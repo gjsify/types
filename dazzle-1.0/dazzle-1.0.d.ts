@@ -1107,6 +1107,7 @@ export namespace Dazzle {
         // Virtual methods
         /**
          * Gets if the window is in the fullscreen state.
+         * @since 3.26
          * @virtual
          */
         vfunc_get_fullscreen(): boolean;
@@ -1121,6 +1122,7 @@ export namespace Dazzle {
          * See `dzl_application_window_get_fullscreen()` to get the current fullscreen
          * state.
          * @param fullscreen if the window should be in the fullscreen state
+         * @since 3.26
          * @virtual
          */
         vfunc_set_fullscreen(fullscreen: boolean): void;
@@ -1129,12 +1131,14 @@ export namespace Dazzle {
         /**
          * Gets if the window is in the fullscreen state.
          * @returns `true` if `self` is fullscreen, otherwise `false`.
+         * @since 3.26
          */
         get_fullscreen(): boolean;
 
         /**
          * Gets the titlebar for the window, if there is one.
          * @returns A {@link Gtk.Widget} or `null`
+         * @since 3.26
          */
         get_titlebar(): Gtk.Widget;
 
@@ -1156,6 +1160,7 @@ export namespace Dazzle {
          * See `dzl_application_window_get_fullscreen()` to get the current fullscreen
          * state.
          * @param fullscreen if the window should be in the fullscreen state
+         * @since 3.26
          */
         set_fullscreen(fullscreen: boolean): void;
 
@@ -1165,6 +1170,7 @@ export namespace Dazzle {
          * Generally, you want to do this from your GTK ui template by setting
          * the &lt;child type="titlebar"&gt;
          * @param titlebar 
+         * @since 3.26
          */
         set_titlebar(titlebar: Gtk.Widget): void;
 
@@ -1179,6 +1185,7 @@ export namespace Dazzle {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -1188,6 +1195,7 @@ export namespace Dazzle {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -1196,6 +1204,7 @@ export namespace Dazzle {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -1205,6 +1214,7 @@ export namespace Dazzle {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -1244,6 +1254,7 @@ export namespace Dazzle {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -1261,6 +1272,7 @@ export namespace Dazzle {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -1271,6 +1283,7 @@ export namespace Dazzle {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -1290,6 +1303,7 @@ export namespace Dazzle {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -1304,6 +1318,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -1328,6 +1343,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -1350,6 +1366,7 @@ export namespace Dazzle {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -1357,6 +1374,7 @@ export namespace Dazzle {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -1366,6 +1384,7 @@ export namespace Dazzle {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -1399,6 +1418,7 @@ export namespace Dazzle {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -1407,6 +1427,7 @@ export namespace Dazzle {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -1417,6 +1438,7 @@ export namespace Dazzle {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -1426,6 +1448,7 @@ export namespace Dazzle {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -1436,6 +1459,7 @@ export namespace Dazzle {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -1476,6 +1500,7 @@ export namespace Dazzle {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -1494,6 +1519,7 @@ export namespace Dazzle {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -1504,6 +1530,7 @@ export namespace Dazzle {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -1523,6 +1550,7 @@ export namespace Dazzle {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -1537,6 +1565,7 @@ export namespace Dazzle {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -1561,6 +1590,7 @@ export namespace Dazzle {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -1583,6 +1613,7 @@ export namespace Dazzle {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -1590,6 +1621,7 @@ export namespace Dazzle {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -1599,6 +1631,7 @@ export namespace Dazzle {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -1632,6 +1665,7 @@ export namespace Dazzle {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -1644,6 +1678,7 @@ export namespace Dazzle {
          * 
          * The action map takes its own reference on `action`.
          * @param action a {@link Gio.Action}
+         * @since 2.32
          */
         add_action(action: Gio.Action): void;
 
@@ -1660,6 +1695,7 @@ export namespace Dazzle {
          * If no such action exists, returns `NULL`.
          * @param action_name the name of an action
          * @returns a {@link Gio.Action}
+         * @since 2.32
          */
         lookup_action(action_name: string): Gio.Action | null;
 
@@ -1668,6 +1704,7 @@ export namespace Dazzle {
          * 
          * If no action of this name is in the map then nothing happens.
          * @param action_name the name of the action
+         * @since 2.32
          */
         remove_action(action_name: string): void;
 
@@ -1695,6 +1732,7 @@ export namespace Dazzle {
          * }
          * ```
          * @param entries a pointer to   the first item in an array of {@link Gio.ActionEntry} structs
+         * @since 2.78
          */
         remove_action_entries(entries: Gio.ActionEntry[]): void;
 
@@ -1706,6 +1744,7 @@ export namespace Dazzle {
          * 
          * The action map takes its own reference on `action`.
          * @param action a {@link Gio.Action}
+         * @since 2.32
          * @virtual
          */
         vfunc_add_action(action: Gio.Action): void;
@@ -1715,6 +1754,7 @@ export namespace Dazzle {
          * 
          * If no such action exists, returns `NULL`.
          * @param action_name the name of an action
+         * @since 2.32
          * @virtual
          */
         vfunc_lookup_action(action_name: string): Gio.Action | null;
@@ -1724,6 +1764,7 @@ export namespace Dazzle {
          * 
          * If no action of this name is in the map then nothing happens.
          * @param action_name the name of the action
+         * @since 2.32
          * @virtual
          */
         vfunc_remove_action(action_name: string): void;
@@ -2206,12 +2247,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -2608,6 +2651,7 @@ export namespace Dazzle {
          * 
          * If the `parameter` {@link GLib.Variant} is floating, it is consumed.
          * @param parameter the parameter to the activation
+         * @since 2.28
          */
         activate(parameter: GLib.Variant | null): void;
 
@@ -2623,6 +2667,7 @@ export namespace Dazzle {
          * 
          * If the `value` {@link GLib.Variant} is floating, it is consumed.
          * @param value the new state
+         * @since 2.30
          */
         change_state(value: GLib.Variant): void;
 
@@ -2632,12 +2677,14 @@ export namespace Dazzle {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @returns whether the action is enabled
+         * @since 2.28
          */
         get_enabled(): boolean;
 
         /**
          * Queries the name of `action`.
          * @returns the name of the action
+         * @since 2.28
          */
         get_name(): string;
 
@@ -2652,6 +2699,7 @@ export namespace Dazzle {
          * In the case that this function returns `NULL`, you must not give any
          * {@link GLib.Variant}, but `NULL` instead.
          * @returns the parameter type
+         * @since 2.28
          */
         get_parameter_type(): GLib.VariantType | null;
 
@@ -2665,6 +2713,7 @@ export namespace Dazzle {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the current state of the action
+         * @since 2.28
          */
         get_state(): GLib.Variant | null;
 
@@ -2688,6 +2737,7 @@ export namespace Dazzle {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the state range hint
+         * @since 2.28
          */
         get_state_hint(): GLib.Variant | null;
 
@@ -2705,6 +2755,7 @@ export namespace Dazzle {
          * then this function will return `NULL`. In that case, {@link Gio.Action.get_state}
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_state_type(): GLib.VariantType | null;
 
@@ -2717,6 +2768,7 @@ export namespace Dazzle {
          * 
          * If the `parameter` {@link GLib.Variant} is floating, it is consumed.
          * @param parameter the parameter to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate(parameter: GLib.Variant | null): void;
@@ -2733,6 +2785,7 @@ export namespace Dazzle {
          * 
          * If the `value` {@link GLib.Variant} is floating, it is consumed.
          * @param value the new state
+         * @since 2.30
          * @virtual
          */
         vfunc_change_state(value: GLib.Variant): void;
@@ -2742,12 +2795,14 @@ export namespace Dazzle {
          * 
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_enabled(): boolean;
 
         /**
          * Queries the name of `action`.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_name(): string;
@@ -2762,6 +2817,7 @@ export namespace Dazzle {
          * 
          * In the case that this function returns `NULL`, you must not give any
          * {@link GLib.Variant}, but `NULL` instead.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_parameter_type(): GLib.VariantType | null;
@@ -2775,6 +2831,7 @@ export namespace Dazzle {
          * 
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_state(): GLib.Variant | null;
@@ -2798,6 +2855,7 @@ export namespace Dazzle {
          * 
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_state_hint(): GLib.Variant | null;
@@ -2815,6 +2873,7 @@ export namespace Dazzle {
          * If the action is not stateful (e.g. created with {@link Gio.SimpleAction.new})
          * then this function will return `NULL`. In that case, {@link Gio.Action.get_state}
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_state_type(): GLib.VariantType | null;
@@ -3363,6 +3422,8 @@ export namespace Dazzle {
          * is defined.
          * @param path {@link Gtk.WidgetPath} to query
          * @returns The icon factory to use for `path`, or `null`
+         * @since 3.0
+         * @deprecated since 3.8: Will always return `null` for all GTK-provided style providers.
          */
         get_icon_factory(path: Gtk.WidgetPath): Gtk.IconFactory | null;
 
@@ -3371,6 +3432,8 @@ export namespace Dazzle {
          * `provider` doesn’t contemplate styling `path`.
          * @param path {@link Gtk.WidgetPath} to query
          * @returns a {@link Gtk.StyleProperties} containing the style settings affecting `path`
+         * @since 3.0
+         * @deprecated since 3.8: Will always return `null` for all GTK-provided style providers     as the interface cannot correctly work the way CSS is specified.
          */
         get_style(path: Gtk.WidgetPath): Gtk.StyleProperties | null;
 
@@ -3381,6 +3444,7 @@ export namespace Dazzle {
          * @param state state to query the style property for
          * @param pspec The {@link GObject.ParamSpec} to query
          * @returns `true` if the property was found and has a value, `false` otherwise
+         * @since 3.0
          */
         get_style_property(path: Gtk.WidgetPath, state: Gtk.StateFlags, pspec: GObject.ParamSpec): [boolean, unknown];
 
@@ -3388,6 +3452,8 @@ export namespace Dazzle {
          * Returns the {@link Gtk.IconFactory} defined to be in use for `path`, or `null` if none
          * is defined.
          * @param path {@link Gtk.WidgetPath} to query
+         * @since 3.0
+         * @deprecated since 3.8: Will always return `null` for all GTK-provided style providers.
          * @virtual
          */
         vfunc_get_icon_factory(path: Gtk.WidgetPath): Gtk.IconFactory | null;
@@ -3396,6 +3462,8 @@ export namespace Dazzle {
          * Returns the style settings affecting a widget defined by `path`, or `null` if
          * `provider` doesn’t contemplate styling `path`.
          * @param path {@link Gtk.WidgetPath} to query
+         * @since 3.0
+         * @deprecated since 3.8: Will always return `null` for all GTK-provided style providers     as the interface cannot correctly work the way CSS is specified.
          * @virtual
          */
         vfunc_get_style(path: Gtk.WidgetPath): Gtk.StyleProperties | null;
@@ -3406,6 +3474,7 @@ export namespace Dazzle {
          * @param path {@link Gtk.WidgetPath} to query
          * @param state state to query the style property for
          * @param pspec The {@link GObject.ParamSpec} to query
+         * @since 3.0
          * @virtual
          */
         vfunc_get_style_property(path: Gtk.WidgetPath, state: Gtk.StateFlags, pspec: GObject.ParamSpec): [boolean, GObject.Value | any];
@@ -3495,6 +3564,7 @@ export namespace Dazzle {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -3505,6 +3575,7 @@ export namespace Dazzle {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -3523,6 +3594,7 @@ export namespace Dazzle {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -3550,6 +3622,7 @@ export namespace Dazzle {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -3562,6 +3635,7 @@ export namespace Dazzle {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -3575,6 +3649,7 @@ export namespace Dazzle {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -3585,6 +3660,7 @@ export namespace Dazzle {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -3893,6 +3969,7 @@ export namespace Dazzle {
          * 
          * Currently, this is best effort, as there are a number of situations that
          * make covering all cases problematic.
+         * @since 3.30
          */
         emit_presented(): void;
 
@@ -3967,6 +4044,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          */
         needs_attention(): void;
 
@@ -3987,6 +4065,7 @@ export namespace Dazzle {
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
+         * @since 3.34
          */
         ref_gicon(): Gio.Icon | null;
 
@@ -4093,6 +4172,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          * @virtual
          */
         vfunc_needs_attention(): void;
@@ -4113,6 +4193,7 @@ export namespace Dazzle {
          * 
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
+         * @since 3.34
          * @virtual
          */
         vfunc_ref_gicon(): Gio.Icon | null;
@@ -4159,6 +4240,7 @@ export namespace Dazzle {
          * Also see `gtk_widget_child_notify()`.
          * @param child the child widget
          * @param child_property the name of a child property installed on     the class of `container`
+         * @since 3.2
          */
         child_notify(child: Gtk.Widget, child_property: string): void;
 
@@ -4305,6 +4387,7 @@ export namespace Dazzle {
          * 
          * Currently, this is best effort, as there are a number of situations that
          * make covering all cases problematic.
+         * @since 3.30
          */
         emit_presented(): void;
 
@@ -4379,6 +4462,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          */
         needs_attention(): void;
 
@@ -4399,6 +4483,7 @@ export namespace Dazzle {
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
+         * @since 3.34
          */
         ref_gicon(): Gio.Icon | null;
 
@@ -4505,6 +4590,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          * @virtual
          */
         vfunc_needs_attention(): void;
@@ -4525,6 +4611,7 @@ export namespace Dazzle {
          * 
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
+         * @since 3.34
          * @virtual
          */
         vfunc_ref_gicon(): Gio.Icon | null;
@@ -4659,6 +4746,7 @@ export namespace Dazzle {
          * This function may be called multiple times and after an equivalent
          * number of calls to `dzl_dock_manager_unpause_grabs()`, transient
          * grab monitoring will continue.
+         * @since 3.26
          */
         pause_grabs(): void;
 
@@ -4674,6 +4762,7 @@ export namespace Dazzle {
          * 
          * Once the pause count returns to zero, transient grab monitoring
          * will be restored.
+         * @since 3.26
          */
         unpause_grabs(): void;
 
@@ -4822,6 +4911,7 @@ export namespace Dazzle {
          * 
          * Currently, this is best effort, as there are a number of situations that
          * make covering all cases problematic.
+         * @since 3.30
          */
         emit_presented(): void;
 
@@ -4896,6 +4986,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          */
         needs_attention(): void;
 
@@ -4916,6 +5007,7 @@ export namespace Dazzle {
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
+         * @since 3.34
          */
         ref_gicon(): Gio.Icon | null;
 
@@ -5022,6 +5114,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          * @virtual
          */
         vfunc_needs_attention(): void;
@@ -5042,6 +5135,7 @@ export namespace Dazzle {
          * 
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
+         * @since 3.34
          * @virtual
          */
         vfunc_ref_gicon(): Gio.Icon | null;
@@ -5088,6 +5182,7 @@ export namespace Dazzle {
          * Also see `gtk_widget_child_notify()`.
          * @param child the child widget
          * @param child_property the name of a child property installed on     the class of `container`
+         * @since 3.2
          */
         child_notify(child: Gtk.Widget, child_property: string): void;
 
@@ -5236,6 +5331,7 @@ export namespace Dazzle {
          * 
          * Currently, this is best effort, as there are a number of situations that
          * make covering all cases problematic.
+         * @since 3.30
          */
         emit_presented(): void;
 
@@ -5310,6 +5406,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          */
         needs_attention(): void;
 
@@ -5330,6 +5427,7 @@ export namespace Dazzle {
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
+         * @since 3.34
          */
         ref_gicon(): Gio.Icon | null;
 
@@ -5436,6 +5534,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          * @virtual
          */
         vfunc_needs_attention(): void;
@@ -5456,6 +5555,7 @@ export namespace Dazzle {
          * 
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
+         * @since 3.34
          * @virtual
          */
         vfunc_ref_gicon(): Gio.Icon | null;
@@ -5628,6 +5728,7 @@ export namespace Dazzle {
          * 
          * Currently, this is best effort, as there are a number of situations that
          * make covering all cases problematic.
+         * @since 3.30
          */
         emit_presented(): void;
 
@@ -5702,6 +5803,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          */
         needs_attention(): void;
 
@@ -5722,6 +5824,7 @@ export namespace Dazzle {
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
+         * @since 3.34
          */
         ref_gicon(): Gio.Icon | null;
 
@@ -5828,6 +5931,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          * @virtual
          */
         vfunc_needs_attention(): void;
@@ -5848,6 +5952,7 @@ export namespace Dazzle {
          * 
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
+         * @since 3.34
          * @virtual
          */
         vfunc_ref_gicon(): Gio.Icon | null;
@@ -5887,12 +5992,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -6335,6 +6442,7 @@ export namespace Dazzle {
          * 
          * Currently, this is best effort, as there are a number of situations that
          * make covering all cases problematic.
+         * @since 3.30
          */
         emit_presented(): void;
 
@@ -6409,6 +6517,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          */
         needs_attention(): void;
 
@@ -6429,6 +6538,7 @@ export namespace Dazzle {
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
+         * @since 3.34
          */
         ref_gicon(): Gio.Icon | null;
 
@@ -6535,6 +6645,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          * @virtual
          */
         vfunc_needs_attention(): void;
@@ -6555,6 +6666,7 @@ export namespace Dazzle {
          * 
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
+         * @since 3.34
          * @virtual
          */
         vfunc_ref_gicon(): Gio.Icon | null;
@@ -6594,12 +6706,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -6890,6 +7004,7 @@ export namespace Dazzle {
          * 
          * Currently, this is best effort, as there are a number of situations that
          * make covering all cases problematic.
+         * @since 3.30
          */
         emit_presented(): void;
 
@@ -6964,6 +7079,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          */
         needs_attention(): void;
 
@@ -6984,6 +7100,7 @@ export namespace Dazzle {
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
+         * @since 3.34
          */
         ref_gicon(): Gio.Icon | null;
 
@@ -7090,6 +7207,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          * @virtual
          */
         vfunc_needs_attention(): void;
@@ -7110,6 +7228,7 @@ export namespace Dazzle {
          * 
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
+         * @since 3.34
          * @virtual
          */
         vfunc_ref_gicon(): Gio.Icon | null;
@@ -7316,6 +7435,7 @@ export namespace Dazzle {
          * 
          * Currently, this is best effort, as there are a number of situations that
          * make covering all cases problematic.
+         * @since 3.30
          */
         emit_presented(): void;
 
@@ -7390,6 +7510,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          */
         needs_attention(): void;
 
@@ -7410,6 +7531,7 @@ export namespace Dazzle {
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
+         * @since 3.34
          */
         ref_gicon(): Gio.Icon | null;
 
@@ -7516,6 +7638,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          * @virtual
          */
         vfunc_needs_attention(): void;
@@ -7536,6 +7659,7 @@ export namespace Dazzle {
          * 
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
+         * @since 3.34
          * @virtual
          */
         vfunc_ref_gicon(): Gio.Icon | null;
@@ -7582,6 +7706,7 @@ export namespace Dazzle {
          * Also see `gtk_widget_child_notify()`.
          * @param child the child widget
          * @param child_property the name of a child property installed on     the class of `container`
+         * @since 3.2
          */
         child_notify(child: Gtk.Widget, child_property: string): void;
 
@@ -7595,6 +7720,7 @@ export namespace Dazzle {
          * Fetches the requested opacity for this widget.
          * See `gtk_widget_set_opacity()`.
          * @returns the requested opacity for this widget.
+         * @since 3.8
          */
         get_opacity(): number;
 
@@ -7608,6 +7734,7 @@ export namespace Dazzle {
          * resources when a widget has been realized, and you should
          * free those resources when the widget is unrealized.
          * @returns the {@link Gdk.Screen} for the toplevel for this widget.
+         * @since 2.2
          */
         get_screen(): Gdk.Screen;
 
@@ -7640,6 +7767,7 @@ export namespace Dazzle {
          * For child widgets it doesn’t work if any affected widget has a native window, or
          * disables double buffering.
          * @param opacity desired opacity, between 0 and 1
+         * @since 3.8
          */
         set_opacity(opacity: number): void;
     }
@@ -8023,12 +8151,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -8227,6 +8357,7 @@ export namespace Dazzle {
         /**
          * Gets the entry used by the {@link Gtk.Entry}.
          * @returns a {@link Gtk.Entry}
+         * @since 3.32
          */
         get_entry(): Gtk.Entry;
 
@@ -8354,6 +8485,7 @@ export namespace Dazzle {
 
         /**
          * Gets statistics about the transfer progress.
+         * @since 3.28
          */
         stat(): FileTransferStat;
     }
@@ -8794,6 +8926,7 @@ export namespace Dazzle {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8837,6 +8970,7 @@ export namespace Dazzle {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8880,6 +9014,7 @@ export namespace Dazzle {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8888,6 +9023,7 @@ export namespace Dazzle {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -8896,6 +9032,7 @@ export namespace Dazzle {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): FuzzyIndexCursor;
 
@@ -8939,6 +9076,7 @@ export namespace Dazzle {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -8947,6 +9085,7 @@ export namespace Dazzle {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -8961,6 +9100,7 @@ export namespace Dazzle {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -8971,6 +9111,7 @@ export namespace Dazzle {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -8989,6 +9130,7 @@ export namespace Dazzle {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -9016,6 +9158,7 @@ export namespace Dazzle {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -9028,6 +9171,7 @@ export namespace Dazzle {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -9041,6 +9185,7 @@ export namespace Dazzle {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -9051,6 +9196,7 @@ export namespace Dazzle {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -9481,6 +9627,7 @@ export namespace Dazzle {
          * @param iter the iter to set
          * @param column the column to set
          * @param value the new value for the column
+         * @since 3.30
          */
         static iter_set(iter: GraphModelIter, column: number, value: GObject.Value | any): void;
 
@@ -9860,6 +10007,7 @@ export namespace Dazzle {
          * Sets the max number of rows to cache for reuse.  Set to 0 to return
          * to the default.
          * @param recycle_max max number of rows to cache
+         * @since 3.28
          */
         set_recycle_max(recycle_max: number): void;
     }
@@ -9980,6 +10128,7 @@ export namespace Dazzle {
          * 
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
+         * @since 3.4
          */
         get_action_name(): string | null;
 
@@ -9988,6 +10137,7 @@ export namespace Dazzle {
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
          * @returns the current target value
+         * @since 3.4
          */
         get_action_target_value(): GLib.Variant;
 
@@ -10004,6 +10154,7 @@ export namespace Dazzle {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          */
         set_action_name(action_name: string | null): void;
 
@@ -10028,6 +10179,7 @@ export namespace Dazzle {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          */
         set_action_target_value(target_value: GLib.Variant | null): void;
 
@@ -10044,6 +10196,7 @@ export namespace Dazzle {
          * `action` is the action name and `target` is the string to use
          * as the target.)
          * @param detailed_action_name the detailed action name
+         * @since 3.4
          */
         set_detailed_action_name(detailed_action_name: string): void;
 
@@ -10051,6 +10204,7 @@ export namespace Dazzle {
          * Gets the action name for `actionable`.
          * 
          * See `gtk_actionable_set_action_name()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_name(): string | null;
@@ -10059,6 +10213,7 @@ export namespace Dazzle {
          * Gets the current target value of `actionable`.
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant;
@@ -10076,6 +10231,7 @@ export namespace Dazzle {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_name(action_name: string | null): void;
@@ -10101,6 +10257,7 @@ export namespace Dazzle {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
@@ -10208,6 +10365,7 @@ export namespace Dazzle {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -10218,6 +10376,7 @@ export namespace Dazzle {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -10236,6 +10395,7 @@ export namespace Dazzle {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -10263,6 +10423,7 @@ export namespace Dazzle {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -10275,6 +10436,7 @@ export namespace Dazzle {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -10288,6 +10450,7 @@ export namespace Dazzle {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -10298,6 +10461,7 @@ export namespace Dazzle {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -10359,6 +10523,7 @@ export namespace Dazzle {
         /**
          * Gets the model being adapted.
          * @returns A {@link Gio.ListModel}
+         * @since 3.26
          */
         get_model(): Gio.ListModel;
 
@@ -10372,6 +10537,7 @@ export namespace Dazzle {
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
@@ -10448,6 +10614,7 @@ export namespace Dazzle {
          * return value for this string.
          * @param iter a {@link Gtk.TreeIter}-struct
          * @returns a newly-allocated string.     Must be freed with `g_free()`.
+         * @since 2.2
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
 
@@ -10538,6 +10705,7 @@ export namespace Dazzle {
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the previous node
+         * @since 3.0
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
 
@@ -10607,6 +10775,7 @@ export namespace Dazzle {
          * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
+         * @since 3.10
          */
         rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
@@ -10750,6 +10919,7 @@ export namespace Dazzle {
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
+         * @since 3.0
          * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
@@ -11045,6 +11215,7 @@ export namespace Dazzle {
         // Methods
         /**
          * @returns A {@link Dazzle.MenuButton} or `null`.
+         * @since 3.26
          */
         get_model(): Gio.MenuModel | null;
 
@@ -11065,6 +11236,7 @@ export namespace Dazzle {
          * If `true`, accelerators will be displayed next to menu items that
          * contain a shortcut.
          * @param show_accels if accelerators should be visible
+         * @since 3.26
          */
         set_show_accels(show_accels: boolean): void;
 
@@ -11074,6 +11246,7 @@ export namespace Dazzle {
          * If `true`, an pan-down-symbolic image will be displayed next to the
          * image in the button.
          * @param show_arrow 
+         * @since 3.26
          */
         set_show_arrow(show_arrow: boolean): void;
 
@@ -11083,6 +11256,7 @@ export namespace Dazzle {
          * If `true`, icons will be displayed next to menu items that
          * contain a shortcut.
          * @param show_icons if icons should be visible
+         * @since 3.26
          */
         set_show_icons(show_icons: boolean): void;
 
@@ -11121,6 +11295,7 @@ export namespace Dazzle {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -11153,6 +11328,7 @@ export namespace Dazzle {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -11248,6 +11424,7 @@ export namespace Dazzle {
          * menu merge. Use the value returned from `dzl_menu_manager_merge()` as
          * the `merge_id`.
          * @param merge_id A previously registered merge id
+         * @since 3.26
          */
         remove(merge_id: number): void;
     }
@@ -11383,6 +11560,7 @@ export namespace Dazzle {
          * @param x x coordinate
          * @param y y coordinate
          * @returns a {@link Gtk.Widget} or `null`
+         * @since 3.28
          */
         get_at_point(x: number, y: number): Gtk.Widget | null;
 
@@ -11403,12 +11581,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -11637,12 +11817,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -11742,6 +11924,7 @@ export namespace Dazzle {
          * Gets the {@link Dazzle.PathElement.icon_name} property. This is used by the
          * path bar to display an icon next to the element of the path.
          * @returns The icon-name for the {@link Dazzle.PathElement}.
+         * @since 3.26
          */
         get_icon_name(): string | null;
 
@@ -11751,6 +11934,7 @@ export namespace Dazzle {
          * is useful to the application that it using it. You might store
          * the name of a directory, or some other key as the id.
          * @returns The id for the {@link Dazzle.PathElement}.
+         * @since 3.26
          */
         get_id(): string;
 
@@ -11758,6 +11942,7 @@ export namespace Dazzle {
          * Gets the {@link Dazzle.PathElement.title} property. This is used by the
          * path bar to display text representing the element of the path.
          * @returns The title for the {@link Dazzle.PathElement}.
+         * @since 3.26
          */
         get_title(): string | null;
     }
@@ -13510,12 +13695,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -13751,6 +13938,7 @@ export namespace Dazzle {
          * 
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
+         * @since 3.4
          */
         get_action_name(): string | null;
 
@@ -13759,6 +13947,7 @@ export namespace Dazzle {
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
          * @returns the current target value
+         * @since 3.4
          */
         get_action_target_value(): GLib.Variant;
 
@@ -13775,6 +13964,7 @@ export namespace Dazzle {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          */
         set_action_name(action_name: string | null): void;
 
@@ -13799,6 +13989,7 @@ export namespace Dazzle {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          */
         set_action_target_value(target_value: GLib.Variant | null): void;
 
@@ -13815,6 +14006,7 @@ export namespace Dazzle {
          * `action` is the action name and `target` is the string to use
          * as the target.)
          * @param detailed_action_name the detailed action name
+         * @since 3.4
          */
         set_detailed_action_name(detailed_action_name: string): void;
 
@@ -13822,6 +14014,7 @@ export namespace Dazzle {
          * Gets the action name for `actionable`.
          * 
          * See `gtk_actionable_set_action_name()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_name(): string | null;
@@ -13830,6 +14023,7 @@ export namespace Dazzle {
          * Gets the current target value of `actionable`.
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant;
@@ -13847,6 +14041,7 @@ export namespace Dazzle {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_name(action_name: string | null): void;
@@ -13872,6 +14067,7 @@ export namespace Dazzle {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
@@ -13893,12 +14089,16 @@ export namespace Dazzle {
          * > `gtk_activatable_get_related_action()` to retrieve the
          * > previous action.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         do_set_related_action(action: Gtk.Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_related_action(): Gtk.Action;
 
@@ -13907,6 +14107,8 @@ export namespace Dazzle {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_use_action_appearance(): boolean;
 
@@ -13916,6 +14118,8 @@ export namespace Dazzle {
          * > {@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * > property and call `gtk_activatable_do_set_related_action()` when it changes.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_related_action(action: Gtk.Action): void;
 
@@ -13928,6 +14132,8 @@ export namespace Dazzle {
          * > `gtk_activatable_sync_action_properties()` to update `activatable`
          * > if needed.
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -13937,6 +14143,8 @@ export namespace Dazzle {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          */
         sync_action_properties(action: Gtk.Action | null): void;
 
@@ -13946,6 +14154,8 @@ export namespace Dazzle {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          * @virtual
          */
         vfunc_sync_action_properties(action: Gtk.Action | null): void;
@@ -13982,6 +14192,7 @@ export namespace Dazzle {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -13991,6 +14202,7 @@ export namespace Dazzle {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -14340,6 +14552,7 @@ export namespace Dazzle {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -14372,6 +14585,7 @@ export namespace Dazzle {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -14451,6 +14665,7 @@ export namespace Dazzle {
          * 
          * The action name of all added properties will be identical to their
          * property name.
+         * @since 3.26
          */
         add_all_properties(): void;
 
@@ -14459,6 +14674,7 @@ export namespace Dazzle {
          * property `property_name` of {@link Dazzle.PropertiesGroup.object}.
          * @param name the name of the action
          * @param property_name the name of the property
+         * @since 3.26
          */
         add_property(name: string, property_name: string): void;
 
@@ -14470,6 +14686,7 @@ export namespace Dazzle {
          * @param name the name of the action
          * @param property_name the name of the property
          * @param flags optional flags for the action
+         * @since 3.26
          */
         add_property_full(name: string, property_name: string, flags: PropertiesFlags): void;
 
@@ -14478,6 +14695,7 @@ export namespace Dazzle {
          * `dzl_properties_group_add_property()`. `name` should match the
          * name parameter to that function.
          * @param name the name of the action
+         * @since 3.26
          */
         remove(name: string): void;
 
@@ -14486,6 +14704,7 @@ export namespace Dazzle {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -14495,6 +14714,7 @@ export namespace Dazzle {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -14503,6 +14723,7 @@ export namespace Dazzle {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -14512,6 +14733,7 @@ export namespace Dazzle {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -14551,6 +14773,7 @@ export namespace Dazzle {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -14568,6 +14791,7 @@ export namespace Dazzle {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -14578,6 +14802,7 @@ export namespace Dazzle {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -14597,6 +14822,7 @@ export namespace Dazzle {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -14611,6 +14837,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -14635,6 +14862,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -14657,6 +14885,7 @@ export namespace Dazzle {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -14664,6 +14893,7 @@ export namespace Dazzle {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -14673,6 +14903,7 @@ export namespace Dazzle {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -14706,6 +14937,7 @@ export namespace Dazzle {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -14714,6 +14946,7 @@ export namespace Dazzle {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -14724,6 +14957,7 @@ export namespace Dazzle {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -14733,6 +14967,7 @@ export namespace Dazzle {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -14743,6 +14978,7 @@ export namespace Dazzle {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -14783,6 +15019,7 @@ export namespace Dazzle {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -14801,6 +15038,7 @@ export namespace Dazzle {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -14811,6 +15049,7 @@ export namespace Dazzle {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -14830,6 +15069,7 @@ export namespace Dazzle {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -14844,6 +15084,7 @@ export namespace Dazzle {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -14868,6 +15109,7 @@ export namespace Dazzle {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -14890,6 +15132,7 @@ export namespace Dazzle {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -14897,6 +15140,7 @@ export namespace Dazzle {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -14906,6 +15150,7 @@ export namespace Dazzle {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -14939,6 +15184,7 @@ export namespace Dazzle {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -15183,6 +15429,7 @@ export namespace Dazzle {
          * `base_model`. This is useful when you want to give API consumers access to
          * a {@link Gio.ListModel} but without the ability to mutate the underlying list.
          * @param base_model a {@link Gio.ListModel}
+         * @since 3.30
          */
         static ["new"](base_model: Gio.ListModel): Gio.ListModel;
 
@@ -15196,6 +15443,7 @@ export namespace Dazzle {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -15206,6 +15454,7 @@ export namespace Dazzle {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -15224,6 +15473,7 @@ export namespace Dazzle {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -15251,6 +15501,7 @@ export namespace Dazzle {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -15263,6 +15514,7 @@ export namespace Dazzle {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -15276,6 +15528,7 @@ export namespace Dazzle {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -15286,6 +15539,7 @@ export namespace Dazzle {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -15356,12 +15610,14 @@ export namespace Dazzle {
         // Methods
         /**
          * Cancels the recursive file monitor.
+         * @since 3.28
          */
         cancel(): void;
 
         /**
          * Gets the root directory used forthe file monitor.
          * @returns a {@link Gio.File}
+         * @since 3.28
          */
         get_root(): Gio.File;
 
@@ -15374,6 +15630,7 @@ export namespace Dazzle {
          * If `ignore_func` is `null`, it is set to the default which does not
          * ignore any files or directories.
          * @param ignore_func a {@link Dazzle.RecursiveIgnoreFunc}
+         * @since 3.28
          */
         set_ignore_func(ignore_func: RecursiveIgnoreFunc): void;
 
@@ -15835,6 +16092,7 @@ export namespace Dazzle {
          * 
          * If the `parameter` {@link GLib.Variant} is floating, it is consumed.
          * @param parameter the parameter to the activation
+         * @since 2.28
          */
         activate(parameter: GLib.Variant | null): void;
 
@@ -15850,6 +16108,7 @@ export namespace Dazzle {
          * 
          * If the `value` {@link GLib.Variant} is floating, it is consumed.
          * @param value the new state
+         * @since 2.30
          */
         change_state(value: GLib.Variant): void;
 
@@ -15859,12 +16118,14 @@ export namespace Dazzle {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @returns whether the action is enabled
+         * @since 2.28
          */
         get_enabled(): boolean;
 
         /**
          * Queries the name of `action`.
          * @returns the name of the action
+         * @since 2.28
          */
         get_name(): string;
 
@@ -15879,6 +16140,7 @@ export namespace Dazzle {
          * In the case that this function returns `NULL`, you must not give any
          * {@link GLib.Variant}, but `NULL` instead.
          * @returns the parameter type
+         * @since 2.28
          */
         get_parameter_type(): GLib.VariantType | null;
 
@@ -15892,6 +16154,7 @@ export namespace Dazzle {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the current state of the action
+         * @since 2.28
          */
         get_state(): GLib.Variant | null;
 
@@ -15915,6 +16178,7 @@ export namespace Dazzle {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the state range hint
+         * @since 2.28
          */
         get_state_hint(): GLib.Variant | null;
 
@@ -15932,6 +16196,7 @@ export namespace Dazzle {
          * then this function will return `NULL`. In that case, {@link Gio.Action.get_state}
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_state_type(): GLib.VariantType | null;
 
@@ -15944,6 +16209,7 @@ export namespace Dazzle {
          * 
          * If the `parameter` {@link GLib.Variant} is floating, it is consumed.
          * @param parameter the parameter to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate(parameter: GLib.Variant | null): void;
@@ -15960,6 +16226,7 @@ export namespace Dazzle {
          * 
          * If the `value` {@link GLib.Variant} is floating, it is consumed.
          * @param value the new state
+         * @since 2.30
          * @virtual
          */
         vfunc_change_state(value: GLib.Variant): void;
@@ -15969,12 +16236,14 @@ export namespace Dazzle {
          * 
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_enabled(): boolean;
 
         /**
          * Queries the name of `action`.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_name(): string;
@@ -15989,6 +16258,7 @@ export namespace Dazzle {
          * 
          * In the case that this function returns `NULL`, you must not give any
          * {@link GLib.Variant}, but `NULL` instead.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_parameter_type(): GLib.VariantType | null;
@@ -16002,6 +16272,7 @@ export namespace Dazzle {
          * 
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_state(): GLib.Variant | null;
@@ -16025,6 +16296,7 @@ export namespace Dazzle {
          * 
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_state_hint(): GLib.Variant | null;
@@ -16042,6 +16314,7 @@ export namespace Dazzle {
          * If the action is not stateful (e.g. created with {@link Gio.SimpleAction.new})
          * then this function will return `NULL`. In that case, {@link Gio.Action.get_state}
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_state_type(): GLib.VariantType | null;
@@ -16654,6 +16927,7 @@ export namespace Dazzle {
          * is a group of keybindings that may be activated in response to a
          * single or series of {@link Gdk.EventKey}.
          * @returns A {@link Dazzle.ShortcutContext} or `null`.
+         * @since 3.26
          */
         get_context(): ShortcutContext | null;
 
@@ -16663,6 +16937,7 @@ export namespace Dazzle {
          * bubble, or dispatch.
          * @param phase the phase for the shorcut delivery
          * @returns A {@link Dazzle.ShortcutContext} or `null`.
+         * @since 3.26
          */
         get_context_for_phase(phase: ShortcutPhase): ShortcutContext | null;
 
@@ -16688,6 +16963,7 @@ export namespace Dazzle {
 
         /**
          * @returns the widget for the controller
+         * @since 3.34
          */
         get_widget(): Gtk.Widget;
 
@@ -16703,6 +16979,7 @@ export namespace Dazzle {
          * Contexts are resolved at runtime through the current theme (and possibly
          * a parent theme if it inherits from one).
          * @param name The name of the context
+         * @since 3.26
          */
         set_context_by_name(name: string | null): void;
 
@@ -16853,12 +17130,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -17102,6 +17381,7 @@ export namespace Dazzle {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -17145,6 +17425,7 @@ export namespace Dazzle {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -17159,6 +17440,7 @@ export namespace Dazzle {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -17169,6 +17451,7 @@ export namespace Dazzle {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -17187,6 +17470,7 @@ export namespace Dazzle {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -17214,6 +17498,7 @@ export namespace Dazzle {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -17226,6 +17511,7 @@ export namespace Dazzle {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -17239,6 +17525,7 @@ export namespace Dazzle {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -17249,6 +17536,7 @@ export namespace Dazzle {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -17355,6 +17643,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -17366,6 +17655,7 @@ export namespace Dazzle {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -17376,6 +17666,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -17386,6 +17677,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -17395,6 +17687,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -17403,6 +17696,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -17413,6 +17707,7 @@ export namespace Dazzle {
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -17423,6 +17718,7 @@ export namespace Dazzle {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -17431,12 +17727,14 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -17446,6 +17744,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -17457,6 +17756,7 @@ export namespace Dazzle {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -17468,6 +17768,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -17479,6 +17780,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -17488,6 +17790,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -17496,6 +17799,7 @@ export namespace Dazzle {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -17506,6 +17810,7 @@ export namespace Dazzle {
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -17517,6 +17822,7 @@ export namespace Dazzle {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -17526,6 +17832,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -17533,6 +17840,7 @@ export namespace Dazzle {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -17654,6 +17962,7 @@ export namespace Dazzle {
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
@@ -17730,6 +18039,7 @@ export namespace Dazzle {
          * return value for this string.
          * @param iter a {@link Gtk.TreeIter}-struct
          * @returns a newly-allocated string.     Must be freed with `g_free()`.
+         * @since 2.2
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
 
@@ -17820,6 +18130,7 @@ export namespace Dazzle {
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the previous node
+         * @since 3.0
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
 
@@ -17889,6 +18200,7 @@ export namespace Dazzle {
          * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
+         * @since 3.10
          */
         rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
@@ -18032,6 +18344,7 @@ export namespace Dazzle {
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
+         * @since 3.0
          * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
@@ -18431,12 +18744,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -18881,30 +19196,35 @@ export namespace Dazzle {
          * Gets the {@link Dazzle.ShortcutTooltip.accel} property, which can be used to override
          * the commands accel.
          * @returns an override accel, or `null`
+         * @since 3.32
          */
         get_accel(): string | null;
 
         /**
          * Gets the {@link Dazzle.ShortcutTooltip.command_id} property.
          * @returns a string containing the command id
+         * @since 3.32
          */
         get_command_id(): string | null;
 
         /**
          * Gets the {@link Dazzle.ShortcutTooltip.title} property, if set.
          * @returns a string containing the title, or `null`
+         * @since 3.32
          */
         get_title(): string | null;
 
         /**
          * Gets the {@link Gtk.Widget} that the shortcut-tooltip is wrapping.
          * @returns a {@link Gtk.Widget} or `null` if unset
+         * @since 3.32
          */
         get_widget(): Gtk.Widget | null;
 
         /**
          * Allows overriding the accel that is used.
          * @param accel Sets the accelerator to use, or `null` to unset   and use the default
+         * @since 3.32
          */
         set_accel(accel: string | null): void;
 
@@ -18913,6 +19233,7 @@ export namespace Dazzle {
          * shortcut registered with libdazzle to display when a tooltip request is
          * received.
          * @param command_id the command-id of the shortcut registered
+         * @since 3.32
          */
         set_command_id(command_id: string): void;
 
@@ -18921,6 +19242,7 @@ export namespace Dazzle {
          * override the default title for the tooltip as discovered from the
          * shortcut manager.
          * @param title a title for the tooltip, or `null`
+         * @since 3.32
          */
         set_title(title: string | null): void;
 
@@ -18930,6 +19252,7 @@ export namespace Dazzle {
          * If configured, the widget will be displayed with an appropriate tooltip
          * message matching the shortcut from {@link Dazzle.ShortcutTooltip.command_id}.
          * @param widget a {@link Gtk.Widget} or `null`
+         * @since 3.32
          */
         set_widget(widget: Gtk.Widget | null): void;
     }
@@ -19107,12 +19430,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -19308,12 +19633,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -19608,12 +19935,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -20145,6 +20474,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -20156,6 +20486,7 @@ export namespace Dazzle {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -20166,6 +20497,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -20176,6 +20508,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -20185,6 +20518,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -20193,6 +20527,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -20203,6 +20538,7 @@ export namespace Dazzle {
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -20213,6 +20549,7 @@ export namespace Dazzle {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -20221,12 +20558,14 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -20236,6 +20575,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -20247,6 +20587,7 @@ export namespace Dazzle {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -20258,6 +20599,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -20269,6 +20611,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -20278,6 +20621,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -20286,6 +20630,7 @@ export namespace Dazzle {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -20296,6 +20641,7 @@ export namespace Dazzle {
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -20307,6 +20653,7 @@ export namespace Dazzle {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -20316,6 +20663,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -20323,6 +20671,7 @@ export namespace Dazzle {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -20901,6 +21250,7 @@ export namespace Dazzle {
          * Checks to see if the current state of the {@link Dazzle.StateMachine} matches `state`.
          * @param state the name of the state to check
          * @returns `true` if `self` is currently set to `state`.
+         * @since 3.28
          */
         is_state(state: string | null): boolean;
 
@@ -20922,6 +21272,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -20933,6 +21284,7 @@ export namespace Dazzle {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -20943,6 +21295,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -20953,6 +21306,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -20962,6 +21316,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -20970,6 +21325,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -20980,6 +21336,7 @@ export namespace Dazzle {
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -20990,6 +21347,7 @@ export namespace Dazzle {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -20998,12 +21356,14 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -21013,6 +21373,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -21024,6 +21385,7 @@ export namespace Dazzle {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -21035,6 +21397,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -21046,6 +21409,7 @@ export namespace Dazzle {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -21055,6 +21419,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -21063,6 +21428,7 @@ export namespace Dazzle {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -21073,6 +21439,7 @@ export namespace Dazzle {
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -21084,6 +21451,7 @@ export namespace Dazzle {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -21093,6 +21461,7 @@ export namespace Dazzle {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -21100,6 +21469,7 @@ export namespace Dazzle {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -21239,6 +21609,7 @@ export namespace Dazzle {
         // Virtual methods
         /**
          * Gets the icon for the suggestion, if any.
+         * @since 3.30
          * @virtual
          */
         vfunc_get_icon(): Gio.Icon | null;
@@ -21251,12 +21622,14 @@ export namespace Dazzle {
          * `widget` is provided so that the implementation may determine scale or
          * any other style-specific settings from the style context.
          * @param widget a widget that may contain the surface
+         * @since 3.30
          * @virtual
          */
         vfunc_get_icon_surface(widget: Gtk.Widget): cairo.Surface | null;
 
         /**
          * Gets the secondary icon for the suggestion, if any.
+         * @since 3.36
          * @virtual
          */
         vfunc_get_secondary_icon(): Gio.Icon | null;
@@ -21269,6 +21642,7 @@ export namespace Dazzle {
          * `widget` is provided so that the implementation may determine scale or
          * any other style-specific settings from the style context.
          * @param widget a widget that may contain the surface
+         * @since 3.36
          * @virtual
          */
         vfunc_get_secondary_icon_surface(widget: Gtk.Widget): cairo.Surface | null;
@@ -21299,6 +21673,7 @@ export namespace Dazzle {
         /**
          * Gets the icon for the suggestion, if any.
          * @returns a {@link Gio.Icon} or `null`
+         * @since 3.30
          */
         get_icon(): Gio.Icon | null;
 
@@ -21313,6 +21688,7 @@ export namespace Dazzle {
          * any other style-specific settings from the style context.
          * @param widget a widget that may contain the surface
          * @returns a {@link cairo.Surface} or `null`
+         * @since 3.30
          */
         get_icon_surface(widget: Gtk.Widget): cairo.Surface | null;
 
@@ -21321,6 +21697,7 @@ export namespace Dazzle {
         /**
          * Gets the secondary icon for the suggestion, if any.
          * @returns a {@link Gio.Icon} or `null`
+         * @since 3.36
          */
         get_secondary_icon(): Gio.Icon | null;
 
@@ -21335,6 +21712,7 @@ export namespace Dazzle {
          * any other style-specific settings from the style context.
          * @param widget a widget that may contain the surface
          * @returns a {@link cairo.Surface} or `null`
+         * @since 3.36
          */
         get_secondary_icon_surface(widget: Gtk.Widget): cairo.Surface | null;
 
@@ -21505,11 +21883,13 @@ export namespace Dazzle {
         // Methods
         /**
          * @returns a {@link Gtk.Widget}
+         * @since 3.34
          */
         get_button(): Gtk.Button;
 
         /**
          * @returns a {@link Dazzle.SuggestionEntry}
+         * @since 3.34
          */
         get_entry(): SuggestionEntry;
     }
@@ -21804,6 +22184,7 @@ export namespace Dazzle {
         /**
          * Gets the {@link Dazzle.SuggestionEntry.compact} property.
          * @returns `true` if compact-mode is in use.
+         * @since 3.34
          */
         get_compact(): boolean;
 
@@ -21817,6 +22198,7 @@ export namespace Dazzle {
          * Gets the result display widget for the entry. This is currently
          * always a {@link Dazzle.SuggestionPopover}.
          * @returns a {@link Gtk.Widget}
+         * @since 3.32
          */
         get_popover(): Gtk.Widget;
 
@@ -21838,6 +22220,7 @@ export namespace Dazzle {
         /**
          * Sets the {@link Dazzle.SuggestionEntry.compact} property.
          * @param compact if compact mode should be used
+         * @since 3.34
          */
         set_compact(compact: boolean): void;
 
@@ -21852,6 +22235,7 @@ export namespace Dazzle {
          * In `func`, you should set the height of the rectangle to the maximum height
          * that the popover should be allowed to grow.
          * @param func A function to call to position the popover, or `null` to set the default.
+         * @since 3.26
          */
         set_position_func(func: SuggestionPositionFunc | null): void;
 
@@ -22599,12 +22983,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -22871,6 +23257,7 @@ export namespace Dazzle {
          * 
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
+         * @since 3.4
          */
         get_action_name(): string | null;
 
@@ -22879,6 +23266,7 @@ export namespace Dazzle {
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
          * @returns the current target value
+         * @since 3.4
          */
         get_action_target_value(): GLib.Variant;
 
@@ -22895,6 +23283,7 @@ export namespace Dazzle {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          */
         set_action_name(action_name: string | null): void;
 
@@ -22919,6 +23308,7 @@ export namespace Dazzle {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          */
         set_action_target_value(target_value: GLib.Variant | null): void;
 
@@ -22935,6 +23325,7 @@ export namespace Dazzle {
          * `action` is the action name and `target` is the string to use
          * as the target.)
          * @param detailed_action_name the detailed action name
+         * @since 3.4
          */
         set_detailed_action_name(detailed_action_name: string): void;
 
@@ -22942,6 +23333,7 @@ export namespace Dazzle {
          * Gets the action name for `actionable`.
          * 
          * See `gtk_actionable_set_action_name()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_name(): string | null;
@@ -22950,6 +23342,7 @@ export namespace Dazzle {
          * Gets the current target value of `actionable`.
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant;
@@ -22967,6 +23360,7 @@ export namespace Dazzle {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_name(action_name: string | null): void;
@@ -22992,6 +23386,7 @@ export namespace Dazzle {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
@@ -23184,12 +23579,14 @@ export namespace Dazzle {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -23984,36 +24381,42 @@ export namespace Dazzle {
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
          * @returns `true` if `border` has been set
+         * @since 3.16
          */
         get_border(): [boolean, Gtk.Border];
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_hadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_vadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
@@ -24022,12 +24425,14 @@ export namespace Dazzle {
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
@@ -24036,6 +24441,7 @@ export namespace Dazzle {
          * vertical scrolling should start below the minimum height or
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
@@ -24045,6 +24451,7 @@ export namespace Dazzle {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
@@ -24559,6 +24966,7 @@ export namespace Dazzle {
          * 
          * If `null`, the default foreground color should be used.
          * @returns A {@link Gdk.RGBA} or `null`
+         * @since 3.28
          */
         get_foreground_rgba(): Gdk.RGBA | null;
 
@@ -24621,6 +25029,7 @@ export namespace Dazzle {
          * Inserts `child` as a child of `self` at `position`.
          * @param child a {@link Dazzle.TreeNode}
          * @param position the position for the child
+         * @since 3.28
          */
         insert(child: TreeNode, position: number): void;
 
@@ -24653,6 +25062,7 @@ export namespace Dazzle {
         /**
          * Rebuilds a node, without invalidating children nodes. If you want to
          * ensure that children are also rebuilt, use `dzl_tree_node_invalidate()`.
+         * @since 3.28
          */
         rebuild(): void;
 
@@ -24687,6 +25097,7 @@ export namespace Dazzle {
          * 
          * If `foreground_rgba` is `null`, the value is reset to the default.
          * @param foreground_rgba A {@link Gdk.RGBA} or `null`
+         * @since 3.28
          */
         set_foreground_rgba(foreground_rgba: Gdk.RGBA | null): void;
 
@@ -24815,6 +25226,7 @@ export namespace Dazzle {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -24824,6 +25236,7 @@ export namespace Dazzle {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -24832,6 +25245,7 @@ export namespace Dazzle {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -24841,6 +25255,7 @@ export namespace Dazzle {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -24880,6 +25295,7 @@ export namespace Dazzle {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -24897,6 +25313,7 @@ export namespace Dazzle {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -24907,6 +25324,7 @@ export namespace Dazzle {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -24926,6 +25344,7 @@ export namespace Dazzle {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -24940,6 +25359,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -24964,6 +25384,7 @@ export namespace Dazzle {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -24986,6 +25407,7 @@ export namespace Dazzle {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -24993,6 +25415,7 @@ export namespace Dazzle {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -25002,6 +25425,7 @@ export namespace Dazzle {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -25035,6 +25459,7 @@ export namespace Dazzle {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -25043,6 +25468,7 @@ export namespace Dazzle {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -25053,6 +25479,7 @@ export namespace Dazzle {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -25062,6 +25489,7 @@ export namespace Dazzle {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -25072,6 +25500,7 @@ export namespace Dazzle {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -25112,6 +25541,7 @@ export namespace Dazzle {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -25130,6 +25560,7 @@ export namespace Dazzle {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -25140,6 +25571,7 @@ export namespace Dazzle {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -25159,6 +25591,7 @@ export namespace Dazzle {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -25173,6 +25606,7 @@ export namespace Dazzle {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -25197,6 +25631,7 @@ export namespace Dazzle {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -25219,6 +25654,7 @@ export namespace Dazzle {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -25226,6 +25662,7 @@ export namespace Dazzle {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -25235,6 +25672,7 @@ export namespace Dazzle {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -25268,6 +25706,7 @@ export namespace Dazzle {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -26528,6 +26967,7 @@ export namespace Dazzle {
 
             /**
              * Emits the "needs-attention" signal.
+             * @since 3.34
              * @virtual
              */
             vfunc_needs_attention(): void;
@@ -26548,6 +26988,7 @@ export namespace Dazzle {
              * 
              * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
              * may be returned.
+             * @since 3.34
              * @virtual
              */
             vfunc_ref_gicon(): Gio.Icon | null;
@@ -26620,6 +27061,7 @@ export namespace Dazzle {
          * 
          * Currently, this is best effort, as there are a number of situations that
          * make covering all cases problematic.
+         * @since 3.30
          */
         emit_presented(): void;
 
@@ -26694,6 +27136,7 @@ export namespace Dazzle {
 
         /**
          * Emits the "needs-attention" signal.
+         * @since 3.34
          */
         needs_attention(): void;
 
@@ -26714,6 +27157,7 @@ export namespace Dazzle {
          * If an icon-name has been set, a new {@link Gio.Icon} for that icon-name
          * may be returned.
          * @returns a {@link Gio.Icon} or `null`
+         * @since 3.34
          */
         ref_gicon(): Gio.Icon | null;
 

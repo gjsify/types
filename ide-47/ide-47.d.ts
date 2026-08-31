@@ -2362,6 +2362,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -2371,6 +2372,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -2379,6 +2381,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -2388,6 +2391,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -2427,6 +2431,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -2444,6 +2449,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -2454,6 +2460,7 @@ export namespace Ide {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -2473,6 +2480,7 @@ export namespace Ide {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -2487,6 +2495,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -2511,6 +2520,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -2533,6 +2543,7 @@ export namespace Ide {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -2540,6 +2551,7 @@ export namespace Ide {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -2549,6 +2561,7 @@ export namespace Ide {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -2582,6 +2595,7 @@ export namespace Ide {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -2590,6 +2604,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -2600,6 +2615,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -2609,6 +2625,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -2619,6 +2636,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -2659,6 +2677,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -2677,6 +2696,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -2687,6 +2707,7 @@ export namespace Ide {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -2706,6 +2727,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -2720,6 +2742,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -2744,6 +2767,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -2766,6 +2790,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -2773,6 +2798,7 @@ export namespace Ide {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -2782,6 +2808,7 @@ export namespace Ide {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -2815,6 +2842,7 @@ export namespace Ide {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -3085,6 +3113,7 @@ export namespace Ide {
          * If no workbench could be found, `null` is returned.
          * @param project_info an {@link Ide.ProjectInfo}
          * @returns an {@link Ide.Workbench} or `null`
+         * @since 44
          */
         find_project_workbench(project_info: ProjectInfo): Workbench | null;
 
@@ -3840,6 +3869,7 @@ export namespace Ide {
         /**
          * Gets the code action provider, if any.
          * @returns an {@link Ide.CodeActionProvider} or `null`
+         * @since 44
          */
         get_code_action_provider(): CodeActionProvider | null;
 
@@ -4054,6 +4084,7 @@ export namespace Ide {
         /**
          * Gets the symbol resolvers for the buffer.
          * @returns a {@link Gio.ListModel} of {@link Ide.SymbolResolver}
+         * @since 45
          */
         list_symbol_resolvers(): Gio.ListModel;
 
@@ -4633,6 +4664,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -4643,6 +4675,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -4661,6 +4694,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -4688,6 +4722,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -4700,6 +4735,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -4713,6 +4749,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -4723,6 +4760,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -4770,6 +4808,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -5244,6 +5283,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -5253,6 +5293,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -5261,6 +5302,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -5270,6 +5312,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -5309,6 +5352,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -5326,6 +5370,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -5336,6 +5381,7 @@ export namespace Ide {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -5355,6 +5401,7 @@ export namespace Ide {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -5369,6 +5416,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -5393,6 +5441,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -5415,6 +5464,7 @@ export namespace Ide {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -5422,6 +5472,7 @@ export namespace Ide {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -5431,6 +5482,7 @@ export namespace Ide {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -5464,6 +5516,7 @@ export namespace Ide {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -5472,6 +5525,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -5482,6 +5536,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -5491,6 +5546,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -5501,6 +5557,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -5541,6 +5598,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -5559,6 +5617,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -5569,6 +5628,7 @@ export namespace Ide {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -5588,6 +5648,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -5602,6 +5663,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -5626,6 +5688,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -5648,6 +5711,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -5655,6 +5719,7 @@ export namespace Ide {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -5664,6 +5729,7 @@ export namespace Ide {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -5697,6 +5763,7 @@ export namespace Ide {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -5742,6 +5809,7 @@ export namespace Ide {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5785,6 +5853,7 @@ export namespace Ide {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -5832,6 +5901,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -5910,6 +5980,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -5920,6 +5991,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -5938,6 +6010,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -5965,6 +6038,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -5977,6 +6051,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -5990,6 +6065,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -6000,6 +6076,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -7000,6 +7077,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -7009,6 +7087,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -7017,6 +7096,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -7026,6 +7106,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -7065,6 +7146,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -7082,6 +7164,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -7092,6 +7175,7 @@ export namespace Ide {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -7111,6 +7195,7 @@ export namespace Ide {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -7125,6 +7210,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -7149,6 +7235,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -7171,6 +7258,7 @@ export namespace Ide {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -7178,6 +7266,7 @@ export namespace Ide {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -7187,6 +7276,7 @@ export namespace Ide {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -7220,6 +7310,7 @@ export namespace Ide {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -7228,6 +7319,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -7238,6 +7330,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -7247,6 +7340,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -7257,6 +7351,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -7297,6 +7392,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -7315,6 +7411,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -7325,6 +7422,7 @@ export namespace Ide {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -7344,6 +7442,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -7358,6 +7457,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -7382,6 +7482,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -7404,6 +7505,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -7411,6 +7513,7 @@ export namespace Ide {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -7420,6 +7523,7 @@ export namespace Ide {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -7453,6 +7557,7 @@ export namespace Ide {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -7496,6 +7601,7 @@ export namespace Ide {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -7539,6 +7645,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7582,6 +7689,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -7590,6 +7698,7 @@ export namespace Ide {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7598,6 +7707,7 @@ export namespace Ide {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ConfigManager;
 
@@ -7641,6 +7751,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7649,6 +7760,7 @@ export namespace Ide {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -7663,6 +7775,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -7673,6 +7786,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -7691,6 +7805,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -7718,6 +7833,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -7730,6 +7846,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -7743,6 +7860,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -7753,6 +7871,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -7800,6 +7919,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -7968,6 +8088,7 @@ export namespace Ide {
         /**
          * Gets the logs for the context.
          * @returns a {@link Gio.ListModel} of {@link Ide.LogItem}
+         * @since 44
          */
         ref_logs(): Gio.ListModel;
 
@@ -9438,6 +9559,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -9447,6 +9569,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -9455,6 +9578,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -9464,6 +9588,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -9503,6 +9628,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -9520,6 +9646,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -9530,6 +9657,7 @@ export namespace Ide {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -9549,6 +9677,7 @@ export namespace Ide {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -9563,6 +9692,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -9587,6 +9717,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -9609,6 +9740,7 @@ export namespace Ide {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -9616,6 +9748,7 @@ export namespace Ide {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -9625,6 +9758,7 @@ export namespace Ide {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -9658,6 +9792,7 @@ export namespace Ide {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -9666,6 +9801,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -9676,6 +9812,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -9685,6 +9822,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -9695,6 +9833,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -9735,6 +9874,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -9753,6 +9893,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -9763,6 +9904,7 @@ export namespace Ide {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -9782,6 +9924,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -9796,6 +9939,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -9820,6 +9964,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -9842,6 +9987,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -9849,6 +9995,7 @@ export namespace Ide {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -9858,6 +10005,7 @@ export namespace Ide {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -9891,6 +10039,7 @@ export namespace Ide {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -9938,6 +10087,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -11804,6 +11954,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -11813,6 +11964,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -11821,6 +11973,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -11830,6 +11983,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -11869,6 +12023,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -11886,6 +12041,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -11896,6 +12052,7 @@ export namespace Ide {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -11915,6 +12072,7 @@ export namespace Ide {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -11929,6 +12087,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -11953,6 +12112,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -11975,6 +12135,7 @@ export namespace Ide {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -11982,6 +12143,7 @@ export namespace Ide {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -11991,6 +12153,7 @@ export namespace Ide {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -12024,6 +12187,7 @@ export namespace Ide {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -12032,6 +12196,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -12042,6 +12207,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -12051,6 +12217,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -12061,6 +12228,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -12101,6 +12269,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -12119,6 +12288,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -12129,6 +12299,7 @@ export namespace Ide {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -12148,6 +12319,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -12162,6 +12334,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -12186,6 +12359,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -12208,6 +12382,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -12215,6 +12390,7 @@ export namespace Ide {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -12224,6 +12400,7 @@ export namespace Ide {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -12257,6 +12434,7 @@ export namespace Ide {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -12300,6 +12478,7 @@ export namespace Ide {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -12343,6 +12522,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -12386,6 +12566,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -12394,6 +12575,7 @@ export namespace Ide {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -12402,6 +12584,7 @@ export namespace Ide {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceManager;
 
@@ -12445,6 +12628,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -12453,6 +12637,7 @@ export namespace Ide {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -12467,6 +12652,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -12477,6 +12663,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -12495,6 +12682,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -12522,6 +12710,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -12534,6 +12723,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -12547,6 +12737,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -12557,6 +12748,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -12604,6 +12796,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -13434,6 +13627,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -13444,6 +13638,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -13462,6 +13657,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -13489,6 +13685,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -13501,6 +13698,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -13514,6 +13712,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -13524,6 +13723,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -13571,6 +13771,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -14042,6 +14243,7 @@ export namespace Ide {
         /**
          * @param file 
          * @returns a {@link Dex.Future} to a gboolean
+         * @since 47
          */
         query_ignored(file: Gio.File): Dex.Future;
 
@@ -14190,6 +14392,7 @@ export namespace Ide {
 
         /**
          * @param file 
+         * @since 47
          * @virtual
          */
         vfunc_query_ignored(file: Gio.File): Dex.Future;
@@ -15261,6 +15464,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -15271,6 +15475,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -15289,6 +15494,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -15316,6 +15522,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -15328,6 +15535,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -15341,6 +15549,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -15351,6 +15560,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -15487,6 +15697,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -15499,6 +15710,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -15507,6 +15719,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -15519,6 +15732,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -15529,18 +15743,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -15552,6 +15769,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -15585,6 +15803,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -15594,6 +15813,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -15604,6 +15824,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -15651,6 +15872,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -15659,12 +15881,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -15675,18 +15899,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -15698,6 +15925,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -16168,6 +16396,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -16178,6 +16407,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -16196,6 +16426,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -16223,6 +16454,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -16235,6 +16467,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -16248,6 +16481,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -16258,6 +16492,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -16305,6 +16540,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -16491,6 +16727,7 @@ export namespace Ide {
         /**
          * This should prepare an environment for developer tooling such as a language server.
          * @param run_context 
+         * @since 44
          */
         prepare_tooling(run_context: RunContext): void;
 
@@ -16574,6 +16811,7 @@ export namespace Ide {
         /**
          * This should prepare an environment for developer tooling such as a language server.
          * @param run_context 
+         * @since 44
          * @virtual
          */
         vfunc_prepare_tooling(run_context: RunContext): void;
@@ -16827,6 +17065,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -16839,6 +17078,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -16847,6 +17087,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -16859,6 +17100,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -16869,18 +17111,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -16892,6 +17137,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -16925,6 +17171,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -16934,6 +17181,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -16944,6 +17192,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -16991,6 +17240,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -16999,12 +17249,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -17015,18 +17267,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -17038,6 +17293,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -18525,6 +18781,7 @@ export namespace Ide {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -18568,6 +18825,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -18611,6 +18869,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -18619,6 +18878,7 @@ export namespace Ide {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -18627,6 +18887,7 @@ export namespace Ide {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): FuzzyIndexCursor;
 
@@ -18670,6 +18931,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -18678,6 +18940,7 @@ export namespace Ide {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -18692,6 +18955,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -18702,6 +18966,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -18720,6 +18985,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -18747,6 +19013,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -18759,6 +19026,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -18772,6 +19040,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -18782,6 +19051,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -18940,6 +19210,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -18949,6 +19220,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -18957,6 +19229,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -18966,6 +19239,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -19005,6 +19279,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -19022,6 +19297,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -19032,6 +19308,7 @@ export namespace Ide {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -19051,6 +19328,7 @@ export namespace Ide {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -19065,6 +19343,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -19089,6 +19368,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -19111,6 +19391,7 @@ export namespace Ide {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -19118,6 +19399,7 @@ export namespace Ide {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -19127,6 +19409,7 @@ export namespace Ide {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -19160,6 +19443,7 @@ export namespace Ide {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -19168,6 +19452,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -19178,6 +19463,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -19187,6 +19473,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -19197,6 +19484,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -19237,6 +19525,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -19255,6 +19544,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -19265,6 +19555,7 @@ export namespace Ide {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -19284,6 +19575,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -19298,6 +19590,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -19322,6 +19615,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -19344,6 +19638,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -19351,6 +19646,7 @@ export namespace Ide {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -19360,6 +19656,7 @@ export namespace Ide {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -19393,6 +19690,7 @@ export namespace Ide {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -20221,6 +20519,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -20233,6 +20532,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -20241,6 +20541,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -20253,6 +20554,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -20263,18 +20565,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -20286,6 +20591,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -20319,6 +20625,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -20328,6 +20635,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -20338,6 +20646,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -20385,6 +20694,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -20393,12 +20703,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -20409,18 +20721,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -20432,6 +20747,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -20975,6 +21291,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -20987,6 +21304,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -20995,6 +21313,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -21007,6 +21326,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -21017,18 +21337,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -21040,6 +21363,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -21073,6 +21397,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -21082,6 +21407,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -21092,6 +21418,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -21139,6 +21466,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -21147,12 +21475,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -21163,18 +21493,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -21186,6 +21519,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -21747,22 +22081,26 @@ export namespace Ide {
         /**
          * Gets the time the log item was created.
          * @returns a {@link GLib.DateTime}
+         * @since 44
          */
         get_created_at(): GLib.DateTime;
 
         /**
          * Get the domain for the log item.
+         * @since 44
          */
         get_domain(): string;
 
         /**
          * Gets the log message.
          * @returns A string containing the log message
+         * @since 44
          */
         get_message(): string;
 
         /**
          * Gets the log item severity.
+         * @since 44
          */
         get_severity(): GLib.LogLevelFlags;
     }
@@ -22142,6 +22480,7 @@ export namespace Ide {
          * This is useful in situations where you want to be able to have better
          * logging messages which include the LSP name.
          * @param name the name of the LSP like "gopls"
+         * @since 44
          */
         set_name(name: string): void;
 
@@ -22453,6 +22792,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -22534,6 +22874,7 @@ export namespace Ide {
          * Implementing this virtual-function is optional, but can be useful to allow
          * external tooling to compare results.
          * @returns a newly allocated string, or `null`
+         * @since 5.6
          */
         get_typed_text(): string | null;
 
@@ -22542,6 +22883,7 @@ export namespace Ide {
          * 
          * Implementing this virtual-function is optional, but can be useful to allow
          * external tooling to compare results.
+         * @since 5.6
          * @virtual
          */
         vfunc_get_typed_text(): string | null;
@@ -22942,6 +23284,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -23006,6 +23349,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -23016,6 +23360,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -23034,6 +23379,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -23061,6 +23407,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -23073,6 +23420,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -23086,6 +23434,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -23096,6 +23445,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -23540,6 +23890,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -23842,6 +24193,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -24928,6 +25280,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -24940,6 +25293,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -24948,6 +25302,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -24960,6 +25315,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -24970,18 +25326,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -24993,6 +25352,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -25026,6 +25386,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -25035,6 +25396,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -25045,6 +25407,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -25092,6 +25455,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -25100,12 +25464,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -25116,18 +25482,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -25139,6 +25508,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -25883,6 +26253,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -25893,6 +26264,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -25911,6 +26283,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -25938,6 +26311,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -25950,6 +26324,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -25963,6 +26338,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -25973,6 +26349,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -26020,6 +26397,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -26137,6 +26515,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -26149,6 +26528,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -26157,6 +26537,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -26169,6 +26550,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -26179,18 +26561,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -26202,6 +26587,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -26235,6 +26621,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -26244,6 +26631,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -26254,6 +26642,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -26301,6 +26690,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -26309,12 +26699,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -26325,18 +26717,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -26348,6 +26743,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -27082,6 +27478,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -27091,6 +27488,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -27099,6 +27497,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -27108,6 +27507,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -27147,6 +27547,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -27170,6 +27571,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -27180,6 +27582,7 @@ export namespace Ide {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -27199,6 +27602,7 @@ export namespace Ide {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -27213,6 +27617,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -27237,6 +27642,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -27259,6 +27665,7 @@ export namespace Ide {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -27266,6 +27673,7 @@ export namespace Ide {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -27275,6 +27683,7 @@ export namespace Ide {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -27308,6 +27717,7 @@ export namespace Ide {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -27316,6 +27726,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -27326,6 +27737,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -27335,6 +27747,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -27345,6 +27758,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -27385,6 +27799,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -27403,6 +27818,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -27413,6 +27829,7 @@ export namespace Ide {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -27432,6 +27849,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -27446,6 +27864,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -27470,6 +27889,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -27492,6 +27912,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -27499,6 +27920,7 @@ export namespace Ide {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -27508,6 +27930,7 @@ export namespace Ide {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -27541,6 +27964,7 @@ export namespace Ide {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -28793,6 +29217,7 @@ export namespace Ide {
         /**
          * Gets the name of the arch.
          * @returns a new string containing the arch
+         * @since 44
          */
         dup_arch(): string;
 
@@ -29066,6 +29491,7 @@ export namespace Ide {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -29109,6 +29535,7 @@ export namespace Ide {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -29123,6 +29550,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -29133,6 +29561,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -29151,6 +29580,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -29178,6 +29608,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -29190,6 +29621,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -29203,6 +29635,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -29213,6 +29646,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -29260,6 +29694,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -31600,6 +32035,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -31609,6 +32045,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -31617,6 +32054,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -31626,6 +32064,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -31665,6 +32104,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -31682,6 +32122,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -31692,6 +32133,7 @@ export namespace Ide {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -31711,6 +32153,7 @@ export namespace Ide {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -31725,6 +32168,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -31749,6 +32193,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -31771,6 +32216,7 @@ export namespace Ide {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -31778,6 +32224,7 @@ export namespace Ide {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -31787,6 +32234,7 @@ export namespace Ide {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -31820,6 +32268,7 @@ export namespace Ide {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -31828,6 +32277,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -31838,6 +32288,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -31847,6 +32298,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -31857,6 +32309,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -31897,6 +32350,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -31915,6 +32369,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -31925,6 +32380,7 @@ export namespace Ide {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -31944,6 +32400,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -31958,6 +32415,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -31982,6 +32440,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -32004,6 +32463,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -32011,6 +32471,7 @@ export namespace Ide {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -32020,6 +32481,7 @@ export namespace Ide {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -32053,6 +32515,7 @@ export namespace Ide {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -32242,6 +32705,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -32254,6 +32718,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -32262,6 +32727,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -32274,6 +32740,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -32284,18 +32751,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -32307,6 +32777,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -32340,6 +32811,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -32349,6 +32821,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -32359,6 +32832,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -32406,6 +32880,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -32414,12 +32889,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -32430,18 +32907,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -32453,6 +32933,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -32716,6 +33197,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -32726,6 +33208,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -32744,6 +33227,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -32771,6 +33255,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -32783,6 +33268,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -32796,6 +33282,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -32806,6 +33293,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -33020,6 +33508,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -33032,6 +33521,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -33040,6 +33530,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -33052,6 +33543,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -33062,18 +33554,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -33085,6 +33580,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -33118,6 +33614,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -33127,6 +33624,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -33137,6 +33635,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -33184,6 +33683,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -33192,12 +33692,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -33208,18 +33710,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -33231,6 +33736,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -33732,6 +34238,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -33742,6 +34249,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -33760,6 +34268,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -33787,6 +34296,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -33799,6 +34309,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -33812,6 +34323,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -33822,6 +34334,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -33869,6 +34382,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -34306,6 +34820,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -34315,6 +34830,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -34323,6 +34839,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -34332,6 +34849,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -34371,6 +34889,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -34388,6 +34907,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -34398,6 +34918,7 @@ export namespace Ide {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -34417,6 +34938,7 @@ export namespace Ide {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -34431,6 +34953,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -34455,6 +34978,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -34477,6 +35001,7 @@ export namespace Ide {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -34484,6 +35009,7 @@ export namespace Ide {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -34493,6 +35019,7 @@ export namespace Ide {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -34526,6 +35053,7 @@ export namespace Ide {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -34534,6 +35062,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -34544,6 +35073,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -34553,6 +35083,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -34563,6 +35094,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -34603,6 +35135,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -34621,6 +35154,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -34631,6 +35165,7 @@ export namespace Ide {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -34650,6 +35185,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -34664,6 +35200,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -34688,6 +35225,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -34710,6 +35248,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -34717,6 +35256,7 @@ export namespace Ide {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -34726,6 +35266,7 @@ export namespace Ide {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -34759,6 +35300,7 @@ export namespace Ide {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -34804,6 +35346,7 @@ export namespace Ide {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -34847,6 +35390,7 @@ export namespace Ide {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -34894,6 +35438,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -35447,6 +35992,7 @@ export namespace Ide {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -35490,6 +36036,7 @@ export namespace Ide {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -35504,6 +36051,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -35514,6 +36062,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -35532,6 +36081,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -35559,6 +36109,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -35571,6 +36122,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -35584,6 +36136,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -35594,6 +36147,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -35641,6 +36195,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -35761,6 +36316,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -35771,6 +36327,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -35789,6 +36346,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -35816,6 +36374,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -35828,6 +36387,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -35841,6 +36401,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -35851,6 +36412,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -35898,6 +36460,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -36063,6 +36626,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -36075,6 +36639,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -36083,6 +36648,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -36095,6 +36661,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -36105,18 +36672,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -36128,6 +36698,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -36161,6 +36732,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -36170,6 +36742,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -36180,6 +36753,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -36227,6 +36801,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -36235,12 +36810,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -36251,18 +36828,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -36274,6 +36854,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -36573,6 +37154,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -36583,6 +37165,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -36601,6 +37184,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -36628,6 +37212,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -36640,6 +37225,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -36653,6 +37239,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -36663,6 +37250,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -36805,6 +37393,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -36815,6 +37404,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -36833,6 +37423,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -36860,6 +37451,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -36872,6 +37464,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -36885,6 +37478,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -36895,6 +37489,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -36969,6 +37564,7 @@ export namespace Ide {
          * Locates a search provider for a specific plugin module-name.
          * @param module_name 
          * @returns a {@link Ide.SearchProvider} or `null`
+         * @since 47
          */
         find_by_module_name(module_name: string): SearchProvider | null;
 
@@ -37306,6 +37902,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -37318,6 +37915,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -37326,6 +37924,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -37338,6 +37937,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -37348,18 +37948,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -37371,6 +37974,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -37404,6 +38008,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -37413,6 +38018,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -37423,6 +38029,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -37470,6 +38077,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -37478,12 +38086,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -37494,18 +38104,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -37517,6 +38130,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -37654,6 +38268,7 @@ export namespace Ide {
          * change your tree to allow this function to work.
          * @param state what kind of accessible state to retrieve
          * @returns the accessible platform state of the delegate
+         * @since 4.10
          */
         delegate_get_accessible_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -37711,6 +38326,7 @@ export namespace Ide {
          * Retrieves the contents of `editable`, including *pseudo-content*
          * such as the preedit buffer.
          * @returns the complete contents of the editable
+         * @since 4.24
          */
         get_complete_text(): string;
 
@@ -37739,6 +38355,7 @@ export namespace Ide {
          * Retrieves the widget that was previously set up as input interceptor
          * for `editable`. See {@link Gtk.Editable.set_input_interceptor}.
          * @returns The editable widget
+         * @since 4.24
          */
         get_input_interceptor(): Gtk.Widget | null;
 
@@ -37860,6 +38477,7 @@ export namespace Ide {
          * Only those events that would be handled by an input method will be handled,
          * this excludes combinations of Ctrl/Alt/Mod, and other shortcuts.
          * @param interceptor the input interceptor widget
+         * @since 4.24
          */
         set_input_interceptor(interceptor: Gtk.Widget | null): void;
 
@@ -37952,6 +38570,7 @@ export namespace Ide {
         /**
          * Retrieves the contents of `editable`, including *pseudo-content*
          * such as the preedit buffer.
+         * @since 4.24
          * @virtual
          */
         vfunc_get_complete_text(): string;
@@ -38319,6 +38938,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -38331,6 +38951,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -38339,6 +38960,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -38351,6 +38973,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -38361,18 +38984,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -38384,6 +39010,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -38417,6 +39044,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -38426,6 +39054,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -38436,6 +39065,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -38483,6 +39113,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -38491,12 +39122,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -38507,18 +39140,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -38530,6 +39166,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -38934,6 +39571,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -38944,6 +39582,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -38962,6 +39601,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -38989,6 +39629,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -39001,6 +39642,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -39014,6 +39656,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -39024,6 +39667,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -39593,6 +40237,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -39602,6 +40247,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -39610,6 +40256,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -39619,6 +40266,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -39658,6 +40306,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -39675,6 +40324,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -39685,6 +40335,7 @@ export namespace Ide {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -39704,6 +40355,7 @@ export namespace Ide {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -39718,6 +40370,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -39742,6 +40395,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -39764,6 +40418,7 @@ export namespace Ide {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -39771,6 +40426,7 @@ export namespace Ide {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -39780,6 +40436,7 @@ export namespace Ide {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -39813,6 +40470,7 @@ export namespace Ide {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -39821,6 +40479,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -39831,6 +40490,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -39840,6 +40500,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -39850,6 +40511,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -39890,6 +40552,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -39908,6 +40571,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -39918,6 +40582,7 @@ export namespace Ide {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -39937,6 +40602,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -39951,6 +40617,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -39975,6 +40642,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -39997,6 +40665,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -40004,6 +40673,7 @@ export namespace Ide {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -40013,6 +40683,7 @@ export namespace Ide {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -40046,6 +40717,7 @@ export namespace Ide {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -40233,6 +40905,7 @@ export namespace Ide {
          * 
          * If the `parameter` {@link GLib.Variant} is floating, it is consumed.
          * @param parameter the parameter to the activation
+         * @since 2.28
          */
         activate(parameter: GLib.Variant | null): void;
 
@@ -40248,6 +40921,7 @@ export namespace Ide {
          * 
          * If the `value` {@link GLib.Variant} is floating, it is consumed.
          * @param value the new state
+         * @since 2.30
          */
         change_state(value: GLib.Variant): void;
 
@@ -40257,12 +40931,14 @@ export namespace Ide {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @returns whether the action is enabled
+         * @since 2.28
          */
         get_enabled(): boolean;
 
         /**
          * Queries the name of `action`.
          * @returns the name of the action
+         * @since 2.28
          */
         get_name(): string;
 
@@ -40277,6 +40953,7 @@ export namespace Ide {
          * In the case that this function returns `NULL`, you must not give any
          * {@link GLib.Variant}, but `NULL` instead.
          * @returns the parameter type
+         * @since 2.28
          */
         get_parameter_type(): GLib.VariantType | null;
 
@@ -40290,6 +40967,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the current state of the action
+         * @since 2.28
          */
         get_state(): GLib.Variant | null;
 
@@ -40313,6 +40991,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the state range hint
+         * @since 2.28
          */
         get_state_hint(): GLib.Variant | null;
 
@@ -40330,6 +41009,7 @@ export namespace Ide {
          * then this function will return `NULL`. In that case, {@link Gio.Action.get_state}
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_state_type(): GLib.VariantType | null;
 
@@ -40342,6 +41022,7 @@ export namespace Ide {
          * 
          * If the `parameter` {@link GLib.Variant} is floating, it is consumed.
          * @param parameter the parameter to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate(parameter: GLib.Variant | null): void;
@@ -40358,6 +41039,7 @@ export namespace Ide {
          * 
          * If the `value` {@link GLib.Variant} is floating, it is consumed.
          * @param value the new state
+         * @since 2.30
          * @virtual
          */
         vfunc_change_state(value: GLib.Variant): void;
@@ -40367,12 +41049,14 @@ export namespace Ide {
          * 
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_enabled(): boolean;
 
         /**
          * Queries the name of `action`.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_name(): string;
@@ -40387,6 +41071,7 @@ export namespace Ide {
          * 
          * In the case that this function returns `NULL`, you must not give any
          * {@link GLib.Variant}, but `NULL` instead.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_parameter_type(): GLib.VariantType | null;
@@ -40400,6 +41085,7 @@ export namespace Ide {
          * 
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_state(): GLib.Variant | null;
@@ -40423,6 +41109,7 @@ export namespace Ide {
          * 
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_state_hint(): GLib.Variant | null;
@@ -40440,6 +41127,7 @@ export namespace Ide {
          * If the action is not stateful (e.g. created with {@link Gio.SimpleAction.new})
          * then this function will return `NULL`. In that case, {@link Gio.Action.get_state}
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_state_type(): GLib.VariantType | null;
@@ -40766,6 +41454,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -42333,6 +43022,7 @@ export namespace Ide {
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
          * @returns `TRUE` if `res` has the indicated `source_tag`, `FALSE` if   not.
+         * @since 2.34
          */
         is_tagged(source_tag: null): boolean;
 
@@ -42348,6 +43038,7 @@ export namespace Ide {
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
          * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
+         * @since 2.34
          */
         legacy_propagate_error(): boolean;
 
@@ -42367,6 +43058,7 @@ export namespace Ide {
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
+         * @since 2.34
          * @virtual
          */
         vfunc_is_tagged(source_tag: null): boolean;
@@ -43304,6 +43996,7 @@ export namespace Ide {
          * Implementations of the {@link Gtk.AccessibleText} interface should call this
          * function every time the caret has moved, in order to notify assistive
          * technologies.
+         * @since 4.14
          */
         update_caret_position(): void;
 
@@ -43320,6 +44013,7 @@ export namespace Ide {
          * @param change the type of change in the contents
          * @param start the starting offset of the change, in characters
          * @param end the end offset of the change, in characters
+         * @since 4.14
          */
         update_contents(change: Gtk.AccessibleTextContentChange, start: number, end: number): void;
 
@@ -43329,6 +44023,7 @@ export namespace Ide {
          * Implementations of the {@link Gtk.AccessibleText} interface should call this
          * function every time the selection has moved, in order to notify assistive
          * technologies.
+         * @since 4.14
          */
         update_selection_bound(): void;
 
@@ -43351,12 +44046,14 @@ export namespace Ide {
          * greater than or equal to one, `ranges` will be set to a newly
          * allocated array of [struct#Gtk.AccessibleTextRange].
          * @param offset the offset, in characters
+         * @since 4.14
          * @virtual
          */
         vfunc_get_attributes(offset: number): [boolean, Gtk.AccessibleTextRange[] | null, string[] | null, string[] | null];
 
         /**
          * Retrieves the position of the caret inside the accessible object.
+         * @since 4.14
          * @virtual
          */
         vfunc_get_caret_position(): number;
@@ -43369,6 +44066,7 @@ export namespace Ide {
          * of the accessible object.
          * @param start the beginning of the range, in characters
          * @param end the end of the range, in characters
+         * @since 4.14
          * @virtual
          */
         vfunc_get_contents(start: number, end: number): GLib.Bytes | Uint8Array;
@@ -43380,6 +44078,7 @@ export namespace Ide {
          * The `start` and `end` values contain the boundaries of the text.
          * @param offset the offset, in characters
          * @param granularity the granularity of the query
+         * @since 4.14
          * @virtual
          */
         vfunc_get_contents_at(offset: number, granularity: Gtk.AccessibleTextGranularity): [GLib.Bytes | Uint8Array, number, number];
@@ -43397,6 +44096,7 @@ export namespace Ide {
          * 
          * GTK provides support for various text attribute names and values, but
          * implementations of this interface are free to add their own attributes.
+         * @since 4.14
          * @virtual
          */
         vfunc_get_default_attributes(): [string[] | null, string[] | null];
@@ -43406,6 +44106,7 @@ export namespace Ide {
          * @param start the start offset, in characters
          * @param end the end offset, in characters, `extents` (out caller-allocates): return location for the extents
          * @param extents 
+         * @since 4.16
          * @virtual
          */
         vfunc_get_extents(start: number, end: number, extents: Graphene.Rect): boolean;
@@ -43413,6 +44114,7 @@ export namespace Ide {
         /**
          * Gets the text offset at a given point.
          * @param point a point in widget coordinates of `self`
+         * @since 4.16
          * @virtual
          */
         vfunc_get_offset(point: Graphene.Point): [boolean, number];
@@ -43423,6 +44125,7 @@ export namespace Ide {
          * If this function returns true, `n_ranges` will be set to a value
          * greater than or equal to one, and `ranges` will be set to a newly
          * allocated array of [struct#Gtk.AccessibleTextRange].
+         * @since 4.14
          * @virtual
          */
         vfunc_get_selection(): [boolean, Gtk.AccessibleTextRange[] | null];
@@ -43430,6 +44133,7 @@ export namespace Ide {
         /**
          * Sets the caret position.
          * @param offset the text offset in characters
+         * @since 4.22
          * @virtual
          */
         vfunc_set_caret_position(offset: number): boolean;
@@ -43438,6 +44142,7 @@ export namespace Ide {
          * Sets the caret position.
          * @param i the selection to set
          * @param range the range to set the selection to
+         * @since 4.22
          * @virtual
          */
         vfunc_set_selection(i: number, range: Gtk.AccessibleTextRange): boolean;
@@ -44217,6 +44922,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -44229,6 +44935,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -44237,6 +44944,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -44249,6 +44957,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -44259,18 +44968,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -44282,6 +44994,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -44315,6 +45028,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -44324,6 +45038,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -44334,6 +45049,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -44381,6 +45097,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -44389,12 +45106,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -44405,18 +45124,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -44428,6 +45150,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -44837,6 +45560,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -44846,6 +45570,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -44854,6 +45579,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -44863,6 +45589,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -44902,6 +45629,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -44919,6 +45647,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -44929,6 +45658,7 @@ export namespace Ide {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -44948,6 +45678,7 @@ export namespace Ide {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -44962,6 +45693,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -44986,6 +45718,7 @@ export namespace Ide {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -45008,6 +45741,7 @@ export namespace Ide {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -45015,6 +45749,7 @@ export namespace Ide {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -45024,6 +45759,7 @@ export namespace Ide {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -45057,6 +45793,7 @@ export namespace Ide {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -45065,6 +45802,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -45075,6 +45813,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -45084,6 +45823,7 @@ export namespace Ide {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -45094,6 +45834,7 @@ export namespace Ide {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -45134,6 +45875,7 @@ export namespace Ide {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -45152,6 +45894,7 @@ export namespace Ide {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -45162,6 +45905,7 @@ export namespace Ide {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -45181,6 +45925,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -45195,6 +45940,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -45219,6 +45965,7 @@ export namespace Ide {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -45241,6 +45988,7 @@ export namespace Ide {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -45248,6 +45996,7 @@ export namespace Ide {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -45257,6 +46006,7 @@ export namespace Ide {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -45290,6 +46040,7 @@ export namespace Ide {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -45337,6 +46088,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -45696,6 +46448,7 @@ export namespace Ide {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -45739,6 +46492,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -45782,6 +46536,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -45790,6 +46545,7 @@ export namespace Ide {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -45798,6 +46554,7 @@ export namespace Ide {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ToolchainManager;
 
@@ -45841,6 +46598,7 @@ export namespace Ide {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -45849,6 +46607,7 @@ export namespace Ide {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -45863,6 +46622,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -45873,6 +46633,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -45891,6 +46652,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -45918,6 +46680,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -45930,6 +46693,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -45943,6 +46707,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -45953,6 +46718,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -46000,6 +46766,7 @@ export namespace Ide {
          * ```
          * 
          * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         * @since 2.26
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
     }
@@ -46356,6 +47123,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -46366,6 +47134,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -46384,6 +47153,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -46411,6 +47181,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -46423,6 +47194,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -46436,6 +47208,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -46446,6 +47219,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -46697,6 +47471,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -46709,6 +47484,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -46717,6 +47493,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -46729,6 +47506,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -46739,18 +47517,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -46762,6 +47543,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -46795,6 +47577,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -46804,6 +47587,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -46814,6 +47598,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -46861,6 +47646,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -46869,12 +47655,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -46885,18 +47673,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -46908,6 +47699,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -47337,6 +48129,7 @@ export namespace Ide {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -47349,6 +48142,7 @@ export namespace Ide {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -47357,6 +48151,7 @@ export namespace Ide {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -47369,6 +48164,7 @@ export namespace Ide {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -47379,18 +48175,21 @@ export namespace Ide {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -47402,6 +48201,7 @@ export namespace Ide {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -47435,6 +48235,7 @@ export namespace Ide {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -47444,6 +48245,7 @@ export namespace Ide {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -47454,6 +48256,7 @@ export namespace Ide {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -47501,6 +48304,7 @@ export namespace Ide {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -47509,12 +48313,14 @@ export namespace Ide {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -47525,18 +48331,21 @@ export namespace Ide {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -47548,6 +48357,7 @@ export namespace Ide {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -48101,6 +48911,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -48111,6 +48922,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -48138,6 +48950,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -48150,6 +48963,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -48163,6 +48977,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -48173,6 +48988,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -48311,6 +49127,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -48321,6 +49138,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -48339,6 +49157,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -48366,6 +49185,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -48378,6 +49198,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -48391,6 +49212,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -48401,6 +49223,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -51860,11 +52683,15 @@ export namespace Ide {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @since 44
+         */
         get_incremental(): boolean;
 
         /**
          * Gets the underlying model.
          * @returns a {@link Gio.ListModel}
+         * @since 44
          */
         get_model(): Gio.ListModel | null;
 
@@ -51882,23 +52709,27 @@ export namespace Ide {
         /**
          * Get the {@link Gtk.Sorter} used to deduplicate items.
          * @returns a GtkSorter or `null`
+         * @since 44
          */
         get_sorter(): Gtk.Sorter | null;
 
         /**
          * @param incremental if filtering should be incremental
+         * @since 44
          */
         set_incremental(incremental: boolean): void;
 
         /**
          * Sets the underlying model to be deduplicated.
          * @param model a {@link Gio.ListModel} or `null`
+         * @since 44
          */
         set_model(model: Gio.ListModel | null): void;
 
         /**
          * Sets the sorter used to deduplicate items.
          * @param sorter a {@link Gtk.Sorter} or `null`
+         * @since 44
          */
         set_sorter(sorter: Gtk.Sorter | null): void;
 
@@ -51912,6 +52743,7 @@ export namespace Ide {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -51922,6 +52754,7 @@ export namespace Ide {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -51940,6 +52773,7 @@ export namespace Ide {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -51967,6 +52801,7 @@ export namespace Ide {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -51979,6 +52814,7 @@ export namespace Ide {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -51992,6 +52828,7 @@ export namespace Ide {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -52002,6 +52839,7 @@ export namespace Ide {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -56621,6 +57459,7 @@ export namespace Ide {
             /**
              * This should prepare an environment for developer tooling such as a language server.
              * @param run_context 
+             * @since 44
              * @virtual
              */
             vfunc_prepare_tooling(run_context: RunContext): void;
@@ -56781,6 +57620,7 @@ export namespace Ide {
         /**
          * This should prepare an environment for developer tooling such as a language server.
          * @param run_context 
+         * @since 44
          */
         prepare_tooling(run_context: RunContext): void;
 
@@ -60290,6 +61130,7 @@ export namespace Ide {
             /**
              * Checks if a node is draggable.
              * @param node an {@link Ide.TreeNode}
+             * @since 44
              * @virtual
              */
             vfunc_node_draggable(node: TreeNode): Gdk.ContentProvider | null;
@@ -60301,6 +61142,7 @@ export namespace Ide {
              * @param drop_target a {@link Gtk.DropTarget}
              * @param drop_node an {@link Ide.TreeNode}
              * @param gtypes an array of {@link GObject.GType}
+             * @since 44
              * @virtual
              */
             vfunc_node_droppable(drop_target: Gtk.DropTarget, drop_node: TreeNode, gtypes: GObject.GType[]): Gdk.DragAction;
@@ -60448,6 +61290,7 @@ export namespace Ide {
          * Checks if a node is draggable.
          * @param node an {@link Ide.TreeNode}
          * @returns `null` or a {@link Gdk.ContentProvider} if   the node is draggable.
+         * @since 44
          */
         node_draggable(node: TreeNode): Gdk.ContentProvider | null;
 
@@ -60459,6 +61302,7 @@ export namespace Ide {
          * @param drop_node an {@link Ide.TreeNode}
          * @param gtypes an array of {@link GObject.GType}
          * @returns 0 if not droppable, otherwise a {@link Gdk.DragAction}
+         * @since 44
          */
         node_droppable(drop_target: Gtk.DropTarget, drop_node: TreeNode, gtypes: GObject.GType[]): Gdk.DragAction;
 
@@ -60639,6 +61483,7 @@ export namespace Ide {
 
             /**
              * @param file 
+             * @since 47
              * @virtual
              */
             vfunc_query_ignored(file: Gio.File): Dex.Future;
@@ -60896,6 +61741,7 @@ export namespace Ide {
         /**
          * @param file 
          * @returns a {@link Dex.Future} to a gboolean
+         * @since 47
          */
         query_ignored(file: Gio.File): Dex.Future;
 
@@ -61041,6 +61887,7 @@ export namespace Ide {
             /**
              * Sets a PTY that should be written to for message contents.
              * @param pty_fd a fd or -1
+             * @since 44
              * @virtual
              */
             vfunc_set_pty_fd(pty_fd: number): void;
@@ -61161,6 +62008,7 @@ export namespace Ide {
         /**
          * Sets a PTY that should be written to for message contents.
          * @param pty_fd a fd or -1
+         * @since 44
          */
         set_pty_fd(pty_fd: number): void;
 

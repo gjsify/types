@@ -434,6 +434,7 @@ export namespace Template {
          * Otherwise, `null` is returned.
          * @param name 
          * @returns a string or `null`
+         * @since 3.36
          */
         dup_string(name: string): string | null;
 

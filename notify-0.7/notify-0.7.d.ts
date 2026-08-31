@@ -566,6 +566,7 @@ export namespace Notify {
          * the launch context for the activated action, if the notification daemon
          * supports it.
          * @returns The {@link Gio.AppLaunchContext} for  the current activation token, or `null` if unset
+         * @since 0.8.7
          */
         get_activation_app_launch_context(): Gio.AppLaunchContext | null;
 
@@ -577,6 +578,7 @@ export namespace Notify {
          * the activation token for the activated action, if the notification daemon
          * supports it.
          * @returns The current activation token, or `null` if none
+         * @since 0.7.10
          */
         get_activation_token(): string | null;
 
@@ -596,6 +598,7 @@ export namespace Notify {
          * If this function is not called or if `app_icon` is `null`, the application icon
          * will be set from the value set via {@link set_app_icon}.
          * @param app_icon The optional icon theme icon name or filename.
+         * @since 0.8.4
          */
         set_app_icon(app_icon: string | null): void;
 
@@ -606,6 +609,7 @@ export namespace Notify {
          * will be set from the value used in {@link init} or overridden with
          * {@link set_app_name}.
          * @param app_name the localised application name
+         * @since 0.7.3
          */
         set_app_name(app_name: string | null): void;
 
@@ -626,6 +630,7 @@ export namespace Notify {
          * If `value` is floating, it is consumed.
          * @param key the hint key
          * @param value the hint value
+         * @since 0.6
          */
         set_hint(key: string, value: GLib.Variant | null): void;
 
@@ -633,6 +638,7 @@ export namespace Notify {
          * Sets a hint with a byte value.
          * @param key The hint.
          * @param value The hint's value.
+         * @deprecated since 0.6.: Use {@link Notification.set_hint} instead
          */
         set_hint_byte(key: string, value: number): void;
 
@@ -642,6 +648,7 @@ export namespace Notify {
          * The length of `value` must be passed as `len`.
          * @param key The hint.
          * @param value The hint's value.
+         * @deprecated since 0.6.: Use {@link Notification.set_hint} instead
          */
         set_hint_byte_array(key: string, value: Uint8Array | string): void;
 
@@ -649,6 +656,7 @@ export namespace Notify {
          * Sets a hint with a double value.
          * @param key The hint.
          * @param value The hint's value.
+         * @deprecated since 0.6.: Use {@link Notification.set_hint} instead
          */
         set_hint_double(key: string, value: number): void;
 
@@ -656,6 +664,7 @@ export namespace Notify {
          * Sets a hint with a 32-bit integer value.
          * @param key The hint.
          * @param value The hint's value.
+         * @deprecated since 0.6.: Use {@link Notification.set_hint} instead
          */
         set_hint_int32(key: string, value: number): void;
 
@@ -663,6 +672,7 @@ export namespace Notify {
          * Sets a hint with a string value.
          * @param key The hint.
          * @param value The hint's value.
+         * @deprecated since 0.6.: Use {@link Notification.set_hint} instead
          */
         set_hint_string(key: string, value: string): void;
 
@@ -670,18 +680,21 @@ export namespace Notify {
          * Sets a hint with an unsigned 32-bit integer value.
          * @param key The hint.
          * @param value The hint's value.
+         * @deprecated since 0.6.: Use {@link Notification.set_hint} instead
          */
         set_hint_uint32(key: string, value: number): void;
 
         /**
          * Sets the icon in the notification from a {@link GdkPixbuf.Pixbuf}.
          * @param icon The icon.
+         * @deprecated since 0.5.: Use {@link Notification.set_image_from_pixbuf} instead.
          */
         set_icon_from_pixbuf(icon: GdkPixbuf.Pixbuf): void;
 
         /**
          * Sets the image in the notification from a {@link GdkPixbuf.Pixbuf}.
          * @param pixbuf The image.
+         * @since 0.5
          */
         set_image_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
 

@@ -775,6 +775,7 @@ export namespace GstValidate {
         // Methods
         /**
          * @returns The {@link GstValidate.Scenario} being executed under `monitor` watch
+         * @since 1.20
          */
         get_scenario(): Scenario | null;
 
@@ -3214,11 +3215,13 @@ export namespace GstValidate {
 
         /**
          * @returns report dot file name
+         * @since 1.22
          */
         get_dotfile_name(): string | null;
 
         /**
          * @returns report issue
+         * @since 1.22
          */
         get_issue(): Issue;
 
@@ -3226,36 +3229,43 @@ export namespace GstValidate {
 
         /**
          * @returns report level
+         * @since 1.22
          */
         get_level(): ReportLevel;
 
         /**
          * @returns report message
+         * @since 1.22
          */
         get_message(): string;
 
         /**
          * @returns report reporter
+         * @since 1.22
          */
         get_reporter(): Reporter;
 
         /**
          * @returns report issue
+         * @since 1.22
          */
         get_reporter_name(): string;
 
         /**
          * @returns reporting level
+         * @since 1.22
          */
         get_reporting_level(): ReportingDetails;
 
         /**
          * @returns report timestamp
+         * @since 1.22
          */
         get_timestamp(): Gst.ClockTime;
 
         /**
          * @returns report backtrace
+         * @since 1.22
          */
         get_trace(): string | null;
 

@@ -23,6 +23,12 @@ export const DECLS = {
     EvWebView: ['EvWebView', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
 };
 
+// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
+// and descend from `GObject.Object`. A renderer places them like a container; a check
+// asking "is this a widget" must not count them. Derived from the accessor pair, never
+// from a list — the count is in the provenance line above.
+export const CHILD_HOLDERS = [];
+
 export const ENUM_NICKS = {
     EvJobPriority: ['priority-urgent', 'priority-high', 'priority-low', 'priority-none', 'n-priorities'],
     EvJobRunMode: ['thread', 'main-loop'],

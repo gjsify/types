@@ -249,6 +249,9 @@ export namespace GstWebRTC {
         constructor(options: { message: string; code: number });
 
         // Static methods
+        /**
+         * @since 1.20
+         */
         static quark(): GLib.Quark;
     }
 
@@ -1168,6 +1171,7 @@ export namespace GstWebRTC {
         /**
          * Send `data` as a data message over `channel`.
          * @param data a {@link GLib.Bytes} or `null`
+         * @deprecated since 1.22: Use `gst_webrtc_data_channel_send_data_full()` instead
          */
         send_data(data: GLib.Bytes | Uint8Array | null): void;
 
@@ -1175,12 +1179,14 @@ export namespace GstWebRTC {
          * Send `data` as a data message over `channel`.
          * @param data a {@link GLib.Bytes} or `null`
          * @returns TRUE if `channel` is open and data could be queued
+         * @since 1.22
          */
         send_data_full(data: GLib.Bytes | Uint8Array | null): boolean;
 
         /**
          * Send `str` as a string message over `channel`.
          * @param str a string or `null`
+         * @deprecated since 1.22: Use `gst_webrtc_data_channel_send_string_full()` instead
          */
         send_string(str: string | null): void;
 
@@ -1188,6 +1194,7 @@ export namespace GstWebRTC {
          * Send `str` as a string message over `channel`.
          * @param str a string or `null`
          * @returns TRUE if `channel` is open and data could be queued
+         * @since 1.22
          */
         send_string_full(str: string | null): boolean;
     }
@@ -1301,18 +1308,21 @@ export namespace GstWebRTC {
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @param candidate The ICE candidate
          * @param promise A {@link Gst.Promise} for task notifications (Since: 1.24)
+         * @since 1.22
          * @virtual
          */
         vfunc_add_candidate(stream: WebRTCICEStream, candidate: string, promise: Gst.Promise | null): void;
 
         /**
          * @param session_id The session id
+         * @since 1.22
          * @virtual
          */
         vfunc_add_stream(session_id: number): WebRTCICEStream | null;
 
         /**
          * @param uri URI of the TURN server
+         * @since 1.22
          * @virtual
          */
         vfunc_add_turn_server(uri: string): boolean;
@@ -1321,6 +1331,7 @@ export namespace GstWebRTC {
          * Invoke the close procedure as specified in
          * https://www.w3.org/TR/webrtc/#dom-rtcpeerconnection-close.
          * @param promise a {@link Gst.Promise} to be notified when the task is complete.
+         * @since 1.28
          * @virtual
          */
         vfunc_close(promise: Gst.Promise | null): void;
@@ -1328,23 +1339,27 @@ export namespace GstWebRTC {
         /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @param component The {@link GstWebRTC.WebRTCICEComponent}
+         * @since 1.22
          * @virtual
          */
         vfunc_find_transport(stream: WebRTCICEStream, component: WebRTCICEComponent): WebRTCICETransport | null;
 
         /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
+         * @since 1.22
          * @virtual
          */
         vfunc_gather_candidates(stream: WebRTCICEStream): boolean;
 
         /**
          * Get HTTP Proxy to be used when connecting to TURN server.
+         * @since 1.22
          * @virtual
          */
         vfunc_get_http_proxy(): string;
 
         /**
+         * @since 1.22
          * @virtual
          */
         vfunc_get_is_controller(): boolean;
@@ -1363,22 +1378,27 @@ export namespace GstWebRTC {
 
         /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
+         * @since 1.22
+         * @deprecated since 1.28: Use `gst_webrtc_ice_transport_get_selected_candidate_pair()`.
          * @virtual
          */
         vfunc_get_selected_pair(stream: WebRTCICEStream): [boolean, WebRTCICECandidateStats, WebRTCICECandidateStats];
 
         /**
+         * @since 1.22
          * @virtual
          */
         vfunc_get_stun_server(): string | null;
 
         /**
+         * @since 1.22
          * @virtual
          */
         vfunc_get_turn_server(): string | null;
 
         /**
          * @param force_relay TRUE to enable force relay
+         * @since 1.22
          * @virtual
          */
         vfunc_set_force_relay(force_relay: boolean): void;
@@ -1386,12 +1406,14 @@ export namespace GstWebRTC {
         /**
          * Set HTTP Proxy to be used when connecting to TURN server.
          * @param uri URI of the HTTP proxy of the form   http://[username:password@]hostname[:port][?alpn=<alpn>]
+         * @since 1.22
          * @virtual
          */
         vfunc_set_http_proxy(uri: string): void;
 
         /**
          * @param controller TRUE to set as controller
+         * @since 1.22
          * @virtual
          */
         vfunc_set_is_controller(controller: boolean): void;
@@ -1400,12 +1422,14 @@ export namespace GstWebRTC {
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @param ufrag ICE username
          * @param pwd ICE password
+         * @since 1.22
          * @virtual
          */
         vfunc_set_local_credentials(stream: WebRTCICEStream, ufrag: string, pwd: string): boolean;
 
         /**
          * @param func The {@link GstWebRTC.WebRTCICEOnCandidateFunc} callback function
+         * @since 1.22
          * @virtual
          */
         vfunc_set_on_ice_candidate(func: WebRTCICEOnCandidateFunc): void;
@@ -1414,12 +1438,14 @@ export namespace GstWebRTC {
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @param ufrag ICE username
          * @param pwd ICE password
+         * @since 1.22
          * @virtual
          */
         vfunc_set_remote_credentials(stream: WebRTCICEStream, ufrag: string, pwd: string): boolean;
 
         /**
          * @param uri URI of the STUN server
+         * @since 1.22
          * @virtual
          */
         vfunc_set_stun_server(uri: string | null): void;
@@ -1427,12 +1453,14 @@ export namespace GstWebRTC {
         /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @param tos ToS to be set
+         * @since 1.22
          * @virtual
          */
         vfunc_set_tos(stream: WebRTCICEStream, tos: number): void;
 
         /**
          * @param uri URI of the TURN sever
+         * @since 1.22
          * @virtual
          */
         vfunc_set_turn_server(uri: string | null): void;
@@ -1442,18 +1470,21 @@ export namespace GstWebRTC {
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @param candidate The ICE candidate
          * @param promise A {@link Gst.Promise} for task notifications (Since: 1.24)
+         * @since 1.22
          */
         add_candidate(stream: WebRTCICEStream, candidate: string, promise: Gst.Promise | null): void;
 
         /**
          * @param session_id The session id
          * @returns The {@link GstWebRTC.WebRTCICEStream}, or `null`
+         * @since 1.22
          */
         add_stream(session_id: number): WebRTCICEStream | null;
 
         /**
          * @param uri URI of the TURN server
          * @returns FALSE on error, TRUE otherwise
+         * @since 1.22
          */
         add_turn_server(uri: string): boolean;
 
@@ -1461,6 +1492,7 @@ export namespace GstWebRTC {
          * Invoke the close procedure as specified in
          * https://www.w3.org/TR/webrtc/#dom-rtcpeerconnection-close.
          * @param promise a {@link Gst.Promise} to be notified when the task is complete.
+         * @since 1.28
          */
         close(promise: Gst.Promise | null): void;
 
@@ -1468,66 +1500,79 @@ export namespace GstWebRTC {
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @param component The {@link GstWebRTC.WebRTCICEComponent}
          * @returns The {@link GstWebRTC.WebRTCICETransport}, or `null`
+         * @since 1.22
          */
         find_transport(stream: WebRTCICEStream, component: WebRTCICEComponent): WebRTCICETransport | null;
 
         /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @returns FALSE on error, TRUE otherwise
+         * @since 1.22
          */
         gather_candidates(stream: WebRTCICEStream): boolean;
 
         /**
          * @returns URI of the HTTP proxy of the form   http://[username:password@]hostname[:port][?alpn=<alpn>] Get HTTP Proxy to be used when connecting to TURN server.
+         * @since 1.22
          */
         get_http_proxy(): string;
 
         /**
          * @returns TRUE if set as controller, FALSE otherwise
+         * @since 1.22
          */
         get_is_controller(): boolean;
 
         /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @returns List of local candidates
+         * @since 1.22
          */
         get_local_candidates(stream: WebRTCICEStream): WebRTCICECandidateStats[];
 
         /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @returns List of remote candidates
+         * @since 1.22
          */
         get_remote_candidates(stream: WebRTCICEStream): WebRTCICECandidateStats[];
 
         /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @returns FALSE on failure, otherwise `local_stats` `remote_stats` will be set
+         * @since 1.22
+         * @deprecated since 1.28: Use `gst_webrtc_ice_transport_get_selected_candidate_pair()`.
          */
         get_selected_pair(stream: WebRTCICEStream): [boolean, WebRTCICECandidateStats, WebRTCICECandidateStats];
 
         /**
          * @returns URI of the STUN sever
+         * @since 1.22
          */
         get_stun_server(): string | null;
 
         /**
          * @returns URI of the TURN sever
+         * @since 1.22
          */
         get_turn_server(): string | null;
 
         /**
          * @param force_relay TRUE to enable force relay
+         * @since 1.22
          */
         set_force_relay(force_relay: boolean): void;
 
         /**
          * Set HTTP Proxy to be used when connecting to TURN server.
          * @param uri URI of the HTTP proxy of the form   http://[username:password@]hostname[:port][?alpn=<alpn>]
+         * @since 1.22
          */
         set_http_proxy(uri: string): void;
 
         /**
          * @param controller TRUE to set as controller
+         * @since 1.22
          */
         set_is_controller(controller: boolean): void;
 
@@ -1536,11 +1581,13 @@ export namespace GstWebRTC {
          * @param ufrag ICE username
          * @param pwd ICE password
          * @returns FALSE on error, TRUE otherwise
+         * @since 1.22
          */
         set_local_credentials(stream: WebRTCICEStream, ufrag: string, pwd: string): boolean;
 
         /**
          * @param func The {@link GstWebRTC.WebRTCICEOnCandidateFunc} callback function
+         * @since 1.22
          */
         set_on_ice_candidate(func: WebRTCICEOnCandidateFunc): void;
 
@@ -1549,22 +1596,26 @@ export namespace GstWebRTC {
          * @param ufrag ICE username
          * @param pwd ICE password
          * @returns FALSE on error, TRUE otherwise
+         * @since 1.22
          */
         set_remote_credentials(stream: WebRTCICEStream, ufrag: string, pwd: string): boolean;
 
         /**
          * @param uri URI of the STUN server
+         * @since 1.22
          */
         set_stun_server(uri: string | null): void;
 
         /**
          * @param stream The {@link GstWebRTC.WebRTCICEStream}
          * @param tos ToS to be set
+         * @since 1.22
          */
         set_tos(stream: WebRTCICEStream, tos: number): void;
 
         /**
          * @param uri URI of the TURN sever
+         * @since 1.22
          */
         set_turn_server(uri: string | null): void;
     }
@@ -1635,11 +1686,13 @@ export namespace GstWebRTC {
         // Virtual methods
         /**
          * @param component The {@link GstWebRTC.WebRTCICEComponent}
+         * @since 1.22
          * @virtual
          */
         vfunc_find_transport(component: WebRTCICEComponent): WebRTCICETransport | null;
 
         /**
+         * @since 1.22
          * @virtual
          */
         vfunc_gather_candidates(): boolean;
@@ -1648,11 +1701,13 @@ export namespace GstWebRTC {
         /**
          * @param component The {@link GstWebRTC.WebRTCICEComponent}
          * @returns the {@link GstWebRTC.WebRTCICETransport}, or `null`
+         * @since 1.22
          */
         find_transport(component: WebRTCICEComponent): WebRTCICETransport | null;
 
         /**
          * @returns FALSE on error, TRUE otherwise
+         * @since 1.22
          */
         gather_candidates(): boolean;
     }
@@ -1761,6 +1816,7 @@ export namespace GstWebRTC {
         /**
          * See also
          * https://w3c.github.io/webrtc-pc/#dom-rtcicetransport-getselectedcandidatepair
+         * @since 1.28
          * @virtual
          */
         vfunc_get_selected_candidate_pair(): WebRTCICECandidatePair | null;
@@ -1780,6 +1836,7 @@ export namespace GstWebRTC {
          * See also
          * https://w3c.github.io/webrtc-pc/#dom-rtcicetransport-getselectedcandidatepair
          * @returns A {@link GstWebRTC.WebRTCICECandidatePair}
+         * @since 1.28
          */
         get_selected_candidate_pair(): WebRTCICECandidatePair | null;
 
@@ -1928,6 +1985,7 @@ export namespace GstWebRTC {
          * (Differentiated Services Code Point).
          * This also sets the Traffic Class field of IPv6.
          * @param priority The priority of this sender
+         * @since 1.20
          */
         set_priority(priority: WebRTCPriorityType): void;
     }
@@ -2215,11 +2273,13 @@ export namespace GstWebRTC {
         // Methods
         /**
          * @returns A copy of `candidate`
+         * @since 1.28
          */
         copy(): WebRTCICECandidate;
 
         /**
          * Helper function to free {@link GstWebRTC.WebRTCICECandidate}
+         * @since 1.28
          */
         free(): void;
     }
@@ -2243,11 +2303,13 @@ export namespace GstWebRTC {
         // Methods
         /**
          * @returns A copy of `pair`
+         * @since 1.28
          */
         copy(): WebRTCICECandidatePair;
 
         /**
          * Helper function to free {@link GstWebRTC.WebRTCICECandidatePair}
+         * @since 1.28
          */
         free(): void;
     }
@@ -2293,11 +2355,13 @@ export namespace GstWebRTC {
         // Methods
         /**
          * @returns A copy of `stats`
+         * @since 1.22
          */
         copy(): WebRTCICECandidateStats;
 
         /**
          * Helper function to free {@link GstWebRTC.WebRTCICECandidateStats}
+         * @since 1.22
          */
         free(): void;
     }

@@ -102,6 +102,7 @@ export namespace Malcontent {
         // Static methods
         /**
          * Error quark for {@link Malcontent.ManagerError}.
+         * @since 0.5.0
          */
         static quark(): GLib.Quark;
     }
@@ -455,6 +456,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns app filter for the queried user
+         * @since 0.3.0
          */
         get_app_filter(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null): AppFilter;
 
@@ -467,6 +469,7 @@ export namespace Malcontent {
          * @param user_id ID of the user to query, typically coming from `getuid()`
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @since 0.3.0
          */
         get_app_filter_async(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<AppFilter>;
 
@@ -480,6 +483,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback an asynchronous operation result callback
+         * @since 0.3.0
          */
         get_app_filter_async(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -493,6 +497,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback an asynchronous operation result callback
+         * @since 0.3.0
          */
         get_app_filter_async(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<AppFilter> | void;
 
@@ -501,6 +506,7 @@ export namespace Malcontent {
          * with {@link Malcontent.Manager.get_app_filter_async}.
          * @param result the asynchronous operation result
          * @returns app filter for the queried user
+         * @since 0.3.0
          */
         get_app_filter_finish(result: Gio.AsyncResult): AppFilter;
 
@@ -510,6 +516,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns session limits for the queried user
+         * @since 0.5.0
          */
         get_session_limits(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null): SessionLimits;
 
@@ -523,6 +530,7 @@ export namespace Malcontent {
          * @param user_id ID of the user to query, typically coming from `getuid()`
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @since 0.5.0
          */
         get_session_limits_async(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<SessionLimits>;
 
@@ -537,6 +545,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback an asynchronous operation result callback
+         * @since 0.5.0
          */
         get_session_limits_async(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -551,6 +560,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback an asynchronous operation result callback
+         * @since 0.5.0
          */
         get_session_limits_async(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SessionLimits> | void;
 
@@ -559,6 +569,7 @@ export namespace Malcontent {
          * started with {@link Malcontent.Manager.get_session_limits_async}.
          * @param result the asynchronous operation result
          * @returns session limits for the queried user
+         * @since 0.5.0
          */
         get_session_limits_finish(result: Gio.AsyncResult): SessionLimits;
 
@@ -568,6 +579,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns web filter for the queried user
+         * @since 0.14.0
          */
         get_web_filter(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null): WebFilter;
 
@@ -581,6 +593,7 @@ export namespace Malcontent {
          * @param user_id ID of the user to query, typically coming from `getuid()`
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @since 0.14.0
          */
         get_web_filter_async(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<WebFilter>;
 
@@ -595,6 +608,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback an asynchronous operation result callback
+         * @since 0.14.0
          */
         get_web_filter_async(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -609,6 +623,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback an asynchronous operation result callback
+         * @since 0.14.0
          */
         get_web_filter_async(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<WebFilter> | void;
 
@@ -617,6 +632,7 @@ export namespace Malcontent {
          * started with {@link Malcontent.Manager.get_web_filter_async}.
          * @param result the asynchronous operation result
          * @returns web filter for the queried user
+         * @since 0.14.0
          */
         get_web_filter_finish(result: Gio.AsyncResult): WebFilter;
 
@@ -627,6 +643,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns true on success, false otherwise
+         * @since 0.3.0
          */
         set_app_filter(user_id: never, app_filter: AppFilter, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -643,6 +660,7 @@ export namespace Malcontent {
          * @param app_filter the app filter to set for the user
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @since 0.3.0
          */
         set_app_filter_async(user_id: never, app_filter: AppFilter, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -660,6 +678,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback an asynchronous operation result callback
+         * @since 0.3.0
          */
         set_app_filter_async(user_id: never, app_filter: AppFilter, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -677,6 +696,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback an asynchronous operation result callback
+         * @since 0.3.0
          */
         set_app_filter_async(user_id: never, app_filter: AppFilter, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -685,6 +705,7 @@ export namespace Malcontent {
          * with {@link Malcontent.Manager.set_app_filter_async}.
          * @param result the asynchronous operation result
          * @returns true on success, false otherwise
+         * @since 0.3.0
          */
         set_app_filter_finish(result: Gio.AsyncResult): boolean;
 
@@ -695,6 +716,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns true on success, false otherwise
+         * @since 0.5.0
          */
         set_session_limits(user_id: never, session_limits: SessionLimits, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -710,6 +732,7 @@ export namespace Malcontent {
          * @param session_limits the session limits to set for the user
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @since 0.5.0
          */
         set_session_limits_async(user_id: never, session_limits: SessionLimits, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -726,6 +749,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback an asynchronous operation result callback
+         * @since 0.5.0
          */
         set_session_limits_async(user_id: never, session_limits: SessionLimits, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -742,6 +766,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback an asynchronous operation result callback
+         * @since 0.5.0
          */
         set_session_limits_async(user_id: never, session_limits: SessionLimits, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -750,6 +775,7 @@ export namespace Malcontent {
          * started with {@link Malcontent.Manager.set_session_limits_async}.
          * @param result the asynchronous operation result
          * @returns true on success, false otherwise
+         * @since 0.5.0
          */
         set_session_limits_finish(result: Gio.AsyncResult): boolean;
 
@@ -760,6 +786,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns true on success, false otherwise
+         * @since 0.14.0
          */
         set_web_filter(user_id: never, web_filter: WebFilter, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -775,6 +802,7 @@ export namespace Malcontent {
          * @param web_filter the web filter to set for the user
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @since 0.14.0
          */
         set_web_filter_async(user_id: never, web_filter: WebFilter, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -791,6 +819,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback an asynchronous operation result callback
+         * @since 0.14.0
          */
         set_web_filter_async(user_id: never, web_filter: WebFilter, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -807,6 +836,7 @@ export namespace Malcontent {
          * @param flags flags to affect the behaviour of the call
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback an asynchronous operation result callback
+         * @since 0.14.0
          */
         set_web_filter_async(user_id: never, web_filter: WebFilter, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -815,6 +845,7 @@ export namespace Malcontent {
          * started with {@link Malcontent.Manager.set_web_filter_async}.
          * @param result the asynchronous operation result
          * @returns true on success, false otherwise
+         * @since 0.14.0
          */
         set_web_filter_finish(result: Gio.AsyncResult): boolean;
     }
@@ -1043,54 +1074,63 @@ export namespace Malcontent {
          * User IDs are a primary key for users in Unix.
          * @param b another user
          * @returns true if `a` and `b` are the same user, false otherwise
+         * @since 0.14.0
          */
         equal(b: User): boolean;
 
         /**
          * Get the value of the {@link Malcontent.User.display_name} property.
          * @returns the user’s display name
+         * @since 0.14.0
          */
         get_display_name(): string;
 
         /**
          * Get the value of the {@link Malcontent.User.icon_path} property.
          * @returns the user’s avatar icon path, or `NULL` if not set
+         * @since 0.14.0
          */
         get_icon_path(): string | null;
 
         /**
          * Get the value of the {@link Malcontent.User.locale} property.
          * @returns the user’s locale, `""` if the system default, or `NULL`   if not set
+         * @since 0.14.0
          */
         get_locale(): string | null;
 
         /**
          * Get the value of the {@link Malcontent.User.login_time} property.
          * @returns the login time
+         * @since 0.14.0
          */
         get_login_time(): number;
 
         /**
          * Get the value of the {@link Malcontent.User.real_name} property.
          * @returns the user’s real name, or `NULL` if not set
+         * @since 0.14.0
          */
         get_real_name(): string | null;
 
         /**
          * Get the value of the {@link Malcontent.User.uid} property.
          * @returns the user’s ID
+         * @since 0.14.0
          */
         get_uid(): never;
 
         /**
          * Get the value of the {@link Malcontent.User.user_type} property.
          * @returns the user’s account type
+         * @since 0.14.0
          */
         get_user_type(): UserType;
 
         /**
          * Get the value of the {@link Malcontent.User.username} property.
          * @returns the user’s username
+         * @since 0.14.0
          */
         get_username(): string;
 
@@ -1101,6 +1141,7 @@ export namespace Malcontent {
          * of a family.
          * @param other another user
          * @returns true if `self` and `other` are in the same family, false otherwise
+         * @since 0.14.0
          */
         is_in_same_family(other: User): boolean;
 
@@ -1111,6 +1152,7 @@ export namespace Malcontent {
          * of a family and family relationships.
          * @param other another user
          * @returns true if `self` is a parent of `other`; false otherwise
+         * @since 0.14.0
          */
         is_parent_of(other: User): boolean;
     }
@@ -1228,6 +1270,7 @@ export namespace Malcontent {
         /**
          * Get all the non-system users on the system.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @since 0.14.0
          */
         get_all_users_async(cancellable: Gio.Cancellable | null): globalThis.Promise<User[]>;
 
@@ -1235,6 +1278,7 @@ export namespace Malcontent {
          * Get all the non-system users on the system.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback callback for when the operation is complete
+         * @since 0.14.0
          */
         get_all_users_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1242,6 +1286,7 @@ export namespace Malcontent {
          * Get all the non-system users on the system.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback callback for when the operation is complete
+         * @since 0.14.0
          */
         get_all_users_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<User[]> | void;
 
@@ -1250,6 +1295,7 @@ export namespace Malcontent {
          * {@link Malcontent.UserManager.get_all_users_async}.
          * @param result result of the asynchronous operation
          * @returns array of   users in an undefined order, may be empty
+         * @since 0.14.0
          */
         get_all_users_finish(result: Gio.AsyncResult): User[];
 
@@ -1259,6 +1305,7 @@ export namespace Malcontent {
          * `user` is returned in the result set.
          * @param user user to get the family members for
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @since 0.14.0
          */
         get_family_members_for_user_async(user: User, cancellable: Gio.Cancellable | null): globalThis.Promise<User[]>;
 
@@ -1269,6 +1316,7 @@ export namespace Malcontent {
          * @param user user to get the family members for
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback callback for when the operation is complete
+         * @since 0.14.0
          */
         get_family_members_for_user_async(user: User, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1279,6 +1327,7 @@ export namespace Malcontent {
          * @param user user to get the family members for
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback callback for when the operation is complete
+         * @since 0.14.0
          */
         get_family_members_for_user_async(user: User, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<User[]> | void;
 
@@ -1287,6 +1336,7 @@ export namespace Malcontent {
          * {@link Malcontent.UserManager.get_family_members_for_user_async}.
          * @param result result of the asynchronous operation
          * @returns array of   family members in an undefined order, may be empty
+         * @since 0.14.0
          */
         get_family_members_for_user_finish(result: Gio.AsyncResult): User[];
 
@@ -1296,6 +1346,7 @@ export namespace Malcontent {
          * It is safe to call this before {@link Malcontent.UserManager.load_async} is
          * finished.
          * @returns true if the user manager is loaded, false otherwise
+         * @since 0.14.0
          */
         get_is_loaded(): boolean;
 
@@ -1306,6 +1357,7 @@ export namespace Malcontent {
          * is finished.
          * @param uid user ID to fetch
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @since 0.14.0
          */
         get_user_by_uid_async(uid: never, cancellable: Gio.Cancellable | null): globalThis.Promise<User | null>;
 
@@ -1317,6 +1369,7 @@ export namespace Malcontent {
          * @param uid user ID to fetch
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback callback for when the operation is complete
+         * @since 0.14.0
          */
         get_user_by_uid_async(uid: never, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1328,6 +1381,7 @@ export namespace Malcontent {
          * @param uid user ID to fetch
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback callback for when the operation is complete
+         * @since 0.14.0
          */
         get_user_by_uid_async(uid: never, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<User | null> | void;
 
@@ -1336,6 +1390,7 @@ export namespace Malcontent {
          * {@link Malcontent.UserManager.get_user_by_uid_async}.
          * @param result result of the asynchronous operation
          * @returns the user, or `NULL` if not found
+         * @since 0.14.0
          */
         get_user_by_uid_finish(result: Gio.AsyncResult): User | null;
 
@@ -1346,6 +1401,7 @@ export namespace Malcontent {
          * is finished.
          * @param username username to fetch
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
+         * @since 0.14.0
          */
         get_user_by_username_async(username: string, cancellable: Gio.Cancellable | null): globalThis.Promise<User | null>;
 
@@ -1357,6 +1413,7 @@ export namespace Malcontent {
          * @param username username to fetch
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback callback for when the operation is complete
+         * @since 0.14.0
          */
         get_user_by_username_async(username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1368,6 +1425,7 @@ export namespace Malcontent {
          * @param username username to fetch
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @param callback callback for when the operation is complete
+         * @since 0.14.0
          */
         get_user_by_username_async(username: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<User | null> | void;
 
@@ -1376,6 +1434,7 @@ export namespace Malcontent {
          * {@link Malcontent.UserManager.get_user_by_username_async}.
          * @param result result of the asynchronous operation
          * @returns the user, or `NULL` if not found
+         * @since 0.14.0
          */
         get_user_by_username_finish(result: Gio.AsyncResult): User | null;
 
@@ -1386,6 +1445,7 @@ export namespace Malcontent {
          * 
          * It does not currently support being called more than once.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`,
+         * @since 0.14.0
          */
         load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1397,6 +1457,7 @@ export namespace Malcontent {
          * It does not currently support being called more than once.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`,
          * @param callback callback for when the operation is complete
+         * @since 0.14.0
          */
         load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1408,6 +1469,7 @@ export namespace Malcontent {
          * It does not currently support being called more than once.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`,
          * @param callback callback for when the operation is complete
+         * @since 0.14.0
          */
         load_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1416,6 +1478,7 @@ export namespace Malcontent {
          * {@link Malcontent.UserManager.load_async}.
          * @param result result of the asynchronous operation
          * @returns true on success, false otherwise
+         * @since 0.14.0
          */
         load_finish(result: Gio.AsyncResult): boolean;
     }
@@ -1449,11 +1512,13 @@ export namespace Malcontent {
          * be returned.
          * @param variant a serialized app filter variant
          * @param user_id the ID of the user the app filter relates to
+         * @since 0.7.0
          */
         static deserialize(variant: GLib.Variant, user_id: never): AppFilter;
 
         /**
          * Error quark aliased to {@link Malcontent.ManagerError}.
+         * @since 0.2.0
          */
         static error_quark(): GLib.Quark;
 
@@ -1462,6 +1527,7 @@ export namespace Malcontent {
          * Check whether app filters `a` and `b` are equal.
          * @param b another app filter
          * @returns true if `a` and `b` are equal, false otherwise
+         * @since 0.10.0
          */
         equal(b: AppFilter): boolean;
 
@@ -1472,6 +1538,7 @@ export namespace Malcontent {
          * even if its stored value is {@link Malcontent.AppFilterOarsValue.UNKNOWN}. The
          * returned list may be empty.
          * @returns `NULL`-terminated   array of OARS sections
+         * @since 0.2.0
          */
         get_oars_sections(): string[];
 
@@ -1490,12 +1557,14 @@ export namespace Malcontent {
          * {@link Malcontent.AppFilter.is_system_installation_allowed}.
          * @param oars_section name of the OARS section to get the value from
          * @returns an OARS value
+         * @since 0.2.0
          */
         get_oars_value(oars_section: string): AppFilterOarsValue;
 
         /**
          * Get the user ID of the user this app filter is for.
          * @returns user ID of the relevant user, or `(uid_t) -1` if unknown
+         * @since 0.2.0
          */
         get_user_id(): never;
 
@@ -1511,6 +1580,7 @@ export namespace Malcontent {
          * if any of its keys are allowed.
          * @param app_info application information
          * @returns true if the user this `filter` corresponds to is allowed to run the   app represented by `app_info` according to the `filter` policy; false   otherwise
+         * @since 0.2.0
          */
         is_appinfo_allowed(app_info: Gio.AppInfo): boolean;
 
@@ -1523,6 +1593,7 @@ export namespace Malcontent {
          * a check for whether `application/xspf+xml` is blocklisted would return false.
          * @param content_type content type to check
          * @returns true if the user this `filter` corresponds to is allowed to run   programs handling `content_type` according to the `filter` policy; false   otherwise
+         * @since 0.4.0
          */
         is_content_type_allowed(content_type: string): boolean;
 
@@ -1533,6 +1604,7 @@ export namespace Malcontent {
          * This gives a high level view of whether app filter parental controls are
          * ‘enabled’ for the given user.
          * @returns true if the app filter contains at least one non-default value,   false if it’s entirely default
+         * @since 0.7.0
          */
         is_enabled(): boolean;
 
@@ -1547,6 +1619,7 @@ export namespace Malcontent {
          * contain architecture or branch information.
          * @param app_id flatpak ID for the app, for example `org.gnome.Builder`
          * @returns true if the user this `filter` corresponds to is allowed to run the   flatpak called `app_id` according to the `filter` policy; false otherwise
+         * @since 0.2.0
          */
         is_flatpak_app_allowed(app_id: string): boolean;
 
@@ -1555,6 +1628,7 @@ export namespace Malcontent {
          * according to this app filter.
          * @param app_ref flatpak ref for the app, for example   `app/org.gnome.Builder/x86_64/master`
          * @returns true if the user this `filter` corresponds to is allowed to run the   flatpak called `app_ref` according to the `filter` policy; false otherwise
+         * @since 0.2.0
          */
         is_flatpak_ref_allowed(app_ref: string): boolean;
 
@@ -1565,6 +1639,7 @@ export namespace Malcontent {
          * `path` will be canonicalised without doing any I/O.
          * @param path absolute path of a program to check
          * @returns true if the user this `filter` corresponds to is allowed to run the   program at `path` according to the `filter` policy; false otherwise
+         * @since 0.2.0
          */
         is_path_allowed(path: string): boolean;
 
@@ -1576,6 +1651,7 @@ export namespace Malcontent {
          * OARS values should be ignored and app installation should be unconditionally
          * disallowed.
          * @returns true if app installation is allowed to the system repository for   this user; false if it is unconditionally disallowed for this user
+         * @since 0.2.0
          */
         is_system_installation_allowed(): boolean;
 
@@ -1587,12 +1663,14 @@ export namespace Malcontent {
          * OARS values should be ignored and app installation should be unconditionally
          * disallowed.
          * @returns true if app installation is allowed to the user repository for   this user; false if it is unconditionally disallowed for this user
+         * @since 0.2.0
          */
         is_user_installation_allowed(): boolean;
 
         /**
          * Increment the reference count of `filter`, and return the same pointer to it.
          * @returns the same pointer as `filter`
+         * @since 0.2.0
          */
         ref(): AppFilter;
 
@@ -1604,12 +1682,14 @@ export namespace Malcontent {
          * is guaranteed to always be able to load any variant produced by the current
          * or any previous version of {@link Malcontent.AppFilter.serialize}.
          * @returns a new, floating {@link GLib.Variant}   containing the app filter
+         * @since 0.7.0
          */
         serialize(): GLib.Variant;
 
         /**
          * Decrement the reference count of `filter`. If the reference count reaches
          * zero, free the `filter` and all its resources.
+         * @since 0.2.0
          */
         unref(): void;
     }
@@ -1645,6 +1725,7 @@ export namespace Malcontent {
          * `application/xml` is added to the blocklist but `application/xspf+xml` is not,
          * a check for whether `application/xspf+xml` is blocklisted would return false.
          * @param content_type a content type to blocklist
+         * @since 0.4.0
          */
         blocklist_content_type(content_type: string): void;
 
@@ -1654,6 +1735,7 @@ export namespace Malcontent {
          * 
          * The `app_ref` will not be added again if it’s already been added.
          * @param app_ref a flatpak app ref to blocklist
+         * @since 0.2.0
          */
         blocklist_flatpak_ref(app_ref: string): void;
 
@@ -1663,6 +1745,7 @@ export namespace Malcontent {
          * It will be canonicalised (without doing any I/O) before being added.
          * The canonicalised `path` will not be added again if it’s already been added.
          * @param path an absolute path to blocklist
+         * @since 0.2.0
          */
         blocklist_path(path: string): void;
 
@@ -1674,6 +1757,7 @@ export namespace Malcontent {
          * 
          * If called on an already-cleared {@link Malcontent.AppFilterBuilder}, this
          * function is idempotent.
+         * @since 0.2.0
          */
         clear(): void;
 
@@ -1684,6 +1768,7 @@ export namespace Malcontent {
          * This is safe to use with cleared, stack-allocated
          * {@link Malcontent.AppFilterBuilder}s.
          * @returns a copy of `builder`
+         * @since 0.2.0
          */
         copy(): AppFilterBuilder;
 
@@ -1694,6 +1779,7 @@ export namespace Malcontent {
          * The {@link Malcontent.AppFilterBuilder} will be cleared as if
          * {@link Malcontent.AppFilterBuilder.clear} had been called.
          * @returns a newly constructed {@link Malcontent.AppFilter}
+         * @since 0.2.0
          */
         end(): AppFilter;
 
@@ -1703,6 +1789,7 @@ export namespace Malcontent {
          * 
          * This must not be called on stack-allocated builders initialised using
          * {@link Malcontent.AppFilterBuilder.init}.
+         * @since 0.2.0
          */
         free(): void;
 
@@ -1716,6 +1803,7 @@ export namespace Malcontent {
          * Construct the {@link Malcontent.AppFilter} by calling methods on `builder`,
          * followed by {@link Malcontent.AppFilterBuilder.end}. To abort construction,
          * use {@link Malcontent.AppFilterBuilder.clear}.
+         * @since 0.2.0
          */
         init(): void;
 
@@ -1726,6 +1814,7 @@ export namespace Malcontent {
          * ({@link Malcontent.AppFilterBuilder.set_oars_value}). If it is false, app
          * installation is unconditionally disallowed for this user.
          * @param allow_system_installation true to allow app installation; false to   unconditionally disallow it
+         * @since 0.2.0
          */
         set_allow_system_installation(allow_system_installation: boolean): void;
 
@@ -1736,6 +1825,7 @@ export namespace Malcontent {
          * ({@link Malcontent.AppFilterBuilder.set_oars_value}). If it is false, app
          * installation is unconditionally disallowed for this user.
          * @param allow_user_installation true to allow app installation; false to   unconditionally disallow it
+         * @since 0.2.0
          */
         set_allow_user_installation(allow_user_installation: boolean): void;
 
@@ -1747,6 +1837,7 @@ export namespace Malcontent {
          * by the user.
          * @param oars_section name of the OARS section to set the value for
          * @param value value to set for the `oars_section`
+         * @since 0.2.0
          */
         set_oars_value(oars_section: string, value: AppFilterOarsValue): void;
     }
@@ -1786,6 +1877,7 @@ export namespace Malcontent {
          * be returned.
          * @param variant a serialized session limits variant
          * @param user_id the ID of the user the session limits relate to
+         * @since 0.7.0
          */
         static deserialize(variant: GLib.Variant, user_id: never): SessionLimits;
 
@@ -1805,6 +1897,7 @@ export namespace Malcontent {
          * @param now_dt current time in the user’s timezone, typically queried using   `g_date_time_new_now_local()`
          * @param active_session_time_today_secs total time the user has spent in an active   session so far today, in seconds
          * @returns true if the user this `limits` corresponds to is allowed to be in   an active session at the given time; false otherwise
+         * @since 0.14.0
          */
         check_time_remaining(now_dt: GLib.DateTime, active_session_time_today_secs: bigint | number): [boolean, number, boolean, boolean];
 
@@ -1812,6 +1905,7 @@ export namespace Malcontent {
          * Check whether session limits configurations `a` and `b` are equal.
          * @param b a session limits configuration
          * @returns true if `a` and `b` are equal, false otherwise
+         * @since 0.14.0
          */
         equal(b: SessionLimits): boolean;
 
@@ -1831,6 +1925,7 @@ export namespace Malcontent {
          * returned and the out arguments will be set to zero.
          * @param now_dt current time in the user’s timezone, typically queried using   `g_date_time_new_now_local()`
          * @returns true if `limits` has a screen time limit extension active; false   otherwise
+         * @since 0.14.0
          */
         get_active_extension(now_dt: GLib.DateTime): [boolean, number, number];
 
@@ -1841,6 +1936,7 @@ export namespace Malcontent {
          * 
          * `out_daily_limit_secs` is guaranteed to be at most `24 * 60 * 60` if set.
          * @returns true if a daily limit is set, false otherwise
+         * @since 0.14.0
          */
         get_daily_limit(): [boolean, number];
 
@@ -1854,12 +1950,14 @@ export namespace Malcontent {
          * they are set. `out_end_time_secs` is guaranteed to be at most `24 * 60 * 60`
          * if set.
          * @returns true if a daily schedule is set, false otherwise
+         * @since 0.14.0
          */
         get_daily_schedule(): [boolean, number, number];
 
         /**
          * Get the user ID of the user this {@link Malcontent.SessionLimits} is for.
          * @returns user ID of the relevant user, or `(uid_t) -1` if unknown
+         * @since 0.5.0
          */
         get_user_id(): never;
 
@@ -1874,12 +1972,14 @@ export namespace Malcontent {
          * `time_limit_enabled_out` argument of
          * {@link Malcontent.SessionLimits.check_time_remaining}.
          * @returns true if the session limits object contains at least one restrictive   session limit, false if there are no limits in place
+         * @since 0.7.0
          */
         is_enabled(): boolean;
 
         /**
          * Increment the reference count of `limits`, and return the same pointer to it.
          * @returns the same pointer as `limits`
+         * @since 0.5.0
          */
         ref(): SessionLimits;
 
@@ -1892,12 +1992,14 @@ export namespace Malcontent {
          * to load any variant produced by the current or any previous version of
          * {@link Malcontent.SessionLimits.serialize}.
          * @returns a new, floating {@link GLib.Variant}   containing the session limits
+         * @since 0.7.0
          */
         serialize(): GLib.Variant;
 
         /**
          * Decrement the reference count of `limits`. If the reference count reaches
          * zero, free the `limits` and all its resources.
+         * @since 0.5.0
          */
         unref(): void;
     }
@@ -1930,6 +2032,7 @@ export namespace Malcontent {
          * 
          * If called on an already-cleared {@link Malcontent.SessionLimitsBuilder},
          * this function is idempotent.
+         * @since 0.5.0
          */
         clear(): void;
 
@@ -1940,6 +2043,7 @@ export namespace Malcontent {
          * This is safe to use with cleared, stack-allocated
          * {@link Malcontent.SessionLimitsBuilder}s.
          * @returns a copy of `builder`
+         * @since 0.5.0
          */
         copy(): SessionLimitsBuilder;
 
@@ -1950,6 +2054,7 @@ export namespace Malcontent {
          * The {@link Malcontent.SessionLimitsBuilder} will be cleared as if
          * {@link Malcontent.SessionLimitsBuilder.clear} had been called.
          * @returns a newly constructed   {@link Malcontent.SessionLimits}
+         * @since 0.5.0
          */
         end(): SessionLimits;
 
@@ -1959,6 +2064,7 @@ export namespace Malcontent {
          * 
          * This must not be called on stack-allocated builders initialised using
          * {@link Malcontent.SessionLimitsBuilder.init}.
+         * @since 0.5.0
          */
         free(): void;
 
@@ -1972,6 +2078,7 @@ export namespace Malcontent {
          * Construct the {@link Malcontent.SessionLimits} by calling methods on
          * `builder`, followed by {@link Malcontent.SessionLimitsBuilder.end}. To abort
          * construction, use {@link Malcontent.SessionLimitsBuilder.clear}.
+         * @since 0.5.0
          */
         init(): void;
 
@@ -1988,6 +2095,7 @@ export namespace Malcontent {
          * extension will be ignored.
          * @param start_time_secs start time of the extension, in seconds since the Unix   epoch
          * @param duration_secs duration of the extension, in seconds; or zero if there is no   active extension
+         * @since 0.14.0
          */
         set_active_extension(start_time_secs: bigint | number, duration_secs: number): void;
 
@@ -2000,6 +2108,7 @@ export namespace Malcontent {
          * This will act in addition to any other session limits.
          * @param enforced true if the limit type is to be enforced, false if the value is   just being stored for future use without being enforced
          * @param daily_limit_secs maximum length for the user’s active session time each   day, in seconds
+         * @since 0.14.0
          */
         set_daily_limit(enforced: boolean, daily_limit_secs: number): void;
 
@@ -2015,6 +2124,7 @@ export namespace Malcontent {
          * @param enforced true if the limit type is to be enforced, false if the value is   just being stored for future use without being enforced
          * @param start_time_secs number of seconds since midnight when the user’s session   can first start
          * @param end_time_secs number of seconds since midnight when the user’s session can   last end
+         * @since 0.14.0
          */
         set_daily_schedule(enforced: boolean, start_time_secs: number, end_time_secs: number): void;
 
@@ -2024,11 +2134,13 @@ export namespace Malcontent {
          * Use this to set up a `builder` as a clone of `limits`, ready to have its
          * options modified further.
          * @param limits a {@link Malcontent.SessionLimits} to copy into the builder
+         * @since 0.14.0
          */
         set_from_instance(limits: SessionLimits): void;
 
         /**
          * Unset any session limits currently set in the `builder`.
+         * @since 0.5.0
          */
         set_none(): void;
     }
@@ -2108,6 +2220,7 @@ export namespace Malcontent {
          * be returned.
          * @param variant a serialized web filter variant
          * @param user_id the ID of the user the web filter relates to
+         * @since 0.14.0
          */
         static deserialize(variant: GLib.Variant, user_id: never): WebFilter;
 
@@ -2120,6 +2233,7 @@ export namespace Malcontent {
          * hostnames instead. Domain names are entries in the DNS database, hostnames
          * are website addresses. Every hostname is a domain name, but not vice-versa.
          * @param domain_name a potential domain name
+         * @since 0.14.0
          */
         static validate_domain_name(domain_name: string): boolean;
 
@@ -2133,6 +2247,7 @@ export namespace Malcontent {
          * are website addresses. Every hostname is a domain name, but not vice-versa.
          * @param domain_name a potential domain_name
          * @param max_len length (in bytes) to check, or until the first nul byte is reached
+         * @since 0.14.0
          */
         static validate_domain_name_len(domain_name: string, max_len: bigint | number): boolean;
 
@@ -2141,6 +2256,7 @@ export namespace Malcontent {
          * 
          * Filter list IDs must be non-empty UTF-8 strings.
          * @param id a potential filter list ID
+         * @since 0.14.0
          */
         static validate_filter_id(id: string): boolean;
 
@@ -2153,6 +2269,7 @@ export namespace Malcontent {
          * domain names instead. Domain names are entries in the DNS database, hostnames
          * are website addresses. Every hostname is a domain name, but not vice-versa.
          * @param hostname a potential hostname
+         * @since 0.14.0
          */
         static validate_hostname(hostname: string): boolean;
 
@@ -2166,6 +2283,7 @@ export namespace Malcontent {
          * are website addresses. Every hostname is a domain name, but not vice-versa.
          * @param hostname a potential hostname
          * @param max_len length (in bytes) to check, or until the first nul byte is reached
+         * @since 0.14.0
          */
         static validate_hostname_len(hostname: string, max_len: bigint | number): boolean;
 
@@ -2174,6 +2292,7 @@ export namespace Malcontent {
          * Check whether web filters `a` and `b` are equal.
          * @param b a web filter
          * @returns true if `a` and `b` are equal, false otherwise
+         * @since 0.14.0
          */
         equal(b: WebFilter): boolean;
 
@@ -2185,6 +2304,7 @@ export namespace Malcontent {
          * 
          * A `NULL` return value is equivalent to an empty mapping.
          * @returns mapping of ID   to URI for allow lists
+         * @since 0.14.0
          */
         get_allow_lists(): { [key: string]: string } | null;
 
@@ -2196,6 +2316,7 @@ export namespace Malcontent {
          * 
          * A `NULL` return value is equivalent to an empty mapping.
          * @returns mapping of ID   to URI for block lists
+         * @since 0.14.0
          */
         get_block_lists(): { [key: string]: string } | null;
 
@@ -2207,6 +2328,7 @@ export namespace Malcontent {
          * 
          * A `NULL` return value is equivalent to an empty array.
          * @returns array of   hostnames to allow
+         * @since 0.14.0
          */
         get_custom_allow_list(): string[] | null;
 
@@ -2218,12 +2340,14 @@ export namespace Malcontent {
          * 
          * A `NULL` return value is equivalent to an empty array.
          * @returns array of   hostnames to block
+         * @since 0.14.0
          */
         get_custom_block_list(): string[] | null;
 
         /**
          * Gets the type of web filter.
          * @returns the currently active filter type
+         * @since 0.14.0
          */
         get_filter_type(): WebFilterType;
 
@@ -2233,12 +2357,14 @@ export namespace Malcontent {
          * If enabled, search engines and other popular websites will be automatically
          * redirected to their ‘safe search’ variant, if supported.
          * @returns true if safe search is force-enabled, false otherwise
+         * @since 0.14.0
          */
         get_force_safe_search(): boolean;
 
         /**
          * Get the user ID of the user this {@link Malcontent.WebFilter} is for.
          * @returns user ID of the relevant user, or `(uid_t) -1` if unknown
+         * @since 0.14.0
          */
         get_user_id(): never;
 
@@ -2249,12 +2375,14 @@ export namespace Malcontent {
          * This gives a high level view of whether web filter parental controls are
          * ‘enabled’ for the given user.
          * @returns true if the web filter object contains at least one restrictive    filter, false if there are no filters in place
+         * @since 0.14.0
          */
         is_enabled(): boolean;
 
         /**
          * Increment the reference count of `filter`, and return the same pointer to it.
          * @returns the same pointer as `filter`
+         * @since 0.14.0
          */
         ref(): WebFilter;
 
@@ -2266,12 +2394,14 @@ export namespace Malcontent {
          * is guaranteed to always be able to load any variant produced by the current
          * or any previous version of {@link Malcontent.WebFilter.serialize}.
          * @returns a new, floating {@link GLib.Variant}   containing the web filter
+         * @since 0.14.0
          */
         serialize(): GLib.Variant;
 
         /**
          * Decrement the reference count of `filter`. If the reference count reaches
          * zero, free the `filter` and all its resources.
+         * @since 0.14.0
          */
         unref(): void;
     }
@@ -2309,6 +2439,7 @@ export namespace Malcontent {
          * not when this function is called.
          * @param id ID of the filter
          * @param filter_uri URI of the filter to download
+         * @since 0.14.0
          */
         add_allow_list(id: string, filter_uri: string): void;
 
@@ -2324,6 +2455,7 @@ export namespace Malcontent {
          * not when this function is called.
          * @param id ID of the filter
          * @param filter_uri URI of the filter to download
+         * @since 0.14.0
          */
         add_block_list(id: string, filter_uri: string): void;
 
@@ -2333,6 +2465,7 @@ export namespace Malcontent {
          * See the top-level documentation for {@link Malcontent.WebFilter} for details
          * of the allowed filter list and ID formats.
          * @param hostname hostname to allow
+         * @since 0.14.0
          */
         add_custom_allow_list_entry(hostname: string): void;
 
@@ -2342,6 +2475,7 @@ export namespace Malcontent {
          * See the top-level documentation for {@link Malcontent.WebFilter} for details
          * of the allowed filter list and ID formats.
          * @param hostname hostname to block
+         * @since 0.14.0
          */
         add_custom_block_list_entry(hostname: string): void;
 
@@ -2353,6 +2487,7 @@ export namespace Malcontent {
          * 
          * If called on an already-cleared {@link Malcontent.WebFilterBuilder}, this
          * function is idempotent.
+         * @since 0.14.0
          */
         clear(): void;
 
@@ -2363,6 +2498,7 @@ export namespace Malcontent {
          * This is safe to use with cleared, stack-allocated
          * {@link Malcontent.WebFilterBuilder}s.
          * @returns a copy of `builder`
+         * @since 0.14.0
          */
         copy(): WebFilterBuilder;
 
@@ -2373,6 +2509,7 @@ export namespace Malcontent {
          * The {@link Malcontent.WebFilterBuilder} will be cleared as if
          * {@link Malcontent.WebFilterBuilder.clear} had been called.
          * @returns a newly constructed {@link Malcontent.WebFilter}
+         * @since 0.14.0
          */
         end(): WebFilter;
 
@@ -2382,6 +2519,7 @@ export namespace Malcontent {
          * 
          * This must not be called on stack-allocated builders initialised using
          * {@link Malcontent.WebFilterBuilder.init}.
+         * @since 0.14.0
          */
         free(): void;
 
@@ -2395,12 +2533,14 @@ export namespace Malcontent {
          * Construct the {@link Malcontent.WebFilter} by calling methods on `builder`,
          * followed by {@link Malcontent.WebFilterBuilder.end}. To abort construction,
          * use {@link Malcontent.WebFilterBuilder.clear}.
+         * @since 0.14.0
          */
         init(): void;
 
         /**
          * Set the type of web filter to apply to the user.
          * @param filter_type type of web filter
+         * @since 0.14.0
          */
         set_filter_type(filter_type: WebFilterType): void;
 
@@ -2410,6 +2550,7 @@ export namespace Malcontent {
          * If enabled, search engines and other popular websites will be automatically
          * redirected to their ‘safe search’ variant, if supported.
          * @param force_safe_search true to force safe search to be enabled, false otherwise
+         * @since 0.14.0
          */
         set_force_safe_search(force_safe_search: boolean): void;
     }

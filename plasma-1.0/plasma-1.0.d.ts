@@ -84,11 +84,13 @@ export namespace Plasma {
          * @param data_size The number of bytes of data for a newly created object.
          * @param options The option for creating an object.
          * @returns A newly created {@link Plasma.CreatedObject}   on success, `null` on error.
+         * @since 0.12.0
          */
         create(id: ObjectID, data_size: bigint | number, options: ClientCreateOptions | null): CreatedObject | null;
 
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @since 0.12.0
          */
         disconnect(): boolean;
 
@@ -102,6 +104,7 @@ export namespace Plasma {
          * @param id The ID of the target object.
          * @param timeout_ms The timeout in milliseconds. -1 means no timeout.
          * @returns A found {@link Plasma.ReferredObject}   on success, `null` on error.
+         * @since 0.12.0
          */
         refer_object(id: ObjectID, timeout_ms: bigint | number): ReferredObject | null;
     }
@@ -165,11 +168,13 @@ export namespace Plasma {
         // Methods
         /**
          * @returns The metadata of a created object.
+         * @since 0.12.0
          */
         get_metadata(): Uint8Array | null;
 
         /**
          * @param metadata The metadata of a created object.
+         * @since 0.12.0
          */
         set_metadata(metadata: Uint8Array | string | null): void;
     }
@@ -233,11 +238,13 @@ export namespace Plasma {
         // Methods
         /**
          * @returns The number of retries on connect.
+         * @since 0.12.0
          */
         get_n_retries(): number;
 
         /**
          * @param n_retries The number of retires on connect.
+         * @since 0.12.0
          */
         set_n_retries(n_retries: number): void;
     }
@@ -297,6 +304,7 @@ export namespace Plasma {
          * Aborts the object in the object store. You can't use the aborted
          * object anymore.
          * @returns `true` on success, `false` on error.
+         * @since 0.12.0
          */
         abort(): boolean;
 
@@ -304,6 +312,7 @@ export namespace Plasma {
          * Seals the object in the object store. You can't use the sealed
          * object anymore.
          * @returns `true` on success, `false` on error.
+         * @since 0.12.0
          */
         seal(): boolean;
     }
@@ -468,11 +477,13 @@ export namespace Plasma {
         // Methods
         /**
          * @returns The byte string of the object ID.
+         * @since 0.12.0
          */
         to_binary(): Uint8Array;
 
         /**
          * @returns The hex representation of the object ID.   It should be freed with `g_free()` when no longer needed.
+         * @since 0.12.0
          */
         to_hex(): string;
     }
@@ -531,6 +542,7 @@ export namespace Plasma {
         /**
          * Releases the object explicitly. The object is no longer valid.
          * @returns `true` on success, `false` on error.
+         * @since 0.12.0
          */
         release(): boolean;
     }

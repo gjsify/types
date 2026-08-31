@@ -584,6 +584,7 @@ export namespace ClutterX11 {
          * @param y the Y coordinate of the area to update
          * @param width the width of the area to update
          * @param height the height of the area to update
+         * @since 0.8
          * @virtual
          */
         vfunc_update_area(x: number, y: number, width: number, height: number): void;
@@ -593,12 +594,14 @@ export namespace ClutterX11 {
          * Enables or disables the automatic updates ot `texture` in case the backing
          * pixmap or window is damaged
          * @param setting `true` to enable automatic updates
+         * @since 0.8
          */
         set_automatic(setting: boolean): void;
 
         /**
          * Sets the X Pixmap to which the texture should be bound.
          * @param pixmap the X Pixmap to which the texture should be bound
+         * @since 0.8
          */
         set_pixmap(pixmap: xlib.Pixmap): void;
 
@@ -613,12 +616,14 @@ export namespace ClutterX11 {
          * This function has no effect unless the XComposite extension is available.
          * @param window the X window to which the texture should be bound
          * @param automatic `true` for automatic window updates, `false` for manual.
+         * @since 0.8
          */
         set_window(window: xlib.Window, automatic: boolean): void;
 
         /**
          * Resets the texture's pixmap from its window, perhaps in response to the
          * pixmap's invalidation as the window changed size.
+         * @since 0.8
          */
         sync_window(): void;
 
@@ -630,6 +635,7 @@ export namespace ClutterX11 {
          * @param y the Y coordinate of the area to update
          * @param width the width of the area to update
          * @param height the height of the area to update
+         * @since 0.8
          */
         update_area(x: number, y: number, width: number, height: number): void;
     }

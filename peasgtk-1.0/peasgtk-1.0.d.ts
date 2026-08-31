@@ -169,12 +169,14 @@ export namespace PeasGtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -349,6 +351,7 @@ export namespace PeasGtk {
         /**
          * Returns if builtin plugins should be shown.
          * @returns if builtin plugins should be shown.
+         * @deprecated since 1.2: Use hidden plugins instead.
          */
         get_show_builtin(): boolean;
 
@@ -361,6 +364,7 @@ export namespace PeasGtk {
         /**
          * Sets if builtin plugins should be shown.
          * @param show_builtin If builtin plugins should be shown.
+         * @deprecated since 1.2: Use hidden plugins instead.
          */
         set_show_builtin(show_builtin: boolean): void;
 
@@ -429,36 +433,42 @@ export namespace PeasGtk {
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
          * @returns `true` if `border` has been set
+         * @since 3.16
          */
         get_border(): [boolean, Gtk.Border];
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_hadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_vadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
@@ -467,12 +477,14 @@ export namespace PeasGtk {
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
@@ -481,6 +493,7 @@ export namespace PeasGtk {
          * vertical scrolling should start below the minimum height or
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
@@ -490,6 +503,7 @@ export namespace PeasGtk {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];

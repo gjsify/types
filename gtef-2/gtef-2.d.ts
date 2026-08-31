@@ -407,12 +407,16 @@ export namespace Gtef {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @since 2.0
+         */
         static get_instance(): ActionInfoCentralStore;
 
         // Methods
         /**
          * @param action_name an action name.
          * @returns the found {@link Gtef.ActionInfo}, or `null`.
+         * @since 2.0
          */
         lookup(action_name: string): ActionInfo;
     }
@@ -481,6 +485,7 @@ export namespace Gtef {
          * {@link Gtef.ActionInfo} with the same action name. The stores take their own
          * reference on `info`.
          * @param info a {@link Gtef.ActionInfo}.
+         * @since 2.0
          */
         add(info: ActionInfo): void;
 
@@ -493,6 +498,7 @@ export namespace Gtef {
          * An API similar to `g_action_map_add_action_entries()`.
          * @param entries a pointer to the first item in an array of {@link Gtef.ActionInfoEntry} structs.
          * @param translation_domain a gettext domain, or `null`.
+         * @since 2.0
          */
         add_entries(entries: ActionInfoEntry[], translation_domain: string | null): void;
 
@@ -504,6 +510,7 @@ export namespace Gtef {
          * You probably want to call this function on the store returned by
          * `gtef_application_get_app_action_info_store()`. But it can also be useful for a
          * store provided by a library, to easily see which actions you don't use.
+         * @since 2.0
          */
         check_all_used(): void;
 
@@ -523,6 +530,7 @@ export namespace Gtef {
          * for that action, if any).
          * @param action_name an action name.
          * @returns a new {@link Gtk.MenuItem} for `action_name`.
+         * @since 2.0
          */
         create_menu_item(action_name: string): Gtk.Widget;
 
@@ -534,6 +542,7 @@ export namespace Gtef {
         /**
          * @param action_name an action name.
          * @returns the found {@link Gtef.ActionInfo}, or `null`.
+         * @since 2.0
          */
         lookup(action_name: string): ActionInfo;
     }
@@ -597,6 +606,7 @@ export namespace Gtef {
          * Convenience function that calls `g_application_get_default()` followed by
          * `gtef_application_get_from_gtk_application()`. The object returned by
          * `g_application_get_default()` must be a {@link Gtk.Application}.
+         * @since 2.0
          */
         static get_default(): Application;
 
@@ -604,6 +614,7 @@ export namespace Gtef {
          * Returns the {@link Gtef.Application} of `gtk_app`. The returned object is guaranteed
          * to be the same for the lifetime of `gtk_app`.
          * @param gtk_app a {@link Gtk.Application}.
+         * @since 2.0
          */
         static get_from_gtk_application(gtk_app: Gtk.Application): Application;
 
@@ -614,17 +625,20 @@ export namespace Gtef {
          * this store. Libraries should provide their own store if they want to share
          * {@link Gtef.ActionInfo}'s.
          * @returns the {@link Gtef.ActionInfoStore} reserved for the application.
+         * @since 2.0
          */
         get_app_action_info_store(): ActionInfoStore;
 
         /**
          * @returns the {@link Gtk.Application} of `gtef_app`.
+         * @since 2.0
          */
         get_application(): Gtk.Application;
 
         /**
          * Calls `g_application_open()` with a single file and an empty hint.
          * @param file a {@link Gio.File}.
+         * @since 2.0
          */
         open_simple(file: Gio.File): void;
     }
@@ -705,6 +719,7 @@ export namespace Gtef {
          * Returns the {@link Gtef.ApplicationWindow} of `gtk_window`. The returned object is
          * guaranteed to be the same for the lifetime of `gtk_window`.
          * @param gtk_window a {@link Gtk.ApplicationWindow}.
+         * @since 2.0
          */
         static get_from_gtk_application_window(gtk_window: Gtk.ApplicationWindow): ApplicationWindow;
 
@@ -720,6 +735,7 @@ export namespace Gtef {
          * case if the {@link Gtk.MenuItem} has been created with the functions available in
          * {@link Gtef.ActionInfoStore}.
          * @param gtef_menu_shell a {@link Gtef.MenuShell}.
+         * @since 2.0
          */
         connect_menu_to_statusbar(gtef_menu_shell: MenuShell): void;
 
@@ -731,6 +747,7 @@ export namespace Gtef {
          * The full path is retrieved with
          * `gtef_utils_recent_chooser_menu_get_item_uri()`.
          * @param menu a {@link Gtk.RecentChooserMenu}.
+         * @since 2.0
          */
         connect_recent_chooser_menu_to_statusbar(menu: Gtk.RecentChooserMenu): void;
 
@@ -751,22 +768,26 @@ export namespace Gtef {
          * `gtef_application_open_simple()` is called, so the {@link Gio.Application} must have the
          * {@link Gio.ApplicationFlags.HANDLES_OPEN} flag set.
          * @returns a new {@link Gtk.MenuItem}.
+         * @since 2.0
          */
         create_open_recent_menu_item(): Gtk.Widget;
 
         /**
          * @returns the {@link Gtk.ApplicationWindow} of `gtef_window`.
+         * @since 2.0
          */
         get_application_window(): Gtk.ApplicationWindow;
 
         /**
          * @returns the {@link Gtef.ApplicationWindow.statusbar}.
+         * @since 2.0
          */
         get_statusbar(): Gtk.Statusbar | null;
 
         /**
          * Sets the {@link Gtef.ApplicationWindow.statusbar} property.
          * @param statusbar a {@link Gtk.Statusbar}, or `null`.
+         * @since 2.0
          */
         set_statusbar(statusbar: Gtk.Statusbar | null): void;
     }
@@ -897,16 +918,19 @@ export namespace Gtef {
          * Returns the {@link Gtef.File} of `buffer`. The returned object is guaranteed to be the
          * same for the lifetime of `buffer`.
          * @returns the associated {@link Gtef.File}.
+         * @since 1.0
          */
         get_file(): File;
 
         /**
          * @returns the current {@link Gtef.SelectionType}.
+         * @since 1.0
          */
         get_selection_type(): SelectionType;
 
         /**
          * @returns the {@link Gtef.Buffer.gtef_style_scheme_id}. Free with `g_free()`.
+         * @since 2.0
          */
         get_style_scheme_id(): string;
 
@@ -917,6 +941,7 @@ export namespace Gtef {
          * - the directory path in parenthesis if the {@link Gtef.File.location} isn't
          *   `null`.
          * @returns the `buffer` title. Free the return value with `g_free()` when no longer needed.
+         * @since 1.0
          */
         get_title(): string;
 
@@ -930,6 +955,7 @@ export namespace Gtef {
          * the undo/redo {@link GtkSource.Buffer} history must be empty, and the
          * {@link Gtef.File.location} must be `null`.
          * @returns `true` if `buffer` has not been touched, `false` otherwise.
+         * @since 1.0
          */
         is_untouched(): boolean;
 
@@ -940,6 +966,7 @@ export namespace Gtef {
          * {@link GtkSource.StyleSchemeManager} as returned by
          * `gtk_source_style_scheme_manager_get_default()`.
          * @param style_scheme_id the new value.
+         * @since 2.0
          */
         set_style_scheme_id(style_scheme_id: string): void;
     }
@@ -1091,11 +1118,13 @@ export namespace Gtef {
          * 
          * Since this function is synchronous, it is advised to call it only on local
          * files. See `gtef_file_is_local()`.
+         * @since 1.0
          */
         check_file_on_disk(): void;
 
         /**
          * @returns the compression type.
+         * @since 1.0
          */
         get_compression_type(): CompressionType;
 
@@ -1103,21 +1132,25 @@ export namespace Gtef {
          * The encoding is initially `null`. After a successful file loading or saving
          * operation, the encoding is non-`null`.
          * @returns the character encoding.
+         * @since 1.0
          */
         get_encoding(): Encoding;
 
         /**
          * @returns the associated {@link Gtef.FileMetadata}.
+         * @since 1.0
          */
         get_file_metadata(): FileMetadata;
 
         /**
          * @returns the {@link Gio.File}.
+         * @since 1.0
          */
         get_location(): Gio.File;
 
         /**
          * @returns the newline type.
+         * @since 1.0
          */
         get_newline_type(): NewlineType;
 
@@ -1128,6 +1161,7 @@ export namespace Gtef {
          * application, starting at 1. When an untitled file is closed, its number is
          * released and can be used by a later untitled file.
          * @returns the `file` short name.
+         * @since 1.0
          */
         get_short_name(): string;
 
@@ -1138,6 +1172,7 @@ export namespace Gtef {
          * To have an up-to-date value, you must first call
          * `gtef_file_check_file_on_disk()`.
          * @returns whether the file has been deleted.
+         * @since 1.0
          */
         is_deleted(): boolean;
 
@@ -1148,6 +1183,7 @@ export namespace Gtef {
          * To have an up-to-date value, you must first call
          * `gtef_file_check_file_on_disk()`.
          * @returns whether the file is externally modified.
+         * @since 1.0
          */
         is_externally_modified(): boolean;
 
@@ -1155,6 +1191,7 @@ export namespace Gtef {
          * Returns whether the file is local. If the {@link Gtef.File.location} is `null`,
          * returns `false`.
          * @returns whether the file is local.
+         * @since 1.0
          */
         is_local(): boolean;
 
@@ -1165,12 +1202,14 @@ export namespace Gtef {
          * To have an up-to-date value, you must first call
          * `gtef_file_check_file_on_disk()`.
          * @returns whether the file is read-only.
+         * @since 1.0
          */
         is_readonly(): boolean;
 
         /**
          * Sets the location.
          * @param location the new {@link Gio.File}, or `null`.
+         * @since 1.0
          */
         set_location(location: Gio.File | null): void;
     }
@@ -1307,36 +1346,43 @@ export namespace Gtef {
         // Methods
         /**
          * @returns the {@link Gtef.Buffer} to load the content into.
+         * @since 1.0
          */
         get_buffer(): Buffer | null;
 
         /**
          * @returns the chunk size.
+         * @since 1.0
          */
         get_chunk_size(): number;
 
         /**
          * @returns the detected file encoding, or `null`.
+         * @since 2.0
          */
         get_encoding(): Encoding | null;
 
         /**
          * @returns the {@link Gtef.File}.
+         * @since 1.0
          */
         get_file(): File | null;
 
         /**
          * @returns the {@link Gio.File} to load.
+         * @since 1.0
          */
         get_location(): Gio.File | null;
 
         /**
          * @returns the maximum content size, or -1 for unlimited.
+         * @since 1.0
          */
         get_max_size(): number;
 
         /**
          * @returns the detected newline type.
+         * @since 2.0
          */
         get_newline_type(): NewlineType;
 
@@ -1347,6 +1393,7 @@ export namespace Gtef {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
+         * @since 1.0
          */
         load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>;
 
@@ -1358,6 +1405,7 @@ export namespace Gtef {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 1.0
          */
         load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1369,6 +1417,7 @@ export namespace Gtef {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 1.0
          */
         load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1376,16 +1425,19 @@ export namespace Gtef {
          * Finishes a file loading started with `gtef_file_loader_load_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the content has been loaded successfully.
+         * @since 1.0
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @param chunk_size the new chunk size.
+         * @since 1.0
          */
         set_chunk_size(chunk_size: bigint | number): void;
 
         /**
          * @param max_size the new maximum size, or -1 for unlimited.
+         * @since 1.0
          */
         set_max_size(max_size: bigint | number): void;
     }
@@ -1451,11 +1503,13 @@ export namespace Gtef {
          * Gets the value of a metadata stored in the `metadata` object memory.
          * @param key the name of the metadata.
          * @returns the value of the metadata, or `null` if the metadata   doesn't exist. Free with `g_free()`.
+         * @since 1.0
          */
         get(key: string): string | null;
 
         /**
          * @returns the {@link Gtef.File} that the metadata belong to.
+         * @since 1.0
          */
         get_file(): File;
 
@@ -1472,6 +1526,7 @@ export namespace Gtef {
          * If {@link Gtef.File.location} is `null`, `false` is simply returned.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was loaded successfully.
+         * @since 1.0
          */
         load(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1485,6 +1540,7 @@ export namespace Gtef {
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 1.0
          */
         load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1499,6 +1555,7 @@ export namespace Gtef {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 1.0
          */
         load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1513,6 +1570,7 @@ export namespace Gtef {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 1.0
          */
         load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1520,6 +1578,7 @@ export namespace Gtef {
          * Finishes the metadata loading started with `gtef_file_metadata_load_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the metadata was loaded successfully.
+         * @since 1.0
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -1532,6 +1591,7 @@ export namespace Gtef {
          * If {@link Gtef.File.location} is `null`, `false` is simply returned.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was saved successfully.
+         * @since 1.0
          */
         save(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1544,6 +1604,7 @@ export namespace Gtef {
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 1.0
          */
         save_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1557,6 +1618,7 @@ export namespace Gtef {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 1.0
          */
         save_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1570,6 +1632,7 @@ export namespace Gtef {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 1.0
          */
         save_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1577,6 +1640,7 @@ export namespace Gtef {
          * Finishes the metadata saving started with `gtef_file_metadata_save_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the metadata was saved successfully.
+         * @since 1.0
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -1588,6 +1652,7 @@ export namespace Gtef {
          * memory.
          * @param key the name of the metadata.
          * @param value the value of the metadata, or `null` to unset.
+         * @since 1.0
          */
         set(key: string, value: string | null): void;
 
@@ -1735,36 +1800,43 @@ export namespace Gtef {
         // Methods
         /**
          * @returns the {@link Gtef.Buffer} to save.
+         * @since 1.0
          */
         get_buffer(): Buffer;
 
         /**
          * @returns the compression type.
+         * @since 1.0
          */
         get_compression_type(): CompressionType;
 
         /**
          * @returns the encoding.
+         * @since 1.0
          */
         get_encoding(): Encoding;
 
         /**
          * @returns the {@link Gtef.File}.
+         * @since 1.0
          */
         get_file(): File;
 
         /**
          * @returns the flags.
+         * @since 1.0
          */
         get_flags(): FileSaverFlags;
 
         /**
          * @returns the {@link Gio.File} where to save the buffer to.
+         * @since 1.0
          */
         get_location(): Gio.File;
 
         /**
          * @returns the newline type.
+         * @since 1.0
          */
         get_newline_type(): NewlineType;
 
@@ -1774,6 +1846,7 @@ export namespace Gtef {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
+         * @since 1.0
          */
         save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>;
 
@@ -1784,6 +1857,7 @@ export namespace Gtef {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 1.0
          */
         save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1794,6 +1868,7 @@ export namespace Gtef {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 1.0
          */
         save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1808,6 +1883,7 @@ export namespace Gtef {
          * saved successfully.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the file was saved successfully.
+         * @since 1.0
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -1815,6 +1891,7 @@ export namespace Gtef {
          * Sets the compression type. By default the compression type is taken from the
          * {@link Gtef.File}.
          * @param compression_type the new compression type.
+         * @since 1.0
          */
         set_compression_type(compression_type: CompressionType): void;
 
@@ -1822,11 +1899,13 @@ export namespace Gtef {
          * Sets the encoding. If `encoding` is `null`, the UTF-8 encoding will be set.
          * By default the encoding is taken from the {@link Gtef.File}.
          * @param encoding the new encoding, or `null` for UTF-8.
+         * @since 1.0
          */
         set_encoding(encoding: Encoding | null): void;
 
         /**
          * @param flags the new flags.
+         * @since 1.0
          */
         set_flags(flags: FileSaverFlags): void;
 
@@ -1834,6 +1913,7 @@ export namespace Gtef {
          * Sets the newline type. By default the newline type is taken from the
          * {@link Gtef.File}.
          * @param newline_type the new newline type.
+         * @since 1.0
          */
         set_newline_type(newline_type: NewlineType): void;
     }
@@ -1908,16 +1988,19 @@ export namespace Gtef {
         /**
          * Obtains iterators pointing to the start and end of the {@link Gtef.FoldRegion}.
          * @returns `true` on success, `false` otherwise.
+         * @since 1.0
          */
         get_bounds(): [boolean, Gtk.TextIter, Gtk.TextIter];
 
         /**
          * @returns the {@link Gtk.TextBuffer} where the fold region   is applied.
+         * @since 1.0
          */
         get_buffer(): Gtk.TextBuffer | null;
 
         /**
          * @returns whether the {@link Gtef.FoldRegion} is folded.
+         * @since 1.0
          */
         get_folded(): boolean;
 
@@ -1925,12 +2008,14 @@ export namespace Gtef {
          * Sets the start and end of the {@link Gtef.FoldRegion}.
          * @param start a {@link Gtk.TextIter}.
          * @param end a {@link Gtk.TextIter}.
+         * @since 1.0
          */
         set_bounds(start: Gtk.TextIter, end: Gtk.TextIter): void;
 
         /**
          * Folds or unfolds the region.
          * @param folded the new value.
+         * @since 1.0
          */
         set_folded(folded: boolean): void;
     }
@@ -1998,6 +2083,7 @@ export namespace Gtef {
          * This function is intended to be called from a subclass' draw method before
          * chaining-up to its parent's draw method.
          * @param state a {@link Gtef.GutterRendererFoldsState}.
+         * @since 1.0
          */
         set_state(state: GutterRendererFoldsState): void;
     }
@@ -2102,6 +2188,7 @@ export namespace Gtef {
          * Utility function to create a {@link Gtk.Label} suitable for a {@link Gtk.InfoBar}. The
          * wrapping and alignment is configured. The label is also set as selectable,
          * for example to copy an error message and search an explanation on the web.
+         * @since 1.0
          */
         static create_label(): Gtk.Label;
 
@@ -2110,6 +2197,7 @@ export namespace Gtef {
          * Calls `gtk_info_bar_set_show_close_button()`, and additionnally closes the
          * `info_bar` when the {@link Gtk.InfoBar.SignalSignatures.response | Gtk.InfoBar::response} signal is received with the
          * `response_id` {@link Gtk.ResponseType.CLOSE}.
+         * @since 2.0
          */
         add_close_button(): void;
 
@@ -2122,6 +2210,7 @@ export namespace Gtef {
          * {@link Gtef.InfoBar} and you need to add a custom {@link Gtk.Widget}, it is better to use
          * this function instead of adding the {@link Gtk.Widget} directly to the content area.
          * @param content a {@link Gtk.Widget}.
+         * @since 2.0
          */
         add_content_widget(content: Gtk.Widget): void;
 
@@ -2131,18 +2220,21 @@ export namespace Gtef {
          * 
          * The icon is not updated when the message type changes. Another {@link Gtef.InfoBar}
          * must be created in that case.
+         * @since 2.0
          */
         add_icon(): void;
 
         /**
          * Adds a primary message.
          * @param primary_msg a primary message.
+         * @since 2.0
          */
         add_primary_message(primary_msg: string): void;
 
         /**
          * Adds a secondary message.
          * @param secondary_msg a secondary message.
+         * @since 2.0
          */
         add_secondary_message(secondary_msg: string): void;
     }
@@ -2232,6 +2324,7 @@ export namespace Gtef {
          * Returns the {@link Gtef.MenuShell} of `gtk_menu_shell`. The returned object is
          * guaranteed to be the same for the lifetime of `gtk_menu_shell`.
          * @param gtk_menu_shell a {@link Gtk.MenuShell}.
+         * @since 2.0
          */
         static get_from_gtk_menu_shell(gtk_menu_shell: Gtk.MenuShell): MenuShell;
 
@@ -2251,6 +2344,7 @@ export namespace Gtef {
         // Methods
         /**
          * @returns the {@link Gtk.MenuShell} of `gtef_menu_shell`.
+         * @since 2.0
          */
         get_menu_shell(): Gtk.MenuShell;
     }
@@ -2359,6 +2453,7 @@ export namespace Gtef {
          * one below the first info bar, etc. With the main widget of `tab` at the
          * bottom.
          * @param info_bar a {@link Gtk.InfoBar}.
+         * @since 1.0
          */
         add_info_bar(info_bar: Gtk.InfoBar): void;
 
@@ -2374,12 +2469,14 @@ export namespace Gtef {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -2511,17 +2608,20 @@ export namespace Gtef {
         // Methods
         /**
          * Copies the clipboard.
+         * @since 1.0
          */
         copy_clipboard(): void;
 
         /**
          * Cuts the clipboard and then scrolls to the cursor position.
+         * @since 1.0
          */
         cut_clipboard(): void;
 
         /**
          * Deletes the text currently selected in the {@link Gtk.TextBuffer} associated
          * to the view and then scrolls to the cursor position.
+         * @since 1.0
          */
         delete_selection(): void;
 
@@ -2530,6 +2630,7 @@ export namespace Gtef {
          * `gtk_text_buffer_get_iter_at_line()`, and scrolls to that position.
          * @param line a line number, counting from 0.
          * @returns `true` if the cursor has been moved exactly to `line`, `false` if that   line didn't exist.
+         * @since 2.0
          */
         goto_line(line: number): boolean;
 
@@ -2539,21 +2640,25 @@ export namespace Gtef {
          * @param line a line number, counting from 0.
          * @param line_offset the line offset, in characters (not bytes).
          * @returns `true` if the cursor has been moved exactly to `line` and   `line_offset`, `false` if that position didn't exist.
+         * @since 2.0
          */
         goto_line_offset(line: number, line_offset: number): boolean;
 
         /**
          * Pastes the clipboard and then scrolls to the cursor position.
+         * @since 1.0
          */
         paste_clipboard(): void;
 
         /**
          * Scrolls the `view` to the cursor position.
+         * @since 1.0
          */
         scroll_to_cursor(): void;
 
         /**
          * Selects all the text.
+         * @since 1.0
          */
         select_all(): void;
 
@@ -2565,6 +2670,7 @@ export namespace Gtef {
          * the place where a warning or error occurred.
          * @param start_line start of the region to select.
          * @param end_line end of the region to select.
+         * @since 2.0
          */
         select_lines(start_line: number, end_line: number): void;
     }
@@ -2586,6 +2692,7 @@ export namespace Gtef {
         // Methods
         /**
          * @returns a copy of `info`. The copy will have a reference count of one.
+         * @since 2.0
          */
         copy(): ActionInfo;
 
@@ -2594,32 +2701,38 @@ export namespace Gtef {
          * returns a `null`-terminated array, to be suitable for
          * `gtk_application_set_accels_for_action()`.
          * @returns a `null`-terminated array of accelerators in the format understood by `gtk_accelerator_parse()`.
+         * @since 2.0
          */
         get_accels(): string[];
 
         /**
          * @returns the action name, or `null`. Example: `"win.save"`.
+         * @since 2.0
          */
         get_action_name(): string | null;
 
         /**
          * @returns the icon name, or `null`.
+         * @since 2.0
          */
         get_icon_name(): string | null;
 
         /**
          * @returns the label (i.e. a short description), or `null`.
+         * @since 2.0
          */
         get_label(): string | null;
 
         /**
          * @returns the tooltip (i.e. a long description), or `null`.
+         * @since 2.0
          */
         get_tooltip(): string | null;
 
         /**
          * Increments the reference count of `info` by one.
          * @returns the passed in `info`.
+         * @since 2.0
          */
         ref(): ActionInfo;
 
@@ -2629,33 +2742,39 @@ export namespace Gtef {
          * `accels` must not be `null`, it must be a `null`-terminated array, to be
          * consistent with `gtk_application_set_accels_for_action()`.
          * @param accels a `null`-terminated array of accelerators in the format understood by `gtk_accelerator_parse()`.
+         * @since 2.0
          */
         set_accels(accels: string[]): void;
 
         /**
          * Sets the action name, for example `"win.save"`.
          * @param action_name the action name.
+         * @since 2.0
          */
         set_action_name(action_name: string): void;
 
         /**
          * @param icon_name the icon name, or `null`.
+         * @since 2.0
          */
         set_icon_name(icon_name: string | null): void;
 
         /**
          * @param label the label (i.e. a short description), or `null`.
+         * @since 2.0
          */
         set_label(label: string | null): void;
 
         /**
          * @param tooltip the tooltip (i.e. a long description), or `null`.
+         * @since 2.0
          */
         set_tooltip(tooltip: string | null): void;
 
         /**
          * Decrements the reference count of `info` by one. If the reference count drops
          * to 0, `info` is freed.
+         * @since 2.0
          */
         unref(): void;
     }
@@ -2772,6 +2891,7 @@ export namespace Gtef {
         // Static methods
         /**
          * Gets a list of all encodings known by {@link Gtef.Encoding}.
+         * @since 2.0
          */
         static get_all(): Encoding[];
 
@@ -2782,37 +2902,46 @@ export namespace Gtef {
          * This function returns a different list depending on the current locale (i.e.
          * language, country and default encoding). The UTF-8 encoding and the current
          * locale encoding are guaranteed to be present in the returned list.
+         * @since 2.0
          */
         static get_default_candidates(): Encoding[];
 
         // Methods
         /**
          * @returns a copy of `enc`.
+         * @since 2.0
          */
         copy(): Encoding;
 
         /**
          * @param enc2 a {@link Gtef.Encoding}, or `null`.
          * @returns whether `enc1` and `enc2` are equals.
+         * @since 2.0
          */
         equals(enc2: Encoding | null): boolean;
 
+        /**
+         * @since 2.0
+         */
         free(): void;
 
         /**
          * Gets the character set of the {@link Gtef.Encoding}, such as "UTF-8" or "ISO-8859-1".
          * @returns the character set of the {@link Gtef.Encoding}.
+         * @since 2.0
          */
         get_charset(): string;
 
         /**
          * Gets the name of the {@link Gtef.Encoding} such as "Unicode" or "Western".
          * @returns the name of the {@link Gtef.Encoding}.
+         * @since 2.0
          */
         get_name(): string;
 
         /**
          * @returns whether `enc` is a UTF-8 encoding.
+         * @since 2.0
          */
         is_utf8(): boolean;
 
@@ -2820,6 +2949,7 @@ export namespace Gtef {
          * Returns the encoding name with the charset in parenthesis, for example
          * "Unicode (UTF-8)". If the name is unknown, just the charset is returned.
          * @returns a string representation. Free with `g_free()` when no longer needed.
+         * @since 2.0
          */
         to_string(): string;
     }

@@ -500,6 +500,7 @@ export namespace Rest {
          * @param code_challenge the code challenge (see {@link Rest.PkceCodeChallenge})
          * @param scope the requesting scope of the resource
          * @returns the authorization url which should be shown in a WebView in order to accept/decline the request to authorize the application
+         * @since 0.8
          */
         build_authorization_url(code_challenge: string, scope: string | null): [string, string];
 
@@ -846,6 +847,7 @@ export namespace Rest {
          *   rest_proxy_add_soup_feature(proxy, cookie_jar);
          *   </programlisting>
          * @param feature A {@link Soup.SessionFeature}
+         * @since 0.7.92
          */
         add_soup_feature(feature: Soup.SessionFeature): void;
 
@@ -913,6 +915,7 @@ export namespace Rest {
          * by cancelling the associated {@link Soup.Message}.
          * It results in returning {@link GLib.Error} REST_PROXY_ERROR_CANCELLED
          * to the function that requested the authentication.
+         * @deprecated since 0.9: This object get removed from {@link Rest.Proxy}
          */
         cancel(): void;
 
@@ -921,11 +924,13 @@ export namespace Rest {
          * 
          * If `auth` is already paused, this function does not
          * do anything.
+         * @deprecated since 0.9: This object get removed from {@link Rest.Proxy}
          */
         pause(): void;
 
         /**
          * Unpauses a paused {@link Rest.ProxyAuth} instance.
+         * @deprecated since 0.9: This object get removed from {@link Rest.Proxy}
          */
         unpause(): void;
     }
@@ -1027,6 +1032,7 @@ export namespace Rest {
         /**
          * Get the REST function that is going to be called on the proxy.
          * @returns The REST "function" for the current call, see also `rest_proxy_call_set_function()`. This string is owned by the {@link Rest.ProxyCall} and should not be freed.
+         * @since 0.7.92
          */
         get_function(): string;
 

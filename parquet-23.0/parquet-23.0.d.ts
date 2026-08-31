@@ -113,32 +113,38 @@ export namespace Parquet {
         // Methods
         /**
          * Close the reader.
+         * @since 23.0.0
          */
         close(): void;
 
         /**
          * @returns The metadata.
+         * @since 8.0.0
          */
         get_metadata(): FileMetadata;
 
         /**
          * @returns The number of row groups.
+         * @since 0.11.0
          */
         get_n_row_groups(): number;
 
         /**
          * @returns The number of rows.
+         * @since 6.0.0
          */
         get_n_rows(): number;
 
         /**
          * @returns A got {@link Arrow.Schema}.
+         * @since 0.12.0
          */
         get_schema(): Arrow.Schema | null;
 
         /**
          * @param i The index of the column to be read.   If an index is negative, the index is counted backward from the   end of the columns. `-1` means the last column.
          * @returns A read {@link Arrow.ChunkedArray}.
+         * @since 0.15.0
          */
         read_column_data(i: number): Arrow.ChunkedArray | null;
 
@@ -146,11 +152,13 @@ export namespace Parquet {
          * @param row_group_index A row group index to be read.
          * @param column_indices Column indices to be read. `null` means that all columns are read.   If an index is negative, the index is counted backward from the   end of the columns. `-1` means the last column.
          * @returns A read {@link Arrow.Table}.
+         * @since 1.0.0
          */
         read_row_group(row_group_index: number, column_indices: number[] | null): Arrow.Table | null;
 
         /**
          * @returns A read {@link Arrow.Table}.
+         * @since 0.11.0
          */
         read_table(): Arrow.Table | null;
 
@@ -225,23 +233,27 @@ export namespace Parquet {
         // Methods
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @since 0.11.0
          */
         close(): boolean;
 
         /**
          * @returns The schema to be written to.
+         * @since 18.0.0
          */
         get_schema(): Arrow.Schema;
 
         /**
          * Start a new buffered row group.
          * @returns `true` on success, `false` if there was an error.
+         * @since 18.0.0
          */
         new_buffered_row_group(): boolean;
 
         /**
          * Start a new row group.
          * @returns `true` on success, `false` if there was an error.
+         * @since 18.0.0
          */
         new_row_group(): boolean;
 
@@ -249,6 +261,7 @@ export namespace Parquet {
          * Start a chunked array as a column chunk.
          * @param chunked_array A {@link Arrow.ChunkedArray} to be written.
          * @returns `true` on success, `false` if there was an error.
+         * @since 18.0.0
          */
         write_chunked_array(chunked_array: Arrow.ChunkedArray): boolean;
 
@@ -267,6 +280,7 @@ export namespace Parquet {
          * `gparquet_file_writer_close()` is called.
          * @param record_batch A record batch to be written.
          * @returns `true` on success, `false` if there was an error.
+         * @since 18.0.0
          */
         write_record_batch(record_batch: Arrow.RecordBatch): boolean;
 
@@ -274,6 +288,7 @@ export namespace Parquet {
          * @param table A table to be written.
          * @param chunk_size The max number of rows in a row group.
          * @returns `true` on success, `false` if there was an error.
+         * @since 0.11.0
          */
         write_table(table: Arrow.Table, chunk_size: bigint | number): boolean;
     }
@@ -325,11 +340,13 @@ export namespace Parquet {
         // Methods
         /**
          * @returns The maximum value.
+         * @since 8.0.0
          */
         get_max(): boolean;
 
         /**
          * @returns The minimum value.
+         * @since 8.0.0
          */
         get_min(): boolean;
     }
@@ -381,11 +398,13 @@ export namespace Parquet {
         // Methods
         /**
          * @returns The maximum value.
+         * @since 8.0.0
          */
         get_max(): GLib.Bytes;
 
         /**
          * @returns The minimum value.
+         * @since 8.0.0
          */
         get_min(): GLib.Bytes;
     }
@@ -452,32 +471,38 @@ export namespace Parquet {
         // Methods
         /**
          * @returns `true` if all of the column chunk can be decompressed,   `false` otherwise.
+         * @since 8.0.0
          */
         can_decompress(): boolean;
 
         /**
          * @param other_metadata A {@link Parquet.ColumnChunkMetadata}.
          * @returns `true` if both of them have the same data, `false`   otherwise.
+         * @since 8.0.0
          */
         equal(other_metadata: ColumnChunkMetadata): boolean;
 
         /**
          * @returns Byte offset from beginning of file to first page (data or   dictionary) in this column chunk.
+         * @since 8.0.0
          */
         get_file_offset(): number;
 
         /**
          * @returns The statistics of this column chunk if   it's set, `null` otherwise.
+         * @since 8.0.0
          */
         get_statistics(): Statistics | null;
 
         /**
          * @returns Total byte size of all the compressed (and potentially   encrypted) data in this column chunk.
+         * @since 8.0.0
          */
         get_total_compressed_size(): number;
 
         /**
          * @returns Total byte size of all the uncompressed data in this   column chunk.
+         * @since 8.0.0
          */
         get_total_size(): number;
     }
@@ -529,11 +554,13 @@ export namespace Parquet {
         // Methods
         /**
          * @returns The maximum value.
+         * @since 8.0.0
          */
         get_max(): number;
 
         /**
          * @returns The minimum value.
+         * @since 8.0.0
          */
         get_min(): number;
     }
@@ -593,48 +620,57 @@ export namespace Parquet {
         // Methods
         /**
          * @returns `true` if all of the row groups can be decompressed, `false`   otherwise.   This will return false if any of the RowGroup's page is   compressed with a compression format which is not compiled in the   current Parquet library.
+         * @since 8.0.0
          */
         can_decompress(): boolean;
 
         /**
          * @param other_metadata A {@link Parquet.FileMetadata}.
          * @returns `true` if both of them have the same data, `false`   otherwise.
+         * @since 8.0.0
          */
         equal(other_metadata: FileMetadata): boolean;
 
         /**
          * @returns The application's user-agent string of the writer.
+         * @since 8.0.0
          */
         get_created_by(): string;
 
         /**
          * @returns The number of top-level columns in the schema.   Parquet thrift definition requires that nested schema elements are   flattened. This method returns the number of columns in the un-flattened   version.
+         * @since 8.0.0
          */
         get_n_columns(): number;
 
         /**
          * @returns The number of row groups in the file.
+         * @since 8.0.0
          */
         get_n_row_groups(): number;
 
         /**
          * @returns The total number of rows.
+         * @since 8.0.0
          */
         get_n_rows(): number;
 
         /**
          * @returns The number of flattened schema elements.   Parquet thrift definition requires that nested schema elements are   flattened. This method returns the total number of elements in the   flattened list.
+         * @since 8.0.0
          */
         get_n_schema_elements(): number;
 
         /**
          * @param index An index of the row group to retrieve.
          * @returns A {@link Parquet.RowGroupMetadata}   at `index` on success, `null` on error.
+         * @since 8.0.0
          */
         get_row_group(index: number): RowGroupMetadata | null;
 
         /**
          * @returns The size of the original thrift encoded metadata footer.
+         * @since 8.0.0
          */
         get_size(): number;
     }
@@ -686,11 +722,13 @@ export namespace Parquet {
         // Methods
         /**
          * @returns The maximum value.
+         * @since 8.0.0
          */
         get_max(): GLib.Bytes;
 
         /**
          * @returns The minimum value.
+         * @since 8.0.0
          */
         get_min(): GLib.Bytes;
     }
@@ -742,11 +780,13 @@ export namespace Parquet {
         // Methods
         /**
          * @returns The maximum value.
+         * @since 8.0.0
          */
         get_max(): number;
 
         /**
          * @returns The minimum value.
+         * @since 8.0.0
          */
         get_min(): number;
     }
@@ -798,11 +838,13 @@ export namespace Parquet {
         // Methods
         /**
          * @returns The maximum value.
+         * @since 8.0.0
          */
         get_max(): number;
 
         /**
          * @returns The minimum value.
+         * @since 8.0.0
          */
         get_min(): number;
     }
@@ -854,11 +896,13 @@ export namespace Parquet {
         // Methods
         /**
          * @returns The maximum value.
+         * @since 8.0.0
          */
         get_max(): number;
 
         /**
          * @returns The minimum value.
+         * @since 8.0.0
          */
         get_min(): number;
     }
@@ -925,43 +969,51 @@ export namespace Parquet {
         // Methods
         /**
          * @returns `true` if all of the row group's column chunks can be   decompressed, `false` otherwise.
+         * @since 8.0.0
          */
         can_decompress(): boolean;
 
         /**
          * @param other_metadata A {@link Parquet.RowGroupMetadata}.
          * @returns `true` if both of them have the same data, `false`   otherwise.
+         * @since 8.0.0
          */
         equal(other_metadata: RowGroupMetadata): boolean;
 
         /**
          * @param index An index of the column chunk to retrieve.
          * @returns A {@link Parquet.ColumnChunkMetadata}   at `index` on success, `null` on error.
+         * @since 8.0.0
          */
         get_column_chunk(index: number): ColumnChunkMetadata | null;
 
         /**
          * @returns Byte offset from beginning of file to first page (data or   dictionary) in this row group.   The `file_offset` field that this method exposes is   optional. This method will return 0 if that field is not set to a   meaningful value.
+         * @since 8.0.0
          */
         get_file_offset(): number;
 
         /**
          * @returns The number of columns in this row group. The order must   match the parent's column ordering.
+         * @since 8.0.0
          */
         get_n_columns(): number;
 
         /**
          * @returns The number of rows in this row group.
+         * @since 8.0.0
          */
         get_n_rows(): number;
 
         /**
          * @returns Total byte size of all the compressed (and potentially   encrypted) column data in this row group.
+         * @since 8.0.0
          */
         get_total_compressed_size(): number;
 
         /**
          * @returns Total byte size of all the uncompressed column data in   this row group.
+         * @since 8.0.0
          */
         get_total_size(): number;
     }
@@ -1022,36 +1074,43 @@ export namespace Parquet {
         /**
          * @param other_statistics A {@link Parquet.Statistics}.
          * @returns `true` if both of them have the same data, `false`   otherwise.
+         * @since 8.0.0
          */
         equal(other_statistics: Statistics): boolean;
 
         /**
          * @returns The number of distinct values.
+         * @since 8.0.0
          */
         get_n_distinct_values(): number;
 
         /**
          * @returns The number of null values.
+         * @since 8.0.0
          */
         get_n_nulls(): number;
 
         /**
          * @returns The number of values.
+         * @since 8.0.0
          */
         get_n_values(): number;
 
         /**
          * @returns `true` if the min and max statistics are set, `false` otherwise.
+         * @since 8.0.0
          */
         has_min_max(): boolean;
 
         /**
          * @returns `true` if the number of distinct values is set, `false` otherwise.
+         * @since 8.0.0
          */
         has_n_distinct_values(): boolean;
 
         /**
          * @returns `true` if the number of null values is set, `false` otherwise.
+         * @since 8.0.0
          */
         has_n_nulls(): boolean;
     }
@@ -1103,69 +1162,82 @@ export namespace Parquet {
         // Methods
         /**
          * @param path The column path as dot string.
+         * @since 0.17.0
          */
         disable_dictionary(path: string | null): void;
 
         /**
          * @param path The column path as dot string.
+         * @since 0.17.0
          */
         enable_dictionary(path: string | null): void;
 
         /**
          * @returns The batch size.
+         * @since 0.17.0
          */
         get_batch_size(): number;
 
         /**
          * @param path The path as dot string.
          * @returns The compression type of {@link Parquet.WriterProperties}.
+         * @since 0.17.0
          */
         get_compression_path(path: string): Arrow.CompressionType;
 
         /**
          * @returns The data page size.
+         * @since 0.17.0
          */
         get_data_page_size(): number;
 
         /**
          * @returns The dictionary page size limit.
+         * @since 0.17.0
          */
         get_dictionary_page_size_limit(): number;
 
         /**
          * @returns The max row group length.
+         * @since 0.17.0
          */
         get_max_row_group_length(): number;
 
         /**
          * @param path The path as dot string.
          * @returns `true` on dictionary enabled, `false` on dictionary disabled.
+         * @since 0.17.0
          */
         is_dictionary_enabled(path: string): boolean;
 
         /**
          * @param batch_size The batch size.
+         * @since 0.17.0
          */
         set_batch_size(batch_size: bigint | number): void;
 
         /**
          * @param compression_type A {@link Arrow.CompressionType}.
          * @param path The column path as dot string.
+         * @since 0.17.0
          */
         set_compression(compression_type: Arrow.CompressionType, path: string | null): void;
 
         /**
          * @param data_page_size The data page size.
+         * @since 0.17.0
          */
         set_data_page_size(data_page_size: bigint | number): void;
 
         /**
          * @param limit The dictionary page size limit.
+         * @since 0.17.0
          */
         set_dictionary_page_size_limit(limit: bigint | number): void;
 
         /**
          * @param length The max row group length.
+         * @since 0.17.0
          */
         set_max_row_group_length(length: bigint | number): void;
     }

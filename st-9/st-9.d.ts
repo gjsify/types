@@ -630,6 +630,7 @@ export namespace St {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -643,6 +644,7 @@ export namespace St {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -660,6 +662,7 @@ export namespace St {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -667,12 +670,14 @@ export namespace St {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -687,6 +692,7 @@ export namespace St {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -704,6 +710,7 @@ export namespace St {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -712,6 +719,7 @@ export namespace St {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -2313,6 +2321,7 @@ export namespace St {
 
         /**
          * Gets the value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_value_and_text()` instead.
          */
         get_current_value(): unknown;
 
@@ -2322,11 +2331,13 @@ export namespace St {
          * mean that it is limited only by the floating point precision of the
          * platform.
          * @returns the minimum increment by which the value of this object may be changed. zero if undefined.
+         * @since 2.12
          */
         get_increment(): number;
 
         /**
          * Gets the maximum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          */
         get_maximum_value(): unknown;
 
@@ -2334,17 +2345,21 @@ export namespace St {
          * Gets the minimum increment by which the value of this object may be changed.  If zero,
          * the minimum increment is undefined, which may mean that it is limited only by the
          * floating point precision of the platform.
+         * @since 1.12
+         * @deprecated Since 2.12. Use `atk_value_get_increment()` instead.
          */
         get_minimum_increment(): unknown;
 
         /**
          * Gets the minimum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          */
         get_minimum_value(): unknown;
 
         /**
          * Gets the range of this object.
          * @returns a newly allocated {@link Atk.Range} that represents the minimum, maximum and descriptor (if available) of `obj`. NULL if that range is not defined.
+         * @since 2.12
          */
         get_range(): Atk.Range | null;
 
@@ -2352,6 +2367,7 @@ export namespace St {
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
          * introduction for examples of subranges and when to expose them.
          * @returns an {@link GLib.SList} of {@link Atk.Range} which each of the subranges defined for this object. Free the returns list with `g_slist_free()`.
+         * @since 2.12
          */
         get_sub_ranges(): Atk.Range[];
 
@@ -2359,6 +2375,7 @@ export namespace St {
          * Gets the current value and the human readable text alternative of
          * `obj`. `text` is a newly created string, that must be freed by the
          * caller. Can be NULL if no descriptor is available.
+         * @since 2.12
          */
         get_value_and_text(): [number, string];
 
@@ -2366,6 +2383,7 @@ export namespace St {
          * Sets the value of this object.
          * @param value a {@link GObject.Value} which is the desired new accessible value.
          * @returns `true` if new value is successfully set, `false` otherwise.
+         * @deprecated Since 2.12. Use `atk_value_set_value()` instead.
          */
         set_current_value(value: GObject.Value | any): boolean;
 
@@ -2385,11 +2403,13 @@ export namespace St {
          * required anymore to return if the value was properly assigned or
          * not.
          * @param new_value a double which is the desired new accessible value.
+         * @since 2.12
          */
         set_value(new_value: number): void;
 
         /**
          * Gets the value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_value_and_text()` instead.
          * @virtual
          */
         vfunc_get_current_value(): GObject.Value | any;
@@ -2399,12 +2419,14 @@ export namespace St {
          * changed.  If zero, the minimum increment is undefined, which may
          * mean that it is limited only by the floating point precision of the
          * platform.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_increment(): number;
 
         /**
          * Gets the maximum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          * @virtual
          */
         vfunc_get_maximum_value(): GObject.Value | any;
@@ -2413,18 +2435,22 @@ export namespace St {
          * Gets the minimum increment by which the value of this object may be changed.  If zero,
          * the minimum increment is undefined, which may mean that it is limited only by the
          * floating point precision of the platform.
+         * @since 1.12
+         * @deprecated Since 2.12. Use `atk_value_get_increment()` instead.
          * @virtual
          */
         vfunc_get_minimum_increment(): GObject.Value | any;
 
         /**
          * Gets the minimum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          * @virtual
          */
         vfunc_get_minimum_value(): GObject.Value | any;
 
         /**
          * Gets the range of this object.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_range(): Atk.Range | null;
@@ -2432,6 +2458,7 @@ export namespace St {
         /**
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
          * introduction for examples of subranges and when to expose them.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_sub_ranges(): Atk.Range[];
@@ -2440,6 +2467,7 @@ export namespace St {
          * Gets the current value and the human readable text alternative of
          * `obj`. `text` is a newly created string, that must be freed by the
          * caller. Can be NULL if no descriptor is available.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_value_and_text(): [number, string];
@@ -2447,6 +2475,7 @@ export namespace St {
         /**
          * Sets the value of this object.
          * @param value a {@link GObject.Value} which is the desired new accessible value.
+         * @deprecated Since 2.12. Use `atk_value_set_value()` instead.
          * @virtual
          */
         vfunc_set_current_value(value: unknown): boolean;
@@ -2467,6 +2496,7 @@ export namespace St {
          * required anymore to return if the value was properly assigned or
          * not.
          * @param new_value a double which is the desired new accessible value.
+         * @since 2.12
          * @virtual
          */
         vfunc_set_value(new_value: number): void;
@@ -2835,6 +2865,7 @@ export namespace St {
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
+         * @since 1.10
          */
         get_preferred_size(): [boolean, number, number];
 
@@ -2844,6 +2875,7 @@ export namespace St {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          */
         invalidate(): void;
 
@@ -2874,6 +2906,7 @@ export namespace St {
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
+         * @since 1.10
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
@@ -2884,6 +2917,7 @@ export namespace St {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          * @virtual
          */
         vfunc_invalidate(): void;
@@ -2926,6 +2960,7 @@ export namespace St {
          * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
          * @returns a {@link GLib.Variant}, or `null` when serialization fails. The {@link GLib.Variant} will not be floating.
+         * @since 2.38
          */
         serialize(): GLib.Variant | null;
 
@@ -2947,6 +2982,7 @@ export namespace St {
          * - If `icon` is a {@link Gio.ThemedIcon} with exactly one name and no fallbacks,
          *   the encoding is simply the name (such as `network-server`).
          * @returns An allocated NUL-terminated UTF8 string or `null` if `icon` can't be serialized. Use `g_free()` to free.
+         * @since 2.20
          */
         to_string(): string | null;
 
@@ -2969,6 +3005,7 @@ export namespace St {
          * As serialization will avoid using raw icon data when possible, it only
          * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
+         * @since 2.38
          * @virtual
          */
         vfunc_serialize(): GLib.Variant | null;
@@ -2976,6 +3013,7 @@ export namespace St {
         /**
          * Serializes the `icon` into string tokens.
          * This is can be invoked when `g_icon_new_for_string()` is called.
+         * @since 2.20
          * @virtual
          */
         vfunc_to_tokens(): [boolean, string[], number];
@@ -6019,6 +6057,7 @@ export namespace St {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -6032,6 +6071,7 @@ export namespace St {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -6049,6 +6089,7 @@ export namespace St {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -6056,12 +6097,14 @@ export namespace St {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -6076,6 +6119,7 @@ export namespace St {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -6093,6 +6137,7 @@ export namespace St {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -6101,6 +6146,7 @@ export namespace St {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -6115,6 +6161,8 @@ export namespace St {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -6129,6 +6177,7 @@ export namespace St {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -6138,6 +6187,7 @@ export namespace St {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -6146,6 +6196,7 @@ export namespace St {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -6160,6 +6211,7 @@ export namespace St {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -6173,6 +6225,7 @@ export namespace St {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -6181,6 +6234,7 @@ export namespace St {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -6189,12 +6243,15 @@ export namespace St {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -6206,6 +6263,8 @@ export namespace St {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -6217,6 +6276,8 @@ export namespace St {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -6230,12 +6291,16 @@ export namespace St {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -6261,6 +6326,8 @@ export namespace St {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -6271,6 +6338,7 @@ export namespace St {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -6286,6 +6354,7 @@ export namespace St {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -6300,6 +6369,7 @@ export namespace St {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -6308,6 +6378,7 @@ export namespace St {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -6320,6 +6391,8 @@ export namespace St {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -6332,6 +6405,8 @@ export namespace St {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -6346,6 +6421,8 @@ export namespace St {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -6353,6 +6430,8 @@ export namespace St {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -6360,6 +6439,7 @@ export namespace St {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -6371,6 +6451,7 @@ export namespace St {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -6380,6 +6461,7 @@ export namespace St {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -6391,11 +6473,13 @@ export namespace St {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -6407,6 +6491,7 @@ export namespace St {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -6417,6 +6502,7 @@ export namespace St {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -6429,6 +6515,7 @@ export namespace St {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -6721,6 +6808,7 @@ export namespace St {
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
          * @returns An alpha value from 0 to 1.0, inclusive.
+         * @since 1.12
          */
         get_alpha(): number;
 
@@ -6753,6 +6841,7 @@ export namespace St {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_position(coord_type: Atk.CoordType): [number, number];
 
@@ -6761,6 +6850,7 @@ export namespace St {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_size(): [number, number];
 
@@ -6785,6 +6875,7 @@ export namespace St {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          */
         remove_focus_handler(handler_id: number): void;
 
@@ -6796,6 +6887,7 @@ export namespace St {
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to(type: Atk.ScrollType): boolean;
 
@@ -6806,6 +6898,7 @@ export namespace St {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
 
@@ -6863,6 +6956,7 @@ export namespace St {
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
+         * @since 1.12
          * @virtual
          */
         vfunc_get_alpha(): number;
@@ -6897,6 +6991,7 @@ export namespace St {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_position(coord_type: Atk.CoordType): [number, number];
@@ -6906,6 +7001,7 @@ export namespace St {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_size(): [number, number];
@@ -6931,6 +7027,7 @@ export namespace St {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
@@ -6942,6 +7039,7 @@ export namespace St {
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to(type: Atk.ScrollType): boolean;
@@ -6952,6 +7050,7 @@ export namespace St {
          * @param coords specify whether coordinates are relative to the screen or to the parent object.
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;

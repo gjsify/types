@@ -1746,6 +1746,7 @@ export namespace Anjuta {
          * 
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
+         * @since 3.4
          */
         get_action_name(): string | null;
 
@@ -1754,6 +1755,7 @@ export namespace Anjuta {
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
          * @returns the current target value
+         * @since 3.4
          */
         get_action_target_value(): GLib.Variant;
 
@@ -1770,6 +1772,7 @@ export namespace Anjuta {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          */
         set_action_name(action_name: string | null): void;
 
@@ -1794,6 +1797,7 @@ export namespace Anjuta {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          */
         set_action_target_value(target_value: GLib.Variant | null): void;
 
@@ -1810,6 +1814,7 @@ export namespace Anjuta {
          * `action` is the action name and `target` is the string to use
          * as the target.)
          * @param detailed_action_name the detailed action name
+         * @since 3.4
          */
         set_detailed_action_name(detailed_action_name: string): void;
 
@@ -1817,6 +1822,7 @@ export namespace Anjuta {
          * Gets the action name for `actionable`.
          * 
          * See `gtk_actionable_set_action_name()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_name(): string | null;
@@ -1825,6 +1831,7 @@ export namespace Anjuta {
          * Gets the current target value of `actionable`.
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant;
@@ -1842,6 +1849,7 @@ export namespace Anjuta {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_name(action_name: string | null): void;
@@ -1867,6 +1875,7 @@ export namespace Anjuta {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
@@ -1888,12 +1897,16 @@ export namespace Anjuta {
          * > `gtk_activatable_get_related_action()` to retrieve the
          * > previous action.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         do_set_related_action(action: Gtk.Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_related_action(): Gtk.Action;
 
@@ -1902,6 +1915,8 @@ export namespace Anjuta {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_use_action_appearance(): boolean;
 
@@ -1911,6 +1926,8 @@ export namespace Anjuta {
          * > {@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * > property and call `gtk_activatable_do_set_related_action()` when it changes.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_related_action(action: Gtk.Action): void;
 
@@ -1923,6 +1940,8 @@ export namespace Anjuta {
          * > `gtk_activatable_sync_action_properties()` to update `activatable`
          * > if needed.
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -1932,6 +1951,8 @@ export namespace Anjuta {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          */
         sync_action_properties(action: Gtk.Action | null): void;
 
@@ -1941,6 +1962,8 @@ export namespace Anjuta {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          * @virtual
          */
         vfunc_sync_action_properties(action: Gtk.Action | null): void;
@@ -1977,6 +2000,7 @@ export namespace Anjuta {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -1986,6 +2010,7 @@ export namespace Anjuta {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -2096,12 +2121,14 @@ export namespace Anjuta {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -3936,12 +3963,14 @@ export namespace Anjuta {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -4404,36 +4433,42 @@ export namespace Anjuta {
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
          * @returns `true` if `border` has been set
+         * @since 3.16
          */
         get_border(): [boolean, Gtk.Border];
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_hadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_vadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
@@ -4442,12 +4477,14 @@ export namespace Anjuta {
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
@@ -4456,6 +4493,7 @@ export namespace Anjuta {
          * vertical scrolling should start below the minimum height or
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
@@ -4465,6 +4503,7 @@ export namespace Anjuta {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
@@ -6464,12 +6503,14 @@ export namespace Anjuta {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -6885,12 +6926,14 @@ export namespace Anjuta {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          */
         add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -6898,6 +6941,7 @@ export namespace Anjuta {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          */
         clear_attributes(cell: Gtk.CellRenderer): void;
 
@@ -6906,12 +6950,14 @@ export namespace Anjuta {
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
+         * @since 3.0
          */
         get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with `g_list_free()`     when no longer needed.
+         * @since 2.12
          */
         get_cells(): Gtk.CellRenderer[];
 
@@ -6923,6 +6969,7 @@ export namespace Anjuta {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -6934,6 +6981,7 @@ export namespace Anjuta {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -6944,6 +6992,7 @@ export namespace Anjuta {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          */
         reorder(cell: Gtk.CellRenderer, position: number): void;
 
@@ -6957,6 +7006,7 @@ export namespace Anjuta {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          */
         set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
@@ -6970,6 +7020,7 @@ export namespace Anjuta {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
@@ -6977,6 +7028,7 @@ export namespace Anjuta {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -6985,6 +7037,7 @@ export namespace Anjuta {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: Gtk.CellRenderer): void;
@@ -6993,12 +7046,14 @@ export namespace Anjuta {
          * Returns the underlying {@link Gtk.CellArea} which might be `cell_layout`
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): Gtk.CellRenderer[];
@@ -7011,6 +7066,7 @@ export namespace Anjuta {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -7023,6 +7079,7 @@ export namespace Anjuta {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -7034,6 +7091,7 @@ export namespace Anjuta {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: Gtk.CellRenderer, position: number): void;
@@ -7048,6 +7106,7 @@ export namespace Anjuta {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
@@ -7074,6 +7133,7 @@ export namespace Anjuta {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -7083,6 +7143,7 @@ export namespace Anjuta {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -7283,6 +7344,7 @@ export namespace Anjuta {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -7294,6 +7356,7 @@ export namespace Anjuta {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -7304,6 +7367,7 @@ export namespace Anjuta {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -7314,6 +7378,7 @@ export namespace Anjuta {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -7323,6 +7388,7 @@ export namespace Anjuta {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -7331,6 +7397,7 @@ export namespace Anjuta {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -7341,6 +7408,7 @@ export namespace Anjuta {
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -7351,6 +7419,7 @@ export namespace Anjuta {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -7359,12 +7428,14 @@ export namespace Anjuta {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -7374,6 +7445,7 @@ export namespace Anjuta {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -7385,6 +7457,7 @@ export namespace Anjuta {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -7396,6 +7469,7 @@ export namespace Anjuta {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -7407,6 +7481,7 @@ export namespace Anjuta {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -7416,6 +7491,7 @@ export namespace Anjuta {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -7424,6 +7500,7 @@ export namespace Anjuta {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -7434,6 +7511,7 @@ export namespace Anjuta {
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -7445,6 +7523,7 @@ export namespace Anjuta {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -7454,6 +7533,7 @@ export namespace Anjuta {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -7461,6 +7541,7 @@ export namespace Anjuta {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -7707,36 +7788,42 @@ export namespace Anjuta {
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
          * @returns `true` if `border` has been set
+         * @since 3.16
          */
         get_border(): [boolean, Gtk.Border];
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_hadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_vadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
@@ -7745,12 +7832,14 @@ export namespace Anjuta {
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
@@ -7759,6 +7848,7 @@ export namespace Anjuta {
          * vertical scrolling should start below the minimum height or
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
@@ -7768,6 +7858,7 @@ export namespace Anjuta {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];

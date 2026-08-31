@@ -429,6 +429,7 @@ export namespace EvinceView {
 
         /**
          * @returns whether the document model's page layout is set to {@link EvinceView.PageLayout.DUAL}.
+         * @deprecated since 3.8: Use `ev_document_model_get_page_layout()` instead
          */
         get_dual_page(): boolean;
 
@@ -446,6 +447,7 @@ export namespace EvinceView {
 
         /**
          * @returns the document model's page layout
+         * @since 3.8
          */
         get_page_layout(): PageLayout;
 
@@ -471,6 +473,7 @@ export namespace EvinceView {
          * Sets the document model's page layout to {@link EvinceView.PageLayout.SINGLE} or
          * {@link EvinceView.PageLayout.DUAL}.
          * @param dual_page whether to enable dual page mode
+         * @deprecated since 3.8: Use `ev_document_model_set_page_layout()` instead
          */
         set_dual_page(dual_page: boolean): void;
 
@@ -512,6 +515,7 @@ export namespace EvinceView {
         /**
          * Sets the document model's page layout to `layout`.
          * @param layout a {@link EvinceView.PageLayout}
+         * @since 3.8
          */
         set_page_layout(layout: PageLayout): void;
 
@@ -905,6 +909,7 @@ export namespace EvinceView {
 
         /**
          * @returns the job's find options
+         * @since 3.6
          */
         get_options(): EvinceDocument.FindOptions;
 
@@ -914,6 +919,7 @@ export namespace EvinceView {
 
         /**
          * @param options 
+         * @since 3.6
          */
         set_options(options: EvinceDocument.FindOptions): void;
     }
@@ -1078,6 +1084,7 @@ export namespace EvinceView {
         /**
          * Get a {@link Gtk.TreeModel} loaded with the links
          * @returns The {@link Gtk.TreeModel} loaded
+         * @since 3.6
          */
         get_model(): Gtk.TreeModel;
     }
@@ -1207,6 +1214,7 @@ export namespace EvinceView {
          * returns `false` with `error` filled in.
          * @param fd a file descriptor
          * @returns `true` if the file descriptor could be set
+         * @since 42.0
          */
         set_fd(fd: number): boolean;
 
@@ -1230,6 +1238,7 @@ export namespace EvinceView {
          * Note that `job` takes ownership of `fd`; you must not do anything
          * with it afterwards.
          * @param fd a file descriptor
+         * @since 42.0
          */
         take_fd(fd: number): void;
     }
@@ -1691,12 +1700,14 @@ export namespace EvinceView {
         // Methods
         /**
          * @param has_frame 
+         * @since 3.8
          */
         set_has_frame(has_frame: boolean): void;
 
         /**
          * Set the desired output format for the generated thumbnail
          * @param format a {@link EvinceView.JobThumbnailFormat}
+         * @since 3.14
          */
         set_output_format(format: JobThumbnailFormat): void;
     }
@@ -2067,6 +2078,7 @@ export namespace EvinceView {
          * When the selected text spans more than one page, it will add a
          * corresponding annotation for each page that contains selected text.
          * @returns `true` if annotations were added successfully, `false` otherwise.
+         * @since 3.30
          */
         add_text_markup_annotation_for_selected_text(): boolean;
 
@@ -2102,6 +2114,7 @@ export namespace EvinceView {
         /**
          * Restart the current search operation from the given `page`.
          * @param page a page index
+         * @since 3.12
          */
         find_restart(page: number): void;
 
@@ -2116,11 +2129,13 @@ export namespace EvinceView {
          * FIXME
          * @param page 
          * @param result 
+         * @since 3.10
          */
         find_set_result(page: number, result: number): void;
 
         /**
          * @param job 
+         * @since 3.6
          */
         find_started(job: JobFind): void;
 
@@ -2155,6 +2170,7 @@ export namespace EvinceView {
          * 
          * The value returned may be NULL if there is no selected text.
          * @returns The string representing selected text.
+         * @since 3.30
          */
         get_selected_text(): string;
 
@@ -2186,6 +2202,7 @@ export namespace EvinceView {
         /**
          * @param scroll 
          * @param horizontal 
+         * @deprecated since 3.10
          */
         scroll(scroll: Gtk.ScrollType, horizontal: boolean): void;
 
@@ -2199,12 +2216,14 @@ export namespace EvinceView {
         /**
          * @param page 
          * @param offset 
+         * @since 3.10
          */
         set_caret_cursor_position(page: number, offset: number): void;
 
         /**
          * Enables or disables caret navigation mode for the document.
          * @param enabled whether to enable caret navigation mode
+         * @since 3.10
          */
         set_caret_navigation_enabled(enabled: boolean): void;
 
@@ -2215,6 +2234,7 @@ export namespace EvinceView {
 
         /**
          * @param loading 
+         * @deprecated since 3.8
          */
         set_loading(loading: boolean): void;
 
@@ -2238,6 +2258,7 @@ export namespace EvinceView {
 
         /**
          * @returns whether the document supports caret navigation
+         * @since 3.10
          */
         supports_caret_navigation(): boolean;
 
@@ -2310,36 +2331,42 @@ export namespace EvinceView {
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
          * @returns `true` if `border` has been set
+         * @since 3.16
          */
         get_border(): [boolean, Gtk.Border];
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_hadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_vadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
@@ -2348,12 +2375,14 @@ export namespace EvinceView {
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
@@ -2362,6 +2391,7 @@ export namespace EvinceView {
          * vertical scrolling should start below the minimum height or
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
@@ -2371,6 +2401,7 @@ export namespace EvinceView {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
@@ -2545,6 +2576,7 @@ export namespace EvinceView {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -2556,6 +2588,7 @@ export namespace EvinceView {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -2566,6 +2599,7 @@ export namespace EvinceView {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -2576,6 +2610,7 @@ export namespace EvinceView {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -2585,6 +2620,7 @@ export namespace EvinceView {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -2593,6 +2629,7 @@ export namespace EvinceView {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -2603,6 +2640,7 @@ export namespace EvinceView {
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -2613,6 +2651,7 @@ export namespace EvinceView {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -2621,12 +2660,14 @@ export namespace EvinceView {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -2636,6 +2677,7 @@ export namespace EvinceView {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -2647,6 +2689,7 @@ export namespace EvinceView {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -2658,6 +2701,7 @@ export namespace EvinceView {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -2669,6 +2713,7 @@ export namespace EvinceView {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -2678,6 +2723,7 @@ export namespace EvinceView {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -2686,6 +2732,7 @@ export namespace EvinceView {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -2696,6 +2743,7 @@ export namespace EvinceView {
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -2707,6 +2755,7 @@ export namespace EvinceView {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -2716,6 +2765,7 @@ export namespace EvinceView {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -2723,6 +2773,7 @@ export namespace EvinceView {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;

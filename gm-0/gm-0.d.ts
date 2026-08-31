@@ -247,18 +247,21 @@ export namespace Gm {
         /**
          * Gets the bounding box of the cutout.
          * @returns The bounding box.
+         * @since 0.0.2
          */
         get_bounds(): Rect;
 
         /**
          * The name of the cutout.
          * @returns The cutout's name.
+         * @since 0.0.2
          */
         get_name(): string;
 
         /**
          * Gets the SVG path describing the shape of the cutout.
          * @returns The cutout's shape as SVG path
+         * @since 0.0.2
          */
         get_path(): string;
     }
@@ -332,6 +335,7 @@ export namespace Gm {
          * Gets display panel information. Queries the database for the best
          * matching panel based on the device's compatibles.
          * @returns The display panel information
+         * @since 0.0.1
          */
         get_display_panel(): DisplayPanel;
     }
@@ -513,6 +517,8 @@ export namespace Gm {
          * top and bottom border radius are different then this matches the
          * top border radius.  given applies to all corners of the panel.
          * @returns The panel's border radius.
+         * @since 0.0.1
+         * @deprecated since 0.6.0: Use {@link DisplayPanel.get_corner_radii} instead
          */
         get_border_radius(): number;
 
@@ -520,42 +526,49 @@ export namespace Gm {
          * Gets the panels border radii starting with the top-left corner
          * clockwise.
          * @returns The panel's border radii.
+         * @since 0.6.0
          */
         get_corner_radii(): number[];
 
         /**
          * Get the display cutouts.
          * @returns The display cutouts
+         * @since 0.0.1
          */
         get_cutouts(): Gio.ListModel;
 
         /**
          * Gets the panels height in mm.
          * @returns The panel's height.
+         * @since 0.0.1
          */
         get_height(): number;
 
         /**
          * Gets the panel's name.
          * @returns The panel's name
+         * @since 0.0.1
          */
         get_name(): string;
 
         /**
          * Gets the panels width in mm.
          * @returns The panel's width.
+         * @since 0.0.1
          */
         get_width(): number;
 
         /**
          * Gets the panels resolution (in pixels) in the x direction
          * @returns The x resolution.
+         * @since 0.0.1
          */
         get_x_res(): number;
 
         /**
          * Gets the panels resolution (in pixels) in the y direction.
          * @returns The y resolution.
+         * @since 0.0.1
          */
         get_y_res(): number;
     }

@@ -11946,6 +11946,7 @@ export namespace Clutter {
          * the parent has moved with respect to the stage, for example because
          * a grandparent's origin has moved.
          * @param box new allocation of the actor, in parent-relative coordinates
+         * @since 0.8
          * @virtual
          */
         vfunc_allocate(box: ActorBox): void;
@@ -12035,6 +12036,7 @@ export namespace Clutter {
          * A request should not incorporate the actor's scale or translation;
          * those transformations do not affect layout, only rendering.
          * @param for_width available width to assume in computing desired height,   or a negative value to indicate that no width is defined
+         * @since 0.8
          * @virtual
          */
         vfunc_get_preferred_height(for_width: number): [number, number];
@@ -12050,6 +12052,7 @@ export namespace Clutter {
          * A request should not incorporate the actor's scaleor translation;
          * those transformations do not affect layout, only rendering.
          * @param for_height available height when computing the preferred width,   or a negative value to indicate that no height is defined
+         * @since 0.8
          * @virtual
          */
         vfunc_get_preferred_width(for_height: number): [number, number];
@@ -12070,6 +12073,7 @@ export namespace Clutter {
          * Custom actors can override the default response by implementing the
          * {@link Clutter.ActorClass}.has_overlaps() virtual function. See
          * `clutter_actor_set_offscreen_redirect()` for more information.
+         * @since 1.8
          * @virtual
          */
         vfunc_has_overlaps(): boolean;
@@ -12131,6 +12135,7 @@ export namespace Clutter {
          * 
          * When overriding map, it is mandatory to chain up to the parent
          * implementation.
+         * @since 1.0
          * @virtual
          */
         vfunc_map(): void;
@@ -12192,6 +12197,7 @@ export namespace Clutter {
          * subclass implementations, not by applications directly.
          * 
          * Queueing a new layout automatically queues a redraw as well.
+         * @since 0.8
          * @virtual
          */
         vfunc_queue_relayout(): void;
@@ -12212,6 +12218,7 @@ export namespace Clutter {
          * This function does not realize child actors, except in the special
          * case that realizing the stage, when the stage is visible, will
          * suddenly map (and thus realize) the children of the stage.
+         * @deprecated since 1.16: Actors are automatically realized, and nothing   requires explicit realization.
          * @virtual
          */
         vfunc_realize(): void;
@@ -12262,6 +12269,7 @@ export namespace Clutter {
          * the {@link Clutter.ActorClass}.destroy() or the {@link GObject.ObjectClass}.dispose()
          * implementation, but it is guaranteed to be called before the
          * {@link GObject.ObjectClass}.finalize() implementation.
+         * @since 1.0
          * @virtual
          */
         vfunc_unmap(): void;
@@ -12292,6 +12300,7 @@ export namespace Clutter {
          * If you were using `clutter_actor_unrealize()` to implement
          * unrealizing children of your container, then don't, ClutterActor
          * will already take care of that.
+         * @deprecated since 1.16: Actors are automatically unrealized, and nothing   requires explicit realization.
          * @virtual
          */
         vfunc_unrealize(): void;
@@ -12306,6 +12315,7 @@ export namespace Clutter {
          * `clutter_actor_remove_action()` or `clutter_actor_clear_actions()`
          * is called
          * @param action a {@link Clutter.Action}
+         * @since 1.4
          */
         add_action(action: Action): void;
 
@@ -12323,6 +12333,7 @@ export namespace Clutter {
          * 
          * @param name the name to set on the action
          * @param action a {@link Clutter.Action}
+         * @since 1.4
          */
         add_action_with_name(name: string, action: Action): void;
 
@@ -12338,6 +12349,7 @@ export namespace Clutter {
          * This function will emit the {@link Clutter.Container.SignalSignatures.actor_added | Clutter.Container::actor-added} signal
          * on `self`.
          * @param child a {@link Clutter.Actor}
+         * @since 1.10
          */
         add_child(child: Actor): void;
 
@@ -12349,6 +12361,7 @@ export namespace Clutter {
          * either `clutter_actor_remove_constraint()` or
          * `clutter_actor_clear_constraints()` is called.
          * @param constraint a {@link Clutter.Constraint}
+         * @since 1.4
          */
         add_constraint(constraint: Constraint): void;
 
@@ -12366,6 +12379,7 @@ export namespace Clutter {
          * 
          * @param name the name to set on the constraint
          * @param constraint a {@link Clutter.Constraint}
+         * @since 1.4
          */
         add_constraint_with_name(name: string, constraint: Constraint): void;
 
@@ -12376,6 +12390,7 @@ export namespace Clutter {
          * `clutter_actor_remove_effect()` or `clutter_actor_clear_effects()` is
          * called.
          * @param effect a {@link Clutter.Effect}
+         * @since 1.4
          */
         add_effect(effect: Effect): void;
 
@@ -12393,6 +12408,7 @@ export namespace Clutter {
          * 
          * @param name the name to set on the effect
          * @param effect a {@link Clutter.Effect}
+         * @since 1.4
          */
         add_effect_with_name(name: string, effect: Effect): void;
 
@@ -12410,6 +12426,7 @@ export namespace Clutter {
          * property.
          * @param name the name of the transition to add
          * @param transition the {@link Clutter.Transition} to add
+         * @since 1.10
          */
         add_transition(name: string, transition: Transition): void;
 
@@ -12435,6 +12452,7 @@ export namespace Clutter {
          * the parent has moved with respect to the stage, for example because
          * a grandparent's origin has moved.
          * @param box new allocation of the actor, in parent-relative coordinates
+         * @since 0.8
          */
         allocate(box: ActorBox): void;
 
@@ -12460,6 +12478,7 @@ export namespace Clutter {
          * @param y_align the vertical alignment, between 0 and 1
          * @param x_fill whether the actor should fill horizontally
          * @param y_fill whether the actor should fill vertically
+         * @since 1.4
          */
         allocate_align_fill(box: ActorBox, x_align: number, y_align: number, x_fill: boolean, y_fill: boolean): void;
 
@@ -12521,6 +12540,7 @@ export namespace Clutter {
          * @param y the actor's Y coordinate
          * @param available_width the maximum available width, or -1 to use the   actor's natural width
          * @param available_height the maximum available height, or -1 to use the   actor's natural height
+         * @since 1.0
          */
         allocate_available_size(x: number, y: number, available_width: number, available_height: number): void;
 
@@ -12539,6 +12559,7 @@ export namespace Clutter {
          * {@link Clutter.ActorClass}.allocate virtual function.
          * @param x the actor's X coordinate
          * @param y the actor's Y coordinate
+         * @since 0.8
          */
         allocate_preferred_size(x: number, y: number): void;
 
@@ -12553,6 +12574,7 @@ export namespace Clutter {
          * the behaviour of `clutter_actor_apply_transform_to_point()`.
          * @param ancestor A {@link Clutter.Actor} ancestor, or `null` to use the   default {@link Clutter.Stage}
          * @param point A point as {@link Graphene.Point3D}
+         * @since 0.6
          */
         apply_relative_transform_to_point(ancestor: Actor | null, point: Graphene.Point3D): Graphene.Point3D;
 
@@ -12561,6 +12583,7 @@ export namespace Clutter {
          * into screen-relative coordinates with the current actor
          * transformation (i.e. scale, rotation, etc)
          * @param point A point as {@link Graphene.Point3D}
+         * @since 0.4
          */
         apply_transform_to_point(point: Graphene.Point3D): Graphene.Point3D;
 
@@ -12579,21 +12602,25 @@ export namespace Clutter {
          * directly is undefined behaviour.
          * @param model a {@link Gio.ListModel}
          * @param create_child_func a function that creates {@link Clutter.Actor} instances   from the contents of the `model`
+         * @since 1.24
          */
         bind_model(model: Gio.ListModel | null, create_child_func: ActorCreateChildFunc): void;
 
         /**
          * Clears the list of actions applied to `self`
+         * @since 1.4
          */
         clear_actions(): void;
 
         /**
          * Clears the list of constraints applied to `self`
+         * @since 1.4
          */
         clear_constraints(): void;
 
         /**
          * Clears the list of effects applied to `self`
+         * @since 1.4
          */
         clear_effects(): void;
 
@@ -12603,6 +12630,7 @@ export namespace Clutter {
          * `descendant` point to the same actor then it will also return `true`.
          * @param descendant A {@link Clutter.Actor}, possibly contained in `self`
          * @returns whether `descendent` is contained within `self`
+         * @since 1.4
          */
         contains(descendant: Actor): boolean;
 
@@ -12613,6 +12641,7 @@ export namespace Clutter {
          * be applied, or it will paint the actual actor if the current effect
          * is the last effect in the chain.
          * @param paint_context 
+         * @since 1.8
          */
         continue_paint(paint_context: PaintContext): void;
 
@@ -12633,6 +12662,7 @@ export namespace Clutter {
          * 
          * See also `clutter_actor_get_pango_context()`.
          * @returns the newly created {@link Pango.Context}.   Use `g_object_unref()` on the returned value to deallocate its   resources
+         * @since 1.0
          */
         create_pango_context(): Pango.Context;
 
@@ -12648,6 +12678,7 @@ export namespace Clutter {
          * `pango_layout_context_changed()` in response to them.
          * @param text the text to set on the {@link Pango.Layout}, or `null`
          * @returns the newly created {@link Pango.Layout}.   Use `g_object_unref()` when done
+         * @since 1.0
          */
         create_pango_layout(text: string | null): Pango.Layout;
 
@@ -12681,6 +12712,7 @@ export namespace Clutter {
          * order to make sure that children are destroyed and signal handlers
          * are disconnected even in cases where circular references prevent this
          * from automatically happening through reference counting alone.
+         * @since 1.10
          */
         destroy_all_children(): void;
 
@@ -12691,6 +12723,7 @@ export namespace Clutter {
          * @param event a {@link Clutter.Event}
          * @param capture `true` if event in in capture phase, `false` otherwise.
          * @returns the return value from the signal emission: `true`   if the actor handled the event, or `false` if the event was   not handled
+         * @since 0.6
          */
         event(event: Event, capture: boolean): boolean;
 
@@ -12703,6 +12736,7 @@ export namespace Clutter {
          *  - v[1] contains (x2, y1)
          *  - v[2] contains (x1, y2)
          *  - v[3] contains (x2, y2)
+         * @since 0.4
          */
         get_abs_allocation_vertices(): Graphene.Point3D[];
 
@@ -12728,12 +12762,14 @@ export namespace Clutter {
          * of actions applied to `self`
          * @param name the name of the action to retrieve
          * @returns a {@link Clutter.Action} for the given   name, or `null`. The returned {@link Clutter.Action} is owned by the   actor and it should not be unreferenced directly
+         * @since 1.4
          */
         get_action(name: string): Action;
 
         /**
          * Retrieves the list of actions applied to `self`
          * @returns a copy   of the list of {@link Clutter.Action}<!-- -->s. The contents of the list are   owned by the {@link Clutter.Actor}. Use `g_list_free()` to free the resources   allocated by the returned {@link GLib.List}
+         * @since 1.4
          */
         get_actions(): Action[];
 
@@ -12748,11 +12784,13 @@ export namespace Clutter {
          * Do not call any of the clutter_actor_get_allocation_*() family
          * of functions inside the implementation of the `get_preferred_width()`
          * or `get_preferred_height()` virtual functions.
+         * @since 0.8
          */
         get_allocation_box(): ActorBox;
 
         /**
          * Retrieves the color set using `clutter_actor_set_background_color()`.
+         * @since 1.10
          */
         get_background_color(): Color;
 
@@ -12761,6 +12799,7 @@ export namespace Clutter {
          * children of `self`.
          * @param index_ the position in the list of children
          * @returns a pointer to a {@link Clutter.Actor}, or `null`
+         * @since 1.10
          */
         get_child_at_index(index_: number): Actor;
 
@@ -12768,23 +12807,27 @@ export namespace Clutter {
          * Retrieves the child transformation matrix set using
          * `clutter_actor_set_child_transform()`; if none is currently set,
          * the `transform` matrix will be initialized to the identity matrix.
+         * @since 1.12
          */
         get_child_transform(): Matrix;
 
         /**
          * Retrieves the list of children of `self`.
          * @returns A newly   allocated {@link GLib.List} of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` when   done.
+         * @since 1.10
          */
         get_children(): Actor[];
 
         /**
          * Gets the clip area for `self`, if any is set.
+         * @since 0.6
          */
         get_clip(): [number, number, number, number];
 
         /**
          * Retrieves the value set using `clutter_actor_set_clip_to_allocation()`
          * @returns `true` if the {@link Clutter.Actor} is clipped to its allocation
+         * @since 1.4
          */
         get_clip_to_allocation(): boolean;
 
@@ -12793,18 +12836,21 @@ export namespace Clutter {
          * of constraints applied to `self`
          * @param name the name of the constraint to retrieve
          * @returns a {@link Clutter.Constraint} for the given   name, or `null`. The returned {@link Clutter.Constraint} is owned by the   actor and it should not be unreferenced directly
+         * @since 1.4
          */
         get_constraint(name: string): Constraint;
 
         /**
          * Retrieves the list of constraints applied to `self`
          * @returns a copy   of the list of {@link Clutter.Constraint}<!-- -->s. The contents of the list are   owned by the {@link Clutter.Actor}. Use `g_list_free()` to free the resources   allocated by the returned {@link GLib.List}
+         * @since 1.4
          */
         get_constraints(): Constraint[];
 
         /**
          * Retrieves the contents of `self`.
          * @returns a pointer to the {@link Clutter.Content} instance,   or `null` if none was set
+         * @since 1.10
          */
         get_content(): Content;
 
@@ -12822,6 +12868,7 @@ export namespace Clutter {
          * If the {@link Clutter.Content} used by the actor has a preferred size, then
          * it is possible to modify the content box by using the
          * {@link Clutter.Actor.content_gravity} property.
+         * @since 1.10
          */
         get_content_box(): ActorBox;
 
@@ -12829,6 +12876,7 @@ export namespace Clutter {
          * Retrieves the content gravity as set using
          * `clutter_actor_set_content_gravity()`.
          * @returns the content gravity
+         * @since 1.10
          */
         get_content_gravity(): ContentGravity;
 
@@ -12836,11 +12884,13 @@ export namespace Clutter {
          * Retrieves the repeat policy for a {@link Clutter.Actor} set by
          * `clutter_actor_set_content_repeat()`.
          * @returns the content repeat policy
+         * @since 1.12
          */
         get_content_repeat(): ContentRepeat;
 
         /**
          * Retrieves the values set using `clutter_actor_set_content_scaling_filters()`.
+         * @since 1.10
          */
         get_content_scaling_filters(): [ScalingFilter | null, ScalingFilter | null];
 
@@ -12855,6 +12905,7 @@ export namespace Clutter {
          * cannot chain up to the parent implementation when computing their
          * paint volume.
          * @returns a pointer to the default   {@link Clutter.PaintVolume}, relative to the {@link Clutter.Actor}, or `null` if   the actor could not compute a valid paint volume. The returned value   is not guaranteed to be stable across multiple frames, so if you   want to retain it, you will need to copy it using   `clutter_paint_volume_copy()`.
+         * @since 1.10
          */
         get_default_paint_volume(): PaintVolume;
 
@@ -12862,6 +12913,7 @@ export namespace Clutter {
          * Retrieves the delay that should be applied when tweening animatable
          * properties.
          * @returns a delay, in milliseconds
+         * @since 1.10
          */
         get_easing_delay(): number;
 
@@ -12869,6 +12921,7 @@ export namespace Clutter {
          * Retrieves the duration of the tweening for animatable
          * properties of `self` for the current easing state.
          * @returns the duration of the tweening, in milliseconds
+         * @since 1.10
          */
         get_easing_duration(): number;
 
@@ -12876,6 +12929,7 @@ export namespace Clutter {
          * Retrieves the easing mode for the tweening of animatable properties
          * of `self` for the current easing state.
          * @returns an easing mode
+         * @since 1.10
          */
         get_easing_mode(): AnimationMode;
 
@@ -12884,12 +12938,14 @@ export namespace Clutter {
          * of effects applied to `self`
          * @param name the name of the effect to retrieve
          * @returns a {@link Clutter.Effect} for the given   name, or `null`. The returned {@link Clutter.Effect} is owned by the   actor and it should not be unreferenced directly
+         * @since 1.4
          */
         get_effect(name: string): Effect;
 
         /**
          * Retrieves the {@link Clutter.Effect}<!-- -->s applied on `self`, if any
          * @returns a list   of {@link Clutter.Effect}<!-- -->s, or `null`. The elements of the returned   list are owned by Clutter and they should not be freed. You should   free the returned list using `g_list_free()` when done
+         * @since 1.4
          */
         get_effects(): Effect[];
 
@@ -12900,6 +12956,7 @@ export namespace Clutter {
          * is not safe to modify the list of children of `self` while iterating
          * it.
          * @returns a pointer to a {@link Clutter.Actor}, or `null`
+         * @since 1.10
          */
         get_first_child(): Actor;
 
@@ -12915,12 +12972,14 @@ export namespace Clutter {
          * Checks whether an actor has a fixed position set (and will thus be
          * unaffected by any layout manager).
          * @returns `true` if the fixed position is set on the actor
+         * @since 0.8
          */
         get_fixed_position_set(): boolean;
 
         /**
          * Retrieves the flags set on `self`
          * @returns a bitwise or of {@link Clutter.ActorFlags} or 0
+         * @since 1.0
          */
         get_flags(): ActorFlags;
 
@@ -12954,47 +13013,55 @@ export namespace Clutter {
          * is not safe to modify the list of children of `self` while iterating
          * it.
          * @returns a pointer to a {@link Clutter.Actor}, or `null`
+         * @since 1.10
          */
         get_last_child(): Actor;
 
         /**
          * Retrieves the {@link Clutter.LayoutManager} used by `self`.
          * @returns a pointer to the {@link Clutter.LayoutManager},   or `null`
+         * @since 1.10
          */
         get_layout_manager(): LayoutManager;
 
         /**
          * Retrieves all the components of the margin of a {@link Clutter.Actor}.
+         * @since 1.10
          */
         get_margin(): Margin;
 
         /**
          * Retrieves the bottom margin of a {@link Clutter.Actor}.
          * @returns the bottom margin
+         * @since 1.10
          */
         get_margin_bottom(): number;
 
         /**
          * Retrieves the left margin of a {@link Clutter.Actor}.
          * @returns the left margin
+         * @since 1.10
          */
         get_margin_left(): number;
 
         /**
          * Retrieves the right margin of a {@link Clutter.Actor}.
          * @returns the right margin
+         * @since 1.10
          */
         get_margin_right(): number;
 
         /**
          * Retrieves the top margin of a {@link Clutter.Actor}.
          * @returns the top margin
+         * @since 1.10
          */
         get_margin_top(): number;
 
         /**
          * Retrieves the number of children of `self`.
          * @returns the number of children of an actor
+         * @since 1.10
          */
         get_n_children(): number;
 
@@ -13012,6 +13079,7 @@ export namespace Clutter {
          * is not safe to modify the list of children of `self` while iterating
          * it.
          * @returns a pointer to a {@link Clutter.Actor}, or `null`
+         * @since 1.10
          */
         get_next_sibling(): Actor;
 
@@ -13019,6 +13087,7 @@ export namespace Clutter {
          * Retrieves whether to redirect the actor to an offscreen buffer, as
          * set by `clutter_actor_set_offscreen_redirect()`.
          * @returns the value of the offscreen-redirect property of the actor
+         * @since 1.8
          */
         get_offscreen_redirect(): OffscreenRedirect;
 
@@ -13035,6 +13104,7 @@ export namespace Clutter {
         /**
          * See `clutter_actor_set_opacity_override()`
          * @returns the override value for the actor's opacity, or -1 if no override   is set.
+         * @since 1.22
          */
         get_opacity_override(): number;
 
@@ -13052,6 +13122,7 @@ export namespace Clutter {
          * because the actor isn't yet parented under a stage or because
          * the actor is unable to determine a paint volume.
          * @returns `true` if a 2D paint box could be determined, else `false`.
+         * @since 1.6
          */
         get_paint_box(): [boolean, ActorBox];
 
@@ -13064,6 +13135,7 @@ export namespace Clutter {
          * This function is intended for subclasses to use in the paint virtual
          * function, to paint themselves with the correct opacity.
          * @returns The actor opacity value.
+         * @since 0.8
          */
         get_paint_opacity(): number;
 
@@ -13073,6 +13145,7 @@ export namespace Clutter {
          * 
          * This is by definition the same as `CLUTTER_ACTOR_IS_MAPPED`.
          * @returns `true` if the actor is visible and will be painted.
+         * @since 0.8
          */
         get_paint_visibility(): boolean;
 
@@ -13094,6 +13167,7 @@ export namespace Clutter {
          * should ensure that their volume has a depth of 0. (This will be true
          * as long as you don't call `clutter_paint_volume_set_depth()`.)
          * @returns a pointer to a {@link Clutter.PaintVolume},   or `null` if no volume could be determined. The returned pointer   is not guaranteed to be valid across multiple frames; if you want   to keep it, you will need to copy it using `clutter_paint_volume_copy()`.
+         * @since 1.6
          */
         get_paint_volume(): PaintVolume;
 
@@ -13110,6 +13184,7 @@ export namespace Clutter {
          * and render text using `cogl_pango_show_layout()` to reuse the
          * glyphs cache also used by Clutter.
          * @returns the {@link Pango.Context} for a {@link Clutter.Actor}.   The returned {@link Pango.Context} is owned by the actor and should not be   unreferenced by the application code
+         * @since 1.0
          */
         get_pango_context(): Pango.Context;
 
@@ -13121,11 +13196,13 @@ export namespace Clutter {
 
         /**
          * Retrieves the coordinates of the {@link Clutter.Actor.pivot_point}.
+         * @since 1.12
          */
         get_pivot_point(): [number, number];
 
         /**
          * Retrieves the Z component of the {@link Clutter.Actor.pivot_point}.
+         * @since 1.12
          */
         get_pivot_point_z(): number;
 
@@ -13137,6 +13214,7 @@ export namespace Clutter {
          * otherwise, returns 0,0.
          * 
          * The returned position is in pixels.
+         * @since 0.6
          */
         get_position(): [number, number];
 
@@ -13150,6 +13228,7 @@ export namespace Clutter {
          * A request should not incorporate the actor's scale or translation;
          * those transformations do not affect layout, only rendering.
          * @param for_width available width to assume in computing desired height,   or a negative value to indicate that no width is defined
+         * @since 0.8
          */
         get_preferred_height(for_width: number): [number, number];
 
@@ -13165,6 +13244,7 @@ export namespace Clutter {
          * the preferred height, you should use `clutter_actor_get_preferred_width()`
          * and `clutter_actor_get_preferred_height()`, and check the actor's preferred
          * geometry management using the {@link Clutter.Actor.request_mode} property.
+         * @since 0.8
          */
         get_preferred_size(): [number, number, number, number];
 
@@ -13179,6 +13259,7 @@ export namespace Clutter {
          * A request should not incorporate the actor's scaleor translation;
          * those transformations do not affect layout, only rendering.
          * @param for_height available height when computing the preferred width,   or a negative value to indicate that no height is defined
+         * @since 0.8
          */
         get_preferred_width(for_height: number): [number, number];
 
@@ -13190,18 +13271,21 @@ export namespace Clutter {
          * is not safe to modify the list of children of `self` while iterating
          * it.
          * @returns a pointer to a {@link Clutter.Actor}, or `null`
+         * @since 1.10
          */
         get_previous_sibling(): Actor;
 
         /**
          * Checks whether `actor` is marked as reactive.
          * @returns `true` if the actor is reactive
+         * @since 0.6
          */
         get_reactive(): boolean;
 
         /**
          * Retrieves the geometry request mode of `self`
          * @returns the request mode for the actor
+         * @since 1.2
          */
         get_request_mode(): RequestMode;
 
@@ -13241,11 +13325,13 @@ export namespace Clutter {
          * Retrieves the angle of rotation set by `clutter_actor_set_rotation_angle()`.
          * @param axis the axis of the rotation
          * @returns the angle of rotation, in degrees
+         * @since 1.12
          */
         get_rotation_angle(axis: RotateAxis): number;
 
         /**
          * Retrieves an actors scale factors.
+         * @since 0.2
          */
         get_scale(): [number, number];
 
@@ -13253,6 +13339,7 @@ export namespace Clutter {
          * Retrieves the scaling factor along the Z axis, as set using
          * `clutter_actor_set_scale_z()`.
          * @returns the scaling factor along the Z axis
+         * @since 1.12
          */
         get_scale_z(): number;
 
@@ -13266,12 +13353,14 @@ export namespace Clutter {
          * should probably call a different function like
          * `clutter_actor_get_allocation_box()` or
          * `clutter_actor_get_preferred_width()`.
+         * @since 0.2
          */
         get_size(): [number, number];
 
         /**
          * Retrieves the {@link Clutter.Stage} where `actor` is contained.
          * @returns the stage   containing the actor, or `null`
+         * @since 0.8
          */
         get_stage(): Stage;
 
@@ -13282,11 +13371,13 @@ export namespace Clutter {
          * direction, as returned by `clutter_get_default_text_direction()`, will
          * be returned instead
          * @returns the {@link Clutter.TextDirection} for the actor
+         * @since 1.2
          */
         get_text_direction(): TextDirection;
 
         /**
          * Retrieves the current transformation matrix of a {@link Clutter.Actor}.
+         * @since 1.12
          */
         get_transform(): Matrix;
 
@@ -13309,11 +13400,13 @@ export namespace Clutter {
          * together using `clutter_paint_volume_union()`.
          * @param relative_to_ancestor A {@link Clutter.Actor} that is an ancestor of `self`    (or `null` for the stage)
          * @returns a pointer to a {@link Clutter.PaintVolume},   or `null` if no volume could be determined. The returned pointer is   not guaranteed to be valid across multiple frames; if you wish to   keep it, you will have to copy it using `clutter_paint_volume_copy()`.
+         * @since 1.6
          */
         get_transformed_paint_volume(relative_to_ancestor: Actor): PaintVolume;
 
         /**
          * Gets the absolute position of an actor, in pixels relative to the stage.
+         * @since 0.8
          */
         get_transformed_position(): [number, number];
 
@@ -13337,6 +13430,7 @@ export namespace Clutter {
          * returned by `clutter_actor_get_transformed_position()`; if you need this
          * information, you need to use `clutter_actor_get_abs_allocation_vertices()`
          * to get the coords of the actual quadrangle.
+         * @since 0.8
          */
         get_transformed_size(): [number, number];
 
@@ -13367,11 +13461,13 @@ export namespace Clutter {
          * transition name as the signal detail.
          * @param name the name of the transition
          * @returns a {@link Clutter.Transition}, or `null` is none   was found to match the passed name; the returned instance is owned   by Clutter and it should not be freed
+         * @since 1.10
          */
         get_transition(name: string): Transition;
 
         /**
          * Retrieves the translation set using `clutter_actor_set_translation()`.
+         * @since 1.12
          */
         get_translation(): [number, number, number];
 
@@ -13420,6 +13516,7 @@ export namespace Clutter {
          * Retrieves the horizontal alignment policy set using
          * `clutter_actor_set_x_align()`.
          * @returns the horizontal alignment policy.
+         * @since 1.10
          */
         get_x_align(): ActorAlign;
 
@@ -13428,6 +13525,7 @@ export namespace Clutter {
          * 
          * See also: `clutter_actor_needs_expand()`
          * @returns `true` if the actor has been set to expand
+         * @since 1.12
          */
         get_x_expand(): boolean;
 
@@ -13453,6 +13551,7 @@ export namespace Clutter {
          * Retrieves the vertical alignment policy set using
          * `clutter_actor_set_y_align()`.
          * @returns the vertical alignment policy.
+         * @since 1.10
          */
         get_y_align(): ActorAlign;
 
@@ -13461,18 +13560,21 @@ export namespace Clutter {
          * 
          * See also: `clutter_actor_needs_expand()`
          * @returns `true` if the actor has been set to expand
+         * @since 1.12
          */
         get_y_expand(): boolean;
 
         /**
          * Retrieves the actor's position on the Z axis.
          * @returns the position on the Z axis.
+         * @since 1.12
          */
         get_z_position(): number;
 
         /**
          * Sets the key focus of the {@link Clutter.Stage} including `self`
          * to this {@link Clutter.Actor}.
+         * @since 1.0
          */
         grab_key_focus(): void;
 
@@ -13481,6 +13583,7 @@ export namespace Clutter {
         /**
          * Returns whether the actor has any actions applied.
          * @returns `true` if the actor has any actions,   `false` otherwise
+         * @since 1.10
          */
         has_actions(): boolean;
 
@@ -13496,12 +13599,14 @@ export namespace Clutter {
          * If this function returns `false`, then the actor will normally
          * be allocated before it is next drawn on the screen.
          * @returns `true` if the actor has an up-to-date allocation
+         * @since 1.4
          */
         has_allocation(): boolean;
 
         /**
          * Returns whether the actor has any constraints applied.
          * @returns `true` if the actor has any constraints,   `false` otherwise
+         * @since 1.10
          */
         has_constraints(): boolean;
 
@@ -13510,12 +13615,14 @@ export namespace Clutter {
         /**
          * Returns whether the actor has any effects applied.
          * @returns `true` if the actor has any effects,   `false` otherwise
+         * @since 1.10
          */
         has_effects(): boolean;
 
         /**
          * Checks whether `self` is the {@link Clutter.Actor} that has key focus
          * @returns `true` if the actor has key focus, and `false` otherwise
+         * @since 1.4
          */
         has_key_focus(): boolean;
 
@@ -13538,6 +13645,7 @@ export namespace Clutter {
          * {@link Clutter.ActorClass}.has_overlaps() virtual function. See
          * `clutter_actor_set_offscreen_redirect()` for more information.
          * @returns `true` if the actor may have overlapping primitives, and   `false` otherwise
+         * @since 1.8
          */
         has_overlaps(): boolean;
 
@@ -13581,6 +13689,7 @@ export namespace Clutter {
          * on `self`.
          * @param child a {@link Clutter.Actor}
          * @param sibling a child of `self`, or `null`
+         * @since 1.10
          */
         insert_child_above(child: Actor, sibling: Actor | null): void;
 
@@ -13599,6 +13708,7 @@ export namespace Clutter {
          * on `self`.
          * @param child a {@link Clutter.Actor}
          * @param index_ the index
+         * @since 1.10
          */
         insert_child_at_index(child: Actor, index_: number): void;
 
@@ -13617,6 +13727,7 @@ export namespace Clutter {
          * on `self`.
          * @param child a {@link Clutter.Actor}
          * @param sibling a child of `self`, or `null`
+         * @since 1.10
          */
         insert_child_below(child: Actor, sibling: Actor | null): void;
 
@@ -13642,6 +13753,7 @@ export namespace Clutter {
          * 
          * This function should not be used by applications
          * @returns `true` if the {@link Clutter.Actor} is currently being painted   by a {@link Clutter.Clone}, and `false` otherwise
+         * @since 1.0
          */
         is_in_clone_paint(): boolean;
 
@@ -13650,6 +13762,7 @@ export namespace Clutter {
          * 
          * See also `CLUTTER_ACTOR_IS_MAPPED` and {@link Clutter.Actor.mapped}
          * @returns `true` if the actor is mapped
+         * @since 1.24
          */
         is_mapped(): boolean;
 
@@ -13658,18 +13771,21 @@ export namespace Clutter {
          * 
          * See also `CLUTTER_ACTOR_IS_REALIZED` and {@link Clutter.Actor.realized}.
          * @returns `true` if the actor is realized
+         * @since 1.24
          */
         is_realized(): boolean;
 
         /**
          * Checks whether any rotation is applied to the actor.
          * @returns `true` if the actor is rotated.
+         * @since 0.6
          */
         is_rotated(): boolean;
 
         /**
          * Checks whether the actor is scaled in either dimension.
          * @returns `true` if the actor is scaled.
+         * @since 0.6
          */
         is_scaled(): boolean;
 
@@ -13678,6 +13794,7 @@ export namespace Clutter {
          * 
          * See also `CLUTTER_ACTOR_IS_VISIBLE` and {@link Clutter.Actor.visible}.
          * @returns `true` if the actor visible
+         * @since 1.24
          */
         is_visible(): boolean;
 
@@ -13692,6 +13809,7 @@ export namespace Clutter {
          * 
          * When overriding map, it is mandatory to chain up to the parent
          * implementation.
+         * @since 1.0
          */
         map(): void;
 
@@ -13704,6 +13822,7 @@ export namespace Clutter {
          * additional translation, using `clutter_actor_set_translation()`.
          * @param dx Distance to move Actor on X axis.
          * @param dy Distance to move Actor on Y axis.
+         * @since 0.2
          */
         move_by(dx: number, dy: number): void;
 
@@ -13718,6 +13837,7 @@ export namespace Clutter {
          * use `clutter_actor_get_x_expand()` or `clutter_actor_get_y_expand()`.
          * @param orientation the direction of expansion
          * @returns `true` if the actor should expand
+         * @since 1.12
          */
         needs_expand(orientation: Orientation): boolean;
 
@@ -13802,6 +13922,7 @@ export namespace Clutter {
          * If `clip` is `null` this function is equivalent to
          * `clutter_actor_queue_redraw()`.
          * @param clip a rectangular clip region, or `null`
+         * @since 1.10
          */
         queue_redraw_with_clip(clip: cairo.RectangleInt | null): void;
 
@@ -13811,6 +13932,7 @@ export namespace Clutter {
          * subclass implementations, not by applications directly.
          * 
          * Queueing a new layout automatically queues a redraw as well.
+         * @since 0.8
          */
         queue_relayout(): void;
 
@@ -13830,6 +13952,7 @@ export namespace Clutter {
          * This function does not realize child actors, except in the special
          * case that realizing the stage, when the stage is visible, will
          * suddenly map (and thus realize) the children of the stage.
+         * @deprecated since 1.16: Actors are automatically realized, and nothing   requires explicit realization.
          */
         realize(): void;
 
@@ -13838,6 +13961,7 @@ export namespace Clutter {
          * 
          * The reference held by `self` on the {@link Clutter.Action} will be released
          * @param action a {@link Clutter.Action}
+         * @since 1.4
          */
         remove_action(action: Action): void;
 
@@ -13845,6 +13969,7 @@ export namespace Clutter {
          * Removes the {@link Clutter.Action} with the given name from the list
          * of actions applied to `self`
          * @param name the name of the action to remove
+         * @since 1.4
          */
         remove_action_by_name(name: string): void;
 
@@ -13857,11 +13982,13 @@ export namespace Clutter {
          * If the reference count of a child drops to zero, the child will be
          * destroyed. If you want to ensure the destruction of all the children
          * of `self`, use `clutter_actor_destroy_all_children()`.
+         * @since 1.10
          */
         remove_all_children(): void;
 
         /**
          * Removes all transitions associated to `self`.
+         * @since 1.10
          */
         remove_all_transitions(): void;
 
@@ -13876,6 +14003,7 @@ export namespace Clutter {
          * This function will emit the {@link Clutter.Container.SignalSignatures.actor_removed | Clutter.Container::actor-removed}
          * signal on `self`.
          * @param child a {@link Clutter.Actor}
+         * @since 1.10
          */
         remove_child(child: Actor): void;
 
@@ -13889,6 +14017,7 @@ export namespace Clutter {
          * 
          * The reference held by `self` on the {@link Clutter.Constraint} will be released
          * @param constraint a {@link Clutter.Constraint}
+         * @since 1.4
          */
         remove_constraint(constraint: Constraint): void;
 
@@ -13896,6 +14025,7 @@ export namespace Clutter {
          * Removes the {@link Clutter.Constraint} with the given name from the list
          * of constraints applied to `self`
          * @param name the name of the constraint to remove
+         * @since 1.4
          */
         remove_constraint_by_name(name: string): void;
 
@@ -13904,6 +14034,7 @@ export namespace Clutter {
          * 
          * The reference held by `self` on the {@link Clutter.Effect} will be released
          * @param effect a {@link Clutter.Effect}
+         * @since 1.4
          */
         remove_effect(effect: Effect): void;
 
@@ -13911,6 +14042,7 @@ export namespace Clutter {
          * Removes the {@link Clutter.Effect} with the given name from the list
          * of effects applied to `self`
          * @param name the name of the effect to remove
+         * @since 1.4
          */
         remove_effect_by_name(name: string): void;
 
@@ -13923,6 +14055,7 @@ export namespace Clutter {
          * This function releases the reference acquired when the transition
          * was added to the {@link Clutter.Actor}.
          * @param name the name of the transition to remove
+         * @since 1.10
          */
         remove_transition(name: string): void;
 
@@ -13930,12 +14063,14 @@ export namespace Clutter {
          * Replaces `old_child` with `new_child` in the list of children of `self`.
          * @param old_child the child of `self` to replace
          * @param new_child the {@link Clutter.Actor} to replace `old_child`
+         * @since 1.10
          */
         replace_child(old_child: Actor, new_child: Actor): void;
 
         /**
          * Restores the easing state as it was prior to a call to
          * `clutter_actor_save_easing_state()`.
+         * @since 1.10
          */
         restore_easing_state(): void;
 
@@ -13946,6 +14081,7 @@ export namespace Clutter {
          * New transitions created after calling this function will inherit the
          * duration, easing mode, and delay of the new easing state; this also
          * applies to transitions modified in flight.
+         * @since 1.10
          */
         save_easing_state(): void;
 
@@ -13964,6 +14100,7 @@ export namespace Clutter {
          * {@link Clutter.ActorClass}.allocate() virtual function will call this
          * function.
          * @param box a {@link Clutter.ActorBox}
+         * @since 1.10
          */
         set_allocation(box: ActorBox): void;
 
@@ -13978,6 +14115,7 @@ export namespace Clutter {
          * 
          * The {@link Clutter.Actor.background_color} property is animatable.
          * @param color a {@link Clutter.Color}, or `null` to unset a previously  set color
+         * @since 1.10
          */
         set_background_color(color: Color | null): void;
 
@@ -13991,6 +14129,7 @@ export namespace Clutter {
          * or change state on `child`.
          * @param child a {@link Clutter.Actor} child of `self`
          * @param sibling a {@link Clutter.Actor} child of `self`, or `null`
+         * @since 1.10
          */
         set_child_above_sibling(child: Actor, sibling: Actor | null): void;
 
@@ -14002,6 +14141,7 @@ export namespace Clutter {
          * emit signals or change state on `child`.
          * @param child a {@link Clutter.Actor} child of `self`
          * @param index_ the new index for `child`
+         * @since 1.10
          */
         set_child_at_index(child: Actor, index_: number): void;
 
@@ -14015,6 +14155,7 @@ export namespace Clutter {
          * or change state on `child`.
          * @param child a {@link Clutter.Actor} child of `self`
          * @param sibling a {@link Clutter.Actor} child of `self`, or `null`
+         * @since 1.10
          */
         set_child_below_sibling(child: Actor, sibling: Actor | null): void;
 
@@ -14027,6 +14168,7 @@ export namespace Clutter {
          * 
          * The {@link Clutter.Actor.child_transform} property is animatable.
          * @param transform a {@link Clutter.Matrix}, or `null`
+         * @since 1.12
          */
         set_child_transform(transform: Matrix | null): void;
 
@@ -14037,6 +14179,7 @@ export namespace Clutter {
          * @param yoff Y offset of the clip rectangle
          * @param width Width of the clip rectangle
          * @param height Height of the clip rectangle
+         * @since 0.6
          */
         set_clip(xoff: number, yoff: number, width: number, height: number): void;
 
@@ -14044,12 +14187,14 @@ export namespace Clutter {
          * Sets whether `self` should be clipped to the same size as its
          * allocation
          * @param clip_set `true` to apply a clip tracking the allocation
+         * @since 1.4
          */
         set_clip_to_allocation(clip_set: boolean): void;
 
         /**
          * Sets the contents of a {@link Clutter.Actor}.
          * @param content a {@link Clutter.Content}, or `null`
+         * @since 1.10
          */
         set_content(content: Content | null): void;
 
@@ -14061,6 +14206,7 @@ export namespace Clutter {
          * 
          * The {@link Clutter.Actor.content_gravity} property is animatable.
          * @param gravity the {@link Clutter.ContentGravity}
+         * @since 1.10
          */
         set_content_gravity(gravity: ContentGravity): void;
 
@@ -14069,6 +14215,7 @@ export namespace Clutter {
          * {@link Clutter.Actor}. The behaviour is deferred to the {@link Clutter.Content}
          * implementation.
          * @param repeat the repeat policy
+         * @since 1.12
          */
         set_content_repeat(repeat: ContentRepeat): void;
 
@@ -14081,6 +14228,7 @@ export namespace Clutter {
          * will be used when increasing the size of the content.
          * @param min_filter the minification filter for the content
          * @param mag_filter the magnification filter for the content
+         * @since 1.10
          */
         set_content_scaling_filters(min_filter: ScalingFilter, mag_filter: ScalingFilter): void;
 
@@ -14088,6 +14236,7 @@ export namespace Clutter {
          * Sets the delay that should be applied before tweening animatable
          * properties.
          * @param msecs the delay before the start of the tweening, in milliseconds
+         * @since 1.10
          */
         set_easing_delay(msecs: number): void;
 
@@ -14095,6 +14244,7 @@ export namespace Clutter {
          * Sets the duration of the tweening for animatable properties
          * of `self` for the current easing state.
          * @param msecs the duration of the easing, or `null`
+         * @since 1.10
          */
         set_easing_duration(msecs: number): void;
 
@@ -14102,6 +14252,7 @@ export namespace Clutter {
          * Sets the easing mode for the tweening of animatable properties
          * of `self`.
          * @param mode an easing mode, excluding {@link Clutter.AnimationMode.CUSTOM_MODE}
+         * @since 1.10
          */
         set_easing_mode(mode: AnimationMode): void;
 
@@ -14109,6 +14260,7 @@ export namespace Clutter {
          * Sets whether an actor has a fixed position set (and will thus be
          * unaffected by any layout manager).
          * @param is_set whether to use fixed position
+         * @since 0.8
          */
         set_fixed_position_set(is_set: boolean): void;
 
@@ -14117,6 +14269,7 @@ export namespace Clutter {
          * 
          * This function will emit notifications for the changed properties
          * @param flags the flags to set
+         * @since 1.0
          */
         set_flags(flags: ActorFlags): void;
 
@@ -14129,6 +14282,7 @@ export namespace Clutter {
          * 
          * This function sets both the minimum and natural size of the actor.
          * @param height Requested new height for the actor, in pixels, or -1
+         * @since 0.2
          */
         set_height(height: number): void;
 
@@ -14140,12 +14294,14 @@ export namespace Clutter {
          * will be released either when the layout manager is removed, or when
          * the actor is destroyed.
          * @param manager a {@link Clutter.LayoutManager}, or `null` to unset it
+         * @since 1.10
          */
         set_layout_manager(manager: LayoutManager | null): void;
 
         /**
          * Sets all the components of the margin of a {@link Clutter.Actor}.
          * @param margin a {@link Clutter.Margin}
+         * @since 1.10
          */
         set_margin(margin: Margin): void;
 
@@ -14154,6 +14310,7 @@ export namespace Clutter {
          * 
          * The {@link Clutter.Actor.margin_bottom} property is animatable.
          * @param margin the bottom margin
+         * @since 1.10
          */
         set_margin_bottom(margin: number): void;
 
@@ -14162,6 +14319,7 @@ export namespace Clutter {
          * 
          * The {@link Clutter.Actor.margin_left} property is animatable.
          * @param margin the left margin
+         * @since 1.10
          */
         set_margin_left(margin: number): void;
 
@@ -14170,6 +14328,7 @@ export namespace Clutter {
          * 
          * The {@link Clutter.Actor.margin_right} property is animatable.
          * @param margin the right margin
+         * @since 1.10
          */
         set_margin_right(margin: number): void;
 
@@ -14178,6 +14337,7 @@ export namespace Clutter {
          * 
          * The {@link Clutter.Actor.margin_top} property is animatable.
          * @param margin the top margin
+         * @since 1.10
          */
         set_margin_top(margin: number): void;
 
@@ -14247,6 +14407,7 @@ export namespace Clutter {
          * recommended to override the `has_overlaps()` virtual to return `false`
          * for maximum efficiency.
          * @param redirect New offscreen redirect flags for the actor.
+         * @since 1.8
          */
         set_offscreen_redirect(redirect: OffscreenRedirect): void;
 
@@ -14279,6 +14440,7 @@ export namespace Clutter {
          * the bottom right corner.
          * @param pivot_x the normalized X coordinate of the pivot point
          * @param pivot_y the normalized Y coordinate of the pivot point
+         * @since 1.12
          */
         set_pivot_point(pivot_x: number, pivot_y: number): void;
 
@@ -14288,6 +14450,7 @@ export namespace Clutter {
          * 
          * The `pivot_z` value is expressed as a distance along the Z axis.
          * @param pivot_z the Z coordinate of the actor's pivot point
+         * @since 1.12
          */
         set_pivot_point_z(pivot_z: number): void;
 
@@ -14305,6 +14468,7 @@ export namespace Clutter {
         /**
          * Sets `actor` as reactive. Reactive actors will receive events.
          * @param reactive whether the actor should be reactive to events
+         * @since 0.6
          */
         set_reactive(reactive: boolean): void;
 
@@ -14315,6 +14479,7 @@ export namespace Clutter {
          * `clutter_actor_get_preferred_width()` and
          * `clutter_actor_get_preferred_height()`
          * @param mode the request mode
+         * @since 1.2
          */
         set_request_mode(mode: RequestMode): void;
 
@@ -14329,6 +14494,7 @@ export namespace Clutter {
          * property.
          * @param axis the axis to set the angle one
          * @param angle the angle of rotation, in degrees
+         * @since 1.12
          */
         set_rotation_angle(axis: RotateAxis, angle: number): void;
 
@@ -14341,6 +14507,7 @@ export namespace Clutter {
          * animatable.
          * @param scale_x double factor to scale actor by horizontally.
          * @param scale_y double factor to scale actor by vertically.
+         * @since 0.2
          */
         set_scale(scale_x: number, scale_y: number): void;
 
@@ -14351,6 +14518,7 @@ export namespace Clutter {
          * 
          * The {@link Clutter.Actor.scale_z} property is animatable.
          * @param scale_z the scaling factor along the Z axis
+         * @since 1.12
          */
         set_scale_z(scale_z: number): void;
 
@@ -14382,6 +14550,7 @@ export namespace Clutter {
          * special handling when the text direction changes, should connect to
          * the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal for the {@link Clutter.Actor.text_direction} property
          * @param text_dir the text direction for `self`
+         * @since 1.2
          */
         set_text_direction(text_dir: TextDirection): void;
 
@@ -14392,6 +14561,7 @@ export namespace Clutter {
          * 
          * The {@link Clutter.Actor.transform} property is animatable.
          * @param transform a {@link Clutter.Matrix}, or `null` to   unset a custom transformation
+         * @since 1.12
          */
         set_transform(transform: Matrix | null): void;
 
@@ -14401,6 +14571,7 @@ export namespace Clutter {
          * @param translate_x the translation along the X axis
          * @param translate_y the translation along the Y axis
          * @param translate_z the translation along the Z axis
+         * @since 1.12
          */
         set_translation(translate_x: number, translate_y: number, translate_z: number): void;
 
@@ -14413,6 +14584,7 @@ export namespace Clutter {
          * 
          * This function sets both the minimum and natural size of the actor.
          * @param width Requested new width for the actor, in pixels, or -1
+         * @since 0.2
          */
         set_width(width: number): void;
 
@@ -14424,6 +14596,7 @@ export namespace Clutter {
          * 
          * The {@link Clutter.Actor.x} property is animatable.
          * @param x the actor's position on the X axis
+         * @since 0.6
          */
         set_x(x: number): void;
 
@@ -14433,6 +14606,7 @@ export namespace Clutter {
          * 
          * See also the {@link Clutter.Actor.x_align} property.
          * @param x_align the horizontal alignment policy
+         * @since 1.10
          */
         set_x_align(x_align: ActorAlign): void;
 
@@ -14445,6 +14619,7 @@ export namespace Clutter {
          * that it's possible to build an actor tree and only set this flag on
          * its leaves and not on every single actor.
          * @param expand whether the actor should expand horizontally
+         * @since 1.12
          */
         set_x_expand(expand: boolean): void;
 
@@ -14456,6 +14631,7 @@ export namespace Clutter {
          * 
          * The {@link Clutter.Actor.y} property is animatable.
          * @param y the actor's position on the Y axis
+         * @since 0.6
          */
         set_y(y: number): void;
 
@@ -14465,6 +14641,7 @@ export namespace Clutter {
          * 
          * See also the {@link Clutter.Actor.y_align} property.
          * @param y_align the vertical alignment policy
+         * @since 1.10
          */
         set_y_align(y_align: ActorAlign): void;
 
@@ -14477,6 +14654,7 @@ export namespace Clutter {
          * that it's possible to build an actor tree and only set this flag on
          * its leaves and not on every single actor.
          * @param expand whether the actor should expand vertically
+         * @since 1.12
          */
         set_y_expand(expand: boolean): void;
 
@@ -14485,6 +14663,7 @@ export namespace Clutter {
          * 
          * See {@link Clutter.Actor.z_position}.
          * @param z_position the position on the Z axis
+         * @since 1.12
          */
         set_z_position(z_position: number): void;
 
@@ -14529,6 +14708,7 @@ export namespace Clutter {
          * @param x x screen coordinate of the point to unproject
          * @param y y screen coordinate of the point to unproject
          * @returns `true` if conversion was successful.
+         * @since 0.6
          */
         transform_stage_point(x: number, y: number): [boolean, number, number];
 
@@ -14557,6 +14737,7 @@ export namespace Clutter {
          * the {@link Clutter.ActorClass}.destroy() or the {@link GObject.ObjectClass}.dispose()
          * implementation, but it is guaranteed to be called before the
          * {@link GObject.ObjectClass}.finalize() implementation.
+         * @since 1.0
          */
         unmap(): void;
 
@@ -14586,6 +14767,7 @@ export namespace Clutter {
          * If you were using `clutter_actor_unrealize()` to implement
          * unrealizing children of your container, then don't, ClutterActor
          * will already take care of that.
+         * @deprecated since 1.16: Actors are automatically unrealized, and nothing   requires explicit realization.
          */
         unrealize(): void;
 
@@ -14594,6 +14776,7 @@ export namespace Clutter {
          * 
          * This function will emit notifications for the changed properties
          * @param flags the flags to unset
+         * @since 1.0
          */
         unset_flags(flags: ActorFlags): void;
 
@@ -14601,6 +14784,7 @@ export namespace Clutter {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -14614,6 +14798,7 @@ export namespace Clutter {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -14631,6 +14816,7 @@ export namespace Clutter {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
 
@@ -14638,12 +14824,14 @@ export namespace Clutter {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -14658,6 +14846,7 @@ export namespace Clutter {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -14675,6 +14864,7 @@ export namespace Clutter {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, GObject.Value | any];
@@ -14683,6 +14873,7 @@ export namespace Clutter {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -14697,6 +14888,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Actor): void;
 
@@ -14711,6 +14904,7 @@ export namespace Clutter {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Actor, property: string, value: GObject.Value | any): void;
 
@@ -14720,6 +14914,7 @@ export namespace Clutter {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Actor, pspec: GObject.ParamSpec): void;
 
@@ -14728,6 +14923,7 @@ export namespace Clutter {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Actor, property: string, value: GObject.Value | any): void;
 
@@ -14742,6 +14938,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Actor): void;
 
@@ -14755,6 +14952,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Actor): void;
 
@@ -14763,6 +14961,7 @@ export namespace Clutter {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Actor;
 
@@ -14771,6 +14970,7 @@ export namespace Clutter {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Actor): ChildMeta;
 
@@ -14782,6 +14982,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Actor, sibling: Actor | null): void;
 
@@ -14793,6 +14995,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Actor, sibling: Actor | null): void;
 
@@ -14806,12 +15010,16 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -14837,6 +15045,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Actor): void;
@@ -14847,6 +15057,7 @@ export namespace Clutter {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Actor, pspec: GObject.ParamSpec): void;
@@ -14862,6 +15073,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Actor): void;
@@ -14876,6 +15088,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Actor): void;
@@ -14884,6 +15097,7 @@ export namespace Clutter {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Actor): ChildMeta;
@@ -14896,6 +15110,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Actor, sibling: Actor | null): void;
@@ -14908,6 +15124,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Actor, sibling: Actor | null): void;
@@ -14922,6 +15140,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Actor): void;
@@ -14929,6 +15149,8 @@ export namespace Clutter {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -14936,6 +15158,7 @@ export namespace Clutter {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -14947,6 +15170,7 @@ export namespace Clutter {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -14956,6 +15180,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
 
@@ -14967,11 +15192,13 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -14983,6 +15210,7 @@ export namespace Clutter {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -14993,6 +15221,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
@@ -15005,6 +15234,7 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -15094,6 +15324,7 @@ export namespace Clutter {
         /**
          * Sets whether `meta` should be enabled or not
          * @param is_enabled whether `meta` is enabled
+         * @since 1.4
          * @virtual
          */
         vfunc_set_enabled(is_enabled: boolean): void;
@@ -15102,24 +15333,28 @@ export namespace Clutter {
         /**
          * Retrieves a pointer to the {@link Clutter.Actor} that owns `meta`
          * @returns a pointer to a {@link Clutter.Actor} or `null`
+         * @since 1.4
          */
         get_actor(): Actor;
 
         /**
          * Retrieves whether `meta` is enabled
          * @returns `true` if the {@link Clutter.ActorMeta} instance is enabled
+         * @since 1.4
          */
         get_enabled(): boolean;
 
         /**
          * Retrieves the name set using `clutter_actor_meta_set_name()`
          * @returns the name of the {@link Clutter.ActorMeta}   instance, or `null` if none was set. The returned string is owned   by the {@link Clutter.ActorMeta} instance and it should not be modified   or freed
+         * @since 1.4
          */
         get_name(): string;
 
         /**
          * Sets whether `meta` should be enabled or not
          * @param is_enabled whether `meta` is enabled
+         * @since 1.4
          */
         set_enabled(is_enabled: boolean): void;
 
@@ -15128,6 +15363,7 @@ export namespace Clutter {
          * 
          * The name can be used to identify the {@link Clutter.ActorMeta} instance
          * @param name the name of `meta`
+         * @since 1.4
          */
         set_name(name: string): void;
     }
@@ -15302,12 +15538,14 @@ export namespace Clutter {
         /**
          * Retrieves the value set using `clutter_align_constraint_set_align_axis()`
          * @returns the alignment axis
+         * @since 1.4
          */
         get_align_axis(): AlignAxis;
 
         /**
          * Retrieves the factor set using `clutter_align_constraint_set_factor()`
          * @returns the alignment factor
+         * @since 1.4
          */
         get_factor(): number;
 
@@ -15321,12 +15559,14 @@ export namespace Clutter {
         /**
          * Retrieves the source of the alignment
          * @returns the {@link Clutter.Actor} used as the source   of the alignment
+         * @since 1.4
          */
         get_source(): Actor;
 
         /**
          * Sets the axis to which the alignment refers to
          * @param axis the axis to which the alignment refers to
+         * @since 1.4
          */
         set_align_axis(axis: AlignAxis): void;
 
@@ -15343,6 +15583,7 @@ export namespace Clutter {
          * {@link Clutter.AlignAxis.Y_AXIS}). A value of 0.5 aligns in the middle in either
          * cases
          * @param factor the alignment factor, between 0.0 and 1.0
+         * @since 1.4
          */
         set_factor(factor: number): void;
 
@@ -15361,6 +15602,7 @@ export namespace Clutter {
         /**
          * Sets the source of the alignment constraint
          * @param source a {@link Clutter.Actor}, or `null` to unset the source
+         * @since 1.4
          */
         set_source(source: Actor | null): void;
     }
@@ -15445,6 +15687,7 @@ export namespace Clutter {
         /**
          * Retrieves the font options for `backend`.
          * @returns the font options of the {@link Clutter.Backend}.   The returned {@link cairo.FontOptions} is owned by the backend and should   not be modified or freed
+         * @since 0.8
          */
         get_font_options(): cairo.FontOptions;
 
@@ -15466,6 +15709,7 @@ export namespace Clutter {
          * initializing; the resolution is also stored in the
          * {@link Clutter.Settings.font_dpi} property.
          * @returns the current resolution, or -1 if no resolution   has been set.
+         * @since 0.4
          */
         get_resolution(): number;
 
@@ -15480,6 +15724,7 @@ export namespace Clutter {
          * This function is intended for actors creating a Pango layout
          * using the PangoCairo API.
          * @param options Cairo font options for the backend, or `null`
+         * @since 0.8
          */
         set_font_options(options: cairo.FontOptions): void;
 
@@ -15670,36 +15915,42 @@ export namespace Clutter {
         /**
          * Retrieves the bound coordinate of the constraint
          * @returns the bound coordinate
+         * @since 1.4
          */
         get_coordinate(): BindCoordinate;
 
         /**
          * Retrieves the offset set using `clutter_bind_constraint_set_offset()`
          * @returns the offset, in pixels
+         * @since 1.4
          */
         get_offset(): number;
 
         /**
          * Retrieves the {@link Clutter.Actor} set using `clutter_bind_constraint_set_source()`
          * @returns a pointer to the source actor
+         * @since 1.4
          */
         get_source(): Actor;
 
         /**
          * Sets the coordinate to bind in the constraint
          * @param coordinate the coordinate to bind
+         * @since 1.4
          */
         set_coordinate(coordinate: BindCoordinate): void;
 
         /**
          * Sets the offset to be applied to the constraint
          * @param offset the offset to apply, in pixels
+         * @since 1.4
          */
         set_offset(offset: number): void;
 
         /**
          * Sets the source {@link Clutter.Actor} for the constraint
          * @param source a {@link Clutter.Actor}, or `null` to unset the source
+         * @since 1.4
          */
         set_source(source: Actor | null): void;
     }
@@ -15767,6 +16018,7 @@ export namespace Clutter {
         /**
          * Finds the {@link Clutter.BindingPool} with `name`.
          * @param name the name of the binding pool to find
+         * @since 1.0
          */
         static find(name: string): BindingPool;
 
@@ -15788,6 +16040,7 @@ export namespace Clutter {
          * ```
          * 
          * @param klass a {@link GObject.ObjectClass} pointer
+         * @since 1.0
          */
         static get_for_class(klass: null): BindingPool;
 
@@ -15819,12 +16072,14 @@ export namespace Clutter {
          * @param modifiers bitmask for the modifiers
          * @param gobject a {@link GObject.Object}
          * @returns `true` if an action was found and was activated
+         * @since 1.0
          */
         activate(key_val: number, modifiers: ModifierType, gobject: GObject.Object): boolean;
 
         /**
          * Blocks all the actions with name `action_name` inside `pool`.
          * @param action_name an action name
+         * @since 1.0
          */
         block_action(action_name: string): void;
 
@@ -15834,6 +16089,7 @@ export namespace Clutter {
          * @param key_val a key symbol
          * @param modifiers a bitmask for the modifiers
          * @returns the name of the action, if found, or `null`. The   returned string is owned by the binding pool and should never   be modified or freed
+         * @since 1.0
          */
         find_action(key_val: number, modifiers: ModifierType): string;
 
@@ -15853,6 +16109,7 @@ export namespace Clutter {
          * @param key_val key symbol
          * @param modifiers bitmask of modifiers
          * @param callback function to be called   when the action is activated
+         * @since 1.0
          */
         install_action(action_name: string, key_val: number, modifiers: ModifierType, callback: BindingActionFunc): void;
 
@@ -15874,6 +16131,7 @@ export namespace Clutter {
          * @param key_val key symbol
          * @param modifiers bitmask of modifiers
          * @param closure a {@link GObject.Closure}
+         * @since 1.0
          */
         install_closure(action_name: string, key_val: number, modifiers: ModifierType, closure: GObject.Closure): void;
 
@@ -15889,6 +16147,7 @@ export namespace Clutter {
          * @param key_val key symbol
          * @param modifiers bitmask of modifiers
          * @param callback function to be called when the action is activated
+         * @since 1.0
          */
         override_action(key_val: number, modifiers: ModifierType, callback: GObject.Callback): void;
 
@@ -15906,6 +16165,7 @@ export namespace Clutter {
          * @param key_val key symbol
          * @param modifiers bitmask of modifiers
          * @param closure a {@link GObject.Closure}
+         * @since 1.0
          */
         override_closure(key_val: number, modifiers: ModifierType, closure: GObject.Closure): void;
 
@@ -15914,6 +16174,7 @@ export namespace Clutter {
          * if any exists.
          * @param key_val a key symbol
          * @param modifiers a bitmask for the modifiers
+         * @since 1.0
          */
         remove_action(key_val: number, modifiers: ModifierType): void;
 
@@ -15924,6 +16185,7 @@ export namespace Clutter {
          * be invoked in case `clutter_binding_pool_activate()` was called on
          * an action previously blocked with `clutter_binding_pool_block_action()`.
          * @param action_name an action name
+         * @since 1.0
          */
         unblock_action(action_name: string): void;
     }
@@ -16082,24 +16344,28 @@ export namespace Clutter {
         /**
          * Retrieves if the children sizes are allocated homogeneously.
          * @returns `true` if the {@link Clutter.BoxLayout} is arranging its children   homogeneously, and `false` otherwise
+         * @since 1.4
          */
         get_homogeneous(): boolean;
 
         /**
          * Retrieves the orientation of the `layout`.
          * @returns the orientation of the layout
+         * @since 1.12
          */
         get_orientation(): Orientation;
 
         /**
          * Retrieves the value set using `clutter_box_layout_set_pack_start()`
          * @returns `true` if the {@link Clutter.BoxLayout} should pack children  at the beginning of the layout, and `false` otherwise
+         * @since 1.2
          */
         get_pack_start(): boolean;
 
         /**
          * Retrieves the spacing set using `clutter_box_layout_set_spacing()`
          * @returns the spacing between children of the {@link Clutter.BoxLayout}
+         * @since 1.2
          */
         get_spacing(): number;
 
@@ -16107,12 +16373,14 @@ export namespace Clutter {
          * Sets whether the size of `layout` children should be
          * homogeneous
          * @param homogeneous `true` if the layout should be homogeneous
+         * @since 1.4
          */
         set_homogeneous(homogeneous: boolean): void;
 
         /**
          * Sets the orientation of the {@link Clutter.BoxLayout} layout manager.
          * @param orientation the orientation of the {@link Clutter.BoxLayout}
+         * @since 1.12
          */
         set_orientation(orientation: Orientation): void;
 
@@ -16120,12 +16388,14 @@ export namespace Clutter {
          * Sets whether children of `layout` should be laid out by appending
          * them or by prepending them
          * @param pack_start `true` if the `layout` should pack children at the   beginning of the layout
+         * @since 1.2
          */
         set_pack_start(pack_start: boolean): void;
 
         /**
          * Sets the spacing between children of `layout`
          * @param spacing the spacing between children of the layout, in pixels
+         * @since 1.2
          */
         set_spacing(spacing: number): void;
     }
@@ -16216,11 +16486,13 @@ export namespace Clutter {
         // Methods
         /**
          * Retrieves the change in brightness used by `effect`.
+         * @since 1.10
          */
         get_brightness(): [number, number, number];
 
         /**
          * Retrieves the contrast value used by `effect`.
+         * @since 1.10
          */
         get_contrast(): [number, number, number];
 
@@ -16229,6 +16501,7 @@ export namespace Clutter {
          * a value below 0.0 indicates a decrease in brightness; and a value
          * above 0.0 indicates an increase of brightness.
          * @param brightness the brightness change for all three components (r, g, b)
+         * @since 1.10
          */
         set_brightness(brightness: number): void;
 
@@ -16239,6 +16512,7 @@ export namespace Clutter {
          * @param red red component of the change in brightness
          * @param green green component of the change in brightness
          * @param blue blue component of the change in brightness
+         * @since 1.10
          */
         set_brightness_full(red: number, green: number, blue: number): void;
 
@@ -16247,6 +16521,7 @@ export namespace Clutter {
          * a value below 0.0 indicates a decrease in contrast; and a value above
          * 0.0 indicates an increase.
          * @param contrast contrast change for all three channels
+         * @since 1.10
          */
         set_contrast(contrast: number): void;
 
@@ -16257,6 +16532,7 @@ export namespace Clutter {
          * @param red red component of the change in contrast
          * @param green green component of the change in contrast
          * @param blue blue component of the change in contrast
+         * @since 1.10
          */
         set_contrast_full(red: number, green: number, blue: number): void;
     }
@@ -16363,6 +16639,7 @@ export namespace Clutter {
          * 
          * You should call `clutter_content_invalidate()` every time you wish to
          * draw the contents of the canvas.
+         * @since 1.10
          */
         static ["new"](): Content;
 
@@ -16410,6 +16687,7 @@ export namespace Clutter {
          * @param width the width of the canvas, in pixels
          * @param height the height of the canvas, in pixels
          * @returns this function returns `true` if the size change   caused a content invalidation, and `false` otherwise
+         * @since 1.10
          */
         set_size(width: number, height: number): boolean;
 
@@ -16420,6 +16698,7 @@ export namespace Clutter {
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
+         * @since 1.10
          */
         get_preferred_size(): [boolean, number, number];
 
@@ -16429,6 +16708,7 @@ export namespace Clutter {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          */
         invalidate(): void;
 
@@ -16459,6 +16739,7 @@ export namespace Clutter {
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
+         * @since 1.10
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
@@ -16469,6 +16750,7 @@ export namespace Clutter {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          * @virtual
          */
         vfunc_invalidate(): void;
@@ -16594,12 +16876,14 @@ export namespace Clutter {
         /**
          * Retrieves the actor wrapped by `data`
          * @returns a {@link Clutter.Actor}
+         * @since 0.8
          */
         get_actor(): Actor;
 
         /**
          * Retrieves the container using `data`
          * @returns a {@link Clutter.Container}
+         * @since 0.8
          */
         get_container(): Container;
     }
@@ -16770,17 +17054,20 @@ export namespace Clutter {
         /**
          * Retrieves the button that was pressed.
          * @returns the button value
+         * @since 1.4
          */
         get_button(): number;
 
         /**
          * Retrieves the screen coordinates of the button press.
+         * @since 1.8
          */
         get_coords(): [number, number];
 
         /**
          * Retrieves the modifier state of the click action.
          * @returns the modifier state parameter, or 0
+         * @since 1.6
          */
         get_state(): ModifierType;
 
@@ -16793,6 +17080,7 @@ export namespace Clutter {
          * 
          * This function is useful to break a grab, for instance after a certain
          * amount of time has passed.
+         * @since 1.4
          */
         release(): void;
     }
@@ -16965,12 +17253,14 @@ export namespace Clutter {
         /**
          * Retrieves the source {@link Clutter.Actor} being cloned by `self`.
          * @returns the actor source for the clone
+         * @since 1.0
          */
         get_source(): Actor;
 
         /**
          * Sets `source` as the source actor to be cloned by `self`.
          * @param source a {@link Clutter.Actor}, or `null`
+         * @since 1.0
          */
         set_source(source: Actor | null): void;
 
@@ -16978,6 +17268,7 @@ export namespace Clutter {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -16991,6 +17282,7 @@ export namespace Clutter {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -17008,6 +17300,7 @@ export namespace Clutter {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
 
@@ -17015,12 +17308,14 @@ export namespace Clutter {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -17035,6 +17330,7 @@ export namespace Clutter {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -17052,6 +17348,7 @@ export namespace Clutter {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, GObject.Value | any];
@@ -17060,6 +17357,7 @@ export namespace Clutter {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -17074,6 +17372,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Actor): void;
 
@@ -17088,6 +17388,7 @@ export namespace Clutter {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Actor, property: string, value: GObject.Value | any): void;
 
@@ -17097,6 +17398,7 @@ export namespace Clutter {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Actor, pspec: GObject.ParamSpec): void;
 
@@ -17105,6 +17407,7 @@ export namespace Clutter {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Actor, property: string, value: GObject.Value | any): void;
 
@@ -17119,6 +17422,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Actor): void;
 
@@ -17132,6 +17436,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Actor): void;
 
@@ -17140,6 +17445,7 @@ export namespace Clutter {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Actor;
 
@@ -17148,12 +17454,15 @@ export namespace Clutter {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Actor): ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Actor[];
 
@@ -17165,6 +17474,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Actor, sibling: Actor | null): void;
 
@@ -17176,6 +17487,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Actor, sibling: Actor | null): void;
 
@@ -17189,12 +17502,16 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -17220,6 +17537,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Actor): void;
@@ -17230,6 +17549,7 @@ export namespace Clutter {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Actor, pspec: GObject.ParamSpec): void;
@@ -17245,6 +17565,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Actor): void;
@@ -17259,6 +17580,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Actor): void;
@@ -17267,6 +17589,7 @@ export namespace Clutter {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Actor): ChildMeta;
@@ -17279,6 +17602,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Actor, sibling: Actor | null): void;
@@ -17291,6 +17616,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Actor, sibling: Actor | null): void;
@@ -17305,6 +17632,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Actor): void;
@@ -17312,6 +17641,8 @@ export namespace Clutter {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -17319,6 +17650,7 @@ export namespace Clutter {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -17330,6 +17662,7 @@ export namespace Clutter {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -17339,6 +17672,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
 
@@ -17350,11 +17684,13 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -17366,6 +17702,7 @@ export namespace Clutter {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -17376,6 +17713,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
@@ -17388,6 +17726,7 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -17492,12 +17831,14 @@ export namespace Clutter {
         // Methods
         /**
          * Retrieves the tint used by `effect`
+         * @since 1.4
          */
         get_tint(): Color;
 
         /**
          * Sets the tint to be used when colorizing
          * @param tint the color to be used
+         * @since 1.4
          */
         set_tint(tint: Color): void;
     }
@@ -17684,18 +18025,21 @@ export namespace Clutter {
         /**
          * Retrieves the handle to the back face material used by `effect`
          * @returns a handle for the material, or `null`.   The returned material is owned by the {@link Clutter.DeformEffect} and it   should not be freed directly
+         * @since 1.4
          */
         get_back_material(): Cogl.Handle;
 
         /**
          * Retrieves the number of horizontal and vertical tiles used to sub-divide
          * the actor's geometry during the effect
+         * @since 1.4
          */
         get_n_tiles(): [number, number];
 
         /**
          * Invalidates the `effect`<!-- -->'s vertices and, if it is associated
          * to an actor, it will queue a redraw
+         * @since 1.4
          */
         invalidate(): void;
 
@@ -17706,6 +18050,7 @@ export namespace Clutter {
          * The {@link Clutter.DeformEffect} will take a reference on the material's
          * handle
          * @param material a handle to a Cogl material
+         * @since 1.4
          */
         set_back_material(material: Cogl.Handle | null): void;
 
@@ -17717,6 +18062,7 @@ export namespace Clutter {
          * of computation
          * @param x_tiles number of horizontal tiles
          * @param y_tiles number of vertical tiles
+         * @since 1.4
          */
         set_n_tiles(x_tiles: number, y_tiles: number): void;
     }
@@ -17788,6 +18134,7 @@ export namespace Clutter {
         /**
          * Retrieves the desaturation factor of `effect`
          * @returns the desaturation factor
+         * @since 1.4
          */
         get_factor(): number;
 
@@ -17795,6 +18142,7 @@ export namespace Clutter {
          * Sets the desaturation factor for `effect`, with 0.0 being "do not desaturate"
          * and 1.0 being "fully desaturate"
          * @param factor the desaturation factor, between 0.0 and 1.0
+         * @since 1.4
          */
         set_factor(factor: number): void;
     }
@@ -17917,6 +18265,7 @@ export namespace Clutter {
          * one then that will override this call. In that case this effect
          * will instead be called with the {@link Clutter.EffectPaintFlags.ACTOR_DIRTY}
          * flag set.
+         * @since 1.8
          */
         queue_repaint(): void;
     }
@@ -18178,46 +18527,54 @@ export namespace Clutter {
         /**
          * Retrieves the spacing between columns
          * @returns the spacing between columns of the {@link Clutter.FlowLayout},   in pixels
+         * @since 1.2
          */
         get_column_spacing(): number;
 
         /**
          * Retrieves the minimum and maximum column widths
+         * @since 1.2
          */
         get_column_width(): [number, number];
 
         /**
          * Retrieves whether the `layout` is homogeneous
          * @returns `true` if the {@link Clutter.FlowLayout} is homogeneous
+         * @since 1.2
          */
         get_homogeneous(): boolean;
 
         /**
          * Retrieves the orientation of the `layout`
          * @returns the orientation of the {@link Clutter.FlowLayout}
+         * @since 1.2
          */
         get_orientation(): FlowOrientation;
 
         /**
          * Retrieves the minimum and maximum row heights
+         * @since 1.2
          */
         get_row_height(): [number, number];
 
         /**
          * Retrieves the spacing between rows
          * @returns the spacing between rows of the {@link Clutter.FlowLayout},   in pixels
+         * @since 1.2
          */
         get_row_spacing(): number;
 
         /**
          * Retrieves the value of {@link Clutter.FlowLayout.snap_to_grid} property
          * @returns `true` if the `layout` is placing its children on a grid
+         * @since 1.16
          */
         get_snap_to_grid(): boolean;
 
         /**
          * Sets the space between columns, in pixels
          * @param spacing the space between columns
+         * @since 1.2
          */
         set_column_spacing(spacing: number): void;
 
@@ -18225,6 +18582,7 @@ export namespace Clutter {
          * Sets the minimum and maximum widths that a column can have
          * @param min_width minimum width of a column
          * @param max_width maximum width of a column
+         * @since 1.2
          */
         set_column_width(min_width: number, max_width: number): void;
 
@@ -18232,6 +18590,7 @@ export namespace Clutter {
          * Sets whether the `layout` should allocate the same space for
          * each child
          * @param homogeneous whether the layout should be homogeneous or not
+         * @since 1.2
          */
         set_homogeneous(homogeneous: boolean): void;
 
@@ -18242,6 +18601,7 @@ export namespace Clutter {
          * the children: either horizontally or vertically. The
          * orientation also controls the direction of the overflowing
          * @param orientation the orientation of the layout
+         * @since 1.2
          */
         set_orientation(orientation: FlowOrientation): void;
 
@@ -18249,18 +18609,21 @@ export namespace Clutter {
          * Sets the minimum and maximum heights that a row can have
          * @param min_height the minimum height of a row
          * @param max_height the maximum height of a row
+         * @since 1.2
          */
         set_row_height(min_height: number, max_height: number): void;
 
         /**
          * Sets the spacing between rows, in pixels
          * @param spacing the space between rows
+         * @since 1.2
          */
         set_row_spacing(spacing: number): void;
 
         /**
          * Whether the `layout` should place its children on a grid.
          * @param snap_to_grid `true` if `layout` should place its children on a grid
+         * @since 1.16
          */
         set_snap_to_grid(snap_to_grid: boolean): void;
     }
@@ -18549,6 +18912,7 @@ export namespace Clutter {
         // Methods
         /**
          * Cancel a {@link Clutter.GestureAction} before it begins
+         * @since 1.12
          */
         cancel(): void;
 
@@ -18556,6 +18920,7 @@ export namespace Clutter {
          * Retrieves the {@link Clutter.InputDevice} of a touch point.
          * @param point the touch point index, with 0 being the first touch   point received by the action
          * @returns the {@link Clutter.InputDevice} of a touch point.
+         * @since 1.12
          */
         get_device(point: number): InputDevice;
 
@@ -18564,6 +18929,7 @@ export namespace Clutter {
          * `clutter_event_copy()` if you need to store the reference somewhere.
          * @param point index of a point currently active
          * @returns the last {@link Clutter.Event} for a touch point.
+         * @since 1.14
          */
         get_last_event(point: number): Event;
 
@@ -18571,6 +18937,7 @@ export namespace Clutter {
          * Retrieves the coordinates, in stage space, of the latest motion
          * event during the dragging.
          * @param point the touch point index, with 0 being the first touch   point received by the action
+         * @since 1.8
          */
         get_motion_coords(point: number): [number, number];
 
@@ -18579,18 +18946,21 @@ export namespace Clutter {
          * during the dragging.
          * @param point the touch point index, with 0 being the first touch   point received by the action
          * @returns the distance since last motion event
+         * @since 1.12
          */
         get_motion_delta(point: number): [number, number, number];
 
         /**
          * Retrieves the number of points currently active.
          * @returns the number of points currently active.
+         * @since 1.12
          */
         get_n_current_points(): number;
 
         /**
          * Retrieves the number of requested points to trigger the gesture.
          * @returns the number of points to trigger the gesture.
+         * @since 1.12
          */
         get_n_touch_points(): number;
 
@@ -18598,6 +18968,7 @@ export namespace Clutter {
          * Retrieves the coordinates, in stage space, of the press event
          * that started the dragging for a specific touch point.
          * @param point the touch point index, with 0 being the first touch   point received by the action
+         * @since 1.8
          */
         get_press_coords(point: number): [number, number];
 
@@ -18605,6 +18976,7 @@ export namespace Clutter {
          * Retrieves the coordinates, in stage space, where the touch point was
          * last released.
          * @param point the touch point index, with 0 being the first touch   point received by the action
+         * @since 1.8
          */
         get_release_coords(point: number): [number, number];
 
@@ -18612,12 +18984,14 @@ export namespace Clutter {
          * Retrieves the {@link Clutter.EventSequence} of a touch point.
          * @param point index of a point currently active
          * @returns the {@link Clutter.EventSequence} of a touch point.
+         * @since 1.12
          */
         get_sequence(point: number): EventSequence;
 
         /**
          * Retrieves the threshold trigger distance of the gesture `action`,
          * as set using `clutter_gesture_action_set_threshold_trigger_distance()`.
+         * @since 1.18
          */
         get_threshold_trigger_distance(): [number, number];
 
@@ -18625,6 +18999,7 @@ export namespace Clutter {
          * Retrieves the edge trigger of the gesture `action`, as set using
          * `clutter_gesture_action_set_threshold_trigger_edge()`.
          * @returns the edge trigger
+         * @since 1.20
          */
         get_threshold_trigger_edge(): GestureTriggerEdge;
 
@@ -18632,6 +19007,8 @@ export namespace Clutter {
          * Retrieves the edge trigger of the gesture `action`, as set using
          * `clutter_gesture_action_set_threshold_trigger_edge()`.
          * @returns the edge trigger
+         * @since 1.18
+         * @deprecated since 1.20: Use `clutter_gesture_action_get_threshold_trigger_edge()` instead.
          */
         get_threshold_trigger_egde(): GestureTriggerEdge;
 
@@ -18639,12 +19016,14 @@ export namespace Clutter {
          * Retrieves the velocity, in stage pixels per millisecond, of the
          * latest motion event during the dragging.
          * @param point the touch point index, with 0 being the first touch   point received by the action
+         * @since 1.12
          */
         get_velocity(point: number): [number, number, number];
 
         /**
          * Sets the number of points needed to trigger the gesture.
          * @param nb_points a number of points
+         * @since 1.12
          */
         set_n_touch_points(nb_points: number): void;
 
@@ -18655,6 +19034,7 @@ export namespace Clutter {
          * {@link Clutter.GestureAction} during their construction phase.
          * @param x the distance on the horizontal axis
          * @param y the distance on the vertical axis
+         * @since 1.18
          */
         set_threshold_trigger_distance(x: number, y: number): void;
 
@@ -18664,6 +19044,7 @@ export namespace Clutter {
          * This function should only be called by sub-classes of
          * {@link Clutter.GestureAction} during their construction phase.
          * @param edge the %ClutterGestureTriggerEdge
+         * @since 1.18
          */
         set_threshold_trigger_edge(edge: GestureTriggerEdge): void;
     }
@@ -18807,6 +19188,7 @@ export namespace Clutter {
          * @param top the row number to attach the top side of `child` to
          * @param width the number of columns that `child` will span
          * @param height the number of rows that `child` will span
+         * @since 1.12
          */
         attach(child: Actor, left: number, top: number, width: number, height: number): void;
 
@@ -18825,6 +19207,7 @@ export namespace Clutter {
          * @param side the side of `sibling` that `child` is positioned next to
          * @param width the number of columns that `child` will span
          * @param height the number of rows that `child` will span
+         * @since 1.12
          */
         attach_next_to(child: Actor, sibling: Actor | null, side: GridPosition, width: number, height: number): void;
 
@@ -18834,6 +19217,7 @@ export namespace Clutter {
          * @param left the left edge of the cell
          * @param top the top edge of the cell
          * @returns the child at the given position, or `null`
+         * @since 1.12
          */
         get_child_at(left: number, top: number): Actor;
 
@@ -18846,24 +19230,28 @@ export namespace Clutter {
         /**
          * Retrieves the spacing set using `clutter_grid_layout_set_column_spacing()`
          * @returns the spacing between coluns of `layout`
+         * @since 1.12
          */
         get_column_spacing(): number;
 
         /**
          * Retrieves the orientation of the `layout`.
          * @returns the orientation of the layout
+         * @since 1.12
          */
         get_orientation(): Orientation;
 
         /**
          * Returns whether all rows of `layout` have the same height.
          * @returns whether all rows of `layout` have the same height.
+         * @since 1.12
          */
         get_row_homogeneous(): boolean;
 
         /**
          * Retrieves the spacing set using `clutter_grid_layout_set_row_spacing()`
          * @returns the spacing between rows of `layout`
+         * @since 1.12
          */
         get_row_spacing(): number;
 
@@ -18874,6 +19262,7 @@ export namespace Clutter {
          * are moved one column to the right. Children which span across this
          * position are grown to span the new column.
          * @param position the position to insert the column at
+         * @since 1.12
          */
         insert_column(position: number): void;
 
@@ -18887,6 +19276,7 @@ export namespace Clutter {
          * a column is inserted.
          * @param sibling the child of `layout` that the new row or column will be     placed next to
          * @param side the side of `sibling` that `child` is positioned next to
+         * @since 1.12
          */
         insert_next_to(sibling: Actor, side: GridPosition): void;
 
@@ -18897,18 +19287,21 @@ export namespace Clutter {
          * are moved one row down. Children which span across this
          * position are grown to span the new row.
          * @param position the position to insert the row at
+         * @since 1.12
          */
         insert_row(position: number): void;
 
         /**
          * Sets whether all columns of `layout` will have the same width.
          * @param homogeneous `true` to make columns homogeneous
+         * @since 1.12
          */
         set_column_homogeneous(homogeneous: boolean): void;
 
         /**
          * Sets the spacing between columns of `layout`
          * @param spacing the spacing between columns of the layout, in pixels
+         * @since 1.12
          */
         set_column_spacing(spacing: number): void;
 
@@ -18920,18 +19313,21 @@ export namespace Clutter {
          * `clutter_actor_add_child()`; changing this value will not have
          * any effect on children that are already part of the layout.
          * @param orientation the orientation of the {@link Clutter.GridLayout}
+         * @since 1.12
          */
         set_orientation(orientation: Orientation): void;
 
         /**
          * Sets whether all rows of `layout` will have the same height.
          * @param homogeneous `true` to make rows homogeneous
+         * @since 1.12
          */
         set_row_homogeneous(homogeneous: boolean): void;
 
         /**
          * Sets the spacing between rows of `layout`
          * @param spacing the spacing between rows of the layout, in pixels
+         * @since 1.12
          */
         set_row_spacing(spacing: number): void;
     }
@@ -18985,6 +19381,7 @@ export namespace Clutter {
         // Static methods
         /**
          * Creates a new {@link Clutter.Image} instance.
+         * @since 1.10
          */
         static ["new"](): Content;
 
@@ -18996,6 +19393,7 @@ export namespace Clutter {
          * to manually invalidate the `image` with `clutter_content_invalidate()`
          * in order to update the actors using `image` as their content.
          * @returns a pointer to the Cogl texture, or `null`
+         * @since 1.10
          */
         get_texture(): Cogl.Texture;
 
@@ -19019,6 +19417,7 @@ export namespace Clutter {
          * @param rect a rectangle indicating the area that should be set
          * @param row_stride the length of each row inside `data`
          * @returns `true` if the image data was successfully loaded,   and `false` otherwise.
+         * @since 1.10
          */
         set_area(data: Uint8Array | string, pixel_format: Cogl.PixelFormat, rect: cairo.RectangleInt, row_stride: number): boolean;
 
@@ -19038,6 +19437,7 @@ export namespace Clutter {
          * @param height the height of the image data
          * @param row_stride the length of each row inside `data`
          * @returns `true` if the image data was successfully loaded,   and `false` otherwise.
+         * @since 1.12
          */
         set_bytes(data: GLib.Bytes | Uint8Array, pixel_format: Cogl.PixelFormat, width: number, height: number, row_stride: number): boolean;
 
@@ -19080,6 +19480,7 @@ export namespace Clutter {
          * @param height the height of the image data
          * @param row_stride the length of each row inside `data`
          * @returns `true` if the image data was successfully loaded,   and `false` otherwise.
+         * @since 1.10
          */
         set_data(data: Uint8Array | string, pixel_format: Cogl.PixelFormat, width: number, height: number, row_stride: number): boolean;
 
@@ -19096,6 +19497,7 @@ export namespace Clutter {
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
+         * @since 1.10
          */
         get_preferred_size(): [boolean, number, number];
 
@@ -19105,6 +19507,7 @@ export namespace Clutter {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          */
         invalidate(): void;
 
@@ -19135,6 +19538,7 @@ export namespace Clutter {
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
+         * @since 1.10
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
@@ -19145,6 +19549,7 @@ export namespace Clutter {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          * @virtual
          */
         vfunc_invalidate(): void;
@@ -19451,6 +19856,7 @@ export namespace Clutter {
          * from the {@link Clutter.KeyEvent}.hardware_keycode member of {@link Clutter.KeyEvent}.
          * @param hardware_keycode The hardware keycode from a {@link Clutter.KeyEvent}
          * @param evdev_keycode The return location for the evdev keycode
+         * @since 1.10
          * @virtual
          */
         vfunc_keycode_to_evdev(hardware_keycode: number, evdev_keycode: number): boolean;
@@ -19467,6 +19873,7 @@ export namespace Clutter {
          * of `device` and `sequence`.
          * @param sequence an optional {@link Clutter.EventSequence}
          * @returns a pointer to the {@link Clutter.Actor} or `null`
+         * @since 1.2
          */
         get_actor(sequence: EventSequence | null): Actor;
 
@@ -19478,6 +19885,7 @@ export namespace Clutter {
          * set to {@link Clutter.InputMode.LOGICAL}, this function will return
          * `null`.
          * @returns a {@link Clutter.InputDevice}, or `null`
+         * @since 1.6
          */
         get_associated_device(): InputDevice;
 
@@ -19485,6 +19893,7 @@ export namespace Clutter {
          * Retrieves the type of axis on `device` at the given index.
          * @param index_ the index of the axis
          * @returns the axis type
+         * @since 1.6
          */
         get_axis(index_: number): InputAxis;
 
@@ -19508,6 +19917,7 @@ export namespace Clutter {
          * @param axes an array of axes values, typically   coming from `clutter_event_get_axes()`
          * @param axis the axis to extract
          * @returns `true` if the value was set, and `false` otherwise
+         * @since 1.6
          */
         get_axis_value(axes: number[], axis: InputAxis): [boolean, number];
 
@@ -19516,24 +19926,28 @@ export namespace Clutter {
          * `device`.
          * @param sequence a {@link Clutter.EventSequence}, or `null` if   the device is not touch-based
          * @returns `false` if the device's sequence hasn't been found,   and `true` otherwise.
+         * @since 1.12
          */
         get_coords(sequence: EventSequence | null): [boolean, Graphene.Point];
 
         /**
          * Retrieves the unique identifier of `device`
          * @returns the identifier of the device
+         * @since 1.0
          */
         get_device_id(): number;
 
         /**
          * Retrieves the {@link Clutter.InputMode} of `device`.
          * @returns the device mode
+         * @since 1.6
          */
         get_device_mode(): InputMode;
 
         /**
          * Retrieves the name of the `device`
          * @returns the name of the device, or `null`. The returned string   is owned by the {@link Clutter.InputDevice} and should never be modified   or freed
+         * @since 1.2
          */
         get_device_name(): string;
 
@@ -19542,12 +19956,14 @@ export namespace Clutter {
         /**
          * Retrieves the type of `device`
          * @returns the type of the device
+         * @since 1.0
          */
         get_device_type(): InputDeviceType;
 
         /**
          * Retrieves whether `device` is enabled.
          * @returns `true` if the device is enabled
+         * @since 1.6
          */
         get_enabled(): boolean;
 
@@ -19555,6 +19971,7 @@ export namespace Clutter {
          * Retrieves a pointer to the {@link Clutter.Actor} currently grabbing all
          * the events coming from `device`.
          * @returns a {@link Clutter.Actor}, or `null`
+         * @since 1.10
          */
         get_grabbed_actor(): Actor;
 
@@ -19567,6 +19984,7 @@ export namespace Clutter {
          * Retrieves whether `device` has a pointer that follows the
          * device motion.
          * @returns `true` if the device has a cursor
+         * @since 1.6
          */
         get_has_cursor(): boolean;
 
@@ -19574,6 +19992,7 @@ export namespace Clutter {
          * Retrieves the key set using `clutter_input_device_set_key()`
          * @param index_ the index of the key
          * @returns `true` if a key was set at the given index
+         * @since 1.6
          */
         get_key(index_: number): [boolean, number, ModifierType];
 
@@ -19588,18 +20007,21 @@ export namespace Clutter {
          * Retrieves the current modifiers state of the device, as seen
          * by the last event Clutter processed.
          * @returns the last known modifier state
+         * @since 1.16
          */
         get_modifier_state(): ModifierType;
 
         /**
          * Retrieves the number of axes available on `device`.
          * @returns the number of axes on the device
+         * @since 1.6
          */
         get_n_axes(): number;
 
         /**
          * Retrieves the number of keys registered for `device`.
          * @returns the number of registered keys
+         * @since 1.6
          */
         get_n_keys(): number;
 
@@ -19612,18 +20034,21 @@ export namespace Clutter {
         /**
          * Retrieves the physical devices attached to `device`.
          * @returns a   list of {@link Clutter.InputDevice}, or `null`. The contents of the list are   owned by the device. Use `g_list_free()` when done
+         * @since 1.6
          */
         get_physical_devices(): InputDevice[];
 
         /**
          * Retrieves the {@link Clutter.Stage} underneath the pointer of `device`
          * @returns a pointer to the {@link Clutter.Stage} or `null`
+         * @since 1.2
          */
         get_pointer_stage(): Stage;
 
         /**
          * Gets the product ID of this device.
          * @returns the product ID
+         * @since 1.22
          */
         get_product_id(): string;
 
@@ -19636,6 +20061,7 @@ export namespace Clutter {
         /**
          * Gets the vendor ID of this device.
          * @returns the vendor ID
+         * @since 1.22
          */
         get_vendor_id(): string;
 
@@ -19652,6 +20078,7 @@ export namespace Clutter {
          * Only {@link Clutter.InputDevice} of types {@link Clutter.InputDeviceType.POINTER_DEVICE},
          * {@link Clutter.InputDeviceType.TABLET_DEVICE} and {@link Clutter.InputDeviceType.KEYBOARD_DEVICE} can hold a grab.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.10
          */
         grab(actor: Actor): void;
 
@@ -19675,6 +20102,7 @@ export namespace Clutter {
          * @param hardware_keycode The hardware keycode from a {@link Clutter.KeyEvent}
          * @param evdev_keycode The return location for the evdev keycode
          * @returns `true` if the conversion succeeded, `false` otherwise.
+         * @since 1.10
          */
         keycode_to_evdev(hardware_keycode: number, evdev_keycode: number): boolean;
 
@@ -19683,6 +20111,7 @@ export namespace Clutter {
          * touch events coming from `device` given the `sequence`.
          * @param sequence a {@link Clutter.EventSequence}
          * @returns a {@link Clutter.Actor}, or `null`
+         * @since 1.12
          */
         sequence_get_grabbed_actor(sequence: EventSequence): Actor;
 
@@ -19699,6 +20128,7 @@ export namespace Clutter {
          * backend has the concept of "device grabs", Clutter will not use them.
          * @param sequence a {@link Clutter.EventSequence}
          * @param actor a {@link Clutter.Actor}
+         * @since 1.12
          */
         sequence_grab(sequence: EventSequence, actor: Actor): void;
 
@@ -19706,6 +20136,7 @@ export namespace Clutter {
          * Releases the grab on the `device` for the given `sequence`, if one is
          * in place.
          * @param sequence a {@link Clutter.EventSequence}
+         * @since 1.12
          */
         sequence_ungrab(sequence: EventSequence): void;
 
@@ -19716,6 +20147,7 @@ export namespace Clutter {
          * to {@link Clutter.InputMode.PHYSICAL} or {@link Clutter.InputMode.FLOATING} can
          * be disabled.
          * @param enabled `true` to enable the `device`
+         * @since 1.6
          */
         set_enabled(enabled: boolean): void;
 
@@ -19727,6 +20159,7 @@ export namespace Clutter {
          * @param index_ the index of the key
          * @param keyval the keyval
          * @param modifiers a bitmask of modifiers
+         * @since 1.6
          */
         set_key(index_: number, keyval: number, modifiers: ModifierType): void;
 
@@ -19737,6 +20170,7 @@ export namespace Clutter {
 
         /**
          * Releases the grab on the `device`, if one is in place.
+         * @since 1.10
          */
         ungrab(): void;
 
@@ -19798,6 +20232,7 @@ export namespace Clutter {
          * of the passed `event` to update the stage associated to the input device.
          * @param event a {@link Clutter.Event}
          * @param update_stage whether to update the {@link Clutter.Stage} of the `device`   using the stage of the event
+         * @since 1.2
          */
         update_from_event(event: Event, update_stage: boolean): void;
     }
@@ -19880,12 +20315,14 @@ export namespace Clutter {
          * Gets the serial of this tool, this value can be used to identify a
          * physical tool (eg. a tablet pen) across program executions.
          * @returns The serial ID for this tool
+         * @since 1.28
          */
         get_serial(): number;
 
         /**
          * Gets the tool type of this tool.
          * @returns The tool type of this tool
+         * @since 1.28
          */
         get_tool_type(): InputDeviceToolType;
     }
@@ -20297,6 +20734,7 @@ export namespace Clutter {
          * Computes the value between the `interval` boundaries given the
          * progress `factor` and copies it into `value`.
          * @param factor the progress factor, between 0 and 1
+         * @since 1.0
          * @virtual
          */
         vfunc_compute_value(factor: number): [boolean, GObject.Value | any];
@@ -20305,6 +20743,7 @@ export namespace Clutter {
          * Validates the initial and final values of `interval` against
          * a {@link GObject.ParamSpec}.
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.0
          * @virtual
          */
         vfunc_validate(pspec: GObject.ParamSpec): boolean;
@@ -20313,6 +20752,7 @@ export namespace Clutter {
         /**
          * Creates a copy of `interval`.
          * @returns the newly created {@link Clutter.Interval}
+         * @since 1.0
          */
         clone(): Interval;
 
@@ -20328,6 +20768,7 @@ export namespace Clutter {
          * `g_object_set_property()`
          * @param factor the progress factor, between 0 and 1
          * @returns a pointer to the computed value,   or `null` if the computation was not successful
+         * @since 1.4
          */
         compute(factor: number): unknown;
 
@@ -20336,6 +20777,7 @@ export namespace Clutter {
          * progress `factor` and copies it into `value`.
          * @param factor the progress factor, between 0 and 1
          * @returns `true` if the operation was successful
+         * @since 1.0
          */
         compute_value(factor: number): [boolean, unknown];
 
@@ -20345,6 +20787,7 @@ export namespace Clutter {
          * 
          * The passed {@link GObject.Value} must be initialized to the value held by
          * the {@link Clutter.Interval}.
+         * @since 1.0
          */
         get_final_value(): unknown;
 
@@ -20354,30 +20797,35 @@ export namespace Clutter {
          * 
          * The passed {@link GObject.Value} must be initialized to the value held by
          * the {@link Clutter.Interval}.
+         * @since 1.0
          */
         get_initial_value(): unknown;
 
         /**
          * Retrieves the {@link GObject.GType} of the values inside `interval`.
          * @returns the type of the value, or G_TYPE_INVALID
+         * @since 1.0
          */
         get_value_type(): GObject.GType;
 
         /**
          * Checks if the `interval` has a valid initial and final values.
          * @returns `true` if the {@link Clutter.Interval} has an initial and   final values, and `false` otherwise
+         * @since 1.12
          */
         is_valid(): boolean;
 
         /**
          * Gets the pointer to the final value of `interval`
          * @returns the final value of the interval.   The value is owned by the {@link Clutter.Interval} and it should not be   modified or freed
+         * @since 1.0
          */
         peek_final_value(): unknown;
 
         /**
          * Gets the pointer to the initial value of `interval`
          * @returns the initial value of the interval.   The value is owned by the {@link Clutter.Interval} and it should not be   modified or freed
+         * @since 1.0
          */
         peek_initial_value(): unknown;
 
@@ -20385,6 +20833,7 @@ export namespace Clutter {
          * Sets the final value of `interval` to `value`. The value is
          * copied inside the {@link Clutter.Interval}.
          * @param value a {@link GObject.Value}
+         * @since 1.0
          */
         set_final(value: GObject.Value | any): void;
 
@@ -20392,6 +20841,7 @@ export namespace Clutter {
          * Sets the initial value of `interval` to `value`. The value is copied
          * inside the {@link Clutter.Interval}.
          * @param value a {@link GObject.Value}
+         * @since 1.0
          */
         set_initial(value: GObject.Value | any): void;
 
@@ -20400,12 +20850,14 @@ export namespace Clutter {
          * a {@link GObject.ParamSpec}.
          * @param pspec a {@link GObject.ParamSpec}
          * @returns `true` if the {@link Clutter.Interval} is valid, `false` otherwise
+         * @since 1.0
          */
         validate(pspec: GObject.ParamSpec): boolean;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -20417,6 +20869,7 @@ export namespace Clutter {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -20426,6 +20879,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
 
@@ -20437,11 +20891,13 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -20453,6 +20909,7 @@ export namespace Clutter {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -20463,6 +20920,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
@@ -20475,6 +20933,7 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -20546,6 +21005,7 @@ export namespace Clutter {
         // Methods
         /**
          * Removes all key frames from `transition`.
+         * @since 1.12
          */
         clear(): void;
 
@@ -20555,12 +21015,14 @@ export namespace Clutter {
          * The `transition` must already have key frames set, and `index_` must be
          * smaller than the number of key frames.
          * @param index_ the index of the key frame
+         * @since 1.12
          */
         get_key_frame(index_: number): [number, AnimationMode | null, unknown];
 
         /**
          * Retrieves the number of key frames inside `transition`.
          * @returns the number of key frames
+         * @since 1.12
          */
         get_n_key_frames(): number;
 
@@ -20573,6 +21035,7 @@ export namespace Clutter {
          * @param key the key of the key frame
          * @param mode the easing mode of the key frame
          * @param value a {@link GObject.Value} containing the value of the key frame
+         * @since 1.12
          */
         set_key_frame(index_: number, key: number, mode: AnimationMode, value: GObject.Value | any): void;
 
@@ -20583,6 +21046,7 @@ export namespace Clutter {
          * will be created; if `transition` already has key frames, `key_frames` must
          * have at least as many elements as the number of key frames.
          * @param key_frames an array of keys between 0.0   and 1.0, one for each key frame
+         * @since 1.12
          */
         set_key_frames(key_frames: number[]): void;
 
@@ -20593,6 +21057,7 @@ export namespace Clutter {
          * be created; if `transition` already has key frames, `modes` must have
          * at least as many elements as the number of key frames.
          * @param modes an array of easing modes, one for   each key frame
+         * @since 1.12
          */
         set_modes(modes: AnimationMode[]): void;
 
@@ -20603,6 +21068,7 @@ export namespace Clutter {
          * be created; if `transition` already has key frames, `values` must have
          * at least as many elements as the number of key frames.
          * @param values an array of values, one for each   key frame
+         * @since 1.12
          */
         set_values(values: (GObject.Value | any)[]): void;
     }
@@ -20793,6 +21259,7 @@ export namespace Clutter {
          * See also `clutter_actor_allocate()`
          * @param container the {@link Clutter.Container} using `manager`
          * @param allocation the {@link Clutter.ActorBox} containing the allocated area   of `container`
+         * @since 1.2
          * @virtual
          */
         vfunc_allocate(container: Container, allocation: ActorBox): void;
@@ -20809,6 +21276,7 @@ export namespace Clutter {
          * See also `clutter_actor_get_preferred_height()`
          * @param container the {@link Clutter.Container} using `manager`
          * @param for_width the width for which the height should be computed, or -1
+         * @since 1.2
          * @virtual
          */
         vfunc_get_preferred_height(container: Container, for_width: number): [number, number];
@@ -20820,6 +21288,7 @@ export namespace Clutter {
          * See also `clutter_actor_get_preferred_width()`
          * @param container the {@link Clutter.Container} using `manager`
          * @param for_height the height for which the width should be computed, or -1
+         * @since 1.2
          * @virtual
          */
         vfunc_get_preferred_width(container: Container, for_height: number): [number, number];
@@ -20829,6 +21298,7 @@ export namespace Clutter {
          * 
          * This function should only be called by implementations of the
          * {@link Clutter.LayoutManager} class
+         * @since 1.2
          * @virtual
          */
         vfunc_layout_changed(): void;
@@ -20841,6 +21311,7 @@ export namespace Clutter {
          * The layout manager should not increase the reference
          * count of the `container`
          * @param container a {@link Clutter.Container} using `manager`
+         * @since 1.2
          * @virtual
          */
         vfunc_set_container(container: Container | null): void;
@@ -20852,6 +21323,7 @@ export namespace Clutter {
          * See also `clutter_actor_allocate()`
          * @param container the {@link Clutter.Container} using `manager`
          * @param allocation the {@link Clutter.ActorBox} containing the allocated area   of `container`
+         * @since 1.2
          */
         allocate(container: Container, allocation: ActorBox): void;
 
@@ -20866,6 +21338,7 @@ export namespace Clutter {
          * @param actor a {@link Clutter.Actor} child of `container`
          * @param property_name the name of the property to get
          * @param value a {@link GObject.Value} with the value of the property to get
+         * @since 1.2
          */
         child_get_property(container: Container, actor: Actor, property_name: string, value: GObject.Value | any): void;
 
@@ -20876,6 +21349,7 @@ export namespace Clutter {
          * @param actor a {@link Clutter.Actor} child of `container`
          * @param property_name the name of the property to set
          * @param value a {@link GObject.Value} with the value of the property to set
+         * @since 1.2
          */
         child_set_property(container: Container, actor: Actor, property_name: string, value: GObject.Value | any): void;
 
@@ -20884,6 +21358,7 @@ export namespace Clutter {
          * the {@link Clutter.LayoutMeta} sub-class used by `manager`
          * @param name the name of the property
          * @returns a {@link GObject.ParamSpec} describing the property,   or `null` if no property with that name exists. The returned   {@link GObject.ParamSpec} is owned by the layout manager and should not be   modified or freed
+         * @since 1.2
          */
         find_child_property(name: string): GObject.ParamSpec;
 
@@ -20894,6 +21369,7 @@ export namespace Clutter {
          * @param container a {@link Clutter.Container} using `manager`
          * @param actor a {@link Clutter.Actor} child of `container`
          * @returns a {@link Clutter.LayoutMeta}, or `null` if the   {@link Clutter.LayoutManager} does not have layout properties. The returned   layout meta instance is owned by the {@link Clutter.LayoutManager} and it   should not be unreferenced
+         * @since 1.0
          */
         get_child_meta(container: Container, actor: Actor): LayoutMeta;
 
@@ -20904,6 +21380,7 @@ export namespace Clutter {
          * See also `clutter_actor_get_preferred_height()`
          * @param container the {@link Clutter.Container} using `manager`
          * @param for_width the width for which the height should be computed, or -1
+         * @since 1.2
          */
         get_preferred_height(container: Container, for_width: number): [number, number];
 
@@ -20914,6 +21391,7 @@ export namespace Clutter {
          * See also `clutter_actor_get_preferred_width()`
          * @param container the {@link Clutter.Container} using `manager`
          * @param for_height the height for which the width should be computed, or -1
+         * @since 1.2
          */
         get_preferred_width(container: Container, for_height: number): [number, number];
 
@@ -20922,6 +21400,7 @@ export namespace Clutter {
          * 
          * This function should only be called by implementations of the
          * {@link Clutter.LayoutManager} class
+         * @since 1.2
          */
         layout_changed(): void;
 
@@ -20929,6 +21408,7 @@ export namespace Clutter {
          * Retrieves all the {@link GObject.ParamSpec}<!-- -->s for the layout properties
          * stored inside the {@link Clutter.LayoutMeta} sub-class used by `manager`
          * @returns the newly-allocated,   `null`-terminated array of {@link GObject.ParamSpec}<!-- -->s. Use `g_free()` to free the   resources allocated for the array
+         * @since 1.2
          */
         list_child_properties(): GObject.ParamSpec[];
 
@@ -20940,6 +21420,7 @@ export namespace Clutter {
          * The layout manager should not increase the reference
          * count of the `container`
          * @param container a {@link Clutter.Container} using `manager`
+         * @since 1.2
          */
         set_container(container: Container | null): void;
     }
@@ -21010,6 +21491,7 @@ export namespace Clutter {
         /**
          * Retrieves the actor wrapped by `data`
          * @returns a {@link Clutter.LayoutManager}
+         * @since 1.2
          */
         get_manager(): LayoutManager;
     }
@@ -21068,6 +21550,7 @@ export namespace Clutter {
          * Calls the `create_texture()` virtual function of the `effect`
          * @param width the minimum width of the target texture
          * @param height the minimum height of the target texture
+         * @since 1.4
          * @virtual
          */
         vfunc_create_texture(width: number, height: number): Cogl.Handle;
@@ -21075,6 +21558,7 @@ export namespace Clutter {
         /**
          * Calls the `paint_target()` virtual function of the `effect`
          * @param paint_context a {@link Clutter.PaintContext}
+         * @since 1.4
          * @virtual
          */
         vfunc_paint_target(paint_context: PaintContext): void;
@@ -21085,6 +21569,7 @@ export namespace Clutter {
          * @param width the minimum width of the target texture
          * @param height the minimum height of the target texture
          * @returns a handle to a Cogl texture, or   `null`. The returned handle has its reference   count increased.
+         * @since 1.4
          */
         create_texture(width: number, height: number): Cogl.Handle;
 
@@ -21096,6 +21581,7 @@ export namespace Clutter {
          * implementations, from within the {@link Clutter.OffscreenEffectClass}.paint_target()
          * virtual function.
          * @returns `true` if the offscreen buffer has a valid rectangle,   and `false` otherwise
+         * @since 1.14
          */
         get_target_rect(): [boolean, Graphene.Rect];
 
@@ -21107,6 +21593,8 @@ export namespace Clutter {
          * implementations, from within the {@link Clutter.OffscreenEffectClass}.paint_target()
          * virtual function.
          * @returns `true` if the offscreen buffer has a valid size,   and `false` otherwise
+         * @since 1.8
+         * @deprecated since 1.14: Use `clutter_offscreen_effect_get_target_rect()` instead
          */
         get_target_size(): [boolean, number, number];
 
@@ -21121,12 +21609,14 @@ export namespace Clutter {
          * used instead of `clutter_offscreen_effect_get_target()` when the
          * effect subclass wants to paint using its own material.
          * @returns a {@link Cogl.Handle} or `null`. The   returned texture is owned by Clutter and it should not be   modified or freed
+         * @since 1.10
          */
         get_texture(): Cogl.Handle;
 
         /**
          * Calls the `paint_target()` virtual function of the `effect`
          * @param paint_context a {@link Clutter.PaintContext}
+         * @since 1.4
          */
         paint_target(paint_context: PaintContext): void;
     }
@@ -21218,24 +21708,28 @@ export namespace Clutter {
         /**
          * Retrieves the value set using `clutter_page_turn_effect_get_angle()`
          * @returns the angle of the page curling
+         * @since 1.4
          */
         get_angle(): number;
 
         /**
          * Retrieves the value set using `clutter_page_turn_effect_get_period()`
          * @returns the period of the page curling
+         * @since 1.4
          */
         get_period(): number;
 
         /**
          * Retrieves the value set using `clutter_page_turn_effect_set_radius()`
          * @returns the radius of the page curling
+         * @since 1.4
          */
         get_radius(): number;
 
         /**
          * Sets the angle of the page curling, in degrees
          * @param angle the angle of the page curl, in degrees
+         * @since 1.4
          */
         set_angle(angle: number): void;
 
@@ -21243,12 +21737,14 @@ export namespace Clutter {
          * Sets the period of the page curling, between 0.0 (no curling)
          * and 1.0 (fully curled)
          * @param period the period of the page curl, between 0.0 and 1.0
+         * @since 1.4
          */
         set_period(period: number): void;
 
         /**
          * Sets the radius of the page curling
          * @param radius the radius of the page curling, in pixels
+         * @since 1.4
          */
         set_radius(radius: number): void;
     }
@@ -21290,6 +21786,7 @@ export namespace Clutter {
          * 
          * This function will acquire a reference on `child`.
          * @param child the child {@link Clutter.PaintNode} to add
+         * @since 1.10
          */
         add_child(child: PaintNode): void;
 
@@ -21305,6 +21802,7 @@ export namespace Clutter {
          * Adds a rectangle region to the `node`, as described by the
          * passed `rect`.
          * @param rect a {@link Clutter.ActorBox}
+         * @since 1.10
          */
         add_rectangle(rect: ActorBox): void;
 
@@ -21315,6 +21813,7 @@ export namespace Clutter {
          * @param y_1 the top Y coordinate of the texture
          * @param x_2 the right X coordinate of the texture
          * @param y_2 the bottom Y coordinate of the texture
+         * @since 1.10
          */
         add_texture_rectangle(rect: ActorBox, x_1: number, y_1: number, x_2: number, y_2: number): void;
 
@@ -21335,6 +21834,7 @@ export namespace Clutter {
         /**
          * Acquires a reference on `node`.
          * @returns the {@link Clutter.PaintNode}
+         * @since 1.10
          */
         ref(): PaintNode;
 
@@ -21346,11 +21846,13 @@ export namespace Clutter {
          * The `node` will intern `name` using `g_intern_string()`. If you have access to a
          * static string, use `clutter_paint_node_set_static_name()` instead.
          * @param name a string annotating the `node`
+         * @since 1.10
          */
         set_name(name: string): void;
 
         /**
          * Releases a reference on `node`.
+         * @since 1.10
          */
         unref(): void;
     }
@@ -21511,6 +22013,7 @@ export namespace Clutter {
         /**
          * Retrieves the initial acceleration factor for interpolated ::pan events.
          * @returns The initial acceleration factor for interpolated events.
+         * @since 1.12
          */
         get_acceleration_factor(): number;
 
@@ -21520,12 +22023,14 @@ export namespace Clutter {
          * {@link Clutter.PanAction.pan_axis} property.
          * @param point the touch point index, with 0 being the first touch   point received by the action
          * @returns the distance since last motion event
+         * @since 1.24
          */
         get_constrained_motion_delta(point: number): [number, number, number];
 
         /**
          * Retrieves the deceleration rate of interpolated ::pan events.
          * @returns The deceleration rate of the interpolated events.
+         * @since 1.12
          */
         get_deceleration(): number;
 
@@ -21534,12 +22039,14 @@ export namespace Clutter {
          * the pointer during a panning gesture, to emulate some kind of
          * kinetic inertia.
          * @returns `true` if interpolated events emission is active.
+         * @since 1.12
          */
         get_interpolate(): boolean;
 
         /**
          * Retrieves the coordinates, in stage space, of the latest interpolated
          * event, analogous to `clutter_gesture_action_get_motion_coords()`.
+         * @since 1.12
          */
         get_interpolated_coords(): [number, number];
 
@@ -21547,6 +22054,7 @@ export namespace Clutter {
          * Retrieves the delta, in stage space, since the latest interpolated
          * event, analogous to `clutter_gesture_action_get_motion_delta()`.
          * @returns the distance since the latest interpolated event
+         * @since 1.12
          */
         get_interpolated_delta(): [number, number, number];
 
@@ -21560,6 +22068,7 @@ export namespace Clutter {
          * `clutter_pan_action_get_interpolated_coords()`. This is a convenience
          * method designed to be used in replacement "pan" signal handlers.
          * @param point the touch point index, with 0 being the first touch   point received by the action
+         * @since 1.14
          */
         get_motion_coords(point: number): [number, number];
 
@@ -21573,12 +22082,14 @@ export namespace Clutter {
          * `clutter_pan_action_get_interpolated_delta()`. This is a convenience
          * method designed to be used in replacement "pan" signal handlers.
          * @param point the touch point index, with 0 being the first touch   point received by the action
+         * @since 1.14
          */
         get_motion_delta(point: number): [number, number, number];
 
         /**
          * Retrieves the axis constraint set by `clutter_pan_action_set_pan_axis()`
          * @returns the axis constraint
+         * @since 1.12
          */
         get_pan_axis(): PanAxis;
 
@@ -21586,6 +22097,7 @@ export namespace Clutter {
          * Factor applied to the momentum velocity at the time of releasing the
          * pointer when generating interpolated ::pan events.
          * @param factor The acceleration factor
+         * @since 1.12
          */
         set_acceleration_factor(factor: number): void;
 
@@ -21594,6 +22106,7 @@ export namespace Clutter {
          * after a pan gesture. This is approximately the value that the momentum
          * at the time of releasing the pointer is divided by every 60th of a second.
          * @param rate The deceleration rate
+         * @since 1.12
          */
         set_deceleration(rate: number): void;
 
@@ -21601,12 +22114,14 @@ export namespace Clutter {
          * Sets whether the action should emit interpolated ::pan events
          * after the drag has ended, to emulate the gesture kinetic inertia.
          * @param should_interpolate whether to enable interpolated pan events
+         * @since 1.12
          */
         set_interpolate(should_interpolate: boolean): void;
 
         /**
          * Restricts the panning action to a specific axis
          * @param axis the axis to constraint the panning to
+         * @since 1.12
          */
         set_pan_axis(axis: PanAxis): void;
     }
@@ -21679,6 +22194,7 @@ export namespace Clutter {
         /**
          * Add the nodes of the Cairo path to the end of `path`.
          * @param cpath a Cairo path
+         * @since 1.0
          */
         add_cairo_path(cpath: cairo.Path): void;
 
@@ -21686,6 +22202,7 @@ export namespace Clutter {
          * Adds a {@link Clutter.PathNodeType.CLOSE} type node to the path. This creates a
          * straight line from the last node to the last {@link Clutter.PathNodeType.MOVE_TO}
          * type node.
+         * @since 1.0
          */
         add_close(): void;
 
@@ -21699,6 +22216,7 @@ export namespace Clutter {
          * @param y_2 the y coordinate of the second control point
          * @param x_3 the x coordinate of the third control point
          * @param y_3 the y coordinate of the third control point
+         * @since 1.0
          */
         add_curve_to(x_1: number, y_1: number, x_2: number, y_2: number, x_3: number, y_3: number): void;
 
@@ -21707,6 +22225,7 @@ export namespace Clutter {
          * actor to move to the new coordinates in a straight line.
          * @param x the x coordinate
          * @param y the y coordinate
+         * @since 1.0
          */
         add_line_to(x: number, y: number): void;
 
@@ -21716,12 +22235,14 @@ export namespace Clutter {
          * of the path to cause the actor to jump to the new coordinate.
          * @param x the x coordinate
          * @param y the y coordinate
+         * @since 1.0
          */
         add_move_to(x: number, y: number): void;
 
         /**
          * Adds `node` to the end of the path.
          * @param node a {@link Clutter.PathNode}
+         * @since 1.0
          */
         add_node(node: PathNode): void;
 
@@ -21734,6 +22255,7 @@ export namespace Clutter {
          * @param y_2 the y coordinate of the second control point
          * @param x_3 the x coordinate of the third control point
          * @param y_3 the y coordinate of the third control point
+         * @since 1.0
          */
         add_rel_curve_to(x_1: number, y_1: number, x_2: number, y_2: number, x_3: number, y_3: number): void;
 
@@ -21742,6 +22264,7 @@ export namespace Clutter {
          * relative to the previous node.
          * @param x the x coordinate
          * @param y the y coordinate
+         * @since 1.0
          */
         add_rel_line_to(x: number, y: number): void;
 
@@ -21750,6 +22273,7 @@ export namespace Clutter {
          * relative to the previous node.
          * @param x the x coordinate
          * @param y the y coordinate
+         * @since 1.0
          */
         add_rel_move_to(x: number, y: number): void;
 
@@ -21781,17 +22305,20 @@ export namespace Clutter {
          * nodes will be added.
          * @param str a string describing the new nodes
          * @returns `true` is the path description was valid or `false` otherwise.
+         * @since 1.0
          */
         add_string(str: string): boolean;
 
         /**
          * Removes all nodes from the path.
+         * @since 1.0
          */
         clear(): void;
 
         /**
          * Calls a function for each node of the path.
          * @param callback the function to call with each node
+         * @since 1.0
          */
         foreach(callback: PathCallback): void;
 
@@ -21799,24 +22326,28 @@ export namespace Clutter {
          * Returns a newly allocated string describing the path in the same
          * format as used by `clutter_path_add_string()`.
          * @returns a string description of the path. Free with `g_free()`.
+         * @since 1.0
          */
         get_description(): string;
 
         /**
          * Retrieves an approximation of the total length of the path.
          * @returns the length of the path.
+         * @since 1.0
          */
         get_length(): number;
 
         /**
          * Retrieves the number of nodes in the path.
          * @returns the number of nodes.
+         * @since 1.0
          */
         get_n_nodes(): number;
 
         /**
          * Retrieves the node of the path indexed by `index`.
          * @param index_ the node number to retrieve
+         * @since 1.0
          */
         get_node(index_: number): PathNode;
 
@@ -21827,6 +22358,7 @@ export namespace Clutter {
          * list to become invalid so you should copy them if you want to keep
          * the list.
          * @returns a   list of nodes in the path.
+         * @since 1.0
          */
         get_nodes(): PathNode[];
 
@@ -21836,6 +22368,7 @@ export namespace Clutter {
          * interpolated position is then stored in `position`.
          * @param progress a position along the path as a fraction of its length
          * @returns index of the node used to calculate the position.
+         * @since 1.0
          */
         get_position(progress: number): [number, Knot];
 
@@ -21844,12 +22377,14 @@ export namespace Clutter {
          * `index_` is negative it will append the node to the end of the path.
          * @param index_ offset of where to insert the node
          * @param node the node to insert
+         * @since 1.0
          */
         insert_node(index_: number, node: PathNode): void;
 
         /**
          * Removes the node at the given offset from the path.
          * @param index_ index of the node to remove
+         * @since 1.0
          */
         remove_node(index_: number): void;
 
@@ -21857,6 +22392,7 @@ export namespace Clutter {
          * Replaces the node at offset `index_` with `node`.
          * @param index_ index to the existing node
          * @param node the replacement node
+         * @since 1.0
          */
         replace_node(index_: number, node: PathNode): void;
 
@@ -21868,12 +22404,14 @@ export namespace Clutter {
          * unaltered.
          * @param str a string describing the path
          * @returns `true` is the path was valid, `false` otherwise.
+         * @since 1.0
          */
         set_description(str: string): boolean;
 
         /**
          * Add the nodes of the ClutterPath to the path in the Cairo context.
          * @param cr a Cairo context
+         * @since 1.0
          */
         to_cairo_path(cr: cairo.Context): void;
     }
@@ -21962,18 +22500,21 @@ export namespace Clutter {
         /**
          * Retrieves the offset along the {@link Clutter.Path} used by `constraint`.
          * @returns the offset
+         * @since 1.6
          */
         get_offset(): number;
 
         /**
          * Retrieves a pointer to the {@link Clutter.Path} used by `constraint`.
          * @returns the {@link Clutter.Path} used by the   {@link Clutter.PathConstraint}, or `null`. The returned {@link Clutter.Path} is owned   by the constraint and it should not be unreferenced
+         * @since 1.6
          */
         get_path(): Path;
 
         /**
          * Sets the offset along the {@link Clutter.Path} used by `constraint`.
          * @param offset the offset along the path
+         * @since 1.6
          */
         set_offset(offset: number): void;
 
@@ -21983,6 +22524,7 @@ export namespace Clutter {
          * The `constraint` will take ownership of the {@link Clutter.Path} passed to this
          * function.
          * @param path a {@link Clutter.Path}
+         * @since 1.6
          */
         set_path(path: Path | null): void;
     }
@@ -22110,12 +22652,14 @@ export namespace Clutter {
          * Retrieves the value of the {@link Clutter.PropertyTransition.property_name}
          * property.
          * @returns the name of the property being animated, or `null` if   none is set. The returned string is owned by the `transition` and   it should not be freed.
+         * @since 1.10
          */
         get_property_name(): string;
 
         /**
          * Sets the {@link Clutter.PropertyTransition.property_name} property of `transition`.
          * @param property_name a property name
+         * @since 1.10
          */
         set_property_name(property_name: string | null): void;
     }
@@ -22338,6 +22882,7 @@ export namespace Clutter {
          * {@link Clutter.Script} has for that purpose. This function should
          * rarely be used.
          * @param type_name name of the type to look up
+         * @since 0.6
          * @virtual
          */
         vfunc_get_type_from_name(type_name: string): GObject.GType;
@@ -22350,6 +22895,7 @@ export namespace Clutter {
          * can be used to define search paths for the textures source file name
          * or other custom, file-based properties.
          * @param paths an array of strings containing   different search paths
+         * @since 0.8
          */
         add_search_paths(paths: string[]): void;
 
@@ -22364,6 +22910,7 @@ export namespace Clutter {
          * Note that this function will not work if {@link GModule.Module} is not supported by
          * the platform Clutter is running on.
          * @param user_data data to be passed to the signal handlers, or `null`
+         * @since 0.6
          */
         connect_signals(user_data: null): void;
 
@@ -22379,12 +22926,14 @@ export namespace Clutter {
          * 
          * Applications should use `clutter_script_connect_signals()`.
          * @param func signal connection function
+         * @since 0.6
          */
         connect_signals_full(func: ScriptConnectFunc): void;
 
         /**
          * Ensure that every object defined inside `script` is correctly
          * constructed. You should rarely need to use this function.
+         * @since 0.6
          */
         ensure_objects(): void;
 
@@ -22393,6 +22942,7 @@ export namespace Clutter {
          * the reference count of the returned object.
          * @param name the name of the object to retrieve
          * @returns the named object, or `null` if no object   with the given name was available
+         * @since 0.6
          */
         get_object<T = GObject.Object>(name: string): T;
 
@@ -22400,6 +22950,7 @@ export namespace Clutter {
          * Retrieves the translation domain set using
          * `clutter_script_set_translation_domain()`.
          * @returns the translation domain, if any is set,   or `null`
+         * @since 1.10
          */
         get_translation_domain(): string;
 
@@ -22409,6 +22960,7 @@ export namespace Clutter {
          * rarely be used.
          * @param type_name name of the type to look up
          * @returns the type for the requested type name, or   `G_TYPE_INVALID` if not corresponding type was found.
+         * @since 0.6
          */
         get_type_from_name(type_name: string): GObject.GType;
 
@@ -22418,6 +22970,7 @@ export namespace Clutter {
          * Note: this function does not increment the reference count of the
          * objects it returns.
          * @returns a list   of {@link GObject.Object}<!-- -->s, or `null`. The objects are owned by the   {@link Clutter.Script} instance. Use `g_list_free()` on the returned list when   done.
+         * @since 0.8
          */
         list_objects(): GObject.Object[];
 
@@ -22427,6 +22980,7 @@ export namespace Clutter {
          * @param data a buffer containing the definitions
          * @param length the length of the buffer, or -1 if `data` is a NUL-terminated   buffer
          * @returns on error, zero is returned and `error` is set   accordingly. On success, the merge id for the UI definitions is   returned. You can use the merge id with `clutter_script_unmerge_objects()`.
+         * @since 0.6
          */
         load_from_data(data: string, length: bigint | number): number;
 
@@ -22435,6 +22989,7 @@ export namespace Clutter {
          * the currently loaded ones, if any.
          * @param filename the full path to the definition file
          * @returns on error, zero is returned and `error` is set   accordingly. On success, the merge id for the UI definitions is   returned. You can use the merge id with `clutter_script_unmerge_objects()`.
+         * @since 0.6
          */
         load_from_file(filename: string): number;
 
@@ -22443,6 +22998,7 @@ export namespace Clutter {
          * the currently loaded ones, if any.
          * @param resource_path the resource path of the file to parse
          * @returns on error, zero is returned and `error` is set   accordingly. On success, the merge id for the UI definitions is   returned. You can use the merge id with `clutter_script_unmerge_objects()`.
+         * @since 1.10
          */
         load_from_resource(resource_path: string): number;
 
@@ -22451,18 +23007,21 @@ export namespace Clutter {
          * is found, its full path will be returned .
          * @param filename the name of the file to lookup
          * @returns the full path of `filename` or `null` if no path was   found.
+         * @since 0.8
          */
         lookup_filename(filename: string): string;
 
         /**
          * Sets the translation domain for `script`.
          * @param domain the translation domain, or `null`
+         * @since 1.10
          */
         set_translation_domain(domain: string | null): void;
 
         /**
          * Unmerges the objects identified by `merge_id`.
          * @param merge_id merge id returned when loading a UI definition
+         * @since 0.6
          */
         unmerge_objects(merge_id: number): void;
     }
@@ -22606,6 +23165,7 @@ export namespace Clutter {
         /**
          * Retrieves the {@link Clutter.ScrollActor.scroll_mode} property
          * @returns the scrolling mode
+         * @since 1.12
          */
         get_scroll_mode(): ScrollMode;
 
@@ -22618,18 +23178,21 @@ export namespace Clutter {
          * This function will use the currently set easing state of the `actor`
          * to transition from the current scroll origin to the new one.
          * @param point a {@link Graphene.Point}
+         * @since 1.12
          */
         scroll_to_point(point: Graphene.Point): void;
 
         /**
          * Scrolls `actor` so that `rect` is in the visible portion.
          * @param rect a `ClutterRect`
+         * @since 1.12
          */
         scroll_to_rect(rect: Graphene.Rect): void;
 
         /**
          * Sets the {@link Clutter.ScrollActor.scroll_mode} property.
          * @param mode a {@link Clutter.ScrollMode}
+         * @since 1.12
          */
         set_scroll_mode(mode: ScrollMode): void;
 
@@ -22637,6 +23200,7 @@ export namespace Clutter {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -22650,6 +23214,7 @@ export namespace Clutter {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -22667,6 +23232,7 @@ export namespace Clutter {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
 
@@ -22674,12 +23240,14 @@ export namespace Clutter {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -22694,6 +23262,7 @@ export namespace Clutter {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -22711,6 +23280,7 @@ export namespace Clutter {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, GObject.Value | any];
@@ -22719,6 +23289,7 @@ export namespace Clutter {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -22733,6 +23304,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Actor): void;
 
@@ -22747,6 +23320,7 @@ export namespace Clutter {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Actor, property: string, value: GObject.Value | any): void;
 
@@ -22756,6 +23330,7 @@ export namespace Clutter {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Actor, pspec: GObject.ParamSpec): void;
 
@@ -22764,6 +23339,7 @@ export namespace Clutter {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Actor, property: string, value: GObject.Value | any): void;
 
@@ -22778,6 +23354,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Actor): void;
 
@@ -22791,6 +23368,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Actor): void;
 
@@ -22799,6 +23377,7 @@ export namespace Clutter {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Actor;
 
@@ -22807,12 +23386,15 @@ export namespace Clutter {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Actor): ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Actor[];
 
@@ -22824,6 +23406,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Actor, sibling: Actor | null): void;
 
@@ -22835,6 +23419,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Actor, sibling: Actor | null): void;
 
@@ -22848,12 +23434,16 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -22879,6 +23469,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Actor): void;
@@ -22889,6 +23481,7 @@ export namespace Clutter {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Actor, pspec: GObject.ParamSpec): void;
@@ -22904,6 +23497,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Actor): void;
@@ -22918,6 +23512,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Actor): void;
@@ -22926,6 +23521,7 @@ export namespace Clutter {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Actor): ChildMeta;
@@ -22938,6 +23534,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Actor, sibling: Actor | null): void;
@@ -22950,6 +23548,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Actor, sibling: Actor | null): void;
@@ -22964,6 +23564,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Actor): void;
@@ -22971,6 +23573,8 @@ export namespace Clutter {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -22978,6 +23582,7 @@ export namespace Clutter {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -22989,6 +23594,7 @@ export namespace Clutter {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -22998,6 +23604,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
 
@@ -23009,11 +23616,13 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -23025,6 +23634,7 @@ export namespace Clutter {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -23035,6 +23645,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
@@ -23047,6 +23658,7 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -23694,6 +24306,7 @@ export namespace Clutter {
         // Static methods
         /**
          * Retrieves the singleton instance of {@link Clutter.Settings}
+         * @since 1.4
          */
         static get_default(): Settings;
     }
@@ -23782,12 +24395,14 @@ export namespace Clutter {
         /**
          * Retrieves a pointer to the program's handle
          * @returns a pointer to the program's handle,   or `null`
+         * @since 1.4
          */
         get_program(): Cogl.Handle;
 
         /**
          * Retrieves a pointer to the shader's handle
          * @returns a pointer to the shader's handle,   or `null`
+         * @since 1.4
          */
         get_shader(): Cogl.Handle;
 
@@ -23801,6 +24416,7 @@ export namespace Clutter {
          * yield no result.
          * @param source the source of a GLSL shader
          * @returns `true` if the source was set
+         * @since 1.4
          */
         set_shader_source(source: string): boolean;
 
@@ -23817,6 +24433,7 @@ export namespace Clutter {
          * languages than C.
          * @param name the name of the uniform to set
          * @param value a {@link GObject.Value} with the value of the uniform to set
+         * @since 1.4
          */
         set_uniform_value(name: string, value: GObject.Value | any): void;
     }
@@ -24017,18 +24634,21 @@ export namespace Clutter {
         // Methods
         /**
          * Retrieves the edges used by the `constraint`
+         * @since 1.6
          */
         get_edges(): [SnapEdge, SnapEdge];
 
         /**
          * Retrieves the offset set using `clutter_snap_constraint_set_offset()`
          * @returns the offset, in pixels
+         * @since 1.6
          */
         get_offset(): number;
 
         /**
          * Retrieves the {@link Clutter.Actor} set using `clutter_snap_constraint_set_source()`
          * @returns a pointer to the source actor
+         * @since 1.6
          */
         get_source(): Actor;
 
@@ -24040,18 +24660,21 @@ export namespace Clutter {
          * the {@link Clutter.SnapConstraint.source} property.
          * @param from_edge the edge on the actor
          * @param to_edge the edge on the source
+         * @since 1.6
          */
         set_edges(from_edge: SnapEdge, to_edge: SnapEdge): void;
 
         /**
          * Sets the offset to be applied to the constraint
          * @param offset the offset to apply, in pixels
+         * @since 1.6
          */
         set_offset(offset: number): void;
 
         /**
          * Sets the source {@link Clutter.Actor} for the constraint
          * @param source a {@link Clutter.Actor}, or `null` to unset the source
+         * @since 1.6
          */
         set_source(source: Actor | null): void;
     }
@@ -24322,6 +24945,7 @@ export namespace Clutter {
          * This function should not be called by applications; it is used
          * when embedding a {@link Clutter.Stage} into a toolkit with another
          * windowing system, like GTK+.
+         * @since 1.0
          */
         ensure_viewport(): void;
 
@@ -24332,6 +24956,7 @@ export namespace Clutter {
          * synthetised events.
          * @param event a {@link Clutter.Event}
          * @returns the return value from the signal emission
+         * @since 0.4
          */
         event(event: Event): boolean;
 
@@ -24365,6 +24990,7 @@ export namespace Clutter {
         /**
          * Retrieves the actor that is currently under key focus.
          * @returns the actor with key focus, or the stage
+         * @since 0.6
          */
         get_key_focus(): Actor;
 
@@ -24375,12 +25001,14 @@ export namespace Clutter {
          * The returned size may not correspond to the actual minimum size and
          * it is specific to the {@link Clutter.Stage} implementation inside the
          * Clutter backend
+         * @since 1.2
          */
         get_minimum_size(): [number, number];
 
         /**
          * Retrieves the value set using `clutter_stage_set_motion_events_enabled()`.
          * @returns `true` if the per-actor motion event delivery is enabled   and `false` otherwise
+         * @since 1.8
          */
         get_motion_events_enabled(): boolean;
 
@@ -24392,12 +25020,14 @@ export namespace Clutter {
         /**
          * Retrieves the value set with `clutter_stage_set_throttle_motion_events()`
          * @returns `true` if the motion events are being throttled,   and `false` otherwise
+         * @since 1.0
          */
         get_throttle_motion_events(): boolean;
 
         /**
          * Gets the stage title.
          * @returns pointer to the title string for the stage. The returned string is owned by the actor and should not be modified or freed.
+         * @since 0.4
          */
         get_title(): string;
 
@@ -24445,6 +25075,7 @@ export namespace Clutter {
          * all the key events. If `actor` is `null`, the stage will receive
          * focus.
          * @param actor the actor to set key focus to, or `null`
+         * @since 0.6
          */
         set_key_focus(actor: Actor | null): void;
 
@@ -24459,6 +25090,7 @@ export namespace Clutter {
          * `stage` will be resized to the new `width` and `height`
          * @param width width, in pixels
          * @param height height, in pixels
+         * @since 1.2
          */
         set_minimum_size(width: number, height: number): void;
 
@@ -24484,6 +25116,7 @@ export namespace Clutter {
          * the pointer is not going to change, so it's meaningless to perform
          * a pick.
          * @param enabled `true` to enable the motion events delivery, and `false`   otherwise
+         * @since 1.8
          */
         set_motion_events_enabled(enabled: boolean): void;
 
@@ -24497,12 +25130,14 @@ export namespace Clutter {
          * This function should only be used if you want to have all
          * the motion events delivered to your application code.
          * @param throttle `true` to throttle motion events
+         * @since 1.0
          */
         set_throttle_motion_events(throttle: boolean): void;
 
         /**
          * Sets the stage title.
          * @param title A utf8 string for the stage windows title.
+         * @since 0.4
          */
         set_title(title: string): void;
 
@@ -24515,6 +25150,7 @@ export namespace Clutter {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -24528,6 +25164,7 @@ export namespace Clutter {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -24545,6 +25182,7 @@ export namespace Clutter {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
 
@@ -24552,12 +25190,14 @@ export namespace Clutter {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -24572,6 +25212,7 @@ export namespace Clutter {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -24589,6 +25230,7 @@ export namespace Clutter {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, GObject.Value | any];
@@ -24597,6 +25239,7 @@ export namespace Clutter {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -24611,6 +25254,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Actor): void;
 
@@ -24625,6 +25270,7 @@ export namespace Clutter {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Actor, property: string, value: GObject.Value | any): void;
 
@@ -24634,6 +25280,7 @@ export namespace Clutter {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Actor, pspec: GObject.ParamSpec): void;
 
@@ -24642,6 +25289,7 @@ export namespace Clutter {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Actor, property: string, value: GObject.Value | any): void;
 
@@ -24656,6 +25304,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Actor): void;
 
@@ -24669,6 +25318,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Actor): void;
 
@@ -24677,6 +25327,7 @@ export namespace Clutter {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Actor;
 
@@ -24685,12 +25336,15 @@ export namespace Clutter {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Actor): ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Actor[];
 
@@ -24702,6 +25356,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Actor, sibling: Actor | null): void;
 
@@ -24713,6 +25369,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Actor, sibling: Actor | null): void;
 
@@ -24726,12 +25384,16 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -24757,6 +25419,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Actor): void;
@@ -24767,6 +25431,7 @@ export namespace Clutter {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Actor, pspec: GObject.ParamSpec): void;
@@ -24782,6 +25447,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Actor): void;
@@ -24796,6 +25462,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Actor): void;
@@ -24804,6 +25471,7 @@ export namespace Clutter {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Actor): ChildMeta;
@@ -24816,6 +25484,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Actor, sibling: Actor | null): void;
@@ -24828,6 +25498,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Actor, sibling: Actor | null): void;
@@ -24842,6 +25514,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Actor): void;
@@ -24849,6 +25523,8 @@ export namespace Clutter {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -24856,6 +25532,7 @@ export namespace Clutter {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -24867,6 +25544,7 @@ export namespace Clutter {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -24876,6 +25554,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
 
@@ -24887,11 +25566,13 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -24903,6 +25584,7 @@ export namespace Clutter {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -24913,6 +25595,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
@@ -24925,6 +25608,7 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -25013,6 +25697,7 @@ export namespace Clutter {
         // Static methods
         /**
          * Returns the default {@link Clutter.StageManager}.
+         * @since 0.8
          */
         static get_default(): StageManager;
 
@@ -25033,18 +25718,21 @@ export namespace Clutter {
         /**
          * Returns the default {@link Clutter.Stage}.
          * @returns the default stage. The returned object   is owned by Clutter and you should never reference or unreference it
+         * @since 0.8
          */
         get_default_stage(): Stage;
 
         /**
          * Lists all currently used stages.
          * @returns a newly   allocated list of {@link Clutter.Stage} objects. Use `g_slist_free()` to   deallocate it when done.
+         * @since 0.8
          */
         list_stages(): Stage[];
 
         /**
          * Lists all currently used stages.
          * @returns a pointer   to the internal list of {@link Clutter.Stage} objects. The returned list   is owned by the {@link Clutter.StageManager} and should never be modified   or freed
+         * @since 1.0
          */
         peek_stages(): Stage[];
     }
@@ -26072,6 +26760,7 @@ export namespace Clutter {
          * signal handlers before the default signal handler for the
          * {@link Clutter.Text} is invoked.
          * @returns `true` if the ::activate signal has been emitted,   and `false` otherwise
+         * @since 1.0
          */
         activate(): boolean;
 
@@ -26080,6 +26769,7 @@ export namespace Clutter {
          * @param x the X coordinate, relative to the actor
          * @param y the Y coordinate, relative to the actor
          * @returns the position of the character
+         * @since 1.10
          */
         coords_to_position(x: number, y: number): number;
 
@@ -26090,6 +26780,7 @@ export namespace Clutter {
          * Somewhat awkwardly, the cursor position is decremented by the same
          * number of characters you've deleted.
          * @param n_chars the number of characters to delete
+         * @since 1.0
          */
         delete_chars(n_chars: number): void;
 
@@ -26098,6 +26789,7 @@ export namespace Clutter {
          * 
          * This function is only useful in subclasses of {@link Clutter.Text}
          * @returns `true` if text was deleted or if the text actor   is empty, and `false` otherwise
+         * @since 1.0
          */
         delete_selection(): boolean;
 
@@ -26109,12 +26801,14 @@ export namespace Clutter {
          * not in bytes.
          * @param start_pos starting position
          * @param end_pos ending position
+         * @since 1.0
          */
         delete_text(start_pos: bigint | number, end_pos: bigint | number): void;
 
         /**
          * Retrieves whether a {@link Clutter.Text} is activatable or not.
          * @returns `true` if the actor is activatable
+         * @since 1.0
          */
         get_activatable(): boolean;
 
@@ -26122,6 +26816,7 @@ export namespace Clutter {
          * Gets the attribute list that was set on the {@link Clutter.Text} actor
          * `clutter_text_set_attributes()`, if any.
          * @returns the attribute list, or `null` if none was set. The  returned value is owned by the {@link Clutter.Text} and should not be unreferenced.
+         * @since 1.0
          */
         get_attributes(): Pango.AttrList;
 
@@ -26129,6 +26824,7 @@ export namespace Clutter {
          * Get the {@link Clutter.TextBuffer} object which holds the text for
          * this widget.
          * @returns A `GtkEntryBuffer` object.
+         * @since 1.10
          */
         get_buffer(): TextBuffer;
 
@@ -26140,22 +26836,26 @@ export namespace Clutter {
          * @param start_pos start of text, in characters
          * @param end_pos end of text, in characters
          * @returns a newly allocated string with the contents of   the text actor between the specified positions. Use `g_free()`   to free the resources when done
+         * @since 1.0
          */
         get_chars(start_pos: bigint | number, end_pos: bigint | number): string;
 
         /**
          * Retrieves the text color as set by `clutter_text_set_color()`.
+         * @since 1.0
          */
         get_color(): Color;
 
         /**
          * Retrieves the color of the cursor of a {@link Clutter.Text} actor.
+         * @since 1.0
          */
         get_cursor_color(): Color;
 
         /**
          * Retrieves the cursor position.
          * @returns the cursor position, in characters
+         * @since 1.0
          */
         get_cursor_position(): number;
 
@@ -26164,24 +26864,28 @@ export namespace Clutter {
          * 
          * The coordinates of the rectangle's origin are in actor-relative
          * coordinates.
+         * @since 1.16
          */
         get_cursor_rect(): Graphene.Rect;
 
         /**
          * Retrieves the size of the cursor of a {@link Clutter.Text} actor.
          * @returns the size of the cursor, in pixels
+         * @since 1.0
          */
         get_cursor_size(): number;
 
         /**
          * Retrieves whether the cursor of a {@link Clutter.Text} actor is visible.
          * @returns `true` if the cursor is visible
+         * @since 1.0
          */
         get_cursor_visible(): boolean;
 
         /**
          * Retrieves whether a {@link Clutter.Text} is editable or not.
          * @returns `true` if the actor is editable
+         * @since 1.0
          */
         get_editable(): boolean;
 
@@ -26189,18 +26893,21 @@ export namespace Clutter {
          * Returns the ellipsizing position of a {@link Clutter.Text} actor, as
          * set by `clutter_text_set_ellipsize()`.
          * @returns {@link Pango.EllipsizeMode}
+         * @since 1.0
          */
         get_ellipsize(): Pango.EllipsizeMode;
 
         /**
          * Retrieves the {@link Pango.FontDescription} used by `self`
          * @returns a {@link Pango.FontDescription}. The returned value is owned   by the {@link Clutter.Text} actor and it should not be modified or freed
+         * @since 1.2
          */
         get_font_description(): Pango.FontDescription;
 
         /**
          * Retrieves the font name as set by `clutter_text_set_font_name()`.
          * @returns a string containing the font name. The returned   string is owned by the {@link Clutter.Text} actor and should not be   modified or freed
+         * @since 1.0
          */
         get_font_name(): string;
 
@@ -26212,18 +26919,21 @@ export namespace Clutter {
          * Retrieves whether the {@link Clutter.Text} actor should justify its contents
          * on both margins.
          * @returns `true` if the text should be justified
+         * @since 0.6
          */
         get_justify(): boolean;
 
         /**
          * Retrieves the current {@link Pango.Layout} used by a {@link Clutter.Text} actor.
          * @returns a {@link Pango.Layout}. The returned object is owned by   the {@link Clutter.Text} actor and should not be modified or freed
+         * @since 1.0
          */
         get_layout(): Pango.Layout;
 
         /**
          * Obtains the coordinates where the {@link Clutter.Text} will draw the {@link Pango.Layout}
          * representing the text.
+         * @since 1.8
          */
         get_layout_offsets(): [number, number];
 
@@ -26231,12 +26941,14 @@ export namespace Clutter {
          * Retrieves the alignment of a {@link Clutter.Text}, as set by
          * `clutter_text_set_line_alignment()`.
          * @returns a {@link Pango.Alignment}
+         * @since 1.0
          */
         get_line_alignment(): Pango.Alignment;
 
         /**
          * Retrieves the value set using `clutter_text_set_line_wrap()`.
          * @returns `true` if the {@link Clutter.Text} actor should wrap   its contents
+         * @since 1.0
          */
         get_line_wrap(): boolean;
 
@@ -26245,6 +26957,7 @@ export namespace Clutter {
          * 
          * See clutter_text_set_line_wrap_mode ().
          * @returns the wrap mode used by the {@link Clutter.Text}
+         * @since 1.0
          */
         get_line_wrap_mode(): Pango.WrapMode;
 
@@ -26253,6 +26966,7 @@ export namespace Clutter {
          * 
          * See `clutter_text_set_max_length()`.
          * @returns the maximum number of characters.
+         * @since 1.0
          */
         get_max_length(): number;
 
@@ -26260,23 +26974,27 @@ export namespace Clutter {
          * Retrieves the character to use in place of the actual text
          * as set by `clutter_text_set_password_char()`.
          * @returns a Unicode character or 0 if the password   character is not set
+         * @since 1.0
          */
         get_password_char(): string;
 
         /**
          * Retrieves whether a {@link Clutter.Text} is selectable or not.
          * @returns `true` if the actor is selectable
+         * @since 1.0
          */
         get_selectable(): boolean;
 
         /**
          * Retrieves the color of selected text of a {@link Clutter.Text} actor.
+         * @since 1.8
          */
         get_selected_text_color(): Color;
 
         /**
          * Retrieves the currently selected text.
          * @returns a newly allocated string containing the currently   selected text, or `null`. Use `g_free()` to free the returned   string.
+         * @since 1.0
          */
         get_selection(): string;
 
@@ -26284,17 +27002,20 @@ export namespace Clutter {
          * Retrieves the other end of the selection of a {@link Clutter.Text} actor,
          * in characters from the current cursor position.
          * @returns the position of the other end of the selection
+         * @since 1.0
          */
         get_selection_bound(): number;
 
         /**
          * Retrieves the color of the selection of a {@link Clutter.Text} actor.
+         * @since 1.0
          */
         get_selection_color(): Color;
 
         /**
          * Retrieves whether the {@link Clutter.Text} actor is in single line mode.
          * @returns `true` if the {@link Clutter.Text} actor is in single line mode
+         * @since 1.0
          */
         get_single_line_mode(): boolean;
 
@@ -26316,6 +27037,7 @@ export namespace Clutter {
          * If the {@link Clutter.Text} actor is empty, this function will return
          * an empty string, and not `null`.
          * @returns the contents of the actor. The returned   string is owned by the {@link Clutter.Text} actor and should never be modified   or freed
+         * @since 1.0
          */
         get_text(): string;
 
@@ -26323,6 +27045,7 @@ export namespace Clutter {
          * Retrieves whether the contents of the {@link Clutter.Text} actor should be
          * parsed for the Pango text markup.
          * @returns `true` if the contents will be parsed for markup
+         * @since 1.0
          */
         get_use_markup(): boolean;
 
@@ -26337,6 +27060,7 @@ export namespace Clutter {
          * The position is expressed in characters, not in bytes.
          * @param text the text to be inserted
          * @param position the position of the insertion, or -1
+         * @since 1.0
          */
         insert_text(text: string, position: bigint | number): void;
 
@@ -26344,6 +27068,7 @@ export namespace Clutter {
          * Inserts `wc` at the current cursor position of a
          * {@link Clutter.Text} actor.
          * @param wc a Unicode character
+         * @since 1.0
          */
         insert_unichar(wc: string): void;
 
@@ -26351,6 +27076,7 @@ export namespace Clutter {
          * Retrieves the coordinates of the given `position`.
          * @param position position in characters
          * @returns `true` if the conversion was successful
+         * @since 1.0
          */
         position_to_coords(position: number): [boolean, number, number, number];
 
@@ -26364,6 +27090,7 @@ export namespace Clutter {
          * An activatable {@link Clutter.Text} must also be set as editable using
          * `clutter_text_set_editable()`.
          * @param activatable whether the {@link Clutter.Text} actor should be activatable
+         * @since 1.0
          */
         set_activatable(activatable: boolean): void;
 
@@ -26374,6 +27101,7 @@ export namespace Clutter {
          * The {@link Clutter.Text} actor will take a reference on the {@link Pango.AttrList}
          * passed to this function.
          * @param attrs a {@link Pango.AttrList} or `null` to unset the attributes
+         * @since 1.0
          */
         set_attributes(attrs: Pango.AttrList | null): void;
 
@@ -26381,6 +27109,7 @@ export namespace Clutter {
          * Set the {@link Clutter.TextBuffer} object which holds the text for
          * this widget.
          * @param buffer a {@link Clutter.TextBuffer}
+         * @since 1.10
          */
         set_buffer(buffer: TextBuffer): void;
 
@@ -26392,6 +27121,7 @@ export namespace Clutter {
          * opacity of the actor itself on the scenegraph, as returned
          * by `clutter_actor_get_paint_opacity()`.
          * @param color a {@link Clutter.Color}
+         * @since 1.0
          */
         set_color(color: Color): void;
 
@@ -26401,6 +27131,7 @@ export namespace Clutter {
          * If `color` is `null`, the cursor color will be the same as the
          * text color.
          * @param color the color of the cursor, or `null` to unset it
+         * @since 1.0
          */
         set_cursor_color(color: Color | null): void;
 
@@ -26409,6 +27140,7 @@ export namespace Clutter {
          * 
          * The position is expressed in characters, not in bytes.
          * @param position the new cursor position, in characters
+         * @since 1.0
          */
         set_cursor_position(position: number): void;
 
@@ -26417,6 +27149,7 @@ export namespace Clutter {
          * will only be visible if the {@link Clutter.Text.cursor_visible} property
          * is set to `true`.
          * @param size the size of the cursor, in pixels, or -1 to use the   default value
+         * @since 1.0
          */
         set_cursor_size(size: number): void;
 
@@ -26432,6 +27165,7 @@ export namespace Clutter {
          * The position of the cursor can be changed programmatically using
          * `clutter_text_set_cursor_position()`.
          * @param cursor_visible whether the cursor should be visible
+         * @since 1.0
          */
         set_cursor_visible(cursor_visible: boolean): void;
 
@@ -26442,6 +27176,7 @@ export namespace Clutter {
          * `clutter_actor_grab_key_focus()` or `clutter_stage_set_key_focus()`
          * will receive key events and will update its contents accordingly.
          * @param editable whether the {@link Clutter.Text} should be editable
+         * @since 1.0
          */
         set_editable(editable: boolean): void;
 
@@ -26450,6 +27185,7 @@ export namespace Clutter {
          * text if there is not enough space to render the entire contents
          * of a {@link Clutter.Text} actor
          * @param mode a {@link Pango.EllipsizeMode}
+         * @since 1.0
          */
         set_ellipsize(mode: Pango.EllipsizeMode): void;
 
@@ -26460,6 +27196,7 @@ export namespace Clutter {
          * so you can safely call `pango_font_description_free()` on it after
          * calling this function.
          * @param font_desc a {@link Pango.FontDescription}
+         * @since 1.2
          */
         set_font_description(font_desc: Pango.FontDescription): void;
 
@@ -26483,6 +27220,7 @@ export namespace Clutter {
          * ```
          * 
          * @param font_name a font name, or `null` to set the default font name
+         * @since 1.0
          */
         set_font_name(font_name: string | null): void;
 
@@ -26501,6 +27239,7 @@ export namespace Clutter {
          * on both margins. This setting is ignored if Clutter is compiled
          * against Pango &lt; 1.18.
          * @param justify whether the text should be justified
+         * @since 1.0
          */
         set_justify(justify: boolean): void;
 
@@ -26512,6 +27251,7 @@ export namespace Clutter {
          * To align a {@link Clutter.Text} actor you should add it to a container
          * that supports alignment, or use the anchor point.
          * @param alignment A {@link Pango.Alignment}
+         * @since 1.0
          */
         set_line_alignment(alignment: Pango.Alignment): void;
 
@@ -26519,6 +27259,7 @@ export namespace Clutter {
          * Sets whether the contents of a {@link Clutter.Text} actor should wrap,
          * if they don't fit the size assigned to the actor.
          * @param line_wrap whether the contents should wrap
+         * @since 1.0
          */
         set_line_wrap(line_wrap: boolean): void;
 
@@ -26527,6 +27268,7 @@ export namespace Clutter {
          * function controls how the line wrapping is performed. The default is
          * {@link Pango.WrapMode.WORD} which means wrap on word boundaries.
          * @param wrap_mode the line wrapping mode
+         * @since 1.0
          */
         set_line_wrap_mode(wrap_mode: Pango.WrapMode): void;
 
@@ -26544,6 +27286,7 @@ export namespace Clutter {
          * ```
          * 
          * @param markup a string containing Pango markup.   Passing `null` is the same as passing "" (the empty string)
+         * @since 1.0
          */
         set_markup(markup: string | null): void;
 
@@ -26552,6 +27295,7 @@ export namespace Clutter {
          * current contents are longer than the given length, then they will be
          * truncated to fit.
          * @param max the maximum number of characters allowed in the text actor; 0   to disable or -1 to set the length of the current string
+         * @since 1.0
          */
         set_max_length(max: number): void;
 
@@ -26562,6 +27306,7 @@ export namespace Clutter {
          * If `wc` is 0 the text will be displayed as it is entered in the
          * {@link Clutter.Text} actor.
          * @param wc a Unicode character, or 0 to unset the password character
+         * @since 1.0
          */
         set_password_char(wc: string): void;
 
@@ -26578,6 +27323,7 @@ export namespace Clutter {
          * @param preedit_str the pre-edit string, or `null` to unset it
          * @param preedit_attrs the pre-edit string attributes
          * @param cursor_pos the cursor position for the pre-edit string
+         * @since 1.2
          */
         set_preedit_string(preedit_str: string | null, preedit_attrs: Pango.AttrList | null, cursor_pos: number): void;
 
@@ -26587,6 +27333,7 @@ export namespace Clutter {
          * A selectable {@link Clutter.Text} will allow selecting its contents using
          * the pointer or the keyboard.
          * @param selectable whether the {@link Clutter.Text} actor should be selectable
+         * @since 1.0
          */
         set_selectable(selectable: boolean): void;
 
@@ -26596,6 +27343,7 @@ export namespace Clutter {
          * If `color` is `null`, the selected text color will be the same as the
          * selection color, which then falls back to cursor, and then text color.
          * @param color the selected text color, or `null` to unset it
+         * @since 1.8
          */
         set_selected_text_color(color: Color | null): void;
 
@@ -26606,6 +27354,7 @@ export namespace Clutter {
          * `start_pos` and the selection bound to match `end_pos`.
          * @param start_pos start of the selection, in characters
          * @param end_pos end of the selection, in characters
+         * @since 1.0
          */
         set_selection(start_pos: bigint | number, end_pos: bigint | number): void;
 
@@ -26615,6 +27364,7 @@ export namespace Clutter {
          * 
          * If `selection_bound` is -1, the selection unset.
          * @param selection_bound the position of the end of the selection, in characters
+         * @since 1.0
          */
         set_selection_bound(selection_bound: number): void;
 
@@ -26625,6 +27375,7 @@ export namespace Clutter {
          * cursor color, or if no cursor color is set either then it will be
          * the same as the text color.
          * @param color the color of the selection, or `null` to unset it
+         * @since 1.0
          */
         set_selection_color(color: Color | null): void;
 
@@ -26643,6 +27394,7 @@ export namespace Clutter {
          * line character, the text actor will emit the {@link Clutter.Text.SignalSignatures.activate | Clutter.Text::activate}
          * signal.
          * @param single_line whether to enable single line mode
+         * @since 1.0
          */
         set_single_line_mode(single_line: boolean): void;
 
@@ -26654,6 +27406,7 @@ export namespace Clutter {
          * maintain the {@link Clutter.Text.use_markup} you should use the
          * `clutter_text_set_markup()` function instead
          * @param text the text to set. Passing `null` is the same   as passing "" (the empty string)
+         * @since 1.0
          */
         set_text(text: string | null): void;
 
@@ -26666,6 +27419,7 @@ export namespace Clutter {
          * 
          * See also {@link Clutter.Text.use_markup}.
          * @param setting `true` if the text should be parsed for markup.
+         * @since 1.0
          */
         set_use_markup(setting: boolean): void;
 
@@ -26673,6 +27427,7 @@ export namespace Clutter {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -26686,6 +27441,7 @@ export namespace Clutter {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -26703,6 +27459,7 @@ export namespace Clutter {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
 
@@ -26710,12 +27467,14 @@ export namespace Clutter {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -26730,6 +27489,7 @@ export namespace Clutter {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -26747,6 +27507,7 @@ export namespace Clutter {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, GObject.Value | any];
@@ -26755,6 +27516,7 @@ export namespace Clutter {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -26769,6 +27531,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Actor): void;
 
@@ -26783,6 +27547,7 @@ export namespace Clutter {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Actor, property: string, value: GObject.Value | any): void;
 
@@ -26792,6 +27557,7 @@ export namespace Clutter {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Actor, pspec: GObject.ParamSpec): void;
 
@@ -26800,6 +27566,7 @@ export namespace Clutter {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Actor, property: string, value: GObject.Value | any): void;
 
@@ -26814,6 +27581,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Actor): void;
 
@@ -26827,6 +27595,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Actor): void;
 
@@ -26835,6 +27604,7 @@ export namespace Clutter {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Actor;
 
@@ -26843,12 +27613,15 @@ export namespace Clutter {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Actor): ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Actor[];
 
@@ -26860,6 +27633,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Actor, sibling: Actor | null): void;
 
@@ -26871,6 +27646,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Actor, sibling: Actor | null): void;
 
@@ -26884,12 +27661,16 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -26915,6 +27696,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Actor): void;
@@ -26925,6 +27708,7 @@ export namespace Clutter {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Actor, pspec: GObject.ParamSpec): void;
@@ -26940,6 +27724,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Actor): void;
@@ -26954,6 +27739,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Actor): void;
@@ -26962,6 +27748,7 @@ export namespace Clutter {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Actor): ChildMeta;
@@ -26974,6 +27761,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Actor, sibling: Actor | null): void;
@@ -26986,6 +27775,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Actor, sibling: Actor | null): void;
@@ -27000,6 +27791,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Actor): void;
@@ -27007,6 +27800,8 @@ export namespace Clutter {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -27014,6 +27809,7 @@ export namespace Clutter {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -27025,6 +27821,7 @@ export namespace Clutter {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -27034,6 +27831,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
 
@@ -27045,11 +27843,13 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -27061,6 +27861,7 @@ export namespace Clutter {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -27071,6 +27872,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
@@ -27083,6 +27885,7 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -27201,6 +28004,7 @@ export namespace Clutter {
          * Note that the positions are specified in characters, not bytes.
          * @param position position at which to delete text
          * @param n_chars number of characters to delete
+         * @since 1.10
          * @virtual
          */
         vfunc_delete_text(position: number, n_chars: number): number;
@@ -27214,6 +28018,7 @@ export namespace Clutter {
 
         /**
          * Retrieves the length in characters of the buffer.
+         * @since 1.10
          * @virtual
          */
         vfunc_get_length(): number;
@@ -27237,6 +28042,7 @@ export namespace Clutter {
          * @param position the position at which to insert text.
          * @param chars the text to insert into the buffer.
          * @param n_chars the length of the text in characters, or -1
+         * @since 1.10
          * @virtual
          */
         vfunc_insert_text(position: number, chars: string, n_chars: number): number;
@@ -27262,6 +28068,7 @@ export namespace Clutter {
          * @param position position at which to delete text
          * @param n_chars number of characters to delete
          * @returns The number of characters deleted.
+         * @since 1.10
          */
         delete_text(position: number, n_chars: number): number;
 
@@ -27271,6 +28078,7 @@ export namespace Clutter {
          * Used when subclassing {@link Clutter.TextBuffer}
          * @param position position at which text was deleted
          * @param n_chars number of characters deleted
+         * @since 1.10
          */
         emit_deleted_text(position: number, n_chars: number): void;
 
@@ -27281,6 +28089,7 @@ export namespace Clutter {
          * @param position position at which text was inserted
          * @param chars text that was inserted
          * @param n_chars number of characters inserted
+         * @since 1.10
          */
         emit_inserted_text(position: number, chars: string, n_chars: number): void;
 
@@ -27288,12 +28097,14 @@ export namespace Clutter {
          * Retrieves the length in bytes of the buffer.
          * See `clutter_text_buffer_get_length()`.
          * @returns The byte length of the buffer.
+         * @since 1.10
          */
         get_bytes(): number;
 
         /**
          * Retrieves the length in characters of the buffer.
          * @returns The number of characters in the buffer.
+         * @since 1.10
          */
         get_length(): number;
 
@@ -27301,6 +28112,7 @@ export namespace Clutter {
          * Retrieves the maximum allowed length of the text in
          * `buffer`. See `clutter_text_buffer_set_max_length()`.
          * @returns the maximum allowed number of characters               in {@link Clutter.TextBuffer}, or 0 if there is no maximum.
+         * @since 1.10
          */
         get_max_length(): number;
 
@@ -27310,6 +28122,7 @@ export namespace Clutter {
          * The memory pointer returned by this call will not change
          * unless this object emits a signal, or is finalized.
          * @returns a pointer to the contents of the widget as a      string. This string points to internally allocated      storage in the buffer and must not be freed, modified or      stored.
+         * @since 1.10
          */
         get_text(): string;
 
@@ -27327,6 +28140,7 @@ export namespace Clutter {
          * @param chars the text to insert into the buffer.
          * @param n_chars the length of the text in characters, or -1
          * @returns The number of characters actually inserted.
+         * @since 1.10
          */
         insert_text(position: number, chars: string, n_chars: number): number;
 
@@ -27335,6 +28149,7 @@ export namespace Clutter {
          * the current contents are longer than the given length, then they
          * will be truncated to fit.
          * @param max_length the maximum length of the entry buffer, or 0 for no maximum.   (other than the maximum length of entries.) The value passed in will   be clamped to the range [ 0, `CLUTTER_TEXT_BUFFER_MAX_SIZE` ].
+         * @since 1.10
          */
         set_max_length(max_length: number): void;
 
@@ -27347,6 +28162,7 @@ export namespace Clutter {
          * Note that `n_chars` is in characters, not in bytes.
          * @param chars the new text
          * @param n_chars the number of characters in `text`, or -1
+         * @since 1.10
          */
         set_text(chars: string, n_chars: number): void;
     }
@@ -27953,6 +28769,7 @@ export namespace Clutter {
          * See also: `clutter_timeline_add_marker_at_time()`
          * @param marker_name the unique name for this marker
          * @param progress the normalized value of the position of the martke
+         * @since 1.14
          */
         add_marker(marker_name: string, progress: number): void;
 
@@ -27971,6 +28788,7 @@ export namespace Clutter {
          * See also: `clutter_timeline_add_marker()`
          * @param marker_name the unique name for this marker
          * @param msecs position of the marker in milliseconds
+         * @since 0.8
          */
         add_marker_at_time(marker_name: string, msecs: number): void;
 
@@ -27993,6 +28811,7 @@ export namespace Clutter {
          * is set, nor it will emit {@link Clutter.Timeline.SignalSignatures.marker_reached | Clutter.Timeline::marker-reached} for
          * `marker_name`.
          * @param marker_name the name of the marker
+         * @since 0.8
          */
         advance_to_marker(marker_name: string): void;
 
@@ -28005,12 +28824,14 @@ export namespace Clutter {
         /**
          * Retrieves the value set by `clutter_timeline_set_auto_reverse()`.
          * @returns `true` if the timeline should automatically reverse, and   `false` otherwise
+         * @since 1.6
          */
         get_auto_reverse(): boolean;
 
         /**
          * Retrieves the control points for the cubic bezier progress mode.
          * @returns `true` if the `timeline` is using a cubic bezier progress   more, and `false` otherwise
+         * @since 1.12
          */
         get_cubic_bezier_progress(): [boolean, Graphene.Point, Graphene.Point];
 
@@ -28019,12 +28840,14 @@ export namespace Clutter {
          * 
          * Repeats start at 0.
          * @returns the current repeat
+         * @since 1.10
          */
         get_current_repeat(): number;
 
         /**
          * Retrieves the delay set using `clutter_timeline_set_delay()`.
          * @returns the delay in milliseconds.
+         * @since 0.4
          */
         get_delay(): number;
 
@@ -28036,6 +28859,7 @@ export namespace Clutter {
          * signal, and its behaviour is undefined if the timeline is not
          * playing.
          * @returns the amount of time in milliseconds elapsed since the last frame
+         * @since 0.6
          */
         get_delta(): number;
 
@@ -28043,6 +28867,7 @@ export namespace Clutter {
          * Retrieves the direction of the timeline set with
          * `clutter_timeline_set_direction()`.
          * @returns the direction of the timeline
+         * @since 0.6
          */
         get_direction(): TimelineDirection;
 
@@ -28050,6 +28875,7 @@ export namespace Clutter {
          * Retrieves the duration of a {@link Clutter.Timeline} in milliseconds.
          * See `clutter_timeline_set_duration()`.
          * @returns the duration of the timeline, in milliseconds.
+         * @since 0.6
          */
         get_duration(): number;
 
@@ -28063,6 +28889,7 @@ export namespace Clutter {
          * The returned value is to be considered a hint, and it's only valid
          * as long as the `timeline` hasn't been changed.
          * @returns the full duration of the {@link Clutter.Timeline}
+         * @since 1.10
          */
         get_duration_hint(): number;
 
@@ -28079,6 +28906,7 @@ export namespace Clutter {
          * mode set using `clutter_timeline_set_progress_mode()`, or by the
          * progress function set using `clutter_timeline_set_progress_func()`.
          * @returns the normalized current position in the timeline.
+         * @since 0.6
          */
         get_progress(): number;
 
@@ -28086,18 +28914,21 @@ export namespace Clutter {
          * Retrieves the progress mode set using `clutter_timeline_set_progress_mode()`
          * or `clutter_timeline_set_progress_func()`.
          * @returns a {@link Clutter.AnimationMode}
+         * @since 1.10
          */
         get_progress_mode(): AnimationMode;
 
         /**
          * Retrieves the number set using `clutter_timeline_set_repeat_count()`.
          * @returns the number of repeats
+         * @since 1.10
          */
         get_repeat_count(): number;
 
         /**
          * Retrieves the parameters of the step progress mode used by `timeline`.
          * @returns `true` if the `timeline` is using a step progress   mode, and `false` otherwise
+         * @since 1.12
          */
         get_step_progress(): [boolean, number, StepMode];
 
@@ -28105,6 +28936,7 @@ export namespace Clutter {
          * Checks whether `timeline` has a marker set with the given name.
          * @param marker_name the name of the marker
          * @returns `true` if the marker was found
+         * @since 0.8
          */
         has_marker(marker_name: string): boolean;
 
@@ -28120,6 +28952,7 @@ export namespace Clutter {
          * returned.
          * @param msecs the time to check, or -1
          * @returns a newly allocated, `null` terminated string array containing the names   of the markers. Use `g_strfreev()` when done.
+         * @since 0.8
          */
         list_markers(msecs: number): string[];
 
@@ -28131,6 +28964,7 @@ export namespace Clutter {
         /**
          * Removes `marker_name`, if found, from `timeline`.
          * @param marker_name the name of the marker to remove
+         * @since 0.8
          */
         remove_marker(marker_name: string): void;
 
@@ -28189,6 +29023,7 @@ export namespace Clutter {
          * ```
          * 
          * @param reverse `true` if the `timeline` should reverse the direction
+         * @since 1.6
          */
         set_auto_reverse(reverse: boolean): void;
 
@@ -28202,12 +29037,14 @@ export namespace Clutter {
          * Y coordinate of the two control points can exceed this range.
          * @param c_1 the first control point for the cubic bezier
          * @param c_2 the second control point for the cubic bezier
+         * @since 1.12
          */
         set_cubic_bezier_progress(c_1: Graphene.Point, c_2: Graphene.Point): void;
 
         /**
          * Sets the delay, in milliseconds, before `timeline` should start.
          * @param msecs delay in milliseconds
+         * @since 0.4
          */
         set_delay(msecs: number): void;
 
@@ -28215,6 +29052,7 @@ export namespace Clutter {
          * Sets the direction of `timeline`, either {@link Clutter.TimelineDirection.FORWARD} or
          * {@link Clutter.TimelineDirection.BACKWARD}.
          * @param direction the direction of the timeline
+         * @since 0.6
          */
         set_direction(direction: TimelineDirection): void;
 
@@ -28222,6 +29060,7 @@ export namespace Clutter {
          * Sets the duration of the timeline, in milliseconds. The speed
          * of the timeline depends on the ClutterTimeline:fps setting.
          * @param msecs duration of the timeline in milliseconds
+         * @since 0.6
          */
         set_duration(msecs: number): void;
 
@@ -28242,6 +29081,7 @@ export namespace Clutter {
          * If `func` is `null`, any previously set progress function will be unset, and
          * the {@link Clutter.Timeline.progress_mode} property will be set to {@link Clutter.AnimationMode.LINEAR}.
          * @param func a progress function, or `null`
+         * @since 1.10
          */
         set_progress_func(func: TimelineProgressFunc | null): void;
 
@@ -28250,6 +29090,7 @@ export namespace Clutter {
          * enumeration. The `mode` cannot be {@link Clutter.AnimationMode.CUSTOM_MODE} or bigger than
          * {@link Clutter.AnimationMode.ANIMATION_LAST}.
          * @param mode the progress mode, as a {@link Clutter.AnimationMode}
+         * @since 1.10
          */
         set_progress_mode(mode: AnimationMode): void;
 
@@ -28261,6 +29102,7 @@ export namespace Clutter {
          * If `count` is -1, the timeline will always repeat until
          * it's stopped.
          * @param count the number of times the timeline should repeat
+         * @since 1.10
          */
         set_repeat_count(count: number): void;
 
@@ -28269,6 +29111,7 @@ export namespace Clutter {
          * and provides the parameters of the step function.
          * @param n_steps the number of steps
          * @param step_mode whether the change should happen at the start   or at the end of the step
+         * @since 1.12
          */
         set_step_progress(n_steps: number, step_mode: StepMode): void;
 
@@ -28291,6 +29134,7 @@ export namespace Clutter {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -28302,6 +29146,7 @@ export namespace Clutter {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -28311,6 +29156,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
 
@@ -28322,11 +29168,13 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -28338,6 +29186,7 @@ export namespace Clutter {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -28348,6 +29197,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
@@ -28360,6 +29210,7 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -28527,18 +29378,21 @@ export namespace Clutter {
         /**
          * Retrieves the {@link Clutter.Animatable} set using `clutter_transition_set_animatable()`.
          * @returns a {@link Clutter.Animatable}, or `null`; the returned   animatable is owned by the {@link Clutter.Transition}, and it should not be freed   directly.
+         * @since 1.10
          */
         get_animatable(): Animatable;
 
         /**
          * Retrieves the interval set using `clutter_transition_set_interval()`
          * @returns a {@link Clutter.Interval}, or `null`; the returned   interval is owned by the {@link Clutter.Transition} and it should not be freed   directly
+         * @since 1.10
          */
         get_interval(): Interval;
 
         /**
          * Retrieves the value of the {@link Clutter.Transition.remove_on_complete} property.
          * @returns `true` if the `transition` should be detached when complete,   and `false` otherwise
+         * @since 1.10
          */
         get_remove_on_complete(): boolean;
 
@@ -28552,6 +29406,7 @@ export namespace Clutter {
          * reference will be released, and the {@link Clutter.TransitionClass}.detached()
          * virtual function will be called.
          * @param animatable a {@link Clutter.Animatable}, or `null`
+         * @since 1.10
          */
         set_animatable(animatable: Animatable | null): void;
 
@@ -28571,6 +29426,7 @@ export namespace Clutter {
          * 
          * This function is meant to be used by language bindings.
          * @param value a {@link GObject.Value} with the initial value of the transition
+         * @since 1.12
          */
         set_from(value: GObject.Value | any): void;
 
@@ -28580,6 +29436,7 @@ export namespace Clutter {
          * The `transition` will acquire a reference on the `interval`, sinking
          * the floating flag on it if necessary.
          * @param interval a {@link Clutter.Interval}, or `null`
+         * @since 1.10
          */
         set_interval(interval: Interval | null): void;
 
@@ -28588,6 +29445,7 @@ export namespace Clutter {
          * set using `clutter_transition_set_animatable()` when the
          * {@link Clutter.Timeline.SignalSignatures.completed | Clutter.Timeline::completed} signal is emitted.
          * @param remove_complete whether to detach `transition` when complete
+         * @since 1.10
          */
         set_remove_on_complete(remove_complete: boolean): void;
 
@@ -28607,12 +29465,14 @@ export namespace Clutter {
          * 
          * This function is meant to be used by language bindings.
          * @param value a {@link GObject.Value} with the final value of the transition
+         * @since 1.12
          */
         set_to(value: GObject.Value | any): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -28624,6 +29484,7 @@ export namespace Clutter {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -28633,6 +29494,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
 
@@ -28644,11 +29506,13 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -28660,6 +29524,7 @@ export namespace Clutter {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -28670,6 +29535,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
@@ -28682,6 +29548,7 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -28753,6 +29620,7 @@ export namespace Clutter {
          * This function acquires a reference on `transition` that will be released
          * when calling `clutter_transition_group_remove_transition()`.
          * @param transition a {@link Clutter.Transition}
+         * @since 1.12
          */
         add_transition(transition: Transition): void;
 
@@ -28761,6 +29629,7 @@ export namespace Clutter {
          * 
          * This function releases the reference acquired when calling
          * `clutter_transition_group_add_transition()`.
+         * @since 1.12
          */
         remove_all(): void;
 
@@ -28770,6 +29639,7 @@ export namespace Clutter {
          * This function releases the reference acquired on `transition` when
          * calling `clutter_transition_group_add_transition()`.
          * @param transition a {@link Clutter.Transition}
+         * @since 1.12
          */
         remove_transition(transition: Transition): void;
     }
@@ -29100,24 +29970,28 @@ export namespace Clutter {
         // Methods
         /**
          * Retrieves the focal point of the current zoom
+         * @since 1.12
          */
         get_focal_point(): Graphene.Point;
 
         /**
          * Retrieves the focal point relative to the actor's coordinates of
          * the current zoom
+         * @since 1.12
          */
         get_transformed_focal_point(): Graphene.Point;
 
         /**
          * Retrieves the axis constraint set by `clutter_zoom_action_set_zoom_axis()`
          * @returns the axis constraint
+         * @since 1.12
          */
         get_zoom_axis(): ZoomAxis;
 
         /**
          * Restricts the zooming action to a specific axis
          * @param axis the axis to constraint the zooming to
+         * @since 1.12
          */
         set_zoom_axis(axis: ZoomAxis): void;
     }
@@ -29160,12 +30034,14 @@ export namespace Clutter {
         // Static methods
         /**
          * Allocates a new {@link Clutter.ActorBox}.
+         * @since 1.12
          */
         static alloc(): ActorBox;
 
         // Methods
         /**
          * Clamps the components of `box` to the nearest integer
+         * @since 1.2
          */
         clamp_to_pixel(): void;
 
@@ -29175,12 +30051,14 @@ export namespace Clutter {
          * @param x X coordinate of the point
          * @param y Y coordinate of the point
          * @returns `true` if the point is contained by the {@link Clutter.ActorBox}
+         * @since 1.0
          */
         contains(x: number, y: number): boolean;
 
         /**
          * Copies `box`
          * @returns a newly allocated copy of {@link Clutter.ActorBox}. Use   `clutter_actor_box_free()` to free the allocated resources
+         * @since 1.0
          */
         copy(): ActorBox;
 
@@ -29188,12 +30066,14 @@ export namespace Clutter {
          * Checks `box_a` and `box_b` for equality
          * @param box_b a {@link Clutter.ActorBox}
          * @returns `true` if the passed {@link Clutter.ActorBox} are equal
+         * @since 1.0
          */
         equal(box_b: ActorBox): boolean;
 
         /**
          * Frees a {@link Clutter.ActorBox} allocated using `clutter_actor_box_new()`
          * or `clutter_actor_box_copy()`
+         * @since 1.0
          */
         free(): void;
 
@@ -29201,46 +30081,54 @@ export namespace Clutter {
          * Calculates the bounding box represented by the four vertices; for details
          * of the vertex array see `clutter_actor_get_abs_allocation_vertices()`.
          * @param verts array of four {@link Graphene.Point3D}
+         * @since 1.0
          */
         from_vertices(verts: Graphene.Point3D[]): void;
 
         /**
          * Retrieves the area of `box`
          * @returns the area of a {@link Clutter.ActorBox}, in pixels
+         * @since 1.0
          */
         get_area(): number;
 
         /**
          * Retrieves the height of the `box`
          * @returns the height of the box
+         * @since 1.0
          */
         get_height(): number;
 
         /**
          * Retrieves the origin of `box`
+         * @since 1.0
          */
         get_origin(): [number, number];
 
         /**
          * Retrieves the size of `box`
+         * @since 1.0
          */
         get_size(): [number, number];
 
         /**
          * Retrieves the width of the `box`
          * @returns the width of the box
+         * @since 1.0
          */
         get_width(): number;
 
         /**
          * Retrieves the X coordinate of the origin of `box`
          * @returns the X coordinate of the origin
+         * @since 1.0
          */
         get_x(): number;
 
         /**
          * Retrieves the Y coordinate of the origin of `box`
          * @returns the Y coordinate of the origin
+         * @since 1.0
          */
         get_y(): number;
 
@@ -29251,6 +30139,7 @@ export namespace Clutter {
          * @param x_2 X coordinate of the bottom right point
          * @param y_2 Y coordinate of the bottom right point
          * @returns the initialized {@link Clutter.ActorBox}
+         * @since 1.10
          */
         init(x_1: number, y_1: number, x_2: number, y_2: number): ActorBox;
 
@@ -29260,6 +30149,7 @@ export namespace Clutter {
          * @param y Y coordinate of the origin
          * @param width width of the box
          * @param height height of the box
+         * @since 1.10
          */
         init_rect(x: number, y: number, width: number, height: number): void;
 
@@ -29268,6 +30158,7 @@ export namespace Clutter {
          * using `progress`
          * @param _final the final {@link Clutter.ActorBox}
          * @param progress the interpolation progress
+         * @since 1.2
          */
         interpolate(_final: ActorBox, progress: number): ActorBox;
 
@@ -29281,6 +30172,7 @@ export namespace Clutter {
         /**
          * Rescale the `box` by provided `scale` factor.
          * @param scale scale factor for resizing this box
+         * @since 1.6
          */
         scale(scale: number): void;
 
@@ -29288,6 +30180,7 @@ export namespace Clutter {
          * Changes the origin of `box`, maintaining the size of the {@link Clutter.ActorBox}.
          * @param x the X coordinate of the new origin
          * @param y the Y coordinate of the new origin
+         * @since 1.6
          */
         set_origin(x: number, y: number): void;
 
@@ -29295,12 +30188,14 @@ export namespace Clutter {
          * Sets the size of `box`, maintaining the origin of the {@link Clutter.ActorBox}.
          * @param width the new width
          * @param height the new height
+         * @since 1.6
          */
         set_size(width: number, height: number): void;
 
         /**
          * Unions the two boxes `a` and `b` and stores the result in `result`.
          * @param b the second {@link Clutter.ActorBox}
+         * @since 1.4
          */
         union(b: ActorBox): ActorBox;
     }
@@ -29336,6 +30231,7 @@ export namespace Clutter {
          * than once for the same actor.
          * 
          * This function will call `clutter_actor_destroy()` internally.
+         * @since 1.10
          */
         destroy(): void;
 
@@ -29360,6 +30256,7 @@ export namespace Clutter {
          * ```
          * 
          * @param root a {@link Clutter.Actor}
+         * @since 1.10
          */
         init(root: Actor): void;
 
@@ -29370,6 +30267,7 @@ export namespace Clutter {
          * if the {@link Clutter.Actor} that it refers to hasn't been modified after
          * the initialization.
          * @returns `true` if the iterator is valid, and `false` otherwise
+         * @since 1.12
          */
         is_valid(): boolean;
 
@@ -29383,6 +30281,7 @@ export namespace Clutter {
          * If the iterator cannot advance, this function returns `false`, and
          * the contents of `child` are undefined.
          * @returns `true` if the iterator could advance, and `false` otherwise.
+         * @since 1.10
          */
         next(): [boolean, Actor];
 
@@ -29396,6 +30295,7 @@ export namespace Clutter {
          * If the iterator cannot advance, this function returns `false`, and
          * the contents of `child` are undefined.
          * @returns `true` if the iterator could advance, and `false` otherwise.
+         * @since 1.10
          */
         prev(): [boolean, Actor];
 
@@ -29408,6 +30308,7 @@ export namespace Clutter {
          * than once for the same actor.
          * 
          * This function will call `clutter_actor_remove_child()` internally.
+         * @since 1.10
          */
         remove(): void;
     }
@@ -29702,6 +30603,7 @@ export namespace Clutter {
          * If the alpha component is not specified then it is assumed to be set to
          * be fully opaque.
          * @param str a string specifying a color
+         * @since 1.0
          */
         static from_string(str: string): [boolean, Color];
 
@@ -29711,6 +30613,7 @@ export namespace Clutter {
          * Static colors are created by Clutter and are guaranteed to always be
          * available and valid
          * @param color the named global color
+         * @since 1.6
          */
         static get_static(color: StaticColor): Color;
 
@@ -29728,6 +30631,7 @@ export namespace Clutter {
          * Makes a copy of the color structure.  The result must be
          * freed using `clutter_color_free()`.
          * @returns an allocated copy of `color`.
+         * @since 0.2
          */
         copy(): Color;
 
@@ -29744,11 +30648,13 @@ export namespace Clutter {
          * parameter, when using {@link Clutter.Color}<!-- -->s as keys in a {@link GLib.HashTable}.
          * @param v2 a {@link Clutter.Color}
          * @returns `true` if the two colors are the same.
+         * @since 0.2
          */
         equal(v2: Color): boolean;
 
         /**
          * Frees a color structure created with `clutter_color_copy()`.
+         * @since 0.2
          */
         free(): void;
 
@@ -29758,6 +30664,7 @@ export namespace Clutter {
          * This function can be passed to `g_hash_table_new()` as the `hash_func`
          * parameter, when using {@link Clutter.Color}<!-- -->s as keys in a {@link GLib.HashTable}.
          * @returns a hash value corresponding to the color
+         * @since 1.0
          */
         hash(): number;
 
@@ -29768,6 +30675,7 @@ export namespace Clutter {
          * @param blue blue component of the color, between 0 and 255
          * @param alpha alpha component of the color, between 0 and 255
          * @returns the initialized {@link Clutter.Color}
+         * @since 1.12
          */
         init(red: number, green: number, blue: number, alpha: number): Color;
 
@@ -29776,6 +30684,7 @@ export namespace Clutter {
          * using `progress`
          * @param _final the final {@link Clutter.Color}
          * @param progress the interpolation progress
+         * @since 1.6
          */
         interpolate(_final: Color, progress: number): Color;
 
@@ -29825,6 +30734,7 @@ export namespace Clutter {
          * hexadecimal digits representing the red, green, blue and alpha components
          * respectively.
          * @returns a newly-allocated text string
+         * @since 0.2
          */
         to_string(): string;
     }
@@ -30165,6 +31075,7 @@ export namespace Clutter {
         /**
          * Makes an allocated copy of a knot.
          * @returns the copied knot.
+         * @since 0.2
          */
         copy(): Knot;
 
@@ -30172,11 +31083,13 @@ export namespace Clutter {
          * Compares to knot and checks if the point to the same location.
          * @param knot_b Second knot
          * @returns `true` if the knots point to the same location.
+         * @since 0.2
          */
         equal(knot_b: Knot): boolean;
 
         /**
          * Frees the memory of an allocated knot.
+         * @since 0.2
          */
         free(): void;
     }
@@ -30230,12 +31143,14 @@ export namespace Clutter {
          * Creates a new {@link Clutter.Margin} and copies the contents of `margin_` into
          * the newly created structure.
          * @returns a copy of the {@link Clutter.Margin}.
+         * @since 1.10
          */
         copy(): Margin;
 
         /**
          * Frees the resources allocated by `clutter_margin_new()` and
          * `clutter_margin_copy()`.
+         * @since 1.10
          */
         free(): void;
     }
@@ -30447,11 +31362,13 @@ export namespace Clutter {
         /**
          * Copies `pv` into a new {@link Clutter.PaintVolume}
          * @returns a newly allocated copy of a {@link Clutter.PaintVolume}
+         * @since 1.6
          */
         copy(): PaintVolume;
 
         /**
          * Frees the resources allocated by `pv`
+         * @since 1.6
          */
         free(): void;
 
@@ -30479,6 +31396,7 @@ export namespace Clutter {
          * depth. This is because actors may report simple, loose fitting paint
          * volumes for efficiency.
          * @returns the depth, in units of `pv`'s local coordinate system.
+         * @since 1.6
          */
         get_depth(): number;
 
@@ -30506,11 +31424,13 @@ export namespace Clutter {
          * height. This is because actors may report simple, loose fitting paint
          * volumes for efficiency.
          * @returns the height, in units of `pv`'s local coordinate system.
+         * @since 1.6
          */
         get_height(): number;
 
         /**
          * Retrieves the origin of the {@link Clutter.PaintVolume}.
+         * @since 1.6
          */
         get_origin(): Graphene.Point3D;
 
@@ -30538,6 +31458,7 @@ export namespace Clutter {
          * actor's width. This is because actors may report simple, loose
          * fitting paint volumes for efficiency.
          * @returns the width, in units of `pv`'s local coordinate system.
+         * @since 1.6
          */
         get_width(): number;
 
@@ -30545,6 +31466,7 @@ export namespace Clutter {
          * Sets the depth of the paint volume. The depth is measured along
          * the z axis in the actor coordinates that `pv` is associated with.
          * @param depth the depth of the paint volume, in pixels
+         * @since 1.6
          */
         set_depth(depth: number): void;
 
@@ -30569,6 +31491,7 @@ export namespace Clutter {
          * 
          * @param actor a {@link Clutter.Actor}
          * @returns `true` if the paint volume was successfully set, and `false`   otherwise
+         * @since 1.6
          */
         set_from_allocation(actor: Actor): boolean;
 
@@ -30576,6 +31499,7 @@ export namespace Clutter {
          * Sets the height of the paint volume. The height is measured along
          * the y axis in the actor coordinates that `pv` is associated with.
          * @param height the height of the paint volume, in pixels
+         * @since 1.6
          */
         set_height(height: number): void;
 
@@ -30587,6 +31511,7 @@ export namespace Clutter {
          * 
          * The default is origin is assumed at: (0, 0, 0)
          * @param origin a {@link Graphene.Point3D}
+         * @since 1.6
          */
         set_origin(origin: Graphene.Point3D): void;
 
@@ -30594,6 +31519,7 @@ export namespace Clutter {
          * Sets the width of the paint volume. The width is measured along
          * the x axis in the actor coordinates that `pv` is associated with.
          * @param width the width of the paint volume, in pixels
+         * @since 1.6
          */
         set_width(width: number): void;
 
@@ -30603,6 +31529,7 @@ export namespace Clutter {
          * There are no guarantees about how precisely the two volumes
          * will be unioned.
          * @param another_pv A second {@link Clutter.PaintVolume} to union with `pv`
+         * @since 1.6
          */
         union(another_pv: PaintVolume): void;
 
@@ -30612,6 +31539,7 @@ export namespace Clutter {
          * This function is similar to `clutter_paint_volume_union()`, but it is
          * specific for 2D regions.
          * @param box a {@link Clutter.ActorBox} to union to `pv`
+         * @since 1.10
          */
         union_box(box: ActorBox): void;
     }
@@ -30662,6 +31590,7 @@ export namespace Clutter {
         /**
          * Makes an allocated copy of a node.
          * @returns the copied node.
+         * @since 1.0
          */
         copy(): PathNode;
 
@@ -30670,11 +31599,13 @@ export namespace Clutter {
          * same coordinates.
          * @param node_b Second node
          * @returns `true` if the nodes are the same.
+         * @since 1.0
          */
         equal(node_b: PathNode): boolean;
 
         /**
          * Frees the memory of an allocated node.
+         * @since 1.0
          */
         free(): void;
     }
@@ -31211,6 +32142,7 @@ export namespace Clutter {
         /**
          * Stores a value in centimeters inside `units`
          * @param cm centimeters
+         * @since 1.2
          */
         static from_cm(cm: number): Units;
 
@@ -31218,6 +32150,7 @@ export namespace Clutter {
          * Stores a value in em inside `units`, using the default font
          * name as returned by `clutter_backend_get_font_name()`
          * @param em em
+         * @since 1.0
          */
         static from_em(em: number): Units;
 
@@ -31225,24 +32158,28 @@ export namespace Clutter {
          * Stores a value in em inside `units` using `font_name`
          * @param font_name the font name and size
          * @param em em
+         * @since 1.0
          */
         static from_em_for_font(font_name: string | null, em: number): Units;
 
         /**
          * Stores a value in millimiters inside `units`
          * @param mm millimeters
+         * @since 1.0
          */
         static from_mm(mm: number): Units;
 
         /**
          * Stores a value in pixels inside `units`
          * @param px pixels
+         * @since 1.0
          */
         static from_pixels(px: number): Units;
 
         /**
          * Stores a value in typographic points inside `units`
          * @param pt typographic points
+         * @since 1.0
          */
         static from_pt(pt: number): Units;
 
@@ -31287,6 +32224,7 @@ export namespace Clutter {
          * 
          * If no unit is specified, pixels are assumed.
          * @param str the string to convert
+         * @since 1.0
          */
         static from_string(str: string): [boolean, Units];
 
@@ -31294,6 +32232,7 @@ export namespace Clutter {
         /**
          * Copies `units`
          * @returns the newly created copy of a   {@link Clutter.Units} structure. Use `clutter_units_free()` to free   the allocated resources
+         * @since 1.0
          */
         copy(): Units;
 
@@ -31302,24 +32241,28 @@ export namespace Clutter {
          * 
          * You should only call this function on a {@link Clutter.Units}
          * created using `clutter_units_copy()`
+         * @since 1.0
          */
         free(): void;
 
         /**
          * Retrieves the unit type of the value stored inside `units`
          * @returns a unit type
+         * @since 1.0
          */
         get_unit_type(): UnitType;
 
         /**
          * Retrieves the value stored inside `units`
          * @returns the value stored inside a {@link Clutter.Units}
+         * @since 1.0
          */
         get_unit_value(): number;
 
         /**
          * Converts a value in {@link Clutter.Units} to pixels
          * @returns the value in pixels
+         * @since 1.0
          */
         to_pixels(): number;
 
@@ -31333,6 +32276,7 @@ export namespace Clutter {
          * position for em, mm and cm, and to the first decimal position for
          * typographic points. Pixels are integers.
          * @returns a newly allocated string containing the encoded   {@link Clutter.Units} value. Use `g_free()` to free the string
+         * @since 1.0
          */
         to_string(): string;
     }
@@ -31376,18 +32320,21 @@ export namespace Clutter {
          * emitted for the event and it will take precedence over any grabs.
          * @param stage The {@link Clutter.Stage} to capture events for
          * @param func The callback function which will be passed all events.
+         * @since 1.18
          */
         static add_filter(stage: Stage | null, func: EventFilterFunc): number;
 
         /**
          * Pops an event off the event queue. Applications should not need to call
          * this.
+         * @since 0.4
          */
         static get(): Event;
 
         /**
          * Returns a pointer to the first event from the event queue but
          * does not remove it.
+         * @since 0.4
          */
         static peek(): Event;
 
@@ -31395,6 +32342,7 @@ export namespace Clutter {
          * Removes an event filter that was previously added with
          * `clutter_event_add_filter()`.
          * @param id The ID of the event filter, as returned from `clutter_event_add_filter()`
+         * @since 1.18
          */
         static remove_filter(id: number): void;
 
@@ -31417,29 +32365,34 @@ export namespace Clutter {
          * the positive Y axis.
          * @param target a {@link Clutter.Event}
          * @returns the angle between two {@link Clutter.Event}
+         * @since 1.12
          */
         get_angle(target: Event): number;
 
         /**
          * Retrieves the array of axes values attached to the event.
          * @returns an array of axis values
+         * @since 1.6
          */
         get_axes(): [number, number];
 
         /**
          * Retrieves the button number of `event`
          * @returns the button number
+         * @since 1.0
          */
         get_button(): number;
 
         /**
          * Retrieves the number of clicks of `event`
          * @returns the click count
+         * @since 1.0
          */
         get_click_count(): number;
 
         /**
          * Retrieves the coordinates of `event` and puts them into `x` and `y`.
+         * @since 0.4
          */
         get_coords(): [number, number];
 
@@ -31451,6 +32404,7 @@ export namespace Clutter {
          * The {@link Clutter.InputDevice} structure is completely opaque and should
          * be cast to the platform-specific implementation.
          * @returns the {@link Clutter.InputDevice} or `null`. The   returned device is owned by the {@link Clutter.Event} and it should not   be unreferenced
+         * @since 1.0
          */
         get_device(): InputDevice;
 
@@ -31463,12 +32417,14 @@ export namespace Clutter {
         /**
          * Returns the device tool that originated this event
          * @returns The tool of this event
+         * @since 1.28
          */
         get_device_tool(): InputDeviceTool;
 
         /**
          * Retrieves the type of the device for `event`
          * @returns the {@link Clutter.InputDeviceType} for the device, if   any is set
+         * @since 1.0
          */
         get_device_type(): InputDeviceType;
 
@@ -31476,24 +32432,28 @@ export namespace Clutter {
          * Retrieves the distance between two events, a `source` and a `target`.
          * @param target a {@link Clutter.Event}
          * @returns the distance between two {@link Clutter.Event}
+         * @since 1.12
          */
         get_distance(target: Event): number;
 
         /**
          * Retrieves the {@link Clutter.EventSequence} of `event`.
          * @returns the event sequence, or `null`
+         * @since 1.10
          */
         get_event_sequence(): EventSequence;
 
         /**
          * Retrieves the {@link Clutter.EventFlags} of `event`
          * @returns the event flags
+         * @since 1.0
          */
         get_flags(): EventFlags;
 
         /**
          * Returns the gesture motion deltas relative to the current pointer
          * position.
+         * @since 1.24
          */
         get_gesture_motion_delta(): [number, number];
 
@@ -31506,6 +32466,7 @@ export namespace Clutter {
         /**
          * Returns the angle delta reported by this specific event.
          * @returns The angle delta relative to the previous event.
+         * @since 1.24
          */
         get_gesture_pinch_angle_delta(): number;
 
@@ -31515,18 +32476,21 @@ export namespace Clutter {
          * {@link Clutter.TouchpadGesturePhase.BEGIN} is received.
          * is received.
          * @returns the current pinch gesture scale
+         * @since 1.24
          */
         get_gesture_pinch_scale(): number;
 
         /**
          * Retrieves the keycode of the key that caused `event`
          * @returns The keycode representing the key
+         * @since 1.0
          */
         get_key_code(): number;
 
         /**
          * Retrieves the key symbol of `event`
          * @returns the key symbol representing the key
+         * @since 1.0
          */
         get_key_symbol(): number;
 
@@ -31547,12 +32511,14 @@ export namespace Clutter {
         /**
          * Retrieves the event coordinates as a {@link Graphene.Point}.
          * @param position a {@link Graphene.Point}
+         * @since 1.12
          */
         get_position(position: Graphene.Point): void;
 
         /**
          * Retrieves the related actor of a crossing event.
          * @returns the related {@link Clutter.Actor}, or `null`
+         * @since 1.0
          */
         get_related(): Actor;
 
@@ -31561,12 +32527,14 @@ export namespace Clutter {
          * 
          * The `event` has to have a {@link Clutter.ScrollEvent}.direction value
          * of {@link Clutter.ScrollDirection.SMOOTH}.
+         * @since 1.10
          */
         get_scroll_delta(): [number, number];
 
         /**
          * Retrieves the direction of the scrolling of `event`
          * @returns the scrolling direction
+         * @since 1.0
          */
         get_scroll_direction(): ScrollDirection;
 
@@ -31575,12 +32543,14 @@ export namespace Clutter {
          * can be used to determine whether post-scroll effects like kinetic
          * scrolling should be applied.
          * @returns The scroll finish flags
+         * @since 1.26
          */
         get_scroll_finish_flags(): ScrollFinishFlags;
 
         /**
          * Returns the {@link Clutter.ScrollSource} that applies to an scroll event.
          * @returns The source of scroll events
+         * @since 1.26
          */
         get_scroll_source(): ScrollSource;
 
@@ -31588,6 +32558,7 @@ export namespace Clutter {
          * Retrieves the source {@link Clutter.Actor} the event originated from, or
          * NULL if the event has no source.
          * @returns a {@link Clutter.Actor}
+         * @since 0.6
          */
         get_source(): Actor;
 
@@ -31599,6 +32570,7 @@ export namespace Clutter {
          * If no hardware device originated this event, this function will
          * return the same device as `clutter_event_get_device()`.
          * @returns a pointer to a {@link Clutter.InputDevice}   or `null`
+         * @since 1.6
          */
         get_source_device(): InputDevice;
 
@@ -31606,6 +32578,7 @@ export namespace Clutter {
          * Retrieves the source {@link Clutter.Stage} the event originated for, or
          * `null` if the event has no stage.
          * @returns a {@link Clutter.Stage}
+         * @since 0.8
          */
         get_stage(): Stage;
 
@@ -31614,6 +32587,7 @@ export namespace Clutter {
          * supports reporting latched and locked modifiers, this function returns
          * the effective state.
          * @returns the modifier state parameter, or 0
+         * @since 0.4
          */
         get_state(): ModifierType;
 
@@ -31621,30 +32595,35 @@ export namespace Clutter {
          * Retrieves the decomposition of the keyboard state into button, base,
          * latched, locked and effective. This can be used to transmit to other
          * applications, for example when implementing a wayland compositor.
+         * @since 1.16
          */
         get_state_full(): [ModifierType | null, ModifierType | null, ModifierType | null, ModifierType | null, ModifierType | null];
 
         /**
          * Retrieves the time of the event.
          * @returns the time of the event, or `CLUTTER_CURRENT_TIME`
+         * @since 0.4
          */
         get_time(): number;
 
         /**
          * Returns the number of fingers that is triggering the touchpad gesture.
          * @returns the number of fingers in the gesture.
+         * @since 1.24
          */
         get_touchpad_gesture_finger_count(): number;
 
         /**
          * Checks whether `event` has the Control modifier mask set.
          * @returns `true` if the event has the Control modifier mask set
+         * @since 1.12
          */
         has_control_modifier(): boolean;
 
         /**
          * Checks whether `event` has the Shift modifier mask set.
          * @returns `true` if the event has the Shift modifier mask set
+         * @since 1.12
          */
         has_shift_modifier(): boolean;
 
@@ -31653,6 +32632,7 @@ export namespace Clutter {
          * system. The returned value can be used to distinguish between events
          * synthesized by the windowing system itself (as opposed by Clutter).
          * @returns `true` if the event is pointer emulated
+         * @since 1.12
          */
         is_pointer_emulated(): boolean;
 
@@ -31662,12 +32642,14 @@ export namespace Clutter {
          * event signals will be emitted for this source and capture/bubbling for
          * its ancestors. If the source is not set it will be generated by picking
          * or use the actor that currently has keyboard focus
+         * @since 0.6
          */
         put(): void;
 
         /**
          * Sets the button number of `event`
          * @param button the button number
+         * @since 1.8
          */
         set_button(button: number): void;
 
@@ -31675,48 +32657,56 @@ export namespace Clutter {
          * Sets the coordinates of the `event`.
          * @param x the X coordinate of the event
          * @param y the Y coordinate of the event
+         * @since 1.8
          */
         set_coords(x: number, y: number): void;
 
         /**
          * Sets the device for `event`.
          * @param device a {@link Clutter.InputDevice}, or `null`
+         * @since 1.6
          */
         set_device(device: InputDevice | null): void;
 
         /**
          * Sets the tool in use for this event
          * @param tool a {@link Clutter.InputDeviceTool}
+         * @since 1.28
          */
         set_device_tool(tool: InputDeviceTool | null): void;
 
         /**
          * Sets the {@link Clutter.EventFlags} of `event`
          * @param flags a binary OR of {@link Clutter.EventFlags} values
+         * @since 1.8
          */
         set_flags(flags: EventFlags): void;
 
         /**
          * Sets the keycode of the `event`.
          * @param key_code the keycode representing the key
+         * @since 1.8
          */
         set_key_code(key_code: number): void;
 
         /**
          * Sets the key symbol of `event`.
          * @param key_sym the key symbol representing the key
+         * @since 1.8
          */
         set_key_symbol(key_sym: number): void;
 
         /**
          * Sets the Unicode value of `event`.
          * @param key_unicode the Unicode value representing the key
+         * @since 1.8
          */
         set_key_unicode(key_unicode: string): void;
 
         /**
          * Sets the related actor of a crossing event
          * @param actor a {@link Clutter.Actor} or `null`
+         * @since 1.8
          */
         set_related(actor: Actor | null): void;
 
@@ -31724,18 +32714,21 @@ export namespace Clutter {
          * Sets the precise scrolling information of `event`.
          * @param dx delta on the horizontal axis
          * @param dy delta on the vertical axis
+         * @since 1.10
          */
         set_scroll_delta(dx: number, dy: number): void;
 
         /**
          * Sets the direction of the scrolling of `event`
          * @param direction the scrolling direction
+         * @since 1.8
          */
         set_scroll_direction(direction: ScrollDirection): void;
 
         /**
          * Sets the source {@link Clutter.Actor} of `event`.
          * @param actor a {@link Clutter.Actor}, or `null`
+         * @since 1.8
          */
         set_source(actor: Actor | null): void;
 
@@ -31744,24 +32737,28 @@ export namespace Clutter {
          * 
          * The {@link Clutter.Event} must have been created using `clutter_event_new()`.
          * @param device a {@link Clutter.InputDevice}
+         * @since 1.8
          */
         set_source_device(device: InputDevice | null): void;
 
         /**
          * Sets the source {@link Clutter.Stage} of the event.
          * @param stage a {@link Clutter.Stage}, or `null`
+         * @since 1.8
          */
         set_stage(stage: Stage | null): void;
 
         /**
          * Sets the modifier state of the event.
          * @param state the modifier state to set
+         * @since 1.8
          */
         set_state(state: ModifierType): void;
 
         /**
          * Sets the time of the event.
          * @param time_ the time of the event
+         * @since 1.8
          */
         set_time(time_: number): void;
 
@@ -31784,6 +32781,7 @@ export namespace Clutter {
             /**
              * Finds the {@link GObject.ParamSpec} for `property_name`
              * @param property_name the name of the animatable property to find
+             * @since 1.4
              * @virtual
              */
             vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -31798,6 +32796,7 @@ export namespace Clutter {
              * Retrieves the current state of `property_name` and sets `value` with it
              * @param property_name the name of the animatable property to retrieve
              * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+             * @since 1.4
              * @virtual
              */
             vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -31815,6 +32814,7 @@ export namespace Clutter {
              * @param property_name the name of the property to interpolate
              * @param interval a {@link Clutter.Interval} with the animation range
              * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+             * @since 1.8
              * @virtual
              */
             vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, GObject.Value | any];
@@ -31823,6 +32823,7 @@ export namespace Clutter {
              * Sets the current state of `property_name` to `value`
              * @param property_name the name of the animatable property to set
              * @param value the value of the animatable property to set
+             * @since 1.4
              * @virtual
              */
             vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -31847,6 +32848,7 @@ export namespace Clutter {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -31860,6 +32862,7 @@ export namespace Clutter {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -31877,6 +32880,7 @@ export namespace Clutter {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Interval, progress: number): [boolean, unknown];
 
@@ -31884,6 +32888,7 @@ export namespace Clutter {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
     }
@@ -31923,6 +32928,8 @@ export namespace Clutter {
              * deprecated virtual function. The default implementation will
              * call `clutter_actor_add_child()`.
              * @param actor the first {@link Clutter.Actor} to add
+             * @since 0.4
+             * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
              * @virtual
              */
             vfunc_add(actor: Actor): void;
@@ -31933,6 +32940,7 @@ export namespace Clutter {
              * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
              * @param child a {@link Clutter.Actor}
              * @param pspec a {@link GObject.ParamSpec}
+             * @since 1.6
              * @virtual
              */
             vfunc_child_notify(child: Actor, pspec: GObject.ParamSpec): void;
@@ -31948,6 +32956,7 @@ export namespace Clutter {
              * 
              * Applications should not call this function.
              * @param actor a {@link Clutter.Actor}
+             * @since 1.2
              * @virtual
              */
             vfunc_create_child_meta(actor: Actor): void;
@@ -31962,6 +32971,7 @@ export namespace Clutter {
              * 
              * Applications should not call this function.
              * @param actor a {@link Clutter.Actor}
+             * @since 1.2
              * @virtual
              */
             vfunc_destroy_child_meta(actor: Actor): void;
@@ -31970,6 +32980,7 @@ export namespace Clutter {
              * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
              * `container` specific state for `actor`.
              * @param actor a {@link Clutter.Actor} that is a child of `container`.
+             * @since 0.8
              * @virtual
              */
             vfunc_get_child_meta(actor: Actor): ChildMeta;
@@ -31982,6 +32993,8 @@ export namespace Clutter {
              * `clutter_actor_set_child_below_sibling()`.
              * @param actor the actor to raise
              * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+             * @since 0.6
+             * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
              * @virtual
              */
             vfunc_lower(actor: Actor, sibling: Actor | null): void;
@@ -31994,6 +33007,8 @@ export namespace Clutter {
              * `clutter_actor_set_child_above_sibling()`.
              * @param actor the actor to raise
              * @param sibling the sibling to raise to, or `null` to raise   to the top
+             * @since 0.6
+             * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
              * @virtual
              */
             vfunc_raise(actor: Actor, sibling: Actor | null): void;
@@ -32008,6 +33023,8 @@ export namespace Clutter {
              * deprecated virtual function. The default implementation will call
              * `clutter_actor_remove_child()`.
              * @param actor a {@link Clutter.Actor}
+             * @since 0.4
+             * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
              * @virtual
              */
             vfunc_remove(actor: Actor): void;
@@ -32015,6 +33032,8 @@ export namespace Clutter {
             /**
              * Sorts a container's children using their depth. This function should not
              * be normally used by applications.
+             * @since 0.6
+             * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
              * @virtual
              */
             vfunc_sort_depth_order(): void;
@@ -32059,6 +33078,8 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Actor): void;
 
@@ -32073,6 +33094,7 @@ export namespace Clutter {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Actor, property: string, value: GObject.Value | any): void;
 
@@ -32082,6 +33104,7 @@ export namespace Clutter {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Actor, pspec: GObject.ParamSpec): void;
 
@@ -32090,6 +33113,7 @@ export namespace Clutter {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Actor, property: string, value: GObject.Value | any): void;
 
@@ -32104,6 +33128,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Actor): void;
 
@@ -32117,6 +33142,7 @@ export namespace Clutter {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Actor): void;
 
@@ -32125,6 +33151,7 @@ export namespace Clutter {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Actor;
 
@@ -32133,12 +33160,15 @@ export namespace Clutter {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Actor): ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Actor[];
 
@@ -32150,6 +33180,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Actor, sibling: Actor | null): void;
 
@@ -32161,6 +33193,8 @@ export namespace Clutter {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Actor, sibling: Actor | null): void;
 
@@ -32174,12 +33208,16 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
     }
@@ -32215,6 +33253,7 @@ export namespace Clutter {
              * The natural size of a {@link Clutter.Content} is defined as the size the content
              * would have regardless of the allocation of the actor that is painting it,
              * for instance the size of an image data.
+             * @since 1.10
              * @virtual
              */
             vfunc_get_preferred_size(): [boolean, number, number];
@@ -32225,6 +33264,7 @@ export namespace Clutter {
              * This function should be called by {@link Clutter.Content} implementations when
              * they change the way a the content should be painted regardless of the
              * actor state.
+             * @since 1.10
              * @virtual
              */
             vfunc_invalidate(): void;
@@ -32270,6 +33310,7 @@ export namespace Clutter {
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
+         * @since 1.10
          */
         get_preferred_size(): [boolean, number, number];
 
@@ -32279,6 +33320,7 @@ export namespace Clutter {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          */
         invalidate(): void;
 
@@ -32307,6 +33349,7 @@ export namespace Clutter {
             // Virtual methods
             /**
              * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+             * @since 0.6
              * @virtual
              */
             vfunc_get_id(): string;
@@ -32318,6 +33361,7 @@ export namespace Clutter {
              * @param value the generic value to be set
              * @param name the name of the node
              * @param node the JSON node to be parsed
+             * @since 0.6
              * @virtual
              */
             vfunc_parse_custom_node(script: Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -32328,6 +33372,7 @@ export namespace Clutter {
              * @param script the {@link Clutter.Script} creating the scriptable instance
              * @param name the name of the property
              * @param value the value of the property
+             * @since 0.6
              * @virtual
              */
             vfunc_set_custom_property(script: Script, name: string, value: unknown): void;
@@ -32340,6 +33385,7 @@ export namespace Clutter {
              * define a unique name for an object constructable using the UI
              * definition language parsed by {@link Clutter.Script}.
              * @param id_ the {@link Clutter.Script} id of the object
+             * @since 0.6
              * @virtual
              */
             vfunc_set_id(id_: string): void;
@@ -32366,6 +33412,7 @@ export namespace Clutter {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -32377,6 +33424,7 @@ export namespace Clutter {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -32386,6 +33434,7 @@ export namespace Clutter {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Script, name: string, value: GObject.Value | any): void;
 
@@ -32397,6 +33446,7 @@ export namespace Clutter {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
     }

@@ -714,6 +714,7 @@ export namespace GFBGraph {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -741,6 +742,7 @@ export namespace GFBGraph {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -771,6 +773,7 @@ export namespace GFBGraph {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -779,6 +782,7 @@ export namespace GFBGraph {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -793,6 +797,7 @@ export namespace GFBGraph {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -812,6 +817,7 @@ export namespace GFBGraph {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -847,6 +853,7 @@ export namespace GFBGraph {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -856,6 +863,7 @@ export namespace GFBGraph {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -883,6 +891,7 @@ export namespace GFBGraph {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;

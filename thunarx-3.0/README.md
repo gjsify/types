@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/thunarx-3.0)
 
 
-GJS TypeScript type definitions for Thunarx-3.0, generated from library version 4.20.9 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.3.0.
+GJS TypeScript type definitions for Thunarx-3.0, generated from library version 4.20.9 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.4.0.
 
 ## Install
 

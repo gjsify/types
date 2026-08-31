@@ -625,6 +625,7 @@ export namespace Libxfce4util {
         // Static methods
         /**
          * Create a new {@link Libxfce4util.Consolekit} instance or increase reference count.
+         * @since 4.19.1
          */
         static get(): Consolekit;
 
@@ -632,30 +633,35 @@ export namespace Libxfce4util {
         /**
          * Check whether ConsoleKit can trigger and has authorization for Hibernate.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         can_hibernate(): [boolean, boolean, boolean];
 
         /**
          * Check whether ConsoleKit can trigger and has authorization for HybridSleep.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         can_hybrid_sleep(): [boolean, boolean, boolean];
 
         /**
          * Check whether ConsoleKit can trigger PowerOff.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         can_power_off(): [boolean, boolean, boolean];
 
         /**
          * Check whether ConsoleKit can trigger Reboot.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         can_reboot(): [boolean, boolean, boolean];
 
         /**
          * Check whether ConsoleKit can trigger and has authorization for Suspend.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         can_suspend(): [boolean, boolean, boolean];
 
@@ -663,6 +669,7 @@ export namespace Libxfce4util {
          * Ask ConsoleKit to trigger Hibernate.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         hibernate(polkit_interactive: boolean): boolean;
 
@@ -670,6 +677,7 @@ export namespace Libxfce4util {
          * Ask ConsoleKit to trigger HybridSleep.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         hybrid_sleep(polkit_interactive: boolean): boolean;
 
@@ -677,6 +685,7 @@ export namespace Libxfce4util {
          * Ask ConsoleKit to trigger PowerOff.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         power_off(polkit_interactive: boolean): boolean;
 
@@ -684,6 +693,7 @@ export namespace Libxfce4util {
          * Ask ConsoleKit to trigger Reboot.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         reboot(polkit_interactive: boolean): boolean;
 
@@ -691,6 +701,7 @@ export namespace Libxfce4util {
          * Ask ConsoleKit to trigger Suspend.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         suspend(polkit_interactive: boolean): boolean;
     }
@@ -743,6 +754,7 @@ export namespace Libxfce4util {
         /**
          * Frees the `kiosk` object.
          * In 4.13 and above, this is equivalent to calling g_clear_object.
+         * @since 4.2
          */
         free(): void;
 
@@ -751,6 +763,7 @@ export namespace Libxfce4util {
          * the current user has the `capability`, else `false`.
          * @param capability The name of the capability to check.
          * @returns `true` if the current user has the `capability`, else `false`.
+         * @since 4.2
          */
         query(capability: string): boolean;
     }
@@ -800,6 +813,7 @@ export namespace Libxfce4util {
         // Static methods
         /**
          * Create a new {@link Libxfce4util.Systemd} instance or increase reference count.
+         * @since 4.19.1
          */
         static get(): Systemd;
 
@@ -807,30 +821,35 @@ export namespace Libxfce4util {
         /**
          * Check whether systemd can trigger and has authorization for Hibernate.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         can_hibernate(): [boolean, boolean, boolean];
 
         /**
          * Check whether systemd can trigger and has authorization for HybridSleep.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         can_hybrid_sleep(): [boolean, boolean, boolean];
 
         /**
          * Check whether systemd can trigger PowerOff.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         can_power_off(): [boolean, boolean, boolean];
 
         /**
          * Check whether systemd can trigger Reboot.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         can_reboot(): [boolean, boolean, boolean];
 
         /**
          * Check whether systemd can trigger and has authorization for Suspend.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         can_suspend(): [boolean, boolean, boolean];
 
@@ -838,6 +857,7 @@ export namespace Libxfce4util {
          * Ask systemd to trigger Hibernate.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         hibernate(polkit_interactive: boolean): boolean;
 
@@ -845,6 +865,7 @@ export namespace Libxfce4util {
          * Ask systemd to trigger HybridSleep.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         hybrid_sleep(polkit_interactive: boolean): boolean;
 
@@ -852,6 +873,7 @@ export namespace Libxfce4util {
          * Ask systemd to trigger PowerOff.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         power_off(polkit_interactive: boolean): boolean;
 
@@ -859,6 +881,7 @@ export namespace Libxfce4util {
          * Ask systemd to trigger Reboot.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         reboot(polkit_interactive: boolean): boolean;
 
@@ -866,6 +889,7 @@ export namespace Libxfce4util {
          * Ask systemd to trigger Suspend.
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
+         * @since 4.19.1
          */
         suspend(polkit_interactive: boolean): boolean;
     }
@@ -900,6 +924,7 @@ export namespace Libxfce4util {
          * @param type The resource type being opened
          * @param resource The resource name to open
          * @param readonly whether to open `resource` readonly.
+         * @since 4.2
          */
         static config_open(type: ResourceType, resource: string, readonly: boolean): Rc;
 
@@ -916,6 +941,7 @@ export namespace Libxfce4util {
          * only the default group and no entries.
          * @param filename name of the filename to open.
          * @param readonly whether to open `filename` readonly.
+         * @since 4.2
          */
         static simple_open(filename: string, readonly: boolean): Rc;
 
@@ -925,6 +951,7 @@ export namespace Libxfce4util {
          * 
          * If `rc` was opened read-write and contains dirty (modified) entries, these
          * will be flushed to permanent storage first.
+         * @since 4.2
          */
         close(): void;
 
@@ -933,6 +960,7 @@ export namespace Libxfce4util {
          * group.
          * @param key the key to delete.
          * @param global whether to delete `key` globally.
+         * @since 4.2
          */
         delete_entry(key: string, global: boolean): void;
 
@@ -948,6 +976,7 @@ export namespace Libxfce4util {
          * probably return the system-wide config entries.
          * @param group name of the group to delete.
          * @param global whether to delete the group globally.
+         * @since 4.2
          */
         delete_group(group: string, global: boolean): void;
 
@@ -955,6 +984,7 @@ export namespace Libxfce4util {
          * Flushes all changes that currently reside only in memory back to permanent
          * storage. Dirty configuration entries are written in the most specific file
          * available.
+         * @since 4.2
          */
         flush(): void;
 
@@ -967,6 +997,7 @@ export namespace Libxfce4util {
          * applications. You should not use it in newly written code.
          * @param group the name of the group to get entries from.
          * @returns a NULL-terminated string array with all entries in `group`. Has to               be freed using `g_strfreev()` if no longer needed. If the specified               `group` does not exists, `null` is returned. If the `group` has no entries,               an empty string array is returned.
+         * @since 4.2
          */
         get_entries(group: string): string[];
 
@@ -975,6 +1006,7 @@ export namespace Libxfce4util {
          * from which we are retrieving entries. If the currently active group is
          * the default group (the so called "NULL group"), `null` will be returned.
          * @returns the name of the current group.
+         * @since 4.2
          */
         get_group(): string;
 
@@ -985,12 +1017,14 @@ export namespace Libxfce4util {
          * returned with this functions. But it does not matter at all, since the
          * default group is known to always exist.
          * @returns a NULL-terminated string array will the names of all groups in               `rc`. Should be freed using `g_strfreev()` when no longer needed.
+         * @since 4.2
          */
         get_groups(): string[];
 
         /**
          * Returns current locale used by `rc` to lookup translated entries.
          * @returns a string representing the current locale.
+         * @since 4.2
          */
         get_locale(): string;
 
@@ -998,6 +1032,7 @@ export namespace Libxfce4util {
          * Checks whether the `key` has an entry in the current group.
          * @param key the key to search for.
          * @returns `true` if the `key` is available, else `false`.
+         * @since 4.2
          */
         has_entry(key: string): boolean;
 
@@ -1005,18 +1040,21 @@ export namespace Libxfce4util {
          * Returns `true` if the specified `group` is known about.
          * @param group the group to search for.
          * @returns `true` if the `group` exists.
+         * @since 4.2
          */
         has_group(group: string): boolean;
 
         /**
          * Checks whether `rc` has any dirty (modified) entries.
          * @returns `true` if `rc` has any dirty (modified) entries.
+         * @since 4.2
          */
         is_dirty(): boolean;
 
         /**
          * Returns the read-only status of `rc`.
          * @returns the read-only status.
+         * @since 4.2
          */
         is_readonly(): boolean;
 
@@ -1027,6 +1065,7 @@ export namespace Libxfce4util {
          * @param key the key to search for.
          * @param fallback a default value returned if the `key` was not found.
          * @returns the value for this `key`.
+         * @since 4.2
          */
         read_bool_entry(key: string, fallback: boolean): boolean;
 
@@ -1035,6 +1074,7 @@ export namespace Libxfce4util {
          * @param key the key to search for.
          * @param fallback a default value returned if the `key` was not found.
          * @returns the value for this `key`, or `fallback` if `key` was not found.
+         * @since 4.2
          */
         read_entry(key: string, fallback: string): string;
 
@@ -1044,6 +1084,7 @@ export namespace Libxfce4util {
          * @param key the key to search for.
          * @param fallback a default value returned if the `key` was not found.
          * @returns the untranslated value for this `key`, or `fallback` if `key` was not               found.
+         * @since 4.2
          */
         read_entry_untranslated(key: string, fallback: string): string;
 
@@ -1053,6 +1094,7 @@ export namespace Libxfce4util {
          * @param key the key to search for.
          * @param fallback a default value returned if the `key` was not found.
          * @returns the value for this `key`.
+         * @since 4.2
          */
         read_int_entry(key: string, fallback: number): number;
 
@@ -1065,6 +1107,7 @@ export namespace Libxfce4util {
          * @param key the key to search for.
          * @param delimiter a string which specifies the places at which to split the string.              The delimiter is not included in any of the resulting strings.              If NULL, "," is used.
          * @returns the list or NULL if the entry does not exist.
+         * @since 4.2
          */
         read_list_entry(key: string, delimiter: string): string[];
 
@@ -1072,6 +1115,7 @@ export namespace Libxfce4util {
          * Mark `rc` as "clean", i.e. don't write dirty entries at destruction time. If
          * you then call `xfce_rc_write_entry` again, the dirty flag is set again and
          * dirty entries will be written at a subsequent `xfce_rc_flush` call.
+         * @since 4.2
          */
         rollback(): void;
 
@@ -1083,6 +1127,7 @@ export namespace Libxfce4util {
          * If `group` references a group that does not exists, it will be created for
          * you. But note, that empty groups will not be synced to permanent storage.
          * @param group the name of the new group or `null` to to switch back to the default group.
+         * @since 4.2
          */
         set_group(group: string): void;
 
@@ -1090,6 +1135,7 @@ export namespace Libxfce4util {
          * Wrapper for `xfce_rc_write_entry`, that stores a boolean `value`.
          * @param key the key to write.
          * @param value the value to write.
+         * @since 4.2
          */
         write_bool_entry(key: string, value: boolean): void;
 
@@ -1103,6 +1149,7 @@ export namespace Libxfce4util {
          * written to the most specific config file.
          * @param key the key to write.
          * @param value the value to write.
+         * @since 4.2
          */
         write_entry(key: string, value: string): void;
 
@@ -1110,6 +1157,7 @@ export namespace Libxfce4util {
          * Wrapper for `xfce_rc_write_entry`, that stores an integer `value`.
          * @param key the key to write.
          * @param value the value to write.
+         * @since 4.2
          */
         write_int_entry(key: string, value: number): void;
 
@@ -1121,6 +1169,7 @@ export namespace Libxfce4util {
          * @param key the key to write.
          * @param value a `null` terminated list of strings to store in the entry specified by key.
          * @param separator the list separator. Defaults to "," if `null`.
+         * @since 4.2
          */
         write_list_entry(key: string, value: string, separator: string): void;
     }

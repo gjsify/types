@@ -405,23 +405,27 @@ export namespace GUPnP {
          * @param use_acl `true`, if the path should query the GUPnPContext::acl before serving the resource, `false` otherwise.
          * @param path the toplevel path for the handler.
          * @param callback callback to invoke for requests under `path`
+         * @since 0.20.11
          */
         add_server_handler(use_acl: boolean, path: string, callback: Soup.ServerCallback): void;
 
         /**
          * @returns The access control list associated with this context or `null` if no acl is set.
+         * @since 0.20.11
          */
         get_acl(): Acl;
 
         /**
          * Get the default Content-Language header for this context.
          * @returns The default content of the Content-Language header.
+         * @since 0.17.0
          */
         get_default_language(): string;
 
         /**
          * Get the IP address we advertise ourselves as using.
          * @returns The IP address. This string should not be freed.
+         * @deprecated since 0.12.7: The "host-ip" property has moved to the base class {@link GSSDP.Client} so newer applications should use `gssdp_client_get_host_ip` instead.
          */
         get_host_ip(): string;
 
@@ -440,6 +444,7 @@ export namespace GUPnP {
         /**
          * Get the {@link Soup.Session} object that GUPnP is using.
          * @returns The {@link Soup.Session} used by GUPnP. Do not unref this when finished.
+         * @since 0.12.3
          */
         get_session(): Soup.Session;
 
@@ -466,17 +471,20 @@ export namespace GUPnP {
          * @param server_path Web server path already being hosted
          * @param user_agent The user-agent as a {@link GLib.Regex}.
          * @returns `true` on success, `false` otherwise.
+         * @since 0.13.3
          */
         host_path_for_agent(local_path: string, server_path: string, user_agent: GLib.Regex): boolean;
 
         /**
          * Remove a {@link Soup.ServerCallback} from the {@link GUPnP.Context}<!-- -->'s {@link Soup.Server}.
          * @param path the toplevel path for the handler.
+         * @since 0.20.11
          */
         remove_server_handler(path: string): void;
 
         /**
          * @param acl The new access control list or `null` to remove the current list.
+         * @since 0.20.11
          */
         set_acl(acl: Acl | null): void;
 
@@ -488,6 +496,7 @@ export namespace GUPnP {
          * no files hosted in languages which match the requested ones the
          * Content-Language header is set to this value. The default value is "en".
          * @param language A language tag as defined in RFC 2616 3.10
+         * @since 0.17.0
          */
         set_default_language(language: string): void;
 
@@ -546,6 +555,7 @@ export namespace GUPnP {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -589,6 +599,7 @@ export namespace GUPnP {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -699,6 +710,7 @@ export namespace GUPnP {
          * NetworkManager - on its availability during runtime. If it is not available,
          * the implementation falls back to the basic Unix context manager instead.
          * @param port Port to create contexts for, or 0 if you don't care what port is used.
+         * @since 0.17.2
          */
         static create(port: number): ContextManager;
 
@@ -706,6 +718,7 @@ export namespace GUPnP {
         /**
          * Get the network port associated with this context manager.
          * @returns The network port asssociated with this context manager.
+         * @since 0.19.1
          */
         get_port(): number;
 
@@ -722,6 +735,7 @@ export namespace GUPnP {
          * {@link GUPnP.ContextManager.SignalSignatures.context_available | GUPnP.ContextManager::context-available} handler after you create a
          * {@link GUPnP.ControlPoint} object for the newly available context.
          * @param control_point The {@link GUPnP.ControlPoint} to be taken care of
+         * @since 0.13.0
          */
         manage_control_point(control_point: ControlPoint): void;
 
@@ -732,6 +746,7 @@ export namespace GUPnP {
          * {@link GUPnP.ContextManager.SignalSignatures.context_available | GUPnP.ContextManager::context-available} handler after you create a
          * {@link GUPnP.RootDevice} object for the newly available context.
          * @param root_device The {@link GUPnP.RootDevice} to be taken care of
+         * @since 0.13.0
          */
         manage_root_device(root_device: RootDevice): void;
 
@@ -740,6 +755,7 @@ export namespace GUPnP {
          * Only the active control points send discovery messages.
          * This function should be called when servers are suspected to have
          * disappeared.
+         * @since 0.20.3
          */
         rescan_control_points(): void;
     }
@@ -1112,6 +1128,7 @@ export namespace GUPnP {
          * in the device description file.
          * @param element Name of the description element to retrieve
          * @returns a newly allocated string or `null` if the device               description doesn't contain the given `element`
+         * @since 0.13.0
          */
         get_description_value(element: string): string;
 
@@ -1273,6 +1290,7 @@ export namespace GUPnP {
          * Get a {@link GLib.List} of strings that represent the device capabilities as announced
          * in the device description file using the &lt;dlna:X_DLNACAP&gt; element.
          * @returns a {@link GLib.List} of newly allocated strings or `null` if the device description doesn't contain the &lt;dlna:X_DLNACAP&gt; element.
+         * @since 0.13.0
          */
         list_dlna_capabilities(): string[];
 
@@ -1281,6 +1299,7 @@ export namespace GUPnP {
          * announced in the device description file using the &lt;dlna:X_DLNADOC&gt;
          * element.
          * @returns a {@link GLib.List} of newly allocated strings or `null` if the device description doesn't contain the &lt;dlna:X_DLNADOC&gt; element.
+         * @since 0.20.4
          */
         list_dlna_device_class_identifier(): string[];
 
@@ -1599,6 +1618,7 @@ export namespace GUPnP {
         /**
          * Get the {@link GSSDP.ResourceGroup} used by `root_device`.
          * @returns The {@link GSSDP.ResourceGroup} of `root_device`.
+         * @since 0.19.2
          */
         get_ssdp_resource_group(): GSSDP.ResourceGroup;
 
@@ -2054,6 +2074,7 @@ export namespace GUPnP {
          * instead, this function re-enter the GMainloop before returning or might
          * even block.
          * @returns A new {@link GUPnP.ServiceIntrospection} for this service or `null`. Unref after use.
+         * @deprecated since 0.20.15.: Use `gupnp_service_info_get_introspection_async()` or `gupnp_service_info_get_introspection_async_full()` instead.
          */
         get_introspection(): ServiceIntrospection;
 
@@ -2074,6 +2095,7 @@ export namespace GUPnP {
          * error code {@link Gio.IOErrorEnum.CANCELLED}.
          * @param callback callback to be called when introspection object is ready.
          * @param cancellable GCancellable that can be used to cancel the call, or `null`.
+         * @since 0.20.9
          */
         get_introspection_async_full(callback: ServiceIntrospectionCallback, cancellable: Gio.Cancellable | null): void;
 
@@ -2289,6 +2311,7 @@ export namespace GUPnP {
          * @param type The type of the variable
          * @param callback The callback to call when `variable` changes
          * @returns `true` on success.
+         * @since 0.20.12
          */
         add_notify(variable: string, type: GObject.GType, callback: ServiceProxyNotifyCallback): boolean;
 
@@ -2298,6 +2321,7 @@ export namespace GUPnP {
          * #xmlDoc. Do NOT free or modify this document.
          * @param callback The callback to call when the peer issues any variable notification.
          * @returns `true` on success.
+         * @since 0.20.12
          */
         add_raw_notify(callback: ServiceProxyNotifyCallback): boolean;
 
@@ -2309,6 +2333,7 @@ export namespace GUPnP {
          * @param in_values {@link GLib.List} of values (as {@link GObject.Value}) that line up with `in_names`
          * @param callback The callback to call when sending the action has succeeded or failed
          * @returns A {@link GUPnP.ServiceProxyAction} handle. This will be freed when calling `gupnp_service_proxy_cancel_action()` or `gupnp_service_proxy_end_action_list()`.
+         * @since 0.13.3
          */
         begin_action_list(action: string, in_names: string[], in_values: (GObject.Value | any)[], callback: ServiceProxyActionCallback): ServiceProxyAction;
 
@@ -2467,6 +2492,7 @@ export namespace GUPnP {
          * if `entry` already exists, it won't be added a second time.
          * @param entry A value used to filter network
          * @returns `true` if `entry` is added, `false` otherwise.
+         * @since 0.20.5
          */
         add_entry(entry: string): boolean;
 
@@ -2475,6 +2501,7 @@ export namespace GUPnP {
          * directly add a `null`-terminated array of string usually aquired from
          * commandline args.
          * @param entries A `null`-terminated list of strings
+         * @since 0.20.8
          */
         add_entryv(entries: string[]): void;
 
@@ -2485,6 +2512,7 @@ export namespace GUPnP {
          * (enabled or not).
          * @param context A {@link GUPnP.Context} to test.
          * @returns `true` if `context` is matching the `white_list` criterias, `false` otherwise.
+         * @since 0.20.5
          */
         check_context(context: Context): boolean;
 
@@ -2492,24 +2520,28 @@ export namespace GUPnP {
          * Remove all entries from {@link GLib.List} that compose the white list.
          * The list is now empty. Even if {@link GUPnP.WhiteList} is enabled, it will have the
          * same behavior as if it was disabled.
+         * @since 0.20.5
          */
         clear(): void;
 
         /**
          * Return the status of the {@link GUPnP.WhiteList}
          * @returns `true` if `white_list` is enabled, `false` otherwise.
+         * @since 0.20.5
          */
         get_enabled(): boolean;
 
         /**
          * Get the {@link GLib.List} of entries that compose the white list. Do not free
          * @returns a {@link GLib.List} of entries used to filter networks, interfaces,... or `null`. Do not modify or free the list nor its elements.
+         * @since 0.20.5
          */
         get_entries(): string[];
 
         /**
          * Return the state of the entries list of {@link GUPnP.WhiteList}
          * @returns `true` if `white_list` is empty, `false` otherwise.
+         * @since 0.20.5
          */
         is_empty(): boolean;
 
@@ -2518,12 +2550,14 @@ export namespace GUPnP {
          * filter networks.
          * @param entry A value to remove from the filter list.
          * @returns `true` if `entry` is removed, `false` otherwise.
+         * @since 0.20.5
          */
         remove_entry(entry: string): boolean;
 
         /**
          * Enable or disable the {@link GUPnP.WhiteList} to perform the network filtering.
          * @param enable `true` to enable `white_list`, `false` otherwise
+         * @since 0.20.5
          */
         set_enabled(enable: boolean): void;
     }
@@ -2697,6 +2731,7 @@ export namespace GUPnP {
         /**
          * Get the number of IN arguments from the `action` and return it.
          * @returns The number of IN arguments from the `action`.
+         * @since 0.17.0
          */
         get_argument_count(): number;
 
@@ -2707,6 +2742,7 @@ export namespace GUPnP {
          * @param argument The name of the argument to retrieve
          * @param type The type of argument to retrieve
          * @returns Value as {@link GObject.Value} associated with `action`. `g_value_unset()` and `g_slice_free()` it after usage.
+         * @since 0.13.3
          */
         get_value(argument: string, type: GObject.GType): unknown;
 
@@ -2721,6 +2757,7 @@ export namespace GUPnP {
          * Get the {@link Soup.Message} associated with `action`. Mainly intended for
          * applications to be able to read HTTP headers received from clients.
          * @returns {@link Soup.Message} associated with `action`. Unref after using it.
+         * @since 0.13.0
          */
         get_message(): Soup.Message;
 
@@ -2735,6 +2772,7 @@ export namespace GUPnP {
          * @param arg_names A {@link GLib.List} of argument names as string
          * @param arg_types A {@link GLib.List} of argument types as {@link GObject.GType}
          * @returns The values as {@link GLib.List} of {@link GObject.Value}. `g_list_free()` the returned list and `g_value_unset()` and `g_slice_free()` each element.
+         * @since 0.13.3
          */
         get_values(arg_names: string[], arg_types: GObject.GType[]): unknown[];
 
@@ -2761,6 +2799,7 @@ export namespace GUPnP {
          * Sets the specified action return values.
          * @param arg_names A {@link GLib.List} of argument names
          * @param arg_values The {@link GLib.List} of values (as `GValues`) that line up with `arg_names`.
+         * @since 0.13.3
          */
         set_values(arg_names: string[], arg_values: (GObject.Value | any)[]): void;
     }
@@ -2907,6 +2946,7 @@ export namespace GUPnP {
             // Virtual methods
             /**
              * Check whether `gupnp_acl_is_allowed_async()` is supported.
+             * @since 0.20.11
              * @virtual
              */
             vfunc_can_sync(): boolean;
@@ -2918,6 +2958,7 @@ export namespace GUPnP {
              * @param path The path being served.
              * @param address IP address of the peer.
              * @param agent The User-Agent header of the peer or `null` if not unknown. `returns` `true` if the peer is allowed, `false` otherwise
+             * @since 0.20.11
              * @virtual
              */
             vfunc_is_allowed(device: null, service: null, path: string, address: string, agent: string | null): boolean;
@@ -2937,12 +2978,14 @@ export namespace GUPnP {
              * @param agent The User-Agent header of the peer or `null` if not unknown.
              * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the operation.
              * @param callback Callback to call after the function is done.
+             * @since 0.20.11
              * @virtual
              */
             vfunc_is_allowed_async(device: null, service: null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
             /**
              * @param res %GAsyncResult obtained from the callback in `gupnp_acl_is_allowed_async()`
+             * @since 0.20.11
              * @virtual
              */
             vfunc_is_allowed_finish(res: Gio.AsyncResult): boolean;
@@ -2966,6 +3009,7 @@ export namespace GUPnP {
         // Methods
         /**
          * Check whether `gupnp_acl_is_allowed_async()` is supported.
+         * @since 0.20.11
          */
         can_sync(): boolean;
 
@@ -2976,6 +3020,7 @@ export namespace GUPnP {
          * @param path The path being served.
          * @param address IP address of the peer.
          * @param agent The User-Agent header of the peer or `null` if not unknown. `returns` `true` if the peer is allowed, `false` otherwise
+         * @since 0.20.11
          */
         is_allowed(device: null, service: null, path: string, address: string, agent: string | null): boolean;
 
@@ -2993,6 +3038,7 @@ export namespace GUPnP {
          * @param address IP address of the peer
          * @param agent The User-Agent header of the peer or `null` if not unknown.
          * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the operation.
+         * @since 0.20.11
          */
         is_allowed_async(device: null, service: null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3011,6 +3057,7 @@ export namespace GUPnP {
          * @param agent The User-Agent header of the peer or `null` if not unknown.
          * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the operation.
          * @param callback Callback to call after the function is done.
+         * @since 0.20.11
          */
         is_allowed_async(device: null, service: null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3029,11 +3076,13 @@ export namespace GUPnP {
          * @param agent The User-Agent header of the peer or `null` if not unknown.
          * @param cancellable A {@link Gio.Cancellable} which can be used to cancel the operation.
          * @param callback Callback to call after the function is done.
+         * @since 0.20.11
          */
         is_allowed_async(device: null, service: null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param res %GAsyncResult obtained from the callback in `gupnp_acl_is_allowed_async()`
+         * @since 0.20.11
          */
         is_allowed_finish(res: Gio.AsyncResult): boolean;
     }

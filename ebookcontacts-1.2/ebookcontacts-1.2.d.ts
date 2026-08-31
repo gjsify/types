@@ -1565,6 +1565,7 @@ export namespace EBookContacts {
          * @param uid a UID of a contact
          * @param indices_index index to the indices array the contact belongs to
          * @returns whether the indices changed
+         * @since 3.50
          */
         add(uid: string, indices_index: number): boolean;
 
@@ -1572,6 +1573,7 @@ export namespace EBookContacts {
          * Sets the initial indices to be updated by the `self`. If `null`,
          * then unsets them.
          * @returns current indices, or `null`, when none had been set yet
+         * @since 3.50
          */
         get_indices(): BookIndices | null;
 
@@ -1583,6 +1585,7 @@ export namespace EBookContacts {
          * This function can be used only after initial call to `e_book_indices_updater_take_indices()`.
          * @param uid a UID of a removed contact
          * @returns whether the indices changed
+         * @since 3.50
          */
         remove(uid: string): boolean;
 
@@ -1595,6 +1598,7 @@ export namespace EBookContacts {
          * The function assumes ownership of the `indices`.
          * @param indices an {@link EBookContacts.BookIndices}, or `null`
          * @returns whether the indices changed
+         * @since 3.50
          */
         take_indices(indices: BookIndices | null): boolean;
     }
@@ -3658,6 +3662,7 @@ export namespace EBookContacts {
         /**
          * Gets the {@link EBookContacts.ContactField} corresponding to the `vcard_field`.
          * @param vcard_field a string representing a vCard field
+         * @since 2.26
          */
         static field_id_from_vcard(vcard_field: string): ContactField;
 
@@ -3665,6 +3670,7 @@ export namespace EBookContacts {
          * Returns whether the `field_id` is of a string type,
          * thus it can be used with `e_contact_get_const()`.
          * @param field_id an {@link EBookContacts.ContactField}
+         * @since 3.16
          */
         static field_is_string(field_id: ContactField): boolean;
 
@@ -3678,12 +3684,14 @@ export namespace EBookContacts {
          * Gets the {@link GObject.GType} used for this contact field, this indicates
          * what kind of value can be passed to `e_contact_set()`.
          * @param field_id an {@link EBookContacts.ContactField}
+         * @since 3.8
          */
         static field_type(field_id: ContactField): GObject.GType;
 
         /**
          * Gets a scheme (like "icq:") for the corresponding IM `field`.
          * @param field an {@link EBookContacts.ContactField}, one of E_CONTACT_IM_....
+         * @since 3.60
          */
         static impp_field_to_scheme(field: ContactField): string | null;
 
@@ -3698,6 +3706,7 @@ export namespace EBookContacts {
          * is never returned, then the `scheme` can be a valid scheme,
          * only the {@link EBookContacts.ContactField} does not have a mapping for it.
          * @param scheme a URI scheme as "icq:", but can be with a value too
+         * @since 3.60
          */
         static impp_scheme_to_field(scheme: string): [ContactField, number];
 
@@ -3721,6 +3730,7 @@ export namespace EBookContacts {
          * 
          * Not every attribute has it set, thus a `null` is a valid return value.
          * @param field_id an {@link EBookContacts.ContactField}
+         * @since 3.60
          */
         static vcard_attribute_fallback(field_id: ContactField): string | null;
 
@@ -3731,6 +3741,7 @@ export namespace EBookContacts {
          * then does nothing and returns `null`.
          * @param to_version the requested vCard version, one of {@link EBookContacts.VCardVersion}
          * @returns the `self` converted to `to_version`,    or `null`, when it is in this version already
+         * @since 3.60
          */
         convert(to_version: VCardVersion): Contact | null;
 
@@ -3761,6 +3772,7 @@ export namespace EBookContacts {
          * stored on the local file system as type {@link EBookContacts.ContactPhotoType.URI}
          * to be inlined and stored as {@link EBookContacts.ContactPhotoType.INLINED} instead.
          * @returns `true` if there were no errors, upon error `false` is returned    and `error` is set.
+         * @since 3.4
          */
         inline_local_photos(): boolean;
 
@@ -3863,6 +3875,7 @@ export namespace EBookContacts {
         /**
          * Fetches the `EContactFields` configured to be indexed, with thier respective `EBookIndexTypes`.
          * @returns The array of indexed `EContactFields`.
+         * @since 3.8
          */
         get_indexed_fields(): [ContactField, BookIndexType, number];
 
@@ -3871,6 +3884,7 @@ export namespace EBookContacts {
          * 
          * <note><para>If there are no configured summary fields, the default configuration is assumed</para></note>
          * @returns An array of `EContactFields` `n_fields` long, should be freed with `g_free()` when done.
+         * @since 3.8
          */
         get_summary_fields(): [ContactField, number];
 
@@ -3889,6 +3903,7 @@ export namespace EBookContacts {
          * @param fields The array of `EContactFields` to set indexes for
          * @param types The array of `EBookIndexTypes` defining what types of indexes to create
          * @param n_fields The number elements in the passed `fields`, `rule_types` and `rules` arrays.
+         * @since 3.8
          */
         set_indexed_fieldsv(fields: ContactField, types: BookIndexType, n_fields: number): void;
 
@@ -3905,6 +3920,7 @@ export namespace EBookContacts {
          * are currently supported as summary fields.</para></note>
          * @param fields The array of `EContactFields` to set as summary fields
          * @param n_fields The number of `EContactFields` in `fields`
+         * @since 3.8
          */
         set_summary_fieldsv(fields: ContactField, n_fields: number): void;
     }
@@ -3998,6 +4014,7 @@ export namespace EBookContacts {
          * See also `e_vcard_add_attribute_with_value()`, `e_vcard_append_attribute_with_value()`
          * @param attr an {@link EBookContacts.VCardAttribute} to add
          * @param value a value to assign to the attribute
+         * @since 3.60
          */
         add_attribute_with_value_take(attr: VCardAttribute, value: string): void;
 
@@ -4005,6 +4022,7 @@ export namespace EBookContacts {
          * Appends `attr` to `evc` to the end of a list of attributes. This takes
          * ownership of `attr`.
          * @param attr an {@link EBookContacts.VCardAttribute} to append
+         * @since 2.32
          */
         append_attribute(attr: VCardAttribute): void;
 
@@ -4018,6 +4036,7 @@ export namespace EBookContacts {
          * See also `e_vcard_append_attribute_with_value_take()`, `e_vcard_add_attribute_with_value()`
          * @param attr an {@link EBookContacts.VCardAttribute} to append
          * @param value a value to assign to the attribute
+         * @since 2.32
          */
         append_attribute_with_value(attr: VCardAttribute, value: string): void;
 
@@ -4031,6 +4050,7 @@ export namespace EBookContacts {
          * See also `e_vcard_append_attribute_with_value()`, `e_vcard_add_attribute_with_value()`
          * @param attr an {@link EBookContacts.VCardAttribute} to append
          * @param value a value to assign to the attribute
+         * @since 3.60
          */
         append_attribute_with_value_take(attr: VCardAttribute, value: string): void;
 
@@ -4039,6 +4059,7 @@ export namespace EBookContacts {
          * attributes are copied, thus the caller is responsible to take care
          * of the `attrs` and its content.
          * @param attrs a {@link GLib.List} of {@link EBookContacts.VCardAttribute}
+         * @since 3.60
          */
         append_attributes(attrs: VCardAttribute[]): void;
 
@@ -4047,6 +4068,7 @@ export namespace EBookContacts {
          * assumes ownership of both the `attrs` and the respective attributes
          * stored in it.
          * @param attrs a {@link GLib.List} of {@link EBookContacts.VCardAttribute}
+         * @since 3.60
          */
         append_attributes_take(attrs: VCardAttribute[]): void;
 
@@ -4064,6 +4086,7 @@ export namespace EBookContacts {
          * @param str a vCard string
          * @param len length of `str`, or -1 if `str` is `null` terminated
          * @param uid a unique ID string
+         * @since 3.12
          */
         construct_full(str: string, len: bigint | number, uid: string | null): void;
 
@@ -4075,6 +4098,7 @@ export namespace EBookContacts {
          * This modifies `evc`.
          * @param str a vCard string
          * @param uid a unique ID string
+         * @since 3.4
          */
         construct_with_uid(str: string, uid: string | null): void;
 
@@ -4084,6 +4108,7 @@ export namespace EBookContacts {
          * then does nothing and returns `null`.
          * @param to_version the requested vCard version, one of {@link EBookContacts.VCardVersion}
          * @returns the `self` converted to `to_version`,    or `null`, when it is in this version already
+         * @since 3.60
          */
         convert(to_version: VCardVersion): VCard | null;
 
@@ -4092,6 +4117,7 @@ export namespace EBookContacts {
          * version `version`.
          * @param version the vCard version to export to
          * @returns A newly allocated string representing the vCard    in version `version`.
+         * @since 3.60
          */
         convert_to_string(version: VCardVersion): string;
 
@@ -4106,6 +4132,7 @@ export namespace EBookContacts {
          * continue the walk-through, or `false` to stop.
          * @param flags a bit-or of {@link EBookContacts.VCardForeachFlags}
          * @param func an {@link EBookContacts.VCardForeachFunc} callback function
+         * @since 3.60
          */
         foreach(flags: VCardForeachFlags, func: VCardForeachFunc): void;
 
@@ -4113,6 +4140,7 @@ export namespace EBookContacts {
          * Removes all attributes the `func` returns `true` for.
          * @param func an {@link EBookContacts.VCardForeachFunc} callback function
          * @returns how many attributes had been removed
+         * @since 3.60
          */
         foreach_remove(func: VCardForeachFunc): number;
 
@@ -4140,6 +4168,7 @@ export namespace EBookContacts {
          * parse the vCard if it is not already parsed.
          * @param name the name of the attribute to get
          * @returns An {@link EBookContacts.VCardAttribute} if found, or `null`.
+         * @since 3.4
          */
         get_attribute_if_parsed(name: string): VCardAttribute | null;
 
@@ -4160,6 +4189,7 @@ export namespace EBookContacts {
          * should be freed with `g_list_free()`, when no longer needed.
          * @param name an attribute name
          * @returns a new {@link GLib.List}    of {@link EBookContacts.VCardAttribute} objects, which are named `name` and stored in the `self`, or `null`,    when the `self` does not contain any such attribute. The attributes are in the list    in the order as they appear in the `self`.
+         * @since 3.60
          */
         get_attributes_by_name(name: string): VCardAttribute[] | null;
 
@@ -4168,6 +4198,7 @@ export namespace EBookContacts {
          * is returned only if there is a VERSION attribute, but with an unknown
          * value. Otherwise an {@link EBookContacts.VCardVersion.40} is used as a fallback version.
          * @returns a vCard version of the `self`, as one of {@link EBookContacts.VCardVersion}
+         * @since 3.60
          */
         get_version(): VCardVersion;
 
@@ -4175,6 +4206,7 @@ export namespace EBookContacts {
          * Check if the `evc` has been parsed already, as {@link EBookContacts.VCard} implements lazy parsing
          * of its vCard data. Used for debugging.
          * @returns `true` if `evc` has been parsed, `false` otherwise.
+         * @since 3.2
          */
         is_parsed(): boolean;
 
@@ -4198,12 +4230,14 @@ export namespace EBookContacts {
          * Exports `self` to a string representation. To use a specific vCard version
          * use `e_vcard_convert_to_string()`.
          * @returns A newly allocated string representing the vCard.
+         * @since 3.60
          */
         to_string(): string;
 
         /**
          * @param x_name the attribute name, which starts with "X-"
          * @returns Value of attribute `x_name`, or `null`,    when there is no such attribute. Free the returned pointer with `g_free()`,    when no longer needed.
+         * @since 3.26
          */
         util_dup_x_attribute(x_name: string): string | null;
 
@@ -4212,6 +4246,7 @@ export namespace EBookContacts {
          * removes it from `vcard`, when `value` is `null`.
          * @param x_name the attribute name, which starts with "X-"
          * @param value the value to set, or `null` to unset
+         * @since 3.26
          */
         util_set_x_attribute(x_name: string, value: string | null): void;
     }
@@ -4263,6 +4298,7 @@ export namespace EBookContacts {
         /**
          * Creates a copy of `eaw`.
          * @returns A new {@link EBookContacts.AddressWestern} struct identical to `eaw`.
+         * @since 3.24
          */
         copy(): AddressWestern;
 
@@ -4311,6 +4347,7 @@ export namespace EBookContacts {
          * Free the returned array with `e_book_client_view_sort_fields_free()`,
          * when no longer needed.
          * @returns copy of the `src`
+         * @since 3.50
          */
         copy(): BookClientViewSortFields;
 
@@ -4347,6 +4384,7 @@ export namespace EBookContacts {
         /**
          * Returns whether the `self` considers contacts stored in the ascending order.
          * @param self an {@link EBookContacts.BookIndicesUpdater}
+         * @since 3.50
          */
         static get_ascending_sort(self: BookIndicesUpdater): boolean;
 
@@ -4356,6 +4394,7 @@ export namespace EBookContacts {
          * indexes the indices have set.
          * @param self an {@link EBookContacts.BookIndicesUpdater}
          * @param ascending_sort the value to set
+         * @since 3.50
          */
         static set_ascending_sort(self: BookIndicesUpdater, ascending_sort: boolean): void;
 
@@ -4368,6 +4407,7 @@ export namespace EBookContacts {
          * Free the returned array with `e_book_indices_free()`,
          * when no longer needed.
          * @returns copy of the `src`
+         * @since 3.50
          */
         copy(): BookIndices;
 
@@ -4453,6 +4493,7 @@ export namespace EBookContacts {
          * @param field a EVCard field name to test
          * @param test the test to apply
          * @param value the value to test for
+         * @since 2.22
          */
         static vcard_field_test(field: string, test: BookQueryTest, value: string): BookQuery;
 
@@ -4532,6 +4573,7 @@ export namespace EBookContacts {
         /**
          * Frees all the members of the `self`, but unlike `e_contact_address_free()`,
          * it does not free the `self` itself.
+         * @since 3.60
          */
         clear(): void;
 
@@ -4543,12 +4585,14 @@ export namespace EBookContacts {
         /**
          * Populates `self` from the `source` attribute.
          * @param source an ADR {@link EBookContacts.VCardAttribute}
+         * @since 3.60
          */
         read_attr(source: VCardAttribute): void;
 
         /**
          * Populates ADR attribute `destination` with the data from the `self`.
          * @param destination an {@link EBookContacts.VCardAttribute}
+         * @since 3.60
          */
         write_attr(destination: VCardAttribute): VCardAttribute;
     }
@@ -4582,6 +4626,7 @@ export namespace EBookContacts {
          * in the structure (for example when the KEY attribute
          * is a URI to some server).
          * @param source a source {@link EBookContacts.VCardAttribute}
+         * @since 3.60
          */
         static from_attr(source: VCardAttribute): ContactCert | null;
 
@@ -4598,6 +4643,7 @@ export namespace EBookContacts {
          * The `destination` is supposed to be a KEY attribute.
          * @param to_version one of {@link EBookContacts.VCardVersion}
          * @param destination a destination {@link EBookContacts.VCardAttribute}
+         * @since 3.60
          */
         write_attr(to_version: VCardVersion, destination: VCardAttribute): void;
     }
@@ -4656,6 +4702,7 @@ export namespace EBookContacts {
          * on the values of `dt`.
          * @param for_version an {@link EBookContacts.VCardVersion}
          * @returns A date string, owned by the caller.
+         * @since 3.60
          */
         to_string(for_version: VCardVersion): string;
     }
@@ -4701,6 +4748,7 @@ export namespace EBookContacts {
          * Creates a new {@link EBookContacts.ContactDateTime} based on `str`.
          * @param str a date, time, date-time string in vCard format
          * @param flags 
+         * @since 3.60
          */
         static from_string(str: string, flags: ContactDateTimeFlags): ContactDateTime;
 
@@ -4709,23 +4757,27 @@ export namespace EBookContacts {
          * Checks if `dt1` and `dt2` are the same date time.
          * @param dt2 an {@link EBookContacts.ContactDateTime}
          * @returns `true` if `dt1` and `dt2` are equal, `false` otherwise.
+         * @since 3.60
          */
         equal(dt2: ContactDateTime): boolean;
 
         /**
          * Frees the `self` struct and its content.
+         * @since 3.60
          */
         free(): void;
 
         /**
          * Checks whether the `self` has set at least one of the date members.
          * @returns whether the `self` has set at least one of the date members
+         * @since 3.60
          */
         has_date(): boolean;
 
         /**
          * Checks whether the `self` has set at least one of the time members.
          * @returns whether the `self` has set at least one of the time members
+         * @since 3.60
          */
         has_time(): boolean;
 
@@ -4736,6 +4788,7 @@ export namespace EBookContacts {
          * @param for_version an {@link EBookContacts.VCardVersion} with version to use the format for
          * @param flags bit-or of {@link EBookContacts.ContactDateTimeFlags}
          * @returns a new date/time string, or `null`,    when `self` is `null` or when all members are unset.
+         * @since 3.60
          */
         to_string(for_version: VCardVersion, flags: ContactDateTimeFlags): string | null;
     }
@@ -4766,12 +4819,14 @@ export namespace EBookContacts {
          * Converts a string into an {@link EBookContacts.ContactGenderSex}. Unrecognized values
          * are returned as {@link EBookContacts.ContactGenderSex.NOT_SET}.
          * @param string a string representation of a gender sex
+         * @since 3.60
          */
         static sex_from_string(string: string): ContactGenderSex;
 
         /**
          * Converts the `sex` into a string, as used by the vCard 4.0 standard.
          * @param sex an {@link EBookContacts.ContactGenderSex}
+         * @since 3.60
          */
         static sex_to_string(sex: ContactGenderSex): string | null;
 
@@ -4780,11 +4835,13 @@ export namespace EBookContacts {
          * Creates a copy of the `self`. Returns `null` when `self` is `null`.
          * Free it with `e_contact_gender_free()`, when no longer needed.
          * @returns a new copy of    the `self`, or `null` when the `self` is `null`
+         * @since 3.60
          */
         copy(): ContactGender | null;
 
         /**
          * Frees the `self`. Does nothing, when `self` is `null`.
+         * @since 3.60
          */
         free(): void;
     }
@@ -4817,12 +4874,14 @@ export namespace EBookContacts {
          * and longitude from the provided strings.
          * @param latitude a text representation of the latitude
          * @param longitude a text representation of the longitude
+         * @since 3.60
          */
         static from_string(latitude: string, longitude: string): ContactGeo | null;
 
         // Methods
         /**
          * Frees the `geo` struct and its contents.
+         * @since 1.12
          */
         free(): void;
 
@@ -4832,6 +4891,7 @@ export namespace EBookContacts {
          * 
          * Note: the numbers are converted up to 6 digits after the decimal point.
          * @returns `true`, when the `self` contained latitude and longitude    and the out arguments were populated, `false` otherwise, which    also means the out arguments were not modified.
+         * @since 3.60
          */
         to_string(): [boolean, string, string];
     }
@@ -4914,6 +4974,7 @@ export namespace EBookContacts {
         /**
          * Creates a copy of `photo`.
          * @returns A new {@link EBookContacts.ContactPhoto} struct identical to `photo`.
+         * @since 3.8
          */
         copy(): ContactPhoto;
 
@@ -4925,36 +4986,42 @@ export namespace EBookContacts {
         /**
          * Gets the `photo`'s data.
          * @returns the inlined image in the {@link EBookContacts.ContactPhoto}, or `null` if it has not been set.
+         * @since 3.2
          */
         get_inlined(): Uint8Array | null;
 
         /**
          * Gets the `photo`'s mime type.
          * @returns the MIME type of the image, or `null` if it has not been set.
+         * @since 3.2
          */
         get_mime_type(): string | null;
 
         /**
          * Gets the `photo`'s URI.
          * @returns the URI of the image, or `null` if it has not been set
+         * @since 3.2
          */
         get_uri(): string | null;
 
         /**
          * Sets the `photo`'s inlined data.
          * @param data the inlined image data
+         * @since 3.2
          */
         set_inlined(data: Uint8Array | string): void;
 
         /**
          * Sets the `photo`'s mime type.
          * @param mime_type the mime type
+         * @since 3.2
          */
         set_mime_type(mime_type: string): void;
 
         /**
          * Sets the `photo`'s URI.
          * @param uri the `photo`'s URI
+         * @since 3.2
          */
         set_uri(uri: string): void;
     }
@@ -5013,6 +5080,7 @@ export namespace EBookContacts {
         /**
          * Creates a copy of `w`.
          * @returns A new {@link EBookContacts.NameWestern} struct identical to `w`.
+         * @since 3.24
          */
         copy(): NameWestern;
 
@@ -5037,6 +5105,7 @@ export namespace EBookContacts {
          * Compares two phone numbers.
          * @param first_number the first EPhoneNumber to compare
          * @param second_number the second EPhoneNumber to compare
+         * @since 3.8
          */
         static compare_strings(first_number: string, second_number: string): PhoneNumberMatch;
 
@@ -5045,6 +5114,7 @@ export namespace EBookContacts {
          * @param first_number the first EPhoneNumber to compare
          * @param second_number the second EPhoneNumber to compare
          * @param region_code a two-letter country code, or `null`
+         * @since 3.8
          */
         static compare_strings_with_region(first_number: string, second_number: string, region_code: string | null): PhoneNumberMatch;
 
@@ -5064,6 +5134,7 @@ export namespace EBookContacts {
          * calling code, then "ZZ" can be passed for `region_code`.
          * @param phone_number the phone number to parse
          * @param region_code a two-letter country code, or `null`
+         * @since 3.8
          */
         static from_string(phone_number: string, region_code: string | null): PhoneNumber;
 
@@ -5074,6 +5145,7 @@ export namespace EBookContacts {
          * If `null` is passed for `region_code` the default region as returned by
          * `e_phone_number_get_default_region()` is used.
          * @param region_code a two-letter country code, a locale name, or `null`
+         * @since 3.8
          */
         static get_country_code_for_region(region_code: string | null): number;
 
@@ -5086,6 +5158,7 @@ export namespace EBookContacts {
          * `LC_ADDRESS` category: If that category provides a reasonable value
          * for %_NL_ADDRESS_COUNTRY_AB2 this value is returned. Otherwise the
          * locale name configured for `LC_ADDRESS` is parsed.
+         * @since 3.8
          */
         static get_default_region(): string;
 
@@ -5094,6 +5167,7 @@ export namespace EBookContacts {
          * function before using any of the phone-utils functions to ensure that the
          * required functionality is available, and to pick alternative mechanisms if
          * needed.
+         * @since 3.8
          */
         static is_supported(): boolean;
 
@@ -5102,17 +5176,20 @@ export namespace EBookContacts {
          * Compares two phone numbers.
          * @param second_number the second EPhoneNumber to compare
          * @returns The quality of matching for the two phone numbers.
+         * @since 3.8
          */
         compare(second_number: PhoneNumber): PhoneNumberMatch;
 
         /**
          * Makes a copy of `phone_number`.
          * @returns A newly allocated EPhoneNumber instance. Call `e_phone_number_free()` to release this instance.
+         * @since 3.8
          */
         copy(): PhoneNumber;
 
         /**
          * Released the memory occupied by `phone_number`.
+         * @since 3.8
          */
         free(): void;
 
@@ -5122,6 +5199,7 @@ export namespace EBookContacts {
          * function would return one and assign E_PHONE_NUMBER_COUNTRY_FROM_FQTN to `source`.
          * @param source an optional location for storing the phone number's origin, or `null`
          * @returns A valid country calling code, or zero if no code is known.
+         * @since 3.8
          */
         get_country_code(source: PhoneNumberCountrySource | null): number;
 
@@ -5130,6 +5208,7 @@ export namespace EBookContacts {
          * prefixes. For instance when parsing "+1-617-5423789" this function would
          * return the string "6175423789".
          * @returns The national portion of `phone_number`.
+         * @since 3.8
          */
         get_national_number(): string;
 
@@ -5137,6 +5216,7 @@ export namespace EBookContacts {
          * Describes the `phone_number` according to the rules applying to `format`.
          * @param format the phone number format to apply
          * @returns A formatted string for `phone_number`.
+         * @since 3.8
          */
         to_string(format: PhoneNumberFormat): string;
     }
@@ -5213,6 +5293,7 @@ export namespace EBookContacts {
          * 
          * See also `e_vcard_attribute_add_value()`.
          * @param value a value to add and take
+         * @since 3.60
          */
         add_value_take(value: string): void;
 
@@ -5236,6 +5317,7 @@ export namespace EBookContacts {
         /**
          * Gets how many values the `attr` holds.
          * @returns how many values the `attr` holds
+         * @since 3.60
          */
         get_n_values(): number;
 
@@ -5253,6 +5335,7 @@ export namespace EBookContacts {
          * the `attr` has stored.
          * @param index an index of the value to receive, counting from zero
          * @returns a value at index `index`, or `null`, when out of bounds.
+         * @since 3.60
          */
         get_nth_value(index: number): string | null;
 
@@ -5362,6 +5445,7 @@ export namespace EBookContacts {
          * names are guaranteed to be unique, so `attr` is guaranteed to have no
          * parameters named `param_name` after this function returns.
          * @param param_name a parameter name
+         * @since 1.12
          */
         remove_param(param_name: string): void;
 

@@ -1287,6 +1287,7 @@ export namespace Grss {
          * @param channel the {@link Grss.FeedChannel} to dump in the file.
          * @param items list of `GrssFeedItems` to be added in         the feed.
          * @returns a newly allocated string holding the formatted feed, to be freed when no longer in use.
+         * @deprecated since 0.6: Use `grss_feed_formatter_format()` instead.
          */
         format_content(channel: FeedChannel, items: FeedItem[]): string;
 
@@ -1746,22 +1747,26 @@ export namespace Grss {
         // Methods
         /**
          * @returns the email of person. The returned          string is owned by {@link Grss.Person} and it should          not be modified or freed.
+         * @since 0.7
          */
         get_email(): string;
 
         /**
          * @returns the name of person. The returned          string is owned by {@link Grss.Person} and it should          not be modified or freed.
+         * @since 0.7
          */
         get_name(): string;
 
         /**
          * @returns the website (uri) of person. The returned          string is owned by {@link Grss.Person} and it should          not be modified or freed.
+         * @since 0.7
          */
         get_uri(): string;
 
         /**
          * Atomically increments the reference count of `person` by one.
          * @returns the {@link Grss.Person} with the reference count increased
+         * @since 0.7
          */
         ref(): Person;
 
@@ -1770,6 +1775,7 @@ export namespace Grss {
          * 
          * When the reference count reaches zero, the resources allocated by
          * `person` are freed
+         * @since 0.7
          */
         unref(): void;
     }

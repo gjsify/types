@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Adw-1.
  *
- * GENERATED — do not edit. Provenance: Adw-1 — library 1.10.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap
+ * GENERATED — do not edit. Provenance: Adw-1 — library 1.10.0 — 1 child holder(s) — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap
  *
- * 62 concrete widgets, 63 declarations, 25 enum nick unions, 66 slot candidates.
+ * 62 concrete widgets, 1 child holders, 64 declarations, 25 enum nick unions, 67 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -1539,6 +1539,52 @@ export interface AdwToastOverlayProps extends GtkWidgetProps, GtkAccessibleProps
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type AdwToastOverlayConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
 
+/** A toggle within [class@ToggleGroup]. */
+export interface AdwToggleProps {
+    /**
+     * The toggle child.
+     * @since 1.7
+     */
+    child?: Gtk.Widget | null;
+    /**
+     * The description of the toggle.
+     * @since 1.9
+     */
+    description?: string;
+    /**
+     * Whether this toggle is enabled.
+     * @since 1.7
+     */
+    enabled?: boolean;
+    /**
+     * The toggle icon name.
+     * @since 1.7
+     */
+    'icon-name'?: string | null;
+    /**
+     * The toggle label.
+     * @since 1.7
+     */
+    label?: string | null;
+    /**
+     * The toggle name.
+     * @since 1.7
+     */
+    name?: string;
+    /**
+     * The tooltip of the toggle.
+     * @since 1.7
+     */
+    tooltip?: string;
+    /**
+     * Whether an embedded underline in the label indicates a mnemonic.
+     * @since 1.7
+     */
+    'use-underline'?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type AdwToggleConstructOnly = never;
+
 /** A group of exclusive toggles. */
 export interface AdwToggleGroupProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkOrientableProps {
     /**
@@ -2354,6 +2400,31 @@ export interface Widgets {
 /** Every GType this namespace can create. A consumer derives its own tag map. */
 export type WidgetGType = keyof Widgets;
 
+// ---------------------------------------------------------------------------
+// Child holders — the same shape, for objects that CARRY a widget without being one.
+//
+// `GtkListItem`, `GtkListHeader`, `GtkColumnViewCell` and `AdwToggle` descend from
+// `GObject.Object` and hold a widget through `set_child`/`get_child`. A renderer places
+// them exactly like a container, so they belong in the vocabulary; a check asking "is
+// this a widget" must still be able to say no. Hence a sibling table rather than four
+// more rows in `Widgets`: concatenate them when you mean both.
+// ---------------------------------------------------------------------------
+
+export interface ChildHolders {
+    AdwToggle: {
+        class: Adw.Toggle;
+        props: AdwToggleProps;
+        signals: Adw.Toggle.SignalSignatures;
+        constructOnly: AdwToggleConstructOnly;
+        slotCandidates: {
+        'child': 'set_child';
+        };
+    };
+}
+
+/** Every GType this namespace holds a child in without it being a widget. */
+export type ChildHolderGType = keyof ChildHolders;
+
 /** The writable, optional, GObject-keyed property surface of one GType. */
 export type PropsOf<G extends WidgetGType> = Widgets[G]['props'];
 
@@ -2388,6 +2459,9 @@ export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
 /** Widget GType -> every declaration its members come from, self first. */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
+
+/** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
+export const CHILD_HOLDERS: readonly string[];
 
 /** Enum GType -> the nicks this surface offers. */
 export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;

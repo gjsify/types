@@ -2073,6 +2073,7 @@ export namespace ColorHug {
          * @param buffer_in_len The size of `buffer_in`
          * @param buffer_out The output buffer, or `null`
          * @param buffer_out_len The size of `buffer_out`
+         * @since 0.1.29
          */
         add(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: bigint | number, buffer_out: number, buffer_out_len: bigint | number): void;
 
@@ -2081,6 +2082,7 @@ export namespace ColorHug {
          * 
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
+         * @since 0.1.29
          */
         boot_flash(device: GUsb.Device): void;
 
@@ -2090,6 +2092,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param calibration_index Slot
+         * @since 0.1.29
          */
         clear_calibration(device: GUsb.Device, calibration_index: number): void;
 
@@ -2100,6 +2103,7 @@ export namespace ColorHug {
          * @param device A {@link GUsb.Device}
          * @param address The device EEPROM address
          * @param len The length of `data`
+         * @since 0.1.29
          */
         erase_flash(device: GUsb.Device, address: number, len: bigint | number): void;
 
@@ -2109,6 +2113,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 2
          * @param device A {@link GUsb.Device}
          * @param vref The voltage reference, ranging from 0.0 to 3.3V.
+         * @since 0.1.31
          */
         get_adc_vref_neg(device: GUsb.Device, vref: number): void;
 
@@ -2118,6 +2123,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 2
          * @param device A {@link GUsb.Device}
          * @param vref The voltage reference, ranging from 0.0 to 3.3V.
+         * @since 0.1.31
          */
         get_adc_vref_pos(device: GUsb.Device, vref: number): void;
 
@@ -2130,6 +2136,7 @@ export namespace ColorHug {
          * @param calibration the 3x3 calibration matrix
          * @param types The types the matrix supports
          * @param description The description of the calibration
+         * @since 0.1.29
          */
         get_calibration(device: GUsb.Device, calibration_index: number, calibration: Colord.Mat3x3, types: number, description: string): void;
 
@@ -2139,6 +2146,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param calibration_map An array of slot positions
+         * @since 0.1.29
          */
         get_calibration_map(device: GUsb.Device, calibration_map: number): void;
 
@@ -2149,6 +2157,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 2
          * @param device A {@link GUsb.Device}
          * @param indexes An array of red, green, blue indexes
+         * @since 0.1.31
          */
         get_ccd_calibration(device: GUsb.Device, indexes: number): void;
 
@@ -2158,6 +2167,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param color_select The color select, e.g. {@link ColorHug.ColorSelect.RED}
+         * @since 0.1.29
          */
         get_color_select(device: GUsb.Device, color_select: ColorSelect): void;
 
@@ -2167,6 +2177,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 2
          * @param device A {@link GUsb.Device}
          * @param dac_value value between 0.0 and 0.99
+         * @since 1.1.6
          */
         get_dac_value(device: GUsb.Device, dac_value: number): void;
 
@@ -2176,6 +2187,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param value A {@link Colord.ColorRGB}
+         * @since 0.1.29
          */
         get_dark_offsets(device: GUsb.Device, value: Colord.ColorRGB): void;
 
@@ -2187,6 +2199,7 @@ export namespace ColorHug {
          * @param major The firmware major version
          * @param minor The firmware minor version
          * @param micro The firmware micro version
+         * @since 0.1.29
          */
         get_firmware_ver(device: GUsb.Device, major: number, minor: number, micro: number): void;
 
@@ -2196,6 +2209,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param hw_version The hardware version
+         * @since 0.1.29
          */
         get_hardware_version(device: GUsb.Device, hw_version: number): void;
 
@@ -2205,6 +2219,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param integral_time The sensor integral time in device units
+         * @since 0.1.29
          */
         get_integral_time(device: GUsb.Device, integral_time: number): void;
 
@@ -2214,6 +2229,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param leds The LED bitfield
+         * @since 0.1.29
          */
         get_leds(device: GUsb.Device, leds: number): void;
 
@@ -2223,6 +2239,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param measure_mode The {@link ColorHug.MeasureMode}, e.g. {@link ColorHug.MeasureMode.DURATION}
+         * @since 0.1.29
          */
         get_measure_mode(device: GUsb.Device, measure_mode: MeasureMode): void;
 
@@ -2232,6 +2249,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param multiplier The device multiplier, e.g. {@link ColorHug.FreqScale.100}
+         * @since 0.1.29
          */
         get_multiplier(device: GUsb.Device, multiplier: FreqScale): void;
 
@@ -2241,6 +2259,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param email An email address
+         * @since 0.1.29
          */
         get_owner_email(device: GUsb.Device, email: string): void;
 
@@ -2250,6 +2269,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param name The owner name
+         * @since 0.1.29
          */
         get_owner_name(device: GUsb.Device, name: string): void;
 
@@ -2259,6 +2279,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param pcb_errata The PCB errata, e.g. {@link ColorHug.PcbErrata.SWAPPED_LEDS}
+         * @since 0.1.29
          */
         get_pcb_errata(device: GUsb.Device, pcb_errata: number): void;
 
@@ -2268,6 +2289,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param post_scale The post-scale value
+         * @since 0.1.29
          */
         get_post_scale(device: GUsb.Device, post_scale: number): void;
 
@@ -2277,6 +2299,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param pre_scale Pre-scale value
+         * @since 0.1.29
          */
         get_pre_scale(device: GUsb.Device, pre_scale: number): void;
 
@@ -2286,6 +2309,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param remote_hash A {@link ColorHug.Sha1}
+         * @since 0.1.29
          */
         get_remote_hash(device: GUsb.Device, remote_hash: Sha1): void;
 
@@ -2295,6 +2319,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param serial_number The device serial number
+         * @since 0.1.29
          */
         get_serial_number(device: GUsb.Device, serial_number: number): void;
 
@@ -2304,6 +2329,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 2
          * @param device A {@link GUsb.Device}
          * @param temperature Temperature in Celcius
+         * @since 0.1.29
          */
         get_temperature(device: GUsb.Device, temperature: number): void;
 
@@ -2313,6 +2339,7 @@ export namespace ColorHug {
          * @param process_flags Flags how to process the queue, e.g. {@link ColorHug.DeviceQueueProcessFlags.CONTINUE_ERRORS}
          * @param cancellable {@link Gio.Cancellable} or `null`
          * @returns `true` if the commands were executed successfully.
+         * @since 0.1.29
          */
         process(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2320,6 +2347,7 @@ export namespace ColorHug {
          * Processes all commands in the command queue.
          * @param process_flags 
          * @param cancellable A {@link Gio.Cancellable}, or `null`
+         * @since 0.1.29
          */
         process_async(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2328,6 +2356,7 @@ export namespace ColorHug {
          * @param process_flags 
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @param callback A {@link Gio.AsyncReadyCallback} that will be called when finished.
+         * @since 0.1.29
          */
         process_async(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2336,6 +2365,7 @@ export namespace ColorHug {
          * @param process_flags 
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @param callback A {@link Gio.AsyncReadyCallback} that will be called when finished.
+         * @since 0.1.29
          */
         process_async(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2343,6 +2373,7 @@ export namespace ColorHug {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns `true` if the request was fulfilled.
+         * @since 0.1.29
          */
         process_finish(res: Gio.AsyncResult): boolean;
 
@@ -2353,6 +2384,7 @@ export namespace ColorHug {
          * @param device A {@link GUsb.Device}
          * @param data Firmware binary data
          * @param len Size of `data`
+         * @since 1.2.11
          */
         read_firmware(device: GUsb.Device, data: number, len: bigint | number): void;
 
@@ -2364,6 +2396,7 @@ export namespace ColorHug {
          * @param address The device EEPROM address
          * @param data Binary data
          * @param len The length of `data`
+         * @since 0.1.29
          */
         read_flash(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
 
@@ -2375,6 +2408,7 @@ export namespace ColorHug {
          * @param address The device memory address
          * @param data The binary data
          * @param len Size of `data`
+         * @since 0.1.29
          */
         read_sram(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
 
@@ -2383,6 +2417,7 @@ export namespace ColorHug {
          * 
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
+         * @since 0.1.29
          */
         reset(device: GUsb.Device): void;
 
@@ -2391,6 +2426,7 @@ export namespace ColorHug {
          * 
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
+         * @since 0.1.29
          */
         self_test(device: GUsb.Device): void;
 
@@ -2403,6 +2439,7 @@ export namespace ColorHug {
          * @param calibration the 3x3 calibration matrix
          * @param types The types the matrix supports
          * @param description The description of the calibration
+         * @since 0.1.29
          */
         set_calibration(device: GUsb.Device, calibration_index: number, calibration: Colord.Mat3x3, types: number, description: string): void;
 
@@ -2410,6 +2447,7 @@ export namespace ColorHug {
          * @param device 
          * @param calibration_index 
          * @param ccmx 
+         * @since 0.1.29
          */
         set_calibration_ccmx(device: GUsb.Device, calibration_index: number, ccmx: Colord.It8): boolean;
 
@@ -2419,6 +2457,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param calibration_map An array of slot positions
+         * @since 0.1.29
          */
         set_calibration_map(device: GUsb.Device, calibration_map: number): void;
 
@@ -2429,6 +2468,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 2
          * @param device A {@link GUsb.Device}
          * @param indexes An array of red, green, blue indexes
+         * @since 0.1.31
          */
         set_ccd_calibration(device: GUsb.Device, indexes: number): void;
 
@@ -2438,6 +2478,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param color_select The color select, e.g. {@link ColorHug.ColorSelect.RED}
+         * @since 0.1.29
          */
         set_color_select(device: GUsb.Device, color_select: ColorSelect): void;
 
@@ -2447,6 +2488,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param dac_value The DAC value
+         * @since 1.1.6
          */
         set_dac_value(device: GUsb.Device, dac_value: number): void;
 
@@ -2456,6 +2498,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param value A {@link Colord.ColorRGB}
+         * @since 0.1.29
          */
         set_dark_offsets(device: GUsb.Device, value: Colord.ColorRGB): void;
 
@@ -2467,6 +2510,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param value Success value
+         * @since 0.1.29
          */
         set_flash_success(device: GUsb.Device, value: number): void;
 
@@ -2476,6 +2520,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param integral_time The sensor integral time in device units
+         * @since 0.1.29
          */
         set_integral_time(device: GUsb.Device, integral_time: number): void;
 
@@ -2488,6 +2533,7 @@ export namespace ColorHug {
          * @param repeat Sets the number of times to repeat the pattern
          * @param on_time Set the on time
          * @param off_time Set the off time
+         * @since 0.1.29
          */
         set_leds(device: GUsb.Device, leds: number, repeat: number, on_time: number, off_time: number): void;
 
@@ -2497,6 +2543,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param measure_mode The {@link ColorHug.MeasureMode}, e.g. {@link ColorHug.MeasureMode.DURATION}
+         * @since 0.1.29
          */
         set_measure_mode(device: GUsb.Device, measure_mode: MeasureMode): void;
 
@@ -2506,6 +2553,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param multiplier The device multiplier, e.g. {@link ColorHug.FreqScale.100}
+         * @since 0.1.29
          */
         set_multiplier(device: GUsb.Device, multiplier: FreqScale): void;
 
@@ -2515,6 +2563,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param email An email address
+         * @since 0.1.29
          */
         set_owner_email(device: GUsb.Device, email: string): void;
 
@@ -2524,6 +2573,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param name The owner name
+         * @since 0.1.29
          */
         set_owner_name(device: GUsb.Device, name: string): void;
 
@@ -2533,6 +2583,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param pcb_errata The PCB errata, e.g. {@link ColorHug.PcbErrata.SWAPPED_LEDS}
+         * @since 0.1.29
          */
         set_pcb_errata(device: GUsb.Device, pcb_errata: number): void;
 
@@ -2542,6 +2593,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param post_scale The post-scale value
+         * @since 0.1.29
          */
         set_post_scale(device: GUsb.Device, post_scale: number): void;
 
@@ -2551,6 +2603,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param pre_scale Pre-scale value
+         * @since 0.1.29
          */
         set_pre_scale(device: GUsb.Device, pre_scale: number): void;
 
@@ -2560,6 +2613,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param remote_hash A {@link ColorHug.Sha1}
+         * @since 0.1.29
          */
         set_remote_hash(device: GUsb.Device, remote_hash: Sha1): void;
 
@@ -2569,6 +2623,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param serial_number The device serial number
+         * @since 0.1.29
          */
         set_serial_number(device: GUsb.Device, serial_number: number): void;
 
@@ -2578,6 +2633,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param reading_array An array of raw readings
+         * @since 0.1.29
          */
         take_reading_array(device: GUsb.Device, reading_array: number): void;
 
@@ -2587,6 +2643,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param take_reading A raw reading value
+         * @since 0.1.29
          */
         take_reading_raw(device: GUsb.Device, take_reading: number): void;
 
@@ -2596,6 +2653,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 2
          * @param device A {@link GUsb.Device}
          * @param sram_addr The SRAM location where the data is held
+         * @since 0.1.31
          */
         take_reading_spectral(device: GUsb.Device, sram_addr: number): void;
 
@@ -2606,6 +2664,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param value The {@link Colord.ColorRGB} of the raw reading
+         * @since 0.1.29
          */
         take_readings(device: GUsb.Device, value: Colord.ColorRGB): void;
 
@@ -2616,6 +2675,7 @@ export namespace ColorHug {
          * @param device A {@link GUsb.Device}
          * @param calibration_index 
          * @param value The {@link Colord.ColorXYZ} for a given calibration slot
+         * @since 0.1.29
          */
         take_readings_xyz(device: GUsb.Device, calibration_index: number, value: Colord.ColorXYZ): void;
 
@@ -2626,6 +2686,7 @@ export namespace ColorHug {
          * @param device A {@link GUsb.Device}
          * @param data Firmware binary data
          * @param len Size of `data`
+         * @since 0.1.29
          */
         verify_firmware(device: GUsb.Device, data: number, len: bigint | number): void;
 
@@ -2637,6 +2698,7 @@ export namespace ColorHug {
          * @param address The device EEPROM address
          * @param data Binary data
          * @param len The length of `data`
+         * @since 0.1.29
          */
         verify_flash(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
 
@@ -2646,6 +2708,7 @@ export namespace ColorHug {
          * NOTE: This command is available on hardware version: 1 & 2
          * @param device A {@link GUsb.Device}
          * @param magic The magic sekret string
+         * @since 0.1.29
          */
         write_eeprom(device: GUsb.Device, magic: string): void;
 
@@ -2656,6 +2719,7 @@ export namespace ColorHug {
          * @param device A {@link GUsb.Device}
          * @param data Firmware binary data
          * @param len Size of `data`
+         * @since 0.1.29
          */
         write_firmware(device: GUsb.Device, data: number, len: bigint | number): void;
 
@@ -2667,6 +2731,7 @@ export namespace ColorHug {
          * @param address The device EEPROM address
          * @param data Binary data
          * @param len The length of `data`
+         * @since 0.1.29
          */
         write_flash(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
 
@@ -2678,6 +2743,7 @@ export namespace ColorHug {
          * @param address The device memory address
          * @param data The binary data
          * @param len Size of `data`
+         * @since 0.1.29
          */
         write_sram(device: GUsb.Device, address: number, data: number, len: bigint | number): void;
     }
@@ -2708,6 +2774,7 @@ export namespace ColorHug {
          * Parses a SHA1 hash from a string value.
          * @param value A string representation of the SHA1 hash
          * @param sha1 A %ChSha1
+         * @since 0.1.29
          */
         static parse(value: string, sha1: Sha1): boolean;
 
@@ -2715,6 +2782,7 @@ export namespace ColorHug {
         /**
          * Gets a string representation of the SHA1 hash.
          * @returns A string, free with `g_free()`.
+         * @since 0.1.29
          */
         to_string(): string;
     }

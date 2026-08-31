@@ -60,6 +60,12 @@ export const DECLS = {
     GladeSignalEditor: ['GladeSignalEditor', 'GtkBox', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkOrientable'],
 };
 
+// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
+// and descend from `GObject.Object`. A renderer places them like a container; a check
+// asking "is this a widget" must not count them. Derived from the accessor pair, never
+// from a list — the count is in the provenance line above.
+export const CHILD_HOLDERS = [];
+
 export const ENUM_NICKS = {
     GladeCreateReason: ['user', 'copy', 'load', 'rebuild', 'reasons'],
     GladeCursorType: ['selector', 'add-widget', 'resize-top-left', 'resize-top-right', 'resize-bottom-left', 'resize-bottom-right', 'resize-left', 'resize-right', 'resize-top', 'resize-bottom', 'drag'],

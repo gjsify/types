@@ -279,6 +279,7 @@ export namespace UPowerGlib {
          * This is an asynchronous failable function.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 0.99.14
          */
         static new_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Client> | null): void;
 
@@ -300,12 +301,14 @@ export namespace UPowerGlib {
          * Gets a string representing the configured critical action,
          * depending on availability.
          * @returns the action name, or `null` on error.
+         * @since 1.0
          */
         get_critical_action(): string;
 
         /**
          * Get UPower daemon version.
          * @returns string containing the daemon version, e.g. 008
+         * @since 0.9.0
          */
         get_daemon_version(): string;
 
@@ -314,18 +317,22 @@ export namespace UPowerGlib {
          * function for the {@link GLib.PtrArray} so you need use g_object_unref on all
          * elements when you are finished with the array.
          * @returns an array of {@link UPowerGlib.Device} objects or `null` on error, free with `g_ptr_array_unref()`
+         * @since 0.9.0
+         * @deprecated since 0.99.8
          */
         get_devices(): Device[];
 
         /**
          * Get a copy of the device objects.
          * @returns an array of {@link UPowerGlib.Device} objects or `null` on error, free with `g_ptr_array_unref()`
+         * @since 0.99.8
          */
         get_devices2(): Device[];
 
         /**
          * Asynchronously fetches the list of {@link UPowerGlib.Device} objects.
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 0.99.14
          */
         get_devices_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Device[]>;
 
@@ -333,6 +340,7 @@ export namespace UPowerGlib {
          * Asynchronously fetches the list of {@link UPowerGlib.Device} objects.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 0.99.14
          */
         get_devices_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -340,6 +348,7 @@ export namespace UPowerGlib {
          * Asynchronously fetches the list of {@link UPowerGlib.Device} objects.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 0.99.14
          */
         get_devices_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Device[]> | void;
 
@@ -353,24 +362,28 @@ export namespace UPowerGlib {
         /**
          * Get the composite display device.
          * @returns a {@link UPowerGlib.Device} object, or `null` on error.
+         * @since 1.0
          */
         get_display_device(): Device;
 
         /**
          * Get whether the laptop lid is closed.
          * @returns `true` if lid is closed or `false` otherwise.
+         * @since 0.9.0
          */
         get_lid_is_closed(): boolean;
 
         /**
          * Get whether a laptop lid is present on this machine.
          * @returns `true` if the machine has a laptop lid
+         * @since 0.9.2
          */
         get_lid_is_present(): boolean;
 
         /**
          * Get whether the system is running on battery power.
          * @returns `true` if the system is currently running on battery, `false` otherwise.
+         * @since 0.9.0
          */
         get_on_battery(): boolean;
 
@@ -413,6 +426,7 @@ export namespace UPowerGlib {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -456,6 +470,7 @@ export namespace UPowerGlib {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -499,6 +514,7 @@ export namespace UPowerGlib {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -507,6 +523,7 @@ export namespace UPowerGlib {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -515,6 +532,7 @@ export namespace UPowerGlib {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Client;
 
@@ -558,6 +576,7 @@ export namespace UPowerGlib {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -566,6 +585,7 @@ export namespace UPowerGlib {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -611,6 +631,7 @@ export namespace UPowerGlib {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -654,6 +675,7 @@ export namespace UPowerGlib {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -1312,48 +1334,56 @@ export namespace UPowerGlib {
         /**
          * Converts a string to a {@link UPowerGlib.DeviceKind}.
          * @param type 
+         * @since 0.9.0
          */
         static kind_from_string(type: string): DeviceKind;
 
         /**
          * Converts a {@link UPowerGlib.DeviceKind} to a string.
          * @param type_enum 
+         * @since 0.9.0
          */
         static kind_to_string(type_enum: DeviceKind): string;
 
         /**
          * Converts a string to a {@link UPowerGlib.DeviceLevel}.
          * @param level 
+         * @since 1.0
          */
         static level_from_string(level: string): DeviceLevel;
 
         /**
          * Converts a {@link UPowerGlib.DeviceLevel} to a string.
          * @param level_enum 
+         * @since 1.0
          */
         static level_to_string(level_enum: DeviceLevel): string;
 
         /**
          * Converts a string to a {@link UPowerGlib.DeviceState}.
          * @param state 
+         * @since 0.9.0
          */
         static state_from_string(state: string): DeviceState;
 
         /**
          * Converts a {@link UPowerGlib.DeviceState} to a string.
          * @param state_enum 
+         * @since 0.9.0
          */
         static state_to_string(state_enum: DeviceState): string;
 
         /**
          * Converts a string to a {@link UPowerGlib.DeviceTechnology}.
          * @param technology 
+         * @since 0.9.0
          */
         static technology_from_string(technology: string): DeviceTechnology;
 
         /**
          * Converts a {@link UPowerGlib.DeviceTechnology} to a string.
          * @param technology_enum 
+         * @since 0.9.0
          */
         static technology_to_string(technology_enum: DeviceTechnology): string;
 
@@ -1365,12 +1395,14 @@ export namespace UPowerGlib {
          * @param resolution the resolution of data.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns an array of {@link UPowerGlib.HistoryItem}'s, with the most               recent one being first; `null` if `error` is set or `device` is               invalid
+         * @since 0.9.0
          */
         get_history_sync(type: string, timespec: number, resolution: number, cancellable: Gio.Cancellable | null): HistoryItem[];
 
         /**
          * Gets the object path for the device.
          * @returns the object path, or `null`
+         * @since 0.9.0
          */
         get_object_path(): string;
 
@@ -1379,6 +1411,7 @@ export namespace UPowerGlib {
          * @param type the type of statistics.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns an array of {@link UPowerGlib.StatsItem}'s, else `NULL` and `error` is used
+         * @since 0.9.0
          */
         get_statistics_sync(type: string, cancellable: Gio.Cancellable | null): StatsItem[];
 
@@ -1388,6 +1421,7 @@ export namespace UPowerGlib {
          * an error if the daemon was started in debug mode.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
+         * @since 0.9.0
          */
         refresh_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1396,12 +1430,14 @@ export namespace UPowerGlib {
          * @param object_path The UPower object path.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
+         * @since 0.9.0
          */
         set_object_path_sync(object_path: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Converts the device to a string description.
          * @returns text representation of {@link UPowerGlib.Device}
+         * @since 0.9.0
          */
         to_text(): string;
     }
@@ -1483,50 +1519,59 @@ export namespace UPowerGlib {
         // Methods
         /**
          * Gets the item state.
+         * @since 0.9.0
          */
         get_state(): DeviceState;
 
         /**
          * Gets the item time.
+         * @since 0.9.0
          */
         get_time(): number;
 
         /**
          * Gets the item value.
+         * @since 0.9.0
          */
         get_value(): number;
 
         /**
          * Converts the history item to a string representation.
          * @param text 
+         * @since 0.9.1
          */
         set_from_string(text: string): boolean;
 
         /**
          * Sets the item state.
          * @param state the new value
+         * @since 0.9.0
          */
         set_state(state: DeviceState): void;
 
         /**
          * Sets the item time.
          * @param time the new value
+         * @since 0.9.0
          */
         set_time(time: number): void;
 
         /**
          * Sets the item time to the present value.
+         * @since 0.9.1
          */
         set_time_to_present(): void;
 
         /**
          * Sets the item value.
          * @param value the new value
+         * @since 0.9.0
          */
         set_value(value: number): void;
 
         /**
          * Converts the history item to a string representation.
+         * @since 0.9.1
          */
         to_string(): string;
     }
@@ -1599,23 +1644,27 @@ export namespace UPowerGlib {
         // Methods
         /**
          * Gets the item accuracy.
+         * @since 0.9.0
          */
         get_accuracy(): number;
 
         /**
          * Gets the item value.
+         * @since 0.9.0
          */
         get_value(): number;
 
         /**
          * Sets the item accuracy.
          * @param accuracy 
+         * @since 0.9.0
          */
         set_accuracy(accuracy: number): void;
 
         /**
          * Sets the item value.
          * @param value 
+         * @since 0.9.0
          */
         set_value(value: number): void;
     }

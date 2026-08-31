@@ -162,6 +162,7 @@ export namespace GtkChamplain {
         /**
          * Gets a {@link Champlain.View} from the {@link GtkChamplain.Embed} object.
          * @returns a {@link Champlain.View} ready to be used
+         * @since 0.4
          */
         get_view(): Champlain.View;
 

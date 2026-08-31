@@ -787,6 +787,7 @@ export namespace Mx {
          * 
          * If the `parameter` {@link GLib.Variant} is floating, it is consumed.
          * @param parameter the parameter to the activation
+         * @since 2.28
          */
         activate(parameter: GLib.Variant | null): void;
 
@@ -802,6 +803,7 @@ export namespace Mx {
          * 
          * If the `value` {@link GLib.Variant} is floating, it is consumed.
          * @param value the new state
+         * @since 2.30
          */
         change_state(value: GLib.Variant): void;
 
@@ -811,6 +813,7 @@ export namespace Mx {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @returns whether the action is enabled
+         * @since 2.28
          */
         get_enabled(): boolean;
 
@@ -825,6 +828,7 @@ export namespace Mx {
          * In the case that this function returns `NULL`, you must not give any
          * {@link GLib.Variant}, but `NULL` instead.
          * @returns the parameter type
+         * @since 2.28
          */
         get_parameter_type(): GLib.VariantType | null;
 
@@ -838,6 +842,7 @@ export namespace Mx {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the current state of the action
+         * @since 2.28
          */
         get_state(): GLib.Variant | null;
 
@@ -861,6 +866,7 @@ export namespace Mx {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @returns the state range hint
+         * @since 2.28
          */
         get_state_hint(): GLib.Variant | null;
 
@@ -878,6 +884,7 @@ export namespace Mx {
          * then this function will return `NULL`. In that case, {@link Gio.Action.get_state}
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_state_type(): GLib.VariantType | null;
 
@@ -890,6 +897,7 @@ export namespace Mx {
          * 
          * If the `parameter` {@link GLib.Variant} is floating, it is consumed.
          * @param parameter the parameter to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate(parameter: GLib.Variant | null): void;
@@ -906,6 +914,7 @@ export namespace Mx {
          * 
          * If the `value` {@link GLib.Variant} is floating, it is consumed.
          * @param value the new state
+         * @since 2.30
          * @virtual
          */
         vfunc_change_state(value: GLib.Variant): void;
@@ -915,12 +924,14 @@ export namespace Mx {
          * 
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_enabled(): boolean;
 
         /**
          * Queries the name of `action`.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_name(): string;
@@ -935,6 +946,7 @@ export namespace Mx {
          * 
          * In the case that this function returns `NULL`, you must not give any
          * {@link GLib.Variant}, but `NULL` instead.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_parameter_type(): GLib.VariantType | null;
@@ -948,6 +960,7 @@ export namespace Mx {
          * 
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_state(): GLib.Variant | null;
@@ -971,6 +984,7 @@ export namespace Mx {
          * 
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_state_hint(): GLib.Variant | null;
@@ -988,6 +1002,7 @@ export namespace Mx {
          * If the action is not stateful (e.g. created with {@link Gio.SimpleAction.new})
          * then this function will return `NULL`. In that case, {@link Gio.Action.get_state}
          * will return `NULL` and you must not call {@link Gio.Action.change_state}.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_state_type(): GLib.VariantType | null;
@@ -1126,6 +1141,7 @@ export namespace Mx {
          * This is a convenience function that allows for easy association of one
          * {@link Mx.ActorManager} to a {@link Clutter.Stage}.
          * @param stage A {@link Clutter.Stage}
+         * @since 1.2
          */
         static get_for_stage(stage: Clutter.Stage): ActorManager;
 
@@ -1188,6 +1204,7 @@ export namespace Mx {
          * @param container A {@link Clutter.Container}
          * @param actor A {@link Clutter.Actor}
          * @returns The ID for this operation.
+         * @since 1.2
          */
         add_actor(container: Clutter.Container, actor: Clutter.Actor): number;
 
@@ -1196,30 +1213,35 @@ export namespace Mx {
          * {@link Mx.ActorManager.SignalSignatures.operation_cancelled | Mx.ActorManager::operation_cancelled} signal is fired whenever an operation
          * is cancelled.
          * @param id An operation ID
+         * @since 1.2
          */
         cancel_operation(id: bigint | number): void;
 
         /**
          * Cancels all operations associated with the given actor.
          * @param actor A {@link Clutter.Actor}
+         * @since 1.2
          */
         cancel_operations(actor: Clutter.Actor): void;
 
         /**
          * Retrieves the amount of operations left in the queue.
          * @returns Number of operations left to perform
+         * @since 1.2
          */
         get_n_operations(): number;
 
         /**
          * Gets the {@link Clutter.Stage} the actor manager is associated with.
          * @returns The {@link Clutter.Stage} the actor is associated with.
+         * @since 1.2
          */
         get_stage(): Clutter.Stage;
 
         /**
          * Retrieves the current time slice being used for operations.
          * @returns The time-slice being used, in milliseconds
+         * @since 1.2
          */
         get_time_slice(): number;
 
@@ -1236,6 +1258,7 @@ export namespace Mx {
          * @param container A {@link Clutter.Container}
          * @param actor A {@link Clutter.Actor}
          * @returns The ID for this operation.
+         * @since 1.2
          */
         remove_actor(container: Clutter.Container, actor: Clutter.Actor): number;
 
@@ -1250,6 +1273,7 @@ export namespace Mx {
          * the container's opacity to 0 before calling this function.
          * </para></note>
          * @param container A {@link Clutter.Container}
+         * @since 1.2
          */
         remove_container(container: Clutter.Container): void;
 
@@ -1260,6 +1284,7 @@ export namespace Mx {
          * Lower times will lead to smoother performance, but will increase the amount
          * of time it takes for operations to complete.
          * @param msecs A time, in milliseconds
+         * @since 1.2
          */
         set_time_slice(msecs: number): void;
     }
@@ -1399,6 +1424,7 @@ export namespace Mx {
         /**
          * Get the value of the {@link Mx.Adjustment.clamp_value} property.
          * @returns the current value of the "clamp-value" property.
+         * @since 1.2
          */
         get_clamp_value(): boolean;
 
@@ -1476,6 +1502,7 @@ export namespace Mx {
         /**
          * Set the value of the {@link Mx.Adjustment.clamp_value} property.
          * @param clamp a `gboolean`
+         * @since 1.2
          */
         set_clamp_value(clamp: boolean): void;
 
@@ -1677,6 +1704,7 @@ export namespace Mx {
          * for the action.
          * @param name name of the action to invoke
          * @param variant parameter for the action
+         * @since 1.4
          */
         invoke_action_with_parameter(name: string, variant: GLib.Variant): void;
 
@@ -2134,6 +2162,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -2142,6 +2171,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -2149,6 +2179,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -2480,6 +2511,7 @@ export namespace Mx {
         /**
          * Get the value of the {@link Mx.BoxLayout.scroll_to_focused} property.
          * @returns `TRUE` if automatically scrolling to the focused actor is enabled
+         * @since 1.2
          */
         get_scroll_to_focused(): boolean;
 
@@ -2504,6 +2536,7 @@ export namespace Mx {
         /**
          * Enables or disables automatic scrolling to the focused actor.
          * @param scroll_to_focused `TRUE` to enable automatically scrolling to the focused actor
+         * @since 1.2
          */
         set_scroll_to_focused(scroll_to_focused: boolean): void;
 
@@ -2706,6 +2739,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -2714,6 +2748,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -2721,6 +2756,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -3102,6 +3138,7 @@ export namespace Mx {
         /**
          * Retrieves the {@link Mx.Action} associated with `button`.
          * @returns A {@link Mx.Action}
+         * @since 1.2
          */
         get_action(): Action;
 
@@ -3114,24 +3151,28 @@ export namespace Mx {
         /**
          * Get the icon-name being used on the button.
          * @returns the icon-name. This must not be freed by the application. `null` if no icon has been set
+         * @since 1.2
          */
         get_icon_name(): string;
 
         /**
          * Retrieves the icon's relative position to the text.
          * @returns A {@link Mx.Position}
+         * @since 1.2
          */
         get_icon_position(): Position;
 
         /**
          * Retrieves the icon-size being used for the displayed icon inside the button.
          * @returns The icon-size being used for the button icon, in pixels
+         * @since 1.2
          */
         get_icon_size(): number;
 
         /**
          * Retrieves the visibility of the icon associated with the button's action.
          * @returns `true` if the icon is visible, `false` otherwise
+         * @since 1.2
          */
         get_icon_visible(): boolean;
 
@@ -3150,6 +3191,7 @@ export namespace Mx {
         /**
          * Retrieves the visibility of the text associated with the button's action.
          * @returns `true` if the text is visible, `false` otherwise
+         * @since 1.2
          */
         get_label_visible(): boolean;
 
@@ -3163,6 +3205,7 @@ export namespace Mx {
          * Sets `action` as the action for `button`. `Button` will take its label and
          * icon from `action`.
          * @param action A {@link Mx.Action}
+         * @since 1.2
          */
         set_action(action: Action): void;
 
@@ -3171,12 +3214,14 @@ export namespace Mx {
          * will remove the icon name, or resort to the icon-name set in the current
          * style. Setting an icon name overrides any icon set in the style.
          * @param icon_name icon-name to use on the button
+         * @since 1.2
          */
         set_icon_name(icon_name: string): void;
 
         /**
          * Sets the icon position, relative to the text on the button.
          * @param position A {@link Mx.Position}
+         * @since 1.2
          */
         set_icon_position(position: Position): void;
 
@@ -3185,12 +3230,14 @@ export namespace Mx {
          * override the icon-size set in the style. Setting a value of %0 resets to the
          * size from the style.
          * @param icon_size 
+         * @since 1.2
          */
         set_icon_size(icon_size: number): void;
 
         /**
          * Sets the visibility of the icon associated with the button's action.
          * @param visible `true` if the icon should be visible
+         * @since 1.2
          */
         set_icon_visible(visible: boolean): void;
 
@@ -3210,6 +3257,7 @@ export namespace Mx {
         /**
          * Sets the visibility of the text associated with the button's action.
          * @param visible `true` if the text should be visible
+         * @since 1.2
          */
         set_label_visible(visible: boolean): void;
 
@@ -3644,6 +3692,7 @@ export namespace Mx {
 
         /**
          * Remove all the items of `box`
+         * @since 1.4
          */
         remove_all(): void;
 
@@ -3822,6 +3871,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -3830,6 +3880,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -3837,6 +3888,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -4576,6 +4628,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -4584,6 +4637,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -4591,6 +4645,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -4985,6 +5040,7 @@ export namespace Mx {
         /**
          * Adds an {@link Mx.Button} that represents `action` to the button area of `dialog`
          * @param action A {@link Mx.Action}
+         * @since 1.2
          */
         add_action(action: Action): void;
 
@@ -4997,6 +5053,7 @@ export namespace Mx {
         /**
          * Retrieves a list of actions added to `dialog`.
          * @returns A newly allocated {@link GLib.List} of {@link Mx.Action} objects. The actions in the list are owned by the dialog.
+         * @since 1.2
          */
         get_actions(): Action[];
 
@@ -5009,6 +5066,7 @@ export namespace Mx {
         /**
          * Removes the button associated with `action` from the button area of `dialog`
          * @param action A {@link Mx.Action}
+         * @since 1.2
          */
         remove_action(action: Action): void;
 
@@ -5022,6 +5080,7 @@ export namespace Mx {
          * Sets the parent of the {@link Mx.Dialog}. This is the actor over which the
          * modal frame will appear when `clutter_actor_show()` is called.
          * @param actor A {@link Clutter.Actor}
+         * @since 1.2
          */
         set_transient_parent(actor: Clutter.Actor): void;
 
@@ -5518,6 +5577,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -5526,6 +5586,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -5533,6 +5594,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -5948,16 +6010,19 @@ export namespace Mx {
         // Methods
         /**
          * Retrieves the border values for `effect`.
+         * @since 1.2
          */
         get_border(): [number, number, number, number];
 
         /**
          * Retrieves the bounding box of the effect.
+         * @since 1.2
          */
         get_bounds(): [number, number, number, number];
 
         /**
          * Retrieves the color used for the fade effect.
+         * @since 1.2
          */
         get_color(): Clutter.Color;
 
@@ -5968,6 +6033,7 @@ export namespace Mx {
          * @param right The right border, in pixels
          * @param bottom The lower border, in pixels
          * @param left The left border, in pixels
+         * @since 1.2
          */
         set_border(top: number, right: number, bottom: number, left: number): void;
 
@@ -5985,6 +6051,7 @@ export namespace Mx {
          * @param y The y value of the effect bounds, in pixels
          * @param width The width of the effect bounds, in pixels, or %0
          * @param height The height of the effect bounds, in pixels, or %0
+         * @since 1.2
          */
         set_bounds(x: number, y: number, width: number, height: number): void;
 
@@ -5992,6 +6059,7 @@ export namespace Mx {
          * Sets the color of the fade effect. The effect will fade out towards
          * the set border to this color.
          * @param color A {@link Clutter.Color}
+         * @since 1.2
          */
         set_color(color: Clutter.Color): void;
     }
@@ -6252,6 +6320,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -6260,6 +6329,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -6267,6 +6337,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -6435,6 +6506,7 @@ export namespace Mx {
          * `focusable` does not accept focus directly.
          * @param focusable the object to set focus on
          * @param hint an {@link Mx.FocusHint}
+         * @since 1.2
          */
         push_focus_with_hint(focusable: Focusable, hint: FocusHint): void;
     }
@@ -7084,6 +7156,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -7092,6 +7165,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -7099,6 +7173,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -7455,6 +7530,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -7463,6 +7539,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -7470,6 +7547,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -7888,54 +7966,63 @@ export namespace Mx {
          * @param mode a {@link Clutter.AnimationMode}
          * @param duration duration of the animation in milliseconds
          * @param scale_mode The {@link Mx.ImageScaleMode} to set
+         * @since 1.2
          */
         animate_scale_mode(mode: bigint | number, duration: number, scale_mode: ImageScaleMode): void;
 
         /**
          * Clear the current image and set a blank, transparent image.
          * @returns static void
+         * @since 1.2
          */
         clear(): void;
 
         /**
          * Determines whether image up-scaling is allowed.
          * @returns `true` if upscaling is allowed, `false` otherwise
+         * @since 1.2
          */
         get_allow_upscale(): boolean;
 
         /**
          * Get the value of the MxImage:image-rotation property.
          * @returns The value of the image-rotation property.
+         * @since 1.2
          */
         get_image_rotation(): number;
 
         /**
          * Determines whether asynchronous image loading is in use.
          * @returns `true` if images are set to load asynchronously, `false` otherwise
+         * @since 1.2
          */
         get_load_async(): boolean;
 
         /**
          * Retrieves the height scaling threshold.
          * @returns The height scaling threshold, in pixels
+         * @since 1.2
          */
         get_scale_height_threshold(): number;
 
         /**
          * Get the current scale mode of `MxImage`.
          * @returns The current MxImageScaleMode
+         * @since 1.2
          */
         get_scale_mode(): ImageScaleMode;
 
         /**
          * Retrieves the width scaling threshold.
          * @returns The width scaling threshold, in pixels
+         * @since 1.2
          */
         get_scale_width_threshold(): number;
 
         /**
          * Get the value of the MxImage:transition-duration property.
          * @returns The value of the transition-duration property.
+         * @since 1.2
          */
         get_transition_duration(): number;
 
@@ -7947,6 +8034,7 @@ export namespace Mx {
          * The advantage of this is that software up-scaling is potentially higher
          * quality, but it comes at the expense of video memory.
          * @param allow `true` to allow upscaling, `false` otherwise
+         * @since 1.2
          */
         set_allow_upscale(allow: boolean): void;
 
@@ -7957,6 +8045,7 @@ export namespace Mx {
          * with, `buffer_free_func` will be called.
          * @param buffer A buffer pointing to encoded image data
          * @returns `TRUE` if the image was successfully updated
+         * @since 1.2
          */
         set_from_buffer(buffer: Uint8Array | string): boolean;
 
@@ -7970,6 +8059,7 @@ export namespace Mx {
          * @param width Width to scale the image to, or -1
          * @param height Height to scale the image to, or -1
          * @returns `TRUE` if the image was successfully updated
+         * @since 1.2
          */
         set_from_buffer_at_size(buffer: Uint8Array | string, width: number, height: number): boolean;
 
@@ -7977,6 +8067,7 @@ export namespace Mx {
          * Sets the contents of the image from the given Cogl texture.
          * @param texture A {@link Cogl.Handle} to a texture
          * @returns `true` on success, `false` on failure
+         * @since 1.2
          */
         set_from_cogl_texture(texture: Cogl.Handle): boolean;
 
@@ -7989,6 +8080,7 @@ export namespace Mx {
          * @param height Height in pixels of image data
          * @param rowstride Distance in bytes between row starts.
          * @returns `TRUE` if the image was successfully updated
+         * @since 1.2
          */
         set_from_data(data: Uint8Array | string, pixel_format: Cogl.PixelFormat, width: number, height: number, rowstride: number): boolean;
 
@@ -7997,6 +8089,7 @@ export namespace Mx {
          * and `error` is set.
          * @param filename Filename to read the file from
          * @returns `TRUE` if the image was successfully updated
+         * @since 1.2
          */
         set_from_file(filename: string): boolean;
 
@@ -8008,12 +8101,14 @@ export namespace Mx {
          * @param width Width to scale the image to, or -1
          * @param height Height to scale the image to, or -1
          * @returns `TRUE` if the image was successfully updated
+         * @since 1.2
          */
         set_from_file_at_size(filename: string, width: number, height: number): boolean;
 
         /**
          * Set the MxImage:image-rotation property.
          * @param rotation Rotation angle in degrees
+         * @since 1.2
          */
         set_image_rotation(rotation: number): void;
 
@@ -8026,6 +8121,7 @@ export namespace Mx {
          * {@link Mx.Image.SignalSignatures.image_load_error | Mx.Image::image-load-error} signals are used to signal success or failure
          * of asynchronous image loading.
          * @param load_async `true` to load images asynchronously
+         * @since 1.2
          */
         set_load_async(load_async: boolean): void;
 
@@ -8037,12 +8133,14 @@ export namespace Mx {
          * This can be useful to avoid excessive CPU usage when the image differs
          * only slightly to the desired size.
          * @param pixels Number of pixels
+         * @since 1.2
          */
         set_scale_height_threshold(pixels: number): void;
 
         /**
          * Set the scale mode on `MxImage`
          * @param mode The {@link Mx.ImageScaleMode} to set
+         * @since 1.2
          */
         set_scale_mode(mode: ImageScaleMode): void;
 
@@ -8054,12 +8152,14 @@ export namespace Mx {
          * This can be useful to avoid excessive CPU usage when the image differs
          * only slightly to the desired size.
          * @param pixels Number of pixels
+         * @since 1.2
          */
         set_scale_width_threshold(pixels: number): void;
 
         /**
          * Set the MxImage:transition-duration property.
          * @param duration Transition duration in milliseconds
+         * @since 1.2
          */
         set_transition_duration(duration: number): void;
 
@@ -8184,6 +8284,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -8192,6 +8293,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -8199,6 +8301,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -8786,42 +8889,49 @@ export namespace Mx {
         /**
          * Retrieves the initial acceleration factor of the kinetic scroll-view.
          * @returns The initial acceleration factor of the kinetic scroll-view
+         * @since 1.4
          */
         get_acceleration_factor(): number;
 
         /**
          * Retrieves the duration of the adjustment clamp animation.
          * @returns Clamp duration
+         * @since 1.4
          */
         get_clamp_duration(): number;
 
         /**
          * Retrieves the animation mode to use for the adjustment clamp animation.
          * @returns Clamp mode
+         * @since 1.4
          */
         get_clamp_mode(): number;
 
         /**
          * Retrieves whether to clamp to step increments based on the center of the page.
          * @returns Clamp to center
+         * @since 1.4
          */
         get_clamp_to_center(): boolean;
 
         /**
          * Retrieves the deceleration rate of the kinetic scroll-view.
          * @returns The deceleration rate of the kinetic scroll-view
+         * @since 1.2
          */
         get_deceleration(): number;
 
         /**
          * Gets the {@link Mx.KineticScrollView.mouse_button} property
          * @returns The mouse button number used to initiate drag events on the kinetic scroll-view
+         * @since 1.2
          */
         get_mouse_button(): number;
 
         /**
          * Retrieves the deceleration rate multiplier used when the scroll-view is
          * scrolling beyond its boundaries.
+         * @since 1.2
          */
         get_overshoot(): number;
 
@@ -8834,30 +8944,35 @@ export namespace Mx {
         /**
          * Gets the {@link Mx.KineticScrollView.use_captured} property.
          * @returns `true` if captured-events should be used to initiate scrolling
+         * @since 1.2
          */
         get_use_captured(): boolean;
 
         /**
          * Factor applied to the initial momentum.
          * @param acceleration_factor The acceleration factor
+         * @since 1.4
          */
         set_acceleration_factor(acceleration_factor: number): void;
 
         /**
          * Duration of the adjustment clamp animation.
          * @param clamp_duration Clamp duration
+         * @since 1.4
          */
         set_clamp_duration(clamp_duration: number): void;
 
         /**
          * Animation mode to use for the adjustment clamp animation.
          * @param clamp_mode Clamp mode
+         * @since 1.4
          */
         set_clamp_mode(clamp_mode: bigint | number): void;
 
         /**
          * Set whether to clamp to step increments based on the center of the page.
          * @param clamp_to_center Clamp to center
+         * @since 1.4
          */
         set_clamp_to_center(clamp_to_center: boolean): void;
 
@@ -8866,6 +8981,7 @@ export namespace Mx {
          * scroll-view. This is the value that the momentum is divided by
          * every 60th of a second.
          * @param rate The deceleration rate
+         * @since 1.2
          */
         set_deceleration(rate: number): void;
 
@@ -8873,6 +8989,7 @@ export namespace Mx {
          * Sets the mouse button number used to initiate drag events on the kinetic
          * scroll-view.
          * @param button A mouse button number
+         * @since 1.2
          */
         set_mouse_button(button: number): void;
 
@@ -8884,6 +9001,7 @@ export namespace Mx {
          * 
          * See `mx_kinetic_scroll_view_set_deceleration()`
          * @param overshoot The rate at which the view will decelerate when scrolling beyond its boundaries.
+         * @since 1.2
          */
         set_overshoot(overshoot: number): void;
 
@@ -8899,11 +9017,13 @@ export namespace Mx {
          * used to block events that would initiate scrolling from reaching the child
          * actor.
          * @param use_captured `true` to use captured events
+         * @since 1.2
          */
         set_use_captured(use_captured: boolean): void;
 
         /**
          * Stops any current movement due to kinetic scrolling.
+         * @since 1.2
          */
         stop(): void;
 
@@ -9232,18 +9352,21 @@ export namespace Mx {
          * Determines whether the label has been set to fade out when there isn't
          * enough space allocated to display the entire label.
          * @returns `true` if the label is set to fade out, `false` otherwise
+         * @since 1.2
          */
         get_fade_out(): boolean;
 
         /**
          * Get the value of the {@link Mx.Label.line_wrap} property.
          * @returns `true` if the "line-wrap" property is set.
+         * @since 1.2
          */
         get_line_wrap(): boolean;
 
         /**
          * Returns the current value of the {@link Mx.Label.show_tooltip} property.
          * @returns `true` if the {@link Mx.Label.show_tooltip} property is enabled
+         * @since 1.4
          */
         get_show_tooltip(): boolean;
 
@@ -9256,6 +9379,7 @@ export namespace Mx {
         /**
          * Determines whether the text of the label is being treated as Pango markup.
          * @returns `true` if the text of the label is treated as Pango markup, `false` otherwise.
+         * @since 1.2
          */
         get_use_markup(): boolean;
 
@@ -9280,18 +9404,21 @@ export namespace Mx {
          * Enabling this mode will also set the {@link Clutter.Text.single_line_mode} and
          * {@link Clutter.Text.ellipsize} properties.
          * @param fade `true` to fade out, `false` otherwise
+         * @since 1.2
          */
         set_fade_out(fade: boolean): void;
 
         /**
          * Set the value of the {@link Mx.Label.line_wrap} property.
          * @param line_wrap new value of the line-wrap property.
+         * @since 1.2
          */
         set_line_wrap(line_wrap: boolean): void;
 
         /**
          * Set the value of the {@link Mx.Label.show_tooltip} property
          * @param show_tooltip `true` if the tooltip should be shown
+         * @since 1.4
          */
         set_show_tooltip(show_tooltip: boolean): void;
 
@@ -9450,6 +9577,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -9458,6 +9586,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -9465,6 +9594,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -10361,6 +10491,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -10369,6 +10500,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -10376,6 +10508,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -10655,12 +10788,14 @@ export namespace Mx {
         /**
          * Gets the value of the {@link Mx.Offscreen.accumulation_enabled} property.
          * @returns `TRUE` if the accumulation buffer is enabled
+         * @since 1.2
          */
         get_accumulation_enabled(): boolean;
 
         /**
          * Gets the {@link Mx.Offscreen.accumulation_material} property.
          * @returns The {@link Cogl.Handle} for the material used for the accumulation buffer
+         * @since 1.2
          */
         get_accumulation_material(): Cogl.Handle;
 
@@ -10673,6 +10808,7 @@ export namespace Mx {
         /**
          * Gets the value of the {@link Mx.Offscreen.buffer} property.
          * @returns the {@link Cogl.Handle} for the offscreen buffer object
+         * @since 1.2
          */
         get_buffer(): Cogl.Handle;
 
@@ -10691,6 +10827,7 @@ export namespace Mx {
         /**
          * Gets the value of the {@link Mx.Offscreen.redirect_enabled} property.
          * @returns `TRUE` if offscreen redirection is enabled
+         * @since 1.2
          */
         get_redirect_enabled(): boolean;
 
@@ -10702,6 +10839,7 @@ export namespace Mx {
          * buffer at the opacity specified in the alpha component of the blend
          * constant. This opacity is 50% by default.
          * @param enable `TRUE` to enable an accumulation buffer
+         * @since 1.2
          */
         set_accumulation_enabled(enable: boolean): void;
 
@@ -10732,6 +10870,7 @@ export namespace Mx {
          * redirection is enabled, the painting of the child of `offscreen` will be
          * redirected to the texture of `offscreen`.
          * @param enabled `TRUE` if redirection to the offscreen surface should be enabled
+         * @since 1.2
          */
         set_redirect_enabled(enabled: boolean): void;
 
@@ -11155,6 +11294,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -11163,6 +11303,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -11170,6 +11311,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -11511,6 +11653,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -11519,6 +11662,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -11526,6 +11670,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -12292,6 +12437,7 @@ export namespace Mx {
         /**
          * Get the value of the {@link Mx.Slider.buffer_value} property.
          * @returns The current value of the "buffer-value" property.
+         * @since 1.2
          */
         get_buffer_value(): number;
 
@@ -12304,6 +12450,7 @@ export namespace Mx {
         /**
          * Set the value of the {@link Mx.Slider.buffer_value} property.
          * @param value the new buffer value of the slider
+         * @since 1.2
          */
         set_buffer_value(value: number): void;
 
@@ -12464,6 +12611,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -12472,6 +12620,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -12479,6 +12628,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -12703,6 +12853,7 @@ export namespace Mx {
         /**
          * Determines whether the spinner is animating.
          * @returns `true` if the spinner is animating, `false` otherwise
+         * @since 1.2
          */
         get_animating(): boolean;
 
@@ -12710,6 +12861,7 @@ export namespace Mx {
          * Sets whether the spinner is animating. A spinner can be stopped if
          * the task it represents has finished, or to save energy.
          * @param animating `true` to enable animation, `false` to disable
+         * @since 1.2
          */
         set_animating(animating: boolean): void;
 
@@ -12834,6 +12986,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -12842,6 +12995,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -12849,6 +13003,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -13054,6 +13209,7 @@ export namespace Mx {
          * Get the value of the {@link Mx.StackChild.fit} property.
          * @param child A {@link Clutter.Actor}
          * @returns the current value of the {@link Mx.StackChild.crop} property
+         * @since 1.4
          */
         child_get_crop(child: Clutter.Actor): boolean;
 
@@ -13061,6 +13217,7 @@ export namespace Mx {
          * Get the value of the {@link Mx.StackChild.fit} property.
          * @param child A {@link Clutter.Actor}
          * @returns the current value of the {@link Mx.StackChild.fit} property
+         * @since 1.2
          */
         child_get_fit(child: Clutter.Actor): boolean;
 
@@ -13068,6 +13225,7 @@ export namespace Mx {
          * Get the value of the {@link Mx.StackChild.x_align} property
          * @param child A {@link Clutter.Actor}
          * @returns the current value of the "x-align" property
+         * @since 1.2
          */
         child_get_x_align(child: Clutter.Actor): Align;
 
@@ -13075,6 +13233,7 @@ export namespace Mx {
          * Get the value of the {@link Mx.StackChild.x_fill} property.
          * @param child A {@link Clutter.Actor}
          * @returns the current value of the "x-fill" property.
+         * @since 1.2
          */
         child_get_x_fill(child: Clutter.Actor): boolean;
 
@@ -13082,6 +13241,7 @@ export namespace Mx {
          * Get the value of the {@link Mx.StackChild.y_align} property.
          * @param child A {@link Clutter.Actor}
          * @returns the current value of the "y-align" property.
+         * @since 1.2
          */
         child_get_y_align(child: Clutter.Actor): Align;
 
@@ -13089,6 +13249,7 @@ export namespace Mx {
          * Get the value of the {@link Mx.StackChild.y_fill} property
          * @param child A {@link Clutter.Actor}
          * @returns the current value of the "y-fill" property
+         * @since 1.2
          */
         child_get_y_fill(child: Clutter.Actor): boolean;
 
@@ -13096,6 +13257,7 @@ export namespace Mx {
          * Set the value of the {@link Mx.StackChild.crop} property.
          * @param child A {@link Clutter.Actor}
          * @param crop A `gboolean`
+         * @since 1.4
          */
         child_set_crop(child: Clutter.Actor, crop: boolean): void;
 
@@ -13103,6 +13265,7 @@ export namespace Mx {
          * Set the value of the {@link Mx.StackChild.fit} property.
          * @param child A {@link Clutter.Actor}
          * @param fit A `gboolean`
+         * @since 1.2
          */
         child_set_fit(child: Clutter.Actor, fit: boolean): void;
 
@@ -13110,6 +13273,7 @@ export namespace Mx {
          * Set the value of the {@link Mx.StackChild.x_align} property.
          * @param child A {@link Clutter.Actor}
          * @param x_align An {@link Mx.Align}
+         * @since 1.2
          */
         child_set_x_align(child: Clutter.Actor, x_align: Align): void;
 
@@ -13117,6 +13281,7 @@ export namespace Mx {
          * Set the value of the {@link Mx.StackChild.x_fill} property.
          * @param child A {@link Clutter.Actor}
          * @param x_fill A `gboolean`
+         * @since 1.2
          */
         child_set_x_fill(child: Clutter.Actor, x_fill: boolean): void;
 
@@ -13124,6 +13289,7 @@ export namespace Mx {
          * Set the value of the {@link Mx.StackChild.y_align} property.
          * @param child A {@link Clutter.Actor}
          * @param y_align An {@link Mx.Align}
+         * @since 1.2
          */
         child_set_y_align(child: Clutter.Actor, y_align: Align): void;
 
@@ -13131,6 +13297,7 @@ export namespace Mx {
          * Set the value of the {@link Mx.StackChild.y_fill} property.
          * @param child A {@link Clutter.Actor}
          * @param y_fill A `gboolean`
+         * @since 1.2
          */
         child_set_y_fill(child: Clutter.Actor, y_fill: boolean): void;
 
@@ -13285,6 +13452,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -13293,6 +13461,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -13300,6 +13469,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -14083,6 +14253,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -14091,6 +14262,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -14098,6 +14270,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -14364,6 +14537,7 @@ export namespace Mx {
          * cache.
          * @param uri A URI or path to an image file
          * @returns `true` if the image exists, `false` otherwise
+         * @since 1.2
          */
         contains(uri: string): boolean;
 
@@ -14373,6 +14547,7 @@ export namespace Mx {
          * @param uri A URI or path to an image file
          * @param ident A unique identifier
          * @returns `true` if the data exists, `false` otherwise
+         * @since 1.2
          */
         contains_meta(uri: string, ident: never): boolean;
 
@@ -14402,6 +14577,7 @@ export namespace Mx {
          * @param uri A URI or path to an image file
          * @param ident A unique identifier
          * @returns A {@link Cogl.Handle} to a texture, with an added reference. `null` if no image was found.
+         * @since 1.2
          */
         get_meta_cogl_texture(uri: string, ident: never): Cogl.Handle;
 
@@ -14413,6 +14589,7 @@ export namespace Mx {
          * @param uri A URI or path to an image file
          * @param ident A unique identifier
          * @returns A newly allocated {@link Clutter.Texture}, or `null` if no image was found
+         * @since 1.2
          */
         get_meta_texture(uri: string, ident: never): Clutter.Texture;
 
@@ -14441,6 +14618,7 @@ export namespace Mx {
          * reference will be taken on the given texture.
          * @param uri A URI or local file path
          * @param texture A {@link Cogl.Handle} to a texture
+         * @since 1.2
          */
         insert(uri: string, texture: Cogl.Handle): void;
 
@@ -14453,6 +14631,7 @@ export namespace Mx {
          * @param uri A URI or local file path
          * @param ident A unique identifier
          * @param texture A {@link Cogl.Handle} to a texture
+         * @since 1.2
          */
         insert_meta(uri: string, ident: never, texture: Cogl.Handle): void;
 
@@ -14674,6 +14853,8 @@ export namespace Mx {
          * @param progress the progress factor
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          */
         animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
@@ -14681,6 +14862,7 @@ export namespace Mx {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -14688,6 +14870,7 @@ export namespace Mx {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -14705,6 +14888,7 @@ export namespace Mx {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -14712,6 +14896,7 @@ export namespace Mx {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
@@ -14730,6 +14915,8 @@ export namespace Mx {
          * @param final_value the final value of the animation interval
          * @param progress the progress factor
          * @param value return location for the animation value
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          * @virtual
          */
         vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
@@ -14737,6 +14924,7 @@ export namespace Mx {
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -14745,6 +14933,7 @@ export namespace Mx {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -14762,6 +14951,7 @@ export namespace Mx {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -14770,6 +14960,7 @@ export namespace Mx {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -14784,6 +14975,8 @@ export namespace Mx {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -14798,6 +14991,7 @@ export namespace Mx {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -14807,6 +15001,7 @@ export namespace Mx {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -14815,6 +15010,7 @@ export namespace Mx {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -14829,6 +15025,7 @@ export namespace Mx {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -14842,6 +15039,7 @@ export namespace Mx {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -14850,6 +15048,7 @@ export namespace Mx {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -14862,6 +15061,8 @@ export namespace Mx {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          */
         foreach(callback: Clutter.Callback): void;
 
@@ -14873,6 +15074,8 @@ export namespace Mx {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          */
         foreach_with_internals(callback: Clutter.Callback): void;
 
@@ -14881,12 +15084,15 @@ export namespace Mx {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -14898,6 +15104,8 @@ export namespace Mx {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -14909,6 +15117,8 @@ export namespace Mx {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -14922,12 +15132,16 @@ export namespace Mx {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -14953,6 +15167,8 @@ export namespace Mx {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -14963,6 +15179,7 @@ export namespace Mx {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -14978,6 +15195,7 @@ export namespace Mx {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -14992,6 +15210,7 @@ export namespace Mx {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -15005,6 +15224,8 @@ export namespace Mx {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
@@ -15017,6 +15238,8 @@ export namespace Mx {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
@@ -15025,6 +15248,7 @@ export namespace Mx {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -15037,6 +15261,8 @@ export namespace Mx {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -15049,6 +15275,8 @@ export namespace Mx {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -15063,6 +15291,8 @@ export namespace Mx {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -15070,6 +15300,8 @@ export namespace Mx {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -15077,6 +15309,7 @@ export namespace Mx {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -15088,6 +15321,7 @@ export namespace Mx {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -15097,6 +15331,7 @@ export namespace Mx {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -15108,11 +15343,13 @@ export namespace Mx {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -15124,6 +15361,7 @@ export namespace Mx {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -15134,6 +15372,7 @@ export namespace Mx {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -15146,6 +15385,7 @@ export namespace Mx {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -15424,6 +15664,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -15432,6 +15673,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -15439,6 +15681,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -15864,6 +16107,7 @@ export namespace Mx {
          * left after a short delay when a tooltip is hidden. This is used to
          * make tooltips display quicker when a previous tooltip is already
          * displayed.
+         * @since 1.2
          */
         static is_in_browse_mode(): boolean;
 
@@ -16365,6 +16609,7 @@ export namespace Mx {
          * Used to implement how a new style instance should be applied in the widget.
          * For instance, setting style instance on stylable internal children.
          * @param style A {@link Mx.Style}
+         * @since 1.2
          * @virtual
          */
         vfunc_apply_style(style: Style): void;
@@ -16389,6 +16634,7 @@ export namespace Mx {
          * Used to implement how a new style instance should be applied in the widget.
          * For instance, setting style instance on stylable internal children.
          * @param style A {@link Mx.Style}
+         * @since 1.2
          */
         apply_style(style: Style): void;
 
@@ -16542,6 +16788,8 @@ export namespace Mx {
          * @param progress the progress factor
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          */
         animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
@@ -16549,6 +16797,7 @@ export namespace Mx {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -16556,6 +16805,7 @@ export namespace Mx {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -16573,6 +16823,7 @@ export namespace Mx {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -16580,6 +16831,7 @@ export namespace Mx {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
@@ -16598,6 +16850,8 @@ export namespace Mx {
          * @param final_value the final value of the animation interval
          * @param progress the progress factor
          * @param value return location for the animation value
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          * @virtual
          */
         vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
@@ -16605,6 +16859,7 @@ export namespace Mx {
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -16613,6 +16868,7 @@ export namespace Mx {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -16630,6 +16886,7 @@ export namespace Mx {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -16638,6 +16895,7 @@ export namespace Mx {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -16652,6 +16910,8 @@ export namespace Mx {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -16666,6 +16926,7 @@ export namespace Mx {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -16675,6 +16936,7 @@ export namespace Mx {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -16683,6 +16945,7 @@ export namespace Mx {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -16697,6 +16960,7 @@ export namespace Mx {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -16710,6 +16974,7 @@ export namespace Mx {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -16718,6 +16983,7 @@ export namespace Mx {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -16730,6 +16996,8 @@ export namespace Mx {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          */
         foreach(callback: Clutter.Callback): void;
 
@@ -16741,6 +17009,8 @@ export namespace Mx {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          */
         foreach_with_internals(callback: Clutter.Callback): void;
 
@@ -16749,12 +17019,15 @@ export namespace Mx {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -16766,6 +17039,8 @@ export namespace Mx {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -16777,6 +17052,8 @@ export namespace Mx {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -16790,12 +17067,16 @@ export namespace Mx {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -16821,6 +17102,8 @@ export namespace Mx {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -16831,6 +17114,7 @@ export namespace Mx {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -16846,6 +17130,7 @@ export namespace Mx {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -16860,6 +17145,7 @@ export namespace Mx {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -16873,6 +17159,8 @@ export namespace Mx {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
@@ -16885,6 +17173,8 @@ export namespace Mx {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
@@ -16893,6 +17183,7 @@ export namespace Mx {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -16905,6 +17196,8 @@ export namespace Mx {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -16917,6 +17210,8 @@ export namespace Mx {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -16931,6 +17226,8 @@ export namespace Mx {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -16938,6 +17235,8 @@ export namespace Mx {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -16945,6 +17244,7 @@ export namespace Mx {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -16956,6 +17256,7 @@ export namespace Mx {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -16965,6 +17266,7 @@ export namespace Mx {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -16976,11 +17278,13 @@ export namespace Mx {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -16992,6 +17296,7 @@ export namespace Mx {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -17002,6 +17307,7 @@ export namespace Mx {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -17014,6 +17320,7 @@ export namespace Mx {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -17111,6 +17418,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -17119,6 +17427,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -17126,6 +17435,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
 
@@ -17379,6 +17689,7 @@ export namespace Mx {
         /**
          * Determines if the window has been set to be in fullscreen mode.
          * @returns `true` if the window has been set to be in fullscreen mode, otherwise `false`
+         * @since 1.2
          */
         get_fullscreen(): boolean;
 
@@ -17406,6 +17717,7 @@ export namespace Mx {
         /**
          * Retrieves the title used for the window.
          * @returns The title used for the window
+         * @since 1.2
          */
         get_title(): string;
 
@@ -17423,6 +17735,7 @@ export namespace Mx {
         /**
          * Retrieve the rotation of the window.
          * @returns An {@link Mx.WindowRotation}
+         * @since 1.2
          */
         get_window_rotation(): WindowRotation;
 
@@ -17430,16 +17743,19 @@ export namespace Mx {
          * Retrieves the size of the display area of the window, taking into
          * account any window border. This includes the area occupied by the
          * window's toolbar, if it's enabled.
+         * @since 1.2
          */
         get_window_size(): [number, number];
 
         /**
          * Hide the window
+         * @since 1.2
          */
         hide(): void;
 
         /**
          * Present the window. The actual behaviour is specific to the window system.
+         * @since 1.2
          */
         present(): void;
 
@@ -17460,6 +17776,7 @@ export namespace Mx {
          * window system.
          * </para></note>
          * @param fullscreen `true` to request fullscreen mode, `false` to disable
+         * @since 1.2
          */
         set_fullscreen(fullscreen: boolean): void;
 
@@ -17497,12 +17814,14 @@ export namespace Mx {
          * Sets the title used for the window, the results of which are
          * window-system specific.
          * @param title A string to use for the window title name
+         * @since 1.2
          */
         set_title(title: string): void;
 
         /**
          * Sets the toolbar associated with the window.
          * @param toolbar 
+         * @since 1.2
          */
         set_toolbar(toolbar: Toolbar): void;
 
@@ -17516,6 +17835,7 @@ export namespace Mx {
         /**
          * Set the rotation of the window.
          * @param rotation The {@link Mx.WindowRotation}
+         * @since 1.2
          */
         set_window_rotation(rotation: WindowRotation): void;
 
@@ -17530,11 +17850,13 @@ export namespace Mx {
          * </para></note>
          * @param width A width, in pixels
          * @param height A height, in pixels
+         * @since 1.2
          */
         set_window_size(width: number, height: number): void;
 
         /**
          * Show the window
+         * @since 1.2
          */
         show(): void;
     }
@@ -18924,6 +19246,7 @@ export namespace Mx {
          * Add a pseudo-class name to the list of pseudo classes, contained in the
          * {@link Mx.Stylable.style_pseudo_class} property.
          * @param new_class A pseudo-class name to add
+         * @since 1.2
          */
         style_pseudo_class_add(new_class: string): void;
 
@@ -18932,6 +19255,7 @@ export namespace Mx {
          * set pseudo classes on this {@link Mx.Stylable} object.
          * @param pseudo_class A pseudo-class name
          * @returns `true` if the given pseudo-class is set, `false` otherwise
+         * @since 1.2
          */
         style_pseudo_class_contains(pseudo_class: string): boolean;
 
@@ -18939,6 +19263,7 @@ export namespace Mx {
          * Remove the specified pseudo class name from the list of pseudo classes
          * contained in the {@link Mx.Stylable.style_pseudo_class} property.
          * @param remove_class A pseudo class name to remove
+         * @since 1.2
          */
         style_pseudo_class_remove(remove_class: string): void;
     }

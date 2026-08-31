@@ -798,11 +798,13 @@ export namespace GnomeKeyring {
         /**
          * Copy an access control for an item.
          * @returns The new {@link GnomeKeyring.AccessControl} pointer. Use `gnome_keyring_access_control_free()` to free the memory.
+         * @deprecated Not needed when using libsecret.
          */
         copy(): AccessControl;
 
         /**
          * Free an access control for an item.
+         * @deprecated Not needed when using libsecret.
          */
         free(): void;
     }
@@ -823,11 +825,13 @@ export namespace GnomeKeyring {
         /**
          * Copy an application reference.
          * @returns A new {@link GnomeKeyring.ApplicationRef} pointer.
+         * @deprecated Not needed when using libsecret.
          */
         copy(): ApplicationRef;
 
         /**
          * Free an application reference.
+         * @deprecated Not needed when using libsecret.
          */
         free(): void;
     }
@@ -854,6 +858,7 @@ export namespace GnomeKeyring {
          * @param attributes A {@link GnomeKeyring.AttributeList}
          * @param name The name of the new attribute
          * @param value The value to store in `attributes`
+         * @deprecated libsecret stores attributes as a {@link GLib.HashTable} containing             string keys and values, use `g_hash_table_replace()` instead.
          */
         static list_append_string(attributes: AttributeList, name: string, value: string): void;
 
@@ -862,12 +867,14 @@ export namespace GnomeKeyring {
          * @param attributes A {@link GnomeKeyring.AttributeList}
          * @param name The name of the new attribute
          * @param value The value to store in `attributes`
+         * @deprecated libsecret does not support number attributes.
          */
         static list_append_uint32(attributes: AttributeList, name: string, value: number): void;
 
         /**
          * Copy a list of item attributes.
          * @param attributes A {@link GnomeKeyring.AttributeList} to copy.
+         * @deprecated Not needed when using libsecret.
          */
         static list_copy(attributes: AttributeList): AttributeList;
 
@@ -876,11 +883,13 @@ export namespace GnomeKeyring {
          * 
          * If a `null` pointer is passed, it is ignored.
          * @param attributes A {@link GnomeKeyring.AttributeList}
+         * @deprecated libsecret stores attributes as a {@link GLib.HashTable} containing             string keys and values, use `g_hash_table_unref()` instead.
          */
         static list_free(attributes: AttributeList): void;
 
         /**
          * Create a new {@link GnomeKeyring.AttributeList}.
+         * @deprecated libsecret stores attributes as a {@link GLib.HashTable} containing             string keys and values; use `g_hash_table_new()` instead.
          */
         static list_new(): AttributeList;
 
@@ -888,6 +897,8 @@ export namespace GnomeKeyring {
          * Create {@link GLib.List} of {@link GnomeKeyring.Attribute} pointers from `attributes`. This is
          * mostly useful in language bindings which cannot directly use a {@link GLib.Array}.
          * @param attributes A {@link GnomeKeyring.AttributeList}
+         * @since 3.4
+         * @deprecated Not needed when using libsecret.
          */
         static list_to_glist(attributes: AttributeList): Attribute[];
 
@@ -898,6 +909,7 @@ export namespace GnomeKeyring {
          * mostly useful for language bindings which do not provide union access. In C
          * you should just use attribute->value.string.
          * @returns The value.string pointer of `attribute`. This is not a copy, do not free.
+         * @deprecated Not needed when using libsecret.
          */
         get_string(): string;
 
@@ -907,6 +919,7 @@ export namespace GnomeKeyring {
          * mostly useful for language bindings which do not provide union access. In C
          * you should just use attribute->value.integer.
          * @returns The value.integer of `attribute`.
+         * @deprecated Not needed when using libsecret.
          */
         get_uint32(): number;
     }
@@ -942,6 +955,7 @@ export namespace GnomeKeyring {
         /**
          * Free the memory used by the {@link GnomeKeyring.Found} items in `found_list`.
          * @param found_list a {@link GLib.List} of {@link GnomeKeyring.Found}
+         * @deprecated Not needed when using libsecret.
          */
         static list_free(found_list: Found[]): void;
 
@@ -949,6 +963,7 @@ export namespace GnomeKeyring {
         /**
          * Copy a {@link GnomeKeyring.Found} item.
          * @returns The new {@link GnomeKeyring.Found}
+         * @deprecated Not needed when using libsecret.
          */
         copy(): Found;
 
@@ -957,6 +972,7 @@ export namespace GnomeKeyring {
          * 
          * You usually want to use `gnome_keyring_found_list_free()` on the list of
          * results.
+         * @deprecated Deprecated: Not needed when using libsecret.
          */
         free(): void;
     }
@@ -972,24 +988,28 @@ export namespace GnomeKeyring {
         /**
          * Copy a {@link GnomeKeyring.Info} object.
          * @returns The newly allocated {@link GnomeKeyring.Info}. This must be freed with `gnome_keyring_info_free()`
+         * @deprecated Use `SecretCollection` objects instead.
          */
         copy(): Info;
 
         /**
          * Free a {@link GnomeKeyring.Info} object. If a `null` pointer is passed
          * nothing occurs.
+         * @deprecated Use `SecretCollection` objects instead.
          */
         free(): void;
 
         /**
          * Get the time at which the keyring was created.
          * @returns The created time.
+         * @deprecated Use `secret_collection_get_created()` instead.
          */
         get_ctime(): number;
 
         /**
          * Get whether the keyring is locked or not.
          * @returns Whether the keyring is locked or not.
+         * @deprecated Use `secret_collection_get_locked()` instead.
          */
         get_is_locked(): boolean;
 
@@ -998,6 +1018,7 @@ export namespace GnomeKeyring {
          * 
          * See also `gnome_keyring_info_get_lock_timeout()`.
          * @returns Whether to lock or not.
+         * @deprecated Not supported when using libsecret.
          */
         get_lock_on_idle(): boolean;
 
@@ -1006,12 +1027,14 @@ export namespace GnomeKeyring {
          * 
          * See also `gnome_keyring_info_get_lock_on_idle()`.
          * @returns The idle timeout, in seconds.
+         * @deprecated Not supported when using libsecret.
          */
         get_lock_timeout(): number;
 
         /**
          * Get the time at which the keyring was last modified.
          * @returns The last modified time.
+         * @deprecated Use `secret_collection_get_modified()` instead.
          */
         get_mtime(): number;
 
@@ -1020,6 +1043,7 @@ export namespace GnomeKeyring {
          * 
          * See also `gnome_keyring_info_set_lock_timeout()`.
          * @param value Whether to lock or not.
+         * @deprecated Not supported when using libsecret.
          */
         set_lock_on_idle(value: boolean): void;
 
@@ -1028,6 +1052,7 @@ export namespace GnomeKeyring {
          * 
          * See also `gnome_keyring_info_set_lock_on_idle()`.
          * @param value The lock timeout in seconds.
+         * @deprecated Not supported when using libsecret.
          */
         set_lock_timeout(value: number): void;
     }
@@ -1048,6 +1073,7 @@ export namespace GnomeKeyring {
         /**
          * Copy a {@link GnomeKeyring.ItemInfo} object.
          * @returns A keyring item info pointer.
+         * @deprecated Use `SecretItem` objects instead.
          */
         copy(): ItemInfo;
 
@@ -1055,54 +1081,63 @@ export namespace GnomeKeyring {
          * Free the {@link GnomeKeyring.ItemInfo} object.
          * 
          * A `null` pointer may be passed, in which case it will be ignored.
+         * @deprecated Use `SecretItem` objects instead.
          */
         free(): void;
 
         /**
          * Get the item created time.
          * @returns The item created time.
+         * @deprecated Use `secret_item_get_created()` instead.
          */
         get_ctime(): number;
 
         /**
          * Get the item display name.
          * @returns The newly allocated string containing the item display name.
+         * @deprecated Use `secret_item_get_label()` instead.
          */
         get_display_name(): string;
 
         /**
          * Get the item last modified time.
          * @returns The item last modified time.
+         * @deprecated Use `secret_item_get_modified()` instead.
          */
         get_mtime(): number;
 
         /**
          * Get the item secret.
          * @returns The newly allocated string containing the item secret.
+         * @deprecated Use `secret_item_get_secret()` instead.
          */
         get_secret(): string;
 
         /**
          * Get the item type.
          * @returns The item type
+         * @deprecated Use `secret_item_get_schema_name()` instead.
          */
         get_type(): ItemType;
 
         /**
          * Set the display name on an item info.
          * @param value The new display name.
+         * @deprecated Use `secret_item_set_label()` instead.
          */
         set_display_name(value: string): void;
 
         /**
          * Set the secret on an item info.
          * @param value The new item secret
+         * @deprecated Use `secret_item_set_secret()` instead.
          */
         set_secret(value: string): void;
 
         /**
          * Set the type on an item info.
          * @param type The new item type
+         * @deprecated Use `secret_item_set_attributes()` instead.
          */
         set_type(type: ItemType): void;
     }

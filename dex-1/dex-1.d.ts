@@ -1425,6 +1425,7 @@ export namespace Dex {
          * the future is discarded. This happens when no more futures are awaiting
          * the completion of this future.
          * @param cancel_on_discard if the operation should cancel when the future is discarded
+         * @since 0.4
          */
         set_cancel_on_discard(cancel_on_discard: boolean): void;
     }
@@ -1534,6 +1535,7 @@ export namespace Dex {
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
          * @returns `TRUE` if `res` has the indicated `source_tag`, `FALSE` if   not.
+         * @since 2.34
          */
         is_tagged(source_tag: null): boolean;
 
@@ -1549,6 +1551,7 @@ export namespace Dex {
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
          * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
+         * @since 2.34
          */
         legacy_propagate_error(): boolean;
 
@@ -1568,6 +1571,7 @@ export namespace Dex {
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
+         * @since 2.34
          * @virtual
          */
         vfunc_is_tagged(source_tag: null): boolean;
@@ -1841,6 +1845,7 @@ export namespace Dex {
         // Methods
         /**
          * Cancels all in-flight fibers.
+         * @since 1.1
          */
         cancel(): void;
 
@@ -1848,6 +1853,7 @@ export namespace Dex {
          * Gets the {@link Dex.DBusInterfaceSkeletonFlags} that describes the behavior
          * of `interface_`
          * @returns One or more flags from the {@link Dex.DBusInterfaceSkeletonFlags} enumeration.
+         * @since 1.1
          */
         get_flags(): DBusInterfaceSkeletonFlags;
 
@@ -1860,6 +1866,7 @@ export namespace Dex {
         /**
          * Sets flags describing what the behavior of `interface_` should be.
          * @param flags Flags from the {@link Dex.DBusInterfaceSkeletonFlags} enumeration.
+         * @since 1.1
          */
         set_flags(flags: DBusInterfaceSkeletonFlags): void;
 
@@ -1872,6 +1879,7 @@ export namespace Dex {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -1884,6 +1892,7 @@ export namespace Dex {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -1898,11 +1907,13 @@ export namespace Dex {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -1915,6 +1926,7 @@ export namespace Dex {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -1931,6 +1943,7 @@ export namespace Dex {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -2040,6 +2053,7 @@ export namespace Dex {
          * 
          * This may only be called from within a {@link Dex.Fiber}. If it is called
          * from any other context, `error` is set to {@link Dex.Error.NO_FIBER}.
+         * @since 1.2
          */
         static ["yield"](): boolean;
     }
@@ -2202,6 +2216,7 @@ export namespace Dex {
          * 
          * The resolved value must be of type `DEX_TYPE_FD` or `error` is set.
          * @returns a valid file descriptor or -1. you may get -1 without   error being set if there was no rejected future.
+         * @since 0.10
          */
         await_fd(): number;
 
@@ -2278,12 +2293,14 @@ export namespace Dex {
         /**
          * Awaits on `future` and returns the `G_TYPE_VARIANT` based result.
          * @returns the variant result, or `null` and `error` is set.
+         * @since 0.4
          */
         await_variant(): GLib.Variant;
 
         /**
          * Disowns a future, allowing it to run to completion even though there may
          * be no observer interested in the futures completion or rejection.
+         * @since 0.4
          */
         disown(): void;
 
@@ -2318,6 +2335,7 @@ export namespace Dex {
          * Creates a new list model that will initially be empty and after
          * `future` resolves contain the items within it.
          * @returns a new {@link Dex.FutureListModel}
+         * @since 1.1
          */
         list_model_new(): Gio.ListModel;
     }
@@ -2372,6 +2390,7 @@ export namespace Dex {
         /**
          * Gets the future provided when creating the list model.
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} or rejects with error.
+         * @since 1.1
          */
         dup_future(): Future;
 
@@ -2385,6 +2404,7 @@ export namespace Dex {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -2395,6 +2415,7 @@ export namespace Dex {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -2413,6 +2434,7 @@ export namespace Dex {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -2440,6 +2462,7 @@ export namespace Dex {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -2452,6 +2475,7 @@ export namespace Dex {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -2465,6 +2489,7 @@ export namespace Dex {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -2475,6 +2500,7 @@ export namespace Dex {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -2596,6 +2622,7 @@ export namespace Dex {
          * before acquisition completes, the returned future rejects with
          * {@link Dex.Error.SEMAPHORE_CLOSED}.
          * @returns a future that resolves when a permit is acquired
+         * @since 1.2
          */
         acquire(): Future;
 
@@ -2605,6 +2632,7 @@ export namespace Dex {
          * Pending and future acquisitions reject with {@link Dex.Error.SEMAPHORE_CLOSED}.
          * Permits already acquired remain valid, but releasing them after close will
          * not make them available for new work.
+         * @since 1.2
          */
         close(): void;
 
@@ -2618,12 +2646,14 @@ export namespace Dex {
          * futures and held permits are complete. Existing permit holders must still
          * eventually release.
          * @returns a {@link Dex.Future} that resolves to `true`
+         * @since 1.2
          */
         close_after_drain(): Future;
 
         /**
          * Gets the maximum number of permits available from `limiter`.
          * @returns the maximum number of concurrent operations
+         * @since 1.2
          */
         get_max_concurrency(): number;
 
@@ -2633,6 +2663,7 @@ export namespace Dex {
          * This must be called exactly once for each successful
          * {@link Dex.Limiter.acquire} unless the permit is managed by
          * {@link Dex.Limiter.run}.
+         * @since 1.2
          */
         release(): void;
 
@@ -2647,6 +2678,7 @@ export namespace Dex {
          * @param stack_size stack size for the spawned fiber, or zero to use the default
          * @param func fiber function to run after a permit is acquired
          * @returns a future representing the spawned fiber
+         * @since 1.2
          */
         run(scheduler: Scheduler | null, stack_size: bigint | number, func: FiberFunc): Future;
 
@@ -2660,6 +2692,7 @@ export namespace Dex {
          * @param scheduler scheduler to spawn `func` on, or `null` for the thread default
          * @param func coroutine function to run after a permit is acquired
          * @returns a future representing the spawned coroutine
+         * @since 1.2
          */
         run_coroutine(scheduler: Scheduler | null, func: CoroutineFunc): Future;
 
@@ -2677,6 +2710,7 @@ export namespace Dex {
          * @param pool a {@link Dex.ThreadPool}
          * @param thread_func function to run on `pool` after a permit is acquired
          * @returns a future representing the submitted work
+         * @since 1.2
          */
         run_on_pool(pool: ThreadPool, thread_func: ThreadFunc): Future;
     }
@@ -2838,6 +2872,7 @@ export namespace Dex {
         /**
          * @param boxed_type a {@link GObject.GType} of `G_TYPE_BOXED`
          * @param instance the boxed value to store
+         * @since 0.10
          */
         resolve_boxed(boxed_type: GObject.GType, instance: null): void;
 
@@ -2851,6 +2886,7 @@ export namespace Dex {
          * Resolve `promise` to `value`.
          * @param enum_type a {@link GObject.GType} of `G_TYPE_ENUM`
          * @param value the enum value
+         * @since 1.2
          */
         resolve_enum(enum_type: GObject.GType, value: number): void;
 
@@ -2920,6 +2956,7 @@ export namespace Dex {
         /**
          * If `variant` is floating, its reference is consumed.
          * @param variant a {@link GLib.Variant}
+         * @since 0.8
          */
         resolve_variant(variant: GLib.Variant | null): void;
     }
@@ -3053,6 +3090,7 @@ export namespace Dex {
          * future in its context using one of the `DEX_COROUTINE_SUSPEND_*` helpers.
          * @param func coroutine entrypoint
          * @returns a {@link Dex.Future} that will resolve or reject   when `func` finishes or returns an error.
+         * @since 1.2
          */
         spawn_coroutine(func: CoroutineFunc): Future;
     }
@@ -3105,6 +3143,7 @@ export namespace Dex {
          * will run or succeed, and it may differ from the current state returned by
          * {@link Dex.StateMachine.get_state}.
          * @returns the most recent valid requested state
+         * @since 1.2
          */
         get_requested_state(): number;
 
@@ -3122,6 +3161,7 @@ export namespace Dex {
          * does not request a transition or change the current state; the active
          * callback decides how to handle the interrupt.
          * @returns `true` if an active transition context was marked interrupted;   otherwise `false`
+         * @since 1.2
          */
         interrupt(): boolean;
 
@@ -3154,6 +3194,7 @@ export namespace Dex {
          * {@link Dex.StateMachine.transition} to move the state machine.
          * @param state the state to wait for
          * @returns a future resolving to `state`
+         * @since 1.2
          */
         wait_for_state(state: number): Future;
     }
@@ -3254,6 +3295,7 @@ export namespace Dex {
          * Otherwise, `future` will be added to `group`.
          * @param future a {@link Dex.Future}
          * @returns `false` if the group is closed or cancelled;   otherwise `true`.
+         * @since 1.2
          */
         add(future: Future): boolean;
 
@@ -3262,6 +3304,7 @@ export namespace Dex {
         /**
          * Close the group to new tasks.
          * @returns a {@link Dex.Future} that resolves when all the   collected futures have resolved or rejected.
+         * @since 1.2
          */
         close(): Future;
 
@@ -3325,6 +3368,7 @@ export namespace Dex {
         /**
          * Gets the fixed number of threads owned by the pool.
          * @returns the number of threads in the pool
+         * @since 1.2
          */
         get_n_threads(): number;
 
@@ -3337,6 +3381,7 @@ export namespace Dex {
          * @param thread_name the name to use for debugging the returned future
          * @param thread_func the function to run on a pooled thread
          * @returns a future that resolves when the work completes
+         * @since 1.2
          */
         submit(thread_name: string | null, thread_func: ThreadFunc): Future;
     }
@@ -3485,6 +3530,7 @@ export namespace Dex {
         // Methods
         /**
          * Get the signal number that the future represents.
+         * @since 1.0
          */
         get_signum(): number;
     }
@@ -3611,6 +3657,7 @@ export namespace Dex {
          * error is propagated.
          * @param target the target state for the next edge
          * @returns `true` if the continuation succeeded; otherwise `false`
+         * @since 1.2
          */
         continue_to(target: number): boolean;
 
@@ -3620,12 +3667,14 @@ export namespace Dex {
          * This value is fixed for the lifetime of `context` and does not change if
          * {@link Dex.StateTransitionContext.set_state} is called.
          * @returns the source state for the transition edge
+         * @since 1.2
          */
         get_from(): number;
 
         /**
          * Gets the real current state from the {@link Dex.StateMachine}.
          * @returns the current state
+         * @since 1.2
          */
         get_state(): number;
 
@@ -3635,6 +3684,7 @@ export namespace Dex {
          * This value is fixed for the lifetime of `context` and does not change if
          * {@link Dex.StateTransitionContext.set_state} is called.
          * @returns the target state for the transition edge
+         * @since 1.2
          */
         get_to(): number;
 
@@ -3646,6 +3696,7 @@ export namespace Dex {
          * enum type. This method may only be used while the transition callback is
          * active.
          * @param state the new state
+         * @since 1.2
          */
         set_state(state: number): void;
 
@@ -3661,6 +3712,7 @@ export namespace Dex {
          * If `context` completes before it is interrupted, the returned future is
          * rejected with {@link Gio.IOErrorEnum.CANCELLED}.
          * @returns a future resolving to `true` when interrupted
+         * @since 1.2
          */
         wait_for_interrupt(): Future;
     }

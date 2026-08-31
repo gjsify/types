@@ -896,6 +896,7 @@ export namespace Libxfce4ui {
          * (for example, using g_connect_swapped) for the simple case where the desired effect
          * of this signal is to set the sensitivity of a single GtkWidget (for example, a GtkButton).
          * @param widget a {@link Gtk.Widget}
+         * @since 4.16
          */
         static desensitise_widget(widget: Gtk.Widget): void;
 
@@ -904,6 +905,7 @@ export namespace Libxfce4ui {
          * (for example, using g_connect_swapped) for the simple case where the desired effect
          * of this signal is to set the sensitivity of a single GtkWidget (for example, a GtkButton).
          * @param widget a {@link Gtk.Widget}
+         * @since 4.16
          */
         static sensitise_widget(widget: Gtk.Widget): void;
 
@@ -914,18 +916,21 @@ export namespace Libxfce4ui {
          * whether the text is a valid filename or not, so that for example any
          * GtkWidgets whose sensitivity is controlled by this can be correctly updated
          * when they are first created.
+         * @since 4.16
          */
         check(): void;
 
         /**
          * Gets the {@link Gtk.Entry} associated to filename_input
          * @returns A {@link Gtk.Entry}
+         * @since 4.16
          */
         get_entry(): Gtk.Entry;
 
         /**
          * Gets the current text of the widget.
          * @returns the string representing the current text
+         * @since 4.16
          */
         get_text(): string;
 
@@ -941,12 +946,14 @@ export namespace Libxfce4ui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -1451,6 +1458,7 @@ export namespace Libxfce4ui {
          * Calling this function with `inhibit` as `false` will remove any current
          * screensaver inhibit the {@link Libxfce4ui.Screensaver} object has.
          * @param inhibit whether to inhibit the screensaver from activating
+         * @since 4.18.2
          */
         inhibit(inhibit: boolean): void;
 
@@ -1459,6 +1467,7 @@ export namespace Libxfce4ui {
          * D-Bus proxies, the Xfconf lock command, or one of the
          * fallback scripts such as xdg-screensaver.
          * @returns `true` if the lock attempt returns success, `false` otherwise.
+         * @since 4.18.2
          */
         lock(): boolean;
     }
@@ -1604,6 +1613,7 @@ export namespace Libxfce4ui {
          * (see `gtk_button_box_set_child_secondary` for reference).
          * @param child an activatable widget.
          * @param response_id response ID for `child`.
+         * @since 4.16
          */
         add_action_widget(child: Gtk.Widget, response_id: number): void;
 
@@ -1615,11 +1625,14 @@ export namespace Libxfce4ui {
          * @param button_text text of button.
          * @param response_id response ID for `child`.
          * @returns the GtkButton widget that was added.
+         * @since 4.16
          */
         add_button(button_text: string, response_id: number): Gtk.Widget;
 
         /**
          * This function is a no-op since 4.19.3.
+         * @since 4.16
+         * @deprecated since 4.19.3
          */
         create_action_area(): void;
 
@@ -1639,6 +1652,7 @@ export namespace Libxfce4ui {
          * This function is a replacement for `gtk_dialog_set_default_response`, which does
          * not work with {@link Libxfce4ui.TitledDialog}.
          * @param response_id a response ID
+         * @since 4.16
          */
         set_default_response(response_id: number): void;
 

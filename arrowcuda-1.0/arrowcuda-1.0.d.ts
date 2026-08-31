@@ -82,6 +82,7 @@ export namespace ArrowCUDA {
         /**
          * @param data Data on CPU host to be copied.
          * @returns `true` on success, `false` if there was an error.
+         * @since 0.8.0
          */
         copy_from_host(data: Uint8Array | string): boolean;
 
@@ -89,16 +90,19 @@ export namespace ArrowCUDA {
          * @param position The offset of memory on GPU device to be copied.
          * @param size The size of memory on GPU device to be copied in bytes.
          * @returns A {@link GLib.Bytes} that have copied memory on CPU   host on success, `null` on error.
+         * @since 0.8.0
          */
         copy_to_host(position: bigint | number, size: bigint | number): GLib.Bytes;
 
         /**
          * @returns A newly created   {@link ArrowCUDA.IPCMemoryHandle} to handle the exported buffer on   success, `null` on error
+         * @since 0.8.0
          */
         ["export"](): IPCMemoryHandle;
 
         /**
          * @returns A newly created {@link ArrowCUDA.Context} for the   buffer. Contexts for the same buffer share the same data internally.
+         * @since 0.8.0
          */
         get_context(): Context;
 
@@ -106,6 +110,7 @@ export namespace ArrowCUDA {
          * @param schema A {@link Arrow.Schema} for record batch.
          * @param options A {@link Arrow.ReadOptions}.
          * @returns A newly created {@link Arrow.RecordBatch} on   success, `null` on error. The record batch data is located on GPU.
+         * @since 0.8.0
          */
         read_record_batch(schema: Arrow.Schema, options: Arrow.ReadOptions | null): Arrow.RecordBatch;
     }
@@ -207,17 +212,20 @@ export namespace ArrowCUDA {
         // Methods
         /**
          * @returns The CPU buffer size in bytes. See `garrow_cuda_buffer_output_stream_set_buffer_size()` for CPU buffer size details.
+         * @since 0.8.0
          */
         get_buffer_size(): number;
 
         /**
          * @returns The size of buffered data in bytes.
+         * @since 0.8.0
          */
         get_buffered_size(): number;
 
         /**
          * @param size A size of CPU buffer in bytes.
          * @returns `true` on success, `false` if there was an error. Sets CPU buffer size. to limit `cudaMemcpy()` calls. If CPU buffer size is `0`, buffering is disabled. The default is `0`.
+         * @since 0.8.0
          */
         set_buffer_size(size: bigint | number): boolean;
 
@@ -233,6 +241,7 @@ export namespace ArrowCUDA {
 
         /**
          * @returns `true` if the `file` is already closed, `false` otherwise.
+         * @since 0.13.0
          */
         is_closed(): boolean;
 
@@ -310,6 +319,7 @@ export namespace ArrowCUDA {
         // Methods
         /**
          * @returns The allocated memory by this context in bytes.
+         * @since 0.8.0
          */
         get_allocated_size(): number;
     }
@@ -362,11 +372,13 @@ export namespace ArrowCUDA {
         /**
          * @param gpu_number A GPU device number for the target context.
          * @returns A newly created {@link ArrowCUDA.Context} on   success, `null` on error. Contexts for the same GPU device number   share the same data internally.
+         * @since 0.8.0
          */
         get_context(gpu_number: number): Context;
 
         /**
          * @returns The number of GPU devices.
+         * @since 0.8.0
          */
         get_n_devices(): number;
     }
@@ -488,6 +500,7 @@ export namespace ArrowCUDA {
         // Methods
         /**
          * @returns A newly created {@link Arrow.Buffer} on success,   `null` on error. The buffer has serialized `handle`. The serialized   `handle` can be deserialized by `garrow_cuda_ipc_memory_handle_new()`   in other process.
+         * @since 0.8.0
          */
         serialize(): Arrow.Buffer;
     }

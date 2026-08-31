@@ -1051,6 +1051,7 @@ export namespace MateDesktop {
         /**
          * Sets `color` to be the current color in the MateColorSelection widget.
          * @param color an array of 4 `gdouble` to fill in with the current color.
+         * @deprecated since 2.0: Use `mate_color_selection_get_current_color()` instead.
          */
         get_color(color: number): void;
 
@@ -1098,6 +1099,7 @@ export namespace MateDesktop {
          * Sets the current color to be `color`.  The first time this is called, it will
          * also set the original color to be `color` too.
          * @param color an array of 4 doubles specifying the red, green, blue and opacity   to set the current color to.
+         * @deprecated since 2.0: Use `mate_color_selection_set_current_color()` instead.
          */
         set_color(color: number): void;
 
@@ -1155,12 +1157,14 @@ export namespace MateDesktop {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -1350,6 +1354,7 @@ export namespace MateDesktop {
         /**
          * Retrieves the {@link MateDesktop.ColorSelection} widget embedded in the dialog.
          * @returns the embedded {@link MateDesktop.ColorSelection}
+         * @since 1.9.1
          */
         get_color_selection(): Gtk.Widget;
     }
@@ -1408,6 +1413,7 @@ export namespace MateDesktop {
          * @param mime_type the mime type of the file
          * @param mtime the mtime of the file
          * @returns TRUE if the file can be thumbnailed.
+         * @since 2.2
          */
         can_thumbnail(uri: string, mime_type: string, mtime: bigint | number): boolean;
 
@@ -1418,6 +1424,7 @@ export namespace MateDesktop {
          * Usage of this function is threadsafe.
          * @param uri the uri of a file
          * @param mtime the modification time of the file
+         * @since 2.2
          */
         create_failed_thumbnail(uri: string, mtime: bigint | number): void;
 
@@ -1429,6 +1436,7 @@ export namespace MateDesktop {
          * @param uri the uri of a file
          * @param mime_type the mime type of the file
          * @returns thumbnail pixbuf if thumbnailing succeeded, `null` otherwise.
+         * @since 2.2
          */
         generate_thumbnail(uri: string, mime_type: string): GdkPixbuf.Pixbuf;
 
@@ -1441,6 +1449,7 @@ export namespace MateDesktop {
          * @param uri the uri of a file
          * @param mtime the mtime of the file
          * @returns TRUE if there is a failed thumbnail for the file.
+         * @since 2.2
          */
         has_valid_failed_thumbnail(uri: string, mtime: bigint | number): boolean;
 
@@ -1451,6 +1460,7 @@ export namespace MateDesktop {
          * @param uri the uri of a file
          * @param mtime the mtime of the file
          * @returns The absolute path of the thumbnail, or `null` if none exist.
+         * @since 2.2
          */
         lookup(uri: string, mtime: bigint | number): string;
 
@@ -1462,6 +1472,7 @@ export namespace MateDesktop {
          * @param thumbnail the thumbnail as a pixbuf
          * @param uri the uri of a file
          * @param original_mtime the modification time of the original file
+         * @since 2.2
          */
         save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: bigint | number): void;
     }
@@ -1616,6 +1627,7 @@ export namespace MateDesktop {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -1627,6 +1639,7 @@ export namespace MateDesktop {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -1637,6 +1650,7 @@ export namespace MateDesktop {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -1647,6 +1661,7 @@ export namespace MateDesktop {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -1656,6 +1671,7 @@ export namespace MateDesktop {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -1664,6 +1680,7 @@ export namespace MateDesktop {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -1674,6 +1691,7 @@ export namespace MateDesktop {
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -1684,6 +1702,7 @@ export namespace MateDesktop {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -1692,12 +1711,14 @@ export namespace MateDesktop {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -1707,6 +1728,7 @@ export namespace MateDesktop {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -1718,6 +1740,7 @@ export namespace MateDesktop {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -1729,6 +1752,7 @@ export namespace MateDesktop {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -1740,6 +1764,7 @@ export namespace MateDesktop {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -1749,6 +1774,7 @@ export namespace MateDesktop {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -1757,6 +1783,7 @@ export namespace MateDesktop {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -1767,6 +1794,7 @@ export namespace MateDesktop {
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -1778,6 +1806,7 @@ export namespace MateDesktop {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -1787,6 +1816,7 @@ export namespace MateDesktop {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -1794,6 +1824,7 @@ export namespace MateDesktop {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -2019,6 +2050,7 @@ export namespace MateDesktop {
          * 
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
+         * @since 3.4
          */
         get_action_name(): string | null;
 
@@ -2027,6 +2059,7 @@ export namespace MateDesktop {
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
          * @returns the current target value
+         * @since 3.4
          */
         get_action_target_value(): GLib.Variant;
 
@@ -2043,6 +2076,7 @@ export namespace MateDesktop {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          */
         set_action_name(action_name: string | null): void;
 
@@ -2067,6 +2101,7 @@ export namespace MateDesktop {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          */
         set_action_target_value(target_value: GLib.Variant | null): void;
 
@@ -2083,6 +2118,7 @@ export namespace MateDesktop {
          * `action` is the action name and `target` is the string to use
          * as the target.)
          * @param detailed_action_name the detailed action name
+         * @since 3.4
          */
         set_detailed_action_name(detailed_action_name: string): void;
 
@@ -2090,6 +2126,7 @@ export namespace MateDesktop {
          * Gets the action name for `actionable`.
          * 
          * See `gtk_actionable_set_action_name()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_name(): string | null;
@@ -2098,6 +2135,7 @@ export namespace MateDesktop {
          * Gets the current target value of `actionable`.
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant;
@@ -2115,6 +2153,7 @@ export namespace MateDesktop {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_name(action_name: string | null): void;
@@ -2140,6 +2179,7 @@ export namespace MateDesktop {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
@@ -2161,12 +2201,16 @@ export namespace MateDesktop {
          * > `gtk_activatable_get_related_action()` to retrieve the
          * > previous action.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         do_set_related_action(action: Gtk.Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_related_action(): Gtk.Action;
 
@@ -2175,6 +2219,8 @@ export namespace MateDesktop {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_use_action_appearance(): boolean;
 
@@ -2184,6 +2230,8 @@ export namespace MateDesktop {
          * > {@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * > property and call `gtk_activatable_do_set_related_action()` when it changes.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_related_action(action: Gtk.Action): void;
 
@@ -2196,6 +2244,8 @@ export namespace MateDesktop {
          * > `gtk_activatable_sync_action_properties()` to update `activatable`
          * > if needed.
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -2205,6 +2255,8 @@ export namespace MateDesktop {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          */
         sync_action_properties(action: Gtk.Action | null): void;
 
@@ -2214,6 +2266,8 @@ export namespace MateDesktop {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          * @virtual
          */
         vfunc_sync_action_properties(action: Gtk.Action | null): void;
@@ -2773,6 +2827,7 @@ export namespace MateDesktop {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2816,6 +2871,7 @@ export namespace MateDesktop {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;

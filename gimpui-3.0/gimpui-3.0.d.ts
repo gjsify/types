@@ -2604,23 +2604,27 @@ export namespace GimpUi {
         // Methods
         /**
          * @returns The left vbox.
+         * @since 3.0
          */
         get_left_vbox(): Gtk.Box;
 
         /**
          * @returns The right vbox.
+         * @since 3.0
          */
         get_right_vbox(): Gtk.Box;
 
         /**
          * Sets the search summary text.
          * @param summary a string describing the search result
+         * @since 3.0
          */
         set_search_summary(summary: string): void;
 
         /**
          * Sets the widget to appear on the right side of the `browser`.
          * @param widget a {@link Gtk.Widget}
+         * @since 2.4
          */
         set_widget(widget: Gtk.Widget): void;
 
@@ -2629,6 +2633,7 @@ export namespace GimpUi {
          * side already contains a {@link Gtk.Label}, the widget previously added with
          * `gimp_browser_set_widget()` is removed and replaced by a {@link Gtk.Label}.
          * @param message text message
+         * @since 2.4
          */
         show_message(message: string): void;
 
@@ -2644,12 +2649,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -2867,12 +2874,14 @@ export namespace GimpUi {
         /**
          * Returns the displayed message of `box`.
          * @returns The displayed message.
+         * @since 2.10.4
          */
         get_message(): string;
 
         /**
          * Sets the displayed message og `box` to `message`.
          * @param message the displayed message
+         * @since 2.10.4
          */
         set_message(message: string): void;
 
@@ -2888,12 +2897,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -3114,6 +3125,7 @@ export namespace GimpUi {
          * 
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
+         * @since 3.4
          */
         get_action_name(): string | null;
 
@@ -3122,6 +3134,7 @@ export namespace GimpUi {
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
          * @returns the current target value
+         * @since 3.4
          */
         get_action_target_value(): GLib.Variant;
 
@@ -3138,6 +3151,7 @@ export namespace GimpUi {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          */
         set_action_name(action_name: string | null): void;
 
@@ -3162,6 +3176,7 @@ export namespace GimpUi {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          */
         set_action_target_value(target_value: GLib.Variant | null): void;
 
@@ -3178,6 +3193,7 @@ export namespace GimpUi {
          * `action` is the action name and `target` is the string to use
          * as the target.)
          * @param detailed_action_name the detailed action name
+         * @since 3.4
          */
         set_detailed_action_name(detailed_action_name: string): void;
 
@@ -3185,6 +3201,7 @@ export namespace GimpUi {
          * Gets the action name for `actionable`.
          * 
          * See `gtk_actionable_set_action_name()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_name(): string | null;
@@ -3193,6 +3210,7 @@ export namespace GimpUi {
          * Gets the current target value of `actionable`.
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant;
@@ -3210,6 +3228,7 @@ export namespace GimpUi {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_name(action_name: string | null): void;
@@ -3235,6 +3254,7 @@ export namespace GimpUi {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
@@ -3256,12 +3276,16 @@ export namespace GimpUi {
          * > `gtk_activatable_get_related_action()` to retrieve the
          * > previous action.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         do_set_related_action(action: Gtk.Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_related_action(): Gtk.Action;
 
@@ -3270,6 +3294,8 @@ export namespace GimpUi {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_use_action_appearance(): boolean;
 
@@ -3279,6 +3305,8 @@ export namespace GimpUi {
          * > {@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * > property and call `gtk_activatable_do_set_related_action()` when it changes.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_related_action(action: Gtk.Action): void;
 
@@ -3291,6 +3319,8 @@ export namespace GimpUi {
          * > `gtk_activatable_sync_action_properties()` to update `activatable`
          * > if needed.
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -3300,6 +3330,8 @@ export namespace GimpUi {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          */
         sync_action_properties(action: Gtk.Action | null): void;
 
@@ -3309,6 +3341,8 @@ export namespace GimpUi {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          * @virtual
          */
         vfunc_sync_action_properties(action: Gtk.Action | null): void;
@@ -3345,6 +3379,7 @@ export namespace GimpUi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -3354,6 +3389,7 @@ export namespace GimpUi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -3578,6 +3614,7 @@ export namespace GimpUi {
          * Emits the "clicked" signal from a {@link GimpUi.CellRendererToggle}.
          * @param path the path to the clicked row
          * @param state the modifier state
+         * @since 2.2
          */
         clicked(path: string, state: Gdk.ModifierType): void;
     }
@@ -3744,12 +3781,14 @@ export namespace GimpUi {
 
         /**
          * @returns The {@link GimpUi.ChainButton}'s button.
+         * @since 3.0
          */
         get_button(): Gtk.Button;
 
         /**
          * Gets the icon size of the {@link GimpUi.ChainButton}.
          * @returns The icon size.
+         * @since 2.10.10
          */
         get_icon_size(): Gtk.IconSize;
 
@@ -3763,6 +3802,7 @@ export namespace GimpUi {
         /**
          * Sets the icon size of the {@link GimpUi.ChainButton}.
          * @param size The new icon size.
+         * @since 2.10.10
          */
         set_icon_size(size: Gtk.IconSize): void;
 
@@ -3778,12 +3818,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -3916,6 +3958,7 @@ export namespace GimpUi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -3925,6 +3968,7 @@ export namespace GimpUi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -4109,6 +4153,7 @@ export namespace GimpUi {
         /**
          * Sets the color management configuration to use with this color area.
          * @param config a {@link Gimp.ColorConfig} object.
+         * @since 2.10
          */
         set_color_config(config: Gimp.ColorConfig): void;
 
@@ -4130,6 +4175,7 @@ export namespace GimpUi {
          * more colors out of gamut (for instance non-gray colors on a grayscale
          * image, or colors absent of palettes in indexed images, etc.)
          * @param out_of_gamut whether to show an out-of-gamut indicator
+         * @since 2.10.10
          */
         set_out_of_gamut(out_of_gamut: boolean): void;
 
@@ -4374,6 +4420,7 @@ export namespace GimpUi {
         // Methods
         /**
          * @returns The `button`'s {@link Gio.SimpleActionGroup}.
+         * @since 3.0
          */
         get_action_group(): Gio.SimpleActionGroup;
 
@@ -4385,6 +4432,7 @@ export namespace GimpUi {
 
         /**
          * @returns The `button` dialog's title.
+         * @since 2.10
          */
         get_title(): string;
 
@@ -4410,12 +4458,14 @@ export namespace GimpUi {
          * Sets the color management configuration to use with this color button's
          * {@link GimpUi.ColorArea}.
          * @param config a {@link Gimp.ColorConfig} object.
+         * @since 2.10
          */
         set_color_config(config: Gimp.ColorConfig): void;
 
         /**
          * Sets the `button` dialog's title.
          * @param title the new title.
+         * @since 2.10
          */
         set_title(title: string): void;
 
@@ -4455,6 +4505,7 @@ export namespace GimpUi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -4464,6 +4515,7 @@ export namespace GimpUi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -4563,6 +4615,7 @@ export namespace GimpUi {
         /**
          * Creates a configuration widget for `display` which can be added to a
          * container widget.
+         * @since 2.0
          * @virtual
          */
         vfunc_configure(): Gtk.Widget;
@@ -4571,6 +4624,7 @@ export namespace GimpUi {
          * Converts all pixels in `area` of `buffer`.
          * @param buffer a {@link Gegl.Buffer}
          * @param area area in `buffer` to convert
+         * @since 2.10
          * @virtual
          */
         vfunc_convert_buffer(buffer: Gegl.Buffer, area: Gegl.Rectangle): void;
@@ -4581,6 +4635,7 @@ export namespace GimpUi {
         /**
          * Creates a copy of `display`.
          * @returns a duplicate of `display`.
+         * @since 2.0
          */
         clone(): ColorDisplay;
 
@@ -4588,6 +4643,7 @@ export namespace GimpUi {
          * Creates a configuration widget for `display` which can be added to a
          * container widget.
          * @returns a new configuration widget for `display`, or          `null` if no specific widget exists.
+         * @since 2.0
          */
         configure(): Gtk.Widget;
 
@@ -4597,11 +4653,13 @@ export namespace GimpUi {
          * Converts all pixels in `area` of `buffer`.
          * @param buffer a {@link Gegl.Buffer}
          * @param area area in `buffer` to convert
+         * @since 2.10
          */
         convert_buffer(buffer: Gegl.Buffer, area: Gegl.Rectangle): void;
 
         /**
          * @returns a pointer to the {@link Gimp.ColorConfig}               object or `null`.
+         * @since 2.4
          */
         get_config(): Gimp.ColorConfig;
 
@@ -4609,6 +4667,7 @@ export namespace GimpUi {
 
         /**
          * @returns a pointer to the {@link Gimp.ColorManaged}               object or `null`.
+         * @since 2.4
          */
         get_managed(): Gimp.ColorManaged;
 
@@ -4617,12 +4676,14 @@ export namespace GimpUi {
          * `state` must be a properly serialized configuration for a
          * {@link GimpUi.ColorDisplay}, such as saved by `gimp_color_display_save_state()`.
          * @param state a {@link Gimp.Parasite}
+         * @since 2.0
          */
         load_state(state: Gimp.Parasite): void;
 
         /**
          * Saves the configuration state of `display` as a new parasite.
          * @returns a {@link Gimp.Parasite}
+         * @since 2.0
          */
         save_state(): Gimp.Parasite;
 
@@ -4702,11 +4763,13 @@ export namespace GimpUi {
         /**
          * Add the color module `display` to `stack`.
          * @param display a {@link GimpUi.ColorDisplay}
+         * @since 2.0
          */
         add(display: ColorDisplay): void;
 
         /**
          * Emit the "changed" signal of `stack`.
+         * @since 2.0
          */
         changed(): void;
 
@@ -4714,6 +4777,7 @@ export namespace GimpUi {
          * Creates a copy of `stack` with all its display color modules also
          * duplicated.
          * @returns a duplicate of `stack`.
+         * @since 2.0
          */
         clone(): ColorDisplayStack;
 
@@ -4721,30 +4785,35 @@ export namespace GimpUi {
          * Runs all the stack's filters on all pixels in `area` of `buffer`.
          * @param buffer a {@link Gegl.Buffer}
          * @param area area of `buffer` to convert
+         * @since 2.10
          */
         convert_buffer(buffer: Gegl.Buffer, area: Gegl.Rectangle): void;
 
         /**
          * Gets the list of added color modules.
          * @returns the list of `stack`'s display color modules.
+         * @since 3.0
          */
         get_filters(): ColorDisplay[];
 
         /**
          * Remove the color module `display` from `stack`.
          * @param display a {@link GimpUi.ColorDisplay}
+         * @since 2.0
          */
         remove(display: ColorDisplay): void;
 
         /**
          * Move the color module `display` down in the filter list of `stack`.
          * @param display a {@link GimpUi.ColorDisplay}
+         * @since 2.0
          */
         reorder_down(display: ColorDisplay): void;
 
         /**
          * Move the color module `display` up in the filter list of `stack`.
          * @param display a {@link GimpUi.ColorDisplay}
+         * @since 2.0
          */
         reorder_up(display: ColorDisplay): void;
     }
@@ -4896,6 +4965,7 @@ export namespace GimpUi {
         /**
          * Retrieves the color value displayed by a {@link GimpUi.ColorHexEntry}.
          * @returns the color stored in `entry`.
+         * @since 2.2
          */
         get_color(): Gegl.Color;
 
@@ -4904,6 +4974,7 @@ export namespace GimpUi {
          * is different to the previously set color, the "color-changed"
          * signal is emitted.
          * @param color the color to set.
+         * @since 2.2
          */
         set_color(color: Gegl.Color): void;
 
@@ -5319,22 +5390,26 @@ export namespace GimpUi {
 
         /**
          * @returns The active page's {@link GimpUi.ColorSelector}.
+         * @since 3.0
          */
         get_current_selector(): ColorSelector;
 
         /**
          * @returns The {@link Gtk.Notebook} inside.
+         * @since 3.0
          */
         get_notebook(): Gtk.Notebook;
 
         /**
          * @returns The               notebook's list of {@link GimpUi.ColorSelector}'s.
+         * @since 3.0
          */
         get_selectors(): ColorSelector[];
 
         /**
          * Updates all selectors with the current format.
          * @param format A Babl format, with space.
+         * @since 3.0
          */
         set_format(format: Babl.Object): void;
 
@@ -5352,6 +5427,7 @@ export namespace GimpUi {
          * @param profile A {@link Gimp.ColorProfile} object.
          * @param intent A {@link Gimp.ColorRenderingIntent} enum.
          * @param bpc A gboolean.
+         * @since 3.0
          */
         set_simulation(profile: Gimp.ColorProfile, intent: Gimp.ColorRenderingIntent, bpc: boolean): void;
     }
@@ -5643,6 +5719,7 @@ export namespace GimpUi {
          * @param label user-visible label for the added choice
          * @param options ids for the options of the choice, or `null` for a boolean choice
          * @param option_labels user-visible labels for the options, must be the same length as `options`
+         * @since 3.22
          */
         add_choice(id: string, label: string, options: string[] | null, option_labels: string[] | null): void;
 
@@ -5654,6 +5731,7 @@ export namespace GimpUi {
          * Note that the `chooser` takes ownership of the filter, so you have to
          * ref and sink it if you want to keep a reference.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         add_filter(filter: Gtk.FileFilter): void;
 
@@ -5664,6 +5742,7 @@ export namespace GimpUi {
          * “/usr/share/mydrawprogram/Clipart” folder to the volume list.
          * @param folder filename of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
+         * @since 2.4
          */
         add_shortcut_folder(folder: string): boolean;
 
@@ -5674,6 +5753,7 @@ export namespace GimpUi {
          * “file:///usr/share/mydrawprogram/Clipart” folder to the volume list.
          * @param uri URI of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
+         * @since 2.4
          */
         add_shortcut_folder_uri(uri: string): boolean;
 
@@ -5681,6 +5761,7 @@ export namespace GimpUi {
          * Gets the type of operation that the file chooser is performing; see
          * `gtk_file_chooser_set_action()`.
          * @returns the action that the file selector is performing
+         * @since 2.4
          */
         get_action(): Gtk.FileChooserAction;
 
@@ -5688,6 +5769,7 @@ export namespace GimpUi {
          * Gets the currently selected option in the 'choice' with the given ID.
          * @param id the ID of the choice to get
          * @returns the ID of the currenly selected option
+         * @since 3.22
          */
         get_choice(id: string): string;
 
@@ -5695,6 +5777,7 @@ export namespace GimpUi {
          * Gets whether file choser will offer to create new folders.
          * See `gtk_file_chooser_set_create_folders()`.
          * @returns `true` if the Create Folder button should be displayed.
+         * @since 2.18
          */
         get_create_folders(): boolean;
 
@@ -5710,6 +5793,7 @@ export namespace GimpUi {
          * currently-selected folder in that mode, use `gtk_file_chooser_get_uri()` as the
          * usual way to get the selection.
          * @returns the full path of the current folder, or `null` if the current path cannot be represented as a local filename.  Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder()` on a nonexistent folder.
+         * @since 2.4
          */
         get_current_folder(): string | null;
 
@@ -5717,6 +5801,7 @@ export namespace GimpUi {
          * Gets the current folder of `chooser` as {@link Gio.File}.
          * See `gtk_file_chooser_get_current_folder_uri()`.
          * @returns the {@link Gio.File} for the current folder.
+         * @since 2.14
          */
         get_current_folder_file(): Gio.File | null;
 
@@ -5732,6 +5817,7 @@ export namespace GimpUi {
          * currently-selected folder in that mode, use `gtk_file_chooser_get_uri()` as the
          * usual way to get the selection.
          * @returns the URI for the current folder. Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder_uri()` on a nonexistent folder.
+         * @since 2.4
          */
         get_current_folder_uri(): string | null;
 
@@ -5745,6 +5831,7 @@ export namespace GimpUi {
          * change the extension of the typed filename based on the chosen format, say,
          * from “.jpg” to “.png”.
          * @returns The raw text from the file chooser’s “Name” entry.  Free this with `g_free()`.  Note that this string is not a full pathname or URI; it is whatever the contents of the entry are.  Note also that this string is in UTF-8 encoding, which is not necessarily the system’s encoding for filenames.
+         * @since 3.10
          */
         get_current_name(): string;
 
@@ -5752,6 +5839,7 @@ export namespace GimpUi {
          * Queries whether a file chooser is set to confirm for overwriting when the user
          * types a file name that already exists.
          * @returns `true` if the file chooser will present a confirmation dialog; `false` otherwise.
+         * @since 2.8
          */
         get_do_overwrite_confirmation(): boolean;
 
@@ -5759,6 +5847,7 @@ export namespace GimpUi {
          * Gets the current extra widget; see
          * `gtk_file_chooser_set_extra_widget()`.
          * @returns the current extra widget, or `null`
+         * @since 2.4
          */
         get_extra_widget(): Gtk.Widget | null;
 
@@ -5770,6 +5859,7 @@ export namespace GimpUi {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns a selected {@link Gio.File}. You own the returned file;     use `g_object_unref()` to release it.
+         * @since 2.14
          */
         get_file(): Gio.File;
 
@@ -5782,6 +5872,7 @@ export namespace GimpUi {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns The currently selected filename,  or `null` if no file is selected, or the selected file can't  be represented with a local filename. Free with `g_free()`.
+         * @since 2.4
          */
         get_filename(): string | null;
 
@@ -5791,6 +5882,7 @@ export namespace GimpUi {
          * folder cannot be represented as local filenames they will be ignored. (See
          * `gtk_file_chooser_get_uris()`)
          * @returns a {@link GLib.SList}    containing the filenames of all selected files and subfolders in    the current folder. Free the returned list with `g_slist_free()`,    and the filenames with `g_free()`.
+         * @since 2.4
          */
         get_filenames(): string[];
 
@@ -5798,12 +5890,14 @@ export namespace GimpUi {
          * Lists all the selected files and subfolders in the current folder of `chooser`
          * as {@link Gio.File}. An internal function, see `gtk_file_chooser_get_uris()`.
          * @returns a {@link GLib.SList}   containing a {@link Gio.File} for each selected file and subfolder in the   current folder.  Free the returned list with `g_slist_free()`, and   the files with `g_object_unref()`.
+         * @since 2.14
          */
         get_files(): Gio.File[];
 
         /**
          * Gets the current filter; see `gtk_file_chooser_set_filter()`.
          * @returns the current filter, or `null`
+         * @since 2.4
          */
         get_filter(): Gtk.FileFilter | null;
 
@@ -5811,6 +5905,7 @@ export namespace GimpUi {
          * Gets whether only local files can be selected in the
          * file selector. See `gtk_file_chooser_set_local_only()`
          * @returns `true` if only local files can be selected.
+         * @since 2.4
          */
         get_local_only(): boolean;
 
@@ -5818,6 +5913,7 @@ export namespace GimpUi {
          * Gets the {@link Gio.File} that should be previewed in a custom preview
          * Internal function, see `gtk_file_chooser_get_preview_uri()`.
          * @returns the {@link Gio.File} for the file to preview,     or `null` if no file is selected. Free with `g_object_unref()`.
+         * @since 2.14
          */
         get_preview_file(): Gio.File | null;
 
@@ -5825,6 +5921,7 @@ export namespace GimpUi {
          * Gets the filename that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the filename to preview, or `null` if  no file is selected, or if the selected file cannot be represented  as a local filename. Free with `g_free()`
+         * @since 2.4
          */
         get_preview_filename(): string | null;
 
@@ -5832,6 +5929,7 @@ export namespace GimpUi {
          * Gets the URI that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the URI for the file to preview,     or `null` if no file is selected. Free with `g_free()`.
+         * @since 2.4
          */
         get_preview_uri(): string | null;
 
@@ -5839,6 +5937,7 @@ export namespace GimpUi {
          * Gets the current preview widget; see
          * `gtk_file_chooser_set_preview_widget()`.
          * @returns the current preview widget, or `null`
+         * @since 2.4
          */
         get_preview_widget(): Gtk.Widget | null;
 
@@ -5847,6 +5946,7 @@ export namespace GimpUi {
          * should be shown for the current filename. See
          * `gtk_file_chooser_set_preview_widget_active()`.
          * @returns `true` if the preview widget is active for the current filename.
+         * @since 2.4
          */
         get_preview_widget_active(): boolean;
 
@@ -5854,6 +5954,7 @@ export namespace GimpUi {
          * Gets whether multiple files can be selected in the file
          * selector. See `gtk_file_chooser_set_select_multiple()`.
          * @returns `true` if multiple files can be selected.
+         * @since 2.4
          */
         get_select_multiple(): boolean;
 
@@ -5861,6 +5962,7 @@ export namespace GimpUi {
          * Gets whether hidden files and folders are displayed in the file selector.
          * See `gtk_file_chooser_set_show_hidden()`.
          * @returns `true` if hidden files and folders are displayed.
+         * @since 2.6
          */
         get_show_hidden(): boolean;
 
@@ -5872,6 +5974,7 @@ export namespace GimpUi {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns The currently selected URI, or `null`    if no file is selected. If `gtk_file_chooser_set_local_only()` is set to    `true` (the default) a local URI will be returned for any FUSE locations.    Free with `g_free()`
+         * @since 2.4
          */
         get_uri(): string | null;
 
@@ -5879,6 +5982,7 @@ export namespace GimpUi {
          * Lists all the selected files and subfolders in the current folder of
          * `chooser`. The returned names are full absolute URIs.
          * @returns a {@link GLib.SList} containing the URIs of all selected   files and subfolders in the current folder. Free the returned list   with `g_slist_free()`, and the filenames with `g_free()`.
+         * @since 2.4
          */
         get_uris(): string[];
 
@@ -5893,6 +5997,7 @@ export namespace GimpUi {
          * Lists the current set of user-selectable filters; see
          * `gtk_file_chooser_add_filter()`, `gtk_file_chooser_remove_filter()`.
          * @returns a  {@link GLib.SList} containing the current set of user selectable filters. The  contents of the list are owned by GTK+, but you must free the list  itself with `g_slist_free()` when you are done with it.
+         * @since 2.4
          */
         list_filters(): Gtk.FileFilter[];
 
@@ -5900,6 +6005,7 @@ export namespace GimpUi {
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder_uri()`.
          * @returns A list of folder URIs, or `null` if there are no shortcut folders.  Free the returned list with `g_slist_free()`, and the URIs with `g_free()`.
+         * @since 2.4
          */
         list_shortcut_folder_uris(): string[] | null;
 
@@ -5907,18 +6013,21 @@ export namespace GimpUi {
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder()`.
          * @returns A list of folder filenames, or `null` if there are no shortcut folders. Free the returned list with `g_slist_free()`, and the filenames with `g_free()`.
+         * @since 2.4
          */
         list_shortcut_folders(): string[] | null;
 
         /**
          * Removes a 'choice' that has been added with `gtk_file_chooser_add_choice()`.
          * @param id the ID of the choice to remove
+         * @since 3.22
          */
         remove_choice(id: string): void;
 
         /**
          * Removes `filter` from the list of filters that the user can select between.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         remove_filter(filter: Gtk.FileFilter): void;
 
@@ -5926,6 +6035,7 @@ export namespace GimpUi {
          * Removes a folder from a file chooser’s list of shortcut folders.
          * @param folder filename of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder()`
+         * @since 2.4
          */
         remove_shortcut_folder(folder: string): boolean;
 
@@ -5933,11 +6043,13 @@ export namespace GimpUi {
          * Removes a folder URI from a file chooser’s list of shortcut folders.
          * @param uri URI of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder_uri()`
+         * @since 2.4
          */
         remove_shortcut_folder_uri(uri: string): boolean;
 
         /**
          * Selects all the files in the current folder of a file chooser.
+         * @since 2.4
          */
         select_all(): void;
 
@@ -5946,6 +6058,7 @@ export namespace GimpUi {
          * _gtk_file_chooser_select_uri().
          * @param file the file to select
          * @returns Not useful.
+         * @since 2.14
          */
         select_file(file: Gio.File): boolean;
 
@@ -5955,6 +6068,7 @@ export namespace GimpUi {
          * be changed to the folder containing `filename`.
          * @param filename the filename to select
          * @returns Not useful. See also: `gtk_file_chooser_set_filename()`
+         * @since 2.4
          */
         select_filename(filename: string): boolean;
 
@@ -5964,6 +6078,7 @@ export namespace GimpUi {
          * `chooser` will be changed to the folder containing `filename`.
          * @param uri the URI to select
          * @returns Not useful.
+         * @since 2.4
          */
         select_uri(uri: string): boolean;
 
@@ -5974,6 +6089,7 @@ export namespace GimpUi {
          * {@link Gtk.FileChooserAction.SAVE} but not if the action is
          * {@link Gtk.FileChooserAction.OPEN}.
          * @param action the action that the file selector is performing
+         * @since 2.4
          */
         set_action(action: Gtk.FileChooserAction): void;
 
@@ -5983,6 +6099,7 @@ export namespace GimpUi {
          * possible options are "true" and "false".
          * @param id the ID of the choice to set
          * @param option the ID of the option to select
+         * @since 3.22
          */
         set_choice(id: string, option: string): void;
 
@@ -5991,6 +6108,7 @@ export namespace GimpUi {
          * This is only relevant if the action is not set to be
          * {@link Gtk.FileChooserAction.OPEN}.
          * @param create_folders `true` if the Create Folder button should be displayed
+         * @since 2.18
          */
         set_create_folders(create_folders: boolean): void;
 
@@ -6004,6 +6122,7 @@ export namespace GimpUi {
          * for the rationale behind this.
          * @param filename the full path of the new current folder
          * @returns Not useful.
+         * @since 2.4
          */
         set_current_folder(filename: string): boolean;
 
@@ -6012,6 +6131,7 @@ export namespace GimpUi {
          * Internal function, see `gtk_file_chooser_set_current_folder_uri()`.
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.14
          */
         set_current_folder_file(file: Gio.File): boolean;
 
@@ -6025,6 +6145,7 @@ export namespace GimpUi {
          * for the rationale behind this.
          * @param uri the URI for the new current folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.4
          */
         set_current_folder_uri(uri: string): boolean;
 
@@ -6040,6 +6161,7 @@ export namespace GimpUi {
          * Please see the documentation for those functions for an example of using
          * `gtk_file_chooser_set_current_name()` as well.
          * @param name the filename to use, as a UTF-8 string
+         * @since 2.4
          */
         set_current_name(name: string): void;
 
@@ -6056,12 +6178,14 @@ export namespace GimpUi {
          * {@link Gtk.FileChooser.SignalSignatures.confirm_overwrite | Gtk.FileChooser::confirm-overwrite} signal; please refer to its documentation
          * for the details.
          * @param do_overwrite_confirmation whether to confirm overwriting in save mode
+         * @since 2.8
          */
         set_do_overwrite_confirmation(do_overwrite_confirmation: boolean): void;
 
         /**
          * Sets an application-supplied widget to provide extra options to the user.
          * @param extra_widget widget for extra options
+         * @since 2.4
          */
         set_extra_widget(extra_widget: Gtk.Widget): void;
 
@@ -6103,6 +6227,7 @@ export namespace GimpUi {
          * 
          * @param file the {@link Gio.File} to set as current
          * @returns Not useful.
+         * @since 2.14
          */
         set_file(file: Gio.File): boolean;
 
@@ -6143,6 +6268,7 @@ export namespace GimpUi {
          * is already known, so the file chooser will use it.
          * @param filename the filename to set as current
          * @returns Not useful.
+         * @since 2.4
          */
         set_filename(filename: string): boolean;
 
@@ -6154,6 +6280,7 @@ export namespace GimpUi {
          * filters is empty is useful if you want to restrict the displayed
          * set of files without letting the user change it.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         set_filter(filter: Gtk.FileFilter): void;
 
@@ -6172,6 +6299,7 @@ export namespace GimpUi {
          * available using the native filesystem via a userspace
          * filesystem (FUSE).
          * @param local_only `true` if only local files can be selected
+         * @since 2.4
          */
         set_local_only(local_only: boolean): void;
 
@@ -6189,6 +6317,7 @@ export namespace GimpUi {
          * application-supplied preview widget is not active, the file chooser
          * will display no preview at all.
          * @param preview_widget widget for displaying preview.
+         * @since 2.4
          */
         set_preview_widget(preview_widget: Gtk.Widget): void;
 
@@ -6200,6 +6329,7 @@ export namespace GimpUi {
          * or it may display no preview at all. See
          * `gtk_file_chooser_set_preview_widget()` for more details.
          * @param active whether to display the user-specified preview widget
+         * @since 2.4
          */
         set_preview_widget_active(active: boolean): void;
 
@@ -6208,12 +6338,14 @@ export namespace GimpUi {
          * only relevant if the action is set to be {@link Gtk.FileChooserAction.OPEN} or
          * {@link Gtk.FileChooserAction.SELECT_FOLDER}.
          * @param select_multiple `true` if multiple files can be selected.
+         * @since 2.4
          */
         set_select_multiple(select_multiple: boolean): void;
 
         /**
          * Sets whether hidden files and folders are displayed in the file selector.
          * @param show_hidden `true` if hidden files and folders should be displayed.
+         * @since 2.6
          */
         set_show_hidden(show_hidden: boolean): void;
 
@@ -6254,6 +6386,7 @@ export namespace GimpUi {
          * is already known, so the file chooser will use it.
          * @param uri the URI to set as current
          * @returns Not useful.
+         * @since 2.4
          */
         set_uri(uri: string): boolean;
 
@@ -6265,11 +6398,13 @@ export namespace GimpUi {
          * 
          * See also: `gtk_file_chooser_set_preview_widget()`
          * @param use_label whether to display a stock label with the name of the previewed file
+         * @since 2.4
          */
         set_use_preview_label(use_label: boolean): void;
 
         /**
          * Unselects all the files in the current folder of a file chooser.
+         * @since 2.4
          */
         unselect_all(): void;
 
@@ -6277,6 +6412,7 @@ export namespace GimpUi {
          * Unselects the file referred to by `file`. If the file is not in the current
          * directory, does not exist, or is otherwise not currently selected, does nothing.
          * @param file a {@link Gio.File}
+         * @since 2.14
          */
         unselect_file(file: Gio.File): void;
 
@@ -6285,6 +6421,7 @@ export namespace GimpUi {
          * is not in the current directory, does not exist, or
          * is otherwise not currently selected, does nothing.
          * @param filename the filename to unselect
+         * @since 2.4
          */
         unselect_filename(filename: string): void;
 
@@ -6293,6 +6430,7 @@ export namespace GimpUi {
          * is not in the current directory, does not exist, or
          * is otherwise not currently selected, does nothing.
          * @param uri the URI to unselect
+         * @since 2.4
          */
         unselect_uri(uri: string): void;
     }
@@ -6439,11 +6577,13 @@ export namespace GimpUi {
          * `gimp_color_profile_store_add_file()` for details.
          * @param file file of the profile to add (or `null`)
          * @param label label to use for the profile         (may only be `null` if `file` is `null`)
+         * @since 2.10
          */
         add_file(file: Gio.File, label: string): void;
 
         /**
          * @returns The file of the currently selected               color profile, release using `g_object_unref()` when it               is not any longer needed.
+         * @since 2.10
          */
         get_active_file(): Gio.File;
 
@@ -6453,6 +6593,7 @@ export namespace GimpUi {
          * with the given `label` (or `file` in case that `label` is `null`).
          * @param file file of the profile to select
          * @param label label to use when adding a new entry (can be `null`)
+         * @since 2.10
          */
         set_active_file(file: Gio.File, label: string): void;
 
@@ -6460,6 +6601,7 @@ export namespace GimpUi {
          * Selects a color profile from the `combo` and makes it the active
          * item.
          * @param profile a {@link Gimp.ColorProfile} to set
+         * @since 3.0
          */
         set_active_profile(profile: Gimp.ColorProfile): void;
 
@@ -6544,12 +6686,14 @@ export namespace GimpUi {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          */
         add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -6557,6 +6701,7 @@ export namespace GimpUi {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          */
         clear_attributes(cell: Gtk.CellRenderer): void;
 
@@ -6565,12 +6710,14 @@ export namespace GimpUi {
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
+         * @since 3.0
          */
         get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with `g_list_free()`     when no longer needed.
+         * @since 2.12
          */
         get_cells(): Gtk.CellRenderer[];
 
@@ -6582,6 +6729,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -6593,6 +6741,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -6603,6 +6752,7 @@ export namespace GimpUi {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          */
         reorder(cell: Gtk.CellRenderer, position: number): void;
 
@@ -6616,6 +6766,7 @@ export namespace GimpUi {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          */
         set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
@@ -6629,6 +6780,7 @@ export namespace GimpUi {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
@@ -6636,6 +6788,7 @@ export namespace GimpUi {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -6644,6 +6797,7 @@ export namespace GimpUi {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: Gtk.CellRenderer): void;
@@ -6652,12 +6806,14 @@ export namespace GimpUi {
          * Returns the underlying {@link Gtk.CellArea} which might be `cell_layout`
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): Gtk.CellRenderer[];
@@ -6670,6 +6826,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -6682,6 +6839,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -6693,6 +6851,7 @@ export namespace GimpUi {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: Gtk.CellRenderer, position: number): void;
@@ -6707,6 +6866,7 @@ export namespace GimpUi {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
@@ -6733,6 +6893,7 @@ export namespace GimpUi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -6742,6 +6903,7 @@ export namespace GimpUi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -6817,6 +6979,7 @@ export namespace GimpUi {
          * be set to the string "None" for you (and translated for the user).
          * @param file {@link Gio.File} of the profile to add (or `null`)
          * @param label label to use for the profile         (may only be `null` if `file` is `null`)
+         * @since 2.10
          */
         add_file(file: Gio.File, label: string): void;
 
@@ -6826,6 +6989,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -6837,6 +7001,7 @@ export namespace GimpUi {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -6847,6 +7012,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -6857,6 +7023,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -6866,6 +7033,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -6874,6 +7042,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -6884,6 +7053,7 @@ export namespace GimpUi {
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -6894,6 +7064,7 @@ export namespace GimpUi {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -6902,12 +7073,14 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -6917,6 +7090,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -6928,6 +7102,7 @@ export namespace GimpUi {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -6939,6 +7114,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -6950,6 +7126,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -6959,6 +7136,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -6967,6 +7145,7 @@ export namespace GimpUi {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -6977,6 +7156,7 @@ export namespace GimpUi {
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -6988,6 +7168,7 @@ export namespace GimpUi {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -6997,6 +7178,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -7004,6 +7186,7 @@ export namespace GimpUi {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -7125,6 +7308,7 @@ export namespace GimpUi {
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
@@ -7201,6 +7385,7 @@ export namespace GimpUi {
          * return value for this string.
          * @param iter a {@link Gtk.TreeIter}-struct
          * @returns a newly-allocated string.     Must be freed with `g_free()`.
+         * @since 2.2
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
 
@@ -7291,6 +7476,7 @@ export namespace GimpUi {
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the previous node
+         * @since 3.0
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
 
@@ -7360,6 +7546,7 @@ export namespace GimpUi {
          * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
+         * @since 3.10
          */
         rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
@@ -7503,6 +7690,7 @@ export namespace GimpUi {
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
+         * @since 3.0
          * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
@@ -7910,36 +8098,42 @@ export namespace GimpUi {
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
          * @returns `true` if `border` has been set
+         * @since 3.16
          */
         get_border(): [boolean, Gtk.Border];
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_hadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_vadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
@@ -7948,12 +8142,14 @@ export namespace GimpUi {
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
@@ -7962,6 +8158,7 @@ export namespace GimpUi {
          * vertical scrolling should start below the minimum height or
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
@@ -7971,6 +8168,7 @@ export namespace GimpUi {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
@@ -8104,6 +8302,7 @@ export namespace GimpUi {
         /**
          * Sets the color management configuration to use with this color scale.
          * @param config a {@link Gimp.ColorConfig} object.
+         * @since 2.10
          */
         set_color_config(config: Gimp.ColorConfig): void;
 
@@ -8564,6 +8763,7 @@ export namespace GimpUi {
 
         /**
          * @returns The selection's {@link GimpUi.ColorNotebook}.
+         * @since 3.0
          */
         get_notebook(): Gtk.Widget;
 
@@ -8574,6 +8774,7 @@ export namespace GimpUi {
 
         /**
          * @returns The selection's right {@link Gtk.Box} which          contains the color scales.
+         * @since 3.0
          */
         get_right_vbox(): Gtk.Box;
 
@@ -8597,12 +8798,14 @@ export namespace GimpUi {
         /**
          * Sets the color management configuration to use with this color selection.
          * @param config A {@link Gimp.ColorConfig} object.
+         * @since 2.4
          */
         set_config(config: Gimp.ColorConfig): void;
 
         /**
          * Updates all selectors with the current format.
          * @param format A Babl format, with space.
+         * @since 3.0
          */
         set_format(format: Babl.Object): void;
 
@@ -8623,6 +8826,7 @@ export namespace GimpUi {
          * @param profile A {@link Gimp.ColorProfile} object.
          * @param intent A {@link Gimp.ColorRenderingIntent} enum.
          * @param bpc A gboolean.
+         * @since 3.0
          */
         set_simulation(profile: Gimp.ColorProfile, intent: Gimp.ColorRenderingIntent, bpc: boolean): void;
 
@@ -8638,12 +8842,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -8800,6 +9006,7 @@ export namespace GimpUi {
         /**
          * Sets the color management configuration to use with this color selector.
          * @param config a {@link Gimp.ColorConfig} object.
+         * @since 2.4
          * @virtual
          */
         vfunc_set_config(config: Gimp.ColorConfig): void;
@@ -8809,6 +9016,7 @@ export namespace GimpUi {
          * `selector` is supposed to display values for. Depending on the type of color
          * selector, it may trigger various UX changes, or none at all.
          * @param format a Babl format, with space.
+         * @since 3.0
          * @virtual
          */
         vfunc_set_format(format: Babl.Object): void;
@@ -8820,6 +9028,7 @@ export namespace GimpUi {
          * has the ability to show different color models.
          * @param model The affected {@link GimpUi.ColorSelectorModel}.
          * @param visible The new visible setting.
+         * @since 2.10
          * @virtual
          */
         vfunc_set_model_visible(model: ColorSelectorModel, visible: boolean): void;
@@ -8836,6 +9045,7 @@ export namespace GimpUi {
          * @param profile a {@link Gimp.ColorProfile} object.
          * @param intent a {@link Gimp.ColorRenderingIntent} enum.
          * @param bpc a gboolean.
+         * @since 3.0
          * @virtual
          */
         vfunc_set_simulation(profile: Gimp.ColorProfile, intent: Gimp.ColorRenderingIntent, bpc: boolean): void;
@@ -8875,24 +9085,28 @@ export namespace GimpUi {
         /**
          * Returns the `selector`'s current channel.
          * @returns The {@link GimpUi.ColorSelectorChannel} currently shown by the `selector`.
+         * @since 2.10
          */
         get_channel(): ColorSelectorChannel;
 
         /**
          * Retrieves the color shown in the `selector` widget.
          * @returns a copy of the selected color.
+         * @since 2.10
          */
         get_color(): Gegl.Color;
 
         /**
          * @param model The {@link GimpUi.ColorSelectorModel}.
          * @returns whether `model` is visible in `selector`.
+         * @since 2.10
          */
         get_model_visible(model: ColorSelectorModel): boolean;
 
         /**
          * Returns the `selector`'s `show_alpha` property.
          * @returns `true` if the {@link GimpUi.ColorSelector} has alpha controls.
+         * @since 2.10
          */
         get_show_alpha(): boolean;
 
@@ -8906,12 +9120,14 @@ export namespace GimpUi {
         /**
          * Returns the `sensitive` property of the `selector`'s toggles.
          * @returns `true` if the {@link GimpUi.ColorSelector}'s toggles are sensitive.
+         * @since 2.10
          */
         get_toggles_sensitive(): boolean;
 
         /**
          * Returns the `visible` property of the `selector`'s toggles.
          * @returns `true` if the {@link GimpUi.ColorSelector}'s toggles are visible.
+         * @since 2.10
          */
         get_toggles_visible(): boolean;
 
@@ -8934,6 +9150,7 @@ export namespace GimpUi {
         /**
          * Sets the color management configuration to use with this color selector.
          * @param config a {@link Gimp.ColorConfig} object.
+         * @since 2.4
          */
         set_config(config: Gimp.ColorConfig): void;
 
@@ -8942,6 +9159,7 @@ export namespace GimpUi {
          * `selector` is supposed to display values for. Depending on the type of color
          * selector, it may trigger various UX changes, or none at all.
          * @param format a Babl format, with space.
+         * @since 3.0
          */
         set_format(format: Babl.Object): void;
 
@@ -8952,6 +9170,7 @@ export namespace GimpUi {
          * has the ability to show different color models.
          * @param model The affected {@link GimpUi.ColorSelectorModel}.
          * @param visible The new visible setting.
+         * @since 2.10
          */
         set_model_visible(model: ColorSelectorModel, visible: boolean): void;
 
@@ -8966,6 +9185,7 @@ export namespace GimpUi {
          * @param profile a {@link Gimp.ColorProfile} object.
          * @param intent a {@link Gimp.ColorRenderingIntent} enum.
          * @param bpc a gboolean.
+         * @since 3.0
          */
         set_simulation(profile: Gimp.ColorProfile, intent: Gimp.ColorRenderingIntent, bpc: boolean): void;
 
@@ -8999,12 +9219,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -9189,6 +9411,7 @@ export namespace GimpUi {
          * be used in functions such as {@link Gimp.brushes_popup} which will allow the
          * core process to set this {@link Dialog} as parent to the newly created popup.
          * @returns an opaque {@link GLib.Bytes} identifying this                           window.
+         * @since 3.0
          */
         get_native_handle(): GLib.Bytes;
 
@@ -9205,6 +9428,7 @@ export namespace GimpUi {
          * {@link Gtk.Dialog.set_alternative_button_order}, except it won't
          * output a deprecation warning.
          * @param order array of buttons' response ids.
+         * @since 3.0
          */
         set_alternative_button_order_from_array(order: number[]): void;
     }
@@ -9361,12 +9585,16 @@ export namespace GimpUi {
         /**
          * Gets the currently selected drawable.
          * @returns an internal copy of the drawable which must not be freed.
+         * @since 3.0
+         * @deprecated since 3.2: Use `gimp_item_chooser_get_item()`.
          */
         get_drawable(): Gimp.Drawable;
 
         /**
          * Returns the label widget.
          * @returns the {@link Gtk.Widget} showing the label text.
+         * @since 3.0
+         * @deprecated since 3.2: Use `gimp_item_chooser_get_label()`.
          */
         get_label(): Gtk.Widget;
 
@@ -9374,6 +9602,8 @@ export namespace GimpUi {
          * Sets the currently selected drawable.
          * This will select the drawable in both the button and any chooser popup.
          * @param drawable Drawable to set.
+         * @since 3.0
+         * @deprecated since 3.2: Use `gimp_item_chooser_set_item()`.
          */
         set_drawable(drawable: Gimp.Drawable): void;
 
@@ -9389,12 +9619,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -9527,6 +9759,7 @@ export namespace GimpUi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -9536,6 +9769,7 @@ export namespace GimpUi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -9644,6 +9878,7 @@ export namespace GimpUi {
         // Methods
         /**
          * @returns the drawable that has been passed to          `gimp_drawable_preview_new_from_drawable()`.
+         * @since 2.10
          */
         get_drawable(): Gimp.Drawable;
     }
@@ -9769,6 +10004,7 @@ export namespace GimpUi {
          * `gimp_enum_store_set_icon_prefix()` to find out what to use as
          * `icon_prefix`.
          * @param icon_prefix a prefix to create icon names from enum values
+         * @since 2.10
          */
         set_icon_prefix(icon_prefix: string): void;
 
@@ -9794,6 +10030,7 @@ export namespace GimpUi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -9803,6 +10040,7 @@ export namespace GimpUi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -9960,6 +10198,7 @@ export namespace GimpUi {
         // Methods
         /**
          * @param value an enum value
+         * @since 2.4
          */
         set_value(value: number): void;
     }
@@ -10042,6 +10281,7 @@ export namespace GimpUi {
          * 
          * See also: `gimp_enum_combo_box_set_icon_prefix()`.
          * @param icon_prefix a prefix to create icon names from enum values
+         * @since 2.10
          */
         set_icon_prefix(icon_prefix: string): void;
 
@@ -10336,12 +10576,14 @@ export namespace GimpUi {
         /**
          * Gets the current action.
          * @returns the action which determined the UI of `chooser`.
+         * @since 3.0
          */
         get_action(): Gimp.FileChooserAction;
 
         /**
          * Gets the currently selected file.
          * @returns an internal copy of the file which must not be freed.
+         * @since 3.0
          */
         get_file(): Gio.File;
 
@@ -10351,6 +10593,7 @@ export namespace GimpUi {
          * 
          * Note: the label text may contain a mnemonic.
          * @returns the label set.
+         * @since 3.0
          */
         get_label(): string | null;
 
@@ -10358,6 +10601,7 @@ export namespace GimpUi {
          * Returns the label widget. This can be useful for instance when
          * aligning dialog's widgets with a {@link Gtk.SizeGroup}.
          * @returns the {@link Gtk.Widget} showing the label text.
+         * @since 3.0
          */
         get_label_widget(): Gtk.Widget;
 
@@ -10368,6 +10612,7 @@ export namespace GimpUi {
          * A `null` value means that the file dialog uses default title and the
          * entry has no placeholder text.
          * @returns the text used for the title of `chooser`'s dialog.
+         * @since 3.0
          */
         get_title(): string | null;
 
@@ -10385,12 +10630,14 @@ export namespace GimpUi {
          * 
          * {@link Gimp.FileChooserAction.ANY} is not a valid value for `action`.
          * @param action Action to set.
+         * @since 3.0
          */
         set_action(action: Gimp.FileChooserAction): void;
 
         /**
          * Sets the currently selected file.
          * @param file File to set.
+         * @since 3.0
          */
         set_file(file: Gio.File): void;
 
@@ -10399,6 +10646,7 @@ export namespace GimpUi {
          * 
          * Setting a `null` label text will hide the label widget.
          * @param text Label text.
+         * @since 3.0
          */
         set_label(text: string | null): void;
 
@@ -10409,6 +10657,7 @@ export namespace GimpUi {
          * Setting a `null` title `text` will mean that the file dialog will use a
          * generic title and there will be no placeholder text in the entry.
          * @param text Dialog's title text.
+         * @since 3.0
          */
         set_title(text: string | null): void;
 
@@ -10424,12 +10673,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -10856,12 +11107,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -10998,12 +11251,14 @@ export namespace GimpUi {
         /**
          * Gets the currently selected image.
          * @returns an internal copy of the image which must not be freed.
+         * @since 3.0
          */
         get_image(): Gimp.Image;
 
         /**
          * Returns the label widget.
          * @returns the {@link Gtk.Widget} showing the label text.
+         * @since 3.0
          */
         get_label(): Gtk.Widget;
 
@@ -11011,6 +11266,7 @@ export namespace GimpUi {
          * Sets the currently selected image.
          * This will select the image in both the button and any chooser popup.
          * @param image Image to set.
+         * @since 3.0
          */
         set_image(image: Gimp.Image): void;
 
@@ -11026,12 +11282,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -11165,6 +11423,7 @@ export namespace GimpUi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -11174,6 +11433,7 @@ export namespace GimpUi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -11345,6 +11605,7 @@ export namespace GimpUi {
          * @param value the value to set
          * @param callback a callback to connect to the `combo_box`'s "changed" signal
          * @returns the signal handler ID as returned by `g_signal_connect()`
+         * @since 2.2
          */
         connect(value: number, callback: GObject.Callback): number;
 
@@ -11356,6 +11617,7 @@ export namespace GimpUi {
         /**
          * Retrieves the value of the selected (active) item in the `combo_box`.
          * @returns `true` if `value` has been set or `false` if no item was               active.
+         * @since 2.2
          */
         get_active(): [boolean, number];
 
@@ -11368,6 +11630,7 @@ export namespace GimpUi {
         /**
          * Retrieves the user-data of the selected (active) item in the `combo_box`.
          * @returns `true` if `user_data` has been set or `false` if no item was               active.
+         * @since 2.10
          */
         get_active_user_data(): [boolean, null];
 
@@ -11375,12 +11638,14 @@ export namespace GimpUi {
          * Returns the label previously set with `gimp_int_combo_box_set_label()`,
          * or `null`,
          * @returns the `combo_box`' label.
+         * @since 2.10
          */
         get_label(): string;
 
         /**
          * Returns the layout of `combo_box`
          * @returns the `combo_box`'s layout.
+         * @since 2.10
          */
         get_layout(): IntComboBoxLayout;
 
@@ -11389,6 +11654,7 @@ export namespace GimpUi {
          * selected item in the `combo_box`.
          * @param value an integer value
          * @returns `true` on success (value changed or not) or `false` if there          was no item for this value.
+         * @since 2.2
          */
         set_active(value: number): boolean;
 
@@ -11403,6 +11669,7 @@ export namespace GimpUi {
          * selected item in the `combo_box`.
          * @param user_data an integer value
          * @returns `true` on success or `false` if there was no item for               this user-data.
+         * @since 2.10
          */
         set_active_by_user_data(user_data: null): boolean;
 
@@ -11412,12 +11679,14 @@ export namespace GimpUi {
          * contents of the box will be right-aligned. This is useful for
          * places where screen estate is rare, like in tool options.
          * @param label a string to be shown as label
+         * @since 2.10
          */
         set_label(label: string): void;
 
         /**
          * Sets the layout of `combo_box` to `layout`.
          * @param layout the combo box layout
+         * @since 2.10
          */
         set_layout(layout: IntComboBoxLayout): void;
 
@@ -11429,6 +11698,7 @@ export namespace GimpUi {
          * Calling `gtk_widget_queue_draw()` on the `combo_box` will cause the
          * sensitivity to be updated.
          * @param func a function that returns a boolean value, or `null` to unset
+         * @since 2.4
          */
         set_sensitivity(func: IntSensitivityFunc): void;
 
@@ -11513,12 +11783,14 @@ export namespace GimpUi {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          */
         add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -11526,6 +11798,7 @@ export namespace GimpUi {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          */
         clear_attributes(cell: Gtk.CellRenderer): void;
 
@@ -11534,12 +11807,14 @@ export namespace GimpUi {
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
+         * @since 3.0
          */
         get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with `g_list_free()`     when no longer needed.
+         * @since 2.12
          */
         get_cells(): Gtk.CellRenderer[];
 
@@ -11551,6 +11826,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -11562,6 +11838,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -11572,6 +11849,7 @@ export namespace GimpUi {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          */
         reorder(cell: Gtk.CellRenderer, position: number): void;
 
@@ -11585,6 +11863,7 @@ export namespace GimpUi {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          */
         set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
@@ -11598,6 +11877,7 @@ export namespace GimpUi {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
@@ -11605,6 +11885,7 @@ export namespace GimpUi {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -11613,6 +11894,7 @@ export namespace GimpUi {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: Gtk.CellRenderer): void;
@@ -11621,12 +11903,14 @@ export namespace GimpUi {
          * Returns the underlying {@link Gtk.CellArea} which might be `cell_layout`
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): Gtk.CellRenderer[];
@@ -11639,6 +11923,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -11651,6 +11936,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -11662,6 +11948,7 @@ export namespace GimpUi {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: Gtk.CellRenderer, position: number): void;
@@ -11676,6 +11963,7 @@ export namespace GimpUi {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
@@ -11702,6 +11990,7 @@ export namespace GimpUi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -11711,6 +12000,7 @@ export namespace GimpUi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -11839,12 +12129,14 @@ export namespace GimpUi {
         // Methods
         /**
          * @returns the value of the active item.
+         * @since 3.0
          */
         get_active(): number;
 
         /**
          * Retrieves the user-data of the selected (active) item in the `radio_frame`.
          * @returns `true` if `user_data` has been set or `false` if no item was               active.
+         * @since 3.0
          */
         get_active_user_data(): [boolean, null];
 
@@ -11853,6 +12145,7 @@ export namespace GimpUi {
          * selected item in the `radio_frame`.
          * @param value an integer value
          * @returns `true` on success (value changed or not) or `false` if there          was no item for this value.
+         * @since 3.0
          */
         set_active(value: number): boolean;
 
@@ -11861,6 +12154,7 @@ export namespace GimpUi {
          * selected item in the `radio_frame`.
          * @param user_data an integer value
          * @returns `true` on success or `false` if there was no item for          this user-data.
+         * @since 3.0
          */
         set_active_by_user_data(user_data: null): boolean;
 
@@ -11872,6 +12166,7 @@ export namespace GimpUi {
          * Calling `gtk_widget_queue_draw()` on the `radio_frame` will cause the
          * sensitivity to be updated.
          * @param func a function that returns a boolean value, or `null` to unset
+         * @since 3.0
          */
         set_sensitivity(func: IntRadioFrameSensitivityFunc): void;
 
@@ -11879,6 +12174,7 @@ export namespace GimpUi {
          * Change the `frame`'s title, possibly with a mnemonic.
          * @param title the frame title or `null` for none.
          * @param with_mnemonic whether `title` has a mnemonic.
+         * @since 3.0
          */
         set_title(title: string, with_mnemonic: boolean): void;
     }
@@ -11964,6 +12260,7 @@ export namespace GimpUi {
          * Iterate over the `model` looking for `user_data`.
          * @param model a {@link GimpUi.IntStore}
          * @param user_data a gpointer "user-data" to lookup in the `model`
+         * @since 2.10
          */
         static lookup_by_user_data(model: Gtk.TreeModel, user_data: null): [boolean, Gtk.TreeIter];
 
@@ -11971,6 +12268,7 @@ export namespace GimpUi {
          * Iterate over the `model` looking for `value`.
          * @param model a {@link GimpUi.IntStore}
          * @param value an integer value to lookup in the `model`
+         * @since 2.2
          */
         static lookup_by_value(model: Gtk.TreeModel, value: number): [boolean, Gtk.TreeIter];
 
@@ -11980,6 +12278,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -11991,6 +12290,7 @@ export namespace GimpUi {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -12001,6 +12301,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -12011,6 +12312,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -12020,6 +12322,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -12028,6 +12331,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -12038,6 +12342,7 @@ export namespace GimpUi {
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -12048,6 +12353,7 @@ export namespace GimpUi {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -12056,12 +12362,14 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -12071,6 +12379,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -12082,6 +12391,7 @@ export namespace GimpUi {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -12093,6 +12403,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -12104,6 +12415,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -12113,6 +12425,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -12121,6 +12434,7 @@ export namespace GimpUi {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -12131,6 +12445,7 @@ export namespace GimpUi {
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -12142,6 +12457,7 @@ export namespace GimpUi {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -12151,6 +12467,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -12158,6 +12475,7 @@ export namespace GimpUi {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -12279,6 +12597,7 @@ export namespace GimpUi {
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
@@ -12355,6 +12674,7 @@ export namespace GimpUi {
          * return value for this string.
          * @param iter a {@link Gtk.TreeIter}-struct
          * @returns a newly-allocated string.     Must be freed with `g_free()`.
+         * @since 2.2
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
 
@@ -12445,6 +12765,7 @@ export namespace GimpUi {
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the previous node
+         * @since 3.0
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
 
@@ -12514,6 +12835,7 @@ export namespace GimpUi {
          * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
+         * @since 3.10
          */
         rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
@@ -12657,6 +12979,7 @@ export namespace GimpUi {
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
+         * @since 3.0
          * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
@@ -13026,12 +13349,14 @@ export namespace GimpUi {
         /**
          * Gets the currently selected item.
          * @returns an internal copy of the item which must not be freed.
+         * @since 3.2
          */
         get_item(): Gimp.Item;
 
         /**
          * Returns the label widget.
          * @returns the {@link Gtk.Widget} showing the label text.
+         * @since 3.2
          */
         get_label(): Gtk.Widget;
 
@@ -13039,6 +13364,7 @@ export namespace GimpUi {
          * Sets the currently selected item.
          * This will select the item in both the button and any chooser popup.
          * @param item Item to set.
+         * @since 3.2
          */
         set_item(item: Gimp.Item): void;
 
@@ -13054,12 +13380,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -13969,12 +14297,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -14107,6 +14437,7 @@ export namespace GimpUi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -14116,6 +14447,7 @@ export namespace GimpUi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -14226,6 +14558,7 @@ export namespace GimpUi {
         // Methods
         /**
          * @returns the entry's `GtkSpinbutton`.
+         * @since 3.0
          */
         get_spinbutton(): Gtk.SpinButton;
 
@@ -14254,12 +14587,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -14579,29 +14914,37 @@ export namespace GimpUi {
         /**
          * Gets the aspect of the ratio displayed by a {@link GimpUi.NumberPairEntry}.
          * @returns The entry's current aspect.
+         * @since 2.4
          */
         get_aspect(): AspectType;
 
         /**
          * @returns the string manually set to be shown,          or `null` if values are shown in a normal fashion.
+         * @since 2.4
          */
         get_default_text(): string | null;
 
+        /**
+         * @since 2.4
+         */
         get_default_values(): [number, number];
 
         /**
          * Retrieves the ratio of the numbers displayed by a {@link GimpUi.NumberPairEntry}.
          * @returns The ratio value.
+         * @since 2.4
          */
         get_ratio(): number;
 
         /**
          * @returns Whether or not the the widget is in user overridden mode.
+         * @since 2.4
          */
         get_user_override(): boolean;
 
         /**
          * Gets the numbers displayed by a {@link GimpUi.NumberPairEntry}.
+         * @since 2.4
          */
         get_values(): [number, number];
 
@@ -14610,6 +14953,7 @@ export namespace GimpUi {
          * right_number if necessary (or setting them to 1.0 in case that
          * `aspect` is {@link GimpUi.AspectType.SQUARE}).
          * @param aspect The new aspect.
+         * @since 2.4
          */
         set_aspect(aspect: AspectType): void;
 
@@ -14622,12 +14966,14 @@ export namespace GimpUi {
          * Set the default string to `null` to display default values as
          * normal.
          * @param string Default string.
+         * @since 2.4
          */
         set_default_text(string: string): void;
 
         /**
          * @param left Default left value in the entry.
          * @param right Default right value in the entry.
+         * @since 2.4
          */
         set_default_values(left: number, right: number): void;
 
@@ -14639,6 +14985,7 @@ export namespace GimpUi {
          * An attempt is made to convert the decimal number into a fraction
          * with left_number and right_number < 1000.
          * @param ratio Ratio to set in the widget.
+         * @since 2.4
          */
         set_ratio(ratio: number): void;
 
@@ -14647,6 +14994,7 @@ export namespace GimpUi {
          * change when the default values are changed. When in user overridden
          * mode, setting default values will not affect the active values.
          * @param user_override `true` sets the entry in user overridden mode,                 `false` disables.
+         * @since 2.4
          */
         set_user_override(user_override: boolean): void;
 
@@ -14656,6 +15004,7 @@ export namespace GimpUi {
          * user-override will not be changed.
          * @param left Left number in the entry.
          * @param right Right number in the entry.
+         * @since 2.4
          */
         set_values(left: number, right: number): void;
 
@@ -15072,6 +15421,7 @@ export namespace GimpUi {
          * Sets the pixbuf which represents the original image/drawable which
          * is being offset.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}.
+         * @since 2.2
          */
         set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
 
@@ -15228,50 +15578,59 @@ export namespace GimpUi {
         // Methods
         /**
          * @returns the number of pages in the document to open.
+         * @since 2.4
          */
         get_n_pages(): number;
 
         /**
          * @param page_no The number of the page to get the thumbnail for.
          * @returns The page's label, or `null` if none is          set. This is a newly allocated string that should be `g_free()`'d          when no longer needed.
+         * @since 2.4
          */
         get_page_label(page_no: number): string | null;
 
         /**
          * @param page_no The number of the page to get the thumbnail for.
          * @returns The page's thumbnail, or `null` if none          is set. The returned pixbuf is owned by {@link GimpUi.PageSelector} and must          not be unref'ed when no longer needed.
+         * @since 2.4
          */
         get_page_thumbnail(page_no: number): GdkPixbuf.Pixbuf | null;
 
         /**
          * @returns A sorted array of page numbers of          selected pages. Use `g_free()` if you don't need the array any longer
+         * @since 2.4
          */
         get_selected_pages(): number[];
 
         /**
          * @returns A newly allocated string representing the set of selected          pages. See `gimp_page_selector_select_range()` for the          format of the string.
+         * @since 2.4
          */
         get_selected_range(): string;
 
         /**
          * @returns How the selected pages should be opened.
+         * @since 2.4
          */
         get_target(): PageSelectorTarget;
 
         /**
          * @param page_no The number of the page to check.
          * @returns `true` if the page is selected, `false` otherwise.
+         * @since 2.4
          */
         page_is_selected(page_no: number): boolean;
 
         /**
          * Selects all pages.
+         * @since 2.4
          */
         select_all(): void;
 
         /**
          * Adds a page to the selection.
          * @param page_no The number of the page to select.
+         * @since 2.4
          */
         select_page(page_no: number): void;
 
@@ -15284,12 +15643,14 @@ export namespace GimpUi {
          * Invalid pages and ranges will be silently ignored, duplicate and
          * overlapping pages and ranges will be merged.
          * @param range A string representing the set of selected pages.
+         * @since 2.4
          */
         select_range(range: string): void;
 
         /**
          * Sets the number of pages in the document to open.
          * @param n_pages The number of pages.
+         * @since 2.4
          */
         set_n_pages(n_pages: number): void;
 
@@ -15297,6 +15658,7 @@ export namespace GimpUi {
          * Sets the label of the specified page.
          * @param page_no The number of the page to set the label for.
          * @param label The label.
+         * @since 2.4
          */
         set_page_label(page_no: number, label: string): void;
 
@@ -15305,22 +15667,26 @@ export namespace GimpUi {
          * be used if no page thumbnail is set.
          * @param page_no The number of the page to set the thumbnail for.
          * @param thumbnail The thumbnail pixbuf.
+         * @since 2.4
          */
         set_page_thumbnail(page_no: number, thumbnail: GdkPixbuf.Pixbuf): void;
 
         /**
          * @param target How to open the selected pages.
+         * @since 2.4
          */
         set_target(target: PageSelectorTarget): void;
 
         /**
          * Unselects all pages.
+         * @since 2.4
          */
         unselect_all(): void;
 
         /**
          * Removes a page from the selection.
          * @param page_no The number of the page to unselect.
+         * @since 2.4
          */
         unselect_page(page_no: number): void;
 
@@ -15336,12 +15702,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -15572,6 +15940,7 @@ export namespace GimpUi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -15581,6 +15950,7 @@ export namespace GimpUi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -15759,12 +16129,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -16077,6 +16449,7 @@ export namespace GimpUi {
          * 
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
+         * @since 3.4
          */
         get_action_name(): string | null;
 
@@ -16085,6 +16458,7 @@ export namespace GimpUi {
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
          * @returns the current target value
+         * @since 3.4
          */
         get_action_target_value(): GLib.Variant;
 
@@ -16101,6 +16475,7 @@ export namespace GimpUi {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          */
         set_action_name(action_name: string | null): void;
 
@@ -16125,6 +16500,7 @@ export namespace GimpUi {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          */
         set_action_target_value(target_value: GLib.Variant | null): void;
 
@@ -16141,6 +16517,7 @@ export namespace GimpUi {
          * `action` is the action name and `target` is the string to use
          * as the target.)
          * @param detailed_action_name the detailed action name
+         * @since 3.4
          */
         set_detailed_action_name(detailed_action_name: string): void;
 
@@ -16148,6 +16525,7 @@ export namespace GimpUi {
          * Gets the action name for `actionable`.
          * 
          * See `gtk_actionable_set_action_name()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_name(): string | null;
@@ -16156,6 +16534,7 @@ export namespace GimpUi {
          * Gets the current target value of `actionable`.
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant;
@@ -16173,6 +16552,7 @@ export namespace GimpUi {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_name(action_name: string | null): void;
@@ -16198,6 +16578,7 @@ export namespace GimpUi {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
@@ -16219,12 +16600,16 @@ export namespace GimpUi {
          * > `gtk_activatable_get_related_action()` to retrieve the
          * > previous action.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         do_set_related_action(action: Gtk.Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_related_action(): Gtk.Action;
 
@@ -16233,6 +16618,8 @@ export namespace GimpUi {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_use_action_appearance(): boolean;
 
@@ -16242,6 +16629,8 @@ export namespace GimpUi {
          * > {@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * > property and call `gtk_activatable_do_set_related_action()` when it changes.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_related_action(action: Gtk.Action): void;
 
@@ -16254,6 +16643,8 @@ export namespace GimpUi {
          * > `gtk_activatable_sync_action_properties()` to update `activatable`
          * > if needed.
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -16263,6 +16654,8 @@ export namespace GimpUi {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          */
         sync_action_properties(action: Gtk.Action | null): void;
 
@@ -16272,6 +16665,8 @@ export namespace GimpUi {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          * @virtual
          */
         vfunc_sync_action_properties(action: Gtk.Action | null): void;
@@ -16308,6 +16703,7 @@ export namespace GimpUi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -16317,6 +16713,7 @@ export namespace GimpUi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -16435,6 +16832,7 @@ export namespace GimpUi {
          * 
          * {@link GimpUi.DrawablePreview} implements `gimp_preview_draw()` by drawing the
          * original, unmodified drawable to the `preview`.
+         * @since 2.2
          * @virtual
          */
         vfunc_draw(): void;
@@ -16452,6 +16850,7 @@ export namespace GimpUi {
          * derived class implementing this method.
          * @param buffer a pixel buffer the size of the preview
          * @param rowstride the `buffer`'s rowstride
+         * @since 2.2
          * @virtual
          */
         vfunc_draw_buffer(buffer: Uint8Array, rowstride: number): void;
@@ -16478,6 +16877,7 @@ export namespace GimpUi {
          * Transforms from image to widget coordinates.
          * @param src_x horizontal position on the previewed image
          * @param src_y vertical position on the previewed image
+         * @since 2.4
          * @virtual
          */
         vfunc_transform(src_x: number, src_y: number): [number, number];
@@ -16486,6 +16886,7 @@ export namespace GimpUi {
          * Transforms from widget to image coordinates.
          * @param src_x horizontal position relative to the preview area's origin
          * @param src_y vertical position relative to  preview area's origin
+         * @since 2.4
          * @virtual
          */
         vfunc_untransform(src_x: number, src_y: number): [number, number];
@@ -16498,6 +16899,7 @@ export namespace GimpUi {
          * 
          * {@link GimpUi.DrawablePreview} implements `gimp_preview_draw()` by drawing the
          * original, unmodified drawable to the `preview`.
+         * @since 2.2
          */
         draw(): void;
 
@@ -16507,6 +16909,7 @@ export namespace GimpUi {
          * derived class implementing this method.
          * @param buffer a pixel buffer the size of the preview
          * @param rowstride the `buffer`'s rowstride
+         * @since 2.2
          */
         draw_buffer(buffer: Uint8Array | string, rowstride: number): void;
 
@@ -16516,6 +16919,7 @@ export namespace GimpUi {
          * For example if you want to receive mouse events from the area. In
          * such cases, use `gimp_preview_get_area()`.
          * @returns a pointer to the {@link GimpUi.PreviewArea} used in the `preview`.
+         * @since 2.4
          */
         get_area(): PreviewArea;
 
@@ -16526,33 +16930,44 @@ export namespace GimpUi {
          * that contains the update toggle. Derived widgets can use this function
          * if they need to add controls to this area.
          * @returns the horizontal {@link Gtk.Box} at the bottom of the preview.
+         * @since 2.4
          */
         get_controls(): Gtk.Box;
 
         /**
          * See `gimp_preview_set_default_cursor()`:
          * @returns The `preview`'s default {@link Gdk.Cursor}.
+         * @since 3.0
          */
         get_default_cursor(): Gdk.Cursor;
 
         /**
          * @returns a pointer to the {@link Gtk.AspectFrame} used in the `preview`.
+         * @since 3.0
          */
         get_frame(): Gtk.AspectFrame;
 
         /**
          * @returns a pointer to the {@link Gtk.Grid} used in the `preview`.
+         * @since 3.0
          */
         get_grid(): Gtk.Grid;
 
         get_offsets(): [number, number];
 
+        /**
+         * @since 2.2
+         */
         get_position(): [number, number];
 
+        /**
+         * @since 2.2
+         */
         get_size(): [number, number];
 
         /**
          * @returns the state of the "Preview" check button.
+         * @since 2.2
          */
         get_update(): boolean;
 
@@ -16566,6 +16981,7 @@ export namespace GimpUi {
          * During the emission of the signal a busy cursor is set on the
          * toplevel window containing the `preview` and on the preview area
          * itself.
+         * @since 2.2
          */
         invalidate(): void;
 
@@ -16577,6 +16993,7 @@ export namespace GimpUi {
          * @param ymin the minimum Y value
          * @param xmax the maximum X value
          * @param ymax the maximum Y value
+         * @since 2.2
          */
         set_bounds(xmin: number, ymin: number, xmax: number, ymax: number): void;
 
@@ -16585,6 +17002,7 @@ export namespace GimpUi {
          * be overridden by a {@link Gdk.CursorType.FLEUR} if the preview has scrollbars, or by a
          * {@link Gdk.CursorType.WATCH} when the preview is invalidated.
          * @param cursor a {@link Gdk.Cursor} or `null`
+         * @since 2.2
          */
         set_default_cursor(cursor: Gdk.Cursor): void;
 
@@ -16603,6 +17021,7 @@ export namespace GimpUi {
         /**
          * Sets the state of the "Preview" check button.
          * @param update `true` if the preview should invalidate itself when being          scrolled or when `gimp_preview_invalidate()` is being called
+         * @since 2.2
          */
         set_update(update: boolean): void;
 
@@ -16610,6 +17029,7 @@ export namespace GimpUi {
          * Transforms from image to widget coordinates.
          * @param src_x horizontal position on the previewed image
          * @param src_y vertical position on the previewed image
+         * @since 2.4
          */
         transform(src_x: number, src_y: number): [number, number];
 
@@ -16617,6 +17037,7 @@ export namespace GimpUi {
          * Transforms from widget to image coordinates.
          * @param src_x horizontal position relative to the preview area's origin
          * @param src_y vertical position relative to  preview area's origin
+         * @since 2.4
          */
         untransform(src_x: number, src_y: number): [number, number];
 
@@ -16632,12 +17053,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -16859,17 +17282,20 @@ export namespace GimpUi {
          * Creates a popup menu that allows one to configure the size and type of
          * the checkerboard pattern that the `area` uses to visualize transparency.
          * @param event the button event that causes the menu to popup or `null`
+         * @since 2.2
          */
         menu_popup(event: Gdk.EventButton | null): void;
 
         /**
          * Reset any previous drawing done through {@link GimpUi.PreviewArea} functions.
+         * @since 3.0
          */
         reset(): void;
 
         /**
          * Sets the color management configuration to use with this preview area.
          * @param config a {@link Gimp.ColorConfig} object.
+         * @since 2.10
          */
         set_color_config(config: Gimp.ColorConfig): void;
 
@@ -16891,6 +17317,7 @@ export namespace GimpUi {
          * preview will draw itself centered into the allocated area.
          * @param width the maximum width in pixels or -1 to unset the limit
          * @param height the maximum height in pixels or -1 to unset the limit
+         * @since 2.2
          */
         set_max_size(width: number, height: number): void;
 
@@ -16899,6 +17326,7 @@ export namespace GimpUi {
          * when drawing the checkerboard and to determine the dither offsets.
          * @param x horizontal offset
          * @param y vertical offset
+         * @since 2.2
          */
         set_offsets(x: number, y: number): void;
     }
@@ -17041,6 +17469,7 @@ export namespace GimpUi {
         /**
          * Retrieves the name of the currently selected procedure.
          * @returns The name of the selected procedure of `null` if no               procedure is selected.
+         * @since 2.4
          */
         get_selected(): string | null;
     }
@@ -17729,12 +18158,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -17909,12 +18340,14 @@ export namespace GimpUi {
         /**
          * Returns the label widget.
          * @returns the {@link Gtk.Widget} showing the label text.
+         * @since 3.0
          */
         get_label(): Gtk.Widget;
 
         /**
          * Gets the currently selected resource.
          * @returns an internal copy of the resource which must not be freed.
+         * @since 3.0
          */
         get_resource(): Gimp.Resource;
 
@@ -17922,6 +18355,7 @@ export namespace GimpUi {
          * Sets the currently selected resource.
          * This will select the resource in both the button and any chooser popup.
          * @param resource Resource to set.
+         * @since 3.0
          */
         set_resource(resource: Gimp.Resource): void;
 
@@ -17937,12 +18371,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -18094,22 +18530,26 @@ export namespace GimpUi {
          * for the track widget's children, regardless of whether they are
          * ordinary children of off-screen children.
          * @param widget the track widget to add
+         * @since 2.8
          */
         add_track_widget(widget: Gtk.Widget): void;
 
         /**
          * @returns the current position of the `ruler` widget.
+         * @since 2.8
          */
         get_position(): number;
 
         /**
          * Retrieves values indicating the range and current position of a {@link GimpUi.Ruler}.
          * See `gimp_ruler_set_range()`.
+         * @since 2.8
          */
         get_range(): [number, number, number];
 
         /**
          * @returns the unit currently used in the `ruler` widget.
+         * @since 2.8
          */
         get_unit(): Gimp.Unit;
 
@@ -18117,12 +18557,14 @@ export namespace GimpUi {
          * Removes a previously added track widget from the ruler. See
          * `gimp_ruler_add_track_widget()`.
          * @param widget the track widget to remove
+         * @since 2.8
          */
         remove_track_widget(widget: Gtk.Widget): void;
 
         /**
          * This sets the position of the ruler.
          * @param position the position to set the ruler to
+         * @since 2.8
          */
         set_position(position: number): void;
 
@@ -18131,12 +18573,14 @@ export namespace GimpUi {
          * @param lower the lower limit of the ruler
          * @param upper the upper limit of the ruler
          * @param max_size the maximum size of the ruler used when calculating the space to leave for the text
+         * @since 2.8
          */
         set_range(lower: number, upper: number, max_size: number): void;
 
         /**
          * This sets the unit of the ruler.
          * @param unit the {@link Gimp.Unit} to set the ruler to
+         * @since 2.8
          */
         set_unit(unit: Gimp.Unit): void;
 
@@ -18146,6 +18590,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -18157,6 +18602,7 @@ export namespace GimpUi {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -18167,6 +18613,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -18177,6 +18624,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -18186,6 +18634,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -18194,6 +18643,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -18204,6 +18654,7 @@ export namespace GimpUi {
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -18214,6 +18665,7 @@ export namespace GimpUi {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -18222,12 +18674,14 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -18237,6 +18691,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -18248,6 +18703,7 @@ export namespace GimpUi {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -18259,6 +18715,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -18270,6 +18727,7 @@ export namespace GimpUi {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -18279,6 +18737,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -18287,6 +18746,7 @@ export namespace GimpUi {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -18297,6 +18757,7 @@ export namespace GimpUi {
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -18308,6 +18769,7 @@ export namespace GimpUi {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -18317,6 +18779,7 @@ export namespace GimpUi {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -18324,6 +18787,7 @@ export namespace GimpUi {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -18435,6 +18899,7 @@ export namespace GimpUi {
         // Methods
         /**
          * @returns `true` if `entry`'s scale widget will behave in          logarithmic fashion, `false` for linear behavior.
+         * @since 2.2
          */
         get_logarithmic(): boolean;
 
@@ -18480,6 +18945,7 @@ export namespace GimpUi {
          * ranges, but smaller selections on that range require a finer
          * adjustment.
          * @param logarithmic a boolean value to set or reset logarithmic behavior               of the scale widget
+         * @since 2.2
          */
         set_logarithmic(logarithmic: boolean): void;
     }
@@ -18581,6 +19047,7 @@ export namespace GimpUi {
          * 
          * This function should only be used to implement widgets derived from
          * {@link GimpUi.ScrolledPreview}. There is no point in calling this from a plug-in.
+         * @since 2.4
          */
         freeze(): void;
 
@@ -18589,12 +19056,14 @@ export namespace GimpUi {
         /**
          * @param hscrollbar_policy policy for horizontal scrollbar
          * @param vscrollbar_policy policy for vertical scrollbar
+         * @since 2.4
          */
         set_policy(hscrollbar_policy: Gtk.PolicyType, vscrollbar_policy: Gtk.PolicyType): void;
 
         /**
          * @param x horizontal scroll offset
          * @param y vertical scroll offset
+         * @since 2.4
          */
         set_position(x: number, y: number): void;
 
@@ -18604,6 +19073,7 @@ export namespace GimpUi {
          * 
          * This function should only be used to implement widgets derived from
          * {@link GimpUi.ScrolledPreview}. There is no point in calling this from a plug-in.
+         * @since 2.4
          */
         thaw(): void;
     }
@@ -18823,6 +19293,7 @@ export namespace GimpUi {
          * Iterates over all entries in the {@link GimpUi.SizeEntry} and calls
          * `gtk_entry_set_activates_default()` on them.
          * @param setting `true` to activate window's default widget on Enter keypress
+         * @since 2.4
          */
         set_activates_default(setting: boolean): void;
 
@@ -18944,6 +19415,7 @@ export namespace GimpUi {
          * Controls whether a unit menu is shown in the size entry.  If
          * `show` is `true`, the menu is shown; otherwise it is hidden.
          * @param show Boolean
+         * @since 2.4
          */
         show_unit_menu(show: boolean): void;
 
@@ -18959,12 +19431,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -19140,12 +19614,14 @@ export namespace GimpUi {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -19532,6 +20008,7 @@ export namespace GimpUi {
         /**
          * Retrieves the value of the selected (active) item in the `combo_box`.
          * @returns newly allocated ID string or `null` if nothing was selected
+         * @since 2.4
          */
         get_active(): string;
 
@@ -19546,6 +20023,7 @@ export namespace GimpUi {
          * selected item in the `combo_box`.
          * @param id the ID of the item to select
          * @returns `true` on success or `false` if there was no item for          this value.
+         * @since 2.4
          */
         set_active(id: string): boolean;
 
@@ -19563,6 +20041,7 @@ export namespace GimpUi {
          * Calling `gtk_widget_queue_draw()` on the `combo_box` will cause the
          * sensitivity to be updated.
          * @param func a function that returns a boolean value, or `null` to unset
+         * @since 3.0
          */
         set_sensitivity(func: StringSensitivityFunc): void;
 
@@ -19647,12 +20126,14 @@ export namespace GimpUi {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          */
         add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -19660,6 +20141,7 @@ export namespace GimpUi {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          */
         clear_attributes(cell: Gtk.CellRenderer): void;
 
@@ -19668,12 +20150,14 @@ export namespace GimpUi {
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
+         * @since 3.0
          */
         get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with `g_list_free()`     when no longer needed.
+         * @since 2.12
          */
         get_cells(): Gtk.CellRenderer[];
 
@@ -19685,6 +20169,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -19696,6 +20181,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -19706,6 +20192,7 @@ export namespace GimpUi {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          */
         reorder(cell: Gtk.CellRenderer, position: number): void;
 
@@ -19719,6 +20206,7 @@ export namespace GimpUi {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          */
         set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
@@ -19732,6 +20220,7 @@ export namespace GimpUi {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
@@ -19739,6 +20228,7 @@ export namespace GimpUi {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -19747,6 +20237,7 @@ export namespace GimpUi {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: Gtk.CellRenderer): void;
@@ -19755,12 +20246,14 @@ export namespace GimpUi {
          * Returns the underlying {@link Gtk.CellArea} which might be `cell_layout`
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): Gtk.CellRenderer[];
@@ -19773,6 +20266,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -19785,6 +20279,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -19796,6 +20291,7 @@ export namespace GimpUi {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: Gtk.CellRenderer, position: number): void;
@@ -19810,6 +20306,7 @@ export namespace GimpUi {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
@@ -19836,6 +20333,7 @@ export namespace GimpUi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -19845,6 +20343,7 @@ export namespace GimpUi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -20062,12 +20561,14 @@ export namespace GimpUi {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          */
         add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -20075,6 +20576,7 @@ export namespace GimpUi {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          */
         clear_attributes(cell: Gtk.CellRenderer): void;
 
@@ -20083,12 +20585,14 @@ export namespace GimpUi {
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
+         * @since 3.0
          */
         get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with `g_list_free()`     when no longer needed.
+         * @since 2.12
          */
         get_cells(): Gtk.CellRenderer[];
 
@@ -20100,6 +20604,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -20111,6 +20616,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -20121,6 +20627,7 @@ export namespace GimpUi {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          */
         reorder(cell: Gtk.CellRenderer, position: number): void;
 
@@ -20134,6 +20641,7 @@ export namespace GimpUi {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          */
         set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
@@ -20147,6 +20655,7 @@ export namespace GimpUi {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
@@ -20154,6 +20663,7 @@ export namespace GimpUi {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -20162,6 +20672,7 @@ export namespace GimpUi {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: Gtk.CellRenderer): void;
@@ -20170,12 +20681,14 @@ export namespace GimpUi {
          * Returns the underlying {@link Gtk.CellArea} which might be `cell_layout`
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): Gtk.CellRenderer[];
@@ -20188,6 +20701,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -20200,6 +20714,7 @@ export namespace GimpUi {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -20211,6 +20726,7 @@ export namespace GimpUi {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: Gtk.CellRenderer, position: number): void;
@@ -20225,6 +20741,7 @@ export namespace GimpUi {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
@@ -20251,6 +20768,7 @@ export namespace GimpUi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -20260,6 +20778,7 @@ export namespace GimpUi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -20425,6 +20944,7 @@ export namespace GimpUi {
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
@@ -20501,6 +21021,7 @@ export namespace GimpUi {
          * return value for this string.
          * @param iter a {@link Gtk.TreeIter}-struct
          * @returns a newly-allocated string.     Must be freed with `g_free()`.
+         * @since 2.2
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
 
@@ -20591,6 +21112,7 @@ export namespace GimpUi {
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the previous node
+         * @since 3.0
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
 
@@ -20660,6 +21182,7 @@ export namespace GimpUi {
          * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
+         * @since 3.10
          */
         rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
@@ -20803,6 +21326,7 @@ export namespace GimpUi {
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
+         * @since 3.0
          * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
@@ -21269,18 +21793,21 @@ export namespace GimpUi {
         /**
          * Returns the drawable the {@link GimpUi.ZoomPreview} is attached to.
          * @returns the drawable that was passed to          `gimp_zoom_preview_new_from_drawable()`.
+         * @since 3.0
          */
         get_drawable(): Gimp.Drawable;
 
         /**
          * Returns the zoom factor the preview is currently using.
          * @returns the current zoom factor
+         * @since 2.4
          */
         get_factor(): number;
 
         /**
          * Returns the {@link GimpUi.ZoomModel} the preview is using.
          * @returns a pointer to the {@link GimpUi.ZoomModel} owned          by the `preview`
+         * @since 2.4
          */
         get_model(): ZoomModel;
 
@@ -21290,6 +21817,7 @@ export namespace GimpUi {
          * This function also allow to get the current width, height and bpp of the
          * {@link GimpUi.ZoomPreview}.
          * @returns newly allocated data that should be          released using `g_free()` when it is not any longer needed
+         * @since 2.4
          */
         get_source(): [Uint8Array, number, number, number];
     }

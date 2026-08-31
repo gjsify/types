@@ -127,6 +127,7 @@ export namespace ArrowFlight {
          * @param ticket A {@link ArrowFlight.Ticket}.
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The {@link ArrowFlight.StreamReader} to read record batched from the server   on success, `null` on error.
+         * @since 6.0.0
          */
         do_get(ticket: Ticket, options: CallOptions | null): StreamReader | null;
 
@@ -134,6 +135,7 @@ export namespace ArrowFlight {
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The returned list of {@link ArrowFlight.Info} on success, `null` on error.
+         * @since 5.0.0
          */
         list_flights(criteria: Criteria | null, options: CallOptions | null): Info[] | null;
     }
@@ -232,6 +234,7 @@ export namespace ArrowFlight {
         // Methods
         /**
          * @returns The opaque value used to express a command.   It should be freed with `g_free()` when no longer needed.
+         * @since 5.0.0
          */
         get_command(): string;
     }
@@ -402,11 +405,13 @@ export namespace ArrowFlight {
         /**
          * @param other_descriptor A {@link ArrowFlight.Descriptor} to be compared.
          * @returns `true` if both of them represents the same descriptor,   `false` otherwise.
+         * @since 5.0.0
          */
         equal(other_descriptor: Descriptor): boolean;
 
         /**
          * @returns A descriptor as a string.   It should be freed with `g_free()` when no longer needed.
+         * @since 5.0.0
          */
         to_string(): string;
     }
@@ -471,11 +476,13 @@ export namespace ArrowFlight {
         /**
          * @param other_endpoint A {@link ArrowFlight.Endpoint} to be compared.
          * @returns `true` if both of them represents the same endpoint,   `false` otherwise.
+         * @since 5.0.0
          */
         equal(other_endpoint: Endpoint): boolean;
 
         /**
          * @returns The locations in this endpoint.   It must be freed with `g_list_free()` and `g_object_unref()` when no   longer needed. You can use `g_list_free_full(locations,   g_object_unref)`.
+         * @since 5.0.0
          */
         get_locations(): Location[] | null;
     }
@@ -538,32 +545,38 @@ export namespace ArrowFlight {
         /**
          * @param other_info A {@link ArrowFlight.Info} to be compared.
          * @returns `true` if both of them represents the same information,   `false` otherwise.
+         * @since 5.0.0
          */
         equal(other_info: Info): boolean;
 
         /**
          * @returns The {@link ArrowFlight.Descriptor} of the information.
+         * @since 5.0.0
          */
         get_descriptor(): Descriptor;
 
         /**
          * @returns The list of {@link ArrowFlight.Endpoint} of the information.
+         * @since 5.0.0
          */
         get_endpoints(): Endpoint[];
 
         /**
          * @param options A {@link Arrow.ReadOptions}.
          * @returns Deserialized {@link Arrow.Schema}, `null` on error.
+         * @since 5.0.0
          */
         get_schema(options: Arrow.ReadOptions | null): Arrow.Schema;
 
         /**
          * @returns The number of total bytes of the information.
+         * @since 5.0.0
          */
         get_total_bytes(): number;
 
         /**
          * @returns The number of total records of the information.
+         * @since 5.0.0
          */
         get_total_records(): number;
     }
@@ -616,16 +629,19 @@ export namespace ArrowFlight {
         /**
          * @param other_location A {@link ArrowFlight.Location} to be compared.
          * @returns `true` if both of them represents the same URI, `false` otherwise.
+         * @since 5.0.0
          */
         equal(other_location: Location): boolean;
 
         /**
          * @returns The scheme of this URI.   It should be freed with `g_free()` when no longer needed.
+         * @since 5.0.0
          */
         get_scheme(): string;
 
         /**
          * @returns A representation of this URI as a string.   It should be freed with `g_free()` when no longer needed.
+         * @since 5.0.0
          */
         to_string(): string;
     }
@@ -679,6 +695,7 @@ export namespace ArrowFlight {
         // Methods
         /**
          * @returns The paths in this descriptor.   It must be freed with `g_strfreev()` when no longer needed.
+         * @since 5.0.0
          */
         get_paths(): string[] | null;
     }
@@ -738,11 +755,13 @@ export namespace ArrowFlight {
         // Methods
         /**
          * @returns The all data on success, `null` on error.
+         * @since 6.0.0
          */
         read_all(): Arrow.Table;
 
         /**
          * @returns The next chunk on success, `null` on end   of stream, `null` on error.
+         * @since 6.0.0
          */
         read_next(): StreamChunk;
     }
@@ -851,6 +870,7 @@ export namespace ArrowFlight {
         /**
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param ticket A {@link ArrowFlight.Ticket}.
+         * @since 6.0.0
          * @virtual
          */
         vfunc_do_get(context: ServerCallContext, ticket: Ticket): DataStream;
@@ -858,6 +878,7 @@ export namespace ArrowFlight {
         /**
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param criteria A {@link ArrowFlight.Criteria}.
+         * @since 5.0.0
          * @virtual
          */
         vfunc_list_flights(context: ServerCallContext, criteria: Criteria | null): Info[];
@@ -867,6 +888,7 @@ export namespace ArrowFlight {
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param ticket A {@link ArrowFlight.Ticket}.
          * @returns {@link ArrowFlight.DataStream} on success, `null` on error.
+         * @since 6.0.0
          */
         do_get(context: ServerCallContext, ticket: Ticket): DataStream;
 
@@ -876,12 +898,14 @@ export namespace ArrowFlight {
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @returns {@link GLib.List} of {@link ArrowFlight.Info} on success, `null` on error.
+         * @since 5.0.0
          */
         list_flights(context: ServerCallContext, criteria: Criteria | null): Info[];
 
         /**
          * @param options A {@link ArrowFlight.ServerOptions}.
          * @returns `true` on success, `false` on error.
+         * @since 5.0.0
          */
         listen(options: ServerOptions): boolean;
 
@@ -889,6 +913,7 @@ export namespace ArrowFlight {
          * Shuts down the serve. This function can be called from signal
          * handler or another thread.
          * @returns `true` on success, `false` on error.
+         * @since 5.0.0
          */
         shutdown(): boolean;
 
@@ -1064,6 +1089,7 @@ export namespace ArrowFlight {
         // Methods
         /**
          * @returns The data of the chunk.
+         * @since 6.0.0
          */
         get_data(): Arrow.RecordBatch;
 
@@ -1075,6 +1101,7 @@ export namespace ArrowFlight {
 
         /**
          * @returns The metadata of the chunk.   The metadata may be NULL.
+         * @since 6.0.0
          */
         get_metadata(): Arrow.Buffer | null;
     }
@@ -1185,6 +1212,7 @@ export namespace ArrowFlight {
         /**
          * @param other_ticket A {@link ArrowFlight.Ticket} to be compared.
          * @returns `true` if both of them represents the same ticket, `false` otherwise.
+         * @since 5.0.0
          */
         equal(other_ticket: Ticket): boolean;
     }

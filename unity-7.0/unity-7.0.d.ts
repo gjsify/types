@@ -468,6 +468,9 @@ export namespace Unity {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @deprecated
+         */
         static get_instance(): AppInfoManager;
 
         static get_default(): AppInfoManager;

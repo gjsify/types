@@ -80,6 +80,7 @@ export namespace Libosinfo {
         // Static methods
         /**
          * Gets a {@link GLib.Quark} representing the string "libosinfo"
+         * @since 1.3.0
          */
         static quark(): GLib.Quark;
     }
@@ -295,6 +296,7 @@ export namespace Libosinfo {
         // Static methods
         /**
          * Gets a {@link GLib.Quark} representing the string "osinfo-tree-error"
+         * @since 0.1.0
          */
         static quark(): GLib.Quark;
     }
@@ -737,21 +739,25 @@ export namespace Libosinfo {
         // Methods
         /**
          * @returns Whether alpha channel is supported in the avatar.
+         * @since 0.2.2
          */
         get_alpha(): boolean;
 
         /**
          * @returns the required height (in pixels) of the avatar, or -1.
+         * @since 0.2.2
          */
         get_height(): number;
 
         /**
          * @returns the required mime-types of the avatar.
+         * @since 0.2.2
          */
         get_mime_types(): string[];
 
         /**
          * @returns the required width (in pixels) of the avatar, or -1.
+         * @since 0.2.2
          */
         get_width(): number;
     }
@@ -808,18 +814,21 @@ export namespace Libosinfo {
          * the `map`.
          * @param inval the input value
          * @param outval the output value
+         * @since 0.2.3
          */
         insert(inval: string, outval: string): void;
 
         /**
          * Returns the output value with which `inval` is associated to.
          * @param inval the input value
+         * @since 0.2.3
          */
         lookup(inval: string): string;
 
         /**
          * Returns the input value with which `outval` is associated to.
          * @param outval the output value
+         * @since 0.2.3
          */
         reverse_lookup(outval: string): string;
     }
@@ -918,6 +927,7 @@ export namespace Libosinfo {
         // Methods
         /**
          * @param datamap an install datamap
+         * @since 0.2.3
          */
         add_datamap(datamap: Datamap): void;
 
@@ -933,6 +943,7 @@ export namespace Libosinfo {
 
         /**
          * @param script an install script
+         * @since 0.2.0
          */
         add_install_script(script: InstallScript): void;
 
@@ -957,11 +968,13 @@ export namespace Libosinfo {
         /**
          * @param id the unique operating system identifier
          * @returns the install datamap, or NULL if none is found
+         * @since 0.2.3
          */
         get_datamap(id: string): Datamap;
 
         /**
          * @returns the list of install datamaps
+         * @since 0.2.3
          */
         get_datamap_list(): DatamapList;
 
@@ -990,11 +1003,13 @@ export namespace Libosinfo {
         /**
          * @param id the unique operating system identifier
          * @returns the install script, or NULL if none is found
+         * @since 0.2.0
          */
         get_install_script(id: string): InstallScript;
 
         /**
          * @returns the list of install scripts
+         * @since 0.2.0
          */
         get_install_script_list(): InstallScriptList;
 
@@ -1024,6 +1039,7 @@ export namespace Libosinfo {
          * Guess operating system given an {@link Libosinfo.Media} object.
          * @param media the installation media
          * @returns the operating system, or NULL if guessing failed
+         * @deprecated since 0.2.3: Use `osinfo_db_identify_media()` instead.
          */
         guess_os_from_media(media: Media): [Os, Media | null];
 
@@ -1031,6 +1047,7 @@ export namespace Libosinfo {
          * Guess operating system given an {@link Libosinfo.Tree} object.
          * @param tree the installation tree
          * @returns the operating system, or NULL if guessing failed
+         * @deprecated since 1.6.0: Use `osinfo_db_identify_tree()` instead.
          */
         guess_os_from_tree(tree: Tree): [Os, Tree | null];
 
@@ -1049,6 +1066,7 @@ export namespace Libosinfo {
          * method instead to receive all matched media.
          * @param media the installation media data
          * @returns TRUE if `media` was found in `db`, FALSE otherwise
+         * @since 0.2.3
          */
         identify_media(media: Media): boolean;
 
@@ -1061,6 +1079,7 @@ export namespace Libosinfo {
          * OsinfoMedia::os properties will be set, while `media` is left unmodified.
          * @param media the installation media data
          * @returns a list containing any matches for `media` found in `db`
+         * @since 1.10.0
          */
         identify_medialist(media: Media): MediaList;
 
@@ -1079,6 +1098,7 @@ export namespace Libosinfo {
          * method instead to receive all matched tree.
          * @param tree the installation tree data
          * @returns TRUE if `tree` was found in `db`, FALSE otherwise
+         * @since 1.6.0
          */
         identify_tree(tree: Tree): boolean;
 
@@ -1091,6 +1111,7 @@ export namespace Libosinfo {
          * OsinfoTree::os properties will be set, while `tree` is left unmodified.
          * @param tree the installation tree data
          * @returns a list containing any matches for `tree` found in `db`
+         * @since 1.10.0
          */
         identify_treelist(tree: Tree): TreeList;
 
@@ -1311,6 +1332,7 @@ export namespace Libosinfo {
          * Construct a new deployment list that is filled with deployments
          * from `source`
          * @returns a copy of the deployment list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_copy()` instead.
          */
         new_copy(): DeploymentList;
 
@@ -1319,6 +1341,7 @@ export namespace Libosinfo {
          * from `source` that match `filter`
          * @param filter the filter to apply
          * @returns a filtered copy of the deployment list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_filtered()` instead.
          */
         new_filtered(filter: Filter): DeploymentList;
 
@@ -1327,6 +1350,7 @@ export namespace Libosinfo {
          * deployments that are present in both `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second deployment list to copy
          * @returns an intersection of the two deployment lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_intersection()` instead.
          */
         new_intersection(sourceTwo: DeploymentList): DeploymentList;
 
@@ -1335,6 +1359,7 @@ export namespace Libosinfo {
          * deployments that are present in either `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second deployment list to copy
          * @returns a union of the two deployment lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_union()` instead.
          */
         new_union(sourceTwo: DeploymentList): DeploymentList;
     }
@@ -1398,6 +1423,7 @@ export namespace Libosinfo {
 
         /**
          * @returns the value of the device's subsystem.
+         * @since 0.2.1
          */
         get_subsystem(): string;
 
@@ -1454,11 +1480,13 @@ export namespace Libosinfo {
         /**
          * Retrieves the target hardware architecture of `driver`.
          * @returns the hardware architecture.
+         * @since 0.2.2
          */
         get_architecture(): string;
 
         /**
          * @returns The list of devices supported by this driver.
+         * @since 0.2.2
          */
         get_devices(): DeviceList;
 
@@ -1466,17 +1494,20 @@ export namespace Libosinfo {
          * Retrieves the names of driver files under the location returned by
          * `osinfo_device_driver_get_location`.
          * @returns The list of driver files.
+         * @since 0.2.2
          */
         get_files(): string[];
 
         /**
          * Retrieves the location of the `driver` as a URL.
          * @returns the location of the driver.
+         * @since 0.2.2
          */
         get_location(): string;
 
         /**
          * @returns TRUE if `driver` is pre-installable, FALSE otherwise.
+         * @since 0.2.2
          */
         get_pre_installable(): boolean;
 
@@ -1484,6 +1515,7 @@ export namespace Libosinfo {
          * Returns the priority of the device driver. The higher the value, the more
          * important it is.
          * @returns the priority of the device driver.
+         * @since 1.7.0
          */
         get_priority(): number;
 
@@ -1491,6 +1523,7 @@ export namespace Libosinfo {
          * Some OS vendors recommend or require device drivers to be signed by them
          * before these device drivers could be installed on their OS.
          * @returns TRUE if `driver` is signed, FALSE otherwise.
+         * @since 0.2.6
          */
         get_signed(): boolean;
     }
@@ -1740,6 +1773,7 @@ export namespace Libosinfo {
          * Construct a new devicelink list that is filled with devicelinks
          * from `source`
          * @returns a copy of the devicelink list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_copy()` instead.
          */
         new_copy(): DeviceLinkList;
 
@@ -1748,6 +1782,7 @@ export namespace Libosinfo {
          * from `source` that match `filter`
          * @param filter the filter to apply
          * @returns a filtered copy of the devicelink list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_filtered()` instead.
          */
         new_filtered(filter: Filter): DeviceLinkList;
 
@@ -1756,6 +1791,7 @@ export namespace Libosinfo {
          * devicelinks that are present in both `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second devicelink list to copy
          * @returns an intersection of the two devicelink lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_intersection()` instead.
          */
         new_intersection(sourceTwo: DeviceLinkList): DeviceLinkList;
 
@@ -1764,6 +1800,7 @@ export namespace Libosinfo {
          * devicelinks that are present in either `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second devicelink list to copy
          * @returns a union of the two devicelink lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_union()` instead.
          */
         new_union(sourceTwo: DeviceLinkList): DeviceLinkList;
     }
@@ -1819,6 +1856,7 @@ export namespace Libosinfo {
          * Construct a new device list that is filled with devices
          * from `source`
          * @returns a copy of the device list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_copy()` instead.
          */
         new_copy(): DeviceList;
 
@@ -1827,6 +1865,7 @@ export namespace Libosinfo {
          * from `source` that match `filter`
          * @param filter the filter to apply
          * @returns a filtered copy of the device list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_filtered()` instead.
          */
         new_filtered(filter: Filter): DeviceList;
 
@@ -1835,6 +1874,7 @@ export namespace Libosinfo {
          * devices that are present in both `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second device list to copy
          * @returns an intersection of the two device lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_intersection()` instead.
          */
         new_intersection(sourceTwo: DeviceList): DeviceList;
 
@@ -1843,6 +1883,7 @@ export namespace Libosinfo {
          * devices that are present in either `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second device list to copy
          * @returns a union of the two device lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_union()` instead.
          */
         new_union(sourceTwo: DeviceList): DeviceList;
     }
@@ -1949,6 +1990,7 @@ export namespace Libosinfo {
          * first value is returned. If no value is associated, FALSE is returned
          * @param key the name of the key
          * @returns the value associated with the key as a boolean, or FALSE
+         * @since 0.2.0
          */
         get_param_value_boolean(key: string): boolean;
 
@@ -1960,6 +2002,7 @@ export namespace Libosinfo {
          * @param key the name of the key
          * @param default_value the value to be returned in case there's no value                 associated with the `key`
          * @returns the value associated with the key as a boolean, or `default_value`
+         * @since 0.2.1
          */
         get_param_value_boolean_with_default(key: string, default_value: boolean): boolean;
 
@@ -1972,6 +2015,7 @@ export namespace Libosinfo {
          * @param enum_type the enum type
          * @param default_value the default value to be used, in case there's                 no value associated with the key
          * @returns the enum value associated with the key, or `default_value`.
+         * @since 0.2.2
          */
         get_param_value_enum(key: string, enum_type: GObject.GType, default_value: number): number;
 
@@ -1981,6 +2025,7 @@ export namespace Libosinfo {
          * first value is returned. If no value is associated, -1 is returned.
          * @param key the name of the key
          * @returns the value associated with the key as an int64, or -1.
+         * @since 0.2.1
          */
         get_param_value_int64(key: string): number;
 
@@ -1992,6 +2037,7 @@ export namespace Libosinfo {
          * @param key the name of the key
          * @param default_value the value to be returned in case there's no value                 associated with the `key`
          * @returns the value associated with the key as an int64, or `default_value`
+         * @since 0.2.1
          */
         get_param_value_int64_with_default(key: string, default_value: bigint | number): number;
 
@@ -2018,6 +2064,7 @@ export namespace Libosinfo {
          * cleared.
          * @param key the name of the key
          * @param value the boolean value to be associated with that key
+         * @since 0.2.0
          */
         set_param_boolean(key: string, value: boolean): void;
 
@@ -2028,6 +2075,7 @@ export namespace Libosinfo {
          * @param key the name of the key
          * @param value the enum value to be associated with that key
          * @param enum_type the enum type
+         * @since 0.2.2
          */
         set_param_enum(key: string, value: number, enum_type: GObject.GType): void;
 
@@ -2037,6 +2085,7 @@ export namespace Libosinfo {
          * cleared.
          * @param key the name of the key
          * @param value the int64 value to be associated with that key
+         * @since 0.2.1
          */
         set_param_int64(key: string, value: bigint | number): void;
     }
@@ -2207,18 +2256,21 @@ export namespace Libosinfo {
         /**
          * Retrieves the target hardware architecture of the OS `firmware` provides.
          * @returns the hardware architecture, or NULL
+         * @since 1.7.0
          */
         get_architecture(): string;
 
         /**
          * The type of the `firmware`
          * @returns the type, or NULL
+         * @since 1.7.0
          */
         get_firmware_type(): string;
 
         /**
          * Whether the `firmware` is supported or not
          * @returns TRUE if supported, FALSE otherwise.
+         * @since 1.8.0
          */
         is_supported(): boolean;
     }
@@ -2366,41 +2418,48 @@ export namespace Libosinfo {
         /**
          * Retrieves the target hardware architecture of the OS `image` provides.
          * @returns the hardware architecture, or NULL
+         * @since 1.3.0
          */
         get_architecture(): string;
 
         /**
          * Whether `image` supports cloud init customizations
          * @returns `TRUE` if `image` supports cloud init customizations, `FALSE` otherwise.
+         * @since 1.3.0
          */
         get_cloud_init(): boolean;
 
         /**
          * The format of the `image`
          * @returns the format, or NULL
+         * @since 1.3.0
          */
         get_format(): string;
 
         /**
          * @returns the operating system, or NULL
+         * @since 1.5.0
          */
         get_os(): Os;
 
         /**
          * Gets the varriants of the associated operating system
          * @returns the operating system variants, or NULL
+         * @since 1.5.0
          */
         get_os_variants(): OsVariantList;
 
         /**
          * The URL to the `image`
          * @returns the URL, or NULL
+         * @since 1.3.0
          */
         get_url(): string;
 
         /**
          * Sets the {@link Libosinfo.Os} associated to the {@link Libosinfo.Image} instance.
          * @param os an {@link Libosinfo.Os} instance
+         * @since 1.5.0
          */
         set_os(os: Os): void;
     }
@@ -2501,127 +2560,152 @@ export namespace Libosinfo {
         // Methods
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_ADMIN_PASSWORD parameter,          or NULL.
+         * @since 0.2.0
          */
         get_admin_password(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_AVATAR_DISK parameter,          or NULL.
+         * @since 0.2.2
          */
         get_avatar_disk(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_AVATAR_LOCATION parameter,          or NULL.
+         * @since 0.2.2
          */
         get_avatar_location(): string;
 
         /**
          * @returns `true` if driver signing is currently enabled, `false` otherwise, see `osinfo_install_config_set_driver_signing`() for more details about driver signing.
+         * @since 0.2.6
          */
         get_driver_signing(): boolean;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_HARDWARE_ARCH parameter,          or NULL.
+         * @since 0.2.8
          */
         get_hardware_arch(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_HOSTNAME parameter,          or NULL.
+         * @since 0.2.8
          */
         get_hostname(): string;
 
         /**
          * Returns the URL the script will use to perform the installation.
+         * @since 1.5.0
          */
         get_installation_url(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_L10N_KEYBOARD parameter,          or NULL.
+         * @since 0.2.0
          */
         get_l10n_keyboard(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_L10N_LANGUAGE parameter,          or NULL.
+         * @since 0.2.0
          */
         get_l10n_language(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_L10N_TIMEZONE parameter,          or NULL.
+         * @since 0.2.0
          */
         get_l10n_timezone(): string;
 
         /**
          * @returns The disk on which post-installation drivers are located, or NULL if its not set using `osinfo_install_config_set_post_install_drivers_disk`().
+         * @since 0.2.2
          */
         get_post_install_drivers_disk(): string;
 
         /**
          * @returns The disk on which post-installation drivers are located, or NULL if its not set using `osinfo_install_config_set_post_install_drivers_location`().
+         * @since 0.2.2
          */
         get_post_install_drivers_location(): string;
 
         /**
          * @returns The disk on which pre-installation drivers are located, or NULL if its not set using `osinfo_install_config_set_pre_install_drivers_disk`().
+         * @since 0.2.2
          */
         get_pre_install_drivers_disk(): string;
 
         /**
          * @returns The location on which pre-installation drivers are located, or NULL if its not set using `osinfo_install_config_set_pre_install_drivers_location`().
+         * @since 0.2.2
          */
         get_pre_install_drivers_location(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_REG_LOGIN parameter,          or NULL.
+         * @since 0.2.8
          */
         get_reg_login(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_REG_PASSWORD parameter,          or NULL.
+         * @since 0.2.8
          */
         get_reg_password(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_REG_PRODUCTKEY parameter,          or NULL.
+         * @since 0.2.8
          */
         get_reg_product_key(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_SCRIPT_DISK parameter,          or NULL.
+         * @since 0.2.2
          */
         get_script_disk(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_TARGET_DISK parameter,          or NULL.
+         * @since 0.2.2
          */
         get_target_disk(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_USER_ADMIN parameter,          or NULL.
+         * @since 0.2.0
          */
         get_user_administrator(): boolean;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_USER_AUTOLOGIN parameter,          or NULL.
+         * @since 0.2.0
          */
         get_user_autologin(): boolean;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_USER_LOGIN parameter,          or NULL.
+         * @since 0.2.0
          */
         get_user_login(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_USER_PASSWORD parameter,          or NULL.
+         * @since 0.2.0
          */
         get_user_password(): string;
 
         /**
          * @returns The value of #OSINFO_INSTALL_CONFIG_PROP_USER_REALNAME parameter,          or NULL.
+         * @since 0.2.0
          */
         get_user_realname(): string;
 
         /**
          * Sets the #OSINFO_INSTALL_CONFIG_PROP_ADMIN_PASSWORD parameter
          * @param password the administrator password to be set
+         * @since 0.2.0
          */
         set_admin_password(password: string): void;
 
@@ -2631,6 +2715,7 @@ export namespace Libosinfo {
          * Please read documentation on `osinfo_install_config_set_target_disk`() for
          * explanation on the format of `disk` string.
          * @param disk the avatar disk
+         * @since 0.2.2
          */
         set_avatar_disk(disk: string): void;
 
@@ -2645,6 +2730,7 @@ export namespace Libosinfo {
          * Also note that in case of #OSINFO_PATH_FORMAT_DOS, the drive/disk letter
          * and the leading ':' must not be included in the path.
          * @param location new location
+         * @since 0.2.2
          */
         set_avatar_location(location: string): void;
 
@@ -2653,6 +2739,7 @@ export namespace Libosinfo {
          * disable that security feature. WARNING: Disabling driver signing may very
          * well mean disabling it permanently.
          * @param signing boolean value
+         * @since 0.2.6
          */
         set_driver_signing(signing: boolean): void;
 
@@ -2661,6 +2748,7 @@ export namespace Libosinfo {
          * 
          * The list of valid architectures are part of osinfo.rng schema
          * @param arch the hardware architecture
+         * @since 0.2.0
          */
         set_hardware_arch(arch: string): void;
 
@@ -2674,6 +2762,7 @@ export namespace Libosinfo {
          * than ASCII alphanumeric and '-'. Otherwise unattended installation might
          * fail.
          * @param hostname the desired hostname
+         * @since 0.2.0
          */
         set_hostname(hostname: string): void;
 
@@ -2681,6 +2770,7 @@ export namespace Libosinfo {
          * When performing a tree based installation the script will need the installation
          * URL to be set, whenever the installation is performed from a non canonical place.
          * @param url the URL used to perform the installation
+         * @since 1.5.0
          */
         set_installation_url(url: string): void;
 
@@ -2690,6 +2780,7 @@ export namespace Libosinfo {
          * The expected format of this string is the same as
          * `osinfo_install_config_set_l10n_language` function's 'language' parameter.
          * @param keyboard the keyboard
+         * @since 0.2.0
          */
         set_l10n_keyboard(keyboard: string): void;
 
@@ -2704,6 +2795,7 @@ export namespace Libosinfo {
          * 'pt_BR' is accepted is accepted as the language codes for Brazilian Portuguese
          * but 'pt_BR.utf8' is not.
          * @param language the language
+         * @since 0.2.0
          */
         set_l10n_language(language: string): void;
 
@@ -2712,6 +2804,7 @@ export namespace Libosinfo {
          * 
          * The expected format of this string is the tzdata names standard.
          * @param tz the timezone
+         * @since 0.2.0
          */
         set_l10n_timezone(tz: string): void;
 
@@ -2726,6 +2819,7 @@ export namespace Libosinfo {
          * `osinfo_install_script_get_can_post_install_drivers`() to find out if an
          * install script supports it.
          * @param disk the target disk
+         * @since 0.2.2
          */
         set_post_install_drivers_disk(disk: string): void;
 
@@ -2740,6 +2834,7 @@ export namespace Libosinfo {
          * `osinfo_install_script_get_can_post_install_drivers`() to find out if an
          * install script supports it.
          * @param location the location of avatar
+         * @since 0.2.2
          */
         set_post_install_drivers_location(location: string): void;
 
@@ -2759,6 +2854,7 @@ export namespace Libosinfo {
          * NOTE: Microsoft Windows XP requires pre-installation driver files to be
          * present in the script disk under the toplevel directory.
          * @param disk the disk
+         * @since 0.2.2
          */
         set_pre_install_drivers_disk(disk: string): void;
 
@@ -2771,18 +2867,21 @@ export namespace Libosinfo {
          * Please read documentation on `osinfo_install_config_set_avatar_location`() for
          * explanation on the format of `location` string.
          * @param location the location
+         * @since 0.2.2
          */
         set_pre_install_drivers_location(location: string): void;
 
         /**
          * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_REG_LOGIN parameter.
          * @param name the registration login
+         * @since 0.2.0
          */
         set_reg_login(name: string): void;
 
         /**
          * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_REG_PASSWORD parameter.
          * @param password the registration password
+         * @since 0.2.0
          */
         set_reg_password(password: string): void;
 
@@ -2797,6 +2896,7 @@ export namespace Libosinfo {
          * Please read documentation on `osinfo_install_config_set_target_disk`() for
          * explanation on the format of `disk` string.
          * @param disk the disk
+         * @since 0.2.2
          */
         set_script_disk(disk: string): void;
 
@@ -2810,36 +2910,42 @@ export namespace Libosinfo {
          * #OSINFO_PATH_FORMAT_UNIX unix device node names are expected, e.g "/dev/fd0".
          * In case of #OSINFO_PATH_FORMAT_DOS drive letters are expected, e.g "A".
          * @param disk the target disk
+         * @since 0.2.2
          */
         set_target_disk(disk: string): void;
 
         /**
          * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_ADMIN parameter.
          * @param admin whether the user should be set as administrator or not
+         * @since 0.2.0
          */
         set_user_administrator(admin: boolean): void;
 
         /**
          * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_AUTOLOGIN parameter.
          * @param autologin whether autologin should be set for the user or not
+         * @since 0.2.0
          */
         set_user_autologin(autologin: boolean): void;
 
         /**
          * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_LOGIN parameter.
          * @param username the chosen username for the user log into the system
+         * @since 0.2.0
          */
         set_user_login(username: string): void;
 
         /**
          * Sets the #OSINFO_INSTALL_CONFIG_PROP_USER_PASSWORD parameter
          * @param password the user password to be set
+         * @since 0.2.0
          */
         set_user_password(password: string): void;
 
         /**
          * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_REALNAME parameter.
          * @param name the user real name to be displayed
+         * @since 0.2.0
          */
         set_user_realname(name: string): void;
     }
@@ -2930,26 +3036,31 @@ export namespace Libosinfo {
         // Methods
         /**
          * @returns the name of the configuration parameter
+         * @since 0.2.0
          */
         get_name(): string;
 
         /**
          * @returns the policy of the configuration parameter
+         * @since 0.2.0
          */
         get_policy(): InstallConfigParamPolicy;
 
         /**
          * @returns The data map used to transform values set for this                           parameter to OS-specific values, or NULL.
+         * @since 0.2.8
          */
         get_value_map(): Datamap;
 
         /**
          * @returns TRUE if the config_param is optional. FALSE otherwise.
+         * @since 0.2.1
          */
         is_optional(): boolean;
 
         /**
          * @returns TRUE if the config_param is required. FALSE otherwise.
+         * @since 0.2.1
          */
         is_required(): boolean;
 
@@ -2958,6 +3069,7 @@ export namespace Libosinfo {
          * be used to transform values set for this parameter to OS-specific
          * values. A NULL `datamap` will disable transformations.
          * @param datamap a {@link Libosinfo.Datamap} to transform values this parameter is set to, or NULL to disable transformations for this parameter
+         * @since 0.2.8
          */
         set_value_map(datamap: Datamap): void;
     }
@@ -3179,6 +3291,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string. If you are generating the script for a specific media, it is recommended that you use `osinfo_install_script_generate_for_media`() instead. If you are generating the script for a specific tree, it is recommended that you use `osinfo_install_script_generate_for_tree`() in instead.
+         * @since 0.2.0
          */
         generate(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
 
@@ -3192,6 +3305,7 @@ export namespace Libosinfo {
          * @param os the os
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.2.0
          */
         generate_async(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -3206,6 +3320,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
+         * @since 0.2.0
          */
         generate_async(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3220,6 +3335,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
+         * @since 0.2.0
          */
         generate_async(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -3240,6 +3356,7 @@ export namespace Libosinfo {
          * @param os the os entity
          * @param config the install script config
          * @returns The generated command line string, NULL otherwise.
+         * @since 0.2.7
          */
         generate_command_line(os: Os, config: InstallConfig): string;
 
@@ -3255,6 +3372,7 @@ export namespace Libosinfo {
          * @param media the media
          * @param config the install script config
          * @returns The generated command line string, NULL otherwise.
+         * @since 0.2.12
          */
         generate_command_line_for_media(media: Media, config: InstallConfig): string;
 
@@ -3270,12 +3388,14 @@ export namespace Libosinfo {
          * @param tree the tree
          * @param config the install script config
          * @returns The generated command line string, NULL otherwise.
+         * @since 1.6.0
          */
         generate_command_line_for_tree(tree: Tree, config: InstallConfig): string;
 
         /**
          * @param res a {@link Gio.AsyncResult}
          * @returns the generated script, or NULL on error
+         * @since 0.2.0
          */
         generate_finish(res: Gio.AsyncResult): string;
 
@@ -3286,6 +3406,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string.
+         * @since 0.2.12
          */
         generate_for_media(media: Media, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
 
@@ -3296,6 +3417,7 @@ export namespace Libosinfo {
          * @param media the media
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.2.12
          */
         generate_for_media_async(media: Media, config: InstallConfig, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -3307,6 +3429,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
+         * @since 0.2.12
          */
         generate_for_media_async(media: Media, config: InstallConfig, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3318,12 +3441,14 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
+         * @since 0.2.12
          */
         generate_for_media_async(media: Media, config: InstallConfig, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param res a {@link Gio.AsyncResult}
          * @returns the generated script, or NULL on error
+         * @since 0.2.12
          */
         generate_for_media_finish(res: Gio.AsyncResult): string;
 
@@ -3334,6 +3459,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string.
+         * @since 1.6.0
          */
         generate_for_tree(tree: Tree, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
 
@@ -3344,6 +3470,7 @@ export namespace Libosinfo {
          * @param tree the tree
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.6.0
          */
         generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -3355,6 +3482,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
+         * @since 1.6.0
          */
         generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3366,12 +3494,14 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
+         * @since 1.6.0
          */
         generate_for_tree_async(tree: Tree, config: InstallConfig, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
         /**
          * @param res a {@link Gio.AsyncResult}
          * @returns the generated script, or NULL or error
+         * @since 1.6.0
          */
         generate_for_tree_finish(res: Gio.AsyncResult): string;
 
@@ -3382,6 +3512,7 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a file containing the script If you are generating the script for a specific media, it is recommended that you use `osinfo_install_script_generate_output_for_media`() instead. If you are generating the script for a specific tree, it is recommended that you use `osinfo_install_script_generate_output_for_tree`() instead.
+         * @since 0.2.0
          */
         generate_output(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): Gio.File;
 
@@ -3396,6 +3527,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.2.0
          */
         generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File>;
 
@@ -3411,6 +3543,7 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
+         * @since 0.2.0
          */
         generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3426,12 +3559,14 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
+         * @since 0.2.0
          */
         generate_output_async(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.File> | void;
 
         /**
          * @param res a {@link Gio.AsyncResult}
          * @returns a file containing the script, or NULL on error
+         * @since 0.2.3
          */
         generate_output_finish(res: Gio.AsyncResult): Gio.File;
 
@@ -3442,6 +3577,7 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a file containing the script.
+         * @since 0.2.12
          */
         generate_output_for_media(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): Gio.File;
 
@@ -3454,6 +3590,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.2.12
          */
         generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File>;
 
@@ -3467,6 +3604,7 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
+         * @since 0.2.12
          */
         generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3480,12 +3618,14 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
+         * @since 0.2.12
          */
         generate_output_for_media_async(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.File> | void;
 
         /**
          * @param res a {@link Gio.AsyncResult}
          * @returns a file containing the script, or NULL on error.
+         * @since 0.2.12
          */
         generate_output_for_media_finish(res: Gio.AsyncResult): Gio.File;
 
@@ -3496,6 +3636,7 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a file containing the script.
+         * @since 1.6.0
          */
         generate_output_for_tree(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): Gio.File;
 
@@ -3508,6 +3649,7 @@ export namespace Libosinfo {
          * @param config the install script config
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.6.0
          */
         generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.File>;
 
@@ -3521,6 +3663,7 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
+         * @since 1.6.0
          */
         generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3534,12 +3677,14 @@ export namespace Libosinfo {
          * @param output_dir the directory where the file containing the output script              will be written
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
+         * @since 1.6.0
          */
         generate_output_for_tree_async(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.File> | void;
 
         /**
          * @param res a {@link Gio.AsyncResult}
          * @returns a file containing the script, or NULL on error.
+         * @since 1.6.0
          */
         generate_output_for_tree_finish(res: Gio.AsyncResult): Gio.File;
 
@@ -3548,6 +3693,7 @@ export namespace Libosinfo {
          * this method to retrieve those restrictions in the form of an
          * {@link Libosinfo.AvatarFormat} instance.
          * @returns The avatar format, or NULL if there is no restrictions on the                           format of avatar
+         * @since 0.2.2
          */
         get_avatar_format(): AvatarFormat;
 
@@ -3556,6 +3702,7 @@ export namespace Libosinfo {
          * This can be used for installing devices which the OS in question does not
          * have out of the box support.
          * @returns TRUE if install script supports post-installable drivers, FALSE otherwise.
+         * @since 0.2.2
          */
         get_can_post_install_drivers(): boolean;
 
@@ -3565,6 +3712,7 @@ export namespace Libosinfo {
          * not have out of the box support for and devices are required/preferred to be
          * available during actual installation.
          * @returns TRUE if install script supports pre-installable drivers, FALSE otherwise.
+         * @since 0.2.2
          */
         get_can_pre_install_drivers(): boolean;
 
@@ -3572,18 +3720,21 @@ export namespace Libosinfo {
          * Get a config param from the config param's list
          * @param name name of the parameter
          * @returns the sought config param, if exists.                           NULL otherwise. This code assumes that the 'id' and 'name' entity properties are the same.
+         * @since 0.2.1
          */
         get_config_param(name: string): InstallConfigParam;
 
         /**
          * Get the list of valid config parameters for `script`.
          * @returns the list of valid {@link Libosinfo.InstallConfigParam} parameters. Free with `g_list_free()` when done. The elements are owned by libosinfo.
+         * @since 0.2.0
          */
         get_config_param_list(): InstallScript[];
 
         /**
          * Get the list of valid config parameters for `script`.
          * @returns the list of valid {@link Libosinfo.InstallConfigParam} parameters.
+         * @since 0.2.3
          */
         get_config_params(): InstallConfigParamList;
 
@@ -3591,23 +3742,27 @@ export namespace Libosinfo {
          * Some operating systems (as Windows) expect that script filename has
          * particular name to work.
          * @returns the expected script filename
+         * @since 0.2.1
          */
         get_expected_filename(): string;
 
         /**
          * Retrieve the supported method to inject the script in to the installation process.
          * @returns bitwise-or of supported methods for install script injection.
+         * @since 0.2.10
          */
         get_injection_methods(): InstallScriptInjectionMethod;
 
         /**
          * @returns the installation source to be used with the script. If none is set, it defaults to OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_MEDIA.
+         * @since 1.3.0
          */
         get_installation_source(): InstallScriptInstallationSource;
 
         /**
          * Some install scripts cannot ensure that they work without an internet connection.
          * @returns TRUE if script needs an internet connection, FALSE otherwise internet connection.
+         * @since 0.2.11
          */
         get_needs_internet(): boolean;
 
@@ -3617,11 +3772,13 @@ export namespace Libosinfo {
          * functionality by set the expected filename's prefix using
          * `osinfo_install_script_set_output_prefix()` function.
          * @returns the output script filename
+         * @since 0.2.0
          */
         get_output_filename(): string;
 
         /**
          * @returns the prefix of the file generated
+         * @since 0.2.8
          */
         get_output_prefix(): string;
 
@@ -3629,23 +3786,27 @@ export namespace Libosinfo {
          * Returns the path format to be used for the files and disks which will
          * be used during the installation.
          * @returns the path format to be used. OSINFO_PATH_FORMAT_UNIX is the          default option.
+         * @since 0.2.2
          */
         get_path_format(): PathFormat;
 
         /**
          * If install script can install drivers at the end of installation, this
          * function retrieves the requirement about signed status of drivers.
+         * @since 0.2.6
          */
         get_post_install_drivers_signing_req(): DeviceDriverSigningReq;
 
         /**
          * If install script can install drivers at the very beginning of installation,
          * this function retrieves the requirement about signed status of drivers.
+         * @since 0.2.6
          */
         get_pre_install_drivers_signing_req(): DeviceDriverSigningReq;
 
         /**
          * @returns the preferred injection method for the script. If none is set and OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_DISK is supported, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_DISK is returned, otherwise OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_INITRD is returned.
+         * @since 1.3.0
          */
         get_preferred_injection_method(): InstallScriptInjectionMethod;
 
@@ -3668,6 +3829,7 @@ export namespace Libosinfo {
          * alphanumeric characters and 4 '-' characters at (0-based) indices 5, 11, 17
          * and 23.
          * @returns Product key format mask, or NULL.
+         * @since 0.2.2
          */
         get_product_key_format(): string;
 
@@ -3677,16 +3839,19 @@ export namespace Libosinfo {
          * 
          * The values supported are "jeos" for minimal installations and "desktop" for
          * workstation/desktop installations.
+         * @since 0.2.0
          */
         get_profile(): string;
 
         /**
          * Returns the stylesheet data used to construct the install script.
+         * @since 0.2.0
          */
         get_template_data(): string;
 
         /**
          * Returns the stylesheet URI used to construct the install script.
+         * @since 0.2.0
          */
         get_template_uri(): string;
 
@@ -3695,30 +3860,35 @@ export namespace Libosinfo {
          * 
          * This code assumes that the 'id' and 'name' entity properties are the same.
          * @param config_param an {@link Libosinfo.InstallConfigParam}
+         * @since 0.2.0
          */
         has_config_param(config_param: InstallConfigParam): boolean;
 
         /**
          * Returns whether the `script` has a configuration parameter matching `name` or not.
          * @param name the configuration parameter name
+         * @since 0.2.0
          */
         has_config_param_name(name: string): boolean;
 
         /**
          * Set the installation source to be used with the `script`.
          * @param source one of the installation sources: OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_MEDIA, OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_NETWORK
+         * @since 1.3.0
          */
         set_installation_source(source: InstallScriptInstallationSource): void;
 
         /**
          * Mind that not all installers support any name for the installer scripts.
          * @param prefix a prefix to be added to the file generated
+         * @since 0.2.0
          */
         set_output_prefix(prefix: string): void;
 
         /**
          * Set the preferred injection method to be used with the `script`
          * @param method one of the injection methods: OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_CDROM, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_DISK, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_FLOPPY, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_INITRD, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_WEB
+         * @since 1.3.0
          */
         set_preferred_injection_method(method: InstallScriptInjectionMethod): void;
     }
@@ -3774,6 +3944,8 @@ export namespace Libosinfo {
          * Construct a new install_script list that is filled with install_scripts
          * from `source`
          * @returns a copy of the install_script list
+         * @since 0.2.0
+         * @deprecated since 0.2.2: Use `osinfo_list_new_copy()` instead.
          */
         new_copy(): InstallScriptList;
 
@@ -3782,6 +3954,8 @@ export namespace Libosinfo {
          * from `source` that match `filter`
          * @param filter the filter to apply
          * @returns a filtered copy of the install_script list
+         * @since 0.2.0
+         * @deprecated since 0.2.2: Use `osinfo_list_new_filtered()` instead.
          */
         new_filtered(filter: Filter): InstallScriptList;
 
@@ -3790,6 +3964,8 @@ export namespace Libosinfo {
          * install_scripts that are present in both `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second install_script list to copy
          * @returns an intersection of the two install_script lists
+         * @since 0.2.0
+         * @deprecated since 0.2.2: Use `osinfo_list_new_intersection()` instead.
          */
         new_intersection(sourceTwo: InstallScriptList): InstallScriptList;
 
@@ -3798,6 +3974,8 @@ export namespace Libosinfo {
          * install_scripts that are present in either `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second install_script list to copy
          * @returns a union of the two install_script lists
+         * @since 0.2.0
+         * @deprecated since 0.2.2: Use `osinfo_list_new_union()` instead.
          */
         new_union(sourceTwo: InstallScriptList): InstallScriptList;
     }
@@ -3950,6 +4128,7 @@ export namespace Libosinfo {
         /**
          * Construct a new list that is filled with elements from `source`
          * @returns a copy of the list
+         * @since 0.2.2
          */
         new_copy(): List;
 
@@ -3958,6 +4137,7 @@ export namespace Libosinfo {
          * match `filter`
          * @param filter the filter to apply
          * @returns a filtered copy of the list
+         * @since 0.2.2
          */
         new_filtered(filter: Filter): List;
 
@@ -3966,6 +4146,7 @@ export namespace Libosinfo {
          * that are present in both `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second list to copy
          * @returns an intersection of the two lists
+         * @since 0.2.2
          */
         new_intersection(sourceTwo: List): List;
 
@@ -3975,6 +4156,7 @@ export namespace Libosinfo {
          * the same type.
          * @param sourceTwo the second list to copy
          * @returns a union of the two lists
+         * @since 0.2.2
          */
         new_union(sourceTwo: List): List;
     }
@@ -4034,6 +4216,7 @@ export namespace Libosinfo {
 
         /**
          * Loads data from the local path.
+         * @since 0.2.8
          */
         process_local_path(): void;
 
@@ -4048,6 +4231,7 @@ export namespace Libosinfo {
 
         /**
          * Loads data from the system path.
+         * @since 0.2.8
          */
         process_system_path(): void;
 
@@ -4062,6 +4246,7 @@ export namespace Libosinfo {
 
         /**
          * Loads data from user path.
+         * @since 0.2.8
          */
         process_user_path(): void;
     }
@@ -4403,6 +4588,7 @@ export namespace Libosinfo {
          * Finishes an asynchronous media object creation process started with
          * `osinfo_media_create_from_location_async`.
          * @param res a {@link Gio.AsyncResult}
+         * @since 1.6.0
          */
         static create_from_location_finish(res: Gio.AsyncResult): Media;
 
@@ -4414,6 +4600,7 @@ export namespace Libosinfo {
          * @param location the location of an installation media
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param flags An `OsinfoMediaDetectFlag`, or 0.
+         * @since 1.6.0
          */
         static create_from_location_with_flags(location: string, cancellable: Gio.Cancellable | null, flags: number): Media;
 
@@ -4424,6 +4611,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
          * @param flags An `OsinfoMediaDetectFlag`, or 0.
+         * @since 1.6.0
          */
         static create_from_location_with_flags_async(location: string, priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Media> | null, flags: number): void;
 
@@ -4438,6 +4626,7 @@ export namespace Libosinfo {
         /**
          * Adds an `script` to the specified `media`
          * @param script an {@link Libosinfo.InstallScript} instance
+         * @since 1.4.0
          */
         add_install_script(script: InstallScript): void;
 
@@ -4461,6 +4650,7 @@ export namespace Libosinfo {
         /**
          * Whether `media` should ejected after the installation procces.
          * @returns `TRUE` if media should be ejected, `FALSE` otherwise
+         * @since 0.2.13
          */
         get_eject_after_install(): boolean;
 
@@ -4474,12 +4664,14 @@ export namespace Libosinfo {
 
         /**
          * @returns a list of the install scripts for the specified media
+         * @since 1.4.0
          */
         get_install_script_list(): InstallScriptList;
 
         /**
          * Whether `media` provides an installer for an OS.
          * @returns `TRUE` if media is installer, `FALSE` otherwise
+         * @since 0.0.3
          */
         get_installer(): boolean;
 
@@ -4494,6 +4686,7 @@ export namespace Libosinfo {
          * Warning: Some media allow you to install from live sessions, in which case
          * number of reboots *alone* is not a reliable method for tracking installation.
          * @returns the number of installer reboots or -1 if media is not an installer
+         * @since 0.2.1
          */
         get_installer_reboots(): number;
 
@@ -4514,23 +4707,27 @@ export namespace Libosinfo {
          * Use `osinfo_media_get_installer`(or OsinfoMedia::installer) to know
          * if the media is an installer or not.
          * @returns a {@link GLib.List} containing the list of the UI languages this media supports. The list must be freed with `g_list_free()` when no longer needed. If the supported languages are unknown, NULL will be returned.
+         * @since 0.2.3
          */
         get_languages(): string[];
 
         /**
          * Whether `media` can boot directly an OS without any installations.
          * @returns `TRUE` if media is live, `FALSE` otherwise
+         * @since 0.0.3
          */
         get_live(): boolean;
 
         /**
          * @returns the operating system, or NULL
+         * @since 0.2.3
          */
         get_os(): Os;
 
         /**
          * Gets the variants of the associated operating system.
          * @returns the operating system variant, or NULL
+         * @since 0.2.9
          */
         get_os_variants(): OsVariantList;
 
@@ -4580,6 +4777,7 @@ export namespace Libosinfo {
 
         /**
          * @returns `TRUE` if the `media` is bootable. `FALSE` otherwise.
+         * @since 1.6.0
          */
         is_bootable(): boolean;
 
@@ -4591,12 +4789,14 @@ export namespace Libosinfo {
          * while the metadata in the `reference` media must be regular expressions.
          * @param reference a reference {@link Libosinfo.Media} instance
          * @returns `TRUE` if `media` is a match for `reference`. `FALSE` otherwise
+         * @since 1.10.0
          */
         matches(reference: Media): boolean;
 
         /**
          * Whether `media` supports installation using install scripts.
          * @returns `TRUE` if install-scripts are supported by the media, `FALSE` otherwise
+         * @since 1.3.0
          */
         supports_installer_script(): boolean;
     }
@@ -4652,6 +4852,7 @@ export namespace Libosinfo {
          * Construct a new media list that is filled with medias
          * from `source`
          * @returns a copy of the media list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_copy()` instead.
          */
         new_copy(): MediaList;
 
@@ -4660,6 +4861,7 @@ export namespace Libosinfo {
          * from `source` that match `filter`
          * @param filter the filter to apply
          * @returns a filtered copy of the media list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_filtered()` instead.
          */
         new_filtered(filter: Filter): MediaList;
 
@@ -4668,6 +4870,7 @@ export namespace Libosinfo {
          * medias that are present in both `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second media list to copy
          * @returns an intersection of the two media lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_intersection()` instead.
          */
         new_intersection(sourceTwo: MediaList): MediaList;
 
@@ -4676,6 +4879,7 @@ export namespace Libosinfo {
          * medias that are present in either `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second media list to copy
          * @returns a union of the two media lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_union()` instead.
          */
         new_union(sourceTwo: MediaList): MediaList;
     }
@@ -4803,30 +5007,35 @@ export namespace Libosinfo {
         /**
          * Adds `driver` to the list of device drivers of operating system `os`.
          * @param driver the device driver to add
+         * @since 0.2.2
          */
         add_device_driver(driver: DeviceDriver): void;
 
         /**
          * Adds `firmware` to the list of firmwares of operating system `os`.
          * @param firmware the firmware to add
+         * @since 1.7.0
          */
         add_firmware(firmware: Firmware): void;
 
         /**
          * Adds an installed image `image` to operating system `os`.
          * @param image the image to add
+         * @since 1.3.0
          */
         add_image(image: Image): void;
 
         /**
          * Adds `script` to the list of scripts of operating system `os`.
          * @param script the install script to add
+         * @since 0.2.0
          */
         add_install_script(script: InstallScript): void;
 
         /**
          * Adds `resources` to list of maximum resources of operating system `os`.
          * @param resources the resources to add
+         * @since 1.3.0
          */
         add_maximum_resources(resources: Resources): void;
 
@@ -4846,6 +5055,7 @@ export namespace Libosinfo {
          * Adds `resources` to list of resources needed for network installing an
          * operating system `os`.
          * @param resources the resources to add
+         * @since 1.3.0
          */
         add_network_install_resources(resources: Resources): void;
 
@@ -4864,12 +5074,14 @@ export namespace Libosinfo {
         /**
          * Adds a variant `variant` to operating system `os`.
          * @param variant the variant to add
+         * @since 0.2.9
          */
         add_variant(variant: OsVariant): void;
 
         /**
          * @param profile the install script profile that must be either OSINFO_INSTALL_SCRIPT_PROFILE_DESKTOP or OSINFO_INSTALL_SCRIPT_PROFILE_JEOS
          * @returns A new {@link Libosinfo.InstallScript} for the `os` `profile`
+         * @since 0.2.0
          */
         find_install_script(profile: string): InstallScript;
 
@@ -4879,6 +5091,7 @@ export namespace Libosinfo {
          * derived and cloned operating systems.
          * @param filter an optional device property filter
          * @returns A list of OsinfoDeviceLink
+         * @since 1.3.0
          */
         get_all_device_links(filter: Filter | null): DeviceLinkList;
 
@@ -4888,6 +5101,7 @@ export namespace Libosinfo {
          * systems.
          * @param filter an optional device property filter
          * @returns A list of devices
+         * @since 0.0.5
          */
         get_all_devices(filter: Filter | null): DeviceList;
 
@@ -4902,18 +5116,21 @@ export namespace Libosinfo {
          * Get the complete firmwares matching a given filter, including the non-supported ones.
          * @param filter an optional firmware property filter
          * @returns A list of firmwares
+         * @since 1.10.0
          */
         get_complete_firmware_list(filter: Filter | null): FirmwareList;
 
         /**
          * Gets list of all available device drivers for OS `os`.
          * @returns A list of device drivers
+         * @since 0.2.2
          */
         get_device_drivers(): DeviceDriverList;
 
         /**
          * Gets list of the highest priority device drivers for OS `os`.
          * @returns A list of device drivers
+         * @since 1.7.0
          */
         get_device_drivers_prioritized(): DeviceDriverList;
 
@@ -4939,6 +5156,7 @@ export namespace Libosinfo {
          * @param value the required value of property `property`
          * @param inherited Should devices from inherited and cloned OSs be included in the search.
          * @returns The found devices
+         * @since 0.0.6
          */
         get_devices_by_property(property: string, value: string, inherited: boolean): DeviceList;
 
@@ -4960,17 +5178,20 @@ export namespace Libosinfo {
          * Get all the supported firmwares matching a given filter
          * @param filter an optional firmware property filter
          * @returns A list of firmwares
+         * @since 1.7.0
          */
         get_firmware_list(filter: Filter | null): FirmwareList;
 
         /**
          * Get all installed images associated with operating system `os`.
          * @returns A list of images
+         * @since 1.3.0
          */
         get_image_list(): ImageList;
 
         /**
          * @returns a list of the install scripts for the specified os
+         * @since 0.2.0
          */
         get_install_script_list(): InstallScriptList;
 
@@ -4984,6 +5205,7 @@ export namespace Libosinfo {
         /**
          * Get the list of maximum resources for the operating system `os`.
          * @returns A list of resources
+         * @since 1.3.0
          */
         get_maximum_resources(): ResourcesList;
 
@@ -5003,6 +5225,7 @@ export namespace Libosinfo {
          * Get the list of resources needed for network installing an operating system
          * `os`.
          * @returns A list of resources
+         * @since 1.3.0
          */
         get_network_install_resources(): ResourcesList;
 
@@ -5015,6 +5238,7 @@ export namespace Libosinfo {
         /**
          * Use this to determine the release status of the `os`.
          * @returns release status of `os`.
+         * @since 0.2.9
          */
         get_release_status(): ReleaseStatus;
 
@@ -5027,6 +5251,7 @@ export namespace Libosinfo {
         /**
          * Gets all known variants of operating system `os`.
          * @returns A list of variants
+         * @since 0.2.9
          */
         get_variant_list(): OsVariantList;
     }
@@ -5082,6 +5307,7 @@ export namespace Libosinfo {
          * Construct a new os list that is filled with oss
          * from `source`
          * @returns a copy of the os list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_copy()` instead.
          */
         new_copy(): OsList;
 
@@ -5090,6 +5316,7 @@ export namespace Libosinfo {
          * from `source` that match `filter`
          * @param filter the filter to apply
          * @returns a filtered copy of the os list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_filtered()` instead.
          */
         new_filtered(filter: Filter): OsList;
 
@@ -5098,6 +5325,7 @@ export namespace Libosinfo {
          * oss that are present in both `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second os list to copy
          * @returns an intersection of the two os lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_intersection()` instead.
          */
         new_intersection(sourceTwo: OsList): OsList;
 
@@ -5106,6 +5334,7 @@ export namespace Libosinfo {
          * oss that are present in either `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second os list to copy
          * @returns a union of the two os lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_union()` instead.
          */
         new_union(sourceTwo: OsList): OsList;
     }
@@ -5171,6 +5400,7 @@ export namespace Libosinfo {
         /**
          * The name of the `variant`
          * @returns the name, or NULL
+         * @since 0.2.9
          */
         get_name(): string;
     }
@@ -5289,6 +5519,7 @@ export namespace Libosinfo {
          * all derived and upgraded platforms.
          * @param filter an optional device property filter
          * @returns A list of devices
+         * @since 0.2.7
          */
         get_all_devices(filter: Filter | null): DeviceList;
 
@@ -5360,6 +5591,7 @@ export namespace Libosinfo {
          * Construct a new platform list that is filled with platforms
          * from `source`
          * @returns a copy of the platform list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_copy()` instead.
          */
         new_copy(): PlatformList;
 
@@ -5368,6 +5600,7 @@ export namespace Libosinfo {
          * from `source` that match `filter`
          * @param filter the filter to apply
          * @returns a filtered copy of the platform list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_filtered()` instead.
          */
         new_filtered(filter: Filter): PlatformList;
 
@@ -5376,6 +5609,7 @@ export namespace Libosinfo {
          * platforms that are present in both `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second platform list to copy
          * @returns an intersection of the two platform lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_intersection()` instead.
          */
         new_intersection(sourceTwo: PlatformList): PlatformList;
 
@@ -5384,6 +5618,7 @@ export namespace Libosinfo {
          * platforms that are present in either `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second platform list to copy
          * @returns a union of the two platform lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_union()` instead.
          */
         new_union(sourceTwo: PlatformList): PlatformList;
     }
@@ -5511,11 +5746,13 @@ export namespace Libosinfo {
 
         /**
          * @returns A {@link GLib.Date} representing the product's EOL date,                           or NULL.
+         * @since 0.2.8
          */
         get_eol_date(): GLib.Date;
 
         /**
          * @returns A string representing the product's EOL date, or NULL.
+         * @since 0.2.8
          */
         get_eol_date_string(): string;
 
@@ -5533,11 +5770,13 @@ export namespace Libosinfo {
 
         /**
          * @returns A {@link GLib.Date} representing the product's release date,                           or NULL.
+         * @since 0.2.8
          */
         get_release_date(): GLib.Date;
 
         /**
          * @returns A string representing the product's release date, or NULL.
+         * @since 0.2.8
          */
         get_release_date_string(): string;
 
@@ -5546,6 +5785,7 @@ export namespace Libosinfo {
         /**
          * Retrieve all the short-ids associated with the product.
          * @returns the list of short-ids.
+         * @since 1.5.0
          */
         get_short_id_list(): string[];
 
@@ -5686,6 +5926,7 @@ export namespace Libosinfo {
          * Construct a new os list that is filled with oss
          * from `source`
          * @returns a copy of the os list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_copy()` instead.
          */
         new_copy(): ProductList;
 
@@ -5694,6 +5935,7 @@ export namespace Libosinfo {
          * from `source` that match `filter`
          * @param filter the filter to apply
          * @returns a filtered copy of the os list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_filtered()` instead.
          */
         new_filtered(filter: Filter): ProductList;
 
@@ -5702,6 +5944,7 @@ export namespace Libosinfo {
          * oss that are present in both `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second os list to copy
          * @returns an intersection of the two os lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_intersection()` instead.
          */
         new_intersection(sourceTwo: ProductList): ProductList;
 
@@ -5710,6 +5953,7 @@ export namespace Libosinfo {
          * oss that are present in either `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second os list to copy
          * @returns a union of the two os lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_union()` instead.
          */
         new_union(sourceTwo: ProductList): ProductList;
     }
@@ -5928,6 +6172,7 @@ export namespace Libosinfo {
          * Construct a new resources list that is filled with resources instances
          * from `source`
          * @returns a copy of the resources list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_copy()` instead.
          */
         new_copy(): ResourcesList;
 
@@ -5936,6 +6181,7 @@ export namespace Libosinfo {
          * from `source` that match `filter`
          * @param filter the filter to apply
          * @returns a filtered copy of the resources list
+         * @deprecated since 0.2.2: Use `osinfo_list_new_filtered()` instead.
          */
         new_filtered(filter: Filter): ResourcesList;
 
@@ -5944,6 +6190,7 @@ export namespace Libosinfo {
          * resources instances that are present in both `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second resources list to copy
          * @returns an intersection of the two resources lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_intersection()` instead.
          */
         new_intersection(sourceTwo: ResourcesList): ResourcesList;
 
@@ -5952,6 +6199,7 @@ export namespace Libosinfo {
          * resources instances that are present in either `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second resources list to copy
          * @returns a union of the two resources lists
+         * @deprecated since 0.2.2: Use `osinfo_list_new_union()` instead.
          */
         new_union(sourceTwo: ResourcesList): ResourcesList;
     }
@@ -6177,6 +6425,7 @@ export namespace Libosinfo {
          * NOTE: Currently this only works for trees with a .treeinfo file
          * @param location the location of an installation tree
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.0
          */
         static create_from_location(location: string, cancellable: Gio.Cancellable | null): Tree;
 
@@ -6186,6 +6435,7 @@ export namespace Libosinfo {
          * @param priority the I/O priority of the request
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback Function to call when result of this call is ready
+         * @since 0.1.0
          */
         static create_from_location_async(location: string, priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Tree> | null): void;
 
@@ -6193,6 +6443,7 @@ export namespace Libosinfo {
          * Finishes an asynchronous tree object creation process started with
          * `osinfo_tree_create_from_location_async`.
          * @param res a {@link Gio.AsyncResult}
+         * @since 0.1.0
          */
         static create_from_location_finish(res: Gio.AsyncResult): Tree;
 
@@ -6200,6 +6451,7 @@ export namespace Libosinfo {
          * Creates a new {@link Libosinfo.Tree} for installation tree represented by `treeinfo`.
          * @param treeinfo a string representing the .treeinfo content
          * @param location the location of the original `treeinfo`
+         * @since 1.7.0
          */
         static create_from_treeinfo(treeinfo: string, location: string): Tree;
 
@@ -6207,12 +6459,14 @@ export namespace Libosinfo {
         /**
          * Retrieves the target hardware architecture of the OS `tree` provides.
          * @returns the hardware architecture, or NULL
+         * @since 0.1.0
          */
         get_architecture(): string;
 
         /**
          * Retrieves the path to the boot_iso image in the install tree.
          * @returns the path to boot_iso image, or NULL
+         * @since 0.1.0
          */
         get_boot_iso_path(): string;
 
@@ -6221,6 +6475,7 @@ export namespace Libosinfo {
          * 
          * Note: This only applies to installer trees of 'linux' OS family.
          * @returns the path to initrd image, or NULL
+         * @since 0.1.0
          */
         get_initrd_path(): string;
 
@@ -6229,17 +6484,20 @@ export namespace Libosinfo {
          * 
          * Note: This only applies to installer trees of 'linux' OS family.
          * @returns the path to kernel image, or NULL
+         * @since 0.1.0
          */
         get_kernel_path(): string;
 
         /**
          * @returns the operating system, or NULL
+         * @since 1.5.0
          */
         get_os(): Os;
 
         /**
          * Gets the variants of the associated operating system.
          * @returns the operating system variant, or NULL
+         * @since 1.5.0
          */
         get_os_variants(): OsVariantList;
 
@@ -6249,6 +6507,7 @@ export namespace Libosinfo {
          * Note: In practice, this will usually not be the exact copy of the
          * architecture but rather a regular expression that matches it.
          * @returns the treeinfo architecture, or NULL
+         * @since 0.1.0
          */
         get_treeinfo_arch(): string;
 
@@ -6258,6 +6517,7 @@ export namespace Libosinfo {
          * Note: In practice, this will usually not be the exact copy of the family
          * but rather a regular expression that matches it.
          * @returns the treeinfo family, or NULL
+         * @since 0.1.0
          */
         get_treeinfo_family(): string;
 
@@ -6267,6 +6527,7 @@ export namespace Libosinfo {
          * Note: In practice, this will usually not be the exact copy of the variant
          * but rather a regular expression that matches it.
          * @returns the treeinfo variant, or NULL
+         * @since 0.1.0
          */
         get_treeinfo_variant(): string;
 
@@ -6276,12 +6537,14 @@ export namespace Libosinfo {
          * Note: In practice, this will usually not be the exact copy of version but
          * rather a regular expression that matches it.
          * @returns the treeinfo version, or NULL
+         * @since 0.1.0
          */
         get_treeinfo_version(): string;
 
         /**
          * The URL to the `tree`
          * @returns the URL, or NULL
+         * @since 0.1.0
          */
         get_url(): string;
 
@@ -6293,12 +6556,14 @@ export namespace Libosinfo {
          * while the metadata in the `reference` tree must be regular expressions.
          * @param reference a reference {@link Libosinfo.Tree} instance
          * @returns `TRUE` if `tree` is a match for `reference`. `FALSE` otherwise
+         * @since 1.10.0
          */
         matches(reference: Tree): boolean;
 
         /**
          * Sets the {@link Libosinfo.Os} associated to the {@link Libosinfo.Tree} instance.
          * @param os an {@link Libosinfo.Os} instance
+         * @since 1.5.0
          */
         set_os(os: Os): void;
     }
@@ -6354,6 +6619,8 @@ export namespace Libosinfo {
          * Construct a new tree list that is filled with trees
          * from `source`
          * @returns a copy of the tree list
+         * @since 0.1.0
+         * @deprecated since 0.2.2: Use `osinfo_list_new_copy()` instead.
          */
         new_copy(): TreeList;
 
@@ -6362,6 +6629,8 @@ export namespace Libosinfo {
          * from `source` that match `filter`
          * @param filter the filter to apply
          * @returns a filtered copy of the tree list
+         * @since 0.1.0
+         * @deprecated since 0.2.2: Use `osinfo_list_new_filtered()` instead.
          */
         new_filtered(filter: Filter): TreeList;
 
@@ -6370,6 +6639,8 @@ export namespace Libosinfo {
          * trees that are present in both `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second tree list to copy
          * @returns an intersection of the two tree lists
+         * @since 0.1.0
+         * @deprecated since 0.2.2: Use `osinfo_list_new_intersection()` instead.
          */
         new_intersection(sourceTwo: TreeList): TreeList;
 
@@ -6378,6 +6649,8 @@ export namespace Libosinfo {
          * trees that are present in either `sourceOne` and `sourceTwo`.
          * @param sourceTwo the second tree list to copy
          * @returns a union of the two tree lists
+         * @since 0.1.0
+         * @deprecated since 0.2.2: Use `osinfo_list_new_union()` instead.
          */
         new_union(sourceTwo: TreeList): TreeList;
     }

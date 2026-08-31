@@ -335,6 +335,7 @@ export namespace Abi {
          * 
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
+         * @since 3.4
          */
         get_action_name(): string | null;
 
@@ -343,6 +344,7 @@ export namespace Abi {
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
          * @returns the current target value
+         * @since 3.4
          */
         get_action_target_value(): GLib.Variant;
 
@@ -359,6 +361,7 @@ export namespace Abi {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          */
         set_action_name(action_name: string | null): void;
 
@@ -383,6 +386,7 @@ export namespace Abi {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          */
         set_action_target_value(target_value: GLib.Variant | null): void;
 
@@ -399,6 +403,7 @@ export namespace Abi {
          * `action` is the action name and `target` is the string to use
          * as the target.)
          * @param detailed_action_name the detailed action name
+         * @since 3.4
          */
         set_detailed_action_name(detailed_action_name: string): void;
 
@@ -406,6 +411,7 @@ export namespace Abi {
          * Gets the action name for `actionable`.
          * 
          * See `gtk_actionable_set_action_name()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_name(): string | null;
@@ -414,6 +420,7 @@ export namespace Abi {
          * Gets the current target value of `actionable`.
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant;
@@ -431,6 +438,7 @@ export namespace Abi {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_name(action_name: string | null): void;
@@ -456,6 +464,7 @@ export namespace Abi {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
@@ -477,12 +486,16 @@ export namespace Abi {
          * > `gtk_activatable_get_related_action()` to retrieve the
          * > previous action.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         do_set_related_action(action: Gtk.Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_related_action(): Gtk.Action;
 
@@ -491,6 +504,8 @@ export namespace Abi {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_use_action_appearance(): boolean;
 
@@ -500,6 +515,8 @@ export namespace Abi {
          * > {@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * > property and call `gtk_activatable_do_set_related_action()` when it changes.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_related_action(action: Gtk.Action): void;
 
@@ -512,6 +529,8 @@ export namespace Abi {
          * > `gtk_activatable_sync_action_properties()` to update `activatable`
          * > if needed.
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -521,6 +540,8 @@ export namespace Abi {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          */
         sync_action_properties(action: Gtk.Action | null): void;
 
@@ -530,6 +551,8 @@ export namespace Abi {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          * @virtual
          */
         vfunc_sync_action_properties(action: Gtk.Action | null): void;
@@ -566,6 +589,7 @@ export namespace Abi {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -575,6 +599,7 @@ export namespace Abi {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }

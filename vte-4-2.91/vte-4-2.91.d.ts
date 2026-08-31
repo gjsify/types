@@ -597,6 +597,7 @@ export namespace Vte {
 
         /**
          * Since 0.42 this is a no-op.
+         * @deprecated since 0.42
          */
         close(): void;
 
@@ -643,12 +644,14 @@ export namespace Vte {
          * @param spawn_flags flags from {@link GLib.SpawnFlags}
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.48
          */
         spawn_async(working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, timeout: number, cancellable: Gio.Cancellable | null): void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, or `false` on error with `error` filled in
+         * @since 0.48
          */
         spawn_finish(result: Gio.AsyncResult): [boolean, GLib.Pid | null];
 
@@ -692,6 +695,7 @@ export namespace Vte {
          * @param spawn_flags flags from {@link GLib.SpawnFlags}
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.62
          */
         spawn_with_fds_async(working_directory: string | null, argv: string[], envv: string[] | null, fds: number[] | null, map_fds: number[] | null, spawn_flags: GLib.SpawnFlags, timeout: number, cancellable: Gio.Cancellable | null): void;
 
@@ -736,6 +740,7 @@ export namespace Vte {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -779,6 +784,7 @@ export namespace Vte {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -1781,6 +1787,7 @@ export namespace Vte {
         /**
          * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
          * selection.
+         * @deprecated since 0.50: Use `vte_terminal_copy_clipboard_format()` with {@link Vte.Format.TEXT}   instead.
          * @virtual
          */
         vfunc_copy_clipboard(): void;
@@ -1886,6 +1893,7 @@ export namespace Vte {
         /**
          * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
          * selection.
+         * @deprecated since 0.50: Use `vte_terminal_copy_clipboard_format()` with {@link Vte.Format.TEXT}   instead.
          */
         copy_clipboard(): void;
 
@@ -1900,6 +1908,7 @@ export namespace Vte {
          * returns the HTML data in UTF-16 with a U+FEFF BYTE ORDER MARK character at
          * the start.
          * @param format a {@link Vte.Format}
+         * @since 0.50
          */
         copy_clipboard_format(format: Format): void;
 
@@ -1925,6 +1934,7 @@ export namespace Vte {
         /**
          * Sends a block of binary data to the child.
          * @param data data to send to the child
+         * @deprecated since 0.60: Don't send binary data. Use `vte_terminal_feed_child()` instead to send   UTF-8 text
          */
         feed_child_binary(data: Uint8Array | string | null): void;
 
@@ -1932,12 +1942,14 @@ export namespace Vte {
          * Checks whether or not the terminal will attempt to draw bold text,
          * by using a bold font variant.
          * @returns `true` if bolding is enabled, `false` if not
+         * @deprecated since 0.60: There's probably no reason for this feature to exist.
          */
         get_allow_bold(): boolean;
 
         /**
          * Checks whether or not hyperlinks (OSC 8 escape sequence) are allowed.
          * @returns `true` if hyperlinks are enabled, `false` if not
+         * @since 0.50
          */
         get_allow_hyperlink(): boolean;
 
@@ -1953,16 +1965,19 @@ export namespace Vte {
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
          * or if SGR 1 only enables bold and leaves the color intact.
          * @returns `true` if bold also enables bright, `false` if not
+         * @since 0.52
          */
         get_bold_is_bright(): boolean;
 
         /**
          * @returns the terminal's cell height scale
+         * @since 0.52
          */
         get_cell_height_scale(): number;
 
         /**
          * @returns the terminal's cell width scale
+         * @since 0.52
          */
         get_cell_width_scale(): number;
 
@@ -2023,22 +2038,26 @@ export namespace Vte {
         /**
          * Checks whether the terminal performs bidirectional text rendering.
          * @returns `true` if BiDi is enabled, `false` if not
+         * @since 0.58
          */
         get_enable_bidi(): boolean;
 
         /**
          * @returns `true` if fallback scrolling is enabled
+         * @since 0.64
          */
         get_enable_fallback_scrolling(): boolean;
 
         /**
          * Checks whether the terminal shapes Arabic text.
          * @returns `true` if Arabic shaping is enabled, `false` if not
+         * @since 0.58
          */
         get_enable_shaping(): boolean;
 
         /**
          * @returns `true` if SIXEL image support is enabled, `false` otherwise
+         * @since 0.62
          */
         get_enable_sixel(): boolean;
 
@@ -2046,6 +2065,7 @@ export namespace Vte {
          * Determines the name of the encoding in which the terminal expects data to be
          * encoded, or `null` if UTF-8 is in use.
          * @returns the current encoding for the terminal
+         * @deprecated since 0.54: Support for non-UTF-8 is deprecated.
          */
         get_encoding(): string | null;
 
@@ -2073,6 +2093,7 @@ export namespace Vte {
 
         /**
          * @returns `null`
+         * @deprecated since 0.54
          */
         get_icon_title(): string | null;
 
@@ -2099,6 +2120,7 @@ export namespace Vte {
         /**
          * Checks whether or not the terminal will rewrap its contents upon resize.
          * @returns `true` if rewrapping is enabled, `false` if not
+         * @deprecated since 0.58
          */
         get_rewrap_on_resize(): boolean;
 
@@ -2109,21 +2131,25 @@ export namespace Vte {
 
         /**
          * @returns whether or not the terminal will forcibly scroll to the bottom of the viewable history when the user presses a key.  Modifier keys do not trigger this behavior.
+         * @since 0.52
          */
         get_scroll_on_keystroke(): boolean;
 
         /**
          * @returns whether or not the terminal will forcibly scroll to the bottom of the viewable history when the new data is received from the child.
+         * @since 0.52
          */
         get_scroll_on_output(): boolean;
 
         /**
          * @returns `true` if the scroll unit is pixels; or `false` if the unit is lines
+         * @since 0.66
          */
         get_scroll_unit_is_pixels(): boolean;
 
         /**
          * @returns length of the scrollback buffer used by the terminal. A negative value means "infinite scrollback".
+         * @since 0.52
          */
         get_scrollback_lines(): number;
 
@@ -2147,6 +2173,7 @@ export namespace Vte {
         /**
          * Checks whether or not the terminal will allow blinking text.
          * @returns the blinking setting
+         * @since 0.52
          */
         get_text_blink_mode(): TextBlinkMode;
 
@@ -2164,6 +2191,7 @@ export namespace Vte {
          * 0.70, passing a non-`null` `array` parameter will make this function itself return `null`.
          * @param is_selected a {@link Vte.SelectionFunc} callback
          * @returns a newly allocated text string, or `null`.
+         * @deprecated since 0.56: Use `vte_terminal_get_text()` instead.
          */
         get_text_include_trailing_spaces(is_selected: SelectionFunc | null): [string, CharAttributes[]];
 
@@ -2202,26 +2230,31 @@ export namespace Vte {
          * 
          * If `null`, a built-in set is used.
          * @returns a string, or `null`
+         * @since 0.40
          */
         get_word_char_exceptions(): string | null;
 
         /**
          * @returns the horizontal alignment of `terminal` within its allocation
+         * @since 0.70
          */
         get_xalign(): Align;
 
         /**
          * @returns the horizontal fillment of `terminal` within its allocation
+         * @since 0.70
          */
         get_xfill(): boolean;
 
         /**
          * @returns the vertical alignment of `terminal` within its allocation
+         * @since 0.70
          */
         get_yalign(): Align;
 
         /**
          * @returns the vertical fillment of `terminal` within its allocation
+         * @since 0.70
          */
         get_yfill(): boolean;
 
@@ -2235,6 +2268,7 @@ export namespace Vte {
          * @param regex a {@link Vte.Regex}
          * @param flags PCRE2 match flags, or 0
          * @returns an integer associated with this expression
+         * @since 0.46
          */
         match_add_regex(regex: Regex, flags: number): number;
 
@@ -2250,6 +2284,7 @@ export namespace Vte {
          * @param column the text column
          * @param row the text row
          * @returns a newly allocated string which matches one of the previously   set regular expressions
+         * @deprecated since 0.46: Use `vte_terminal_match_check_event()` instead.
          */
         match_check(column: bigint | number, row: bigint | number): [string | null, number];
 
@@ -2272,6 +2307,7 @@ export namespace Vte {
          * specified by `tag`.  The terminal keeps a reference to `cursor`.
          * @param tag the tag of the regex which should use the specified cursor
          * @param cursor the {@link Gdk.Cursor} which the terminal should use when the pattern is   highlighted, or `null` to use the standard cursor
+         * @deprecated since 0.40: Use `vte_terminal_match_set_cursor_name()` instead.
          */
         match_set_cursor(tag: number, cursor: Gdk.Cursor | null): void;
 
@@ -2303,6 +2339,7 @@ export namespace Vte {
          * this differs from `vte_terminal_feed_child()` in that it may process
          * `text` before passing it to the child (e.g. apply bracketed mode)
          * @param text a string to paste
+         * @since 0.68
          */
         paste_text(text: string): void;
 
@@ -2344,6 +2381,7 @@ export namespace Vte {
 
         /**
          * @returns the search {@link Vte.Regex} regex set in `terminal`, or `null`
+         * @since 0.46
          */
         search_get_regex(): Regex;
 
@@ -2359,6 +2397,7 @@ export namespace Vte {
          * <literal>PCRE2_MULTILINE</literal> flag.
          * @param regex a {@link Vte.Regex}, or `null`
          * @param flags PCRE2 match flags, or 0
+         * @since 0.46
          */
         search_set_regex(regex: Regex | null, flags: number): void;
 
@@ -2378,12 +2417,14 @@ export namespace Vte {
          * Controls whether or not the terminal will attempt to draw bold text,
          * by using a bold font variant.
          * @param allow_bold `true` if the terminal should attempt to draw bold text
+         * @deprecated since 0.60: There's probably no reason for this feature to exist.
          */
         set_allow_bold(allow_bold: boolean): void;
 
         /**
          * Controls whether or not hyperlinks (OSC 8 escape sequence) are allowed.
          * @param allow_hyperlink `true` if the terminal should allow hyperlinks
+         * @since 0.50
          */
         set_allow_hyperlink(allow_hyperlink: boolean): void;
 
@@ -2407,6 +2448,7 @@ export namespace Vte {
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
          * or if SGR 1 only enables bold and leaves the color intact.
          * @param bold_is_bright `true` if bold should also enable bright
+         * @since 0.52
          */
         set_bold_is_bright(bold_is_bright: boolean): void;
 
@@ -2416,6 +2458,7 @@ export namespace Vte {
          * This can be used to increase the line spacing. (The font's height is not affected.)
          * Valid values go from 1.0 (default) to 2.0 ("double spacing").
          * @param scale the cell height scale
+         * @since 0.52
          */
         set_cell_height_scale(scale: number): void;
 
@@ -2425,6 +2468,7 @@ export namespace Vte {
          * This can be used to increase the letter spacing. (The font's width is not affected.)
          * Valid values go from 1.0 (default) to 2.0.
          * @param scale the cell width scale
+         * @since 0.52
          */
         set_cell_width_scale(scale: number): void;
 
@@ -2465,6 +2509,7 @@ export namespace Vte {
          * under the cursor will be drawn with foreground and background colors
          * reversed.
          * @param cursor_foreground the new color to use for the text cursor, or `null`
+         * @since 0.44
          */
         set_color_cursor_foreground(cursor_foreground: Gdk.RGBA | null): void;
 
@@ -2537,6 +2582,7 @@ export namespace Vte {
         /**
          * Controls whether or not the terminal will perform bidirectional text rendering.
          * @param enable_bidi `true` to enable BiDi support
+         * @since 0.58
          */
         set_enable_bidi(enable_bidi: boolean): void;
 
@@ -2548,18 +2594,21 @@ export namespace Vte {
          * {@link Gtk.ScrolledWindow}, to perform kinetic scrolling (while vte itself does
          * not, yet, implement kinetic scrolling by itself).
          * @param enable whether to enable fallback scrolling
+         * @since 0.64
          */
         set_enable_fallback_scrolling(enable: boolean): void;
 
         /**
          * Controls whether or not the terminal will shape Arabic text.
          * @param enable_shaping `true` to enable Arabic shaping
+         * @since 0.58
          */
         set_enable_shaping(enable_shaping: boolean): void;
 
         /**
          * Set whether to enable SIXEL images.
          * @param enabled whether to enable SIXEL images
+         * @since 0.62
          */
         set_enable_sixel(enabled: boolean): void;
 
@@ -2573,6 +2622,7 @@ export namespace Vte {
          * spawning the child process.
          * @param codeset target charset, or `null` to use UTF-8
          * @returns `true` if the encoding could be changed to the specified one,  or `false` with `error` set to {@link GLib.ConvertError.NO_CONVERSION}.
+         * @deprecated since 0.54: Support for non-UTF-8 is deprecated.
          */
         set_encoding(codeset: string | null): boolean;
 
@@ -2620,6 +2670,7 @@ export namespace Vte {
          * Controls whether or not the terminal will rewrap its contents, including
          * the scrollback history, whenever the terminal's width changes.
          * @param rewrap `true` if the terminal should rewrap on resize
+         * @deprecated since 0.58
          */
         set_rewrap_on_resize(rewrap: boolean): void;
 
@@ -2644,6 +2695,7 @@ export namespace Vte {
          * This function is rarely useful, except when the terminal is added to a
          * {@link Gtk.ScrolledWindow}.
          * @param enable whether to use pixels as scroll unit
+         * @since 0.66
          */
         set_scroll_unit_is_pixels(enable: boolean): void;
 
@@ -2672,6 +2724,7 @@ export namespace Vte {
         /**
          * Controls whether or not the terminal will allow blinking text.
          * @param text_blink_mode the {@link Vte.TextBlinkMode} to use
+         * @since 0.52
          */
         set_text_blink_mode(text_blink_mode: TextBlinkMode): void;
 
@@ -2687,6 +2740,7 @@ export namespace Vte {
          * 
          * Use `null` to reset the set of exception characters to the default.
          * @param exceptions a string of ASCII punctuation characters, or `null`
+         * @since 0.40
          */
         set_word_char_exceptions(exceptions: string): void;
 
@@ -2696,6 +2750,7 @@ export namespace Vte {
          * Note: `VTE_ALIGN_START_FILL` is not supported, and will be treated
          *   like {@link Vte.Align.START}.
          * @param align alignment value from {@link Vte.Align}
+         * @since 0.70
          */
         set_xalign(align: Align): void;
 
@@ -2705,18 +2760,21 @@ export namespace Vte {
          * Note: `VTE_FILL_START_FILL` is not supported, and will be treated
          *   like `VTE_FILL_START`.
          * @param fill fillment value from `VteFill`
+         * @since 0.70
          */
         set_xfill(fill: boolean): void;
 
         /**
          * Sets the vertical alignment of `terminal` within its allocation.
          * @param align alignment value from {@link Vte.Align}
+         * @since 0.70
          */
         set_yalign(align: Align): void;
 
         /**
          * Sets the vertical fillment of `terminal` within its allocation.
          * @param fill fillment value from `VteFill`
+         * @since 0.70
          */
         set_yfill(fill: boolean): void;
 
@@ -2733,6 +2791,7 @@ export namespace Vte {
          * @param spawn_flags flags from {@link GLib.SpawnFlags}
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.48
          */
         spawn_async(pty_flags: PtyFlags, working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, timeout: number, cancellable: Gio.Cancellable | null): void;
 
@@ -2768,6 +2827,7 @@ export namespace Vte {
          * @param child_setup an extra child setup function to run in the child just before `exec()`, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, or `false` on error with `error` filled in
+         * @deprecated since 0.48: Use `vte_terminal_spawn_async()` instead.
          */
         spawn_sync(pty_flags: PtyFlags, working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Pid | null];
 
@@ -2825,6 +2885,7 @@ export namespace Vte {
          * @param spawn_flags flags from {@link GLib.SpawnFlags}
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.62
          */
         spawn_with_fds_async(pty_flags: PtyFlags, working_directory: string | null, argv: string[], envv: string[] | null, fds: number[] | null, map_fds: number[] | null, spawn_flags: GLib.SpawnFlags, timeout: number, cancellable: Gio.Cancellable | null): void;
 
@@ -2951,6 +3012,7 @@ export namespace Vte {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -2963,6 +3025,7 @@ export namespace Vte {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -2971,6 +3034,7 @@ export namespace Vte {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -2983,6 +3047,7 @@ export namespace Vte {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -2993,18 +3058,21 @@ export namespace Vte {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -3016,6 +3084,7 @@ export namespace Vte {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -3049,6 +3118,7 @@ export namespace Vte {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -3058,6 +3128,7 @@ export namespace Vte {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -3068,6 +3139,7 @@ export namespace Vte {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -3115,6 +3187,7 @@ export namespace Vte {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -3123,12 +3196,14 @@ export namespace Vte {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -3139,18 +3214,21 @@ export namespace Vte {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -3162,6 +3240,7 @@ export namespace Vte {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -3389,6 +3468,7 @@ export namespace Vte {
          * @param replacement the replacement string
          * @param flags PCRE2 match flags
          * @returns the substituted string, or `null`   if an error occurred
+         * @since 0.56
          */
         substitute(subject: string, replacement: string, flags: number): string;
 

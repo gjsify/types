@@ -1075,6 +1075,7 @@ export namespace Gsf {
         /**
          * Extend `xin` so that it can parse a subtree in OpenDoc metadata format
          * @param doc {@link Gsf.XMLInDoc}
+         * @since 1.14.24
          */
         odf_subtree(doc: XMLIn): void;
 
@@ -1083,6 +1084,7 @@ export namespace Gsf {
          * results in `accum`.
          * @param _in {@link Gsf.Input}
          * @returns A {@link GLib.Error} if there was an error.
+         * @since 1.14.24
          */
         read_from_msole(_in: Input): GLib.Error;
 
@@ -1091,6 +1093,7 @@ export namespace Gsf {
          * into `md`.  Overwrite any existing properties with the same id.
          * @param input {@link Gsf.Input}
          * @returns (out) (optional) (nullable): place to store a {@link GLib.Error} if anything goes wrong if there is a problem.
+         * @since 1.14.24
          */
         read_from_odf(input: Input): GLib.Error;
 
@@ -1121,12 +1124,14 @@ export namespace Gsf {
          * @param out {@link Gsf.Output}
          * @param doc_not_component a kludge to differentiate DocumentSummary from Summary
          * @returns `true` on success;
+         * @since 1.14.24
          */
         write_to_msole(out: Output, doc_not_component: boolean): boolean;
 
         /**
          * @param output a pointer to a {@link Gsf.Output}.
          * @returns `true` if no error occured.
+         * @since 1.14.24
          */
         write_to_odf(output: XMLOut): boolean;
     }
@@ -4339,6 +4344,7 @@ export namespace Gsf {
          * Parser for time stamps.  Requires a ISO 8601 formatted string.
          * @param spec The string to parse
          * @returns `true` on success
+         * @since 1.14.24
          */
         load_from_string(spec: string): number;
 
@@ -4350,6 +4356,7 @@ export namespace Gsf {
         /**
          * Calls g_value_set_box (value, stamp);
          * @param value {@link GObject.Value}
+         * @since 1.14.24
          */
         to_value(value: GObject.Value | any): void;
     }

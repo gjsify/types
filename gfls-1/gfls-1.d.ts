@@ -327,11 +327,13 @@ export namespace Gfls {
          * `str` has the same semantics as the corresponding parameter of
          * `g_file_query_info()`.
          * @param str the value to add.
+         * @since 0.2
          */
         add(str: string): void;
 
         /**
          * @returns the complete string to pass to   `g_file_query_info()` (for example), or `null` if the list is empty.
+         * @since 0.2
          */
         to_string(): string | null;
     }
@@ -385,11 +387,13 @@ export namespace Gfls {
         // Methods
         /**
          * @returns the {@link Gio.File} of `config`, or `null`.
+         * @since 0.2
          */
         get_file(): Gio.File | null;
 
         /**
          * @returns the {@link Gio.InputStream} of `config`, or `null`.
+         * @since 0.2
          */
         get_stream(): Gio.InputStream | null;
     }
@@ -439,6 +443,9 @@ export namespace Gfls {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @since 0.1
+         */
         static get_default(): UnsavedDocumentTitles;
 
         // Methods
@@ -449,6 +456,7 @@ export namespace Gfls {
          * 
          * The returned number is the lowest available value, starting at 1.
          * @returns the allocated number.
+         * @since 0.1
          */
         allocate_number(): number;
 
@@ -457,6 +465,7 @@ export namespace Gfls {
          * you can use `gfls_unsaved_document_titles_set_title_callback()`.
          * @param number a number.
          * @returns a suitable title for the unsaved document with the   given `number`.
+         * @since 0.1
          */
         get_title(number: number): string;
 
@@ -465,6 +474,7 @@ export namespace Gfls {
          * available for a next unsaved document. This is usually done when the document
          * is saved on disk.
          * @param number the number to release.
+         * @since 0.1
          */
         release_number(number: number): void;
     }
@@ -492,12 +502,14 @@ export namespace Gfls {
         // Methods
         /**
          * Frees `region`.
+         * @since 0.4
          */
         free(): void;
 
         /**
          * Frees `iter`.
          * @param iter a {@link Gfls.BytesRegionIter}.
+         * @since 0.4
          */
         iter_free(iter: BytesRegionIter | null): void;
 
@@ -512,12 +524,14 @@ export namespace Gfls {
          * region and the holes, so that the corresponding {@link GLib.Bytes} is traversed from
          * start to end.
          * @param iter a {@link Gfls.BytesRegionIter}. It must not be the end iterator.
+         * @since 0.4
          */
         iter_get_sub_region(iter: BytesRegionIter): [number, number, boolean];
 
         /**
          * @param iter a {@link Gfls.BytesRegionIter}.
          * @returns whether `iter` is the end iterator.
+         * @since 0.4
          */
         iter_is_end(iter: BytesRegionIter): boolean;
 
@@ -526,12 +540,14 @@ export namespace Gfls {
          * 
          * If all sub-regions have been traversed, `iter` is set to the end iterator.
          * @param iter a {@link Gfls.BytesRegionIter}. The end iterator is accepted as an input   value.
+         * @since 0.4
          */
         iter_next(iter: BytesRegionIter): void;
 
         /**
          * @param bytes a {@link GLib.Bytes}.
          * @returns whether `region` can be applied to `bytes` (it checks the total size).
+         * @since 0.4
          */
         match_bytes(bytes: GLib.Bytes | Uint8Array): boolean;
 
@@ -542,6 +558,7 @@ export namespace Gfls {
          * 
          * One line per sub-region, in order.
          * @returns a string representation of `region`.
+         * @since 0.4
          */
         to_string(): string;
     }
@@ -568,6 +585,7 @@ export namespace Gfls {
          * with a hole. See also `gfls_bytes_region_match_bytes()`.
          * @param sub_region_length the length of the sub-region. Must not be equal to 0.
          * @param is_part_of_region whether the sub-region is part of the region.
+         * @since 0.4
          */
         append(sub_region_length: bigint | number, is_part_of_region: boolean): void;
 
@@ -575,11 +593,13 @@ export namespace Gfls {
          * Creates a {@link Gfls.BytesRegion} and frees `builder`.
          * @param free_data if `true`, the data is freed as well.
          * @returns a {@link Gfls.BytesRegion}, or `null` if   `free_data` is `true`.
+         * @since 0.4
          */
         free(free_data: boolean): BytesRegion | null;
 
         /**
          * @returns the current total size, in number of bytes (holes included).
+         * @since 0.4
          */
         get_current_size(): number;
     }
@@ -605,6 +625,7 @@ export namespace Gfls {
          * 
          * If you need to know if closing `conv` returns an error, call
          * `gfls_iconv_close()` explicitly beforehand.
+         * @since 0.4
          */
         free(): void;
     }

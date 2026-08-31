@@ -2106,6 +2106,7 @@ export namespace AgsGui {
          * @param current current step value
          * @param is_abscissae is abscissae
          * @param data the data
+         * @since 3.0.0
          */
         static linear_step_conversion_func(current: number, is_abscissae: boolean, data: null): number;
 
@@ -2114,6 +2115,7 @@ export namespace AgsGui {
          * @param x the x position
          * @param y the y position
          * @param data the {@link AgsGui.Cartesian}
+         * @since 3.0.0
          */
         static linear_translate_func(x: number, y: number, data: null): [number, number];
 
@@ -2121,6 +2123,7 @@ export namespace AgsGui {
          * Labeling function of x big scale
          * @param value the value
          * @param data the {@link AgsGui.Cartesian}
+         * @since 3.0.0
          */
         static linear_x_big_scale_func(value: number, data: null): number;
 
@@ -2128,6 +2131,7 @@ export namespace AgsGui {
          * Format x label `value` appropriately.
          * @param value the value
          * @param data the {@link AgsGui.Cartesian}
+         * @since 3.0.0
          */
         static linear_x_label_func(value: number, data: null): string;
 
@@ -2135,6 +2139,7 @@ export namespace AgsGui {
          * Labeling function of x small scale
          * @param value the value
          * @param data the {@link AgsGui.Cartesian}
+         * @since 3.0.0
          */
         static linear_x_small_scale_func(value: number, data: null): number;
 
@@ -2142,6 +2147,7 @@ export namespace AgsGui {
          * Labeling function of y big scale
          * @param value the value
          * @param data the {@link AgsGui.Cartesian}
+         * @since 3.0.0
          */
         static linear_y_big_scale_func(value: number, data: null): number;
 
@@ -2149,6 +2155,7 @@ export namespace AgsGui {
          * Format y label `value` appropriately.
          * @param value the value
          * @param data the {@link AgsGui.Cartesian}
+         * @since 3.0.0
          */
         static linear_y_label_func(value: number, data: null): string;
 
@@ -2156,6 +2163,7 @@ export namespace AgsGui {
          * Labeling function of y small scale
          * @param value the value
          * @param data the {@link AgsGui.Cartesian}
+         * @since 3.0.0
          */
         static linear_y_small_scale_func(value: number, data: null): number;
 
@@ -2163,509 +2171,594 @@ export namespace AgsGui {
         /**
          * Add `plot` to `cartesian`.
          * @param plot the {@link AgsGui.Plot}-struct
+         * @since 3.0.0
          */
         add_plot(plot: null): void;
 
         /**
          * Fill x label if `do_x_label`, otherwise y label.
          * @param do_x_label do x label
+         * @since 3.0.0
          */
         fill_label(do_x_label: boolean): void;
 
         /**
          * Get center of `cartesian`.
          * @returns the center
+         * @since 3.2.0
          */
         get_center(): number;
 
         /**
          * Get font size of `cartesian`.
          * @returns the font size
+         * @since 3.2.0
          */
         get_font_size(): number;
 
         /**
          * Get line width of `cartesian`.
          * @returns the line width
+         * @since 3.2.0
          */
         get_line_width(): number;
 
         /**
          * Get point radius.
          * @returns the point radius
+         * @since 3.2.0
          */
         get_point_radius(): number;
 
         /**
          * Get cairo surface of `cartesian`.
          * @returns the cairo surface
+         * @since 3.2.0
          */
         get_surface(): cairo.Surface;
 
         /**
          * Get x big scale factor of `cartesian`.
          * @returns the x big factor
+         * @since 3.2.0
          */
         get_x_big_scale_factor(): number;
 
         /**
          * Get x end of `cartesian`.
          * @returns the x end
+         * @since 3.2.0
          */
         get_x_end(): number;
 
         /**
          * Get x label of `cartesian`.
          * @returns the x label
+         * @since 3.2.0
          */
         get_x_label(): string[];
 
         /**
          * Get x label factor of `cartesian`.
          * @returns the x label factor
+         * @since 3.2.0
          */
         get_x_label_factor(): number;
 
         /**
          * Get x label precision of `cartesian`.
          * @returns the x label precision
+         * @since 3.2.0
          */
         get_x_label_precision(): number;
 
         /**
          * Get x label start of `cartesian`.
          * @returns the x label start
+         * @since 3.2.0
          */
         get_x_label_start(): number;
 
         /**
          * Get x label step width.
          * @returns the x label step width
+         * @since 3.2.0
          */
         get_x_label_step_width(): number;
 
         /**
          * Get x margin of `cartesian`.
          * @returns the x margin
+         * @since 3.2.0
          */
         get_x_margin(): number;
 
         /**
          * Get x scale step width of `cartesian`.
          * @returns the x scale step width
+         * @since 3.2.0
          */
         get_x_scale_step_width(): number;
 
         /**
          * Get x small scale factor of `cartesian`.
          * @returns the x small factor
+         * @since 3.2.0
          */
         get_x_small_scale_factor(): number;
 
         /**
          * Get x start of `cartesian`.
          * @returns the x start
+         * @since 3.2.0
          */
         get_x_start(): number;
 
         /**
          * Get x step of `cartesian`.
          * @returns the x step
+         * @since 3.2.0
          */
         get_x_step(): number;
 
         /**
          * Get x step factor of `cartesian`.
          * @returns the x step factor
+         * @since 3.2.0
          */
         get_x_step_factor(): number;
 
         /**
          * Get x step width of `cartesian`.
          * @returns the x step width
+         * @since 3.2.0
          */
         get_x_step_width(): number;
 
         /**
          * Get x unit of `cartesian`.
          * @returns the x unit
+         * @since 3.2.0
          */
         get_x_unit(): string;
 
         /**
          * Get x unit size of `cartesian`.
          * @returns the x unit size
+         * @since 3.2.0
          */
         get_x_unit_size(): number;
 
         /**
          * Get x unit x0 of `cartesian`.
          * @returns the x unit x0
+         * @since 3.2.0
          */
         get_x_unit_x0(): number;
 
         /**
          * Get x unit y0 of `cartesian`.
          * @returns the x unit y0
+         * @since 3.2.0
          */
         get_x_unit_y0(): number;
 
         /**
          * Get y big scale factor of `cartesian`.
          * @returns the y big factor
+         * @since 3.2.0
          */
         get_y_big_scale_factor(): number;
 
         /**
          * Get y end of `cartesian`.
          * @returns the y end
+         * @since 3.2.0
          */
         get_y_end(): number;
 
         /**
          * Get y label of `cartesian`.
          * @returns the y label
+         * @since 3.2.0
          */
         get_y_label(): string[];
 
         /**
          * Get y label factor of `cartesian`.
          * @returns the y label factor
+         * @since 3.2.0
          */
         get_y_label_factor(): number;
 
         /**
          * Get y label precision of `cartesian`.
          * @returns the y label precision
+         * @since 3.2.0
          */
         get_y_label_precision(): number;
 
         /**
          * Get y label start of `cartesian`.
          * @returns the y label start
+         * @since 3.2.0
          */
         get_y_label_start(): number;
 
         /**
          * Get y label step height of `cartesian`.
          * @returns the y label step height
+         * @since 3.2.0
          */
         get_y_label_step_height(): number;
 
         /**
          * Get y margin of `cartesian`.
          * @returns the y margin
+         * @since 3.2.0
          */
         get_y_margin(): number;
 
         /**
          * Get y scale step height of `cartesian`.
          * @returns the y scale step height
+         * @since 3.2.0
          */
         get_y_scale_step_height(): number;
 
         /**
          * Get y small scale factor of `cartesian`.
          * @returns the y small factor
+         * @since 3.2.0
          */
         get_y_small_scale_factor(): number;
 
         /**
          * Get y start of `cartesian`.
          * @returns the y start
+         * @since 3.2.0
          */
         get_y_start(): number;
 
         /**
          * Get y step of `cartesian`.
          * @returns the y step
+         * @since 3.2.0
          */
         get_y_step(): number;
 
         /**
          * Get y step factor of `cartesian`.
          * @returns the y step factor
+         * @since 3.2.0
          */
         get_y_step_factor(): number;
 
         /**
          * Get y step height.
          * @returns the y step height
+         * @since 3.2.0
          */
         get_y_step_height(): number;
 
         /**
          * Get y unit of `cartesian`.
          * @returns the y unit
+         * @since 3.2.0
          */
         get_y_unit(): string;
 
         /**
          * Get y unit size of `cartesian`.
          * @returns the y unit size
+         * @since 3.2.0
          */
         get_y_unit_size(): number;
 
         /**
          * Get y unit x0 of `cartesian`.
          * @returns the y unit x0
+         * @since 3.2.0
          */
         get_y_unit_x0(): number;
 
         /**
          * Get y unit y0 of `cartesian`.
+         * @since 3.2.0
          */
         get_y_unit_y0(): number;
 
         /**
          * Reallocate x label if `do_x_label`, otherwise y label.
          * @param do_x_label do x label
+         * @since 3.0.0
          */
         reallocate_label(do_x_label: boolean): void;
 
         /**
          * Remove `plot` from `cartesian`.
          * @param plot the {@link AgsGui.Plot}-struct
+         * @since 3.0.0
          */
         remove_plot(plot: null): void;
 
         /**
          * Set center of `cartesian`.
          * @param center the center
+         * @since 3.2.0
          */
         set_center(center: number): void;
 
         /**
          * Set font size of `cartesian`.
          * @param font_size the font size
+         * @since 3.2.0
          */
         set_font_size(font_size: number): void;
 
         /**
          * Set line width of `cartesian`.
          * @param line_width the line width
+         * @since 3.2.0
          */
         set_line_width(line_width: number): void;
 
         /**
          * Set point radius.
          * @param point_radius the point radius
+         * @since 3.2.0
          */
         set_point_radius(point_radius: number): void;
 
         /**
          * Set x big scale factor of `cartesian`.
          * @param x_big_scale_factor the x big scale factor
+         * @since 3.2.0
          */
         set_x_big_scale_factor(x_big_scale_factor: number): void;
 
         /**
          * Set x end of `cartesian`.
          * @param x_end the x end
+         * @since 3.2.0
          */
         set_x_end(x_end: number): void;
 
         /**
          * Set x label of `cartesian`.
          * @param x_label the x label
+         * @since 3.2.0
          */
         set_x_label(x_label: string): void;
 
         /**
          * Set x label factor of `cartesian`.
          * @param x_label_factor the x label factor
+         * @since 3.2.0
          */
         set_x_label_factor(x_label_factor: number): void;
 
         /**
          * Set x label precision of `cartesian`.
          * @param x_label_precision the x label precision
+         * @since 3.2.0
          */
         set_x_label_precision(x_label_precision: number): void;
 
         /**
          * Set x label start of `cartesian`.
          * @param x_label_start the x label start
+         * @since 3.2.0
          */
         set_x_label_start(x_label_start: number): void;
 
         /**
          * Set x label step width of `cartesian`.
          * @param x_label_step_width the x label step width
+         * @since 3.2.0
          */
         set_x_label_step_width(x_label_step_width: number): void;
 
         /**
          * Set x margin of `cartesian`.
          * @param x_margin the x margin
+         * @since 3.2.0
          */
         set_x_margin(x_margin: number): void;
 
         /**
          * Set x scale step width of `cartesian`.
          * @param x_scale_step_width the x scale step width
+         * @since 3.2.0
          */
         set_x_scale_step_width(x_scale_step_width: number): void;
 
         /**
          * Set x small scale factor of `cartesian`.
          * @param x_small_scale_factor the x small scale factor
+         * @since 3.2.0
          */
         set_x_small_scale_factor(x_small_scale_factor: number): void;
 
         /**
          * Set x start of `cartesian`.
          * @param x_start the x start
+         * @since 3.2.0
          */
         set_x_start(x_start: number): void;
 
         /**
          * Set x step of `cartesian`.
          * @param x_step the x step
+         * @since 3.2.0
          */
         set_x_step(x_step: number): void;
 
         /**
          * Set x step factor of `cartesian`.
          * @param x_step_factor the x step factor
+         * @since 3.2.0
          */
         set_x_step_factor(x_step_factor: number): void;
 
         /**
          * Set x step width of `cartesian`.
          * @param x_step_width the x step width
+         * @since 3.2.0
          */
         set_x_step_width(x_step_width: number): void;
 
         /**
          * Set x unit of `cartesian`.
          * @param x_unit the x unit
+         * @since 3.2.0
          */
         set_x_unit(x_unit: string): void;
 
         /**
          * Set x unit size of `cartesian`.
          * @param x_unit_size the x unit size
+         * @since 3.2.0
          */
         set_x_unit_size(x_unit_size: number): void;
 
         /**
          * Set x unit x0 of `cartesian`.
          * @param x_unit_x0 the x unit x0
+         * @since 3.2.0
          */
         set_x_unit_x0(x_unit_x0: number): void;
 
         /**
          * Set x unit y0 of `cartesian`.
          * @param x_unit_y0 the x unit y0
+         * @since 3.2.0
          */
         set_x_unit_y0(x_unit_y0: number): void;
 
         /**
          * Set y big scale factor of `cartesian`.
          * @param y_big_scale_factor the y big scale factor
+         * @since 3.2.0
          */
         set_y_big_scale_factor(y_big_scale_factor: number): void;
 
         /**
          * Set y end of `cartesian`.
          * @param y_end the y end
+         * @since 3.2.0
          */
         set_y_end(y_end: number): void;
 
         /**
          * Set y label of `cartesian`.
          * @param y_label the y label
+         * @since 3.2.0
          */
         set_y_label(y_label: string): void;
 
         /**
          * Set y label factor of `cartesian`.
          * @param y_label_factor the y label factor
+         * @since 3.2.0
          */
         set_y_label_factor(y_label_factor: number): void;
 
         /**
          * Set y label precision of `cartesian`.
          * @param y_label_precision the y label precision
+         * @since 3.2.0
          */
         set_y_label_precision(y_label_precision: number): void;
 
         /**
          * Set y label start of `cartesian`.
          * @param y_label_start the y label start
+         * @since 3.2.0
          */
         set_y_label_start(y_label_start: number): void;
 
         /**
          * Set y label step height of `cartesian`.
          * @param y_label_step_height the y label step height
+         * @since 3.2.0
          */
         set_y_label_step_height(y_label_step_height: number): void;
 
         /**
          * Set y margin of `cartesian`.
          * @param y_margin the y margin
+         * @since 3.2.0
          */
         set_y_margin(y_margin: number): void;
 
         /**
          * Set y scale step height of `cartesian`.
          * @param y_scale_step_height the y scale step height
+         * @since 3.2.0
          */
         set_y_scale_step_height(y_scale_step_height: number): void;
 
         /**
          * Set y small scale factor of `cartesian`.
          * @param y_small_scale_factor the y small scale factor
+         * @since 3.2.0
          */
         set_y_small_scale_factor(y_small_scale_factor: number): void;
 
         /**
          * Set y start of `cartesian`.
          * @param y_start the y start
+         * @since 3.2.0
          */
         set_y_start(y_start: number): void;
 
         /**
          * Set y step of `cartesian`.
          * @param y_step the y step
+         * @since 3.2.0
          */
         set_y_step(y_step: number): void;
 
         /**
          * Set y step factor of `cartesian`.
          * @param y_step_factor the y step factor
+         * @since 3.2.0
          */
         set_y_step_factor(y_step_factor: number): void;
 
         /**
          * Set y step height of `cartesian`.
          * @param y_step_height the y step height
+         * @since 3.2.0
          */
         set_y_step_height(y_step_height: number): void;
 
         /**
          * Set y unit of `cartesian`.
          * @param y_unit the y unit
+         * @since 3.2.0
          */
         set_y_unit(y_unit: string): void;
 
         /**
          * Set y unit size of `cartesian`.
          * @param y_unit_size the y unit size
+         * @since 3.2.0
          */
         set_y_unit_size(y_unit_size: number): void;
 
         /**
          * Set y unit x0 of `cartesian`.
          * @param y_unit_x0 the y unit x0
+         * @since 3.2.0
          */
         set_y_unit_x0(y_unit_x0: number): void;
 
         /**
          * Set y unit y0 of `cartesian`.
          * @param y_unit_y0 the y unit y0
+         * @since 3.2.0
          */
         set_y_unit_y0(y_unit_y0: number): void;
 
@@ -2701,6 +2794,7 @@ export namespace AgsGui {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -2713,6 +2807,7 @@ export namespace AgsGui {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -2721,6 +2816,7 @@ export namespace AgsGui {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -2733,6 +2829,7 @@ export namespace AgsGui {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -2743,18 +2840,21 @@ export namespace AgsGui {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -2766,6 +2866,7 @@ export namespace AgsGui {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -2799,6 +2900,7 @@ export namespace AgsGui {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -2808,6 +2910,7 @@ export namespace AgsGui {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -2818,6 +2921,7 @@ export namespace AgsGui {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -2865,6 +2969,7 @@ export namespace AgsGui {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -2873,12 +2978,14 @@ export namespace AgsGui {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -2889,18 +2996,21 @@ export namespace AgsGui {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -2912,6 +3022,7 @@ export namespace AgsGui {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -3302,6 +3413,7 @@ export namespace AgsGui {
         // Virtual methods
         /**
          * The value-changed event of `dial`.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_value_changed(): void;
@@ -3310,138 +3422,161 @@ export namespace AgsGui {
         /**
          * Get adjustment of `dial`.
          * @returns the {@link Gtk.Adjustment}
+         * @since 3.2.0
          */
         get_adjustment(): Gtk.Adjustment;
 
         /**
          * Get button height of `dial`.
          * @returns the button height
+         * @since 3.2.0
          */
         get_button_height(): number;
 
         /**
          * Get button width of `dial`.
          * @returns the button width
+         * @since 3.2.0
          */
         get_button_width(): number;
 
         /**
          * Get font name of `dial`.
          * @returns the font name
+         * @since 8.0.0
          */
         get_font_name(): string;
 
         /**
          * Get font size of `dial`.
          * @returns the font size
+         * @since 3.2.0
          */
         get_font_size(): number;
 
         /**
          * Get margin_left of `dial`.
          * @returns the margin left
+         * @since 3.2.0
          */
         get_margin_left(): number;
 
         /**
          * Get margin right of `dial`.
          * @returns the margin right
+         * @since 3.2.0
          */
         get_margin_right(): number;
 
         /**
          * Get outline strength of `dial`.
          * @returns the outline _strength
+         * @since 3.2.0
          */
         get_outline_strength(): number;
 
         /**
          * Get radius of `dial`.
          * @returns the radius
+         * @since 3.2.0
          */
         get_radius(): number;
 
         /**
          * Get scale precision of `dial`.
          * @returns the scale precision
+         * @since 3.2.0
          */
         get_scale_precision(): number;
 
         /**
          * Get value
          * @returns the value
+         * @since 3.14.0
          */
         get_value(): number;
 
         /**
          * Set adjustment of `dial`.
          * @param adjustment the {@link Gtk.Adjustment}
+         * @since 3.2.0
          */
         set_adjustment(adjustment: Gtk.Adjustment): void;
 
         /**
          * Set button height of `dial`.
          * @param button_height the button height
+         * @since 3.2.0
          */
         set_button_height(button_height: number): void;
 
         /**
          * Set button width of `dial`.
          * @param button_width the button width
+         * @since 3.2.0
          */
         set_button_width(button_width: number): void;
 
         /**
          * Set flags of `dial`.
          * @param flags the flags
+         * @since 8.0.0
          */
         set_flags(flags: DialFlags): void;
 
         /**
          * Set font name of `dial`.
          * @param font_name the font name
+         * @since 8.0.0
          */
         set_font_name(font_name: string): void;
 
         /**
          * Set font size of `dial`.
          * @param font_size the font size
+         * @since 3.2.0
          */
         set_font_size(font_size: number): void;
 
         /**
          * Set margin left of `dial`.
          * @param margin_left the margin left
+         * @since 3.2.0
          */
         set_margin_left(margin_left: number): void;
 
         /**
          * Set margin right of `dial`.
          * @param margin_right the margin right
+         * @since 3.2.0
          */
         set_margin_right(margin_right: number): void;
 
         /**
          * Set outline strength of `dial`.
          * @param outline_strength the outline strength
+         * @since 3.2.0
          */
         set_outline_strength(outline_strength: number): void;
 
         /**
          * Set radius of `dial`.
          * @param radius the radius
+         * @since 3.2.0
          */
         set_radius(radius: number): void;
 
         /**
          * Set scale precision of `dial`.
          * @param scale_precision the scale precision
+         * @since 3.2.0
          */
         set_scale_precision(scale_precision: number): void;
 
         /**
          * Set value
          * @param value the value to set
+         * @since 3.0.0
          */
         set_value(value: number): void;
 
@@ -3449,17 +3584,20 @@ export namespace AgsGui {
          * Test flags of `dial`.
          * @param flags the flags
          * @returns `true` on success, otherwise `false`
+         * @since 8.0.0
          */
         test_flags(flags: DialFlags): boolean;
 
         /**
          * Set flags of `dial`.
          * @param flags the flags
+         * @since 8.0.0
          */
         unset_flags(flags: DialFlags): void;
 
         /**
          * The value-changed event of `dial`.
+         * @since 3.0.0
          */
         value_changed(): void;
 
@@ -3495,6 +3633,7 @@ export namespace AgsGui {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -3507,6 +3646,7 @@ export namespace AgsGui {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -3515,6 +3655,7 @@ export namespace AgsGui {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -3527,6 +3668,7 @@ export namespace AgsGui {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -3537,18 +3679,21 @@ export namespace AgsGui {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -3560,6 +3705,7 @@ export namespace AgsGui {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -3593,6 +3739,7 @@ export namespace AgsGui {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -3602,6 +3749,7 @@ export namespace AgsGui {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -3612,6 +3760,7 @@ export namespace AgsGui {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -3659,6 +3808,7 @@ export namespace AgsGui {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -3667,12 +3817,14 @@ export namespace AgsGui {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -3683,18 +3835,21 @@ export namespace AgsGui {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -3706,6 +3861,7 @@ export namespace AgsGui {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -3716,6 +3872,7 @@ export namespace AgsGui {
          * This operation should behave similarly as if the user performed the
          * action.
          * @param value the value to set
+         * @since 4.10
          * @virtual
          */
         vfunc_set_current_value(value: number): boolean;
@@ -3923,6 +4080,7 @@ export namespace AgsGui {
          * @param y y-position
          * @param width allocation width
          * @param height allocation height
+         * @since 3.0.0
          */
         add(widget: Gtk.Widget, x: number, y: number, width: number, height: number): void;
 
@@ -3930,12 +4088,14 @@ export namespace AgsGui {
          * Find `child` of `expander`.
          * @param child the {@link Gtk.Widget}
          * @returns the matching {@link AgsGui.ExpanderChild}-struct
+         * @since 3.0.0
          */
         child_find(child: Gtk.Widget): null;
 
         /**
          * Removes a {@link Gtk.Widget} of {@link AgsGui.Expander}
          * @param widget the child {@link Gtk.Widget}
+         * @since 3.0.0
          */
         remove(widget: Gtk.Widget): void;
 
@@ -4063,6 +4223,7 @@ export namespace AgsGui {
          * @param y y-position
          * @param width allocation width
          * @param height allocation height
+         * @since 3.0.0
          */
         add(widget: Gtk.Widget, x: number, y: number, width: number, height: number): void;
 
@@ -4070,12 +4231,14 @@ export namespace AgsGui {
          * Find `child` of `expander_set`.
          * @param child the {@link Gtk.Widget}
          * @returns the matching {@link AgsGui.ExpanderSetChild}-struct
+         * @since 3.0.0
          */
         child_find(child: Gtk.Widget): null;
 
         /**
          * Removes a {@link Gtk.Widget} of {@link AgsGui.ExpanderSet}
          * @param widget the child {@link Gtk.Widget}
+         * @since 3.0.0
          */
         remove(widget: Gtk.Widget): void;
 
@@ -4250,6 +4413,7 @@ export namespace AgsGui {
         /**
          * Response `file_dialog` due to user action.
          * @param response_id the response id
+         * @since 6.6.0
          * @virtual
          */
         vfunc_response(response_id: number): void;
@@ -4258,24 +4422,28 @@ export namespace AgsGui {
         /**
          * Get download link of `file_dialog`.
          * @returns the {@link Gtk.LinkButton} or `null`
+         * @since 7.2.8
          */
         get_download_link(): Gtk.LinkButton;
 
         /**
          * Get widget of `file_dialog`.
          * @returns the {@link AgsGui.FileWidget}
+         * @since 6.6.0
          */
         get_file_widget(): FileWidget;
 
         /**
          * Response `file_dialog` due to user action.
          * @param response_id the response id
+         * @since 6.6.0
          */
         response(response_id: number): void;
 
         /**
          * Set `flags` of `file_dialog`.
          * @param flags the flags
+         * @since 7.2.8
          */
         set_flags(flags: number): void;
 
@@ -4283,12 +4451,14 @@ export namespace AgsGui {
          * Test `flags` of `file_dialog`.
          * @param flags the flags
          * @returns `true` if flags set, otherwise `false`
+         * @since 7.2.8
          */
         test_flags(flags: number): boolean;
 
         /**
          * Set `flags` of `file_dialog`.
          * @param flags the flags
+         * @since 7.2.8
          */
         unset_flags(flags: number): void;
 
@@ -4552,18 +4722,21 @@ export namespace AgsGui {
         /**
          * Get filename of `file_entry`.
          * @returns the filename
+         * @since 7.5.0
          */
         get_filename(): string;
 
         /**
          * Set filename of `file_entry`.
          * @param filename the filename
+         * @since 7.5.0
          */
         set_filename(filename: string): void;
 
         /**
          * Set flags of `file_entry`.
          * @param flags the flags
+         * @since 8.0.0
          */
         set_flags(flags: FileEntryFlags): void;
 
@@ -4571,12 +4744,14 @@ export namespace AgsGui {
          * Test flags of `file_entry`.
          * @param flags the flags
          * @returns `true` on success, otherwise `false`
+         * @since 8.0.0
          */
         test_flags(flags: FileEntryFlags): boolean;
 
         /**
          * Set flags of `file_entry`.
          * @param flags the flags
+         * @since 8.0.0
          */
         unset_flags(flags: FileEntryFlags): void;
 
@@ -4938,12 +5113,14 @@ export namespace AgsGui {
         /**
          * Create directory `dir_path`.
          * @param dir_path the directory path
+         * @since 6.6.0
          * @virtual
          */
         vfunc_create_dir(dir_path: string): void;
 
         /**
          * Refresh `file_widget` due to current path change.
+         * @since 6.6.0
          * @virtual
          */
         vfunc_refresh(): void;
@@ -4952,6 +5129,7 @@ export namespace AgsGui {
         /**
          * Add `bookmark_location` to bookmark with `button_text`.
          * @param bookmark_location the bookmark location
+         * @since 6.6.0
          */
         add_bookmark(bookmark_location: string): void;
 
@@ -4959,195 +5137,228 @@ export namespace AgsGui {
          * Add `button_action` to location with `button_text`.
          * @param button_action the button action
          * @param button_text the button text
+         * @since 6.6.0
          */
         add_location(button_action: string, button_text: string): void;
 
         /**
          * Create directory `dir_path`.
          * @param dir_path the directory path
+         * @since 6.6.0
          */
         create_dir(dir_path: string): void;
 
         /**
          * Get app generic path of `file_widget`.
          * @returns the app generic path as string
+         * @since 6.6.0
          */
         get_app_generic_path(): string;
 
         /**
          * Get app home path of `file_widget`.
          * @returns the app home path as string
+         * @since 6.6.0
          */
         get_app_home_path(): string;
 
         /**
          * Get bookmark from `file_widget`.
          * @returns the bookmark {@link GLib.HashTable}
+         * @since 6.6.0
          */
         get_bookmark(): never;
 
         /**
          * Get bookmark filename of `file_widget`.
          * @returns the bookmark filename as string
+         * @since 6.6.0
          */
         get_bookmark_filename(): string;
 
         /**
          * Get current path of `file_widget`.
          * @returns the current path as string
+         * @since 6.6.0
          */
         get_current_path(): string;
 
         /**
          * Get default bundle of `file_widget`.
          * @returns the default bundle as string
+         * @since 6.6.0
          */
         get_default_bundle(): string;
 
         /**
          * Get default path of `file_widget`.
          * @returns the default path as string
+         * @since 6.6.0
          */
         get_default_path(): string;
 
         /**
          * Get file magic executable of `file_widget`.
          * @returns the file magic executable as string
+         * @since 6.6.0
          */
         get_file_magic_executable(): string;
 
         /**
          * Get filename of `file_widget`.
          * @returns the filename as string
+         * @since 6.6.0
          */
         get_filename(): string;
 
         /**
          * Get filenames of `file_widget`.
          * @returns the filename as string
+         * @since 6.6.0
          */
         get_filenames(): string[];
 
         /**
          * Get home path of `file_widget`.
          * @returns the home path as string
+         * @since 6.6.0
          */
         get_home_path(): string;
 
         /**
          * Get location from `file_widget`.
          * @returns the location {@link GLib.HashTable}
+         * @since 6.6.0
          */
         get_location(): never;
 
         /**
          * Get recently used from `file_widget`.
          * @returns the recently used string vector
+         * @since 6.6.0
          */
         get_recently_used(): [string[], number];
 
         /**
          * Get recently used filename of `file_widget`.
          * @returns the home path as string
+         * @since 6.6.0
          */
         get_recently_used_filename(): string;
 
         /**
          * Read bookmarks from bookmark-filename.
+         * @since 6.6.0
          */
         read_bookmark(): void;
 
         /**
          * Read recently-used from recently-used-filename.
+         * @since 6.6.0
          */
         read_recently_used(): void;
 
         /**
          * Refresh `file_widget` due to current path change.
+         * @since 6.6.0
          */
         refresh(): void;
 
         /**
          * Remove `bookmark_location` from bookmark with `button_text`.
          * @param bookmark_location the bookmark location
+         * @since 6.6.0
          */
         remove_bookmark(bookmark_location: string): void;
 
         /**
          * Remove `button_action` from location with `button_text`.
          * @param button_action the button action
+         * @since 6.6.0
          */
         remove_location(button_action: string): void;
 
         /**
          * Set `app_generic_path` of `file_widget`.
          * @param app_generic_path the app generic path
+         * @since 6.6.0
          */
         set_app_generic_path(app_generic_path: string): void;
 
         /**
          * Set `app_home_path` of `file_widget`.
          * @param app_home_path the app home path
+         * @since 6.6.0
          */
         set_app_home_path(app_home_path: string): void;
 
         /**
          * Set `bookmark_filename` of `file_widget`.
          * @param bookmark_filename the bookmark filename
+         * @since 6.6.0
          */
         set_bookmark_filename(bookmark_filename: string): void;
 
         /**
          * Set `current_path` of `file_widget`.
          * @param current_path the current path
+         * @since 6.6.0
          */
         set_current_path(current_path: string): void;
 
         /**
          * Set `default_bundle` of `file_widget`.
          * @param default_bundle the default bundle
+         * @since 6.6.0
          */
         set_default_bundle(default_bundle: string): void;
 
         /**
          * Set `default_path` of `file_widget`.
          * @param default_path the default path
+         * @since 6.6.0
          */
         set_default_path(default_path: string): void;
 
         /**
          * Set `file_action` of `file_widget`.
          * @param file_action the file action
+         * @since 6.6.0
          */
         set_file_action(file_action: number): void;
 
         /**
          * Set `file_filter` of `file_widget`.
          * @param file_filter the file filter
+         * @since 6.6.0
          */
         set_file_filter(file_filter: number): void;
 
         /**
          * Set `file_magic_executable` of `file_widget`.
          * @param file_magic_executable the file magic executable
+         * @since 6.6.0
          */
         set_file_magic_executable(file_magic_executable: string): void;
 
         /**
          * Set `flags` of `file_widget`.
          * @param flags the flags
+         * @since 6.6.0
          */
         set_flags(flags: number): void;
 
         /**
          * Set `home_path` of `file_widget`.
          * @param home_path the home path
+         * @since 6.6.0
          */
         set_home_path(home_path: string): void;
 
         /**
          * Set `recently_used_filename` of `file_widget`.
          * @param recently_used_filename the recently used filename
+         * @since 6.6.0
          */
         set_recently_used_filename(recently_used_filename: string): void;
 
@@ -5155,6 +5366,7 @@ export namespace AgsGui {
          * Test `file_action` of `file_widget`.
          * @param file_action the file action
          * @returns `true` if file action matches, otherwise `false`
+         * @since 6.6.0
          */
         test_file_action(file_action: number): boolean;
 
@@ -5162,6 +5374,7 @@ export namespace AgsGui {
          * Test `file_filter` of `file_widget`.
          * @param file_filter the file filter
          * @returns `true` if file filter matches, otherwise `false`
+         * @since 6.6.0
          */
         test_file_filter(file_filter: number): boolean;
 
@@ -5169,22 +5382,26 @@ export namespace AgsGui {
          * Test `flags` of `file_widget`.
          * @param flags the flags
          * @returns `true` if flags set, otherwise `false`
+         * @since 6.6.0
          */
         test_flags(flags: number): boolean;
 
         /**
          * Set `flags` of `file_widget`.
          * @param flags the flags
+         * @since 6.6.0
          */
         unset_flags(flags: number): void;
 
         /**
          * Write bookmarks from bookmark-filename.
+         * @since 6.6.0
          */
         write_bookmark(): void;
 
         /**
          * Write recently_useds from recently_used-filename.
+         * @since 6.6.0
          */
         write_recently_used(): void;
 
@@ -5348,18 +5565,21 @@ export namespace AgsGui {
         // Virtual methods
         /**
          * Emits ::clicked event.
+         * @since 6.6.0
          * @virtual
          */
         vfunc_clicked(): void;
 
         /**
          * Emits ::copy-event event.
+         * @since 6.6.0
          * @virtual
          */
         vfunc_copy_event(): IconLink;
 
         /**
          * Emits ::delete-event event.
+         * @since 6.6.0
          * @virtual
          */
         vfunc_delete_event(): void;
@@ -5367,59 +5587,69 @@ export namespace AgsGui {
         // Methods
         /**
          * Emits ::clicked event.
+         * @since 6.6.0
          */
         clicked(): void;
 
         /**
          * Emits ::copy-event event.
          * @returns the icon link
+         * @since 6.6.0
          */
         copy_event(): IconLink;
 
         /**
          * Emits ::delete-event event.
+         * @since 6.6.0
          */
         delete_event(): void;
 
         /**
          * Get action of `icon_link`.
          * @returns the action as string
+         * @since 6.6.0
          */
         get_action(): string;
 
         /**
          * Get icon name of `icon_link`.
          * @returns the icon name as string
+         * @since 6.6.0
          */
         get_icon_name(): string;
 
         /**
          * Get link text of `icon_link`.
          * @returns the link text as string
+         * @since 6.6.0
          */
         get_link_text(): string;
 
         /**
          * Set `action` of `icon_link`.
          * @param action the action
+         * @since 6.6.0
          */
         set_action(action: string): void;
 
         /**
          * Set `flags` of `icon_link`.
          * @param flags the flags
+         * @since 6.6.0
          */
         set_flags(flags: number): void;
 
         /**
          * Set `icon_name` of `icon_link`.
          * @param icon_name the icon name
+         * @since 6.6.0
          */
         set_icon_name(icon_name: string): void;
 
         /**
          * Set `link_text` of `icon_link`.
          * @param link_text the link text
+         * @since 6.6.0
          */
         set_link_text(link_text: string): void;
 
@@ -5427,12 +5657,14 @@ export namespace AgsGui {
          * Test `flags` of `icon_link`.
          * @param flags the flags
          * @returns `true` if flags set, otherwise `false`
+         * @since 6.6.0
          */
         test_flags(flags: number): boolean;
 
         /**
          * Set `flags` of `icon_link`.
          * @param flags the flags
+         * @since 6.6.0
          */
         unset_flags(flags: number): void;
 
@@ -5636,60 +5868,70 @@ export namespace AgsGui {
         /**
          * Get adjustment.
          * @returns the {@link Gtk.Adjustment}
+         * @since 3.2.0
          */
         get_adjustment(): Gtk.Adjustment;
 
         /**
          * Get segment count.
          * @returns the segment count
+         * @since 3.2.0
          */
         get_segment_count(): number;
 
         /**
          * Get segment height.
          * @returns the segment height
+         * @since 3.2.0
          */
         get_segment_height(): number;
 
         /**
          * Get segment padding.
          * @returns the segment padding
+         * @since 3.2.0
          */
         get_segment_padding(): number;
 
         /**
          * Get segment width.
          * @returns the segment width
+         * @since 3.2.0
          */
         get_segment_width(): number;
 
         /**
          * Set adjustment.
          * @param adjustment the {@link Gtk.Adjustment}
+         * @since 3.2.0
          */
         set_adjustment(adjustment: Gtk.Adjustment): void;
 
         /**
          * Set segment count.
          * @param segment_count the segment count
+         * @since 3.2.0
          */
         set_segment_count(segment_count: number): void;
 
         /**
          * Set segment height.
          * @param segment_height the segment height
+         * @since 3.2.0
          */
         set_segment_height(segment_height: number): void;
 
         /**
          * Set segment padding.
          * @param segment_padding the segment padding
+         * @since 3.2.0
          */
         set_segment_padding(segment_padding: number): void;
 
         /**
          * Set segment width.
          * @param segment_width the segment width
+         * @since 3.2.0
          */
         set_segment_width(segment_width: number): void;
 
@@ -5725,6 +5967,7 @@ export namespace AgsGui {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -5737,6 +5980,7 @@ export namespace AgsGui {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -5745,6 +5989,7 @@ export namespace AgsGui {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -5757,6 +6002,7 @@ export namespace AgsGui {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -5767,18 +6013,21 @@ export namespace AgsGui {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -5790,6 +6039,7 @@ export namespace AgsGui {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -5823,6 +6073,7 @@ export namespace AgsGui {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -5832,6 +6083,7 @@ export namespace AgsGui {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -5842,6 +6094,7 @@ export namespace AgsGui {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -5889,6 +6142,7 @@ export namespace AgsGui {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -5897,12 +6151,14 @@ export namespace AgsGui {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -5913,18 +6169,21 @@ export namespace AgsGui {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -5936,6 +6195,7 @@ export namespace AgsGui {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -5946,6 +6206,7 @@ export namespace AgsGui {
          * This operation should behave similarly as if the user performed the
          * action.
          * @param value the value to set
+         * @since 4.10
          * @virtual
          */
         vfunc_set_current_value(value: number): boolean;
@@ -6204,6 +6465,7 @@ export namespace AgsGui {
         /**
          * Emit signal  AgsInputDialog::response().
          * @param response the response
+         * @since 6.6.0
          * @virtual
          */
         vfunc_response(response: number): void;
@@ -6212,42 +6474,49 @@ export namespace AgsGui {
         /**
          * The {@link Gtk.Entry} to get input from.
          * @returns the entry widget
+         * @since 6.6.0
          */
         get_entry(): Gtk.Entry;
 
         /**
          * The {@link Gtk.SpinButton} to get input from.
          * @returns the spin button widget
+         * @since 6.6.0
          */
         get_spin_button(): Gtk.SpinButton;
 
         /**
          * Emit signal  AgsInputDialog::response().
          * @param response the response
+         * @since 6.6.0
          */
         response(response: number): void;
 
         /**
          * Set `flags`.
          * @param flags the flags
+         * @since 4.0.0
          */
         set_flags(flags: number): void;
 
         /**
          * Set informal message.
          * @param message the message
+         * @since 6.10.0
          */
         set_message(message: string): void;
 
         /**
          * Set label of spin button.
          * @param label the spin button label
+         * @since 6.6.0
          */
         set_spin_button_label(label: string): void;
 
         /**
          * Set informal text.
          * @param text the text
+         * @since 6.6.0
          */
         set_text(text: string): void;
 
@@ -6255,12 +6524,14 @@ export namespace AgsGui {
          * Test flags to be set.
          * @param flags the flags
          * @returns `true` if flags is set, otherwise `false`
+         * @since 4.0.0
          */
         test_flags(flags: number): boolean;
 
         /**
          * Unset `flags`.
          * @param flags the flags
+         * @since 4.0.0
          */
         unset_flags(flags: number): void;
 
@@ -6476,36 +6747,42 @@ export namespace AgsGui {
         /**
          * Get segment height.
          * @returns the segment height
+         * @since 4.0.0
          */
         get_segment_height(): number;
 
         /**
          * Get segment width.
          * @returns the segment width
+         * @since 4.0.0
          */
         get_segment_width(): number;
 
         /**
          * Set `led` to active state.
          * @returns `true` if led active, otherwise `false`
+         * @since 3.2.0
          */
         is_active(): boolean;
 
         /**
          * Set `led` active by `active`.
          * @param active `true` if active, otherwise `false`
+         * @since 3.0.0
          */
         set_active(active: boolean): void;
 
         /**
          * Set segment height.
          * @param segment_height the segment height
+         * @since 4.0.0
          */
         set_segment_height(segment_height: number): void;
 
         /**
          * Set segment width.
          * @param segment_width the segment width
+         * @since 4.0.0
          */
         set_segment_width(segment_width: number): void;
 
@@ -6541,6 +6818,7 @@ export namespace AgsGui {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -6553,6 +6831,7 @@ export namespace AgsGui {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -6561,6 +6840,7 @@ export namespace AgsGui {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -6573,6 +6853,7 @@ export namespace AgsGui {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -6583,18 +6864,21 @@ export namespace AgsGui {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -6606,6 +6890,7 @@ export namespace AgsGui {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -6639,6 +6924,7 @@ export namespace AgsGui {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -6648,6 +6934,7 @@ export namespace AgsGui {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -6658,6 +6945,7 @@ export namespace AgsGui {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -6705,6 +6993,7 @@ export namespace AgsGui {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -6713,12 +7002,14 @@ export namespace AgsGui {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -6729,18 +7020,21 @@ export namespace AgsGui {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -6752,6 +7046,7 @@ export namespace AgsGui {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -7011,47 +7306,55 @@ export namespace AgsGui {
         /**
          * Get led count of `led_array`.
          * @returns the led count
+         * @since 3.2.0
          */
         get_led_count(): number;
 
         /**
          * Set led height of `led_array`.
          * @returns the led height
+         * @since 3.2.0
          */
         get_segment_height(): number;
 
         /**
          * Get led width of `led_array`.
          * @returns the led width
+         * @since 3.2.0
          */
         get_segment_width(): number;
 
         /**
          * Set led count of `led_array`.
          * @param led_count the led count
+         * @since 3.0.0
          */
         set_led_count(led_count: number): void;
 
         /**
          * Set `nth` led active.
          * @param nth the nth led
+         * @since 3.0.0
          */
         set_nth(nth: number): void;
 
         /**
          * Set led height of `led_array`.
          * @param segment_height the led height
+         * @since 3.2.0
          */
         set_segment_height(segment_height: number): void;
 
         /**
          * Set led width of `led_array`.
          * @param segment_width the led width
+         * @since 3.2.0
          */
         set_segment_width(segment_width: number): void;
 
         /**
          * Unset all led active.
+         * @since 3.0.0
          */
         unset_all(): void;
 
@@ -7259,6 +7562,7 @@ export namespace AgsGui {
         /**
          * Emits ::value-changed event.
          * @param normalized_volume the normalized volume
+         * @since 3.0.0
          * @virtual
          */
         vfunc_value_changed(normalized_volume: number): void;
@@ -7267,54 +7571,63 @@ export namespace AgsGui {
         /**
          * Get lower of `level`.
          * @returns the lower
+         * @since 3.2.2
          */
         get_lower(): number;
 
         /**
          * Get normalized volume of `level`.
          * @returns the normalized volume
+         * @since 3.2.2
          */
         get_normalized_volume(): number;
 
         /**
          * Get upper of `level`.
          * @returns the upper
+         * @since 3.2.2
          */
         get_upper(): number;
 
         /**
          * Set data-format.
          * @param data_format the data format
+         * @since 5.1.0
          */
         set_data_format(data_format: LevelDataFormat): void;
 
         /**
          * Set `lower` of `level`.
          * @param lower the lower
+         * @since 3.2.2
          */
         set_lower(lower: number): void;
 
         /**
          * Set `normalized_volume` of `level`.
          * @param normalized_volume the normalized volume
+         * @since 3.2.2
          */
         set_normalized_volume(normalized_volume: number): void;
 
         /**
          * Set samplerate.
          * @param samplerate the samplerate
+         * @since 5.1.0
          */
         set_samplerate(samplerate: number): void;
 
         /**
          * Set `upper` of `level`.
          * @param upper the upper
+         * @since 3.2.2
          */
         set_upper(upper: number): void;
 
         /**
          * Emits ::value-changed event.
          * @param normalized_volume the normalized volume
+         * @since 3.0.0
          */
         value_changed(normalized_volume: number): void;
 
@@ -7350,6 +7663,7 @@ export namespace AgsGui {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -7362,6 +7676,7 @@ export namespace AgsGui {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -7370,6 +7685,7 @@ export namespace AgsGui {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -7382,6 +7698,7 @@ export namespace AgsGui {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -7392,18 +7709,21 @@ export namespace AgsGui {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -7415,6 +7735,7 @@ export namespace AgsGui {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -7448,6 +7769,7 @@ export namespace AgsGui {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -7457,6 +7779,7 @@ export namespace AgsGui {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -7467,6 +7790,7 @@ export namespace AgsGui {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -7514,6 +7838,7 @@ export namespace AgsGui {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -7522,12 +7847,14 @@ export namespace AgsGui {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -7538,18 +7865,21 @@ export namespace AgsGui {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -7561,6 +7891,7 @@ export namespace AgsGui {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -7785,6 +8116,7 @@ export namespace AgsGui {
          * Notify about child level height request.
          * @param level the {@link AgsGui.Level}
          * @param height_request the level's height-request
+         * @since 4.0.0
          * @virtual
          */
         vfunc_child_height_request(level: Gtk.Widget, height_request: number): void;
@@ -7793,6 +8125,7 @@ export namespace AgsGui {
          * Notify about child level width request.
          * @param level the {@link AgsGui.Level}
          * @param width_request the level's width-request
+         * @since 4.0.0
          * @virtual
          */
         vfunc_child_width_request(level: Gtk.Widget, width_request: number): void;
@@ -7801,6 +8134,7 @@ export namespace AgsGui {
         /**
          * Add `level` to `level_box`.
          * @param level the {@link AgsGui.Level}
+         * @since 4.0.0
          */
         add_level(level: Level): void;
 
@@ -7808,6 +8142,7 @@ export namespace AgsGui {
          * Notify about child level height request.
          * @param level the {@link AgsGui.Level}
          * @param height_request the level's height-request
+         * @since 4.0.0
          */
         child_height_request(level: Gtk.Widget, height_request: number): void;
 
@@ -7815,18 +8150,21 @@ export namespace AgsGui {
          * Notify about child level width request.
          * @param level the {@link AgsGui.Level}
          * @param width_request the level's width-request
+         * @since 4.0.0
          */
         child_width_request(level: Gtk.Widget, width_request: number): void;
 
         /**
          * Get level.
          * @returns the {@link GLib.List}-struct containing {@link AgsGui.Level}
+         * @since 4.0.0
          */
         get_level(): Level[];
 
         /**
          * Remove level at `position` of `level_box`.
          * @param level the {@link AgsGui.Level}
+         * @since 4.0.0
          */
         remove_level(level: Level): void;
 
@@ -7995,12 +8333,14 @@ export namespace AgsGui {
         /**
          * Add `tab` to `notebook`.
          * @param tab the {@link Gtk.ToggleButton}
+         * @since 3.0.0
          */
         add_tab(tab: Gtk.ToggleButton): void;
 
         /**
          * Get tab.
          * @returns the {@link GLib.List}-struct containing {@link Gtk.ToggleButton}
+         * @since 4.0.0
          */
         get_tab(): Gtk.ToggleButton[];
 
@@ -8008,6 +8348,7 @@ export namespace AgsGui {
          * Insert a new `AgsNotebookTab`-struct to `notebook`.
          * @param tab the {@link Gtk.ToggleButton}
          * @param position the position as integer
+         * @since 3.0.0
          */
         insert_tab(tab: Gtk.ToggleButton, position: number): void;
 
@@ -8015,12 +8356,14 @@ export namespace AgsGui {
          * Get next active tab following `position`.
          * @param position the position as integer
          * @returns the position of next active tab as integer
+         * @since 3.0.0
          */
         next_active_tab(position: number): number;
 
         /**
          * Remove `tab` from `notebook`.
          * @param tab the {@link Gtk.ToggleButton}
+         * @since 3.0.0
          */
         remove_tab(tab: Gtk.ToggleButton): void;
 
@@ -8267,6 +8610,7 @@ export namespace AgsGui {
         /**
          * Get note from key code.
          * @param key_code the key code
+         * @since 3.0.0
          */
         static key_code_to_note(key_code: number): string;
 
@@ -8275,6 +8619,7 @@ export namespace AgsGui {
          * Emits ::key-clicked event.
          * @param note the string representation of key
          * @param key_code the key code
+         * @since 3.0.0
          * @virtual
          */
         vfunc_key_clicked(note: string, key_code: number): void;
@@ -8283,6 +8628,7 @@ export namespace AgsGui {
          * Emits ::key-pressed event.
          * @param note the string representation of key
          * @param key_code the key code
+         * @since 3.0.0
          * @virtual
          */
         vfunc_key_pressed(note: string, key_code: number): void;
@@ -8291,6 +8637,7 @@ export namespace AgsGui {
          * Emits ::key-released event.
          * @param note the string representation of key
          * @param key_code the key code
+         * @since 3.0.0
          * @virtual
          */
         vfunc_key_released(note: string, key_code: number): void;
@@ -8300,42 +8647,49 @@ export namespace AgsGui {
          * Get active keys.
          * @param active_key_count return location of count of active keys
          * @returns the active keys as gint array
+         * @since 3.0.0
          */
         get_active_key(active_key_count: number): number;
 
         /**
          * Get base key code of `piano`.
          * @returns the base key code
+         * @since 3.2.0
          */
         get_base_key_code(): number;
 
         /**
          * Get base note of `piano`.
          * @returns the base note
+         * @since 3.2.0
          */
         get_base_note(): string;
 
         /**
          * Get mouse button state of `piano`.
          * @returns the button state
+         * @since 3.6.6
          */
         get_button_state(): number;
 
         /**
          * Get key count of `piano`.
          * @returns the key count
+         * @since 3.2.0
          */
         get_key_count(): number;
 
         /**
          * Get key height of `piano`.
          * @returns the key height
+         * @since 3.2.0
          */
         get_key_height(): number;
 
         /**
          * Get key width of `piano`.
          * @returns the key width
+         * @since 3.2.0
          */
         get_key_width(): number;
 
@@ -8343,6 +8697,7 @@ export namespace AgsGui {
          * Emits ::key-clicked event.
          * @param note the string representation of key
          * @param key_code the key code
+         * @since 3.0.0
          */
         key_clicked(note: string, key_code: number): void;
 
@@ -8350,6 +8705,7 @@ export namespace AgsGui {
          * Emits ::key-pressed event.
          * @param note the string representation of key
          * @param key_code the key code
+         * @since 3.0.0
          */
         key_pressed(note: string, key_code: number): void;
 
@@ -8357,42 +8713,49 @@ export namespace AgsGui {
          * Emits ::key-released event.
          * @param note the string representation of key
          * @param key_code the key code
+         * @since 3.0.0
          */
         key_released(note: string, key_code: number): void;
 
         /**
          * Set base key code of `piano`.
          * @param base_key_code the base key code
+         * @since 3.2.0
          */
         set_base_key_code(base_key_code: number): void;
 
         /**
          * Set base note of `piano`.
          * @param base_note the base note
+         * @since 3.2.0
          */
         set_base_note(base_note: string): void;
 
         /**
          * Set `button_state` of `piano`.
          * @param button_state the {@link AgsGui.PianoButtonState}-enum
+         * @since 3.6.6
          */
         set_button_state(button_state: number): void;
 
         /**
          * Set key count of `piano`.
          * @param key_count the key count
+         * @since 3.2.0
          */
         set_key_count(key_count: number): void;
 
         /**
          * Set key width of `piano`.
          * @param key_height the key width
+         * @since 3.2.0
          */
         set_key_height(key_height: number): void;
 
         /**
          * Set key width of `piano`.
          * @param key_width the base note
+         * @since 3.2.0
          */
         set_key_width(key_width: number): void;
 
@@ -8428,6 +8791,7 @@ export namespace AgsGui {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -8440,6 +8804,7 @@ export namespace AgsGui {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -8448,6 +8813,7 @@ export namespace AgsGui {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -8460,6 +8826,7 @@ export namespace AgsGui {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -8470,18 +8837,21 @@ export namespace AgsGui {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -8493,6 +8863,7 @@ export namespace AgsGui {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -8526,6 +8897,7 @@ export namespace AgsGui {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -8535,6 +8907,7 @@ export namespace AgsGui {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -8545,6 +8918,7 @@ export namespace AgsGui {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -8592,6 +8966,7 @@ export namespace AgsGui {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -8600,12 +8975,14 @@ export namespace AgsGui {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -8616,18 +8993,21 @@ export namespace AgsGui {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -8639,6 +9019,7 @@ export namespace AgsGui {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -8961,96 +9342,112 @@ export namespace AgsGui {
         /**
          * Get adjustment of `ruler`.
          * @returns the {@link Gtk.Adjustment}
+         * @since 3.2.0
          */
         get_adjustment(): Gtk.Adjustment;
 
         /**
          * Get factor of `ruler`.
          * @returns the factor
+         * @since 4.0.0
          */
         get_factor(): number;
 
         /**
          * Get font size of `ruler`.
          * @returns the font size
+         * @since 3.6.15
          */
         get_font_size(): number;
 
         /**
          * Get large step of `ruler`.
          * @returns the large step
+         * @since 3.2.0
          */
         get_large_step(): number;
 
         /**
          * Get precision of `ruler`.
          * @returns the precision
+         * @since 4.0.0
          */
         get_precision(): number;
 
         /**
          * Get scale precision of `ruler`.
          * @returns the scale precision
+         * @since 4.0.0
          */
         get_scale_precision(): number;
 
         /**
          * Get small step of `ruler`.
          * @returns the small step
+         * @since 3.2.0
          */
         get_small_step(): number;
 
         /**
          * Get step of `ruler`.
          * @returns the step
+         * @since 3.2.0
          */
         get_step(): number;
 
         /**
          * Set adjustment of `ruler`.
          * @param adjustment the {@link Gtk.Adjustment}
+         * @since 3.2.0
          */
         set_adjustment(adjustment: Gtk.Adjustment): void;
 
         /**
          * Set factor of `ruler`.
          * @param factor the factor
+         * @since 4.0.0
          */
         set_factor(factor: number): void;
 
         /**
          * Set font size of `ruler`.
          * @param font_size the font size
+         * @since 3.6.15
          */
         set_font_size(font_size: number): void;
 
         /**
          * Set large step of `ruler`.
          * @param large_step the large step
+         * @since 3.2.0
          */
         set_large_step(large_step: number): void;
 
         /**
          * Set precision of `ruler`.
          * @param precision the precision
+         * @since 4.0.0
          */
         set_precision(precision: number): void;
 
         /**
          * Set scale precision of `ruler`.
          * @param scale_precision the scale precision
+         * @since 4.0.0
          */
         set_scale_precision(scale_precision: number): void;
 
         /**
          * Set small step of `ruler`.
          * @param small_step the small step
+         * @since 3.2.0
          */
         set_small_step(small_step: number): void;
 
         /**
          * Set step of `ruler`.
          * @param step the step
+         * @since 3.2.0
          */
         set_step(step: number): void;
 
@@ -9086,6 +9483,7 @@ export namespace AgsGui {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -9098,6 +9496,7 @@ export namespace AgsGui {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -9106,6 +9505,7 @@ export namespace AgsGui {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -9118,6 +9518,7 @@ export namespace AgsGui {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -9128,18 +9529,21 @@ export namespace AgsGui {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -9151,6 +9555,7 @@ export namespace AgsGui {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -9184,6 +9589,7 @@ export namespace AgsGui {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -9193,6 +9599,7 @@ export namespace AgsGui {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -9203,6 +9610,7 @@ export namespace AgsGui {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -9250,6 +9658,7 @@ export namespace AgsGui {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -9258,12 +9667,14 @@ export namespace AgsGui {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -9274,18 +9685,21 @@ export namespace AgsGui {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -9297,6 +9711,7 @@ export namespace AgsGui {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -9587,6 +10002,7 @@ export namespace AgsGui {
         /**
          * Emits ::value-changed event.
          * @param default_value the default value
+         * @since 3.0.0
          * @virtual
          */
         vfunc_value_changed(default_value: number): void;
@@ -9595,54 +10011,63 @@ export namespace AgsGui {
         /**
          * Get scale height of `scale`.
          * @returns the scale height
+         * @since 3.2.2
          */
         get_control_name(): string;
 
         /**
          * Get normalized volume of `scale`.
          * @returns the normalized volume
+         * @since 3.2.2
          */
         get_default_value(): number;
 
         /**
          * Get lower of `scale`.
          * @returns the lower
+         * @since 3.2.2
          */
         get_lower(): number;
 
         /**
          * Get upper of `scale`.
          * @returns the upper
+         * @since 3.2.2
          */
         get_upper(): number;
 
         /**
          * Set `control_name` of `scale`.
          * @param control_name the scale height
+         * @since 3.2.2
          */
         set_control_name(control_name: string): void;
 
         /**
          * Set `default_value` of `scale`.
          * @param default_value the normalized volume
+         * @since 3.2.2
          */
         set_default_value(default_value: number): void;
 
         /**
          * Set `lower` of `scale`.
          * @param lower the lower
+         * @since 3.2.2
          */
         set_lower(lower: number): void;
 
         /**
          * Set `upper` of `scale`.
          * @param upper the upper
+         * @since 3.2.2
          */
         set_upper(upper: number): void;
 
         /**
          * Emits ::value-changed event.
          * @param default_value the default value
+         * @since 3.0.0
          */
         value_changed(default_value: number): void;
 
@@ -9678,6 +10103,7 @@ export namespace AgsGui {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -9690,6 +10116,7 @@ export namespace AgsGui {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -9698,6 +10125,7 @@ export namespace AgsGui {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -9710,6 +10138,7 @@ export namespace AgsGui {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -9720,18 +10149,21 @@ export namespace AgsGui {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -9743,6 +10175,7 @@ export namespace AgsGui {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -9776,6 +10209,7 @@ export namespace AgsGui {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -9785,6 +10219,7 @@ export namespace AgsGui {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -9795,6 +10230,7 @@ export namespace AgsGui {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -9842,6 +10278,7 @@ export namespace AgsGui {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -9850,12 +10287,14 @@ export namespace AgsGui {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -9866,18 +10305,21 @@ export namespace AgsGui {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -9889,6 +10331,7 @@ export namespace AgsGui {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -10113,6 +10556,7 @@ export namespace AgsGui {
          * Notify about child scale height request.
          * @param scale the {@link AgsGui.Scale}
          * @param height_request the scale's height-request
+         * @since 4.0.0
          * @virtual
          */
         vfunc_child_height_request(scale: Gtk.Widget, height_request: number): void;
@@ -10121,6 +10565,7 @@ export namespace AgsGui {
          * Notify about child scale width request.
          * @param scale the {@link AgsGui.Scale}
          * @param width_request the scale's width-request
+         * @since 4.0.0
          * @virtual
          */
         vfunc_child_width_request(scale: Gtk.Widget, width_request: number): void;
@@ -10129,6 +10574,7 @@ export namespace AgsGui {
         /**
          * Add `scale` to `scale_box`.
          * @param scale the {@link AgsGui.Scale}
+         * @since 4.0.0
          */
         add_scale(scale: Scale): void;
 
@@ -10136,6 +10582,7 @@ export namespace AgsGui {
          * Notify about child scale height request.
          * @param scale the {@link AgsGui.Scale}
          * @param height_request the scale's height-request
+         * @since 4.0.0
          */
         child_height_request(scale: Gtk.Widget, height_request: number): void;
 
@@ -10143,18 +10590,21 @@ export namespace AgsGui {
          * Notify about child scale width request.
          * @param scale the {@link AgsGui.Scale}
          * @param width_request the scale's width-request
+         * @since 4.0.0
          */
         child_width_request(scale: Gtk.Widget, width_request: number): void;
 
         /**
          * Get scale.
          * @returns the {@link GLib.List}-struct containing {@link AgsGui.Scale}
+         * @since 4.0.0
          */
         get_scale(): Scale[];
 
         /**
          * Remove `scale` from `scale_box`.
          * @param scale the {@link AgsGui.Scale}
+         * @since 4.0.0
          */
         remove_scale(scale: Scale): void;
 
@@ -10276,12 +10726,14 @@ export namespace AgsGui {
         /**
          * Get level box of `scrolled_level_box`.
          * @returns the {@link AgsGui.LevelBox}
+         * @since 4.0.0
          */
         get_level_box(): LevelBox;
 
         /**
          * Get scrolled window of `scrolled_level_box`.
          * @returns the {@link Gtk.ScrolledWindow}
+         * @since 4.0.0
          */
         get_scrolled_window(): Gtk.ScrolledWindow;
 
@@ -10403,12 +10855,14 @@ export namespace AgsGui {
         /**
          * Get piano of `scrolled_piano`.
          * @returns the {@link AgsGui.Piano}
+         * @since 3.6.8
          */
         get_piano(): Piano;
 
         /**
          * Get scrolled window of `scrolled_piano`.
          * @returns the #GtkScrolled_Window
+         * @since 3.6.8
          */
         get_scrolled_window(): Gtk.ScrolledWindow;
 
@@ -10530,6 +10984,7 @@ export namespace AgsGui {
         /**
          * Get scrolled_window of `scrolled_scale_box`.
          * @returns the #GtkScrolled_Window
+         * @since 4.0.0
          */
         get_scrolled_window(): Gtk.ScrolledWindow;
 
@@ -10727,6 +11182,7 @@ export namespace AgsGui {
         /**
          * Emits ::value-changed event.
          * @param default_value the default value
+         * @since 5.1.0
          * @virtual
          */
         vfunc_value_changed(default_value: number): void;
@@ -10735,54 +11191,63 @@ export namespace AgsGui {
         /**
          * Get tempo height of `tempo`.
          * @returns the tempo height
+         * @since 3.2.2
          */
         get_control_name(): string;
 
         /**
          * Get normalized volume of `tempo`.
          * @returns the normalized volume
+         * @since 3.2.2
          */
         get_default_value(): number;
 
         /**
          * Get lower of `tempo`.
          * @returns the lower
+         * @since 3.2.2
          */
         get_lower(): number;
 
         /**
          * Get upper of `tempo`.
          * @returns the upper
+         * @since 3.2.2
          */
         get_upper(): number;
 
         /**
          * Set `control_name` of `tempo`.
          * @param control_name the tempo height
+         * @since 3.2.2
          */
         set_control_name(control_name: string): void;
 
         /**
          * Set `default_value` of `tempo`.
          * @param default_value the normalized volume
+         * @since 3.2.2
          */
         set_default_value(default_value: number): void;
 
         /**
          * Set `lower` of `tempo`.
          * @param lower the lower
+         * @since 3.2.2
          */
         set_lower(lower: number): void;
 
         /**
          * Set `upper` of `tempo`.
          * @param upper the upper
+         * @since 3.2.2
          */
         set_upper(upper: number): void;
 
         /**
          * Emits ::value-changed event.
          * @param default_value the default value
+         * @since 5.1.0
          */
         value_changed(default_value: number): void;
 
@@ -10818,6 +11283,7 @@ export namespace AgsGui {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -10830,6 +11296,7 @@ export namespace AgsGui {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -10838,6 +11305,7 @@ export namespace AgsGui {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -10850,6 +11318,7 @@ export namespace AgsGui {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -10860,18 +11329,21 @@ export namespace AgsGui {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -10883,6 +11355,7 @@ export namespace AgsGui {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -10916,6 +11389,7 @@ export namespace AgsGui {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -10925,6 +11399,7 @@ export namespace AgsGui {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -10935,6 +11410,7 @@ export namespace AgsGui {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -10982,6 +11458,7 @@ export namespace AgsGui {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -10990,12 +11467,14 @@ export namespace AgsGui {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -11006,18 +11485,21 @@ export namespace AgsGui {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -11029,6 +11511,7 @@ export namespace AgsGui {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -11179,12 +11662,14 @@ export namespace AgsGui {
          * @param y the y position
          * @param width the width
          * @param height the height
+         * @since 3.0.0
          */
         static alloc(x: number, y: number, width: number, height: number): null;
 
         /**
          * Free `expander_child`.
          * @param expander_child the {@link AgsGui.ExpanderChild}-struct
+         * @since 3.2.2
          */
         static free(expander_child: null): void;
     }
@@ -11219,12 +11704,14 @@ export namespace AgsGui {
          * @param y the y position
          * @param width the width
          * @param height the height
+         * @since 3.0.0
          */
         static alloc(x: number, y: number, width: number, height: number): null;
 
         /**
          * Free `expander_set_child`.
          * @param expander_set_child the {@link AgsGui.ExpanderSetChild}-struct
+         * @since 3.2.2
          */
         static free(expander_set_child: null): void;
     }
@@ -11330,72 +11817,84 @@ export namespace AgsGui {
          * @param n_points number of points
          * @param n_bitmaps number of bitmaps
          * @param n_pixmaps number of pixmaps
+         * @since 3.0.0
          */
         static alloc(n_points: number, n_bitmaps: number, n_pixmaps: number): null;
 
         /**
          * Free `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
+         * @since 3.0.0
          */
         static free(plot: null): void;
 
         /**
          * Get bitmaps.
          * @param plot the {@link AgsGui.Plot}-struct
+         * @since 3.2.0
          */
         static get_bitmap(plot: null): number;
 
         /**
          * Get bitmap colors.
          * @param plot the {@link AgsGui.Plot}-struct
+         * @since 3.2.0
          */
         static get_bitmap_color(plot: null): number;
 
         /**
          * Get join points.
          * @param plot the {@link AgsGui.Plot}-struct
+         * @since 3.2.0
          */
         static get_join_points(plot: null): boolean;
 
         /**
          * Get number of bitmaps.
          * @param plot the {@link AgsGui.Plot}-struct
+         * @since 3.2.0
          */
         static get_n_bitmaps(plot: null): number;
 
         /**
          * Get number of pixmaps.
          * @param plot the {@link AgsGui.Plot}-struct
+         * @since 3.2.0
          */
         static get_n_pixmaps(plot: null): number;
 
         /**
          * Get number of points.
          * @param plot the {@link AgsGui.Plot}-struct
+         * @since 3.2.0
          */
         static get_n_points(plot: null): number;
 
         /**
          * Get pixmaps.
          * @param plot the {@link AgsGui.Plot}-struct
+         * @since 3.2.0
          */
         static get_pixmap(plot: null): number;
 
         /**
          * Get points.
          * @param plot the {@link AgsGui.Plot}-struct
+         * @since 3.2.0
          */
         static get_point(plot: null): number;
 
         /**
          * Get point colors.
          * @param plot the {@link AgsGui.Plot}-struct
+         * @since 3.2.0
          */
         static get_point_color(plot: null): number;
 
         /**
          * Get point labels.
          * @param plot the {@link AgsGui.Plot}-struct
+         * @since 3.2.0
          */
         static get_point_label(plot: null): string[];
 
@@ -11403,6 +11902,7 @@ export namespace AgsGui {
          * Set bitmap field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param bitmap the bitmaps
+         * @since 3.2.0
          */
         static set_bitmap(plot: null, bitmap: number): void;
 
@@ -11410,6 +11910,7 @@ export namespace AgsGui {
          * Set bitmap color field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param bitmap_color the bitmaps colors as array of RGB value
+         * @since 3.2.0
          */
         static set_bitmap_color(plot: null, bitmap_color: number): void;
 
@@ -11417,6 +11918,7 @@ export namespace AgsGui {
          * Set join_points field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param join_points if `true` join points, otherwise not
+         * @since 3.2.0
          */
         static set_join_points(plot: null, join_points: boolean): void;
 
@@ -11424,6 +11926,7 @@ export namespace AgsGui {
          * Set n_bitmaps field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param n_bitmaps the number of bitmaps
+         * @since 3.2.0
          */
         static set_n_bitmaps(plot: null, n_bitmaps: number): void;
 
@@ -11431,6 +11934,7 @@ export namespace AgsGui {
          * Set n_pixmaps field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param n_pixmaps the number of pixmaps
+         * @since 3.2.0
          */
         static set_n_pixmaps(plot: null, n_pixmaps: number): void;
 
@@ -11438,6 +11942,7 @@ export namespace AgsGui {
          * Set n_points field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param n_points the number of points
+         * @since 3.2.0
          */
         static set_n_points(plot: null, n_points: number): void;
 
@@ -11445,6 +11950,7 @@ export namespace AgsGui {
          * Set pixmap field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param pixmap the pixmaps
+         * @since 3.2.0
          */
         static set_pixmap(plot: null, pixmap: number): void;
 
@@ -11452,6 +11958,7 @@ export namespace AgsGui {
          * Set point field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param point the points as array of coordinates
+         * @since 3.2.0
          */
         static set_point(plot: null, point: number): void;
 
@@ -11459,6 +11966,7 @@ export namespace AgsGui {
          * Set point color field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param point_color the points colors as array of RGB value
+         * @since 3.2.0
          */
         static set_point_color(plot: null, point_color: number): void;
 
@@ -11466,6 +11974,7 @@ export namespace AgsGui {
          * Set point label field of `plot`.
          * @param plot the {@link AgsGui.Plot}-struct
          * @param point_label the points labels as string vector
+         * @since 3.2.0
          */
         static set_point_label(plot: null, point_label: string): void;
     }

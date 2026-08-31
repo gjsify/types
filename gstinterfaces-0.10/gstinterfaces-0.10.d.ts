@@ -997,6 +997,7 @@ export namespace GstInterfaces {
         /**
          * Get the {@link GstInterfaces.ColorBalanceType} of this implementation.
          * @returns A the {@link GstInterfaces.ColorBalanceType}.
+         * @since 0.10.24
          */
         get_balance_type(): ColorBalanceType;
 
@@ -1069,6 +1070,7 @@ export namespace GstInterfaces {
         /**
          * Get the {@link GstInterfaces.MixerType} of this mixer implementation.
          * @returns A the {@link GstInterfaces.MixerType}.
+         * @since 0.10.24
          */
         get_mixer_type(): MixerType;
 
@@ -1104,6 +1106,7 @@ export namespace GstInterfaces {
          * rebuild their interface when they receive this message.
          * This function only works for GstElements that are implementing the
          * GstMixer interface, and the element needs to have been provided a bus.
+         * @since 0.10.18
          */
         mixer_changed(): void;
 
@@ -1140,6 +1143,7 @@ export namespace GstInterfaces {
          * GstMixer interface, and the element needs to have been provided a bus
          * for this to work.
          * @param opts the GstMixerOptions whose list of values has changed
+         * @since 0.10.18
          */
         options_list_changed(opts: MixerOptions): void;
 
@@ -1239,6 +1243,7 @@ export namespace GstInterfaces {
         /**
          * Sends the indicated command to the navigation interface.
          * @param command The command to issue
+         * @since 0.10.23
          */
         send_command(command: NavigationCommand): void;
 
@@ -1439,23 +1444,27 @@ export namespace GstInterfaces {
         // Methods
         /**
          * @returns Returns `true` if the stream is muted
+         * @since 0.10.25
          */
         get_mute(): boolean;
 
         /**
          * @param format {@link GstInterfaces.StreamVolumeFormat} which should be returned
          * @returns The current stream volume as linear factor
+         * @since 0.10.25
          */
         get_volume(format: StreamVolumeFormat): number;
 
         /**
          * @param mute Mute state that should be set
+         * @since 0.10.25
          */
         set_mute(mute: boolean): void;
 
         /**
          * @param format {@link GstInterfaces.StreamVolumeFormat} of `val`
          * @param val Linear volume factor that should be set
+         * @since 0.10.25
          */
         set_volume(format: StreamVolumeFormat, val: number): void;
     }
@@ -1599,6 +1608,7 @@ export namespace GstInterfaces {
             /**
              * Get the horizontal centering offset from the given object.
              * @param center return location for the result
+             * @since 0.10.11
              * @virtual
              */
             vfunc_get_hcenter(center: number): boolean;
@@ -1606,6 +1616,7 @@ export namespace GstInterfaces {
             /**
              * Get the horizontal flipping state (`true` for flipped) from the given object.
              * @param flip return location for the result
+             * @since 0.10.11
              * @virtual
              */
             vfunc_get_hflip(flip: boolean): boolean;
@@ -1613,6 +1624,7 @@ export namespace GstInterfaces {
             /**
              * Get the vertical centering offset from the given object.
              * @param center return location for the result
+             * @since 0.10.11
              * @virtual
              */
             vfunc_get_vcenter(center: number): boolean;
@@ -1620,6 +1632,7 @@ export namespace GstInterfaces {
             /**
              * Get the vertical flipping state (`true` for flipped) from the given object.
              * @param flip return location for the result
+             * @since 0.10.11
              * @virtual
              */
             vfunc_get_vflip(flip: boolean): boolean;
@@ -1627,6 +1640,7 @@ export namespace GstInterfaces {
             /**
              * Set the horizontal centering offset for the given object.
              * @param center centering offset
+             * @since 0.10.11
              * @virtual
              */
             vfunc_set_hcenter(center: number): boolean;
@@ -1634,6 +1648,7 @@ export namespace GstInterfaces {
             /**
              * Set the horizontal flipping state (`true` for flipped) for the given object.
              * @param flip use flipping
+             * @since 0.10.11
              * @virtual
              */
             vfunc_set_hflip(flip: boolean): boolean;
@@ -1641,6 +1656,7 @@ export namespace GstInterfaces {
             /**
              * Set the vertical centering offset for the given object.
              * @param center centering offset
+             * @since 0.10.11
              * @virtual
              */
             vfunc_set_vcenter(center: number): boolean;
@@ -1648,6 +1664,7 @@ export namespace GstInterfaces {
             /**
              * Set the vertical flipping state (`true` for flipped) for the given object.
              * @param flip use flipping
+             * @since 0.10.11
              * @virtual
              */
             vfunc_set_vflip(flip: boolean): boolean;
@@ -1673,6 +1690,7 @@ export namespace GstInterfaces {
          * Get the horizontal centering offset from the given object.
          * @param center return location for the result
          * @returns `true` in case the element supports centering
+         * @since 0.10.11
          */
         get_hcenter(center: number): boolean;
 
@@ -1680,6 +1698,7 @@ export namespace GstInterfaces {
          * Get the horizontal flipping state (`true` for flipped) from the given object.
          * @param flip return location for the result
          * @returns `true` in case the element supports flipping
+         * @since 0.10.11
          */
         get_hflip(flip: boolean): boolean;
 
@@ -1687,6 +1706,7 @@ export namespace GstInterfaces {
          * Get the vertical centering offset from the given object.
          * @param center return location for the result
          * @returns `true` in case the element supports centering
+         * @since 0.10.11
          */
         get_vcenter(center: number): boolean;
 
@@ -1694,6 +1714,7 @@ export namespace GstInterfaces {
          * Get the vertical flipping state (`true` for flipped) from the given object.
          * @param flip return location for the result
          * @returns `true` in case the element supports flipping
+         * @since 0.10.11
          */
         get_vflip(flip: boolean): boolean;
 
@@ -1701,6 +1722,7 @@ export namespace GstInterfaces {
          * Set the horizontal centering offset for the given object.
          * @param center centering offset
          * @returns `true` in case the element supports centering
+         * @since 0.10.11
          */
         set_hcenter(center: number): boolean;
 
@@ -1708,6 +1730,7 @@ export namespace GstInterfaces {
          * Set the horizontal flipping state (`true` for flipped) for the given object.
          * @param flip use flipping
          * @returns `true` in case the element supports flipping
+         * @since 0.10.11
          */
         set_hflip(flip: boolean): boolean;
 
@@ -1715,6 +1738,7 @@ export namespace GstInterfaces {
          * Set the vertical centering offset for the given object.
          * @param center centering offset
          * @returns `true` in case the element supports centering
+         * @since 0.10.11
          */
         set_vcenter(center: number): boolean;
 
@@ -1722,6 +1746,7 @@ export namespace GstInterfaces {
          * Set the vertical flipping state (`true` for flipped) for the given object.
          * @param flip use flipping
          * @returns `true` in case the element supports flipping
+         * @since 0.10.11
          */
         set_vflip(flip: boolean): boolean;
     }
@@ -1768,6 +1793,7 @@ export namespace GstInterfaces {
          * for them. This method allows you to disable events handling completely
          * from the XOverlay.
          * @param handle_events a `gboolean` indicating if events should be handled or not.
+         * @since 0.10.12
          */
         handle_events(handle_events: boolean): void;
 
@@ -1795,6 +1821,7 @@ export namespace GstInterfaces {
          * @param width the width of the render area inside the window
          * @param height the height of the render area inside the window
          * @returns `false` if not supported by the sink.
+         * @since 0.10.29
          */
         set_render_rectangle(x: number, y: number, width: number, height: number): boolean;
 

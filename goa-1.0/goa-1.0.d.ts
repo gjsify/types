@@ -1072,6 +1072,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1115,6 +1116,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1158,6 +1160,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1166,6 +1169,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1174,6 +1178,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): AccountProxy;
 
@@ -1223,6 +1228,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -1231,6 +1237,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -1238,6 +1245,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -1250,6 +1258,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -1258,11 +1267,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -1275,6 +1286,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -1284,6 +1296,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -1329,6 +1342,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1372,6 +1386,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -2006,6 +2021,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -2018,6 +2034,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -2032,11 +2049,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -2049,6 +2068,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -2065,6 +2085,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -2383,6 +2404,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2426,6 +2448,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2469,6 +2492,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2477,6 +2501,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -2485,6 +2510,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): CalendarProxy;
 
@@ -2534,6 +2560,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -2542,6 +2569,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -2549,6 +2577,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -2561,6 +2590,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -2569,11 +2599,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -2586,6 +2618,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -2595,6 +2628,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -2640,6 +2674,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2683,6 +2718,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -2770,6 +2806,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -2782,6 +2819,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -2796,11 +2834,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -2813,6 +2853,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -2829,6 +2870,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -2988,6 +3030,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3031,6 +3074,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3074,6 +3118,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3082,6 +3127,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3090,6 +3136,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ChatProxy;
 
@@ -3139,6 +3186,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3147,6 +3195,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -3154,6 +3203,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -3166,6 +3216,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -3174,11 +3225,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -3191,6 +3244,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -3200,6 +3254,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -3245,6 +3300,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3288,6 +3344,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -3343,6 +3400,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -3355,6 +3413,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -3369,11 +3428,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -3386,6 +3447,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -3402,6 +3464,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -3536,6 +3599,7 @@ export namespace Goa {
          * {@link Goa.Account.id} D-Bus property matches `id`.
          * @param id The ID to look for
          * @returns the object for the given id
+         * @since 3.6
          */
         lookup_by_id(id: string): Object;
 
@@ -3578,6 +3642,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3621,6 +3686,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3664,6 +3730,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3672,6 +3739,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3680,6 +3748,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Client;
 
@@ -3723,6 +3792,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3731,6 +3801,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -3776,6 +3847,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3819,6 +3891,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -4010,6 +4083,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -4053,6 +4127,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4096,6 +4171,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -4104,6 +4180,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -4112,6 +4189,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ContactsProxy;
 
@@ -4161,6 +4239,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -4169,6 +4248,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -4176,6 +4256,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -4188,6 +4269,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -4196,11 +4278,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -4213,6 +4297,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -4222,6 +4307,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -4267,6 +4353,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4310,6 +4397,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -4397,6 +4485,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -4409,6 +4498,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -4423,11 +4513,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -4440,6 +4532,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -4456,6 +4549,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -4546,6 +4640,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @deprecated The D-Bus interface has been deprecated.
          */
         static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<DocumentsProxy> | null): void;
 
@@ -4568,6 +4663,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @deprecated The D-Bus interface has been deprecated.
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<DocumentsProxy> | null): void;
 
@@ -4616,6 +4712,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -4659,6 +4756,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4702,6 +4800,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -4710,6 +4809,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -4718,6 +4818,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DocumentsProxy;
 
@@ -4767,6 +4868,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -4775,6 +4877,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -4782,6 +4885,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -4794,6 +4898,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -4802,11 +4907,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -4819,6 +4926,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -4828,6 +4936,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -4873,6 +4982,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4916,6 +5026,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -4972,6 +5083,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -4984,6 +5096,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -4998,11 +5111,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -5015,6 +5130,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -5031,6 +5147,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -5123,6 +5240,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.6.0
          */
         static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ExchangeProxy> | null): void;
 
@@ -5145,6 +5263,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.6.0
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ExchangeProxy> | null): void;
 
@@ -5226,6 +5345,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5269,6 +5389,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5312,6 +5433,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5320,6 +5442,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5328,6 +5451,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ExchangeProxy;
 
@@ -5377,6 +5501,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -5385,6 +5510,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -5392,6 +5518,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -5404,6 +5531,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -5412,11 +5540,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -5429,6 +5559,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -5438,6 +5569,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -5483,6 +5615,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5526,6 +5659,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -5617,6 +5751,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -5629,6 +5764,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -5643,11 +5779,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -5660,6 +5798,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -5676,6 +5815,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -5768,6 +5908,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.8.0
          */
         static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<FilesProxy> | null): void;
 
@@ -5790,6 +5931,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.8.0
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<FilesProxy> | null): void;
 
@@ -5871,6 +6013,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5914,6 +6057,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5957,6 +6101,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5965,6 +6110,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5973,6 +6119,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): FilesProxy;
 
@@ -6022,6 +6169,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -6030,6 +6178,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -6037,6 +6186,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -6049,6 +6199,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -6057,11 +6208,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -6074,6 +6227,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -6083,6 +6237,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -6128,6 +6283,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6171,6 +6327,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -6262,6 +6419,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -6274,6 +6432,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -6288,11 +6447,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -6305,6 +6466,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -6321,6 +6483,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -6848,6 +7011,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -6891,6 +7055,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6934,6 +7099,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -6942,6 +7108,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -6950,6 +7117,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): MailProxy;
 
@@ -6999,6 +7167,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7007,6 +7176,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -7014,6 +7184,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -7026,6 +7197,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -7034,11 +7206,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -7051,6 +7225,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -7060,6 +7235,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -7105,6 +7281,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -7148,6 +7325,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -7571,6 +7749,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -7583,6 +7762,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -7597,11 +7777,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -7614,6 +7796,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -7630,6 +7813,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -7789,6 +7973,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -7832,6 +8017,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7875,6 +8061,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -7883,6 +8070,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7891,6 +8079,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ManagerProxy;
 
@@ -7940,6 +8129,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7948,6 +8138,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -7955,6 +8146,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -7967,6 +8159,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -7975,11 +8168,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -7992,6 +8187,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -8001,6 +8197,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -8046,6 +8243,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8089,6 +8287,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -8302,6 +8501,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -8314,6 +8514,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -8328,11 +8529,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -8345,6 +8548,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -8361,6 +8565,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -8610,6 +8815,8 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.14.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<MapsProxy> | null): void;
 
@@ -8632,6 +8839,8 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.14.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<MapsProxy> | null): void;
 
@@ -8680,6 +8889,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8723,6 +8933,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8766,6 +8977,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8774,6 +8986,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -8782,6 +8995,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): MapsProxy;
 
@@ -8831,6 +9045,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -8839,6 +9054,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -8846,6 +9062,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -8858,6 +9075,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -8866,11 +9084,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -8883,6 +9103,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -8892,6 +9113,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -8937,6 +9159,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8980,6 +9203,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -9037,6 +9261,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -9049,6 +9274,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -9063,11 +9289,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -9080,6 +9308,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -9096,6 +9325,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -9189,6 +9419,8 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.14
+         * @deprecated The D-Bus interface has been deprecated.
          */
         static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<MediaServerProxy> | null): void;
 
@@ -9211,6 +9443,8 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.14
+         * @deprecated The D-Bus interface has been deprecated.
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<MediaServerProxy> | null): void;
 
@@ -9295,6 +9529,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -9338,6 +9573,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -9381,6 +9617,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -9389,6 +9626,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -9397,6 +9635,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): MediaServerProxy;
 
@@ -9446,6 +9685,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -9454,6 +9694,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -9461,6 +9702,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -9473,6 +9715,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -9481,11 +9724,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -9498,6 +9743,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -9507,6 +9753,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -9552,6 +9799,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9595,6 +9843,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -9690,6 +9939,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -9702,6 +9952,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -9716,11 +9967,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -9733,6 +9986,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -9749,6 +10003,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -9839,6 +10094,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.18.0
          */
         static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<MusicProxy> | null): void;
 
@@ -9861,6 +10117,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.18.0
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<MusicProxy> | null): void;
 
@@ -9909,6 +10166,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -9952,6 +10210,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -9995,6 +10254,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -10003,6 +10263,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -10011,6 +10272,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): MusicProxy;
 
@@ -10060,6 +10322,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -10068,6 +10331,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -10075,6 +10339,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -10087,6 +10352,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -10095,11 +10361,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -10112,6 +10380,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -10121,6 +10390,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -10166,6 +10436,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10209,6 +10480,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -10265,6 +10537,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -10277,6 +10550,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -10291,11 +10565,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -10308,6 +10584,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -10324,6 +10601,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -10525,6 +10803,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -10568,6 +10847,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -10611,6 +10891,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -10619,6 +10900,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -10627,6 +10909,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): OAuth2BasedProxy;
 
@@ -10676,6 +10959,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -10684,6 +10968,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -10691,6 +10976,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -10703,6 +10989,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -10711,11 +10998,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -10728,6 +11017,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -10737,6 +11027,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -10782,6 +11073,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10825,6 +11117,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -10987,6 +11280,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -10999,6 +11293,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -11013,11 +11308,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -11030,6 +11327,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -11046,6 +11344,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -11312,6 +11611,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -11355,6 +11655,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -11398,6 +11699,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -11406,6 +11708,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -11414,6 +11717,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): OAuthBasedProxy;
 
@@ -11463,6 +11767,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -11471,6 +11776,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -11478,6 +11784,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -11490,6 +11797,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -11498,11 +11806,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -11515,6 +11825,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -11524,6 +11835,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -11569,6 +11881,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11612,6 +11925,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -11775,6 +12089,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -11787,6 +12102,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -11801,11 +12117,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -11818,6 +12136,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -11834,6 +12153,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -12068,6 +12388,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -12111,6 +12432,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -12154,6 +12476,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -12162,6 +12485,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -12170,6 +12494,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ObjectManagerClient;
 
@@ -12219,6 +12544,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -12227,6 +12553,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -12237,6 +12564,7 @@ export namespace Goa {
          * @param object_path Object path to look up.
          * @param interface_name D-Bus interface name to look up.
          * @returns A {@link Gio.DBusInterface} instance or `null`. Free   with `g_object_unref()`.
+         * @since 2.30
          */
         get_interface(object_path: string, interface_name: string): Gio.DBusInterface | null;
 
@@ -12244,18 +12572,21 @@ export namespace Goa {
          * Gets the {@link Gio.DBusObject} at `object_path`, if any.
          * @param object_path Object path to look up.
          * @returns A {@link Gio.DBusObject} or `null`. Free with   `g_object_unref()`.
+         * @since 2.30
          */
         get_object(object_path: string): Gio.DBusObject | null;
 
         /**
          * Gets the object path that `manager` is for.
          * @returns A string owned by `manager`. Do not free.
+         * @since 2.30
          */
         get_object_path(): string;
 
         /**
          * Gets all {@link Gio.DBusObject} objects known to `manager`.
          * @returns A list of   {@link Gio.DBusObject} objects. The returned list should be freed with   `g_list_free()` after each element has been freed with   `g_object_unref()`.
+         * @since 2.30
          */
         get_objects(): Gio.DBusObject[];
 
@@ -12264,6 +12595,7 @@ export namespace Goa {
          * any.
          * @param object_path Object path to look up.
          * @param interface_name D-Bus interface name to look up.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interface(object_path: string, interface_name: string): Gio.DBusInterface | null;
@@ -12271,18 +12603,21 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} at `object_path`, if any.
          * @param object_path Object path to look up.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_object(object_path: string): Gio.DBusObject | null;
 
         /**
          * Gets the object path that `manager` is for.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_object_path(): string;
 
         /**
          * Gets all {@link Gio.DBusObject} objects known to `manager`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_objects(): Gio.DBusObject[];
@@ -12358,6 +12693,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -12401,6 +12737,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -12726,18 +13063,21 @@ export namespace Goa {
          * `object`, if any.
          * @param interface_name A D-Bus interface name.
          * @returns `null` if not found, otherwise a   {@link Gio.DBusInterface} that must be freed with `g_object_unref()`.
+         * @since 2.30
          */
         get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
          * @returns A list of {@link Gio.DBusInterface} instances.   The returned list must be freed by `g_list_free()` after each element has been freed   with `g_object_unref()`.
+         * @since 2.30
          */
         get_interfaces(): Gio.DBusInterface[];
 
         /**
          * Gets the object path for `object`.
          * @returns A string owned by `object`. Do not free.
+         * @since 2.30
          */
         get_object_path(): string;
 
@@ -12745,18 +13085,21 @@ export namespace Goa {
          * Gets the D-Bus interface with name `interface_name` associated with
          * `object`, if any.
          * @param interface_name A D-Bus interface name.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interfaces(): Gio.DBusInterface[];
 
         /**
          * Gets the object path for `object`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_object_path(): string;
@@ -12802,18 +13145,21 @@ export namespace Goa {
         /**
          * Gets the {@link Goa.Documents} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Documents.top_of_page">org.gnome.OnlineAccounts.Documents</link> on `object`, if any.
          * @returns A {@link Goa.Documents} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_documents(): Documents | null;
 
         /**
          * Gets the {@link Goa.Exchange} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Exchange.top_of_page">org.gnome.OnlineAccounts.Exchange</link> on `object`, if any.
          * @returns A {@link Goa.Exchange} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.6.0
          */
         get_exchange(): Exchange | null;
 
         /**
          * Gets the {@link Goa.Files} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Files.top_of_page">org.gnome.OnlineAccounts.Files</link> on `object`, if any.
          * @returns A {@link Goa.Files} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.8.0
          */
         get_files(): Files | null;
 
@@ -12832,18 +13178,23 @@ export namespace Goa {
         /**
          * Gets the {@link Goa.Maps} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Maps.top_of_page">org.gnome.OnlineAccounts.Maps</link> on `object`, if any.
          * @returns A {@link Goa.Maps} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.14.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_maps(): Maps | null;
 
         /**
          * Gets the {@link Goa.MediaServer} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link> on `object`, if any.
          * @returns A {@link Goa.MediaServer} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.14
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_media_server(): MediaServer | null;
 
         /**
          * Gets the {@link Goa.Music} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Music.top_of_page">org.gnome.OnlineAccounts.Music</link> on `object`, if any.
          * @returns A {@link Goa.Music} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.18.0
          */
         get_music(): Music | null;
 
@@ -12862,36 +13213,45 @@ export namespace Goa {
         /**
          * Gets the {@link Goa.PasswordBased} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link> on `object`, if any.
          * @returns A {@link Goa.PasswordBased} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.6.0
          */
         get_password_based(): PasswordBased | null;
 
         /**
          * Gets the {@link Goa.Photos} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Photos.top_of_page">org.gnome.OnlineAccounts.Photos</link> on `object`, if any.
          * @returns A {@link Goa.Photos} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.8.0
          */
         get_photos(): Photos | null;
 
         /**
          * Gets the {@link Goa.Printers} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Printers.top_of_page">org.gnome.OnlineAccounts.Printers</link> on `object`, if any.
          * @returns A {@link Goa.Printers} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.12.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_printers(): Printers | null;
 
         /**
          * Gets the {@link Goa.ReadLater} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link> on `object`, if any.
          * @returns A {@link Goa.ReadLater} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.12.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_read_later(): ReadLater | null;
 
         /**
          * Gets the {@link Goa.Ticketing} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Ticketing.top_of_page">org.gnome.OnlineAccounts.Ticketing</link> on `object`, if any.
          * @returns A {@link Goa.Ticketing} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.6.0
          */
         get_ticketing(): Ticketing | null;
 
         /**
          * Gets the {@link Goa.Todo} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Todo.top_of_page">org.gnome.OnlineAccounts.Todo</link> on `object`, if any.
          * @returns A {@link Goa.Todo} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.26.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_todo(): Todo | null;
     }
@@ -12991,18 +13351,21 @@ export namespace Goa {
         /**
          * Sets the {@link Goa.Documents} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Documents.top_of_page">org.gnome.OnlineAccounts.Documents</link> on `object`.
          * @param interface_ A {@link Goa.Documents} or `null` to clear the interface.
+         * @deprecated The D-Bus interface has been deprecated.
          */
         set_documents(interface_: Documents | null): void;
 
         /**
          * Sets the {@link Goa.Exchange} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Exchange.top_of_page">org.gnome.OnlineAccounts.Exchange</link> on `object`.
          * @param interface_ A {@link Goa.Exchange} or `null` to clear the interface.
+         * @since 3.6.0
          */
         set_exchange(interface_: Exchange | null): void;
 
         /**
          * Sets the {@link Goa.Files} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Files.top_of_page">org.gnome.OnlineAccounts.Files</link> on `object`.
          * @param interface_ A {@link Goa.Files} or `null` to clear the interface.
+         * @since 3.8.0
          */
         set_files(interface_: Files | null): void;
 
@@ -13021,18 +13384,23 @@ export namespace Goa {
         /**
          * Sets the {@link Goa.Maps} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Maps.top_of_page">org.gnome.OnlineAccounts.Maps</link> on `object`.
          * @param interface_ A {@link Goa.Maps} or `null` to clear the interface.
+         * @since 3.14.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         set_maps(interface_: Maps | null): void;
 
         /**
          * Sets the {@link Goa.MediaServer} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link> on `object`.
          * @param interface_ A {@link Goa.MediaServer} or `null` to clear the interface.
+         * @since 3.14
+         * @deprecated The D-Bus interface has been deprecated.
          */
         set_media_server(interface_: MediaServer | null): void;
 
         /**
          * Sets the {@link Goa.Music} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Music.top_of_page">org.gnome.OnlineAccounts.Music</link> on `object`.
          * @param interface_ A {@link Goa.Music} or `null` to clear the interface.
+         * @since 3.18.0
          */
         set_music(interface_: Music | null): void;
 
@@ -13051,36 +13419,45 @@ export namespace Goa {
         /**
          * Sets the {@link Goa.PasswordBased} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link> on `object`.
          * @param interface_ A {@link Goa.PasswordBased} or `null` to clear the interface.
+         * @since 3.6.0
          */
         set_password_based(interface_: PasswordBased | null): void;
 
         /**
          * Sets the {@link Goa.Photos} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Photos.top_of_page">org.gnome.OnlineAccounts.Photos</link> on `object`.
          * @param interface_ A {@link Goa.Photos} or `null` to clear the interface.
+         * @since 3.8.0
          */
         set_photos(interface_: Photos | null): void;
 
         /**
          * Sets the {@link Goa.Printers} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Printers.top_of_page">org.gnome.OnlineAccounts.Printers</link> on `object`.
          * @param interface_ A {@link Goa.Printers} or `null` to clear the interface.
+         * @since 3.12.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         set_printers(interface_: Printers | null): void;
 
         /**
          * Sets the {@link Goa.ReadLater} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link> on `object`.
          * @param interface_ A {@link Goa.ReadLater} or `null` to clear the interface.
+         * @since 3.12.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         set_read_later(interface_: ReadLater | null): void;
 
         /**
          * Sets the {@link Goa.Ticketing} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Ticketing.top_of_page">org.gnome.OnlineAccounts.Ticketing</link> on `object`.
          * @param interface_ A {@link Goa.Ticketing} or `null` to clear the interface.
+         * @since 3.6.0
          */
         set_ticketing(interface_: Ticketing | null): void;
 
         /**
          * Sets the {@link Goa.Todo} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Todo.top_of_page">org.gnome.OnlineAccounts.Todo</link> on `object`.
          * @param interface_ A {@link Goa.Todo} or `null` to clear the interface.
+         * @since 3.26.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         set_todo(interface_: Todo | null): void;
 
@@ -13336,18 +13713,21 @@ export namespace Goa {
          * `object`, if any.
          * @param interface_name A D-Bus interface name.
          * @returns `null` if not found, otherwise a   {@link Gio.DBusInterface} that must be freed with `g_object_unref()`.
+         * @since 2.30
          */
         get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
          * @returns A list of {@link Gio.DBusInterface} instances.   The returned list must be freed by `g_list_free()` after each element has been freed   with `g_object_unref()`.
+         * @since 2.30
          */
         get_interfaces(): Gio.DBusInterface[];
 
         /**
          * Gets the object path for `object`.
          * @returns A string owned by `object`. Do not free.
+         * @since 2.30
          */
         get_object_path(): string;
 
@@ -13355,18 +13735,21 @@ export namespace Goa {
          * Gets the D-Bus interface with name `interface_name` associated with
          * `object`, if any.
          * @param interface_name A D-Bus interface name.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interfaces(): Gio.DBusInterface[];
 
         /**
          * Gets the object path for `object`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_object_path(): string;
@@ -13412,18 +13795,21 @@ export namespace Goa {
         /**
          * Gets the {@link Goa.Documents} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Documents.top_of_page">org.gnome.OnlineAccounts.Documents</link> on `object`, if any.
          * @returns A {@link Goa.Documents} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_documents(): Documents | null;
 
         /**
          * Gets the {@link Goa.Exchange} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Exchange.top_of_page">org.gnome.OnlineAccounts.Exchange</link> on `object`, if any.
          * @returns A {@link Goa.Exchange} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.6.0
          */
         get_exchange(): Exchange | null;
 
         /**
          * Gets the {@link Goa.Files} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Files.top_of_page">org.gnome.OnlineAccounts.Files</link> on `object`, if any.
          * @returns A {@link Goa.Files} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.8.0
          */
         get_files(): Files | null;
 
@@ -13442,18 +13828,23 @@ export namespace Goa {
         /**
          * Gets the {@link Goa.Maps} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Maps.top_of_page">org.gnome.OnlineAccounts.Maps</link> on `object`, if any.
          * @returns A {@link Goa.Maps} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.14.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_maps(): Maps | null;
 
         /**
          * Gets the {@link Goa.MediaServer} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link> on `object`, if any.
          * @returns A {@link Goa.MediaServer} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.14
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_media_server(): MediaServer | null;
 
         /**
          * Gets the {@link Goa.Music} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Music.top_of_page">org.gnome.OnlineAccounts.Music</link> on `object`, if any.
          * @returns A {@link Goa.Music} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.18.0
          */
         get_music(): Music | null;
 
@@ -13472,36 +13863,45 @@ export namespace Goa {
         /**
          * Gets the {@link Goa.PasswordBased} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link> on `object`, if any.
          * @returns A {@link Goa.PasswordBased} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.6.0
          */
         get_password_based(): PasswordBased | null;
 
         /**
          * Gets the {@link Goa.Photos} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Photos.top_of_page">org.gnome.OnlineAccounts.Photos</link> on `object`, if any.
          * @returns A {@link Goa.Photos} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.8.0
          */
         get_photos(): Photos | null;
 
         /**
          * Gets the {@link Goa.Printers} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Printers.top_of_page">org.gnome.OnlineAccounts.Printers</link> on `object`, if any.
          * @returns A {@link Goa.Printers} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.12.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_printers(): Printers | null;
 
         /**
          * Gets the {@link Goa.ReadLater} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link> on `object`, if any.
          * @returns A {@link Goa.ReadLater} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.12.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_read_later(): ReadLater | null;
 
         /**
          * Gets the {@link Goa.Ticketing} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Ticketing.top_of_page">org.gnome.OnlineAccounts.Ticketing</link> on `object`, if any.
          * @returns A {@link Goa.Ticketing} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.6.0
          */
         get_ticketing(): Ticketing | null;
 
         /**
          * Gets the {@link Goa.Todo} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Todo.top_of_page">org.gnome.OnlineAccounts.Todo</link> on `object`, if any.
          * @returns A {@link Goa.Todo} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.26.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_todo(): Todo | null;
     }
@@ -13591,6 +13991,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.6.0
          */
         static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<PasswordBasedProxy> | null): void;
 
@@ -13613,6 +14014,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.6.0
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<PasswordBasedProxy> | null): void;
 
@@ -13661,6 +14063,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -13704,6 +14107,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -13747,6 +14151,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -13755,6 +14160,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -13763,6 +14169,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): PasswordBasedProxy;
 
@@ -13812,6 +14219,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -13820,6 +14228,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -13827,6 +14236,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -13839,6 +14249,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -13847,11 +14258,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -13864,6 +14277,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -13873,6 +14287,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -13918,6 +14333,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -13961,6 +14377,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -13973,6 +14390,7 @@ export namespace Goa {
          * See `goa_password_based_call_get_password_sync()` for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 3.6.0
          */
         call_get_password(arg_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -13985,6 +14403,7 @@ export namespace Goa {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 3.6.0
          */
         call_get_password(arg_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -13997,6 +14416,7 @@ export namespace Goa {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 3.6.0
          */
         call_get_password(arg_id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -14004,6 +14424,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_password_based_call_get_password()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_password_based_call_get_password()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 3.6.0
          */
         call_get_password_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -14014,6 +14435,7 @@ export namespace Goa {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 3.6.0
          */
         call_get_password_sync(arg_id: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -14023,6 +14445,7 @@ export namespace Goa {
          * This method will free `invocation`, you cannot use it afterwards.
          * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param password Parameter to return.
+         * @since 3.6.0
          */
         complete_get_password(invocation: Gio.DBusMethodInvocation, password: string): void;
 
@@ -14086,6 +14509,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -14098,6 +14522,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -14112,11 +14537,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -14129,6 +14556,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -14145,6 +14573,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -14157,6 +14586,7 @@ export namespace Goa {
          * See `goa_password_based_call_get_password_sync()` for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 3.6.0
          */
         call_get_password(arg_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -14169,6 +14599,7 @@ export namespace Goa {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 3.6.0
          */
         call_get_password(arg_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -14181,6 +14612,7 @@ export namespace Goa {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 3.6.0
          */
         call_get_password(arg_id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -14188,6 +14620,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_password_based_call_get_password()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_password_based_call_get_password()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 3.6.0
          */
         call_get_password_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -14198,6 +14631,7 @@ export namespace Goa {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 3.6.0
          */
         call_get_password_sync(arg_id: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -14207,6 +14641,7 @@ export namespace Goa {
          * This method will free `invocation`, you cannot use it afterwards.
          * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param password Parameter to return.
+         * @since 3.6.0
          */
         complete_get_password(invocation: Gio.DBusMethodInvocation, password: string): void;
 
@@ -14304,6 +14739,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.8.0
          */
         static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<PhotosProxy> | null): void;
 
@@ -14326,6 +14762,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.8.0
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<PhotosProxy> | null): void;
 
@@ -14374,6 +14811,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -14417,6 +14855,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -14460,6 +14899,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -14468,6 +14908,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -14476,6 +14917,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): PhotosProxy;
 
@@ -14525,6 +14967,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -14533,6 +14976,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -14540,6 +14984,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -14552,6 +14997,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -14560,11 +15006,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -14577,6 +15025,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -14586,6 +15035,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -14631,6 +15081,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -14674,6 +15125,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -14730,6 +15182,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -14742,6 +15195,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -14756,11 +15210,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -14773,6 +15229,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -14789,6 +15246,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -14880,6 +15338,8 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.12.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<PrintersProxy> | null): void;
 
@@ -14902,6 +15362,8 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.12.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<PrintersProxy> | null): void;
 
@@ -14950,6 +15412,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -14993,6 +15456,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -15036,6 +15500,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -15044,6 +15509,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -15052,6 +15518,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): PrintersProxy;
 
@@ -15101,6 +15568,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -15109,6 +15577,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -15116,6 +15585,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -15128,6 +15598,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -15136,11 +15607,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -15153,6 +15626,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -15162,6 +15636,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -15207,6 +15682,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -15250,6 +15726,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -15307,6 +15784,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -15319,6 +15797,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -15333,11 +15812,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -15350,6 +15831,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -15366,6 +15848,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -15457,6 +15940,8 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.12.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ReadLaterProxy> | null): void;
 
@@ -15479,6 +15964,8 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.12.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<ReadLaterProxy> | null): void;
 
@@ -15527,6 +16014,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -15570,6 +16058,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -15613,6 +16102,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -15621,6 +16111,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -15629,6 +16120,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ReadLaterProxy;
 
@@ -15678,6 +16170,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -15686,6 +16179,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -15693,6 +16187,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -15705,6 +16200,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -15713,11 +16209,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -15730,6 +16228,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -15739,6 +16238,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -15784,6 +16284,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -15827,6 +16328,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -15884,6 +16386,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -15896,6 +16399,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -15910,11 +16414,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -15927,6 +16433,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -15943,6 +16450,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -16034,6 +16542,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.6.0
          */
         static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<TicketingProxy> | null): void;
 
@@ -16056,6 +16565,7 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.6.0
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<TicketingProxy> | null): void;
 
@@ -16114,6 +16624,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -16157,6 +16668,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -16200,6 +16712,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -16208,6 +16721,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -16216,6 +16730,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): TicketingProxy;
 
@@ -16265,6 +16780,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -16273,6 +16789,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -16280,6 +16797,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -16292,6 +16810,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -16300,11 +16819,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -16317,6 +16838,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -16326,6 +16848,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -16371,6 +16894,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -16414,6 +16938,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -16425,6 +16950,7 @@ export namespace Goa {
          * 
          * See `goa_ticketing_call_get_ticket_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 3.6.0
          */
         call_get_ticket(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -16436,6 +16962,7 @@ export namespace Goa {
          * See `goa_ticketing_call_get_ticket_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 3.6.0
          */
         call_get_ticket(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -16447,6 +16974,7 @@ export namespace Goa {
          * See `goa_ticketing_call_get_ticket_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 3.6.0
          */
         call_get_ticket(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -16454,6 +16982,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_ticketing_call_get_ticket()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_ticketing_call_get_ticket()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 3.6.0
          */
         call_get_ticket_finish(res: Gio.AsyncResult): boolean;
 
@@ -16463,6 +16992,7 @@ export namespace Goa {
          * See `goa_ticketing_call_get_ticket()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 3.6.0
          */
         call_get_ticket_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -16471,6 +17001,7 @@ export namespace Goa {
          * 
          * This method will free `invocation`, you cannot use it afterwards.
          * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @since 3.6.0
          */
         complete_get_ticket(invocation: Gio.DBusMethodInvocation): void;
 
@@ -16544,6 +17075,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -16556,6 +17088,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -16570,11 +17103,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -16587,6 +17122,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -16603,6 +17139,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -16614,6 +17151,7 @@ export namespace Goa {
          * 
          * See `goa_ticketing_call_get_ticket_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 3.6.0
          */
         call_get_ticket(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -16625,6 +17163,7 @@ export namespace Goa {
          * See `goa_ticketing_call_get_ticket_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 3.6.0
          */
         call_get_ticket(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -16636,6 +17175,7 @@ export namespace Goa {
          * See `goa_ticketing_call_get_ticket_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 3.6.0
          */
         call_get_ticket(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -16643,6 +17183,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_ticketing_call_get_ticket()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_ticketing_call_get_ticket()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 3.6.0
          */
         call_get_ticket_finish(res: Gio.AsyncResult): boolean;
 
@@ -16652,6 +17193,7 @@ export namespace Goa {
          * See `goa_ticketing_call_get_ticket()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 3.6.0
          */
         call_get_ticket_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -16660,6 +17202,7 @@ export namespace Goa {
          * 
          * This method will free `invocation`, you cannot use it afterwards.
          * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @since 3.6.0
          */
         complete_get_ticket(invocation: Gio.DBusMethodInvocation): void;
 
@@ -16757,6 +17300,8 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.26.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<TodoProxy> | null): void;
 
@@ -16779,6 +17324,8 @@ export namespace Goa {
          * @param object_path An object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 3.26.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         static new_for_bus(bus_type: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<TodoProxy> | null): void;
 
@@ -16827,6 +17374,7 @@ export namespace Goa {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -16870,6 +17418,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -16913,6 +17462,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -16921,6 +17471,7 @@ export namespace Goa {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -16929,6 +17480,7 @@ export namespace Goa {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): TodoProxy;
 
@@ -16978,6 +17530,7 @@ export namespace Goa {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -16986,6 +17539,7 @@ export namespace Goa {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -16993,6 +17547,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -17005,6 +17560,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -17013,11 +17569,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -17030,6 +17588,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -17039,6 +17598,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -17084,6 +17644,7 @@ export namespace Goa {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -17127,6 +17688,7 @@ export namespace Goa {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -17184,6 +17746,7 @@ export namespace Goa {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -17196,6 +17759,7 @@ export namespace Goa {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -17210,11 +17774,13 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -17227,6 +17793,7 @@ export namespace Goa {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -17243,6 +17810,7 @@ export namespace Goa {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -20173,18 +20741,21 @@ export namespace Goa {
         /**
          * Gets the {@link Goa.Documents} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Documents.top_of_page">org.gnome.OnlineAccounts.Documents</link> on `object`, if any.
          * @returns A {@link Goa.Documents} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_documents(): Documents | null;
 
         /**
          * Gets the {@link Goa.Exchange} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Exchange.top_of_page">org.gnome.OnlineAccounts.Exchange</link> on `object`, if any.
          * @returns A {@link Goa.Exchange} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.6.0
          */
         get_exchange(): Exchange | null;
 
         /**
          * Gets the {@link Goa.Files} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Files.top_of_page">org.gnome.OnlineAccounts.Files</link> on `object`, if any.
          * @returns A {@link Goa.Files} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.8.0
          */
         get_files(): Files | null;
 
@@ -20203,18 +20774,23 @@ export namespace Goa {
         /**
          * Gets the {@link Goa.Maps} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Maps.top_of_page">org.gnome.OnlineAccounts.Maps</link> on `object`, if any.
          * @returns A {@link Goa.Maps} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.14.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_maps(): Maps | null;
 
         /**
          * Gets the {@link Goa.MediaServer} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link> on `object`, if any.
          * @returns A {@link Goa.MediaServer} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.14
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_media_server(): MediaServer | null;
 
         /**
          * Gets the {@link Goa.Music} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Music.top_of_page">org.gnome.OnlineAccounts.Music</link> on `object`, if any.
          * @returns A {@link Goa.Music} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.18.0
          */
         get_music(): Music | null;
 
@@ -20233,36 +20809,45 @@ export namespace Goa {
         /**
          * Gets the {@link Goa.PasswordBased} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link> on `object`, if any.
          * @returns A {@link Goa.PasswordBased} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.6.0
          */
         get_password_based(): PasswordBased | null;
 
         /**
          * Gets the {@link Goa.Photos} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Photos.top_of_page">org.gnome.OnlineAccounts.Photos</link> on `object`, if any.
          * @returns A {@link Goa.Photos} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.8.0
          */
         get_photos(): Photos | null;
 
         /**
          * Gets the {@link Goa.Printers} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Printers.top_of_page">org.gnome.OnlineAccounts.Printers</link> on `object`, if any.
          * @returns A {@link Goa.Printers} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.12.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_printers(): Printers | null;
 
         /**
          * Gets the {@link Goa.ReadLater} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link> on `object`, if any.
          * @returns A {@link Goa.ReadLater} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.12.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_read_later(): ReadLater | null;
 
         /**
          * Gets the {@link Goa.Ticketing} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Ticketing.top_of_page">org.gnome.OnlineAccounts.Ticketing</link> on `object`, if any.
          * @returns A {@link Goa.Ticketing} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.6.0
          */
         get_ticketing(): Ticketing | null;
 
         /**
          * Gets the {@link Goa.Todo} instance for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Todo.top_of_page">org.gnome.OnlineAccounts.Todo</link> on `object`, if any.
          * @returns A {@link Goa.Todo} that must be freed with `g_object_unref()` or `null` if `object` does not implement the interface.
+         * @since 3.26.0
+         * @deprecated The D-Bus interface has been deprecated.
          */
         get_todo(): Todo | null;
     }
@@ -20325,6 +20910,7 @@ export namespace Goa {
          * See `goa_password_based_call_get_password_sync()` for the synchronous, blocking version of this method.
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 3.6.0
          */
         call_get_password(arg_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -20337,6 +20923,7 @@ export namespace Goa {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 3.6.0
          */
         call_get_password(arg_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -20349,6 +20936,7 @@ export namespace Goa {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 3.6.0
          */
         call_get_password(arg_id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -20356,6 +20944,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_password_based_call_get_password()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_password_based_call_get_password()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 3.6.0
          */
         call_get_password_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -20366,6 +20955,7 @@ export namespace Goa {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 3.6.0
          */
         call_get_password_sync(arg_id: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -20375,6 +20965,7 @@ export namespace Goa {
          * This method will free `invocation`, you cannot use it afterwards.
          * @param invocation A {@link Gio.DBusMethodInvocation}.
          * @param password Parameter to return.
+         * @since 3.6.0
          */
         complete_get_password(invocation: Gio.DBusMethodInvocation, password: string): void;
     }
@@ -20551,6 +21142,7 @@ export namespace Goa {
          * 
          * See `goa_ticketing_call_get_ticket_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 3.6.0
          */
         call_get_ticket(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -20562,6 +21154,7 @@ export namespace Goa {
          * See `goa_ticketing_call_get_ticket_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 3.6.0
          */
         call_get_ticket(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -20573,6 +21166,7 @@ export namespace Goa {
          * See `goa_ticketing_call_get_ticket_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 3.6.0
          */
         call_get_ticket(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -20580,6 +21174,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_ticketing_call_get_ticket()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_ticketing_call_get_ticket()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 3.6.0
          */
         call_get_ticket_finish(res: Gio.AsyncResult): boolean;
 
@@ -20589,6 +21184,7 @@ export namespace Goa {
          * See `goa_ticketing_call_get_ticket()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 3.6.0
          */
         call_get_ticket_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -20597,6 +21193,7 @@ export namespace Goa {
          * 
          * This method will free `invocation`, you cannot use it afterwards.
          * @param invocation A {@link Gio.DBusMethodInvocation}.
+         * @since 3.6.0
          */
         complete_get_ticket(invocation: Gio.DBusMethodInvocation): void;
     }

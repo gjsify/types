@@ -211,6 +211,8 @@ export namespace PangoFT2 {
          * This function can be used to do things like set
          * hinting and antialiasing options.
          * @param func function to call to to do final config tweaking        on {@link fontconfig.Pattern} objects.
+         * @since 1.2
+         * @deprecated since 1.46: Use {@link PangoFc.FontMap.set_default_substitute} instead.
          */
         set_default_substitute(func: SubstituteFunc): void;
 
@@ -224,6 +226,7 @@ export namespace PangoFT2 {
          * Sets the horizontal and vertical resolutions for the fontmap.
          * @param dpi_x dots per inch in the X direction
          * @param dpi_y dots per inch in the Y direction
+         * @since 1.2
          */
         set_resolution(dpi_x: number, dpi_y: number): void;
 
@@ -234,6 +237,8 @@ export namespace PangoFT2 {
          * 
          * That is, if your substitution function will return different
          * results for the same input pattern, you must call this function.
+         * @since 1.2
+         * @deprecated since 1.46: Use {@link PangoFc.FontMap.substitute_changed} instead.
          */
         substitute_changed(): void;
 
@@ -247,6 +252,7 @@ export namespace PangoFT2 {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -257,6 +263,7 @@ export namespace PangoFT2 {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -275,6 +282,7 @@ export namespace PangoFT2 {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -302,6 +310,7 @@ export namespace PangoFT2 {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -314,6 +323,7 @@ export namespace PangoFT2 {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -327,6 +337,7 @@ export namespace PangoFT2 {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -337,6 +348,7 @@ export namespace PangoFT2 {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;

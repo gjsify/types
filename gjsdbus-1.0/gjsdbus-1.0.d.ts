@@ -113,6 +113,7 @@ export namespace GjsDBus {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -125,6 +126,7 @@ export namespace GjsDBus {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -139,11 +141,13 @@ export namespace GjsDBus {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -156,6 +160,7 @@ export namespace GjsDBus {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -172,6 +177,7 @@ export namespace GjsDBus {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;

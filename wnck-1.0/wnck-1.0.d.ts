@@ -844,6 +844,7 @@ export namespace Wnck {
         /**
          * Gets the startup sequence ID used for startup notification of `app`.
          * @returns the startup sequence ID used for startup notification of `app`, or `null` if none is available.
+         * @since 2.2
          */
         get_startup_id(): string;
 
@@ -921,6 +922,7 @@ export namespace Wnck {
         /**
          * Gets the {@link Wnck.ClassGroup} corresponding to `res_class`.
          * @param res_class name of the sought resource class.
+         * @since 2.2
          */
         static get(res_class: string): ClassGroup;
 
@@ -934,18 +936,21 @@ export namespace Wnck {
          * have the same name. If all {@link Wnck.Window} don't have the same name, the
          * resource class name is used.
          * @returns an human-readable name for `class_group`.
+         * @since 2.2
          */
         get_name(): string;
 
         /**
          * Gets the resource class name for `class_group`.
          * @returns the resource class name of `class_group`, or an empty string if the group has no resource class name.
+         * @since 2.2
          */
         get_res_class(): string;
 
         /**
          * Gets the list of {@link Wnck.Window} that are grouped in `class_group`.
          * @returns the list of {@link Wnck.Window} grouped in `class_group`, or `null` if the group contains no window. The list should not be modified nor freed, as it is owned by `class_group`.
+         * @since 2.2
          */
         get_windows(): Window[];
     }
@@ -1031,6 +1036,7 @@ export namespace Wnck {
         /**
          * Sets the layout policy for `pager` to `policy`.
          * @param policy a layout policy.
+         * @since 2.32
          */
         set_layout_policy(policy: PagerLayoutPolicy): void;
 
@@ -1072,6 +1078,8 @@ export namespace Wnck {
         /**
          * Does nothing.
          * @param screen a {@link Wnck.Screen}.
+         * @since 2.2
+         * @deprecated since 2.20
          */
         set_screen(screen: Screen): void;
 
@@ -1080,6 +1088,7 @@ export namespace Wnck {
          * function is proper integration of {@link Wnck.Pager} in panels with non-system
          * backgrounds.
          * @param shadow_type a shadow type.
+         * @since 2.2
          */
         set_shadow_type(shadow_type: Gtk.ShadowType): void;
 
@@ -1096,6 +1105,7 @@ export namespace Wnck {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -1107,6 +1117,7 @@ export namespace Wnck {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -1117,6 +1128,7 @@ export namespace Wnck {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -1127,6 +1139,7 @@ export namespace Wnck {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -1136,6 +1149,7 @@ export namespace Wnck {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -1144,6 +1158,7 @@ export namespace Wnck {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -1154,6 +1169,7 @@ export namespace Wnck {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -1164,6 +1180,7 @@ export namespace Wnck {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -1172,12 +1189,14 @@ export namespace Wnck {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -1187,6 +1206,7 @@ export namespace Wnck {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -1198,6 +1218,7 @@ export namespace Wnck {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -1209,6 +1230,7 @@ export namespace Wnck {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -1220,6 +1242,7 @@ export namespace Wnck {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -1229,6 +1252,7 @@ export namespace Wnck {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -1237,6 +1261,7 @@ export namespace Wnck {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -1247,6 +1272,7 @@ export namespace Wnck {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -1258,6 +1284,7 @@ export namespace Wnck {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -1267,6 +1294,7 @@ export namespace Wnck {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -1274,6 +1302,7 @@ export namespace Wnck {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -1459,6 +1488,8 @@ export namespace Wnck {
          * Frees the content of `layout`. This does not free `layout` itself, so you
          * might want to free `layout` yourself after calling this.
          * @param layout a {@link Wnck.WorkspaceLayout}.
+         * @since 2.12
+         * @deprecated since 2.20
          */
         static free_workspace_layout(layout: WorkspaceLayout): void;
 
@@ -1576,12 +1607,15 @@ export namespace Wnck {
          * @param num_workspaces the number of {@link Wnck.Workspace} on `screen`, or -1 to let `wnck_screen_calc_workspace_layout()` find this number.
          * @param space_index the index of a {@link Wnck.Workspace}.
          * @param layout return location for the layout of {@link Wnck.Workspace} with additional information.
+         * @since 2.12
+         * @deprecated since 2.20
          */
         calc_workspace_layout(num_workspaces: number, space_index: number, layout: WorkspaceLayout): void;
 
         /**
          * Asks the window manager to change the number of {@link Wnck.Workspace} on `screen`.
          * @param count the number of {@link Wnck.Workspace} to request.
+         * @since 2.2
          */
         change_workspace_count(count: number): void;
 
@@ -1628,6 +1662,7 @@ export namespace Wnck {
          * Gets the index of `screen` on the display to which it belongs. The first
          * {@link Wnck.Screen} has an index of 0.
          * @returns the index of `space` on `screen`, or -1 on errors.
+         * @since 2.20
          */
         get_number(): number;
 
@@ -1636,6 +1671,7 @@ export namespace Wnck {
          * sometimes, since not all window managers guarantee that a window is always
          * active.
          * @returns the previously active {@link Wnck.Window} on `screen`, or `null`. The returned {@link Wnck.Window} is owned by libwnck and must not be referenced or unreferenced.
+         * @since 2.8
          */
         get_previously_active_window(): Window;
 
@@ -1643,6 +1679,7 @@ export namespace Wnck {
          * Gets whether `screen` is in the "showing the desktop" mode. This mode is
          * changed when a {@link Wnck.Screen.SignalSignatures.showing_desktop_changed | Wnck.Screen::showing-desktop-changed} signal gets emitted.
          * @returns `true` if `window` is fullscreen, `false` otherwise.
+         * @since 2.2
          */
         get_showing_desktop(): boolean;
 
@@ -1655,6 +1692,7 @@ export namespace Wnck {
         /**
          * Gets the name of the window manager.
          * @returns the name of the window manager, or `null` if the window manager does not comply with the <ulink url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html">EWMH</ulink> specification.
+         * @since 2.20
          */
         get_window_manager_name(): string;
 
@@ -1691,6 +1729,8 @@ export namespace Wnck {
          * index of 0. See also `wnck_workspace_get_number()`.
          * @param space a {@link Wnck.Workspace}.
          * @returns the index of `space` on `screen`, or -1 on errors.
+         * @since 2.14
+         * @deprecated since 2.20: Use `wnck_workspace_get_number()` instead.
          */
         get_workspace_index(space: Workspace): number;
 
@@ -1700,6 +1740,8 @@ export namespace Wnck {
          * @param space a {@link Wnck.Workspace}.
          * @param direction direction in which to search the neighbor.
          * @returns the neighbor {@link Wnck.Workspace} of `space` in the `direction` direction on `screen`, or `null` if no such neighbor {@link Wnck.Workspace} exists. The returned {@link Wnck.Workspace} is owned by libwnck and must not be referenced or unreferenced.
+         * @since 2.14
+         * @deprecated since 2.20: Use `wnck_workspace_get_neighbor()` instead.
          */
         get_workspace_neighbor(space: Workspace, direction: MotionDirection): Workspace;
 
@@ -1707,6 +1749,7 @@ export namespace Wnck {
          * Gets the list of {@link Wnck.Workspace} on `screen`. The list is ordered: the
          * first element in the list is the first {@link Wnck.Workspace}, etc..
          * @returns the list of {@link Wnck.Workspace} on `screen`. The list should not be modified nor freed, as it is owned by `screen`.
+         * @since 2.20
          */
         get_workspaces(): Workspace[];
 
@@ -1715,6 +1758,7 @@ export namespace Wnck {
          * on `screen`.
          * @param x X offset in pixels of viewport.
          * @param y Y offset in pixels of viewport.
+         * @since 2.4
          */
         move_viewport(x: number, y: number): void;
 
@@ -1749,6 +1793,7 @@ export namespace Wnck {
          * Asks the window manager to set the "showing the desktop" mode on `screen`
          * according to `show`.
          * @param show whether to activate the "showing the desktop" mode on `screen`.
+         * @since 2.2
          */
         toggle_showing_desktop(show: boolean): void;
 
@@ -1965,12 +2010,14 @@ export namespace Wnck {
         /**
          * Returns -1.
          * @returns -1
+         * @deprecated since 2.20
          */
         get_minimum_height(): number;
 
         /**
          * Returns -1.
          * @returns -1
+         * @deprecated since 2.20
          */
         get_minimum_width(): number;
 
@@ -1990,6 +2037,7 @@ export namespace Wnck {
          * this function is proper integration of {@link Wnck.Tasklist} in panels with
          * non-system backgrounds.
          * @param relief a relief type.
+         * @since 2.12
          */
         set_button_relief(relief: Gtk.ReliefStyle): void;
 
@@ -2027,18 +2075,22 @@ export namespace Wnck {
         /**
          * Does nothing.
          * @param size a minimum height in pixels.
+         * @deprecated since 2.20
          */
         set_minimum_height(size: number): void;
 
         /**
          * Does nothing.
          * @param size a minimum width in pixels.
+         * @deprecated since 2.20
          */
         set_minimum_width(size: number): void;
 
         /**
          * Does nothing.
          * @param screen a {@link Wnck.Screen}.
+         * @since 2.2
+         * @deprecated since 2.20
          */
         set_screen(screen: Screen): void;
 
@@ -2225,6 +2277,7 @@ export namespace Wnck {
          * This function existed before 2.10, but the `timestamp` argument was missing
          * in earlier versions.
          * @param timestamp the X server timestamp of the user interaction event that caused this call to occur.
+         * @since 2.10
          */
         activate(timestamp: number): void;
 
@@ -2239,6 +2292,7 @@ export namespace Wnck {
          * This function existed before 2.10, but the `timestamp` argument was missing
          * in earlier versions.
          * @param timestamp the X server timestamp of the user interaction event that caused this call to occur.
+         * @since 2.10
          */
         activate_transient(timestamp: number): void;
 
@@ -2248,6 +2302,7 @@ export namespace Wnck {
          * This function existed before 2.6, but the `timestamp` argument was missing
          * in earlier versions.
          * @param timestamp the X server timestamp of the user interaction event that caused this call to occur.
+         * @since 2.6
          */
         close(timestamp: number): void;
 
@@ -2266,6 +2321,7 @@ export namespace Wnck {
         /**
          * Gets the {@link Wnck.ClassGroup} to which `window` belongs.
          * @returns the {@link Wnck.ClassGroup} to which `window` belongs. The returned {@link Wnck.ClassGroup} is owned by libwnck and must not be referenced or unreferenced.
+         * @since 2.2
          */
         get_class_group(): ClassGroup;
 
@@ -2282,6 +2338,7 @@ export namespace Wnck {
          * @param yp return location for Y coordinate in pixels of `window`.
          * @param widthp return location for width in pixels of `window`.
          * @param heightp return location for height in pixels of `window`.
+         * @since 2.20
          */
         get_client_window_geometry(xp: number, yp: number, widthp: number, heightp: number): void;
 
@@ -2373,6 +2430,7 @@ export namespace Wnck {
          * {@link Wnck.Selector} and {@link Wnck.Tasklist}. The sort order is an internal state in
          * libwnck. The initial value is defined when the window is created.
          * @returns the sort order of `window`, or G_MAXINT if none is available.
+         * @since 2.10
          */
         get_sort_order(): number;
 
@@ -2413,6 +2471,7 @@ export namespace Wnck {
          * methods return `false` does `wnck_window_get_icon_name()` return a
          * generic fallback name.)
          * @returns `true` if `wnck_window_get_icon_name()` returns `window`<!-- -->'s icon name, `false` if it returns a fallback name.
+         * @since 2.16
          */
         has_icon_name(): boolean;
 
@@ -2424,6 +2483,7 @@ export namespace Wnck {
          * 
          * For icons titles, use `wnck_window_has_icon_name()` instead.
          * @returns `true` if `wnck_window_get_name()` returns `window`<!-- -->'s name, `false` if it returns a fallback name.
+         * @since 2.16
          */
         has_name(): boolean;
 
@@ -2433,6 +2493,7 @@ export namespace Wnck {
          * 
          * See `wnck_window_make_above()` for more details on this state.
          * @returns `true` if `window` is above other windows, `false` otherwise.
+         * @since 2.14
          */
         is_above(): boolean;
 
@@ -2448,6 +2509,7 @@ export namespace Wnck {
          * 
          * See `wnck_window_make_below()` for more details on this state.
          * @returns `true` if `window` is below other windows, `false` otherwise.
+         * @since 2.20
          */
         is_below(): boolean;
 
@@ -2455,6 +2517,7 @@ export namespace Wnck {
          * Gets whether `window` is fullscreen. Fullscreen state may change
          * anytime a {@link Wnck.Window.SignalSignatures.state_changed | Wnck.Window::state-changed} signal gets emitted.
          * @returns `true` if `window` is fullscreen, `false` otherwise.
+         * @since 2.8
          */
         is_fullscreen(): boolean;
 
@@ -2462,6 +2525,7 @@ export namespace Wnck {
          * Gets `true` if `window` appears in the current viewport of `workspace`.
          * @param workspace a {@link Wnck.Workspace}.
          * @returns `true` if `window` appears in current viewport of `workspace`, `false` otherwise.
+         * @since 2.4
          */
         is_in_viewport(workspace: Workspace): boolean;
 
@@ -2506,6 +2570,7 @@ export namespace Wnck {
          * active in those cases) but differs slightly for mouse focus since
          * there often is no active window.
          * @returns `true` if `window` was the most recently activated window on its {@link Wnck.Screen}, `false` otherwise.
+         * @since 2.8
          */
         is_most_recently_activated(): boolean;
 
@@ -2579,11 +2644,13 @@ export namespace Wnck {
          * Asks the window manager to put `window` on top of most windows (`window` will
          * not be on top of focused fullscreen windows, of other windows with this
          * setting and of dock windows).
+         * @since 2.14
          */
         make_above(): void;
 
         /**
          * Asks the window manager to put `window` below most windows.
+         * @since 2.20
          */
         make_below(): void;
 
@@ -2621,6 +2688,7 @@ export namespace Wnck {
          * This state depends on flags such as the demands_attention and is_urgent
          * hints.
          * @returns `true` if `window` needs attention, `false` otherwise.
+         * @since 2.12
          */
         needs_attention(): boolean;
 
@@ -2628,6 +2696,7 @@ export namespace Wnck {
          * Gets whether `window` or one of its transients needs attention. This state
          * may change anytime a {@link Wnck.Window.SignalSignatures.state_changed | Wnck.Window::state-changed} signal gets emitted.
          * @returns `true` if `window` or one of its transients needs attention, `false` otherwise.
+         * @since 2.12
          */
         or_transient_needs_attention(): boolean;
 
@@ -2640,6 +2709,7 @@ export namespace Wnck {
          * Asks the window manager to set the fullscreen state of `window` according to
          * `fullscreen`.
          * @param fullscreen whether to make `window` fullscreen.
+         * @since 2.8
          */
         set_fullscreen(fullscreen: boolean): void;
 
@@ -2659,6 +2729,7 @@ export namespace Wnck {
          * @param y new Y coordinate in pixels of `window`.
          * @param width new width in pixels of `window`.
          * @param height new height in pixels of `window`.
+         * @since 2.16
          */
         set_geometry(gravity: WindowGravity, geometry_mask: WindowMoveResizeMask, x: number, y: number, width: number, height: number): void;
 
@@ -2689,12 +2760,14 @@ export namespace Wnck {
          * Sets the sort order of `window`. The sort order is used for ordering of
          * `window` in {@link Wnck.Selector} and {@link Wnck.Tasklist}.
          * @param order new sort order for `window`.
+         * @since 2.20
          */
         set_sort_order(order: number): void;
 
         /**
          * Sets the semantic type of `window` to `wintype`.
          * @param wintype a semantic type.
+         * @since 2.12
          */
         set_window_type(wintype: WindowType): void;
 
@@ -2721,18 +2794,21 @@ export namespace Wnck {
          * especially annoying in the case of modal dialogs that don't appear
          * in the `WnckTaslist`).
          * @returns `true` if one of the transients of `window` is the most recently activated window, `false` otherwise.
+         * @since 2.12
          */
         transient_is_most_recently_activated(): boolean;
 
         /**
          * Asks the window manager to not put `window` on top of most windows, and to
          * put it again in the stack with other windows.
+         * @since 2.14
          */
         unmake_above(): void;
 
         /**
          * Asks the window manager to not put `window` below most windows, and to
          * put it again in the stack with other windows.
+         * @since 2.20
          */
         unmake_below(): void;
 
@@ -2845,18 +2921,21 @@ export namespace Wnck {
          * This function existed before 2.10, but the `timestamp` argument was missing
          * in earlier versions.
          * @param timestamp the X server timestamp of the user interaction event that caused this call to occur.
+         * @since 2.10
          */
         activate(timestamp: number): void;
 
         /**
          * Changes the name of `space`.
          * @param name new name for `space`.
+         * @since 2.2
          */
         change_name(name: string): void;
 
         /**
          * Gets the height of `space`.
          * @returns the height of `space`.
+         * @since 2.4
          */
         get_height(): number;
 
@@ -2866,6 +2945,7 @@ export namespace Wnck {
          * corner set for the layout and regardless of the default direction of the
          * environment (i.e., in both Left-To-Right and Right-To-Left environments).
          * @returns the column of `space` in the {@link Wnck.Workspace} layout, or -1 on errors.
+         * @since 2.20
          */
         get_layout_column(): number;
 
@@ -2874,6 +2954,7 @@ export namespace Wnck {
          * index of 0 and is always the top row, regardless of the starting corner set
          * for the layout.
          * @returns the row of `space` in the {@link Wnck.Workspace} layout, or -1 on errors.
+         * @since 2.20
          */
         get_layout_row(): number;
 
@@ -2895,24 +2976,28 @@ export namespace Wnck {
         /**
          * Gets the X coordinate of the viewport in `space`.
          * @returns the X coordinate of the viewport in `space`, or 0 if `space` does not contain a viewport.
+         * @since 2.4
          */
         get_viewport_x(): number;
 
         /**
          * Gets the Y coordinate of the viewport in `space`.
          * @returns the Y coordinate of the viewport in `space`, or 0 if `space` does not contain a viewport.
+         * @since 2.4
          */
         get_viewport_y(): number;
 
         /**
          * Gets the width of `space`.
          * @returns the width of `space`.
+         * @since 2.4
          */
         get_width(): number;
 
         /**
          * Gets whether `space` contains a viewport.
          * @returns `true` if `space` contains a viewport, `false` otherwise.
+         * @since 2.4
          */
         is_virtual(): boolean;
     }

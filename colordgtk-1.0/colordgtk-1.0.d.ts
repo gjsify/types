@@ -146,6 +146,7 @@ export namespace ColordGtk {
         /**
          * Sets the color for the sample widget
          * @param color A color
+         * @since 0.1.24
          */
         set_color(color: Colord.ColorRGB): void;
     }
@@ -274,12 +275,14 @@ export namespace ColordGtk {
         /**
          * Sets the window to a specific color.
          * @param color the color
+         * @since 0.1.22
          */
         set_color(color: Colord.ColorRGB): void;
 
         /**
          * Sets the percentage value on the window.
          * @param fraction the fraction value to show, or -1 for pulsing.
+         * @since 0.1.22
          */
         set_fraction(fraction: number): void;
     }
@@ -350,6 +353,9 @@ export namespace ColordGtk {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @since 0.1.20
+         */
         static error_quark(): GLib.Quark;
 
         // Virtual methods
@@ -363,6 +369,7 @@ export namespace ColordGtk {
         /**
          * Gets the color profile to use for this widget.
          * @returns a {@link Colord.Profile}
+         * @since 0.1.20
          */
         get_last_profile(): Colord.Profile;
 
@@ -377,6 +384,7 @@ export namespace ColordGtk {
          * has already been connected to, as is ready to use.
          * @param widget a {@link Gtk.Widget}
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 0.1.20
          */
         get_profile(widget: Gtk.Widget, cancellable: Gio.Cancellable | null): globalThis.Promise<Colord.Profile>;
 
@@ -392,6 +400,7 @@ export namespace ColordGtk {
          * @param widget a {@link Gtk.Widget}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
+         * @since 0.1.20
          */
         get_profile(widget: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -407,6 +416,7 @@ export namespace ColordGtk {
          * @param widget a {@link Gtk.Widget}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
+         * @since 0.1.20
          */
         get_profile(widget: Gtk.Widget, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Colord.Profile> | void;
 
@@ -414,6 +424,7 @@ export namespace ColordGtk {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
+         * @since 0.1.20
          */
         get_profile_finish(res: Gio.AsyncResult): Colord.Profile;
 
@@ -426,6 +437,7 @@ export namespace ColordGtk {
          * @param widget a {@link Gtk.Widget}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link Colord.Profile} or `null`
+         * @since 0.1.20
          */
         get_profile_sync(widget: Gtk.Widget, cancellable: Gio.Cancellable | null): Colord.Profile;
     }

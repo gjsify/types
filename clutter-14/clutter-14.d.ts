@@ -12421,6 +12421,7 @@ export namespace Clutter {
          * This function does not realize child actors, except in the special
          * case that realizing the stage, when the stage is visible, will
          * suddenly map (and thus realize) the children of the stage.
+         * @deprecated since 1.16: Actors are automatically realized, and nothing   requires explicit realization.
          * @virtual
          */
         vfunc_realize(): void;
@@ -12503,6 +12504,7 @@ export namespace Clutter {
          * If you were using `clutter_actor_unrealize()` to implement
          * unrealizing children of your container, then don't, ClutterActor
          * will already take care of that.
+         * @deprecated since 1.16: Actors are automatically unrealized, and nothing   requires explicit realization.
          * @virtual
          */
         vfunc_unrealize(): void;
@@ -14080,6 +14082,7 @@ export namespace Clutter {
          * This function does not realize child actors, except in the special
          * case that realizing the stage, when the stage is visible, will
          * suddenly map (and thus realize) the children of the stage.
+         * @deprecated since 1.16: Actors are automatically realized, and nothing   requires explicit realization.
          */
         realize(): void;
 
@@ -14838,6 +14841,7 @@ export namespace Clutter {
          * If you were using `clutter_actor_unrealize()` to implement
          * unrealizing children of your container, then don't, ClutterActor
          * will already take care of that.
+         * @deprecated since 1.16: Actors are automatically unrealized, and nothing   requires explicit realization.
          */
         unrealize(): void;
 

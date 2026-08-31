@@ -8393,6 +8393,7 @@ export namespace ParamArray {
          * Returns the procedure's interpreter name, as set with
          * {@link BatchProcedure.set_interpreter_name}.
          * @returns The procedure's interpreter name.
+         * @since 3.0
          */
         get_interpreter_name(): string;
 
@@ -8415,6 +8416,7 @@ export namespace ParamArray {
          * acronyms, even if sometimes just to rewrite them with the local
          * writing system.
          * @param interpreter_name A public-facing name for the interpreter, e.g. "Python 3".
+         * @since 3.0
          */
         set_interpreter_name(interpreter_name: string): void;
     }
@@ -8473,6 +8475,7 @@ export namespace ParamArray {
          * Return an existing brush having the given name. Returns `null` when
          * no brush exists of that name.
          * @param name The name of the brush.
+         * @since 3.0
          */
         static get_by_name(name: string): Brush | null;
 
@@ -8489,6 +8492,7 @@ export namespace ParamArray {
          * Gets the angle of rotation for a generated brush. Returns an error
          * when called for a non-parametric brush.
          * @returns TRUE on success.
+         * @since 2.4
          */
         get_angle(): [boolean, number];
 
@@ -8499,6 +8503,7 @@ export namespace ParamArray {
          * called for a non-parametric brush. The aspect ratio is a double
          * between 0.0 and 1000.0.
          * @returns TRUE on success.
+         * @since 2.4
          */
         get_aspect_ratio(): [boolean, number];
 
@@ -8531,6 +8536,7 @@ export namespace ParamArray {
          * between 0.0 and 1.0. Returns an error when called for a
          * non-parametric brush.
          * @returns TRUE on success.
+         * @since 2.4
          */
         get_hardness(): [boolean, number];
 
@@ -8541,6 +8547,7 @@ export namespace ParamArray {
          * color depth and mask depth (bpp). The color bpp is zero when the
          * brush is parametric versus raster.
          * @returns TRUE on success.
+         * @since 2.2
          */
         get_info(): [boolean, number, number, number, number];
 
@@ -8568,6 +8575,7 @@ export namespace ParamArray {
          * Gets the radius of a generated brush. Returns an error when called
          * for a non-parametric brush.
          * @returns TRUE on success.
+         * @since 2.4
          */
         get_radius(): [boolean, number];
 
@@ -8580,6 +8588,7 @@ export namespace ParamArray {
          * and Diamond (GIMP_BRUSH_GENERATED_DIAMOND). Other shapes might be
          * added in the future.
          * @returns TRUE on success.
+         * @since 2.4
          */
         get_shape(): [boolean, BrushGeneratedShape];
 
@@ -8591,6 +8600,7 @@ export namespace ParamArray {
          * the width and height of the mask. Both parametric and raster brushes
          * have a spacing.
          * @returns The brush spacing.
+         * @since 2.2
          */
         get_spacing(): number;
 
@@ -8600,6 +8610,7 @@ export namespace ParamArray {
          * Gets the number of spikes for a generated brush. Returns an error
          * when called for a non-parametric brush.
          * @returns TRUE on success.
+         * @since 2.4
          */
         get_spikes(): [boolean, number];
 
@@ -8608,6 +8619,7 @@ export namespace ParamArray {
          * 
          * Returns TRUE when brush is parametric.
          * @returns TRUE if the brush is generated.
+         * @since 2.4
          */
         is_generated(): boolean;
 
@@ -8619,6 +8631,7 @@ export namespace ParamArray {
          * Returns an error when brush is non-parametric or not editable.
          * @param angle_in The desired brush rotation angle in degrees.
          * @returns TRUE on success.
+         * @since 2.4
          */
         set_angle(angle_in: number): [boolean, number];
 
@@ -8630,6 +8643,7 @@ export namespace ParamArray {
          * brush is non-parametric or not editable.
          * @param aspect_ratio_in The desired brush aspect ratio.
          * @returns TRUE on success.
+         * @since 2.4
          */
         set_aspect_ratio(aspect_ratio_in: number): [boolean, number];
 
@@ -8641,6 +8655,7 @@ export namespace ParamArray {
          * non-parametric or not editable.
          * @param hardness_in The desired brush hardness.
          * @returns TRUE on success.
+         * @since 2.4
          */
         set_hardness(hardness_in: number): [boolean, number];
 
@@ -8652,6 +8667,7 @@ export namespace ParamArray {
          * non-parametric or not editable.
          * @param radius_in The desired brush radius in pixel.
          * @returns TRUE on success.
+         * @since 2.4
          */
         set_radius(radius_in: number): [boolean, number];
 
@@ -8664,6 +8680,7 @@ export namespace ParamArray {
          * and Diamond (GIMP_BRUSH_GENERATED_DIAMOND).
          * @param shape_in The brush shape.
          * @returns TRUE on success.
+         * @since 2.4
          */
         set_shape(shape_in: BrushGeneratedShape): [boolean, BrushGeneratedShape];
 
@@ -8676,6 +8693,7 @@ export namespace ParamArray {
          * new or copied brush or to get an editable brush.
          * @param spacing The brush spacing.
          * @returns TRUE on success.
+         * @since 2.4
          */
         set_spacing(spacing: number): boolean;
 
@@ -8687,6 +8705,7 @@ export namespace ParamArray {
          * non-parametric or not editable.
          * @param spikes_in The desired number of spikes.
          * @returns TRUE on success.
+         * @since 2.4
          */
         set_spikes(spikes_in: number): [boolean, number];
     }
@@ -8746,6 +8765,7 @@ export namespace ParamArray {
          * calls `gimp_item_get_by_id()` and returns the item if it is channel
          * or `null` otherwise.
          * @param channel_id The channel id.
+         * @since 3.0
          */
         static get_by_id(channel_id: number): Channel | null;
 
@@ -8890,6 +8910,7 @@ export namespace ParamArray {
          * @param id optional integer ID for `nick`.
          * @param label the label of `choice`.
          * @param help optional longer help text for `nick`.
+         * @since 3.0
          */
         add(nick: string, id: number, label: string, help: string): void;
 
@@ -8899,6 +8920,7 @@ export namespace ParamArray {
          * @param label the label of `nick`.
          * @param help the help text of `nick`.
          * @returns `true` if `nick` is found, `false` otherwise.
+         * @since 3.0
          */
         get_documentation(nick: string, label: string, help: string): boolean;
 
@@ -8906,18 +8928,21 @@ export namespace ParamArray {
          * Returns the longer documentation for `nick`.
          * @param nick the nick to lookup.
          * @returns the help text of `nick`.
+         * @since 3.0
          */
         get_help(nick: string): string;
 
         /**
          * @param nick the nick to lookup.
          * @returns the ID of `nick`.
+         * @since 3.0
          */
         get_id(nick: string): number;
 
         /**
          * @param nick the nick to lookup.
          * @returns the label of `nick`.
+         * @since 3.0
          */
         get_label(nick: string): string;
 
@@ -8926,12 +8951,14 @@ export namespace ParamArray {
          * an existing choice.
          * @param nick the nick to check.
          * @returns Whether the choice is valid.
+         * @since 3.0
          */
         is_valid(nick: string): boolean;
 
         /**
          * This procedure returns the list of nicks allowed for `choice`.
          * @returns The list of `choice`'s nicks.
+         * @since 3.0
          */
         list_nicks(): string[];
 
@@ -8942,6 +8969,7 @@ export namespace ParamArray {
          * functions to get information about a choice will still function).
          * @param nick the nick to lookup.
          * @param sensitive 
+         * @since 3.0
          */
         set_sensitive(nick: string, sensitive: boolean): void;
     }
@@ -9237,50 +9265,83 @@ export namespace ParamArray {
         // Methods
         /**
          * @returns the default CMYK color profile.
+         * @since 2.10
          */
         get_cmyk_color_profile(): ColorProfile;
 
+        /**
+         * @since 2.10
+         */
         get_display_bpc(): boolean;
 
         /**
          * @returns the default display color profile.
+         * @since 2.10
          */
         get_display_color_profile(): ColorProfile;
 
+        /**
+         * @since 2.10
+         */
         get_display_intent(): ColorRenderingIntent;
 
+        /**
+         * @since 2.10
+         */
         get_display_optimize(): boolean;
 
+        /**
+         * @since 2.10
+         */
         get_display_profile_from_gdk(): boolean;
 
         /**
          * @returns the default grayscale color profile.
+         * @since 2.10
          */
         get_gray_color_profile(): ColorProfile;
 
+        /**
+         * @since 2.10
+         */
         get_mode(): ColorManagementMode;
 
         /**
          * @returns the {@link Gegl.Color} to use to represent                           out-of-gamut pixels.
+         * @since 3.0
          */
         get_out_of_gamut_color(): Gegl.Color;
 
         /**
          * @returns the default RGB color profile.
+         * @since 2.10
          */
         get_rgb_color_profile(): ColorProfile;
 
+        /**
+         * @since 2.10
+         */
         get_simulation_bpc(): boolean;
 
         /**
          * @returns the default soft-proofing color                                profile.
+         * @since 2.10
          */
         get_simulation_color_profile(): ColorProfile;
 
+        /**
+         * @since 2.10
+         */
         get_simulation_gamut_check(): boolean;
 
+        /**
+         * @since 2.10
+         */
         get_simulation_intent(): ColorRenderingIntent;
 
+        /**
+         * @since 2.10
+         */
         get_simulation_optimize(): boolean;
     }
 
@@ -9355,17 +9416,20 @@ export namespace ParamArray {
          * Note that this function currently only supports RGB, RGBA, R'G'B',
          * R'G'B'A, Y, YA, Y', Y'A and the cairo-RGB24 and cairo-ARGB32 formats.
          * @param format a {@link Babl.Object} format
+         * @since 2.10
          */
         static get_lcms_format(format: Babl.Object): [Babl.Object | null, number];
 
         // Methods
         /**
          * @returns a string containing `profile`'s copyright. The               returned value belongs to `profile` and must not be               modified or freed.
+         * @since 2.10
          */
         get_copyright(): string;
 
         /**
          * @returns a string containing `profile`'s description. The               returned value belongs to `profile` and must not be               modified or freed.
+         * @since 2.10
          */
         get_description(): string;
 
@@ -9376,6 +9440,7 @@ export namespace ParamArray {
          * @param format a {@link Babl.Object} format
          * @param intent a {@link Gimp.ColorRenderingIntent}
          * @returns the new {@link Babl.Object} format.
+         * @since 2.10
          */
         get_format(format: Babl.Object, intent: ColorRenderingIntent): Babl.Object;
 
@@ -9383,6 +9448,7 @@ export namespace ParamArray {
          * This function returns `profile` as ICC profile data. The returned
          * memory belongs to `profile` and must not be modified or freed.
          * @returns a pointer to the IIC profile data.
+         * @since 2.10
          */
         get_icc_profile(): Uint8Array;
 
@@ -9393,6 +9459,7 @@ export namespace ParamArray {
          * Unlike `gimp_color_profile_get_description()`, this function always
          * returns a string (as a fallback, it returns "(unnamed profile)").
          * @returns the `profile`'s label. The returned value belongs to               `profile` and must not be modified or freed.
+         * @since 2.10
          */
         get_label(): string;
 
@@ -9400,16 +9467,19 @@ export namespace ParamArray {
          * This function returns `profile`'s cmsHPROFILE. The returned
          * value belongs to `profile` and must not be modified or freed.
          * @returns a pointer to the cmsHPROFILE.
+         * @since 2.10
          */
         get_lcms_profile(): null;
 
         /**
          * @returns a string containing `profile`'s manufacturer. The               returned value belongs to `profile` and must not be               modified or freed.
+         * @since 2.10
          */
         get_manufacturer(): string;
 
         /**
          * @returns a string containing `profile`'s model. The returned               value belongs to `profile` and must not be modified or               freed.
+         * @since 2.10
          */
         get_model(): string;
 
@@ -9418,6 +9488,7 @@ export namespace ParamArray {
          * specified `intent`.
          * @param intent a {@link Gimp.ColorRenderingIntent}
          * @returns the new {@link Babl.Object} space.
+         * @since 2.10.6
          */
         get_space(intent: ColorRenderingIntent): Babl.Object;
 
@@ -9427,11 +9498,13 @@ export namespace ParamArray {
          * used as detailed information about the profile in a user
          * interface.
          * @returns the `profile`'s summary. The returned value belongs to               `profile` and must not be modified or freed.
+         * @since 2.10
          */
         get_summary(): string;
 
         /**
          * @returns `true` if the profile's color space is CMYK, `false` otherwise.
+         * @since 2.10
          */
         is_cmyk(): boolean;
 
@@ -9439,11 +9512,13 @@ export namespace ParamArray {
          * Compares two profiles.
          * @param profile2 a {@link Gimp.ColorProfile}
          * @returns `true` if the profiles are equal, `false` otherwise.
+         * @since 2.10
          */
         is_equal(profile2: ColorProfile): boolean;
 
         /**
          * @returns `true` if the profile's color space is grayscale, `false` otherwise.
+         * @since 2.10
          */
         is_gray(): boolean;
 
@@ -9452,11 +9527,13 @@ export namespace ParamArray {
          * is a linear RGB profile or not, some profiles that are LUTs though linear
          * will also return FALSE;
          * @returns `true` if the profile is a matrix shaping profile with linear TRCs, `false` otherwise.
+         * @since 2.10
          */
         is_linear(): boolean;
 
         /**
          * @returns `true` if the profile's color space is RGB, `false` otherwise.
+         * @since 2.10
          */
         is_rgb(): boolean;
 
@@ -9464,6 +9541,7 @@ export namespace ParamArray {
          * This function creates a new RGB {@link Gimp.ColorProfile} with a linear TRC
          * and `profile`'s RGB chromacities and whitepoint.
          * @returns the new {@link Gimp.ColorProfile}, or `null` if               `profile` is not an RGB profile or not matrix-based.
+         * @since 2.10
          */
         new_linear_from_color_profile(): ColorProfile | null;
 
@@ -9471,6 +9549,7 @@ export namespace ParamArray {
          * This function creates a new RGB {@link Gimp.ColorProfile} with a sRGB gamma
          * TRC and `profile`'s RGB chromacities and whitepoint.
          * @returns the new {@link Gimp.ColorProfile}, or `null` if               `profile` is not an RGB profile or not matrix-based.
+         * @since 2.10
          */
         new_srgb_trc_from_color_profile(): ColorProfile | null;
 
@@ -9478,6 +9557,7 @@ export namespace ParamArray {
          * This function saves `profile` to `file` as ICC profile.
          * @param file a {@link Gio.File}
          * @returns `true` on success, `false` if an error occurred.
+         * @since 2.10
          */
         save_to_file(file: Gio.File): boolean;
     }
@@ -9540,6 +9620,7 @@ export namespace ParamArray {
          * This function checks if a GimpColorTransform is needed at all.
          * @param src_profile source {@link Gimp.ColorProfile}
          * @param dest_profile destination {@link Gimp.ColorProfile}
+         * @since 2.10
          */
         static can_gegl_copy(src_profile: ColorProfile, dest_profile: ColorProfile): boolean;
 
@@ -9555,6 +9636,7 @@ export namespace ParamArray {
          * @param src_rect rectangle in `src_buffer`
          * @param dest_buffer destination {@link Gegl.Buffer}
          * @param dest_rect rectangle in `dest_buffer`
+         * @since 2.10
          */
         process_buffer(src_buffer: Gegl.Buffer, src_rect: Gegl.Rectangle, dest_buffer: Gegl.Buffer, dest_rect: Gegl.Rectangle): void;
 
@@ -9570,6 +9652,7 @@ export namespace ParamArray {
          * @param dest_format {@link Babl.Object} format of `dest_pixels`
          * @param dest_pixels pointer to the destination pixels
          * @param length number of pixels to process
+         * @since 2.10
          */
         process_pixels(src_format: Babl.Object, src_pixels: null, dest_format: Babl.Object, dest_pixels: null, length: bigint | number): void;
     }
@@ -9615,6 +9698,7 @@ export namespace ParamArray {
          * To reverse the expansion, use `gimp_config_path_unexpand()`.
          * @param path a NUL-terminated string in UTF-8 encoding
          * @param recode whether to convert to the filesystem's encoding
+         * @since 2.4
          */
         static expand(path: string, recode: boolean): string;
 
@@ -9629,6 +9713,7 @@ export namespace ParamArray {
          * `gimp_path_parse()`, then turns the filenames returned by
          * `gimp_path_parse()` into GFile using `g_file_new_for_path()`.
          * @param path a NUL-terminated string in UTF-8 encoding
+         * @since 2.10
          */
         static expand_to_files(path: string): Gio.File[];
 
@@ -9644,6 +9729,7 @@ export namespace ParamArray {
          * if `recode` is `false` then `path` is assumed to be UTF-8.
          * @param path a NUL-terminated string
          * @param recode whether `path` is in filesystem encoding or UTF-8
+         * @since 2.10
          */
         static unexpand(path: string, recode: boolean): string;
     }
@@ -9766,6 +9852,7 @@ export namespace ParamArray {
          * @param x the point abscissa on a `[0.0, 1.0]` range.
          * @param y the point ordinate on a `[0.0, 1.0]` range.
          * @returns a point identifier to be used in other functions.
+         * @since 3.2
          */
         add_point(x: number, y: number): number;
 
@@ -9773,6 +9860,7 @@ export namespace ParamArray {
          * Deletes all points from a {@link Gimp.CurveType.SMOOTH} `curve`.
          * 
          * A subsequent call to {@link Gimp.Curve.get_n_points} will return 0.
+         * @since 3.2
          */
         clear_points(): void;
 
@@ -9787,11 +9875,13 @@ export namespace ParamArray {
          * point, unless you modified the `curve` since (e.g. by calling
          * `gimp_curve_add_point` again, or by deleting or modifying a point).
          * @param point a point identifier.
+         * @since 3.2
          */
         delete_point(point: number): void;
 
         /**
          * @returns the `curve` type.
+         * @since 3.2
          */
         get_curve_type(): CurveType;
 
@@ -9806,12 +9896,14 @@ export namespace ParamArray {
          * the information on the number of points is still valid when you use
          * it (you may have added or removed points in particular).
          * @returns the number of points in a smooth curve.
+         * @since 3.2
          */
         get_n_points(): number;
 
         /**
          * Gets the number of samples in a {@link Gimp.CurveType.FREE} curve.
          * @returns the number of samples in a freehand curve.
+         * @since 3.2
          */
         get_n_samples(): number;
 
@@ -9826,12 +9918,14 @@ export namespace ParamArray {
          * point, unless you modified the `curve` since (e.g. by calling
          * `gimp_curve_add_point` again, or by deleting or modifying a point).
          * @param point a point identifier.
+         * @since 3.2
          */
         get_point(point: number): [number, number];
 
         /**
          * @param point a point identifier.
          * @returns the `point` type of a {@link Gimp.CurveType.SMOOTH} `curve`.
+         * @since 3.2
          */
         get_point_type(point: number): CurvePointType;
 
@@ -9845,6 +9939,7 @@ export namespace ParamArray {
          * {@link Gimp.Curve.set_n_samples}, the more precise the rounding will
          * be.
          * @param x an abscissa on a `[0.0, 1.0]` range.
+         * @since 3.2
          */
         get_sample(x: number): number;
 
@@ -9852,6 +9947,7 @@ export namespace ParamArray {
          * If this function returns `true`, then the curve maps each value to
          * itself. If it returns `false`, then this assumption can not be made.
          * @returns `true` if the curve is an identity mapping, `false` otherwise.
+         * @since 3.2
          */
         is_identity(): boolean;
 
@@ -9866,6 +9962,7 @@ export namespace ParamArray {
          * - If you change to {@link Gimp.CurveType.FREE}, all existing points
          *   will be cleared.
          * @param curve_type the new curve type.
+         * @since 3.2
          */
         set_curve_type(curve_type: CurveType): void;
 
@@ -9879,6 +9976,7 @@ export namespace ParamArray {
          * Note that changing the number of samples will reset the curve to an
          * identity curve.
          * @param n_samples the number of samples.
+         * @since 3.2
          */
         set_n_samples(n_samples: number): void;
 
@@ -9888,6 +9986,7 @@ export namespace ParamArray {
          * @param point a point identifier.
          * @param x the point abscissa on a `[0.0, 1.0]` range.
          * @param y the point ordinate on a `[0.0, 1.0]` range.
+         * @since 3.2
          */
         set_point(point: number, x: number, y: number): void;
 
@@ -9895,6 +9994,7 @@ export namespace ParamArray {
          * Sets the `point` type in a {@link Gimp.CurveType.SMOOTH} `curve`.
          * @param point a point identifier.
          * @param type a point type.
+         * @since 3.2
          */
         set_point_type(point: number, type: CurvePointType): void;
 
@@ -9909,6 +10009,7 @@ export namespace ParamArray {
          * be.
          * @param x the point abscissa on a `[0.0, 1.0]` range.
          * @param y the point ordinate on a `[0.0, 1.0]` range.
+         * @since 3.2
          */
         set_sample(x: number, y: number): void;
     }
@@ -9978,6 +10079,7 @@ export namespace ParamArray {
          * reusable across sessions. Use the appropriate functions for your use
          * case instead.
          * @param display_id The display id.
+         * @since 3.0
          */
         static get_by_id(display_id: number): Display | null;
 
@@ -9991,6 +10093,7 @@ export namespace ParamArray {
          * got a {@link Gimp.Display} from the API, you should trust it is
          * valid. This function is mostly for internal usage.
          * @param display_id The display ID to check.
+         * @since 3.0
          */
         static id_is_valid(display_id: number): boolean;
 
@@ -10020,6 +10123,7 @@ export namespace ParamArray {
          * Note: in most use cases, you should not need a display's ID which is
          * mostly internal data and not reusable across sessions.
          * @returns the display ID.
+         * @since 3.0
          */
         get_id(): number;
 
@@ -10034,6 +10138,7 @@ export namespace ParamArray {
          * value of NULL is returned for an invalid display or if this function
          * is unimplemented for the windowing system that is being used.
          * @returns The native window handle or NULL.
+         * @since 2.4
          */
         get_window_handle(): GLib.Bytes;
 
@@ -10043,6 +10148,7 @@ export namespace ParamArray {
          * This procedure checks if the given display is valid and refers to
          * an existing display.
          * @returns Whether the display is valid.
+         * @since 2.4
          */
         is_valid(): boolean;
 
@@ -10052,6 +10158,7 @@ export namespace ParamArray {
          * This procedure presents the specified display at the top of the
          * display stack.
          * @returns TRUE on success.
+         * @since 3.0
          */
         present(): boolean;
     }
@@ -10107,6 +10214,7 @@ export namespace ParamArray {
          * calls `gimp_item_get_by_id()` and returns the item if it is drawable
          * or `null` otherwise.
          * @param drawable_id The drawable id.
+         * @since 3.0
          */
         static get_by_id(drawable_id: number): Drawable | null;
 
@@ -10122,6 +10230,7 @@ export namespace ParamArray {
          * operation's arguments as received with
          * {@link Gimp.DrawableFilter.get_config} before adding the effect.
          * @param filter The drawable filter to append.
+         * @since 3.0
          */
         append_filter(filter: DrawableFilter): void;
 
@@ -10134,6 +10243,8 @@ export namespace ParamArray {
          * @param brightness Brightness adjustment.
          * @param contrast Contrast adjustment.
          * @returns TRUE on success.
+         * @since 2.10
+         * @deprecated since 3.2: Use filter "gimp:brightness-contrast" instead.
          */
         brightness_contrast(brightness: number, contrast: number): boolean;
 
@@ -10154,6 +10265,8 @@ export namespace ParamArray {
          * @param magenta_green Magenta-Green color balance.
          * @param yellow_blue Yellow-Blue color balance.
          * @returns TRUE on success.
+         * @since 2.10
+         * @deprecated since 3.2: Use filter "gimp:color-balance" instead.
          */
         color_balance(transfer_mode: TransferMode, preserve_lum: boolean, cyan_red: number, magenta_green: number, yellow_blue: number): boolean;
 
@@ -10168,6 +10281,8 @@ export namespace ParamArray {
          * @param saturation Saturation in percent.
          * @param lightness Lightness in percent.
          * @returns TRUE on success.
+         * @since 2.10
+         * @deprecated since 3.2: Use filter "gimp:colorize" instead.
          */
         colorize_hsl(hue: number, saturation: number, lightness: number): boolean;
 
@@ -10183,6 +10298,8 @@ export namespace ParamArray {
          * @param channel The channel to modify.
          * @param values The explicit curve.
          * @returns TRUE on success.
+         * @since 2.10
+         * @deprecated since 3.2: Use filter "gimp:curves" instead.
          */
         curves_explicit(channel: HistogramChannel, values: number[]): boolean;
 
@@ -10204,6 +10321,8 @@ export namespace ParamArray {
          * @param channel The channel to modify.
          * @param points The spline control points: { cp1.x, cp1.y, cp2.x, cp2.y, ... }.
          * @returns TRUE on success.
+         * @since 2.10
+         * @deprecated since 3.2: Use filter "gimp:curves" instead.
          */
         curves_spline(channel: HistogramChannel, points: number[]): boolean;
 
@@ -10216,6 +10335,8 @@ export namespace ParamArray {
          * of type RGB color.
          * @param desaturate_mode The formula to use to desaturate.
          * @returns TRUE on success.
+         * @since 2.10
+         * @deprecated since 3.2: Use filter "gimp:desaturate" instead.
          */
         desaturate(desaturate_mode: DesaturateMode): boolean;
 
@@ -10239,6 +10360,7 @@ export namespace ParamArray {
          * @param x The x coordinate of this bucket fill's application.
          * @param y The y coordinate of this bucket fill's application.
          * @returns TRUE on success.
+         * @since 2.10
          */
         edit_bucket_fill(fill_type: FillType, x: number, y: number): boolean;
 
@@ -10300,6 +10422,7 @@ export namespace ParamArray {
          * @param x2 The x coordinate of this gradient's ending point.
          * @param y2 The y coordinate of this gradient's ending point.
          * @returns TRUE on success.
+         * @since 2.10
          */
         edit_gradient_fill(gradient_type: GradientType, offset: number, supersample: boolean, supersample_max_depth: number, supersample_threshold: number, dither: boolean, x1: number, y1: number, x2: number, y2: number): boolean;
 
@@ -10320,6 +10443,7 @@ export namespace ParamArray {
          * line property settings, `gimp_context_set_antialias()`.
          * @param item The item to stroke.
          * @returns TRUE on success.
+         * @since 2.10
          */
         edit_stroke_item(item: Item): boolean;
 
@@ -10354,6 +10478,7 @@ export namespace ParamArray {
          * adjusted based on the histogram for the entire image.
          * @param mask_only Equalization option.
          * @returns TRUE on success.
+         * @since 2.10
          */
         equalize(mask_only: boolean): boolean;
 
@@ -10365,6 +10490,8 @@ export namespace ParamArray {
          * @param invert Invert the extracted component.
          * @param linear Use linear output instead of gamma corrected.
          * @returns TRUE on success.
+         * @since 2.10.34
+         * @deprecated since 3.2: Use filter "gegl:component-extract" instead.
          */
         extract_component(component: number, invert: boolean, linear: boolean): boolean;
 
@@ -10396,6 +10523,7 @@ export namespace ParamArray {
          * @param mode The algorithm to use.
          * @param mask Tri-Map.
          * @returns TRUE on success.
+         * @since 2.4
          */
         foreground_extract(mode: ForegroundExtractMode, mask: Drawable): boolean;
 
@@ -10407,6 +10535,7 @@ export namespace ParamArray {
          * drawable is removed from the image, or when the plug-in procedure
          * which allocated it returns.
          * @returns TRUE on success.
+         * @since 2.6
          */
         free_shadow(): boolean;
 
@@ -10424,6 +10553,7 @@ export namespace ParamArray {
          * drawable when the buffer gets destroyed, or when `gegl_buffer_flush()`
          * is called.
          * @returns The {@link Gegl.Buffer}. See Also: `gimp_drawable_get_shadow_buffer()`
+         * @since 2.10
          */
         get_buffer(): Gegl.Buffer;
 
@@ -10434,12 +10564,14 @@ export namespace ParamArray {
          * applied non-destructively to `drawable`. The order of filters is from
          * topmost to bottommost.
          * @returns The list of filters on the drawable.          The returned value must be freed with `g_free()`.
+         * @since 3.0
          */
         get_filters(): DrawableFilter[];
 
         /**
          * Returns the {@link Babl.Object} format of the drawable.
          * @returns The {@link Babl.Object} format.
+         * @since 2.10
          */
         get_format(): Babl.Object;
 
@@ -10477,6 +10609,7 @@ export namespace ParamArray {
          * synced back with the core drawable's shadow tiles when the buffer
          * gets destroyed, or when `gegl_buffer_flush()` is called.
          * @returns The {@link Gegl.Buffer}.
+         * @since 2.10
          */
         get_shadow_buffer(): Gegl.Buffer;
 
@@ -10492,6 +10625,7 @@ export namespace ParamArray {
          * @param dest_height the requested thumbnail height (<= 1024 pixels)
          * @param alpha how to handle an alpha channel
          * @returns a new {@link GdkPixbuf.Pixbuf}
+         * @since 2.2
          */
         get_sub_thumbnail(src_x: number, src_y: number, src_width: number, src_height: number, dest_width: number, dest_height: number, alpha: PixbufTransparency): GdkPixbuf.Pixbuf;
 
@@ -10516,6 +10650,7 @@ export namespace ParamArray {
          * @param height the requested thumbnail height (<= 1024 pixels)
          * @param alpha how to handle an alpha channel
          * @returns a new {@link GdkPixbuf.Pixbuf}
+         * @since 2.2
          */
         get_thumbnail(width: number, height: number, alpha: PixbufTransparency): GdkPixbuf.Pixbuf;
 
@@ -10531,6 +10666,7 @@ export namespace ParamArray {
         /**
          * Returns the {@link Babl.Object} thumbnail format of the drawable.
          * @returns The {@link Babl.Object} thumbnail format.
+         * @since 2.10.14
          */
         get_thumbnail_format(): Babl.Object;
 
@@ -10575,6 +10711,7 @@ export namespace ParamArray {
          * @param start_range Start of the intensity measurement range.
          * @param end_range End of the intensity measurement range.
          * @returns TRUE on success.
+         * @since 2.10
          */
         histogram(channel: HistogramChannel, start_range: number, end_range: number): [boolean, number, number, number, number, number, number];
 
@@ -10592,6 +10729,8 @@ export namespace ParamArray {
          * @param saturation Saturation modification.
          * @param overlap Overlap other hue channels.
          * @returns TRUE on success.
+         * @since 2.10
+         * @deprecated since 3.2: Use filter "gimp:hue-saturation" instead.
          */
         hue_saturation(hue_range: HueRange, hue_offset: number, lightness: number, saturation: number, overlap: number): boolean;
 
@@ -10604,6 +10743,8 @@ export namespace ParamArray {
          * drawable is inverted in linear space.
          * @param linear Whether to invert in linear space.
          * @returns TRUE on success.
+         * @since 2.10
+         * @deprecated since 3.2: Use filters "gegl:invert-linear" or "gegl:invert-gamma" instead.
          */
         invert(linear: boolean): boolean;
 
@@ -10658,6 +10799,8 @@ export namespace ParamArray {
          * @param high_output Intensity of highest output.
          * @param clamp_output Clamp final output values.
          * @returns TRUE on success.
+         * @since 2.10
+         * @deprecated since 3.2: Use filter "gimp:levels" instead.
          */
         levels(channel: HistogramChannel, low_input: number, high_input: number, clamp_input: boolean, gamma: number, low_output: number, high_output: number, clamp_output: boolean): boolean;
 
@@ -10668,6 +10811,7 @@ export namespace ParamArray {
          * be remapped according to a set of guessed parameters. It is
          * equivalent to clicking the \"Auto\" button in the Levels tool.
          * @returns TRUE on success.
+         * @since 2.10
          */
         levels_stretch(): boolean;
 
@@ -10701,6 +10845,7 @@ export namespace ParamArray {
          * If there is no selection this function returns TRUE and the returned
          * bounds are the extents of the whole drawable.
          * @returns TRUE if the returned area is not empty.
+         * @since 2.2
          */
         mask_intersect(): [boolean, number, number, number, number];
 
@@ -10717,6 +10862,7 @@ export namespace ParamArray {
          * {@link Gimp.DrawableFilter.get_config} or set the filter's opacity
          * and blend mode before merging the effect.
          * @param filter The drawable filter to merge.
+         * @since 3.0
          */
         merge_filter(filter: DrawableFilter): void;
 
@@ -10767,6 +10913,8 @@ export namespace ParamArray {
          * intensity channel to the specified 'levels' parameter.
          * @param levels Levels of posterization.
          * @returns TRUE on success.
+         * @since 2.10
+         * @deprecated since 3.2: Use filter "gimp:posterize" instead.
          */
         posterize(levels: number): boolean;
 
@@ -10797,6 +10945,8 @@ export namespace ParamArray {
          * @param shadows_ccorrect Adjust saturation of shadows.
          * @param highlights_ccorrect Adjust saturation of highlights.
          * @returns TRUE on success.
+         * @since 2.10.34
+         * @deprecated since 3.2: Use filter "gegl:shadows-highlights" instead.
          */
         shadows_highlights(shadows: number, highlights: number, whitepoint: number, radius: number, compress: number, shadows_ccorrect: number, highlights_ccorrect: number): boolean;
 
@@ -10811,6 +10961,8 @@ export namespace ParamArray {
          * @param low_threshold The low threshold value.
          * @param high_threshold The high threshold value.
          * @returns TRUE on success.
+         * @since 2.10
+         * @deprecated since 3.2: Use filter "gimp:threshold" instead.
          */
         threshold(channel: HistogramChannel, low_threshold: number, high_threshold: number): boolean;
 
@@ -10908,6 +11060,7 @@ export namespace ParamArray {
         // Static methods
         /**
          * @param filter_id The %GimpDrawableFilter id.
+         * @since 3.0
          */
         static get_by_id(filter_id: number): DrawableFilter | null;
 
@@ -10917,6 +11070,7 @@ export namespace ParamArray {
          * This procedure checks if the given drawable filter ID is valid and
          * refers to an existing filter.
          * @param filter_id The filter ID to check.
+         * @since 3.0
          */
         static id_is_valid(filter_id: number): boolean;
 
@@ -10926,6 +11080,7 @@ export namespace ParamArray {
          * 
          * This procedure returns a list of all GEGL operation names available
          * for use with drawable filters.
+         * @since 3.2
          */
         static operation_get_available(): string[];
 
@@ -10943,6 +11098,7 @@ export namespace ParamArray {
          * Some operation's license is not specifically set. In such cases, the
          * returned license is 'unknown'.
          * @param operation_name The GEGL operation's name.
+         * @since 3.2
          */
         static operation_get_details(operation_name: string): [boolean, string[], ValueArray];
 
@@ -10953,6 +11109,7 @@ export namespace ParamArray {
          * GEGL operation.
          * Each parameter is represented by GParamSpec.
          * @param operation_name The GEGL operation's name.
+         * @since 3.2
          */
         static operation_get_pspecs(operation_name: string): ValueArray;
 
@@ -10965,6 +11122,7 @@ export namespace ParamArray {
          * or if the drawable was already removed from the image.
          * Do not use anymore the `filter` object after having deleted it.
          * @returns TRUE on success.
+         * @since 3.0
          */
         ["delete"](): boolean;
 
@@ -10973,6 +11131,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the specified filter's mode.
          * @returns The effect blending mode.
+         * @since 3.0
          */
         get_blend_mode(): LayerMode;
 
@@ -10987,11 +11146,13 @@ export namespace ParamArray {
          * immediately with the core application. Use
          * {@link Gimp.Drawable.update} to trigger an actual update.
          * @returns The {@link Gimp.DrawableFilterConfig}. Further                           calls will return the same object.
+         * @since 3.0
          */
         get_config(): DrawableFilterConfig;
 
         /**
          * @returns the drawable's filter ID.
+         * @since 3.0
          */
         get_id(): number;
 
@@ -11004,6 +11165,7 @@ export namespace ParamArray {
          * a free form field so do not rely on this information for any
          * processing.
          * @returns The filter's name.          The returned value must be freed with `g_free()`.
+         * @since 3.0
          */
         get_name(): string;
 
@@ -11012,6 +11174,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the specified filter's opacity.
          * @returns The filter's opacity.
+         * @since 3.0
          */
         get_opacity(): number;
 
@@ -11020,6 +11183,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the specified filter's operation name.
          * @returns The filter's operation name.          The returned value must be freed with `g_free()`.
+         * @since 3.0
          */
         get_operation_name(): string;
 
@@ -11028,6 +11192,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the specified filter's visibility.
          * @returns The filter visibility.
+         * @since 3.0
          */
         get_visible(): boolean;
 
@@ -11037,6 +11202,7 @@ export namespace ParamArray {
          * This procedure checks if the given filter is valid and refers to an
          * existing %GimpDrawableFilter.
          * @returns Whether `drawable_filter` is valid.
+         * @since 3.0
          */
         is_valid(): boolean;
 
@@ -11048,6 +11214,7 @@ export namespace ParamArray {
          * Use {@link Gimp.Drawable.update} to trigger an actual update.
          * @param input_pad_name name of the filter's input pad.
          * @param input the drawable to use as auxiliary input.
+         * @since 3.0
          */
         set_aux_input(input_pad_name: string, input: Drawable): void;
 
@@ -11057,6 +11224,7 @@ export namespace ParamArray {
          * The change is not synced immediately with the core application.
          * Use {@link Gimp.Drawable.update} to trigger an actual update.
          * @param mode blend mode.
+         * @since 3.0
          */
         set_blend_mode(mode: LayerMode): void;
 
@@ -11067,6 +11235,7 @@ export namespace ParamArray {
          * The change is not synced immediately with the core application.
          * Use {@link Gimp.Drawable.update} to trigger an actual update.
          * @param opacity the opacity.
+         * @since 3.0
          */
         set_opacity(opacity: number): void;
 
@@ -11078,6 +11247,7 @@ export namespace ParamArray {
          * {@link Gimp.Drawable.update} to trigger an update.
          * @param visible The new filter visibility.
          * @returns TRUE on success.
+         * @since 3.0
          */
         set_visible(visible: boolean): boolean;
 
@@ -11090,6 +11260,7 @@ export namespace ParamArray {
          * 
          * In particular, if the image is displayed, rendering will be frozen
          * and will happen only once for all changed settings.
+         * @since 3.0
          */
         update(): void;
     }
@@ -11228,6 +11399,7 @@ export namespace ParamArray {
          * {@link Gimp.ExportReturn.IGNORE} was returned.
          * @param image the image.
          * @returns An enum of {@link Gimp.ExportReturn}.
+         * @since 3.0
          */
         get_image(image: Image): [ExportReturn, Image];
     }
@@ -11418,31 +11590,37 @@ export namespace ParamArray {
         // Methods
         /**
          * @returns `true` if `procedure` supports comment exporting.
+         * @since 3.0
          */
         get_support_comment(): boolean;
 
         /**
          * @returns `true` if `procedure` supports Exif exporting.
+         * @since 3.0
          */
         get_support_exif(): boolean;
 
         /**
          * @returns `true` if `procedure` supports IPTC exporting.
+         * @since 3.0
          */
         get_support_iptc(): boolean;
 
         /**
          * @returns `true` if `procedure` supports ICC color profile exporting.
+         * @since 3.0
          */
         get_support_profile(): boolean;
 
         /**
          * @returns `true` if `procedure` supports thumbnail exporting.
+         * @since 3.0
          */
         get_support_thumbnail(): boolean;
 
         /**
          * @returns `true` if `procedure` supports XMP exporting.
+         * @since 3.0
          */
         get_support_xmp(): boolean;
 
@@ -11459,6 +11637,7 @@ export namespace ParamArray {
          * edit the export capabilities dynamically.
          * @param capabilities a {@link Gimp.ExportCapabilities} bitfield.
          * @param get_capabilities_func callback function to update export options
+         * @since 3.0
          */
         set_capabilities(capabilities: ExportCapabilities, get_capabilities_func: ExportGetCapabilitiesFunc | null): void;
 
@@ -11483,6 +11662,7 @@ export namespace ParamArray {
          * 
          * By default, the value will be {@link export_comment}.
          * @param supports whether a comment can be stored.
+         * @since 3.0
          */
         set_support_comment(supports: boolean): void;
 
@@ -11507,6 +11687,7 @@ export namespace ParamArray {
          * 
          * By default, the value will be {@link export_exif}.
          * @param supports whether Exif metadata are supported.
+         * @since 3.0
          */
         set_support_exif(supports: boolean): void;
 
@@ -11531,6 +11712,7 @@ export namespace ParamArray {
          * 
          * By default, the value will be {@link export_iptc}.
          * @param supports whether IPTC metadata are supported.
+         * @since 3.0
          */
         set_support_iptc(supports: boolean): void;
 
@@ -11555,6 +11737,7 @@ export namespace ParamArray {
          * 
          * By default, the value will be {@link export_color_profile}.
          * @param supports whether color profiles can be stored.
+         * @since 3.0
          */
         set_support_profile(supports: boolean): void;
 
@@ -11579,6 +11762,7 @@ export namespace ParamArray {
          * 
          * By default, the value will be {@link export_thumbnail}.
          * @param supports whether a thumbnail can be stored.
+         * @since 3.0
          */
         set_support_thumbnail(supports: boolean): void;
 
@@ -11603,6 +11787,7 @@ export namespace ParamArray {
          * 
          * By default, the value will be {@link export_xmp}.
          * @param supports whether XMP metadata are supported.
+         * @since 3.0
          */
         set_support_xmp(supports: boolean): void;
     }
@@ -11662,6 +11847,7 @@ export namespace ParamArray {
          * Returns the procedure's extensions as set with
          * {@link FileProcedure.set_extensions}.
          * @returns The procedure's registered extensions.
+         * @since 3.0
          */
         get_extensions(): string;
 
@@ -11669,6 +11855,7 @@ export namespace ParamArray {
          * Returns the procedure's format name, as set with
          * {@link FileProcedure.set_format_name}.
          * @returns The procedure's format name.
+         * @since 3.0
          */
         get_format_name(): string;
 
@@ -11676,12 +11863,14 @@ export namespace ParamArray {
          * Returns the procedure's 'handles remote' flags as set with
          * {@link FileProcedure.set_handles_remote}.
          * @returns The procedure's 'handles remote' flag
+         * @since 3.0
          */
         get_handles_remote(): boolean;
 
         /**
          * Returns the procedure's magics as set with {@link FileProcedure.set_magics}.
          * @returns The procedure's registered magics.
+         * @since 3.0
          */
         get_magics(): string;
 
@@ -11690,6 +11879,7 @@ export namespace ParamArray {
          * {@link FileProcedure.set_meta}. If `meta_extensions` is not `null`,
          * the generic extensions will be returned too.
          * @returns `true` is `procedure` is a meta file procedure.
+         * @since 3.2
          */
         get_meta(): [boolean, string];
 
@@ -11697,6 +11887,7 @@ export namespace ParamArray {
          * Returns the procedure's mime-type as set with
          * {@link FileProcedure.set_mime_types}.
          * @returns The procedure's registered mime-types.
+         * @since 3.0
          */
         get_mime_types(): string;
 
@@ -11704,6 +11895,7 @@ export namespace ParamArray {
          * Returns the procedure's prefixes as set with
          * {@link FileProcedure.set_prefixes}.
          * @returns The procedure's registered prefixes.
+         * @since 3.0
          */
         get_prefixes(): string;
 
@@ -11711,6 +11903,7 @@ export namespace ParamArray {
          * Returns the procedure's priority as set with
          * {@link FileProcedure.set_priority}.
          * @returns The procedure's registered priority.
+         * @since 3.0
          */
         get_priority(): number;
 
@@ -11718,6 +11911,7 @@ export namespace ParamArray {
          * Registers the given list of extensions as something this procedure can
          * handle.
          * @param extensions A comma separated list of extensions this procedure can              handle (i.e. "jpg,jpeg").
+         * @since 3.0
          */
         set_extensions(extensions: string): void;
 
@@ -11739,6 +11933,7 @@ export namespace ParamArray {
          * acronyms, even if sometimes just to rewrite them with the local
          * writing system.
          * @param format_name A public-facing name for the format, e.g. "PNG".
+         * @since 3.0
          */
         set_format_name(format_name: string): void;
 
@@ -11754,12 +11949,14 @@ export namespace ParamArray {
          * to a filename that can be used with whatever non-GIO means of dealing with
          * the file.
          * @param handles_remote The procedure's 'handles remote' flag.
+         * @since 3.0
          */
         set_handles_remote(handles_remote: boolean): void;
 
         /**
          * Registers the list of magic file information this procedure can handle.
          * @param magics A comma-separated list of magic file information (i.e. "0,string,GIF").
+         * @since 3.0
          */
         set_magics(magics: string): void;
 
@@ -11777,6 +11974,7 @@ export namespace ParamArray {
          * image as "png.gz" even though it is not explicitly listed.
          * @param is_meta Whether `procedure` is a meta file procedure.
          * @param meta_extensions A comma separated list of generic extensions this procedure can                   handle (i.e. "gz").
+         * @since 3.2
          */
         set_meta(is_meta: boolean, meta_extensions: string): void;
 
@@ -11790,6 +11988,7 @@ export namespace ParamArray {
          * will associate the first one with files opened or saved with this
          * procedure.
          * @param mime_types A comma-separated list of MIME types, such as "image/jpeg".
+         * @since 3.0
          */
         set_mime_types(mime_types: string): void;
 
@@ -11797,6 +11996,7 @@ export namespace ParamArray {
          * It should almost never be necessary to register prefixes with file
          * procedures, because most sorts of URIs should be handled by GIO.
          * @param prefixes A comma separated list of prefixes this procedure can             handle (i.e. "http:,ftp:").
+         * @since 3.0
          */
         set_prefixes(prefixes: string): void;
 
@@ -11808,6 +12008,7 @@ export namespace ParamArray {
          * it is unspecified which one of them is used. The default priority for file
          * handler procedures is 0.
          * @param priority The procedure's priority.
+         * @since 3.0
          */
         set_priority(priority: number): void;
     }
@@ -11869,6 +12070,7 @@ export namespace ParamArray {
          * instead.
          * Returns `null` when no font exists of that name.
          * @param name The name of the font.
+         * @since 3.0
          */
         static get_by_name(name: string): Font | null;
 
@@ -11882,6 +12084,7 @@ export namespace ParamArray {
         /**
          * Returns a {@link Pango.FontDescription} representing `font`.
          * @returns a %PangoFontDescription representing `font`.
+         * @since 3.0
          */
         get_pango_font_description(): Pango.FontDescription;
     }
@@ -11940,6 +12143,7 @@ export namespace ParamArray {
          * Returns an existing gradient having the given name. Returns `null`
          * when no gradient exists of that name.
          * @param name The name of the gradient.
+         * @since 3.0
          */
         static get_by_name(name: string): Gradient | null;
 
@@ -11960,6 +12164,7 @@ export namespace ParamArray {
          * @param positions The list of positions to sample along the gradient.
          * @param reverse Use the reverse gradient.
          * @returns Color samples.          The returned value must be freed with `gimp_color_array_free()`.
+         * @since 2.2
          */
         get_custom_samples(positions: number[], reverse: boolean): Gegl.Color[];
 
@@ -11968,6 +12173,7 @@ export namespace ParamArray {
          * 
          * Gets the number of segments of the gradient
          * @returns Number of segments.
+         * @since 2.6
          */
         get_number_of_segments(): number;
 
@@ -11983,6 +12189,7 @@ export namespace ParamArray {
          * @param num_samples The number of samples to take.
          * @param reverse Use the reverse gradient.
          * @returns Color samples.          The returned value must be freed with `gimp_color_array_free()`.
+         * @since 2.2
          */
         get_uniform_samples(num_samples: number, reverse: boolean): Gegl.Color[];
 
@@ -11993,6 +12200,7 @@ export namespace ParamArray {
          * Returns an error when the segment index is out of range.
          * @param segment The index of a segment within the gradient.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_get_blending_function(segment: number): [boolean, GradientSegmentType];
 
@@ -12003,6 +12211,7 @@ export namespace ParamArray {
          * Returns an error when the segment index is out of range.
          * @param segment The index of a segment within the gradient.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_get_coloring_type(segment: number): [boolean, GradientSegmentColor];
 
@@ -12013,6 +12222,7 @@ export namespace ParamArray {
          * Returns an error when the segment index is out of range.
          * @param segment The index of a segment within the gradient.
          * @returns The return color.
+         * @since 2.2
          */
         segment_get_left_color(segment: number): Gegl.Color;
 
@@ -12024,6 +12234,7 @@ export namespace ParamArray {
          * Returns an error when the segment index is out of range.
          * @param segment The index of a segment within the gradient.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_get_left_pos(segment: number): [boolean, number];
 
@@ -12034,6 +12245,7 @@ export namespace ParamArray {
          * Returns an error when the segment index is out of range.
          * @param segment The index of a segment within the gradient.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_get_middle_pos(segment: number): [boolean, number];
 
@@ -12045,6 +12257,7 @@ export namespace ParamArray {
          * Returns an error when the segment index is out of range.
          * @param segment The index of a segment within the gradient.
          * @returns The return color.
+         * @since 2.2
          */
         segment_get_right_color(segment: number): Gegl.Color;
 
@@ -12056,6 +12269,7 @@ export namespace ParamArray {
          * Returns an error when the segment index is out of range.
          * @param segment The index of a segment within the gradient.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_get_right_pos(segment: number): [boolean, number];
 
@@ -12069,6 +12283,7 @@ export namespace ParamArray {
          * @param start_segment Index of the first segment to operate on.
          * @param end_segment Index of the last segment to operate on. If negative, the range will extend to the end segment.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_range_blend_colors(start_segment: number, end_segment: number): boolean;
 
@@ -12082,6 +12297,7 @@ export namespace ParamArray {
          * @param start_segment Index of the first segment to operate on.
          * @param end_segment Index of the last segment to operate on. If negative, the range will extend to the end segment.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_range_blend_opacity(start_segment: number, end_segment: number): boolean;
 
@@ -12094,6 +12310,7 @@ export namespace ParamArray {
          * @param start_segment Index of the first segment to operate on.
          * @param end_segment Index of the last segment to operate on. If negative, the range will extend to the end segment.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_range_delete(start_segment: number, end_segment: number): boolean;
 
@@ -12108,6 +12325,7 @@ export namespace ParamArray {
          * @param start_segment Index of the first segment to operate on.
          * @param end_segment Index of the last segment to operate on. If negative, the range will extend to the end segment.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_range_flip(start_segment: number, end_segment: number): boolean;
 
@@ -12124,6 +12342,7 @@ export namespace ParamArray {
          * @param delta The delta to move the segment range.
          * @param control_compress Whether or not to compress the neighboring segments.
          * @returns The final delta by which the range moved.
+         * @since 2.2
          */
         segment_range_move(start_segment: number, end_segment: number, delta: number, control_compress: boolean): number;
 
@@ -12138,6 +12357,7 @@ export namespace ParamArray {
          * @param start_segment Index of the first segment to operate on.
          * @param end_segment Index of the last segment to operate on. If negative, the range will extend to the end segment.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_range_redistribute_handles(start_segment: number, end_segment: number): boolean;
 
@@ -12153,6 +12373,7 @@ export namespace ParamArray {
          * @param end_segment Index of the last segment to operate on. If negative, the range will extend to the end segment.
          * @param replicate_times The number of replicas for each segment.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_range_replicate(start_segment: number, end_segment: number, replicate_times: number): boolean;
 
@@ -12166,6 +12387,7 @@ export namespace ParamArray {
          * @param end_segment Index of the last segment to operate on. If negative, the range will extend to the end segment.
          * @param blending_function The blending function.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_range_set_blending_function(start_segment: number, end_segment: number, blending_function: GradientSegmentType): boolean;
 
@@ -12179,6 +12401,7 @@ export namespace ParamArray {
          * @param end_segment Index of the last segment to operate on. If negative, the range will extend to the end segment.
          * @param coloring_type The coloring type.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_range_set_coloring_type(start_segment: number, end_segment: number, coloring_type: GradientSegmentColor): boolean;
 
@@ -12191,6 +12414,7 @@ export namespace ParamArray {
          * @param start_segment Index of the first segment to operate on.
          * @param end_segment Index of the last segment to operate on. If negative, the range will extend to the end segment.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_range_split_midpoint(start_segment: number, end_segment: number): boolean;
 
@@ -12205,6 +12429,7 @@ export namespace ParamArray {
          * @param end_segment Index of the last segment to operate on. If negative, the range will extend to the end segment.
          * @param split_parts The number of uniform divisions to split each segment to.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_range_split_uniform(start_segment: number, end_segment: number, split_parts: number): boolean;
 
@@ -12219,6 +12444,7 @@ export namespace ParamArray {
          * @param segment The index of a segment within the gradient.
          * @param color The color to set.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_set_left_color(segment: number, color: Gegl.Color): boolean;
 
@@ -12233,6 +12459,7 @@ export namespace ParamArray {
          * @param segment The index of a segment within the gradient.
          * @param pos The position to set the guidepoint to.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_set_left_pos(segment: number, pos: number): [boolean, number];
 
@@ -12247,6 +12474,7 @@ export namespace ParamArray {
          * @param segment The index of a segment within the gradient.
          * @param pos The position to set the guidepoint to.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_set_middle_pos(segment: number, pos: number): [boolean, number];
 
@@ -12260,6 +12488,7 @@ export namespace ParamArray {
          * @param segment The index of a segment within the gradient.
          * @param color The color to set.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_set_right_color(segment: number, color: Gegl.Color): boolean;
 
@@ -12274,6 +12503,7 @@ export namespace ParamArray {
          * @param segment The index of a segment within the gradient.
          * @param pos The position to set the right endpoint to.
          * @returns TRUE on success.
+         * @since 2.2
          */
         segment_set_right_pos(segment: number, pos: number): [boolean, number];
     }
@@ -12331,6 +12561,7 @@ export namespace ParamArray {
          * `gimp_item_get_by_id()` and returns the item if it is a group layer or
          * `null` otherwise.
          * @param layer_id The layer id.
+         * @since 3.0
          */
         static get_by_id(layer_id: number): GroupLayer | null;
 
@@ -12342,6 +12573,7 @@ export namespace ParamArray {
          * single normal layer, replacing the group.
          * The group layer is expected to be attached to an image.
          * @returns The resulting layer.
+         * @since 2.10.14
          */
         merge(): Layer;
     }
@@ -12414,11 +12646,13 @@ export namespace ParamArray {
          * @param width Width of the matrix (0 to reset to default matrix).
          * @param height Height of the matrix (0 to reset to default matrix).
          * @param matrix The matrix -- all values must be >= 1.
+         * @since 2.4
          */
         static convert_set_dither_matrix(width: number, height: number, matrix: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * @param image_id The image id.
+         * @since 3.0
          */
         static get_by_id(image_id: number): Image | null;
 
@@ -12428,12 +12662,14 @@ export namespace ParamArray {
          * This procedure checks if the given image ID is valid and refers to
          * an existing image.
          * @param image_id The image ID to check.
+         * @since 3.0
          */
         static id_is_valid(image_id: number): boolean;
 
         /**
          * Retrieves a thumbnail from metadata if present.
          * @param file A {@link Gio.File} image
+         * @since 2.10
          */
         static metadata_load_thumbnail(file: Gio.File): Image | null;
 
@@ -12458,6 +12694,7 @@ export namespace ParamArray {
          * @param position_x The sample point's x-offset from left of image.
          * @param position_y The sample point's y-offset from top of image.
          * @returns The new sample point.
+         * @since 2.10
          */
         add_sample_point(position_x: number, position_y: number): number;
 
@@ -12479,6 +12716,7 @@ export namespace ParamArray {
          * values.
          * @param parasite The parasite to attach to an image.
          * @returns TRUE on success.
+         * @since 2.8
          */
         attach_parasite(parasite: Parasite): boolean;
 
@@ -12537,6 +12775,7 @@ export namespace ParamArray {
          * @param intent Rendering intent.
          * @param bpc Black point compensation.
          * @returns `true` on success.
+         * @since 2.10
          */
         convert_color_profile(profile: ColorProfile | null, intent: ColorRenderingIntent, bpc: boolean): boolean;
 
@@ -12551,6 +12790,7 @@ export namespace ParamArray {
          * @param intent Rendering intent.
          * @param bpc Black point compensation.
          * @returns TRUE on success.
+         * @since 2.10
          */
         convert_color_profile_from_file(file: Gio.File, intent: ColorRenderingIntent, bpc: boolean): boolean;
 
@@ -12597,6 +12837,7 @@ export namespace ParamArray {
          * GIMP_PRECISION_U8.
          * @param precision The new precision.
          * @returns TRUE on success.
+         * @since 2.10
          */
         convert_precision(precision: Precision): boolean;
 
@@ -12658,6 +12899,7 @@ export namespace ParamArray {
          * removes the specified sample point from the specified image.
          * @param sample_point The ID of the sample point to be removed.
          * @returns TRUE on success.
+         * @since 2.10
          */
         delete_sample_point(sample_point: number): boolean;
 
@@ -12671,6 +12913,7 @@ export namespace ParamArray {
          * no parasite was named like this).
          * @param name The name of the parasite to detach from an image.
          * @returns TRUE on success.
+         * @since 2.8
          */
         detach_parasite(name: string): boolean;
 
@@ -12693,6 +12936,7 @@ export namespace ParamArray {
          * @param file The SVG file to create.
          * @param path The path object to export, or `null` for all in the image.
          * @returns TRUE on success.
+         * @since 2.6
          */
         export_path_to_file(file: Gio.File, path: Path | null): boolean;
 
@@ -12705,6 +12949,7 @@ export namespace ParamArray {
          * 'path' argument to export all paths in the image.
          * @param path The path object to export, or `null` for all in the image.
          * @returns A string whose contents are a complete SVG document.          The returned value must be freed with `g_free()`.
+         * @since 2.6
          */
         export_path_to_string(path: Path | null): string;
 
@@ -12732,6 +12977,7 @@ export namespace ParamArray {
          * argument or the image has no sample points.
          * @param sample_point The ID of the current sample point (0 if first invocation).
          * @returns The next sample point's ID.
+         * @since 2.10
          */
         find_next_sample_point(sample_point: number): number;
 
@@ -12778,6 +13024,7 @@ export namespace ParamArray {
          * corresponding call to {@link Gimp.Image.thaw_channels}, undoing its
          * effects.
          * @returns TRUE on success.
+         * @since 2.10.2
          */
         freeze_channels(): boolean;
 
@@ -12793,6 +13040,7 @@ export namespace ParamArray {
          * corresponding call to {@link Gimp.Image.thaw_layers}, undoing its
          * effects.
          * @returns TRUE on success.
+         * @since 2.10.2
          */
         freeze_layers(): boolean;
 
@@ -12808,6 +13056,7 @@ export namespace ParamArray {
          * corresponding call to {@link Gimp.Image.thaw_paths}, undoing its
          * effects.
          * @returns TRUE on success.
+         * @since 2.10.2
          */
         freeze_paths(): boolean;
 
@@ -12827,6 +13076,7 @@ export namespace ParamArray {
          * specified image.
          * @param name The name of the channel to find.
          * @returns The channel with the specified name.
+         * @since 2.8
          */
         get_channel_by_name(name: string): Channel;
 
@@ -12860,6 +13110,7 @@ export namespace ParamArray {
          * the effective color profile and don't want to have to deal with `null`
          * return values.
          * @returns The image's color profile. The          returned value must be freed with {@link GObject.Object.unref}.
+         * @since 2.10
          */
         get_color_profile(): ColorProfile | null;
 
@@ -12893,6 +13144,7 @@ export namespace ParamArray {
          * 
          * Returns the default mode for newly created layers of this image.
          * @returns The layer mode.
+         * @since 2.10
          */
         get_default_new_layer_mode(): LayerMode;
 
@@ -12902,6 +13154,7 @@ export namespace ParamArray {
          * {@link Gimp.Image.get_color_profile} if the image has a profile
          * assigned, or a built-in profile for the given color space otherwise.
          * @returns The color profile. The returned value must          be freed with {@link GObject.Object.unref}.
+         * @since 2.10
          */
         get_effective_color_profile(): ColorProfile;
 
@@ -12912,6 +13165,7 @@ export namespace ParamArray {
          * if the image was exported a non-native GIMP format. If the image was
          * not exported, this procedure returns `null`.
          * @returns The exported file.
+         * @since 2.8
          */
         get_exported_file(): Gio.File;
 
@@ -12926,6 +13180,7 @@ export namespace ParamArray {
          * yet saved, or gimp-image-get-exported-file if the image has been
          * exported to a non-GIMP file format.
          * @returns The file.
+         * @since 2.8
          */
         get_file(): Gio.File;
 
@@ -12969,6 +13224,7 @@ export namespace ParamArray {
 
         /**
          * @returns the image ID.
+         * @since 3.0
          */
         get_id(): number;
 
@@ -12980,6 +13236,7 @@ export namespace ParamArray {
          * image was not imported, or has since been saved in the native Gimp
          * format, this procedure returns `null`.
          * @returns The imported file.
+         * @since 2.8
          */
         get_imported_file(): Gio.File;
 
@@ -12992,6 +13249,7 @@ export namespace ParamArray {
          * returned.
          * @param item The item.
          * @returns The position of the item in its level in the item tree.
+         * @since 2.8
          */
         get_item_position(item: Item): number;
 
@@ -13002,6 +13260,7 @@ export namespace ParamArray {
          * specified image.
          * @param name The name of the layer to find.
          * @returns The layer with the specified name.
+         * @since 2.8
          */
         get_layer_by_name(name: string): Layer;
 
@@ -13035,6 +13294,7 @@ export namespace ParamArray {
          * 
          * Returns exif/iptc/xmp metadata from the image.
          * @returns The exif/ptc/xmp metadata,          or `null` if there is none.
+         * @since 2.10
          */
         get_metadata(): Metadata | null;
 
@@ -13059,6 +13319,7 @@ export namespace ParamArray {
          * {@link Gimp.Palette}. If the image is not in Indexed color mode,
          * `null` is returned.
          * @returns The image's colormap palette.
+         * @since 3.0
          */
         get_palette(): Palette;
 
@@ -13069,6 +13330,7 @@ export namespace ParamArray {
          * image.
          * @param name The name of the parasite to find.
          * @returns The found parasite.
+         * @since 2.8
          */
         get_parasite(name: string): Parasite;
 
@@ -13079,6 +13341,7 @@ export namespace ParamArray {
          * These names can later be used to get the actual {@link Gimp.Parasite} with
          * `gimp_image_get_parasite()` when needed.
          * @returns The names of currently attached parasites.          The returned value must be freed with `g_strfreev()`.
+         * @since 2.8
          */
         get_parasite_list(): string[];
 
@@ -13089,6 +13352,7 @@ export namespace ParamArray {
          * image.
          * @param name The name of the path to find.
          * @returns The path with the specified name.
+         * @since 2.8
          */
         get_path_by_name(name: string): Path;
 
@@ -13099,6 +13363,7 @@ export namespace ParamArray {
          * specified image.
          * @param tattoo The tattoo of the path to find.
          * @returns The path with the specified tattoo.
+         * @since 2.6
          */
         get_path_by_tattoo(tattoo: number): Path;
 
@@ -13108,6 +13373,7 @@ export namespace ParamArray {
          * This procedure returns the list of paths contained in the specified
          * image.
          * @returns The list of paths contained in the image.          The returned value must be freed with `g_free()`.
+         * @since 2.4
          */
         get_paths(): Path[];
 
@@ -13116,6 +13382,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the image's precision.
          * @returns The image's precision.
+         * @since 2.10
          */
         get_precision(): Precision;
 
@@ -13136,6 +13403,7 @@ export namespace ParamArray {
          * left of the image.
          * @param sample_point The guide.
          * @returns The sample point's x-offset relative to left of image.
+         * @since 2.10
          */
         get_sample_point_position(sample_point: number): [number, number];
 
@@ -13145,6 +13413,7 @@ export namespace ParamArray {
          * This procedure returns the list of selected channels in the
          * specified image.
          * @returns The list of selected channels in the image.          The returned value must be freed with `g_free()`.
+         * @since 3.0.0
          */
         get_selected_channels(): Channel[];
 
@@ -13159,6 +13428,7 @@ export namespace ParamArray {
          * has a layer mask and the layer mask is in edit mode, then the layer
          * mask is the active drawable.
          * @returns The list of selected drawables in the image.          The returned value must be freed with `g_free()`.
+         * @since 3.0.0
          */
         get_selected_drawables(): Drawable[];
 
@@ -13168,6 +13438,7 @@ export namespace ParamArray {
          * This procedure returns the list of selected layers in the specified
          * image.
          * @returns The list of selected layers in the image.          The returned value must be freed with `g_free()`.
+         * @since 3.0.0
          */
         get_selected_layers(): Layer[];
 
@@ -13177,6 +13448,7 @@ export namespace ParamArray {
          * This procedure returns the list of selected paths in the specified
          * image.
          * @returns The list of selected paths in the image.          The returned value must be freed with `g_free()`.
+         * @since 3.0.0
          */
         get_selected_paths(): Path[];
 
@@ -13196,6 +13468,7 @@ export namespace ParamArray {
          * This procedure returns whether the image has Black Point
          * Compensation enabled for its simulation
          * @returns The Black Point Compensation status.
+         * @since 3.0
          */
         get_simulation_bpc(): boolean;
 
@@ -13204,6 +13477,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the image's simulation rendering intent.
          * @returns The image's simulation rendering intent.
+         * @since 3.0
          */
         get_simulation_intent(): ColorRenderingIntent;
 
@@ -13211,6 +13485,7 @@ export namespace ParamArray {
          * This procedure returns the image's simulation color profile, or `null` if
          * the image has no simulation color profile assigned.
          * @returns The image's simulation color profile. The          returned value must be freed with {@link GObject.Object.unref}.
+         * @since 3.0
          */
         get_simulation_profile(): ColorProfile | null;
 
@@ -13231,6 +13506,7 @@ export namespace ParamArray {
          * @param height the requested thumbnail height (<= 1024 pixels)
          * @param alpha how to handle an alpha channel
          * @returns a new {@link GdkPixbuf.Pixbuf}
+         * @since 2.2
          */
         get_thumbnail(width: number, height: number, alpha: PixbufTransparency): GdkPixbuf.Pixbuf;
 
@@ -13273,6 +13549,7 @@ export namespace ParamArray {
          * This procedure returns the XCF file associated with the image. If
          * there is no such file, this procedure returns `null`.
          * @returns The imported XCF file.
+         * @since 2.8
          */
         get_xcf_file(): Gio.File;
 
@@ -13281,6 +13558,7 @@ export namespace ParamArray {
          * 
          * This procedure gets the background color of an image's grid.
          * @returns The image's grid background color.
+         * @since 2.4
          */
         grid_get_background_color(): Gegl.Color;
 
@@ -13289,6 +13567,7 @@ export namespace ParamArray {
          * 
          * This procedure gets the foreground color of an image's grid.
          * @returns The image's grid foreground color.
+         * @since 2.4
          */
         grid_get_foreground_color(): Gegl.Color;
 
@@ -13298,6 +13577,7 @@ export namespace ParamArray {
          * This procedure retrieves the horizontal and vertical offset of an
          * image's grid. It takes the image as parameter.
          * @returns TRUE on success.
+         * @since 2.4
          */
         grid_get_offset(): [boolean, number, number];
 
@@ -13307,6 +13587,7 @@ export namespace ParamArray {
          * This procedure retrieves the horizontal and vertical spacing of an
          * image's grid. It takes the image as parameter.
          * @returns TRUE on success.
+         * @since 2.4
          */
         grid_get_spacing(): [boolean, number, number];
 
@@ -13315,6 +13596,7 @@ export namespace ParamArray {
          * 
          * This procedure retrieves the style of an image's grid.
          * @returns The image's grid style.
+         * @since 2.4
          */
         grid_get_style(): GridStyle;
 
@@ -13324,6 +13606,7 @@ export namespace ParamArray {
          * This procedure sets the background color of an image's grid.
          * @param bgcolor The new background color.
          * @returns TRUE on success.
+         * @since 2.4
          */
         grid_set_background_color(bgcolor: Gegl.Color): boolean;
 
@@ -13333,6 +13616,7 @@ export namespace ParamArray {
          * This procedure sets the foreground color of an image's grid.
          * @param fgcolor The new foreground color.
          * @returns TRUE on success.
+         * @since 2.4
          */
         grid_set_foreground_color(fgcolor: Gegl.Color): boolean;
 
@@ -13344,6 +13628,7 @@ export namespace ParamArray {
          * @param xoffset The image's grid horizontal offset.
          * @param yoffset The image's grid vertical offset.
          * @returns TRUE on success.
+         * @since 2.4
          */
         grid_set_offset(xoffset: number, yoffset: number): boolean;
 
@@ -13355,6 +13640,7 @@ export namespace ParamArray {
          * @param xspacing The image's grid horizontal spacing.
          * @param yspacing The image's grid vertical spacing.
          * @returns TRUE on success.
+         * @since 2.4
          */
         grid_set_spacing(xspacing: number, yspacing: number): boolean;
 
@@ -13365,6 +13651,7 @@ export namespace ParamArray {
          * and the new style as parameters.
          * @param style The image's grid style.
          * @returns TRUE on success.
+         * @since 2.4
          */
         grid_set_style(style: GridStyle): boolean;
 
@@ -13377,6 +13664,7 @@ export namespace ParamArray {
          * @param merge Merge paths into a single path object.
          * @param scale Scale the SVG to image dimensions.
          * @returns TRUE on success.
+         * @since 2.4
          */
         import_paths_from_file(file: Gio.File, merge: boolean, scale: boolean): [boolean, Path[]];
 
@@ -13391,6 +13679,7 @@ export namespace ParamArray {
          * @param merge Merge paths into a single path object.
          * @param scale Scale the SVG to image dimensions.
          * @returns TRUE on success.
+         * @since 2.4
          */
         import_paths_from_string(string: string, length: number, merge: boolean, scale: boolean): [boolean, Path[]];
 
@@ -13470,6 +13759,7 @@ export namespace ParamArray {
          * This procedure checks if the given image is valid and refers to
          * an existing image.
          * @returns Whether the image is valid.
+         * @since 2.4
          */
         is_valid(): boolean;
 
@@ -13480,6 +13770,7 @@ export namespace ParamArray {
          * The procedure call will fail if there is no item below it.
          * @param item The item to lower.
          * @returns TRUE on success.
+         * @since 2.8
          */
         lower_item(item: Item): boolean;
 
@@ -13491,6 +13782,7 @@ export namespace ParamArray {
          * it.
          * @param item The item to lower to bottom.
          * @returns TRUE on success.
+         * @since 2.8
          */
         lower_item_to_bottom(item: Item): boolean;
 
@@ -13548,6 +13840,7 @@ export namespace ParamArray {
          * @param flags Flags to specify what of the metadata to save
          * @param file The file `image` was saved to or NULL if file was not saved yet
          * @returns Filtered metadata or `null` in case of failure.          Use [GObject.Object.unref] when returned metadata are no          longer needed
+         * @since 3.0
          */
         metadata_save_filter(mime_type: string, metadata: Metadata, flags: MetadataSaveFlags, file: Gio.File): Metadata;
 
@@ -13578,6 +13871,7 @@ export namespace ParamArray {
          * @param mime_type The saved file's mime-type
          * @param suggested_flags Suggested default values for the metadata to export.
          * @returns The image's metadata, prepared for saving.
+         * @since 2.10
          */
         metadata_save_prepare(mime_type: string, suggested_flags: MetadataSaveFlags): Metadata;
 
@@ -13645,6 +13939,7 @@ export namespace ParamArray {
          * when loading an image through a PDB call.
          * @param interactive Querying the user through a dialog is a possibility.
          * @returns TRUE on success.
+         * @since 3.0
          */
         policy_color_profile(interactive: boolean): boolean;
 
@@ -13666,6 +13961,7 @@ export namespace ParamArray {
          * when loading an image through a PDB call.
          * @param interactive Querying the user through a dialog is a possibility.
          * @returns TRUE on success.
+         * @since 3.0
          */
         policy_rotate(interactive: boolean): boolean;
 
@@ -13676,6 +13972,7 @@ export namespace ParamArray {
          * The procedure call will fail if there is no item above it.
          * @param item The item to raise.
          * @returns TRUE on success.
+         * @since 2.8
          */
         raise_item(item: Item): boolean;
 
@@ -13686,6 +13983,7 @@ export namespace ParamArray {
          * item tree. It will not move the item if there is no item above it.
          * @param item The item to raise to top.
          * @returns TRUE on success.
+         * @since 2.8
          */
         raise_item_to_top(item: Item): boolean;
 
@@ -13719,6 +14017,7 @@ export namespace ParamArray {
          * path doesn't exist, an error is returned.
          * @param path The path object.
          * @returns TRUE on success.
+         * @since 2.4
          */
         remove_path(path: Path): boolean;
 
@@ -13740,6 +14039,7 @@ export namespace ParamArray {
          * @param parent The new parent item.
          * @param position The new position of the item.
          * @returns TRUE on success.
+         * @since 2.8
          */
         reorder_item(item: Item, parent: Item | null, position: number): boolean;
 
@@ -13769,6 +14069,7 @@ export namespace ParamArray {
          * size; this includes the image selection mask. All layers within the
          * image are repositioned to the new image area.
          * @returns TRUE on success.
+         * @since 2.2
          */
         resize_to_layers(): boolean;
 
@@ -13819,6 +14120,7 @@ export namespace ParamArray {
          * @param drawable The affected drawable.
          * @param color The color to select.
          * @returns TRUE on success.
+         * @since 2.8
          */
         select_color(operation: ChannelOps, drawable: Drawable, color: Gegl.Color): boolean;
 
@@ -13856,6 +14158,7 @@ export namespace ParamArray {
          * @param x x coordinate of initial seed fill point: (image coordinates).
          * @param y y coordinate of initial seed fill point: (image coordinates).
          * @returns TRUE on success.
+         * @since 2.8
          */
         select_contiguous_color(operation: ChannelOps, drawable: Drawable, x: number, y: number): boolean;
 
@@ -13875,6 +14178,7 @@ export namespace ParamArray {
          * @param width The width of the ellipse.
          * @param height The height of the ellipse.
          * @returns TRUE on success.
+         * @since 2.8
          */
         select_ellipse(operation: ChannelOps, x: number, y: number, width: number, height: number): boolean;
 
@@ -13892,6 +14196,7 @@ export namespace ParamArray {
          * @param operation The desired operation with current selection.
          * @param item The item to render to the selection.
          * @returns TRUE on success.
+         * @since 2.8
          */
         select_item(operation: ChannelOps, item: Item): boolean;
 
@@ -13913,6 +14218,7 @@ export namespace ParamArray {
          * @param operation The selection operation.
          * @param segs Array of points: { p1.x, p1.y, p2.x, p2.y, ..., pn.x, pn.y}.
          * @returns TRUE on success.
+         * @since 2.8
          */
         select_polygon(operation: ChannelOps, segs: number[]): boolean;
 
@@ -13931,6 +14237,7 @@ export namespace ParamArray {
          * @param width The width of the rectangle.
          * @param height The height of the rectangle.
          * @returns TRUE on success.
+         * @since 2.8
          */
         select_rectangle(operation: ChannelOps, x: number, y: number, width: number, height: number): boolean;
 
@@ -13954,6 +14261,7 @@ export namespace ParamArray {
          * @param corner_radius_x The corner radius in X direction.
          * @param corner_radius_y The corner radius in Y direction.
          * @returns TRUE on success.
+         * @since 2.8
          */
         select_round_rectangle(operation: ChannelOps, x: number, y: number, width: number, height: number, corner_radius_x: number, corner_radius_y: number): boolean;
 
@@ -13964,6 +14272,7 @@ export namespace ParamArray {
          * `image`'s color model is set.
          * @param profile A {@link Gimp.ColorProfile}, or `null`.
          * @returns `true` on success.
+         * @since 2.10
          */
         set_color_profile(profile: ColorProfile | null): boolean;
 
@@ -13978,6 +14287,7 @@ export namespace ParamArray {
          * image.
          * @param file The file containing the new color profile.
          * @returns TRUE on success.
+         * @since 2.10
          */
         set_color_profile_from_file(file: Gio.File): boolean;
 
@@ -14026,6 +14336,7 @@ export namespace ParamArray {
          * `metadata` is `null`.
          * @param metadata The exif/ptc/xmp metadata.
          * @returns TRUE on success.
+         * @since 2.10
          */
         set_metadata(metadata: Metadata): boolean;
 
@@ -14038,6 +14349,7 @@ export namespace ParamArray {
          * is returned.
          * @param new_palette The palette to copy from.
          * @returns The image's colormap palette.
+         * @since 3.0
          */
         set_palette(new_palette: Palette): Palette;
 
@@ -14062,6 +14374,7 @@ export namespace ParamArray {
          * procedure will return an execution error.
          * @param channels The list of channels to select.
          * @returns TRUE on success.
+         * @since 3.0.0
          */
         set_selected_channels(channels: Channel[]): boolean;
 
@@ -14074,6 +14387,7 @@ export namespace ParamArray {
          * will return an execution error.
          * @param layers The list of layers to select.
          * @returns TRUE on success.
+         * @since 3.0.0
          */
         set_selected_layers(layers: Layer[]): boolean;
 
@@ -14083,6 +14397,7 @@ export namespace ParamArray {
          * The paths are set as the selected paths in the image.
          * @param paths The list of paths to select.
          * @returns TRUE on success.
+         * @since 3.0.0
          */
         set_selected_paths(paths: Path[]): boolean;
 
@@ -14094,6 +14409,7 @@ export namespace ParamArray {
          * enabled for its simulation
          * @param bpc The Black Point Compensation status.
          * @returns TRUE on success.
+         * @since 3.0
          */
         set_simulation_bpc(bpc: boolean): boolean;
 
@@ -14103,6 +14419,7 @@ export namespace ParamArray {
          * This procedure sets the image's simulation rendering intent.
          * @param intent A GimpColorRenderingIntent.
          * @returns TRUE on success.
+         * @since 3.0
          */
         set_simulation_intent(intent: ColorRenderingIntent): boolean;
 
@@ -14112,6 +14429,7 @@ export namespace ParamArray {
          * If `null` is passed as `profile`, then the simulation profile is unset.
          * @param profile A {@link Gimp.ColorProfile}, or `null`.
          * @returns `true` on success.
+         * @since 3.0
          */
         set_simulation_profile(profile: ColorProfile | null): boolean;
 
@@ -14123,6 +14441,7 @@ export namespace ParamArray {
          * This procedure does no color conversion.
          * @param file The file containing the new simulation color profile.
          * @returns TRUE on success.
+         * @since 3.0
          */
         set_simulation_profile_from_file(file: Gio.File): boolean;
 
@@ -14166,6 +14485,7 @@ export namespace ParamArray {
          * execution error.
          * @param channels The list of channels to select.
          * @returns TRUE on success.
+         * @since 3.0
          */
         take_selected_channels(channels: Channel[]): boolean;
 
@@ -14176,6 +14496,7 @@ export namespace ParamArray {
          * execution error.
          * @param layers The list of layers to select.
          * @returns TRUE on success.
+         * @since 3.0
          */
         take_selected_layers(layers: Layer[]): boolean;
 
@@ -14184,6 +14505,7 @@ export namespace ParamArray {
          * selected paths are unselected.
          * @param paths The list of paths to select.
          * @returns TRUE on success.
+         * @since 3.0
          */
         take_selected_paths(paths: Path[]): boolean;
 
@@ -14196,6 +14518,7 @@ export namespace ParamArray {
          * This procedure should match a corresponding call to
          * {@link Gimp.Image.freeze_channels}.
          * @returns TRUE on success.
+         * @since 2.10.2
          */
         thaw_channels(): boolean;
 
@@ -14208,6 +14531,7 @@ export namespace ParamArray {
          * This procedure should match a corresponding call to
          * {@link Gimp.Image.freeze_layers}.
          * @returns TRUE on success.
+         * @since 2.10.2
          */
         thaw_layers(): boolean;
 
@@ -14220,6 +14544,7 @@ export namespace ParamArray {
          * This procedure should match a corresponding call to
          * {@link Gimp.Image.freeze_paths}.
          * @returns TRUE on success.
+         * @since 2.10.2
          */
         thaw_paths(): boolean;
 
@@ -14454,6 +14779,7 @@ export namespace ParamArray {
          * by its ID, which is mostly internal data and not reusable across
          * sessions. Use the appropriate functions for your use case instead.
          * @param item_id The item id.
+         * @since 3.0
          */
         static get_by_id(item_id: number): Item | null;
 
@@ -14465,6 +14791,7 @@ export namespace ParamArray {
          * *Note*: in most use cases, you should not use this function. See
          * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
+         * @since 3.0
          */
         static id_is_channel(item_id: number): boolean;
 
@@ -14476,6 +14803,7 @@ export namespace ParamArray {
          * *Note*: in most use cases, you should not use this function. See
          * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
+         * @since 3.0
          */
         static id_is_drawable(item_id: number): boolean;
 
@@ -14488,6 +14816,7 @@ export namespace ParamArray {
          * *Note*: in most use cases, you should not use this function. See
          * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
+         * @since 3.0
          */
         static id_is_group_layer(item_id: number): boolean;
 
@@ -14515,6 +14844,7 @@ export namespace ParamArray {
          *   `do_something()`
          * ```
          * @param item_id The item ID.
+         * @since 3.0
          */
         static id_is_layer(item_id: number): boolean;
 
@@ -14527,6 +14857,7 @@ export namespace ParamArray {
          * *Note*: in most use cases, you should not use this function. See
          * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item.
+         * @since 3.0
          */
         static id_is_layer_mask(item_id: number): boolean;
 
@@ -14539,6 +14870,7 @@ export namespace ParamArray {
          * *Note*: in most use cases, you should not use this function. See
          * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
+         * @since 3.2
          */
         static id_is_link_layer(item_id: number): boolean;
 
@@ -14550,6 +14882,7 @@ export namespace ParamArray {
          * *Note*: in most use cases, you should not use this function. See
          * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
+         * @since 3.0
          */
         static id_is_path(item_id: number): boolean;
 
@@ -14562,6 +14895,7 @@ export namespace ParamArray {
          * *Note*: in most use cases, you should not use this function. See
          * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
+         * @since 3.0
          */
         static id_is_selection(item_id: number): boolean;
 
@@ -14574,6 +14908,7 @@ export namespace ParamArray {
          * *Note*: in most use cases, you should not use this function. See
          * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
+         * @since 3.0
          */
         static id_is_text_layer(item_id: number): boolean;
 
@@ -14587,6 +14922,7 @@ export namespace ParamArray {
          * got a {@link Gimp.Item} from the API, you should trust it is valid.
          * This function is mostly for internal usage.
          * @param item_id The item ID to check.
+         * @since 3.0
          */
         static id_is_valid(item_id: number): boolean;
 
@@ -14599,6 +14935,7 @@ export namespace ParamArray {
          * *Note*: in most use cases, you should not use this function. See
          * {@link Gimp.Item.id_is_layer} for a discussion on alternatives.
          * @param item_id The item ID.
+         * @since 3.2
          */
         static id_is_vector_layer(item_id: number): boolean;
 
@@ -14610,6 +14947,7 @@ export namespace ParamArray {
          * values.
          * @param parasite The parasite to attach to the item.
          * @returns TRUE on success.
+         * @since 2.8
          */
         attach_parasite(parasite: Parasite): boolean;
 
@@ -14622,6 +14960,7 @@ export namespace ParamArray {
          * procedure is useful is if you want to get rid of a item which has
          * not yet been added to an image.
          * @returns TRUE on success.
+         * @since 2.8
          */
         ["delete"](): boolean;
 
@@ -14632,6 +14971,7 @@ export namespace ParamArray {
          * values.
          * @param name The name of the parasite to detach from the item.
          * @returns TRUE on success.
+         * @since 2.8
          */
         detach_parasite(name: string): boolean;
 
@@ -14641,6 +14981,7 @@ export namespace ParamArray {
          * This procedure returns the list of items which are children of the
          * specified item. The order is topmost to bottommost.
          * @returns The item's list of children.          The returned value must be freed with `g_free()`.
+         * @since 2.8
          */
         get_children(): Item[];
 
@@ -14649,6 +14990,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the specified item's color tag.
          * @returns The item's color tag.
+         * @since 2.10
          */
         get_color_tag(): ColorTag;
 
@@ -14657,6 +14999,7 @@ export namespace ParamArray {
          * 
          * This procedure returns `true` if the specified item is expanded.
          * @returns TRUE if the item is expanded, FALSE otherwise.
+         * @since 2.10
          */
         get_expanded(): boolean;
 
@@ -14664,6 +15007,7 @@ export namespace ParamArray {
          * Note: in most use cases, you should not need an item's ID which is
          * mostly internal data and not reusable across sessions.
          * @returns the item ID.
+         * @since 3.0
          */
         get_id(): number;
 
@@ -14672,6 +15016,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the item's image.
          * @returns The item's image.
+         * @since 2.8
          */
         get_image(): Image;
 
@@ -14680,6 +15025,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the specified item's lock content state.
          * @returns Whether the item's contents are locked.
+         * @since 2.8
          */
         get_lock_content(): boolean;
 
@@ -14688,6 +15034,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the specified item's lock position state.
          * @returns Whether the item's position is locked.
+         * @since 2.10
          */
         get_lock_position(): boolean;
 
@@ -14696,6 +15043,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the specified item's lock visibility state.
          * @returns Whether the item's visibility is locked.
+         * @since 3.0
          */
         get_lock_visibility(): boolean;
 
@@ -14704,6 +15052,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the specified item's name.
          * @returns The item name.          The returned value must be freed with `g_free()`.
+         * @since 2.8
          */
         get_name(): string;
 
@@ -14713,6 +15062,7 @@ export namespace ParamArray {
          * Finds and returns the parasite that is attached to an item.
          * @param name The name of the parasite to find.
          * @returns The found parasite.
+         * @since 2.8
          */
         get_parasite(name: string): Parasite;
 
@@ -14721,6 +15071,7 @@ export namespace ParamArray {
          * 
          * Returns a list of all parasites currently attached the an item.
          * @returns The names of currently attached parasites.          The returned value must be freed with `g_strfreev()`.
+         * @since 2.8
          */
         get_parasite_list(): string[];
 
@@ -14729,6 +15080,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the item's parent item, if any.
          * @returns The item's parent item.
+         * @since 2.8
          */
         get_parent(): Item;
 
@@ -14739,6 +15091,7 @@ export namespace ParamArray {
          * unique and permanent identifier attached to a item that can be used
          * to uniquely identify a item within an image even between sessions.
          * @returns The item tattoo.
+         * @since 2.8
          */
         get_tattoo(): number;
 
@@ -14747,6 +15100,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the specified item's visibility.
          * @returns The item visibility.
+         * @since 2.8
          */
         get_visible(): boolean;
 
@@ -14755,6 +15109,7 @@ export namespace ParamArray {
          * 
          * This procedure returns TRUE if the specified item is a channel.
          * @returns TRUE if the item is a channel, FALSE otherwise.
+         * @since 2.8
          */
         is_channel(): boolean;
 
@@ -14763,6 +15118,7 @@ export namespace ParamArray {
          * 
          * This procedure returns TRUE if the specified item is a drawable.
          * @returns TRUE if the item is a drawable, FALSE otherwise.
+         * @since 2.8
          */
         is_drawable(): boolean;
 
@@ -14772,6 +15128,7 @@ export namespace ParamArray {
          * This procedure returns `true` if the specified item is a group item
          * which can have children.
          * @returns TRUE if the item is a group, FALSE otherwise.
+         * @since 2.8
          */
         is_group(): boolean;
 
@@ -14781,6 +15138,7 @@ export namespace ParamArray {
          * This procedure returns TRUE if the specified item is a group
          * layer.
          * @returns TRUE if the item is a group layer, FALSE otherwise.
+         * @since 3.0
          */
         is_group_layer(): boolean;
 
@@ -14789,6 +15147,7 @@ export namespace ParamArray {
          * 
          * This procedure returns TRUE if the specified item is a layer.
          * @returns TRUE if the item is a layer, FALSE otherwise.
+         * @since 2.8
          */
         is_layer(): boolean;
 
@@ -14798,6 +15157,7 @@ export namespace ParamArray {
          * This procedure returns TRUE if the specified item is a layer
          * mask.
          * @returns TRUE if the item is a layer mask, FALSE otherwise.
+         * @since 2.8
          */
         is_layer_mask(): boolean;
 
@@ -14807,6 +15167,7 @@ export namespace ParamArray {
          * This procedure returns TRUE if the specified item is a link
          * layer.
          * @returns TRUE if the item is a link layer, FALSE otherwise.
+         * @since 3.2
          */
         is_link_layer(): boolean;
 
@@ -14815,6 +15176,7 @@ export namespace ParamArray {
          * 
          * This procedure returns TRUE if the specified item is a path.
          * @returns TRUE if the item is a path, FALSE otherwise.
+         * @since 2.8
          */
         is_path(): boolean;
 
@@ -14823,6 +15185,7 @@ export namespace ParamArray {
          * 
          * This procedure returns TRUE if the specified item is a selection.
          * @returns TRUE if the item is a selection, FALSE otherwise.
+         * @since 2.8
          */
         is_selection(): boolean;
 
@@ -14832,6 +15195,7 @@ export namespace ParamArray {
          * This procedure returns TRUE if the specified item is a text
          * layer.
          * @returns TRUE if the item is a text layer, FALSE otherwise.
+         * @since 2.8
          */
         is_text_layer(): boolean;
 
@@ -14841,6 +15205,7 @@ export namespace ParamArray {
          * This procedure checks if the given item is valid and refers to an
          * existing item.
          * @returns Whether the item is valid.
+         * @since 2.8
          */
         is_valid(): boolean;
 
@@ -14850,6 +15215,7 @@ export namespace ParamArray {
          * This procedure returns TRUE if the specified item is a vector
          * layer.
          * @returns TRUE if the item is a vector layer, FALSE otherwise.
+         * @since 3.2
          */
         is_vector_layer(): boolean;
 
@@ -14859,6 +15225,7 @@ export namespace ParamArray {
          * This procedure sets the specified item's color tag.
          * @param color_tag The new item color tag.
          * @returns TRUE on success.
+         * @since 2.10
          */
         set_color_tag(color_tag: ColorTag): boolean;
 
@@ -14868,6 +15235,7 @@ export namespace ParamArray {
          * This procedure expands or collapses the item.
          * @param expanded TRUE to expand the item, FALSE to collapse the item.
          * @returns TRUE on success.
+         * @since 2.10
          */
         set_expanded(expanded: boolean): boolean;
 
@@ -14877,6 +15245,7 @@ export namespace ParamArray {
          * This procedure sets the specified item's lock content state.
          * @param lock_content The new item 'lock content' state.
          * @returns TRUE on success.
+         * @since 2.8
          */
         set_lock_content(lock_content: boolean): boolean;
 
@@ -14886,6 +15255,7 @@ export namespace ParamArray {
          * This procedure sets the specified item's lock position state.
          * @param lock_position The new item 'lock position' state.
          * @returns TRUE on success.
+         * @since 2.10
          */
         set_lock_position(lock_position: boolean): boolean;
 
@@ -14895,6 +15265,7 @@ export namespace ParamArray {
          * This procedure sets the specified item's lock visibility state.
          * @param lock_visibility The new item 'lock visibility' state.
          * @returns TRUE on success.
+         * @since 3.0
          */
         set_lock_visibility(lock_visibility: boolean): boolean;
 
@@ -14904,6 +15275,7 @@ export namespace ParamArray {
          * This procedure sets the specified item's name.
          * @param name The new item name.
          * @returns TRUE on success.
+         * @since 2.8
          */
         set_name(name: string): boolean;
 
@@ -14915,6 +15287,7 @@ export namespace ParamArray {
          * to uniquely identify a item within an image even between sessions.
          * @param tattoo The new item tattoo.
          * @returns TRUE on success.
+         * @since 2.8
          */
         set_tattoo(tattoo: number): boolean;
 
@@ -14924,6 +15297,7 @@ export namespace ParamArray {
          * This procedure sets the specified item's visibility.
          * @param visible The new item visibility.
          * @returns TRUE on success.
+         * @since 2.8
          */
         set_visible(visible: boolean): boolean;
 
@@ -14959,6 +15333,7 @@ export namespace ParamArray {
          * @param dest_x X coordinate of where the center goes.
          * @param dest_y Y coordinate of where the center goes.
          * @returns The transformed item.
+         * @since 2.8
          */
         transform_2d(source_x: number, source_y: number, scale_x: number, scale_y: number, angle: number, dest_x: number, dest_y: number): Item;
 
@@ -14986,6 +15361,7 @@ export namespace ParamArray {
          * @param x1 horz. coord. of other end of axis.
          * @param y1 vert. coord. of other end of axis.
          * @returns The flipped item.
+         * @since 2.8
          */
         transform_flip(x0: number, y0: number, x1: number, y1: number): Item;
 
@@ -15012,6 +15388,7 @@ export namespace ParamArray {
          * @param auto_center Whether to automatically position the axis in the selection center.
          * @param axis coord. of flip axis.
          * @returns The flipped item.
+         * @since 2.2
          */
         transform_flip_simple(flip_type: OrientationType, auto_center: boolean, axis: number): Item;
 
@@ -15047,6 +15424,7 @@ export namespace ParamArray {
          * @param coeff_2_1 coefficient (2,1) of the transformation matrix.
          * @param coeff_2_2 coefficient (2,2) of the transformation matrix.
          * @returns The transformed item.
+         * @since 2.8
          */
         transform_matrix(coeff_0_0: number, coeff_0_1: number, coeff_0_2: number, coeff_1_0: number, coeff_1_1: number, coeff_1_2: number, coeff_2_0: number, coeff_2_1: number, coeff_2_2: number): Item;
 
@@ -15087,6 +15465,7 @@ export namespace ParamArray {
          * @param x3 The new x coordinate of lower-right corner of original bounding box.
          * @param y3 The new y coordinate of lower-right corner of original bounding box.
          * @returns The transformed item.
+         * @since 2.8
          */
         transform_perspective(x0: number, y0: number, x1: number, y1: number, x2: number, y2: number, x3: number, y3: number): Item;
 
@@ -15119,6 +15498,7 @@ export namespace ParamArray {
          * @param center_x The hor. coordinate of the center of rotation.
          * @param center_y The vert. coordinate of the center of rotation.
          * @returns The rotated item.
+         * @since 2.8
          */
         transform_rotate(angle: number, auto_center: boolean, center_x: number, center_y: number): Item;
 
@@ -15149,6 +15529,7 @@ export namespace ParamArray {
          * @param center_x The hor. coordinate of the center of rotation.
          * @param center_y The vert. coordinate of the center of rotation.
          * @returns The rotated item.
+         * @since 2.8
          */
         transform_rotate_simple(rotate_type: RotationType, auto_center: boolean, center_x: number, center_y: number): Item;
 
@@ -15178,6 +15559,7 @@ export namespace ParamArray {
          * @param x1 The new x coordinate of the lower-right corner of the scaled region.
          * @param y1 The new y coordinate of the lower-right corner of the scaled region.
          * @returns The scaled item.
+         * @since 2.8
          */
         transform_scale(x0: number, y0: number, x1: number, y1: number): Item;
 
@@ -15207,6 +15589,7 @@ export namespace ParamArray {
          * @param shear_type Type of shear.
          * @param magnitude The magnitude of the shear.
          * @returns The sheared item.
+         * @since 2.8
          */
         transform_shear(shear_type: OrientationType, magnitude: number): Item;
 
@@ -15220,6 +15603,7 @@ export namespace ParamArray {
          * @param off_x Offset in x direction.
          * @param off_y Offset in y direction.
          * @returns The translated item.
+         * @since 2.10
          */
         transform_translate(off_x: number, off_y: number): Item;
     }
@@ -15286,6 +15670,7 @@ export namespace ParamArray {
          * This procedure returns the specified mask's layer , or -1 if none
          * exists.
          * @param mask Mask for which to return the layer.
+         * @since 2.2
          */
         static from_mask(mask: LayerMask): Layer;
 
@@ -15294,6 +15679,7 @@ export namespace ParamArray {
          * `gimp_item_get_by_id()` and returns the item if it is layer or `null`
          * otherwise.
          * @param layer_id The layer id.
+         * @since 3.0
          */
         static get_by_id(layer_id: number): Layer | null;
 
@@ -15379,6 +15765,7 @@ export namespace ParamArray {
          * color. This transforms layers of type RGBA to RGB, GRAYA to GRAY,
          * and INDEXEDA to INDEXED.
          * @returns TRUE on success.
+         * @since 2.4
          */
         flatten(): boolean;
 
@@ -15397,6 +15784,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the specified layer's blend space.
          * @returns The layer blend space.
+         * @since 2.10
          */
         get_blend_space(): LayerColorSpace;
 
@@ -15405,6 +15793,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the specified layer's composite mode.
          * @returns The layer composite mode.
+         * @since 2.10
          */
         get_composite_mode(): LayerCompositeMode;
 
@@ -15413,6 +15802,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the specified layer's composite space.
          * @returns The layer composite space.
+         * @since 2.10
          */
         get_composite_space(): LayerColorSpace;
 
@@ -15549,6 +15939,7 @@ export namespace ParamArray {
          * This procedure sets the specified layer's blend space.
          * @param blend_space The new layer blend space.
          * @returns TRUE on success.
+         * @since 2.10
          */
         set_blend_space(blend_space: LayerColorSpace): boolean;
 
@@ -15558,6 +15949,7 @@ export namespace ParamArray {
          * This procedure sets the specified layer's composite mode.
          * @param composite_mode The new layer composite mode.
          * @returns TRUE on success.
+         * @since 2.10
          */
         set_composite_mode(composite_mode: LayerCompositeMode): boolean;
 
@@ -15567,6 +15959,7 @@ export namespace ParamArray {
          * This procedure sets the specified layer's composite space.
          * @param composite_space The new layer composite space.
          * @returns TRUE on success.
+         * @since 2.10
          */
         set_composite_space(composite_space: LayerColorSpace): boolean;
 
@@ -15685,6 +16078,7 @@ export namespace ParamArray {
          * calls `gimp_item_get_by_id()` and returns the item if it is
          * layer_mask or `null` otherwise.
          * @param layer_mask_id The layer_mask id.
+         * @since 3.0
          */
         static get_by_id(layer_mask_id: number): LayerMask | null;
     }
@@ -15745,6 +16139,7 @@ export namespace ParamArray {
          * {@link Gimp.Item.get_by_id} and returns the item if it is a link
          * layer or `null` otherwise.
          * @param layer_id The layer id.
+         * @since 3.2
          */
         static get_by_id(layer_id: number): LinkLayer | null;
 
@@ -15754,6 +16149,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the file which is being monitored.
          * @returns The monitored file.
+         * @since 3.2
          */
         get_file(): Gio.File;
 
@@ -15770,6 +16166,7 @@ export namespace ParamArray {
          * This function may also return `null` in case of error (for instance
          * if the external file doesn't exist anymore).
          * @returns The mime type of the monitored file.          The returned value must be freed with `g_free()`.
+         * @since 3.2
          */
         get_mime_type(): string;
 
@@ -15780,6 +16177,7 @@ export namespace ParamArray {
          * layer's render.
          * @param file The file to monitor.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_file(file: Gio.File): boolean;
 
@@ -15800,6 +16198,7 @@ export namespace ParamArray {
          * with the various procedures provided by the {@link Gimp.TextLayer}
          * class interface.
          * @returns TRUE if `item` is rasterized.
+         * @since 3.2
          */
         is_rasterized(): boolean;
 
@@ -15814,6 +16213,7 @@ export namespace ParamArray {
          * possible to retrieve the original behavior with
          * {@link Gimp.Rasterizable.restore}.
          * @returns TRUE on success.
+         * @since 3.2
          */
         rasterize(): boolean;
 
@@ -15827,6 +16227,7 @@ export namespace ParamArray {
          * will prevent direct modification of its pixels and will be rendered
          * when its properties are updated.
          * @returns TRUE on success.
+         * @since 3.2
          */
         restore(): boolean;
     }
@@ -15905,6 +16306,7 @@ export namespace ParamArray {
          * Returns the procedure's 'handles raw' flag as set with
          * {@link GimpLoadProcedure.set_handles_raw}.
          * @returns The procedure's 'handles raw' flag.
+         * @since 3.0
          */
         get_handles_raw(): boolean;
 
@@ -15912,6 +16314,7 @@ export namespace ParamArray {
          * Returns the procedure's thumbnail loader procedure as set with
          * {@link GimpLoadProcedure.set_thumbnail_loader}.
          * @returns The procedure's thumbnail loader procedure
+         * @since 3.0
          */
         get_thumbnail_loader(): string;
 
@@ -15921,6 +16324,7 @@ export namespace ParamArray {
          * Note that you cannot call this function on {@link VectorLoadProcedure}
          * subclass objects.
          * @param handles_raw The procedure's handles raw flag.
+         * @since 3.0
          */
         set_handles_raw(handles_raw: boolean): void;
 
@@ -15934,6 +16338,7 @@ export namespace ParamArray {
          * the image. This procedure is then associated with the standard
          * load procedure using this function.
          * @param thumbnail_proc The name of the thumbnail load procedure.
+         * @since 3.0
          */
         set_thumbnail_loader(thumbnail_proc: string): void;
     }
@@ -15972,6 +16377,7 @@ export namespace ParamArray {
          * Parses a string representation of a memory size as returned by
          * `gimp_memsize_serialize()`.
          * @param string a string as returned by `gimp_memsize_serialize()`
+         * @since 2.2
          */
         static deserialize(string: string): [boolean, number];
 
@@ -15981,6 +16387,7 @@ export namespace ParamArray {
          * config files. It should not be displayed to the user. If you need a
          * nice human-readable string please use `g_format_size()`.
          * @param memsize memory size in bytes
+         * @since 2.2
          */
         static serialize(memsize: bigint | number): string;
     }
@@ -16035,11 +16442,13 @@ export namespace ParamArray {
          * Deserializes a string of XML that has been created by
          * `gimp_metadata_serialize()`.
          * @param metadata_xml A string of serialized metadata XML.
+         * @since 2.10
          */
         static deserialize(metadata_xml: string): Metadata;
 
         /**
          * Generate Version 4 UUID/GUID.
+         * @since 2.10
          */
         static get_guid(): string;
 
@@ -16047,12 +16456,14 @@ export namespace ParamArray {
          * Returns whether `tag` is supported in a file of type `mime_type`.
          * @param tag A metadata tag name
          * @param mime_type A mime type
+         * @since 2.10
          */
         static is_tag_supported(tag: string, mime_type: string): boolean;
 
         /**
          * Loads {@link Gimp.Metadata} from `file`.
          * @param file The {@link Gio.File} to load the metadata from
+         * @since 2.10
          */
         static load_from_file(file: Gio.File): Metadata;
 
@@ -16065,6 +16476,7 @@ export namespace ParamArray {
         /**
          * Duplicates a {@link Gimp.Metadata} instance.
          * @returns The new {@link Gimp.Metadata}, or `null` if `metadata` is `null`.
+         * @since 2.10
          */
         duplicate(): Metadata;
 
@@ -16073,6 +16485,7 @@ export namespace ParamArray {
          * Exif.Iop.InteroperabilityIndex, Exif.Nikon3.ColorSpace,
          * Exif.Canon.ColorSpace of `metadata`.
          * @returns The colorspace specified by above tags.
+         * @since 2.10
          */
         get_colorspace(): MetadataColorspace;
 
@@ -16080,6 +16493,7 @@ export namespace ParamArray {
          * Returns values based on Exif.Image.XResolution,
          * Exif.Image.YResolution and Exif.Image.ResolutionUnit of `metadata`.
          * @returns `true` on success, `false` otherwise.
+         * @since 2.10
          */
         get_resolution(): [boolean, number, number, Unit | null];
 
@@ -16087,6 +16501,7 @@ export namespace ParamArray {
          * Saves `metadata` to `file`.
          * @param file The file to save the metadata to
          * @returns `true` on success, `false` otherwise.
+         * @since 2.10
          */
         save_to_file(file: Gio.File): boolean;
 
@@ -16094,12 +16509,14 @@ export namespace ParamArray {
          * Serializes `metadata` into an XML string that can later be deserialized
          * using `gimp_metadata_deserialize()`.
          * @returns The serialized XML string.
+         * @since 2.10
          */
         serialize(): string;
 
         /**
          * Sets Exif.Image.BitsPerSample on `metadata`.
          * @param bits_per_sample Bits per pixel, per component
+         * @since 2.10
          */
         set_bits_per_sample(bits_per_sample: number): void;
 
@@ -16108,6 +16525,7 @@ export namespace ParamArray {
          * Exif.Iop.InteroperabilityIndex, Exif.Nikon3.ColorSpace,
          * Exif.Canon.ColorSpace of `metadata`.
          * @param colorspace The color space.
+         * @since 2.10
          */
         set_colorspace(colorspace: MetadataColorspace): void;
 
@@ -16119,6 +16537,7 @@ export namespace ParamArray {
          * `Exif.Photo.OffsetTimeDigitized`, `Xmp.xmp.CreateDate`, `Xmp.xmp.ModifyDate`,
          * `Xmp.xmp.MetadataDate`, `Xmp.photoshop.DateCreated` of `metadata`.
          * @param datetime A {@link GLib.DateTime} value
+         * @since 3.0
          */
         set_creation_date(datetime: GLib.DateTime): void;
 
@@ -16126,6 +16545,7 @@ export namespace ParamArray {
          * Sets the tags from a piece of Exif data on `metadata`.
          * @param exif_data The blob of Exif data to set
          * @returns `true` on success, `false` otherwise.
+         * @since 2.10
          */
         set_from_exif(exif_data: Uint8Array | string): boolean;
 
@@ -16133,6 +16553,7 @@ export namespace ParamArray {
          * Sets the tags from a piece of IPTC data on `metadata`.
          * @param iptc_data The blob of Iptc data to set
          * @returns `true` on success, `false` otherwise.
+         * @since 2.10
          */
         set_from_iptc(iptc_data: Uint8Array | string): boolean;
 
@@ -16140,6 +16561,7 @@ export namespace ParamArray {
          * Sets the tags from a piece of XMP data on `metadata`.
          * @param xmp_data The blob of XMP data to set
          * @returns `true` on success, `false` otherwise.
+         * @since 2.10
          */
         set_from_xmp(xmp_data: Uint8Array | string): boolean;
 
@@ -16149,6 +16571,7 @@ export namespace ParamArray {
          * Exif.Photo.PixelYDimension.
          * @param width Width in pixels
          * @param height Height in pixels
+         * @since 2.10
          */
         set_pixel_size(width: number, height: number): void;
 
@@ -16158,6 +16581,7 @@ export namespace ParamArray {
          * @param xres The image's X Resolution, in ppi
          * @param yres The image's Y Resolution, in ppi
          * @param unit The image's unit
+         * @since 2.10
          */
         set_resolution(xres: number, yres: number, unit: Unit): void;
     }
@@ -16247,6 +16671,7 @@ export namespace ParamArray {
         // Static methods
         /**
          * This function is never called directly. Use GIMP_MODULE_ERROR() instead.
+         * @since 2.8
          */
         static error_quark(): GLib.Quark;
 
@@ -16270,37 +16695,44 @@ export namespace ParamArray {
         /**
          * Returns whether this `module` in automatically loaded at startup.
          * @returns The `module`'s 'auto_load' property.
+         * @since 3.0
          */
         get_auto_load(): boolean;
 
         /**
          * Returns {@link Gio.File} of the `module`,
          * @returns The `module`'s {@link Gio.File}.
+         * @since 3.0
          */
         get_file(): Gio.File;
 
         /**
          * @returns The `module`'s {@link Gimp.ModuleInfo} as provided          by the actual module, or `null`.
+         * @since 3.0
          */
         get_info(): ModuleInfo;
 
         /**
          * @returns The `module`'s last error message.
+         * @since 3.0
          */
         get_last_error(): string;
 
         /**
          * @returns The `module`'s state.
+         * @since 3.0
          */
         get_state(): ModuleState;
 
         /**
          * @returns Whether the `module` is currently loaded.
+         * @since 3.0
          */
         is_loaded(): boolean;
 
         /**
          * @returns Whether the `module` is present on diak.
+         * @since 3.0
          */
         is_on_disk(): boolean;
 
@@ -16315,6 +16747,7 @@ export namespace ParamArray {
         /**
          * Sets the `auto_load` property of the module
          * @param auto_load Pass `false` to exclude this module from auto-loading
+         * @since 3.0
          */
         set_auto_load(auto_load: boolean): void;
 
@@ -16415,6 +16848,7 @@ export namespace ParamArray {
         /**
          * Returns the 'verbose' setting of `db`.
          * @returns the 'verbose' setting.
+         * @since 3.0
          */
         get_verbose(): boolean;
 
@@ -16447,6 +16881,7 @@ export namespace ParamArray {
         /**
          * Sets the 'verbose' setting of `db`.
          * @param verbose the new 'verbose' setting
+         * @since 3.0
          */
         set_verbose(verbose: boolean): void;
 
@@ -16460,6 +16895,7 @@ export namespace ParamArray {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -16470,6 +16906,7 @@ export namespace ParamArray {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -16488,6 +16925,7 @@ export namespace ParamArray {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -16515,6 +16953,7 @@ export namespace ParamArray {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -16527,6 +16966,7 @@ export namespace ParamArray {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -16540,6 +16980,7 @@ export namespace ParamArray {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -16550,6 +16991,7 @@ export namespace ParamArray {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -16607,6 +17049,7 @@ export namespace ParamArray {
          * provided for each registered procedure.
          * @param file The dump file.
          * @returns TRUE on success.
+         * @since 3.0
          */
         dump_to_file(file: Gio.File): boolean;
 
@@ -16622,12 +17065,14 @@ export namespace ParamArray {
          * The returned string is owned by `pdb` and must not be freed or
          * modified.
          * @returns the error message
+         * @since 3.0
          */
         get_last_error(): string;
 
         /**
          * Retrieves the status from the last procedure call.
          * @returns the {@link Gimp.PDBStatusType}.
+         * @since 3.0
          */
         get_last_status(): PDBStatusType;
 
@@ -16638,6 +17083,7 @@ export namespace ParamArray {
          * The returned {@link Procedure} is owned by `pdb` and must not be modified.
          * @param procedure_name A procedure name
          * @returns A {@link Procedure}, or `null`.
+         * @since 3.0
          */
         lookup_procedure(procedure_name: string): Procedure | null;
 
@@ -16646,6 +17092,7 @@ export namespace ParamArray {
          * database.
          * @param procedure_name A procedure name
          * @returns `true` if the procedure exists, `false` otherwise.
+         * @since 3.0
          */
         procedure_exists(procedure_name: string): boolean;
 
@@ -16676,6 +17123,7 @@ export namespace ParamArray {
          * @param date The regex for procedure date.
          * @param proc_type The regex for procedure type: { 'Internal GIMP procedure', 'GIMP Plug-in', 'GIMP Extension', 'Temporary Procedure' }.
          * @returns The list          of procedure names. Free with `g_strfreev()`.
+         * @since 3.0
          */
         query_procedures(name: string, blurb: string, help: string, help_id: string, authors: string, copyright: string, date: string, proc_type: string): string[];
 
@@ -16685,6 +17133,7 @@ export namespace ParamArray {
          * This function generates a temporary PDB entry name that is
          * guaranteed to be unique.
          * @returns A unique temporary name for a temporary          PDB entry. The returned value must be freed with          `g_free()`.
+         * @since 3.0
          */
         temp_procedure_name(): string;
     }
@@ -16743,6 +17192,7 @@ export namespace ParamArray {
          * Returns an existing palette having the given name. Returns `null`
          * when no palette exists of that name.
          * @param name The name of the palette.
+         * @since 3.0
          */
         static get_by_name(name: string): Palette | null;
 
@@ -16763,6 +17213,7 @@ export namespace ParamArray {
          * @param entry_name A name for the entry.
          * @param color The color for the added entry.
          * @returns TRUE on success.
+         * @since 2.2
          */
         add_entry(entry_name: string | null, color: Gegl.Color): [boolean, number];
 
@@ -16775,6 +17226,7 @@ export namespace ParamArray {
          * only be possible to delete palette colors not in use in the image.
          * @param entry_num The index of the entry to delete.
          * @returns TRUE on success.
+         * @since 2.2
          */
         delete_entry(entry_num: number): boolean;
 
@@ -16783,6 +17235,7 @@ export namespace ParamArray {
          * 
          * Returns the number of colors in the palette.
          * @returns The number of colors in the palette.
+         * @since 2.2
          */
         get_color_count(): number;
 
@@ -16803,6 +17256,7 @@ export namespace ParamArray {
          * both set them to `null` but not at the same time.
          * @param format The desired color format.
          * @returns The palette's colormap.
+         * @since 3.0
          */
         get_colormap(format: Babl.Object): [Uint8Array, number];
 
@@ -16812,6 +17266,7 @@ export namespace ParamArray {
          * Returns an array of colors in the palette. Free the returned array
          * with `gimp_color_array_free()`.
          * @returns The colors in the palette.          The returned value must be freed with `gimp_color_array_free()`.
+         * @since 2.6
          */
         get_colors(): Gegl.Color[];
 
@@ -16820,6 +17275,7 @@ export namespace ParamArray {
          * 
          * Gets the preferred number of columns to display the palette.
          * @returns The number of columns used to display this palette.
+         * @since 2.4
          */
         get_columns(): number;
 
@@ -16830,6 +17286,7 @@ export namespace ParamArray {
          * the palette. Returns `null` when the index is out of range.
          * @param entry_num The index of the entry to get the color of.
          * @returns The color at the index.
+         * @since 2.2
          */
         get_entry_color(entry_num: number): Gegl.Color;
 
@@ -16840,6 +17297,7 @@ export namespace ParamArray {
          * Returns an error when the index is out of range.
          * @param entry_num The entry to get.
          * @returns TRUE on success.
+         * @since 2.2
          */
         get_entry_name(entry_num: number): [boolean, string];
 
@@ -16855,6 +17313,7 @@ export namespace ParamArray {
          * @param colormap 
          * @param num_bytes The byte-size of `colormap`.
          * @returns `true` on success.
+         * @since 3.0
          */
         set_colormap(format: Babl.Object, colormap: number, num_bytes: bigint | number): boolean;
 
@@ -16866,6 +17325,7 @@ export namespace ParamArray {
          * maximum allowed value is 64.
          * @param columns The new number of columns.
          * @returns TRUE on success.
+         * @since 2.4
          */
         set_columns(columns: number): boolean;
 
@@ -16878,6 +17338,7 @@ export namespace ParamArray {
          * @param entry_num The entry to get.
          * @param color The new color.
          * @returns TRUE on success.
+         * @since 2.2
          */
         set_entry_color(entry_num: number, color: Gegl.Color): boolean;
 
@@ -16890,6 +17351,7 @@ export namespace ParamArray {
          * @param entry_num The entry to get.
          * @param entry_name The new name.
          * @returns TRUE on success.
+         * @since 2.2
          */
         set_entry_name(entry_num: number, entry_name: string | null): boolean;
     }
@@ -17594,6 +18056,7 @@ export namespace ParamArray {
          * calls `gimp_item_get_by_id()` and returns the item if it is a path
          * or `null` otherwise.
          * @param path_id The path id.
+         * @since 3.0
          */
         static get_by_id(path_id: number): Path | null;
 
@@ -17628,6 +18091,7 @@ export namespace ParamArray {
          * @param x1 The x-coordinate of the end point.
          * @param y1 The y-coordinate of the end point.
          * @returns TRUE on success.
+         * @since 2.4
          */
         bezier_stroke_conicto(stroke_id: number, x0: number, y0: number, x1: number, y1: number): boolean;
 
@@ -17643,6 +18107,7 @@ export namespace ParamArray {
          * @param x2 The x-coordinate of the end point.
          * @param y2 The y-coordinate of the end point.
          * @returns TRUE on success.
+         * @since 2.4
          */
         bezier_stroke_cubicto(stroke_id: number, x0: number, y0: number, x1: number, y1: number, x2: number, y2: number): boolean;
 
@@ -17654,6 +18119,7 @@ export namespace ParamArray {
          * @param x0 The x-coordinate of the lineto.
          * @param y0 The y-coordinate of the lineto.
          * @returns TRUE on success.
+         * @since 2.4
          */
         bezier_stroke_lineto(stroke_id: number, x0: number, y0: number): boolean;
 
@@ -17667,6 +18133,7 @@ export namespace ParamArray {
          * @param radius_y The radius in y direction.
          * @param angle The angle the x-axis of the ellipse (radians, counterclockwise).
          * @returns The resulting stroke.
+         * @since 2.4
          */
         bezier_stroke_new_ellipse(x0: number, y0: number, radius_x: number, radius_y: number, angle: number): number;
 
@@ -17677,6 +18144,7 @@ export namespace ParamArray {
          * @param x0 The x-coordinate of the moveto.
          * @param y0 The y-coordinate of the moveto.
          * @returns The resulting stroke.
+         * @since 2.4
          */
         bezier_stroke_new_moveto(x0: number, y0: number): number;
 
@@ -17690,6 +18158,7 @@ export namespace ParamArray {
          * automatic. Add the new path with the {@link Image.insert_path}
          * method.
          * @returns The newly copied path object.
+         * @since 2.6
          */
         copy(): Path;
 
@@ -17699,6 +18168,7 @@ export namespace ParamArray {
          * Returns an Array with the stroke-IDs associated with the passed
          * path.
          * @returns List of the strokes belonging to the path.          The returned value must be freed with `g_free()`.
+         * @since 2.4
          */
         get_strokes(): number[];
 
@@ -17708,6 +18178,7 @@ export namespace ParamArray {
          * Remove the stroke from a path object.
          * @param stroke_id The stroke ID.
          * @returns TRUE on success.
+         * @since 2.4
          */
         remove_stroke(stroke_id: number): boolean;
 
@@ -17717,6 +18188,7 @@ export namespace ParamArray {
          * Closes the specified stroke.
          * @param stroke_id The stroke ID.
          * @returns TRUE on success.
+         * @since 2.4
          */
         stroke_close(stroke_id: number): boolean;
 
@@ -17728,6 +18200,7 @@ export namespace ParamArray {
          * @param flip_type Flip orientation, either vertical or horizontal.
          * @param axis axis coordinate about which to flip, in pixels.
          * @returns TRUE on success.
+         * @since 2.4
          */
         stroke_flip(stroke_id: number, flip_type: OrientationType, axis: number): boolean;
 
@@ -17743,6 +18216,7 @@ export namespace ParamArray {
          * @param x2 X coordinate of the second point of the flipping axis.
          * @param y2 Y coordinate of the second point of the flipping axis.
          * @returns TRUE on success.
+         * @since 2.4
          */
         stroke_flip_free(stroke_id: number, x1: number, y1: number, x2: number, y2: number): boolean;
 
@@ -17753,6 +18227,7 @@ export namespace ParamArray {
          * @param stroke_id The stroke ID.
          * @param precision The precision used for approximating straight portions of the stroke.
          * @returns The length (in pixels) of the given stroke.
+         * @since 2.4
          */
         stroke_get_length(stroke_id: number, precision: number): number;
 
@@ -17769,6 +18244,7 @@ export namespace ParamArray {
          * @param dist The given distance.
          * @param precision The precision used for the approximation.
          * @returns TRUE on success.
+         * @since 2.4
          */
         stroke_get_point_at_dist(stroke_id: number, dist: number, precision: number): [boolean, number, number, number, boolean];
 
@@ -17781,6 +18257,7 @@ export namespace ParamArray {
          * control points.
          * @param stroke_id The stroke ID.
          * @returns type of the stroke (always GIMP_PATH_STROKE_TYPE_BEZIER for now).
+         * @since 2.4
          */
         stroke_get_points(stroke_id: number): [PathStrokeType, number[], boolean];
 
@@ -17791,6 +18268,7 @@ export namespace ParamArray {
          * @param stroke_id The stroke ID.
          * @param precision The precision used for the approximation.
          * @returns List of the coords along the path (x0, y0, x1, y1, ...).          The returned value must be freed with `g_free()`.
+         * @since 2.4
          */
         stroke_interpolate(stroke_id: number, precision: number): [number[], boolean];
 
@@ -17809,6 +18287,7 @@ export namespace ParamArray {
          * @param controlpoints List of the x- and y-coordinates of the control points.
          * @param closed Whether the stroke is to be closed or not.
          * @returns The stroke ID of the newly created stroke.
+         * @since 2.4
          */
         stroke_new_from_points(type: PathStrokeType, controlpoints: number[], closed: boolean): number;
 
@@ -17818,6 +18297,7 @@ export namespace ParamArray {
          * Reverses the specified stroke.
          * @param stroke_id The stroke ID.
          * @returns TRUE on success.
+         * @since 3.0
          */
         stroke_reverse(stroke_id: number): boolean;
 
@@ -17830,6 +18310,7 @@ export namespace ParamArray {
          * @param center_y Y coordinate of the rotation center.
          * @param angle angle to rotate about.
          * @returns TRUE on success.
+         * @since 2.4
          */
         stroke_rotate(stroke_id: number, center_x: number, center_y: number, angle: number): boolean;
 
@@ -17841,6 +18322,7 @@ export namespace ParamArray {
          * @param scale_x Scale factor in x direction.
          * @param scale_y Scale factor in y direction.
          * @returns TRUE on success.
+         * @since 2.4
          */
         stroke_scale(stroke_id: number, scale_x: number, scale_y: number): boolean;
 
@@ -17852,6 +18334,7 @@ export namespace ParamArray {
          * @param off_x Offset in x direction.
          * @param off_y Offset in y direction.
          * @returns TRUE on success.
+         * @since 2.4
          */
         stroke_translate(stroke_id: number, off_x: number, off_y: number): boolean;
     }
@@ -17908,6 +18391,7 @@ export namespace ParamArray {
          * Returns an existing pattern having the given name. Returns `null`
          * when no pattern exists of that name.
          * @param name The name of the pattern.
+         * @since 3.0
          */
         static get_by_name(name: string): Pattern | null;
 
@@ -17942,6 +18426,7 @@ export namespace ParamArray {
          * Gets information about the pattern: the pattern extents (width and
          * height) and bytes per pixel.
          * @returns TRUE on success.
+         * @since 2.2
          */
         get_info(): [boolean, number, number, number];
     }
@@ -18206,6 +18691,7 @@ export namespace ParamArray {
          * When localizing your plug-in this way, GIMP also binds
          * `gettext_domain` to the UTF-8 encoding.
          * @param procedure_name procedure name.
+         * @since 3.0
          * @virtual
          */
         vfunc_set_i18n(procedure_name: string): [boolean, string, string];
@@ -18225,6 +18711,7 @@ export namespace ParamArray {
          * See also: `gimp_procedure_add_menu_path()`.
          * @param menu_path The sub-menu's menu path.
          * @param menu_label The menu label of the sub-menu.
+         * @since 3.0
          */
         add_menu_branch(menu_path: string, menu_label: string): void;
 
@@ -18246,6 +18733,7 @@ export namespace ParamArray {
          * {@link PlugIn.persistent_process}. See their respective
          * documentation for details.
          * @param procedure A {@link Gimp.Procedure} of type {@link Gimp.PDBProcType.TEMPORARY}.
+         * @since 3.0
          */
         add_temp_procedure(procedure: Procedure): void;
 
@@ -18256,6 +18744,7 @@ export namespace ParamArray {
          * procedure calls made by the calling plug-in. See
          * `gimp_plugin_set_pdb_error_handler()` for details.
          * @returns Who is responsible for handling procedure call errors.
+         * @since 3.0
          */
         get_pdb_error_handler(): PDBErrorHandler;
 
@@ -18264,6 +18753,7 @@ export namespace ParamArray {
          * procedure's `procedure_name`.
          * @param procedure_name The name of a {@link Procedure} added to `plug_in`.
          * @returns The procedure if registered, or `null`.
+         * @since 3.0
          */
         get_temp_procedure(procedure_name: string): Procedure | null;
 
@@ -18271,6 +18761,7 @@ export namespace ParamArray {
          * This function retrieves the list of temporary procedure of `plug_in` as
          * added with {@link PlugIn.add_temp_procedure}.
          * @returns The list of          procedures.
+         * @since 3.0
          */
         get_temp_procedures(): Procedure[];
 
@@ -18296,6 +18787,7 @@ export namespace ParamArray {
          * {@link Gimp.PDBProcType.PERSISTENT} to register temporary procedures.
          * 
          * See also: {@link PlugIn.add_temp_procedure}.
+         * @since 3.0
          */
         persistent_enable(): void;
 
@@ -18311,6 +18803,7 @@ export namespace ParamArray {
          * 
          * See also: {@link PlugIn.add_temp_procedure}.
          * @param timeout The timeout (in ms) to use for the `select()` call.
+         * @since 3.0
          */
         persistent_process(timeout: number): void;
 
@@ -18318,6 +18811,7 @@ export namespace ParamArray {
          * This function removes a temporary procedure from `plug_in` by the
          * procedure's `procedure_name`.
          * @param procedure_name The name of a {@link Procedure} added to `plug_in`.
+         * @since 3.0
          */
         remove_temp_procedure(procedure_name: string): void;
 
@@ -18334,6 +18828,7 @@ export namespace ParamArray {
          * {@link PlugIn.query_procedures} function of a plug-in.
          * @param domain_name The XML namespace of the plug-in's help pages.
          * @param domain_uri The root URI of the plug-in's help pages.
+         * @since 3.0
          */
         set_help_domain(domain_name: string, domain_uri: Gio.File): void;
 
@@ -18349,6 +18844,7 @@ export namespace ParamArray {
          * one if its procedure calls fails. It can do this by displaying the
          * error message or by forwarding it in its own return values.
          * @param handler Who is responsible for handling procedure call errors.
+         * @since 3.0
          */
         set_pdb_error_handler(handler: PDBErrorHandler): void;
     }
@@ -18484,6 +18980,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_boolean_argument(name: string, nick: string, blurb: string | null, value: boolean, flags: GObject.ParamFlags): void;
 
@@ -18494,6 +18991,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_boolean_aux_argument(name: string, nick: string, blurb: string | null, value: boolean, flags: GObject.ParamFlags): void;
 
@@ -18504,6 +19002,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_boolean_return_value(name: string, nick: string, blurb: string | null, value: boolean, flags: GObject.ParamFlags): void;
 
@@ -18516,6 +19015,7 @@ export namespace ParamArray {
          * @param default_value default value
          * @param default_to_context Use the context's brush as default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_brush_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, default_value: Brush | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
@@ -18527,6 +19027,7 @@ export namespace ParamArray {
          * @param default_value default value
          * @param default_to_context Use the context's brush as default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_brush_aux_argument(name: string, nick: string, blurb: string | null, default_value: Brush | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
@@ -18536,6 +19037,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_brush_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -18545,6 +19047,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_bytes_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -18554,6 +19057,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_bytes_aux_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -18563,6 +19067,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_bytes_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -18573,6 +19078,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_channel_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -18583,6 +19089,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_channel_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -18593,6 +19100,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_channel_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -18604,6 +19112,7 @@ export namespace ParamArray {
          * @param choice the {@link Gimp.Choice}
          * @param value the default value for {@link Gimp.Choice}.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_choice_argument(name: string, nick: string, blurb: string | null, choice: Choice, value: string, flags: GObject.ParamFlags): void;
 
@@ -18615,6 +19124,7 @@ export namespace ParamArray {
          * @param choice the {@link Gimp.Choice}
          * @param value the default value for {@link Gimp.Choice}.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_choice_aux_argument(name: string, nick: string, blurb: string | null, choice: Choice, value: string, flags: GObject.ParamFlags): void;
 
@@ -18626,6 +19136,7 @@ export namespace ParamArray {
          * @param choice the {@link Gimp.Choice}
          * @param value the default value for {@link Gimp.Choice}.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_choice_return_value(name: string, nick: string, blurb: string | null, choice: Choice, value: string, flags: GObject.ParamFlags): void;
 
@@ -18637,6 +19148,7 @@ export namespace ParamArray {
          * @param has_alpha whether the argument has transparency.
          * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_color_argument(name: string, nick: string, blurb: string | null, has_alpha: boolean, value: Gegl.Color, flags: GObject.ParamFlags): void;
 
@@ -18648,6 +19160,7 @@ export namespace ParamArray {
          * @param has_alpha whether the argument has transparency.
          * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_color_aux_argument(name: string, nick: string, blurb: string | null, has_alpha: boolean, value: Gegl.Color, flags: GObject.ParamFlags): void;
 
@@ -18659,6 +19172,7 @@ export namespace ParamArray {
          * @param has_alpha whether the argument has transparency.
          * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_color_from_string_argument(name: string, nick: string, blurb: string | null, has_alpha: boolean, value: string, flags: GObject.ParamFlags): void;
 
@@ -18670,6 +19184,7 @@ export namespace ParamArray {
          * @param has_alpha whether the argument has transparency.
          * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_color_from_string_aux_argument(name: string, nick: string, blurb: string | null, has_alpha: boolean, value: string, flags: GObject.ParamFlags): void;
 
@@ -18681,6 +19196,7 @@ export namespace ParamArray {
          * @param has_alpha whether the argument has transparency.
          * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_color_from_string_return_value(name: string, nick: string, blurb: string | null, has_alpha: boolean, value: string, flags: GObject.ParamFlags): void;
 
@@ -18692,6 +19208,7 @@ export namespace ParamArray {
          * @param has_alpha whether the argument has transparency.
          * @param value the default {@link Gegl.Color} value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_color_return_value(name: string, nick: string, blurb: string | null, has_alpha: boolean, value: Gegl.Color, flags: GObject.ParamFlags): void;
 
@@ -18702,6 +19219,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description. `object_type`  the type of object stored in the array
          * @param object_type 
          * @param flags argument flags.
+         * @since 3.0
          */
         add_core_object_array_argument(name: string, nick: string, blurb: string | null, object_type: GObject.GType, flags: GObject.ParamFlags): void;
 
@@ -18712,6 +19230,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description. `object_type`  the type of object stored in the array
          * @param object_type 
          * @param flags argument flags.
+         * @since 3.0
          */
         add_core_object_array_aux_argument(name: string, nick: string, blurb: string | null, object_type: GObject.GType, flags: GObject.ParamFlags): void;
 
@@ -18722,6 +19241,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description. `object_type`  the type of object stored in the array
          * @param object_type 
          * @param flags argument flags.
+         * @since 3.0
          */
         add_core_object_array_return_value(name: string, nick: string, blurb: string | null, object_type: GObject.GType, flags: GObject.ParamFlags): void;
 
@@ -18732,6 +19252,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_display_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -18742,6 +19263,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_display_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -18752,6 +19274,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_display_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -18764,6 +19287,7 @@ export namespace ParamArray {
          * @param max the maximum value for this argument
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_double_argument(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
@@ -18773,6 +19297,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_double_array_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -18782,6 +19307,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_double_array_aux_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -18791,6 +19317,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_double_array_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -18803,6 +19330,7 @@ export namespace ParamArray {
          * @param max the maximum value for this argument
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_double_aux_argument(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
@@ -18815,6 +19343,7 @@ export namespace ParamArray {
          * @param max the maximum value for this argument
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_double_return_value(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
@@ -18825,6 +19354,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_drawable_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -18835,6 +19365,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_drawable_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -18845,6 +19376,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_drawable_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -18856,6 +19388,7 @@ export namespace ParamArray {
          * @param enum_type the {@link GObject.GType} for this argument
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_enum_argument(name: string, nick: string, blurb: string | null, enum_type: GObject.GType, value: number, flags: GObject.ParamFlags): void;
 
@@ -18867,6 +19400,7 @@ export namespace ParamArray {
          * @param enum_type the {@link GObject.GType} for this argument
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_enum_aux_argument(name: string, nick: string, blurb: string | null, enum_type: GObject.GType, value: number, flags: GObject.ParamFlags): void;
 
@@ -18878,6 +19412,7 @@ export namespace ParamArray {
          * @param enum_type the {@link GObject.GType} for this argument
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_enum_return_value(name: string, nick: string, blurb: string | null, enum_type: GObject.GType, value: number, flags: GObject.ParamFlags): void;
 
@@ -18890,6 +19425,7 @@ export namespace ParamArray {
          * @param none_ok Whether `null` is allowed.
          * @param default_file File to use if none is assigned.
          * @param flags Argument flags.
+         * @since 3.0
          */
         add_file_argument(name: string, nick: string, blurb: string | null, action: FileChooserAction, none_ok: boolean, default_file: Gio.File | null, flags: GObject.ParamFlags): void;
 
@@ -18902,6 +19438,7 @@ export namespace ParamArray {
          * @param none_ok Whether `null` is allowed.
          * @param default_file File to use if none is assigned.
          * @param flags Argument flags.
+         * @since 3.0
          */
         add_file_aux_argument(name: string, nick: string, blurb: string | null, action: FileChooserAction, none_ok: boolean, default_file: Gio.File | null, flags: GObject.ParamFlags): void;
 
@@ -18911,6 +19448,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_file_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -18923,6 +19461,7 @@ export namespace ParamArray {
          * @param default_value default value
          * @param default_to_context Use the context's font as default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_font_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, default_value: Font | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
@@ -18934,6 +19473,7 @@ export namespace ParamArray {
          * @param default_value default value
          * @param default_to_context Use the context's font as default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_font_aux_argument(name: string, nick: string, blurb: string | null, default_value: Font | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
@@ -18943,6 +19483,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_font_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -18955,6 +19496,7 @@ export namespace ParamArray {
          * @param default_value default value
          * @param default_to_context Use the context's gradient as default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_gradient_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, default_value: Gradient | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
@@ -18966,6 +19508,7 @@ export namespace ParamArray {
          * @param default_value default value
          * @param default_to_context Use the context's gradient as default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_gradient_aux_argument(name: string, nick: string, blurb: string | null, default_value: Gradient | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
@@ -18975,6 +19518,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_gradient_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -18985,6 +19529,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_group_layer_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -18995,6 +19540,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_group_layer_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19005,6 +19551,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_group_layer_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19015,6 +19562,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_image_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19025,6 +19573,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_image_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19035,6 +19584,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_image_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19044,6 +19594,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_int32_array_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -19053,6 +19604,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_int32_array_aux_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -19062,6 +19614,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_int32_array_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -19074,6 +19627,7 @@ export namespace ParamArray {
          * @param max the maximum value for this argument
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_int_argument(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
@@ -19086,6 +19640,7 @@ export namespace ParamArray {
          * @param max the maximum value for this argument
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_int_aux_argument(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
@@ -19098,6 +19653,7 @@ export namespace ParamArray {
          * @param max the maximum value for this argument
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_int_return_value(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
@@ -19108,6 +19664,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_item_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19118,6 +19675,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_item_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19128,6 +19686,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_item_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19138,6 +19697,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_layer_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19148,6 +19708,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_layer_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19158,6 +19719,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_layer_mask_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19168,6 +19730,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_layer_mask_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19178,6 +19741,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_layer_mask_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19188,6 +19752,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_layer_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19198,6 +19763,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.2
          */
         add_link_layer_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19208,6 +19774,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.2
          */
         add_link_layer_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19218,6 +19785,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.2
          */
         add_link_layer_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19252,6 +19820,7 @@ export namespace ParamArray {
          * This function will place your procedure to the bottom of the selected path or
          * section. Order is not assured relatively to other plug-ins.
          * @param menu_path The `procedure`'s additional menu path.
+         * @since 3.0
          */
         add_menu_path(menu_path: string): void;
 
@@ -19264,6 +19833,7 @@ export namespace ParamArray {
          * @param default_value default value
          * @param default_to_context Use the context's palette as default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_palette_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, default_value: Palette | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
@@ -19275,6 +19845,7 @@ export namespace ParamArray {
          * @param default_value default value
          * @param default_to_context Use the context's palette as default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_palette_aux_argument(name: string, nick: string, blurb: string | null, default_value: Palette | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
@@ -19284,6 +19855,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_palette_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -19294,6 +19866,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param param_type the `GPParamType` for this argument
          * @param flags argument flags.
+         * @since 3.0
          */
         add_param_argument(name: string, nick: string, blurb: string | null, param_type: GObject.GType, flags: GObject.ParamFlags): void;
 
@@ -19304,6 +19877,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param param_type the `GPParamType` for this argument
          * @param flags argument flags.
+         * @since 3.0
          */
         add_param_aux_argument(name: string, nick: string, blurb: string | null, param_type: GObject.GType, flags: GObject.ParamFlags): void;
 
@@ -19314,6 +19888,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param param_type the `GPParamType` for this argument
          * @param flags argument flags.
+         * @since 3.0
          */
         add_param_return_value(name: string, nick: string, blurb: string | null, param_type: GObject.GType, flags: GObject.ParamFlags): void;
 
@@ -19323,6 +19898,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_parasite_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -19332,6 +19908,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_parasite_aux_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -19341,6 +19918,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_parasite_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -19351,6 +19929,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_path_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19361,6 +19940,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_path_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19371,6 +19951,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_path_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19383,6 +19964,7 @@ export namespace ParamArray {
          * @param default_value default value
          * @param default_to_context Use the context's pattern as default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_pattern_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, default_value: Pattern | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
@@ -19394,6 +19976,7 @@ export namespace ParamArray {
          * @param default_value default value
          * @param default_to_context Use the context's pattern as default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_pattern_aux_argument(name: string, nick: string, blurb: string | null, default_value: Pattern | null, default_to_context: boolean, flags: GObject.ParamFlags): void;
 
@@ -19403,6 +19986,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_pattern_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -19414,6 +19998,7 @@ export namespace ParamArray {
          * @param none_ok whether `null` is a valid value.
          * @param default_value default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_resource_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, default_value: Resource | null, flags: GObject.ParamFlags): void;
 
@@ -19424,6 +20009,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param default_value default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_resource_aux_argument(name: string, nick: string, blurb: string | null, default_value: Resource | null, flags: GObject.ParamFlags): void;
 
@@ -19433,6 +20019,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_resource_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -19443,6 +20030,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_selection_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19453,6 +20041,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_selection_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19463,6 +20052,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_selection_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19473,6 +20063,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_string_argument(name: string, nick: string, blurb: string | null, value: string, flags: GObject.ParamFlags): void;
 
@@ -19482,6 +20073,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_string_array_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -19491,6 +20083,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_string_array_aux_argument(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -19500,6 +20093,7 @@ export namespace ParamArray {
          * @param nick the label used in `GimpProcedureDialog`.
          * @param blurb a more detailed help description.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_string_array_return_value(name: string, nick: string, blurb: string | null, flags: GObject.ParamFlags): void;
 
@@ -19510,6 +20104,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_string_aux_argument(name: string, nick: string, blurb: string | null, value: string, flags: GObject.ParamFlags): void;
 
@@ -19520,6 +20115,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_string_return_value(name: string, nick: string, blurb: string | null, value: string, flags: GObject.ParamFlags): void;
 
@@ -19530,6 +20126,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_text_layer_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19540,6 +20137,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_text_layer_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19550,6 +20148,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_text_layer_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19562,6 +20161,7 @@ export namespace ParamArray {
          * @param max the maximum value for this argument
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_uint_argument(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
@@ -19574,6 +20174,7 @@ export namespace ParamArray {
          * @param max the maximum value for this argument
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_uint_aux_argument(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
@@ -19586,6 +20187,7 @@ export namespace ParamArray {
          * @param max the maximum value for this argument
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_uint_return_value(name: string, nick: string, blurb: string | null, min: number, max: number, value: number, flags: GObject.ParamFlags): void;
 
@@ -19598,6 +20200,7 @@ export namespace ParamArray {
          * @param show_percent whether to allow percent as a valid option
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_unit_argument(name: string, nick: string, blurb: string | null, show_pixels: boolean, show_percent: boolean, value: Unit, flags: GObject.ParamFlags): void;
 
@@ -19610,6 +20213,7 @@ export namespace ParamArray {
          * @param show_percent whether to allow percent as a valid option
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_unit_aux_argument(name: string, nick: string, blurb: string | null, show_pixels: boolean, show_percent: boolean, value: Unit, flags: GObject.ParamFlags): void;
 
@@ -19622,6 +20226,7 @@ export namespace ParamArray {
          * @param show_percent whether to allow percent as a valid option
          * @param value the default value.
          * @param flags argument flags.
+         * @since 3.0
          */
         add_unit_return_value(name: string, nick: string, blurb: string | null, show_pixels: boolean, show_percent: boolean, value: Unit, flags: GObject.ParamFlags): void;
 
@@ -19632,6 +20237,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.2
          */
         add_vector_layer_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19642,6 +20248,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.2
          */
         add_vector_layer_aux_argument(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19652,6 +20259,7 @@ export namespace ParamArray {
          * @param blurb a more detailed help description.
          * @param none_ok Whether no is a valid value.
          * @param flags argument flags.
+         * @since 3.2
          */
         add_vector_layer_return_value(name: string, nick: string, blurb: string | null, none_ok: boolean, flags: GObject.ParamFlags): void;
 
@@ -19659,6 +20267,7 @@ export namespace ParamArray {
          * Create a {@link Gimp.Config} with properties that match `procedure`'s arguments, to be
          * used in {@link Procedure.run_config} method.
          * @returns The new {@link Gimp.Config}.
+         * @since 3.0
          */
         create_config(): ProcedureConfig;
 
@@ -19666,6 +20275,7 @@ export namespace ParamArray {
          * Searches the `procedure`'s arguments for a {@link GObject.ParamSpec} called `name`.
          * @param name An argument name
          * @returns The `procedure`'s argument with `name` if it          exists, or `null` otherwise.
+         * @since 3.0
          */
         find_argument(name: string): GObject.ParamSpec;
 
@@ -19674,6 +20284,7 @@ export namespace ParamArray {
          * called `name`.
          * @param name An auxiliary argument name
          * @returns The `procedure`'s auxiliary argument with          `name` if it exists, or `null` otherwise.
+         * @since 3.0
          */
         find_aux_argument(name: string): GObject.ParamSpec;
 
@@ -19682,64 +20293,76 @@ export namespace ParamArray {
          * `name`.
          * @param name A return value name
          * @returns The `procedure`'s return values with `name`          if it exists, or `null` otherwise.
+         * @since 3.0
          */
         find_return_value(name: string): GObject.ParamSpec;
 
         /**
          * @param arg_name the name of one of `procedure`'s arguments or auxiliary arguments
          * @returns The {@link Gimp.ArgumentSync} value set with          `gimp_procedure_set_argument_sync()`:
+         * @since 3.0
          */
         get_argument_sync(arg_name: string): ArgumentSync;
 
         /**
          * @returns An array          of `GParamSpec` in the order they were added in.
+         * @since 3.0
          */
         get_arguments(): GObject.ParamSpec[];
 
         /**
          * @returns The procedure's authors given in {@link Procedure.set_attribution}.
+         * @since 3.0
          */
         get_authors(): string;
 
         /**
          * @returns An array          of `GParamSpec` in the order they were added in.
+         * @since 3.0
          */
         get_aux_arguments(): GObject.ParamSpec[];
 
         /**
          * @returns The procedure's blurb given in {@link Procedure.set_documentation}.
+         * @since 3.0
          */
         get_blurb(): string;
 
         /**
          * @returns The procedure's copyright given in {@link Procedure.set_attribution}.
+         * @since 3.0
          */
         get_copyright(): string;
 
         /**
          * @returns The procedure's date given in {@link Procedure.set_attribution}.
+         * @since 3.0
          */
         get_date(): string;
 
         /**
          * @returns The procedure's help text given in {@link Procedure.set_documentation}.
+         * @since 3.0
          */
         get_help(): string;
 
         /**
          * @returns The procedure's help ID given in {@link Procedure.set_documentation}.
+         * @since 3.0
          */
         get_help_id(): string;
 
         /**
          * Gets the file of the icon if one was set for `procedure`.
          * @returns the icon {@link Gio.File} or `null` if no          file was set.
+         * @since 3.0
          */
         get_icon_file(): Gio.File | null;
 
         /**
          * Gets the name of the icon if one was set for `procedure`.
          * @returns the icon name or `null` if no icon name was set.
+         * @since 3.0
          */
         get_icon_name(): string | null;
 
@@ -19747,6 +20370,7 @@ export namespace ParamArray {
          * Gets the {@link GdkPixbuf.Pixbuf} of the icon if an icon was set this way for
          * `procedure`.
          * @returns the icon pixbuf or `null` if no          icon name was set.
+         * @since 3.0
          */
         get_icon_pixbuf(): GdkPixbuf.Pixbuf | null;
 
@@ -19755,6 +20379,7 @@ export namespace ParamArray {
          * result, you can call the relevant specific function, such as
          * {@link Procedure.get_icon_name}.
          * @returns the {@link Gimp.IconType} of `procedure`'s icon.
+         * @since 3.0
          */
         get_icon_type(): IconType;
 
@@ -19762,41 +20387,49 @@ export namespace ParamArray {
          * This function retrieves the list of image types the procedure can
          * operate on. See `gimp_procedure_set_image_types()`.
          * @returns The image types.
+         * @since 3.0
          */
         get_image_types(): string;
 
         /**
          * @returns The procedure's menu label given in          `gimp_procedure_set_menu_label()`.
+         * @since 3.0
          */
         get_menu_label(): string;
 
         /**
          * @returns the `procedure`'s          menu paths as added with `gimp_procedure_add_menu_path()`.
+         * @since 3.0
          */
         get_menu_paths(): string[];
 
         /**
          * @returns The procedure's name given in {@link Procedure.new}.
+         * @since 3.0
          */
         get_name(): string;
 
         /**
          * @returns The {@link Gimp.PlugIn} given in {@link Procedure.new}.
+         * @since 3.0
          */
         get_plug_in(): PlugIn;
 
         /**
          * @returns The procedure's type given in {@link Procedure.new}.
+         * @since 3.0
          */
         get_proc_type(): PDBProcType;
 
         /**
          * @returns An array          of `GParamSpec` in the order they were added in.
+         * @since 3.0
          */
         get_return_values(): GObject.ParamSpec[];
 
         /**
          * @returns The procedure's sensitivity mask given in          {@link Procedure.set_sensitivity_mask}.
+         * @since 3.0
          */
         get_sensitivity_mask(): number;
 
@@ -19805,6 +20438,7 @@ export namespace ParamArray {
          * a procedure looked up in the {@link Gimp.PDB} can be internal.
          * Procedures created by a plug-in in particular are never internal.
          * @returns Whether `procedure` is an internal procedure or not.
+         * @since 3.0
          */
         is_internal(): boolean;
 
@@ -19813,6 +20447,7 @@ export namespace ParamArray {
          * @param status the success status of the procedure run.
          * @param error an optional {@link GLib.Error}. This parameter should be set if             `status` is either #GIMP_PDB_EXECUTION_ERROR or             #GIMP_PDB_CALLING_ERROR.
          * @returns the expected {@link Gimp.ValueArray} as could be returned by a {@link RunFunc}.
+         * @since 3.0
          */
         new_return_values(status: PDBStatusType, error: GLib.Error | null): ValueArray;
 
@@ -19828,6 +20463,7 @@ export namespace ParamArray {
          * {@link PlugIn.persistent_process}.
          * 
          * See also: {@link Procedure.new}.
+         * @since 3.0
          */
         persistent_ready(): void;
 
@@ -19841,6 +20477,7 @@ export namespace ParamArray {
          * If `config` is `null`, the default arguments of `procedure` will be used.
          * @param config the `procedure`'s arguments.
          * @returns The `procedure`'s return values.
+         * @since 3.0
          */
         run(config: ProcedureConfig | null): ValueArray;
 
@@ -19856,6 +20493,7 @@ export namespace ParamArray {
          * example the "gimp-comment" parasite in file save procedures.
          * @param arg_name the name of one of `procedure`'s arguments or auxiliary arguments.
          * @param sync how to sync the argument or auxiliary argument.
+         * @since 3.0
          */
         set_argument_sync(arg_name: string, sync: ArgumentSync): void;
 
@@ -19864,6 +20502,7 @@ export namespace ParamArray {
          * @param authors The `procedure`'s author(s).
          * @param copyright The `procedure`'s copyright.
          * @param date The `procedure`'s date (written or published).
+         * @since 3.0
          */
         set_attribution(authors: string, copyright: string, date: string): void;
 
@@ -19884,24 +20523,28 @@ export namespace ParamArray {
          * @param blurb The `procedure`'s blurb.
          * @param help The `procedure`'s help text.
          * @param help_id The `procedure`'s help ID.
+         * @since 3.0
          */
         set_documentation(blurb: string, help: string | null, help_id: string | null): void;
 
         /**
          * Sets the icon for `procedure` to the contents of an image file.
          * @param file a {@link Gio.File} pointing to an image file.
+         * @since 3.0
          */
         set_icon_file(file: Gio.File | null): void;
 
         /**
          * Sets the icon for `procedure` to the icon referenced by `icon_name`.
          * @param icon_name an icon name.
+         * @since 3.0
          */
         set_icon_name(icon_name: string | null): void;
 
         /**
          * Sets the icon for `procedure` to `pixbuf`.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}.
+         * @since 3.0
          */
         set_icon_pixbuf(pixbuf: GdkPixbuf.Pixbuf | null): void;
 
@@ -19914,6 +20557,7 @@ export namespace ParamArray {
          * Supported types are "RGB", "GRAY", "INDEXED" and their variants
          * with alpha.
          * @param image_types The image types this procedure can operate on.
+         * @since 3.0
          */
         set_image_types(image_types: string): void;
 
@@ -19925,6 +20569,7 @@ export namespace ParamArray {
          * Plug-ins are responsible for their own translations. You are expected to send
          * localized strings to GIMP if your plug-in is internationalized.
          * @param menu_label The `procedure`'s menu label.
+         * @since 3.0
          */
         set_menu_label(menu_label: string): void;
 
@@ -19947,6 +20592,7 @@ export namespace ParamArray {
          * setting it with `GIMP_PROCEDURE_SENSITIVE_DRAWABLE |
          * GIMP_PROCEDURE_SENSITIVE_DRAWABLES` are equivalent.
          * @param sensitivity_mask A binary mask of {@link Gimp.ProcedureSensitivityMask}.
+         * @since 3.0
          */
         set_sensitivity_mask(sensitivity_mask: number): void;
     }
@@ -20022,6 +20668,7 @@ export namespace ParamArray {
          * integer ID mapped to this value.
          * This makes it easy to work with an Enum type locally, within a plug-in code.
          * @param property_name the name of a `GimpParamSpecChoice` property.
+         * @since 3.0
          */
         get_choice_id(property_name: string): number;
 
@@ -20035,6 +20682,7 @@ export namespace ParamArray {
          * C plug-ins should just use {@link GObject.Object.get}.
          * @param property_name the name of a {@link GObject.ParamSpecBoxed} param spec with {@link ColorArray} value type.
          * @returns an array of `GObjects`.
+         * @since 3.0
          */
         get_color_array(property_name: string): Gegl.Color[];
 
@@ -20048,6 +20696,7 @@ export namespace ParamArray {
          * C plug-ins should just use {@link GObject.Object.get}.
          * @param property_name the name of a `GimpParamSpecCoreObjectArray` param spec.
          * @returns an array of `GObjects`.
+         * @since 3.0
          */
         get_core_object_array(property_name: string): GObject.Object[];
 
@@ -20055,6 +20704,7 @@ export namespace ParamArray {
          * This function returns the {@link Procedure} which created `config`, see
          * {@link Procedure.create_config}.
          * @returns The procedure which created this config.
+         * @since 3.0
          */
         get_procedure(): Procedure;
 
@@ -20075,6 +20725,7 @@ export namespace ParamArray {
          * the `run()` callback.
          * @param exported_image the image that was actually exported
          * @param file the file `exported_image` was written to
+         * @since 3.0
          */
         save_metadata(exported_image: Image, file: Gio.File): void;
 
@@ -20088,6 +20739,7 @@ export namespace ParamArray {
          * C plug-ins should just use {@link GObject.Object.set}.
          * @param property_name the name of a {@link GObject.ParamSpecBoxed} param spec with {@link ColorArray} value type.
          * @param colors an array of {@link Gegl.Color}.
+         * @since 3.0
          */
         set_color_array(property_name: string, colors: Gegl.Color[]): void;
 
@@ -20101,6 +20753,7 @@ export namespace ParamArray {
          * C plug-ins should just use {@link GObject.Object.set}.
          * @param property_name the name of a `GimpParamSpecCoreObjectArray` param spec.
          * @param objects an array of `GObjects`.
+         * @since 3.0
          */
         set_core_object_array(property_name: string, objects: GObject.Object[]): void;
     }
@@ -20170,6 +20823,7 @@ export namespace ParamArray {
          * reusable across sessions. Use the appropriate functions for your use
          * case instead.
          * @param resource_id The resource id.
+         * @since 3.0
          */
         static get_by_id(resource_id: number): Resource | null;
 
@@ -20178,6 +20832,7 @@ export namespace ParamArray {
          * `resource_name`.
          * @param resource_type The {@link GObject.GType} of the resource.
          * @param resource_name The name of the resource.
+         * @since 3.0
          */
         static get_by_name(resource_type: GObject.GType, resource_name: string): Resource | null;
 
@@ -20186,6 +20841,7 @@ export namespace ParamArray {
          * 
          * This procedure returns TRUE if the specified resource ID is a brush.
          * @param resource_id The resource ID.
+         * @since 3.0
          */
         static id_is_brush(resource_id: number): boolean;
 
@@ -20194,6 +20850,7 @@ export namespace ParamArray {
          * 
          * This procedure returns TRUE if the specified resource ID is a font.
          * @param resource_id The resource ID.
+         * @since 3.0
          */
         static id_is_font(resource_id: number): boolean;
 
@@ -20203,6 +20860,7 @@ export namespace ParamArray {
          * This procedure returns TRUE if the specified resource ID is a
          * gradient.
          * @param resource_id The resource ID.
+         * @since 3.0
          */
         static id_is_gradient(resource_id: number): boolean;
 
@@ -20212,6 +20870,7 @@ export namespace ParamArray {
          * This procedure returns TRUE if the specified resource ID is a
          * palette.
          * @param resource_id The resource ID.
+         * @since 3.0
          */
         static id_is_palette(resource_id: number): boolean;
 
@@ -20221,6 +20880,7 @@ export namespace ParamArray {
          * This procedure returns TRUE if the specified resource ID is a
          * pattern.
          * @param resource_id The resource ID.
+         * @since 3.0
          */
         static id_is_pattern(resource_id: number): boolean;
 
@@ -20234,6 +20894,7 @@ export namespace ParamArray {
          * got a {@link Gimp.Resource} from the API, you should trust it is
          * valid. This function is mostly for internal usage.
          * @param resource_id The resource ID to check.
+         * @since 3.0
          */
         static id_is_valid(resource_id: number): boolean;
 
@@ -20245,6 +20906,7 @@ export namespace ParamArray {
          * deletable. Deletes the resource's data. You should not use the
          * resource afterwards.
          * @returns TRUE on success.
+         * @since 3.0
          */
         ["delete"](): boolean;
 
@@ -20253,6 +20915,7 @@ export namespace ParamArray {
          * 
          * Returns a copy having a different, unique ID.
          * @returns A copy of the resource.
+         * @since 3.0
          */
         duplicate(): Resource;
 
@@ -20260,6 +20923,7 @@ export namespace ParamArray {
          * Note: in most use cases, you should not need a resource's ID which is
          * mostly internal data and not reusable across sessions.
          * @returns the resource ID.
+         * @since 3.0
          */
         get_id(): number;
 
@@ -20268,6 +20932,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the resource's name.
          * @returns The resource's name.          The returned value must be freed with `g_free()`.
+         * @since 3.0
          */
         get_name(): string;
 
@@ -20276,6 +20941,7 @@ export namespace ParamArray {
          * 
          * This procedure returns TRUE if the specified resource is a brush.
          * @returns TRUE if the resource is a brush, FALSE otherwise.
+         * @since 3.0
          */
         is_brush(): boolean;
 
@@ -20284,6 +20950,7 @@ export namespace ParamArray {
          * 
          * Returns TRUE if you have permission to change the resource.
          * @returns TRUE if the resource can be edited.
+         * @since 3.0
          */
         is_editable(): boolean;
 
@@ -20292,6 +20959,7 @@ export namespace ParamArray {
          * 
          * This procedure returns TRUE if the specified resource is a font.
          * @returns TRUE if the resource is a font, FALSE otherwise.
+         * @since 3.0
          */
         is_font(): boolean;
 
@@ -20300,6 +20968,7 @@ export namespace ParamArray {
          * 
          * This procedure returns TRUE if the specified resource is a gradient.
          * @returns TRUE if the resource is a gradient, FALSE otherwise.
+         * @since 3.0
          */
         is_gradient(): boolean;
 
@@ -20308,6 +20977,7 @@ export namespace ParamArray {
          * 
          * This procedure returns TRUE if the specified resource is a palette.
          * @returns TRUE if the resource is a palette, FALSE otherwise.
+         * @since 3.0
          */
         is_palette(): boolean;
 
@@ -20316,6 +20986,7 @@ export namespace ParamArray {
          * 
          * This procedure returns TRUE if the specified resource is a pattern.
          * @returns TRUE if the resource is a pattern, FALSE otherwise.
+         * @since 3.0
          */
         is_pattern(): boolean;
 
@@ -20325,6 +20996,7 @@ export namespace ParamArray {
          * This procedure checks if the given resource is valid and refers to an
          * existing resource.
          * @returns Whether the resource is valid.
+         * @since 3.0
          */
         is_valid(): boolean;
 
@@ -20336,6 +21008,7 @@ export namespace ParamArray {
          * generates a unique name.
          * @param new_name The proposed new name of the resource.
          * @returns TRUE on success.
+         * @since 3.0
          */
         rename(new_name: string): boolean;
     }
@@ -20455,6 +21128,7 @@ export namespace ParamArray {
          * terms this procedure floods the selection. See the Algorithms page
          * in the developer wiki for details.
          * @param image The image.
+         * @since 2.10
          */
         static flood(image: Image): boolean;
 
@@ -20463,6 +21137,7 @@ export namespace ParamArray {
          * calls `gimp_item_get_by_id()` and returns the item if it is selection
          * or `null` otherwise.
          * @param selection_id The selection id.
+         * @since 3.0
          */
         static get_by_id(selection_id: number): Selection | null;
 
@@ -20617,6 +21292,7 @@ export namespace ParamArray {
          * `gimp_item_get_by_id()` and returns the item if it is layer or `null`
          * otherwise.
          * @param layer_id The layer id.
+         * @since 3.0
          */
         static get_by_id(layer_id: number): TextLayer | null;
 
@@ -20627,6 +21303,7 @@ export namespace ParamArray {
          * This procedure checks if antialiasing is enabled in the specified
          * text layer.
          * @returns A flag which is true if antialiasing is used for rendering the font in the text layer.
+         * @since 2.6
          */
         get_antialias(): boolean;
 
@@ -20636,6 +21313,7 @@ export namespace ParamArray {
          * This procedure returns the base direction used for rendering the
          * text in the text layer
          * @returns The based direction used for the text layer.
+         * @since 2.6
          */
         get_base_direction(): TextDirection;
 
@@ -20644,6 +21322,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the color of the text in a text layer.
          * @returns The color of the text.
+         * @since 2.6
          */
         get_color(): Gegl.Color;
 
@@ -20652,6 +21331,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the font from a text layer.
          * @returns The font which is used in the specified text layer.
+         * @since 2.6
          */
         get_font(): Font;
 
@@ -20662,6 +21342,7 @@ export namespace ParamArray {
          * layer. You will receive the size as a double 'font-size' in 'unit'
          * units.
          * @returns The font size.
+         * @since 2.6
          */
         get_font_size(): [number, Unit];
 
@@ -20672,6 +21353,7 @@ export namespace ParamArray {
          * used in a text layer. Hinting can be optimized for fidelity or
          * contrast or it can be turned entirely off.
          * @returns The hint style used for font outlines.
+         * @since 2.8
          */
         get_hint_style(): TextHintStyle;
 
@@ -20681,6 +21363,7 @@ export namespace ParamArray {
          * This procedure returns the indentation of the first line in a text
          * layer.
          * @returns The indentation value of the first line.
+         * @since 2.6
          */
         get_indent(): number;
 
@@ -20690,6 +21373,7 @@ export namespace ParamArray {
          * This procedure returns the alignment of the lines in the text layer
          * relative to each other.
          * @returns The justification used in the text layer.
+         * @since 2.6
          */
         get_justification(): TextJustification;
 
@@ -20699,6 +21383,7 @@ export namespace ParamArray {
          * This procedure checks if kerning is enabled in the specified text
          * layer.
          * @returns A flag which is true if kerning is used in the text layer.
+         * @since 2.6
          */
         get_kerning(): boolean;
 
@@ -20708,6 +21393,7 @@ export namespace ParamArray {
          * This procedure returns the language string which is set for the text
          * in the text layer.
          * @returns The language used in the text layer.          The returned value must be freed with `g_free()`.
+         * @since 2.6
          */
         get_language(): string;
 
@@ -20717,6 +21403,7 @@ export namespace ParamArray {
          * This procedure returns the additional spacing between the single
          * glyphs in a text layer.
          * @returns The letter-spacing value.
+         * @since 2.6
          */
         get_letter_spacing(): number;
 
@@ -20726,6 +21413,7 @@ export namespace ParamArray {
          * This procedure returns the line-spacing between lines of text in a
          * text layer.
          * @returns The line-spacing value.
+         * @since 2.6
          */
         get_line_spacing(): number;
 
@@ -20737,6 +21425,7 @@ export namespace ParamArray {
          * https://www.pango.org/ for more information about Pango and its
          * markup.
          * @returns The markup which represents the style of the specified text layer.          The returned value must be freed with `g_free()`.
+         * @since 2.8
          */
         get_markup(): string;
 
@@ -20745,6 +21434,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the outline type of a text layer.
          * @returns The type of outline in the text layer.
+         * @since 3.2
          */
         get_outline(): TextOutline;
 
@@ -20754,6 +21444,7 @@ export namespace ParamArray {
          * This procedure returns the antialias setting of the text outline in
          * a text layer.
          * @returns The text outline antialias setting.
+         * @since 3.2
          */
         get_outline_antialias(): boolean;
 
@@ -20762,6 +21453,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the outline cap style of a text layer.
          * @returns The cap style of the outline in the text layer.
+         * @since 3.2
          */
         get_outline_cap_style(): CapStyle;
 
@@ -20771,6 +21463,7 @@ export namespace ParamArray {
          * This procedure returns the color of the text outline in a text
          * layer.
          * @returns The color of the text outline.
+         * @since 3.2
          */
         get_outline_color(): Gegl.Color;
 
@@ -20780,6 +21473,7 @@ export namespace ParamArray {
          * This procedure returns the dash offset of the text outline in a text
          * layer.
          * @returns The text outline dash offset.
+         * @since 3.2
          */
         get_outline_dash_offset(): number;
 
@@ -20788,6 +21482,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the outline direction of a text layer.
          * @returns The direction of the outline in the text layer.
+         * @since 3.2
          */
         get_outline_direction(): TextOutlineDirection;
 
@@ -20796,6 +21491,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the outline join style of a text layer.
          * @returns The join style of the outline in the text layer.
+         * @since 3.2
          */
         get_outline_join_style(): JoinStyle;
 
@@ -20805,6 +21501,7 @@ export namespace ParamArray {
          * This procedure returns the miter limit of the text outline in a text
          * layer.
          * @returns The text outline miter limit.
+         * @since 3.2
          */
         get_outline_miter_limit(): number;
 
@@ -20814,6 +21511,7 @@ export namespace ParamArray {
          * This procedure returns the color of the text outline in a text
          * layer.
          * @returns The text outline width.
+         * @since 3.2
          */
         get_outline_width(): [number, Unit];
 
@@ -20822,6 +21520,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the text from a text layer as a string.
          * @returns The text from the specified text layer.          The returned value must be freed with `g_free()`.
+         * @since 2.6
          */
         get_text(): string;
 
@@ -20834,6 +21533,7 @@ export namespace ParamArray {
          * @param width The new box width in pixels.
          * @param height The new box height in pixels.
          * @returns TRUE on success.
+         * @since 2.8
          */
         resize(width: number, height: number): boolean;
 
@@ -20844,6 +21544,7 @@ export namespace ParamArray {
          * text layer.
          * @param antialias Enable/disable antialiasing of the text.
          * @returns TRUE on success.
+         * @since 2.6
          */
         set_antialias(antialias: boolean): boolean;
 
@@ -20854,6 +21555,7 @@ export namespace ParamArray {
          * bidirectional algorithm when rendering the text.
          * @param direction The base direction of the text.
          * @returns TRUE on success.
+         * @since 2.6
          */
         set_base_direction(direction: TextDirection): boolean;
 
@@ -20863,6 +21565,7 @@ export namespace ParamArray {
          * This procedure sets the text color in the text layer 'layer'.
          * @param color The color to use for the text.
          * @returns TRUE on success.
+         * @since 2.6
          */
         set_color(color: Gegl.Color): boolean;
 
@@ -20872,6 +21575,7 @@ export namespace ParamArray {
          * This procedure modifies the font used in the specified text layer.
          * @param font The new font to use.
          * @returns TRUE on success.
+         * @since 2.6
          */
         set_font(font: Font): boolean;
 
@@ -20883,6 +21587,7 @@ export namespace ParamArray {
          * @param font_size The font size.
          * @param unit The unit to use for the font size.
          * @returns TRUE on success.
+         * @since 2.6
          */
         set_font_size(font_size: number, unit: Unit): boolean;
 
@@ -20894,6 +21599,7 @@ export namespace ParamArray {
          * and if so, whether to optimize for fidelity or contrast.
          * @param style The new hint style.
          * @returns TRUE on success.
+         * @since 2.8
          */
         set_hint_style(style: TextHintStyle): boolean;
 
@@ -20904,6 +21610,7 @@ export namespace ParamArray {
          * layer.
          * @param indent The indentation for the first line.
          * @returns TRUE on success.
+         * @since 2.6
          */
         set_indent(indent: number): boolean;
 
@@ -20914,6 +21621,7 @@ export namespace ParamArray {
          * relative to each other.
          * @param justify The justification for your text.
          * @returns TRUE on success.
+         * @since 2.6
          */
         set_justification(justify: TextJustification): boolean;
 
@@ -20923,6 +21631,7 @@ export namespace ParamArray {
          * This procedure enables or disables kerning in a text layer.
          * @param kerning Enable/disable kerning in the text.
          * @returns TRUE on success.
+         * @since 2.6
          */
         set_kerning(kerning: boolean): boolean;
 
@@ -20933,6 +21642,7 @@ export namespace ParamArray {
          * scripts the language has an influence of how the text is rendered.
          * @param language The new language to use for the text layer.
          * @returns TRUE on success.
+         * @since 2.6
          */
         set_language(language: string): boolean;
 
@@ -20943,6 +21653,7 @@ export namespace ParamArray {
          * in a text layer.
          * @param letter_spacing The additional letter spacing to use.
          * @returns TRUE on success.
+         * @since 2.6
          */
         set_letter_spacing(letter_spacing: number): boolean;
 
@@ -20953,6 +21664,7 @@ export namespace ParamArray {
          * layer.
          * @param line_spacing The additional line spacing to use.
          * @returns TRUE on success.
+         * @since 2.6
          */
         set_line_spacing(line_spacing: number): boolean;
 
@@ -20967,6 +21679,7 @@ export namespace ParamArray {
          * would be dropped as soon as you edit text with the tool.
          * @param markup The new markup to set.
          * @returns TRUE on success.
+         * @since 3.0
          */
         set_markup(markup: string): boolean;
 
@@ -20977,6 +21690,7 @@ export namespace ParamArray {
          * 'layer'.
          * @param outline The type of outline in the text layer.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_outline(outline: TextOutline): boolean;
 
@@ -20987,6 +21701,7 @@ export namespace ParamArray {
          * 'layer'.
          * @param outline_antialias The text outline antialias setting.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_outline_antialias(outline_antialias: boolean): boolean;
 
@@ -20997,6 +21712,7 @@ export namespace ParamArray {
          * 'layer'.
          * @param outline_cap_style The cap style of the outline in the text layer.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_outline_cap_style(outline_cap_style: CapStyle): boolean;
 
@@ -21006,6 +21722,7 @@ export namespace ParamArray {
          * This procedure sets the outline color in the text layer 'layer'.
          * @param color The color to use for the text outline.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_outline_color(color: Gegl.Color): boolean;
 
@@ -21016,6 +21733,7 @@ export namespace ParamArray {
          * 'layer'.
          * @param outline_dash_offset The text outline dash offset.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_outline_dash_offset(outline_dash_offset: number): boolean;
 
@@ -21026,6 +21744,7 @@ export namespace ParamArray {
          * 'layer'.
          * @param outline_direction The direction of the outline in the text layer.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_outline_direction(outline_direction: TextOutlineDirection): boolean;
 
@@ -21036,6 +21755,7 @@ export namespace ParamArray {
          * 'layer'.
          * @param outline_join_style The join style of the outline in the text layer.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_outline_join_style(outline_join_style: JoinStyle): boolean;
 
@@ -21046,6 +21766,7 @@ export namespace ParamArray {
          * 'layer'.
          * @param outline_miter_limit The text outline miter limit.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_outline_miter_limit(outline_miter_limit: number): boolean;
 
@@ -21057,6 +21778,7 @@ export namespace ParamArray {
          * @param outline_width The text outline width.
          * @param outline_unit The unit to use for the outline width.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_outline_width(outline_width: number, outline_unit: Unit): boolean;
 
@@ -21066,6 +21788,7 @@ export namespace ParamArray {
          * This procedure changes the text of a text layer.
          * @param text The new text to set.
          * @returns TRUE on success.
+         * @since 2.6
          */
         set_text(text: string): boolean;
 
@@ -21086,6 +21809,7 @@ export namespace ParamArray {
          * with the various procedures provided by the {@link Gimp.TextLayer}
          * class interface.
          * @returns TRUE if `item` is rasterized.
+         * @since 3.2
          */
         is_rasterized(): boolean;
 
@@ -21100,6 +21824,7 @@ export namespace ParamArray {
          * possible to retrieve the original behavior with
          * {@link Gimp.Rasterizable.restore}.
          * @returns TRUE on success.
+         * @since 3.2
          */
         rasterize(): boolean;
 
@@ -21113,6 +21838,7 @@ export namespace ParamArray {
          * will prevent direct modification of its pixels and will be rendered
          * when its properties are updated.
          * @returns TRUE on success.
+         * @since 3.2
          */
         restore(): boolean;
     }
@@ -21277,6 +22003,7 @@ export namespace ParamArray {
          * * `%y`: Symbol (e.g. `''` for `GIMP_UNIT_INCH`)
          * @param format A printf-like format string which is used to create the unit          string.
          * @param unit A unit.
+         * @since 2.8
          */
         static format_string(format: string, unit: Unit): string;
 
@@ -21284,6 +22011,7 @@ export namespace ParamArray {
          * Returns the unique {@link Unit} object corresponding to `unit_id`,
          * which is the integer identifier as returned by {@link Unit.get_id}.
          * @param unit_id The unit id.
+         * @since 3.0
          */
         static get_by_id(unit_id: number): Unit;
 
@@ -21292,6 +22020,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the unit representing inch. The returned
          * object is unique across the whole run.
+         * @since 3.0
          */
         static inch(): Unit;
 
@@ -21300,6 +22029,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the unit representing millimeter. The
          * returned object is unique across the whole run.
+         * @since 3.0
          */
         static mm(): Unit;
 
@@ -21309,6 +22039,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the unit representing typographical points.
          * The returned object is unique across the whole run.
+         * @since 3.0
          */
         static percent(): Unit;
 
@@ -21317,6 +22048,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the unit representing Picas.
          * The returned object is unique across the whole run.
+         * @since 3.0
          */
         static pica(): Unit;
 
@@ -21325,6 +22057,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the unit representing pixel. The returned
          * object is unique across the whole run.
+         * @since 3.0
          */
         static pixel(): Unit;
 
@@ -21333,6 +22066,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the unit representing typographical points.
          * The returned object is unique across the whole run.
+         * @since 3.0
          */
         static point(): Unit;
 
@@ -21425,6 +22159,7 @@ export namespace ParamArray {
          * This procedure returns `unit` is a built-in unit. In particular the
          * deletion flag cannot be set on built-in units.
          * @returns Whether `unit` is built-in.
+         * @since 3.0
          */
         is_built_in(): boolean;
 
@@ -21435,6 +22170,7 @@ export namespace ParamArray {
          * 
          * See also: `gimp_unit_get_factor()`
          * @returns `true` if the `unit` is metric.
+         * @since 2.10
          */
         is_metric(): boolean;
 
@@ -21506,6 +22242,7 @@ export namespace ParamArray {
          * `gimp_item_get_by_id()` and returns the item if it is layer or `null`
          * otherwise.
          * @param layer_id The layer id.
+         * @since 3.0
          */
         static get_by_id(layer_id: number): VectorLayer | null;
 
@@ -21516,6 +22253,7 @@ export namespace ParamArray {
          * This procedure checks if fill is enabled in the specified vector
          * layer.
          * @returns If the fill is enabled on the vector layer.
+         * @since 3.2
          */
         get_enable_fill(): boolean;
 
@@ -21525,6 +22263,7 @@ export namespace ParamArray {
          * This procedure checks if stroke is enabled in the specified vector
          * layer.
          * @returns If the stroke is enabled on the vector layer.
+         * @since 3.2
          */
         get_enable_stroke(): boolean;
 
@@ -21537,6 +22276,7 @@ export namespace ParamArray {
          * this procedure or {@link Gimp.VectorLayer.get_fill_pattern} will
          * return `null` at any given time.
          * @returns The color of the fill.
+         * @since 3.2
          */
         get_fill_color(): Gegl.Color;
 
@@ -21549,6 +22289,7 @@ export namespace ParamArray {
          * this procedure or {@link Gimp.VectorLayer.get_fill_color} will
          * return `null` at any given time.
          * @returns The pattern of the fill.
+         * @since 3.2
          */
         get_fill_pattern(): Pattern;
 
@@ -21558,6 +22299,7 @@ export namespace ParamArray {
          * This procedure returns the path from the vector layer if one is
          * associated with it.
          * @returns The path associated with the vector layer.
+         * @since 3.2
          */
         get_path(): Path;
 
@@ -21566,6 +22308,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the stroke cap style in a vector layer.
          * @returns The stroke cap style.
+         * @since 3.2
          */
         get_stroke_cap_style(): CapStyle;
 
@@ -21578,6 +22321,7 @@ export namespace ParamArray {
          * this procedure or {@link Gimp.VectorLayer.get_stroke_pattern} will
          * return `null` at any given time.
          * @returns The color of the stroke.
+         * @since 3.2
          */
         get_stroke_color(): Gegl.Color;
 
@@ -21586,6 +22330,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the stroke dash offset in a vector layer.
          * @returns The stroke dash offset.
+         * @since 3.2
          */
         get_stroke_dash_offset(): number;
 
@@ -21594,6 +22339,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the stroke dash pattern in a vector layer.
          * @returns TRUE on success.
+         * @since 3.2
          */
         get_stroke_dash_pattern(): [boolean, number[]];
 
@@ -21602,6 +22348,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the stroke join style in a vector layer.
          * @returns The stroke join style.
+         * @since 3.2
          */
         get_stroke_join_style(): JoinStyle;
 
@@ -21610,6 +22357,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the stroke miter limit in a vector layer.
          * @returns The stroke miter limit.
+         * @since 3.2
          */
         get_stroke_miter_limit(): number;
 
@@ -21622,6 +22370,7 @@ export namespace ParamArray {
          * this procedure or {@link Gimp.VectorLayer.get_stroke_color} will
          * return `null` at any given time.
          * @returns The pattern of the fill.
+         * @since 3.2
          */
         get_stroke_pattern(): Pattern;
 
@@ -21630,6 +22379,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the stroke width in a vector layer.
          * @returns The stroke width.
+         * @since 3.2
          */
         get_stroke_width(): number;
 
@@ -21638,6 +22388,7 @@ export namespace ParamArray {
          * 
          * This procedure returns the stroke width unit in a vector layer.
          * @returns The stroke width unit.
+         * @since 3.2
          */
         get_stroke_width_unit(): Unit;
 
@@ -21647,6 +22398,7 @@ export namespace ParamArray {
          * This procedure causes the vector layer to refresh itself after
          * changes.
          * @returns TRUE on success.
+         * @since 3.2
          */
         refresh(): boolean;
 
@@ -21657,6 +22409,7 @@ export namespace ParamArray {
          * 'layer'.
          * @param enable_fill Whether to enable the fill on the vector layer.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_enable_fill(enable_fill: boolean): boolean;
 
@@ -21667,6 +22420,7 @@ export namespace ParamArray {
          * 'layer'.
          * @param enable_stroke Whether to enable the stroke on the vector layer.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_enable_stroke(enable_stroke: boolean): boolean;
 
@@ -21676,6 +22430,7 @@ export namespace ParamArray {
          * This procedure sets the fill color in the vector layer 'layer'.
          * @param color The color to use for the fill.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_fill_color(color: Gegl.Color): boolean;
 
@@ -21685,6 +22440,7 @@ export namespace ParamArray {
          * This procedure sets the stroke cap style in a vector layer.
          * @param cap_style The stroke cap style.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_stroke_cap_style(cap_style: CapStyle): boolean;
 
@@ -21694,6 +22450,7 @@ export namespace ParamArray {
          * This procedure sets the stroke color in the vector layer 'layer'.
          * @param color The color to use for the stroke.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_stroke_color(color: Gegl.Color): boolean;
 
@@ -21703,6 +22460,7 @@ export namespace ParamArray {
          * This procedure sets the stroke dash offset in a vector layer.
          * @param dash_offset The stroke dash offset.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_stroke_dash_offset(dash_offset: number): boolean;
 
@@ -21712,6 +22470,7 @@ export namespace ParamArray {
          * This procedure sets the stroke dash pattern in a vector layer.
          * @param dashes The line dash pattern setting.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_stroke_dash_pattern(dashes: number[]): boolean;
 
@@ -21721,6 +22480,7 @@ export namespace ParamArray {
          * This procedure sets the stroke join style in a vector layer.
          * @param join_style The stroke join style.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_stroke_join_style(join_style: JoinStyle): boolean;
 
@@ -21730,6 +22490,7 @@ export namespace ParamArray {
          * This procedure sets the stroke miter limit in a vector layer.
          * @param miter The stroke miter limit.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_stroke_miter_limit(miter: number): boolean;
 
@@ -21739,6 +22500,7 @@ export namespace ParamArray {
          * This procedure sets the stroke width in a vector layer.
          * @param width The stroke width.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_stroke_width(width: number): boolean;
 
@@ -21748,6 +22510,7 @@ export namespace ParamArray {
          * This procedure sets the stroke width unit in a vector layer.
          * @param unit The stroke width unit.
          * @returns TRUE on success.
+         * @since 3.2
          */
         set_stroke_width_unit(unit: Unit): boolean;
 
@@ -21768,6 +22531,7 @@ export namespace ParamArray {
          * with the various procedures provided by the {@link Gimp.TextLayer}
          * class interface.
          * @returns TRUE if `item` is rasterized.
+         * @since 3.2
          */
         is_rasterized(): boolean;
 
@@ -21782,6 +22546,7 @@ export namespace ParamArray {
          * possible to retrieve the original behavior with
          * {@link Gimp.Rasterizable.restore}.
          * @returns TRUE on success.
+         * @since 3.2
          */
         rasterize(): boolean;
 
@@ -21795,6 +22560,7 @@ export namespace ParamArray {
          * will prevent direct modification of its pixels and will be rendered
          * when its properties are updated.
          * @returns TRUE on success.
+         * @since 3.2
          */
         restore(): boolean;
     }
@@ -21957,6 +22723,7 @@ export namespace ParamArray {
          * @param dest another {@link GObject.Object} of the same type as `a`.
          * @param flags a mask of GParamFlags
          * @returns `true` if `dest` was modified, `false` otherwise
+         * @since 2.6
          */
         copy(dest: Config, flags: GObject.ParamFlags): boolean;
 
@@ -21966,6 +22733,7 @@ export namespace ParamArray {
          * @param nest_level the nest level.
          * @param data client data.
          * @returns Whether serialization succeeded.
+         * @since 2.8
          */
         deserialize(scanner: GLib.Scanner, nest_level: number, data: null): boolean;
 
@@ -21977,6 +22745,7 @@ export namespace ParamArray {
          * @param file the file to read configuration from.
          * @param data user data passed to the deserialize implementation.
          * @returns Whether deserialization succeeded.
+         * @since 2.10
          */
         deserialize_file(file: Gio.File, data: null): boolean;
 
@@ -21987,6 +22756,7 @@ export namespace ParamArray {
          * @param parasite parasite containing a serialized config string
          * @param data client data
          * @returns `true` if deserialization succeeded, `false` otherwise.
+         * @since 3.0
          */
         deserialize_parasite(parasite: Parasite, data: null): boolean;
 
@@ -21995,6 +22765,7 @@ export namespace ParamArray {
          * @param scanner a {@link GLib.Scanner}.
          * @param nest_level the nest level
          * @returns `true` on success, `false` otherwise.
+         * @since 2.4
          */
         deserialize_properties(scanner: GLib.Scanner, nest_level: number): boolean;
 
@@ -22005,6 +22776,7 @@ export namespace ParamArray {
          * @param scanner a {@link GLib.Scanner}.
          * @param nest_level the nest level
          * @returns {@link GLib.TokenType.RIGHT_PAREN} on success, otherwise the expected {@link GLib.TokenType} or {@link GLib.TokenType.NONE} if the expected token was found but couldn't be parsed.
+         * @since 2.4
          */
         deserialize_property(scanner: GLib.Scanner, nest_level: number): GLib.TokenType;
 
@@ -22016,6 +22788,7 @@ export namespace ParamArray {
          * @param input the input stream to read configuration from.
          * @param data user data passed to the deserialize implementation.
          * @returns Whether deserialization succeeded.
+         * @since 2.10
          */
         deserialize_stream(input: Gio.InputStream, data: null): boolean;
 
@@ -22026,6 +22799,7 @@ export namespace ParamArray {
          * @param text string to deserialize (in UTF-8 encoding)
          * @param data client data
          * @returns `true` if deserialization succeeded, `false` otherwise.
+         * @since 2.4
          */
         deserialize_string(text: string[], data: null): boolean;
 
@@ -22035,12 +22809,14 @@ export namespace ParamArray {
          * only works for objects that are completely defined by their
          * properties.
          * @returns the duplicated {@link Gimp.Config} object
+         * @since 2.4
          */
         duplicate(): null;
 
         /**
          * Returns the current XCF version of the `config`.
          * @returns the XCF version associated with the `config`.
+         * @since 3.0.8
          */
         get_xcf_version(): number;
 
@@ -22051,6 +22827,7 @@ export namespace ParamArray {
          * properties.
          * @param b another {@link GObject.Object} of the same type as `a`.
          * @returns `true` if the two objects are equal.
+         * @since 2.4
          */
         is_equal_to(b: Config): boolean;
 
@@ -22058,6 +22835,7 @@ export namespace ParamArray {
          * Resets the object to its default state. The default implementation of the
          * {@link Gimp.ConfigInterface} only works for objects that are completely defined by
          * their properties.
+         * @since 2.4
          */
         reset(): void;
 
@@ -22066,6 +22844,7 @@ export namespace ParamArray {
          * @param writer the {@link Gimp.ConfigWriter} to use.
          * @param data client data
          * @returns Whether serialization succeeded.
+         * @since 2.8
          */
         serialize(writer: ConfigWriter, data: null): boolean;
 
@@ -22074,6 +22853,7 @@ export namespace ParamArray {
          * their default values to the `writer`.
          * @param writer a {@link Gimp.ConfigWriter}.
          * @returns `true` if serialization succeeded, `false` otherwise
+         * @since 2.4
          */
         serialize_changed_properties(writer: ConfigWriter): boolean;
 
@@ -22081,6 +22861,7 @@ export namespace ParamArray {
          * This function writes all object properties to the `writer`.
          * @param writer a {@link Gimp.ConfigWriter}.
          * @returns `true` if serialization succeeded, `false` otherwise
+         * @since 2.4
          */
         serialize_properties(writer: ConfigWriter): boolean;
 
@@ -22089,6 +22870,7 @@ export namespace ParamArray {
          * @param param_spec a {@link GObject.ParamSpec}.
          * @param writer a {@link Gimp.ConfigWriter}.
          * @returns `true` if serialization succeeded, `false` otherwise
+         * @since 2.4
          */
         serialize_property(param_spec: GObject.ParamSpec, writer: ConfigWriter): boolean;
 
@@ -22097,6 +22879,7 @@ export namespace ParamArray {
          * @param prop_name the property's name.
          * @param writer a {@link Gimp.ConfigWriter}.
          * @returns `true` if serialization succeeded, `false` otherwise
+         * @since 2.6
          */
         serialize_property_by_name(prop_name: string, writer: ConfigWriter): boolean;
 
@@ -22106,6 +22889,7 @@ export namespace ParamArray {
          * @param fd a file descriptor, opened for writing
          * @param data user data passed to the serialize implementation.
          * @returns `true` if serialization succeeded, `false` otherwise.
+         * @since 2.4
          */
         serialize_to_fd(fd: number, data: null): boolean;
 
@@ -22119,6 +22903,7 @@ export namespace ParamArray {
          * @param footer optional file footer (must be ASCII only)
          * @param data user data passed to the serialize implementation.
          * @returns `true` if serialization succeeded, `false` otherwise.
+         * @since 2.10
          */
         serialize_to_file(file: Gio.File, header: string | null, footer: string | null, data: null): boolean;
 
@@ -22128,6 +22913,7 @@ export namespace ParamArray {
          * @param parasite_flags the new parasite's flags
          * @param data user data passed to the serialize implementation.
          * @returns the newly allocated parasite.
+         * @since 3.0
          */
         serialize_to_parasite(parasite_name: string, parasite_flags: number, data: null): Parasite;
 
@@ -22139,6 +22925,7 @@ export namespace ParamArray {
          * @param footer optional file footer (must be ASCII only)
          * @param data user data passed to the serialize implementation.
          * @returns Whether serialization succeeded.
+         * @since 2.10
          */
         serialize_to_stream(output: Gio.OutputStream, header: string | null, footer: string | null, data: null): boolean;
 
@@ -22146,6 +22933,7 @@ export namespace ParamArray {
          * Serializes the object properties of `config` to a string.
          * @param data user data passed to the serialize implementation.
          * @returns a newly allocated NUL-terminated string.
+         * @since 2.4
          */
         serialize_to_string(data: null): string;
 
@@ -22154,6 +22942,7 @@ export namespace ParamArray {
          * to adjust how properties are serialized depending on the version of the XCF
          * that it is being saved to.
          * @param xcf_version a mask of GParamFlags
+         * @since 3.0.8
          */
         set_xcf_version(xcf_version: number): void;
     }
@@ -22180,6 +22969,7 @@ export namespace ParamArray {
         // Methods
         /**
          * Closes an element opened with `gimp_config_writer_open()`.
+         * @since 2.4
          */
         close(): void;
 
@@ -22188,6 +22978,7 @@ export namespace ParamArray {
          * format it as a comment. Note that this function does not handle non-ASCII
          * characters.
          * @param comment the comment to write (ASCII only)
+         * @since 2.4
          */
         comment(comment: string): void;
 
@@ -22199,12 +22990,14 @@ export namespace ParamArray {
          * Since comments have to start at the beginning of a line, this
          * function will insert a newline if necessary.
          * @param enable `true` to enable comment mode, `false` to disable it
+         * @since 2.4
          */
         comment_mode(enable: boolean): void;
 
         /**
          * Writes data to `writer`.
          * @param data The data to write
+         * @since 2.4
          */
         data(data: Uint8Array | string): void;
 
@@ -22218,6 +23011,7 @@ export namespace ParamArray {
          * and will trigger warnings.
          * @param footer text to include as comment at the bottom of the file
          * @returns `true` if everything could be successfully written,          `false` otherwise
+         * @since 2.4
          */
         finish(footer: string): boolean;
 
@@ -22225,6 +23019,7 @@ export namespace ParamArray {
          * Writes an identifier to `writer`. The `string` is *not* quoted and special
          * characters are *not* escaped.
          * @param identifier a NUL-terminated string
+         * @since 2.4
          */
         identifier(identifier: string): void;
 
@@ -22235,6 +23030,7 @@ export namespace ParamArray {
          * It also increases the indentation level and sets a mark that
          * can be used by `gimp_config_writer_revert()`.
          * @param name name of the element to open
+         * @since 2.4
          */
         open(name: string): void;
 
@@ -22243,12 +23039,14 @@ export namespace ParamArray {
          * must not contain any special characters that might need to be escaped.
          * @param string a string to write
          * @param len number of bytes from `string` or -1 if `string` is NUL-terminated.
+         * @since 2.4
          */
         print(string: string, len: number): void;
 
         /**
          * Adds a reference to a {@link Gimp.ConfigWriter}.
          * @returns the same `writer`.
+         * @since 3.0
          */
         ref(): ConfigWriter;
 
@@ -22256,6 +23054,7 @@ export namespace ParamArray {
          * Reverts all changes to `writer` that were done since the last call
          * to `gimp_config_writer_open()`. This can only work if you didn't call
          * `gimp_config_writer_close()` yet.
+         * @since 2.4
          */
         revert(): void;
 
@@ -22263,6 +23062,7 @@ export namespace ParamArray {
          * Writes a string value to `writer`. The `string` is quoted and special
          * characters are escaped.
          * @param string a NUL-terminated string
+         * @since 2.4
          */
         string(string: string): void;
 
@@ -22272,6 +23072,7 @@ export namespace ParamArray {
          * 
          * Note that at least one of the references has to be dropped using
          * `gimp_config_writer_finish()`.
+         * @since 3.0
          */
         unref(): void;
     }
@@ -22437,6 +23238,7 @@ export namespace ParamArray {
         /**
          * Calculates the determinant of the given matrix.
          * @returns The determinant.
+         * @since 2.10.16
          */
         determinant(): number;
 
@@ -22447,6 +23249,7 @@ export namespace ParamArray {
 
         /**
          * Inverts the given matrix.
+         * @since 2.10.16
          */
         invert(): void;
 
@@ -22460,6 +23263,7 @@ export namespace ParamArray {
          * Transforms a point in 2D as specified by the transformation matrix.
          * @param x The source X coordinate.
          * @param y The source Y coordinate.
+         * @since 2.10.16
          */
         transform_point(x: number, y: number): [number, number];
     }
@@ -22509,6 +23313,7 @@ export namespace ParamArray {
          * Checks if two matrices are equal.
          * @param matrix2 The second matrix
          * @returns `true` the matrices are equal, `false` otherwise
+         * @since 2.10.16
          */
         equal(matrix2: Matrix3): boolean;
 
@@ -22525,6 +23330,7 @@ export namespace ParamArray {
         /**
          * Checks if the given matrix defines an affine transformation.
          * @returns `true` if the matrix defines an affine transformation,          `false` otherwise
+         * @since 2.4
          */
         is_affine(): boolean;
 
@@ -22615,12 +23421,14 @@ export namespace ParamArray {
         // Methods
         /**
          * Sets the matrix to the identity matrix.
+         * @since 2.10.16
          */
         identity(): void;
 
         /**
          * Multiplies two matrices and puts the result into the second one.
          * @param right The second input matrix which will be overwritten by the result.
+         * @since 2.10.16
          */
         mult(right: Matrix4): void;
 
@@ -22632,6 +23440,7 @@ export namespace ParamArray {
          * @param y The source Y coordinate.
          * @param z The source Z coordinate.
          * @returns The transformed W coordinate.
+         * @since 2.10.16
          */
         transform_point(x: number, y: number, z: number): [number, number, number, number];
     }
@@ -22966,69 +23775,82 @@ export namespace ParamArray {
         // Methods
         /**
          * @returns `true` on success
+         * @since 2.4
          */
         parse_boolean(): [boolean, boolean];
 
         /**
          * @returns `true` on success
+         * @since 2.4
          */
         parse_color(): [boolean, Gegl.Color];
 
         /**
          * @returns `true` on success
+         * @since 2.4
          */
         parse_data(): [boolean, Uint8Array];
 
         /**
          * @returns `true` on success
+         * @since 2.4
          */
         parse_double(): [boolean, number];
 
         /**
          * @returns `true` if the next token is an identifier and if its value matches `identifier`.
+         * @since 2.4
          */
         parse_identifier(): [boolean, string];
 
         /**
          * @returns `true` on success
+         * @since 2.4
          */
         parse_int(): [boolean, number];
 
         /**
          * @returns `true` on success
+         * @since 2.8
          */
         parse_int64(): [boolean, number];
 
         /**
          * @returns `true` on success
+         * @since 2.4
          */
         parse_matrix2(): [boolean, Matrix2];
 
         /**
          * @returns `true` on success
+         * @since 2.4
          */
         parse_string(): [boolean, string];
 
         /**
          * @returns `true` on success
+         * @since 2.4
          */
         parse_string_no_validate(): [boolean, string];
 
         /**
          * @param token the {@link GLib.TokenType} expected as next token.
          * @returns `true` if the next token is `token`, `false` otherwise.
+         * @since 2.4
          */
         parse_token(token: GLib.TokenType): boolean;
 
         /**
          * Adds a reference to a {@link Gimp.Scanner}.
          * @returns the same `scanner`.
+         * @since 3.0
          */
         ref(): Scanner;
 
         /**
          * Unref a {@link Gimp.Scanner}. If the reference count drops to zero, the
          * scanner is freed.
+         * @since 3.0
          */
         unref(): void;
     }
@@ -23078,12 +23900,14 @@ export namespace ParamArray {
          * `null`, an uninitialized value is appended.
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
+         * @since 2.10
          */
         append(value: GObject.Value | any | null): ValueArray;
 
         /**
          * Return an exact copy of a {@link Gimp.ValueArray} by duplicating all its values.
          * @returns a newly allocated {@link Gimp.ValueArray}.
+         * @since 3.0
          */
         copy(): ValueArray;
 
@@ -23100,6 +23924,7 @@ export namespace ParamArray {
          * There are no reasons to use this function in C code.
          * @param index index of the value of interest
          * @returns the {@link ColorArray} stored at `index` in `value_array`.
+         * @since 3.0
          */
         get_color_array(index: number): Gegl.Color[];
 
@@ -23116,6 +23941,7 @@ export namespace ParamArray {
          * There are no reasons to use this function in C code.
          * @param index index of the value of interest
          * @returns the {@link CoreObjectArray} stored at `index` in `value_array`.
+         * @since 3.0
          */
         get_core_object_array(index: number): GObject.Object[];
 
@@ -23129,6 +23955,7 @@ export namespace ParamArray {
          * {@link ValueArray.get_color_array}.
          * @param index index of the value of interest
          * @returns pointer to a value at `index` in `value_array`
+         * @since 2.10
          */
         index(index: number): unknown;
 
@@ -23138,6 +23965,7 @@ export namespace ParamArray {
          * @param index insertion position, must be &lt;= `gimp_value_array_length()`
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
+         * @since 2.10
          */
         insert(index: number, value: GObject.Value | any | null): ValueArray;
 
@@ -23148,12 +23976,14 @@ export namespace ParamArray {
          * `null`, an uninitialized value is prepended.
          * @param value {@link GObject.Value} to copy into {@link Gimp.ValueArray}, or `null`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
+         * @since 2.10
          */
         prepend(value: GObject.Value | any | null): ValueArray;
 
         /**
          * Adds a reference to a {@link Gimp.ValueArray}.
          * @returns the same `value_array`
+         * @since 2.10
          */
         ref(): ValueArray;
 
@@ -23161,6 +23991,7 @@ export namespace ParamArray {
          * Remove the value at position `index` from `value_array`.
          * @param index position of value to remove, which must be less than         `gimp_value_array_length()`
          * @returns the {@link Gimp.ValueArray} passed in as `value_array`
+         * @since 2.10
          */
         remove(index: number): ValueArray;
 
@@ -23172,6 +24003,7 @@ export namespace ParamArray {
         /**
          * Unref a {@link Gimp.ValueArray}. If the reference count drops to zero, the
          * array including its contents are freed.
+         * @since 2.10
          */
         unref(): void;
     }
@@ -23304,6 +24136,7 @@ export namespace ParamArray {
         /**
          * Compute a normalized perpendicular vector to `vector`
          * @returns a {@link Gimp.Vector2} perpendicular to `vector`, with a length of 1.0.
+         * @since 2.8
          */
         normal(): Vector2;
 
@@ -23311,6 +24144,7 @@ export namespace ParamArray {
          * Identical to {@link Vector2.normal}, but the vector
          * is passed by value rather than by reference.
          * @returns a {@link Gimp.Vector2} perpendicular to `vector`, with a length of 1.0.
+         * @since 2.8
          */
         normal_val(): Vector2;
 
@@ -23617,11 +24451,13 @@ export namespace ParamArray {
             /**
              * This function always returns a {@link Gimp.ColorProfile} and falls back to
              * `gimp_color_profile_new_rgb_srgb()` if the method is not implemented.
+             * @since 2.10
              * @virtual
              */
             vfunc_get_color_profile(): ColorProfile;
 
             /**
+             * @since 2.4
              * @virtual
              */
             vfunc_get_icc_profile(): Uint8Array | string;
@@ -23629,42 +24465,49 @@ export namespace ParamArray {
             /**
              * This function always returns a gboolean representing whether
              * Black Point Compensation is enabled
+             * @since 3.0
              * @virtual
              */
             vfunc_get_simulation_bpc(): boolean;
 
             /**
              * This function always returns a {@link Gimp.ColorRenderingIntent}
+             * @since 3.0
              * @virtual
              */
             vfunc_get_simulation_intent(): ColorRenderingIntent;
 
             /**
              * This function always returns a {@link Gimp.ColorProfile}
+             * @since 3.0
              * @virtual
              */
             vfunc_get_simulation_profile(): ColorProfile;
 
             /**
              * Emits the "profile-changed" signal.
+             * @since 2.4
              * @virtual
              */
             vfunc_profile_changed(): void;
 
             /**
              * Emits the "simulation-bpc-changed" signal.
+             * @since 3.0
              * @virtual
              */
             vfunc_simulation_bpc_changed(): void;
 
             /**
              * Emits the "simulation-intent-changed" signal.
+             * @since 3.0
              * @virtual
              */
             vfunc_simulation_intent_changed(): void;
 
             /**
              * Emits the "simulation-profile-changed" signal.
+             * @since 3.0
              * @virtual
              */
             vfunc_simulation_profile_changed(): void;
@@ -23690,11 +24533,13 @@ export namespace ParamArray {
          * This function always returns a {@link Gimp.ColorProfile} and falls back to
          * `gimp_color_profile_new_rgb_srgb()` if the method is not implemented.
          * @returns The `managed`'s {@link Gimp.ColorProfile}.
+         * @since 2.10
          */
         get_color_profile(): ColorProfile;
 
         /**
          * @returns A blob of data that represents an ICC color                              profile.
+         * @since 2.4
          */
         get_icc_profile(): Uint8Array;
 
@@ -23702,38 +24547,45 @@ export namespace ParamArray {
          * This function always returns a gboolean representing whether
          * Black Point Compensation is enabled
          * @returns The `managed`'s simulation Black Point Compensation value.
+         * @since 3.0
          */
         get_simulation_bpc(): boolean;
 
         /**
          * This function always returns a {@link Gimp.ColorRenderingIntent}
          * @returns The `managed`'s simulation {@link Gimp.ColorRenderingIntent}.
+         * @since 3.0
          */
         get_simulation_intent(): ColorRenderingIntent;
 
         /**
          * This function always returns a {@link Gimp.ColorProfile}
          * @returns The `managed`'s simulation {@link Gimp.ColorProfile}.
+         * @since 3.0
          */
         get_simulation_profile(): ColorProfile;
 
         /**
          * Emits the "profile-changed" signal.
+         * @since 2.4
          */
         profile_changed(): void;
 
         /**
          * Emits the "simulation-bpc-changed" signal.
+         * @since 3.0
          */
         simulation_bpc_changed(): void;
 
         /**
          * Emits the "simulation-intent-changed" signal.
+         * @since 3.0
          */
         simulation_intent_changed(): void;
 
         /**
          * Emits the "simulation-profile-changed" signal.
+         * @since 3.0
          */
         simulation_profile_changed(): void;
     }
@@ -23929,6 +24781,7 @@ export namespace ParamArray {
          * with the various procedures provided by the {@link Gimp.TextLayer}
          * class interface.
          * @returns TRUE if `item` is rasterized.
+         * @since 3.2
          */
         is_rasterized(): boolean;
 
@@ -23943,6 +24796,7 @@ export namespace ParamArray {
          * possible to retrieve the original behavior with
          * {@link Gimp.Rasterizable.restore}.
          * @returns TRUE on success.
+         * @since 3.2
          */
         rasterize(): boolean;
 
@@ -23956,6 +24810,7 @@ export namespace ParamArray {
          * will prevent direct modification of its pixels and will be rendered
          * when its properties are updated.
          * @returns TRUE on success.
+         * @since 3.2
          */
         restore(): boolean;
     }

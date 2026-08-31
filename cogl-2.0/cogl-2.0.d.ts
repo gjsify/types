@@ -3465,17 +3465,20 @@ export namespace Cogl {
         // Methods
         /**
          * @returns the {@link Cogl.AttributeBuffer} that was        set with `cogl_attribute_set_buffer()` or `cogl_attribute_new()`.
+         * @since 1.10
          */
         get_buffer(): AttributeBuffer;
 
         /**
          * @returns the value of the normalized property set with `cogl_attribute_set_normalized()`.
+         * @since 1.10
          */
         get_normalized(): Bool;
 
         /**
          * Sets a new {@link Cogl.AttributeBuffer} for the attribute.
          * @param attribute_buffer A {@link Cogl.AttributeBuffer}
+         * @since 1.10
          */
         set_buffer(attribute_buffer: AttributeBuffer): void;
 
@@ -3490,6 +3493,7 @@ export namespace Cogl {
          * cogl_normal_in it will default to TRUE and for all other names it
          * will default to FALSE.
          * @param normalized The new value for the normalized property.
+         * @since 1.10
          */
         set_normalized(normalized: Bool): void;
     }
@@ -3566,32 +3570,38 @@ export namespace Cogl {
          * Parses an image file enough to extract the width and height
          * of the bitmap.
          * @param filename the file to check
+         * @since 1.0
          */
         static get_size_from_file(filename: string): [Bool, number, number];
 
         // Methods
         /**
          * @returns the {@link Cogl.PixelBuffer} that this   buffer uses for storage. Note that if the bitmap was created with   `cogl_bitmap_new_from_file()` then it will not actually be using a   pixel buffer and this function will return `null`.
+         * @since 1.10
          */
         get_buffer(): PixelBuffer;
 
         /**
          * @returns the {@link Cogl.PixelFormat} that the data for the bitmap is in.
+         * @since 1.10
          */
         get_format(): PixelFormat;
 
         /**
          * @returns the height of the bitmap
+         * @since 1.10
          */
         get_height(): number;
 
         /**
          * @returns the rowstride of the bitmap. This is the number of   bytes between the address of start of one row to the address of the   next row in the image.
+         * @since 1.10
          */
         get_rowstride(): number;
 
         /**
          * @returns the width of the bitmap
+         * @since 1.10
          */
         get_width(): number;
     }
@@ -3634,6 +3644,7 @@ export namespace Cogl {
          * `cogl_context_new()` then this function returns a pointer to the
          * display that was automatically setup internally.
          * @returns The {@link Cogl.Display} associated with the               given `context`.
+         * @since 1.8
          */
         get_display(): Display;
 
@@ -3645,6 +3656,7 @@ export namespace Cogl {
          * a pointer to the renderer that was automatically connected
          * internally.
          * @returns The {@link Cogl.Renderer} associated with the               given `context`.
+         * @since 1.16
          */
         get_renderer(): Renderer;
     }
@@ -3683,6 +3695,7 @@ export namespace Cogl {
         /**
          * Queries the {@link Cogl.Renderer} associated with the given `display`.
          * @returns The associated {@link Cogl.Renderer}
+         * @since 1.10
          */
         get_renderer(): Renderer;
 
@@ -3695,6 +3708,7 @@ export namespace Cogl {
          * allocated. If Cogl knows how an application wants to allocate onscreen
          * framebuffers then it can try to make sure to setup the display accordingly.
          * @param onscreen_template A template for creating {@link Cogl.Onscreen} framebuffers
+         * @since 1.16
          */
         set_onscreen_template(onscreen_template: OnscreenTemplate): void;
 
@@ -3720,6 +3734,7 @@ export namespace Cogl {
          * with a message.  For simple applications that don't have any
          * fallback options this behaviour may be fine.
          * @returns Returns `true` if there was no error, else it returns               `false` and returns an exception via `error`.
+         * @since 1.10
          */
         setup(): Bool;
     }
@@ -3787,12 +3802,14 @@ export namespace Cogl {
          * Gets the frame counter for the {@link Cogl.Onscreen} that corresponds
          * to this frame.
          * @returns The frame counter value
+         * @since 1.14
          */
         get_frame_counter(): number;
 
         /**
          * Gets the {@link Cogl.Output} that the swapped frame was presented to.
          * @returns The {@link Cogl.Output} that the frame was        presented to, or `null` if this could not be determined.
+         * @since 1.14
          */
         get_output(): Output;
 
@@ -3811,6 +3828,7 @@ export namespace Cogl {
          * OpenGL driver. Also some buggy Mesa drivers up to 9.0.1 may also
          * incorrectly report non-monotonic timestamps.</note>
          * @returns the presentation time for the frame
+         * @since 1.14
          */
         get_presentation_time(): number;
 
@@ -3824,6 +3842,7 @@ export namespace Cogl {
          * more reliable than using `cogl_frame_info_get_output()` followed by
          * `cogl_output_get_refresh_rate()`.</note>
          * @returns the refresh rate in Hertz
+         * @since 1.14
          */
         get_refresh_rate(): number;
     }
@@ -3870,6 +3889,7 @@ export namespace Cogl {
          * <note>You should not try to directly link to and use the symbols
          * provided by any system OpenGLES 2.0 driver.</note>
          * @returns A pointer to a {@link Cogl.GLES2Vtable} providing pointers               to functions for the full OpenGLES 2.0 api.
+         * @since 2.0
          */
         get_vtable(): GLES2Vtable;
     }
@@ -4270,6 +4290,7 @@ export namespace Cogl {
          * @param callback A callback function to call for dirty events
          * @param destroy An optional callback to destroy `user_data` when the           `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.OnscreenDirtyClosure} pointer that can be used to               remove the callback and associated `user_data` later.
+         * @since 1.16
          */
         add_dirty_callback(callback: OnscreenDirtyCallback, destroy: UserDataDestroyCallback | null): OnscreenDirtyClosure;
 
@@ -4300,6 +4321,7 @@ export namespace Cogl {
          * @param callback A callback function to call for frame events
          * @param destroy An optional callback to destroy `user_data`           when the `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.FrameClosure} pointer that can be used to               remove the callback and associated `user_data` later.
+         * @since 1.14
          */
         add_frame_callback(callback: FrameCallback, destroy: UserDataDestroyCallback | null): FrameClosure;
 
@@ -4325,6 +4347,7 @@ export namespace Cogl {
          * @param callback A {@link Cogl.OnscreenResizeCallback} to call when            the `onscreen` changes size.
          * @param destroy An optional callback to destroy `user_data`           when the `callback` is removed or `onscreen` is freed.
          * @returns a {@link Cogl.OnscreenResizeClosure} pointer that can be used to               remove the callback and associated `user_data` later.
+         * @since 2.0
          */
         add_resize_callback(callback: OnscreenResizeCallback, destroy: UserDataDestroyCallback | null): OnscreenResizeClosure;
 
@@ -4343,6 +4366,8 @@ export namespace Cogl {
          * throttling when you request to swap buffers too quickly.
          * @param callback A callback function to call when a swap            has completed
          * @returns a unique identifier that can be used to remove to remove               the callback later.
+         * @since 1.10
+         * @deprecated since 1.14: Use `cogl_onscreen_add_frame_callback()` instead
          */
         add_swap_buffers_callback(callback: SwapBuffersNotify): number;
 
@@ -4386,6 +4411,7 @@ export namespace Cogl {
          * age of {@link Cogl.Onscreen} back buffer contents. If this feature is
          * missing then this function will always return 0.</note>
          * @returns The age of the buffer contents or 0 when the buffer               contents are undefined.
+         * @since 1.14
          */
         get_buffer_age(): number;
 
@@ -4395,6 +4421,7 @@ export namespace Cogl {
          * `cogl_onscreen_swap_buffers()` or `cogl_onscreen_swap_region()`
          * is called.
          * @returns the current frame counter value
+         * @since 1.14
          */
         get_frame_counter(): number;
 
@@ -4414,6 +4441,7 @@ export namespace Cogl {
          * meaningful with your window system, only whether the `onscreen` has
          * been marked as resizable.</note>
          * @returns Returns whether `onscreen` has been marked as               resizable or not.
+         * @since 2.0
          */
         get_resizable(): Bool;
 
@@ -4432,6 +4460,7 @@ export namespace Cogl {
          * requests e.g. to show an already visible window. This also means
          * that it's acceptable to alternatively use native APIs to show and
          * hide windows without confusing Cogl.</note>
+         * @since 2.0
          */
         hide(): void;
 
@@ -4443,6 +4472,7 @@ export namespace Cogl {
          * `cogl_onscreen_add_dirty_callback()` to destroy the user data then
          * this will also get called.
          * @param closure A {@link Cogl.OnscreenDirtyClosure} returned from           `cogl_onscreen_add_dirty_callback()`
+         * @since 1.16
          */
         remove_dirty_callback(closure: OnscreenDirtyClosure): void;
 
@@ -4454,6 +4484,7 @@ export namespace Cogl {
          * `cogl_onscreen_add_frame_callback()` to destroy the user data then
          * this will get called.
          * @param closure A {@link Cogl.FrameClosure} returned from           `cogl_onscreen_add_frame_callback()`
+         * @since 1.14
          */
         remove_frame_callback(closure: FrameClosure): void;
 
@@ -4461,6 +4492,7 @@ export namespace Cogl {
          * Removes a resize `callback` and `user_data` pair that were previously
          * associated with `onscreen` via `cogl_onscreen_add_resize_callback()`.
          * @param closure An identifier returned from `cogl_onscreen_add_resize_callback()`
+         * @since 2.0
          */
         remove_resize_callback(closure: OnscreenResizeClosure): void;
 
@@ -4468,6 +4500,8 @@ export namespace Cogl {
          * Removes a callback that was previously registered
          * using `cogl_onscreen_add_swap_buffers_callback()`.
          * @param id An identifier returned from `cogl_onscreen_add_swap_buffers_callback()`
+         * @since 1.10
+         * @deprecated since 1.14: Use `cogl_onscreen_remove_frame_callback()` instead
          */
         remove_swap_buffers_callback(id: number): void;
 
@@ -4495,6 +4529,7 @@ export namespace Cogl {
          * resize handler using `cogl_onscreen_add_resize_callback()` so that it
          * can track when the viewport has been changed automatically.</note>
          * @param resizable 
+         * @since 2.0
          */
         set_resizable(resizable: Bool): void;
 
@@ -4504,6 +4539,7 @@ export namespace Cogl {
          * displays vblank period or perhaps some other mechanism in a composited
          * environment.
          * @param throttled Whether swap throttling is wanted or not.
+         * @since 1.8
          */
         set_swap_throttled(throttled: Bool): void;
 
@@ -4528,6 +4564,7 @@ export namespace Cogl {
          * requests e.g. to show an already visible window. This also means
          * that it's acceptable to alternatively use native APIs to show and
          * hide windows without confusing Cogl.</note>
+         * @since 2.0
          */
         show(): void;
 
@@ -4545,6 +4582,7 @@ export namespace Cogl {
          * and also use the `cogl_onscreen_get_buffer_age()` api so they can
          * perform incremental updates to older buffers instead of having to
          * render a full buffer for every frame.</note>
+         * @since 1.10
          */
         swap_buffers(): void;
 
@@ -4588,6 +4626,7 @@ export namespace Cogl {
          * perform incremental rendering based on old back buffers.</note>
          * @param rectangles An array of integer 4-tuples representing damaged              rectangles as (x, y, width, height) tuples.
          * @param n_rectangles The number of 4-tuples to be read from `rectangles`
+         * @since 1.16
          */
         swap_buffers_with_damage(rectangles: number, n_rectangles: number): void;
 
@@ -4603,6 +4642,7 @@ export namespace Cogl {
          * frame.
          * @param rectangles An array of integer 4-tuples representing rectangles as              (x, y, width, height) tuples.
          * @param n_rectangles The number of 4-tuples to be read from `rectangles`
+         * @since 1.10
          */
         swap_region(rectangles: number, n_rectangles: number): void;
 
@@ -4618,6 +4658,7 @@ export namespace Cogl {
          * program will abort with an error message if there is an error during
          * automatic allocation.</note>
          * @returns `true` if there were no error allocating the framebuffer, else `false`.
+         * @since 1.8
          */
         allocate(): Bool;
 
@@ -4626,6 +4667,7 @@ export namespace Cogl {
          * `cogl_framebuffer_add_fence_callback()`; the callback will not be
          * called.
          * @param closure The {@link Cogl.FenceClosure} returned from           `cogl_framebuffer_add_fence_callback()`
+         * @since 2.0
          */
         cancel_fence_callback(closure: FenceClosure): void;
 
@@ -4634,6 +4676,7 @@ export namespace Cogl {
          * that includes the color buffer then the specified `color` is used.
          * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
          * @param color The color to clear the color buffer too if specified in         `buffers`.
+         * @since 1.8
          */
         clear(buffers: bigint | number, color: Color): void;
 
@@ -4645,6 +4688,7 @@ export namespace Cogl {
          * @param green The green component of color to clear the color buffer too if         specified in `buffers`.
          * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
          * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
+         * @since 1.8
          */
         clear4f(buffers: bigint | number, red: number, green: number, blue: number, alpha: number): void;
 
@@ -4666,6 +4710,7 @@ export namespace Cogl {
          * framebuffer, and it's not meaningful to try and discard the color buffer of
          * a `CoglOffscreen` framebuffer since they are single-buffered.
          * @param buffers A {@link Cogl.BufferBit} mask of which ancillary buffers you want           to discard.
+         * @since 1.8
          */
         discard_buffers(buffers: bigint | number): void;
 
@@ -4697,6 +4742,8 @@ export namespace Cogl {
          * @param n_vertices The number of vertices to draw from the given attributes
          * @param attributes An array of pointers to {@link Cogl.Attribute}<-- -->s defining vertex              geometry
          * @param n_attributes The number of attributes in the `attributes` array.
+         * @since 1.10
+         * @deprecated since 1.16: Use {@link Cogl.Primitive}<!-- -->s and                   `cogl_primitive_draw()` instead
          */
         draw_attributes(pipeline: Pipeline, mode: VerticesMode, first_vertex: number, n_vertices: number, attributes: Attribute, n_attributes: number): void;
 
@@ -4747,6 +4794,8 @@ export namespace Cogl {
          * @param indices The array of indices used by the GPU to lookup attribute           data for each vertex.
          * @param attributes An array of pointers to {@link Cogl.Attribute}<-- -->s defining vertex              geometry
          * @param n_attributes The number of attributes in the `attributes` array.
+         * @since 1.10
+         * @deprecated since 1.16: Use {@link Cogl.Primitive}<!-- -->s and                   `cogl_primitive_draw()` instead
          */
         draw_indexed_attributes(pipeline: Pipeline, mode: VerticesMode, first_vertex: number, n_vertices: number, indices: Indices, attributes: Attribute, n_attributes: number): void;
 
@@ -4803,6 +4852,7 @@ export namespace Cogl {
          * @param y_2 y coordinate lower right on screen.
          * @param tex_coords An array containing groups of   4 float values: [s_1, t_1, s_2, t_2] that are interpreted as two texture   coordinates; one for the top left texel, and one for the bottom right   texel. Each value should be between 0.0 and 1.0, where the coordinate   (0.0, 0.0) represents the top left of the texture, and (1.0, 1.0) the   bottom right.
          * @param tex_coords_len The length of the `tex_coords` array. (For one layer   and one group of texture coordinates, this would be 4)
+         * @since 1.10
          */
         draw_multitextured_rectangle(pipeline: Pipeline, x_1: number, y_1: number, x_2: number, y_2: number, tex_coords: number[], tex_coords_len: number): void;
 
@@ -4821,6 +4871,8 @@ export namespace Cogl {
          * `cogl_program_use()`</note>
          * @param pipeline A {@link Cogl.Pipeline} state object
          * @param primitive A {@link Cogl.Primitive} geometry object
+         * @since 1.10
+         * @deprecated since 1.16: Use {@link Cogl.Primitive}<!-- -->s and                   `cogl_primitive_draw()` instead
          */
         draw_primitive(pipeline: Pipeline, primitive: Primitive): void;
 
@@ -4841,6 +4893,7 @@ export namespace Cogl {
          * @param y_1 Y coordinate of the top-left corner
          * @param x_2 X coordinate of the bottom-right corner
          * @param y_2 Y coordinate of the bottom-right corner
+         * @since 1.10
          */
         draw_rectangle(pipeline: Pipeline, x_1: number, y_1: number, x_2: number, y_2: number): void;
 
@@ -4867,6 +4920,7 @@ export namespace Cogl {
          * @param pipeline A {@link Cogl.Pipeline} state object
          * @param coordinates an array of coordinates   containing groups of 4 float values: [x_1, y_1, x_2, y_2] that are   interpreted as two position coordinates; one for the top left of   the rectangle (x1, y1), and one for the bottom right of the   rectangle (x2, y2).
          * @param n_rectangles number of rectangles defined in `coordinates`.
+         * @since 1.10
          */
         draw_rectangles(pipeline: Pipeline, coordinates: number[], n_rectangles: number): void;
 
@@ -4911,6 +4965,7 @@ export namespace Cogl {
          * @param t_1 T texture coordinate of the top-left coorner
          * @param s_2 S texture coordinate of the bottom-right coorner
          * @param t_2 T texture coordinate of the bottom-right coorner
+         * @since 1.10
          */
         draw_textured_rectangle(pipeline: Pipeline, x_1: number, y_1: number, x_2: number, y_2: number, s_1: number, t_1: number, s_2: number, t_2: number): void;
 
@@ -4957,6 +5012,7 @@ export namespace Cogl {
          * @param pipeline A {@link Cogl.Pipeline} state object
          * @param coordinates an array containing   groups of 8 float values: [x_1, y_1, x_2, y_2, s_1, t_1, s_2, t_2]   that have the same meaning as the arguments for   `cogl_framebuffer_draw_textured_rectangle()`.
          * @param n_rectangles number of rectangles to `coordinates` to draw
+         * @since 1.10
          */
         draw_textured_rectangles(pipeline: Pipeline, coordinates: number[], n_rectangles: number): void;
 
@@ -4970,6 +5026,7 @@ export namespace Cogl {
          * One example might be for benchmarking purposes to be sure timing
          * measurements reflect the time that the GPU is busy for not just the time it
          * takes to queue rendering commands.
+         * @since 1.10
          */
         finish(): void;
 
@@ -4983,18 +5040,21 @@ export namespace Cogl {
          * @param top Y position of the top clipping plane where it intersects   the near clipping plane
          * @param z_near The distance to the near clipping plane (Must be positive)
          * @param z_far The distance to the far clipping plane (Must be positive)
+         * @since 1.10
          */
         frustum(left: number, right: number, bottom: number, top: number, z_near: number, z_far: number): void;
 
         /**
          * Retrieves the number of alpha bits of `framebuffer`
          * @returns the number of bits
+         * @since 1.8
          */
         get_alpha_bits(): number;
 
         /**
          * Retrieves the number of blue bits of `framebuffer`
          * @returns the number of bits
+         * @since 1.8
          */
         get_blue_bits(): number;
 
@@ -5003,6 +5063,7 @@ export namespace Cogl {
          * current framebuffer. Each bit set in the mask means that the
          * corresponding color would be written.
          * @returns A {@link Cogl.ColorMask}
+         * @since 1.8
          */
         get_color_mask(): ColorMask;
 
@@ -5011,12 +5072,14 @@ export namespace Cogl {
          * instantiated within. This is the {@link Cogl.Context} that was passed to
          * `cogl_onscreen_new()` for example.
          * @returns The {@link Cogl.Context} that the given               `framebuffer` was instantiated within.
+         * @since 1.8
          */
         get_context(): Context;
 
         /**
          * Retrieves the number of depth bits of `framebuffer`
          * @returns the number of bits
+         * @since 2.0
          */
         get_depth_bits(): number;
 
@@ -5029,6 +5092,7 @@ export namespace Cogl {
          * <note>The texture returned stays valid as long as the framebuffer stays
          * valid.</note>
          * @returns the depth texture
+         * @since 1.14
          */
         get_depth_texture(): Texture;
 
@@ -5036,6 +5100,7 @@ export namespace Cogl {
          * Queries whether texture based depth buffer has been enabled via
          * `cogl_framebuffer_set_depth_texture_enabled()`.
          * @returns `true` if a depth texture has been enabled, else               `false`.
+         * @since 1.14
          */
         get_depth_texture_enabled(): Bool;
 
@@ -5043,6 +5108,7 @@ export namespace Cogl {
          * Queries whether depth buffer writing is enabled for `framebuffer`. This
          * can be controlled via `cogl_framebuffer_set_depth_write_enabled()`.
          * @returns `true` if depth writing is enabled or `false` if not.
+         * @since 1.18
          */
         get_depth_write_enabled(): Bool;
 
@@ -5054,18 +5120,21 @@ export namespace Cogl {
          * display pipeline does not support dithering. This value only represents
          * the user's request for dithering.</note>
          * @returns `true` if dithering has been requested or `false` if not.
+         * @since 1.8
          */
         get_dither_enabled(): Bool;
 
         /**
          * Retrieves the number of green bits of `framebuffer`
          * @returns the number of bits
+         * @since 1.8
          */
         get_green_bits(): number;
 
         /**
          * Queries the current height of the given `framebuffer`.
          * @returns The height of `framebuffer`.
+         * @since 1.8
          */
         get_height(): number;
 
@@ -5073,17 +5142,20 @@ export namespace Cogl {
 
         /**
          * Stores the current model-view matrix in `matrix`.
+         * @since 1.10
          */
         get_modelview_matrix(): Matrix;
 
         /**
          * Stores the current projection matrix in `matrix`.
+         * @since 1.10
          */
         get_projection_matrix(): Matrix;
 
         /**
          * Retrieves the number of red bits of `framebuffer`
          * @returns the number of bits
+         * @since 1.8
          */
         get_red_bits(): number;
 
@@ -5101,6 +5173,7 @@ export namespace Cogl {
          * framebuffer has been allocated the value will reflect the actual
          * number of samples that will be made by the GPU.
          * @returns The number of point samples made per pixel when          rasterizing geometry or 0 if single-sample rendering          has been chosen.
+         * @since 1.10
          */
         get_samples_per_pixel(): number;
 
@@ -5108,6 +5181,7 @@ export namespace Cogl {
          * Gets the current {@link Cogl.StereoMode}, which defines which stereo buffers
          * should be drawn to. See `cogl_framebuffer_set_stereo_mode()`.
          * @returns A {@link Cogl.StereoMode}
+         * @since 1.20
          */
         get_stereo_mode(): StereoMode;
 
@@ -5116,6 +5190,7 @@ export namespace Cogl {
          * using `cogl_framebuffer_set_viewport()` or the default values which are 0, 0,
          * framebuffer_width and framebuffer_height.  The values are written into the
          * given `viewport` array.
+         * @since 1.8
          */
         get_viewport4fv(): number[];
 
@@ -5123,6 +5198,7 @@ export namespace Cogl {
          * Queries the height of the viewport as set using `cogl_framebuffer_set_viewport()`
          * or the default value which is the height of the framebuffer.
          * @returns The height of the viewport.
+         * @since 1.8
          */
         get_viewport_height(): number;
 
@@ -5130,6 +5206,7 @@ export namespace Cogl {
          * Queries the width of the viewport as set using `cogl_framebuffer_set_viewport()`
          * or the default value which is the width of the framebuffer.
          * @returns The width of the viewport.
+         * @since 1.8
          */
         get_viewport_width(): number;
 
@@ -5137,6 +5214,7 @@ export namespace Cogl {
          * Queries the x coordinate of the viewport origin as set using `cogl_framebuffer_set_viewport()`
          * or the default value which is 0.
          * @returns The x coordinate of the viewport origin.
+         * @since 1.8
          */
         get_viewport_x(): number;
 
@@ -5144,17 +5222,20 @@ export namespace Cogl {
          * Queries the y coordinate of the viewport origin as set using `cogl_framebuffer_set_viewport()`
          * or the default value which is 0.
          * @returns The y coordinate of the viewport origin.
+         * @since 1.8
          */
         get_viewport_y(): number;
 
         /**
          * Queries the current width of the given `framebuffer`.
          * @returns The width of `framebuffer`.
+         * @since 1.8
          */
         get_width(): number;
 
         /**
          * Resets the current model-view matrix to the identity matrix.
+         * @since 1.10
          */
         identity_matrix(): void;
 
@@ -5167,6 +5248,7 @@ export namespace Cogl {
          * @param y_2 The y coordinate for the second horizontal clipping plane
          * @param near The <emphasis>distance</emphasis> to the near clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
          * @param far The <emphasis>distance</emphasis> to the far clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
+         * @since 1.10
          */
         orthographic(x_1: number, y_1: number, x_2: number, y_2: number, near: number, far: number): void;
 
@@ -5182,6 +5264,7 @@ export namespace Cogl {
          * @param aspect The (width over height) aspect ratio for display
          * @param z_near The distance to the near clipping plane (Must be positive,   and must not be 0)
          * @param z_far The distance to the far clipping plane (Must be positive)
+         * @since 1.10
          */
         perspective(fov_y: number, aspect: number, z_near: number, z_far: number): void;
 
@@ -5189,17 +5272,20 @@ export namespace Cogl {
          * Reverts the clipping region to the state before the last call to
          * `cogl_framebuffer_push_scissor_clip()`, `cogl_framebuffer_push_rectangle_clip()`
          * `cogl_framebuffer_push_path_clip()`, or `cogl_framebuffer_push_primitive_clip()`.
+         * @since 1.10
          */
         pop_clip(): void;
 
         /**
          * Restores the model-view matrix on the top of the matrix stack.
+         * @since 1.10
          */
         pop_matrix(): void;
 
         /**
          * Copies the current model-view matrix onto the matrix stack. The matrix
          * can later be restored with `cogl_framebuffer_pop_matrix()`.
+         * @since 1.10
          */
         push_matrix(): void;
 
@@ -5221,6 +5307,7 @@ export namespace Cogl {
          * @param bounds_y1 y coordinate for the top-left corner of the primitives             bounds
          * @param bounds_x2 x coordinate for the bottom-right corner of the             primitives bounds.
          * @param bounds_y2 y coordinate for the bottom-right corner of the             primitives bounds.
+         * @since 1.10
          */
         push_primitive_clip(primitive: Primitive, bounds_x1: number, bounds_y1: number, bounds_x2: number, bounds_y2: number): void;
 
@@ -5237,6 +5324,7 @@ export namespace Cogl {
          * @param y_1 y coordinate for top left corner of the clip rectangle
          * @param x_2 x coordinate for bottom right corner of the clip rectangle
          * @param y_2 y coordinate for bottom right corner of the clip rectangle
+         * @since 1.10
          */
         push_rectangle_clip(x_1: number, y_1: number, x_2: number, y_2: number): void;
 
@@ -5253,6 +5341,7 @@ export namespace Cogl {
          * @param y top edge of the clip rectangle in window coordinates
          * @param width width of the clip rectangle
          * @param height height of the clip rectangle
+         * @since 1.10
          */
         push_scissor_clip(x: number, y: number, width: number, height: number): void;
 
@@ -5290,6 +5379,7 @@ export namespace Cogl {
          * @param format The pixel format to store the data in
          * @param pixels The address of the buffer to store the data in
          * @returns `true` if the read succeeded or `false` otherwise.
+         * @since 1.10
          */
         read_pixels(x: number, y: number, width: number, height: number, format: PixelFormat, pixels: number): Bool;
 
@@ -5309,6 +5399,7 @@ export namespace Cogl {
          * @param source Identifies which auxillary buffer you want to read          (only COGL_READ_PIXELS_COLOR_BUFFER supported currently)
          * @param bitmap The bitmap to store the results in.
          * @returns `true` if the read succeeded or `false` otherwise. The  function is only likely to fail if the bitmap points to a pixel  buffer and it could not be mapped.
+         * @since 1.10
          */
         read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags, bitmap: Bitmap): Bool;
 
@@ -5333,6 +5424,7 @@ export namespace Cogl {
          * If you are performing incremental updates to a framebuffer you
          * should consider using `cogl_framebuffer_resolve_samples_region()`
          * instead to avoid resolving redundant pixels.
+         * @since 1.8
          */
         resolve_samples(): void;
 
@@ -5362,6 +5454,7 @@ export namespace Cogl {
          * @param y top-left y coordinate of region to resolve
          * @param width width of region to resolve
          * @param height height of region to resolve
+         * @since 1.8
          */
         resolve_samples_region(x: number, y: number, width: number, height: number): void;
 
@@ -5375,6 +5468,7 @@ export namespace Cogl {
          * @param x X-component of vertex to rotate around.
          * @param y Y-component of vertex to rotate around.
          * @param z Z-component of vertex to rotate around.
+         * @since 1.10
          */
         rotate(angle: number, x: number, y: number, z: number): void;
 
@@ -5382,6 +5476,7 @@ export namespace Cogl {
          * Multiplies the current model-view matrix by one that rotates
          * according to the rotation described by `euler`.
          * @param euler A {@link Cogl.Euler}
+         * @since 2.0
          */
         rotate_euler(euler: Euler): void;
 
@@ -5389,6 +5484,7 @@ export namespace Cogl {
          * Multiplies the current model-view matrix by one that rotates
          * according to the rotation described by `quaternion`.
          * @param quaternion A {@link Cogl.Quaternion}
+         * @since 2.0
          */
         rotate_quaternion(quaternion: Quaternion): void;
 
@@ -5398,6 +5494,7 @@ export namespace Cogl {
          * @param x Amount to scale along the x-axis
          * @param y Amount to scale along the y-axis
          * @param z Amount to scale along the z-axis
+         * @since 1.10
          */
         scale(x: number, y: number, z: number): void;
 
@@ -5406,6 +5503,7 @@ export namespace Cogl {
          * given `framebuffer`. If a bit is set in `color_mask` that means that
          * color will be written.
          * @param color_mask A {@link Cogl.ColorMask} of which color channels to write to              the current framebuffer.
+         * @since 1.8
          */
         set_color_mask(color_mask: ColorMask): void;
 
@@ -5421,6 +5519,7 @@ export namespace Cogl {
          * allocated as the creation of the depth texture is done at allocation time.
          * </note>
          * @param enabled TRUE or FALSE
+         * @since 1.14
          */
         set_depth_texture_enabled(enabled: Bool): void;
 
@@ -5432,6 +5531,7 @@ export namespace Cogl {
          * 
          * Depth buffer writing is enabled by default.
          * @param depth_write_enabled `true` to enable depth writing or `false` to disable
+         * @since 1.18
          */
         set_depth_write_enabled(depth_write_enabled: Bool): void;
 
@@ -5450,18 +5550,21 @@ export namespace Cogl {
          * 
          * Dithering is enabled by default.
          * @param dither_enabled `true` to enable dithering or `false` to disable
+         * @since 1.8
          */
         set_dither_enabled(dither_enabled: Bool): void;
 
         /**
          * Sets `matrix` as the new model-view matrix.
          * @param matrix the new model-view matrix
+         * @since 1.10
          */
         set_modelview_matrix(matrix: Matrix): void;
 
         /**
          * Sets `matrix` as the new projection matrix.
          * @param matrix the new projection matrix
+         * @since 1.10
          */
         set_projection_matrix(matrix: Matrix): void;
 
@@ -5499,6 +5602,7 @@ export namespace Cogl {
          * framebuffer has changed this can lead to redundant work being
          * done.</note>
          * @param samples_per_pixel The minimum number of samples per pixel
+         * @since 1.8
          */
         set_samples_per_pixel(samples_per_pixel: number): void;
 
@@ -5511,6 +5615,7 @@ export namespace Cogl {
          * enabled. (See `cogl_onscreen_template_set_stereo_enabled()`,
          * `cogl_framebuffer_get_is_stereo()`.)
          * @param stereo_mode A {@link Cogl.StereoMode} specifying which stereo buffers               should be drawn tow.
+         * @since 1.20
          */
         set_stereo_mode(stereo_mode: StereoMode): void;
 
@@ -5534,12 +5639,14 @@ export namespace Cogl {
          * @param y The top-left y coordinate of the viewport origin (only integers     supported currently)
          * @param width The width of the viewport (only integers supported currently)
          * @param height The height of the viewport (only integers supported currently)
+         * @since 1.8
          */
         set_viewport(x: number, y: number, width: number, height: number): void;
 
         /**
          * Multiplies the current model-view matrix by the given matrix.
          * @param matrix the matrix to multiply with the current model-view
+         * @since 1.10
          */
         transform(matrix: Matrix): void;
 
@@ -5549,6 +5656,7 @@ export namespace Cogl {
          * @param x Distance to translate along the x-axis
          * @param y Distance to translate along the y-axis
          * @param z Distance to translate along the z-axis
+         * @since 1.10
          */
         translate(x: number, y: number, z: number): void;
     }
@@ -5600,6 +5708,7 @@ export namespace Cogl {
          * `cogl_framebuffer_resolve_samples_region()` apis with single-sample
          * rendering.</note>
          * @param n The minimum number of samples per pixel
+         * @since 1.10
          */
         set_samples_per_pixel(n: number): void;
 
@@ -5610,6 +5719,7 @@ export namespace Cogl {
          * does not support stereo, then creation of the framebuffer will
          * fail.
          * @param enabled Whether framebuffers are created with stereo buffers
+         * @since 1.20
          */
         set_stereo_enabled(enabled: Bool): void;
 
@@ -5618,6 +5728,7 @@ export namespace Cogl {
          * template should enable or disable swap throttling according to the given
          * `throttled` argument.
          * @param throttled Whether throttling should be enabled
+         * @since 1.10
          */
         set_swap_throttled(throttled: Bool): void;
     }
@@ -5654,6 +5765,7 @@ export namespace Cogl {
         /**
          * Gets the height of the output in pixels.
          * @returns the height of the output in pixels
+         * @since 1.14
          */
         get_height(): number;
 
@@ -5663,6 +5775,7 @@ export namespace Cogl {
          * nominal resolution rather than the actual physical size of the
          * output device.
          * @returns the height of the output in millimeters. A value  of 0 indicates that the height is unknown
+         * @since 1.14
          */
         get_mm_height(): number;
 
@@ -5672,6 +5785,7 @@ export namespace Cogl {
          * nominal resolution rather than the actual physical size of the
          * output device.
          * @returns the height of the output in millimeters. A value  of 0 indicates the width is unknown
+         * @since 1.14
          */
         get_mm_width(): number;
 
@@ -5679,6 +5793,7 @@ export namespace Cogl {
          * Gets the number of times per second that the output device refreshes
          * the display contents.
          * @returns the refresh rate of the output device. A value of zero  indicates that the refresh rate is unknown.
+         * @since 1.14
          */
         get_refresh_rate(): number;
 
@@ -5687,12 +5802,14 @@ export namespace Cogl {
          * with different colors, returns the layout of the subpixel
          * components.
          * @returns the order of subpixel components for the output device
+         * @since 1.14
          */
         get_subpixel_order(): SubpixelOrder;
 
         /**
          * Gets the width of the output in pixels.
          * @returns the width of the output in pixels
+         * @since 1.14
          */
         get_width(): number;
 
@@ -5700,6 +5817,7 @@ export namespace Cogl {
          * Gets the X position of the output with respect to the coordinate
          * system of the screen.
          * @returns the X position of the output as a pixel offset  from the left side of the screen coordinate space
+         * @since 1.14
          */
         get_x(): number;
 
@@ -5707,6 +5825,7 @@ export namespace Cogl {
          * Gets the Y position of the output with respect to the coordinate
          * system of the screen.
          * @returns the Y position of the output as a pixel offset  from the top side of the screen coordinate space
+         * @since 1.14
          */
         get_y(): number;
     }
@@ -5750,6 +5869,7 @@ export namespace Cogl {
          * and need to be added with `cogl_pipeline_add_snippet()` instead.
          * @param layer The layer to hook the snippet to
          * @param snippet A {@link Cogl.Snippet}
+         * @since 1.10
          */
         add_layer_snippet(layer: number, snippet: Snippet): void;
 
@@ -5759,6 +5879,7 @@ export namespace Cogl {
          * `snippet`. Note that some hook points are specific to a layer and
          * must be added with `cogl_pipeline_add_layer_snippet()` instead.
          * @param snippet The {@link Cogl.Snippet} to add to the vertex processing hook
+         * @since 1.10
          */
         add_snippet(snippet: Snippet): void;
 
@@ -5772,33 +5893,39 @@ export namespace Cogl {
          * keep track of a pipelines ancestry which we may use to help minimize GPU
          * state changes.
          * @returns a pointer to the newly allocated {@link Cogl.Pipeline}
+         * @since 2.0
          */
         copy(): Pipeline;
 
         /**
          * Iterates all the layer indices of the given `pipeline`.
          * @param callback A {@link Cogl.PipelineLayerCallback} to be            called for each layer index
+         * @since 2.0
          */
         foreach_layer(callback: PipelineLayerCallback): void;
 
         /**
          * @returns The alpha test function of `pipeline`.
+         * @since 2.0
          */
         get_alpha_test_function(): PipelineAlphaFunc;
 
         /**
          * @returns The alpha test reference value of `pipeline`.
+         * @since 2.0
          */
         get_alpha_test_reference(): number;
 
         /**
          * Retrieves the current ambient color for `pipeline`
          * @param ambient The location to store the ambient color
+         * @since 2.0
          */
         get_ambient(ambient: Color): void;
 
         /**
          * Retrieves the current pipeline color.
+         * @since 2.0
          */
         get_color(): Color;
 
@@ -5807,29 +5934,34 @@ export namespace Cogl {
          * current framebuffer. Each bit set in the mask means that the
          * corresponding color would be written.
          * @returns A {@link Cogl.ColorMask}
+         * @since 1.8
          */
         get_color_mask(): ColorMask;
 
         /**
          * @returns the cull face mode that was previously set with `cogl_pipeline_set_cull_face_mode()`. Status: Unstable
+         * @since 2.0
          */
         get_cull_face_mode(): PipelineCullFaceMode;
 
         /**
          * Retrieves the current depth state configuration for the given
          * `pipeline` as previously set using `cogl_pipeline_set_depth_state()`.
+         * @since 2.0
          */
         get_depth_state(): DepthState;
 
         /**
          * Retrieves the current diffuse color for `pipeline`
          * @param diffuse The location to store the diffuse color
+         * @since 2.0
          */
         get_diffuse(diffuse: Color): void;
 
         /**
          * Retrieves the pipelines current emission color.
          * @param emission The location to store the emission color
+         * @since 2.0
          */
         get_emission(emission: Color): void;
 
@@ -5842,6 +5974,7 @@ export namespace Cogl {
          * {@link Cogl.Winding.CLOCKWISE} sets them to be clockwise. The default is
          * {@link Cogl.Winding.COUNTER_CLOCKWISE}.
          * @returns The `pipeline` front face winding Status: Unstable
+         * @since 2.0
          */
         get_front_face_winding(): Winding;
 
@@ -5854,6 +5987,7 @@ export namespace Cogl {
          * changed using `cogl_pipeline_set_layer_filters()`.
          * @param layer_index the layer number to change.
          * @returns The magnification {@link Cogl.PipelineFilter} for the               specified layer.
+         * @since 1.10
          */
         get_layer_mag_filter(layer_index: number): PipelineFilter;
 
@@ -5866,6 +6000,7 @@ export namespace Cogl {
          * changed using `cogl_pipeline_set_layer_filters()`.
          * @param layer_index the layer number to change.
          * @returns The minification {@link Cogl.PipelineFilter} for the               specified layer.
+         * @since 1.10
          */
         get_layer_min_filter(layer_index: number): PipelineFilter;
 
@@ -5874,12 +6009,14 @@ export namespace Cogl {
          * texture layer.
          * @param layer_index the layer number to check.
          * @returns whether the texture coordinates will be replaced with point sprite coordinates.
+         * @since 2.0
          */
         get_layer_point_sprite_coords_enabled(layer_index: number): Bool;
 
         /**
          * @param layer_index the index of the layer
          * @returns the texture that was set for the   given layer of the pipeline or `null` if no texture was set.
+         * @since 1.10
          */
         get_layer_texture(layer_index: number): Texture;
 
@@ -5888,6 +6025,7 @@ export namespace Cogl {
          * layer.
          * @param layer_index the layer number to change.
          * @returns the wrap mode for the 'p' coordinate of texture lookups on this layer.
+         * @since 1.6
          */
         get_layer_wrap_mode_p(layer_index: number): PipelineWrapMode;
 
@@ -5896,6 +6034,7 @@ export namespace Cogl {
          * layer.
          * @param layer_index the layer number to change.
          * @returns the wrap mode for the 's' coordinate of texture lookups on this layer.
+         * @since 1.6
          */
         get_layer_wrap_mode_s(layer_index: number): PipelineWrapMode;
 
@@ -5904,17 +6043,20 @@ export namespace Cogl {
          * layer.
          * @param layer_index the layer number to change.
          * @returns the wrap mode for the 't' coordinate of texture lookups on this layer.
+         * @since 1.6
          */
         get_layer_wrap_mode_t(layer_index: number): PipelineWrapMode;
 
         /**
          * Retrieves the number of layers defined for the given `pipeline`
          * @returns the number of layers
+         * @since 2.0
          */
         get_n_layers(): number;
 
         /**
          * @returns `true` if the pipeline has per-vertex point size   enabled or `false` otherwise. The per-vertex point size can be   enabled with `cogl_pipeline_set_per_vertex_point_size()`.
+         * @since 2.0
          */
         get_per_vertex_point_size(): Bool;
 
@@ -5922,18 +6064,21 @@ export namespace Cogl {
          * Get the size of points drawn when {@link Cogl.VerticesMode.POINTS} is
          * used with the vertex buffer API.
          * @returns the point size of the `pipeline`.
+         * @since 2.0
          */
         get_point_size(): number;
 
         /**
          * Retrieves the pipelines current emission color.
          * @returns The pipelines current shininess value
+         * @since 2.0
          */
         get_shininess(): number;
 
         /**
          * Retrieves the pipelines current specular color.
          * @param specular The location to store the specular color
+         * @since 2.0
          */
         get_specular(specular: Color): void;
 
@@ -5949,6 +6094,7 @@ export namespace Cogl {
          * before calling this function.
          * @param uniform_name The name of a uniform
          * @returns A integer representing the location of the given uniform.
+         * @since 2.0
          */
         get_uniform_location(uniform_name: string): number;
 
@@ -5956,12 +6102,14 @@ export namespace Cogl {
          * Queries what user program has been associated with the given
          * `pipeline` using `cogl_pipeline_set_user_program()`.
          * @returns The current user program or `COGL_INVALID_HANDLE`.
+         * @since 2.0
          */
         get_user_program(): Handle;
 
         /**
          * This function removes a layer from your pipeline
          * @param layer_index Specifies the layer you want to remove
+         * @since 1.10
          */
         remove_layer(layer_index: number): void;
 
@@ -5975,6 +6123,7 @@ export namespace Cogl {
          * The default is {@link Cogl.PipelineAlphaFunc.ALWAYS}
          * @param alpha_func A `CoglPipelineAlphaFunc` constant
          * @param alpha_reference A reference point that the chosen alpha function uses   to compare incoming fragments to.
+         * @since 2.0
          */
         set_alpha_test_function(alpha_func: PipelineAlphaFunc, alpha_reference: number): void;
 
@@ -5988,6 +6137,7 @@ export namespace Cogl {
          * 
          * The default value is (0.2, 0.2, 0.2, 1.0)
          * @param ambient The components of the desired ambient color
+         * @since 2.0
          */
         set_ambient(ambient: Color): void;
 
@@ -5999,6 +6149,7 @@ export namespace Cogl {
          * 
          * The default diffuse color is (0.8, 0.8, 0.8, 1.0)
          * @param color The components of the desired ambient and diffuse colors
+         * @since 2.0
          */
         set_ambient_and_diffuse(color: Color): void;
 
@@ -6070,6 +6221,7 @@ export namespace Cogl {
          * is in premultiplied form.
          * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>   describing the desired blend function.
          * @returns `true` if the blend string was successfully parsed, and the   described blending is supported by the underlying driver/hardware. If   there was an error, `false` is returned and `error` is set accordingly (if   present).
+         * @since 2.0
          */
         set_blend(blend_string: string): Bool;
 
@@ -6077,6 +6229,7 @@ export namespace Cogl {
          * When blending is setup to reference a CONSTANT blend factor then
          * blending will depend on the constant set with this function.
          * @param constant_color The constant color you want
+         * @since 2.0
          */
         set_blend_constant(constant_color: Color): void;
 
@@ -6090,6 +6243,7 @@ export namespace Cogl {
          * 
          * The default value is (1.0, 1.0, 1.0, 1.0)
          * @param color The components of the color
+         * @since 2.0
          */
         set_color(color: Color): void;
 
@@ -6101,6 +6255,7 @@ export namespace Cogl {
          * @param green The green component
          * @param blue The blue component
          * @param alpha The alpha component
+         * @since 2.0
          */
         set_color4f(red: number, green: number, blue: number, alpha: number): void;
 
@@ -6112,6 +6267,7 @@ export namespace Cogl {
          * @param green The green component
          * @param blue The blue component
          * @param alpha The alpha component
+         * @since 2.0
          */
         set_color4ub(red: number, green: number, blue: number, alpha: number): void;
 
@@ -6120,6 +6276,7 @@ export namespace Cogl {
          * current framebuffer. If a bit is set in `color_mask` that means that
          * color will be written.
          * @param color_mask A {@link Cogl.ColorMask} of which color channels to write to              the current framebuffer.
+         * @since 1.8
          */
         set_color_mask(color_mask: ColorMask): void;
 
@@ -6139,6 +6296,7 @@ export namespace Cogl {
          * 
          * Status: Unstable
          * @param cull_face_mode The new mode to set
+         * @since 2.0
          */
         set_cull_face_mode(cull_face_mode: PipelineCullFaceMode): void;
 
@@ -6152,6 +6310,7 @@ export namespace Cogl {
          * it is possible for this function to fail and report an `error`.
          * @param state A {@link Cogl.DepthState} struct
          * @returns TRUE if the GPU supports all the given `state` else `false`          and returns an `error`.
+         * @since 2.0
          */
         set_depth_state(state: DepthState): Bool;
 
@@ -6162,6 +6321,7 @@ export namespace Cogl {
          * 
          * The default value is (0.8, 0.8, 0.8, 1.0)
          * @param diffuse The components of the desired diffuse color
+         * @since 2.0
          */
         set_diffuse(diffuse: Color): void;
 
@@ -6172,6 +6332,7 @@ export namespace Cogl {
          * 
          * The default value is (0.0, 0.0, 0.0, 1.0)
          * @param emission The components of the desired emissive color
+         * @since 2.0
          */
         set_emission(emission: Color): void;
 
@@ -6186,6 +6347,7 @@ export namespace Cogl {
          * 
          * Status: Unstable
          * @param front_winding the winding order
+         * @since 2.0
          */
         set_front_face_winding(front_winding: Winding): void;
 
@@ -6269,6 +6431,7 @@ export namespace Cogl {
          * @param layer_index Specifies the layer you want define a combine function for
          * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>    describing the desired texture combine function.
          * @returns `true` if the blend string was successfully parsed, and the   described texture combining is supported by the underlying driver and   or hardware. On failure, `false` is returned and `error` is set
+         * @since 2.0
          */
         set_layer_combine(layer_index: number, blend_string: string): Bool;
 
@@ -6277,6 +6440,7 @@ export namespace Cogl {
          * description then you can use this function to define its value.
          * @param layer_index Specifies the layer you want to specify a constant used               for texture combining
          * @param constant The constant color you want
+         * @since 2.0
          */
         set_layer_combine_constant(layer_index: number, constant: Color): void;
 
@@ -6291,6 +6455,7 @@ export namespace Cogl {
          * @param layer_index the layer number to change.
          * @param min_filter the filter used when scaling a texture down.
          * @param mag_filter the filter used when magnifying a texture.
+         * @since 1.10
          */
         set_layer_filters(layer_index: number, min_filter: PipelineFilter, mag_filter: PipelineFilter): void;
 
@@ -6299,6 +6464,7 @@ export namespace Cogl {
          * and rotate a single layer of a pipeline used to fill your geometry.
          * @param layer_index the index for the layer inside `pipeline`
          * @param matrix the transformation matrix for the layer
+         * @since 1.10
          */
         set_layer_matrix(layer_index: number, matrix: Matrix): void;
 
@@ -6316,6 +6482,7 @@ export namespace Cogl {
          * internal texture type state for efficiency.
          * @param layer_index The layer number to modify
          * @param texture_type The type of the default texture to use
+         * @since 1.10
          */
         set_layer_null_texture(layer_index: number, texture_type: TextureType): void;
 
@@ -6333,6 +6500,7 @@ export namespace Cogl {
          * @param layer_index the layer number to change.
          * @param enable whether to enable point sprite coord generation.
          * @returns `true` if the function succeeds, `false` otherwise.
+         * @since 2.0
          */
         set_layer_point_sprite_coords_enabled(layer_index: number, enable: Bool): Bool;
 
@@ -6350,6 +6518,7 @@ export namespace Cogl {
          * `cogl_pipeline_set_layer_wrap_mode_p()` separately.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
+         * @since 2.0
          */
         set_layer_wrap_mode(layer_index: number, mode: PipelineWrapMode): void;
 
@@ -6358,6 +6527,7 @@ export namespace Cogl {
          * this layer. 'p' is the third coordinate.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
+         * @since 2.0
          */
         set_layer_wrap_mode_p(layer_index: number, mode: PipelineWrapMode): void;
 
@@ -6365,6 +6535,7 @@ export namespace Cogl {
          * Sets the wrap mode for the 's' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
+         * @since 2.0
          */
         set_layer_wrap_mode_s(layer_index: number, mode: PipelineWrapMode): void;
 
@@ -6372,6 +6543,7 @@ export namespace Cogl {
          * Sets the wrap mode for the 't' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
+         * @since 2.0
          */
         set_layer_wrap_mode_t(layer_index: number, mode: PipelineWrapMode): void;
 
@@ -6393,6 +6565,7 @@ export namespace Cogl {
          * a `CoglError`.
          * @param enable whether to enable per-vertex point size
          * @returns `true` if the change suceeded or `false` otherwise
+         * @since 2.0
          */
         set_per_vertex_point_size(enable: Bool): Bool;
 
@@ -6410,6 +6583,7 @@ export namespace Cogl {
          * if an application wants to draw points it must make sure to use a
          * pipeline that has an explicit point size set on it.
          * @param point_size the new point size.
+         * @since 2.0
          */
         set_point_size(point_size: number): void;
 
@@ -6421,6 +6595,7 @@ export namespace Cogl {
          * 
          * The default value is 0.0
          * @param shininess The desired shininess; must be >= 0.0
+         * @since 2.0
          */
         set_shininess(shininess: number): void;
 
@@ -6431,6 +6606,7 @@ export namespace Cogl {
          * 
          * The default value is (0.0, 0.0, 0.0, 1.0)
          * @param specular The components of the desired specular color
+         * @since 2.0
          */
         set_specular(specular: Color): void;
 
@@ -6447,6 +6623,7 @@ export namespace Cogl {
          * uniform.
          * @param uniform_location The uniform's location identifier
          * @param value The new value for the uniform
+         * @since 2.0
          */
         set_uniform_1f(uniform_location: number, value: number): void;
 
@@ -6463,6 +6640,7 @@ export namespace Cogl {
          * uniform or a sampler uniform.
          * @param uniform_location The uniform's location identifier
          * @param value The new value for the uniform
+         * @since 2.0
          */
         set_uniform_1i(uniform_location: number, value: number): void;
 
@@ -6483,6 +6661,7 @@ export namespace Cogl {
          * @param n_components The number of components in the corresponding uniform's type
          * @param count The number of values to set
          * @param value Pointer to the new values to set
+         * @since 2.0
          */
         set_uniform_float(uniform_location: number, n_components: number, count: number, value: number): void;
 
@@ -6503,6 +6682,7 @@ export namespace Cogl {
          * @param n_components The number of components in the corresponding uniform's type
          * @param count The number of values to set
          * @param value Pointer to the new values to set
+         * @since 2.0
          */
         set_uniform_int(uniform_location: number, n_components: number, count: number, value: number): void;
 
@@ -6529,6 +6709,7 @@ export namespace Cogl {
          * @param count The number of values to set
          * @param transpose Whether to transpose the matrix
          * @param value Pointer to the new values to set
+         * @since 2.0
          */
         set_uniform_matrix(uniform_location: number, dimensions: number, count: number, transpose: Bool, value: number): void;
 
@@ -6574,6 +6755,7 @@ export namespace Cogl {
          * {@link Cogl.FeatureFlags.SHADERS_GLSL} or {@link Cogl.FeatureFlags.SHADERS_ARBFP} before
          * using the cogl_program or cogl_shader API.
          * @param program A {@link Cogl.Handle} to a linked CoglProgram
+         * @since 2.0
          */
         set_user_program(program: Handle): void;
     }
@@ -6665,6 +6847,7 @@ export namespace Cogl {
          * levels. By default auto mipmapping is enabled.
          * @param primitive_texture A {@link Cogl.PrimitiveTexture}
          * @param value The new value for whether to auto mipmap
+         * @since 2.0
          */
         static texture_set_auto_mipmap(primitive_texture: PrimitiveTexture, value: Bool): void;
 
@@ -6674,6 +6857,7 @@ export namespace Cogl {
          * is a shallow copy which means it will use the same attributes and
          * attribute buffers as the original primitive.
          * @returns the new primitive
+         * @since 1.10
          */
         copy(): Primitive;
 
@@ -6688,12 +6872,14 @@ export namespace Cogl {
          * are associated with layers of the given `pipeline`.
          * @param framebuffer A destination {@link Cogl.Framebuffer}
          * @param pipeline A {@link Cogl.Pipeline} state object
+         * @since 1.16
          */
         draw(framebuffer: Framebuffer, pipeline: Pipeline): void;
 
         /**
          * Iterates all the attributes of the given {@link Cogl.Primitive}.
          * @param callback A {@link Cogl.PrimitiveAttributeCallback} to be            called for each attribute
+         * @since 1.10
          */
         foreach_attribute(callback: PrimitiveAttributeCallback): void;
 
@@ -6701,6 +6887,7 @@ export namespace Cogl {
 
         /**
          * @returns the indices that were set with `cogl_primitive_set_indices()` or `null` if no indices were set.
+         * @since 1.10
          */
         get_indices(): Indices;
 
@@ -6720,6 +6907,7 @@ export namespace Cogl {
          * terms of data - associated with the primitive it's just the number
          * of vertices to read and draw.</note>
          * @returns The number of vertices to read when drawing.
+         * @since 1.8
          */
         get_n_vertices(): number;
 
@@ -6727,6 +6915,7 @@ export namespace Cogl {
          * Replaces all the attributes of the given {@link Cogl.Primitive} object.
          * @param attributes an array of {@link Cogl.Attribute} pointers
          * @param n_attributes the number of elements in `attributes`
+         * @since 1.6
          */
         set_attributes(attributes: Attribute, n_attributes: number): void;
 
@@ -6756,6 +6945,7 @@ export namespace Cogl {
          * indices to start drawing from.</note>
          * @param indices A {@link Cogl.Indices} array
          * @param n_indices The number of indices to reference when drawing
+         * @since 1.10
          */
         set_indices(indices: Indices, n_indices: number): void;
 
@@ -6775,6 +6965,7 @@ export namespace Cogl {
          * terms of data - associated with the primitive it's just the number
          * of vertices to read and draw.</note>
          * @param n_vertices The number of vertices to read when drawing.
+         * @since 1.8
          */
         set_n_vertices(n_vertices: number): void;
     }
@@ -6816,6 +7007,7 @@ export namespace Cogl {
          * Applications should ideally minimize how many of these constraints they
          * depend on to ensure maximum portability.
          * @param constraint A {@link Cogl.RendererConstraint} to add
+         * @since 1.10
          */
         add_constraint(constraint: RendererConstraint): void;
 
@@ -6824,6 +7016,7 @@ export namespace Cogl {
          * `renderer`.
          * @param onscreen_template A {@link Cogl.OnscreenTemplate}
          * @returns `true` if the `onscreen_template` can be supported,               else `false`.
+         * @since 1.10
          */
         check_onscreen_template(onscreen_template: OnscreenTemplate): Bool;
 
@@ -6833,6 +7026,7 @@ export namespace Cogl {
          * any given constraint criteria can be satisfied and that a
          * usable driver and window system backend can be found.
          * @returns `true` if there was no error while connecting the               given `renderer`. `false` if there was an error.
+         * @since 1.10
          */
         connect(): Bool;
 
@@ -6841,6 +7035,7 @@ export namespace Cogl {
          * passes a corresponding {@link Cogl.Output} pointer to the given `callback`
          * for each one, along with the given `user_data`.
          * @param callback A {@link Cogl.OutputCallback} to be called for            each display output
+         * @since 1.14
          */
         foreach_output(callback: OutputCallback): void;
 
@@ -6848,12 +7043,14 @@ export namespace Cogl {
          * Queries what underlying driver is being used by Cogl.
          * 
          * This may only be called on a connected {@link Cogl.Renderer}.
+         * @since 1.10
          */
         get_driver(): Driver;
 
         /**
          * Queries how many texture units can be used from fragment programs
          * @returns the number of texture image units.
+         * @since 1.8
          */
         get_n_fragment_texture_units(): number;
 
@@ -6871,6 +7068,7 @@ export namespace Cogl {
          * Applications should ideally minimize how many of these constraints they
          * depend on to ensure maximum portability.
          * @param constraint A {@link Cogl.RendererConstraint} to remove
+         * @since 1.10
          */
         remove_constraint(constraint: RendererConstraint): void;
 
@@ -6885,6 +7083,7 @@ export namespace Cogl {
          * 
          * This may only be called on an un-connected {@link Cogl.Renderer}.
          * @param driver 
+         * @since 1.10
          */
         set_driver(driver: Driver): void;
 
@@ -6934,26 +7133,31 @@ export namespace Cogl {
         // Methods
         /**
          * @returns the source string that was set with   `cogl_snippet_set_declarations()` or `null` if none was set.
+         * @since 1.10
          */
         get_declarations(): string;
 
         /**
          * @returns the hook that was set when `cogl_snippet_new()` was   called.
+         * @since 1.10
          */
         get_hook(): SnippetHook;
 
         /**
          * @returns the source string that was set with   `cogl_snippet_set_post()` or `null` if none was set.
+         * @since 1.10
          */
         get_post(): string;
 
         /**
          * @returns the source string that was set with   `cogl_snippet_set_pre()` or `null` if none was set.
+         * @since 1.10
          */
         get_pre(): string;
 
         /**
          * @returns the source string that was set with   `cogl_snippet_set_replace()` or `null` if none was set.
+         * @since 1.10
          */
         get_replace(): string;
 
@@ -6967,6 +7171,7 @@ export namespace Cogl {
          * to its first pipeline. After that the snippet should be considered
          * immutable.
          * @param declarations The new source string for the declarations section   of this snippet.
+         * @since 1.10
          */
         set_declarations(declarations: string): void;
 
@@ -6980,6 +7185,7 @@ export namespace Cogl {
          * to its first pipeline. After that the snippet should be considered
          * immutable.
          * @param post The new source string for the post section of this snippet.
+         * @since 1.10
          */
         set_post(post: string): void;
 
@@ -6993,6 +7199,7 @@ export namespace Cogl {
          * to its first pipeline. After that the snippet should be considered
          * immutable.
          * @param pre The new source string for the pre section of this snippet.
+         * @since 1.10
          */
         set_pre(pre: string): void;
 
@@ -7006,6 +7213,7 @@ export namespace Cogl {
          * to its first pipeline. After that the snippet should be considered
          * immutable.
          * @param replace The new source string for the replace section of this snippet.
+         * @since 1.10
          */
         set_replace(replace: string): void;
     }
@@ -7046,6 +7254,7 @@ export namespace Cogl {
          * from.  This is the texture that was passed to
          * `cogl_sub_texture_new()` as the parent_texture argument.
          * @returns The parent texture that `sub_texture`               derives its content from.
+         * @since 1.10
          */
         get_parent(): Texture;
     }
@@ -7161,6 +7370,7 @@ export namespace Cogl {
          * is {@link Cogl.TextureComponents.RGBA}. The other constructors which take
          * a %CoglBitmap or a data pointer default to the same components as
          * the pixel format of the data.
+         * @since 1.18
          */
         get_components(): TextureComponents;
 
@@ -7207,6 +7417,7 @@ export namespace Cogl {
          * 
          * By default the pre-multipled state is `TRUE`.
          * @returns `true` if red, green and blue components are               internally stored pre-multiplied by the alpha               value or `false` if not.
+         * @since 1.18
          */
         get_premultiplied(): Bool;
 
@@ -7244,6 +7455,7 @@ export namespace Cogl {
          * an image format as long as {@link Cogl.TextureComponents.RG} isn't used
          * as the texture's components.
          * @param components 
+         * @since 1.18
          */
         set_components(components: TextureComponents): void;
 
@@ -7321,6 +7533,7 @@ export namespace Cogl {
          * 
          * By default the `premultipled` state is `TRUE`.
          * @param premultiplied Whether any internally stored red, green or blue                 components are pre-multiplied by an alpha                 component.
+         * @since 1.18
          */
         set_premultiplied(premultiplied: Bool): void;
 
@@ -7358,6 +7571,7 @@ export namespace Cogl {
          * @param dst_height height of destination region to write. (Must be less   than or equal to the bitmap height)
          * @param bitmap The source bitmap to read from
          * @returns `true` if the subregion upload was successful, and   `false` otherwise
+         * @since 1.8
          */
         set_region_from_bitmap(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, bitmap: Bitmap): Bool;
     }
@@ -7429,6 +7643,7 @@ export namespace Cogl {
          * is {@link Cogl.TextureComponents.RGBA}. The other constructors which take
          * a %CoglBitmap or a data pointer default to the same components as
          * the pixel format of the data.
+         * @since 1.18
          */
         get_components(): TextureComponents;
 
@@ -7475,6 +7690,7 @@ export namespace Cogl {
          * 
          * By default the pre-multipled state is `TRUE`.
          * @returns `true` if red, green and blue components are               internally stored pre-multiplied by the alpha               value or `false` if not.
+         * @since 1.18
          */
         get_premultiplied(): Bool;
 
@@ -7512,6 +7728,7 @@ export namespace Cogl {
          * an image format as long as {@link Cogl.TextureComponents.RG} isn't used
          * as the texture's components.
          * @param components 
+         * @since 1.18
          */
         set_components(components: TextureComponents): void;
 
@@ -7589,6 +7806,7 @@ export namespace Cogl {
          * 
          * By default the `premultipled` state is `TRUE`.
          * @param premultiplied Whether any internally stored red, green or blue                 components are pre-multiplied by an alpha                 component.
+         * @since 1.18
          */
         set_premultiplied(premultiplied: Bool): void;
 
@@ -7626,6 +7844,7 @@ export namespace Cogl {
          * @param dst_height height of destination region to write. (Must be less   than or equal to the bitmap height)
          * @param bitmap The source bitmap to read from
          * @returns `true` if the subregion upload was successful, and   `false` otherwise
+         * @since 1.8
          */
         set_region_from_bitmap(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, bitmap: Bitmap): Bool;
     }
@@ -7695,6 +7914,7 @@ export namespace Cogl {
          * is {@link Cogl.TextureComponents.RGBA}. The other constructors which take
          * a %CoglBitmap or a data pointer default to the same components as
          * the pixel format of the data.
+         * @since 1.18
          */
         get_components(): TextureComponents;
 
@@ -7741,6 +7961,7 @@ export namespace Cogl {
          * 
          * By default the pre-multipled state is `TRUE`.
          * @returns `true` if red, green and blue components are               internally stored pre-multiplied by the alpha               value or `false` if not.
+         * @since 1.18
          */
         get_premultiplied(): Bool;
 
@@ -7778,6 +7999,7 @@ export namespace Cogl {
          * an image format as long as {@link Cogl.TextureComponents.RG} isn't used
          * as the texture's components.
          * @param components 
+         * @since 1.18
          */
         set_components(components: TextureComponents): void;
 
@@ -7855,6 +8077,7 @@ export namespace Cogl {
          * 
          * By default the `premultipled` state is `TRUE`.
          * @param premultiplied Whether any internally stored red, green or blue                 components are pre-multiplied by an alpha                 component.
+         * @since 1.18
          */
         set_premultiplied(premultiplied: Bool): void;
 
@@ -7892,6 +8115,7 @@ export namespace Cogl {
          * @param dst_height height of destination region to write. (Must be less   than or equal to the bitmap height)
          * @param bitmap The source bitmap to read from
          * @returns `true` if the subregion upload was successful, and   `false` otherwise
+         * @since 1.8
          */
         set_region_from_bitmap(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, bitmap: Bitmap): Bool;
     }
@@ -7939,6 +8163,7 @@ export namespace Cogl {
          * implemented as zero-copy operation so it implies the updates are
          * working efficiently.
          * @returns `true` if the texture is using an efficient extension   and `false` otherwise
+         * @since 1.4
          */
         is_using_tfp_extension(): Bool;
 
@@ -7952,6 +8177,7 @@ export namespace Cogl {
          * damage events.
          * @param damage A X11 Damage object or 0
          * @param report_level The report level which describes how to interpret   the damage events. This should match the level that the damage   object was created with.
+         * @since 1.4
          */
         set_damage_object(damage: number, report_level: TexturePixmapX11ReportLevel): void;
 
@@ -7963,6 +8189,7 @@ export namespace Cogl {
          * @param y y coordinate of the area to update
          * @param width width of the area to update
          * @param height height of the area to update
+         * @since 1.4
          */
         update_area(x: number, y: number, width: number, height: number): void;
     }
@@ -8032,6 +8259,7 @@ export namespace Cogl {
          * is {@link Cogl.TextureComponents.RGBA}. The other constructors which take
          * a %CoglBitmap or a data pointer default to the same components as
          * the pixel format of the data.
+         * @since 1.18
          */
         get_components(): TextureComponents;
 
@@ -8078,6 +8306,7 @@ export namespace Cogl {
          * 
          * By default the pre-multipled state is `TRUE`.
          * @returns `true` if red, green and blue components are               internally stored pre-multiplied by the alpha               value or `false` if not.
+         * @since 1.18
          */
         get_premultiplied(): Bool;
 
@@ -8115,6 +8344,7 @@ export namespace Cogl {
          * an image format as long as {@link Cogl.TextureComponents.RG} isn't used
          * as the texture's components.
          * @param components 
+         * @since 1.18
          */
         set_components(components: TextureComponents): void;
 
@@ -8192,6 +8422,7 @@ export namespace Cogl {
          * 
          * By default the `premultipled` state is `TRUE`.
          * @param premultiplied Whether any internally stored red, green or blue                 components are pre-multiplied by an alpha                 component.
+         * @since 1.18
          */
         set_premultiplied(premultiplied: Bool): void;
 
@@ -8229,6 +8460,7 @@ export namespace Cogl {
          * @param dst_height height of destination region to write. (Must be less   than or equal to the bitmap height)
          * @param bitmap The source bitmap to read from
          * @returns `true` if the subregion upload was successful, and   `false` otherwise
+         * @since 1.8
          */
         set_region_from_bitmap(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, bitmap: Bitmap): Bool;
     }
@@ -8257,6 +8489,7 @@ export namespace Cogl {
          * parameter, when using {@link Cogl.Color}<!-- -->s as keys in a {@link GLib.HashTable}.
          * @param v1 a {@link Cogl.Color}
          * @param v2 a {@link Cogl.Color}
+         * @since 1.0
          */
         static equal(v1: null, v2: null): Bool;
 
@@ -8266,6 +8499,7 @@ export namespace Cogl {
          * @param hue hue value, in the 0 .. 360 range
          * @param saturation saturation value, in the 0 .. 1 range
          * @param luminance luminance value, in the 0 .. 1 range
+         * @since 1.16
          */
         static init_from_hsl(hue: number, saturation: number, luminance: number): Color;
 
@@ -8273,11 +8507,13 @@ export namespace Cogl {
         /**
          * Creates a copy of `color`
          * @returns a newly-allocated {@link Cogl.Color}. Use `cogl_color_free()`   to free the allocate resources
+         * @since 1.0
          */
         copy(): Color;
 
         /**
          * Frees the resources allocated by `cogl_color_new()` and `cogl_color_copy()`
+         * @since 1.0
          */
         free(): void;
 
@@ -8285,6 +8521,7 @@ export namespace Cogl {
          * Retrieves the alpha channel of `color` as a fixed point
          * value between 0 and 1.0.
          * @returns the alpha channel of the passed color
+         * @since 1.0
          */
         get_alpha(): number;
 
@@ -8292,6 +8529,7 @@ export namespace Cogl {
          * Retrieves the alpha channel of `color` as a byte value
          * between 0 and 255
          * @returns the alpha channel of the passed color
+         * @since 1.0
          */
         get_alpha_byte(): number;
 
@@ -8299,6 +8537,7 @@ export namespace Cogl {
          * Retrieves the alpha channel of `color` as a floating point
          * value between 0.0 and 1.0
          * @returns the alpha channel of the passed color
+         * @since 1.0
          */
         get_alpha_float(): number;
 
@@ -8306,6 +8545,7 @@ export namespace Cogl {
          * Retrieves the blue channel of `color` as a fixed point
          * value between 0 and 1.0.
          * @returns the blue channel of the passed color
+         * @since 1.0
          */
         get_blue(): number;
 
@@ -8313,6 +8553,7 @@ export namespace Cogl {
          * Retrieves the blue channel of `color` as a byte value
          * between 0 and 255
          * @returns the blue channel of the passed color
+         * @since 1.0
          */
         get_blue_byte(): number;
 
@@ -8320,6 +8561,7 @@ export namespace Cogl {
          * Retrieves the blue channel of `color` as a floating point
          * value between 0.0 and 1.0
          * @returns the blue channel of the passed color
+         * @since 1.0
          */
         get_blue_float(): number;
 
@@ -8327,6 +8569,7 @@ export namespace Cogl {
          * Retrieves the green channel of `color` as a fixed point
          * value between 0 and 1.0.
          * @returns the green channel of the passed color
+         * @since 1.0
          */
         get_green(): number;
 
@@ -8334,6 +8577,7 @@ export namespace Cogl {
          * Retrieves the green channel of `color` as a byte value
          * between 0 and 255
          * @returns the green channel of the passed color
+         * @since 1.0
          */
         get_green_byte(): number;
 
@@ -8341,6 +8585,7 @@ export namespace Cogl {
          * Retrieves the green channel of `color` as a floating point
          * value between 0.0 and 1.0
          * @returns the green channel of the passed color
+         * @since 1.0
          */
         get_green_float(): number;
 
@@ -8348,6 +8593,7 @@ export namespace Cogl {
          * Retrieves the red channel of `color` as a fixed point
          * value between 0 and 1.0.
          * @returns the red channel of the passed color
+         * @since 1.0
          */
         get_red(): number;
 
@@ -8355,6 +8601,7 @@ export namespace Cogl {
          * Retrieves the red channel of `color` as a byte value
          * between 0 and 255
          * @returns the red channel of the passed color
+         * @since 1.0
          */
         get_red_byte(): number;
 
@@ -8362,6 +8609,7 @@ export namespace Cogl {
          * Retrieves the red channel of `color` as a floating point
          * value between 0.0 and 1.0
          * @returns the red channel of the passed color
+         * @since 1.0
          */
         get_red_float(): number;
 
@@ -8371,12 +8619,14 @@ export namespace Cogl {
          * @param green value of the green channel, between 0 and 1.0
          * @param blue value of the blue channel, between 0 and 1.0
          * @param alpha value of the alpha channel, between 0 and 1.0
+         * @since 1.4
          */
         init_from_4f(red: number, green: number, blue: number, alpha: number): void;
 
         /**
          * Sets the values of the passed channels into a {@link Cogl.Color}
          * @param color_array a pointer to an array of 4 float color components
+         * @since 1.4
          */
         init_from_4fv(color_array: number): void;
 
@@ -8386,6 +8636,7 @@ export namespace Cogl {
          * @param green value of the green channel, between 0 and 255
          * @param blue value of the blue channel, between 0 and 255
          * @param alpha value of the alpha channel, between 0 and 255
+         * @since 1.4
          */
         init_from_4ub(red: number, green: number, blue: number, alpha: number): void;
 
@@ -8393,42 +8644,49 @@ export namespace Cogl {
          * Converts a non-premultiplied color to a pre-multiplied color. For
          * example, semi-transparent red is (1.0, 0, 0, 0.5) when non-premultiplied
          * and (0.5, 0, 0, 0.5) when premultiplied.
+         * @since 1.0
          */
         premultiply(): void;
 
         /**
          * Sets the alpha channel of `color` to `alpha`.
          * @param alpha a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_alpha(alpha: number): void;
 
         /**
          * Sets the alpha channel of `color` to `alpha`.
          * @param alpha a byte value between 0 and 255
+         * @since 1.4
          */
         set_alpha_byte(alpha: number): void;
 
         /**
          * Sets the alpha channel of `color` to `alpha`.
          * @param alpha a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_alpha_float(alpha: number): void;
 
         /**
          * Sets the blue channel of `color` to `blue`.
          * @param blue a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_blue(blue: number): void;
 
         /**
          * Sets the blue channel of `color` to `blue`.
          * @param blue a byte value between 0 and 255
+         * @since 1.4
          */
         set_blue_byte(blue: number): void;
 
         /**
          * Sets the blue channel of `color` to `blue`.
          * @param blue a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_blue_float(blue: number): void;
 
@@ -8438,6 +8696,8 @@ export namespace Cogl {
          * @param green value of the green channel, between 0 and %1.0
          * @param blue value of the blue channel, between 0 and %1.0
          * @param alpha value of the alpha channel, between 0 and %1.0
+         * @since 1.0
+         * @deprecated since 1.4: Use cogl_color_init_from_4f instead.
          */
         set_from_4f(red: number, green: number, blue: number, alpha: number): void;
 
@@ -8447,42 +8707,50 @@ export namespace Cogl {
          * @param green value of the green channel, between 0 and 255
          * @param blue value of the blue channel, between 0 and 255
          * @param alpha value of the alpha channel, between 0 and 255
+         * @since 1.0
+         * @deprecated since 1.4: Use cogl_color_init_from_4ub instead.
          */
         set_from_4ub(red: number, green: number, blue: number, alpha: number): void;
 
         /**
          * Sets the green channel of `color` to `green`.
          * @param green a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_green(green: number): void;
 
         /**
          * Sets the green channel of `color` to `green`.
          * @param green a byte value between 0 and 255
+         * @since 1.4
          */
         set_green_byte(green: number): void;
 
         /**
          * Sets the green channel of `color` to `green`.
          * @param green a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_green_float(green: number): void;
 
         /**
          * Sets the red channel of `color` to `red`.
          * @param red a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_red(red: number): void;
 
         /**
          * Sets the red channel of `color` to `red`.
          * @param red a byte value between 0 and 255
+         * @since 1.4
          */
         set_red_byte(red: number): void;
 
         /**
          * Sets the red channel of `color` to `red`.
          * @param red a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_red_float(red: number): void;
 
@@ -8491,6 +8759,7 @@ export namespace Cogl {
          * 
          * The `hue` value is in the 0 .. 360 range. The `luminance` and
          * `saturation` values are in the 0 .. 1 range.
+         * @since 1.16
          */
         to_hsl(): [number, number, number];
 
@@ -8498,6 +8767,7 @@ export namespace Cogl {
          * Converts a pre-multiplied color to a non-premultiplied color. For
          * example, semi-transparent red is (0.5, 0, 0, 0.5) when premultiplied
          * and (1.0, 0, 0, 0.5) when non-premultiplied.
+         * @since 1.4
          */
         unpremultiply(): void;
     }
@@ -8533,6 +8803,7 @@ export namespace Cogl {
          * set with `cogl_depth_state_set_range()`.
          * @param near_val A pointer to store the near component of the depth range
          * @param far_val A pointer to store the far component of the depth range
+         * @since 2.0
          */
         get_range(near_val: number, far_val: number): void;
 
@@ -8540,6 +8811,7 @@ export namespace Cogl {
          * Gets the current depth test enabled state as previously set by
          * `cogl_depth_state_set_test_enabled()`.
          * @returns The pipeline's current depth test enabled state.
+         * @since 2.0
          */
         get_test_enabled(): Bool;
 
@@ -8547,6 +8819,7 @@ export namespace Cogl {
          * Gets the current depth test enable state as previously set via
          * `cogl_depth_state_set_test_enabled()`.
          * @returns The current depth test enable state.
+         * @since 2.0
          */
         get_test_function(): DepthTestFunction;
 
@@ -8554,6 +8827,7 @@ export namespace Cogl {
          * Gets the depth writing enable state as set by the corresponding
          * `cogl_depth_state_set_write_enabled()`.
          * @returns The current depth writing enable state
+         * @since 2.0
          */
         get_write_enabled(): Bool;
 
@@ -8562,6 +8836,7 @@ export namespace Cogl {
          * 
          * You should never pass an un initialized {@link Cogl.DepthState} structure
          * to `cogl_pipeline_set_depth_state()`.
+         * @since 2.0
          */
         init(): void;
 
@@ -8594,6 +8869,7 @@ export namespace Cogl {
          * `cogl_pipeline_set_depth_state()`.
          * @param near_val The near component of the desired depth range which will be clamped to the range [0, 1]
          * @param far_val The far component of the desired depth range which will be clamped to the range [0, 1]
+         * @since 2.0
          */
         set_range(near_val: number, far_val: number): void;
 
@@ -8615,6 +8891,7 @@ export namespace Cogl {
          * to then set the state on a {@link Cogl.Pipeline} using
          * `cogl_pipeline_set_depth_state()`
          * @param enable The enable state you want
+         * @since 2.0
          */
         set_test_enabled(enable: Bool): void;
 
@@ -8629,6 +8906,7 @@ export namespace Cogl {
          * to then set the state on a {@link Cogl.Pipeline} using
          * `cogl_pipeline_set_depth_state()`
          * @param _function The {@link Cogl.DepthTestFunction} to set
+         * @since 2.0
          */
         set_test_function(_function: DepthTestFunction): void;
 
@@ -8645,6 +8923,7 @@ export namespace Cogl {
          * to then set the state on a {@link Cogl.Pipeline} using
          * `cogl_pipeline_set_depth_state()`
          * @param enable The enable state you want
+         * @since 2.0
          */
         set_write_enabled(enable: Bool): void;
     }
@@ -8695,6 +8974,7 @@ export namespace Cogl {
          * can be represented with different component rotations</note>
          * @param v1 The first euler angle to compare
          * @param v2 The second euler angle to compare
+         * @since 2.0
          */
         static equal(v1: null, v2: null): Bool;
 
@@ -8704,12 +8984,14 @@ export namespace Cogl {
          * angles of `src`. The newly allocated euler should be freed using
          * `cogl_euler_free()`.
          * @returns A newly allocated {@link Cogl.Euler}
+         * @since 2.0
          */
         copy(): Euler;
 
         /**
          * Frees a {@link Cogl.Euler} that was previously allocated using
          * `cogl_euler_copy()`.
+         * @since 2.0
          */
         free(): void;
 
@@ -8720,6 +9002,7 @@ export namespace Cogl {
          * @param heading Angle to rotate around an object's y axis
          * @param pitch Angle to rotate around an object's x axis
          * @param roll Angle to rotate around an object's z axis
+         * @since 2.0
          */
         init(heading: number, pitch: number, roll: number): void;
 
@@ -8918,6 +9201,7 @@ export namespace Cogl {
          * inverse matrix these are not considered in the comparison.
          * @param v1 A 4x4 transformation matrix
          * @param v2 A 4x4 transformation matrix
+         * @since 1.4
          */
         static equal(v1: null, v2: null): Bool;
 
@@ -8926,12 +9210,14 @@ export namespace Cogl {
          * Allocates a new {@link Cogl.Matrix} on the heap and initializes it with
          * the same values as `matrix`.
          * @returns A newly allocated {@link Cogl.Matrix} which should be freed using `cogl_matrix_free()`
+         * @since 1.6
          */
         copy(): Matrix;
 
         /**
          * Frees a {@link Cogl.Matrix} that was previously allocated via a call to
          * `cogl_matrix_copy()`.
+         * @since 1.6
          */
         free(): void;
 
@@ -8962,6 +9248,7 @@ export namespace Cogl {
          * {@link Cogl.Matrix} so that subsequent requests for the inverse transform may
          * avoid costly inversion calculations.</note>
          * @returns `true` if the inverse was successfully calculated or `false`   for degenerate transformations that can't be inverted (in this case the   `inverse` matrix will simply be initialized with the identity matrix)
+         * @since 1.2
          */
         get_inverse(): [Bool, Matrix];
 
@@ -9011,12 +9298,14 @@ export namespace Cogl {
          * @param tx x coordinate of the translation vector
          * @param ty y coordinate of the translation vector
          * @param tz z coordinate of the translation vector
+         * @since 2.0
          */
         init_translation(tx: number, ty: number, tz: number): void;
 
         /**
          * Determines if the given matrix is an identity matrix.
          * @returns `true` if `matrix` is an identity matrix else `false`
+         * @since 1.8
          */
         is_identity(): Bool;
 
@@ -9056,6 +9345,7 @@ export namespace Cogl {
          * @param world_up_x The X component of the world's up direction vector
          * @param world_up_y The Y component of the world's up direction vector
          * @param world_up_z The Z component of the world's up direction vector
+         * @since 1.8
          */
         look_at(eye_position_x: number, eye_position_y: number, eye_position_z: number, object_x: number, object_y: number, object_z: number, world_up_x: number, world_up_y: number, world_up_z: number): void;
 
@@ -9078,6 +9368,7 @@ export namespace Cogl {
          * @param top The coordinate for the top clipping plane
          * @param near The <emphasis>distance</emphasis> to the near clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
          * @param far The <emphasis>distance</emphasis> to the far clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
+         * @deprecated since 1.10: Use `cogl_matrix_orthographic()`
          */
         ortho(left: number, right: number, bottom: number, top: number, near: number, far: number): void;
 
@@ -9089,6 +9380,7 @@ export namespace Cogl {
          * @param y_2 The y coordinate for the second horizontal clipping plane
          * @param near The <emphasis>distance</emphasis> to the near clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
          * @param far The <emphasis>distance</emphasis> to the far clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
+         * @since 1.10
          */
         orthographic(x_1: number, y_1: number, x_2: number, y_2: number, near: number, far: number): void;
 
@@ -9164,6 +9456,7 @@ export namespace Cogl {
          * Multiplies `matrix` with a rotation transformation described by the
          * given {@link Cogl.Euler}.
          * @param euler A euler describing a rotation
+         * @since 2.0
          */
         rotate_euler(euler: Euler): void;
 
@@ -9171,6 +9464,7 @@ export namespace Cogl {
          * Multiplies `matrix` with a rotation transformation described by the
          * given {@link Cogl.Quaternion}.
          * @param quaternion A quaternion describing a rotation
+         * @since 2.0
          */
         rotate_quaternion(quaternion: Quaternion): void;
 
@@ -9252,6 +9546,7 @@ export namespace Cogl {
         /**
          * Replaces `matrix` with its transpose. Ie, every element (i,j) in the
          * new matrix is taken from element (j,i) in the old matrix.
+         * @since 1.10
          */
         transpose(): void;
 
@@ -9275,6 +9570,7 @@ export namespace Cogl {
          * @param z_2d The distance to the 2D plane. (Should always be positive and   be between `z_near` and the z_far value that was passed to   `cogl_matrix_frustum()`)
          * @param width_2d The width of the 2D coordinate system
          * @param height_2d The height of the 2D coordinate system
+         * @since 1.8
          */
         view_2d_in_frustum(left: number, right: number, bottom: number, top: number, z_near: number, z_2d: number, width_2d: number, height_2d: number): void;
 
@@ -9296,6 +9592,7 @@ export namespace Cogl {
          * @param z_2d The distance to the 2D plane. (Should always be positive and   be between `z_near` and the z_far value that was passed to   `cogl_matrix_frustum()`)
          * @param width_2d The width of the 2D coordinate system
          * @param height_2d The height of the 2D coordinate system
+         * @since 1.8
          */
         view_2d_in_perspective(fov_y: number, aspect: number, z_near: number, z_2d: number, width_2d: number, height_2d: number): void;
     }
@@ -9594,6 +9891,7 @@ export namespace Cogl {
          * equal.
          * @param v1 A {@link Cogl.Quaternion}
          * @param v2 A {@link Cogl.Quaternion}
+         * @since 2.0
          */
         static equal(v1: null, v2: null): Bool;
 
@@ -9602,22 +9900,31 @@ export namespace Cogl {
          * Allocates a new {@link Cogl.Quaternion} on the stack and initializes it with
          * the same values as `src`.
          * @returns A newly allocated {@link Cogl.Quaternion} which should be freed using `cogl_quaternion_free()`
+         * @since 2.0
          */
         copy(): Quaternion;
 
         /**
          * @param b A {@link Cogl.Quaternion}
+         * @since 2.0
          */
         dot_product(b: Quaternion): number;
 
         /**
          * Frees a {@link Cogl.Quaternion} that was previously allocated via
          * `cogl_quaternion_copy()`.
+         * @since 2.0
          */
         free(): void;
 
+        /**
+         * @since 2.0
+         */
         get_rotation_angle(): number;
 
+        /**
+         * @since 2.0
+         */
         get_rotation_axis(): number;
 
         /**
@@ -9628,6 +9935,7 @@ export namespace Cogl {
          * @param x The x component of your axis vector about which you want to rotate.
          * @param y The y component of your axis vector about which you want to rotate.
          * @param z The z component of your axis vector about which you want to rotate.
+         * @since 2.0
          */
         init(angle: number, x: number, y: number, z: number): void;
 
@@ -9637,6 +9945,7 @@ export namespace Cogl {
          * normalized.
          * @param angle The angle to rotate around `axis3f`
          * @param axis3f your 3 component axis vector about which you want to rotate.
+         * @since 2.0
          */
         init_from_angle_vector(angle: number, axis3f: number): void;
 
@@ -9644,38 +9953,45 @@ export namespace Cogl {
          * Initializes a [w (x, y,z)] quaternion directly from an array of 4
          * floats: [w,x,y,z].
          * @param array An array of 4 floats w,(x,y,z)
+         * @since 2.0
          */
         init_from_array(array: number): void;
 
         /**
          * @param euler A {@link Cogl.Euler} with which to initialize the quaternion
+         * @since 2.0
          */
         init_from_euler(euler: Euler): void;
 
         /**
          * Initializes a quaternion from a rotation matrix.
          * @param matrix A rotation matrix with which to initialize the quaternion
+         * @since 1.10
          */
         init_from_matrix(matrix: Matrix): void;
 
         /**
          * @param src A {@link Cogl.Quaternion} with which to initialize `quaternion`
+         * @since 2.0
          */
         init_from_quaternion(src: Quaternion): void;
 
         /**
          * XXX: check which direction this rotates
          * @param angle The angle to rotate around the x axis
+         * @since 2.0
          */
         init_from_x_rotation(angle: number): void;
 
         /**
          * @param angle The angle to rotate around the y axis
+         * @since 2.0
          */
         init_from_y_rotation(angle: number): void;
 
         /**
          * @param angle The angle to rotate around the z axis
+         * @since 2.0
          */
         init_from_z_rotation(angle: number): void;
 
@@ -9686,9 +10002,13 @@ export namespace Cogl {
          * 
          * You might also want to consider using
          * `cogl_get_static_identity_quaternion()`.
+         * @since 2.0
          */
         init_identity(): void;
 
+        /**
+         * @since 2.0
+         */
         invert(): void;
 
         /**
@@ -9702,6 +10022,7 @@ export namespace Cogl {
          * `result` can be equal to `a` but can't be equal to `b`.</note>
          * @param left The second {@link Cogl.Quaternion} rotation to apply
          * @param right The first {@link Cogl.Quaternion} rotation to apply
+         * @since 2.0
          */
         multiply(left: Quaternion, right: Quaternion): void;
 
@@ -9738,10 +10059,14 @@ export namespace Cogl {
          */
         nlerp(a: Quaternion, b: Quaternion, t: number): void;
 
+        /**
+         * @since 2.0
+         */
         normalize(): void;
 
         /**
          * @param exponent the exponent
+         * @since 2.0
          */
         pow(exponent: number): void;
 
@@ -9775,6 +10100,7 @@ export namespace Cogl {
          * @param b The second {@link Cogl.Quaternion}
          * @param next A {@link Cogl.Quaternion} that will be used after `b`
          * @param t The factor in the range [0,1] used to interpolate between quaternion `a` and `b`.
+         * @since 2.0
          */
         squad(prev: Quaternion, a: Quaternion, b: Quaternion, next: Quaternion, t: number): void;
     }
@@ -10221,6 +10547,7 @@ export namespace Cogl {
          * program will abort with an error message if there is an error during
          * automatic allocation.</note>
          * @returns `true` if there were no error allocating the framebuffer, else `false`.
+         * @since 1.8
          */
         allocate(): Bool;
 
@@ -10229,6 +10556,7 @@ export namespace Cogl {
          * `cogl_framebuffer_add_fence_callback()`; the callback will not be
          * called.
          * @param closure The {@link Cogl.FenceClosure} returned from           `cogl_framebuffer_add_fence_callback()`
+         * @since 2.0
          */
         cancel_fence_callback(closure: FenceClosure): void;
 
@@ -10237,6 +10565,7 @@ export namespace Cogl {
          * that includes the color buffer then the specified `color` is used.
          * @param buffers A mask of {@link Cogl.BufferBit}<!-- -->'s identifying which auxiliary   buffers to clear
          * @param color The color to clear the color buffer too if specified in         `buffers`.
+         * @since 1.8
          */
         clear(buffers: bigint | number, color: Color): void;
 
@@ -10248,6 +10577,7 @@ export namespace Cogl {
          * @param green The green component of color to clear the color buffer too if         specified in `buffers`.
          * @param blue The blue component of color to clear the color buffer too if        specified in `buffers`.
          * @param alpha The alpha component of color to clear the color buffer too if         specified in `buffers`.
+         * @since 1.8
          */
         clear4f(buffers: bigint | number, red: number, green: number, blue: number, alpha: number): void;
 
@@ -10269,6 +10599,7 @@ export namespace Cogl {
          * framebuffer, and it's not meaningful to try and discard the color buffer of
          * a `CoglOffscreen` framebuffer since they are single-buffered.
          * @param buffers A {@link Cogl.BufferBit} mask of which ancillary buffers you want           to discard.
+         * @since 1.8
          */
         discard_buffers(buffers: bigint | number): void;
 
@@ -10300,6 +10631,8 @@ export namespace Cogl {
          * @param n_vertices The number of vertices to draw from the given attributes
          * @param attributes An array of pointers to {@link Cogl.Attribute}<-- -->s defining vertex              geometry
          * @param n_attributes The number of attributes in the `attributes` array.
+         * @since 1.10
+         * @deprecated since 1.16: Use {@link Cogl.Primitive}<!-- -->s and                   `cogl_primitive_draw()` instead
          */
         draw_attributes(pipeline: Pipeline, mode: VerticesMode, first_vertex: number, n_vertices: number, attributes: Attribute, n_attributes: number): void;
 
@@ -10350,6 +10683,8 @@ export namespace Cogl {
          * @param indices The array of indices used by the GPU to lookup attribute           data for each vertex.
          * @param attributes An array of pointers to {@link Cogl.Attribute}<-- -->s defining vertex              geometry
          * @param n_attributes The number of attributes in the `attributes` array.
+         * @since 1.10
+         * @deprecated since 1.16: Use {@link Cogl.Primitive}<!-- -->s and                   `cogl_primitive_draw()` instead
          */
         draw_indexed_attributes(pipeline: Pipeline, mode: VerticesMode, first_vertex: number, n_vertices: number, indices: Indices, attributes: Attribute, n_attributes: number): void;
 
@@ -10406,6 +10741,7 @@ export namespace Cogl {
          * @param y_2 y coordinate lower right on screen.
          * @param tex_coords An array containing groups of   4 float values: [s_1, t_1, s_2, t_2] that are interpreted as two texture   coordinates; one for the top left texel, and one for the bottom right   texel. Each value should be between 0.0 and 1.0, where the coordinate   (0.0, 0.0) represents the top left of the texture, and (1.0, 1.0) the   bottom right.
          * @param tex_coords_len The length of the `tex_coords` array. (For one layer   and one group of texture coordinates, this would be 4)
+         * @since 1.10
          */
         draw_multitextured_rectangle(pipeline: Pipeline, x_1: number, y_1: number, x_2: number, y_2: number, tex_coords: number[], tex_coords_len: number): void;
 
@@ -10424,6 +10760,8 @@ export namespace Cogl {
          * `cogl_program_use()`</note>
          * @param pipeline A {@link Cogl.Pipeline} state object
          * @param primitive A {@link Cogl.Primitive} geometry object
+         * @since 1.10
+         * @deprecated since 1.16: Use {@link Cogl.Primitive}<!-- -->s and                   `cogl_primitive_draw()` instead
          */
         draw_primitive(pipeline: Pipeline, primitive: Primitive): void;
 
@@ -10444,6 +10782,7 @@ export namespace Cogl {
          * @param y_1 Y coordinate of the top-left corner
          * @param x_2 X coordinate of the bottom-right corner
          * @param y_2 Y coordinate of the bottom-right corner
+         * @since 1.10
          */
         draw_rectangle(pipeline: Pipeline, x_1: number, y_1: number, x_2: number, y_2: number): void;
 
@@ -10470,6 +10809,7 @@ export namespace Cogl {
          * @param pipeline A {@link Cogl.Pipeline} state object
          * @param coordinates an array of coordinates   containing groups of 4 float values: [x_1, y_1, x_2, y_2] that are   interpreted as two position coordinates; one for the top left of   the rectangle (x1, y1), and one for the bottom right of the   rectangle (x2, y2).
          * @param n_rectangles number of rectangles defined in `coordinates`.
+         * @since 1.10
          */
         draw_rectangles(pipeline: Pipeline, coordinates: number[], n_rectangles: number): void;
 
@@ -10514,6 +10854,7 @@ export namespace Cogl {
          * @param t_1 T texture coordinate of the top-left coorner
          * @param s_2 S texture coordinate of the bottom-right coorner
          * @param t_2 T texture coordinate of the bottom-right coorner
+         * @since 1.10
          */
         draw_textured_rectangle(pipeline: Pipeline, x_1: number, y_1: number, x_2: number, y_2: number, s_1: number, t_1: number, s_2: number, t_2: number): void;
 
@@ -10560,6 +10901,7 @@ export namespace Cogl {
          * @param pipeline A {@link Cogl.Pipeline} state object
          * @param coordinates an array containing   groups of 8 float values: [x_1, y_1, x_2, y_2, s_1, t_1, s_2, t_2]   that have the same meaning as the arguments for   `cogl_framebuffer_draw_textured_rectangle()`.
          * @param n_rectangles number of rectangles to `coordinates` to draw
+         * @since 1.10
          */
         draw_textured_rectangles(pipeline: Pipeline, coordinates: number[], n_rectangles: number): void;
 
@@ -10573,6 +10915,7 @@ export namespace Cogl {
          * One example might be for benchmarking purposes to be sure timing
          * measurements reflect the time that the GPU is busy for not just the time it
          * takes to queue rendering commands.
+         * @since 1.10
          */
         finish(): void;
 
@@ -10586,18 +10929,21 @@ export namespace Cogl {
          * @param top Y position of the top clipping plane where it intersects   the near clipping plane
          * @param z_near The distance to the near clipping plane (Must be positive)
          * @param z_far The distance to the far clipping plane (Must be positive)
+         * @since 1.10
          */
         frustum(left: number, right: number, bottom: number, top: number, z_near: number, z_far: number): void;
 
         /**
          * Retrieves the number of alpha bits of `framebuffer`
          * @returns the number of bits
+         * @since 1.8
          */
         get_alpha_bits(): number;
 
         /**
          * Retrieves the number of blue bits of `framebuffer`
          * @returns the number of bits
+         * @since 1.8
          */
         get_blue_bits(): number;
 
@@ -10606,6 +10952,7 @@ export namespace Cogl {
          * current framebuffer. Each bit set in the mask means that the
          * corresponding color would be written.
          * @returns A {@link Cogl.ColorMask}
+         * @since 1.8
          */
         get_color_mask(): ColorMask;
 
@@ -10614,12 +10961,14 @@ export namespace Cogl {
          * instantiated within. This is the {@link Cogl.Context} that was passed to
          * `cogl_onscreen_new()` for example.
          * @returns The {@link Cogl.Context} that the given               `framebuffer` was instantiated within.
+         * @since 1.8
          */
         get_context(): Context;
 
         /**
          * Retrieves the number of depth bits of `framebuffer`
          * @returns the number of bits
+         * @since 2.0
          */
         get_depth_bits(): number;
 
@@ -10632,6 +10981,7 @@ export namespace Cogl {
          * <note>The texture returned stays valid as long as the framebuffer stays
          * valid.</note>
          * @returns the depth texture
+         * @since 1.14
          */
         get_depth_texture(): Texture;
 
@@ -10639,6 +10989,7 @@ export namespace Cogl {
          * Queries whether texture based depth buffer has been enabled via
          * `cogl_framebuffer_set_depth_texture_enabled()`.
          * @returns `true` if a depth texture has been enabled, else               `false`.
+         * @since 1.14
          */
         get_depth_texture_enabled(): Bool;
 
@@ -10646,6 +10997,7 @@ export namespace Cogl {
          * Queries whether depth buffer writing is enabled for `framebuffer`. This
          * can be controlled via `cogl_framebuffer_set_depth_write_enabled()`.
          * @returns `true` if depth writing is enabled or `false` if not.
+         * @since 1.18
          */
         get_depth_write_enabled(): Bool;
 
@@ -10657,18 +11009,21 @@ export namespace Cogl {
          * display pipeline does not support dithering. This value only represents
          * the user's request for dithering.</note>
          * @returns `true` if dithering has been requested or `false` if not.
+         * @since 1.8
          */
         get_dither_enabled(): Bool;
 
         /**
          * Retrieves the number of green bits of `framebuffer`
          * @returns the number of bits
+         * @since 1.8
          */
         get_green_bits(): number;
 
         /**
          * Queries the current height of the given `framebuffer`.
          * @returns The height of `framebuffer`.
+         * @since 1.8
          */
         get_height(): number;
 
@@ -10676,17 +11031,20 @@ export namespace Cogl {
 
         /**
          * Stores the current model-view matrix in `matrix`.
+         * @since 1.10
          */
         get_modelview_matrix(): Matrix;
 
         /**
          * Stores the current projection matrix in `matrix`.
+         * @since 1.10
          */
         get_projection_matrix(): Matrix;
 
         /**
          * Retrieves the number of red bits of `framebuffer`
          * @returns the number of bits
+         * @since 1.8
          */
         get_red_bits(): number;
 
@@ -10704,6 +11062,7 @@ export namespace Cogl {
          * framebuffer has been allocated the value will reflect the actual
          * number of samples that will be made by the GPU.
          * @returns The number of point samples made per pixel when          rasterizing geometry or 0 if single-sample rendering          has been chosen.
+         * @since 1.10
          */
         get_samples_per_pixel(): number;
 
@@ -10711,6 +11070,7 @@ export namespace Cogl {
          * Gets the current {@link Cogl.StereoMode}, which defines which stereo buffers
          * should be drawn to. See `cogl_framebuffer_set_stereo_mode()`.
          * @returns A {@link Cogl.StereoMode}
+         * @since 1.20
          */
         get_stereo_mode(): StereoMode;
 
@@ -10719,6 +11079,7 @@ export namespace Cogl {
          * using `cogl_framebuffer_set_viewport()` or the default values which are 0, 0,
          * framebuffer_width and framebuffer_height.  The values are written into the
          * given `viewport` array.
+         * @since 1.8
          */
         get_viewport4fv(): number[];
 
@@ -10726,6 +11087,7 @@ export namespace Cogl {
          * Queries the height of the viewport as set using `cogl_framebuffer_set_viewport()`
          * or the default value which is the height of the framebuffer.
          * @returns The height of the viewport.
+         * @since 1.8
          */
         get_viewport_height(): number;
 
@@ -10733,6 +11095,7 @@ export namespace Cogl {
          * Queries the width of the viewport as set using `cogl_framebuffer_set_viewport()`
          * or the default value which is the width of the framebuffer.
          * @returns The width of the viewport.
+         * @since 1.8
          */
         get_viewport_width(): number;
 
@@ -10740,6 +11103,7 @@ export namespace Cogl {
          * Queries the x coordinate of the viewport origin as set using `cogl_framebuffer_set_viewport()`
          * or the default value which is 0.
          * @returns The x coordinate of the viewport origin.
+         * @since 1.8
          */
         get_viewport_x(): number;
 
@@ -10747,17 +11111,20 @@ export namespace Cogl {
          * Queries the y coordinate of the viewport origin as set using `cogl_framebuffer_set_viewport()`
          * or the default value which is 0.
          * @returns The y coordinate of the viewport origin.
+         * @since 1.8
          */
         get_viewport_y(): number;
 
         /**
          * Queries the current width of the given `framebuffer`.
          * @returns The width of `framebuffer`.
+         * @since 1.8
          */
         get_width(): number;
 
         /**
          * Resets the current model-view matrix to the identity matrix.
+         * @since 1.10
          */
         identity_matrix(): void;
 
@@ -10770,6 +11137,7 @@ export namespace Cogl {
          * @param y_2 The y coordinate for the second horizontal clipping plane
          * @param near The <emphasis>distance</emphasis> to the near clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
          * @param far The <emphasis>distance</emphasis> to the far clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
+         * @since 1.10
          */
         orthographic(x_1: number, y_1: number, x_2: number, y_2: number, near: number, far: number): void;
 
@@ -10785,6 +11153,7 @@ export namespace Cogl {
          * @param aspect The (width over height) aspect ratio for display
          * @param z_near The distance to the near clipping plane (Must be positive,   and must not be 0)
          * @param z_far The distance to the far clipping plane (Must be positive)
+         * @since 1.10
          */
         perspective(fov_y: number, aspect: number, z_near: number, z_far: number): void;
 
@@ -10792,17 +11161,20 @@ export namespace Cogl {
          * Reverts the clipping region to the state before the last call to
          * `cogl_framebuffer_push_scissor_clip()`, `cogl_framebuffer_push_rectangle_clip()`
          * `cogl_framebuffer_push_path_clip()`, or `cogl_framebuffer_push_primitive_clip()`.
+         * @since 1.10
          */
         pop_clip(): void;
 
         /**
          * Restores the model-view matrix on the top of the matrix stack.
+         * @since 1.10
          */
         pop_matrix(): void;
 
         /**
          * Copies the current model-view matrix onto the matrix stack. The matrix
          * can later be restored with `cogl_framebuffer_pop_matrix()`.
+         * @since 1.10
          */
         push_matrix(): void;
 
@@ -10824,6 +11196,7 @@ export namespace Cogl {
          * @param bounds_y1 y coordinate for the top-left corner of the primitives             bounds
          * @param bounds_x2 x coordinate for the bottom-right corner of the             primitives bounds.
          * @param bounds_y2 y coordinate for the bottom-right corner of the             primitives bounds.
+         * @since 1.10
          */
         push_primitive_clip(primitive: Primitive, bounds_x1: number, bounds_y1: number, bounds_x2: number, bounds_y2: number): void;
 
@@ -10840,6 +11213,7 @@ export namespace Cogl {
          * @param y_1 y coordinate for top left corner of the clip rectangle
          * @param x_2 x coordinate for bottom right corner of the clip rectangle
          * @param y_2 y coordinate for bottom right corner of the clip rectangle
+         * @since 1.10
          */
         push_rectangle_clip(x_1: number, y_1: number, x_2: number, y_2: number): void;
 
@@ -10856,6 +11230,7 @@ export namespace Cogl {
          * @param y top edge of the clip rectangle in window coordinates
          * @param width width of the clip rectangle
          * @param height height of the clip rectangle
+         * @since 1.10
          */
         push_scissor_clip(x: number, y: number, width: number, height: number): void;
 
@@ -10893,6 +11268,7 @@ export namespace Cogl {
          * @param format The pixel format to store the data in
          * @param pixels The address of the buffer to store the data in
          * @returns `true` if the read succeeded or `false` otherwise.
+         * @since 1.10
          */
         read_pixels(x: number, y: number, width: number, height: number, format: PixelFormat, pixels: number): Bool;
 
@@ -10912,6 +11288,7 @@ export namespace Cogl {
          * @param source Identifies which auxillary buffer you want to read          (only COGL_READ_PIXELS_COLOR_BUFFER supported currently)
          * @param bitmap The bitmap to store the results in.
          * @returns `true` if the read succeeded or `false` otherwise. The  function is only likely to fail if the bitmap points to a pixel  buffer and it could not be mapped.
+         * @since 1.10
          */
         read_pixels_into_bitmap(x: number, y: number, source: ReadPixelsFlags, bitmap: Bitmap): Bool;
 
@@ -10936,6 +11313,7 @@ export namespace Cogl {
          * If you are performing incremental updates to a framebuffer you
          * should consider using `cogl_framebuffer_resolve_samples_region()`
          * instead to avoid resolving redundant pixels.
+         * @since 1.8
          */
         resolve_samples(): void;
 
@@ -10965,6 +11343,7 @@ export namespace Cogl {
          * @param y top-left y coordinate of region to resolve
          * @param width width of region to resolve
          * @param height height of region to resolve
+         * @since 1.8
          */
         resolve_samples_region(x: number, y: number, width: number, height: number): void;
 
@@ -10978,6 +11357,7 @@ export namespace Cogl {
          * @param x X-component of vertex to rotate around.
          * @param y Y-component of vertex to rotate around.
          * @param z Z-component of vertex to rotate around.
+         * @since 1.10
          */
         rotate(angle: number, x: number, y: number, z: number): void;
 
@@ -10985,6 +11365,7 @@ export namespace Cogl {
          * Multiplies the current model-view matrix by one that rotates
          * according to the rotation described by `euler`.
          * @param euler A {@link Cogl.Euler}
+         * @since 2.0
          */
         rotate_euler(euler: Euler): void;
 
@@ -10992,6 +11373,7 @@ export namespace Cogl {
          * Multiplies the current model-view matrix by one that rotates
          * according to the rotation described by `quaternion`.
          * @param quaternion A {@link Cogl.Quaternion}
+         * @since 2.0
          */
         rotate_quaternion(quaternion: Quaternion): void;
 
@@ -11001,6 +11383,7 @@ export namespace Cogl {
          * @param x Amount to scale along the x-axis
          * @param y Amount to scale along the y-axis
          * @param z Amount to scale along the z-axis
+         * @since 1.10
          */
         scale(x: number, y: number, z: number): void;
 
@@ -11009,6 +11392,7 @@ export namespace Cogl {
          * given `framebuffer`. If a bit is set in `color_mask` that means that
          * color will be written.
          * @param color_mask A {@link Cogl.ColorMask} of which color channels to write to              the current framebuffer.
+         * @since 1.8
          */
         set_color_mask(color_mask: ColorMask): void;
 
@@ -11024,6 +11408,7 @@ export namespace Cogl {
          * allocated as the creation of the depth texture is done at allocation time.
          * </note>
          * @param enabled TRUE or FALSE
+         * @since 1.14
          */
         set_depth_texture_enabled(enabled: Bool): void;
 
@@ -11035,6 +11420,7 @@ export namespace Cogl {
          * 
          * Depth buffer writing is enabled by default.
          * @param depth_write_enabled `true` to enable depth writing or `false` to disable
+         * @since 1.18
          */
         set_depth_write_enabled(depth_write_enabled: Bool): void;
 
@@ -11053,18 +11439,21 @@ export namespace Cogl {
          * 
          * Dithering is enabled by default.
          * @param dither_enabled `true` to enable dithering or `false` to disable
+         * @since 1.8
          */
         set_dither_enabled(dither_enabled: Bool): void;
 
         /**
          * Sets `matrix` as the new model-view matrix.
          * @param matrix the new model-view matrix
+         * @since 1.10
          */
         set_modelview_matrix(matrix: Matrix): void;
 
         /**
          * Sets `matrix` as the new projection matrix.
          * @param matrix the new projection matrix
+         * @since 1.10
          */
         set_projection_matrix(matrix: Matrix): void;
 
@@ -11102,6 +11491,7 @@ export namespace Cogl {
          * framebuffer has changed this can lead to redundant work being
          * done.</note>
          * @param samples_per_pixel The minimum number of samples per pixel
+         * @since 1.8
          */
         set_samples_per_pixel(samples_per_pixel: number): void;
 
@@ -11114,6 +11504,7 @@ export namespace Cogl {
          * enabled. (See `cogl_onscreen_template_set_stereo_enabled()`,
          * `cogl_framebuffer_get_is_stereo()`.)
          * @param stereo_mode A {@link Cogl.StereoMode} specifying which stereo buffers               should be drawn tow.
+         * @since 1.20
          */
         set_stereo_mode(stereo_mode: StereoMode): void;
 
@@ -11137,12 +11528,14 @@ export namespace Cogl {
          * @param y The top-left y coordinate of the viewport origin (only integers     supported currently)
          * @param width The width of the viewport (only integers supported currently)
          * @param height The height of the viewport (only integers supported currently)
+         * @since 1.8
          */
         set_viewport(x: number, y: number, width: number, height: number): void;
 
         /**
          * Multiplies the current model-view matrix by the given matrix.
          * @param matrix the matrix to multiply with the current model-view
+         * @since 1.10
          */
         transform(matrix: Matrix): void;
 
@@ -11152,6 +11545,7 @@ export namespace Cogl {
          * @param x Distance to translate along the x-axis
          * @param y Distance to translate along the y-axis
          * @param z Distance to translate along the z-axis
+         * @since 1.10
          */
         translate(x: number, y: number, z: number): void;
     }
@@ -11198,6 +11592,7 @@ export namespace Cogl {
          * is {@link Cogl.TextureComponents.RGBA}. The other constructors which take
          * a %CoglBitmap or a data pointer default to the same components as
          * the pixel format of the data.
+         * @since 1.18
          */
         get_components(): TextureComponents;
 
@@ -11244,6 +11639,7 @@ export namespace Cogl {
          * 
          * By default the pre-multipled state is `TRUE`.
          * @returns `true` if red, green and blue components are               internally stored pre-multiplied by the alpha               value or `false` if not.
+         * @since 1.18
          */
         get_premultiplied(): Bool;
 
@@ -11281,6 +11677,7 @@ export namespace Cogl {
          * an image format as long as {@link Cogl.TextureComponents.RG} isn't used
          * as the texture's components.
          * @param components 
+         * @since 1.18
          */
         set_components(components: TextureComponents): void;
 
@@ -11358,6 +11755,7 @@ export namespace Cogl {
          * 
          * By default the `premultipled` state is `TRUE`.
          * @param premultiplied Whether any internally stored red, green or blue                 components are pre-multiplied by an alpha                 component.
+         * @since 1.18
          */
         set_premultiplied(premultiplied: Bool): void;
 
@@ -11395,6 +11793,7 @@ export namespace Cogl {
          * @param dst_height height of destination region to write. (Must be less   than or equal to the bitmap height)
          * @param bitmap The source bitmap to read from
          * @returns `true` if the subregion upload was successful, and   `false` otherwise
+         * @since 1.8
          */
         set_region_from_bitmap(src_x: number, src_y: number, dst_x: number, dst_y: number, dst_width: number, dst_height: number, bitmap: Bitmap): Bool;
     }

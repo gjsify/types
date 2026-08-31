@@ -2912,36 +2912,42 @@ export namespace Ags {
         // Static methods
         /**
          * Get your application context instance.
+         * @since 3.0.0
          */
         static get_instance(): ApplicationContext;
 
         // Virtual methods
         /**
          * Signal to load and parse configuration.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_load_config(): void;
 
         /**
          * Prepare `application_context`.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_prepare(): void;
 
         /**
          * Calls `exit()`
+         * @since 3.0.0
          * @virtual
          */
         vfunc_quit(): void;
 
         /**
          * Notification to register your types.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_register_types(): void;
 
         /**
          * Setup `application_context`.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_setup(): void;
@@ -2949,32 +2955,38 @@ export namespace Ags {
         // Methods
         /**
          * Signal to load and parse configuration.
+         * @since 3.0.0
          */
         load_config(): void;
 
         /**
          * Prepare `application_context`.
+         * @since 3.0.0
          */
         prepare(): void;
 
         /**
          * Calls `exit()`
+         * @since 3.0.0
          */
         quit(): void;
 
         /**
          * Notification to register your types.
+         * @since 3.0.0
          */
         register_types(): void;
 
         /**
          * Enable a feature of {@link Ags.ApplicationContext}.
          * @param flags see enum AgsApplicationContextFlags
+         * @since 3.0.0
          */
         set_flags(flags: ApplicationContextFlags): void;
 
         /**
          * Setup `application_context`.
+         * @since 3.0.0
          */
         setup(): void;
 
@@ -2982,22 +2994,26 @@ export namespace Ags {
          * Test `flags` to be set on `application_context`.
          * @param flags the flags
          * @returns `true` if flags are set, else `false`
+         * @since 3.0.0
          */
         test_flags(flags: ApplicationContextFlags): boolean;
 
         /**
          * Disable a feature of AgsApplicationContext.
          * @param flags see enum AgsApplicationContextFlags
+         * @since 3.0.0
          */
         unset_flags(flags: ApplicationContextFlags): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          */
         add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          */
         connect(): void;
 
@@ -3009,75 +3025,88 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          */
         disconnect(): void;
 
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
+         * @since 3.0.0
          */
         get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
+         * @since 3.0.0
          */
         is_connected(): boolean;
 
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          */
         remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_compose(): libxml2.Node;
 
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_parse(node: libxml2.Node): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect(): void;
@@ -3085,12 +3114,14 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect(): void;
@@ -3098,48 +3129,56 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_connected(): boolean;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
@@ -3147,6 +3186,7 @@ export namespace Ags {
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
@@ -3204,6 +3244,7 @@ export namespace Ags {
         // Static methods
         /**
          * Get instance.
+         * @since 3.0.0
          */
         static get_instance(): AuthSecurityContext;
     }
@@ -3262,6 +3303,7 @@ export namespace Ags {
         // Static methods
         /**
          * Get instance.
+         * @since 3.0.0
          */
         static get_instance(): AuthenticationManager;
 
@@ -3269,12 +3311,14 @@ export namespace Ags {
         /**
          * Add `authentication` to `authentication_manager`.
          * @param authentication the {@link GObject.Object} implementing {@link Ags.Authentication}
+         * @since 3.0.0
          */
         add_authentication(authentication: GObject.Object): void;
 
         /**
          * Get authentication.
          * @returns the {@link GLib.List}-struct containing {@link GObject.Object} implementing {@link Ags.Authentication}
+         * @since 3.0.0
          */
         get_authentication(): GObject.Object[];
 
@@ -3285,12 +3329,14 @@ export namespace Ags {
          * @param login the login
          * @param security_token the security token
          * @returns the digest as string, or `null` if not available
+         * @since 3.0.0
          */
         get_digest(authentication_module: string, realm: string, login: string, security_token: string): string;
 
         /**
          * Get session timeout.
          * @returns the session timeout
+         * @since 3.0.0
          */
         get_session_timeout(): number;
 
@@ -3298,6 +3344,7 @@ export namespace Ags {
          * Insert `login` as key and `login_info` as its value.
          * @param login the login
          * @param login_info the {@link Ags.LoginInfo}-struct
+         * @since 3.0.0
          */
         insert_login(login: string, login_info: LoginInfo): void;
 
@@ -3307,6 +3354,7 @@ export namespace Ags {
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @returns `true` if active, otherwise `false`
+         * @since 3.0.0
          */
         is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
 
@@ -3316,6 +3364,7 @@ export namespace Ags {
          * @param login the login
          * @param password the password
          * @returns `true` if login was successful, otherwise `false`
+         * @since 3.0.0
          */
         login(authentication_module: string, login: string, password: string): [boolean, string, string];
 
@@ -3325,6 +3374,7 @@ export namespace Ags {
          * @param login the login
          * @param security_token the security token
          * @returns `true` if logout was successful, otherwise `false`
+         * @since 3.0.0
          */
         logout(security_context: GObject.Object, login: string, security_token: string): boolean;
 
@@ -3332,18 +3382,21 @@ export namespace Ags {
          * Lookup `login`.
          * @param login the login
          * @returns the user {@link Ags.LoginInfo}-struct or `null`
+         * @since 3.0.0
          */
         lookup_login(login: string): null;
 
         /**
          * Remove `authentication` from `authentication_manager`.
          * @param authentication the {@link GObject.Object} implementing {@link Ags.Authentication}
+         * @since 3.0.0
          */
         remove_authentication(authentication: GObject.Object): void;
 
         /**
          * Remove `login`.
          * @param login the login
+         * @since 3.0.0
          */
         remove_login(login: string): void;
     }
@@ -3400,6 +3453,7 @@ export namespace Ags {
         // Static methods
         /**
          * Get instance.
+         * @since 3.0.0
          */
         static get_instance(): BusinessGroupManager;
 
@@ -3407,18 +3461,21 @@ export namespace Ags {
         /**
          * Add `business_group` to `business_group_manager`.
          * @param business_group the {@link GObject.Object} implementing {@link Ags.BusinessGroup}
+         * @since 3.0.0
          */
         add_business_group(business_group: GObject.Object): void;
 
         /**
          * Get business_group.
          * @returns the {@link GLib.List}-struct containing {@link GObject.Object} implementing {@link Ags.BusinessGroup}
+         * @since 3.0.0
          */
         get_business_group(): GObject.Object[];
 
         /**
          * Remove `business_group` from `business_group_manager`.
          * @param business_group the {@link GObject.Object} implementing {@link Ags.BusinessGroup}
+         * @since 3.0.0
          */
         remove_business_group(business_group: GObject.Object): void;
     }
@@ -3475,6 +3532,7 @@ export namespace Ags {
         // Static methods
         /**
          * Get instance.
+         * @since 3.0.0
          */
         static get_instance(): CertificateManager;
 
@@ -3482,12 +3540,14 @@ export namespace Ags {
         /**
          * Add `certificate` to `certificate_manager`.
          * @param certificate the {@link GObject.Object} implementing {@link Ags.Certificate}
+         * @since 3.0.0
          */
         add_certificate(certificate: GObject.Object): void;
 
         /**
          * Get certificate.
          * @returns the {@link GLib.List}-struct containing {@link GObject.Object} implementing {@link Ags.Certificate}
+         * @since 3.0.0
          */
         get_certificate(): GObject.Object[];
 
@@ -3498,12 +3558,14 @@ export namespace Ags {
          * @param security_token the security token
          * @param domain the domain to find
          * @param key_type the key type to find
+         * @since 3.0.0
          */
         get_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, domain: string, key_type: string): [string, string];
 
         /**
          * Remove `certificate` from `certificate_manager`.
          * @param certificate the {@link GObject.Object} implementing {@link Ags.Certificate}
+         * @since 3.0.0
          */
         remove_certificate(certificate: GObject.Object): void;
     }
@@ -3586,6 +3648,7 @@ export namespace Ags {
         // Static methods
         /**
          * Get config instance.
+         * @since 3.0.0
          */
         static get_instance(): Config;
 
@@ -3594,12 +3657,14 @@ export namespace Ags {
          * Retrieve config by `group` and `key`.
          * @param group the config group identifier
          * @param key the key of the property
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_value(group: string, key: string): string;
 
         /**
          * Load configuration from default values.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_load_defaults(): void;
@@ -3609,6 +3674,7 @@ export namespace Ags {
          * @param group the config group identifier
          * @param key the key of the property
          * @param value the value to set
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_value(group: string, key: string, value: string): void;
@@ -3616,6 +3682,7 @@ export namespace Ags {
         // Methods
         /**
          * Clears configuration.
+         * @since 3.0.0
          */
         clear(): void;
 
@@ -3624,11 +3691,13 @@ export namespace Ags {
          * @param group the config group identifier
          * @param key the key of the property
          * @returns the property's value
+         * @since 3.0.0
          */
         get_value(group: string, key: string): string;
 
         /**
          * Load configuration from default values.
+         * @since 3.0.0
          */
         load_defaults(): void;
 
@@ -3636,17 +3705,20 @@ export namespace Ags {
          * Read configuration in memory.
          * @param buffer the data buffer
          * @param buffer_length the size of the buffer
+         * @since 3.0.0
          */
         load_from_data(buffer: string, buffer_length: bigint | number): void;
 
         /**
          * Load configuration from `filename`.
          * @param filename the configuration file
+         * @since 3.0.0
          */
         load_from_file(filename: string): void;
 
         /**
          * Save configuration.
+         * @since 3.0.0
          */
         save(): void;
 
@@ -3655,6 +3727,7 @@ export namespace Ags {
          * @param group the config group identifier
          * @param key the key of the property
          * @param value the value to set
+         * @since 3.0.0
          */
         set_value(group: string, key: string, value: string): void;
 
@@ -3662,6 +3735,7 @@ export namespace Ags {
          * Save configuration.
          * @param buffer the data buffer
          * @param buffer_length the size of the buffer
+         * @since 3.0.0
          */
         to_data(buffer: string, buffer_length: bigint | number): void;
     }
@@ -3749,6 +3823,7 @@ export namespace Ags {
          * Query `security_context` for `login`.
          * @param security_context the {@link Ags.SecurityContext}
          * @param login the login to query
+         * @since 3.0.0
          * @virtual
          */
         vfunc_query_security_context(security_context: GObject.Object, login: string): boolean;
@@ -3758,6 +3833,7 @@ export namespace Ags {
          * Add `controller_resource` with key `resource_name` to hash table.
          * @param resource_name the resource name as string
          * @param controller_resource the {@link Ags.ControllerResource}-struct
+         * @since 3.0.0
          */
         add_resource(resource_name: string, controller_resource: null): void;
 
@@ -3765,6 +3841,7 @@ export namespace Ags {
          * Lookup key `resource_name` in hash table.
          * @param resource_name the resource name as string
          * @returns the matching {@link Ags.ControllerResource}-struct
+         * @since 3.0.0
          */
         lookup_resource(resource_name: string): null;
 
@@ -3773,12 +3850,14 @@ export namespace Ags {
          * @param security_context the {@link Ags.SecurityContext}
          * @param login the login to query
          * @returns `true` if allowed to proceed, otherwise `false`
+         * @since 3.0.0
          */
         query_security_context(security_context: GObject.Object, login: string): boolean;
 
         /**
          * Remove key `resource_name` from hash table.
          * @param resource_name the resource name as string
+         * @since 3.0.0
          */
         remove_resource(resource_name: string): void;
     }
@@ -3866,6 +3945,7 @@ export namespace Ags {
          * otherwise if `true` convert back to original format.
          * @param x the value to convert
          * @param reverse the direction to convert
+         * @since 3.0.0
          * @virtual
          */
         vfunc_convert(x: number, reverse: boolean): number;
@@ -3877,6 +3957,7 @@ export namespace Ags {
          * @param x the value to convert
          * @param reverse the direction to convert
          * @returns the converted value as gdouble
+         * @since 3.0.0
          */
         convert(x: number, reverse: boolean): number;
     }
@@ -3938,11 +4019,13 @@ export namespace Ags {
          * @param destroy_worker the {@link Ags.DestroyWorker}
          * @param ptr the gpointer to destroy
          * @param destroy_func the AgsDestroyFunc
+         * @since 3.0.0
          */
         static add(destroy_worker: null, ptr: null, destroy_func: DestroyFunc): void;
 
         /**
          * Get your destroy worker instance.
+         * @since 3.0.0
          */
         static get_instance(): DestroyWorker;
     }
@@ -4174,12 +4257,14 @@ export namespace Ags {
          * Compute MD5 sums of a buffer.
          * @param content the string buffer
          * @param content_length the length of the string
+         * @since 3.0.0
          */
         static str2md5(content: string, content_length: number): string;
 
         // Virtual methods
         /**
          * Opens the file specified by :filename property.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_open(): void;
@@ -4188,12 +4273,14 @@ export namespace Ags {
          * Opens the file provided by `data`.
          * @param data a buffer containing the XML document
          * @param length the buffer length
+         * @since 3.0.0
          * @virtual
          */
         vfunc_open_from_data(data: string, length: number): void;
 
         /**
          * Read XML document from disk.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_read(): void;
@@ -4205,6 +4292,7 @@ export namespace Ags {
 
         /**
          * Update or start the application.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_read_start(): void;
@@ -4212,12 +4300,14 @@ export namespace Ags {
         /**
          * Opens the file specified by :filename property in read-write mode.
          * @param create if `true` create the file as needed
+         * @since 3.0.0
          * @virtual
          */
         vfunc_rw_open(create: boolean): void;
 
         /**
          * Write the XML document to disk.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_write(): void;
@@ -4229,6 +4319,7 @@ export namespace Ags {
 
         /**
          * Resolve references to XPath expressions.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_write_resolve(): void;
@@ -4237,23 +4328,27 @@ export namespace Ags {
         /**
          * Adds `id_ref` to `file`.
          * @param id_ref a reference
+         * @since 3.0.0
          */
         add_id_ref(id_ref: GObject.Object): void;
 
         /**
          * Add `file_launch` for later invoking.
          * @param file_launch a {@link Ags.FileLaunch}
+         * @since 3.0.0
          */
         add_launch(file_launch: GObject.Object): void;
 
         /**
          * Add `file_lookup` for later invoking.
          * @param file_lookup a {@link Ags.FileLookup}
+         * @since 3.0.0
          */
         add_lookup(file_lookup: GObject.Object): void;
 
         /**
          * Closes `file`.
+         * @since 3.0.0
          */
         close(): void;
 
@@ -4261,6 +4356,7 @@ export namespace Ags {
          * Find a reference by its XML node.
          * @param node a XML node
          * @returns the matching {@link GObject.Object}
+         * @since 3.0.0
          */
         find_id_ref_by_node<T = GObject.Object>(node: libxml2.Node): T;
 
@@ -4268,6 +4364,7 @@ export namespace Ags {
          * Find a reference matching `ref`.
          * @param ref a %gpointer
          * @returns the matching {@link GObject.Object}
+         * @since 3.0.0
          */
         find_id_ref_by_reference<T = GObject.Object>(ref: null): T;
 
@@ -4275,47 +4372,55 @@ export namespace Ags {
          * Lookup a reference by `xpath`.
          * @param xpath a XPath expression
          * @returns the matching {@link GObject.Object}
+         * @since 3.0.0
          */
         find_id_ref_by_xpath<T = GObject.Object>(xpath: string): T;
 
         /**
          * Get audio encoding of `file`.
          * @returns the audio encoding
+         * @since 3.6.17
          */
         get_audio_encoding(): string;
 
         /**
          * Get audio format of `file`.
          * @returns the audio format
+         * @since 3.6.17
          */
         get_audio_format(): string;
 
         /**
          * Get encoding of `file`.
          * @returns the encoding
+         * @since 3.6.17
          */
         get_encoding(): string;
 
         /**
          * Get filename of `file`.
          * @returns the filename
+         * @since 3.6.17
          */
         get_filename(): string;
 
         /**
          * Get xml doc of `file`.
          * @returns the #xmlDoc-struct
+         * @since 3.6.17
          */
         get_xml_doc(): libxml2.Doc;
 
         /**
          * Opens the file specified by :filename property.
+         * @since 3.0.0
          */
         open(): void;
 
         /**
          * Opens the file specified by `filename` property.
          * @param filename a path
+         * @since 3.0.0
          */
         open_filename(filename: string): void;
 
@@ -4323,11 +4428,13 @@ export namespace Ags {
          * Opens the file provided by `data`.
          * @param data a buffer containing the XML document
          * @param length the buffer length
+         * @since 3.0.0
          */
         open_from_data(data: string, length: number): void;
 
         /**
          * Read XML document from disk.
+         * @since 3.0.0
          */
         read(): void;
 
@@ -4347,47 +4454,55 @@ export namespace Ags {
 
         /**
          * Update or start the application.
+         * @since 3.0.0
          */
         read_start(): void;
 
         /**
          * Opens the file specified by :filename property in read-write mode.
          * @param create if `true` create the file as needed
+         * @since 3.0.0
          */
         rw_open(create: boolean): void;
 
         /**
          * Set `audio_encoding` of `file`.
          * @param audio_encoding the audio encoding
+         * @since 3.6.17
          */
         set_audio_encoding(audio_encoding: string): void;
 
         /**
          * Set `audio_format` of `file`.
          * @param audio_format the audio format
+         * @since 3.6.17
          */
         set_audio_format(audio_format: string): void;
 
         /**
          * Set `encoding` of `file`.
          * @param encoding the encoding
+         * @since 3.6.17
          */
         set_encoding(encoding: string): void;
 
         /**
          * Set `filename` of `file`.
          * @param filename the filename
+         * @since 3.6.17
          */
         set_filename(filename: string): void;
 
         /**
          * Set `xml_doc` of `file`.
          * @param xml_doc the #xmlDoc-struct
+         * @since 3.6.17
          */
         set_xml_doc(xml_doc: libxml2.Doc): void;
 
         /**
          * Write the XML document to disk.
+         * @since 3.0.0
          */
         write(): void;
 
@@ -4407,6 +4522,7 @@ export namespace Ags {
 
         /**
          * Resolve references to XPath expressions.
+         * @since 3.0.0
          */
         write_resolve(): void;
 
@@ -4414,6 +4530,7 @@ export namespace Ags {
          * Set root element `root_node` of `doc`.
          * @param parent the parent #xmlNode-struct
          * @param child the child #xmlNode-struct
+         * @since 4.0.0
          */
         xml_add_child(parent: libxml2.Node, child: libxml2.Node): void;
 
@@ -4421,6 +4538,7 @@ export namespace Ags {
          * Get content of `node`.
          * @param node the #xmlNode-struct
          * @returns the content of #xmlNode-struct
+         * @since 4.0.0
          */
         xml_get_content(node: libxml2.Node): string;
 
@@ -4428,6 +4546,7 @@ export namespace Ags {
          * Get node name of `node`.
          * @param node the #xmlNode-struct
          * @returns the node name of #xmlNode-struct
+         * @since 4.0.0
          */
         xml_get_node_name(node: libxml2.Node): string;
 
@@ -4436,6 +4555,7 @@ export namespace Ags {
          * @param node the #xmlNode-struct
          * @param prop_name property name
          * @returns the property of #xmlNode-struct
+         * @since 4.0.0
          */
         xml_get_prop(node: libxml2.Node, prop_name: string): string;
 
@@ -4443,6 +4563,7 @@ export namespace Ags {
          * Get root element of `doc`.
          * @param doc the #xmlDoc-struct
          * @returns the root element of #xmlDoc-struct
+         * @since 4.0.0
          */
         xml_get_root_element(doc: libxml2.Doc): libxml2.Node;
 
@@ -4451,6 +4572,7 @@ export namespace Ags {
          * @param node the #xmlNode-struct
          * @param content the content
          * @param is_cdata if content is CDATA
+         * @since 4.0.0
          */
         xml_set_content(node: libxml2.Node, content: string, is_cdata: boolean): void;
 
@@ -4459,6 +4581,7 @@ export namespace Ags {
          * @param node the #xmlNode-struct
          * @param prop_name property name
          * @param prop_value property value
+         * @since 4.0.0
          */
         xml_set_prop(node: libxml2.Node, prop_name: string, prop_value: string): void;
 
@@ -4466,6 +4589,7 @@ export namespace Ags {
          * Set root element `root_node` of `doc`.
          * @param doc the #xmlDoc-struct
          * @param root_node the #xmlNode-struct as root node
+         * @since 4.0.0
          */
         xml_set_root_element(doc: libxml2.Doc, root_node: libxml2.Node): void;
     }
@@ -4571,6 +4695,7 @@ export namespace Ags {
         // Virtual methods
         /**
          * Notify about resolved reference.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_resolved(): void;
@@ -4578,6 +4703,7 @@ export namespace Ags {
         // Methods
         /**
          * Notify about resolved reference.
+         * @since 3.0.0
          */
         resolved(): void;
     }
@@ -4669,6 +4795,7 @@ export namespace Ags {
         // Virtual methods
         /**
          * Start {@link Ags.FileLaunch} to fulfill a task.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_start(): void;
@@ -4676,6 +4803,7 @@ export namespace Ags {
         // Methods
         /**
          * Start {@link Ags.FileLaunch} to fulfill a task.
+         * @since 3.0.0
          */
         start(): void;
     }
@@ -4762,6 +4890,7 @@ export namespace Ags {
         /**
          * Get data of `file_link`.
          * @returns the data
+         * @since 3.6.17
          */
         get_data(): string;
 
@@ -4774,107 +4903,125 @@ export namespace Ags {
         /**
          * Get filename of `file_link`.
          * @returns the filename
+         * @since 3.6.17
          */
         get_filename(): string;
 
         /**
          * Set `data` of `file_link`.
          * @param data the data
+         * @since 3.6.17
          */
         set_data(data: string): void;
 
         /**
          * Set `filename` of `file_link`.
          * @param filename the filename
+         * @since 3.6.17
          */
         set_filename(filename: string): void;
 
         /**
          * Retrieve the build id of the plugin.
          * @returns the plugins build id
+         * @since 3.0.0
          */
         get_build_id(): string;
 
         /**
          * Retrieve the name of the plugin.
          * @returns the plugins name
+         * @since 3.0.0
          */
         get_name(): string;
 
         /**
          * Retrieve the ports of the plugin.
          * @returns the plugins ports
+         * @since 3.0.0
          */
         get_ports(): GObject.Object[];
 
         /**
          * Retrieve the version of the plugin.
          * @returns the plugins version
+         * @since 3.0.0
          */
         get_version(): string;
 
         /**
          * Retrieve the xml type of the plugin.
          * @returns the plugins xml type
+         * @since 3.0.0
          */
         get_xml_type(): string;
 
         /**
          * Set the build id of the plugin.
          * @param build_id the build id of plugin
+         * @since 3.0.0
          */
         set_build_id(build_id: string): void;
 
         /**
          * Set the name of the plugin.
          * @param name the name of plugin
+         * @since 3.0.0
          */
         set_name(name: string): void;
 
         /**
          * Set the build id of the plugin.
          * @param ports the build id of plugin
+         * @since 3.0.0
          */
         set_ports(ports: GObject.Object[]): void;
 
         /**
          * Set the version of the plugin.
          * @param version the version of plugin
+         * @since 3.0.0
          */
         set_version(version: string): void;
 
         /**
          * Set the build id of the plugin.
          * @param xml_type the build id of plugin
+         * @since 3.0.0
          */
         set_xml_type(xml_type: string): void;
 
         /**
          * Retrieve the build id of the plugin.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_build_id(): string;
 
         /**
          * Retrieve the name of the plugin.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_name(): string;
 
         /**
          * Retrieve the ports of the plugin.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_ports(): GObject.Object[];
 
         /**
          * Retrieve the version of the plugin.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_version(): string;
 
         /**
          * Retrieve the xml type of the plugin.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_xml_type(): string;
@@ -4882,6 +5029,7 @@ export namespace Ags {
         /**
          * Set the build id of the plugin.
          * @param build_id the build id of plugin
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_build_id(build_id: string): void;
@@ -4889,6 +5037,7 @@ export namespace Ags {
         /**
          * Set the name of the plugin.
          * @param name the name of plugin
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -4896,6 +5045,7 @@ export namespace Ags {
         /**
          * Set the build id of the plugin.
          * @param ports the build id of plugin
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_ports(ports: GObject.Object[]): void;
@@ -4903,6 +5053,7 @@ export namespace Ags {
         /**
          * Set the version of the plugin.
          * @param version the version of plugin
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_version(version: string): void;
@@ -4910,6 +5061,7 @@ export namespace Ags {
         /**
          * Set the build id of the plugin.
          * @param xml_type the build id of plugin
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_xml_type(xml_type: string): void;
@@ -4994,6 +5146,7 @@ export namespace Ags {
          * Find {@link Ags.FileLookup} by #xmlNode
          * @param file_lookup the {@link GLib.List}-struct containing {@link Ags.FileLookup}
          * @param node a #xmlNode
+         * @since 3.0.0
          */
         static find_by_node(file_lookup: FileLookup[], node: libxml2.Node): FileLookup[];
 
@@ -5001,12 +5154,14 @@ export namespace Ags {
          * Find {@link Ags.FileLookup} by `ref`
          * @param file_lookup the {@link GLib.List}-struct containing {@link Ags.FileLookup}
          * @param ref a `gpointer`
+         * @since 3.0.0
          */
         static find_by_reference(file_lookup: FileLookup[], ref: null): FileLookup[];
 
         // Virtual methods
         /**
          * The ::resolve signal.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_resolve(): void;
@@ -5014,6 +5169,7 @@ export namespace Ags {
         // Methods
         /**
          * The ::resolve signal.
+         * @since 3.0.0
          */
         resolve(): void;
     }
@@ -5084,6 +5240,7 @@ export namespace Ags {
          * @param path the context path to access
          * @param login the login
          * @param security_token the security token
+         * @since 3.0.0
          * @virtual
          */
         vfunc_do_request(msg: Soup.ServerMessage, query: never, security_context: GObject.Object, path: string, login: string, security_token: string): null;
@@ -5098,6 +5255,7 @@ export namespace Ags {
          * @param login the login
          * @param security_token the security token
          * @returns the response on success, otherwise `null`.
+         * @since 3.0.0
          */
         do_request(msg: Soup.ServerMessage, query: never, security_context: GObject.Object, path: string, login: string, security_token: string): null;
     }
@@ -5233,12 +5391,14 @@ export namespace Ags {
         /**
          * Add `solver_matrix` to `function`.
          * @param solver_matrix the {@link Ags.SolverMatrix}
+         * @since 3.2.0
          */
         add_matrix(solver_matrix: SolverMatrix): void;
 
         /**
          * Remove `solver_matrix` from `function`.
          * @param solver_matrix the {@link Ags.SolverMatrix}
+         * @since 3.2.0
          */
         remove_matrix(solver_matrix: SolverMatrix): void;
     }
@@ -5289,11 +5449,13 @@ export namespace Ags {
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          */
         add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          */
         connect(): void;
 
@@ -5305,75 +5467,88 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          */
         disconnect(): void;
 
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
+         * @since 3.0.0
          */
         get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
+         * @since 3.0.0
          */
         is_connected(): boolean;
 
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          */
         remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_compose(): libxml2.Node;
 
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_parse(node: libxml2.Node): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect(): void;
@@ -5381,12 +5556,14 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect(): void;
@@ -5394,48 +5571,56 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_connected(): boolean;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
@@ -5443,6 +5628,7 @@ export namespace Ags {
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
@@ -5450,88 +5636,103 @@ export namespace Ags {
         /**
          * Change frequency.
          * @param frequency the new frequency
+         * @since 3.0.0
          */
         change_frequency(frequency: number): void;
 
         /**
          * Decrement thread needs access to main loop's critical region field.
+         * @since 3.0.0
          */
         dec_queued_critical_region(): void;
 
         /**
          * Retrieve the tree mutex.
          * @returns the mutex
+         * @since 3.0.0
          */
         get_tree_lock(): GLib.RecMutex;
 
         /**
          * Increment thread needs access to main loop's critical region field.
+         * @since 3.0.0
          */
         inc_queued_critical_region(): void;
 
         /**
          * Check if main loop is in critical region.
          * @returns `true` if sync in progress, otherwise `false`
+         * @since 3.0.0
          */
         is_critical_region(): boolean;
 
         /**
          * Check if thread tree is syncing.
          * @returns `true` if sync in progress, otherwise `false`
+         * @since 3.0.0
          */
         is_syncing(): boolean;
 
         /**
          * Set main loop is in critical region.
          * @param is_critical_region set `true` if critical region
+         * @since 3.0.0
          */
         set_critical_region(is_critical_region: boolean): void;
 
         /**
          * Set thread tree is syncing.
          * @param is_syncing set `true` if syncing
+         * @since 3.0.0
          */
         set_syncing(is_syncing: boolean): void;
 
         /**
          * Test main loop may enter critical region.
          * @returns 0 if main loop may enter critical region, otherwise not
+         * @since 3.0.0
          */
         test_queued_critical_region(): number;
 
         /**
          * Change frequency.
          * @param frequency the new frequency
+         * @since 3.0.0
          * @virtual
          */
         vfunc_change_frequency(frequency: number): void;
 
         /**
          * Decrement thread needs access to main loop's critical region field.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_dec_queued_critical_region(): void;
 
         /**
          * Retrieve the tree mutex.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_tree_lock(): GLib.RecMutex;
 
         /**
          * Increment thread needs access to main loop's critical region field.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_inc_queued_critical_region(): void;
 
         /**
          * Check if main loop is in critical region.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_critical_region(): boolean;
 
         /**
          * Check if thread tree is syncing.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_syncing(): boolean;
@@ -5539,6 +5740,7 @@ export namespace Ags {
         /**
          * Set main loop is in critical region.
          * @param is_critical_region set `true` if critical region
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_critical_region(is_critical_region: boolean): void;
@@ -5546,12 +5748,14 @@ export namespace Ags {
         /**
          * Set thread tree is syncing.
          * @param is_syncing set `true` if syncing
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_syncing(is_syncing: boolean): void;
 
         /**
          * Test main loop may enter critical region.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_test_queued_critical_region(): number;
@@ -5604,6 +5808,7 @@ export namespace Ags {
         // Static methods
         /**
          * Get your logging instance.
+         * @since 3.0.0
          */
         static get_instance(): Log;
 
@@ -5611,12 +5816,14 @@ export namespace Ags {
         /**
          * Add a message to `log`.
          * @param str the message
+         * @since 3.0.0
          */
         add_message(str: string): void;
 
         /**
          * Get log messages as {@link GLib.List}-struct containing strings.
          * @returns the {@link GLib.List}-struct containing log messages
+         * @since 3.0.0
          */
         get_messages(): string[];
     }
@@ -5673,6 +5880,7 @@ export namespace Ags {
         // Static methods
         /**
          * Get the {@link Ags.MessageDelivery} instance.
+         * @since 3.0.0
          */
         static get_instance(): MessageDelivery;
 
@@ -5681,12 +5889,14 @@ export namespace Ags {
          * Add `message` to an {@link Ags.MessageQueue} specified by `sender_namespace`.
          * @param sender_namespace the sender namespace as string
          * @param message_envelope the {@link Ags.MessageEnvelope}
+         * @since 3.0.0
          */
         add_message_envelope(sender_namespace: string, message_envelope: GObject.Object): void;
 
         /**
          * Add `message_queue` to `message_delivery`.
          * @param message_queue the {@link Ags.MessageQueue}
+         * @since 3.0.0
          */
         add_message_queue(message_queue: GObject.Object): void;
 
@@ -5696,6 +5906,7 @@ export namespace Ags {
          * @param recipient_namespace the recipient namespace as string, maybe `null`
          * @param recipient the recipient as {@link GObject.Object}
          * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
+         * @since 3.0.0
          */
         find_recipient(recipient_namespace: string, recipient: GObject.Object): MessageEnvelope[];
 
@@ -5703,6 +5914,7 @@ export namespace Ags {
          * Find recipient namespace of {@link Ags.MessageQueue} in `message_delivery`.
          * @param recipient_namespace the recipient namespace as string to find
          * @returns the matching {@link GLib.List}-struct containing {@link Ags.MessageQueue} or `null`
+         * @since 3.0.0
          */
         find_recipient_namespace(recipient_namespace: string): MessageQueue[];
 
@@ -5712,6 +5924,7 @@ export namespace Ags {
          * @param recipient_namespace the recipient namespace as string, maybe `null`
          * @param sender the sender as {@link GObject.Object}
          * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
+         * @since 3.0.0
          */
         find_sender(recipient_namespace: string, sender: GObject.Object): MessageEnvelope[];
 
@@ -5719,12 +5932,14 @@ export namespace Ags {
          * Find sender namespace of {@link Ags.MessageQueue} in `message_delivery`.
          * @param sender_namespace the sender namespace as string to find
          * @returns the matching {@link GLib.List}-struct containing {@link Ags.MessageQueue} or `null`
+         * @since 3.0.0
          */
         find_sender_namespace(sender_namespace: string): MessageQueue[];
 
         /**
          * Get message queue of `message_delivery`.
          * @returns the {@link GLib.List}-struct containing {@link Ags.MessageQueue}
+         * @since 3.6.16
          */
         get_message_queue(): MessageQueue[];
 
@@ -5734,6 +5949,7 @@ export namespace Ags {
          * @param recipient_namespace the recipient namespace as string, maybe `null`
          * @param xpath the xpath to query
          * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
+         * @since 3.0.0
          */
         query_message(recipient_namespace: string, xpath: string): MessageEnvelope[];
 
@@ -5741,18 +5957,21 @@ export namespace Ags {
          * Remove `message` from an {@link Ags.MessageQueue} specified by `sender_namespace`.
          * @param sender_namespace the sender namespace as string
          * @param message_envelope the {@link Ags.MessageEnvelope}
+         * @since 3.0.0
          */
         remove_message_envelope(sender_namespace: string, message_envelope: GObject.Object): void;
 
         /**
          * Remove `message_queue` to `message_delivery`.
          * @param message_queue the {@link Ags.MessageQueue}
+         * @since 3.0.0
          */
         remove_message_queue(message_queue: GObject.Object): void;
 
         /**
          * Set `message_queue` of `message_delivery`.
          * @param message_queue the {@link GLib.List}-struct containing {@link Ags.MessageQueue}
+         * @since 3.6.16
          */
         set_message_queue(message_queue: MessageQueue[]): void;
     }
@@ -5854,6 +6073,7 @@ export namespace Ags {
         /**
          * Get xmlDoc.
          * @returns the doc
+         * @since 3.0.0
          */
         get_doc(): libxml2.Doc;
 
@@ -5862,18 +6082,21 @@ export namespace Ags {
          * @param n_params return location of parameter count
          * @param parameter_name return location `null` terminated string vector containing parameter name
          * @param value return location of {@link GObject.Value}-struct array containing values
+         * @since 3.0.0
          */
         get_parameter(n_params: number, parameter_name: string, value: GObject.Value | any): void;
 
         /**
          * Get recipient.
          * @returns the recipient
+         * @since 3.0.0
          */
         get_recipient<T = GObject.Object>(): T;
 
         /**
          * Get sender.
          * @returns the sender
+         * @since 3.0.0
          */
         get_sender<T = GObject.Object>(): T;
     }
@@ -5972,6 +6195,7 @@ export namespace Ags {
         /**
          * Add `message` to `message_queue`.
          * @param message_envelope the {@link Ags.MessageEnvelope}
+         * @since 3.0.0
          */
         add_message_envelope(message_envelope: GObject.Object): void;
 
@@ -5979,6 +6203,7 @@ export namespace Ags {
          * Find `recipient` in `message_queue`'s messages.
          * @param recipient the recipient as {@link GObject.Object}
          * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
+         * @since 3.0.0
          */
         find_recipient(recipient: GObject.Object): MessageEnvelope[];
 
@@ -5986,24 +6211,28 @@ export namespace Ags {
          * Find `sender` in `message_queue`'s messages.
          * @param sender the sender as {@link GObject.Object}
          * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
+         * @since 3.0.0
          */
         find_sender(sender: GObject.Object): MessageEnvelope[];
 
         /**
          * Get message envelope of `message_queue`.
          * @returns the {@link GLib.List}-struct containing {@link Ags.MessageEnvelope}
+         * @since 3.6.16
          */
         get_message_envelope(): MessageEnvelope[];
 
         /**
          * Get recipient namespace of `message_queue`.
          * @returns the recipient namespace
+         * @since 3.6.16
          */
         get_recipient_namespace(): string;
 
         /**
          * Get sender namespace of `message_queue`.
          * @returns the sender namespace
+         * @since 3.6.16
          */
         get_sender_namespace(): string;
 
@@ -6011,30 +6240,35 @@ export namespace Ags {
          * Query `xpath` in `message_queue`'s messages.
          * @param xpath the XPath as string
          * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
+         * @since 3.0.0
          */
         query_message(xpath: string): MessageEnvelope[];
 
         /**
          * Remove `message` from `message_queue`.
          * @param message_envelope the {@link Ags.MessageEnvelope}
+         * @since 3.0.0
          */
         remove_message_envelope(message_envelope: GObject.Object): void;
 
         /**
          * Set `message_envelope` of `message_queue`.
          * @param message_envelope the {@link GLib.List}-struct containing {@link Ags.MessageEnvelope}
+         * @since 3.6.16
          */
         set_message_envelope(message_envelope: MessageEnvelope[]): void;
 
         /**
          * Set `recipient_namespace` of `message_queue`.
          * @param recipient_namespace the recipient namespace
+         * @since 3.6.16
          */
         set_recipient_namespace(recipient_namespace: string): void;
 
         /**
          * Set `sender_namespace` of `message_queue`.
          * @param sender_namespace the sender namespace
+         * @since 3.6.16
          */
         set_sender_namespace(sender_namespace: string): void;
     }
@@ -6093,6 +6327,7 @@ export namespace Ags {
         // Static methods
         /**
          * Get instance.
+         * @since 3.0.0
          */
         static get_instance(): PasswordStoreManager;
 
@@ -6100,6 +6335,7 @@ export namespace Ags {
         /**
          * Add `password_store` to `password_store_manager`.
          * @param password_store the {@link GObject.Object} implementing {@link Ags.PasswordStore}
+         * @since 3.0.0
          */
         add_password_store(password_store: GObject.Object): void;
 
@@ -6108,18 +6344,21 @@ export namespace Ags {
          * @param user_uuid the user uuid
          * @param password the password
          * @returns `true` if password matches, otherwise `false`
+         * @since 3.0.0
          */
         check_password(user_uuid: string, password: string): boolean;
 
         /**
          * Get password_store.
          * @returns the {@link GLib.List}-struct containing {@link GObject.Object} implementing {@link Ags.PasswordStore}
+         * @since 3.0.0
          */
         get_password_store(): GObject.Object[];
 
         /**
          * Remove `password_store` from `password_store_manager`.
          * @param password_store the {@link GObject.Object} implementing {@link Ags.PasswordStore}
+         * @since 3.0.0
          */
         remove_password_store(password_store: GObject.Object): void;
     }
@@ -6202,6 +6441,7 @@ export namespace Ags {
         // Static methods
         /**
          * Get priority instance.
+         * @since 3.0.0
          */
         static get_instance(): Priority;
 
@@ -6210,12 +6450,14 @@ export namespace Ags {
          * Retrieve priority by `group` and `key`.
          * @param group the priority group identifier
          * @param key the key of the property
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_value(group: string, key: string): string;
 
         /**
          * Load priorities from default values.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_load_defaults(): void;
@@ -6225,6 +6467,7 @@ export namespace Ags {
          * @param group the priority group identifier
          * @param key the key of the property
          * @param value the value to set
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_value(group: string, key: string, value: string): void;
@@ -6235,17 +6478,20 @@ export namespace Ags {
          * @param group the priority group identifier
          * @param key the key of the property
          * @returns the property's value
+         * @since 3.0.0
          */
         get_value(group: string, key: string): string;
 
         /**
          * Load priorities from default values.
+         * @since 3.0.0
          */
         load_defaults(): void;
 
         /**
          * Load priorities from `filename`.
          * @param filename the priorityuration file
+         * @since 3.0.0
          */
         load_from_file(filename: string): void;
 
@@ -6254,6 +6500,7 @@ export namespace Ags {
          * @param group the priority group identifier
          * @param key the key of the property
          * @param value the value to set
+         * @since 3.0.0
          */
         set_value(group: string, key: string, value: string): void;
     }
@@ -6327,6 +6574,7 @@ export namespace Ags {
         /**
          * Add `registry_entry` to `registry`.
          * @param registry_entry the {@link Ags.RegistryEntry}-struct to add
+         * @since 3.0.0
          */
         add_entry(registry_entry: RegistryEntry): void;
     }
@@ -6424,11 +6672,13 @@ export namespace Ags {
         /**
          * Connects `callback` to `thread`.
          * @param callback the callback
+         * @since 3.0.0
          */
         connect_safe_run(callback: ReturnableThreadCallback): void;
 
         /**
          * Disconnects callback of `thread`.
+         * @since 3.0.0
          */
         disconnect_safe_run(): void;
 
@@ -6437,6 +6687,7 @@ export namespace Ags {
         /**
          * Set flags.
          * @param flags the flags
+         * @since 3.0.0
          */
         set_flags(flags: ReturnableThreadFlags): void;
 
@@ -6450,6 +6701,7 @@ export namespace Ags {
          * Test `flags` to be set on `returnable_thread`.
          * @param flags the flags
          * @returns `true` if flags are set, else `false`
+         * @since 3.0.0
          */
         test_flags(flags: ReturnableThreadFlags): boolean;
 
@@ -6462,6 +6714,7 @@ export namespace Ags {
         /**
          * Unset flags.
          * @param flags the flags
+         * @since 3.0.0
          */
         unset_flags(flags: ReturnableThreadFlags): void;
 
@@ -6473,11 +6726,13 @@ export namespace Ags {
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          */
         add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          */
         connect(): void;
 
@@ -6489,75 +6744,88 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          */
         disconnect(): void;
 
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
+         * @since 3.0.0
          */
         get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
+         * @since 3.0.0
          */
         is_connected(): boolean;
 
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          */
         remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_compose(): libxml2.Node;
 
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_parse(node: libxml2.Node): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect(): void;
@@ -6565,12 +6833,14 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect(): void;
@@ -6578,48 +6848,56 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_connected(): boolean;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
@@ -6627,6 +6905,7 @@ export namespace Ags {
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
@@ -6702,18 +6981,21 @@ export namespace Ags {
         /**
          * Add `server_context` to `security_context`.
          * @param server_context the server context
+         * @since 3.0.0
          */
         add_server_context(server_context: string): void;
 
         /**
          * Get business group of `security_context`.
          * @returns the string vector containing business group or `null`
+         * @since 3.0.0
          */
         get_business_group(): string[];
 
         /**
          * Get business group of `security_context`.
          * @returns the string vector containing business group or `null`
+         * @since 3.0.0
          */
         get_server_context(): string[];
 
@@ -6721,6 +7003,7 @@ export namespace Ags {
          * Parse `business_group` and apply to `security_context`.
          * @param xml_doc the xmlDoc containing groups
          * @param user_uuid the user's UUID
+         * @since 3.0.0
          */
         parse_business_group(xml_doc: libxml2.Doc, user_uuid: string): void;
 
@@ -6728,6 +7011,7 @@ export namespace Ags {
          * Remove `server_context` from `security_context`.
          * @param server_context the server context
          * @returns `true` on success, otherwise `false`
+         * @since 3.0.0
          */
         remove_server_context(server_context: string): boolean;
     }
@@ -6925,18 +7209,21 @@ export namespace Ags {
         // Virtual methods
         /**
          * Listen as  server.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_listen(): boolean;
 
         /**
          * Start the XMLRPC-C abyss server.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_start(): void;
 
         /**
          * Stop the XMLRPC-C abyss server.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_stop(): void;
@@ -6945,34 +7232,40 @@ export namespace Ags {
         /**
          * Add `controller` to `server`.
          * @param controller the {@link Ags.Controller}
+         * @since 3.0.0
          */
         add_controller(controller: GObject.Object): void;
 
         /**
          * Listen as  server.
          * @returns `true` as a new connection was initiated, otherwise `false`
+         * @since 3.0.0
          */
         listen(): boolean;
 
         /**
          * Remove `controller` from `server`.
          * @param controller the {@link Ags.Controller}
+         * @since 3.0.0
          */
         remove_controller(controller: GObject.Object): void;
 
         /**
          * Enable a feature of `server`.
          * @param flags see {@link Ags.ServerFlags}-enum
+         * @since 3.0.0
          */
         set_flags(flags: ServerFlags): void;
 
         /**
          * Start the XMLRPC-C abyss server.
+         * @since 3.0.0
          */
         start(): void;
 
         /**
          * Stop the XMLRPC-C abyss server.
+         * @since 3.0.0
          */
         stop(): void;
 
@@ -6980,12 +7273,14 @@ export namespace Ags {
          * Test `flags` to be set on `server`.
          * @param flags the flags
          * @returns `true` if flags are set, else `false`
+         * @since 3.0.0
          */
         test_flags(flags: ServerFlags): boolean;
 
         /**
          * Disable a feature of `server`.
          * @param flags see {@link Ags.ServerFlags}-enum
+         * @since 3.0.0
          */
         unset_flags(flags: ServerFlags): void;
     }
@@ -7057,71 +7352,83 @@ export namespace Ags {
         /**
          * Get main loop of application context.
          * @returns the {@link Ags.Thread} implementing {@link Ags.MainLoop}
+         * @since 3.0.0
          */
         get_main_loop(): Thread;
 
         /**
          * Get task launcher of application context.
          * @returns the {@link Ags.TaskLauncher}
+         * @since 3.0.0
          */
         get_task_launcher(): TaskLauncher;
 
         /**
          * Get thread pool of application context.
          * @returns the {@link Ags.ThreadPool}
+         * @since 3.0.0
          */
         get_thread_pool(): ThreadPool;
 
         /**
          * Get workers of application context.
          * @returns the {@link GLib.List}-struct containing workers
+         * @since 3.0.0
          */
         get_worker(): WorkerThread[];
 
         /**
          * Set main loop of application context.
          * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
+         * @since 3.0.0
          */
         set_main_loop(main_loop: Thread): void;
 
         /**
          * Set task launcher of application context.
          * @param task_launcher the {@link Ags.TaskLauncher}
+         * @since 3.0.0
          */
         set_task_launcher(task_launcher: TaskLauncher): void;
 
         /**
          * Set thread pool of application context.
          * @param thread_pool the {@link Ags.ThreadPool}
+         * @since 3.0.0
          */
         set_thread_pool(thread_pool: ThreadPool): void;
 
         /**
          * Set workers of application context.
          * @param worker the {@link GLib.List}-struct containing workers
+         * @since 3.0.0
          */
         set_worker(worker: WorkerThread[]): void;
 
         /**
          * Get main loop of application context.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_main_loop(): Thread;
 
         /**
          * Get task launcher of application context.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_task_launcher(): TaskLauncher;
 
         /**
          * Get thread pool of application context.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_thread_pool(): ThreadPool;
 
         /**
          * Get workers of application context.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_worker(): WorkerThread[];
@@ -7129,6 +7436,7 @@ export namespace Ags {
         /**
          * Set main loop of application context.
          * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_main_loop(main_loop: Thread): void;
@@ -7136,6 +7444,7 @@ export namespace Ags {
         /**
          * Set task launcher of application context.
          * @param task_launcher the {@link Ags.TaskLauncher}
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_task_launcher(task_launcher: TaskLauncher): void;
@@ -7143,6 +7452,7 @@ export namespace Ags {
         /**
          * Set thread pool of application context.
          * @param thread_pool the {@link Ags.ThreadPool}
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_thread_pool(thread_pool: ThreadPool): void;
@@ -7150,17 +7460,20 @@ export namespace Ags {
         /**
          * Set workers of application context.
          * @param worker the {@link GLib.List}-struct containing workers
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_worker(worker: WorkerThread[]): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          */
         add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          */
         connect(): void;
 
@@ -7172,75 +7485,88 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          */
         disconnect(): void;
 
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
+         * @since 3.0.0
          */
         get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
+         * @since 3.0.0
          */
         is_connected(): boolean;
 
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          */
         remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_compose(): libxml2.Node;
 
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_parse(node: libxml2.Node): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect(): void;
@@ -7248,12 +7574,14 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect(): void;
@@ -7261,48 +7589,56 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_connected(): boolean;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
@@ -7310,6 +7646,7 @@ export namespace Ags {
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
@@ -7317,29 +7654,34 @@ export namespace Ags {
         /**
          * Get server.
          * @returns the {@link GLib.List}-struct containing {@link Ags.Server}
+         * @since 3.0.0
          */
         get_server(): Server[];
 
         /**
          * Set registry.
          * @param registry the {@link Ags.Registry}
+         * @since 3.0.0
          */
         set_registry(registry: Registry): void;
 
         /**
          * Set server.
          * @param server the {@link GLib.List}-struct containing {@link Ags.Server}
+         * @since 3.0.0
          */
         set_server(server: Server[]): void;
 
         /**
          * Get server.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_server(): Server[];
 
         /**
          * Check if is operating.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_operating(): boolean;
@@ -7347,6 +7689,7 @@ export namespace Ags {
         /**
          * Set registry.
          * @param registry the {@link Ags.Registry}
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_registry(registry: Registry): void;
@@ -7354,6 +7697,7 @@ export namespace Ags {
         /**
          * Set server.
          * @param server the {@link GLib.List}-struct containing {@link Ags.Server}
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_server(server: Server[]): void;
@@ -7412,11 +7756,13 @@ export namespace Ags {
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          */
         add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          */
         connect(): void;
 
@@ -7428,75 +7774,88 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          */
         disconnect(): void;
 
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
+         * @since 3.0.0
          */
         get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
+         * @since 3.0.0
          */
         is_connected(): boolean;
 
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          */
         remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_compose(): libxml2.Node;
 
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_parse(node: libxml2.Node): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect(): void;
@@ -7504,12 +7863,14 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect(): void;
@@ -7517,48 +7878,56 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_connected(): boolean;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
@@ -7566,6 +7935,7 @@ export namespace Ags {
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
@@ -7707,6 +8077,7 @@ export namespace Ags {
          * @param nth_column the nth column
          * @param nth_row_a the nth row as a
          * @param nth_row_b the nth row as b
+         * @since 3.9.3
          */
         eliminate(nth_column: number, nth_row_a: number, nth_row_b: number): void;
 
@@ -7715,12 +8086,14 @@ export namespace Ags {
         /**
          * Get row count of `solver_matrix`.
          * @returns the row count
+         * @since 3.9.3
          */
         get_row_count(): number;
 
         /**
          * Get column count of `solver_matrix`.
          * @returns the column count
+         * @since 3.9.3
          */
         get_source_function(): string;
 
@@ -7728,35 +8101,41 @@ export namespace Ags {
          * Insert `solver_vector` to `solver_matrix`.
          * @param solver_vector the {@link Ags.SolverVector}
          * @param position the position
+         * @since 3.2.0
          */
         insert_vector(solver_vector: SolverVector, position: number): void;
 
         /**
          * Parse `source_function` and apply to `solver_matrix`.
          * @param source_function the normalized source function
+         * @since 3.9.3
          */
         parse(source_function: string): void;
 
         /**
          * Remove `solver_vector` from `solver_matrix`.
          * @param solver_vector the {@link Ags.SolverVector}
+         * @since 3.2.0
          */
         remove_vector(solver_vector: SolverVector): void;
 
         /**
          * Set `source_function` of `solver_matrix`.
          * @param source_function the source function
+         * @since 3.9.3
          */
         set_source_function(source_function: string): void;
 
         /**
          * Default solve.
+         * @since 5.3.4
          */
         solve_default(): void;
 
         /**
          * To string of `solver_matrix`.
          * @returns the new string representation
+         * @since 5.5.1
          */
         to_string(): string;
     }
@@ -7894,6 +8273,7 @@ export namespace Ags {
          * symbol and exponent, otherwise `null` returned and error is appropriately set.
          * @param polynomial_b the second summand
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
+         * @since 3.2.0
          */
         add(polynomial_b: SolverPolynomial): SolverPolynomial;
 
@@ -7901,6 +8281,7 @@ export namespace Ags {
          * Perform division of `polynomial_a` and `polynomial_b`.
          * @param polynomial_b the divisor
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
+         * @since 3.2.0
          */
         divide(polynomial_b: SolverPolynomial): SolverPolynomial;
 
@@ -7908,36 +8289,42 @@ export namespace Ags {
          * Perform raising power of `polynomial_a` and `polynomial_b`.
          * @param polynomial_b the index of root
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
+         * @since 3.2.0
          */
         extract_root(polynomial_b: SolverPolynomial): SolverPolynomial;
 
         /**
          * Get coefficient of `solver_polynomial`.
          * @returns the coefficient
+         * @since 3.9.3
          */
         get_coefficient(): string;
 
         /**
          * Get coefficient value of `solver_polynomial`.
          * @returns the coefficient value
+         * @since 3.9.3
          */
         get_coefficient_value(): Complex;
 
         /**
          * Get exponent of `solver_polynomial`.
          * @returns the exponent
+         * @since 3.9.3
          */
         get_exponent(): string[];
 
         /**
          * Get polynomial of `solver_polynomial`.
          * @returns the polynomial
+         * @since 3.9.3
          */
         get_polynomial(): string;
 
         /**
          * Get symbol of `solver_polynomial`.
          * @returns the symbol
+         * @since 3.9.3
          */
         get_symbol(): string[];
 
@@ -7945,12 +8332,14 @@ export namespace Ags {
          * Perform multiplication of `polynomial_a` and `polynomial_b`.
          * @param polynomial_b the second factor
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
+         * @since 3.2.0
          */
         multiply(polynomial_b: SolverPolynomial): SolverPolynomial;
 
         /**
          * Parse `polynomial` and apply to `solver_polynomial`.
          * @param polynomial the polynomial as string
+         * @since 3.2.0
          */
         parse(polynomial: string): void;
 
@@ -7958,24 +8347,28 @@ export namespace Ags {
          * Perform raising power of `polynomial_a` and `polynomial_b`.
          * @param polynomial_b the exponent
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
+         * @since 3.2.0
          */
         raise_power(polynomial_b: SolverPolynomial): SolverPolynomial;
 
         /**
          * Set `coefficient` of `solver_polynomial`.
          * @param coefficient the coefficient
+         * @since 3.9.3
          */
         set_coefficient(coefficient: string): void;
 
         /**
          * Set `coefficient_value` of `solver_polynomial`.
          * @param coefficient_value the coefficient value
+         * @since 3.9.3
          */
         set_coefficient_value(coefficient_value: Complex): void;
 
         /**
          * Set `polynomial` of `solver_polynomial`.
          * @param polynomial the polynomial
+         * @since 3.9.3
          */
         set_polynomial(polynomial: string): void;
 
@@ -7984,11 +8377,13 @@ export namespace Ags {
          * symbol and exponent, otherwise `null` returned and error is appropriately set.
          * @param polynomial_b the subtrahend
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
+         * @since 3.2.0
          */
         subtract(polynomial_b: SolverPolynomial): SolverPolynomial;
 
         /**
          * Update string representation of `solver_polynomial`.
+         * @since 3.2.0
          */
         update(): void;
     }
@@ -8091,12 +8486,14 @@ export namespace Ags {
         /**
          * Get polynomial count of `solver_vector`.
          * @returns the polynomial count
+         * @since 3.9.3
          */
         get_polynomial_count(): number;
 
         /**
          * Get source polynomial of `solver_vector`.
          * @returns the source polynomial
+         * @since 3.9.3
          */
         get_source_polynomial(): string;
 
@@ -8104,18 +8501,21 @@ export namespace Ags {
          * Insert `solver_polynomial` to `solver_vector`.
          * @param solver_polynomial the {@link Ags.SolverPolynomial}
          * @param position the position
+         * @since 3.2.0
          */
         insert_polynomial(solver_polynomial: SolverPolynomial, position: number): void;
 
         /**
          * Remove `solver_polynomial` from `solver_vector`.
          * @param solver_polynomial the {@link Ags.SolverPolynomial}
+         * @since 3.2.0
          */
         remove_polynomial(solver_polynomial: SolverPolynomial): void;
 
         /**
          * Set `source_polynomial` of `solver_vector`.
          * @param source_polynomial the source polynomial
+         * @since 3.9.3
          */
         set_source_polynomial(source_polynomial: string): void;
     }
@@ -8209,12 +8609,14 @@ export namespace Ags {
         /**
          * Signals failure of task.
          * @param error is `null` on success
+         * @since 3.0.0
          * @virtual
          */
         vfunc_failure(error: GLib.Error): void;
 
         /**
          * Intercept task.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_launch(): void;
@@ -8223,17 +8625,20 @@ export namespace Ags {
         /**
          * Signals failure of task.
          * @param error is `null` on success
+         * @since 3.0.0
          */
         failure(error: GLib.Error): void;
 
         /**
          * Intercept task.
+         * @since 3.0.0
          */
         launch(): void;
 
         /**
          * Enable a feature of {@link Ags.Task}.
          * @param flags see enum AgsTaskFlags
+         * @since 3.0.0
          */
         set_flags(flags: TaskFlags): void;
 
@@ -8241,12 +8646,14 @@ export namespace Ags {
          * Test `flags` to be set on `task`.
          * @param flags the flags
          * @returns `true` if flags are set, else `false`
+         * @since 3.0.0
          */
         test_flags(flags: TaskFlags): boolean;
 
         /**
          * Disable a feature of AgsTask.
          * @param flags see enum AgsTaskFlags
+         * @since 3.0.0
          */
         unset_flags(flags: TaskFlags): void;
     }
@@ -8324,6 +8731,7 @@ export namespace Ags {
         // Virtual methods
         /**
          * Emit ::complete signal
+         * @since 3.0.0
          * @virtual
          */
         vfunc_complete(): void;
@@ -8331,12 +8739,14 @@ export namespace Ags {
         // Methods
         /**
          * Emit ::complete signal
+         * @since 3.0.0
          */
         complete(): void;
 
         /**
          * Enable a feature of {@link Ags.TaskCompletion}.
          * @param flags see enum AgsTaskCompletionFlags
+         * @since 3.0.0
          */
         set_flags(flags: TaskCompletionFlags): void;
 
@@ -8344,22 +8754,26 @@ export namespace Ags {
          * Test `flags` to be set on `task_completion`.
          * @param flags the flags
          * @returns `true` if flags are set, else `false`
+         * @since 3.0.0
          */
         test_flags(flags: TaskCompletionFlags): boolean;
 
         /**
          * Disable a feature of AgsTaskCompletion.
          * @param flags see enum AgsTaskCompletionFlags
+         * @since 3.0.0
          */
         unset_flags(flags: TaskCompletionFlags): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          */
         add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          */
         connect(): void;
 
@@ -8371,75 +8785,88 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          */
         disconnect(): void;
 
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
+         * @since 3.0.0
          */
         get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
+         * @since 3.0.0
          */
         is_connected(): boolean;
 
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          */
         remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_compose(): libxml2.Node;
 
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_parse(node: libxml2.Node): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect(): void;
@@ -8447,12 +8874,14 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect(): void;
@@ -8460,48 +8889,56 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_connected(): boolean;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
@@ -8509,6 +8946,7 @@ export namespace Ags {
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
@@ -8565,6 +9003,7 @@ export namespace Ags {
         // Virtual methods
         /**
          * Run tasks.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_run(): void;
@@ -8573,50 +9012,59 @@ export namespace Ags {
         /**
          * Add `cyclic_task` to `task_launcher`.
          * @param cyclic_task the cyclic {@link Ags.Task}
+         * @since 3.0.0
          */
         add_cyclic_task(cyclic_task: Task): void;
 
         /**
          * Add `task` to `task_launcher`.
          * @param task the {@link Ags.Task}
+         * @since 3.0.0
          */
         add_task(task: Task): void;
 
         /**
          * Add all `list` to `task_launcher`.
          * @param list the {@link GLib.List}-struct containing {@link Ags.Task}
+         * @since 3.0.0
          */
         add_task_all(list: Task[]): void;
 
         /**
          * Attach `task_launcher` to `main_context`.
          * @param main_context the {@link GLib.MainContext}-struct
+         * @since 3.0.0
          */
         attach(main_context: GLib.MainContext): void;
 
         /**
          * Remove `cyclic_task` from `task_launcher`.
          * @param cyclic_task the cyclic {@link Ags.Task}
+         * @since 3.0.0
          */
         remove_cyclic_task(cyclic_task: Task): void;
 
         /**
          * Run tasks.
+         * @since 3.0.0
          */
         run(): void;
 
         /**
          * Sync run tasks.
+         * @since 3.0.0
          */
         sync_run(): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          */
         add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          */
         connect(): void;
 
@@ -8628,75 +9076,88 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          */
         disconnect(): void;
 
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
+         * @since 3.0.0
          */
         get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
+         * @since 3.0.0
          */
         is_connected(): boolean;
 
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          */
         remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_compose(): libxml2.Node;
 
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_parse(node: libxml2.Node): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect(): void;
@@ -8704,12 +9165,14 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect(): void;
@@ -8717,48 +9180,56 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_connected(): boolean;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
@@ -8766,6 +9237,7 @@ export namespace Ags {
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
@@ -8891,23 +9363,27 @@ export namespace Ags {
         // Static methods
         /**
          * Get global config value use sync counter.
+         * @since 3.0.0
          */
         static global_get_use_sync_counter(): boolean;
 
         /**
          * Thread self.
+         * @since 3.0.0
          */
         static self(): Thread;
 
         // Virtual methods
         /**
          * Clock the thread.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_clock(): number;
 
         /**
          * Recover dead-lock of the thread.
+         * @since 7.1.0
          * @virtual
          */
         vfunc_recover_dead_lock(): void;
@@ -8915,18 +9391,21 @@ export namespace Ags {
         /**
          * Only for internal use of ags_thread_loop but you may want to set the your very own
          * class function namely your thread's routine.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_run(): void;
 
         /**
          * Start the thread.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_start(): void;
 
         /**
          * Stop the threads loop by unsetting AGS_THREAD_STATUS_RUNNING flag.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_stop(): void;
@@ -8935,6 +9414,7 @@ export namespace Ags {
         /**
          * Add child to thread.
          * @param child the child to remove
+         * @since 3.0.0
          */
         add_child(child: Thread): void;
 
@@ -8943,40 +9423,47 @@ export namespace Ags {
          * @param child the child to remove
          * @param no_start don't start thread
          * @param no_wait don't wait until started
+         * @since 3.0.0
          */
         add_child_extended(child: Thread, no_start: boolean, no_wait: boolean): void;
 
         /**
          * Add `child` to `thread`'s start queue.
          * @param child the child {@link Ags.Thread} to start
+         * @since 3.0.0
          */
         add_start_queue(child: Thread): void;
 
         /**
          * Add `child` to `thread`'s start queue.
          * @param child the children as {@link GLib.List}-struct containing {@link Ags.Thread} to start
+         * @since 3.0.0
          */
         add_start_queue_all(child: Thread[]): void;
 
         /**
          * Get children thread.
          * @returns the children {@link Ags.Thread}
+         * @since 3.0.0
          */
         children(): Thread;
 
         /**
          * Clear status flags.
+         * @since 3.0.0
          */
         clear_status_flags(): void;
 
         /**
          * Clear sync-tic flags.
+         * @since 3.0.0
          */
         clear_sync_tic_flags(): void;
 
         /**
          * Clock the thread.
          * @returns the cycles to be performed
+         * @since 3.0.0
          */
         clock(): number;
 
@@ -8985,42 +9472,49 @@ export namespace Ags {
          * the ref-count is increased.
          * @param gtype the {@link GObject.GType}-struct
          * @returns the matching {@link Ags.Thread}
+         * @since 3.0.0
          */
         find_type(gtype: GObject.GType): Thread;
 
         /**
          * Retrieve first sibling.
          * @returns the very first {@link Ags.Thread} within same tree level
+         * @since 3.0.0
          */
         first(): Thread;
 
         /**
          * Get current sync-tic.
          * @returns the current sync-tic
+         * @since 3.0.0
          */
         get_current_sync_tic(): number;
 
         /**
          * Get delay.
          * @returns the delay
+         * @since 3.0.0
          */
         get_delay(): number;
 
         /**
          * Get frequency.
          * @returns the frequency
+         * @since 3.0.0
          */
         get_frequency(): number;
 
         /**
          * Get max-precision.
          * @returns the max-precision
+         * @since 3.0.0
          */
         get_max_precision(): number;
 
         /**
          * Retrieve toplevel thread.
          * @returns the toplevevel {@link Ags.Thread}
+         * @since 3.0.0
          */
         get_toplevel(): Thread;
 
@@ -9037,23 +9531,27 @@ export namespace Ags {
         /**
          * Retrieve last sibling.
          * @returns the very last `AgsThread` within same tree level
+         * @since 3.0.0
          */
         last(): Thread;
 
         /**
          * Locks the threads own mutex and sets the appropriate flag.
+         * @since 3.0.0
          */
         lock(): void;
 
         /**
          * Get next thread.
          * @returns the next {@link Ags.Thread}
+         * @since 3.0.0
          */
         next(): Thread;
 
         /**
          * Get parent thread.
          * @returns the parent {@link Ags.Thread}
+         * @since 3.0.0
          */
         parent(): Thread;
 
@@ -9070,23 +9568,27 @@ export namespace Ags {
         /**
          * Get prev thread.
          * @returns the prev {@link Ags.Thread}
+         * @since 3.0.0
          */
         prev(): Thread;
 
         /**
          * Recover dead-lock of the thread.
+         * @since 7.1.0
          */
         recover_dead_lock(): void;
 
         /**
          * Remove child of thread.
          * @param child the child to remove
+         * @since 3.0.0
          */
         remove_child(child: Thread): void;
 
         /**
          * Only for internal use of ags_thread_loop but you may want to set the your very own
          * class function namely your thread's routine.
+         * @since 3.0.0
          */
         run(): void;
 
@@ -9098,42 +9600,49 @@ export namespace Ags {
         /**
          * Set current sync-tic.
          * @param current_sync_tic the current sync-tic
+         * @since 3.0.0
          */
         set_current_sync_tic(current_sync_tic: number): void;
 
         /**
          * Set delay.
          * @param delay the delay
+         * @since 3.0.0
          */
         set_delay(delay: number): void;
 
         /**
          * Set flags.
          * @param flags the flags
+         * @since 3.0.0
          */
         set_flags(flags: ThreadFlags): void;
 
         /**
          * Set frequency.
          * @param frequency the frequency
+         * @since 3.0.0
          */
         set_frequency(frequency: number): void;
 
         /**
          * Set max-precision.
          * @param max_precision the max-precision
+         * @since 3.0.0
          */
         set_max_precision(max_precision: number): void;
 
         /**
          * Set status flags.
          * @param status_flags the status flags
+         * @since 3.0.0
          */
         set_status_flags(status_flags: ThreadStatusFlags): void;
 
         /**
          * Set sync-tic flags.
          * @param sync_tic_flags the sync-tic flags
+         * @since 3.0.0
          */
         set_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags): void;
 
@@ -9144,11 +9653,13 @@ export namespace Ags {
 
         /**
          * Start the thread.
+         * @since 3.0.0
          */
         start(): void;
 
         /**
          * Stop the threads loop by unsetting AGS_THREAD_STATUS_RUNNING flag.
+         * @since 3.0.0
          */
         stop(): void;
 
@@ -9156,6 +9667,7 @@ export namespace Ags {
          * Test `flags` to be set on `thread`.
          * @param flags the flags
          * @returns `true` if flags are set, else `false`
+         * @since 3.0.0
          */
         test_flags(flags: ThreadFlags): boolean;
 
@@ -9163,6 +9675,7 @@ export namespace Ags {
          * Test `status_flags` to be set on `thread`.
          * @param status_flags the status flags
          * @returns `true` if status flags are set, else `false`
+         * @since 3.0.0
          */
         test_status_flags(status_flags: ThreadStatusFlags): boolean;
 
@@ -9170,6 +9683,7 @@ export namespace Ags {
          * Test `sync_tic_flags` to be set on `thread`.
          * @param sync_tic_flags the sync-tic flags
          * @returns `true` if sync-tic flags are set, else `false`
+         * @since 3.0.0
          */
         test_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags): boolean;
 
@@ -9178,39 +9692,46 @@ export namespace Ags {
          * appropriate flag and returning `true`. Otherwise return `false`
          * without lock.
          * @returns `true` on success, otherwise `false`
+         * @since 3.0.0
          */
         trylock(): boolean;
 
         /**
          * Unlocks the threads own mutex and unsets the appropriate flag.
+         * @since 3.0.0
          */
         unlock(): void;
 
         /**
          * Unset flags.
          * @param flags the flags
+         * @since 3.0.0
          */
         unset_flags(flags: ThreadFlags): void;
 
         /**
          * Unset status flags.
          * @param status_flags the status flags
+         * @since 3.0.0
          */
         unset_status_flags(status_flags: ThreadStatusFlags): void;
 
         /**
          * Unset sync-tic flags.
          * @param sync_tic_flags the sync-tic flags
+         * @since 3.0.0
          */
         unset_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          */
         add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          */
         connect(): void;
 
@@ -9222,75 +9743,88 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          */
         disconnect(): void;
 
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
+         * @since 3.0.0
          */
         get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
+         * @since 3.0.0
          */
         is_connected(): boolean;
 
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          */
         remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_compose(): libxml2.Node;
 
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_parse(node: libxml2.Node): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect(): void;
@@ -9298,12 +9832,14 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect(): void;
@@ -9311,48 +9847,56 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_connected(): boolean;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
@@ -9360,6 +9904,7 @@ export namespace Ags {
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
@@ -9449,71 +9994,83 @@ export namespace Ags {
         /**
          * Get main loop of application context.
          * @returns the {@link Ags.Thread} implementing {@link Ags.MainLoop}
+         * @since 3.0.0
          */
         get_main_loop(): Thread;
 
         /**
          * Get task launcher of application context.
          * @returns the {@link Ags.TaskLauncher}
+         * @since 3.0.0
          */
         get_task_launcher(): TaskLauncher;
 
         /**
          * Get thread pool of application context.
          * @returns the {@link Ags.ThreadPool}
+         * @since 3.0.0
          */
         get_thread_pool(): ThreadPool;
 
         /**
          * Get workers of application context.
          * @returns the {@link GLib.List}-struct containing workers
+         * @since 3.0.0
          */
         get_worker(): WorkerThread[];
 
         /**
          * Set main loop of application context.
          * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
+         * @since 3.0.0
          */
         set_main_loop(main_loop: Thread): void;
 
         /**
          * Set task launcher of application context.
          * @param task_launcher the {@link Ags.TaskLauncher}
+         * @since 3.0.0
          */
         set_task_launcher(task_launcher: TaskLauncher): void;
 
         /**
          * Set thread pool of application context.
          * @param thread_pool the {@link Ags.ThreadPool}
+         * @since 3.0.0
          */
         set_thread_pool(thread_pool: ThreadPool): void;
 
         /**
          * Set workers of application context.
          * @param worker the {@link GLib.List}-struct containing workers
+         * @since 3.0.0
          */
         set_worker(worker: WorkerThread[]): void;
 
         /**
          * Get main loop of application context.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_main_loop(): Thread;
 
         /**
          * Get task launcher of application context.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_task_launcher(): TaskLauncher;
 
         /**
          * Get thread pool of application context.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_thread_pool(): ThreadPool;
 
         /**
          * Get workers of application context.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_worker(): WorkerThread[];
@@ -9521,6 +10078,7 @@ export namespace Ags {
         /**
          * Set main loop of application context.
          * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_main_loop(main_loop: Thread): void;
@@ -9528,6 +10086,7 @@ export namespace Ags {
         /**
          * Set task launcher of application context.
          * @param task_launcher the {@link Ags.TaskLauncher}
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_task_launcher(task_launcher: TaskLauncher): void;
@@ -9535,6 +10094,7 @@ export namespace Ags {
         /**
          * Set thread pool of application context.
          * @param thread_pool the {@link Ags.ThreadPool}
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_thread_pool(thread_pool: ThreadPool): void;
@@ -9542,17 +10102,20 @@ export namespace Ags {
         /**
          * Set workers of application context.
          * @param worker the {@link GLib.List}-struct containing workers
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_worker(worker: WorkerThread[]): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          */
         add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          */
         connect(): void;
 
@@ -9564,75 +10127,88 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          */
         disconnect(): void;
 
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
+         * @since 3.0.0
          */
         get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
+         * @since 3.0.0
          */
         is_connected(): boolean;
 
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          */
         remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_compose(): libxml2.Node;
 
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_parse(node: libxml2.Node): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect(): void;
@@ -9640,12 +10216,14 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect(): void;
@@ -9653,48 +10231,56 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_connected(): boolean;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
@@ -9702,6 +10288,7 @@ export namespace Ags {
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
@@ -9815,6 +10402,7 @@ export namespace Ags {
         // Virtual methods
         /**
          * Start the thread pool.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_start(): void;
@@ -9824,11 +10412,13 @@ export namespace Ags {
          * Pull a previously instantiated {@link Ags.ReturnableThread}. Note this
          * function may block until a new thread is available.
          * @returns a new {@link Ags.Thread}
+         * @since 3.0.0
          */
         pull(): Thread;
 
         /**
          * Start the thread pool.
+         * @since 3.0.0
          */
         start(): void;
     }
@@ -9890,30 +10480,35 @@ export namespace Ags {
         /**
          * Get AGS offset.
          * @returns the AGS offset as unsigned 64 bit integer
+         * @since 3.0.0
          */
         get_ags_offset(): number;
 
         /**
          * Get unix time.
          * @returns the unix time as time_t value
+         * @since 3.0.0
          */
         get_unix_time(): number;
 
         /**
          * Set AGS offset as unsigned 64 bit integer.
          * @param ags_offset the AGS offset
+         * @since 3.0.0
          */
         set_ags_offset(ags_offset: bigint | number): void;
 
         /**
          * Set `flags` of `timestamp`.
          * @param flags the flags
+         * @since 3.0.0
          */
         set_flags(flags: TimestampFlags): void;
 
         /**
          * Set unix time.
          * @param unix_time the unix time value
+         * @since 3.0.0
          */
         set_unix_time(unix_time: bigint | number): void;
 
@@ -9921,12 +10516,14 @@ export namespace Ags {
          * Test `flags` to be set.
          * @param flags the flags
          * @returns if `flags` set returning `true` otherwise `false`
+         * @since 3.0.0
          */
         test_flags(flags: TimestampFlags): boolean;
 
         /**
          * Unset `flags` of `timestamp`.
          * @param flags the flags
+         * @since 3.0.0
          */
         unset_flags(flags: TimestampFlags): void;
     }
@@ -10015,6 +10612,7 @@ export namespace Ags {
          * Match anon.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_anon(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10022,6 +10620,7 @@ export namespace Ags {
          * Match blank node label.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_blank_node_label(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10029,6 +10628,7 @@ export namespace Ags {
          * Match boolean.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_boolean(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10036,6 +10636,7 @@ export namespace Ags {
          * Match decimal.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_decimal(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10043,6 +10644,7 @@ export namespace Ags {
          * Match double.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_double(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10050,6 +10652,7 @@ export namespace Ags {
          * Match echar.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_echar(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10057,6 +10660,7 @@ export namespace Ags {
          * Match exponent.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_exponent(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10064,6 +10668,7 @@ export namespace Ags {
          * Match hex.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_hex(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10071,6 +10676,7 @@ export namespace Ags {
          * Match integer.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_integer(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10078,6 +10684,7 @@ export namespace Ags {
          * Match iriref.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_iriref(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10085,6 +10692,7 @@ export namespace Ags {
          * Match langtag.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_langtag(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10092,6 +10700,7 @@ export namespace Ags {
          * Match percent.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_percent(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10099,6 +10708,7 @@ export namespace Ags {
          * Match plx.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_plx(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10106,6 +10716,7 @@ export namespace Ags {
          * Match pn chars.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_pn_chars(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10113,6 +10724,7 @@ export namespace Ags {
          * Match pn chars base.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_pn_chars_base(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10120,6 +10732,7 @@ export namespace Ags {
          * Match pn chars u.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_pn_chars_u(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10127,6 +10740,7 @@ export namespace Ags {
          * Match uchar.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_pn_local(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10142,6 +10756,7 @@ export namespace Ags {
          * Match pn prefix.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_pn_prefix(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10149,6 +10764,7 @@ export namespace Ags {
          * Match pname-ln.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_pname_ln(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10156,6 +10772,7 @@ export namespace Ags {
          * Match match pname-ns.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_pname_ns(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10163,6 +10780,7 @@ export namespace Ags {
          * Match string.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_string(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10170,6 +10788,7 @@ export namespace Ags {
          * Match string literal long quote.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_string_literal_long_quote(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10177,6 +10796,7 @@ export namespace Ags {
          * Match string literal long single quote.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_string_literal_long_single_quote(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10184,6 +10804,7 @@ export namespace Ags {
          * Match string literal quote.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_string_literal_quote(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10191,6 +10812,7 @@ export namespace Ags {
          * Match string literal single quote.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_string_literal_single_quote(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10198,6 +10820,7 @@ export namespace Ags {
          * Match uchar.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_uchar(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10205,6 +10828,7 @@ export namespace Ags {
          * Match ws.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.2.12
          */
         static match_ws(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -10212,6 +10836,7 @@ export namespace Ags {
          * Read anon value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_anon(offset: string, end_ptr: string): string;
 
@@ -10219,6 +10844,7 @@ export namespace Ags {
          * Read blank node label value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_blank_node_label(offset: string, end_ptr: string): string;
 
@@ -10226,6 +10852,7 @@ export namespace Ags {
          * Read boolean value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_boolean(offset: string, end_ptr: string): string;
 
@@ -10233,6 +10860,7 @@ export namespace Ags {
          * Read decimal value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_decimal(offset: string, end_ptr: string): string;
 
@@ -10240,6 +10868,7 @@ export namespace Ags {
          * Read double value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_double(offset: string, end_ptr: string): string;
 
@@ -10247,6 +10876,7 @@ export namespace Ags {
          * Read echar value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_echar(offset: string, end_ptr: string): string;
 
@@ -10254,6 +10884,7 @@ export namespace Ags {
          * Read exponent value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_exponent(offset: string, end_ptr: string): string;
 
@@ -10261,6 +10892,7 @@ export namespace Ags {
          * Read hex value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_hex(offset: string, end_ptr: string): string;
 
@@ -10268,6 +10900,7 @@ export namespace Ags {
          * Read integer value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_integer(offset: string, end_ptr: string): string;
 
@@ -10275,6 +10908,7 @@ export namespace Ags {
          * Read iriref value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_iriref(offset: string, end_ptr: string): string;
 
@@ -10282,6 +10916,7 @@ export namespace Ags {
          * Read langtag value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_langtag(offset: string, end_ptr: string): string;
 
@@ -10289,6 +10924,7 @@ export namespace Ags {
          * Read percent value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_percent(offset: string, end_ptr: string): string;
 
@@ -10296,6 +10932,7 @@ export namespace Ags {
          * Read plx value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_plx(offset: string, end_ptr: string): string;
 
@@ -10303,6 +10940,7 @@ export namespace Ags {
          * Read prefixed-name chars value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_pn_chars(offset: string, end_ptr: string): string;
 
@@ -10310,6 +10948,7 @@ export namespace Ags {
          * Read prefixed-name chars base value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_pn_chars_base(offset: string, end_ptr: string): string;
 
@@ -10317,6 +10956,7 @@ export namespace Ags {
          * Read prefixed-name chars underscore value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_pn_chars_u(offset: string, end_ptr: string): string;
 
@@ -10324,6 +10964,7 @@ export namespace Ags {
          * Read prefixed-name local value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_pn_local(offset: string, end_ptr: string): string;
 
@@ -10331,6 +10972,7 @@ export namespace Ags {
          * Read prefixed name local escapes.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_pn_local_esc(offset: string, end_ptr: string): string;
 
@@ -10338,6 +10980,7 @@ export namespace Ags {
          * Read prefixe-name prefix value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_pn_prefix(offset: string, end_ptr: string): string;
 
@@ -10345,6 +10988,7 @@ export namespace Ags {
          * Read prefixed-name localized name value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_pname_ln(offset: string, end_ptr: string): string;
 
@@ -10352,6 +10996,7 @@ export namespace Ags {
          * Read prefixed-name namespace value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_pname_ns(offset: string, end_ptr: string): string;
 
@@ -10359,6 +11004,7 @@ export namespace Ags {
          * Read string value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_string(offset: string, end_ptr: string): string;
 
@@ -10366,6 +11012,7 @@ export namespace Ags {
          * Read string literal long quote value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_string_literal_long_quote(offset: string, end_ptr: string): string;
 
@@ -10373,6 +11020,7 @@ export namespace Ags {
          * Read string literal long single quote value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_string_literal_long_single_quote(offset: string, end_ptr: string): string;
 
@@ -10380,6 +11028,7 @@ export namespace Ags {
          * Read string literal quote value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_string_literal_quote(offset: string, end_ptr: string): string;
 
@@ -10387,6 +11036,7 @@ export namespace Ags {
          * Read string literal single quote value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_string_literal_single_quote(offset: string, end_ptr: string): string;
 
@@ -10394,6 +11044,7 @@ export namespace Ags {
          * Read uchar value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_uchar(offset: string, end_ptr: string): string;
 
@@ -10401,6 +11052,7 @@ export namespace Ags {
          * Read ws value.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.0.0
          */
         static read_ws(offset: string, end_ptr: string): string;
 
@@ -10409,6 +11061,7 @@ export namespace Ags {
          * Lookup XPath expression withing `turtle`.
          * @param xpath a XPath expression as string
          * @returns a {@link GLib.List}-struct containing xmlNode
+         * @since 3.0.0
          */
         find_xpath(xpath: string): libxml2.Node[];
 
@@ -10417,12 +11070,14 @@ export namespace Ags {
          * @param xpath a XPath expression as string
          * @param context_node a #xmlNode-struct
          * @returns a {@link GLib.List}-struct containing xmlNode
+         * @since 3.0.0
          */
         find_xpath_with_context_node(xpath: string, context_node: libxml2.Node): libxml2.Node[];
 
         /**
          * Loads a RDF triple file into an XML Document.
          * @returns a #xmlDoc pointer
+         * @since 3.0.0
          */
         load(): libxml2.Doc;
 
@@ -10484,6 +11139,7 @@ export namespace Ags {
         // Static methods
         /**
          * Get instance of {@link Ags.TurtleManager}.
+         * @since 3.0.0
          */
         static get_instance(): TurtleManager;
 
@@ -10491,6 +11147,7 @@ export namespace Ags {
         /**
          * Adds `turtle` to `turtle_manager`.
          * @param turtle the {@link Ags.Turtle}
+         * @since 3.0.0
          */
         add(turtle: GObject.Object): void;
 
@@ -10498,6 +11155,7 @@ export namespace Ags {
          * Find `filename` in `turtle_manager`.
          * @param filename the filename as string
          * @returns the matching {@link Ags.Turtle}, or `null`
+         * @since 3.0.0
          */
         find<T = GObject.Object>(filename: string): T;
     }
@@ -10557,6 +11215,7 @@ export namespace Ags {
         // Virtual methods
         /**
          * Do poll your work. It is called of the worker thread.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_do_poll(): void;
@@ -10564,12 +11223,14 @@ export namespace Ags {
         // Methods
         /**
          * Do poll your work. It is called of the worker thread.
+         * @since 3.0.0
          */
         do_poll(): void;
 
         /**
          * Set status flags.
          * @param status_flags status flags
+         * @since 3.0.0
          */
         set_status_flags(status_flags: WorkerThreadStatusFlags): void;
 
@@ -10583,6 +11244,7 @@ export namespace Ags {
          * Test `status_flags` of `worker_thread`.
          * @param status_flags status flags
          * @returns `true` if status flags set, otherwise `false`
+         * @since 3.0.0
          */
         test_status_flags(status_flags: WorkerThreadStatusFlags): boolean;
 
@@ -10595,6 +11257,7 @@ export namespace Ags {
         /**
          * Unset status flags.
          * @param status_flags status flags
+         * @since 3.0.0
          */
         unset_status_flags(status_flags: WorkerThreadStatusFlags): void;
 
@@ -10606,11 +11269,13 @@ export namespace Ags {
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          */
         add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          */
         connect(): void;
 
@@ -10622,75 +11287,88 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          */
         disconnect(): void;
 
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
+         * @since 3.0.0
          */
         get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
+         * @since 3.0.0
          */
         is_connected(): boolean;
 
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          */
         remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_compose(): libxml2.Node;
 
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_parse(node: libxml2.Node): void;
 
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect(): void;
@@ -10698,12 +11376,14 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect(): void;
@@ -10711,48 +11391,56 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_connected(): boolean;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
@@ -10760,6 +11448,7 @@ export namespace Ags {
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
@@ -10823,24 +11512,28 @@ export namespace Ags {
          * Find ags-srv-auth xmlNode containing `user_uuid`.
          * @param user_uuid the user UUID
          * @returns the matching xmlNode or `null`
+         * @since 3.0.0
          */
         find_user_uuid(user_uuid: string): libxml2.Node;
 
         /**
          * Open `filename`.
          * @param filename the filename
+         * @since 3.0.0
          */
         open_filename(filename: string): void;
 
         /**
          * Generate token.
          * @returns the generated token
+         * @since 3.0.0
          */
         generate_token(): string;
 
         /**
          * Available authentication modules.
          * @returns a `null` terminated array of strings of available authentication modules
+         * @since 3.0.0
          */
         get_authentication_module(): string[];
 
@@ -10850,6 +11543,7 @@ export namespace Ags {
          * @param login the login
          * @param security_token the security token
          * @returns the encrypted password
+         * @since 3.0.0
          */
         get_digest(realm: string, login: string, security_token: string): string;
 
@@ -10859,6 +11553,7 @@ export namespace Ags {
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @returns `true` if session active, otherwise `false`
+         * @since 3.0.0
          */
         is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
 
@@ -10867,6 +11562,7 @@ export namespace Ags {
          * @param login the login
          * @param password the password
          * @returns `true` on success, otherwise `false`
+         * @since 3.0.0
          */
         login(login: string, password: string): [boolean, string, string];
 
@@ -10876,17 +11572,20 @@ export namespace Ags {
          * @param login the login
          * @param security_token the security token
          * @returns `true` on success, otherwise `false`
+         * @since 3.0.0
          */
         logout(security_context: GObject.Object, login: string, security_token: string): boolean;
 
         /**
          * Generate token.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_generate_token(): string;
 
         /**
          * Available authentication modules.
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_authentication_module(): string[];
@@ -10896,6 +11595,7 @@ export namespace Ags {
          * @param realm the realm
          * @param login the login
          * @param security_token the security token
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_digest(realm: string, login: string, security_token: string): string;
@@ -10905,6 +11605,7 @@ export namespace Ags {
          * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
+         * @since 3.0.0
          * @virtual
          */
         vfunc_is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
@@ -10913,6 +11614,7 @@ export namespace Ags {
          * Login.
          * @param login the login
          * @param password the password
+         * @since 3.0.0
          * @virtual
          */
         vfunc_login(login: string, password: string): [boolean, string, string];
@@ -10922,6 +11624,7 @@ export namespace Ags {
          * @param security_context the {@link Ags.SecurityContext}
          * @param login the login
          * @param security_token the security token
+         * @since 3.0.0
          * @virtual
          */
         vfunc_logout(security_context: GObject.Object, login: string, security_token: string): boolean;
@@ -10984,6 +11687,7 @@ export namespace Ags {
         /**
          * Open `filename`.
          * @param filename the filename
+         * @since 3.0.0
          */
         open_filename(filename: string): void;
 
@@ -10994,6 +11698,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param group_uuid the group's UUID
          * @returns the business group's name as string
+         * @since 3.0.0
          */
         get_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string;
 
@@ -11003,6 +11708,7 @@ export namespace Ags {
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @returns the group UUIDs as `null` terminated string array
+         * @since 3.0.0
          */
         get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
 
@@ -11013,6 +11719,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param group_uuid the business group's UUID
          * @returns the business group's user names as string vector
+         * @since 3.0.0
          */
         get_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string[];
 
@@ -11023,6 +11730,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param group_uuid the group's UUID
          * @param group_name the business group's name to set
+         * @since 3.0.0
          */
         set_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, group_name: string): void;
 
@@ -11033,6 +11741,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param group_uuid the business group's UUID
          * @param user the string array containing user names
+         * @since 3.0.0
          */
         set_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, user: string[]): void;
 
@@ -11042,6 +11751,7 @@ export namespace Ags {
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the group's UUID
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string;
@@ -11051,6 +11761,7 @@ export namespace Ags {
          * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
@@ -11061,6 +11772,7 @@ export namespace Ags {
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the business group's UUID
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string[];
@@ -11072,6 +11784,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param group_uuid the group's UUID
          * @param group_name the business group's name to set
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, group_name: string): void;
@@ -11083,6 +11796,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param group_uuid the business group's UUID
          * @param user the string array containing user names
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, user: string[]): void;
@@ -11145,6 +11859,7 @@ export namespace Ags {
         /**
          * Open `filename`.
          * @param filename the filename
+         * @since 3.0.0
          */
         open_filename(filename: string): void;
 
@@ -11154,6 +11869,7 @@ export namespace Ags {
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @returns the cert UUIDs as `null` terminated string array
+         * @since 3.0.0
          */
         get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
 
@@ -11164,6 +11880,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @returns the domain
+         * @since 3.0.0
          */
         get_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -11174,6 +11891,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @returns the key type
+         * @since 3.0.0
          */
         get_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -11184,6 +11902,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @returns the private key file
+         * @since 3.0.0
          */
         get_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -11194,6 +11913,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @returns the public key file
+         * @since 3.0.0
          */
         get_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -11204,6 +11924,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param domain the domain
+         * @since 3.0.0
          */
         set_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, domain: string): void;
 
@@ -11214,6 +11935,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param key_type the key type
+         * @since 3.0.0
          */
         set_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, key_type: string): void;
 
@@ -11224,6 +11946,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param private_key_file the private key file
+         * @since 3.0.0
          */
         set_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, private_key_file: string): void;
 
@@ -11234,6 +11957,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param public_key_file the public key file
+         * @since 3.0.0
          */
         set_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, public_key_file: string): void;
 
@@ -11242,6 +11966,7 @@ export namespace Ags {
          * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
@@ -11252,6 +11977,7 @@ export namespace Ags {
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
@@ -11262,6 +11988,7 @@ export namespace Ags {
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
@@ -11272,6 +11999,7 @@ export namespace Ags {
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
@@ -11282,6 +12010,7 @@ export namespace Ags {
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
@@ -11293,6 +12022,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param domain the domain
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, domain: string): void;
@@ -11304,6 +12034,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param key_type the key type
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, key_type: string): void;
@@ -11315,6 +12046,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param private_key_file the private key file
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, private_key_file: string): void;
@@ -11326,6 +12058,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param public_key_file the public key file
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, public_key_file: string): void;
@@ -11389,12 +12122,14 @@ export namespace Ags {
          * Find ags-srv-user xmlNode containing `login`.
          * @param login the login
          * @returns the matching xmlNode or `null`
+         * @since 3.0.0
          */
         find_login(login: string): libxml2.Node;
 
         /**
          * Open `filename`.
          * @param filename the filename
+         * @since 3.0.0
          */
         open_filename(filename: string): void;
 
@@ -11403,6 +12138,7 @@ export namespace Ags {
          * @param password the password
          * @param salt your salt
          * @returns the encrypted bytes
+         * @since 3.0.0
          */
         encrypt_password(password: string, salt: string): string;
 
@@ -11412,6 +12148,7 @@ export namespace Ags {
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @returns the login name
+         * @since 3.0.0
          */
         get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
 
@@ -11421,6 +12158,7 @@ export namespace Ags {
          * @param user_uuid the user UUID
          * @param security_token the security token
          * @returns the password
+         * @since 3.0.0
          */
         get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
 
@@ -11430,6 +12168,7 @@ export namespace Ags {
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param login_name the login name
+         * @since 3.0.0
          */
         set_login_name(security_context: GObject.Object, user_uuid: string, security_token: string, login_name: string): void;
 
@@ -11439,6 +12178,7 @@ export namespace Ags {
          * @param user_uuid the user UUID
          * @param security_token the security token
          * @param password the password
+         * @since 3.0.0
          */
         set_password(security_context: GObject.Object, user_uuid: string, security_token: string, password: string): void;
 
@@ -11446,6 +12186,7 @@ export namespace Ags {
          * Encrypt password.
          * @param password the password
          * @param salt your salt
+         * @since 3.0.0
          * @virtual
          */
         vfunc_encrypt_password(password: string, salt: string): string;
@@ -11455,6 +12196,7 @@ export namespace Ags {
          * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
@@ -11464,6 +12206,7 @@ export namespace Ags {
          * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user UUID
          * @param security_token the security token
+         * @since 3.0.0
          * @virtual
          */
         vfunc_get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
@@ -11474,6 +12217,7 @@ export namespace Ags {
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param login_name the login name
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_login_name(security_context: GObject.Object, user_uuid: string, security_token: string, login_name: string): void;
@@ -11484,6 +12228,7 @@ export namespace Ags {
          * @param user_uuid the user UUID
          * @param security_token the security token
          * @param password the password
+         * @since 3.0.0
          * @virtual
          */
         vfunc_set_password(security_context: GObject.Object, user_uuid: string, security_token: string, password: string): void;
@@ -11526,6 +12271,7 @@ export namespace Ags {
          * Read a {@link Ags.Complex} quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_read_complex(cbuffer: number, byte_order: number): Complex;
 
@@ -11533,6 +12279,7 @@ export namespace Ags {
          * Read a gdouble quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_read_double(cbuffer: number, byte_order: number): number;
 
@@ -11540,6 +12287,7 @@ export namespace Ags {
          * Read a gfloat quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_read_float(cbuffer: number, byte_order: number): number;
 
@@ -11547,6 +12295,7 @@ export namespace Ags {
          * Read a gint16 quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_read_s16(cbuffer: number, byte_order: number): number;
 
@@ -11554,6 +12303,7 @@ export namespace Ags {
          * Read a gint32 24 bit quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_read_s24(cbuffer: number, byte_order: number): number;
 
@@ -11561,6 +12311,7 @@ export namespace Ags {
          * Read a gint32 32 bit quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_read_s32(cbuffer: number, byte_order: number): number;
 
@@ -11568,6 +12319,7 @@ export namespace Ags {
          * Read a gint64 64 bit quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_read_s64(cbuffer: number, byte_order: number): number;
 
@@ -11575,6 +12327,7 @@ export namespace Ags {
          * Read a gint8 quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order, ignored here
+         * @since 3.0.0
          */
         static char_buffer_read_s8(cbuffer: number, byte_order: number): number;
 
@@ -11583,6 +12336,7 @@ export namespace Ags {
          * @param cbuffer the buffer to swap
          * @param word_size the word size
          * @param buffer_size the buffer size
+         * @since 3.0.0
          */
         static char_buffer_swap_bytes(cbuffer: number, word_size: number, buffer_size: number): void;
 
@@ -11590,6 +12344,7 @@ export namespace Ags {
          * Unpack `cbuffer` to a {@link Ags.Complex} buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
+         * @since 3.0.0
          */
         static char_buffer_to_complex(cbuffer: number, buffer_size: number): Complex;
 
@@ -11597,6 +12352,7 @@ export namespace Ags {
          * Unpack `cbuffer` to a gdouble buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
+         * @since 3.0.0
          */
         static char_buffer_to_double(cbuffer: number, buffer_size: number): number;
 
@@ -11604,6 +12360,7 @@ export namespace Ags {
          * Unpack `cbuffer` to a gfloat buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
+         * @since 3.0.0
          */
         static char_buffer_to_float(cbuffer: number, buffer_size: number): number;
 
@@ -11611,6 +12368,7 @@ export namespace Ags {
          * Unpack `cbuffer` to a gint16 buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
+         * @since 3.0.0
          */
         static char_buffer_to_s16(cbuffer: number, buffer_size: number): number;
 
@@ -11618,6 +12376,7 @@ export namespace Ags {
          * Unpack `cbuffer` to a gint32 buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
+         * @since 3.0.0
          */
         static char_buffer_to_s24(cbuffer: number, buffer_size: number): number;
 
@@ -11625,6 +12384,7 @@ export namespace Ags {
          * Unpack `cbuffer` to a gint32 buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
+         * @since 3.0.0
          */
         static char_buffer_to_s32(cbuffer: number, buffer_size: number): number;
 
@@ -11632,6 +12392,7 @@ export namespace Ags {
          * Unpack `cbuffer` to a gint64 buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
+         * @since 3.0.0
          */
         static char_buffer_to_s64(cbuffer: number, buffer_size: number): number;
 
@@ -11639,6 +12400,7 @@ export namespace Ags {
          * Unpack `cbuffer` to a gint8 buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
+         * @since 3.0.0
          */
         static char_buffer_to_s8(cbuffer: number, buffer_size: number): number;
 
@@ -11647,6 +12409,7 @@ export namespace Ags {
          * @param cbuffer the character buffer
          * @param value the {@link Ags.Complex} value
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_write_complex(cbuffer: number, value: Complex, byte_order: number): void;
 
@@ -11655,6 +12418,7 @@ export namespace Ags {
          * @param cbuffer the character buffer
          * @param value the gdouble value
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_write_double(cbuffer: number, value: number, byte_order: number): void;
 
@@ -11663,6 +12427,7 @@ export namespace Ags {
          * @param cbuffer the character buffer
          * @param value the gfloat value
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_write_float(cbuffer: number, value: number, byte_order: number): void;
 
@@ -11671,6 +12436,7 @@ export namespace Ags {
          * @param cbuffer the character buffer
          * @param value the gint16 value
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_write_s16(cbuffer: number, value: number, byte_order: number): void;
 
@@ -11679,6 +12445,7 @@ export namespace Ags {
          * @param cbuffer the character buffer
          * @param value the gint32 value
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_write_s24(cbuffer: number, value: number, byte_order: number): void;
 
@@ -11687,6 +12454,7 @@ export namespace Ags {
          * @param cbuffer the character buffer
          * @param value the gint32 value
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_write_s32(cbuffer: number, value: number, byte_order: number): void;
 
@@ -11695,6 +12463,7 @@ export namespace Ags {
          * @param cbuffer the character buffer
          * @param value the gint64 value
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_write_s64(cbuffer: number, value: bigint | number, byte_order: number): void;
 
@@ -11703,6 +12472,7 @@ export namespace Ags {
          * @param cbuffer the character buffer
          * @param value the gint8 value
          * @param byte_order reverse order
+         * @since 3.0.0
          */
         static char_buffer_write_s8(cbuffer: number, value: number, byte_order: number): void;
 
@@ -11710,6 +12480,7 @@ export namespace Ags {
          * Pack `buffer` into an guchar buffer.
          * @param buffer the {@link Ags.Complex} buffer
          * @param buffer_length the buffer length
+         * @since 3.0.0
          */
         static complex_to_char_buffer(buffer: Complex, buffer_length: number): number;
 
@@ -11717,6 +12488,7 @@ export namespace Ags {
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gdouble buffer
          * @param buffer_length the buffer length
+         * @since 3.0.0
          */
         static double_to_char_buffer(buffer: number, buffer_length: number): number;
 
@@ -11724,6 +12496,7 @@ export namespace Ags {
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gfloat buffer
          * @param buffer_length the buffer length
+         * @since 3.0.0
          */
         static float_to_char_buffer(buffer: number, buffer_length: number): number;
 
@@ -11731,6 +12504,7 @@ export namespace Ags {
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gint16 buffer
          * @param buffer_length the buffer length
+         * @since 3.0.0
          */
         static s16_to_char_buffer(buffer: number, buffer_length: number): number;
 
@@ -11738,6 +12512,7 @@ export namespace Ags {
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gint32 buffer
          * @param buffer_length the buffer length
+         * @since 3.0.0
          */
         static s24_to_char_buffer(buffer: number, buffer_length: number): number;
 
@@ -11745,6 +12520,7 @@ export namespace Ags {
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gint32 buffer
          * @param buffer_length the buffer length
+         * @since 3.0.0
          */
         static s32_to_char_buffer(buffer: number, buffer_length: number): number;
 
@@ -11752,6 +12528,7 @@ export namespace Ags {
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gint64 buffer
          * @param buffer_length the buffer length
+         * @since 3.0.0
          */
         static s64_to_char_buffer(buffer: bigint | number, buffer_length: number): number;
 
@@ -11759,6 +12536,7 @@ export namespace Ags {
          * Pack `buffer` into an guchar buffer.
          * @param buffer the gint8 buffer
          * @param buffer_length the buffer length
+         * @since 3.0.0
          */
         static s8_to_char_buffer(buffer: number, buffer_length: number): number;
     }
@@ -11805,6 +12583,7 @@ export namespace Ags {
         // Static methods
         /**
          * Allocate {@link Ags.Complex}-struct
+         * @since 3.0.0
          */
         static alloc(): Complex;
 
@@ -11812,16 +12591,19 @@ export namespace Ags {
         /**
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.Complex}-struct
+         * @since 3.0.0
          */
         copy(): null;
 
         /**
          * Free the memory of `ptr`.
+         * @since 3.0.0
          */
         free(): void;
 
         /**
          * Get complex number.
+         * @since 3.7.11
          */
         get_term(): [number, number];
 
@@ -11829,6 +12611,7 @@ export namespace Ags {
          * Set complex number.
          * @param real the real part
          * @param imag the imaginary part
+         * @since 3.7.11
          */
         set_term(real: number, imag: number): void;
     }
@@ -11885,24 +12668,28 @@ export namespace Ags {
          * @param group_id the group id
          * @param user_id the user id
          * @param access_mode the access mode
+         * @since 3.0.0
          */
         static alloc(group_id: string, user_id: string, access_mode: number): null;
 
         /**
          * Free `controller_resource`.
          * @param controller_resource the {@link Ags.ControllerResource}-struct
+         * @since 3.0.0
          */
         static free(controller_resource: null): void;
 
         /**
          * Increase ref-count of `controller_resource`.
          * @param controller_resource the {@link Ags.ControllerResource}-struct
+         * @since 3.0.0
          */
         static ref(controller_resource: null): void;
 
         /**
          * Decrease ref-count of `controller_resource` and free it if ref-count drops to 0.
          * @param controller_resource the {@link Ags.ControllerResource}-struct
+         * @since 3.0.0
          */
         static unref(controller_resource: null): void;
     }
@@ -11944,6 +12731,7 @@ export namespace Ags {
          * Allocated a destroy entry.
          * @param ptr a pointer
          * @param destroy_func the `ptr`'s destroy function
+         * @since 3.0.0
          */
         static alloc(ptr: null, destroy_func: DestroyFunc): null;
     }
@@ -11959,6 +12747,7 @@ export namespace Ags {
         /**
          * Run dispose and unref `gobject`.
          * @param gobject the {@link GObject.Object} to destroy
+         * @since 3.0.0
          */
         static dispose_and_unref(gobject: GObject.Object): void;
     }
@@ -12012,6 +12801,7 @@ export namespace Ags {
          * Allocate {@link Ags.FileUtil}-struct
          * @param app_encoding the application encoding
          * @param encoding the file encoding
+         * @since 6.3.0
          */
         static alloc(app_encoding: string, encoding: string): FileUtil;
 
@@ -12019,17 +12809,20 @@ export namespace Ags {
         /**
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.FileUtil}-struct
+         * @since 6.3.0
          */
         copy(): null;
 
         /**
          * Free the memory of `ptr`.
+         * @since 6.3.0
          */
         free(): void;
 
         /**
          * Get application encoding of `file_util`.
          * @returns the application encoding
+         * @since 6.3.0
          */
         get_app_encoding(): string;
 
@@ -12037,6 +12830,7 @@ export namespace Ags {
          * Get complex floating point number from string.
          * @param str the string
          * @returns the complex floating point number
+         * @since 6.3.0
          */
         get_complex(str: string): Complex;
 
@@ -12052,17 +12846,20 @@ export namespace Ags {
          * Get double precision size floating point number from string.
          * @param str the string
          * @returns the double precision size floating point number
+         * @since 6.3.0
          */
         get_double(str: string): number;
 
         /**
          * Get encoding of `file_util`.
          * @returns the encoding
+         * @since 6.3.0
          */
         get_encoding(): string;
 
         /**
          * set file version of `file_util`.
+         * @since 6.3.0
          */
         get_file_version(): string;
 
@@ -12070,6 +12867,7 @@ export namespace Ags {
          * Get arbitary size floating point number from string.
          * @param str the string
          * @returns the arbitary size floating point number
+         * @since 6.3.0
          */
         get_float(str: string): number;
 
@@ -12077,6 +12875,7 @@ export namespace Ags {
          * Get integer from string.
          * @param str the string to convert
          * @returns the converted integer
+         * @since 6.3.0
          */
         get_int(str: string): number;
 
@@ -12084,6 +12883,7 @@ export namespace Ags {
          * Get long long integer from string.
          * @param str the string to convert
          * @returns the converted long long integer
+         * @since 6.3.0
          */
         get_int64(str: string): number;
 
@@ -12092,6 +12892,7 @@ export namespace Ags {
          * @param str the string
          * @param max_length the maximum length of string
          * @returns the newly allocated string
+         * @since 6.3.0
          */
         get_string(str: string, max_length: number): string;
 
@@ -12099,6 +12900,7 @@ export namespace Ags {
          * Get unsigned integer from string.
          * @param str the string to convert
          * @returns the converted unsigned integer
+         * @since 6.3.0
          */
         get_uint(str: string): number;
 
@@ -12106,6 +12908,7 @@ export namespace Ags {
          * Get unsigned long long integer.
          * @param str the string to convert
          * @returns the converted unsigned long long integer
+         * @since 6.3.0
          */
         get_uint64(str: string): number;
 
@@ -12113,6 +12916,7 @@ export namespace Ags {
          * Put complex floating point number to string.
          * @param value the value
          * @returns the newly allocated string
+         * @since 6.3.0
          */
         put_complex(value: Complex): string;
 
@@ -12127,6 +12931,7 @@ export namespace Ags {
          * Put double precision size floating point number to string.
          * @param value the value
          * @returns the newly allocated string
+         * @since 6.3.0
          */
         put_double(value: number): string;
 
@@ -12134,6 +12939,7 @@ export namespace Ags {
          * Put arbitary size floating point number to string.
          * @param value the value
          * @returns the newly allocated string
+         * @since 6.3.0
          */
         put_float(value: number): string;
 
@@ -12141,6 +12947,7 @@ export namespace Ags {
          * Put integer to string.
          * @param value the value
          * @returns the newly allocated string
+         * @since 6.3.0
          */
         put_int(value: number): string;
 
@@ -12148,6 +12955,7 @@ export namespace Ags {
          * Put long long integer to string.
          * @param value the value
          * @returns the newly allocated string
+         * @since 6.3.0
          */
         put_int64(value: bigint | number): string;
 
@@ -12156,6 +12964,7 @@ export namespace Ags {
          * @param str the string
          * @param length the length of string
          * @returns the newly allocated string
+         * @since 6.3.0
          */
         put_string(str: string, length: number): string;
 
@@ -12163,6 +12972,7 @@ export namespace Ags {
          * Put unsigned integer to string.
          * @param value the value
          * @returns the newly allocated string
+         * @since 6.3.0
          */
         put_uint(value: number): string;
 
@@ -12170,6 +12980,7 @@ export namespace Ags {
          * Put unsigned long long integer to string.
          * @param value the value
          * @returns the newly allocated string
+         * @since 6.3.0
          */
         put_uint64(value: bigint | number): string;
 
@@ -12206,6 +13017,7 @@ export namespace Ags {
          * Find `gtype` within `list`.
          * @param list the {@link GLib.List}-struct
          * @param gtype the {@link GObject.GType} to find
+         * @since 3.0.0
          */
         static find_type(list: GObject.Object[], gtype: GObject.GType): GObject.Object[];
     }
@@ -12234,24 +13046,28 @@ export namespace Ags {
         // Static methods
         /**
          * Alloc {@link Ags.LoginInfo}-struct.
+         * @since 3.0.0
          */
         static alloc(): null;
 
         /**
          * Free `login_info`.
          * @param login_info the {@link Ags.LoginInfo}-struct
+         * @since 3.0.0
          */
         static free(login_info: null): void;
 
         /**
          * Increase ref-count of `login_info`.
          * @param login_info the {@link Ags.LoginInfo}-struct
+         * @since 3.0.0
          */
         static ref(login_info: null): void;
 
         /**
          * Decrease ref-count of `login_info` and free it if ref-count drops to 0.
          * @param login_info the {@link Ags.LoginInfo}-struct
+         * @since 3.0.0
          */
         static unref(login_info: null): void;
     }
@@ -12272,48 +13088,56 @@ export namespace Ags {
         /**
          * Compute `value` from `coefficient`.
          * @param coefficient the coefficient string
+         * @since 3.6.0
          */
         static coefficient_to_complex(coefficient: string): [boolean, Complex];
 
         /**
          * Find exponent parenthesis.
          * @param str the string
+         * @since 3.2.0
          */
         static find_exponent_parenthesis(str: string): [number, number, number, number];
 
         /**
          * Find next function.
          * @param str the string
+         * @since 3.2.0
          */
         static find_function(str: string): string;
 
         /**
          * Find function parenthesis.
          * @param str the string
+         * @since 3.2.0
          */
         static find_function_parenthesis(str: string): [number, number, number, number];
 
         /**
          * Find all parenthesis.
          * @param str the string
+         * @since 3.2.0
          */
         static find_parenthesis_all(str: string): [number, number, number, number];
 
         /**
          * Find next symbol.
          * @param str the string
+         * @since 3.2.0
          */
         static find_symbol(str: string): string;
 
         /**
          * Find term parenthesis.
          * @param str the string
+         * @since 3.2.0
          */
         static find_term_parenthesis(str: string): [number, number, number, number];
 
         /**
          * Test if `term` is a term.
          * @param term the term
+         * @since 3.2.0
          */
         static is_term(term: string): boolean;
 
@@ -12321,6 +13145,7 @@ export namespace Ags {
          * Match coefficient including optional sign.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.6.0
          */
         static match_coefficient(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -12328,6 +13153,7 @@ export namespace Ags {
          * Match exponent with or without parenthesis.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.6.0
          */
         static match_exponent(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -12335,6 +13161,7 @@ export namespace Ags {
          * Match function.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.6.0
          */
         static match_function(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -12342,6 +13169,7 @@ export namespace Ags {
          * Match operator.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.6.0
          */
         static match_operator(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -12349,6 +13177,7 @@ export namespace Ags {
          * Match sign.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.6.0
          */
         static match_sign(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -12356,6 +13185,7 @@ export namespace Ags {
          * Match symbol including optional sign.
          * @param offset the string pointer
          * @param end_ptr the end of `offset`
+         * @since 3.6.0
          */
         static match_symbol(offset: string, end_ptr: string): [boolean, string, string];
 
@@ -12368,12 +13198,14 @@ export namespace Ags {
         /**
          * Split `polynomial` into coefficient, powers of symbols and summand.
          * @param polynomial the polynomial
+         * @since 3.2.0
          */
         static split_polynomial(polynomial: string): [string, string];
 
         /**
          * Split `sum` into summands.
          * @param sum the sum
+         * @since 3.2.0
          */
         static split_sum(sum: string): string;
     }
@@ -12470,6 +13302,7 @@ export namespace Ags {
          * @param encoding the input encoding
          * @param is_unichar is gunichar
          * @param is_unichar2 is gunichar2
+         * @since 6.3.2
          */
         static alloc(app_encoding: string, encoding: string, is_unichar: boolean, is_unichar2: boolean): RegexUtil;
 
@@ -12481,12 +13314,14 @@ export namespace Ags {
          * @param regex_str the regular expression
          * @param compile_flags the compile flags
          * @returns `true` on success, otherwise `false`
+         * @since 6.3.2
          */
         compile(regex_str: string, compile_flags: number): boolean;
 
         /**
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.RegexUtil}-struct
+         * @since 6.3.2
          */
         copy(): null;
 
@@ -12497,6 +13332,7 @@ export namespace Ags {
          * @param match the regex match
          * @param execute_flags the execute flags
          * @returns `true` on success, otherwise `false`
+         * @since 6.3.2
          */
         execute(str: string, match_count: number, match: RegexMatch, execute_flags: number): boolean;
 
@@ -12507,6 +13343,7 @@ export namespace Ags {
          * @param match the regex match
          * @param execute_flags the execute flags
          * @returns `true` on success, otherwise `false`
+         * @since 6.3.2
          */
         execute_unichar(str: string, match_count: number, match: RegexMatch, execute_flags: number): boolean;
 
@@ -12517,29 +13354,34 @@ export namespace Ags {
          * @param match the regex match
          * @param execute_flags the execute flags
          * @returns `true` on success, otherwise `false`
+         * @since 6.3.2
          */
         execute_unichar2(str: number, match_count: number, match: RegexMatch, execute_flags: number): boolean;
 
         /**
          * Free the memory of `ptr`.
+         * @since 6.3.2
          */
         free(): void;
 
         /**
          * Get application encoding of `regex_util`.
          * @returns the application encoding
+         * @since 6.3.2
          */
         get_app_encoding(): string;
 
         /**
          * Get encoding of `regex_util`.
          * @returns the encoding
+         * @since 6.3.2
          */
         get_encoding(): string;
 
         /**
          * Free `match`.
          * @param match the regex match
+         * @since 6.3.2
          */
         match_free(match: RegexMatch): void;
 
@@ -12547,6 +13389,7 @@ export namespace Ags {
          * Get offset of `match`.
          * @param match the regex match
          * @param nth_match the match position
+         * @since 6.3.2
          */
         match_get_offset(match: RegexMatch, nth_match: number): [number, number];
     }
@@ -12570,6 +13413,7 @@ export namespace Ags {
         // Methods
         /**
          * Free `registry_entry`
+         * @since 3.0.0
          */
         free(): void;
     }
@@ -12668,6 +13512,7 @@ export namespace Ags {
          * @param nth_column the nth-column
          * @param nth_row_a nth-row a
          * @param nth_row_b nth-row b
+         * @since 6.7.1
          */
         static alloc(nth_column: number, nth_row_a: number, nth_row_b: number): SolverPath;
 
@@ -12675,47 +13520,55 @@ export namespace Ags {
         /**
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.SolverPath}-struct
+         * @since 6.7.1
          */
         copy(): null;
 
         /**
          * Free the memory of `ptr`.
+         * @since 6.7.1
          */
         free(): void;
 
         /**
          * Get nth-column of `solver_path`.
          * @returns nth-column as unsigned integer
+         * @since 6.7.1
          */
         get_nth_column(): number;
 
         /**
          * Get nth-row a of `solver_path`.
          * @returns nth-row a as unsigned integer
+         * @since 6.7.1
          */
         get_nth_row_a(): number;
 
         /**
          * Get nth-row b of solver path.
          * @returns nth-row b as unsigned integer
+         * @since 6.7.1
          */
         get_nth_row_b(): number;
 
         /**
          * Set nth-column of `solver_path`.
          * @param nth_column the nth-column to set
+         * @since 6.7.1
          */
         set_nth_column(nth_column: number): void;
 
         /**
          * Set nth-row a of `solver_path`.
          * @param nth_row_a the nth-row a to set
+         * @since 6.7.1
          */
         set_nth_row_a(nth_row_a: number): void;
 
         /**
          * Set nth-row b of `solver_path`.
          * @param nth_row_b the nth-row b to set
+         * @since 6.7.1
          */
         set_nth_row_b(nth_row_b: number): void;
     }
@@ -12751,18 +13604,21 @@ export namespace Ags {
         /**
          * Escape all occurence of single quotes.
          * @param str the string to escape
+         * @since 3.0.0
          */
         static escape_single_quote(str: string): string;
 
         /**
          * String from mcoded7 encoding.
          * @param mcoded7_str the string to decode
+         * @since 5.5.0
          */
         static from_mcoded7(mcoded7_str: string): string;
 
         /**
          * String to mcoded7 encoding.
          * @param str the string to encode
+         * @since 5.5.0
          */
         static to_mcoded7(str: string): string;
     }
@@ -12836,12 +13692,14 @@ export namespace Ags {
         // Static methods
         /**
          * Allocate {@link Ags.UUID}.
+         * @since 3.0.0
          */
         static alloc(): UUID;
 
         /**
          * Retrieve {@link Ags.UUID} by parsing `str`.
          * @param str the UUID as string
+         * @since 3.0.0
          */
         static from_string(str: string): UUID;
 
@@ -12850,28 +13708,33 @@ export namespace Ags {
          * Compare `a` with `b`.
          * @param b another {@link Ags.UUID}
          * @returns 0 on success, otherwise a value less or greater than 0
+         * @since 3.0.0
          */
         compare(b: UUID): number;
 
         /**
          * Create a copy of `ptr`.
          * @returns a pointer of the new {@link Ags.UUID}
+         * @since 3.0.0
          */
         copy(): null;
 
         /**
          * Free the memory of `ptr`.
+         * @since 3.0.0
          */
         free(): void;
 
         /**
          * Generate random UUID.
+         * @since 3.0.0
          */
         generate(): void;
 
         /**
          * Get string representation of `ptr`.
          * @returns the UUID as string if `ptr` not `null`, else `null`
+         * @since 3.0.0
          */
         to_string(): string;
     }
@@ -12912,12 +13775,14 @@ export namespace Ags {
             // Virtual methods
             /**
              * Apply all changes done so far.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_apply(): void;
 
             /**
              * Reset all changes within the user interface.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_reset(): void;
@@ -12925,6 +13790,7 @@ export namespace Ags {
             /**
              * Update behaviour.
              * @param update if `true` do ::reset after ::apply
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_update(update: boolean): void;
@@ -12947,17 +13813,20 @@ export namespace Ags {
         // Methods
         /**
          * Apply all changes done so far.
+         * @since 3.0.0
          */
         apply(): void;
 
         /**
          * Reset all changes within the user interface.
+         * @since 3.0.0
          */
         reset(): void;
 
         /**
          * Update behaviour.
          * @param update if `true` do ::reset after ::apply
+         * @since 3.0.0
          */
         set_update(update: boolean): void;
     }
@@ -12977,12 +13846,14 @@ export namespace Ags {
             // Virtual methods
             /**
              * Generate token.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_generate_token(): string;
 
             /**
              * Available authentication modules.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_authentication_module(): string[];
@@ -12992,6 +13863,7 @@ export namespace Ags {
              * @param realm the realm
              * @param login the login
              * @param security_token the security token
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_digest(realm: string, login: string, security_token: string): string;
@@ -13001,6 +13873,7 @@ export namespace Ags {
              * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the user's UUID
              * @param security_token the security token
+             * @since 3.0.0
              * @virtual
              */
             vfunc_is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
@@ -13009,6 +13882,7 @@ export namespace Ags {
              * Login.
              * @param login the login
              * @param password the password
+             * @since 3.0.0
              * @virtual
              */
             vfunc_login(login: string, password: string): [boolean, string, string];
@@ -13018,6 +13892,7 @@ export namespace Ags {
              * @param security_context the {@link Ags.SecurityContext}
              * @param login the login
              * @param security_token the security token
+             * @since 3.0.0
              * @virtual
              */
             vfunc_logout(security_context: GObject.Object, login: string, security_token: string): boolean;
@@ -13041,12 +13916,14 @@ export namespace Ags {
         /**
          * Generate token.
          * @returns the generated token
+         * @since 3.0.0
          */
         generate_token(): string;
 
         /**
          * Available authentication modules.
          * @returns a `null` terminated array of strings of available authentication modules
+         * @since 3.0.0
          */
         get_authentication_module(): string[];
 
@@ -13056,6 +13933,7 @@ export namespace Ags {
          * @param login the login
          * @param security_token the security token
          * @returns the encrypted password
+         * @since 3.0.0
          */
         get_digest(realm: string, login: string, security_token: string): string;
 
@@ -13065,6 +13943,7 @@ export namespace Ags {
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @returns `true` if session active, otherwise `false`
+         * @since 3.0.0
          */
         is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
 
@@ -13073,6 +13952,7 @@ export namespace Ags {
          * @param login the login
          * @param password the password
          * @returns `true` on success, otherwise `false`
+         * @since 3.0.0
          */
         login(login: string, password: string): [boolean, string, string];
 
@@ -13082,6 +13962,7 @@ export namespace Ags {
          * @param login the login
          * @param security_token the security token
          * @returns `true` on success, otherwise `false`
+         * @since 3.0.0
          */
         logout(security_context: GObject.Object, login: string, security_token: string): boolean;
     }
@@ -13105,6 +13986,7 @@ export namespace Ags {
              * @param user_uuid the user's UUID
              * @param security_token the security token
              * @param group_uuid the group's UUID
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string;
@@ -13114,6 +13996,7 @@ export namespace Ags {
              * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
@@ -13124,6 +14007,7 @@ export namespace Ags {
              * @param user_uuid the user's UUID
              * @param security_token the security token
              * @param group_uuid the business group's UUID
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string[];
@@ -13135,6 +14019,7 @@ export namespace Ags {
              * @param security_token the security token
              * @param group_uuid the group's UUID
              * @param group_name the business group's name to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, group_name: string): void;
@@ -13146,6 +14031,7 @@ export namespace Ags {
              * @param security_token the security token
              * @param group_uuid the business group's UUID
              * @param user the string array containing user names
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, user: string[]): void;
@@ -13173,6 +14059,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param group_uuid the group's UUID
          * @returns the business group's name as string
+         * @since 3.0.0
          */
         get_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string;
 
@@ -13182,6 +14069,7 @@ export namespace Ags {
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @returns the group UUIDs as `null` terminated string array
+         * @since 3.0.0
          */
         get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
 
@@ -13192,6 +14080,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param group_uuid the business group's UUID
          * @returns the business group's user names as string vector
+         * @since 3.0.0
          */
         get_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string[];
 
@@ -13202,6 +14091,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param group_uuid the group's UUID
          * @param group_name the business group's name to set
+         * @since 3.0.0
          */
         set_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, group_name: string): void;
 
@@ -13212,6 +14102,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param group_uuid the business group's UUID
          * @param user the string array containing user names
+         * @since 3.0.0
          */
         set_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, user: string[]): void;
     }
@@ -13234,6 +14125,7 @@ export namespace Ags {
              * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
@@ -13244,6 +14136,7 @@ export namespace Ags {
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
@@ -13254,6 +14147,7 @@ export namespace Ags {
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
@@ -13264,6 +14158,7 @@ export namespace Ags {
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
@@ -13274,6 +14169,7 @@ export namespace Ags {
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
@@ -13285,6 +14181,7 @@ export namespace Ags {
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
              * @param domain the domain
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, domain: string): void;
@@ -13296,6 +14193,7 @@ export namespace Ags {
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
              * @param key_type the key type
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, key_type: string): void;
@@ -13307,6 +14205,7 @@ export namespace Ags {
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
              * @param private_key_file the private key file
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, private_key_file: string): void;
@@ -13318,6 +14217,7 @@ export namespace Ags {
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
              * @param public_key_file the public key file
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, public_key_file: string): void;
@@ -13344,6 +14244,7 @@ export namespace Ags {
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @returns the cert UUIDs as `null` terminated string array
+         * @since 3.0.0
          */
         get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
 
@@ -13354,6 +14255,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @returns the domain
+         * @since 3.0.0
          */
         get_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -13364,6 +14266,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @returns the key type
+         * @since 3.0.0
          */
         get_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -13374,6 +14277,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @returns the private key file
+         * @since 3.0.0
          */
         get_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -13384,6 +14288,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @returns the public key file
+         * @since 3.0.0
          */
         get_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -13394,6 +14299,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param domain the domain
+         * @since 3.0.0
          */
         set_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, domain: string): void;
 
@@ -13404,6 +14310,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param key_type the key type
+         * @since 3.0.0
          */
         set_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, key_type: string): void;
 
@@ -13414,6 +14321,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param private_key_file the private key file
+         * @since 3.0.0
          */
         set_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, private_key_file: string): void;
 
@@ -13424,6 +14332,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param public_key_file the public key file
+         * @since 3.0.0
          */
         set_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, public_key_file: string): void;
     }
@@ -13443,24 +14352,28 @@ export namespace Ags {
             // Virtual methods
             /**
              * Get main loop of application context.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_main_loop(): Thread;
 
             /**
              * Get task launcher of application context.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_task_launcher(): TaskLauncher;
 
             /**
              * Get thread pool of application context.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_thread_pool(): ThreadPool;
 
             /**
              * Get workers of application context.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_worker(): WorkerThread[];
@@ -13468,6 +14381,7 @@ export namespace Ags {
             /**
              * Set main loop of application context.
              * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_main_loop(main_loop: Thread): void;
@@ -13475,6 +14389,7 @@ export namespace Ags {
             /**
              * Set task launcher of application context.
              * @param task_launcher the {@link Ags.TaskLauncher}
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_task_launcher(task_launcher: TaskLauncher): void;
@@ -13482,6 +14397,7 @@ export namespace Ags {
             /**
              * Set thread pool of application context.
              * @param thread_pool the {@link Ags.ThreadPool}
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_thread_pool(thread_pool: ThreadPool): void;
@@ -13489,6 +14405,7 @@ export namespace Ags {
             /**
              * Set workers of application context.
              * @param worker the {@link GLib.List}-struct containing workers
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_worker(worker: WorkerThread[]): void;
@@ -13512,48 +14429,56 @@ export namespace Ags {
         /**
          * Get main loop of application context.
          * @returns the {@link Ags.Thread} implementing {@link Ags.MainLoop}
+         * @since 3.0.0
          */
         get_main_loop(): Thread;
 
         /**
          * Get task launcher of application context.
          * @returns the {@link Ags.TaskLauncher}
+         * @since 3.0.0
          */
         get_task_launcher(): TaskLauncher;
 
         /**
          * Get thread pool of application context.
          * @returns the {@link Ags.ThreadPool}
+         * @since 3.0.0
          */
         get_thread_pool(): ThreadPool;
 
         /**
          * Get workers of application context.
          * @returns the {@link GLib.List}-struct containing workers
+         * @since 3.0.0
          */
         get_worker(): WorkerThread[];
 
         /**
          * Set main loop of application context.
          * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
+         * @since 3.0.0
          */
         set_main_loop(main_loop: Thread): void;
 
         /**
          * Set task launcher of application context.
          * @param task_launcher the {@link Ags.TaskLauncher}
+         * @since 3.0.0
          */
         set_task_launcher(task_launcher: TaskLauncher): void;
 
         /**
          * Set thread pool of application context.
          * @param thread_pool the {@link Ags.ThreadPool}
+         * @since 3.0.0
          */
         set_thread_pool(thread_pool: ThreadPool): void;
 
         /**
          * Set workers of application context.
          * @param worker the {@link GLib.List}-struct containing workers
+         * @since 3.0.0
          */
         set_worker(worker: WorkerThread[]): void;
     }
@@ -13573,12 +14498,14 @@ export namespace Ags {
             // Virtual methods
             /**
              * Add connectable to registry.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_add_to_registry(): void;
 
             /**
              * Connect the connectable.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_connect(): void;
@@ -13586,12 +14513,14 @@ export namespace Ags {
             /**
              * Disconnect the connectable.
              * @param connection the connection
+             * @since 3.0.0
              * @virtual
              */
             vfunc_connect_connection(connection: GObject.Object): void;
 
             /**
              * Disconnect the connectable.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_disconnect(): void;
@@ -13599,48 +14528,56 @@ export namespace Ags {
             /**
              * Disconnect the connectable.
              * @param connection the connection
+             * @since 3.0.0
              * @virtual
              */
             vfunc_disconnect_connection(connection: GObject.Object): void;
 
             /**
              * Get UUID of `connectable`.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_uuid(): UUID;
 
             /**
              * Check the connectable to have resources.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_has_resource(): boolean;
 
             /**
              * Check if the `connectable` was connected.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_is_connected(): boolean;
 
             /**
              * Connect the connectable.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_is_ready(): boolean;
 
             /**
              * List resources as an XML element and return it.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_list_resource(): libxml2.Node;
 
             /**
              * Remove connectable from registry.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_remove_from_registry(): void;
 
             /**
              * Compose an XML element and return it.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_xml_compose(): libxml2.Node;
@@ -13648,6 +14585,7 @@ export namespace Ags {
             /**
              * Parse `node` as XML element and apply it.
              * @param node the #xmlNode-struct
+             * @since 3.0.0
              * @virtual
              */
             vfunc_xml_parse(node: libxml2.Node): void;
@@ -13670,11 +14608,13 @@ export namespace Ags {
         // Methods
         /**
          * Add connectable to registry.
+         * @since 3.0.0
          */
         add_to_registry(): void;
 
         /**
          * Connect the connectable.
+         * @since 3.0.0
          */
         connect(): void;
 
@@ -13686,64 +14626,75 @@ export namespace Ags {
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         connect_connection(connection: GObject.Object): void;
 
         /**
          * Disconnect the connectable.
+         * @since 3.0.0
          */
         disconnect(): void;
 
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @since 3.0.0
          */
         disconnect_connection(connection: GObject.Object): void;
 
         /**
          * Get UUID of `connectable`.
          * @returns the assigned {@link Ags.UUID}
+         * @since 3.0.0
          */
         get_uuid(): UUID;
 
         /**
          * Check the connectable to have resources.
          * @returns `true` if `connectable` can be added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         has_resource(): boolean;
 
         /**
          * Check if the `connectable` was connected.
          * @returns `true` if is connected, otherwise `false`.
+         * @since 3.0.0
          */
         is_connected(): boolean;
 
         /**
          * Connect the connectable.
          * @returns `true` if is added to registry, otherwise `false`.
+         * @since 3.0.0
          */
         is_ready(): boolean;
 
         /**
          * List resources as an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         list_resource(): libxml2.Node;
 
         /**
          * Remove connectable from registry.
+         * @since 3.0.0
          */
         remove_from_registry(): void;
 
         /**
          * Compose an XML element and return it.
          * @returns the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_compose(): libxml2.Node;
 
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @since 3.0.0
          */
         xml_parse(node: libxml2.Node): void;
     }
@@ -13763,24 +14714,28 @@ export namespace Ags {
             // Virtual methods
             /**
              * Retrieve current position of MIDI.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_midi_counter(): bigint | number;
 
             /**
              * Retrieve current position of notation.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_notation_counter(): bigint | number;
 
             /**
              * Retrieve current position of sequencer.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_sequencer_counter(): bigint | number;
 
             /**
              * Retrieve current position of wave.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_wave_counter(): bigint | number;
@@ -13804,24 +14759,28 @@ export namespace Ags {
         /**
          * Retrieve current position of MIDI.
          * @returns the current position
+         * @since 3.0.0
          */
         get_midi_counter(): number;
 
         /**
          * Retrieve current position of notation.
          * @returns the current position
+         * @since 3.0.0
          */
         get_notation_counter(): number;
 
         /**
          * Retrieve current position of sequencer.
          * @returns the current position
+         * @since 3.0.0
          */
         get_sequencer_counter(): number;
 
         /**
          * Retrieve current position of wave.
          * @returns the current position
+         * @since 3.0.0
          */
         get_wave_counter(): number;
     }
@@ -13841,72 +14800,84 @@ export namespace Ags {
             // Virtual methods
             /**
              * Get BPM.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_bpm(): number;
 
             /**
              * Get current.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_current(): GObject.Object[];
 
             /**
              * Get current as copy.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_current_copy(): GObject.Object[];
 
             /**
              * Get the default offset.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_default_offset(): number;
 
             /**
              * Get delay.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_delay(): number;
 
             /**
              * Get delay counter.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_delay_counter(): number;
 
             /**
              * Get duration.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_duration(): bigint | number;
 
             /**
              * Get next.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_next(): GObject.Object[];
 
             /**
              * Get offset.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_offset(): bigint | number;
 
             /**
              * Get prev.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_prev(): GObject.Object[];
 
             /**
              * Get offset counter rate.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_rate(): number;
 
             /**
              * Get the tact.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_tact(): number;
@@ -13930,71 +14901,83 @@ export namespace Ags {
         /**
          * Get BPM.
          * @returns the BPM
+         * @since 3.0.0
          */
         get_bpm(): number;
 
         /**
          * Get current.
          * @returns the {@link GLib.List}-struct pointing to current
+         * @since 3.0.0
          */
         get_current(): GObject.Object[];
 
         /**
          * Get current as copy.
          * @returns the {@link GLib.List}-struct of current as copy
+         * @since 3.0.0
          */
         get_current_copy(): GObject.Object[];
 
         /**
          * Get the default offset.
          * @returns the default offset
+         * @since 3.0.0
          */
         get_default_offset(): number;
 
         /**
          * Get delay.
          * @returns the delay
+         * @since 3.0.0
          */
         get_delay(): number;
 
         /**
          * Get delay counter.
          * @returns the delay counter
+         * @since 3.0.0
          */
         get_delay_counter(): number;
 
         /**
          * Get duration.
          * @returns the duration
+         * @since 3.0.0
          */
         get_duration(): number;
 
         /**
          * Get next.
          * @returns the {@link GLib.List}-struct pointing to next
+         * @since 3.0.0
          */
         get_next(): GObject.Object[];
 
         /**
          * Get offset.
          * @returns the offset
+         * @since 3.0.0
          */
         get_offset(): number;
 
         /**
          * Get prev.
          * @returns the {@link GLib.List}-struct pointing to previous
+         * @since 3.0.0
          */
         get_prev(): GObject.Object[];
 
         /**
          * Get offset counter rate.
+         * @since 3.0.0
          */
         get_rate(): number;
 
         /**
          * Get the tact.
          * @returns the tact
+         * @since 3.0.0
          */
         get_tact(): number;
     }
@@ -14015,36 +14998,42 @@ export namespace Ags {
             /**
              * Change frequency.
              * @param frequency the new frequency
+             * @since 3.0.0
              * @virtual
              */
             vfunc_change_frequency(frequency: number): void;
 
             /**
              * Decrement thread needs access to main loop's critical region field.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_dec_queued_critical_region(): void;
 
             /**
              * Retrieve the tree mutex.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_tree_lock(): GLib.RecMutex;
 
             /**
              * Increment thread needs access to main loop's critical region field.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_inc_queued_critical_region(): void;
 
             /**
              * Check if main loop is in critical region.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_is_critical_region(): boolean;
 
             /**
              * Check if thread tree is syncing.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_is_syncing(): boolean;
@@ -14052,6 +15041,7 @@ export namespace Ags {
             /**
              * Set main loop is in critical region.
              * @param is_critical_region set `true` if critical region
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_critical_region(is_critical_region: boolean): void;
@@ -14059,12 +15049,14 @@ export namespace Ags {
             /**
              * Set thread tree is syncing.
              * @param is_syncing set `true` if syncing
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_syncing(is_syncing: boolean): void;
 
             /**
              * Test main loop may enter critical region.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_test_queued_critical_region(): number;
@@ -14088,52 +15080,61 @@ export namespace Ags {
         /**
          * Change frequency.
          * @param frequency the new frequency
+         * @since 3.0.0
          */
         change_frequency(frequency: number): void;
 
         /**
          * Decrement thread needs access to main loop's critical region field.
+         * @since 3.0.0
          */
         dec_queued_critical_region(): void;
 
         /**
          * Retrieve the tree mutex.
          * @returns the mutex
+         * @since 3.0.0
          */
         get_tree_lock(): GLib.RecMutex;
 
         /**
          * Increment thread needs access to main loop's critical region field.
+         * @since 3.0.0
          */
         inc_queued_critical_region(): void;
 
         /**
          * Check if main loop is in critical region.
          * @returns `true` if sync in progress, otherwise `false`
+         * @since 3.0.0
          */
         is_critical_region(): boolean;
 
         /**
          * Check if thread tree is syncing.
          * @returns `true` if sync in progress, otherwise `false`
+         * @since 3.0.0
          */
         is_syncing(): boolean;
 
         /**
          * Set main loop is in critical region.
          * @param is_critical_region set `true` if critical region
+         * @since 3.0.0
          */
         set_critical_region(is_critical_region: boolean): void;
 
         /**
          * Set thread tree is syncing.
          * @param is_syncing set `true` if syncing
+         * @since 3.0.0
          */
         set_syncing(is_syncing: boolean): void;
 
         /**
          * Test main loop may enter critical region.
          * @returns 0 if main loop may enter critical region, otherwise not
+         * @since 3.0.0
          */
         test_queued_critical_region(): number;
     }
@@ -14154,6 +15155,7 @@ export namespace Ags {
             /**
              * Mute a class instance.
              * @param muted if `true` then muted, else playing
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_muted(muted: boolean): void;
@@ -14177,6 +15179,7 @@ export namespace Ags {
         /**
          * Mute a class instance.
          * @param muted if `true` then muted, else playing
+         * @since 3.0.0
          */
         set_muted(muted: boolean): void;
     }
@@ -14198,6 +15201,7 @@ export namespace Ags {
              * Encrypt password.
              * @param password the password
              * @param salt your salt
+             * @since 3.0.0
              * @virtual
              */
             vfunc_encrypt_password(password: string, salt: string): string;
@@ -14207,6 +15211,7 @@ export namespace Ags {
              * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
@@ -14216,6 +15221,7 @@ export namespace Ags {
              * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the user UUID
              * @param security_token the security token
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
@@ -14226,6 +15232,7 @@ export namespace Ags {
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param login_name the login name
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_login_name(security_context: GObject.Object, user_uuid: string, security_token: string, login_name: string): void;
@@ -14236,6 +15243,7 @@ export namespace Ags {
              * @param user_uuid the user UUID
              * @param security_token the security token
              * @param password the password
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_password(security_context: GObject.Object, user_uuid: string, security_token: string, password: string): void;
@@ -14261,6 +15269,7 @@ export namespace Ags {
          * @param password the password
          * @param salt your salt
          * @returns the encrypted bytes
+         * @since 3.0.0
          */
         encrypt_password(password: string, salt: string): string;
 
@@ -14270,6 +15279,7 @@ export namespace Ags {
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @returns the login name
+         * @since 3.0.0
          */
         get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
 
@@ -14279,6 +15289,7 @@ export namespace Ags {
          * @param user_uuid the user UUID
          * @param security_token the security token
          * @returns the password
+         * @since 3.0.0
          */
         get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
 
@@ -14288,6 +15299,7 @@ export namespace Ags {
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param login_name the login name
+         * @since 3.0.0
          */
         set_login_name(security_context: GObject.Object, user_uuid: string, security_token: string, login_name: string): void;
 
@@ -14297,6 +15309,7 @@ export namespace Ags {
          * @param user_uuid the user UUID
          * @param security_token the security token
          * @param password the password
+         * @since 3.0.0
          */
         set_password(security_context: GObject.Object, user_uuid: string, security_token: string, password: string): void;
     }
@@ -14316,30 +15329,35 @@ export namespace Ags {
             // Virtual methods
             /**
              * Retrieve the build id of the plugin.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_build_id(): string;
 
             /**
              * Retrieve the name of the plugin.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_name(): string;
 
             /**
              * Retrieve the ports of the plugin.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_ports(): GObject.Object[];
 
             /**
              * Retrieve the version of the plugin.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_version(): string;
 
             /**
              * Retrieve the xml type of the plugin.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_xml_type(): string;
@@ -14347,6 +15365,7 @@ export namespace Ags {
             /**
              * Set the build id of the plugin.
              * @param build_id the build id of plugin
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_build_id(build_id: string): void;
@@ -14354,6 +15373,7 @@ export namespace Ags {
             /**
              * Set the name of the plugin.
              * @param name the name of plugin
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_name(name: string): void;
@@ -14361,6 +15381,7 @@ export namespace Ags {
             /**
              * Set the build id of the plugin.
              * @param ports the build id of plugin
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_ports(ports: GObject.Object[]): void;
@@ -14368,6 +15389,7 @@ export namespace Ags {
             /**
              * Set the version of the plugin.
              * @param version the version of plugin
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_version(version: string): void;
@@ -14375,6 +15397,7 @@ export namespace Ags {
             /**
              * Set the build id of the plugin.
              * @param xml_type the build id of plugin
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_xml_type(xml_type: string): void;
@@ -14412,60 +15435,70 @@ export namespace Ags {
         /**
          * Retrieve the build id of the plugin.
          * @returns the plugins build id
+         * @since 3.0.0
          */
         get_build_id(): string;
 
         /**
          * Retrieve the name of the plugin.
          * @returns the plugins name
+         * @since 3.0.0
          */
         get_name(): string;
 
         /**
          * Retrieve the ports of the plugin.
          * @returns the plugins ports
+         * @since 3.0.0
          */
         get_ports(): GObject.Object[];
 
         /**
          * Retrieve the version of the plugin.
          * @returns the plugins version
+         * @since 3.0.0
          */
         get_version(): string;
 
         /**
          * Retrieve the xml type of the plugin.
          * @returns the plugins xml type
+         * @since 3.0.0
          */
         get_xml_type(): string;
 
         /**
          * Set the build id of the plugin.
          * @param build_id the build id of plugin
+         * @since 3.0.0
          */
         set_build_id(build_id: string): void;
 
         /**
          * Set the name of the plugin.
          * @param name the name of plugin
+         * @since 3.0.0
          */
         set_name(name: string): void;
 
         /**
          * Set the build id of the plugin.
          * @param ports the build id of plugin
+         * @since 3.0.0
          */
         set_ports(ports: GObject.Object[]): void;
 
         /**
          * Set the version of the plugin.
          * @param version the version of plugin
+         * @since 3.0.0
          */
         set_version(version: string): void;
 
         /**
          * Set the build id of the plugin.
          * @param xml_type the build id of plugin
+         * @since 3.0.0
          */
         set_xml_type(xml_type: string): void;
     }
@@ -14491,6 +15524,7 @@ export namespace Ags {
              * @param path the context path to access
              * @param login the login
              * @param security_token the security token
+             * @since 3.0.0
              * @virtual
              */
             vfunc_do_request(msg: Soup.ServerMessage, query: never, security_context: GObject.Object, path: string, login: string, security_token: string): null;
@@ -14520,6 +15554,7 @@ export namespace Ags {
          * @param login the login
          * @param security_token the security token
          * @returns the {@link GLib.List}-struct containing `AgsResponse`
+         * @since 3.0.0
          */
         do_request(msg: Soup.ServerMessage, query: never, security_context: GObject.Object, path: string, login: string, security_token: string): null;
     }
@@ -14539,12 +15574,14 @@ export namespace Ags {
             // Virtual methods
             /**
              * Get port.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_port<T = GObject.Object>(): T;
 
             /**
              * Retrieve thread-safe properties.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_list_safe_properties(): string[];
@@ -14553,6 +15590,7 @@ export namespace Ags {
              * Get property thread safe.
              * @param property_name propertie's name
              * @param value the {@link GObject.Value}
+             * @since 3.0.0
              * @virtual
              */
             vfunc_safe_get_property(property_name: string, value: unknown): void;
@@ -14561,6 +15599,7 @@ export namespace Ags {
              * Set property thread safe.
              * @param property_name propertie's name
              * @param value the {@link GObject.Value}
+             * @since 3.0.0
              * @virtual
              */
             vfunc_safe_set_property(property_name: string, value: unknown): void;
@@ -14568,6 +15607,7 @@ export namespace Ags {
             /**
              * Set port.
              * @param port the {@link GObject.Object}
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_port(port: GObject.Object): void;
@@ -14591,12 +15631,14 @@ export namespace Ags {
         /**
          * Get port.
          * @returns the {@link GObject.Object}
+         * @since 3.0.0
          */
         get_port<T = GObject.Object>(): T;
 
         /**
          * Retrieve thread-safe properties.
          * @returns a {@link GLib.List} containing properties
+         * @since 3.0.0
          */
         list_safe_properties(): string[];
 
@@ -14604,6 +15646,7 @@ export namespace Ags {
          * Get property thread safe.
          * @param property_name propertie's name
          * @param value the {@link GObject.Value}
+         * @since 3.0.0
          */
         safe_get_property(property_name: string, value: GObject.Value | any): void;
 
@@ -14611,12 +15654,14 @@ export namespace Ags {
          * Set property thread safe.
          * @param property_name propertie's name
          * @param value the {@link GObject.Value}
+         * @since 3.0.0
          */
         safe_set_property(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Set port.
          * @param port the {@link GObject.Object}
+         * @since 3.0.0
          */
         set_port(port: GObject.Object): void;
     }
@@ -14638,6 +15683,7 @@ export namespace Ags {
              * Seek.
              * @param offset the offset
              * @param whence the direction, see {@link Ags.SeekType}-enum
+             * @since 3.0.0
              * @virtual
              */
             vfunc_seek(offset: number, whence: number): void;
@@ -14662,6 +15708,7 @@ export namespace Ags {
          * Seek.
          * @param offset the offset
          * @param whence the direction, see {@link Ags.SeekType}-enum
+         * @since 3.0.0
          */
         seek(offset: bigint | number, whence: number): void;
     }
@@ -14681,6 +15728,7 @@ export namespace Ags {
             // Virtual methods
             /**
              * Get current playback bpm.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_bpm(): number;
@@ -14688,24 +15736,28 @@ export namespace Ags {
             /**
              * Get current playback buffer.
              * @param buffer_length the buffer's length
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_buffer(buffer_length: number): null;
 
             /**
              * Get current playback delay factor.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_delay_factor(): number;
 
             /**
              * Get device.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_device(): string;
 
             /**
              * Get MIDI version.
+             * @since 7.0.0
              * @virtual
              */
             vfunc_get_midi_version(): SequencerMidiVersion;
@@ -14713,42 +15765,49 @@ export namespace Ags {
             /**
              * Get future playback buffer.
              * @param buffer_length the buffer's length
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_next_buffer(buffer_length: number): null;
 
             /**
              * Get current playback note offset.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_note_offset(): number;
 
             /**
              * Get start playback note offset.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_start_note_offset(): number;
 
             /**
              * Get playing.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_is_playing(): boolean;
 
             /**
              * Get recording.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_is_recording(): boolean;
 
             /**
              * Get starting.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_is_starting(): boolean;
 
             /**
              * Retrieve `card_id` and `card_name` as a list of strings.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_list_cards(): [string[], string[]];
@@ -14756,6 +15815,7 @@ export namespace Ags {
             /**
              * Lock `buffer`.
              * @param buffer the buffer to lock
+             * @since 3.0.0
              * @virtual
              */
             vfunc_lock_buffer(buffer: null): void;
@@ -14763,30 +15823,35 @@ export namespace Ags {
             /**
              * Callback when counter expires minor note offset.
              * @param note_offset the note offset
+             * @since 3.0.0
              * @virtual
              */
             vfunc_offset_changed(note_offset: number): void;
 
             /**
              * Plays the current buffer of sequencer.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_play(): void;
 
             /**
              * Initializes the sequencer for playback.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_play_init(): void;
 
             /**
              * Records the current buffer of sequencer.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_record(): void;
 
             /**
              * Initializes the sequencer for recording.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_record_init(): void;
@@ -14794,6 +15859,7 @@ export namespace Ags {
             /**
              * Set current playback bpm.
              * @param bpm the bpm to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_bpm(bpm: number): void;
@@ -14801,6 +15867,7 @@ export namespace Ags {
             /**
              * Set current playback delay factor.
              * @param delay_factor the delay factor to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_delay_factor(delay_factor: number): void;
@@ -14808,6 +15875,7 @@ export namespace Ags {
             /**
              * Set device.
              * @param card_id the device to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_device(card_id: string): void;
@@ -14821,6 +15889,7 @@ export namespace Ags {
             /**
              * Set current playback note offset.
              * @param note_offset the note offset to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_note_offset(note_offset: number): void;
@@ -14828,18 +15897,21 @@ export namespace Ags {
             /**
              * Set start playback note offset.
              * @param start_note_offset the start note offset to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_start_note_offset(start_note_offset: number): void;
 
             /**
              * Stops the sequencer from playing to it.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_stop(): void;
 
             /**
              * Every call to play may generate a tic.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_tic(): void;
@@ -14847,6 +15919,7 @@ export namespace Ags {
             /**
              * Unlock `buffer`.
              * @param buffer the buffer to unlock
+             * @since 3.0.0
              * @virtual
              */
             vfunc_unlock_buffer(buffer: null): void;
@@ -14870,6 +15943,7 @@ export namespace Ags {
         /**
          * Get current playback bpm.
          * @returns bpm
+         * @since 3.0.0
          */
         get_bpm(): number;
 
@@ -14877,24 +15951,28 @@ export namespace Ags {
          * Get current playback buffer.
          * @param buffer_length the buffer's length
          * @returns current playback buffer
+         * @since 3.0.0
          */
         get_buffer(buffer_length: number): null;
 
         /**
          * Get current playback delay factor.
          * @returns delay factor
+         * @since 3.0.0
          */
         get_delay_factor(): number;
 
         /**
          * Get device.
          * @returns the device's identifier
+         * @since 3.0.0
          */
         get_device(): string;
 
         /**
          * Get MIDI version.
          * @returns the MIDI version
+         * @since 7.0.0
          */
         get_midi_version(): SequencerMidiVersion;
 
@@ -14902,119 +15980,140 @@ export namespace Ags {
          * Get future playback buffer.
          * @param buffer_length the buffer's length
          * @returns next playback buffer
+         * @since 3.0.0
          */
         get_next_buffer(buffer_length: number): null;
 
         /**
          * Get current playback note offset.
          * @returns offset
+         * @since 3.0.0
          */
         get_note_offset(): number;
 
         /**
          * Get start playback note offset.
          * @returns the start note offset
+         * @since 3.0.0
          */
         get_start_note_offset(): number;
 
         /**
          * Get playing.
          * @returns `true` if playing, else `false`
+         * @since 3.0.0
          */
         is_playing(): boolean;
 
         /**
          * Get recording.
          * @returns `true` if recording, else `false`
+         * @since 3.0.0
          */
         is_recording(): boolean;
 
         /**
          * Get starting.
          * @returns `true` if starting, else `false`
+         * @since 3.0.0
          */
         is_starting(): boolean;
 
         /**
          * Retrieve `card_id` and `card_name` as a list of strings.
+         * @since 3.0.0
          */
         list_cards(): [string[], string[]];
 
         /**
          * Lock `buffer`.
          * @param buffer the buffer to lock
+         * @since 3.0.0
          */
         lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
          * @param note_offset the note offset
+         * @since 3.0.0
          */
         offset_changed(note_offset: number): void;
 
         /**
          * Plays the current buffer of sequencer.
+         * @since 3.0.0
          */
         play(): void;
 
         /**
          * Initializes the sequencer for playback.
+         * @since 3.0.0
          */
         play_init(): void;
 
         /**
          * Records the current buffer of sequencer.
+         * @since 3.0.0
          */
         record(): void;
 
         /**
          * Initializes the sequencer for recording.
+         * @since 3.0.0
          */
         record_init(): void;
 
         /**
          * Set current playback bpm.
          * @param bpm the bpm to set
+         * @since 3.0.0
          */
         set_bpm(bpm: number): void;
 
         /**
          * Set current playback delay factor.
          * @param delay_factor the delay factor to set
+         * @since 3.0.0
          */
         set_delay_factor(delay_factor: number): void;
 
         /**
          * Set device.
          * @param card_id the device to set
+         * @since 3.0.0
          */
         set_device(card_id: string): void;
 
         /**
          * Set current playback note offset.
          * @param note_offset the note offset to set
+         * @since 3.0.0
          */
         set_note_offset(note_offset: number): void;
 
         /**
          * Set start playback note offset.
          * @param start_note_offset the start note offset to set
+         * @since 3.0.0
          */
         set_start_note_offset(start_note_offset: number): void;
 
         /**
          * Stops the sequencer from playing to it.
+         * @since 3.0.0
          */
         stop(): void;
 
         /**
          * Every call to play may generate a tic.
+         * @since 3.0.0
          */
         tic(): void;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
+         * @since 3.0.0
          */
         unlock_buffer(buffer: null): void;
     }
@@ -15034,12 +16133,14 @@ export namespace Ags {
             // Virtual methods
             /**
              * Get server.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_server(): Server[];
 
             /**
              * Check if is operating.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_is_operating(): boolean;
@@ -15047,6 +16148,7 @@ export namespace Ags {
             /**
              * Set registry.
              * @param registry the {@link Ags.Registry}
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_registry(registry: Registry): void;
@@ -15054,6 +16156,7 @@ export namespace Ags {
             /**
              * Set server.
              * @param server the {@link GLib.List}-struct containing {@link Ags.Server}
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_server(server: Server[]): void;
@@ -15077,24 +16180,28 @@ export namespace Ags {
         /**
          * Get server.
          * @returns the {@link GLib.List}-struct containing {@link Ags.Server}
+         * @since 3.0.0
          */
         get_server(): Server[];
 
         /**
          * Check if is operating.
          * @returns `true` if operating, otherwise `false`
+         * @since 3.0.0
          */
         is_operating(): boolean;
 
         /**
          * Set registry.
          * @param registry the {@link Ags.Registry}
+         * @since 3.0.0
          */
         set_registry(registry: Registry): void;
 
         /**
          * Set server.
          * @param server the {@link GLib.List}-struct containing {@link Ags.Server}
+         * @since 3.0.0
          */
         set_server(server: Server[]): void;
     }
@@ -15115,6 +16222,7 @@ export namespace Ags {
             /**
              * Gets the ports of `sound_server`.
              * @param port_count the number of ports returned
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_ports(port_count: number): number;
@@ -15122,6 +16230,7 @@ export namespace Ags {
             /**
              * Gets the sequencer of `sound_server` associated with `client_uuid`.
              * @param client_uuid the client uuid
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_sequencer(client_uuid: string): GObject.Object[];
@@ -15129,12 +16238,14 @@ export namespace Ags {
             /**
              * Gets the soundcard of `sound_server` associated with `client_uuid`.
              * @param client_uuid the client uuid
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_soundcard(client_uuid: string): GObject.Object[];
 
             /**
              * Gets the URL of `sound_server`.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_url(): string;
@@ -15142,6 +16253,7 @@ export namespace Ags {
             /**
              * Fetches `sequencer` of `sound_server`.
              * @param is_output if `true` the used as sink, else as source
+             * @since 3.0.0
              * @virtual
              */
             vfunc_register_sequencer<T = GObject.Object>(is_output: boolean): T;
@@ -15151,6 +16263,7 @@ export namespace Ags {
              * @param is_output if `true` the used as sink, else as source
              * @param param_strv the parameter string vector
              * @param param_value the parameter values
+             * @since 7.3.8
              * @virtual
              */
             vfunc_register_sequencer_with_params<T = GObject.Object>(is_output: boolean, param_strv: string, param_value: unknown): T;
@@ -15158,6 +16271,7 @@ export namespace Ags {
             /**
              * Fetches `soundcard` of `sound_server`.
              * @param is_output if `true` the used as sink, else as source
+             * @since 3.0.0
              * @virtual
              */
             vfunc_register_soundcard<T = GObject.Object>(is_output: boolean): T;
@@ -15167,6 +16281,7 @@ export namespace Ags {
              * @param is_output if `true` the used as sink, else as source
              * @param param_strv the parameter string vector
              * @param param_value the parameter values
+             * @since 7.3.8
              * @virtual
              */
             vfunc_register_soundcard_with_params<T = GObject.Object>(is_output: boolean, param_strv: string, param_value: unknown): T;
@@ -15182,6 +16297,7 @@ export namespace Ags {
              * Sets the sequencer at `client_uuid`.
              * @param client_uuid the location to fetch from
              * @param sequencer the sequencer to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_sequencer(client_uuid: string, sequencer: GObject.Object[]): void;
@@ -15190,6 +16306,7 @@ export namespace Ags {
              * Sets the soundcard at `client_uuid`.
              * @param client_uuid the location to fetch from
              * @param soundcard the soundcard to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_soundcard(client_uuid: string, soundcard: GObject.Object[]): void;
@@ -15197,6 +16314,7 @@ export namespace Ags {
             /**
              * Sets the url of `sound_server`.
              * @param url the url to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_url(url: string): void;
@@ -15204,6 +16322,7 @@ export namespace Ags {
             /**
              * Releases `sequencer` in `sound_server`.
              * @param sequencer the {@link Ags.Sequencer}
+             * @since 3.0.0
              * @virtual
              */
             vfunc_unregister_sequencer(sequencer: GObject.Object): void;
@@ -15211,6 +16330,7 @@ export namespace Ags {
             /**
              * Releases `soundcard` in `sound_server`.
              * @param soundcard the {@link Ags.Soundcard}
+             * @since 3.0.0
              * @virtual
              */
             vfunc_unregister_soundcard(soundcard: GObject.Object): void;
@@ -15235,6 +16355,7 @@ export namespace Ags {
          * Gets the ports of `sound_server`.
          * @param port_count the number of ports returned
          * @returns the port as string `null`-terminated array
+         * @since 3.0.0
          */
         get_ports(port_count: number): number;
 
@@ -15242,6 +16363,7 @@ export namespace Ags {
          * Gets the sequencer of `sound_server` associated with `client_uuid`.
          * @param client_uuid the client uuid
          * @returns the sequencer as {@link GLib.List}-struct
+         * @since 3.0.0
          */
         get_sequencer(client_uuid: string): GObject.Object[];
 
@@ -15249,12 +16371,14 @@ export namespace Ags {
          * Gets the soundcard of `sound_server` associated with `client_uuid`.
          * @param client_uuid the client uuid
          * @returns the soundcard as {@link GLib.List}-struct
+         * @since 3.0.0
          */
         get_soundcard(client_uuid: string): GObject.Object[];
 
         /**
          * Gets the URL of `sound_server`.
          * @returns the URL as string
+         * @since 3.0.0
          */
         get_url(): string;
 
@@ -15262,6 +16386,7 @@ export namespace Ags {
          * Fetches `sequencer` of `sound_server`.
          * @param is_output if `true` the used as sink, else as source
          * @returns a new {@link Ags.Sequencer}
+         * @since 3.0.0
          */
         register_sequencer<T = GObject.Object>(is_output: boolean): T;
 
@@ -15271,6 +16396,7 @@ export namespace Ags {
          * @param param_strv the parameter string vector
          * @param param_value the parameter values
          * @returns a new {@link Ags.Sequencer}
+         * @since 7.3.8
          */
         register_sequencer_with_params<T = GObject.Object>(is_output: boolean, param_strv: string, param_value: GObject.Value | any): T;
 
@@ -15278,6 +16404,7 @@ export namespace Ags {
          * Fetches `soundcard` of `sound_server`.
          * @param is_output if `true` the used as sink, else as source
          * @returns a new {@link Ags.Soundcard}
+         * @since 3.0.0
          */
         register_soundcard<T = GObject.Object>(is_output: boolean): T;
 
@@ -15287,6 +16414,7 @@ export namespace Ags {
          * @param param_strv the parameter string vector
          * @param param_value the parameter values
          * @returns a new {@link Ags.Soundcard}
+         * @since 7.3.8
          */
         register_soundcard_with_params<T = GObject.Object>(is_output: boolean, param_strv: string, param_value: GObject.Value | any): T;
 
@@ -15300,6 +16428,7 @@ export namespace Ags {
          * Sets the sequencer at `client_uuid`.
          * @param client_uuid the location to fetch from
          * @param sequencer the sequencer to set
+         * @since 3.0.0
          */
         set_sequencer(client_uuid: string, sequencer: GObject.Object[]): void;
 
@@ -15307,24 +16436,28 @@ export namespace Ags {
          * Sets the soundcard at `client_uuid`.
          * @param client_uuid the location to fetch from
          * @param soundcard the soundcard to set
+         * @since 3.0.0
          */
         set_soundcard(client_uuid: string, soundcard: GObject.Object[]): void;
 
         /**
          * Sets the url of `sound_server`.
          * @param url the url to set
+         * @since 3.0.0
          */
         set_url(url: string): void;
 
         /**
          * Releases `sequencer` in `sound_server`.
          * @param sequencer the {@link Ags.Sequencer}
+         * @since 3.0.0
          */
         unregister_sequencer(sequencer: GObject.Object): void;
 
         /**
          * Releases `soundcard` in `sound_server`.
          * @param soundcard the {@link Ags.Soundcard}
+         * @since 3.0.0
          */
         unregister_soundcard(soundcard: GObject.Object): void;
     }
@@ -15344,72 +16477,84 @@ export namespace Ags {
             // Virtual methods
             /**
              * Get current playback delay.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_absolute_delay(): number;
 
             /**
              * Get current playback attack.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_attack(): number;
 
             /**
              * Get current playback bpm.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_bpm(): number;
 
             /**
              * Get current playback buffer.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_buffer(): null;
 
             /**
              * Retrieve {@link Ags.SoundcardCapability}-enum information.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_capability(): SoundcardCapability;
 
             /**
              * Get current playback delay.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_delay(): number;
 
             /**
              * Get current playback note offset.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_delay_counter(): number;
 
             /**
              * Get current playback delay factor.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_delay_factor(): number;
 
             /**
              * Get device.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_device(): string;
 
             /**
              * Get loop parameters of `soundcard`.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_loop(): [number, number, boolean];
 
             /**
              * Get current playback loop offset.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_loop_offset(): number;
 
             /**
              * Get future playback buffer.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_next_buffer(): null;
@@ -15418,6 +16563,7 @@ export namespace Ags {
              * Get current playback note 256th attack.
              * @param note_256th_attack_lower the return location of attack lower range
              * @param note_256th_attack_upper the return location of attack upper range
+             * @since 6.2.2
              * @virtual
              */
             vfunc_get_note_256th_attack(note_256th_attack_lower: number, note_256th_attack_upper: number): void;
@@ -15425,18 +16571,21 @@ export namespace Ags {
             /**
              * Get current playback note 256th attack position within 16 times `AGS_SOUNDCARD_DEFAULT_PERIOD`.
              * @param note_256th_attack_position the note 256th attack position
+             * @since 6.2.2
              * @virtual
              */
             vfunc_get_note_256th_attack_at_position(note_256th_attack_position: number): number;
 
             /**
              * Get note 256th attack of current 16th pulse.
+             * @since 6.3.0
              * @virtual
              */
             vfunc_get_note_256th_attack_of_16th_pulse(): number;
 
             /**
              * Get note 256th attack position of current 16th pulse.
+             * @since 6.3.0
              * @virtual
              */
             vfunc_get_note_256th_attack_of_16th_pulse_position(): number;
@@ -15445,6 +16594,7 @@ export namespace Ags {
              * Get current playback note 256th attack position within 16 times `AGS_SOUNDCARD_DEFAULT_PERIOD`.
              * @param note_256th_attack_position_lower the return location of attack position lower range
              * @param note_256th_attack_position_upper the return location of attack position upper range
+             * @since 6.2.2
              * @virtual
              */
             vfunc_get_note_256th_attack_position(note_256th_attack_position_lower: number, note_256th_attack_position_upper: number): void;
@@ -15453,78 +16603,91 @@ export namespace Ags {
              * Get current playback note 256th offset.
              * @param note_256th_offset_lower the return location of offset lower range
              * @param note_256th_offset_upper the return location of offset upper range
+             * @since 6.1.0
              * @virtual
              */
             vfunc_get_note_256th_offset(note_256th_offset_lower: number, note_256th_offset_upper: number): void;
 
             /**
              * Get current playback note offset.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_note_offset(): number;
 
             /**
              * Get current playback note offset.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_note_offset_absolute(): number;
 
             /**
              * Get presets.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_presets(): [number, number, number, SoundcardFormat];
 
             /**
              * Get future playback buffer.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_prev_buffer(): null;
 
             /**
              * Get start playback note offset.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_start_note_offset(): number;
 
             /**
              * Get sub block count.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_sub_block_count(): number;
 
             /**
              * Get playback time as string.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_uptime(): string;
 
             /**
              * Get available.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_is_available(): boolean;
 
             /**
              * Get playing.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_is_playing(): boolean;
 
             /**
              * Get recording.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_is_recording(): boolean;
 
             /**
              * Get starting.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_is_starting(): boolean;
 
             /**
              * Retrieve `card_id` and `card_name` as a list of strings.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_list_cards(): [string[], string[]];
@@ -15532,6 +16695,7 @@ export namespace Ags {
             /**
              * Lock `buffer`.
              * @param buffer the buffer to lock
+             * @since 3.0.0
              * @virtual
              */
             vfunc_lock_buffer(buffer: null): void;
@@ -15539,6 +16703,7 @@ export namespace Ags {
             /**
              * Callback when counter expires minor note offset.
              * @param note_offset the current note offset
+             * @since 3.0.0
              * @virtual
              */
             vfunc_offset_changed(note_offset: number): void;
@@ -15546,30 +16711,35 @@ export namespace Ags {
             /**
              * Retrieve detailed information of `card_id` soundcard.
              * @param card_id the selected soundcard by its string identifier
+             * @since 3.0.0
              * @virtual
              */
             vfunc_pcm_info(card_id: string): [number, number, number, number, number, number];
 
             /**
              * Plays the current buffer of soundcard.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_play(): void;
 
             /**
              * Initializes the soundcard for playback.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_play_init(): void;
 
             /**
              * Records the current buffer of soundcard.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_record(): void;
 
             /**
              * Initializes the soundcard for recordback.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_record_init(): void;
@@ -15577,6 +16747,7 @@ export namespace Ags {
             /**
              * Set current playback bpm.
              * @param bpm the bpm to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_bpm(bpm: number): void;
@@ -15584,6 +16755,7 @@ export namespace Ags {
             /**
              * Set current playback delay factor.
              * @param delay_factor the delay factor to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_delay_factor(delay_factor: number): void;
@@ -15591,6 +16763,7 @@ export namespace Ags {
             /**
              * Set device.
              * @param card_id the device to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_device(card_id: string): void;
@@ -15600,6 +16773,7 @@ export namespace Ags {
              * @param loop_left loop position of region
              * @param loop_right loop position of region
              * @param do_loop if `true` do loop, else don't loop
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_loop(loop_left: number, loop_right: number, do_loop: boolean): void;
@@ -15607,6 +16781,7 @@ export namespace Ags {
             /**
              * Set current playback note offset.
              * @param note_offset the note offset to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_note_offset(note_offset: number): void;
@@ -15614,6 +16789,7 @@ export namespace Ags {
             /**
              * Set current playback note offset.
              * @param note_offset the note offset to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_note_offset_absolute(note_offset: number): void;
@@ -15624,6 +16800,7 @@ export namespace Ags {
              * @param rate the samplerate
              * @param buffer_size the buffer size
              * @param format the format
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_presets(channels: number, rate: number, buffer_size: number, format: SoundcardFormat): void;
@@ -15631,18 +16808,21 @@ export namespace Ags {
             /**
              * Set start playback note offset.
              * @param start_note_offset the start note offset to set
+             * @since 3.0.0
              * @virtual
              */
             vfunc_set_start_note_offset(start_note_offset: number): void;
 
             /**
              * Stops the soundcard from playing to it.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_stop(): void;
 
             /**
              * Every call to play may generate a tic.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_tic(): void;
@@ -15651,6 +16831,7 @@ export namespace Ags {
              * Trylock sub block.
              * @param buffer the buffer to lock
              * @param sub_block and its sub block
+             * @since 3.0.0
              * @virtual
              */
             vfunc_trylock_sub_block(buffer: null, sub_block: number): boolean;
@@ -15658,6 +16839,7 @@ export namespace Ags {
             /**
              * Unlock `buffer`.
              * @param buffer the buffer to unlock
+             * @since 3.0.0
              * @virtual
              */
             vfunc_unlock_buffer(buffer: null): void;
@@ -15666,6 +16848,7 @@ export namespace Ags {
              * Unlock sub block.
              * @param buffer the buffer to lock
              * @param sub_block and its sub block
+             * @since 3.0.0
              * @virtual
              */
             vfunc_unlock_sub_block(buffer: null, sub_block: number): void;
@@ -15724,71 +16907,83 @@ export namespace Ags {
         /**
          * Get current playback delay.
          * @returns delay
+         * @since 3.0.0
          */
         get_absolute_delay(): number;
 
         /**
          * Get current playback attack.
          * @returns attack
+         * @since 3.0.0
          */
         get_attack(): number;
 
         /**
          * Get current playback bpm.
          * @returns bpm
+         * @since 3.0.0
          */
         get_bpm(): number;
 
         /**
          * Get current playback buffer.
          * @returns current playback buffer
+         * @since 3.0.0
          */
         get_buffer(): null;
 
         /**
          * Retrieve {@link Ags.SoundcardCapability}-enum information.
          * @returns the capablities flags
+         * @since 3.0.0
          */
         get_capability(): SoundcardCapability;
 
         /**
          * Get current playback delay.
          * @returns delay
+         * @since 3.0.0
          */
         get_delay(): number;
 
         /**
          * Get current playback note offset.
          * @returns offset
+         * @since 3.0.0
          */
         get_delay_counter(): number;
 
         /**
          * Get current playback delay factor.
          * @returns delay factor
+         * @since 3.0.0
          */
         get_delay_factor(): number;
 
         /**
          * Get device.
          * @returns the device's identifier
+         * @since 3.0.0
          */
         get_device(): string;
 
         /**
          * Get loop parameters of `soundcard`.
+         * @since 3.0.0
          */
         get_loop(): [number, number, boolean];
 
         /**
          * Get current playback loop offset.
          * @returns offset
+         * @since 3.0.0
          */
         get_loop_offset(): number;
 
         /**
          * Get future playback buffer.
          * @returns next playback buffer
+         * @since 3.0.0
          */
         get_next_buffer(): null;
 
@@ -15796,24 +16991,28 @@ export namespace Ags {
          * Get current playback note 256th attack.
          * @param note_256th_attack_lower the return location of attack lower range
          * @param note_256th_attack_upper the return location of attack upper range
+         * @since 6.2.2
          */
         get_note_256th_attack(note_256th_attack_lower: number, note_256th_attack_upper: number): void;
 
         /**
          * Get current playback note 256th attack position within 16 times `AGS_SOUNDCARD_DEFAULT_PERIOD`.
          * @param note_256th_attack_position the note 256th attack position
+         * @since 6.2.2
          */
         get_note_256th_attack_at_position(note_256th_attack_position: number): number;
 
         /**
          * Get note 256th attack of current 16th pulse.
          * @returns the note 256th attack of 16th pulse
+         * @since 6.3.0
          */
         get_note_256th_attack_of_16th_pulse(): number;
 
         /**
          * Get note 256th attack position of current 16th pulse.
          * @returns the note 256th attack position of 16th pulse
+         * @since 6.3.0
          */
         get_note_256th_attack_of_16th_pulse_position(): number;
 
@@ -15821,6 +17020,7 @@ export namespace Ags {
          * Get current playback note 256th attack position within 16 times `AGS_SOUNDCARD_DEFAULT_PERIOD`.
          * @param note_256th_attack_position_lower the return location of attack position lower range
          * @param note_256th_attack_position_upper the return location of attack position upper range
+         * @since 6.2.2
          */
         get_note_256th_attack_position(note_256th_attack_position_lower: number, note_256th_attack_position_upper: number): void;
 
@@ -15828,132 +17028,155 @@ export namespace Ags {
          * Get current playback note 256th offset.
          * @param note_256th_offset_lower the return location of offset lower range
          * @param note_256th_offset_upper the return location of offset upper range
+         * @since 6.1.0
          */
         get_note_256th_offset(note_256th_offset_lower: number, note_256th_offset_upper: number): void;
 
         /**
          * Get current playback note offset.
          * @returns the current note offset
+         * @since 3.0.0
          */
         get_note_offset(): number;
 
         /**
          * Get current playback note offset.
          * @returns offset
+         * @since 3.0.0
          */
         get_note_offset_absolute(): number;
 
         /**
          * Get presets.
+         * @since 3.0.0
          */
         get_presets(): [number, number, number, SoundcardFormat];
 
         /**
          * Get future playback buffer.
          * @returns prev playback buffer
+         * @since 3.0.0
          */
         get_prev_buffer(): null;
 
         /**
          * Get start playback note offset.
          * @returns the start note offset
+         * @since 3.0.0
          */
         get_start_note_offset(): number;
 
         /**
          * Get sub block count.
          * @returns the sub block count
+         * @since 3.0.0
          */
         get_sub_block_count(): number;
 
         /**
          * Get playback time as string.
          * @returns playback time as string
+         * @since 3.0.0
          */
         get_uptime(): string;
 
         /**
          * Get available.
          * @returns `true` if available, else `false`
+         * @since 3.0.0
          */
         is_available(): boolean;
 
         /**
          * Get playing.
          * @returns `true` if playing, else `false`
+         * @since 3.0.0
          */
         is_playing(): boolean;
 
         /**
          * Get recording.
          * @returns `true` if recording, else `false`
+         * @since 3.0.0
          */
         is_recording(): boolean;
 
         /**
          * Get starting.
          * @returns `true` if starting, else `false`
+         * @since 3.0.0
          */
         is_starting(): boolean;
 
         /**
          * Retrieve `card_id` and `card_name` as a list of strings.
+         * @since 3.0.0
          */
         list_cards(): [string[], string[]];
 
         /**
          * Lock `buffer`.
          * @param buffer the buffer to lock
+         * @since 3.0.0
          */
         lock_buffer(buffer: null): void;
 
         /**
          * Callback when counter expires minor note offset.
          * @param note_offset the current note offset
+         * @since 3.0.0
          */
         offset_changed(note_offset: number): void;
 
         /**
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
+         * @since 3.0.0
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
+         * @since 3.0.0
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
+         * @since 3.0.0
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
+         * @since 3.0.0
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
+         * @since 3.0.0
          */
         record_init(): void;
 
         /**
          * Set current playback bpm.
          * @param bpm the bpm to set
+         * @since 3.0.0
          */
         set_bpm(bpm: number): void;
 
         /**
          * Set current playback delay factor.
          * @param delay_factor the delay factor to set
+         * @since 3.0.0
          */
         set_delay_factor(delay_factor: number): void;
 
         /**
          * Set device.
          * @param card_id the device to set
+         * @since 3.0.0
          */
         set_device(card_id: string): void;
 
@@ -15962,18 +17185,21 @@ export namespace Ags {
          * @param loop_left loop position of region
          * @param loop_right loop position of region
          * @param do_loop if `true` do loop, else don't loop
+         * @since 3.0.0
          */
         set_loop(loop_left: number, loop_right: number, do_loop: boolean): void;
 
         /**
          * Set current playback note offset.
          * @param note_offset the note offset to set
+         * @since 3.0.0
          */
         set_note_offset(note_offset: number): void;
 
         /**
          * Set current playback note offset.
          * @param note_offset the note offset to set
+         * @since 3.0.0
          */
         set_note_offset_absolute(note_offset: number): void;
 
@@ -15983,22 +17209,26 @@ export namespace Ags {
          * @param rate the samplerate
          * @param buffer_size the buffer size
          * @param format the format
+         * @since 3.0.0
          */
         set_presets(channels: number, rate: number, buffer_size: number, format: SoundcardFormat): void;
 
         /**
          * Set start playback note offset.
          * @param start_note_offset the start note offset to set
+         * @since 3.0.0
          */
         set_start_note_offset(start_note_offset: number): void;
 
         /**
          * Stops the soundcard from playing to it.
+         * @since 3.0.0
          */
         stop(): void;
 
         /**
          * Every call to play may generate a tic.
+         * @since 3.0.0
          */
         tic(): void;
 
@@ -16007,12 +17237,14 @@ export namespace Ags {
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
          * @returns `true` on success, otherwise `false`
+         * @since 3.0.0
          */
         trylock_sub_block(buffer: null, sub_block: number): boolean;
 
         /**
          * Unlock `buffer`.
          * @param buffer the buffer to unlock
+         * @since 3.0.0
          */
         unlock_buffer(buffer: null): void;
 
@@ -16020,6 +17252,7 @@ export namespace Ags {
          * Unlock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
+         * @since 3.0.0
          */
         unlock_sub_block(buffer: null, sub_block: number): void;
     }
@@ -16041,6 +17274,7 @@ export namespace Ags {
              * Change bpm.
              * @param new_bpm the new bpm
              * @param old_bpm the old bpm
+             * @since 3.0.0
              * @virtual
              */
             vfunc_change_bpm(new_bpm: number, old_bpm: number): void;
@@ -16048,6 +17282,7 @@ export namespace Ags {
             /**
              * Change midi duration.
              * @param midi_duration the duration
+             * @since 3.0.0
              * @virtual
              */
             vfunc_change_midi_duration(midi_duration: number): void;
@@ -16055,6 +17290,7 @@ export namespace Ags {
             /**
              * Change notation duration.
              * @param notation_duration the duration
+             * @since 3.0.0
              * @virtual
              */
             vfunc_change_notation_duration(notation_duration: number): void;
@@ -16062,6 +17298,7 @@ export namespace Ags {
             /**
              * Change sequencer duration.
              * @param sequencer_duration the duration
+             * @since 3.0.0
              * @virtual
              */
             vfunc_change_sequencer_duration(sequencer_duration: number): void;
@@ -16070,6 +17307,7 @@ export namespace Ags {
              * Change tact.
              * @param new_tact the new tact
              * @param old_tact the old tact
+             * @since 3.0.0
              * @virtual
              */
             vfunc_change_tact(new_tact: number, old_tact: number): void;
@@ -16077,42 +17315,49 @@ export namespace Ags {
             /**
              * Change wave duration.
              * @param wave_duration the duration
+             * @since 3.0.0
              * @virtual
              */
             vfunc_change_wave_duration(wave_duration: number): void;
 
             /**
              * Get bpm.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_bpm(): number;
 
             /**
              * Get midi duration.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_midi_duration(): bigint | number;
 
             /**
              * Get notation duration.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_notation_duration(): bigint | number;
 
             /**
              * Get sequencer duration.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_sequencer_duration(): bigint | number;
 
             /**
              * Get tact.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_tact(): number;
 
             /**
              * Get wave duration.
+             * @since 3.0.0
              * @virtual
              */
             vfunc_get_wave_duration(): bigint | number;
@@ -16137,24 +17382,28 @@ export namespace Ags {
          * Change bpm.
          * @param new_bpm the new bpm
          * @param old_bpm the old bpm
+         * @since 3.0.0
          */
         change_bpm(new_bpm: number, old_bpm: number): void;
 
         /**
          * Change midi duration.
          * @param midi_duration the duration
+         * @since 3.0.0
          */
         change_midi_duration(midi_duration: bigint | number): void;
 
         /**
          * Change notation duration.
          * @param notation_duration the duration
+         * @since 3.0.0
          */
         change_notation_duration(notation_duration: bigint | number): void;
 
         /**
          * Change sequencer duration.
          * @param sequencer_duration the duration
+         * @since 3.0.0
          */
         change_sequencer_duration(sequencer_duration: bigint | number): void;
 
@@ -16162,48 +17411,56 @@ export namespace Ags {
          * Change tact.
          * @param new_tact the new tact
          * @param old_tact the old tact
+         * @since 3.0.0
          */
         change_tact(new_tact: number, old_tact: number): void;
 
         /**
          * Change wave duration.
          * @param wave_duration the duration
+         * @since 3.0.0
          */
         change_wave_duration(wave_duration: bigint | number): void;
 
         /**
          * Get bpm.
          * @returns the bpm
+         * @since 3.0.0
          */
         get_bpm(): number;
 
         /**
          * Get midi duration.
          * @returns the midi duration
+         * @since 3.0.0
          */
         get_midi_duration(): number;
 
         /**
          * Get notation duration.
          * @returns the notation duration
+         * @since 3.0.0
          */
         get_notation_duration(): number;
 
         /**
          * Get sequencer duration.
          * @returns the sequencer duration
+         * @since 3.0.0
          */
         get_sequencer_duration(): number;
 
         /**
          * Get tact.
          * @returns the tact
+         * @since 3.0.0
          */
         get_tact(): number;
 
         /**
          * Get wave duration.
          * @returns the wave duration
+         * @since 3.0.0
          */
         get_wave_duration(): number;
     }

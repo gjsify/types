@@ -813,6 +813,7 @@ export namespace TelepathyLogger {
         /**
          * Walk the logs to retrieve the next most recent `num_event` events.
          * @param num_events number of maximum events to fetch
+         * @since 0.8.0
          */
         get_events_async(num_events: number): globalThis.Promise<Event[]>;
 
@@ -820,6 +821,7 @@ export namespace TelepathyLogger {
          * Walk the logs to retrieve the next most recent `num_event` events.
          * @param num_events number of maximum events to fetch
          * @param callback a callback to call when the request is satisfied
+         * @since 0.8.0
          */
         get_events_async(num_events: number, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -827,12 +829,14 @@ export namespace TelepathyLogger {
          * Walk the logs to retrieve the next most recent `num_event` events.
          * @param num_events number of maximum events to fetch
          * @param callback a callback to call when the request is satisfied
+         * @since 0.8.0
          */
         get_events_async(num_events: number, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Event[]> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
+         * @since 0.8.0
          */
         get_events_finish(result: Gio.AsyncResult): [boolean, Event[]];
 
@@ -840,6 +844,7 @@ export namespace TelepathyLogger {
          * Determines whether `walker` has run out of events. This is the case
          * when `walker` has returned all the events from the logs.
          * @returns `TRUE` if `walker` has run out of events, otherwise `FALSE`.
+         * @since 0.8.0
          */
         is_end(): boolean;
 
@@ -848,6 +853,7 @@ export namespace TelepathyLogger {
          * the logs. This is the case when `walker` has not yet returned any
          * events or has been rewound completely.
          * @returns `TRUE` if `walker` is pointing at the most recent event, otherwise `FALSE`.
+         * @since 0.8.0
          */
         is_start(): boolean;
 
@@ -855,6 +861,7 @@ export namespace TelepathyLogger {
          * Move the `walker` back by the last `num_event` events that were
          * returned by `tpl_log_walker_get_events_async()`.
          * @param num_events number of events to move back
+         * @since 0.8.0
          */
         rewind_async(num_events: number): globalThis.Promise<boolean>;
 
@@ -863,6 +870,7 @@ export namespace TelepathyLogger {
          * returned by `tpl_log_walker_get_events_async()`.
          * @param num_events number of events to move back
          * @param callback a callback to call when the request is satisfied
+         * @since 0.8.0
          */
         rewind_async(num_events: number, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -871,12 +879,14 @@ export namespace TelepathyLogger {
          * returned by `tpl_log_walker_get_events_async()`.
          * @param num_events number of events to move back
          * @param callback a callback to call when the request is satisfied
+         * @since 0.8.0
          */
         rewind_async(num_events: number, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
+         * @since 0.8.0
          */
         rewind_finish(result: Gio.AsyncResult): boolean;
     }

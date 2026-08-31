@@ -203,6 +203,7 @@ export namespace GrlNet {
          * @param headers a set of additional HTTP headers for this request or `null` to ignore
          * @param cancellable a {@link Gio.Cancellable} instance or `null` to ignore
          * @param callback The callback when the result is ready
+         * @since 0.2.2
          */
         request_with_headers_async(uri: string, headers: { [key: string]: string } | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -211,6 +212,7 @@ export namespace GrlNet {
          * supporting.  If sets `true`, a new cache will be created. If sets to `false`,
          * current cache is clean and removed.
          * @param use_cache if cache must be used or not
+         * @since 0.1.12
          */
         set_cache(use_cache: boolean): void;
 
@@ -218,6 +220,7 @@ export namespace GrlNet {
          * Sets the new maximum size of cache, in Megabytes. Default value is 10. Using
          * 0 means no cache will be done.
          * @param cache_size size of cache (in Mb)
+         * @since 0.1.12
          */
         set_cache_size(cache_size: number): void;
 

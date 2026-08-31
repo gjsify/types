@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gstvideo-0.10)
 
 
-GJS TypeScript type definitions for GstVideo-0.10 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.3.0.
+GJS TypeScript type definitions for GstVideo-0.10 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.4.0.
 
 ## Install
 

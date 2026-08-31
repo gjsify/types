@@ -345,12 +345,16 @@ export namespace Amtk {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @since 3.0
+         */
         static get_singleton(): ActionInfoCentralStore;
 
         // Methods
         /**
          * @param action_name an action name.
          * @returns the found {@link Amtk.ActionInfo}, or `null`.
+         * @since 2.0
          */
         lookup(action_name: string): ActionInfo;
     }
@@ -406,6 +410,7 @@ export namespace Amtk {
          * {@link Amtk.ActionInfo} with the same action name. The stores take their own
          * reference on `info`.
          * @param info an {@link Amtk.ActionInfo}.
+         * @since 2.0
          */
         add(info: ActionInfo): void;
 
@@ -418,6 +423,7 @@ export namespace Amtk {
          * An API similar to `g_action_map_add_action_entries()`.
          * @param entries a pointer to the first item in an array of {@link Amtk.ActionInfoEntry} structs.
          * @param translation_domain a gettext domain, or `null`.
+         * @since 2.0
          */
         add_entries(entries: ActionInfoEntry[], translation_domain: string | null): void;
 
@@ -429,12 +435,14 @@ export namespace Amtk {
          * You probably want to call this function on the application store after
          * creating the menu and toolbar. But it can also be useful for a store provided
          * by a library, to easily see which actions are not used by the application.
+         * @since 2.0
          */
         check_all_used(): void;
 
         /**
          * @param action_name an action name.
          * @returns the found {@link Amtk.ActionInfo}, or `null`.
+         * @since 2.0
          */
         lookup(action_name: string): ActionInfo;
 
@@ -462,6 +470,7 @@ export namespace Amtk {
          * {@link Amtk.Factory}, containing information about actions that are not added to any
          * menu or toolbar.
          * @param application a {@link Gtk.Application}.
+         * @since 5.0
          */
         set_all_accels_to_app(application: Gtk.Application): void;
     }
@@ -546,6 +555,7 @@ export namespace Amtk {
          * are added to the default {@link Gtk.RecentManager} with
          * `gtk_recent_manager_add_item()`, the files will normally show up in the
          * {@link Gtk.RecentChooserMenu}.
+         * @since 5.6
          */
         static create_open_recent_menu_base(): Gtk.RecentChooserMenu;
 
@@ -553,6 +563,7 @@ export namespace Amtk {
          * Returns the {@link Amtk.ApplicationWindow} of `gtk_window`. The returned object is
          * guaranteed to be the same for the lifetime of `gtk_window`.
          * @param gtk_window a {@link Gtk.ApplicationWindow}.
+         * @since 2.0
          */
         static get_from_gtk_application_window(gtk_window: Gtk.ApplicationWindow): ApplicationWindow;
 
@@ -566,6 +577,7 @@ export namespace Amtk {
          * So `amtk_menu_item_set_long_description()` must have been called, which is the
          * case if the {@link Gtk.MenuItem} has been created with {@link Amtk.Factory}.
          * @param menu_shell a {@link Gtk.MenuShell}.
+         * @since 2.0
          */
         connect_menu_to_statusbar(menu_shell: Gtk.MenuShell): void;
 
@@ -577,6 +589,7 @@ export namespace Amtk {
          * The full path is retrieved with
          * `amtk_utils_recent_chooser_menu_get_item_uri()`.
          * @param menu a {@link Gtk.RecentChooserMenu}.
+         * @since 2.0
          */
         connect_recent_chooser_menu_to_statusbar(menu: Gtk.RecentChooserMenu): void;
 
@@ -592,6 +605,7 @@ export namespace Amtk {
          *   `g_application_open()` is called (with an empty hint), so the {@link Gio.Application}
          *   must have the {@link Gio.ApplicationFlags.HANDLES_OPEN} flag set.
          * @returns a new {@link Gtk.RecentChooserMenu}.
+         * @since 3.0
          */
         create_open_recent_menu(): Gtk.Widget;
 
@@ -600,22 +614,26 @@ export namespace Amtk {
          * submenu. The {@link Gtk.RecentChooserMenu} is created with
          * `amtk_application_window_create_open_recent_menu()`.
          * @returns a new {@link Gtk.MenuItem}.
+         * @since 2.0
          */
         create_open_recent_menu_item(): Gtk.Widget;
 
         /**
          * @returns the {@link Gtk.ApplicationWindow} of `amtk_window`.
+         * @since 2.0
          */
         get_application_window(): Gtk.ApplicationWindow;
 
         /**
          * @returns the {@link Amtk.ApplicationWindow.statusbar}.
+         * @since 2.0
          */
         get_statusbar(): Gtk.Statusbar | null;
 
         /**
          * Sets the {@link Amtk.ApplicationWindow.statusbar} property.
          * @param statusbar a {@link Gtk.Statusbar}, or `null`.
+         * @since 2.0
          */
         set_statusbar(statusbar: Gtk.Statusbar | null): void;
     }
@@ -707,6 +725,7 @@ export namespace Amtk {
          * information.
          * @param action_name an action name.
          * @returns a new {@link Gtk.CheckMenuItem} for `action_name`.
+         * @since 3.0
          */
         create_check_menu_item(action_name: string): Gtk.Widget;
 
@@ -722,6 +741,7 @@ export namespace Amtk {
          * @param action_name an action name.
          * @param flags {@link Amtk.FactoryFlags}.
          * @returns a new {@link Gtk.CheckMenuItem} for `action_name`.
+         * @since 3.0
          */
         create_check_menu_item_full(action_name: string, flags: FactoryFlags): Gtk.Widget;
 
@@ -730,6 +750,7 @@ export namespace Amtk {
          * {@link Amtk.Factory.default_flags}.
          * @param action_name an action name.
          * @returns a new {@link Gio.MenuItem} for `action_name`.
+         * @since 5.0
          */
         create_gmenu_item(action_name: string): Gio.MenuItem;
 
@@ -742,6 +763,7 @@ export namespace Amtk {
          * @param action_name an action name.
          * @param flags {@link Amtk.FactoryFlags}.
          * @returns a new {@link Gio.MenuItem} for `action_name`.
+         * @since 5.0
          */
         create_gmenu_item_full(action_name: string, flags: FactoryFlags): Gio.MenuItem;
 
@@ -750,6 +772,7 @@ export namespace Amtk {
          * {@link Amtk.Factory.default_flags}.
          * @param action_name an action name.
          * @returns a new {@link Gtk.MenuItem} for `action_name`.
+         * @since 3.0
          */
         create_menu_item(action_name: string): Gtk.Widget;
 
@@ -759,6 +782,7 @@ export namespace Amtk {
          * @param action_name an action name.
          * @param flags {@link Amtk.FactoryFlags}.
          * @returns a new {@link Gtk.MenuItem} for `action_name`.
+         * @since 3.0
          */
         create_menu_item_full(action_name: string, flags: FactoryFlags): Gtk.Widget;
 
@@ -770,6 +794,7 @@ export namespace Amtk {
          * information.
          * @param action_name an action name.
          * @returns a new {@link Gtk.MenuToolButton} for `action_name`.
+         * @since 3.0
          */
         create_menu_tool_button(action_name: string): Gtk.MenuToolButton;
 
@@ -782,6 +807,7 @@ export namespace Amtk {
          * @param action_name an action name.
          * @param flags {@link Amtk.FactoryFlags}.
          * @returns a new {@link Gtk.MenuToolButton} for `action_name`.
+         * @since 3.0
          */
         create_menu_tool_button_full(action_name: string, flags: FactoryFlags): Gtk.MenuToolButton;
 
@@ -790,6 +816,7 @@ export namespace Amtk {
          * {@link Amtk.Factory.default_flags}.
          * @param action_name an action name.
          * @returns a new {@link Gtk.ShortcutsShortcut} for `action_name`.
+         * @since 5.0
          */
         create_shortcut(action_name: string): Gtk.Widget;
 
@@ -818,6 +845,7 @@ export namespace Amtk {
          * @param action_name an action name.
          * @param flags {@link Amtk.FactoryFlags}.
          * @returns a new {@link Gtk.ShortcutsShortcut} for `action_name`.
+         * @since 5.0
          */
         create_shortcut_full(action_name: string, flags: FactoryFlags): Gtk.Widget;
 
@@ -826,6 +854,7 @@ export namespace Amtk {
          * {@link Amtk.Factory.default_flags}.
          * @param entries a   pointer to the first item in an array of {@link Amtk.ActionInfoEntry} structs.
          * @returns a new simple {@link Gtk.Menu} for `entries`.
+         * @since 5.0
          */
         create_simple_menu(entries: ActionInfoEntry[]): Gtk.Widget;
 
@@ -845,6 +874,7 @@ export namespace Amtk {
          * @param entries a   pointer to the first item in an array of {@link Amtk.ActionInfoEntry} structs.
          * @param flags {@link Amtk.FactoryFlags}.
          * @returns a new simple {@link Gtk.Menu} for `entries`.
+         * @since 5.0
          */
         create_simple_menu_full(entries: ActionInfoEntry[], flags: FactoryFlags): Gtk.Widget;
 
@@ -853,6 +883,7 @@ export namespace Amtk {
          * {@link Amtk.Factory.default_flags}.
          * @param action_name an action name.
          * @returns a new {@link Gtk.ToolButton} for `action_name`.
+         * @since 3.0
          */
         create_tool_button(action_name: string): Gtk.ToolItem;
 
@@ -862,22 +893,26 @@ export namespace Amtk {
          * @param action_name an action name.
          * @param flags {@link Amtk.FactoryFlags}.
          * @returns a new {@link Gtk.ToolButton} for `action_name`.
+         * @since 3.0
          */
         create_tool_button_full(action_name: string, flags: FactoryFlags): Gtk.ToolItem;
 
         /**
          * @returns the {@link Amtk.Factory.application}.
+         * @since 3.0
          */
         get_application(): Gtk.Application | null;
 
         /**
          * @returns the {@link Amtk.Factory.default_flags}.
+         * @since 3.0
          */
         get_default_flags(): FactoryFlags;
 
         /**
          * Sets the {@link Amtk.Factory.default_flags} property.
          * @param default_flags the new value.
+         * @since 3.0
          */
         set_default_flags(default_flags: FactoryFlags): void;
     }
@@ -967,6 +1002,7 @@ export namespace Amtk {
          * Returns the {@link Amtk.MenuShell} of `gtk_menu_shell`. The returned object is
          * guaranteed to be the same for the lifetime of `gtk_menu_shell`.
          * @param gtk_menu_shell a {@link Gtk.MenuShell}.
+         * @since 2.0
          */
         static get_from_gtk_menu_shell(gtk_menu_shell: Gtk.MenuShell): MenuShell;
 
@@ -986,6 +1022,7 @@ export namespace Amtk {
         // Methods
         /**
          * @returns the {@link Gtk.MenuShell} of `amtk_menu_shell`.
+         * @since 2.0
          */
         get_menu_shell(): Gtk.MenuShell;
     }
@@ -1118,17 +1155,20 @@ export namespace Amtk {
         // Methods
         /**
          * @returns the current value of the   {@link Amtk.TreeViewScrolledWindowSizing.monitor_limit_enabled} property.
+         * @since 5.10
          */
         get_monitor_limit(): boolean;
 
         /**
          * @returns the {@link Gtk.TreeView}, if the child widget is   a {@link Gtk.TreeView}. Otherwise `null` is returned.
+         * @since 5.10
          */
         get_tree_view(): Gtk.TreeView | null;
 
         /**
          * Sets the {@link Amtk.TreeViewScrolledWindowSizing.monitor_limit_enabled} property.
          * @param monitor_limit the new value.
+         * @since 5.10
          */
         set_monitor_limit(monitor_limit: boolean): void;
     }
@@ -1150,6 +1190,7 @@ export namespace Amtk {
         // Methods
         /**
          * @returns a copy of `info`. The copy will have a reference count of one.
+         * @since 2.0
          */
         copy(): ActionInfo;
 
@@ -1158,16 +1199,19 @@ export namespace Amtk {
          * returns a `null`-terminated array, to be suitable for
          * `gtk_application_set_accels_for_action()`.
          * @returns a `null`-terminated array of accelerators in the format understood by `gtk_accelerator_parse()`.
+         * @since 2.0
          */
         get_accels(): string[];
 
         /**
          * @returns the action name, or `null`. Example: `"win.save"`. Can be a detailed action name, see `g_action_parse_detailed_name()`.
+         * @since 2.0
          */
         get_action_name(): string | null;
 
         /**
          * @returns the icon name, or `null`.
+         * @since 2.0
          */
         get_icon_name(): string | null;
 
@@ -1175,11 +1219,13 @@ export namespace Amtk {
          * Gets the label. The label has normally a mnemonic. To remove the mnemonic,
          * there is the `amtk_utils_remove_mnemonic()` function.
          * @returns the label (i.e. a short description), or `null`.
+         * @since 2.0
          */
         get_label(): string | null;
 
         /**
          * @returns the tooltip (i.e. a long description), or `null`.
+         * @since 2.0
          */
         get_tooltip(): string | null;
 
@@ -1187,18 +1233,21 @@ export namespace Amtk {
          * Returns whether `info` has been used (for example by an {@link Amtk.Factory}
          * function). See also `amtk_action_info_store_check_all_used()`.
          * @returns whether `info` has been used.
+         * @since 3.0
          */
         has_been_used(): boolean;
 
         /**
          * Mark `info` as used. An {@link Amtk.Factory} function that uses an {@link Amtk.ActionInfo}
          * should call this function. See `amtk_action_info_store_check_all_used()`.
+         * @since 3.0
          */
         mark_as_used(): void;
 
         /**
          * Increments the reference count of `info` by one.
          * @returns the passed in `info`.
+         * @since 2.0
          */
         ref(): ActionInfo;
 
@@ -1208,6 +1257,7 @@ export namespace Amtk {
          * `accels` must not be `null`, it must be a `null`-terminated array, to be
          * consistent with `gtk_application_set_accels_for_action()`.
          * @param accels a `null`-terminated array of accelerators in the format understood by `gtk_accelerator_parse()`.
+         * @since 2.0
          */
         set_accels(accels: string[]): void;
 
@@ -1215,11 +1265,13 @@ export namespace Amtk {
          * Sets the action name, for example `"win.save"`. Can be a detailed action
          * name, see `g_action_parse_detailed_name()`.
          * @param action_name the action name.
+         * @since 2.0
          */
         set_action_name(action_name: string): void;
 
         /**
          * @param icon_name the icon name, or `null`.
+         * @since 2.0
          */
         set_icon_name(icon_name: string | null): void;
 
@@ -1227,17 +1279,20 @@ export namespace Amtk {
          * Sets the label with a mnemonic. To know how to encode the mnemonic, see the
          * documentation of `gtk_label_new_with_mnemonic()`.
          * @param label the label (i.e. a short description), or `null`.
+         * @since 2.0
          */
         set_label(label: string | null): void;
 
         /**
          * @param tooltip the tooltip (i.e. a long description), or `null`.
+         * @since 2.0
          */
         set_tooltip(tooltip: string | null): void;
 
         /**
          * Decrements the reference count of `info` by one. If the reference count drops
          * to 0, `info` is freed.
+         * @since 2.0
          */
         unref(): void;
     }

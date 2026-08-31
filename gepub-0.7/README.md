@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gepub-0.7)
 
 
-GJS TypeScript type definitions for Gepub-0.7 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.3.0.
+GJS TypeScript type definitions for Gepub-0.7 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.4.0.
 
 ## Install
 

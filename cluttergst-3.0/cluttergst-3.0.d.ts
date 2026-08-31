@@ -257,6 +257,7 @@ export namespace ClutterGst {
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
+         * @since 1.10
          */
         get_preferred_size(): [boolean, number, number];
 
@@ -266,6 +267,7 @@ export namespace ClutterGst {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          */
         invalidate(): void;
 
@@ -287,6 +289,7 @@ export namespace ClutterGst {
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
+         * @since 1.10
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
@@ -297,6 +300,7 @@ export namespace ClutterGst {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          * @virtual
          */
         vfunc_invalidate(): void;
@@ -708,18 +712,21 @@ export namespace ClutterGst {
         /**
          * Retrieves the playback volume of `self`.
          * @returns The playback volume between 0.0 and 1.0
+         * @since 3.0
          */
         get_audio_volume(): number;
 
         /**
          * Retrieves the {@link ClutterGst.Frame} of the last frame produced by `self`.
          * @returns the {@link ClutterGst.Frame} of the last frame.
+         * @since 3.0
          */
         get_frame(): Frame;
 
         /**
          * Get the idle state of the pipeline.
          * @returns TRUE if the pipline is in idle mode, FALSE otherwise.
+         * @since 3.0
          */
         get_idle(): boolean;
 
@@ -727,24 +734,28 @@ export namespace ClutterGst {
          * Retrieves the {@link Gst.Pipeline} used by the `self`, for direct use with
          * GStreamer API.
          * @returns the {@link Gst.Pipeline} element used by the player
+         * @since 3.0
          */
         get_pipeline(): Gst.Element;
 
         /**
          * Retrieves the playing status of `self`.
          * @returns `true` if playing, `false` if stopped.
+         * @since 3.0
          */
         get_playing(): boolean;
 
         /**
          * Retrieves the {@link ClutterGst.VideoSink} used by the `self`.
          * @returns the {@link ClutterGst.VideoSink} element used by the player
+         * @since 3.0
          */
         get_video_sink(): VideoSink;
 
         /**
          * Sets the playback volume of `self` to `volume`.
          * @param volume the volume as a double between 0.0 and 1.0
+         * @since 3.0
          */
         set_audio_volume(volume: number): void;
 
@@ -757,6 +768,7 @@ export namespace ClutterGst {
          * current state with `clutter_gst_player_get_playing()`. ClutterGstVideoActor
          * in clutter-gst is an example of such an asynchronous implementation.
          * @param playing `true` to start playing
+         * @since 3.0
          */
         set_playing(playing: boolean): void;
 
@@ -773,18 +785,21 @@ export namespace ClutterGst {
 
         /**
          * Retrieves the playback volume of `self`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_audio_volume(): number;
 
         /**
          * Retrieves the {@link ClutterGst.Frame} of the last frame produced by `self`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_frame(): Frame;
 
         /**
          * Get the idle state of the pipeline.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_idle(): boolean;
@@ -792,18 +807,21 @@ export namespace ClutterGst {
         /**
          * Retrieves the {@link Gst.Pipeline} used by the `self`, for direct use with
          * GStreamer API.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_pipeline(): Gst.Element;
 
         /**
          * Retrieves the playing status of `self`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_playing(): boolean;
 
         /**
          * Retrieves the {@link ClutterGst.VideoSink} used by the `self`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_video_sink(): VideoSink;
@@ -822,6 +840,7 @@ export namespace ClutterGst {
         /**
          * Sets the playback volume of `self` to `volume`.
          * @param volume the volume as a double between 0.0 and 1.0
+         * @since 3.0
          * @virtual
          */
         vfunc_set_audio_volume(volume: number): void;
@@ -835,6 +854,7 @@ export namespace ClutterGst {
          * current state with `clutter_gst_player_get_playing()`. ClutterGstVideoActor
          * in clutter-gst is an example of such an asynchronous implementation.
          * @param playing `true` to start playing
+         * @since 3.0
          * @virtual
          */
         vfunc_set_playing(playing: boolean): void;
@@ -1158,6 +1178,7 @@ export namespace ClutterGst {
 
         /**
          * @param sink A {@link ClutterGst.VideoSink}
+         * @since 3.0
          */
         static new_with_sink(sink: VideoSink): Clutter.Content;
 
@@ -1170,37 +1191,44 @@ export namespace ClutterGst {
         // Methods
         /**
          * @returns The {@link ClutterGst.Frame} currently attached to `self`.
+         * @since 3.0
          */
         get_frame(): Frame;
 
         /**
          * @returns The {@link ClutterGst.Overlays} currently attached to `self`.
+         * @since 3.0
          */
         get_overlays(): Overlays;
 
         /**
          * @returns The {@link ClutterGst.Player} currently attached to `self`.
+         * @since 3.0
          */
         get_player(): Player;
 
         /**
          * @returns The {@link ClutterGst.VideoSink} currently attached to `self`.
+         * @since 3.0
          */
         get_sink(): VideoSink;
 
         /**
          * Set the current frame.
          * @param frame A {@link ClutterGst.Frame}
+         * @since 3.0
          */
         set_frame(frame: Frame): void;
 
         /**
          * @param player A {@link ClutterGst.Player} or `null`
+         * @since 3.0
          */
         set_player(player: Player): void;
 
         /**
          * @param sink A {@link ClutterGst.VideoSink} or `null`
+         * @since 3.0
          */
         set_sink(sink: VideoSink): void;
 
@@ -1211,6 +1239,7 @@ export namespace ClutterGst {
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
+         * @since 1.10
          */
         get_preferred_size(): [boolean, number, number];
 
@@ -1220,6 +1249,7 @@ export namespace ClutterGst {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          */
         invalidate(): void;
 
@@ -1241,6 +1271,7 @@ export namespace ClutterGst {
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
+         * @since 1.10
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
@@ -1251,6 +1282,7 @@ export namespace ClutterGst {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          * @virtual
          */
         vfunc_invalidate(): void;
@@ -1402,6 +1434,7 @@ export namespace ClutterGst {
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
+         * @since 1.10
          */
         get_preferred_size(): [boolean, number, number];
 
@@ -1411,6 +1444,7 @@ export namespace ClutterGst {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          */
         invalidate(): void;
 
@@ -1432,6 +1466,7 @@ export namespace ClutterGst {
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
+         * @since 1.10
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
@@ -1442,6 +1477,7 @@ export namespace ClutterGst {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          * @virtual
          */
         vfunc_invalidate(): void;
@@ -1761,12 +1797,14 @@ export namespace ClutterGst {
          * audio stream playing in the list returned by
          * `clutter_gst_playback_get_audio_streams()`.
          * @returns the index of the current audio stream, -1 if the media has no audio stream
+         * @since 1.4
          */
         get_audio_stream(): number;
 
         /**
          * Get the list of audio streams of the current media.
          * @returns a list of strings describing the available audio streams
+         * @since 1.4
          */
         get_audio_streams(): string[];
 
@@ -1790,6 +1828,7 @@ export namespace ClutterGst {
 
         /**
          * @returns a {@link ClutterGst.BufferingMode}
+         * @since 1.4
          */
         get_buffering_mode(): BufferingMode;
 
@@ -1802,6 +1841,7 @@ export namespace ClutterGst {
         /**
          * Whether the player is seeking.
          * @returns TRUE if the player is seeking, FALSE otherwise.
+         * @since 1.6
          */
         get_in_seek(): boolean;
 
@@ -1820,6 +1860,7 @@ export namespace ClutterGst {
         /**
          * Get the current value of the seek-flags property.
          * @returns a combination of {@link ClutterGst.SeekFlags}
+         * @since 1.4
          */
         get_seek_flags(): SeekFlags;
 
@@ -1834,12 +1875,14 @@ export namespace ClutterGst {
          * subtiles track in the list returned by
          * `clutter_gst_playback_get_subtitle_tracks()`.
          * @returns the index of the current subtitlest track, -1 if the media has no subtitles track or if the subtitles have been turned off
+         * @since 1.4
          */
         get_subtitle_track(): number;
 
         /**
          * Get the list of subtitles tracks of the current media.
          * @returns a list of strings describing the available subtitles tracks
+         * @since 1.4
          */
         get_subtitle_tracks(): string[];
 
@@ -1858,6 +1901,7 @@ export namespace ClutterGst {
         /**
          * Retrieves the user agent used when streaming.
          * @returns the user agent used. The returned string has to be freed with `g_free()`
+         * @since 1.4
          */
         get_user_agent(): string;
 
@@ -1871,6 +1915,7 @@ export namespace ClutterGst {
          * Set the audio stream to play. `index_` is the index of the stream
          * in the list returned by `clutter_gst_playback_get_audio_streams()`.
          * @param index_ the index of the audio stream
+         * @since 1.4
          */
         set_audio_stream(index_: number): void;
 
@@ -1888,6 +1933,7 @@ export namespace ClutterGst {
 
         /**
          * @param mode a {@link ClutterGst.BufferingMode}
+         * @since 1.4
          */
         set_buffering_mode(mode: BufferingMode): void;
 
@@ -1908,6 +1954,7 @@ export namespace ClutterGst {
          * Seeking can be done with several trade-offs. Clutter-gst defaults
          * to {@link ClutterGst.SeekFlags.NONE}.
          * @param flags a combination of {@link ClutterGst.SeekFlags}
+         * @since 1.4
          */
         set_seek_flags(flags: SeekFlags): void;
 
@@ -1932,6 +1979,7 @@ export namespace ClutterGst {
          * 
          * If `index_` is -1, the subtitles are turned off.
          * @param index_ the index of the subtitles track
+         * @since 1.4
          */
         set_subtitle_track(index_: number): void;
 
@@ -1954,6 +2002,7 @@ export namespace ClutterGst {
          * promote your software, make it appear in statistics or because the server
          * requires a special user agent you want to impersonate.
          * @param user_agent the user agent
+         * @since 1.4
          */
         set_user_agent(user_agent: string): void;
 
@@ -1995,18 +2044,21 @@ export namespace ClutterGst {
         /**
          * Retrieves the playback volume of `self`.
          * @returns The playback volume between 0.0 and 1.0
+         * @since 3.0
          */
         get_audio_volume(): number;
 
         /**
          * Retrieves the {@link ClutterGst.Frame} of the last frame produced by `self`.
          * @returns the {@link ClutterGst.Frame} of the last frame.
+         * @since 3.0
          */
         get_frame(): Frame;
 
         /**
          * Get the idle state of the pipeline.
          * @returns TRUE if the pipline is in idle mode, FALSE otherwise.
+         * @since 3.0
          */
         get_idle(): boolean;
 
@@ -2014,24 +2066,28 @@ export namespace ClutterGst {
          * Retrieves the {@link Gst.Pipeline} used by the `self`, for direct use with
          * GStreamer API.
          * @returns the {@link Gst.Pipeline} element used by the player
+         * @since 3.0
          */
         get_pipeline(): Gst.Element;
 
         /**
          * Retrieves the playing status of `self`.
          * @returns `true` if playing, `false` if stopped.
+         * @since 3.0
          */
         get_playing(): boolean;
 
         /**
          * Retrieves the {@link ClutterGst.VideoSink} used by the `self`.
          * @returns the {@link ClutterGst.VideoSink} element used by the player
+         * @since 3.0
          */
         get_video_sink(): VideoSink;
 
         /**
          * Sets the playback volume of `self` to `volume`.
          * @param volume the volume as a double between 0.0 and 1.0
+         * @since 3.0
          */
         set_audio_volume(volume: number): void;
 
@@ -2044,6 +2100,7 @@ export namespace ClutterGst {
          * current state with `clutter_gst_player_get_playing()`. ClutterGstVideoActor
          * in clutter-gst is an example of such an asynchronous implementation.
          * @param playing `true` to start playing
+         * @since 3.0
          */
         set_playing(playing: boolean): void;
 
@@ -2060,18 +2117,21 @@ export namespace ClutterGst {
 
         /**
          * Retrieves the playback volume of `self`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_audio_volume(): number;
 
         /**
          * Retrieves the {@link ClutterGst.Frame} of the last frame produced by `self`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_frame(): Frame;
 
         /**
          * Get the idle state of the pipeline.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_idle(): boolean;
@@ -2079,18 +2139,21 @@ export namespace ClutterGst {
         /**
          * Retrieves the {@link Gst.Pipeline} used by the `self`, for direct use with
          * GStreamer API.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_pipeline(): Gst.Element;
 
         /**
          * Retrieves the playing status of `self`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_playing(): boolean;
 
         /**
          * Retrieves the {@link ClutterGst.VideoSink} used by the `self`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_video_sink(): VideoSink;
@@ -2109,6 +2172,7 @@ export namespace ClutterGst {
         /**
          * Sets the playback volume of `self` to `volume`.
          * @param volume the volume as a double between 0.0 and 1.0
+         * @since 3.0
          * @virtual
          */
         vfunc_set_audio_volume(volume: number): void;
@@ -2122,6 +2186,7 @@ export namespace ClutterGst {
          * current state with `clutter_gst_player_get_playing()`. ClutterGstVideoActor
          * in clutter-gst is an example of such an asynchronous implementation.
          * @param playing `true` to start playing
+         * @since 3.0
          * @virtual
          */
         vfunc_set_playing(playing: boolean): void;
@@ -2278,6 +2343,7 @@ export namespace ClutterGst {
          * frame of the given video sink. An application is free to make a
          * copy of this pipeline and modify it for custom rendering.
          * @returns A {@link ClutterGst.Frame} or NULL if there   isn't a frame to be displayed yet.
+         * @since 3.0
          */
         get_frame(): Frame;
 
@@ -2294,6 +2360,7 @@ export namespace ClutterGst {
          * is passed between components that didn't have an opportunity to
          * connect a signal handler this can be useful.
          * @returns `true` if the sink is ready, else `false`
+         * @since 3.0
          */
         is_ready(): boolean;
 
@@ -2417,6 +2484,7 @@ export namespace ClutterGst {
         /**
          * Sends an event to the navigation interface.
          * @param event The event to send
+         * @since 1.22
          */
         send_event_simple(event: Gst.Event): void;
 
@@ -2447,12 +2515,14 @@ export namespace ClutterGst {
          * @param y The y coordinate of the mouse event.
          * @param delta_x The delta_x coordinate of the mouse event.
          * @param delta_y The delta_y coordinate of the mouse event.
+         * @since 1.18
          */
         send_mouse_scroll_event(x: number, y: number, delta_x: number, delta_y: number): void;
 
         /**
          * sending a navigation event.
          * @param structure 
+         * @deprecated since 1.22: Use {@link GstVideo.NavigationInterface}.send_event_simple() instead.
          * @virtual
          */
         vfunc_send_event(structure: Gst.Structure): void;
@@ -2467,6 +2537,7 @@ export namespace ClutterGst {
         /**
          * Sends an event to the navigation interface.
          * @param event The event to send
+         * @since 1.22
          * @virtual
          */
         vfunc_send_event_simple(event: Gst.Event): void;
@@ -2545,12 +2616,14 @@ export namespace ClutterGst {
         /**
          * Retrieves the height of the `box`
          * @returns the height of the box
+         * @since 3.0
          */
         get_height(): number;
 
         /**
          * Retrieves the width of the `box`
          * @returns the width of the box
+         * @since 3.0
          */
         get_width(): number;
     }
@@ -2767,18 +2840,21 @@ export namespace ClutterGst {
 
             /**
              * Retrieves the playback volume of `self`.
+             * @since 3.0
              * @virtual
              */
             vfunc_get_audio_volume(): number;
 
             /**
              * Retrieves the {@link ClutterGst.Frame} of the last frame produced by `self`.
+             * @since 3.0
              * @virtual
              */
             vfunc_get_frame(): Frame;
 
             /**
              * Get the idle state of the pipeline.
+             * @since 3.0
              * @virtual
              */
             vfunc_get_idle(): boolean;
@@ -2786,18 +2862,21 @@ export namespace ClutterGst {
             /**
              * Retrieves the {@link Gst.Pipeline} used by the `self`, for direct use with
              * GStreamer API.
+             * @since 3.0
              * @virtual
              */
             vfunc_get_pipeline(): Gst.Element;
 
             /**
              * Retrieves the playing status of `self`.
+             * @since 3.0
              * @virtual
              */
             vfunc_get_playing(): boolean;
 
             /**
              * Retrieves the {@link ClutterGst.VideoSink} used by the `self`.
+             * @since 3.0
              * @virtual
              */
             vfunc_get_video_sink(): VideoSink;
@@ -2816,6 +2895,7 @@ export namespace ClutterGst {
             /**
              * Sets the playback volume of `self` to `volume`.
              * @param volume the volume as a double between 0.0 and 1.0
+             * @since 3.0
              * @virtual
              */
             vfunc_set_audio_volume(volume: number): void;
@@ -2829,6 +2909,7 @@ export namespace ClutterGst {
              * current state with `clutter_gst_player_get_playing()`. ClutterGstVideoActor
              * in clutter-gst is an example of such an asynchronous implementation.
              * @param playing `true` to start playing
+             * @since 3.0
              * @virtual
              */
             vfunc_set_playing(playing: boolean): void;
@@ -2899,18 +2980,21 @@ export namespace ClutterGst {
         /**
          * Retrieves the playback volume of `self`.
          * @returns The playback volume between 0.0 and 1.0
+         * @since 3.0
          */
         get_audio_volume(): number;
 
         /**
          * Retrieves the {@link ClutterGst.Frame} of the last frame produced by `self`.
          * @returns the {@link ClutterGst.Frame} of the last frame.
+         * @since 3.0
          */
         get_frame(): Frame;
 
         /**
          * Get the idle state of the pipeline.
          * @returns TRUE if the pipline is in idle mode, FALSE otherwise.
+         * @since 3.0
          */
         get_idle(): boolean;
 
@@ -2918,24 +3002,28 @@ export namespace ClutterGst {
          * Retrieves the {@link Gst.Pipeline} used by the `self`, for direct use with
          * GStreamer API.
          * @returns the {@link Gst.Pipeline} element used by the player
+         * @since 3.0
          */
         get_pipeline(): Gst.Element;
 
         /**
          * Retrieves the playing status of `self`.
          * @returns `true` if playing, `false` if stopped.
+         * @since 3.0
          */
         get_playing(): boolean;
 
         /**
          * Retrieves the {@link ClutterGst.VideoSink} used by the `self`.
          * @returns the {@link ClutterGst.VideoSink} element used by the player
+         * @since 3.0
          */
         get_video_sink(): VideoSink;
 
         /**
          * Sets the playback volume of `self` to `volume`.
          * @param volume the volume as a double between 0.0 and 1.0
+         * @since 3.0
          */
         set_audio_volume(volume: number): void;
 
@@ -2948,6 +3036,7 @@ export namespace ClutterGst {
          * current state with `clutter_gst_player_get_playing()`. ClutterGstVideoActor
          * in clutter-gst is an example of such an asynchronous implementation.
          * @param playing `true` to start playing
+         * @since 3.0
          */
         set_playing(playing: boolean): void;
     }

@@ -115,6 +115,7 @@ export namespace CMenu {
          * action.
          * @param action_name the name of the action as from   `gmenu_desktopappinfo_list_actions()`
          * @returns the locale-specific action name
+         * @since 2.38
          */
         get_action_name(action_name: string): string;
 
@@ -138,6 +139,7 @@ export namespace CMenu {
          * situations such as the {@link CMenu.DesktopAppInfo} returned from
          * `gmenu_desktopappinfo_new_from_keyfile()`, this function will return `null`.
          * @returns The full path to the file for `info`,     or `null` if not known.
+         * @since 2.24
          */
         get_filename(): string;
 
@@ -278,6 +280,7 @@ export namespace CMenu {
          * Obtains the information whether the {@link Gio.AppInfo} can be deleted.
          * See {@link Gio.AppInfo.delete}.
          * @returns `TRUE` if `appinfo` can be deleted
+         * @since 2.20
          */
         can_delete(): boolean;
 
@@ -294,6 +297,7 @@ export namespace CMenu {
          * {@link Gio.AppInfo}s which can be deleted, and system-wide ones which cannot.
          * See {@link Gio.AppInfo.can_delete}.
          * @returns `TRUE` if `appinfo` has been deleted
+         * @since 2.20
          */
         ["delete"](): boolean;
 
@@ -318,6 +322,7 @@ export namespace CMenu {
          * Gets the commandline with which the application will be
          * started.
          * @returns a string containing the `appinfo`’s   commandline, or `NULL` if this information is not available
+         * @since 2.20
          */
         get_commandline(): string | null;
 
@@ -331,6 +336,7 @@ export namespace CMenu {
          * Gets the display name of the application. The display name is often more
          * descriptive to the user than the name itself.
          * @returns the display name of the application for `appinfo`, or the name if no display name is available.
+         * @since 2.24
          */
         get_display_name(): string;
 
@@ -376,6 +382,7 @@ export namespace CMenu {
          * {@link Gio.AppInfo.add_supports_type}, but only those exported directly by
          * the application.
          * @returns a list of content types.
+         * @since 2.34
          */
         get_supported_types(): string[] | null;
 
@@ -442,6 +449,7 @@ export namespace CMenu {
          * @param uris a list of URIs to launch.
          * @param context the launch context
          * @param cancellable a {@link Gio.Cancellable}
+         * @since 2.60
          */
         launch_uris_async(uris: string[] | null, context: Gio.AppLaunchContext | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -456,6 +464,7 @@ export namespace CMenu {
          * @param context the launch context
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is done
+         * @since 2.60
          */
         launch_uris_async(uris: string[] | null, context: Gio.AppLaunchContext | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -470,6 +479,7 @@ export namespace CMenu {
          * @param context the launch context
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is done
+         * @since 2.60
          */
         launch_uris_async(uris: string[] | null, context: Gio.AppLaunchContext | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -477,6 +487,7 @@ export namespace CMenu {
          * Finishes a {@link Gio.AppInfo.launch_uris_async} operation.
          * @param result the async result
          * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * @since 2.60
          */
         launch_uris_finish(result: Gio.AsyncResult): boolean;
 
@@ -541,6 +552,7 @@ export namespace CMenu {
         /**
          * Obtains the information whether the {@link Gio.AppInfo} can be deleted.
          * See {@link Gio.AppInfo.delete}.
+         * @since 2.20
          * @virtual
          */
         vfunc_can_delete(): boolean;
@@ -557,6 +569,7 @@ export namespace CMenu {
          * On some platforms, there may be a difference between user-defined
          * {@link Gio.AppInfo}s which can be deleted, and system-wide ones which cannot.
          * See {@link Gio.AppInfo.can_delete}.
+         * @since 2.20
          * @virtual
          */
         vfunc_do_delete(): boolean;
@@ -581,6 +594,7 @@ export namespace CMenu {
         /**
          * Gets the commandline with which the application will be
          * started.
+         * @since 2.20
          * @virtual
          */
         vfunc_get_commandline(): string | null;
@@ -594,6 +608,7 @@ export namespace CMenu {
         /**
          * Gets the display name of the application. The display name is often more
          * descriptive to the user than the name itself.
+         * @since 2.24
          * @virtual
          */
         vfunc_get_display_name(): string;
@@ -639,6 +654,7 @@ export namespace CMenu {
          * This function does not take in consideration associations added with
          * {@link Gio.AppInfo.add_supports_type}, but only those exported directly by
          * the application.
+         * @since 2.34
          * @virtual
          */
         vfunc_get_supported_types(): string[] | null;
@@ -707,6 +723,7 @@ export namespace CMenu {
          * @param context the launch context
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is done
+         * @since 2.60
          * @virtual
          */
         vfunc_launch_uris_async(uris: string[] | null, context: Gio.AppLaunchContext | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -714,6 +731,7 @@ export namespace CMenu {
         /**
          * Finishes a {@link Gio.AppInfo.launch_uris_async} operation.
          * @param result the async result
+         * @since 2.60
          * @virtual
          */
         vfunc_launch_uris_finish(result: Gio.AsyncResult): boolean;

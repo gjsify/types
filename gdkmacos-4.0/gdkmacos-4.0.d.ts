@@ -419,6 +419,7 @@ export namespace GdkMacos {
          * The NSWindow's contentView is an implementation detail and may change
          * between releases of GTK.
          * @returns a `NSWindow` or `null`
+         * @since 4.8
          */
         get_native_window(): null;
     }

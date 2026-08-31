@@ -168,12 +168,14 @@ export namespace GXPS {
         /**
          * Get the category.
          * @returns a string containing the category or `null`
+         * @since 0.2.3
          */
         get_category(): string;
 
         /**
          * Get the status of the content (e.g. Draft, Reviewed, Final)
          * @returns a string containing the status of the content or `null`
+         * @since 0.2.3
          */
         get_content_status(): string;
 
@@ -181,84 +183,98 @@ export namespace GXPS {
          * Get the type of content represented, generally defined by a
          * specific use and intended audience. This is not the MIME-Type.
          * @returns a string containing the type of content or `null`
+         * @since 0.2.3
          */
         get_content_type(): string;
 
         /**
          * Get the creating date.
          * @returns the creating date as a <type>time_t</type> or -1.
+         * @since 0.2.3
          */
         get_created(): number;
 
         /**
          * Get the creator.
          * @returns a string containing the creator or `null`
+         * @since 0.2.3
          */
         get_creator(): string;
 
         /**
          * Get the description.
          * @returns a string containing the description or `null`
+         * @since 0.2.3
          */
         get_description(): string;
 
         /**
          * Get the unique identifier.
          * @returns a string containing the identifier or `null`
+         * @since 0.2.3
          */
         get_identifier(): string;
 
         /**
          * Get the keywords.
          * @returns a string containing the keywords or `null`
+         * @since 0.2.3
          */
         get_keywords(): string;
 
         /**
          * Get the language.
          * @returns a string containing the language or `null`
+         * @since 0.2.3
          */
         get_language(): string;
 
         /**
          * Get the user who performed the last modification.
          * @returns a string containing the user who performed the    last modification or `null`
+         * @since 0.2.3
          */
         get_last_modified_by(): string;
 
         /**
          * Get the date of the last printing.
          * @returns the date of the last printing as a <type>time_t</type> or -1.
+         * @since 0.2.3
          */
         get_last_printed(): number;
 
         /**
          * Get the last modification date.
          * @returns the modification date as a <type>time_t</type> or -1.
+         * @since 0.2.3
          */
         get_modified(): number;
 
         /**
          * Get the revision number.
          * @returns a string containing the revision number or `null`
+         * @since 0.2.3
          */
         get_revision(): string;
 
         /**
          * Get the subject.
          * @returns a string containing the subject or `null`
+         * @since 0.2.3
          */
         get_subject(): string;
 
         /**
          * Get the title.
          * @returns a string containing the title or `null`
+         * @since 0.2.3
          */
         get_title(): string;
 
         /**
          * Get the version number.
          * @returns a string containing the version number or `null`
+         * @since 0.2.3
          */
         get_version(): string;
 
@@ -303,6 +319,7 @@ export namespace GXPS {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -346,6 +363,7 @@ export namespace GXPS {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -491,6 +509,7 @@ export namespace GXPS {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -534,6 +553,7 @@ export namespace GXPS {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -771,6 +791,7 @@ export namespace GXPS {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -814,6 +835,7 @@ export namespace GXPS {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -951,6 +973,7 @@ export namespace GXPS {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -994,6 +1017,7 @@ export namespace GXPS {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;

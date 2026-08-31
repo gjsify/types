@@ -728,6 +728,7 @@ export namespace Flatpak {
         /**
          * Get the runtime flatpakrepo url stored in the bundle (if any)
          * @returns an url string, or `null`
+         * @since 0.8.0
          */
         get_runtime_repo_url(): string;
     }
@@ -800,6 +801,7 @@ export namespace Flatpak {
          * @param if_needed if `true`, only add if it doesn't exists
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the modifications have been committed successfully
+         * @since 1.3.4
          */
         add_remote(remote: Remote, if_needed: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -815,6 +817,7 @@ export namespace Flatpak {
          * `flatpak_installation_prune_local_repo()` to do that.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
+         * @since 0.10.0
          */
         cleanup_local_refs_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -869,6 +872,7 @@ export namespace Flatpak {
          * @param flags set of {@link Flatpak.QueryFlags}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Flatpak.RemoteRef} instance, or `null`
+         * @since 1.3.3
          */
         fetch_remote_ref_sync_full(remote_name: string, kind: RefKind, name: string, arch: string | null, branch: string | null, flags: QueryFlags, cancellable: Gio.Cancellable | null): RemoteRef;
 
@@ -915,6 +919,7 @@ export namespace Flatpak {
          * by frontends like GNOME Software to decide which language-specific apps
          * to display. An empty array means that all languages should be installed.
          * @returns A possibly empty array of strings, or `null` on error.
+         * @since 1.5.0
          */
         get_default_languages(): string[];
 
@@ -926,6 +931,7 @@ export namespace Flatpak {
          * Strings returned by this function are in the format specified by
          * [`setlocale()`](man:setlocale): `language[_territory][.codeset][`modifier`]`.
          * @returns A possibly empty array of locale strings, or `null` on error.
+         * @since 1.5.1
          */
         get_default_locales(): string[];
 
@@ -935,6 +941,7 @@ export namespace Flatpak {
          * Note that this function may return `null` if the installation
          * does not have a display name.
          * @returns a string with the installation's display name
+         * @since 0.8
          */
         get_display_name(): string;
 
@@ -944,6 +951,7 @@ export namespace Flatpak {
          * The ID for the default system installation is "default".
          * The ID for the user installation is "user".
          * @returns a string with the installation's ID
+         * @since 0.8
          */
         get_id(): string;
 
@@ -972,12 +980,14 @@ export namespace Flatpak {
          * disk space and the size of pending updates or installs, to estimate whether a
          * pull operation will fail due to running out of disk space.
          * @returns `true` on success, or `false` on error.
+         * @since 1.1
          */
         get_min_free_space_bytes(): [boolean, number];
 
         /**
          * Returns the value set with `flatpak_installation_set_no_interaction()`.
          * @returns `true` if interactive authorization dialogs are not allowed
+         * @since 1.1.1
          */
         get_no_interaction(): boolean;
 
@@ -990,6 +1000,7 @@ export namespace Flatpak {
         /**
          * Returns the numeric priority of the installation for `self`.
          * @returns an integer with the configured priority value
+         * @since 0.8
          */
         get_priority(): number;
 
@@ -1004,6 +1015,7 @@ export namespace Flatpak {
         /**
          * Returns the type of storage of the installation for `self`.
          * @returns a {@link Flatpak.StorageType}
+         * @since 0.8
          */
         get_storage_type(): StorageType;
 
@@ -1013,6 +1025,7 @@ export namespace Flatpak {
          * applications or runtimes have been installed, uninstalled, or updated, or when
          * remotes have been added, removed, or modified, to aid cache invalidation.
          * @returns the modification time (seconds since the Unix epoch) of the   installation configuration, or `G_MAXUINT64` if unavailable
+         * @since 1.18.0
          */
         get_timestamp(): number;
 
@@ -1038,6 +1051,7 @@ export namespace Flatpak {
          * @param progress progress callback
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly installed app or `null` on failure
+         * @deprecated since 1.7.0: Use `flatpak_transaction_add_install()` instead.
          */
         install(remote_name: string, kind: RefKind, name: string, arch: string | null, branch: string | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
@@ -1052,6 +1066,7 @@ export namespace Flatpak {
          * @param progress progress callback
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly installed app or `null` on failure
+         * @deprecated since 1.7.0: Use `flatpak_transaction_add_install_bundle()` instead.
          */
         install_bundle(file: Gio.File, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
@@ -1079,6 +1094,7 @@ export namespace Flatpak {
          * @param progress progress callback
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly installed app or `null` on failure
+         * @deprecated since 1.7.0: Use `flatpak_transaction_add_install()` instead.
          */
         install_full(flags: InstallFlags, remote_name: string, kind: RefKind, name: string, arch: string | null, branch: string | null, subpaths: string[] | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
@@ -1097,6 +1113,8 @@ export namespace Flatpak {
          * @param ref_file_data The ref file contents
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Flatpak.RemoteRef} if the remote has been added successfully, `null` on error.
+         * @since 0.6.10
+         * @deprecated since 1.7.0: Use `flatpak_transaction_add_install_flatpakref()` instead.
          */
         install_ref_file(ref_file_data: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): RemoteRef;
 
@@ -1134,6 +1152,7 @@ export namespace Flatpak {
          * @param instance_out return location for a {@link Flatpak.Instance}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true`, unless an error occurred
+         * @since 1.1
          */
         launch_full(flags: LaunchFlags, name: string, arch: string | null, branch: string | null, commit: string | null, instance_out: Instance | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1187,6 +1206,7 @@ export namespace Flatpak {
          * @param ref the ref
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RelatedRef} instances
+         * @since 0.6.7
          */
         list_installed_related_refs_sync(remote_name: string, ref: string, cancellable: Gio.Cancellable | null): RelatedRef[];
 
@@ -1200,6 +1220,7 @@ export namespace Flatpak {
          * @param arch if non-`null`, the architecture of refs to collect
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
+         * @since 1.9.1
          */
         list_pinned_refs(arch: string | null, cancellable: Gio.Cancellable | null): InstalledRef[];
 
@@ -1217,6 +1238,7 @@ export namespace Flatpak {
          * @param flags set of {@link Flatpak.QueryFlags}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RemoteRef} instances
+         * @since 1.3.3
          */
         list_remote_refs_sync_full(remote_or_uri: string, flags: QueryFlags, cancellable: Gio.Cancellable | null): RemoteRef[];
 
@@ -1245,6 +1267,7 @@ export namespace Flatpak {
          * @param ref the ref
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RelatedRef} instances
+         * @since 1.11.1
          */
         list_remote_related_refs_for_installed_sync(remote_name: string, ref: string, cancellable: Gio.Cancellable | null): RelatedRef[];
 
@@ -1267,6 +1290,7 @@ export namespace Flatpak {
          * @param ref the ref
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RelatedRef} instances
+         * @since 0.6.7
          */
         list_remote_related_refs_sync(remote_name: string, ref: string, cancellable: Gio.Cancellable | null): RelatedRef[];
 
@@ -1300,6 +1324,7 @@ export namespace Flatpak {
          * @param arch if non-`null`, the architecture of refs to collect
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
+         * @since 1.1.2
          */
         list_unused_refs(arch: string | null, cancellable: Gio.Cancellable | null): InstalledRef[];
 
@@ -1319,6 +1344,7 @@ export namespace Flatpak {
          * @param options if non-`null`, a GVariant a{sv} with an extensible set                       of options
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
+         * @since 1.9.1
          */
         list_unused_refs_with_options(arch: string | null, metadata_injection: never | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): InstalledRef[];
 
@@ -1343,6 +1369,7 @@ export namespace Flatpak {
          * `self`.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
+         * @since 0.10.0
          */
         prune_local_repo(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1362,6 +1389,7 @@ export namespace Flatpak {
          * @param ref the ref
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
+         * @since 0.10.0
          */
         remove_local_ref_sync(remote_name: string, ref: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1381,6 +1409,7 @@ export namespace Flatpak {
          * flags set.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
+         * @since 1.0.3
          */
         run_triggers(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1404,6 +1433,7 @@ export namespace Flatpak {
          * 
          * By default, interaction is allowed.
          * @param no_interaction Whether to disallow interactive authorization for operations
+         * @since 1.1.1
          */
         set_no_interaction(no_interaction: boolean): void;
 
@@ -1420,6 +1450,7 @@ export namespace Flatpak {
          * @param progress the callback
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
+         * @deprecated since 1.7.0: Use `flatpak_transaction_add_uninstall()` instead.
          */
         uninstall(kind: RefKind, name: string, arch: string | null, branch: string | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1437,6 +1468,8 @@ export namespace Flatpak {
          * @param progress the callback
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
+         * @since 0.11.8
+         * @deprecated since 1.7.0: Use `flatpak_transaction_add_uninstall()` instead.
          */
         uninstall_full(flags: UninstallFlags, kind: RefKind, name: string, arch: string | null, branch: string | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1460,6 +1493,7 @@ export namespace Flatpak {
          * @param progress the callback
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly updated app or `null` on failure
+         * @deprecated since 1.7.0: Use `flatpak_transaction_add_update()` instead.
          */
         update(flags: UpdateFlags, kind: RefKind, name: string, arch: string | null, branch: string | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
@@ -1506,6 +1540,7 @@ export namespace Flatpak {
          * @param progress the callback
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly updated app or `null` on failure
+         * @deprecated since 1.7.0: Use `flatpak_transaction_add_update()` instead.
          */
         update_full(flags: UpdateFlags, kind: RefKind, name: string, arch: string | null, branch: string | null, subpaths: string[] | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
@@ -1516,6 +1551,7 @@ export namespace Flatpak {
          * @param name the name of the remote to update
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the remote has been updated successfully
+         * @since 0.6.13
          */
         update_remote_sync(name: string, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -1769,6 +1805,7 @@ export namespace Flatpak {
          * by the semantics of the content rating type (see
          * `flatpak_installed_ref_get_appdata_content_rating_type()`).
          * @returns the content rating or `null`
+         * @since 1.4.2
          */
         get_appdata_content_rating(): { [key: string]: string } | null;
 
@@ -1776,12 +1813,14 @@ export namespace Flatpak {
          * Returns the content rating type from the appdata. For example, `oars-1.0` or
          * `oars-1.1`.
          * @returns the content rating type or `null`
+         * @since 1.4.2
          */
         get_appdata_content_rating_type(): string | null;
 
         /**
          * Returns the license field from the appdata.
          * @returns the license or `null`
+         * @since 1.1.2
          */
         get_appdata_license(): string;
 
@@ -1790,6 +1829,7 @@ export namespace Flatpak {
          * 
          * The returned string is localized.
          * @returns the name or `null`
+         * @since 1.1.2
          */
         get_appdata_name(): string;
 
@@ -1798,12 +1838,14 @@ export namespace Flatpak {
          * 
          * The returned string is localized.
          * @returns the summary or `null`
+         * @since 1.1.2
          */
         get_appdata_summary(): string;
 
         /**
          * Returns the default version field from the appdata.
          * @returns the version or `null`
+         * @since 1.1.2
          */
         get_appdata_version(): string;
 
@@ -1861,6 +1903,7 @@ export namespace Flatpak {
          * Loads the compressed xml appdata for this ref (if it exists).
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.Bytes} containing the compressed appdata file,     or `null` if an error occurred
+         * @since 1.1.2
          */
         load_appdata(cancellable: Gio.Cancellable | null): GLib.Bytes;
 
@@ -1917,6 +1960,7 @@ export namespace Flatpak {
         // Static methods
         /**
          * Gets FlatpakInstance objects for all running sandboxes in the current session.
+         * @since 1.1
          */
         static get_all(): Instance[];
 
@@ -1926,18 +1970,21 @@ export namespace Flatpak {
          * 
          * Note that this may return `null` for sandboxes that don't have an application.
          * @returns the application ID or `null`
+         * @since 1.1
          */
         get_app(): string | null;
 
         /**
          * Gets the architecture of the application running in the instance.
          * @returns the architecture
+         * @since 1.1
          */
         get_arch(): string;
 
         /**
          * Gets the branch of the application running in the instance.
          * @returns the architecture
+         * @since 1.1
          */
         get_branch(): string;
 
@@ -1949,12 +1996,14 @@ export namespace Flatpak {
          * Note that this function may return 0 immediately after launching
          * a sandbox, for a short amount of time.
          * @returns the application process PID
+         * @since 1.1
          */
         get_child_pid(): number;
 
         /**
          * Gets the commit of the application running in the instance.
          * @returns the commit
+         * @since 1.1
          */
         get_commit(): string;
 
@@ -1962,6 +2011,7 @@ export namespace Flatpak {
          * Gets the instance ID. The ID is used by Flatpak for bookkeeping
          * purposes and has no further relevance.
          * @returns the instance ID
+         * @since 1.1
          */
         get_id(): string;
 
@@ -1973,6 +2023,7 @@ export namespace Flatpak {
          * The most important data in the keyfile is available with separate getters,
          * but there may be more information in the keyfile.
          * @returns the flatpak-info keyfile
+         * @since 1.1
          */
         get_info(): GLib.KeyFile;
 
@@ -1982,18 +2033,21 @@ export namespace Flatpak {
          * 
          * See `flatpak_instance_get_child_pid()`.
          * @returns the outermost process PID
+         * @since 1.1
          */
         get_pid(): number;
 
         /**
          * Gets the ref of the runtime used in the instance.
          * @returns the runtime ref
+         * @since 1.1
          */
         get_runtime(): string;
 
         /**
          * Gets the commit of the runtime used in the instance.
          * @returns the runtime commit
+         * @since 1.1
          */
         get_runtime_commit(): string;
 
@@ -2124,6 +2178,7 @@ export namespace Flatpak {
          * Like `flatpak_ref_format_ref()` but this returns the same string each time
          * it's called rather than allocating a new one.
          * @returns string representation
+         * @since 1.9.1
          */
         format_ref_cached(): string;
 
@@ -2272,6 +2327,7 @@ export namespace Flatpak {
          * Returns the subpaths that should be installed/updated for the ref.
          * This returns `null` if all files should be installed.
          * @returns A strv, or `null`
+         * @since 0.6.7
          */
         get_subpaths(): string[];
     }
@@ -2377,18 +2433,21 @@ export namespace Flatpak {
         /**
          * Returns the comment of the remote.
          * @returns the comment
+         * @since 1.4
          */
         get_comment(): string;
 
         /**
          * Returns the default branch configured for the remote.
          * @returns the default branch, or `null`
+         * @since 0.6.12
          */
         get_default_branch(): string;
 
         /**
          * Returns the description of the remote.
          * @returns the description
+         * @since 1.4
          */
         get_description(): string;
 
@@ -2401,6 +2460,7 @@ export namespace Flatpak {
         /**
          * Returns the filter file of the remote.
          * @returns a pathname to a filter file
+         * @since 1.4
          */
         get_filter(): string;
 
@@ -2413,12 +2473,14 @@ export namespace Flatpak {
         /**
          * Returns the homepage url of the remote.
          * @returns the homepage url
+         * @since 1.4
          */
         get_homepage(): string;
 
         /**
          * Returns the icon url of the remote.
          * @returns the icon url
+         * @since 1.4
          */
         get_icon(): string;
 
@@ -2426,6 +2488,7 @@ export namespace Flatpak {
          * Returns the main ref of this remote, if set. The main ref is the ref that an
          * origin remote is created for.
          * @returns the main ref, or `null`
+         * @since 1.1.1
          */
         get_main_ref(): string;
 
@@ -2456,6 +2519,7 @@ export namespace Flatpak {
         /**
          * Get the value of {@link Flatpak.Remote.type}.
          * @returns the type of remote this is
+         * @since 0.9.8
          */
         get_remote_type(): RemoteType;
 
@@ -2488,6 +2552,7 @@ export namespace Flatpak {
          * using `flatpak_installation_modify_remote()` for the changes to take
          * effect.
          * @param comment The new comment
+         * @since 1.4
          */
         set_comment(comment: string): void;
 
@@ -2498,6 +2563,7 @@ export namespace Flatpak {
          * using `flatpak_installation_modify_remote()` for the changes to take
          * effect.
          * @param default_branch The new default_branch, or `null` to unset
+         * @since 0.6.12
          */
         set_default_branch(default_branch: string): void;
 
@@ -2508,6 +2574,7 @@ export namespace Flatpak {
          * using `flatpak_installation_modify_remote()` for the changes to take
          * effect.
          * @param description The new description
+         * @since 1.4
          */
         set_description(description: string): void;
 
@@ -2528,6 +2595,7 @@ export namespace Flatpak {
          * using `flatpak_installation_modify_remote()` for the changes to take
          * effect.
          * @param filter_path The pathname of the new filter file
+         * @since 1.4
          */
         set_filter(filter_path: string): void;
 
@@ -2558,6 +2626,7 @@ export namespace Flatpak {
          * using `flatpak_installation_modify_remote()` for the changes to take
          * effect.
          * @param homepage The new homepage
+         * @since 1.4
          */
         set_homepage(homepage: string): void;
 
@@ -2568,6 +2637,7 @@ export namespace Flatpak {
          * using `flatpak_installation_modify_remote()` for the changes to take
          * effect.
          * @param icon The new homepage
+         * @since 1.4
          */
         set_icon(icon: string): void;
 
@@ -2579,6 +2649,7 @@ export namespace Flatpak {
          * using `flatpak_installation_modify_remote()` for the changes to take
          * effect.
          * @param main_ref The new main ref
+         * @since 1.1.1
          */
         set_main_ref(main_ref: string): void;
 
@@ -3158,6 +3229,7 @@ export namespace Flatpak {
          * This is useful for example if you're showing an authentication
          * window with a browser, but the user closed it before it was finished.
          * @param id The webflow id, as passed into the webflow-start signal
+         * @since 1.5.1
          */
         abort_webflow(id: number): void;
 
@@ -3239,6 +3311,7 @@ export namespace Flatpak {
          * @param subpaths the subpaths to include, or `null` to install the complete ref
          * @param previous_ids Previous ids to add to the     given ref. These should simply be the ids, not the full ref names (e.g. org.foo.Bar,     not org.foo.Bar/x86_64/master).
          * @returns `true` on success; `false` with `error` set on failure.
+         * @since 1.3.3.
          */
         add_rebase(remote: string, ref: string, subpaths: string | null, previous_ids: string[] | null): boolean;
 
@@ -3264,6 +3337,7 @@ export namespace Flatpak {
          * @param subpaths the subpaths to include, or `null` to install the complete ref
          * @param previous_ids Previous ids to add to the     given ref. These should simply be the ids, not the full ref names (e.g. org.foo.Bar,     not org.foo.Bar/x86_64/master).
          * @returns `true` on success; `false` with `error` set on failure.
+         * @since 1.15.4
          */
         add_rebase_and_uninstall(remote: string, new_ref: string, old_ref: string, subpaths: string | null, previous_ids: string[] | null): boolean;
 
@@ -3277,6 +3351,7 @@ export namespace Flatpak {
          * Additional schemes may be added in the future.
          * @param location source of images for installation
          * @param cancellable 
+         * @since 1.7.1
          */
         add_sideload_image_collection(location: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3286,6 +3361,7 @@ export namespace Flatpak {
          * be done dynamically. Any path added here is used in addition to ones in
          * those directories.
          * @param path a path to a local flatpak repository
+         * @since 1.7.1
          */
         add_sideload_repo(path: string): void;
 
@@ -3320,6 +3396,7 @@ export namespace Flatpak {
          * @param user The user name, or `null` if aborting request
          * @param password The password
          * @param options Extra a{sv] variant with options (or `null`), currently unused.
+         * @since 1.5.2
          */
         complete_basic_auth(id: number, user: string, password: string, options: GLib.Variant): void;
 
@@ -3327,6 +3404,7 @@ export namespace Flatpak {
          * Gets the value set by
          * `flatpak_transaction_set_auto_install_debug()`.
          * @returns `true` if auto_install_debug is set, `false` otherwise
+         * @since 1.13.3
          */
         get_auto_install_debug(): boolean;
 
@@ -3334,6 +3412,7 @@ export namespace Flatpak {
          * Gets the value set by
          * `flatpak_transaction_set_auto_install_sdk()`.
          * @returns `true` if auto_install_sdk is set, `false` otherwise
+         * @since 1.13.3
          */
         get_auto_install_sdk(): boolean;
 
@@ -3347,6 +3426,7 @@ export namespace Flatpak {
          * Gets the value set by
          * `flatpak_transaction_set_include_unused_uninstall_ops()`.
          * @returns `true` if include_unused_uninstall_ops is set, `false` otherwise
+         * @since 1.9.1
          */
         get_include_unused_uninstall_ops(): boolean;
 
@@ -3360,6 +3440,7 @@ export namespace Flatpak {
          * Gets whether the transaction is only downloading updates,
          * and not deploying them.
          * @returns `true` if no_deploy is set, `false` otherwise
+         * @since 1.5.1
          */
         get_no_deploy(): boolean;
 
@@ -3367,6 +3448,7 @@ export namespace Flatpak {
          * Gets whether the transaction is interactive. See
          * `flatpak_transaction_set_no_interaction()`.
          * @returns `true` if the transaction is not interactive, `false` otherwise
+         * @since 1.13.0
          */
         get_no_interaction(): boolean;
 
@@ -3374,6 +3456,7 @@ export namespace Flatpak {
          * Gets whether the transaction should operate only on locally
          * available data.
          * @returns `true` if no_pull is set, `false` otherwise
+         * @since 1.5.1
          */
         get_no_pull(): boolean;
 
@@ -3385,6 +3468,7 @@ export namespace Flatpak {
          * @param remote a remote name
          * @param ref a ref
          * @returns the {@link Flatpak.TransactionOperation} for `ref`, or   `null` with `error` set
+         * @since 1.13.3
          */
         get_operation_for_ref(remote: string | null, ref: string): TransactionOperation;
 
@@ -3399,6 +3483,7 @@ export namespace Flatpak {
          * Gets the parent window set for this transaction, or `null` if unset. See
          * `flatpak_transaction_get_parent_window()`.
          * @returns a window name, or `null`
+         * @since 1.5.1
          */
         get_parent_window(): string;
 
@@ -3431,6 +3516,7 @@ export namespace Flatpak {
          * for each app currently being installed or updated, as well as its
          * dependencies. Does nothing if an uninstall is taking place.
          * @param auto_install_debug whether to auto install debug info for apps
+         * @since 1.13.3
          */
         set_auto_install_debug(auto_install_debug: boolean): void;
 
@@ -3439,6 +3525,7 @@ export namespace Flatpak {
          * each app currently being installed or updated. Does nothing if an uninstall
          * is taking place.
          * @param auto_install_sdk whether to auto install SDKs for apps
+         * @since 1.13.3
          */
         set_auto_install_sdk(auto_install_sdk: boolean): void;
 
@@ -3453,6 +3540,7 @@ export namespace Flatpak {
          * be automatically removed. But this can be disabled if you don't want this
          * behaviour.
          * @param disable_pin whether to disable auto-pinning
+         * @since 1.9.1
          */
         set_disable_auto_pin(disable_pin: boolean): void;
 
@@ -3502,6 +3590,7 @@ export namespace Flatpak {
          * unused runtimes in an installation, use
          * `flatpak_installation_list_unused_refs()`.
          * @param include_unused_uninstall_ops whether to include unused uninstall ops
+         * @since 1.9.1
          */
         set_include_unused_uninstall_ops(include_unused_uninstall_ops: boolean): void;
 
@@ -3519,6 +3608,7 @@ export namespace Flatpak {
          * 
          * By default, the setting from the parent {@link Flatpak.Installation} is used.
          * @param no_interaction Whether to disallow interactive authorization for operations
+         * @since 1.7.3
          */
         set_no_interaction(no_interaction: boolean): void;
 
@@ -3543,6 +3633,7 @@ export namespace Flatpak {
          * On wayland is should be wayland:$handle where handle is gotten by
          * using the export call of the xdg-foreign-unstable wayland extension.
          * @param parent_window whether to avoid pulls
+         * @since 1.5.1
          */
         set_parent_window(parent_window: string): void;
 
@@ -3594,6 +3685,7 @@ export namespace Flatpak {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3637,6 +3729,7 @@ export namespace Flatpak {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -3712,6 +3805,7 @@ export namespace Flatpak {
          * This information is available when the transaction is resolved,
          * i.e. when {@link Flatpak.Transaction.SignalSignatures.ready | Flatpak.Transaction::ready} is emitted.
          * @returns the download size, in bytes
+         * @since 1.1.2
          */
         get_download_size(): number;
 
@@ -3727,6 +3821,7 @@ export namespace Flatpak {
          * This information is available when the transaction is resolved,
          * i.e. when {@link Flatpak.Transaction.SignalSignatures.ready | Flatpak.Transaction::ready} is emitted.
          * @returns the installed size, in bytes
+         * @since 1.1.2
          */
         get_installed_size(): number;
 
@@ -3739,6 +3834,7 @@ export namespace Flatpak {
          * they can be accessed by traversing the operation graph using
          * `flatpak_transaction_operation_get_related_to_ops()`.
          * @returns `true` if the operation has been marked as to skip, `false` otherwise
+         * @since 1.7.3
          */
         get_is_skipped(): boolean;
 
@@ -3794,6 +3890,7 @@ export namespace Flatpak {
          * Elements in the returned array are only safe to access while the parent
          * {@link Flatpak.Transaction} is alive.
          * @returns the   `FlatpakTransactionOperations` this one is related to (may be `null` or an   empty array, which are equivalent)
+         * @since 1.7.3
          */
         get_related_to_ops(): TransactionOperation[] | null;
 
@@ -3808,6 +3905,7 @@ export namespace Flatpak {
          * needed tokens. See also the documentation for
          * {@link Flatpak.Transaction.SignalSignatures.ready_pre_auth | Flatpak.Transaction::ready-pre-auth}.
          * @returns whether `self` requires authentication
+         * @since 1.9.1
          */
         get_requires_authentication(): boolean;
 
@@ -3827,6 +3925,7 @@ export namespace Flatpak {
          * This information is available when the transaction is resolved,
          * i.e. when {@link Flatpak.Transaction.SignalSignatures.ready | Flatpak.Transaction::ready} is emitted.
          * @returns the set of subpaths that will be pulled, or `null` if no subsetting.
+         * @since 1.9.1
          */
         get_subpaths(): string[];
     }
@@ -3885,12 +3984,14 @@ export namespace Flatpak {
          * Gets the current transfer speed in bytes per second. Returns 0 during
          * the first second of a transfer while the rate is being established.
          * @returns the current transfer rate in bytes per second
+         * @since 1.19.0
          */
         get_bytes_per_second(): number;
 
         /**
          * Gets the number of bytes that have been transferred.
          * @returns the number of bytes transferred
+         * @since 1.1.2
          */
         get_bytes_transferred(): number;
 
@@ -3909,6 +4010,7 @@ export namespace Flatpak {
         /**
          * Gets the time at which this operation has started, as monotonic time.
          * @returns the start time
+         * @since 1.1.2
          */
         get_start_time(): number;
 

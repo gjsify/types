@@ -3563,114 +3563,133 @@ export namespace ModemManager {
         /**
          * Gets 5G network access type preference.
          * @returns a {@link ModemManager.BearerAccessTypePreference}.
+         * @since 1.20
          */
         get_access_type_preference(): BearerAccessTypePreference;
 
         /**
          * Gets the methods allowed to use when authenticating with the access point.
          * @returns a bitmask of {@link ModemManager.BearerAllowedAuth} values, or {@link ModemManager.BearerAllowedAuth.UNKNOWN} to request the modem-default method.
+         * @since 1.18
          */
         get_allowed_auth(): BearerAllowedAuth;
 
         /**
          * Gets the name of the access point.
          * @returns the access point, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.18
          */
         get_apn(): string;
 
         /**
          * Gets the APN types to use.
          * @returns a mask of {@link ModemManager.BearerApnType} values.
+         * @since 1.18
          */
         get_apn_type(): BearerApnType;
 
         /**
          * Checks whether the profile is enabled or disabled.
          * @returns `true` if the profile is enabled, `false` otherwise.
+         * @since 1.20
          */
         get_enabled(): boolean;
 
         /**
          * Gets the IP type to use.
          * @returns a {@link ModemManager.BearerIpFamily}.
+         * @since 1.18
          */
         get_ip_type(): BearerIpFamily;
 
         /**
          * Gets the password used to authenticate with the access point.
          * @returns the password, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.18
          */
         get_password(): string;
 
         /**
          * Gets the profile id.
          * @returns the profile id..
+         * @since 1.18
          */
         get_profile_id(): number;
 
         /**
          * Gets the name of the profile.
          * @returns the profile name, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.20
          */
         get_profile_name(): string;
 
         /**
          * Gets the profile source.
          * @returns a {@link ModemManager.BearerProfileSource}.
+         * @since 1.20
          */
         get_profile_source(): BearerProfileSource;
 
         /**
          * Gets the roaming allowance rules.
          * @returns a mask of {@link ModemManager.BearerRoamingAllowance} values.
+         * @since 1.20
          */
         get_roaming_allowance(): BearerRoamingAllowance;
 
         /**
          * Gets the username used to authenticate with the access point.
          * @returns the username, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.18
          */
         get_user(): string;
 
         /**
          * Sets the 5G network access type preference.
          * @param access_type_preference a {@link ModemManager.BearerAccessTypePreference}.
+         * @since 1.20
          */
         set_access_type_preference(access_type_preference: BearerAccessTypePreference): void;
 
         /**
          * Sets the method to use when authenticating with the access point.
          * @param allowed_auth a bitmask of {@link ModemManager.BearerAllowedAuth} values.  {@link ModemManager.BearerAllowedAuth.UNKNOWN} may be given to request the modem-default  method.
+         * @since 1.18
          */
         set_allowed_auth(allowed_auth: BearerAllowedAuth): void;
 
         /**
          * Sets the name of the access point to use.
          * @param apn Name of the access point.
+         * @since 1.18
          */
         set_apn(apn: string): void;
 
         /**
          * Sets the APN types to use.
          * @param apn_type a mask of {@link ModemManager.BearerApnType} values.
+         * @since 1.18
          */
         set_apn_type(apn_type: BearerApnType): void;
 
         /**
          * Sets the flag to indicate whether the profile is enabled or disabled.
          * @param enabled boolean value.
+         * @since 1.20
          */
         set_enabled(enabled: boolean): void;
 
         /**
          * Sets the IP type to use.
          * @param ip_type a {@link ModemManager.BearerIpFamily}.
+         * @since 1.18
          */
         set_ip_type(ip_type: BearerIpFamily): void;
 
         /**
          * Sets the password used to authenticate with the access point.
          * @param password the password
+         * @since 1.18
          */
         set_password(password: string): void;
 
@@ -3679,30 +3698,35 @@ export namespace ModemManager {
          * 
          * If none specified explicitly, #MM_3GPP_PROFILE_ID_UNKNOWN is assumed.
          * @param profile_id Numeric profile id to use, or #MM_3GPP_PROFILE_ID_UNKNOWN.
+         * @since 1.18
          */
         set_profile_id(profile_id: number): void;
 
         /**
          * Sets the name of the profile.
          * @param profile_name Name of the profile.
+         * @since 1.20
          */
         set_profile_name(profile_name: string): void;
 
         /**
          * Sets profile source.
          * @param profile_source a {@link ModemManager.BearerProfileSource}.
+         * @since 1.20
          */
         set_profile_source(profile_source: BearerProfileSource): void;
 
         /**
          * Sets the roaming allowance rules.
          * @param roaming_allowance a mask of {@link ModemManager.BearerRoamingAllowance} values.
+         * @since 1.20
          */
         set_roaming_allowance(roaming_allowance: BearerRoamingAllowance): void;
 
         /**
          * Sets the username used to authenticate with the access point.
          * @param user the username
+         * @since 1.18
          */
         set_user(user: string): void;
     }
@@ -3786,6 +3810,7 @@ export namespace ModemManager {
          * 
          * See `mm_bearer_connect_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         connect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3801,6 +3826,7 @@ export namespace ModemManager {
          * See `mm_bearer_connect_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 1.0
          */
         connect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3816,6 +3842,7 @@ export namespace ModemManager {
          * See `mm_bearer_connect_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 1.0
          */
         connect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3828,6 +3855,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_bearer_connect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_bearer_connect()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -3839,6 +3867,7 @@ export namespace ModemManager {
          * See `mm_bearer_connect()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3854,6 +3883,7 @@ export namespace ModemManager {
          * See `mm_bearer_disconnect_sync()` for the synchronous, blocking version of this
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         disconnect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3870,6 +3900,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         disconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3886,6 +3917,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         disconnect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3899,6 +3931,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_bearer_disconnect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_bearer_disconnect()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -3910,6 +3943,7 @@ export namespace ModemManager {
          * See `mm_bearer_disconnect()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3918,18 +3952,21 @@ export namespace ModemManager {
          * provides packet data using this {@link ModemManager.Bearer}. This will only be available once
          * the {@link ModemManager.Bearer} is in connected state.
          * @returns The name of the interface, or `null` if it couldn't be retrieved. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_interface(): string;
 
         /**
          * Gets a copy of the DBus path of the {@link ModemManager.Bearer} object.
          * @returns The DBus path of the {@link ModemManager.Bearer} object. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_path(): string;
 
         /**
          * Gets the type of bearer.
          * @returns a {@link ModemManager.BearerType}.
+         * @since 1.0
          */
         get_bearer_type(): BearerType;
 
@@ -3937,6 +3974,7 @@ export namespace ModemManager {
          * Checks whether or not the {@link ModemManager.Bearer} is connected and thus whether packet data
          * communication is possible.
          * @returns `true` if the {@link ModemManager.Bearer} is connected, `FALSE` otherwise.
+         * @since 1.0
          */
         get_connected(): boolean;
 
@@ -3948,6 +3986,7 @@ export namespace ModemManager {
          * `mm_bearer_get_connection_error()` again to get a new {@link GLib.Error} with the
          * new values.</warning>
          * @returns A {@link GLib.Error} that must be freed with `g_error_free()` or `null` if none.
+         * @since 1.18
          */
         get_connection_error(): GLib.Error;
 
@@ -3961,12 +4000,14 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_bearer_dup_interface()` if on another
          * thread.</warning>
          * @returns The name of the interface, or `null` if it couldn't be retrieved.
+         * @since 1.0
          */
         get_interface(): string;
 
         /**
          * Gets the maximum time to wait for the bearer to retrieve a valid IP address.
          * @returns The IP timeout, or 0 if no specific one given.
+         * @since 1.0
          */
         get_ip_timeout(): number;
 
@@ -3979,6 +4020,7 @@ export namespace ModemManager {
          * `mm_bearer_get_ipv4_config()` again to get a new {@link ModemManager.BearerIpConfig} with the
          * new values.</warning>
          * @returns A {@link ModemManager.BearerIpConfig} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.0
          */
         get_ipv4_config(): BearerIpConfig;
 
@@ -3991,6 +4033,7 @@ export namespace ModemManager {
          * `mm_bearer_get_ipv6_config()` again to get a new {@link ModemManager.BearerIpConfig} with the
          * new values.</warning>
          * @returns A {@link ModemManager.BearerIpConfig} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.0
          */
         get_ipv6_config(): BearerIpConfig;
 
@@ -3998,12 +4041,14 @@ export namespace ModemManager {
          * Checks whether or not the {@link ModemManager.Bearer} is connected through a multiplexed
          * network likn.
          * @returns `true` if packet data service is connected via a multiplexed network link in the {@link ModemManager.Bearer}, `FALSE` otherwise.
+         * @since 1.18
          */
         get_multiplexed(): boolean;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Bearer} object.
          * @returns The DBus path of the {@link ModemManager.Bearer} object.
+         * @since 1.0
          */
         get_path(): string;
 
@@ -4013,6 +4058,7 @@ export namespace ModemManager {
          * If the bearer is disconnected or the modem doesn't support profile management
          * features, `MM_3GPP_PROFILE_ID_UNKNOWN`.
          * @returns a profile id.
+         * @since 1.18
          */
         get_profile_id(): number;
 
@@ -4025,6 +4071,7 @@ export namespace ModemManager {
          * `mm_bearer_get_properties()` again to get a new {@link ModemManager.BearerProperties} with the
          * new values.</warning>
          * @returns A {@link ModemManager.BearerProperties} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.0
          */
         get_properties(): BearerProperties;
 
@@ -4032,6 +4079,7 @@ export namespace ModemManager {
          * Checks whether or not the {@link ModemManager.Bearer} supporting stats reload (to have
          * RX and TX bytes of the ongoing connection).
          * @returns `true` if the {@link ModemManager.Bearer} supports these stats, `FALSE` otherwise.
+         * @since 1.20
          */
         get_reload_stats_supported(): boolean;
 
@@ -4044,6 +4092,7 @@ export namespace ModemManager {
          * `mm_bearer_get_stats()` again to get a new {@link ModemManager.BearerStats} with the
          * new values.</warning>
          * @returns A {@link ModemManager.BearerStats} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.6
          */
         get_stats(): BearerStats;
 
@@ -4051,6 +4100,7 @@ export namespace ModemManager {
          * Checks whether or not the {@link ModemManager.Bearer} is suspended (but not deactivated) while
          * the device is handling other communications, like a voice call.
          * @returns `true` if packet data service is suspended in the {@link ModemManager.Bearer}, `FALSE` otherwise.
+         * @since 1.0
          */
         get_suspended(): boolean;
 
@@ -4062,6 +4112,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_bearer_get_connection_error()` if on another
          * thread.</warning>
          * @returns A {@link GLib.Error}, or `null` if none. Do not free the returned value, it belongs to `self`.
+         * @since 1.18
          */
         peek_connection_error(): GLib.Error;
 
@@ -4074,6 +4125,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_bearer_get_ipv4_config()` if on another
          * thread.</warning>
          * @returns A {@link ModemManager.BearerIpConfig}. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         peek_ipv4_config(): BearerIpConfig;
 
@@ -4086,6 +4138,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_bearer_get_ipv6_config()` if on another
          * thread.</warning>
          * @returns A {@link ModemManager.BearerIpConfig}. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         peek_ipv6_config(): BearerIpConfig;
 
@@ -4098,6 +4151,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_bearer_get_properties()` if on another
          * thread.</warning>
          * @returns A {@link ModemManager.BearerProperties}. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         peek_properties(): BearerProperties;
 
@@ -4110,6 +4164,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_bearer_get_stats()` if on another
          * thread.</warning>
          * @returns A {@link ModemManager.BearerStats}. Do not free the returned value, it belongs to `self`.
+         * @since 1.6
          */
         peek_stats(): BearerStats;
 
@@ -4344,6 +4399,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -4387,6 +4443,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4430,6 +4487,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -4438,6 +4496,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -4446,6 +4505,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Bearer;
 
@@ -4495,6 +4555,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -4503,6 +4564,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -4682,36 +4744,42 @@ export namespace ModemManager {
         /**
          * Gets the IP address to be used with this bearer.
          * @returns a string with the IP address, or `NULL` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_address(): string;
 
         /**
          * Gets the list of IP addresses of DNS servers to be used with this bearer.
          * @returns a `null`-terminated array of strings. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_dns(): string[];
 
         /**
          * Gets the IP address of the gateway to be used with this bearer.
          * @returns a string with the IP address, or `NULL` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_gateway(): string;
 
         /**
          * Gets the IP method to be used with this bearer.
          * @returns a {@link ModemManager.BearerIpMethod}.
+         * @since 1.0
          */
         get_method(): BearerIpMethod;
 
         /**
          * Gets the MTU to be used with this bearer.
          * @returns the MTU.
+         * @since 1.4
          */
         get_mtu(): number;
 
         /**
          * Gets the network prefix to be used with this bearer.
          * @returns the network prefix.
+         * @since 1.0
          */
         get_prefix(): number;
     }
@@ -4766,30 +4834,35 @@ export namespace ModemManager {
         /**
          * Gets the 5G network access type preference.
          * @returns a {@link ModemManager.BearerAccessTypePreference} value.
+         * @since 1.20
          */
         get_access_type_preference(): BearerAccessTypePreference;
 
         /**
          * Checks whether roaming is allowed in the connection.
          * @returns `true` if roaming is allowed, `false` otherwise.
+         * @since 1.0
          */
         get_allow_roaming(): boolean;
 
         /**
          * Gets the authentication methods allowed in the connection.
          * @returns a bitmask of {@link ModemManager.BearerAllowedAuth} values, or {@link ModemManager.BearerAllowedAuth.UNKNOWN} to request the modem-default method.
+         * @since 1.0
          */
         get_allowed_auth(): BearerAllowedAuth;
 
         /**
          * Gets the name of the access point to use when connecting.
          * @returns the access point, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_apn(): string;
 
         /**
          * Gets the APN types to use.
          * @returns a mask of {@link ModemManager.BearerApnType} values.
+         * @since 1.18
          */
         get_apn_type(): BearerApnType;
 
@@ -4798,66 +4871,78 @@ export namespace ModemManager {
          * to the modem.This method does not apply when the bearer properties are
          * used for other operations.
          * @returns `true` if force send is required, `false` otherwise.
+         * @since 1.24
          */
         get_force(): boolean;
 
         /**
          * Sets the IP type to use.
          * @returns a {@link ModemManager.BearerIpFamily}.
+         * @since 1.0
          */
         get_ip_type(): BearerIpFamily;
 
         /**
          * Gets the type of multiplex support requested by the user.
          * @returns a {@link ModemManager.BearerMultiplexSupport}.
+         * @since 1.18
          */
         get_multiplex(): BearerMultiplexSupport;
 
         /**
          * Gets the number to use when performing the connection.
          * @returns the number, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
+         * @deprecated since 1.10.0.: The number setting is not used anywhere, and therefore it doesn't make sense to expose it in the ModemManager interface.
          */
         get_number(): string;
 
         /**
          * Gets the password used to authenticate with the access point.
          * @returns the password, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_password(): string;
 
         /**
          * Gets the profile ID to use.
          * @returns the profile id.
+         * @since 1.18
          */
         get_profile_id(): number;
 
         /**
          * Gets the name of the profile to use when connecting.
          * @returns the profile name, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.20
          */
         get_profile_name(): string;
 
         /**
          * Gets the RM protocol requested to use in the CDMA connection.
          * @returns a {@link ModemManager.ModemCdmaRmProtocol}.
+         * @since 1.0
          */
         get_rm_protocol(): ModemCdmaRmProtocol;
 
         /**
          * Gets the roaming allowance rules.
          * @returns a mask of {@link ModemManager.BearerRoamingAllowance} values.
+         * @since 1.20
          */
         get_roaming_allowance(): BearerRoamingAllowance;
 
         /**
          * Gets the username used to authenticate with the access point.
          * @returns the username, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_user(): string;
 
         /**
          * Sets the 5G network access type preference.
          * @param access_type_preference a {@link ModemManager.BearerAccessTypePreference} value.
+         * @since 1.20
          */
         set_access_type_preference(access_type_preference: BearerAccessTypePreference): void;
 
@@ -4865,24 +4950,28 @@ export namespace ModemManager {
          * Sets the flag to indicate whether roaming is allowed or not in the
          * connection.
          * @param allow_roaming boolean value.
+         * @since 1.0
          */
         set_allow_roaming(allow_roaming: boolean): void;
 
         /**
          * Sets the authentication method to use.
          * @param allowed_auth a bitmask of {@link ModemManager.BearerAllowedAuth} values.  {@link ModemManager.BearerAllowedAuth.UNKNOWN} may be given to request the modem-default  method.
+         * @since 1.0
          */
         set_allowed_auth(allowed_auth: BearerAllowedAuth): void;
 
         /**
          * Sets the name of the access point to use when connecting.
          * @param apn Name of the access point.
+         * @since 1.0
          */
         set_apn(apn: string): void;
 
         /**
          * Sets the APN types to use.
          * @param apn_type a mask of {@link ModemManager.BearerApnType} values.
+         * @since 1.18
          */
         set_apn_type(apn_type: BearerApnType): void;
 
@@ -4892,60 +4981,71 @@ export namespace ModemManager {
          * This method does not apply when the bearer properties are used for other
          * operations.
          * @param force boolean value.
+         * @since 1.24
          */
         set_force(force: boolean): void;
 
         /**
          * Sets the IP type to use.
          * @param ip_type a {@link ModemManager.BearerIpFamily}.
+         * @since 1.0
          */
         set_ip_type(ip_type: BearerIpFamily): void;
 
         /**
          * Gets the type of multiplex support requested by the user.
          * @param multiplex a {@link ModemManager.BearerMultiplexSupport}.
+         * @since 1.18
          */
         set_multiplex(multiplex: BearerMultiplexSupport): void;
 
         /**
          * Sets the number to use when performing the connection.
          * @param number the number.
+         * @since 1.0
+         * @deprecated since 1.10.0.: The number setting is not used anywhere, and therefore it doesn't make sense to expose it in the ModemManager interface.
          */
         set_number(number: string): void;
 
         /**
          * Sets the password used to authenticate with the access point.
          * @param password the password
+         * @since 1.0
          */
         set_password(password: string): void;
 
         /**
          * Sets the profile ID to use.
          * @param profile_id a profile id.
+         * @since 1.18
          */
         set_profile_id(profile_id: number): void;
 
         /**
          * Sets the name of the profile to use when connecting.
          * @param profile_name Name of the profile.
+         * @since 1.20
          */
         set_profile_name(profile_name: string): void;
 
         /**
          * Sets the RM protocol to use in the CDMA connection.
          * @param protocol a {@link ModemManager.ModemCdmaRmProtocol}.
+         * @since 1.0
          */
         set_rm_protocol(protocol: ModemCdmaRmProtocol): void;
 
         /**
          * Sets the roaming allowance rules.
          * @param roaming_allowance a mask of {@link ModemManager.BearerRoamingAllowance} values
+         * @since 1.20
          */
         set_roaming_allowance(roaming_allowance: BearerRoamingAllowance): void;
 
         /**
          * Sets the username used to authenticate with the access point.
          * @param user the username
+         * @since 1.0
          */
         set_user(user: string): void;
     }
@@ -4998,30 +5098,35 @@ export namespace ModemManager {
         /**
          * Gets the number of connection attempts done with this bearer.
          * @returns a `guint`.
+         * @since 1.14
          */
         get_attempts(): number;
 
         /**
          * Gets the speed of the downlink, in bits per second.
          * @returns a `guint64`.
+         * @since 1.20
          */
         get_downlink_speed(): number;
 
         /**
          * Gets the duration of the current connection, in seconds.
          * @returns a `guint`.
+         * @since 1.6
          */
         get_duration(): number;
 
         /**
          * Gets the number of failed connection attempts done with this bearer.
          * @returns a `guint`.
+         * @since 1.14
          */
         get_failed_attempts(): number;
 
         /**
          * Gets the number of bytes received without error in the connection.
          * @returns a `guint64`.
+         * @since 1.6
          */
         get_rx_bytes(): number;
 
@@ -5029,12 +5134,14 @@ export namespace ModemManager {
          * Gets the start date of the current connection as a timestamp in seconds
          * since the epoch.
          * @returns a `guint64`.
+         * @since 1.20
          */
         get_start_date(): number;
 
         /**
          * Gets the total duration of all the connections of this bearer.
          * @returns a `guint`.
+         * @since 1.14
          */
         get_total_duration(): number;
 
@@ -5042,6 +5149,7 @@ export namespace ModemManager {
          * Gets the total number of bytes received without error during all the
          * connections of this bearer.
          * @returns a `guint64`.
+         * @since 1.14
          */
         get_total_rx_bytes(): number;
 
@@ -5049,18 +5157,21 @@ export namespace ModemManager {
          * Gets the total number of bytes transmitted without error during all the
          * connections of this bearer.
          * @returns a `guint64`.
+         * @since 1.14
          */
         get_total_tx_bytes(): number;
 
         /**
          * Gets the number of bytes transmitted without error in the connection.
          * @returns a `guint64`.
+         * @since 1.6
          */
         get_tx_bytes(): number;
 
         /**
          * Gets the speed of the uplink, in bits per second.
          * @returns a `guint64`.
+         * @since 1.20
          */
         get_uplink_speed(): number;
     }
@@ -5139,6 +5250,7 @@ export namespace ModemManager {
          * 
          * See `mm_call_accept_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.6
          */
         accept(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5155,6 +5267,7 @@ export namespace ModemManager {
          * See `mm_call_accept_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         accept(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5171,6 +5284,7 @@ export namespace ModemManager {
          * See `mm_call_accept_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         accept(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5178,6 +5292,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_call_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_accept()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.6
          */
         accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -5190,6 +5305,7 @@ export namespace ModemManager {
          * See `mm_call_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.6
          */
         accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5207,6 +5323,7 @@ export namespace ModemManager {
          * method.
          * @param number new number where the call will be deflected.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.12
          */
         deflect(number: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5225,6 +5342,7 @@ export namespace ModemManager {
          * @param number new number where the call will be deflected.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         deflect(number: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5243,6 +5361,7 @@ export namespace ModemManager {
          * @param number new number where the call will be deflected.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         deflect(number: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5250,6 +5369,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_call_deflect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_deflect()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.12
          */
         deflect_finish(res: Gio.AsyncResult): boolean;
 
@@ -5263,12 +5383,14 @@ export namespace ModemManager {
          * @param number new number where the call will be deflected.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.12
          */
         deflect_sync(number: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets the kernel device used for audio (if any).
          * @returns The audio port, or `null` if call audio is not routed via the host or couldn't be retrieved.
+         * @since 1.10
          */
         dup_audio_port(): string;
 
@@ -5276,12 +5398,14 @@ export namespace ModemManager {
          * Gets the call number. In outgoing calls contains the dialing number or
          * the remote number in incoming calls
          * @returns The number, or `null` if it couldn't be retrieved. The returned value should be freed with `g_free()`.
+         * @since 1.6
          */
         dup_number(): string;
 
         /**
          * Gets a copy of the DBus path of the {@link ModemManager.Call} object.
          * @returns The DBus path of the {@link ModemManager.Call} object. The returned value should be freed with `g_free()`.
+         * @since 1.6
          */
         dup_path(): string;
 
@@ -5294,24 +5418,28 @@ export namespace ModemManager {
          * `mm_call_get_audio_format()` again to get a new {@link ModemManager.CallAudioFormat} with the
          * new values.</warning>
          * @returns A {@link ModemManager.CallAudioFormat} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.10
          */
         get_audio_format(): CallAudioFormat;
 
         /**
          * Gets the kernel device used for audio (if any).
          * @returns The audio port, or `null` if call audio is not routed via the host or couldn't be retrieved.
+         * @since 1.10
          */
         get_audio_port(): string;
 
         /**
          * Gets the call direction.
          * @returns a {@link ModemManager.CallDirection}.
+         * @since 1.6
          */
         get_direction(): CallDirection;
 
         /**
          * Gets whether the call is part of a multiparty call.
          * @returns `true` if the call is part of a multiparty call, `false` otherwise.
+         * @since 1.12
          */
         get_multiparty(): boolean;
 
@@ -5324,24 +5452,28 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_call_dup_number()` if on another
          * thread.</warning>
          * @returns The number, or `null` if it couldn't be retrieved.
+         * @since 1.6
          */
         get_number(): string;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Call} object.
          * @returns The DBus path of the {@link ModemManager.Call} object.
+         * @since 1.6
          */
         get_path(): string;
 
         /**
          * Gets the current state of call.
          * @returns a {@link ModemManager.CallState}.
+         * @since 1.6
          */
         get_state(): CallState;
 
         /**
          * Gets the reason of why the call changes its state.
          * @returns a {@link ModemManager.CallStateReason}.
+         * @since 1.6
          */
         get_state_reason(): CallStateReason;
 
@@ -5358,6 +5490,7 @@ export namespace ModemManager {
          * See `mm_call_hangup_sync()` for the synchronous, blocking version of this
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.6
          */
         hangup(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5375,6 +5508,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         hangup(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5392,6 +5526,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         hangup(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5399,6 +5534,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_call_hangup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_hangup()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.6
          */
         hangup_finish(res: Gio.AsyncResult): boolean;
 
@@ -5411,6 +5547,7 @@ export namespace ModemManager {
          * See `mm_call_hangup()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.6
          */
         hangup_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5425,6 +5562,7 @@ export namespace ModemManager {
          * See `mm_call_join_multiparty_sync()` for the synchronous, blocking version of
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.12
          */
         join_multiparty(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5440,6 +5578,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         join_multiparty(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5455,6 +5594,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         join_multiparty(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5462,6 +5602,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_call_join_multiparty()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_join_multiparty()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.12
          */
         join_multiparty_finish(res: Gio.AsyncResult): boolean;
 
@@ -5472,6 +5613,7 @@ export namespace ModemManager {
          * See `mm_call_join_multiparty()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.12
          */
         join_multiparty_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5487,6 +5629,7 @@ export namespace ModemManager {
          * See `mm_call_leave_multiparty_sync()` for the synchronous, blocking version
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.12
          */
         leave_multiparty(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5503,6 +5646,7 @@ export namespace ModemManager {
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         leave_multiparty(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5519,6 +5663,7 @@ export namespace ModemManager {
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         leave_multiparty(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5526,6 +5671,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_call_leave_multiparty()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_leave_multiparty()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.12
          */
         leave_multiparty_finish(res: Gio.AsyncResult): boolean;
 
@@ -5537,6 +5683,7 @@ export namespace ModemManager {
          * See `mm_call_leave_multiparty()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.12
          */
         leave_multiparty_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5549,6 +5696,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_call_get_audio_format()` if on another
          * thread.</warning>
          * @returns A {@link ModemManager.CallAudioFormat}. Do not free the returned value, it belongs to `self`.
+         * @since 1.10
          */
         peek_audio_format(): CallAudioFormat;
 
@@ -5566,6 +5714,7 @@ export namespace ModemManager {
          * method.
          * @param dtmf the DMTF tone.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.6
          */
         send_dtmf(dtmf: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5584,6 +5733,7 @@ export namespace ModemManager {
          * @param dtmf the DMTF tone.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         send_dtmf(dtmf: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5602,6 +5752,7 @@ export namespace ModemManager {
          * @param dtmf the DMTF tone.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         send_dtmf(dtmf: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5609,6 +5760,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_call_send_dtmf()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_send_dtmf()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.6
          */
         send_dtmf_finish(res: Gio.AsyncResult): boolean;
 
@@ -5622,6 +5774,7 @@ export namespace ModemManager {
          * @param dtmf the DMTF tone.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.6
          */
         send_dtmf_sync(dtmf: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5637,6 +5790,7 @@ export namespace ModemManager {
          * 
          * See `mm_call_start_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.6
          */
         start(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5653,6 +5807,7 @@ export namespace ModemManager {
          * See `mm_call_start_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         start(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5669,6 +5824,7 @@ export namespace ModemManager {
          * See `mm_call_start_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         start(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5676,6 +5832,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_call_start()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_start()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.6
          */
         start_finish(res: Gio.AsyncResult): boolean;
 
@@ -5688,6 +5845,7 @@ export namespace ModemManager {
          * See `mm_call_start()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.6
          */
         start_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5828,6 +5986,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5871,6 +6030,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5914,6 +6074,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5922,6 +6083,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5930,6 +6092,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Call;
 
@@ -5979,6 +6142,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -5987,6 +6151,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -6522,6 +6687,7 @@ export namespace ModemManager {
          * Gets the encoding of the audio format.  For example, "pcm" for PCM-encoded
          * audio.
          * @returns a string with the encoding, or `NULL` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.10
          */
         get_encoding(): string;
 
@@ -6529,6 +6695,7 @@ export namespace ModemManager {
          * Gets the sampling rate of the audio format.  For example, 8000 for an 8000hz
          * sampling rate.
          * @returns the sampling rate, or 0 if unknown.
+         * @since 1.10
          */
         get_rate(): number;
 
@@ -6536,6 +6703,7 @@ export namespace ModemManager {
          * Gets the resolution of the audio format.  For example, "s16le" for signed
          * 16-bit little-endian audio sampling resolution.
          * @returns a string with the resolution, or `NULL` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.10
          */
         get_resolution(): string;
     }
@@ -6596,48 +6764,62 @@ export namespace ModemManager {
         /**
          * Gets the call direction.
          * @returns the call direction.
+         * @since 1.6
+         * @deprecated since 1.12: the user should not specify the direction of the call, as it is implicit (outgoing always). This parameter has always been ignored during the new call creation processing.
          */
         get_direction(): CallDirection;
 
         /**
          * Gets the number, in UTF-8.
          * @returns the call number, or `null` if it doesn't contain any (anonymous caller). Do not free the returned value, it is owned by `self`.
+         * @since 1.6
          */
         get_number(): string;
 
         /**
          * Gets the call state.
          * @returns the call state.
+         * @since 1.6
+         * @deprecated since 1.12: the user should not specify the state of the call before the call is created. This parameter has always been ignored during the new call creation processing.
          */
         get_state(): CallState;
 
         /**
          * Gets the call state reason.
          * @returns the call state reason.
+         * @since 1.6
+         * @deprecated since 1.12: the user should not specify the state reason of the call before the call is created. This parameter has always been ignored during the new call creation processing.
          */
         get_state_reason(): CallStateReason;
 
         /**
          * Sets the call direction.
          * @param direction the call direction
+         * @since 1.6
+         * @deprecated since 1.12: the user should not specify the direction of the call, as it is implicit (outgoing always). Anyway, this parameter has always been ignored during the new call creation processing.
          */
         set_direction(direction: CallDirection): void;
 
         /**
          * Sets the call number.
          * @param text The number to set, in UTF-8.
+         * @since 1.6
          */
         set_number(text: string): void;
 
         /**
          * Sets the call state
          * @param state the call state
+         * @since 1.6
+         * @deprecated since 1.12: the user should not specify the state of the call before the call is created. This parameter has always been ignored during the new call creation processing.
          */
         set_state(state: CallState): void;
 
         /**
          * Sets the call state reason.
          * @param state_reason the call state reason.
+         * @since 1.6
+         * @deprecated since 1.12: the user should not specify the state reason of the call before the call is created. This parameter has always been ignored during the new call creation processing.
          */
         set_state_reason(state_reason: CallStateReason): void;
     }
@@ -6705,36 +6887,42 @@ export namespace ModemManager {
         /**
          * Gets a copy of the DBus path of the {@link ModemManager.Cbm} object.
          * @returns The DBus path of the {@link ModemManager.Cbm} object. The returned value should be freed with `g_free()`.
+         * @since 1.24
          */
         dup_path(): string;
 
         /**
          * Gets the message text, in UTF-8.
          * @returns The message text, or `null` if it doesn't contain any (e.g. contains data instead). The returned value should be freed with `g_free()`.
+         * @since 1.24
          */
         dup_text(): string;
 
         /**
          * Gets the channel of this CBM.
          * @returns The channel
+         * @since 1.24
          */
         get_channel(): number;
 
         /**
          * Gets the message code of this CBM.
          * @returns The message code
+         * @since 1.24
          */
         get_message_code(): number;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Cbm} object.
          * @returns The DBus path of the {@link ModemManager.Cbm} object.
+         * @since 1.24
          */
         get_path(): string;
 
         /**
          * Gets the state of this CBM.
          * @returns A {@link ModemManager.CbmState} specifying the state.
+         * @since 1.24
          */
         get_state(): CbmState;
 
@@ -6745,12 +6933,14 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_cbm_dup_text()` if on another thread.</warning>
          * @returns The message text, or `null` if it doesn't contain any (e.g. contains data instead).
+         * @since 1.24
          */
         get_text(): string;
 
         /**
          * Gets the update number of this CBM.
          * @returns The update number
+         * @since 1.24
          */
         get_update(): number;
 
@@ -6853,6 +7043,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -6896,6 +7087,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6939,6 +7131,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -6947,6 +7140,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -6955,6 +7149,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Cbm;
 
@@ -7004,6 +7199,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7012,6 +7208,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -7067,54 +7264,63 @@ export namespace ModemManager {
         /**
          * Gets the Mobile Directory Number.
          * @returns The MDN. Do not free the returned value, it is owned by `self`.
+         * @since 1.2
          */
         get_mdn(): string;
 
         /**
          * Gets the Mobile Identification Number.
          * @returns The MIN. Do not free the returned value, it is owned by `self`.
+         * @since 1.2
          */
         get_min(): string;
 
         /**
          * Gets the MN-AAA key.
          * @returns The MN-AAA key. Do not free the returned value, it is owned by `self`.
+         * @since 1.2
          */
         get_mn_aaa_key(): string;
 
         /**
          * Gets the MN-HA key.
          * @returns The MN-HA key. Do not free the returned value, it is owned by `self`.
+         * @since 1.2
          */
         get_mn_ha_key(): string;
 
         /**
          * Gets the Preferred Roaming List.
          * @returns The PRL. Do not free the returned value, it is owned by `self`.
+         * @since 1.2
          */
         get_prl(): [number, number];
 
         /**
          * Gets the Preferred Roaming List.
          * @returns A {@link GLib.ByteArray} with the PRL, or `null` if it doesn't contain any. The returned value should be freed with `g_byte_array_unref()`.
+         * @since 1.2
          */
         get_prl_bytearray(): Uint8Array;
 
         /**
          * Gets the System Identification Number.
          * @returns The SID.
+         * @since 1.2
          */
         get_sid(): number;
 
         /**
          * Gets the Service Programming Code.
          * @returns The SPC. Do not free the returned value, it is owned by `self`.
+         * @since 1.2
          */
         get_spc(): string;
 
         /**
          * Gets the Preferred Roaming List.
          * @returns A {@link GLib.ByteArray} with the PRL, or `null` if it doesn't contain any. Do not free the returned value, it is owned by `self`.
+         * @since 1.2
          */
         peek_prl_bytearray(): Uint8Array;
 
@@ -7122,6 +7328,7 @@ export namespace ModemManager {
          * Sets the Mobile Directory Number.
          * @param mdn The MDN string, maximum 15 characters.
          * @returns `true` if the MDN was successfully set, or `false` if `error` is set.
+         * @since 1.2
          */
         set_mdn(mdn: string): boolean;
 
@@ -7129,6 +7336,7 @@ export namespace ModemManager {
          * Sets the Mobile Identification Number.
          * @param min The MIN string, maximum 15 characters.
          * @returns `true` if the MIN was successfully set, or `false` if `error` is set.
+         * @since 1.2
          */
         set_min(min: string): boolean;
 
@@ -7136,6 +7344,7 @@ export namespace ModemManager {
          * Sets the Mobile Identification Number.
          * @param mn_aaa_key The MN-AAA key string, maximum 16 characters.
          * @returns `true` if the MN-AAA key was successfully set, or `false` if `error` is set.
+         * @since 1.2
          */
         set_mn_aaa_key(mn_aaa_key: string): boolean;
 
@@ -7143,6 +7352,7 @@ export namespace ModemManager {
          * Sets the Mobile Identification Number.
          * @param mn_ha_key The MN-HA key string, maximum 16 characters.
          * @returns `true` if the MN-HA key was successfully set, or `false` if `error` is set.
+         * @since 1.2
          */
         set_mn_ha_key(mn_ha_key: string): boolean;
 
@@ -7151,6 +7361,7 @@ export namespace ModemManager {
          * @param prl The PRL.
          * @param prl_length Length of `prl`.
          * @returns `true` if the PRL was successfully set, or `false` if `error` is set.
+         * @since 1.2
          */
         set_prl(prl: number, prl_length: bigint | number): boolean;
 
@@ -7158,12 +7369,14 @@ export namespace ModemManager {
          * Sets the Preferred Roaming List.
          * @param prl A {@link GLib.ByteArray} with the PRL to set. This method takes a new reference  of `prl`.
          * @returns `true` if the PRL was successfully set, or `false` if `error` is set.
+         * @since 1.2
          */
         set_prl_bytearray(prl: Uint8Array | string): boolean;
 
         /**
          * Sets the Service Identification Number.
          * @param sid The SID.
+         * @since 1.2
          */
         set_sid(sid: number): void;
 
@@ -7171,6 +7384,7 @@ export namespace ModemManager {
          * Sets the Service Programming Code.
          * @param spc The SPC string, exactly 6 digits.
          * @returns `true` if the SPC was successfully set, or `false` if `error` is set.
+         * @since 1.2
          */
         set_spc(spc: string): boolean;
     }
@@ -7234,12 +7448,14 @@ export namespace ModemManager {
         /**
          * Get the type of cell.
          * @returns a {@link ModemManager.CellType}.
+         * @since 1.20
          */
         get_cell_type(): CellType;
 
         /**
          * Get whether the cell is a serving cell or a neighboring cell.a
          * @returns `true` if the cell is a serving cell, `false` otherwise.
+         * @since 1.20
          */
         get_serving(): boolean;
     }
@@ -7294,6 +7510,7 @@ export namespace ModemManager {
          * 
          * Encoded in upper-case hexadecimal format without leading zeros.
          * @returns the CDMA base station id, or `null` if not available.
+         * @since 1.20
          */
         get_base_station_id(): string;
 
@@ -7302,6 +7519,7 @@ export namespace ModemManager {
          * 
          * Encoded in upper-case hexadecimal format without leading zeros.
          * @returns the CDMA network id, or `null` if not available.
+         * @since 1.20
          */
         get_nid(): string;
 
@@ -7310,6 +7528,7 @@ export namespace ModemManager {
          * 
          * Given in the same format and scale as the GSM SINR level.
          * @returns the pilot strength, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_pilot_strength(): number;
 
@@ -7318,6 +7537,7 @@ export namespace ModemManager {
          * 
          * Encoded in upper-case hexadecimal format without leading zeros.
          * @returns the CDMA base station PN number, or `null` if not available.
+         * @since 1.20
          */
         get_ref_pn(): string;
 
@@ -7326,6 +7546,7 @@ export namespace ModemManager {
          * 
          * Encoded in upper-case hexadecimal format without leading zeros.
          * @returns the CDMA system id, or `null` if not available.
+         * @since 1.20
          */
         get_sid(): string;
     }
@@ -7378,6 +7599,7 @@ export namespace ModemManager {
         /**
          * Get the absolute RF channel number.
          * @returns the ARFCN, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_arfcn(): number;
 
@@ -7385,6 +7607,7 @@ export namespace ModemManager {
          * Get the GSM base station id, in upper-case hexadecimal format without leading
          * zeros. E.g. "3F".
          * @returns the GSM base station id, or `null` if not available.
+         * @since 1.20
          */
         get_base_station_id(): string;
 
@@ -7394,6 +7617,7 @@ export namespace ModemManager {
          * Encoded in upper-case hexadecimal format without leading zeros,
          * as specified in 3GPP TS 27.007.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_ci(): string;
 
@@ -7403,18 +7627,21 @@ export namespace ModemManager {
          * Encoded in upper-case hexadecimal format without leading zeros,
          * as specified in 3GPP TS 27.007.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_lac(): string;
 
         /**
          * Get the PLMN MCC/MNC.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_operator_id(): string;
 
         /**
          * Get the serving cell RX measurement.
          * @returns the rx level, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_rx_level(): number;
 
@@ -7423,6 +7650,7 @@ export namespace ModemManager {
          * on the RACH or PRACH to the expected signal from a mobile station at zero
          * distance under static channel conditions.
          * @returns the timing advance, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_timing_advance(): number;
     }
@@ -7475,6 +7703,7 @@ export namespace ModemManager {
         /**
          * Get the bandwidth of the particular carrier in downlink.
          * @returns the bandwidth, or `G_MAXUINT` if not available.
+         * @since 1.22
          */
         get_bandwidth(): number;
 
@@ -7484,18 +7713,21 @@ export namespace ModemManager {
          * Encoded in upper-case hexadecimal format without leading zeros,
          * as specified in 3GPP TS 27.007.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_ci(): string;
 
         /**
          * Get the E-UTRA absolute RF channel number.
          * @returns the EARFCN, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_earfcn(): number;
 
         /**
          * Get the PLMN MCC/MNC.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_operator_id(): string;
 
@@ -7505,24 +7737,28 @@ export namespace ModemManager {
          * Encoded in upper-case hexadecimal format without leading zeros,
          * as specified in 3GPP TS 27.007.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_physical_ci(): string;
 
         /**
          * Get the average reference signal received power in dBm.
          * @returns the RSRP, or -`G_MAXDOUBLE` if not available.
+         * @since 1.20
          */
         get_rsrp(): number;
 
         /**
          * Get the average reference signal received quality in dB.
          * @returns the RSRQ, or -`G_MAXDOUBLE` if not available.
+         * @since 1.20
          */
         get_rsrq(): number;
 
         /**
          * Get the serving cell type.
          * @returns the serving cell type, or {@link ModemManager.ServingCellType.INVALID} if not available.
+         * @since 1.22
          */
         get_serving_cell_type(): ServingCellType;
 
@@ -7532,12 +7768,14 @@ export namespace ModemManager {
          * Encoded in upper-case hexadecimal format without leading zeros,
          * as specified in 3GPP TS 27.007.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_tac(): string;
 
         /**
          * Get the timing advance.
          * @returns the timing advance, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_timing_advance(): number;
     }
@@ -7590,6 +7828,7 @@ export namespace ModemManager {
         /**
          * Get the bandwidth of the particular carrier in downlink.
          * @returns the bandwidth, or `G_MAXUINT` if not available.
+         * @since 1.22
          */
         get_bandwidth(): number;
 
@@ -7599,18 +7838,21 @@ export namespace ModemManager {
          * Encoded in upper-case hexadecimal format without leading zeros,
          * as specified in 3GPP TS 27.007.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_ci(): string;
 
         /**
          * Get the NR absolute RF channel number.
          * @returns the NRARFCN, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_nrarfcn(): number;
 
         /**
          * Get the PLMN MCC/MNC.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_operator_id(): string;
 
@@ -7620,30 +7862,35 @@ export namespace ModemManager {
          * Encoded in upper-case hexadecimal format without leading zeros,
          * as specified in 3GPP TS 27.007.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_physical_ci(): string;
 
         /**
          * Get the average reference signal received power in dBm.
          * @returns the RSRP, or -`G_MAXDOUBLE` if not available.
+         * @since 1.20
          */
         get_rsrp(): number;
 
         /**
          * Get the average reference signal received quality in dB.
          * @returns the RSRQ, or -`G_MAXDOUBLE` if not available.
+         * @since 1.20
          */
         get_rsrq(): number;
 
         /**
          * Get the serving cell type.
          * @returns the serving cell type, or {@link ModemManager.ServingCellType.INVALID} if not available.
+         * @since 1.22
          */
         get_serving_cell_type(): ServingCellType;
 
         /**
          * Get the signal to interference and noise ratio.
          * @returns the SINR, or -`G_MAXDOUBLE` if not available.
+         * @since 1.20
          */
         get_sinr(): number;
 
@@ -7653,12 +7900,14 @@ export namespace ModemManager {
          * Encoded in upper-case hexadecimal format without leading zeros,
          * as specified in 3GPP TS 27.007.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_tac(): string;
 
         /**
          * Get the timing advance.
          * @returns the timing advance, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_timing_advance(): number;
     }
@@ -7711,6 +7960,7 @@ export namespace ModemManager {
         /**
          * Get the cell parameter id.
          * @returns the cell parameter id, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_cell_parameter_id(): number;
 
@@ -7720,6 +7970,7 @@ export namespace ModemManager {
          * Encoded in upper-case hexadecimal format without leading zeros,
          * as specified in 3GPP TS 27.007.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_ci(): string;
 
@@ -7729,24 +7980,28 @@ export namespace ModemManager {
          * Encoded in upper-case hexadecimal format without leading zeros,
          * as specified in 3GPP TS 27.007.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_lac(): string;
 
         /**
          * Get the PLMN MCC/MNC.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_operator_id(): string;
 
         /**
          * Get the path loss of the cell.
          * @returns the path loss, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_path_loss(): number;
 
         /**
          * Get the received signal code power.
          * @returns the RSCP, or -`G_MAXDOUBLE` if not available.
+         * @since 1.20
          */
         get_rscp(): number;
 
@@ -7755,12 +8010,14 @@ export namespace ModemManager {
          * on the RACH or PRACH to the expected signal from a mobile station at zero
          * distance under static channel conditions.
          * @returns the timing advance, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_timing_advance(): number;
 
         /**
          * Get the UTRA absolute RF channel number.
          * @returns the UARFCN, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_uarfcn(): number;
     }
@@ -7816,6 +8073,7 @@ export namespace ModemManager {
          * Encoded in upper-case hexadecimal format without leading zeros,
          * as specified in 3GPP TS 27.007.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_ci(): string;
 
@@ -7823,24 +8081,28 @@ export namespace ModemManager {
          * Get the ECIO, the received energy per chip divided by the power density
          * in the band measured in dBm on the primary CPICH channel of the cell.
          * @returns the ECIO, or -`G_MAXDOUBLE` if not available.
+         * @since 1.20
          */
         get_ecio(): number;
 
         /**
          * Get the frequency of the downlink in kHz while in FDD.
          * @returns the frequency, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_frequency_fdd_dl(): number;
 
         /**
          * Get the frequency of the uplink in kHz while in FDD.
          * @returns the frequency, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_frequency_fdd_ul(): number;
 
         /**
          * Get the frequency in kHz while in TDD.
          * @returns the frequency, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_frequency_tdd(): number;
 
@@ -7850,36 +8112,42 @@ export namespace ModemManager {
          * Encoded in upper-case hexadecimal format without leading zeros,
          * as specified in 3GPP TS 27.007.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_lac(): string;
 
         /**
          * Get the PLMN MCC/MNC.
          * @returns the MCCMNC, or `null` if not available.
+         * @since 1.20
          */
         get_operator_id(): string;
 
         /**
          * Get the path loss of the cell.
          * @returns the path loss, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_path_loss(): number;
 
         /**
          * Get the primary scrambling code.
          * @returns the PSC, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_psc(): number;
 
         /**
          * Get the received signal code power.
          * @returns the RSCP, or -`G_MAXDOUBLE` if not available.
+         * @since 1.20
          */
         get_rscp(): number;
 
         /**
          * Get the UTRA absolute RF channel number.
          * @returns the UARFCN, or `G_MAXUINT` if not available.
+         * @since 1.20
          */
         get_uarfcn(): number;
     }
@@ -7939,6 +8207,7 @@ export namespace ModemManager {
          * Gets the boot version of a firmware image of type
          * {@link ModemManager.FirmwareImageType.GOBI}.
          * @returns The boot version, or `null` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_gobi_boot_version(): string;
 
@@ -7946,12 +8215,14 @@ export namespace ModemManager {
          * Gets the MODEM unique ID of a firmware image of type
          * {@link ModemManager.FirmwareImageType.GOBI}.
          * @returns The PRI unique ID, or `null` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_gobi_modem_unique_id(): string;
 
         /**
          * Gets the PRI info of a firmware image of type {@link ModemManager.FirmwareImageType.GOBI}.
          * @returns The PRI info, or `null` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_gobi_pri_info(): string;
 
@@ -7959,24 +8230,28 @@ export namespace ModemManager {
          * Gets the PRI unique ID of a firmware image of type
          * {@link ModemManager.FirmwareImageType.GOBI}.
          * @returns The PRI unique ID, or `null` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_gobi_pri_unique_id(): string;
 
         /**
          * Gets the PRI version of a firmware image of type {@link ModemManager.FirmwareImageType.GOBI}.
          * @returns The PRI version, or `null` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_gobi_pri_version(): string;
 
         /**
          * Gets the type of the firmware image.
          * @returns A {@link ModemManager.FirmwareImageType} specifying The type of the image.
+         * @since 1.0
          */
         get_image_type(): FirmwareImageType;
 
         /**
          * Gets the unique ID of the firmware image.
          * @returns The ID of the image. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_unique_id(): string;
 
@@ -8055,6 +8330,7 @@ export namespace ModemManager {
          * Gets the list of device ids used to identify the device during a firmware
          * update operation.
          * @returns The list of device ids, or `null` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.10
          */
         get_device_ids(): string[];
 
@@ -8065,18 +8341,21 @@ export namespace ModemManager {
          * Only applicable if the update method includes
          * {@link ModemManager.ModemFirmwareUpdateMethod.FASTBOOT}.
          * @returns The AT command string, or `null` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.10
          */
         get_fastboot_at(): string;
 
         /**
          * Gets the methods to use during the firmware update operation.
          * @returns a bitmask of {@link ModemManager.ModemFirmwareUpdateMethod} values.
+         * @since 1.10
          */
         get_method(): ModemFirmwareUpdateMethod;
 
         /**
          * Gets firmware version string.
          * @returns The version string, or `null` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.10
          */
         get_version(): string;
     }
@@ -8440,6 +8719,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8483,6 +8763,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8526,6 +8807,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8534,6 +8816,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -8542,6 +8825,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusBearerProxy;
 
@@ -8591,6 +8875,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -8599,6 +8884,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -8606,6 +8892,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -8618,6 +8905,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -8626,11 +8914,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -8643,6 +8933,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -8652,6 +8943,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -8697,6 +8989,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8740,6 +9033,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -9126,6 +9420,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -9138,6 +9433,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -9152,11 +9448,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -9169,6 +9467,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -9185,6 +9484,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -9575,6 +9875,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -9618,6 +9919,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -9661,6 +9963,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -9669,6 +9972,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -9677,6 +9981,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusCallProxy;
 
@@ -9726,6 +10031,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -9734,6 +10040,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -9741,6 +10048,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -9753,6 +10061,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -9761,11 +10070,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -9778,6 +10089,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -9787,6 +10099,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -9832,6 +10145,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9875,6 +10189,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -10516,6 +10831,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -10528,6 +10844,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -10542,11 +10859,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -10559,6 +10878,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -10575,6 +10895,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -11280,6 +11601,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -11323,6 +11645,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -11366,6 +11689,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -11374,6 +11698,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -11382,6 +11707,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusCbmProxy;
 
@@ -11431,6 +11757,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -11439,6 +11766,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -11446,6 +11774,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -11458,6 +11787,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -11466,11 +11796,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -11483,6 +11815,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -11492,6 +11825,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -11537,6 +11871,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11580,6 +11915,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -11700,6 +12036,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -11712,6 +12049,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -11726,11 +12064,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -11743,6 +12083,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -11759,6 +12100,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -11939,6 +12281,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -11982,6 +12325,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -12025,6 +12369,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -12033,6 +12378,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -12041,6 +12387,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModem3gppProfileManagerProxy;
 
@@ -12090,6 +12437,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -12098,6 +12446,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -12105,6 +12454,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -12117,6 +12467,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -12125,11 +12476,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -12142,6 +12495,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -12151,6 +12505,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -12196,6 +12551,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -12239,6 +12595,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -12527,6 +12884,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -12539,6 +12897,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -12553,11 +12912,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -12570,6 +12931,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -12586,6 +12948,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -13203,6 +13566,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -13246,6 +13610,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -13289,6 +13654,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -13297,6 +13663,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -13305,6 +13672,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModem3gppProxy;
 
@@ -13354,6 +13722,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -13362,6 +13731,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -13369,6 +13739,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -13381,6 +13752,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -13389,11 +13761,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -13406,6 +13780,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -13415,6 +13790,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -13460,6 +13836,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -13503,6 +13880,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -14344,6 +14722,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -14356,6 +14735,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -14370,11 +14750,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -14387,6 +14769,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -14403,6 +14786,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -15155,6 +15539,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -15198,6 +15583,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -15241,6 +15627,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -15249,6 +15636,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -15257,6 +15645,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModem3gppUssdProxy;
 
@@ -15306,6 +15695,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -15314,6 +15704,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -15321,6 +15712,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -15333,6 +15725,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -15341,11 +15734,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -15358,6 +15753,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -15367,6 +15763,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -15412,6 +15809,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -15455,6 +15853,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -15764,6 +16163,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -15776,6 +16176,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -15790,11 +16191,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -15807,6 +16210,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -15823,6 +16227,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -16290,6 +16695,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -16333,6 +16739,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -16376,6 +16783,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -16384,6 +16792,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -16392,6 +16801,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModemCdmaProxy;
 
@@ -16441,6 +16851,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -16449,6 +16860,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -16456,6 +16868,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -16468,6 +16881,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -16476,11 +16890,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -16493,6 +16909,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -16502,6 +16919,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -16547,6 +16965,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -16590,6 +17009,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -16905,6 +17325,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -16917,6 +17338,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -16931,11 +17353,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -16948,6 +17372,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -16964,6 +17389,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -17305,6 +17731,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -17348,6 +17775,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -17391,6 +17819,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -17399,6 +17828,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -17407,6 +17837,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModemCellBroadcastProxy;
 
@@ -17456,6 +17887,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -17464,6 +17896,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -17471,6 +17904,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -17483,6 +17917,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -17491,11 +17926,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -17508,6 +17945,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -17517,6 +17955,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -17562,6 +18001,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -17605,6 +18045,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -17915,6 +18356,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -17927,6 +18369,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -17941,11 +18384,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -17958,6 +18403,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -17974,6 +18420,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -18378,6 +18825,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -18421,6 +18869,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -18464,6 +18913,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -18472,6 +18922,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -18480,6 +18931,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModemFirmwareProxy;
 
@@ -18529,6 +18981,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -18537,6 +18990,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -18544,6 +18998,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -18556,6 +19011,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -18564,11 +19020,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -18581,6 +19039,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -18590,6 +19049,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -18635,6 +19095,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -18678,6 +19139,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -18885,6 +19347,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -18897,6 +19360,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -18911,11 +19375,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -18928,6 +19394,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -18944,6 +19411,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -19371,6 +19839,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -19414,6 +19883,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -19457,6 +19927,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -19465,6 +19936,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -19473,6 +19945,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModemLocationProxy;
 
@@ -19522,6 +19995,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -19530,6 +20004,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -19537,6 +20012,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -19549,6 +20025,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -19557,11 +20034,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -19574,6 +20053,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -19583,6 +20063,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -19628,6 +20109,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -19671,6 +20153,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -20202,6 +20685,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -20214,6 +20698,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -20228,11 +20713,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -20245,6 +20732,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -20261,6 +20749,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -20811,6 +21300,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -20854,6 +21344,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -20897,6 +21388,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -20905,6 +21397,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -20913,6 +21406,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModemMessagingProxy;
 
@@ -20962,6 +21456,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -20970,6 +21465,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -20977,6 +21473,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -20989,6 +21486,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -20997,11 +21495,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -21014,6 +21514,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -21023,6 +21524,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -21068,6 +21570,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -21111,6 +21614,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -21513,6 +22017,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -21525,6 +22030,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -21539,11 +22045,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -21556,6 +22064,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -21572,6 +22081,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -22100,6 +22610,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -22143,6 +22654,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -22186,6 +22698,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -22194,6 +22707,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -22202,6 +22716,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModemOmaProxy;
 
@@ -22251,6 +22766,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -22259,6 +22775,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -22266,6 +22783,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -22278,6 +22796,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -22286,11 +22805,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -22303,6 +22824,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -22312,6 +22834,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -22357,6 +22880,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -22400,6 +22924,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -22816,6 +23341,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -22828,6 +23354,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -22842,11 +23369,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -22859,6 +23388,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -22875,6 +23405,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -23948,6 +24479,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -23991,6 +24523,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -24034,6 +24567,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -24042,6 +24576,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -24050,6 +24585,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModemProxy;
 
@@ -24099,6 +24635,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -24107,6 +24644,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -24114,6 +24652,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -24126,6 +24665,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -24134,11 +24674,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -24151,6 +24693,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -24160,6 +24703,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -24205,6 +24749,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -24248,6 +24793,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -25334,6 +25880,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -25377,6 +25924,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -25420,6 +25968,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -25428,6 +25977,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -25436,6 +25986,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModemSarProxy;
 
@@ -25485,6 +26036,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -25493,6 +26045,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -25500,6 +26053,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -25512,6 +26066,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -25520,11 +26075,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -25537,6 +26094,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -25546,6 +26104,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -25591,6 +26150,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -25634,6 +26194,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -25857,6 +26418,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -25869,6 +26431,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -25883,11 +26446,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -25900,6 +26465,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -25916,6 +26482,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -26324,6 +26891,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -26367,6 +26935,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -26410,6 +26979,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -26418,6 +26988,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -26426,6 +26997,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModemSignalProxy;
 
@@ -26475,6 +27047,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -26483,6 +27056,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -26490,6 +27064,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -26502,6 +27077,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -26510,11 +27086,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -26527,6 +27105,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -26536,6 +27115,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -26581,6 +27161,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -26624,6 +27205,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -26928,6 +27510,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -26940,6 +27523,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -26954,11 +27538,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -26971,6 +27557,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -26987,6 +27574,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -27282,6 +27870,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -27325,6 +27914,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -27368,6 +27958,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -27376,6 +27967,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -27384,6 +27976,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModemSimpleProxy;
 
@@ -27433,6 +28026,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -27441,6 +28035,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -27448,6 +28043,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -27460,6 +28056,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -27468,11 +28065,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -27485,6 +28084,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -27494,6 +28094,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -27539,6 +28140,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -27582,6 +28184,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -27838,6 +28441,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -27850,6 +28454,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -27864,11 +28469,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -27881,6 +28488,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -27897,6 +28505,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -28778,6 +29387,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -28790,6 +29400,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -28804,11 +29415,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -28821,6 +29434,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -28837,6 +29451,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -29910,6 +30525,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -29953,6 +30569,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -29996,6 +30613,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -30004,6 +30622,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -30012,6 +30631,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModemTimeProxy;
 
@@ -30061,6 +30681,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -30069,6 +30690,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -30076,6 +30698,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -30088,6 +30711,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -30096,11 +30720,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -30113,6 +30739,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -30122,6 +30749,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -30167,6 +30795,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -30210,6 +30839,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -30361,6 +30991,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -30373,6 +31004,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -30387,11 +31019,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -30404,6 +31038,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -30420,6 +31055,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -30687,6 +31323,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -30730,6 +31367,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -30773,6 +31411,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -30781,6 +31420,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -30789,6 +31429,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusModemVoiceProxy;
 
@@ -30838,6 +31479,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -30846,6 +31488,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -30853,6 +31496,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -30865,6 +31509,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -30873,11 +31518,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -30890,6 +31537,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -30899,6 +31547,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -30944,6 +31593,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -30987,6 +31637,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -31684,6 +32335,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -31696,6 +32348,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -31710,11 +32363,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -31727,6 +32382,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -31743,6 +32399,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -32522,6 +33179,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -32565,6 +33223,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -32608,6 +33267,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -32616,6 +33276,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -32624,6 +33285,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusObjectManagerClient;
 
@@ -32673,6 +33335,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -32681,6 +33344,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -32691,6 +33355,7 @@ export namespace ModemManager {
          * @param object_path Object path to look up.
          * @param interface_name D-Bus interface name to look up.
          * @returns A {@link Gio.DBusInterface} instance or `null`. Free   with `g_object_unref()`.
+         * @since 2.30
          */
         get_interface(object_path: string, interface_name: string): Gio.DBusInterface | null;
 
@@ -32698,18 +33363,21 @@ export namespace ModemManager {
          * Gets the {@link Gio.DBusObject} at `object_path`, if any.
          * @param object_path Object path to look up.
          * @returns A {@link Gio.DBusObject} or `null`. Free with   `g_object_unref()`.
+         * @since 2.30
          */
         get_object(object_path: string): Gio.DBusObject | null;
 
         /**
          * Gets the object path that `manager` is for.
          * @returns A string owned by `manager`. Do not free.
+         * @since 2.30
          */
         get_object_path(): string;
 
         /**
          * Gets all {@link Gio.DBusObject} objects known to `manager`.
          * @returns A list of   {@link Gio.DBusObject} objects. The returned list should be freed with   `g_list_free()` after each element has been freed with   `g_object_unref()`.
+         * @since 2.30
          */
         get_objects(): Gio.DBusObject[];
 
@@ -32718,6 +33386,7 @@ export namespace ModemManager {
          * any.
          * @param object_path Object path to look up.
          * @param interface_name D-Bus interface name to look up.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interface(object_path: string, interface_name: string): Gio.DBusInterface | null;
@@ -32725,18 +33394,21 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} at `object_path`, if any.
          * @param object_path Object path to look up.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_object(object_path: string): Gio.DBusObject | null;
 
         /**
          * Gets the object path that `manager` is for.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_object_path(): string;
 
         /**
          * Gets all {@link Gio.DBusObject} objects known to `manager`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_objects(): Gio.DBusObject[];
@@ -32812,6 +33484,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -32855,6 +33528,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -33180,18 +33854,21 @@ export namespace ModemManager {
          * `object`, if any.
          * @param interface_name A D-Bus interface name.
          * @returns `null` if not found, otherwise a   {@link Gio.DBusInterface} that must be freed with `g_object_unref()`.
+         * @since 2.30
          */
         get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
          * @returns A list of {@link Gio.DBusInterface} instances.   The returned list must be freed by `g_list_free()` after each element has been freed   with `g_object_unref()`.
+         * @since 2.30
          */
         get_interfaces(): Gio.DBusInterface[];
 
         /**
          * Gets the object path for `object`.
          * @returns A string owned by `object`. Do not free.
+         * @since 2.30
          */
         get_object_path(): string;
 
@@ -33199,18 +33876,21 @@ export namespace ModemManager {
          * Gets the D-Bus interface with name `interface_name` associated with
          * `object`, if any.
          * @param interface_name A D-Bus interface name.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interfaces(): Gio.DBusInterface[];
 
         /**
          * Gets the object path for `object`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_object_path(): string;
@@ -33730,18 +34410,21 @@ export namespace ModemManager {
          * `object`, if any.
          * @param interface_name A D-Bus interface name.
          * @returns `null` if not found, otherwise a   {@link Gio.DBusInterface} that must be freed with `g_object_unref()`.
+         * @since 2.30
          */
         get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
          * @returns A list of {@link Gio.DBusInterface} instances.   The returned list must be freed by `g_list_free()` after each element has been freed   with `g_object_unref()`.
+         * @since 2.30
          */
         get_interfaces(): Gio.DBusInterface[];
 
         /**
          * Gets the object path for `object`.
          * @returns A string owned by `object`. Do not free.
+         * @since 2.30
          */
         get_object_path(): string;
 
@@ -33749,18 +34432,21 @@ export namespace ModemManager {
          * Gets the D-Bus interface with name `interface_name` associated with
          * `object`, if any.
          * @param interface_name A D-Bus interface name.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interfaces(): Gio.DBusInterface[];
 
         /**
          * Gets the object path for `object`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_object_path(): string;
@@ -34035,6 +34721,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -34078,6 +34765,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -34121,6 +34809,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -34129,6 +34818,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -34137,6 +34827,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusOrgFreedesktopModemManager1Proxy;
 
@@ -34186,6 +34877,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -34194,6 +34886,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -34201,6 +34894,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -34213,6 +34907,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -34221,11 +34916,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -34238,6 +34935,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -34247,6 +34945,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -34292,6 +34991,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -34335,6 +35035,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -34673,6 +35374,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -34685,6 +35387,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -34699,11 +35402,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -34716,6 +35421,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -34732,6 +35438,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -35370,6 +36077,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -35413,6 +36121,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -35456,6 +36165,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -35464,6 +36174,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -35472,6 +36183,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusSimProxy;
 
@@ -35521,6 +36233,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -35529,6 +36242,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -35536,6 +36250,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -35548,6 +36263,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -35556,11 +36272,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -35573,6 +36291,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -35582,6 +36301,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -35627,6 +36347,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -35670,6 +36391,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -36287,6 +37009,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -36299,6 +37022,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -36313,11 +37037,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -36330,6 +37056,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -36346,6 +37073,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -37104,6 +37832,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -37147,6 +37876,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -37190,6 +37920,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -37198,6 +37929,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -37206,6 +37938,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): GdbusSmsProxy;
 
@@ -37255,6 +37988,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -37263,6 +37997,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -37270,6 +38005,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -37282,6 +38018,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -37290,11 +38027,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -37307,6 +38046,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -37316,6 +38056,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -37361,6 +38102,7 @@ export namespace ModemManager {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -37404,6 +38146,7 @@ export namespace ModemManager {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -37834,6 +38577,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -37846,6 +38590,7 @@ export namespace ModemManager {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -37860,11 +38605,13 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -37877,6 +38624,7 @@ export namespace ModemManager {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -37893,6 +38641,7 @@ export namespace ModemManager {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -38079,48 +38828,56 @@ export namespace ModemManager {
         /**
          * Gets the action.
          * @returns The action. Do not free the returned value, it is owned by `self`.
+         * @since 1.8
          */
         get_action(): string;
 
         /**
          * Gets the name.
          * @returns The name. Do not free the returned value, it is owned by `self`.
+         * @since 1.8
          */
         get_name(): string;
 
         /**
          * Gets the subsystem.
          * @returns The subsystem. Do not free the returned value, it is owned by `self`.
+         * @since 1.8
          */
         get_subsystem(): string;
 
         /**
          * Gets the unique ID of the physical device.
          * @returns The uid. Do not free the returned value, it is owned by `self`.
+         * @since 1.8
          */
         get_uid(): string;
 
         /**
          * Sets the action.
          * @param action The action to set.
+         * @since 1.8
          */
         set_action(action: string): void;
 
         /**
          * Sets the name.
          * @param name The name to set.
+         * @since 1.8
          */
         set_name(name: string): void;
 
         /**
          * Sets the subsystem.
          * @param subsystem The subsystem to set.
+         * @since 1.8
          */
         set_subsystem(subsystem: string): void;
 
         /**
          * Sets the unique ID of the physical device.
          * @param uid The uid to set.
+         * @since 1.8
          */
         set_uid(uid: string): void;
     }
@@ -38173,18 +38930,21 @@ export namespace ModemManager {
         /**
          * Gets the cell ID of the 3GPP network.
          * @returns the cell ID, or 0 if unknown.
+         * @since 1.0
          */
         get_cell_id(): number;
 
         /**
          * Gets the location area code of the 3GPP network.
          * @returns the location area code, or 0 if unknown.
+         * @since 1.0
          */
         get_location_area_code(): number;
 
         /**
          * Gets the Mobile Country Code of the 3GPP network.
          * @returns the MCC, or 0 if unknown.
+         * @since 1.0
          */
         get_mobile_country_code(): number;
 
@@ -38195,6 +38955,8 @@ export namespace ModemManager {
          * considered valid just if the reported MCC is valid, as MCC should never
          * be 0.
          * @returns the MNC, or 0 if unknown.
+         * @since 1.0
+         * @deprecated since 1.18.0.: This function can not separate between two-digit MNCs and three-digit MNCs with a leading zero. Use `mm_location_3gpp_get_operator_code()` instead.
          */
         get_mobile_network_code(): number;
 
@@ -38206,12 +38968,14 @@ export namespace ModemManager {
          * and <literal>MNC</literal> is the two- or three-digit GSM Mobile Network
          * Code. e.g. e<literal>"31026"</literal> or <literal>"310260"</literal>.
          * @returns The operator code, or `null` if none available.
+         * @since 1.18
          */
         get_operator_code(): string;
 
         /**
          * Gets the location area code of the 3GPP network.
          * @returns the location area code, or 0 if unknown.
+         * @since 1.10
          */
         get_tracking_area_code(): number;
     }
@@ -38264,12 +39028,14 @@ export namespace ModemManager {
         /**
          * Gets the latitude, in the [-90,90] range.
          * @returns the latitude, or `MM_LOCATION_LATITUDE_UNKNOWN` if unknown.
+         * @since 1.0
          */
         get_latitude(): number;
 
         /**
          * Gets the longitude, in the [-180,180] range.
          * @returns the longitude, or `MM_LOCATION_LONGITUDE_UNKNOWN` if unknown.
+         * @since 1.0
          */
         get_longitude(): number;
     }
@@ -38323,6 +39089,8 @@ export namespace ModemManager {
          * Gets a compilation of all cached traces, in a single string.
          * Traces are separated by '\r\n'.
          * @returns a string containing all traces, or `NULL` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
+         * @deprecated since 1.14: user should use `mm_location_gps_nmea_get_traces()` instead, which provides a much more generic interface to the full list of traces.
          */
         build_full(): string;
 
@@ -38330,12 +39098,14 @@ export namespace ModemManager {
          * Gets the last cached value of the specific `trace_type` given.
          * @param trace_type specific NMEA trace type to gather.
          * @returns the NMEA trace, or `null` if not available. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_trace(trace_type: string): string;
 
         /**
          * Gets all cached traces.
          * @returns The list of traces, or `null` if none available. The returned value should be freed with `g_strfreev()`.
+         * @since 1.14
          */
         get_traces(): string[];
     }
@@ -38388,24 +39158,28 @@ export namespace ModemManager {
         /**
          * Gets the altitude, in the [-90,90] range.
          * @returns the altitude, or `MM_LOCATION_ALTITUDE_UNKNOWN` if unknown.
+         * @since 1.0
          */
         get_altitude(): number;
 
         /**
          * Gets the latitude, in the [-90,90] range.
          * @returns the latitude, or `MM_LOCATION_LATITUDE_UNKNOWN` if unknown.
+         * @since 1.0
          */
         get_latitude(): number;
 
         /**
          * Gets the longitude, in the [-180,180] range.
          * @returns the longitude, or `MM_LOCATION_LONGITUDE_UNKNOWN` if unknown.
+         * @since 1.0
          */
         get_longitude(): number;
 
         /**
          * Gets the UTC time of the location being reported.
          * @returns a string with the UTC time, or `NULL` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_utc_time(): string;
     }
@@ -38490,6 +39264,7 @@ export namespace ModemManager {
          * @param flags Flags from the {@link Gio.DBusObjectManagerClientFlags} enumeration.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 1.0
          */
         static ["new"](connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Manager> | null): void;
 
@@ -38503,6 +39278,7 @@ export namespace ModemManager {
         /**
          * Gets the {@link Gio.DBusProxy} interface of the `manager`.
          * @returns The {@link Gio.DBusProxy} interface of `manager`, or `NULL` if none. The returned object must be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_proxy(): Gio.DBusProxy;
 
@@ -38511,6 +39287,7 @@ export namespace ModemManager {
          * 
          * It is safe to assume this value never changes during runtime.
          * @returns The version, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         get_version(): string;
 
@@ -38536,6 +39313,7 @@ export namespace ModemManager {
          * this method.
          * @param uid the unique ID of the physical device.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.10
          */
         inhibit_device(uid: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -38562,6 +39340,7 @@ export namespace ModemManager {
          * @param uid the unique ID of the physical device.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.10
          */
         inhibit_device(uid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -38588,6 +39367,7 @@ export namespace ModemManager {
          * @param uid the unique ID of the physical device.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.10
          */
         inhibit_device(uid: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -38595,6 +39375,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_manager_inhibit_device()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_manager_inhibit_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 1.10
          */
         inhibit_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -38614,12 +39395,14 @@ export namespace ModemManager {
          * @param uid the unique ID of the physical device.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 1.10
          */
         inhibit_device_sync(uid: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets the {@link Gio.DBusProxy} interface of the `manager`.
          * @returns The {@link Gio.DBusProxy} interface of `manager`, or `NULL` if none. Do not free the returned object, it is owned by `manager`.
+         * @since 1.0
          */
         peek_proxy(): Gio.DBusProxy;
 
@@ -38635,6 +39418,7 @@ export namespace ModemManager {
          * version of this method.
          * @param properties the properties of the kernel event.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.8
          */
         report_kernel_event(properties: KernelEventProperties, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -38651,6 +39435,7 @@ export namespace ModemManager {
          * @param properties the properties of the kernel event.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.8
          */
         report_kernel_event(properties: KernelEventProperties, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -38667,6 +39452,7 @@ export namespace ModemManager {
          * @param properties the properties of the kernel event.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.8
          */
         report_kernel_event(properties: KernelEventProperties, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -38674,6 +39460,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_manager_report_kernel_event()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_manager_report_kernel_event()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.8
          */
         report_kernel_event_finish(res: Gio.AsyncResult): boolean;
 
@@ -38687,6 +39474,7 @@ export namespace ModemManager {
          * @param properties the properties of the kernel event.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.8
          */
         report_kernel_event_sync(properties: KernelEventProperties, cancellable: Gio.Cancellable | null): boolean;
 
@@ -38701,6 +39489,7 @@ export namespace ModemManager {
          * See `mm_manager_scan_devices_sync()` for the synchronous, blocking version of
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         scan_devices(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -38716,6 +39505,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         scan_devices(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -38731,6 +39521,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         scan_devices(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -38738,6 +39529,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_manager_scan_devices()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_manager_scan_devices()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         scan_devices_finish(res: Gio.AsyncResult): boolean;
 
@@ -38749,6 +39541,7 @@ export namespace ModemManager {
          * See `mm_manager_scan_devices()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         scan_devices_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -38764,6 +39557,7 @@ export namespace ModemManager {
          * this method.
          * @param level the login level to set.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         set_logging(level: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -38780,6 +39574,7 @@ export namespace ModemManager {
          * @param level the login level to set.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         set_logging(level: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -38796,6 +39591,7 @@ export namespace ModemManager {
          * @param level the login level to set.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         set_logging(level: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -38803,6 +39599,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_manager_set_logging()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_manager_set_logging()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         set_logging_finish(res: Gio.AsyncResult): boolean;
 
@@ -38815,6 +39612,7 @@ export namespace ModemManager {
          * @param level the login level to set.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         set_logging_sync(level: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -38836,6 +39634,7 @@ export namespace ModemManager {
          * of this method.
          * @param uid the unique ID of the physical device.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.10
          */
         uninhibit_device(uid: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -38858,6 +39657,7 @@ export namespace ModemManager {
          * @param uid the unique ID of the physical device.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.10
          */
         uninhibit_device(uid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -38880,6 +39680,7 @@ export namespace ModemManager {
          * @param uid the unique ID of the physical device.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.10
          */
         uninhibit_device(uid: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -38887,6 +39688,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_manager_uninhibit_device()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_manager_uninhibit_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 1.10
          */
         uninhibit_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -38904,6 +39706,7 @@ export namespace ModemManager {
          * @param uid the unique ID of the physical device.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 1.10
          */
         uninhibit_device_sync(uid: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -38946,6 +39749,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -38989,6 +39793,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -39032,6 +39837,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -39040,6 +39846,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -39048,6 +39855,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Manager;
 
@@ -39097,6 +39905,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -39105,6 +39914,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -39204,12 +40014,16 @@ export namespace ModemManager {
         /**
          * Gets the list of pending network-initiated OMA sessions.
          * @param self A {@link ModemManager.Modem}.
+         * @since 1.2
+         * @deprecated since 1.18: Use `mm_modem_oma_get_pending_network_initiated_sessions()` instead.
          */
         static get_pending_network_initiated_sessions(self: ModemOma): [boolean, OmaPendingNetworkInitiatedSession[]];
 
         /**
          * Gets the list of pending network-initiated OMA sessions.
          * @param self A {@link ModemManager.Modem}.
+         * @since 1.2
+         * @deprecated since 1.18: Use `mm_modem_oma_peek_pending_network_initiated_sessions()` instead.
          */
         static peek_pending_network_initiated_sessions(self: ModemOma): [boolean, OmaPendingNetworkInitiatedSession[]];
 
@@ -39227,6 +40041,7 @@ export namespace ModemManager {
          * @param cmd AT command to run.
          * @param timeout Maximum time to wait for the response, in seconds.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         command(cmd: string, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -39244,6 +40059,7 @@ export namespace ModemManager {
          * @param timeout Maximum time to wait for the response, in seconds.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         command(cmd: string, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -39261,6 +40077,7 @@ export namespace ModemManager {
          * @param timeout Maximum time to wait for the response, in seconds.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         command(cmd: string, timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -39268,6 +40085,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_command()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_command()`.
          * @returns A newly allocated string with the reply to the command, or `NULL` if `error` is set. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         command_finish(res: Gio.AsyncResult): string;
 
@@ -39280,6 +40098,7 @@ export namespace ModemManager {
          * @param timeout Maximum time to wait for the response, in seconds.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A newly allocated string with the reply to the command, or `NULL` if `error` is set. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         command_sync(cmd: string, timeout: number, cancellable: Gio.Cancellable | null): string;
 
@@ -39301,6 +40120,7 @@ export namespace ModemManager {
          * this method.
          * @param properties A {@link ModemManager.BearerProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         create_bearer(properties: BearerProperties, cancellable: Gio.Cancellable | null): globalThis.Promise<Bearer>;
 
@@ -39323,6 +40143,7 @@ export namespace ModemManager {
          * @param properties A {@link ModemManager.BearerProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         create_bearer(properties: BearerProperties, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -39345,6 +40166,7 @@ export namespace ModemManager {
          * @param properties A {@link ModemManager.BearerProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         create_bearer(properties: BearerProperties, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Bearer> | void;
 
@@ -39352,6 +40174,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_create_bearer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_create_bearer()`.
          * @returns A newly created {@link ModemManager.Bearer}, or `null` if `error` is set.
+         * @since 1.0
          */
         create_bearer_finish(res: Gio.AsyncResult): Bearer;
 
@@ -39369,6 +40192,7 @@ export namespace ModemManager {
          * @param properties A {@link ModemManager.BearerProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A newly created {@link ModemManager.Bearer}, or `null` if `error` is set.
+         * @since 1.0
          */
         create_bearer_sync(properties: BearerProperties, cancellable: Gio.Cancellable | null): Bearer;
 
@@ -39384,6 +40208,7 @@ export namespace ModemManager {
          * this method.
          * @param bearer Path of the bearer to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         delete_bearer(bearer: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -39400,6 +40225,7 @@ export namespace ModemManager {
          * @param bearer Path of the bearer to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         delete_bearer(bearer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -39416,6 +40242,7 @@ export namespace ModemManager {
          * @param bearer Path of the bearer to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         delete_bearer(bearer: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -39423,6 +40250,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_delete_bearer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_delete_bearer()`.
          * @returns `true` if the bearer was deleted, `false` if `error` is set.
+         * @since 1.0
          */
         delete_bearer_finish(res: Gio.AsyncResult): boolean;
 
@@ -39434,6 +40262,7 @@ export namespace ModemManager {
          * @param bearer Path of the bearer to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the bearer was deleted, `false` if `error` is set.
+         * @since 1.0
          */
         delete_bearer_sync(bearer: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -39449,6 +40278,7 @@ export namespace ModemManager {
          * See `mm_modem_disable_sync()` for the synchronous, blocking version of this
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         disable(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -39465,6 +40295,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         disable(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -39481,6 +40312,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         disable(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -39488,6 +40320,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_disable()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_disable()`.
          * @returns `true` if the modem was properly disabled, `false` if `error` is set.
+         * @since 1.0
          */
         disable_finish(res: Gio.AsyncResult): boolean;
 
@@ -39499,12 +40332,14 @@ export namespace ModemManager {
          * `mm_modem_disable()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the modem was properly disabled, `false` if `error` is set.
+         * @since 1.0
          */
         disable_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets a copy of the DBus paths of the {@link ModemManager.Bearer} handled in this {@link ModemManager.Modem}.
          * @returns The DBus paths of the {@link ModemManager.Bearer} handled in this {@link ModemManager.Modem}, or `null` if none available. The returned value should be freed with `g_strfreev()`.
+         * @since 1.0
          */
         dup_bearer_paths(): string[];
 
@@ -39512,6 +40347,7 @@ export namespace ModemManager {
          * Gets a copy of the carrier-specific configuration (MCFG) in use, as reported
          * by this {@link ModemManager.Modem}.
          * @returns The carrier configuration, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.12
          */
         dup_carrier_configuration(): string;
 
@@ -39519,6 +40355,7 @@ export namespace ModemManager {
          * Gets a copy of the carrier-specific configuration revision in use, as
          * reported by this {@link ModemManager.Modem}.
          * @returns The carrier configuration revision, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.12
          */
         dup_carrier_configuration_revision(): string;
 
@@ -39526,6 +40363,7 @@ export namespace ModemManager {
          * Gets a copy of the physical modem device reference (ie, USB, PCI, PCMCIA
          * device), which may be dependent upon the operating system.
          * @returns The device, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_device(): string;
 
@@ -39542,6 +40380,7 @@ export namespace ModemManager {
          * This is not the device's IMEI or ESN since those may not be available
          * before unlocking the device via a PIN.
          * @returns The device identifier, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_device_identifier(): string;
 
@@ -39549,6 +40388,7 @@ export namespace ModemManager {
          * Gets a copy of the Operating System device driver handling communication with
          * the modem hardware.
          * @returns The drivers, or `null` if none available. The returned value should be freed with `g_strfreev()`.
+         * @since 1.0
          */
         dup_drivers(): string[];
 
@@ -39558,24 +40398,28 @@ export namespace ModemManager {
          * This will be the IMEI number for GSM devices and the hex-format ESN/MEID
          * for CDMA devices.
          * @returns The equipment identifier, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_equipment_identifier(): string;
 
         /**
          * Gets a copy of the equipment hardware revision, as reported by this {@link ModemManager.Modem}.
          * @returns The equipment hardware revision, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.8
          */
         dup_hardware_revision(): string;
 
         /**
          * Gets a copy of the equipment manufacturer, as reported by this {@link ModemManager.Modem}.
          * @returns The equipment manufacturer, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_manufacturer(): string;
 
         /**
          * Gets a copy of the equipment model, as reported by this {@link ModemManager.Modem}.
          * @returns The equipment model, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_model(): string;
 
@@ -39583,6 +40427,7 @@ export namespace ModemManager {
          * Gets a copy of the list of numbers (e.g. MSISDN in 3GPP) being currently
          * handled by this modem.
          * @returns The list of own numbers or `null` if none is available. The returned value should be freed with `g_strfreev()`.
+         * @since 1.0
          */
         dup_own_numbers(): string[];
 
@@ -39590,6 +40435,7 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_path(): string;
 
@@ -39597,30 +40443,35 @@ export namespace ModemManager {
          * Gets a copy of the physical modem device path (ie, USB, PCI, PCMCIA
          * device), which may be dependent upon the operating system.
          * @returns The physdev path, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.22
          */
         dup_physdev(): string;
 
         /**
          * Gets a copy of the name of the plugin handling this {@link ModemManager.Modem}.
          * @returns The name of the plugin, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_plugin(): string;
 
         /**
          * Gets a copy of the name of the primary port controlling this {@link ModemManager.Modem}.
          * @returns The name of the primary port. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_primary_port(): string;
 
         /**
          * Gets a copy of the equipment revision, as reported by this {@link ModemManager.Modem}.
          * @returns The equipment revision, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_revision(): string;
 
         /**
          * Gets a copy of the DBus path of the {@link ModemManager.Sim} handled in this {@link ModemManager.Modem}.
          * @returns The DBus path of the {@link ModemManager.Sim} handled in this {@link ModemManager.Modem}, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_sim_path(): string;
 
@@ -39630,6 +40481,7 @@ export namespace ModemManager {
          * index doesn't have a SIM card available, an empty object path will be given.
          * This list includes the currently active SIM object path.
          * @returns The DBus paths of the {@link ModemManager.Sim} objects handled in this {@link ModemManager.Modem}, or `null` if none available. The returned value should be freed with `g_strfreev()`.
+         * @since 1.16
          */
         dup_sim_slot_paths(): string[];
 
@@ -39646,6 +40498,7 @@ export namespace ModemManager {
          * See `mm_modem_enable_sync()` for the synchronous, blocking version of this
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         enable(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -39663,6 +40516,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         enable(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -39680,6 +40534,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         enable(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -39687,6 +40542,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_enable()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_enable()`.
          * @returns `true` if the modem was properly enabled, `false` if `error` is set.
+         * @since 1.0
          */
         enable_finish(res: Gio.AsyncResult): boolean;
 
@@ -39699,6 +40555,7 @@ export namespace ModemManager {
          * `mm_modem_enable()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the modem was properly enabled, `false` if `error` is set.
+         * @since 1.0
          */
         enable_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -39715,6 +40572,7 @@ export namespace ModemManager {
          * this method.
          * @param code Carrier-supplied code required to reset the modem.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         factory_reset(code: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -39732,6 +40590,7 @@ export namespace ModemManager {
          * @param code Carrier-supplied code required to reset the modem.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         factory_reset(code: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -39749,6 +40608,7 @@ export namespace ModemManager {
          * @param code Carrier-supplied code required to reset the modem.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         factory_reset(code: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -39756,6 +40616,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_factory_reset()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_factory_reset()`.
          * @returns `true` if the factory_reset was successful, `false` if `error` is set.
+         * @since 1.0
          */
         factory_reset_finish(res: Gio.AsyncResult): boolean;
 
@@ -39768,6 +40629,7 @@ export namespace ModemManager {
          * @param code Carrier-supplied code required to reset the modem.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the factory reset was successful, `false` if `error` is set.
+         * @since 1.0
          */
         factory_reset_sync(code: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -39775,6 +40637,7 @@ export namespace ModemManager {
          * Gets the current network access technology used by the {@link ModemManager.Modem} to
          * communicate with the network.
          * @returns A #{@link ModemManager.ModemAccessTechnology} value.
+         * @since 1.0
          */
         get_access_technologies(): ModemAccessTechnology;
 
@@ -39785,6 +40648,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_bearer_paths()` if on another thread.</warning>
          * @returns The DBus paths of the {@link ModemManager.Bearer} handled in this {@link ModemManager.Modem}, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         get_bearer_paths(): string[];
 
@@ -39796,6 +40660,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_carrier_configuration()` if on another thread.</warning>
          * @returns The carrier configuration, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.12
          */
         get_carrier_configuration(): string;
 
@@ -39807,6 +40672,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_carrier_configuration()` if on another thread.</warning>
          * @returns The carrier configuration revision, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.12
          */
         get_carrier_configuration_revision(): string;
 
@@ -39821,6 +40687,7 @@ export namespace ModemManager {
          * See `mm_modem_get_cell_info_sync()` for the synchronous, blocking version of this
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.20
          */
         get_cell_info(cancellable: Gio.Cancellable | null): globalThis.Promise<CellInfo[]>;
 
@@ -39836,6 +40703,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.20
          */
         get_cell_info(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -39851,6 +40719,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.20
          */
         get_cell_info(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<CellInfo[]> | void;
 
@@ -39858,6 +40727,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_get_cell_info()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_get_cell_info()`.
          * @returns a list of {@link ModemManager.CellInfo} objects, or `NULL` if `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
+         * @since 1.20
          */
         get_cell_info_finish(res: Gio.AsyncResult): CellInfo[];
 
@@ -39868,6 +40738,7 @@ export namespace ModemManager {
          * `mm_modem_get_cell_info()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns a list of {@link ModemManager.CellInfo} objects, or `NULL` if `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
+         * @since 1.20
          */
         get_cell_info_sync(cancellable: Gio.Cancellable | null): CellInfo[];
 
@@ -39877,6 +40748,7 @@ export namespace ModemManager {
          * 
          * For POTS devices, only the #MM_MODEM_BAND_ANY band is supported.
          * @returns `true` if `bands` and `n_bands` are set, `false` otherwise.
+         * @since 1.0
          */
         get_current_bands(): [boolean, ModemBand[]];
 
@@ -39884,6 +40756,7 @@ export namespace ModemManager {
          * Gets the list of generic families of access technologies supported by this
          * {@link ModemManager.Modem} without a firmware reload or reinitialization.
          * @returns A bitmask of {@link ModemManager.ModemCapability} flags.
+         * @since 1.0
          */
         get_current_capabilities(): ModemCapability;
 
@@ -39892,6 +40765,7 @@ export namespace ModemManager {
          * the {@link ModemManager.Modem} is currently allowed to use when connecting to a network, as
          * well as the preferred one, if any.
          * @returns `true` if `allowed` and `preferred` are set, `false` otherwise.
+         * @since 1.0
          */
         get_current_modes(): [boolean, ModemMode, ModemMode];
 
@@ -39903,6 +40777,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_device()` if on another thread.</warning>
          * @returns The device, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         get_device(): string;
 
@@ -39922,6 +40797,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_device_identifier()` if on another thread.</warning>
          * @returns The device identifier, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         get_device_identifier(): string;
 
@@ -39933,6 +40809,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_drivers()` if on another thread.</warning>
          * @returns The drivers, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         get_drivers(): string[];
 
@@ -39946,6 +40823,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_equipment_identifier()` if on another thread.</warning>
          * @returns The equipment identifier, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         get_equipment_identifier(): string;
 
@@ -39956,6 +40834,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_hardware_revision()` if on another thread.</warning>
          * @returns The equipment hardware revision, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.8
          */
         get_hardware_revision(): string;
 
@@ -39966,6 +40845,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_manufacturer()` if on another thread.</warning>
          * @returns The equipment manufacturer, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         get_manufacturer(): string;
 
@@ -39978,6 +40858,7 @@ export namespace ModemManager {
          * one or more active bearers, depending on the amount of physical ports exposed
          * by the device.
          * @returns the maximum number of active packet data bearers.
+         * @since 1.0
          */
         get_max_active_bearers(): number;
 
@@ -39985,6 +40866,7 @@ export namespace ModemManager {
          * Gets the maximum number of active packet data bearers this {@link ModemManager.Modem} supports
          * after enabling multiplexing support on one single network interface.
          * @returns the maximum number of active packet data bearers, or 0 if multiplexing is not supported.
+         * @since 1.18
          */
         get_max_active_multiplexed_bearers(): number;
 
@@ -39999,6 +40881,8 @@ export namespace ModemManager {
          * LTE-capable device (whether LTE-only, GSM/UMTS-capable, and/or
          * CDMA2000-capable) also typically support three or more.
          * @returns the maximum number of defined packet data bearers.
+         * @since 1.0
+         * @deprecated since 1.18.: There is no way to query the modem how many bearers it supports, so the value exposed in this property in all the different implementations is always equal to the one retrieved with `mm_modem_get_max_active_bearers()`, so there is no point in using this method.
          */
         get_max_bearers(): number;
 
@@ -40009,6 +40893,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_model()` if on another thread.</warning>
          * @returns The equipment model, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         get_model(): string;
 
@@ -40020,6 +40905,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_physdev()` if on another thread.</warning>
          * @returns The physdev path, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.22
          */
         get_physdev(): string;
 
@@ -40030,18 +40916,21 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_plugin()` if on another thread.</warning>
          * @returns The name of the plugin, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         get_plugin(): string;
 
         /**
          * Gets the list of ports in the modem.
          * @returns `true` if `ports` and `n_ports` are set, `false` otherwise.
+         * @since 1.0
          */
         get_ports(): [boolean, ModemPortInfo[]];
 
         /**
          * Gets the power state of the {@link ModemManager.Modem}.
          * @returns A {@link ModemManager.ModemPowerState} value.
+         * @since 1.0
          */
         get_power_state(): ModemPowerState;
 
@@ -40052,12 +40941,14 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_primary_port()` if on another thread.</warning>
          * @returns The name of the primary port. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         get_primary_port(): string;
 
         /**
          * Gets the SIM slot number of the primary active SIM.
          * @returns slot number, in the [1,N] range.
+         * @since 1.16
          */
         get_primary_sim_slot(): number;
 
@@ -40068,6 +40959,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_revision()` if on another thread.</warning>
          * @returns The equipment revision, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         get_revision(): string;
 
@@ -40077,6 +40969,7 @@ export namespace ModemManager {
          * 
          * Always 0 for POTS devices.
          * @returns The signal quality.
+         * @since 1.0
          */
         get_signal_quality(): [number, boolean];
 
@@ -40091,6 +40984,7 @@ export namespace ModemManager {
          * See `mm_modem_get_sim_sync()` for the synchronous, blocking version of this
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         get_sim(cancellable: Gio.Cancellable | null): globalThis.Promise<Sim>;
 
@@ -40106,6 +41000,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_sim(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -40121,6 +41016,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_sim(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Sim> | void;
 
@@ -40128,6 +41024,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_get_sim()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_get_sim()`.
          * @returns a {@link ModemManager.Sim} or `NULL` if `error` is set. The returned value should be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_sim_finish(res: Gio.AsyncResult): Sim;
 
@@ -40141,6 +41038,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_dup_sim_slot_paths()` if on another thread.</warning>
          * @returns The DBus paths of the {@link ModemManager.Sim} objects handled in this {@link ModemManager.Modem}, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.16
          */
         get_sim_slot_paths(): string[];
 
@@ -40151,18 +41049,21 @@ export namespace ModemManager {
          * `mm_modem_get_sim()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns a {@link ModemManager.Sim} or `NULL` if `error` is set. The returned value should be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_sim_sync(cancellable: Gio.Cancellable | null): Sim;
 
         /**
          * Gets the overall state of the {@link ModemManager.Modem}.
          * @returns A {@link ModemManager.ModemState} value.
+         * @since 1.0
          */
         get_state(): ModemState;
 
         /**
          * Gets the reason specifying why the modem is in #MM_MODEM_STATE_FAILED state.
          * @returns A {@link ModemManager.ModemStateFailedReason} value.
+         * @since 1.0
          */
         get_state_failed_reason(): ModemStateFailedReason;
 
@@ -40172,6 +41073,7 @@ export namespace ModemManager {
          * 
          * For POTS devices, only #MM_MODEM_BAND_ANY will be returned in `bands`.
          * @returns `true` if `bands` and `n_bands` are set, `false` otherwise.
+         * @since 1.0
          */
         get_supported_bands(): [boolean, ModemBand[]];
 
@@ -40179,24 +41081,28 @@ export namespace ModemManager {
          * Gets the list of combinations of generic families of access technologies
          * supported by this {@link ModemManager.Modem}.
          * @returns `true` if `capabilities` and `n_capabilities` are set, `false` otherwise.
+         * @since 1.0
          */
         get_supported_capabilities(): [boolean, ModemCapability[]];
 
         /**
          * Gets the list of supported IP families.
          * @returns A bitmask of {@link ModemManager.BearerIpFamily} values.
+         * @since 1.0
          */
         get_supported_ip_families(): BearerIpFamily;
 
         /**
          * Gets the list of supported mode combinations.
          * @returns `true` if `modes` and `n_modes` are set, `false` otherwise.
+         * @since 1.0
          */
         get_supported_modes(): [boolean, ModemModeCombination[]];
 
         /**
          * Gets current lock state of the {@link ModemManager.Modem}.
          * @returns A {@link ModemManager.ModemLock} value, specifying the current lock state.
+         * @since 1.0
          */
         get_unlock_required(): ModemLock;
 
@@ -40211,6 +41117,7 @@ export namespace ModemManager {
          * `mm_modem_get_unlock_retries()` again to get a new {@link ModemManager.UnlockRetries} with the
          * new values.</warning>
          * @returns A {@link ModemManager.UnlockRetries} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.0
          */
         get_unlock_retries(): UnlockRetries;
 
@@ -40225,6 +41132,7 @@ export namespace ModemManager {
          * See `mm_modem_list_bearers_sync()` for the synchronous, blocking version of
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         list_bearers(cancellable: Gio.Cancellable | null): globalThis.Promise<Bearer[]>;
 
@@ -40240,6 +41148,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         list_bearers(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -40255,6 +41164,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         list_bearers(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Bearer[]> | void;
 
@@ -40262,6 +41172,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_list_bearers()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_list_bearers()`.
          * @returns The list of {@link ModemManager.Bearer} objects, or `null` if either none found or if `error` is set.
+         * @since 1.0
          */
         list_bearers_finish(res: Gio.AsyncResult): Bearer[];
 
@@ -40272,6 +41183,7 @@ export namespace ModemManager {
          * `mm_modem_list_bearers()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns The list of {@link ModemManager.Bearer} objects, or `null` if either none found or if `error` is set.
+         * @since 1.0
          */
         list_bearers_sync(cancellable: Gio.Cancellable | null): Bearer[];
 
@@ -40290,6 +41202,7 @@ export namespace ModemManager {
          * See `mm_modem_list_sim_slots_sync()` for the synchronous, blocking version of
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.16
          */
         list_sim_slots(cancellable: Gio.Cancellable | null): globalThis.Promise<Sim[]>;
 
@@ -40309,6 +41222,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.16
          */
         list_sim_slots(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -40328,6 +41242,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.16
          */
         list_sim_slots(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Sim[]> | void;
 
@@ -40335,6 +41250,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_list_sim_slots()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_list_sim_slots()`.
          * @returns The array of {@link ModemManager.Sim} objects, or `null` if `error` is set.
+         * @since 1.16
          */
         list_sim_slots_finish(res: Gio.AsyncResult): Sim[];
 
@@ -40349,6 +41265,7 @@ export namespace ModemManager {
          * `mm_modem_list_sim_slots()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns The array of {@link ModemManager.Sim} objects, or `null` if `error` is set.
+         * @since 1.16
          */
         list_sim_slots_sync(cancellable: Gio.Cancellable | null): Sim[];
 
@@ -40358,12 +41275,14 @@ export namespace ModemManager {
          * 
          * For POTS devices, only the #MM_MODEM_BAND_ANY band is supported.
          * @returns `true` if `bands` and `n_bands` are set, `false` otherwise.
+         * @since 1.0
          */
         peek_current_bands(): [boolean, ModemBand[]];
 
         /**
          * Gets the list of ports in the modem.
          * @returns `true` if `ports` and `n_ports` are set, `false` otherwise.
+         * @since 1.0
          */
         peek_ports(): [boolean, ModemPortInfo[]];
 
@@ -40373,6 +41292,7 @@ export namespace ModemManager {
          * 
          * For POTS devices, only #MM_MODEM_BAND_ANY will be returned in `bands`.
          * @returns `true` if `bands` and `n_bands` are set, `false` otherwise.
+         * @since 1.0
          */
         peek_supported_bands(): [boolean, ModemBand[]];
 
@@ -40380,12 +41300,14 @@ export namespace ModemManager {
          * Gets the list of combinations of generic families of access technologies
          * supported by this {@link ModemManager.Modem}.
          * @returns `true` if `capabilities` and `n_capabilities` are set, `false` otherwise.
+         * @since 1.0
          */
         peek_supported_capabilities(): [boolean, ModemCapability[]];
 
         /**
          * Gets the list of supported mode combinations.
          * @returns `true` if `modes` and `n_modes` are set, `false` otherwise.
+         * @since 1.0
          */
         peek_supported_modes(): [boolean, ModemModeCombination[]];
 
@@ -40399,6 +41321,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_get_unlock_retries()` if on another thread.</warning>
          * @returns A {@link ModemManager.UnlockRetries}. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         peek_unlock_retries(): UnlockRetries;
 
@@ -40414,6 +41337,7 @@ export namespace ModemManager {
          * See `mm_modem_reset_sync()` for the synchronous, blocking version of this
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         reset(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -40430,6 +41354,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         reset(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -40446,6 +41371,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         reset(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -40453,6 +41379,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_reset()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_reset()`.
          * @returns `true` if the reset was successful, `false` if `error` is set.
+         * @since 1.0
          */
         reset_finish(res: Gio.AsyncResult): boolean;
 
@@ -40464,6 +41391,7 @@ export namespace ModemManager {
          * for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the reset was successful, `false` if `error` is set.
+         * @since 1.0
          */
         reset_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -40481,6 +41409,7 @@ export namespace ModemManager {
          * @param bands An array of {@link ModemManager.ModemBand} values specifying which bands are allowed.
          * @param n_bands Number of elements in `bands`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         set_current_bands(bands: ModemBand, n_bands: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -40499,6 +41428,7 @@ export namespace ModemManager {
          * @param n_bands Number of elements in `bands`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         set_current_bands(bands: ModemBand, n_bands: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -40517,6 +41447,7 @@ export namespace ModemManager {
          * @param n_bands Number of elements in `bands`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         set_current_bands(bands: ModemBand, n_bands: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -40524,6 +41455,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_set_current_bands()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_set_current_bands()`.
          * @returns `true` if the bands were successfully set, `false` if `error` is set.
+         * @since 1.0
          */
         set_current_bands_finish(res: Gio.AsyncResult): boolean;
 
@@ -40537,6 +41469,7 @@ export namespace ModemManager {
          * @param n_bands Number of elements in `bands`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the bands were successfully set, `false` if `error` is set.
+         * @since 1.0
          */
         set_current_bands_sync(bands: ModemBand, n_bands: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -40554,6 +41487,7 @@ export namespace ModemManager {
          * version of this method.
          * @param capabilities A {@link ModemManager.ModemCapability} mask.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         set_current_capabilities(capabilities: ModemCapability, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -40572,6 +41506,7 @@ export namespace ModemManager {
          * @param capabilities A {@link ModemManager.ModemCapability} mask.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         set_current_capabilities(capabilities: ModemCapability, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -40590,6 +41525,7 @@ export namespace ModemManager {
          * @param capabilities A {@link ModemManager.ModemCapability} mask.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         set_current_capabilities(capabilities: ModemCapability, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -40597,6 +41533,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_set_current_capabilities()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_set_current_capabilities()`.
          * @returns `true` if the capabilities were successfully set, `false` if `error` is set.
+         * @since 1.0
          */
         set_current_capabilities_finish(res: Gio.AsyncResult): boolean;
 
@@ -40610,6 +41547,7 @@ export namespace ModemManager {
          * @param capabilities A {@link ModemManager.ModemCapability} mask.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the capabilities were successfully set, `false` if `error` is set.
+         * @since 1.0
          */
         set_current_capabilities_sync(capabilities: ModemCapability, cancellable: Gio.Cancellable | null): boolean;
 
@@ -40627,6 +41565,7 @@ export namespace ModemManager {
          * @param modes Mask of {@link ModemManager.ModemMode} values specifying which modes are allowed.
          * @param preferred A {@link ModemManager.ModemMode} value specifying which of the modes given in  `modes` is the preferred one, or #MM_MODEM_MODE_NONE if none.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         set_current_modes(modes: ModemMode, preferred: ModemMode, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -40645,6 +41584,7 @@ export namespace ModemManager {
          * @param preferred A {@link ModemManager.ModemMode} value specifying which of the modes given in  `modes` is the preferred one, or #MM_MODEM_MODE_NONE if none.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         set_current_modes(modes: ModemMode, preferred: ModemMode, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -40663,6 +41603,7 @@ export namespace ModemManager {
          * @param preferred A {@link ModemManager.ModemMode} value specifying which of the modes given in  `modes` is the preferred one, or #MM_MODEM_MODE_NONE if none.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         set_current_modes(modes: ModemMode, preferred: ModemMode, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -40670,6 +41611,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_set_current_modes()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_set_current_modes()`.
          * @returns `true` if the allowed modes were successfully set, `false` if `error` is set.
+         * @since 1.0
          */
         set_current_modes_finish(res: Gio.AsyncResult): boolean;
 
@@ -40683,6 +41625,7 @@ export namespace ModemManager {
          * @param preferred A {@link ModemManager.ModemMode} value specifying which of the modes given in  `modes` is the preferred one, or #MM_MODEM_MODE_NONE if none.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the allowed modes were successfully set, `false` if `error` is set.
+         * @since 1.0
          */
         set_current_modes_sync(modes: ModemMode, preferred: ModemMode, cancellable: Gio.Cancellable | null): boolean;
 
@@ -40699,6 +41642,7 @@ export namespace ModemManager {
          * this method.
          * @param state Either {@link ModemManager.ModemPowerState.LOW} or {@link ModemManager.ModemPowerState.ON}. Every  other {@link ModemManager.ModemPowerState} value is not allowed.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         set_power_state(state: ModemPowerState, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -40716,6 +41660,7 @@ export namespace ModemManager {
          * @param state Either {@link ModemManager.ModemPowerState.LOW} or {@link ModemManager.ModemPowerState.ON}. Every  other {@link ModemManager.ModemPowerState} value is not allowed.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         set_power_state(state: ModemPowerState, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -40733,6 +41678,7 @@ export namespace ModemManager {
          * @param state Either {@link ModemManager.ModemPowerState.LOW} or {@link ModemManager.ModemPowerState.ON}. Every  other {@link ModemManager.ModemPowerState} value is not allowed.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         set_power_state(state: ModemPowerState, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -40740,6 +41686,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_set_power_state()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_set_power_state()`.
          * @returns `true` if the power state was successfully set, `false` if `error` is set.
+         * @since 1.0
          */
         set_power_state_finish(res: Gio.AsyncResult): boolean;
 
@@ -40752,6 +41699,7 @@ export namespace ModemManager {
          * @param state Either {@link ModemManager.ModemPowerState.LOW} or {@link ModemManager.ModemPowerState.ON}. Every  other {@link ModemManager.ModemPowerState} value is not allowed.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the power state was successfully set, `false` if `error` is set.
+         * @since 1.0
          */
         set_power_state_sync(state: ModemPowerState, cancellable: Gio.Cancellable | null): boolean;
 
@@ -40767,6 +41715,7 @@ export namespace ModemManager {
          * this method.
          * @param sim_slot SIM slot number.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.16
          */
         set_primary_sim_slot(sim_slot: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -40783,6 +41732,7 @@ export namespace ModemManager {
          * @param sim_slot SIM slot number.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.16
          */
         set_primary_sim_slot(sim_slot: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -40799,6 +41749,7 @@ export namespace ModemManager {
          * @param sim_slot SIM slot number.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.16
          */
         set_primary_sim_slot(sim_slot: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -40806,6 +41757,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_set_primary_sim_slot()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_set_primary_sim_slot()`.
          * @returns `true` if the SIM slot switch has been successfully requested, `false` if `error` is set.
+         * @since 1.16
          */
         set_primary_sim_slot_finish(res: Gio.AsyncResult): boolean;
 
@@ -40817,6 +41769,7 @@ export namespace ModemManager {
          * @param sim_slot SIM slot number.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the SIM slot switch has been successfully requested, `false` if `error` is set.
+         * @since 1.16
          */
         set_primary_sim_slot_sync(sim_slot: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -41448,6 +42401,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -41491,6 +42445,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -41534,6 +42489,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -41542,6 +42498,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -41550,6 +42507,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Modem;
 
@@ -41599,6 +42557,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -41607,6 +42566,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -42586,6 +43546,7 @@ export namespace ModemManager {
          * @param facility Single bit value describing the modem personalization lock to disable.
          * @param control_key String with control key required to unlock the personalization.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.20
          */
         disable_facility_lock(facility: Modem3gppFacility, control_key: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -42601,6 +43562,7 @@ export namespace ModemManager {
          * @param control_key String with control key required to unlock the personalization.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.20
          */
         disable_facility_lock(facility: Modem3gppFacility, control_key: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -42616,6 +43578,7 @@ export namespace ModemManager {
          * @param control_key String with control key required to unlock the personalization.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.20
          */
         disable_facility_lock(facility: Modem3gppFacility, control_key: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -42623,6 +43586,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_disable_facility_lock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_disable_facility_lock()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.20
          */
         disable_facility_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -42636,6 +43600,7 @@ export namespace ModemManager {
          * @param control_key String with control key required to unlock the personalization.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.20
          */
         disable_facility_lock_sync(facility: Modem3gppFacility, control_key: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -42643,6 +43608,7 @@ export namespace ModemManager {
          * Gets a copy of the <ulink url="http://en.wikipedia.org/wiki/Imei">IMEI</ulink>,
          * as reported by this {@link ModemManager.Modem3gpp}.
          * @returns The IMEI, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_imei(): string;
 
@@ -42650,6 +43616,7 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the initial EPS {@link ModemManager.Bearer} exposed in this
          * {@link ModemManager.Modem3gpp}.
          * @returns The DBus path of the {@link ModemManager.Bearer}, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.10
          */
         dup_initial_eps_bearer_path(): string;
 
@@ -42662,6 +43629,7 @@ export namespace ModemManager {
          * and <literal>MNC</literal> is the two- or three-digit GSM Mobile Network
          * Code. e.g. e<literal>"31026"</literal> or <literal>"310260"</literal>.
          * @returns The operator code, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_operator_code(): string;
 
@@ -42669,6 +43637,7 @@ export namespace ModemManager {
          * Gets a copy of the name of the operator to which the mobile is
          * currently registered.
          * @returns The operator name, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_operator_name(): string;
 
@@ -42676,18 +43645,21 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_path(): string;
 
         /**
          * Get the list of facilities for which PIN locking is enabled.
          * @returns A bitmask of {@link ModemManager.Modem3gppFacility} flags, specifying which facilities have locks enabled.
+         * @since 1.0
          */
         get_enabled_facility_locks(): Modem3gppFacility;
 
         /**
          * Get the UE mode of operation for EPS.
          * @returns A {@link ModemManager.Modem3gppEpsUeModeOperation}.
+         * @since 1.8
          */
         get_eps_ue_mode_operation(): Modem3gppEpsUeModeOperation;
 
@@ -42700,6 +43672,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_modem_3gpp_dup_imei()` if on another
          * thread.</warning>
          * @returns The IMEI, or `null` if none available.
+         * @since 1.0
          */
         get_imei(): string;
 
@@ -42716,6 +43689,7 @@ export namespace ModemManager {
          * See `mm_modem_3gpp_get_initial_eps_bearer_sync()` for the synchronous, blocking
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.10
          */
         get_initial_eps_bearer(cancellable: Gio.Cancellable | null): globalThis.Promise<Bearer>;
 
@@ -42733,6 +43707,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.10
          */
         get_initial_eps_bearer(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -42750,6 +43725,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.10
          */
         get_initial_eps_bearer(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Bearer> | void;
 
@@ -42757,6 +43733,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_get_initial_eps_bearer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_get_initial_eps_bearer()`.
          * @returns a {@link ModemManager.Sim} or `NULL` if `error` is set. The returned value should be freed with `g_object_unref()`.
+         * @since 1.10
          */
         get_initial_eps_bearer_finish(res: Gio.AsyncResult): Bearer;
 
@@ -42769,6 +43746,7 @@ export namespace ModemManager {
          * `mm_modem_3gpp_get_initial_eps_bearer_settings()` again to get a new
          * {@link ModemManager.BearerProperties} with the new values.</warning>
          * @returns A {@link ModemManager.BearerProperties} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.10
          */
         get_initial_eps_bearer_settings(): BearerProperties;
 
@@ -42781,6 +43759,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns a {@link ModemManager.Bearer} or `NULL` if `error` is set. The returned value should be freed with `g_object_unref()`.
+         * @since 1.10
          */
         get_initial_eps_bearer_sync(cancellable: Gio.Cancellable | null): Bearer;
 
@@ -42793,6 +43772,7 @@ export namespace ModemManager {
          * `mm_modem_3gpp_get_network_rejection()` again to get a new
          * {@link ModemManager.NetworkRejection} with the new values.</warning>
          * @returns A {@link ModemManager.NetworkRejection} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.24
          */
         get_network_rejection(): NetworkRejection;
 
@@ -42805,6 +43785,7 @@ export namespace ModemManager {
          * `mm_modem_3gpp_get_nr5g_registration_settings()` again to get a new
          * {@link ModemManager.Nr5gRegistrationSettings} with the new values.</warning>
          * @returns A {@link ModemManager.Nr5gRegistrationSettings} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.20
          */
         get_nr5g_registration_settings(): Nr5gRegistrationSettings;
 
@@ -42825,6 +43806,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_modem_3gpp_dup_operator_code()` if on another
          * thread.</warning>
          * @returns The operator code, or `null` if none available.
+         * @since 1.0
          */
         get_operator_code(): string;
 
@@ -42837,24 +43819,28 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_modem_3gpp_dup_operator_name()` if on another
          * thread.</warning>
          * @returns The operator name, or `null` if none available.
+         * @since 1.0
          */
         get_operator_name(): string;
 
         /**
          * Get the packet domain service state.
          * @returns A {@link ModemManager.Modem3gppPacketServiceState} value, specifying the current PS attach  state.
+         * @since 1.20
          */
         get_packet_service_state(): Modem3gppPacketServiceState;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.0
          */
         get_path(): string;
 
         /**
          * Get the list of {@link ModemManager.Pco} received from the network.
          * @returns a list of {@link ModemManager.Pco} objects, or `NULL` if `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
+         * @since 1.10
          */
         get_pco(): Pco[];
 
@@ -42862,6 +43848,7 @@ export namespace ModemManager {
          * Get the the mobile registration status as defined in 3GPP TS 27.007
          * section 10.1.19.
          * @returns A {@link ModemManager.Modem3gppRegistrationState} value, specifying the current registration state.
+         * @since 1.0
          */
         get_registration_state(): Modem3gppRegistrationState;
 
@@ -42873,6 +43860,8 @@ export namespace ModemManager {
          * (e.g. processing specific PCO info), and therefore it doesn't make sense to
          * expose it in the ModemManager interface.
          * @returns A {@link ModemManager.Modem3gppSubscriptionState} value, specifying the current subscription state.
+         * @since 1.0
+         * @deprecated since 1.10.0.: The value of this property can only be obtained with operator specific logic (e.g. processing specific PCO info), and therefore it doesn't make sense to expose it in the ModemManager interface.
          */
         get_subscription_state(): Modem3gppSubscriptionState;
 
@@ -42885,6 +43874,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_modem_3gpp_get_initial_eps_bearer_settings()`
          * if on another thread.</warning>
          * @returns A {@link ModemManager.BearerProperties}. Do not free the returned value, it belongs to `self`.
+         * @since 1.10
          */
         peek_initial_eps_bearer_settings(): BearerProperties;
 
@@ -42897,6 +43887,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_modem_3gpp_get_network_rejection()`
          * if on another thread.</warning>
          * @returns A {@link ModemManager.NetworkRejection}. Do not free the returned value, it belongs to `self`.
+         * @since 1.24
          */
         peek_network_rejection(): NetworkRejection;
 
@@ -42909,6 +43900,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_modem_3gpp_get_nr5g_registration_settings()`
          * if on another thread.</warning>
          * @returns A {@link ModemManager.Nr5gRegistrationSettings} Do not free the returned value, it belongs to `self`.
+         * @since 1.20
          */
         peek_nr5g_registration_settings(): Nr5gRegistrationSettings;
 
@@ -42924,6 +43916,7 @@ export namespace ModemManager {
          * this method.
          * @param network_id The operator ID to register. An empty string can be used to  register to the home network.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         register(network_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -42940,6 +43933,7 @@ export namespace ModemManager {
          * @param network_id The operator ID to register. An empty string can be used to  register to the home network.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         register(network_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -42956,6 +43950,7 @@ export namespace ModemManager {
          * @param network_id The operator ID to register. An empty string can be used to  register to the home network.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         register(network_id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -42963,6 +43958,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_register()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_register()`.
          * @returns `true` if the modem was registered, `false` if `error` is set.
+         * @since 1.0
          */
         register_finish(res: Gio.AsyncResult): boolean;
 
@@ -42974,6 +43970,7 @@ export namespace ModemManager {
          * @param network_id The operator ID to register. An empty string can be used to  register to the home network.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the modem was registered, `false` if `error` is set.
+         * @since 1.0
          */
         register_sync(network_id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -42988,6 +43985,7 @@ export namespace ModemManager {
          * See `mm_modem_3gpp_scan_sync()` for the synchronous, blocking version of this
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         scan(cancellable: Gio.Cancellable | null): globalThis.Promise<Modem3gppNetwork[]>;
 
@@ -43003,6 +44001,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         scan(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -43018,6 +44017,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         scan(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Modem3gppNetwork[]> | void;
 
@@ -43025,6 +44025,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_scan()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_scan()`.
          * @returns a list of {@link ModemManager.Modem3gppNetwork} structs, or `NULL` if `error` is set. The returned value should be freed with `g_list_free_full()` using `mm_modem_3gpp_network_free()` as {@link GLib.DestroyNotify} function.
+         * @since 1.0
          */
         scan_finish(res: Gio.AsyncResult): Modem3gppNetwork[];
 
@@ -43035,6 +44036,7 @@ export namespace ModemManager {
          * `mm_modem_3gpp_scan()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns a list of {@link ModemManager.Modem3gppNetwork} structs, or `NULL` if `error` is set. The returned value should be freed with `g_list_free_full()` using `mm_modem_3gpp_network_free()` as {@link GLib.DestroyNotify} function.
+         * @since 1.0
          */
         scan_sync(cancellable: Gio.Cancellable | null): Modem3gppNetwork[];
 
@@ -43051,6 +44053,7 @@ export namespace ModemManager {
          * blocking version of this method.
          * @param data Carrier lock information.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.22
          */
         set_carrier_lock(data: Uint8Array | string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -43068,6 +44071,7 @@ export namespace ModemManager {
          * @param data Carrier lock information.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.22
          */
         set_carrier_lock(data: Uint8Array | string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -43085,6 +44089,7 @@ export namespace ModemManager {
          * @param data Carrier lock information.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.22
          */
         set_carrier_lock(data: Uint8Array | string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -43092,6 +44097,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_set_carrier_lock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_carrier_lock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @since 1.22
          */
         set_carrier_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -43103,6 +44109,7 @@ export namespace ModemManager {
          * @param data Carrier lock information.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the carrier network info is successfully send, `false` if `error` is set.
+         * @since 1.22
          */
         set_carrier_lock_sync(data: Uint8Array | string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -43120,6 +44127,7 @@ export namespace ModemManager {
          * is received.
          * @param mode A {@link ModemManager.Modem3gppEpsUeModeOperation}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.8
          */
         set_eps_ue_mode_operation(mode: Modem3gppEpsUeModeOperation, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -43138,6 +44146,7 @@ export namespace ModemManager {
          * @param mode A {@link ModemManager.Modem3gppEpsUeModeOperation}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.8
          */
         set_eps_ue_mode_operation(mode: Modem3gppEpsUeModeOperation, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -43156,6 +44165,7 @@ export namespace ModemManager {
          * @param mode A {@link ModemManager.Modem3gppEpsUeModeOperation}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.8
          */
         set_eps_ue_mode_operation(mode: Modem3gppEpsUeModeOperation, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -43163,6 +44173,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_set_eps_ue_mode_operation()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_set_eps_ue_mode_operation()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.8
          */
         set_eps_ue_mode_operation_finish(res: Gio.AsyncResult): boolean;
 
@@ -43175,6 +44186,7 @@ export namespace ModemManager {
          * @param mode A {@link ModemManager.Modem3gppEpsUeModeOperation}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.8
          */
         set_eps_ue_mode_operation_sync(mode: Modem3gppEpsUeModeOperation, cancellable: Gio.Cancellable | null): boolean;
 
@@ -43188,6 +44200,7 @@ export namespace ModemManager {
          * the operation.
          * @param config A {@link ModemManager.BearerProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.10
          */
         set_initial_eps_bearer_settings(config: BearerProperties, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -43202,6 +44215,7 @@ export namespace ModemManager {
          * @param config A {@link ModemManager.BearerProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.10
          */
         set_initial_eps_bearer_settings(config: BearerProperties, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -43216,6 +44230,7 @@ export namespace ModemManager {
          * @param config A {@link ModemManager.BearerProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.10
          */
         set_initial_eps_bearer_settings(config: BearerProperties, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -43224,6 +44239,7 @@ export namespace ModemManager {
          * `mm_modem_3gpp_set_initial_eps_bearer_settings()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_set_initial_eps_bearer_settings()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.10
          */
         set_initial_eps_bearer_settings_finish(res: Gio.AsyncResult): boolean;
 
@@ -43236,6 +44252,7 @@ export namespace ModemManager {
          * @param config A {@link ModemManager.BearerProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.10
          */
         set_initial_eps_bearer_settings_sync(config: BearerProperties, cancellable: Gio.Cancellable | null): boolean;
 
@@ -43251,6 +44268,7 @@ export namespace ModemManager {
          * blocking version of this method.
          * @param settings A {@link ModemManager.Nr5gRegistrationSettings}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.20
          */
         set_nr5g_registration_settings(settings: Nr5gRegistrationSettings, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -43267,6 +44285,7 @@ export namespace ModemManager {
          * @param settings A {@link ModemManager.Nr5gRegistrationSettings}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 1.20
          */
         set_nr5g_registration_settings(settings: Nr5gRegistrationSettings, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -43283,6 +44302,7 @@ export namespace ModemManager {
          * @param settings A {@link ModemManager.Nr5gRegistrationSettings}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 1.20
          */
         set_nr5g_registration_settings(settings: Nr5gRegistrationSettings, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -43290,6 +44310,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_set_nr5g_registration_settings()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_set_nr5g_registration_settings()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.20
          */
         set_nr5g_registration_settings_finish(res: Gio.AsyncResult): boolean;
 
@@ -43302,6 +44323,7 @@ export namespace ModemManager {
          * @param settings A {@link ModemManager.Nr5gRegistrationSettings}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.20
          */
         set_nr5g_registration_settings_sync(settings: Nr5gRegistrationSettings, cancellable: Gio.Cancellable | null): boolean;
 
@@ -43318,6 +44340,7 @@ export namespace ModemManager {
          * blocking version of this method.
          * @param state A {@link ModemManager.Modem3gppPacketServiceState}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.20
          */
         set_packet_service_state(state: Modem3gppPacketServiceState, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -43335,6 +44358,7 @@ export namespace ModemManager {
          * @param state A {@link ModemManager.Modem3gppPacketServiceState}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.20
          */
         set_packet_service_state(state: Modem3gppPacketServiceState, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -43352,6 +44376,7 @@ export namespace ModemManager {
          * @param state A {@link ModemManager.Modem3gppPacketServiceState}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.20
          */
         set_packet_service_state(state: Modem3gppPacketServiceState, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -43359,6 +44384,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_set_packet_service_state()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_set_packet_service_state()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.20
          */
         set_packet_service_state_finish(res: Gio.AsyncResult): boolean;
 
@@ -43371,6 +44397,7 @@ export namespace ModemManager {
          * @param state A {@link ModemManager.Modem3gppPacketServiceState}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.20
          */
         set_packet_service_state_sync(state: Modem3gppPacketServiceState, cancellable: Gio.Cancellable | null): boolean;
 
@@ -43646,6 +44673,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -43689,6 +44717,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -43732,6 +44761,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -43740,6 +44770,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -43748,6 +44779,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Modem3gpp;
 
@@ -43797,6 +44829,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -43805,6 +44838,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -44422,6 +45456,7 @@ export namespace ModemManager {
          * version of this method.
          * @param profile A {@link ModemManager.__3gppProfile}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.18
          */
         ["delete"](profile: __3gppProfile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -44442,6 +45477,7 @@ export namespace ModemManager {
          * @param profile A {@link ModemManager.__3gppProfile}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.18
          */
         ["delete"](profile: __3gppProfile, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -44462,6 +45498,7 @@ export namespace ModemManager {
          * @param profile A {@link ModemManager.__3gppProfile}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.18
          */
         ["delete"](profile: __3gppProfile, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -44469,6 +45506,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_profile_manager_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_profile_manager_delete()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.18
          */
         delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -44484,6 +45522,7 @@ export namespace ModemManager {
          * @param profile A {@link ModemManager.__3gppProfile}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.18
          */
         delete_sync(profile: __3gppProfile, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44491,6 +45530,7 @@ export namespace ModemManager {
          * Gets a copy of the name of the field used as index in profile management
          * operations.
          * @returns The index field, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.20
          */
         dup_index_field(): string;
 
@@ -44498,6 +45538,7 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.18
          */
         dup_path(): string;
 
@@ -44505,12 +45546,14 @@ export namespace ModemManager {
          * Gets the name of the field used as index in profile management
          * operations.
          * @returns The index field, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.20
          */
         get_index_field(): string;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.18
          */
         get_path(): string;
 
@@ -44526,6 +45569,7 @@ export namespace ModemManager {
          * See `mm_modem_3gpp_profile_manager_list_sync()` for the synchronous, blocking
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.18
          */
         list(cancellable: Gio.Cancellable | null): globalThis.Promise<__3gppProfile[] | null>;
 
@@ -44542,6 +45586,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.18
          */
         list(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -44558,6 +45603,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.18
          */
         list(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<__3gppProfile[] | null> | void;
 
@@ -44565,6 +45611,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_profile_manager_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_profile_manager_list()`.
          * @returns `true` if the list was correctly retrieved, `false` if `error` is set.
+         * @since 1.18
          */
         list_finish(res: Gio.AsyncResult): [boolean, __3gppProfile[] | null];
 
@@ -44576,6 +45623,7 @@ export namespace ModemManager {
          * method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the list was correctly retrieved, `false` if `error` is set.
+         * @since 1.18
          */
         list_sync(cancellable: Gio.Cancellable | null): [boolean, __3gppProfile[] | null];
 
@@ -44596,6 +45644,7 @@ export namespace ModemManager {
          * version of this method.
          * @param requested A {@link ModemManager.__3gppProfile} with the requested settings.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.18
          */
         set(requested: __3gppProfile, cancellable: Gio.Cancellable | null): globalThis.Promise<__3gppProfile>;
 
@@ -44617,6 +45666,7 @@ export namespace ModemManager {
          * @param requested A {@link ModemManager.__3gppProfile} with the requested settings.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.18
          */
         set(requested: __3gppProfile, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -44638,6 +45688,7 @@ export namespace ModemManager {
          * @param requested A {@link ModemManager.__3gppProfile} with the requested settings.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.18
          */
         set(requested: __3gppProfile, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<__3gppProfile> | void;
 
@@ -44651,6 +45702,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_profile_manager_set()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_profile_manager_set()`.
          * @returns A {@link ModemManager.__3gppProfile} with the stored settings, or `null` if `error` is set.
+         * @since 1.18
          */
         set_finish(res: Gio.AsyncResult): __3gppProfile;
 
@@ -44667,6 +45719,7 @@ export namespace ModemManager {
          * @param requested A {@link ModemManager.__3gppProfile} with the requested settings.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.__3gppProfile} with the stored settings, or `null` if `error` is set.
+         * @since 1.18
          */
         set_sync(requested: __3gppProfile, cancellable: Gio.Cancellable | null): __3gppProfile;
 
@@ -44729,6 +45782,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -44772,6 +45826,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -44815,6 +45870,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -44823,6 +45879,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -44831,6 +45888,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Modem3gppProfileManager;
 
@@ -44880,6 +45938,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -44888,6 +45947,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -45175,6 +46235,7 @@ export namespace ModemManager {
          * See `mm_modem_3gpp_ussd_cancel_sync()` for the synchronous, blocking version
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         cancel(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -45191,6 +46252,7 @@ export namespace ModemManager {
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         cancel(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -45207,6 +46269,7 @@ export namespace ModemManager {
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         cancel(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -45214,6 +46277,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_ussd_cancel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_ussd_cancel()`.
          * @returns `true` if the session was successfully cancelled, `false` if `error` is set.
+         * @since 1.0
          */
         cancel_finish(res: Gio.AsyncResult): boolean;
 
@@ -45225,6 +46289,7 @@ export namespace ModemManager {
          * `mm_modem_3gpp_ussd_cancel()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the session was successfully cancelled, `false` if `error` is set.
+         * @since 1.0
          */
         cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -45232,12 +46297,14 @@ export namespace ModemManager {
          * Gets a copy of any pending network-initiated request to which no USSD
          * response is required.
          * @returns The network notification, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_network_notification(): string;
 
         /**
          * Gets a copy of any pending network-initiated request.
          * @returns The network request, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_network_request(): string;
 
@@ -45245,6 +46312,7 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_path(): string;
 
@@ -45256,6 +46324,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_3gpp_ussd_dup_network_notification()` if on another thread.</warning>
          * @returns The network notification, or `null` if none available.
+         * @since 1.0
          */
         get_network_notification(): string;
 
@@ -45267,18 +46336,21 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_modem_3gpp_ussd_dup_network_request()` if on
          * another thread.</warning>
          * @returns The network request, or `null` if none available.
+         * @since 1.0
          */
         get_network_request(): string;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.0
          */
         get_path(): string;
 
         /**
          * Get the state of the ongoing USSD session, if any.
          * @returns A {@link ModemManager.Modem3gppUssdSessionState} value, specifying the current state.
+         * @since 1.0
          */
         get_state(): Modem3gppUssdSessionState;
 
@@ -45299,6 +46371,7 @@ export namespace ModemManager {
          * of this method.
          * @param command The command to start the USSD session with.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         initiate(command: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -45320,6 +46393,7 @@ export namespace ModemManager {
          * @param command The command to start the USSD session with.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         initiate(command: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -45341,6 +46415,7 @@ export namespace ModemManager {
          * @param command The command to start the USSD session with.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         initiate(command: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -45348,6 +46423,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_ussd_initiate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_ussd_initiate()`.
          * @returns The response from the network, if any. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         initiate_finish(res: Gio.AsyncResult): string;
 
@@ -45364,6 +46440,7 @@ export namespace ModemManager {
          * @param command The command to start the USSD session with.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns The response from the network, if any. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         initiate_sync(command: string, cancellable: Gio.Cancellable | null): string;
 
@@ -45381,6 +46458,7 @@ export namespace ModemManager {
          * of this method.
          * @param response The response to network-initiated USSD command, or a response to a  request for further input.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         respond(response: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -45399,6 +46477,7 @@ export namespace ModemManager {
          * @param response The response to network-initiated USSD command, or a response to a  request for further input.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         respond(response: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -45417,6 +46496,7 @@ export namespace ModemManager {
          * @param response The response to network-initiated USSD command, or a response to a  request for further input.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         respond(response: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -45424,6 +46504,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_3gpp_ussd_respond()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_ussd_respond()`.
          * @returns The network reply to this response to the network-initiated USSD command. The reply may require further responses. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         respond_finish(res: Gio.AsyncResult): string;
 
@@ -45437,6 +46518,7 @@ export namespace ModemManager {
          * @param response The response to network-initiated USSD command, or a response to a  request for further input.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns The network reply to this response to the network-initiated USSD command. The reply may require further responses. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         respond_sync(response: string, cancellable: Gio.Cancellable | null): string;
 
@@ -45529,6 +46611,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -45572,6 +46655,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -45615,6 +46699,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -45623,6 +46708,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -45631,6 +46717,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Modem3gppUssd;
 
@@ -45680,6 +46767,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -45688,6 +46776,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -45969,6 +47058,7 @@ export namespace ModemManager {
          * this method.
          * @param carrier Name of the carrier.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         activate(carrier: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -45986,6 +47076,7 @@ export namespace ModemManager {
          * @param carrier Name of the carrier.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         activate(carrier: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -46003,6 +47094,7 @@ export namespace ModemManager {
          * @param carrier Name of the carrier.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         activate(carrier: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -46010,6 +47102,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_cdma_activate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_cdma_activate()`.
          * @returns `true` if the activation was successful, `false` if `error` is set.
+         * @since 1.0
          */
         activate_finish(res: Gio.AsyncResult): boolean;
 
@@ -46026,6 +47119,7 @@ export namespace ModemManager {
          * version of this method.
          * @param properties A {@link ModemManager.CdmaManualActivationProperties}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         activate_manual(properties: CdmaManualActivationProperties, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -46043,6 +47137,7 @@ export namespace ModemManager {
          * @param properties A {@link ModemManager.CdmaManualActivationProperties}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         activate_manual(properties: CdmaManualActivationProperties, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -46060,6 +47155,7 @@ export namespace ModemManager {
          * @param properties A {@link ModemManager.CdmaManualActivationProperties}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         activate_manual(properties: CdmaManualActivationProperties, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -46067,6 +47163,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_cdma_activate_manual()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_cdma_activate_manual()`.
          * @returns `true` if the activation was successful, `false` if `error` is set.
+         * @since 1.0
          */
         activate_manual_finish(res: Gio.AsyncResult): boolean;
 
@@ -46078,6 +47175,7 @@ export namespace ModemManager {
          * @param properties A {@link ModemManager.CdmaManualActivationProperties}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the activation was successful, `false` if `error` is set.
+         * @since 1.0
          */
         activate_manual_sync(properties: CdmaManualActivationProperties, cancellable: Gio.Cancellable | null): boolean;
 
@@ -46090,6 +47188,7 @@ export namespace ModemManager {
          * @param carrier Name of the carrier.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the activation was successful, `false` if `error` is set.
+         * @since 1.0
          */
         activate_sync(carrier: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -46100,6 +47199,7 @@ export namespace ModemManager {
          * 
          * The ESN is superceded by MEID, but still used in older devices.
          * @returns The ESN, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_esn(): string;
 
@@ -46108,6 +47208,7 @@ export namespace ModemManager {
          * <ulink url="http://en.wikipedia.org/wiki/MEID">Mobile Equipment Identifier</ulink>,
          * as reported by this {@link ModemManager.ModemCdma}.
          * @returns The MEID, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_meid(): string;
 
@@ -46115,18 +47216,21 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_path(): string;
 
         /**
          * Gets the state of the activation in the 3GPP2 network.
          * @returns a {@link ModemManager.ModemCdmaActivationState}.
+         * @since 1.0
          */
         get_activation_state(): ModemCdmaActivationState;
 
         /**
          * Gets the state of the registration in the CDMA 1x network.
          * @returns a {@link ModemManager.ModemCdmaRegistrationState}.
+         * @since 1.0
          */
         get_cdma1x_registration_state(): ModemCdmaRegistrationState;
 
@@ -46141,12 +47245,14 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_cdma_dup_esn()` if on another thread.</warning>
          * @returns The ESN, or `null` if none available.
+         * @since 1.0
          */
         get_esn(): string;
 
         /**
          * Gets the state of the registration in the EV-DO network.
          * @returns a {@link ModemManager.ModemCdmaRegistrationState}.
+         * @since 1.0
          */
         get_evdo_registration_state(): ModemCdmaRegistrationState;
 
@@ -46159,6 +47265,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_cdma_dup_meid()` if on another thread.</warning>
          * @returns The MEID, or `null` if none available.
+         * @since 1.0
          */
         get_meid(): string;
 
@@ -46168,12 +47275,14 @@ export namespace ModemManager {
          * of the serving CDMA 1x network, if known, and if the modem is registered with
          * a CDMA 1x network.
          * @returns The NID, or `MM_MODEM_CDMA_NID_UNKNOWN`.
+         * @since 1.0
          */
         get_nid(): number;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.0
          */
         get_path(): string;
 
@@ -46183,6 +47292,7 @@ export namespace ModemManager {
          * of the serving CDMA 1x network, if known, and if the modem is registered with
          * a CDMA 1x network.
          * @returns The SID, or `MM_MODEM_CDMA_SID_UNKNOWN`.
+         * @since 1.0
          */
         get_sid(): number;
 
@@ -46325,6 +47435,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -46368,6 +47479,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -46411,6 +47523,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -46419,6 +47532,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -46427,6 +47541,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ModemCdma;
 
@@ -46476,6 +47591,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -46484,6 +47600,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -46711,6 +47828,7 @@ export namespace ModemManager {
          * of this method.
          * @param cbm Path of the {@link ModemManager.Cbm} to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.24
          */
         ["delete"](cbm: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -46727,6 +47845,7 @@ export namespace ModemManager {
          * @param cbm Path of the {@link ModemManager.Cbm} to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.24
          */
         ["delete"](cbm: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -46743,6 +47862,7 @@ export namespace ModemManager {
          * @param cbm Path of the {@link ModemManager.Cbm} to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.24
          */
         ["delete"](cbm: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -46750,6 +47870,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_cell_broadcast_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_cell_broadcast_delete()`.
          * @returns `true` if the cbm was deleted, `false` if `error` is set.
+         * @since 1.24
          */
         delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -46761,6 +47882,7 @@ export namespace ModemManager {
          * @param cbm Path of the {@link ModemManager.Cbm} to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the CBM was deleted, `false` if `error` is set.
+         * @since 1.24
          */
         delete_sync(cbm: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -46768,6 +47890,7 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.24
          */
         dup_path(): string;
 
@@ -46780,6 +47903,7 @@ export namespace ModemManager {
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.24
          */
         get_path(): string;
 
@@ -46794,6 +47918,7 @@ export namespace ModemManager {
          * See `mm_modem_cell_broadcast_list_sync()` for the synchronous, blocking version of
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.24
          */
         list(cancellable: Gio.Cancellable | null): globalThis.Promise<Cbm[]>;
 
@@ -46809,6 +47934,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.24
          */
         list(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -46824,6 +47950,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.24
          */
         list(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Cbm[]> | void;
 
@@ -46831,6 +47958,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_cell_broadcast_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_cell_broadcast_list()`.
          * @returns A list of {@link ModemManager.Cbm} objects, or `NULL` if either not found or `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
+         * @since 1.24
          */
         list_finish(res: Gio.AsyncResult): Cbm[];
 
@@ -46841,6 +47969,7 @@ export namespace ModemManager {
          * `mm_modem_cell_broadcast_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A list of {@link ModemManager.Cbm} objects, or `NULL` if either not found or `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
+         * @since 1.24
          */
         list_sync(cancellable: Gio.Cancellable | null): Cbm[];
 
@@ -46863,6 +47992,7 @@ export namespace ModemManager {
          * @param channels The `MMCellbroadcastChannels` to set
          * @param n_channels The number of elements in `channels`
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.24
          */
         set_channels(channels: CellBroadcastChannels, n_channels: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -46880,6 +48010,7 @@ export namespace ModemManager {
          * @param n_channels The number of elements in `channels`
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`
+         * @since 1.24
          */
         set_channels(channels: CellBroadcastChannels, n_channels: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -46897,6 +48028,7 @@ export namespace ModemManager {
          * @param n_channels The number of elements in `channels`
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`
+         * @since 1.24
          */
         set_channels(channels: CellBroadcastChannels, n_channels: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -46904,6 +48036,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_cell_broadcast_set_channels()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_cell_broadcast_set_channels()`
          * @returns `true` if set default storage is success, `false` if `error` is set.
+         * @since 1.24
          */
         set_channels_finish(res: Gio.AsyncResult): boolean;
 
@@ -46916,6 +48049,7 @@ export namespace ModemManager {
          * @param n_channels The number of elements in `channels`
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.24
          */
         set_channels_sync(channels: CellBroadcastChannels, n_channels: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -46985,6 +48119,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -47028,6 +48163,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -47071,6 +48207,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -47079,6 +48216,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -47087,6 +48225,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ModemCellBroadcast;
 
@@ -47136,6 +48275,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -47144,6 +48284,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -47435,12 +48576,14 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_path(): string;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.0
          */
         get_path(): string;
 
@@ -47453,6 +48596,7 @@ export namespace ModemManager {
          * `mm_modem_firmware_get_update_settings()` again to get a new
          * {@link ModemManager.FirmwareUpdateSettings} with the new values.</warning>
          * @returns A {@link ModemManager.FirmwareUpdateSettings} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.10
          */
         get_update_settings(): FirmwareUpdateSettings;
 
@@ -47467,6 +48611,7 @@ export namespace ModemManager {
          * See `mm_modem_firmware_list_sync()` for the synchronous, blocking version of
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         list(cancellable: Gio.Cancellable | null): globalThis.Promise<[FirmwareProperties | null, FirmwareProperties[] | null]>;
 
@@ -47482,6 +48627,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         list(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -47497,6 +48643,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         list(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[FirmwareProperties | null, FirmwareProperties[] | null]> | void;
 
@@ -47504,6 +48651,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_firmware_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_firmware_list()`.
          * @returns `true` if the list was correctly retrieved, `false` if `error` is set.
+         * @since 1.0
          */
         list_finish(res: Gio.AsyncResult): [boolean, FirmwareProperties | null, FirmwareProperties[] | null];
 
@@ -47514,6 +48662,7 @@ export namespace ModemManager {
          * `mm_modem_firmware_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the list was correctly retrieved, `false` if `error` is set.
+         * @since 1.0
          */
         list_sync(cancellable: Gio.Cancellable | null): [boolean, FirmwareProperties | null, FirmwareProperties[] | null];
 
@@ -47526,6 +48675,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_modem_firmware_get_update_settings()` if on
          * another thread.</warning>
          * @returns A {@link ModemManager.FirmwareUpdateSettings}. Do not free the returned value, it belongs to `self`.
+         * @since 1.10
          */
         peek_update_settings(): FirmwareUpdateSettings;
 
@@ -47544,6 +48694,7 @@ export namespace ModemManager {
          * this method.
          * @param unique_id Unique ID of the firmware image to select.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         select(unique_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -47563,6 +48714,7 @@ export namespace ModemManager {
          * @param unique_id Unique ID of the firmware image to select.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         select(unique_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -47582,6 +48734,7 @@ export namespace ModemManager {
          * @param unique_id Unique ID of the firmware image to select.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         select(unique_id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -47589,6 +48742,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_firmware_select()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_firmware_select()`.
          * @returns `true` if the selection was successful, `false` if `error` is set.
+         * @since 1.0
          */
         select_finish(res: Gio.AsyncResult): boolean;
 
@@ -47603,6 +48757,7 @@ export namespace ModemManager {
          * @param unique_id Unique ID of the firmware image to select.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the selection was successful, `false` if `error` is set.
+         * @since 1.0
          */
         select_sync(unique_id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -47663,6 +48818,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -47706,6 +48862,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -47749,6 +48906,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -47757,6 +48915,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -47765,6 +48924,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ModemFirmware;
 
@@ -47814,6 +48974,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -47822,6 +48983,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -48026,6 +49188,7 @@ export namespace ModemManager {
         /**
          * Gets the list of assistance data servers.
          * @returns a `null`-terminated array of server addresses, or `null` if none available. The returned value should be freed with `g_strfreev()`.
+         * @since 1.10
          */
         dup_assistance_data_servers(): string[];
 
@@ -48033,12 +49196,14 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_path(): string;
 
         /**
          * Gets the address of the SUPL server.
          * @returns The SUPL server address, or `null` if none available. The returned value should be freed with `g_free()`.
+         * @since 1.6
          */
         dup_supl_server(): string;
 
@@ -48053,6 +49218,7 @@ export namespace ModemManager {
          * See `mm_modem_location_get_3gpp_sync()` for the synchronous, blocking version
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         get_3gpp(cancellable: Gio.Cancellable | null): globalThis.Promise<Location3gpp>;
 
@@ -48068,6 +49234,7 @@ export namespace ModemManager {
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_3gpp(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -48083,6 +49250,7 @@ export namespace ModemManager {
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_3gpp(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Location3gpp> | void;
 
@@ -48090,6 +49258,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_location_get_3gpp()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_get_3gpp()`.
          * @returns A {@link ModemManager.Location3gpp}, or `NULL` if not available. The  returned value should be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_3gpp_finish(res: Gio.AsyncResult): Location3gpp;
 
@@ -48100,6 +49269,7 @@ export namespace ModemManager {
          * `mm_modem_location_get_3gpp()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.Location3gpp}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_3gpp_sync(cancellable: Gio.Cancellable | null): Location3gpp;
 
@@ -48111,6 +49281,7 @@ export namespace ModemManager {
          * `mm_modem_location_dup_assistance_data_servers()` if on another thread.
          * </warning>
          * @returns a `null`-terminated array of server addresses, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.10
          */
         get_assistance_data_servers(): string[];
 
@@ -48118,6 +49289,7 @@ export namespace ModemManager {
          * Gets a bitmask of the location capabilities supported by this
          * {@link ModemManager.ModemLocation}.
          * @returns A {@link ModemManager.ModemLocationSource}.
+         * @since 1.0
          */
         get_capabilities(): ModemLocationSource;
 
@@ -48132,6 +49304,7 @@ export namespace ModemManager {
          * See `mm_modem_location_get_cdma_bs_sync()` for the synchronous, blocking
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         get_cdma_bs(cancellable: Gio.Cancellable | null): globalThis.Promise<LocationCdmaBs>;
 
@@ -48147,6 +49320,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_cdma_bs(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -48162,6 +49336,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_cdma_bs(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<LocationCdmaBs> | void;
 
@@ -48169,6 +49344,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_location_get_cdma_bs()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_get_cdma_bs()`.
          * @returns A {@link ModemManager.LocationCdmaBs}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_cdma_bs_finish(res: Gio.AsyncResult): LocationCdmaBs;
 
@@ -48179,12 +49355,14 @@ export namespace ModemManager {
          * `mm_modem_location_get_cdma_bs()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.LocationCdmaBs}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_cdma_bs_sync(cancellable: Gio.Cancellable | null): LocationCdmaBs;
 
         /**
          * Gets a bitmask of the location capabilities which are enabled in this {@link ModemManager.ModemLocation}.
          * @returns A {@link ModemManager.ModemLocationSource}.
+         * @since 1.0
          */
         get_enabled(): ModemLocationSource;
 
@@ -48199,6 +49377,7 @@ export namespace ModemManager {
          * See `mm_modem_location_get_full_sync()` for the synchronous, blocking version
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         get_full(cancellable: Gio.Cancellable | null): globalThis.Promise<[Location3gpp | null, LocationGpsNmea | null, LocationGpsRaw | null, LocationCdmaBs | null]>;
 
@@ -48214,6 +49393,7 @@ export namespace ModemManager {
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_full(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -48229,6 +49409,7 @@ export namespace ModemManager {
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_full(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Location3gpp | null, LocationGpsNmea | null, LocationGpsRaw | null, LocationCdmaBs | null]> | void;
 
@@ -48236,6 +49417,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_location_get_full()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_get_full()`.
          * @returns `true` if the retrieval was successful, `false` if `error` is set.
+         * @since 1.0
          */
         get_full_finish(res: Gio.AsyncResult): [boolean, Location3gpp | null, LocationGpsNmea | null, LocationGpsRaw | null, LocationCdmaBs | null];
 
@@ -48246,6 +49428,7 @@ export namespace ModemManager {
          * `mm_modem_location_get_full()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
+         * @since 1.0
          */
         get_full_sync(cancellable: Gio.Cancellable | null): [boolean, Location3gpp | null, LocationGpsNmea | null, LocationGpsRaw | null, LocationCdmaBs | null];
 
@@ -48260,6 +49443,7 @@ export namespace ModemManager {
          * See `mm_modem_location_get_gps_nmea_sync()` for the synchronous, blocking
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         get_gps_nmea(cancellable: Gio.Cancellable | null): globalThis.Promise<LocationGpsNmea>;
 
@@ -48275,6 +49459,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_gps_nmea(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -48290,6 +49475,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_gps_nmea(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<LocationGpsNmea> | void;
 
@@ -48297,6 +49483,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_location_get_gps_nmea()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_get_gps_nmea()`.
          * @returns A {@link ModemManager.LocationGpsNmea}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_gps_nmea_finish(res: Gio.AsyncResult): LocationGpsNmea;
 
@@ -48307,6 +49494,7 @@ export namespace ModemManager {
          * `mm_modem_location_get_gps_nmea()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.LocationGpsNmea}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_gps_nmea_sync(cancellable: Gio.Cancellable | null): LocationGpsNmea;
 
@@ -48321,6 +49509,7 @@ export namespace ModemManager {
          * See `mm_modem_location_get_gps_raw_sync()` for the synchronous, blocking
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         get_gps_raw(cancellable: Gio.Cancellable | null): globalThis.Promise<LocationGpsRaw>;
 
@@ -48336,6 +49525,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_gps_raw(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -48351,6 +49541,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_gps_raw(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<LocationGpsRaw> | void;
 
@@ -48358,6 +49549,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_location_get_gps_raw()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_get_gps_raw()`.
          * @returns A {@link ModemManager.LocationGpsRaw}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_gps_raw_finish(res: Gio.AsyncResult): LocationGpsRaw;
 
@@ -48368,18 +49560,21 @@ export namespace ModemManager {
          * `mm_modem_location_get_gps_raw()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.LocationGpsRaw}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_gps_raw_sync(cancellable: Gio.Cancellable | null): LocationGpsRaw;
 
         /**
          * Gets the GPS refresh rate, in seconds.
          * @returns The GPS refresh rate, or 0 if no fixed rate is used.
+         * @since 1.0
          */
         get_gps_refresh_rate(): number;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.0
          */
         get_path(): string;
 
@@ -48397,6 +49592,7 @@ export namespace ModemManager {
          * `mm_modem_location_get_signaled_3gpp()` again to get a new {@link ModemManager.Location3gpp}
          * with the new values.</warning>
          * @returns A {@link ModemManager.Location3gpp} that must be freed with `g_object_unref()` or `null` if none available.
+         * @since 1.18
          */
         get_signaled_3gpp(): Location3gpp;
 
@@ -48416,6 +49612,7 @@ export namespace ModemManager {
          * `mm_modem_location_get_signaled_cdma_bs()` again to get a new {@link ModemManager.LocationCdmaBs}
          * with the new values.</warning>
          * @returns A {@link ModemManager.LocationCdmaBs} that must be freed with `g_object_unref()` or `null` if none available.
+         * @since 1.18
          */
         get_signaled_cdma_bs(): LocationCdmaBs;
 
@@ -48435,6 +49632,7 @@ export namespace ModemManager {
          * `mm_modem_location_get_signaled_gps_nmea()` again to get a new {@link ModemManager.LocationGpsNmea}
          * with the new values.</warning>
          * @returns A {@link ModemManager.LocationGpsNmea} that must be freed with `g_object_unref()` or `null` if none available.
+         * @since 1.18
          */
         get_signaled_gps_nmea(): LocationGpsNmea;
 
@@ -48454,6 +49652,7 @@ export namespace ModemManager {
          * `mm_modem_location_get_signaled_gps_raw()` again to get a new {@link ModemManager.LocationGpsRaw}
          * with the new values.</warning>
          * @returns A {@link ModemManager.LocationGpsRaw} that must be freed with `g_object_unref()` or `null` if none available.
+         * @since 1.18
          */
         get_signaled_gps_raw(): LocationGpsRaw;
 
@@ -48464,12 +49663,14 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_location_dup_supl_server()` if on another thread.</warning>
          * @returns The SUPL server address, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.6
          */
         get_supl_server(): string;
 
         /**
          * Gets a bitmask of the supported assistance data types.
          * @returns A {@link ModemManager.ModemLocationAssistanceDataType}.
+         * @since 1.10
          */
         get_supported_assistance_data(): ModemLocationAssistanceDataType;
 
@@ -48486,6 +49687,7 @@ export namespace ModemManager {
          * blocking version of this method.
          * @param data Data to inject.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.10
          */
         inject_assistance_data(data: Uint8Array | string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -48503,6 +49705,7 @@ export namespace ModemManager {
          * @param data Data to inject.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.10
          */
         inject_assistance_data(data: Uint8Array | string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -48520,6 +49723,7 @@ export namespace ModemManager {
          * @param data Data to inject.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.10
          */
         inject_assistance_data(data: Uint8Array | string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -48528,6 +49732,7 @@ export namespace ModemManager {
          * `mm_modem_location_inject_assistance_data()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_inject_assistance_data()`.
          * @returns `true` if the injection was successful, `false` if `error` is set.
+         * @since 1.10
          */
         inject_assistance_data_finish(res: Gio.AsyncResult): boolean;
 
@@ -48540,6 +49745,7 @@ export namespace ModemManager {
          * @param data Data to inject.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the injection was successful, `false` if `error` is set.
+         * @since 1.10
          */
         inject_assistance_data_sync(data: Uint8Array | string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -48557,6 +49763,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_modem_location_get_signaled_3gpp()` if on
          * another thread.</warning>
          * @returns A {@link ModemManager.Location3gpp}, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.18
          */
         peek_signaled_3gpp(): Location3gpp;
 
@@ -48576,6 +49783,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_modem_location_get_signaled_cdma_bs()` if on
          * another thread.</warning>
          * @returns A {@link ModemManager.LocationCdmaBs}, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.18
          */
         peek_signaled_cdma_bs(): LocationCdmaBs;
 
@@ -48595,6 +49803,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_modem_location_get_signaled_gps_nmea()` if on
          * another thread.</warning>
          * @returns A {@link ModemManager.LocationGpsNmea}, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.18
          */
         peek_signaled_gps_nmea(): LocationGpsNmea;
 
@@ -48614,6 +49823,7 @@ export namespace ModemManager {
          * `self` was constructed. Use `mm_modem_location_get_signaled_gps_raw()` if on
          * another thread.</warning>
          * @returns A {@link ModemManager.LocationGpsRaw}, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.18
          */
         peek_signaled_gps_raw(): LocationGpsRaw;
 
@@ -48633,6 +49843,7 @@ export namespace ModemManager {
          * blocking version of this method.
          * @param rate The GPS refresh rate, in seconds.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         set_gps_refresh_rate(rate: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -48653,6 +49864,7 @@ export namespace ModemManager {
          * @param rate The GPS refresh rate, in seconds.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 1.0
          */
         set_gps_refresh_rate(rate: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -48673,6 +49885,7 @@ export namespace ModemManager {
          * @param rate The GPS refresh rate, in seconds.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`.
+         * @since 1.0
          */
         set_gps_refresh_rate(rate: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -48680,6 +49893,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_location_set_gps_refresh_rate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_set_gps_refresh_rate()`.
          * @returns `true` if setting the GPS refresh rate was successful, `false` if `error` is set.
+         * @since 1.0
          */
         set_gps_refresh_rate_finish(res: Gio.AsyncResult): boolean;
 
@@ -48695,6 +49909,7 @@ export namespace ModemManager {
          * @param rate The GPS refresh rate, in seconds.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if setting the refresh rate was successful, `false` if `error` is set.
+         * @since 1.0
          */
         set_gps_refresh_rate_sync(rate: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -48710,6 +49925,7 @@ export namespace ModemManager {
          * version of this method.
          * @param supl The SUPL server address, given as IP:PORT or with a full URL.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.6
          */
         set_supl_server(supl: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -48726,6 +49942,7 @@ export namespace ModemManager {
          * @param supl The SUPL server address, given as IP:PORT or with a full URL.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         set_supl_server(supl: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -48742,6 +49959,7 @@ export namespace ModemManager {
          * @param supl The SUPL server address, given as IP:PORT or with a full URL.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         set_supl_server(supl: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -48749,6 +49967,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_location_set_supl_server()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_set_supl_server()`.
          * @returns `true` if setting the SUPL server was successful, `false` if `error` is set.
+         * @since 1.6
          */
         set_supl_server_finish(res: Gio.AsyncResult): boolean;
 
@@ -48761,6 +49980,7 @@ export namespace ModemManager {
          * @param supl The SUPL server address, given as IP:PORT or with a full URL.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if setting the SUPL server was successful, `false` if `error` is set.
+         * @since 1.6
          */
         set_supl_server_sync(supl: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -48778,6 +49998,7 @@ export namespace ModemManager {
          * @param sources Bitmask of {@link ModemManager.ModemLocationSource} values specifying which locations  should get enabled.
          * @param signal_location Flag to enable or disable location signaling.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         setup(sources: ModemLocationSource, signal_location: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -48796,6 +50017,7 @@ export namespace ModemManager {
          * @param signal_location Flag to enable or disable location signaling.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         setup(sources: ModemLocationSource, signal_location: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -48814,6 +50036,7 @@ export namespace ModemManager {
          * @param signal_location Flag to enable or disable location signaling.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         setup(sources: ModemLocationSource, signal_location: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -48821,6 +50044,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_location_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_modem_location_setup()`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
+         * @since 1.0
          */
         setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -48834,6 +50058,7 @@ export namespace ModemManager {
          * @param signal_location Flag to enable or disable location signaling.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
+         * @since 1.0
          */
         setup_sync(sources: ModemLocationSource, signal_location: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -48993,6 +50218,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -49036,6 +50262,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -49079,6 +50306,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -49087,6 +50315,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -49095,6 +50324,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ModemLocation;
 
@@ -49144,6 +50374,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -49152,6 +50383,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -49568,6 +50800,7 @@ export namespace ModemManager {
          * this method.
          * @param properties A #{@link ModemManager.SmsProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         create(properties: SmsProperties, cancellable: Gio.Cancellable | null): globalThis.Promise<Sms>;
 
@@ -49584,6 +50817,7 @@ export namespace ModemManager {
          * @param properties A #{@link ModemManager.SmsProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         create(properties: SmsProperties, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -49600,6 +50834,7 @@ export namespace ModemManager {
          * @param properties A #{@link ModemManager.SmsProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         create(properties: SmsProperties, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Sms> | void;
 
@@ -49607,6 +50842,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_messaging_create()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_messaging_create()`.
          * @returns A newly created {@link ModemManager.Sms}, or `null` if `error` is set. The returned value should be freed with `g_object_unref()`.
+         * @since 1.0
          */
         create_finish(res: Gio.AsyncResult): Sms;
 
@@ -49618,6 +50854,7 @@ export namespace ModemManager {
          * @param properties A #{@link ModemManager.SmsProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A newly created {@link ModemManager.Sms}, or `null` if `error` is set. The returned value should be freed with `g_object_unref()`.
+         * @since 1.0
          */
         create_sync(properties: SmsProperties, cancellable: Gio.Cancellable | null): Sms;
 
@@ -49633,6 +50870,7 @@ export namespace ModemManager {
          * of this method.
          * @param sms Path of the {@link ModemManager.Sms} to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         ["delete"](sms: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -49649,6 +50887,7 @@ export namespace ModemManager {
          * @param sms Path of the {@link ModemManager.Sms} to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         ["delete"](sms: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -49665,6 +50904,7 @@ export namespace ModemManager {
          * @param sms Path of the {@link ModemManager.Sms} to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         ["delete"](sms: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -49672,6 +50912,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_messaging_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_messaging_delete()`.
          * @returns `true` if the sms was deleted, `false` if `error` is set.
+         * @since 1.0
          */
         delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -49683,6 +50924,7 @@ export namespace ModemManager {
          * @param sms Path of the {@link ModemManager.Sms} to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the SMS was deleted, `false` if `error` is set.
+         * @since 1.0
          */
         delete_sync(sms: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -49690,24 +50932,28 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_path(): string;
 
         /**
          * Gets the default SMS storage used when storing or receiving SMS messages.
          * @returns the default {@link ModemManager.SmsStorage}.
+         * @since 1.0
          */
         get_default_storage(): SmsStorage;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.0
          */
         get_path(): string;
 
         /**
          * Gets the list of SMS storages supported by the {@link ModemManager.Modem}.
          * @returns `true` if `storages` and `n_storages` are set, `false` otherwise.
+         * @since 1.0
          */
         get_supported_storages(): [boolean, SmsStorage[]];
 
@@ -49722,6 +50968,7 @@ export namespace ModemManager {
          * See `mm_modem_messaging_list_sync()` for the synchronous, blocking version of
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         list(cancellable: Gio.Cancellable | null): globalThis.Promise<Sms[]>;
 
@@ -49737,6 +50984,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         list(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -49752,6 +51000,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         list(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Sms[]> | void;
 
@@ -49759,6 +51008,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_messaging_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_messaging_list()`.
          * @returns A list of {@link ModemManager.Sms} objects, or `NULL` if either not found or `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
+         * @since 1.0
          */
         list_finish(res: Gio.AsyncResult): Sms[];
 
@@ -49769,12 +51019,14 @@ export namespace ModemManager {
          * `mm_modem_messaging_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A list of {@link ModemManager.Sms} objects, or `NULL` if either not found or `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
+         * @since 1.0
          */
         list_sync(cancellable: Gio.Cancellable | null): Sms[];
 
         /**
          * Gets the list of SMS storages supported by the {@link ModemManager.Modem}.
          * @returns `true` if `storages` and `n_storages` are set, `false` otherwise.
+         * @since 1.0
          */
         peek_supported_storages(): [boolean, SmsStorage, number];
 
@@ -49790,6 +51042,7 @@ export namespace ModemManager {
          * of this method.
          * @param storage A {@link ModemManager.SmsStorage} to set default storage.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.24
          */
         set_default_storage(storage: SmsStorage, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -49806,6 +51059,7 @@ export namespace ModemManager {
          * @param storage A {@link ModemManager.SmsStorage} to set default storage.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`
+         * @since 1.24
          */
         set_default_storage(storage: SmsStorage, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -49822,6 +51076,7 @@ export namespace ModemManager {
          * @param storage A {@link ModemManager.SmsStorage} to set default storage.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`
+         * @since 1.24
          */
         set_default_storage(storage: SmsStorage, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -49829,6 +51084,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_messaging_set_default_storage()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_messaging_set_default_storage()`
          * @returns `true` if set default storage is success, `false` if `error` is set.
+         * @since 1.24
          */
         set_default_storage_finish(res: Gio.AsyncResult): boolean;
 
@@ -49840,6 +51096,7 @@ export namespace ModemManager {
          * @param storage A {@link ModemManager.SmsStorage} to set default storage.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if set default storage is success, `false` if `error` is set.
+         * @since 1.24
          */
         set_default_storage_sync(storage: SmsStorage, cancellable: Gio.Cancellable | null): boolean;
 
@@ -49929,6 +51186,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -49972,6 +51230,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -50015,6 +51274,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -50023,6 +51283,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -50031,6 +51292,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ModemMessaging;
 
@@ -50080,6 +51342,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -50088,6 +51351,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -50463,6 +51727,7 @@ export namespace ModemManager {
          * @param session_id The unique ID of the network-initiated session.
          * @param accept `true` if the session is to be accepted, `false` otherwise.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.2
          */
         accept_network_initiated_session(session_id: number, accept: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -50481,6 +51746,7 @@ export namespace ModemManager {
          * @param accept `true` if the session is to be accepted, `false` otherwise.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.2
          */
         accept_network_initiated_session(session_id: number, accept: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -50499,6 +51765,7 @@ export namespace ModemManager {
          * @param accept `true` if the session is to be accepted, `false` otherwise.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.2
          */
         accept_network_initiated_session(session_id: number, accept: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -50507,6 +51774,7 @@ export namespace ModemManager {
          * `mm_modem_oma_accept_network_initiated_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_oma_accept_network_initiated_session()`.
          * @returns `true` if the session was started, `false` if `error` is set.
+         * @since 1.2
          */
         accept_network_initiated_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -50520,6 +51788,7 @@ export namespace ModemManager {
          * @param accept `true` if the session is to be accepted, `false` otherwise.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the session was started, `false` if `error` is set.
+         * @since 1.2
          */
         accept_network_initiated_session_sync(session_id: number, accept: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -50534,6 +51803,7 @@ export namespace ModemManager {
          * See `mm_modem_oma_cancel_session_sync()` for the synchronous, blocking version
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.2
          */
         cancel_session(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -50549,6 +51819,7 @@ export namespace ModemManager {
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.2
          */
         cancel_session(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -50564,6 +51835,7 @@ export namespace ModemManager {
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.2
          */
         cancel_session(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -50571,6 +51843,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_oma_cancel_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_oma_cancel_session()`.
          * @returns `true` if the session was started, `false` if `error` is set.
+         * @since 1.2
          */
         cancel_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -50581,6 +51854,7 @@ export namespace ModemManager {
          * `mm_modem_oma_cancel_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the session was started, `false` if `error` is set.
+         * @since 1.2
          */
         cancel_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -50588,42 +51862,49 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.2
          */
         dup_path(): string;
 
         /**
          * Gets the currently enabled OMA features.
          * @returns a bitmask of {@link ModemManager.OmaFeature} values.
+         * @since 1.2
          */
         get_features(): OmaFeature;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.2
          */
         get_path(): string;
 
         /**
          * Gets the list of pending network-initiated OMA sessions.
          * @returns `true` if `sessions` and `n_sessions` are set, `false` otherwise.
+         * @since 1.18
          */
         get_pending_network_initiated_sessions(): [boolean, OmaPendingNetworkInitiatedSession[]];
 
         /**
          * Gets the state of the current OMA device management session.
          * @returns a {@link ModemManager.OmaSessionState}.
+         * @since 1.2
          */
         get_session_state(): OmaSessionState;
 
         /**
          * Gets the type of the current OMA device management session.
          * @returns a {@link ModemManager.OmaSessionType}.
+         * @since 1.2
          */
         get_session_type(): OmaSessionType;
 
         /**
          * Gets the list of pending network-initiated OMA sessions.
          * @returns `true` if `sessions` and `n_sessions` are set, `false` otherwise.
+         * @since 1.18
          */
         peek_pending_network_initiated_sessions(): [boolean, OmaPendingNetworkInitiatedSession[]];
 
@@ -50639,6 +51920,7 @@ export namespace ModemManager {
          * method.
          * @param features Mask of {@link ModemManager.OmaFeature} values to enable.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.2
          */
         setup(features: OmaFeature, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -50655,6 +51937,7 @@ export namespace ModemManager {
          * @param features Mask of {@link ModemManager.OmaFeature} values to enable.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.2
          */
         setup(features: OmaFeature, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -50671,6 +51954,7 @@ export namespace ModemManager {
          * @param features Mask of {@link ModemManager.OmaFeature} values to enable.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.2
          */
         setup(features: OmaFeature, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -50678,6 +51962,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_oma_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_oma_setup()`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
+         * @since 1.2
          */
         setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -50689,6 +51974,7 @@ export namespace ModemManager {
          * @param features Mask of {@link ModemManager.OmaFeature} values to enable.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
+         * @since 1.2
          */
         setup_sync(features: OmaFeature, cancellable: Gio.Cancellable | null): boolean;
 
@@ -50705,6 +51991,7 @@ export namespace ModemManager {
          * blocking version of this method.
          * @param session_type A {@link ModemManager.OmaSessionType}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.2
          */
         start_client_initiated_session(session_type: OmaSessionType, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -50722,6 +52009,7 @@ export namespace ModemManager {
          * @param session_type A {@link ModemManager.OmaSessionType}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.2
          */
         start_client_initiated_session(session_type: OmaSessionType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -50739,6 +52027,7 @@ export namespace ModemManager {
          * @param session_type A {@link ModemManager.OmaSessionType}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.2
          */
         start_client_initiated_session(session_type: OmaSessionType, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -50747,6 +52036,7 @@ export namespace ModemManager {
          * `mm_modem_oma_start_client_initiated_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_oma_start_client_initiated_session()`.
          * @returns `true` if the session was started, `false` if `error` is set.
+         * @since 1.2
          */
         start_client_initiated_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -50759,6 +52049,7 @@ export namespace ModemManager {
          * @param session_type A {@link ModemManager.OmaSessionType}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the session was started, `false` if `error` is set.
+         * @since 1.2
          */
         start_client_initiated_session_sync(session_type: OmaSessionType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -50869,6 +52160,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -50912,6 +52204,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -50955,6 +52248,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -50963,6 +52257,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -50971,6 +52266,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ModemOma;
 
@@ -51020,6 +52316,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -51028,6 +52325,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -51383,6 +52681,7 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.20
          */
         dup_path(): string;
 
@@ -51398,6 +52697,7 @@ export namespace ModemManager {
          * this method.
          * @param enable `true` to enable dynamic SAR and `false` to disable it.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.20
          */
         enable(enable: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -51414,6 +52714,7 @@ export namespace ModemManager {
          * @param enable `true` to enable dynamic SAR and `false` to disable it.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.20
          */
         enable(enable: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -51430,6 +52731,7 @@ export namespace ModemManager {
          * @param enable `true` to enable dynamic SAR and `false` to disable it.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.20
          */
         enable(enable: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -51437,6 +52739,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_sar_enable()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_sar_enable()`.
          * @returns `true` if the enable was successful, `false` if `error` is set.
+         * @since 1.20
          */
         enable_finish(res: Gio.AsyncResult): boolean;
 
@@ -51448,24 +52751,28 @@ export namespace ModemManager {
          * @param enable `true` to enable dynamic SAR and `false` to disable it.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the enable was successful, `false` if `error` is set.
+         * @since 1.20
          */
         enable_sync(enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.20
          */
         get_path(): string;
 
         /**
          * Gets the index of the SAR power level mapping table.
          * @returns the index.
+         * @since 1.20
          */
         get_power_level(): number;
 
         /**
          * Gets the state of dynamic SAR.
          * @returns `true` if dynamic SAR is enabled, `false` otherwise.
+         * @since 1.20
          */
         get_state(): boolean;
 
@@ -51481,6 +52788,7 @@ export namespace ModemManager {
          * this method.
          * @param level Index of the SAR power level mapping table
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.20
          */
         set_power_level(level: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -51497,6 +52805,7 @@ export namespace ModemManager {
          * @param level Index of the SAR power level mapping table
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.20
          */
         set_power_level(level: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -51513,6 +52822,7 @@ export namespace ModemManager {
          * @param level Index of the SAR power level mapping table
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.20
          */
         set_power_level(level: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -51529,6 +52839,7 @@ export namespace ModemManager {
          * @param level Index of the SAR power level mapping table
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if set power level was successful, `false` if `error` is set.
+         * @since 1.20
          */
         set_power_level_sync(level: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -51601,6 +52912,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -51644,6 +52956,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -51687,6 +53000,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -51695,6 +53009,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -51703,6 +53018,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ModemSar;
 
@@ -51752,6 +53068,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -51760,6 +53077,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -51969,6 +53287,7 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.2
          */
         dup_path(): string;
 
@@ -51980,12 +53299,14 @@ export namespace ModemManager {
          * `mm_modem_signal_get_cdma()` again to get a new {@link ModemManager.Signal} with the new values.
          * </warning>
          * @returns A {@link ModemManager.Signal} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.2
          */
         get_cdma(): Signal;
 
         /**
          * Gets whether the error rate threshold is enabled or not.
          * @returns `true` if the error rate threshold is enabled, `false` otherwise.
+         * @since 1.20
          */
         get_error_rate_threshold(): boolean;
 
@@ -51997,6 +53318,7 @@ export namespace ModemManager {
          * `mm_modem_signal_get_evdo()` again to get a new {@link ModemManager.Signal} with the new values.
          * </warning>
          * @returns A {@link ModemManager.Signal} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.2
          */
         get_evdo(): Signal;
 
@@ -52008,6 +53330,7 @@ export namespace ModemManager {
          * `mm_modem_signal_get_gsm()` again to get a new {@link ModemManager.Signal} with the
          * new values.</warning>
          * @returns A {@link ModemManager.Signal} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.2
          */
         get_gsm(): Signal;
 
@@ -52019,6 +53342,7 @@ export namespace ModemManager {
          * `mm_modem_signal_get_lte()` again to get a new {@link ModemManager.Signal} with the new values.
          * </warning>
          * @returns A {@link ModemManager.Signal} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.2
          */
         get_lte(): Signal;
 
@@ -52030,18 +53354,21 @@ export namespace ModemManager {
          * `mm_modem_signal_get_nr5g()` again to get a new {@link ModemManager.Signal} with the new values.
          * </warning>
          * @returns A {@link ModemManager.Signal} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.16
          */
         get_nr5g(): Signal;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.2
          */
         get_path(): string;
 
         /**
          * Gets the currently configured refresh rate.
          * @returns the refresh rate, in seconds.
+         * @since 1.2
          */
         get_rate(): number;
 
@@ -52050,6 +53377,7 @@ export namespace ModemManager {
          * 
          * A value of 0 indicates the threshold is disabled.
          * @returns the RSSI threshold.
+         * @since 1.20
          */
         get_rssi_threshold(): number;
 
@@ -52061,6 +53389,7 @@ export namespace ModemManager {
          * `mm_modem_signal_get_umts()` again to get a new {@link ModemManager.Signal} with the new values.
          * </warning>
          * @returns A {@link ModemManager.Signal} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.2
          */
         get_umts(): Signal;
 
@@ -52071,6 +53400,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_signal_get_cdma()` if on another thread.</warning>
          * @returns A {@link ModemManager.Signal}. Do not free the returned value, it belongs to `self`.
+         * @since 1.2
          */
         peek_cdma(): Signal;
 
@@ -52081,6 +53411,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_signal_get_evdo()` if on another thread.</warning>
          * @returns A {@link ModemManager.Signal}. Do not free the returned value, it belongs to `self`.
+         * @since 1.2
          */
         peek_evdo(): Signal;
 
@@ -52091,6 +53422,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_signal_get_gsm()` if on another thread.</warning>
          * @returns A {@link ModemManager.Signal}. Do not free the returned value, it belongs to `self`.
+         * @since 1.2
          */
         peek_gsm(): Signal;
 
@@ -52101,6 +53433,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_signal_get_lte()` if on another thread.</warning>
          * @returns A {@link ModemManager.Signal}. Do not free the returned value, it belongs to `self`.
+         * @since 1.2
          */
         peek_lte(): Signal;
 
@@ -52111,6 +53444,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_signal_get_nr5g()` if on another thread.</warning>
          * @returns A {@link ModemManager.Signal}. Do not free the returned value, it belongs to `self`.
+         * @since 1.16
          */
         peek_nr5g(): Signal;
 
@@ -52121,6 +53455,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_signal_get_umts()` if on another thread.</warning>
          * @returns A {@link ModemManager.Signal}. Do not free the returned value, it belongs to `self`.
+         * @since 1.2
          */
         peek_umts(): Signal;
 
@@ -52137,6 +53472,7 @@ export namespace ModemManager {
          * this method.
          * @param rate Refresh rate to set, in seconds. Use 0 to disable periodic polling.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.2
          */
         setup(rate: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -52154,6 +53490,7 @@ export namespace ModemManager {
          * @param rate Refresh rate to set, in seconds. Use 0 to disable periodic polling.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.2
          */
         setup(rate: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -52171,6 +53508,7 @@ export namespace ModemManager {
          * @param rate Refresh rate to set, in seconds. Use 0 to disable periodic polling.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.2
          */
         setup(rate: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -52178,6 +53516,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_signal_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_signal_setup()`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
+         * @since 1.2
          */
         setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -52190,6 +53529,7 @@ export namespace ModemManager {
          * @param rate Refresh rate to set, in seconds. Use 0 to disable periodic polling.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
+         * @since 1.2
          */
         setup_sync(rate: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52206,6 +53546,7 @@ export namespace ModemManager {
          * this method.
          * @param properties Threshold values to set.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.20
          */
         setup_thresholds(properties: SignalThresholdProperties, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -52223,6 +53564,7 @@ export namespace ModemManager {
          * @param properties Threshold values to set.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.20
          */
         setup_thresholds(properties: SignalThresholdProperties, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -52240,6 +53582,7 @@ export namespace ModemManager {
          * @param properties Threshold values to set.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.20
          */
         setup_thresholds(properties: SignalThresholdProperties, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -52247,6 +53590,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_signal_setup_thresholds()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_signal_setup_thresholds()`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
+         * @since 1.20
          */
         setup_thresholds_finish(res: Gio.AsyncResult): boolean;
 
@@ -52259,6 +53603,7 @@ export namespace ModemManager {
          * @param properties Threshold values to set.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
+         * @since 1.20
          */
         setup_thresholds_sync(properties: SignalThresholdProperties, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52405,6 +53750,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -52448,6 +53794,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -52491,6 +53838,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -52499,6 +53847,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -52507,6 +53856,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ModemSignal;
 
@@ -52556,6 +53906,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -52564,6 +53915,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -52772,6 +54124,7 @@ export namespace ModemManager {
          * this method.
          * @param properties A {@link ModemManager.SimpleConnectProperties} bundle.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         connect(properties: SimpleConnectProperties, cancellable: Gio.Cancellable | null): globalThis.Promise<Bearer>;
 
@@ -52788,6 +54141,7 @@ export namespace ModemManager {
          * @param properties A {@link ModemManager.SimpleConnectProperties} bundle.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         connect(properties: SimpleConnectProperties, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -52804,6 +54158,7 @@ export namespace ModemManager {
          * @param properties A {@link ModemManager.SimpleConnectProperties} bundle.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         connect(properties: SimpleConnectProperties, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Bearer> | void;
 
@@ -52816,6 +54171,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_simple_connect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_simple_connect()`.
          * @returns A {@link ModemManager.Bearer}, or `false` if `error` is set. The returned value must be freed with `g_object_unref()`.
+         * @since 1.0
          */
         connect_finish(res: Gio.AsyncResult): Bearer;
 
@@ -52827,6 +54183,7 @@ export namespace ModemManager {
          * @param properties A {@link ModemManager.SimpleConnectProperties} bundle.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.Bearer}, or `false` if `error` is set. The returned value must be freed with `g_object_unref()`.
+         * @since 1.0
          */
         connect_sync(properties: SimpleConnectProperties, cancellable: Gio.Cancellable | null): Bearer;
 
@@ -52842,6 +54199,7 @@ export namespace ModemManager {
          * of this method.
          * @param bearer Path of the bearer to disconnect, or `null` to  disconnect all connected bearers.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         disconnect(bearer: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -52858,6 +54216,7 @@ export namespace ModemManager {
          * @param bearer Path of the bearer to disconnect, or `null` to  disconnect all connected bearers.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         disconnect(bearer: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -52874,6 +54233,7 @@ export namespace ModemManager {
          * @param bearer Path of the bearer to disconnect, or `null` to  disconnect all connected bearers.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         disconnect(bearer: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -52887,6 +54247,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_simple_disconnect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_simple_disconnect()`.
          * @returns `true` if the modem is successfully disconnected, `false` if `error` is set.
+         * @since 1.0
          */
         disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -52898,6 +54259,7 @@ export namespace ModemManager {
          * @param bearer Path of the bearer to disconnect, or `null` to  disconnect all connected bearers.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the modem is successfully disconnected, `false` if `error` is set.
+         * @since 1.0
          */
         disconnect_sync(bearer: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52905,12 +54267,14 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_path(): string;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.0
          */
         get_path(): string;
 
@@ -52925,6 +54289,7 @@ export namespace ModemManager {
          * See `mm_modem_simple_get_status_sync()` for the synchronous, blocking version
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         get_status(cancellable: Gio.Cancellable | null): globalThis.Promise<SimpleStatus>;
 
@@ -52940,6 +54305,7 @@ export namespace ModemManager {
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_status(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -52955,6 +54321,7 @@ export namespace ModemManager {
          * of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_status(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SimpleStatus> | void;
 
@@ -52962,6 +54329,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_simple_get_status()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_simple_connect()`.
          * @returns A {@link ModemManager.SimpleStatus}, or `false` if `error` is set. The returned value must be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_status_finish(res: Gio.AsyncResult): SimpleStatus;
 
@@ -52972,6 +54340,7 @@ export namespace ModemManager {
          * `mm_modem_simple_get_status()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.SimpleStatus}, or `false` if `error` is set. The returned value must be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_status_sync(cancellable: Gio.Cancellable | null): SimpleStatus;
 
@@ -53014,6 +54383,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -53057,6 +54427,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -53100,6 +54471,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -53108,6 +54480,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -53116,6 +54489,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ModemSimple;
 
@@ -53165,6 +54539,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -53173,6 +54548,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -53439,6 +54815,7 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_path(): string;
 
@@ -53453,6 +54830,7 @@ export namespace ModemManager {
          * See `mm_modem_time_get_network_time_sync()` for the synchronous, blocking
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         get_network_time(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -53468,6 +54846,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_network_time(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -53483,6 +54862,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         get_network_time(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -53490,6 +54870,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_time_get_network_time()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_enable()`.
          * @returns A string containing the network time, or `null` if `error` is set. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         get_network_time_finish(res: Gio.AsyncResult): string;
 
@@ -53500,6 +54881,7 @@ export namespace ModemManager {
          * `mm_modem_time_get_network_time()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A string containing the network time, or `null` if `error` is set. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         get_network_time_sync(cancellable: Gio.Cancellable | null): string;
 
@@ -53511,12 +54893,14 @@ export namespace ModemManager {
          * `mm_modem_time_get_network_timezone()` again to get a new {@link ModemManager.NetworkTimezone}
          * with the new values.</warning>
          * @returns A {@link ModemManager.NetworkTimezone} that must be freed with `g_object_unref()` or `null` if unknown.
+         * @since 1.0
          */
         get_network_timezone(): NetworkTimezone;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.0
          */
         get_path(): string;
 
@@ -53527,6 +54911,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_modem_time_get_network_timezone()` if on another thread.</warning>
          * @returns A {@link ModemManager.NetworkTimezone}. Do not free the returned value, it belongs to `self`.
+         * @since 1.0
          */
         peek_network_timezone(): NetworkTimezone;
 
@@ -53587,6 +54972,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -53630,6 +55016,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -53673,6 +55060,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -53681,6 +55069,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -53689,6 +55078,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ModemTime;
 
@@ -53738,6 +55128,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -53746,6 +55137,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -53897,6 +55289,7 @@ export namespace ModemManager {
          * See `mm_modem_voice_call_waiting_query_sync()` for the synchronous, blocking
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.12
          */
         call_waiting_query(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -53913,6 +55306,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         call_waiting_query(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -53929,6 +55323,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         call_waiting_query(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -53937,6 +55332,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_call_waiting_query()`.
          * @param status Output location where to store the status.
          * @returns `true` if `status` is set, `false` if `error` is set.
+         * @since 1.12
          */
         call_waiting_query_finish(res: Gio.AsyncResult, status: boolean): boolean;
 
@@ -53949,6 +55345,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param status Output location where to store the status.
          * @returns `true` if `status` is set, `false` if `error` is set.
+         * @since 1.12
          */
         call_waiting_query_sync(cancellable: Gio.Cancellable | null, status: boolean): boolean;
 
@@ -53965,6 +55362,7 @@ export namespace ModemManager {
          * version of this method.
          * @param enable Whether the call waiting service should be enabled.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.12
          */
         call_waiting_setup(enable: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -53982,6 +55380,7 @@ export namespace ModemManager {
          * @param enable Whether the call waiting service should be enabled.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         call_waiting_setup(enable: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -53999,6 +55398,7 @@ export namespace ModemManager {
          * @param enable Whether the call waiting service should be enabled.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         call_waiting_setup(enable: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -54006,6 +55406,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_voice_call_waiting_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_call_waiting_setup()`.
          * @returns `true` if  `status` is set, `false` if `error` is set.
+         * @since 1.12
          */
         call_waiting_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -54018,6 +55419,7 @@ export namespace ModemManager {
          * @param enable Whether the call waiting service should be enabled.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation is successful, `false` if `error` is set.
+         * @since 1.12
          */
         call_waiting_setup_sync(enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54033,6 +55435,7 @@ export namespace ModemManager {
          * of this method.
          * @param properties A #{@link ModemManager.CallProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.6
          */
         create_call(properties: CallProperties, cancellable: Gio.Cancellable | null): globalThis.Promise<Call>;
 
@@ -54049,6 +55452,7 @@ export namespace ModemManager {
          * @param properties A #{@link ModemManager.CallProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         create_call(properties: CallProperties, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -54065,6 +55469,7 @@ export namespace ModemManager {
          * @param properties A #{@link ModemManager.CallProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         create_call(properties: CallProperties, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Call> | void;
 
@@ -54072,6 +55477,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_voice_create_call()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_create_call()`.
          * @returns A newly created {@link ModemManager.Call}, or `null` if `error` is set. The returned value should be freed with `g_object_unref()`.
+         * @since 1.6
          */
         create_call_finish(res: Gio.AsyncResult): Call;
 
@@ -54083,6 +55489,7 @@ export namespace ModemManager {
          * @param properties A #{@link ModemManager.CallProperties} object with the properties to use.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A newly created {@link ModemManager.Call}, or `null` if `error` is set. The returned value should be freed with `g_object_unref()`.
+         * @since 1.6
          */
         create_call_sync(properties: CallProperties, cancellable: Gio.Cancellable | null): Call;
 
@@ -54098,6 +55505,7 @@ export namespace ModemManager {
          * of this method.
          * @param call Path of the {@link ModemManager.Call} to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.6
          */
         delete_call(call: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -54114,6 +55522,7 @@ export namespace ModemManager {
          * @param call Path of the {@link ModemManager.Call} to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         delete_call(call: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -54130,6 +55539,7 @@ export namespace ModemManager {
          * @param call Path of the {@link ModemManager.Call} to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         delete_call(call: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -54137,6 +55547,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_voice_delete_call()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_delete_call()`.
          * @returns `true` if the call was deleted, `false` if `error` is set.
+         * @since 1.6
          */
         delete_call_finish(res: Gio.AsyncResult): boolean;
 
@@ -54148,6 +55559,7 @@ export namespace ModemManager {
          * @param call Path of the {@link ModemManager.Call} to delete.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the CALL was deleted, `false` if `error` is set.
+         * @since 1.6
          */
         delete_call_sync(call: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54155,18 +55567,21 @@ export namespace ModemManager {
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object which implements this
          * interface.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.6
          */
         dup_path(): string;
 
         /**
          * Checks whether emergency calls only are allowed.
          * @returns `true` if only emergency calls are allowed, `false` otherwise.
+         * @since 1.12
          */
         get_emergency_only(): boolean;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Object} which implements this interface.
          * @returns The DBus path of the {@link ModemManager.Object} object.
+         * @since 1.6
          */
         get_path(): string;
 
@@ -54181,6 +55596,7 @@ export namespace ModemManager {
          * See `mm_modem_voice_hangup_all_sync()` for the synchronous, blocking version of
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.12
          */
         hangup_all(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -54196,6 +55612,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         hangup_all(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -54211,6 +55628,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         hangup_all(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -54218,6 +55636,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_voice_hangup_all()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_hangup_all()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.12
          */
         hangup_all_finish(res: Gio.AsyncResult): boolean;
 
@@ -54228,6 +55647,7 @@ export namespace ModemManager {
          * `mm_modem_voice_hangup_all()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.12
          */
         hangup_all_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -54243,6 +55663,7 @@ export namespace ModemManager {
          * See `mm_modem_voice_hangup_and_accept_sync()` for the synchronous, blocking
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.12
          */
         hangup_and_accept(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -54259,6 +55680,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         hangup_and_accept(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -54275,6 +55697,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         hangup_and_accept(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -54282,6 +55705,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_voice_hangup_and_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_hangup_and_accept()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.12
          */
         hangup_and_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -54293,6 +55717,7 @@ export namespace ModemManager {
          * `mm_modem_voice_hangup_and_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.12
          */
         hangup_and_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -54308,6 +55733,7 @@ export namespace ModemManager {
          * See `mm_modem_voice_hold_and_accept_sync()` for the synchronous, blocking
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.12
          */
         hold_and_accept(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -54324,6 +55750,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         hold_and_accept(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -54340,6 +55767,7 @@ export namespace ModemManager {
          * version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         hold_and_accept(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -54347,6 +55775,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_voice_hold_and_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_hold_and_accept()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.12
          */
         hold_and_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -54358,6 +55787,7 @@ export namespace ModemManager {
          * `mm_modem_voice_hold_and_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.12
          */
         hold_and_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -54372,6 +55802,7 @@ export namespace ModemManager {
          * See `mm_modem_voice_list_calls_sync()` for the synchronous, blocking version of
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.6
          */
         list_calls(cancellable: Gio.Cancellable | null): globalThis.Promise<Call[]>;
 
@@ -54387,6 +55818,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         list_calls(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -54402,6 +55834,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.6
          */
         list_calls(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Call[]> | void;
 
@@ -54409,6 +55842,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_voice_list_calls()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_list_calls()`.
          * @returns A list of {@link ModemManager.Call} objects, or `NULL` if either not found or `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
+         * @since 1.6
          */
         list_calls_finish(res: Gio.AsyncResult): Call[];
 
@@ -54419,6 +55853,7 @@ export namespace ModemManager {
          * `mm_modem_voice_list_calls()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A list of {@link ModemManager.Call} objects, or `NULL` if either not found or `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
+         * @since 1.6
          */
         list_calls_sync(cancellable: Gio.Cancellable | null): Call[];
 
@@ -54433,6 +55868,7 @@ export namespace ModemManager {
          * See `mm_modem_voice_transfer_sync()` for the synchronous, blocking version of
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.12
          */
         transfer(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -54448,6 +55884,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         transfer(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -54463,6 +55900,7 @@ export namespace ModemManager {
          * this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.12
          */
         transfer(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -54470,6 +55908,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_modem_voice_transfer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_transfer()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.12
          */
         transfer_finish(res: Gio.AsyncResult): boolean;
 
@@ -54480,6 +55919,7 @@ export namespace ModemManager {
          * `mm_modem_voice_transfer()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.12
          */
         transfer_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -54551,6 +55991,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -54594,6 +56035,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -54637,6 +56079,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -54645,6 +56088,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -54653,6 +56097,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ModemVoice;
 
@@ -54702,6 +56147,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -54710,6 +56156,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -55374,24 +56821,28 @@ export namespace ModemManager {
         /**
          * Gets the available class reported with network reject.
          * @returns the available class.
+         * @since 1.24
          */
         get_access_technology(): ModemAccessTechnology;
 
         /**
          * Gets the network error reported with network reject.
          * @returns the network error.
+         * @since 1.24
          */
         get_error(): NetworkError;
 
         /**
          * Gets the operator id reported with network reject.
          * @returns a string with the operator id, or `NULL` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.24
          */
         get_operator_id(): string;
 
         /**
          * Gets the operator name reported with network reject.
          * @returns a string with the operator name, or `NULL` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.24
          */
         get_operator_name(): string;
     }
@@ -55445,18 +56896,21 @@ export namespace ModemManager {
          * Gets the timezone offset due to daylight saving time (in minutes) reported by
          * the network.
          * @returns the offset, or `MM_NETWORK_TIMEZONE_OFFSET_UNKNOWN` if unknown.
+         * @since 1.0
          */
         get_dst_offset(): number;
 
         /**
          * Gets the number of leap seconds (TAI-UTC), as reported by the network.
          * @returns the number of leap seconds, or `MM_NETWORK_TIMEZONE_LEAP_SECONDS_UNKNOWN` if unknown.
+         * @since 1.0
          */
         get_leap_seconds(): number;
 
         /**
          * Gets the timezone offset (in minutes) reported by the network.
          * @returns the offset, or `MM_NETWORK_TIMEZONE_OFFSET_UNKNOWN` if unknown.
+         * @since 1.0
          */
         get_offset(): number;
     }
@@ -55511,24 +56965,28 @@ export namespace ModemManager {
         /**
          * Gets the MICO mode configuration.
          * @returns a {@link ModemManager.Modem3gppDrxCycle}.
+         * @since 1.20
          */
         get_drx_cycle(): Modem3gppDrxCycle;
 
         /**
          * Gets the MICO mode configuration.
          * @returns a {@link ModemManager.Modem3gppMicoMode}.
+         * @since 1.20
          */
         get_mico_mode(): Modem3gppMicoMode;
 
         /**
          * Sets the MICO mode configuration.
          * @param drx_cycle a {@link ModemManager.Modem3gppDrxCycle}.
+         * @since 1.20
          */
         set_drx_cycle(drx_cycle: Modem3gppDrxCycle): void;
 
         /**
          * Sets the MICO mode configuration.
          * @param mico_mode a {@link ModemManager.Modem3gppMicoMode}.
+         * @since 1.20
          */
         set_mico_mode(mico_mode: Modem3gppMicoMode): void;
     }
@@ -55599,6 +57057,7 @@ export namespace ModemManager {
         /**
          * Gets a copy of the DBus path of the {@link ModemManager.Object} object.
          * @returns The DBus path of the {@link ModemManager.Object}. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_path(): string;
 
@@ -55606,6 +57065,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.Modem} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem on `self`, if any.
          * @returns A {@link ModemManager.Modem} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.0
          */
         get_modem(): Modem;
 
@@ -55613,6 +57073,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.Modem3gpp} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Modem3gpp on `self`, if any.
          * @returns A {@link ModemManager.Modem3gpp} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.0
          */
         get_modem_3gpp(): Modem3gpp;
 
@@ -55620,6 +57081,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.Modem3gppProfileManager} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Modem3gpp-ProfileManager on `self`, if any.
          * @returns A {@link ModemManager.Modem3gppProfileManager} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.18
          */
         get_modem_3gpp_profile_manager(): Modem3gppProfileManager;
 
@@ -55627,6 +57089,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.Modem3gppUssd} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Modem3gpp-Ussd on `self`, if any.
          * @returns A {@link ModemManager.Modem3gppUssd} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.0
          */
         get_modem_3gpp_ussd(): Modem3gppUssd;
 
@@ -55634,6 +57097,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.ModemCdma} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.ModemCdma on `self`, if any.
          * @returns A {@link ModemManager.ModemCdma} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.0
          */
         get_modem_cdma(): ModemCdma;
 
@@ -55641,6 +57105,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.ModemCellBroadcast} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.ModemCellBroadcast on `self`, if any.
          * @returns A {@link ModemManager.ModemCellBroadcast} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.24
          */
         get_modem_cell_broadcast(): ModemCellBroadcast;
 
@@ -55648,6 +57113,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.ModemFirmware} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Firmware on `self`, if any.
          * @returns A {@link ModemManager.ModemFirmware} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.0
          */
         get_modem_firmware(): ModemFirmware;
 
@@ -55655,6 +57121,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.ModemLocation} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Modemlocation on `self`, if any.
          * @returns A {@link ModemManager.ModemLocation} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.0
          */
         get_modem_location(): ModemLocation;
 
@@ -55662,6 +57129,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.ModemMessaging} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Modemmessaging on `self`, if any.
          * @returns A {@link ModemManager.ModemMessaging} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.0
          */
         get_modem_messaging(): ModemMessaging;
 
@@ -55669,6 +57137,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.ModemOma} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Oma on `self`, if any.
          * @returns A {@link ModemManager.ModemOma} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.2
          */
         get_modem_oma(): ModemOma;
 
@@ -55676,6 +57145,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.ModemSar} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Sar on `self`, if any.
          * @returns A {@link ModemManager.ModemSar} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.20
          */
         get_modem_sar(): ModemSar;
 
@@ -55683,6 +57153,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.ModemSignal} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Signal on `self`, if any.
          * @returns A {@link ModemManager.ModemSignal} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.2
          */
         get_modem_signal(): ModemSignal;
 
@@ -55690,6 +57161,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.ModemSimple} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Modemsimple on `self`, if any.
          * @returns A {@link ModemManager.ModemSimple} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.0
          */
         get_modem_simple(): ModemSimple;
 
@@ -55697,6 +57169,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.ModemTime} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Time on `self`, if any.
          * @returns A {@link ModemManager.ModemTime} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.0
          */
         get_modem_time(): ModemTime;
 
@@ -55704,6 +57177,7 @@ export namespace ModemManager {
          * Gets the {@link ModemManager.ModemVoice} instance for the D-Bus interface
          * org.freedesktop.ModemManager1.Modem.Modemvoice on `self`, if any.
          * @returns A {@link ModemManager.ModemVoice} that must be freed with `g_object_unref()` or `null` if `self` does not implement the interface.
+         * @since 1.6
          */
         get_modem_voice(): ModemVoice;
 
@@ -56026,6 +57500,8 @@ export namespace ModemManager {
         /**
          * Frees all of the memory used by a {@link GLib.List} of {@link ModemManager.Pco}.
          * @param pco_list a {@link GLib.List} of  {@link ModemManager.Pco}.
+         * @since 1.10
+         * @deprecated since 1.12.0: Use `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function instead.
          */
         static list_free(pco_list: Pco[]): void;
 
@@ -56033,6 +57509,7 @@ export namespace ModemManager {
         /**
          * Gets the PCO data in raw bytes.
          * @returns the PCO data, or `null` if it doesn't contain any.
+         * @since 1.10
          */
         get_data(): [number, number];
 
@@ -56045,6 +57522,7 @@ export namespace ModemManager {
         /**
          * Gets the session ID associated with the PCO.
          * @returns the session ID.
+         * @since 1.10
          */
         get_session_id(): number;
 
@@ -56052,6 +57530,7 @@ export namespace ModemManager {
          * Gets the complete flag that indicates whether the PCO data contains the
          * complete PCO structure received from the network.
          * @returns `true` if the PCO data contains the complete PCO structure, `false` otherwise.
+         * @since 1.10
          */
         is_complete(): boolean;
     }
@@ -56106,6 +57585,7 @@ export namespace ModemManager {
          * 
          * Only applicable to CDMA1x, CDMA EV-DO and UMTS (WCDMA).
          * @returns the ECIO, or `MM_SIGNAL_UNKNOWN` if unknown.
+         * @since 1.2
          */
         get_ecio(): number;
 
@@ -56115,6 +57595,7 @@ export namespace ModemManager {
          * 
          * Applicable to all RAT.
          * @returns the error rate, or `MM_SIGNAL_UNKNOWN` if unknown.
+         * @since 1.20
          */
         get_error_rate(): number;
 
@@ -56123,12 +57604,14 @@ export namespace ModemManager {
          * 
          * Only applicable to CDMA EV-DO.
          * @returns the Io, or `MM_SIGNAL_UNKNOWN` if unknown.
+         * @since 1.2
          */
         get_io(): number;
 
         /**
          * Gets the RSCP (Received Signal Code Power), in dBm.
          * @returns the RSCP, or `MM_SIGNAL_UNKNOWN` if unknown.
+         * @since 1.2
          */
         get_rscp(): number;
 
@@ -56137,6 +57620,7 @@ export namespace ModemManager {
          * 
          * Only applicable to LTE.
          * @returns the RSRP, or `MM_SIGNAL_UNKNOWN` if unknown.
+         * @since 1.2
          */
         get_rsrp(): number;
 
@@ -56145,12 +57629,14 @@ export namespace ModemManager {
          * 
          * Only applicable to LTE.
          * @returns the RSRQ, or `MM_SIGNAL_UNKNOWN` if unknown.
+         * @since 1.2
          */
         get_rsrq(): number;
 
         /**
          * Gets the RSSI (Received Signal Strength Indication), in dBm.
          * @returns the RSSI, or `MM_SIGNAL_UNKNOWN` if unknown.
+         * @since 1.2
          */
         get_rssi(): number;
 
@@ -56159,6 +57645,7 @@ export namespace ModemManager {
          * 
          * Only applicable to CDMA EV-DO.
          * @returns the SINR, or `MM_SIGNAL_UNKNOWN` if unknown.
+         * @since 1.2
          */
         get_sinr(): number;
 
@@ -56167,6 +57654,7 @@ export namespace ModemManager {
          * 
          * Only applicable to LTE.
          * @returns the S/R ratio, or `MM_SIGNAL_UNKNOWN` if unknown.
+         * @since 1.2
          */
         get_snr(): number;
     }
@@ -56221,24 +57709,28 @@ export namespace ModemManager {
         /**
          * Gets whether the error rate threshold is enabled or disabled.
          * @returns `true` if the error rate threshold is enabled, `false` otherwise.
+         * @since 1.20
          */
         get_error_rate(): boolean;
 
         /**
          * Gets the RSSI threshold, in dBm.
          * @returns the RSSI threshold, or 0 if disabled.
+         * @since 1.20
          */
         get_rssi(): number;
 
         /**
          * Enables or disables the error rate threshold.
          * @param error_rate_threshold `true` to enable, `false` to disable.
+         * @since 1.20
          */
         set_error_rate(error_rate_threshold: boolean): void;
 
         /**
          * Sets the RSSI threshold, in dBm.
          * @param rssi_threshold the RSSI threshold, or 0 to disable.
+         * @since 1.20
          */
         set_rssi(rssi_threshold: number): void;
     }
@@ -56324,6 +57816,7 @@ export namespace ModemManager {
          * @param old_pin The current PIN code.
          * @param new_pin The new PIN code to be set.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         change_pin(old_pin: string, new_pin: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -56341,6 +57834,7 @@ export namespace ModemManager {
          * @param new_pin The new PIN code to be set.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         change_pin(old_pin: string, new_pin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -56358,6 +57852,7 @@ export namespace ModemManager {
          * @param new_pin The new PIN code to be set.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         change_pin(old_pin: string, new_pin: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -56365,6 +57860,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_sim_change_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sim_change_pin()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         change_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -56377,6 +57873,7 @@ export namespace ModemManager {
          * @param new_pin The new PIN code to be set.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         change_pin_sync(old_pin: string, new_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -56392,6 +57889,7 @@ export namespace ModemManager {
          * method.
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         disable_pin(pin: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -56408,6 +57906,7 @@ export namespace ModemManager {
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         disable_pin(pin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -56424,6 +57923,7 @@ export namespace ModemManager {
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         disable_pin(pin: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -56431,6 +57931,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_sim_disable_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sim_disable_pin()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         disable_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -56442,36 +57943,42 @@ export namespace ModemManager {
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         disable_pin_sync(pin: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets a copy of the Embedded UICC ID (EID) of the {@link ModemManager.Sim} object.
          * @returns The EID of the {@link ModemManager.Sim} object, or `null` if it couldn't be retrieved. The returned value should be freed with `g_free()`.
+         * @since 1.16
          */
         dup_eid(): string;
 
         /**
          * Gets a copy of the list of emergency call numbers programmed in the SIM card.
          * @returns The emergency numbers, or `null` if none available. The returned value should be freed with `g_strfreev()`.
+         * @since 1.12
          */
         dup_emergency_numbers(): string[];
 
         /**
          * Gets the Group Identifier Level 1 of the {@link ModemManager.Sim} object.
          * @returns The GID1 data, or `null` if unknown.
+         * @since 1.20
          */
         dup_gid1(): Uint8Array;
 
         /**
          * Gets the Group Identifier Level 2 of the {@link ModemManager.Sim} object.
          * @returns The GID2 data, or `null` if unknown.
+         * @since 1.20
          */
         dup_gid2(): Uint8Array;
 
         /**
          * Gets a copy of the unique SIM identifier of the {@link ModemManager.Sim} object.
          * @returns The unique identifier of the {@link ModemManager.Sim} object, or `null` if it couldn't be retrieved. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_identifier(): string;
 
@@ -56479,24 +57986,28 @@ export namespace ModemManager {
          * Gets a copy of the International Mobile Subscriber Identity (IMSI) of the
          * {@link ModemManager.Sim} object.
          * @returns The IMSI of the {@link ModemManager.Sim} object, or `null` if it couldn't be retrieved. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_imsi(): string;
 
         /**
          * Gets a copy of the Operator Identifier of the {@link ModemManager.Sim} object.
          * @returns The Operator Identifier of the {@link ModemManager.Sim} object, or `null` if it couldn't be retrieved. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_operator_identifier(): string;
 
         /**
          * Gets a copy of the Operator Name of the {@link ModemManager.Sim} object.
          * @returns The Operator Name of the {@link ModemManager.Sim} object, or `null` if it couldn't be retrieved. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_operator_name(): string;
 
         /**
          * Gets a copy of the DBus path of the {@link ModemManager.Sim} object.
          * @returns The DBus path of the {@link ModemManager.Sim} object. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_path(): string;
 
@@ -56512,6 +58023,7 @@ export namespace ModemManager {
          * method.
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         enable_pin(pin: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -56528,6 +58040,7 @@ export namespace ModemManager {
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         enable_pin(pin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -56544,6 +58057,7 @@ export namespace ModemManager {
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         enable_pin(pin: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -56551,6 +58065,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_sim_enable_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sim_enable_pin()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         enable_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -56562,12 +58077,14 @@ export namespace ModemManager {
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         enable_pin_sync(pin: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Checks whether the {@link ModemManager.Sim} is currently active.
          * @returns `true` if the SIM is active, `false` otherwise.
+         * @since 1.16
          */
         get_active(): boolean;
 
@@ -56578,6 +58095,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_sim_dup_eid()` if on another thread.</warning>
          * @returns The EID of the {@link ModemManager.Sim} object, or `null` if it couldn't be retrieved.
+         * @since 1.16
          */
         get_eid(): string;
 
@@ -56588,6 +58106,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_sim_dup_emergency_numbers()` if on another thread.</warning>
          * @returns The emergency numbers, or `null` if none available. Do not free the returned value, it belongs to `self`.
+         * @since 1.12
          */
         get_emergency_numbers(): string[];
 
@@ -56596,18 +58115,21 @@ export namespace ModemManager {
          * 
          * Only applicable if the SIM type is {@link ModemManager.SimType.ESIM}.
          * @returns a {@link ModemManager.SimEsimStatus}.
+         * @since 1.20
          */
         get_esim_status(): SimEsimStatus;
 
         /**
          * Gets the Group Identifier Level 1 of the {@link ModemManager.Sim} object.
          * @returns The GID1 data, or `null` if unknown.
+         * @since 1.20
          */
         get_gid1(): Uint8Array;
 
         /**
          * Gets the Group Identifier Level 2 of the {@link ModemManager.Sim} object.
          * @returns The GID2 data, or `null` if unknown.
+         * @since 1.20
          */
         get_gid2(): Uint8Array;
 
@@ -56618,6 +58140,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_sim_dup_identifier()` if on another thread.</warning>
          * @returns The unique identifier of the {@link ModemManager.Sim} object, or `null` if it couldn't be retrieved.
+         * @since 1.0
          */
         get_identifier(): string;
 
@@ -56629,6 +58152,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_sim_dup_imsi()` if on another thread.</warning>
          * @returns The IMSI of the {@link ModemManager.Sim} object, or `null` if it couldn't be retrieved.
+         * @since 1.0
          */
         get_imsi(): string;
 
@@ -56639,6 +58163,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_sim_dup_operator_identifier()` if on another thread.</warning>
          * @returns The Operator Identifier of the {@link ModemManager.Sim} object, or `null` if it couldn't be retrieved.
+         * @since 1.0
          */
         get_operator_identifier(): string;
 
@@ -56649,12 +58174,14 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_sim_dup_operator_name()` if on another thread.</warning>
          * @returns The Operator Name of the {@link ModemManager.Sim} object, or `null` if it couldn't be retrieved.
+         * @since 1.0
          */
         get_operator_name(): string;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Sim} object.
          * @returns The DBus path of the {@link ModemManager.Sim} object.
+         * @since 1.0
          */
         get_path(): string;
 
@@ -56662,18 +58189,21 @@ export namespace ModemManager {
          * Gets the list of {@link ModemManager.SimPreferredNetwork} objects exposed by this
          * {@link ModemManager.Sim}.
          * @returns a list of {@link ModemManager.SimPreferredNetwork} objects, or `NULL`. The returned value should be freed with `g_list_free_full()` using `mm_sim_preferred_network_free()` as {@link GLib.DestroyNotify} function.
+         * @since 1.18
          */
         get_preferred_networks(): SimPreferredNetwork[];
 
         /**
          * Gets whether the SIM is removable or not.
          * @returns a {@link ModemManager.SimRemovability}.
+         * @since 1.20
          */
         get_removability(): SimRemovability;
 
         /**
          * Gets the SIM type.
          * @returns a {@link ModemManager.SimType}.
+         * @since 1.20
          */
         get_sim_type(): SimType;
 
@@ -56689,6 +58219,7 @@ export namespace ModemManager {
          * method.
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         send_pin(pin: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -56705,6 +58236,7 @@ export namespace ModemManager {
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         send_pin(pin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -56721,6 +58253,7 @@ export namespace ModemManager {
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         send_pin(pin: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -56728,6 +58261,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_sim_send_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sim_send_pin()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         send_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -56739,6 +58273,7 @@ export namespace ModemManager {
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         send_pin_sync(pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -56755,6 +58290,7 @@ export namespace ModemManager {
          * @param puk The PUK code.
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         send_puk(puk: string, pin: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -56772,6 +58308,7 @@ export namespace ModemManager {
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         send_puk(puk: string, pin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -56789,6 +58326,7 @@ export namespace ModemManager {
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         send_puk(puk: string, pin: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -56796,6 +58334,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_sim_send_puk()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sim_send_puk()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         send_puk_finish(res: Gio.AsyncResult): boolean;
 
@@ -56808,6 +58347,7 @@ export namespace ModemManager {
          * @param pin The PIN code.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         send_puk_sync(puk: string, pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -56821,6 +58361,7 @@ export namespace ModemManager {
          * the operation.
          * @param preferred_networks A list of {@link ModemManager.SimPreferredNetwork} objects
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.18
          */
         set_preferred_networks(preferred_networks: SimPreferredNetwork[], cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -56835,6 +58376,7 @@ export namespace ModemManager {
          * @param preferred_networks A list of {@link ModemManager.SimPreferredNetwork} objects
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.18
          */
         set_preferred_networks(preferred_networks: SimPreferredNetwork[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -56849,6 +58391,7 @@ export namespace ModemManager {
          * @param preferred_networks A list of {@link ModemManager.SimPreferredNetwork} objects
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.18
          */
         set_preferred_networks(preferred_networks: SimPreferredNetwork[], cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -56856,6 +58399,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_sim_set_preferred_networks()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sim_set_preferred_networks()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
+         * @since 1.18
          */
         set_preferred_networks_finish(res: Gio.AsyncResult): boolean;
 
@@ -56873,6 +58417,7 @@ export namespace ModemManager {
          * the operation.
          * @param preferred_networks A list of {@link ModemManager.SimPreferredNetwork} objects
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.18
          */
         set_preferred_networks_sync(preferred_networks: SimPreferredNetwork[], cancellable: Gio.Cancellable | null): boolean;
 
@@ -57109,6 +58654,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -57152,6 +58698,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -57195,6 +58742,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -57203,6 +58751,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -57211,6 +58760,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Sim;
 
@@ -57260,6 +58810,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -57268,6 +58819,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -57678,78 +59230,92 @@ export namespace ModemManager {
         /**
          * Checks whether roaming is allowed in the connection.
          * @returns `true` if roaming is allowed, `false` otherwise.
+         * @since 1.0
          */
         get_allow_roaming(): boolean;
 
         /**
          * Gets the authentication methods allowed in the connection.
          * @returns a bitmask of {@link ModemManager.BearerAllowedAuth} values, or {@link ModemManager.BearerAllowedAuth.UNKNOWN} to request the modem-default method.
+         * @since 1.0
          */
         get_allowed_auth(): BearerAllowedAuth;
 
         /**
          * Gets the name of the access point to use when connecting.
          * @returns the access point, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_apn(): string;
 
         /**
          * Gets the APN types to use.
          * @returns a mask of {@link ModemManager.BearerApnType} values.
+         * @since 1.18
          */
         get_apn_type(): BearerApnType;
 
         /**
          * Sets the IP type to use.
          * @returns a {@link ModemManager.BearerIpFamily}.
+         * @since 1.0
          */
         get_ip_type(): BearerIpFamily;
 
         /**
          * Get the multiplex support requested by the user.
          * @returns a {@link ModemManager.BearerMultiplexSupport}.
+         * @since 1.18
          */
         get_multiplex(): BearerMultiplexSupport;
 
         /**
          * Gets the number to use when performing the connection.
          * @returns the number, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
+         * @deprecated since 1.10.0.: The number setting is not used anywhere, and therefore it doesn't make sense to expose it in the ModemManager interface.
          */
         get_number(): string;
 
         /**
          * Gets the ID of the network to which register before connecting.
          * @returns the operator ID, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_operator_id(): string;
 
         /**
          * Gets the password used to authenticate with the access point.
          * @returns the password, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_password(): string;
 
         /**
          * Gets the PIN code to use when unlocking the modem.
          * @returns the PIN, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_pin(): string;
 
         /**
          * Gets the profile ID to use.
          * @returns the profile id.
+         * @since 1.18
          */
         get_profile_id(): number;
 
         /**
          * Get the RM protocol requested by the user.
          * @returns a {@link ModemManager.ModemCdmaRmProtocol}.
+         * @since 1.16
          */
         get_rm_protocol(): ModemCdmaRmProtocol;
 
         /**
          * Gets the username used to authenticate with the access point.
          * @returns the username, or `NULL` if not set. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_user(): string;
 
@@ -57757,78 +59323,92 @@ export namespace ModemManager {
          * Sets the flag to indicate whether roaming is allowed or not in the
          * connection.
          * @param allow_roaming boolean value.
+         * @since 1.0
          */
         set_allow_roaming(allow_roaming: boolean): void;
 
         /**
          * Sets the authentication method to use.
          * @param allowed_auth a bitmask of {@link ModemManager.BearerAllowedAuth} values.  {@link ModemManager.BearerAllowedAuth.UNKNOWN} may be given to request the modem-default method.
+         * @since 1.0
          */
         set_allowed_auth(allowed_auth: BearerAllowedAuth): void;
 
         /**
          * Sets the name of the access point to use when connecting.
          * @param apn Name of the access point.
+         * @since 1.0
          */
         set_apn(apn: string): void;
 
         /**
          * Sets the APN types to use.
          * @param apn_type a mask of {@link ModemManager.BearerApnType} values.
+         * @since 1.18
          */
         set_apn_type(apn_type: BearerApnType): void;
 
         /**
          * Sets the IP type to use.
          * @param ip_type a {@link ModemManager.BearerIpFamily}.
+         * @since 1.0
          */
         set_ip_type(ip_type: BearerIpFamily): void;
 
         /**
          * Sets the multiplex support requested by the user.
          * @param multiplex a {@link ModemManager.BearerMultiplexSupport}.
+         * @since 1.18
          */
         set_multiplex(multiplex: BearerMultiplexSupport): void;
 
         /**
          * Sets the number to use when performing the connection.
          * @param number the number.
+         * @since 1.0
+         * @deprecated since 1.10.0.: The number setting is not used anywhere, and therefore it doesn't make sense to expose it in the ModemManager interface.
          */
         set_number(number: string): void;
 
         /**
          * Sets the ID of the network to which register before connecting.
          * @param operator_id operator ID, given as MCC/MNC.
+         * @since 1.0
          */
         set_operator_id(operator_id: string): void;
 
         /**
          * Sets the password used to authenticate with the access point.
          * @param password the password
+         * @since 1.0
          */
         set_password(password: string): void;
 
         /**
          * Sets the PIN code to use when unlocking the modem.
          * @param pin PIN code.
+         * @since 1.0
          */
         set_pin(pin: string): void;
 
         /**
          * Sets the profile ID to use.
          * @param profile_id a profile id.
+         * @since 1.18
          */
         set_profile_id(profile_id: number): void;
 
         /**
          * Sets the RM protocol requested by the user.
          * @param protocol a {@link ModemManager.ModemCdmaRmProtocol}.
+         * @since 1.16
          */
         set_rm_protocol(protocol: ModemCdmaRmProtocol): void;
 
         /**
          * Sets the username used to authenticate with the access point.
          * @param user the username
+         * @since 1.0
          */
         set_user(user: string): void;
     }
@@ -58046,6 +59626,7 @@ export namespace ModemManager {
          * Gets the MCC/MNC of the operator of the 3GPP network where the modem is
          * registered.
          * @returns the operator code, or `null` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_3gpp_operator_code(): string;
 
@@ -58053,65 +59634,77 @@ export namespace ModemManager {
          * Gets the name of the operator of the 3GPP network where the modem is
          * registered.
          * @returns the operator name, or `null` if unknown. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_3gpp_operator_name(): string;
 
         /**
          * Gets the current state of the registration in the 3GPP network.
          * @returns a {@link ModemManager.Modem3gppRegistrationState}.
+         * @since 1.0
          */
         get_3gpp_registration_state(): Modem3gppRegistrationState;
 
         /**
          * Gets the current subscription status of the account.
          * @returns a {@link ModemManager.Modem3gppSubscriptionState}.
+         * @since 1.0
+         * @deprecated since 1.12.0.: The value of this property can only be obtained with operator specific logic (e.g. processing specific PCO info), and therefore it doesn't make sense to expose it in the ModemManager interface.
          */
         get_3gpp_subscription_state(): Modem3gppSubscriptionState;
 
         /**
          * Gets the currently used access technologies.
          * @returns a bitmask of {@link ModemManager.ModemAccessTechnology} values.
+         * @since 1.0
          */
         get_access_technologies(): ModemAccessTechnology;
 
         /**
          * Gets the current state of the registration in the CDMA-1x network.
          * @returns a {@link ModemManager.ModemCdmaRegistrationState}.
+         * @since 1.0
          */
         get_cdma_cdma1x_registration_state(): ModemCdmaRegistrationState;
 
         /**
          * Gets the current state of the registration in the EV-DO network.
          * @returns a {@link ModemManager.ModemCdmaRegistrationState}.
+         * @since 1.0
          */
         get_cdma_evdo_registration_state(): ModemCdmaRegistrationState;
 
         /**
          * Gets the Network Identification number of the CDMA network.
          * @returns the NID, or `MM_MODEM_CDMA_NID_UNKNOWN` if unknown.
+         * @since 1.0
          */
         get_cdma_nid(): number;
 
         /**
          * Gets the System Identification number of the CDMA network.
          * @returns the SID, or `MM_MODEM_CDMA_SID_UNKNOWN` if unknown.
+         * @since 1.0
          */
         get_cdma_sid(): number;
 
         /**
          * Gets the currently used frequency bands.
+         * @since 1.0
          */
         get_current_bands(): [ModemBand, number];
 
         /**
          * Gets the signal quality.
          * @returns the signal quality.
+         * @since 1.0
          */
         get_signal_quality(): [number, boolean];
 
         /**
          * Gets the state of the modem.
          * @returns a {@link ModemManager.ModemState}.
+         * @since 1.0
          */
         get_state(): ModemState;
     }
@@ -58190,6 +59783,7 @@ export namespace ModemManager {
         /**
          * Gets the message data.
          * @returns The message data, or `null` if it doesn't contain any (e.g. contains text instead). The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_data(): Uint8Array;
 
@@ -58201,30 +59795,35 @@ export namespace ModemManager {
          * This field is only applicable if the PDU type is
          * {@link ModemManager.SmsPduType.STATUS_REPORT}.
          * @returns The timestamp, or `null` if it couldn't be retrieved. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_discharge_timestamp(): string;
 
         /**
          * Gets the number to which the message is addressed.
          * @returns The number, or `null` if it couldn't be retrieved. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_number(): string;
 
         /**
          * Gets a copy of the DBus path of the {@link ModemManager.Sms} object.
          * @returns The DBus path of the {@link ModemManager.Sms} object. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_path(): string;
 
         /**
          * Gets the SMS service center number.
          * @returns The number of the SMSC, or `null` if it couldn't be retrieved. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_smsc(): string;
 
         /**
          * Gets the message text, in UTF-8.
          * @returns The message text, or `null` if it doesn't contain any (e.g. contains data instead). The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_text(): string;
 
@@ -58236,18 +59835,21 @@ export namespace ModemManager {
          * This field is only applicable if the PDU type is {@link ModemManager.SmsPduType.DELIVER} or
          * {@link ModemManager.SmsPduType.STATUS_REPORT}.
          * @returns The timestamp, or `null` if it couldn't be retrieved. The returned value should be freed with `g_free()`.
+         * @since 1.0
          */
         dup_timestamp(): string;
 
         /**
          * Gets the 3GPP message class of the SMS.
          * @returns the message class, or -1 for invalid/unset class.
+         * @since 1.0
          */
         get_class(): number;
 
         /**
          * Gets the message data.
          * @returns The message data, or `null` if it doesn't contain any (e.g. contains text instead).
+         * @since 1.0
          */
         get_data(): Uint8Array;
 
@@ -58260,6 +59862,7 @@ export namespace ModemManager {
         /**
          * Checks whether delivery report is requested for this SMS.
          * @returns `true` if delivery report is requested, `false` otherwise.
+         * @since 1.0
          */
         get_delivery_report_request(): boolean;
 
@@ -58269,6 +59872,7 @@ export namespace ModemManager {
          * This field is only applicable if the PDU type is
          * {@link ModemManager.SmsPduType.STATUS_REPORT}.
          * @returns A {@link ModemManager.SmsDeliveryState} specifying the delivery state.
+         * @since 1.0
          */
         get_delivery_state(): number;
 
@@ -58284,6 +59888,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_sms_dup_discharge_timestamp()` if on another thread.</warning>
          * @returns The timestamp, or `null` if it couldn't be retrieved.
+         * @since 1.0
          */
         get_discharge_timestamp(): string;
 
@@ -58293,6 +59898,7 @@ export namespace ModemManager {
          * If the PDU type is {@link ModemManager.SmsPduType.STATUS_REPORT}, this field identifies the
          * message reference of the PDU associated to the status report.
          * @returns The message reference.
+         * @since 1.0
          */
         get_message_reference(): number;
 
@@ -58303,24 +59909,28 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_sms_dup_number()` if on another thread.</warning>
          * @returns The number, or `null` if it couldn't be retrieved.
+         * @since 1.0
          */
         get_number(): string;
 
         /**
          * Gets the DBus path of the {@link ModemManager.Sms} object.
          * @returns The DBus path of the {@link ModemManager.Sms} object.
+         * @since 1.0
          */
         get_path(): string;
 
         /**
          * Gets the PDU type on which this SMS is based.
          * @returns A {@link ModemManager.SmsPduType} specifying the PDU type.
+         * @since 1.0
          */
         get_pdu_type(): SmsPduType;
 
         /**
          * Gets the 3GPP2 Service Category.
          * @returns a {@link ModemManager.SmsCdmaServiceCategory}.
+         * @since 1.2
          */
         get_service_category(): SmsCdmaServiceCategory;
 
@@ -58331,24 +59941,28 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_sms_dup_smsc()` if on another thread.</warning>
          * @returns The number of the SMSC, or `null` if it couldn't be retrieved.
+         * @since 1.0
          */
         get_smsc(): string;
 
         /**
          * Gets the state of this SMS.
          * @returns A {@link ModemManager.SmsState} specifying the state.
+         * @since 1.0
          */
         get_state(): SmsState;
 
         /**
          * Gets the storage in which this SMS is kept.
          * @returns A {@link ModemManager.SmsStorage} specifying the storage.
+         * @since 1.0
          */
         get_storage(): SmsStorage;
 
         /**
          * Gets the 3GPP2 Teleservice ID.
          * @returns a {@link ModemManager.SmsCdmaTeleserviceId}.
+         * @since 1.2
          */
         get_teleservice_id(): SmsCdmaTeleserviceId;
 
@@ -58359,6 +59973,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_sms_dup_text()` if on another thread.</warning>
          * @returns The message text, or `null` if it doesn't contain any (e.g. contains data instead).
+         * @since 1.0
          */
         get_text(): string;
 
@@ -58374,6 +59989,7 @@ export namespace ModemManager {
          * only safe to use this function on the thread where `self` was constructed. Use
          * `mm_sms_dup_timestamp()` if on another thread.</warning>
          * @returns The timestamp, or `null` if it couldn't be retrieved.
+         * @since 1.0
          */
         get_timestamp(): string;
 
@@ -58382,12 +59998,14 @@ export namespace ModemManager {
          * 
          * Only applicable if the type of validity is #MM_SMS_VALIDITY_TYPE_RELATIVE.
          * @returns the length of the validity period, or 0 if unknown.
+         * @since 1.0
          */
         get_validity_relative(): number;
 
         /**
          * Gets the type of validity information in the SMS.
          * @returns the validity type or #MM_SMS_VALIDITY_TYPE_UNKNOWN.
+         * @since 1.0
          */
         get_validity_type(): SmsValidityType;
 
@@ -58403,6 +60021,7 @@ export namespace ModemManager {
          * 
          * See `mm_sms_send_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         send(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -58419,6 +60038,7 @@ export namespace ModemManager {
          * See `mm_sms_send_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         send(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -58435,6 +60055,7 @@ export namespace ModemManager {
          * See `mm_sms_send_sync()` for the synchronous, blocking version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         send(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -58442,6 +60063,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_sms_send()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sms_send()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         send_finish(res: Gio.AsyncResult): boolean;
 
@@ -58454,6 +60076,7 @@ export namespace ModemManager {
          * for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         send_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -58470,6 +60093,7 @@ export namespace ModemManager {
          * See `mm_sms_store_sync()` for the synchronous, blocking version of this method.
          * @param storage A {@link ModemManager.SmsStorage} specifying where to store the SMS, or  {@link ModemManager.SmsStorage.UNKNOWN} to use the default.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
+         * @since 1.0
          */
         store(storage: SmsStorage, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -58487,6 +60111,7 @@ export namespace ModemManager {
          * @param storage A {@link ModemManager.SmsStorage} specifying where to store the SMS, or  {@link ModemManager.SmsStorage.UNKNOWN} to use the default.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         store(storage: SmsStorage, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -58504,6 +60129,7 @@ export namespace ModemManager {
          * @param storage A {@link ModemManager.SmsStorage} specifying where to store the SMS, or  {@link ModemManager.SmsStorage.UNKNOWN} to use the default.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or  `null`.
+         * @since 1.0
          */
         store(storage: SmsStorage, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -58511,6 +60137,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_sms_store()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sms_store()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         store_finish(res: Gio.AsyncResult): boolean;
 
@@ -58525,6 +60152,7 @@ export namespace ModemManager {
          * @param storage A {@link ModemManager.SmsStorage} specifying where to store the SMS, or  {@link ModemManager.SmsStorage.UNKNOWN} to use the default.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         store_sync(storage: SmsStorage, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58795,6 +60423,7 @@ export namespace ModemManager {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -58838,6 +60467,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -58881,6 +60511,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -58889,6 +60520,7 @@ export namespace ModemManager {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -58897,6 +60529,7 @@ export namespace ModemManager {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Sms;
 
@@ -58946,6 +60579,7 @@ export namespace ModemManager {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -58954,6 +60588,7 @@ export namespace ModemManager {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -59140,12 +60775,14 @@ export namespace ModemManager {
         /**
          * Gets the 3GPP message class of the SMS.
          * @returns the message class, or -1 for invalid/unset class.
+         * @since 1.0
          */
         get_class(): number;
 
         /**
          * Gets the message data.
          * @returns The message data, or `null` if it doesn't contain any (e.g. contains text instead).
+         * @since 1.0
          */
         get_data(): [number, number];
 
@@ -59158,66 +60795,77 @@ export namespace ModemManager {
         /**
          * Gets the message data.
          * @returns A {@link GLib.ByteArray} with the message data, or `null` if it doesn't contain any (e.g. contains text instead). The returned value should be freed with `g_byte_array_unref()`.
+         * @since 1.0
          */
         get_data_bytearray(): Uint8Array;
 
         /**
          * Checks whether delivery report is requested for the SMS.
          * @returns `true` if delivery report is requested, `false` otherwise.
+         * @since 1.0
          */
         get_delivery_report_request(): boolean;
 
         /**
          * Gets the number to which the message is addressed.
          * @returns The number, or `null` if it couldn't be retrieved. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_number(): string;
 
         /**
          * Gets the CDMA message service category of the SMS.
          * @returns the CDMA service category.
+         * @since 1.2
          */
         get_service_category(): SmsCdmaServiceCategory;
 
         /**
          * Gets the SMS service center number.
          * @returns The number of the SMSC, or `null` if it couldn't be retrieved. Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_smsc(): string;
 
         /**
          * Gets the CDMA teleservice ID of the SMS.
          * @returns the CDMA teleservice ID.
+         * @since 1.2
          */
         get_teleservice_id(): SmsCdmaTeleserviceId;
 
         /**
          * Gets the message text, in UTF-8.
          * @returns The message text, or `null` if it doesn't contain any (e.g. contains data instead). Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         get_text(): string;
 
         /**
          * Gets the relative validity time of the SMS.
          * @returns the validity time or 0 if unknown.
+         * @since 1.0
          */
         get_validity_relative(): number;
 
         /**
          * Gets the relative validity type the SMS.
          * @returns a {@link ModemManager.SmsValidityType}.
+         * @since 1.0
          */
         get_validity_type(): SmsValidityType;
 
         /**
          * Gets the message data.
          * @returns A {@link GLib.ByteArray} with the message data, or `null` if it doesn't contain any (e.g. contains text instead). Do not free the returned value, it is owned by `self`.
+         * @since 1.0
          */
         peek_data_bytearray(): Uint8Array;
 
         /**
          * Sets the 3GPP message class of the SMS.
          * @param message_class The message class (0..3), or -1 for invalid/unset class.
+         * @since 1.0
          */
         set_class(message_class: number): void;
 
@@ -59225,6 +60873,7 @@ export namespace ModemManager {
          * Sets the message data.
          * @param data The data to set.
          * @param data_length Length of `data`.
+         * @since 1.0
          */
         set_data(data: number, data_length: bigint | number): void;
 
@@ -59237,42 +60886,49 @@ export namespace ModemManager {
         /**
          * Sets the message data.
          * @param data A {@link GLib.ByteArray} with the data to set. This method takes a new reference  of `data`.
+         * @since 1.0
          */
         set_data_bytearray(data: Uint8Array | string): void;
 
         /**
          * Sets whether delivery report is requested for the SMS.
          * @param request `true` if delivery report is requested, `false` otherwise.
+         * @since 1.0
          */
         set_delivery_report_request(request: boolean): void;
 
         /**
          * Sets the number to which the message is addressed.
          * @param number The number.
+         * @since 1.0
          */
         set_number(number: string): void;
 
         /**
          * Sets the CDMA service category of the SMS.
          * @param service_category The CDMA service category.
+         * @since 1.2
          */
         set_service_category(service_category: SmsCdmaServiceCategory): void;
 
         /**
          * Sets the SMS service center number.
          * @param smsc The SMSC number.
+         * @since 1.0
          */
         set_smsc(smsc: string): void;
 
         /**
          * Sets the CDMA teleservice ID of the SMS.
          * @param teleservice_id The CDMA teleservice ID.
+         * @since 1.2
          */
         set_teleservice_id(teleservice_id: SmsCdmaTeleserviceId): void;
 
         /**
          * Sets the message text.
          * @param text The text to set, in UTF-8.
+         * @since 1.0
          */
         set_text(text: string): void;
 
@@ -59280,6 +60936,7 @@ export namespace ModemManager {
          * Sets the relative validity time of the SMS. Validity time is in minutes.
          * If relative validity time is not set, the default is 24 hours.
          * @param validity The validity of {@link ModemManager.SmsValidityType.RELATIVE} type.
+         * @since 1.0
          */
         set_validity_relative(validity: number): void;
     }
@@ -59332,6 +60989,7 @@ export namespace ModemManager {
         /**
          * Executes `callback` for each lock information found in `self`.
          * @param callback callback to call for each available lock.
+         * @since 1.0
          */
         foreach(callback: UnlockRetriesForeachCb): void;
 
@@ -59339,6 +60997,7 @@ export namespace ModemManager {
          * Gets the unlock retries for the given `lock`.
          * @param lock a {@link ModemManager.ModemLock}.
          * @returns the unlock retries or `MM_UNLOCK_RETRIES_UNKNOWN` if unknown.
+         * @since 1.0
          */
         get(lock: ModemLock): number;
     }
@@ -60395,36 +62054,42 @@ export namespace ModemManager {
         // Methods
         /**
          * Frees a {@link ModemManager.Modem3gppNetwork}.
+         * @since 1.0
          */
         free(): void;
 
         /**
          * Get the technology used to access the 3GPP network.
          * @returns A {@link ModemManager.ModemAccessTechnology}.
+         * @since 1.0
          */
         get_access_technology(): ModemAccessTechnology;
 
         /**
          * Get availability of the 3GPP network.
          * @returns A {@link ModemManager.Modem3gppNetworkAvailability}.
+         * @since 1.0
          */
         get_availability(): Modem3gppNetworkAvailability;
 
         /**
          * Get the operator code (MCCMNC) of the 3GPP network.
          * @returns The operator code, or `null` if none available.
+         * @since 1.0
          */
         get_operator_code(): string;
 
         /**
          * Get the long operator name of the 3GPP network.
          * @returns The long operator name, or `null` if none available.
+         * @since 1.0
          */
         get_operator_long(): string;
 
         /**
          * Get the short operator name of the 3GPP network.
          * @returns The long operator name, or `null` if none available.
+         * @since 1.0
          */
         get_operator_short(): string;
     }
@@ -60556,6 +62221,7 @@ export namespace ModemManager {
         /**
          * Frees an array of {@link ModemManager.ModemPortInfo} values.
          * @param array_size length of `array`.
+         * @since 1.0
          */
         array_free(array_size: number): void;
     }
@@ -60738,30 +62404,35 @@ export namespace ModemManager {
         // Methods
         /**
          * Frees a {@link ModemManager.SimPreferredNetwork}.
+         * @since 1.18
          */
         free(): void;
 
         /**
          * Get the access technology mask of the preferred network.
          * @returns A {@link ModemManager.ModemAccessTechnology}.
+         * @since 1.18
          */
         get_access_technology(): ModemAccessTechnology;
 
         /**
          * Get the operator code (MCCMNC) of the preferred network.
          * @returns The operator code, or `null` if none available.
+         * @since 1.18
          */
         get_operator_code(): string;
 
         /**
          * Set the desired access technologies of this preferred network entry.
          * @param access_technology A {@link ModemManager.ModemAccessTechnology} mask.
+         * @since 1.18
          */
         set_access_technology(access_technology: ModemAccessTechnology): void;
 
         /**
          * Set the operator code (MCCMNC) of this preferred network.
          * @param operator_code Operator code
+         * @since 1.18
          */
         set_operator_code(operator_code: string): void;
     }

@@ -331,6 +331,7 @@ export namespace TrackerMiner {
         /**
          * Gives the caller the {@link GLib.Quark} used to identify {@link TrackerMiner.Decorator} errors
          * in {@link GLib.Error} structures. The {@link GLib.Quark} is used as the domain for the error.
+         * @since 0.18.
          */
         static error_quark(): GLib.Quark;
 
@@ -351,6 +352,7 @@ export namespace TrackerMiner {
          * queue. `id` is the same IDs emitted by tracker-store when the database is
          * updated for consistency. For details, see the GraphUpdated signal.
          * @param id an ID.
+         * @since 0.18.
          */
         delete_id(id: number): void;
 
@@ -358,6 +360,7 @@ export namespace TrackerMiner {
          * This function returns a string list of class names which are being
          * updated with extended metadata. An example would be 'nfo:Document'.
          * @returns a const gchar** or `NULL`.
+         * @since 0.18.
          */
         get_class_names(): string[];
 
@@ -366,6 +369,7 @@ export namespace TrackerMiner {
          * extracted the extended metadata. This is essentially an identifier
          * so it's clear WHO has extracted this extended metadata.
          * @returns a const gchar* or `NULL` if an error happened.
+         * @since 0.18.
          */
         get_data_source(): string;
 
@@ -375,6 +379,7 @@ export namespace TrackerMiner {
          * to be further flurished with metadata with a 2nd pass extraction or
          * index.
          * @returns the number of items queued to be processed, always >= 0.
+         * @since 0.18.
          */
         get_n_items(): number;
 
@@ -386,6 +391,7 @@ export namespace TrackerMiner {
          * This function will give a {@link GLib.Error} if the miner is paused at the
          * time it is called.
          * @param cancellable a {@link Gio.Cancellable}.
+         * @since 0.18.
          */
         next(cancellable: Gio.Cancellable | null): globalThis.Promise<DecoratorInfo>;
 
@@ -398,6 +404,7 @@ export namespace TrackerMiner {
          * time it is called.
          * @param cancellable a {@link Gio.Cancellable}.
          * @param callback a {@link Gio.AsyncReadyCallback}.
+         * @since 0.18.
          */
         next(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -410,6 +417,7 @@ export namespace TrackerMiner {
          * time it is called.
          * @param cancellable a {@link Gio.Cancellable}.
          * @param callback a {@link Gio.AsyncReadyCallback}.
+         * @since 0.18.
          */
         next(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DecoratorInfo> | void;
 
@@ -419,6 +427,7 @@ export namespace TrackerMiner {
          * error or not.
          * @param result a {@link Gio.AsyncResult}.
          * @returns a {@link TrackerMiner.DecoratorInfo} on success or  `NULL` on error. Free with `tracker_decorator_info_unref()`.
+         * @since 0.18.
          */
         next_finish(result: Gio.AsyncResult): DecoratorInfo;
 
@@ -428,6 +437,7 @@ export namespace TrackerMiner {
          * consistency. For details, see the GraphUpdated signal.
          * @param id the ID of the resource ID.
          * @param class_name_id the ID of the resource's class.
+         * @since 0.18.
          */
         prepend_id(id: number, class_name_id: number): void;
 
@@ -437,6 +447,7 @@ export namespace TrackerMiner {
          * applications that need their content available sooner than the
          * standard time it would take to index content.
          * @param rdf_types a string array of rdf types
+         * @since 0.18.
          */
         set_priority_rdf_types(rdf_types: string): void;
 
@@ -481,6 +492,7 @@ export namespace TrackerMiner {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -524,6 +536,7 @@ export namespace TrackerMiner {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -591,6 +604,7 @@ export namespace TrackerMiner {
          * Prepends a file for processing.
          * @param file a {@link Gio.File} to process
          * @returns the tracker:id of the element corresponding to the file
+         * @since 1.2
          */
         prepend_file(file: Gio.File): number;
     }
@@ -773,6 +787,7 @@ export namespace TrackerMiner {
          * the root of the `tree`.
          * @param file a {@link Gio.File} to compare
          * @returns `true` if `file` matches the URL canonically, otherwise `false`.
+         * @since 1.2.
          */
         file_is_root(file: Gio.File): boolean;
 
@@ -792,6 +807,7 @@ export namespace TrackerMiner {
          * (#TRACKER_FILTER_FILE).
          * @param filter a {@link TrackerMiner.FilterType}
          * @returns Either #TRACKER_FILTER_POLICY_DENY or #TRACKER_FILTER_POLICY_ALLOW.
+         * @since 0.18.
          */
         get_default_policy(filter: FilterType): FilterPolicy;
 
@@ -799,6 +815,7 @@ export namespace TrackerMiner {
          * Describes if the `tree` should index hidden content. To change this
          * setting, see `tracker_indexing_tree_set_filter_hidden()`.
          * @returns `false` if hidden files are indexed, otherwise `true`.
+         * @since 0.18.
          */
         get_filter_hidden(): boolean;
 
@@ -827,6 +844,7 @@ export namespace TrackerMiner {
          *   roots added for devices, which technically are not a config root or a
          *   master root.
          * @returns the effective root for all locations, or `null` on error. The root is owned by `tree` and should not be freed. It can be referenced using `g_object_ref()`.
+         * @since 1.2.
          */
         get_master_root(): Gio.File;
 
@@ -858,6 +876,7 @@ export namespace TrackerMiner {
          * @param file a {@link Gio.File}
          * @param recursive Whether contained indexing roots are affected by the update
          * @returns `TRUE` if a signal is emitted.
+         * @since 1.10
          */
         notify_update(file: Gio.File, recursive: boolean): boolean;
 
@@ -886,6 +905,7 @@ export namespace TrackerMiner {
          * using this function.
          * @param filter a {@link TrackerMiner.FilterType}
          * @param policy a {@link TrackerMiner.FilterPolicy}
+         * @since 0.18.
          */
         set_default_policy(filter: FilterType, policy: FilterPolicy): void;
 
@@ -899,6 +919,7 @@ export namespace TrackerMiner {
          * To ignore hidden files, `filter_hidden` should be `true`, otherwise
          * `false`.
          * @param filter_hidden a boolean
+         * @since 0.18.
          */
         set_filter_hidden(filter_hidden: boolean): void;
     }
@@ -1055,6 +1076,7 @@ export namespace TrackerMiner {
         /**
          * Gives the caller the {@link GLib.Quark} used to identify {@link TrackerMiner.Miner} errors
          * in {@link GLib.Error} structures. The {@link GLib.Quark} is used as the domain for the error.
+         * @since 0.8
          */
         static error_quark(): GLib.Quark;
 
@@ -1062,6 +1084,7 @@ export namespace TrackerMiner {
         /**
          * Tells the miner to mark `urls` are to ignore on next update.
          * @param urls the urls to mark as to ignore on next update
+         * @since 0.8
          * @virtual
          */
         vfunc_ignore_next_update(urls: string[]): void;
@@ -1097,24 +1120,28 @@ export namespace TrackerMiner {
         /**
          * Gets the {@link Tracker.SparqlConnection} initialized by `miner`
          * @returns a {@link Tracker.SparqlConnection}.
+         * @since 0.10
          */
         get_connection(): Tracker.SparqlConnection;
 
         /**
          * Gets the {@link Gio.DBusConnection} initialized by `miner`
          * @returns a {@link Gio.DBusConnection}.
+         * @since 0.10
          */
         get_dbus_connection(): Gio.DBusConnection;
 
         /**
          * Gets the DBus name registered by `miner`
          * @returns a constant string which should not be modified by the caller.
+         * @since 0.10
          */
         get_dbus_full_name(): string;
 
         /**
          * Gets the DBus path registered by `miner`
          * @returns a constant string which should not be modified by the caller.
+         * @since 0.10
          */
         get_dbus_full_path(): string;
 
@@ -1122,24 +1149,28 @@ export namespace TrackerMiner {
          * Returns the number of pause reasons holding `miner` from
          * indexing contents.
          * @returns The number of current pause reasons
+         * @since 0.10.5
          */
         get_n_pause_reasons(): number;
 
         /**
          * Tells the miner to mark `urls` are to ignore on next update.
          * @param urls the urls to mark as to ignore on next update
+         * @since 0.8
          */
         ignore_next_update(urls: string[]): void;
 
         /**
          * Returns `TRUE` if the miner is paused.
          * @returns `TRUE` if the miner is paused.
+         * @since 0.10
          */
         is_paused(): boolean;
 
         /**
          * Returns `TRUE` if the miner has been started.
          * @returns `TRUE` if the miner is already started.
+         * @since 0.8
          */
         is_started(): boolean;
 
@@ -1149,6 +1180,7 @@ export namespace TrackerMiner {
          * operations. On failure `error` will be set and -1 will be returned.
          * @param reason reason to pause
          * @returns The pause cookie ID.
+         * @since 0.8
          */
         pause(reason: string): number;
 
@@ -1158,16 +1190,19 @@ export namespace TrackerMiner {
          * operations until all pause requests have been resumed.
          * @param cookie pause cookie
          * @returns `TRUE` if the cookie was valid.
+         * @since 0.8
          */
         resume(cookie: number): boolean;
 
         /**
          * Tells the miner to start processing data.
+         * @since 0.8
          */
         start(): void;
 
         /**
          * Tells the miner to stop processing data.
+         * @since 0.8
          */
         stop(): void;
 
@@ -1212,6 +1247,7 @@ export namespace TrackerMiner {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1255,6 +1291,7 @@ export namespace TrackerMiner {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -1478,6 +1515,7 @@ export namespace TrackerMiner {
         /**
          * Gives the caller the {@link GLib.Quark} used to identify {@link TrackerMiner.MinerFS} errors
          * in {@link GLib.Error} structures. The {@link GLib.Quark} is used as the domain for the error.
+         * @since 1.2.
          */
         static error_quark(): GLib.Quark;
 
@@ -1542,6 +1580,7 @@ export namespace TrackerMiner {
          * caches, an extra query will be done so that these elements
          * are taken into account.
          * @param file a {@link Gio.File}
+         * @since 0.10
          */
         add_directory_without_parent(file: Gio.File): void;
 
@@ -1551,6 +1590,7 @@ export namespace TrackerMiner {
          * of {@link TrackerMiner.MinerFS}. See `tracker_miner_fs_directory_add()`.
          * @param file {@link Gio.File} for the directory to check
          * @param check_parents whether to check parents and eligibility or not
+         * @since 0.10
          */
         check_directory(file: Gio.File, check_parents: boolean): void;
 
@@ -1561,6 +1601,7 @@ export namespace TrackerMiner {
          * @param file {@link Gio.File} for the directory to check
          * @param priority the priority of the check task
          * @param check_parents whether to check parents and eligibility or not
+         * @since 0.10
          */
         check_directory_with_priority(file: Gio.File, priority: number, check_parents: boolean): void;
 
@@ -1570,6 +1611,7 @@ export namespace TrackerMiner {
          * of {@link TrackerMiner.MinerFS}. See `tracker_miner_fs_directory_add()`.
          * @param file {@link Gio.File} for the file to check
          * @param check_parents whether to check parents and eligibility or not
+         * @since 0.10
          */
         check_file(file: Gio.File, check_parents: boolean): void;
 
@@ -1581,6 +1623,7 @@ export namespace TrackerMiner {
          * @param file {@link Gio.File} for the file to check
          * @param priority the priority of the check task
          * @param check_parents whether to check parents and eligibility or not
+         * @since 0.10
          */
         check_file_with_priority(file: Gio.File, priority: number, check_parents: boolean): void;
 
@@ -1588,6 +1631,7 @@ export namespace TrackerMiner {
          * Tells the filesystem miner to inspect a directory.
          * @param file {@link Gio.File} for the directory to inspect
          * @param recurse whether the directory should be inspected recursively
+         * @since 0.8
          */
         directory_add(file: Gio.File, recurse: boolean): void;
 
@@ -1596,6 +1640,7 @@ export namespace TrackerMiner {
          *  watches are removed.
          * @param file {@link Gio.File} for the directory to be removed
          * @returns `true` if the directory was successfully removed.
+         * @since 0.8
          */
         directory_remove(file: Gio.File): boolean;
 
@@ -1605,6 +1650,7 @@ export namespace TrackerMiner {
          * store.
          * @param file {@link Gio.File} for the directory to be removed
          * @returns `true` if the directory was successfully removed.
+         * @since 0.10
          */
         directory_remove_full(file: Gio.File): boolean;
 
@@ -1614,6 +1660,7 @@ export namespace TrackerMiner {
          * that parameter will contain `null` to reflect success.
          * @param file a {@link Gio.File}
          * @param error a {@link GLib.Error} with the error that happened during processing, or `null`.
+         * @since 0.8
          */
         file_notify(file: Gio.File, error: GLib.Error): void;
 
@@ -1621,6 +1668,7 @@ export namespace TrackerMiner {
          * Tells `fs` to force mtime checking (regardless of the global mtime check
          * configuration) on the given `directory`.
          * @param directory a {@link Gio.File} representing the directory
+         * @since 0.12
          */
         force_mtime_checking(directory: Gio.File): void;
 
@@ -1630,6 +1678,7 @@ export namespace TrackerMiner {
          * Returns the {@link TrackerMiner.DataProvider} implementation, which is being used
          * to supply {@link Gio.File} and {@link Gio.FileInfo} content to Tracker.
          * @returns The {@link TrackerMiner.DataProvider} supplying content
+         * @since 1.2
          */
         get_data_provider(): DataProvider;
 
@@ -1646,6 +1695,7 @@ export namespace TrackerMiner {
          * prodominently with cloud data where you can't perform these checks.
          * By default and for local file systems, this is enabled.
          * @returns `true` if a file system structure is crawled for new updates on start up, otherwise `false`.
+         * @since 0.10
          */
         get_initial_crawling(): boolean;
 
@@ -1655,6 +1705,7 @@ export namespace TrackerMiner {
          * working prodominently with cloud data where you can't perform these
          * checks. By default and for local file systems, this is enabled.
          * @returns `true` if mtime checks for directories against the database are done when `fs` crawls the file system, otherwise `false`.
+         * @since 0.10
          */
         get_mtime_checking(): boolean;
 
@@ -1668,6 +1719,7 @@ export namespace TrackerMiner {
          * return non-`null`.
          * @param file a {@link Gio.File} obtained in {@link TrackerMiner.MinerFS.SignalSignatures.process_file | TrackerMiner.MinerFS::process-file}
          * @returns The parent folder URN, or `null`.
+         * @since 0.8
          */
         get_parent_urn(file: Gio.File): string | null;
 
@@ -1675,6 +1727,7 @@ export namespace TrackerMiner {
          * Gets the current throttle value, see
          * `tracker_miner_fs_set_throttle()` for more details.
          * @returns a double representing a value between 0.0 and 1.0.
+         * @since 0.8
          */
         get_throttle(): number;
 
@@ -1686,6 +1739,7 @@ export namespace TrackerMiner {
          * exist in the store yet, `null` will be returned.
          * @param file a {@link Gio.File} obtained in {@link TrackerMiner.MinerFS.SignalSignatures.process_file | TrackerMiner.MinerFS::process-file}
          * @returns The URN containing the data associated to `file`,          or `null`.
+         * @since 0.8
          */
         get_urn(file: Gio.File): string | null;
 
@@ -1695,6 +1749,7 @@ export namespace TrackerMiner {
          * queues is more than 0. This includes items deleted, created,
          * updated, moved or being written back.
          * @returns `true` if there are items to process in the internal queues, otherwise `false`.
+         * @since 0.10
          */
         has_items_to_process(): boolean;
 
@@ -1705,6 +1760,7 @@ export namespace TrackerMiner {
          * If `file` doesn't exist in the store yet, `null` will be returned.
          * @param file a {@link Gio.File}
          * @returns A newly allocated string with the URN containing the data associated          to `file`, or `null`.
+         * @since 0.10
          */
         query_urn(file: Gio.File): string;
 
@@ -1726,6 +1782,7 @@ export namespace TrackerMiner {
          * 
          * The default if not set directly is that `do_initial_crawling` is `true`.
          * @param do_initial_crawling a `gboolean`
+         * @since 0.10
          */
         set_initial_crawling(do_initial_crawling: boolean): void;
 
@@ -1746,6 +1803,7 @@ export namespace TrackerMiner {
          * 
          * The default if not set directly is that `mtime_checking` is `true`.
          * @param mtime_checking a `gboolean`
+         * @since 0.10
          */
         set_mtime_checking(mtime_checking: boolean): void;
 
@@ -1756,6 +1814,7 @@ export namespace TrackerMiner {
          * 1.0, the `fs` is typically waiting one full second before handling
          * the next batch of queued items to be processed.
          * @param throttle a double between 0.0 and 1.0
+         * @since 0.8
          */
         set_throttle(throttle: number): void;
 
@@ -1764,6 +1823,7 @@ export namespace TrackerMiner {
          * @param file {@link Gio.File} for the file to check
          * @param rdf_types A {@link GObject.Strv} with rdf types
          * @param results A array of results from the preparation query
+         * @since 0.10.20
          */
         writeback_file(file: Gio.File, rdf_types: string[], results: string[][]): void;
 
@@ -1773,6 +1833,7 @@ export namespace TrackerMiner {
          * that parameter will contain `null` to reflect success.
          * @param file a {@link Gio.File}
          * @param error a {@link GLib.Error} with the error that happened during processing, or `null`.
+         * @since 0.10.20
          */
         writeback_notify(file: Gio.File, error: GLib.Error): void;
 
@@ -1817,6 +1878,7 @@ export namespace TrackerMiner {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1860,6 +1922,7 @@ export namespace TrackerMiner {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -1965,6 +2028,7 @@ export namespace TrackerMiner {
         /**
          * Get the type of network this data `miner` uses to index content.
          * @returns a {@link TrackerMiner.NetworkType} on success or #TRACKER_NETWORK_TYPE_NONE on error.
+         * @since 0.18.
          */
         get_network_type(): NetworkType;
 
@@ -2009,6 +2073,7 @@ export namespace TrackerMiner {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2052,6 +2117,7 @@ export namespace TrackerMiner {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -2087,6 +2153,7 @@ export namespace TrackerMiner {
          * 
          * ¹: http://en.wikipedia.org/wiki/MIME
          * @returns the MIME type for {@link TrackerMiner.DecoratorInfo} on success or `NULL` on error.
+         * @since 0.18.
          */
         get_mimetype(): string;
 
@@ -2098,6 +2165,7 @@ export namespace TrackerMiner {
          * This function calls `g_task_get_task_data()` on the return value of
          * `tracker_decorator_info_get_task()`.
          * @returns a {@link Tracker.SparqlBuilder} on success or `NULL` on error.
+         * @since 0.18.
          */
         get_sparql(): Tracker.SparqlBuilder;
 
@@ -2110,6 +2178,7 @@ export namespace TrackerMiner {
          * metadata extraction. This can also be accessed with
          * `tracker_decorator_info_get_sparql()`.
          * @returns the {@link Gio.Task} for {@link TrackerMiner.DecoratorInfo} on success or `NULL` if there is no existing {@link Gio.Task}.
+         * @since 0.18.
          */
         get_task(): Gio.Task;
 
@@ -2117,6 +2186,7 @@ export namespace TrackerMiner {
          * A URL is a Uniform Resource Locator and should be a location associated
          * with a resource in the database. For example, 'file:///tmp/foo.txt'.
          * @returns the URL for {@link TrackerMiner.DecoratorInfo} on success or `NULL` on error.
+         * @since 0.18.
          */
         get_url(): string;
 
@@ -2124,18 +2194,21 @@ export namespace TrackerMiner {
          * A URN is a Uniform Resource Name and should be a unique identifier
          * for a resource in the database.
          * @returns the URN for {@link TrackerMiner.DecoratorInfo} on success or `NULL` on error.
+         * @since 0.18.
          */
         get_urn(): string;
 
         /**
          * Increases the reference count of `info` by 1.
          * @returns the same `info` passed in, or `null` on error.
+         * @since 0.18.
          */
         ref(): DecoratorInfo;
 
         /**
          * Decreases the reference count of `info` by 1 and frees it when the
          * reference count reaches 0.
+         * @since 0.18.
          */
         unref(): void;
     }
@@ -2208,6 +2281,7 @@ export namespace TrackerMiner {
              * @param attributes an attribute query string
              * @param flags a set of {@link TrackerMiner.DirectoryFlags}
              * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+             * @since 1.2
              * @virtual
              */
             vfunc_begin(url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable: Gio.Cancellable | null): Enumerator;
@@ -2239,6 +2313,7 @@ export namespace TrackerMiner {
              * @param io_priority the [I/O priority][io-priority] of the request
              * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
              * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+             * @since 1.2
              * @virtual
              */
             vfunc_begin_async(url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -2247,6 +2322,7 @@ export namespace TrackerMiner {
              * Finishes the asynchronous operation started with
              * `tracker_data_provider_begin_async()`.
              * @param result a {@link Gio.AsyncResult}.
+             * @since 1.2
              * @virtual
              */
             vfunc_begin_finish(result: Gio.AsyncResult): Enumerator;
@@ -2267,6 +2343,7 @@ export namespace TrackerMiner {
              * more details.
              * @param enumerator a {@link TrackerMiner.Enumerator} originally created by `tracker_data_provider_begin()`.
              * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+             * @since 1.2
              * @virtual
              */
             vfunc_end(enumerator: Enumerator, cancellable: Gio.Cancellable | null): boolean;
@@ -2296,6 +2373,7 @@ export namespace TrackerMiner {
              * @param io_priority the [I/O priority][io-priority] of the request
              * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
              * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+             * @since 1.2
              * @virtual
              */
             vfunc_end_async(enumerator: Enumerator, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -2304,6 +2382,7 @@ export namespace TrackerMiner {
              * Finishes the asynchronous operation started with
              * `tracker_data_provider_end_async()`.
              * @param result a {@link Gio.AsyncResult}.
+             * @since 1.2
              * @virtual
              */
             vfunc_end_finish(result: Gio.AsyncResult): boolean;
@@ -2344,6 +2423,7 @@ export namespace TrackerMiner {
          * @param flags a set of {@link TrackerMiner.DirectoryFlags}
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns a {@link TrackerMiner.Enumerator} or `null` on failure. This must be freed with `g_object_unref()`.
+         * @since 1.2
          */
         begin(url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable: Gio.Cancellable | null): Enumerator;
 
@@ -2373,6 +2453,7 @@ export namespace TrackerMiner {
          * @param flags a set of {@link TrackerMiner.DirectoryFlags}
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @since 1.2
          */
         begin_async(url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Enumerator>;
 
@@ -2403,6 +2484,7 @@ export namespace TrackerMiner {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 1.2
          */
         begin_async(url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2433,6 +2515,7 @@ export namespace TrackerMiner {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 1.2
          */
         begin_async(url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Enumerator> | void;
 
@@ -2441,6 +2524,7 @@ export namespace TrackerMiner {
          * `tracker_data_provider_begin_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns a {@link TrackerMiner.Enumerator} or `null` on failure. This must be freed with `g_object_unref()`.
+         * @since 1.2
          */
         begin_finish(result: Gio.AsyncResult): Enumerator;
 
@@ -2461,6 +2545,7 @@ export namespace TrackerMiner {
          * @param enumerator a {@link TrackerMiner.Enumerator} originally created by `tracker_data_provider_begin()`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` on success, otherwise `false` and `error` is set.
+         * @since 1.2
          */
         end(enumerator: Enumerator, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2488,6 +2573,7 @@ export namespace TrackerMiner {
          * @param enumerator a {@link TrackerMiner.Enumerator} originally created by `tracker_data_provider_begin()`.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @since 1.2
          */
         end_async(enumerator: Enumerator, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2516,6 +2602,7 @@ export namespace TrackerMiner {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 1.2
          */
         end_async(enumerator: Enumerator, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2544,6 +2631,7 @@ export namespace TrackerMiner {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 1.2
          */
         end_async(enumerator: Enumerator, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2552,6 +2640,7 @@ export namespace TrackerMiner {
          * `tracker_data_provider_end_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success, otherwise `false` and `error` is set.
+         * @since 1.2
          */
         end_finish(result: Gio.AsyncResult): boolean;
     }
@@ -2573,6 +2662,7 @@ export namespace TrackerMiner {
              * Enumerates to the next piece of data according to the `enumerator`
              * implementation.
              * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+             * @since 1.2
              * @virtual
              */
             vfunc_next(cancellable: Gio.Cancellable | null): null;
@@ -2598,6 +2688,7 @@ export namespace TrackerMiner {
              * @param io_priority the [I/O priority][io-priority] of the request
              * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
              * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+             * @since 1.2
              * @virtual
              */
             vfunc_next_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -2606,6 +2697,7 @@ export namespace TrackerMiner {
              * Finishes the asynchronous operation started with
              * `tracker_enumerator_next_async()`.
              * @param result a {@link Gio.AsyncResult}.
+             * @since 1.2
              * @virtual
              */
             vfunc_next_finish(result: Gio.AsyncResult): null;
@@ -2632,6 +2724,7 @@ export namespace TrackerMiner {
          * implementation.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns Returns a `gpointer` with the next item from the `enumerator`, or `null` when `error` is set or the operation was cancelled in `cancellable`. The data must be freed. The function to free depends on the data returned by the enumerator and the {@link TrackerMiner.DataProvider} that created the `enumerator`.
+         * @since 1.2
          */
         next(cancellable: Gio.Cancellable | null): null;
 
@@ -2655,6 +2748,7 @@ export namespace TrackerMiner {
          * priority. Default priority is `G_PRIORITY_DEFAULT`.
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @since 1.2
          */
         next_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<null>;
 
@@ -2679,6 +2773,7 @@ export namespace TrackerMiner {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 1.2
          */
         next_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2703,6 +2798,7 @@ export namespace TrackerMiner {
          * @param io_priority the [I/O priority][io-priority] of the request
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 1.2
          */
         next_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<null> | void;
 
@@ -2711,6 +2807,7 @@ export namespace TrackerMiner {
          * `tracker_enumerator_next_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns Returns a `gpointer` with the next item from the `enumerator`, or `null` when `error` is set or the operation was cancelled in `cancellable`. The data must be freed. The function to free depends on the data returned by the enumerator and the {@link TrackerMiner.DataProvider} that created the `enumerator`.
+         * @since 1.2
          */
         next_finish(result: Gio.AsyncResult): null;
     }

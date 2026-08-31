@@ -509,18 +509,21 @@ export namespace GstAnalytics {
         /**
          * Gets the {@link Gst.Caps} from a stream
          * @returns The {@link Gst.Caps} if there are any
+         * @since 1.28
          */
         get_caps(): Gst.Caps | null;
 
         /**
          * Gets the {@link Gst.Segment} from a stream
          * @returns The {@link Gst.Segment} if there is one
+         * @since 1.28
          */
         get_segment(): Gst.Segment | null;
 
         /**
          * Gets the current stream id from a stream
          * @returns The stream id if there is any
+         * @since 1.28
          */
         get_stream_id(): string | null;
     }
@@ -541,6 +544,7 @@ export namespace GstAnalytics {
         // Static methods
         /**
          * Get an id identifying {@link GstAnalytics.Mtd} type.
+         * @since 1.24
          */
         static get_mtd_type(): MtdType;
 
@@ -548,11 +552,13 @@ export namespace GstAnalytics {
         /**
          * @param quark Quark of the class Get index of class represented by `quark`
          * @returns index of the class associated with `quarks` ( and label) or     a negative value on failure.
+         * @since 1.24
          */
         get_index_by_quark(quark: GLib.Quark): number;
 
         /**
          * @returns Number of classes in this classification instance
+         * @since 1.24
          */
         get_length(): number;
 
@@ -560,12 +566,14 @@ export namespace GstAnalytics {
          * Get confidence level for class at `index`
          * @param index Object class index
          * @returns confidence level for `index`, <0.0 if the call failed.
+         * @since 1.24
          */
         get_level(index: bigint | number): number;
 
         /**
          * @param index index of the class Get quark of the class at `index`
          * @returns Quark of this class (label) associated with `index`
+         * @since 1.24
          */
         get_quark(index: bigint | number): GLib.Quark;
     }
@@ -595,6 +603,7 @@ export namespace GstAnalytics {
          * The loaded modelinfo must be freed with `gst_analytics_modelinfo_free()`
          * when no longer needed.
          * @param model_filename Path to the model file (e.g., "model.onnx", "model.tflite")
+         * @since 1.28
          */
         static load(model_filename: string): ModelInfo | null;
 
@@ -612,6 +621,7 @@ export namespace GstAnalytics {
          * @param data_type The tensor data type to match
          * @param dims The dimension sizes. Use -1 for dynamic dimensions.
          * @returns The tensor name if found, or `null` otherwise.    The caller must free this with `g_free()` when done.
+         * @since 1.28
          */
         find_tensor_name(dir: ModelInfoTensorDirection, index: bigint | number, in_tensor_name: string | null, data_type: TensorDataType, dims: (bigint | number)[]): string | null;
 
@@ -620,6 +630,7 @@ export namespace GstAnalytics {
          * 
          * This function should be called when the modelinfo is no longer needed
          * to release the associated resources.
+         * @since 1.28
          */
         free(): void;
 
@@ -634,6 +645,7 @@ export namespace GstAnalytics {
          * If not specified in the modelinfo, defaults to row-major.
          * @param tensor_name The name of the tensor
          * @returns The dimension order as {@link GstAnalytics.TensorDimOrder}
+         * @since 1.28
          */
         get_dims_order(tensor_name: string): TensorDimOrder;
 
@@ -644,6 +656,7 @@ export namespace GstAnalytics {
          * The group ID is stored in the modelinfo section and is global for all
          * tensors in the model.
          * @returns The group ID string, or `null` if not found.    The caller must free this with `g_free()` when done.
+         * @since 1.28
          */
         get_group_id(): string | null;
 
@@ -653,6 +666,7 @@ export namespace GstAnalytics {
          * The tensor ID is ideally registered in the [Tensor ID Registry](https://github.com/collabora/tensor-id-registry/blob/main/tensor-id-register.md).
          * @param tensor_name The name of the tensor
          * @returns The tensor ID string, or `null` if not found.    The caller must free this with `g_free()` when done.
+         * @since 1.28
          */
         get_id(tensor_name: string): string | null;
 
@@ -683,6 +697,7 @@ export namespace GstAnalytics {
          * @param input_mins The minimum values of the actual input data for each channel
          * @param input_maxs The maximum values of the actual input data for each channel
          * @returns `true` on success, `false` on error, if ranges field is not found, or if `num_input_ranges`          doesn't match the number of target ranges in the modelinfo
+         * @since 1.28
          */
         get_input_scales_offsets(tensor_name: string, input_mins: number[], input_maxs: number[]): [boolean, number[], number[]];
 
@@ -692,6 +707,7 @@ export namespace GstAnalytics {
          * Using GQuark is more efficient than string comparison when you need to
          * compare multiple group IDs.
          * @returns The GQuark of the group ID, or 0 if not found
+         * @since 1.28
          */
         get_quark_group_id(): GLib.Quark;
 
@@ -702,6 +718,7 @@ export namespace GstAnalytics {
          * compare multiple IDs.
          * @param tensor_name The name of the tensor
          * @returns The GQuark of the tensor ID, or 0 if not found
+         * @since 1.28
          */
         get_quark_id(tensor_name: string): GLib.Quark;
 
@@ -719,6 +736,7 @@ export namespace GstAnalytics {
          * The caller must free `mins` and `maxs` with `g_free()` when done.
          * @param tensor_name The name of the tensor
          * @returns `true` if range information was found and valid, `false` otherwise
+         * @since 1.28
          */
         get_target_ranges(tensor_name: string): [boolean, number[], number[]];
 
@@ -728,6 +746,7 @@ export namespace GstAnalytics {
          * The version is in the format "Major.Minor" and is stored in the
          * [modelinfo] section of the modelinfo file.
          * @returns The version string (e.g., "1.0").    The caller must free this with `g_free()` when done.    Defaults to "1.0" if not specified.
+         * @since 1.28
          */
         get_version(): string;
     }
@@ -749,6 +768,7 @@ export namespace GstAnalytics {
         /**
          * Gets the string version of the name of this type of analytics data
          * @param type The type of analytics data
+         * @since 1.24
          */
         static type_get_name(type: MtdType): string;
 
@@ -756,17 +776,20 @@ export namespace GstAnalytics {
         /**
          * Get instance id
          * @returns Id of `instance`
+         * @since 1.24
          */
         get_id(): number;
 
         /**
          * @returns opaque id of the type
+         * @since 1.24
          */
         get_mtd_type(): MtdType;
 
         /**
          * Get instance size
          * @returns Size (in bytes) of this instance or 0 on failure.
+         * @since 1.24
          */
         get_size(): number;
     }
@@ -807,6 +830,7 @@ export namespace GstAnalytics {
         // Static methods
         /**
          * Get an id that represent object-detection metadata type
+         * @since 1.24
          */
         static get_mtd_type(): MtdType;
 
@@ -814,24 +838,28 @@ export namespace GstAnalytics {
         /**
          * Retrieve location confidence level.
          * @returns TRUE on success, otherwise FALSE.
+         * @since 1.24
          */
         get_confidence_lvl(): [boolean, number];
 
         /**
          * Retrieve location and location confidence level.
          * @returns TRUE on success, otherwise FALSE.
+         * @since 1.24
          */
         get_location(): [boolean, number, number, number, number, number];
 
         /**
          * Quark of the class of object associated with this location.
          * @returns Quark different from on success and 0 on failure.
+         * @since 1.24
          */
         get_obj_type(): GLib.Quark;
 
         /**
          * Retrieve oriented location and location confidence level.
          * @returns TRUE on success, otherwise FALSE.
+         * @since 1.26
          */
         get_oriented_location(): [boolean, number, number, number, number, number, number];
     }
@@ -854,6 +882,7 @@ export namespace GstAnalytics {
          * @param confidence_levels confidence levels
          * @param class_quarks labels of this    classification. Order define index, quark, labels relation. This array    need to exist as long has this classification meta exist.
          * @returns Added successfully
+         * @since 1.24
          */
         add_cls_mtd(confidence_levels: number[], class_quarks: GLib.Quark[]): [boolean, ClsMtd];
 
@@ -865,6 +894,7 @@ export namespace GstAnalytics {
          * @param h bounding box height
          * @param loc_conf_lvl confidence level on the object location
          * @returns Added successfully
+         * @since 1.24
          */
         add_od_mtd(type: GLib.Quark, x: number, y: number, w: number, h: number, loc_conf_lvl: number): [boolean, ODMtd | null];
 
@@ -873,6 +903,7 @@ export namespace GstAnalytics {
          * @param confidence_level confidence levels
          * @param class_quark labels of this    classification. Order define index, quark, labels relation. This array    need to exist as long has this classification meta exist.
          * @returns Added successfully
+         * @since 1.24
          */
         add_one_cls_mtd(confidence_level: number, class_quark: GLib.Quark): [boolean, ClsMtd];
 
@@ -885,6 +916,7 @@ export namespace GstAnalytics {
          * @param r bounding box rotation in radians <0, 2xPI>    with respect to the bounding box center    (the rotation value is a clock-wise angle)
          * @param loc_conf_lvl confidence level on the object location
          * @returns Added successfully
+         * @since 1.26
          */
         add_oriented_od_mtd(type: GLib.Quark, x: number, y: number, w: number, h: number, r: number, loc_conf_lvl: number): [boolean, ODMtd | null];
 
@@ -903,6 +935,7 @@ export namespace GstAnalytics {
          * @param masks_loc_w Width of the rectangle corresponding to the masks in the image.
          * @param masks_loc_h Height of the rectangle corresponding to the masks in the image.
          * @returns TRUE if added successfully, otherwise FALSE
+         * @since 1.26
          */
         add_segmentation_mtd(buffer: Gst.Buffer, segmentation_type: SegmentationType, region_ids: number[], masks_loc_x: number, masks_loc_y: number, masks_loc_w: number, masks_loc_h: number): [boolean, SegmentationMtd];
 
@@ -911,6 +944,7 @@ export namespace GstAnalytics {
          * {@link GstAnalytics.Tensor} needs to be filled.
          * @param num_dims The number of dimensions in the tensor
          * @returns Added successfully
+         * @since 1.28
          */
         add_tensor_mtd(num_dims: bigint | number): [boolean, TensorMtd | null];
 
@@ -922,6 +956,7 @@ export namespace GstAnalytics {
          * @param dims_order Indicate tensor dimension indexing order
          * @param dims size of tensor in each dimension.     A value of 0 means the dimension is dynamic.
          * @returns Added successfully
+         * @since 1.28
          */
         add_tensor_mtd_simple(id: GLib.Quark, data_type: TensorDataType, data: Gst.Buffer, dims_order: TensorDimOrder, dims: (bigint | number)[]): [boolean, TensorMtd | null];
 
@@ -929,6 +964,7 @@ export namespace GstAnalytics {
          * @param tracking_id Tracking id
          * @param tracking_first_seen Timestamp of first time the object was observed.
          * @returns Added successfully
+         * @since 1.24
          */
         add_tracking_mtd(tracking_id: bigint | number, tracking_first_seen: Gst.ClockTime): [boolean, TrackingMtd];
 
@@ -942,6 +978,7 @@ export namespace GstAnalytics {
          * @param max_relation_span Maximum number of relation between `an_meta_first_id` and    `an_meta_second_id`.    A value of 1 mean only only consider direct relation.
          * @param cond_types condition on relation types.
          * @returns TRUE if a relation between exit between `an_meta_first_id` and  `an_meta_second_id`, otherwise FALSE.
+         * @since 1.24
          */
         exist(an_meta_first_id: number, an_meta_second_id: number, max_relation_span: number, cond_types: RelTypes): [boolean, number[] | null];
 
@@ -950,6 +987,7 @@ export namespace GstAnalytics {
          * otherwise this method return FALSE and `rlt` is invalid.
          * @param an_meta_id Id of {@link GstAnalytics.ClsMtd} instance to retrieve
          * @returns TRUE if successful.
+         * @since 1.24
          */
         get_cls_mtd(an_meta_id: number): [boolean, ClsMtd];
 
@@ -959,6 +997,7 @@ export namespace GstAnalytics {
          * @param type Type of GstAnalyticsMtd to filter on
          * @param state Opaque data to store state of the query.    If `state` point to NULL, the first analytics-metadata directly related    to `an_meta_id` will be set in `rlt_mtd`. Doesn't need to be free.
          * @returns TRUE if `rlt_mtd` was updated, other wise FALSE
+         * @since 1.24
          */
         get_direct_related(an_meta_id: number, relation_type: RelTypes, type: MtdType, state: never): [boolean, null, Mtd];
 
@@ -968,6 +1007,7 @@ export namespace GstAnalytics {
          * @param an_meta_id Id of GstAnalyticsMtd instance to retrieve
          * @param type Filter on a specific type of analysis, use  `GST_ANALYTICS_MTD_TYPE_ANY` to match any type
          * @returns TRUE if successful.
+         * @since 1.24
          */
         get_mtd(an_meta_id: number, type: MtdType): [boolean, Mtd];
 
@@ -976,6 +1016,7 @@ export namespace GstAnalytics {
          * otherwise this method return FALSE and `rlt` is invalid.
          * @param an_meta_id Id of {@link GstAnalytics.ODMtd} instance to retrieve
          * @returns TRUE if successful.
+         * @since 1.24
          */
         get_od_mtd(an_meta_id: number): [boolean, ODMtd];
 
@@ -986,6 +1027,7 @@ export namespace GstAnalytics {
          * @param an_meta_first_id Id of first analysis-meta
          * @param an_meta_second_id Id of second  analysis-meta
          * @returns relation description between first and second analysis-meta.
+         * @since 1.24
          */
         get_relation(an_meta_first_id: number, an_meta_second_id: number): RelTypes;
 
@@ -994,6 +1036,7 @@ export namespace GstAnalytics {
          * otherwise this method return FALSE and `rlt` is invalid.
          * @param an_meta_id Id of {@link GstAnalytics.SegmentationMtd} instance to retrieve
          * @returns TRUE if successful.
+         * @since 1.26
          */
         get_segmentation_mtd(an_meta_id: number): [boolean, SegmentationMtd];
 
@@ -1002,6 +1045,7 @@ export namespace GstAnalytics {
          * otherwise this method return FALSE and `rlt` is invalid.
          * @param an_meta_id Id of {@link GstAnalytics.TensorMtd} instance to retrieve
          * @returns TRUE if successful.
+         * @since 1.28
          */
         get_tensor_mtd(an_meta_id: number): [boolean, TensorMtd];
 
@@ -1010,6 +1054,7 @@ export namespace GstAnalytics {
          * otherwise this method return FALSE and `rlt` is invalid.
          * @param an_meta_id Id of GstAnalyticsMtd instance to retrieve
          * @returns TRUE if successful.
+         * @since 1.24
          */
         get_tracking_mtd(an_meta_id: number): [boolean, TrackingMtd];
 
@@ -1017,6 +1062,7 @@ export namespace GstAnalytics {
          * @param state Opaque data to store iteration state, initialize to NULL, no need to    free it.
          * @param type Type of GstAnalyticsMtd to iterate on or use  `GST_ANALYTICS_MTD_TYPE_ANY` for any.
          * @returns FALSE if end was reached and iteration is completed.
+         * @since 1.24
          */
         iterate(state: null, type: MtdType): [boolean, Mtd];
 
@@ -1029,6 +1075,7 @@ export namespace GstAnalytics {
          * @param an_meta_first_id first meta id
          * @param an_meta_second_id second meta id
          * @returns TRUE on success and FALSE on failure.
+         * @since 1.24
          */
         set_relation(type: RelTypes, an_meta_first_id: number, an_meta_second_id: number): boolean;
     }
@@ -1191,6 +1238,7 @@ export namespace GstAnalytics {
         /**
          * Get an instance of {@link GstAnalytics.MtdType} that represent segmentation
          * metadata type.
+         * @since 1.26
          */
         static get_mtd_type(): MtdType;
 
@@ -1198,12 +1246,14 @@ export namespace GstAnalytics {
         /**
          * Get segmentation mask data.
          * @returns Segmentation mask data stored in a {@link Gst.Buffer}
+         * @since 1.26
          */
         get_mask(): [Gst.Buffer, number, number, number, number];
 
         /**
          * Get the regions count.
          * @returns Number of regions segmented
+         * @since 1.26
          */
         get_region_count(): number;
 
@@ -1213,6 +1263,7 @@ export namespace GstAnalytics {
          * `gst_analytics_segmentation_mtd_get_region_count()`
          * @param index Region index
          * @returns The region ID
+         * @since 1.26
          */
         get_region_id(index: bigint | number): number;
 
@@ -1220,6 +1271,7 @@ export namespace GstAnalytics {
          * Get region index of the region identified by `id`.
          * @param id Region id
          * @returns TRUE if a region with `id` exist, otherwise FALSE
+         * @since 1.26
          */
         get_region_index(id: number): [boolean, number];
     }
@@ -1257,6 +1309,7 @@ export namespace GstAnalytics {
         /**
          * Get a string version of the data type
          * @param data_type a {@link GstAnalytics.TensorDataType}
+         * @since 1.28
          */
         static data_type_get_name(data_type: TensorDataType): string;
 
@@ -1268,23 +1321,27 @@ export namespace GstAnalytics {
          * @param order The order of the tensor to read from the memory
          * @param dims An optional array of dimensions, where G_MAXSIZE means ANY.
          * @returns TRUE if the {@link GstAnalytics.Tensor} has the reading order from the memory matching `order`, dimensions matching `num_dims`, data type matching `data_type` Otherwise FALSE will be returned.
+         * @since 1.28
          */
         check_type(data_type: TensorDataType, order: TensorDimOrder, dims: (bigint | number)[] | null): boolean;
 
         /**
          * Create a copy of `tensor`.
          * @returns a new {@link GstAnalytics.Tensor}
+         * @since 1.26
          */
         copy(): Tensor | null;
 
         /**
          * Free tensor
+         * @since 1.26
          */
         free(): void;
 
         /**
          * Gets the dimensions of the tensor.
          * @returns The dims array form the tensor
+         * @since 1.26
          */
         get_dims(): number[];
 
@@ -1300,6 +1357,7 @@ export namespace GstAnalytics {
          * @param dims_order Indicate tensor dimension indexing order
          * @param dims size of tensor in each dimension.     A value of 0 means the dimension is dynamic.
          * @returns TRUE if it coudl be set correctly
+         * @since 1.28
          */
         set_simple(id: GLib.Quark, data_type: TensorDataType, data: Gst.Buffer, dims_order: TensorDimOrder, dims: (bigint | number)[]): boolean;
     }
@@ -1321,6 +1379,7 @@ export namespace GstAnalytics {
          * smaller than {@link GstAnalytics.TensorMeta}.num_tensors
          * @param index The number of the tensor to get
          * @returns a GstTensor
+         * @since 1.26
          */
         get(index: bigint | number): Tensor;
 
@@ -1328,6 +1387,7 @@ export namespace GstAnalytics {
          * Get the first tensor from the {@link GstAnalytics.TensorMeta} identified by `id`.
          * @param id A {@link GLib.Quark} identifying tensor-encoding
          * @returns a GstTensor with id matching `id`. Otherwise NULL will be returned.
+         * @since 1.28
          */
         get_by_id(id: GLib.Quark): Tensor | null;
 
@@ -1335,6 +1395,7 @@ export namespace GstAnalytics {
          * Finds the first tensor with the requsted ID in the meta
          * @param id The tensor id to look for
          * @returns The index of the tensor inthe meta, or -1 if  its not found.
+         * @since 1.26
          */
         get_index_from_id(id: GLib.Quark): number;
 
@@ -1348,12 +1409,14 @@ export namespace GstAnalytics {
          * @param order The order of the tensor to read from the memory
          * @param dims An optional array of dimensions, where G_MAXSIZE means ANY.
          * @returns a matching {@link GstAnalytics.Tensor}, otherwise NULL
+         * @since 1.28
          */
         get_typed_tensor(tensor_id: GLib.Quark, data_type: TensorDataType, order: TensorDimOrder, dims: (bigint | number)[] | null): Tensor | null;
 
         /**
          * Sets tensors into the {@link GstAnalytics.TensorMeta}
          * @param tensors An array of poiners to {@link GstAnalytics.Tensor}
+         * @since 1.26
          */
         set(tensors: Tensor[]): void;
     }
@@ -1384,6 +1447,7 @@ export namespace GstAnalytics {
         // Static methods
         /**
          * Get an id that represent tensor metadata type
+         * @since 1.28
          */
         static get_mtd_type(): MtdType;
 
@@ -1391,6 +1455,7 @@ export namespace GstAnalytics {
         /**
          * Get tensor
          * @returns a {@link GstAnalytics.Tensor}
+         * @since 1.28
          */
         get_tensor(): Tensor;
     }
@@ -1408,22 +1473,28 @@ export namespace GstAnalytics {
         id: number;
 
         // Static methods
+        /**
+         * @since 1.24
+         */
         static get_mtd_type(): MtdType;
 
         // Methods
         /**
          * Retrieve tracking information.
          * @returns Successfully retrieved info.
+         * @since 1.24
          */
         get_info(): [boolean, number, Gst.ClockTime, Gst.ClockTime, boolean];
 
         /**
          * @returns Update successful
+         * @since 1.24
          */
         set_lost(): boolean;
 
         /**
          * @param last_seen Timestamp of last time this object was tracked
+         * @since 1.24
          */
         update_last_seen(last_seen: Gst.ClockTime): boolean;
     }

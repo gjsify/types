@@ -1712,6 +1712,7 @@ export namespace GUPnPAV {
          * Get the artist of the `object`. If role is not `null`, it is set to the role
          * of the artist if available.
          * @returns The artist of the `object`, or `null`.
+         * @deprecated since 0.5.3: Use `gupnp_didl_lite_object_get_artists` instead.
          */
         get_artist(): string;
 
@@ -1731,6 +1732,7 @@ export namespace GUPnPAV {
         /**
          * Get the author of the `object`.
          * @returns The author of the `object`, or `null`.
+         * @deprecated since 0.5.3: Use `gupnp_didl_lite_object_get_authors` instead.
          */
         get_author(): string;
 
@@ -1946,12 +1948,14 @@ export namespace GUPnPAV {
         /**
          * Set the Artist of the `object` to `artist`.
          * @param artist The Artist
+         * @deprecated since 0.5.3: Use `gupnp_didl_lite_object_add_artist` instead.
          */
         set_artist(artist: string): void;
 
         /**
          * Set the Author of the `object` to `author`.
          * @param author The Author
+         * @deprecated since 0.5.3: Use `gupnp_didl_lite_object_add_author` instead.
          */
         set_author(author: string): void;
 
@@ -2594,11 +2598,13 @@ export namespace GUPnPAV {
 
         /**
          * @returns The content of the subtitleFileType property or `null`
+         * @since 0.12.4
          */
         get_subtitle_file_type(): string;
 
         /**
          * @returns The content of the subtitleFileUri property or `null` when not set.
+         * @since 0.12.4
          */
         get_subtitle_file_uri(): string;
 
@@ -2727,6 +2733,7 @@ export namespace GUPnPAV {
          * 
          * When `type` is `null` the value is removed.
          * @param type An URI to an external subtitle file
+         * @since 0.12.4
          */
         set_subtitle_file_type(type: string | null): void;
 
@@ -2734,6 +2741,7 @@ export namespace GUPnPAV {
          * Set the URI of an external subtitle file to be used with this resource.
          * When `uri` is `null` the value is removed.
          * @param uri An URI to an external subtitle file or `null` to remove.
+         * @since 0.12.4
          */
         set_subtitle_file_uri(uri: string | null): void;
 

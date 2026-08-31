@@ -391,6 +391,7 @@ export namespace PapersView {
         /**
          * Gets the current tool of the annotation model.
          * @returns the current {@link PapersView.AnnotationTool}
+         * @since 48.0
          */
         get_tool(): AnnotationTool;
 
@@ -437,6 +438,7 @@ export namespace PapersView {
         /**
          * Sets the current tool of the annotation model.
          * @param tool the {@link PapersView.AnnotationTool} to set
+         * @since 48.0
          */
         set_tool(tool: AnnotationTool): void;
     }
@@ -546,6 +548,7 @@ export namespace PapersView {
          * @param color the color to give to the annotation
          * @param user_data a pointer with auxiliary data that is annotation-dependent. For text markup, this points to a {@link PapersDocument.AnnotationTextMarkupType}. For stamps, this points to a {@link cairo.Surface}. For free text, this points to a {@link Pango.FontDescription}. For ink, this points to a {@link PapersView.AnnotationInkAddData}.
          * @returns the newly created annotation
+         * @since 48.0
          */
         add_annotation_sync(page_index: number, type: PapersDocument.AnnotationType, start: PapersDocument.Point, end: PapersDocument.Point, color: Gdk.RGBA, user_data: null): PapersDocument.Annotation;
 
@@ -560,6 +563,7 @@ export namespace PapersView {
         /**
          * @param doc_point the document point where to search for annotations
          * @returns the {@link PapersDocument.Annotation}, if to be found
+         * @since 49.0
          */
         get_annot_at_doc_point(doc_point: PapersDocument.DocumentPoint): PapersDocument.Annotation | null;
 
@@ -921,6 +925,7 @@ export namespace PapersView {
         // Methods
         /**
          * Returns the current editing state.
+         * @since 48.0
          */
         get_annotation_editing_state(): AnnotationEditingState;
 
@@ -966,6 +971,7 @@ export namespace PapersView {
          * widgets for annotations may be shown and annotations not rendered by the
          * backend.
          * @param state The editing state of annotation
+         * @since 48.0
          */
         set_annotation_editing_state(state: AnnotationEditingState): void;
 
@@ -1773,6 +1779,7 @@ export namespace PapersView {
         // Methods
         /**
          * @returns The loaded document, if available
+         * @since 46.0
          */
         get_loaded_document(): PapersDocument.Document | null;
 
@@ -1788,6 +1795,7 @@ export namespace PapersView {
          * @param fd a file descriptor
          * @param mime_type the mime type of the file descriptor
          * @returns `true` if the file descriptor could be set
+         * @since 46.0
          */
         set_fd(fd: number, mime_type: string): boolean;
 
@@ -1816,6 +1824,7 @@ export namespace PapersView {
          * It is an error to call this function if uri is set for the job
          * @param fd a file descriptor
          * @param mime_type the mime type of the file descriptor
+         * @since 46.0
          */
         take_fd(fd: number, mime_type: string): void;
     }
@@ -2520,15 +2529,20 @@ export namespace PapersView {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @since 48.0
+         */
         activate(): void;
 
         /**
          * @param result a {@link PapersView.SearchResult} to be the auto-selected one
+         * @since 48.0
          */
         autoselect_result(result: SearchResult): void;
 
         /**
          * @returns whether search is actively ongoing
+         * @since 48.0
          */
         get_active(): boolean;
 
@@ -2542,6 +2556,7 @@ export namespace PapersView {
         /**
          * @param page 
          * @returns {@link GLib.PtrArray} of {@link PapersView.SearchResult} on the current page
+         * @since 48.0
          */
         get_results_on_page(page: number): SearchResult[];
 
@@ -2552,6 +2567,9 @@ export namespace PapersView {
          */
         has_results_on_page(page: number): boolean;
 
+        /**
+         * @since 48.0
+         */
         release(): void;
 
         restart(): void;
@@ -2621,6 +2639,7 @@ export namespace PapersView {
 
         /**
          * @returns the index of this result relative the complete result model.
+         * @since 48.0
          */
         get_global_index(): number;
 
@@ -2974,6 +2993,7 @@ export namespace PapersView {
          * @param view_point_x the x coordinate over the view
          * @param view_point_y the y coordinate over the view
          * @returns a pointer to a {@link PapersDocument.DocumentPoint} that represents the location in the document for `view_point_x` and `view_point_y`. If the location is not in a page in the document, it returns NULL.
+         * @since 48.0
          */
         get_document_point_for_view_point(view_point_x: number, view_point_y: number): PapersDocument.DocumentPoint | null;
 
@@ -2990,6 +3010,7 @@ export namespace PapersView {
 
         /**
          * @returns a list with the current selections.
+         * @since 48.0
          */
         get_selections(): ViewSelection[];
 
@@ -3022,6 +3043,7 @@ export namespace PapersView {
 
         /**
          * @param context the {@link PapersView.AnnotationsContext} to set
+         * @since 48.0
          */
         set_annotations_context(context: AnnotationsContext): void;
 
@@ -3156,6 +3178,7 @@ export namespace PapersView {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -3168,6 +3191,7 @@ export namespace PapersView {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -3176,6 +3200,7 @@ export namespace PapersView {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -3188,6 +3213,7 @@ export namespace PapersView {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -3198,18 +3224,21 @@ export namespace PapersView {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -3221,6 +3250,7 @@ export namespace PapersView {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -3254,6 +3284,7 @@ export namespace PapersView {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -3263,6 +3294,7 @@ export namespace PapersView {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -3273,6 +3305,7 @@ export namespace PapersView {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -3320,6 +3353,7 @@ export namespace PapersView {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -3328,12 +3362,14 @@ export namespace PapersView {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -3344,18 +3380,21 @@ export namespace PapersView {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -3367,6 +3406,7 @@ export namespace PapersView {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -3738,6 +3778,7 @@ export namespace PapersView {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -3750,6 +3791,7 @@ export namespace PapersView {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -3758,6 +3800,7 @@ export namespace PapersView {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -3770,6 +3813,7 @@ export namespace PapersView {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -3780,18 +3824,21 @@ export namespace PapersView {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -3803,6 +3850,7 @@ export namespace PapersView {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -3836,6 +3884,7 @@ export namespace PapersView {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -3845,6 +3894,7 @@ export namespace PapersView {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -3855,6 +3905,7 @@ export namespace PapersView {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -3902,6 +3953,7 @@ export namespace PapersView {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -3910,12 +3962,14 @@ export namespace PapersView {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -3926,18 +3980,21 @@ export namespace PapersView {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -3949,6 +4006,7 @@ export namespace PapersView {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;

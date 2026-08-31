@@ -4770,6 +4770,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param dir 
          * @returns true on success, false on error
+         * @since 1.19.63
          */
         acl_delete_def_file(dir: string): boolean;
 
@@ -4794,6 +4795,7 @@ export namespace Guestfs {
          * @param path 
          * @param acltype 
          * @returns the returned string, or NULL on error
+         * @since 1.19.63
          */
         acl_get_file(path: string, acltype: string): string;
 
@@ -4836,6 +4838,7 @@ export namespace Guestfs {
          * @param acltype 
          * @param acl 
          * @returns true on success, false on error
+         * @since 1.19.63
          */
         acl_set_file(path: string, acltype: string, acl: string): boolean;
 
@@ -4848,6 +4851,8 @@ export namespace Guestfs {
          * `guestfs_session_add_drive_ro()`.
          * @param filename 
          * @returns true on success, false on error
+         * @since 0.3
+         * @deprecated In new code, use `guestfs_session_add_drive_ro()` instead
          */
         add_cdrom(filename: string): boolean;
 
@@ -4931,6 +4936,7 @@ export namespace Guestfs {
          * @param dom 
          * @param optargs a GuestfsAddDomain containing optional arguments
          * @returns the returned value, or -1 on error
+         * @since 1.7.4
          */
         add_domain(dom: string, optargs: AddDomain | null): number;
 
@@ -5165,6 +5171,7 @@ export namespace Guestfs {
          * @param filename 
          * @param optargs a GuestfsAddDrive containing optional arguments
          * @returns true on success, false on error
+         * @since 0.3
          */
         add_drive(filename: string, optargs: AddDrive | null): boolean;
 
@@ -5177,6 +5184,7 @@ export namespace Guestfs {
          * read-only, with the format being detected automatically.
          * @param filename 
          * @returns true on success, false on error
+         * @since 1.0.38
          */
         add_drive_ro(filename: string): boolean;
 
@@ -5188,6 +5196,8 @@ export namespace Guestfs {
          * @param filename 
          * @param iface 
          * @returns true on success, false on error
+         * @since 1.0.84
+         * @deprecated In new code, use `guestfs_session_add_drive()` instead
          */
         add_drive_ro_with_if(filename: string, iface: string): boolean;
 
@@ -5204,6 +5214,7 @@ export namespace Guestfs {
          * @param size 
          * @param optargs a GuestfsAddDriveScratch containing optional arguments
          * @returns true on success, false on error
+         * @since 1.23.10
          */
         add_drive_scratch(size: bigint | number, optargs: AddDriveScratch | null): boolean;
 
@@ -5215,6 +5226,8 @@ export namespace Guestfs {
          * @param filename 
          * @param iface 
          * @returns true on success, false on error
+         * @since 1.0.84
+         * @deprecated In new code, use `guestfs_session_add_drive()` instead
          */
         add_drive_with_if(filename: string, iface: string): boolean;
 
@@ -5256,6 +5269,7 @@ export namespace Guestfs {
          * @param dom pointer (not implemented in gobject bindings)
          * @param optargs a GuestfsAddLibvirtDom containing optional arguments
          * @returns the returned value, or -1 on error
+         * @since 1.29.14
          */
         add_libvirt_dom(dom: null, optargs: AddLibvirtDom | null): number;
 
@@ -5266,6 +5280,7 @@ export namespace Guestfs {
          * augtool(1) `clear` command.
          * @param augpath 
          * @returns true on success, false on error
+         * @since 1.3.4
          */
         aug_clear(augpath: string): boolean;
 
@@ -5276,6 +5291,7 @@ export namespace Guestfs {
          * After calling this, you have to call `guestfs_session_aug_init()` again
          * before you can use any other Augeas functions.
          * @returns true on success, false on error
+         * @since 0.7
          */
         aug_close(): boolean;
 
@@ -5294,6 +5310,7 @@ export namespace Guestfs {
          * @param expr 
          * @param val 
          * @returns a IntBool object, or NULL on error
+         * @since 0.7
          */
         aug_defnode(name: string, expr: string, val: string): IntBool;
 
@@ -5308,6 +5325,7 @@ export namespace Guestfs {
          * @param name 
          * @param expr 
          * @returns the returned value, or -1 on error
+         * @since 0.7
          */
         aug_defvar(name: string, expr: string | null): number;
 
@@ -5318,6 +5336,7 @@ export namespace Guestfs {
          * node, the `value` is returned.
          * @param augpath 
          * @returns the returned string, or NULL on error
+         * @since 0.7
          */
         aug_get(augpath: string): string;
 
@@ -5366,6 +5385,7 @@ export namespace Guestfs {
          * @param root 
          * @param flags 
          * @returns true on success, false on error
+         * @since 0.7
          */
         aug_init(root: string, flags: number): boolean;
 
@@ -5381,6 +5401,7 @@ export namespace Guestfs {
          * @param label 
          * @param before 
          * @returns true on success, false on error
+         * @since 0.7
          */
         aug_insert(augpath: string, label: string, before: boolean): boolean;
 
@@ -5392,6 +5413,7 @@ export namespace Guestfs {
          * function returns an error.
          * @param augpath 
          * @returns the returned string, or NULL on error
+         * @since 1.23.14
          */
         aug_label(augpath: string): string;
 
@@ -5402,6 +5424,7 @@ export namespace Guestfs {
          * 
          * See `aug_load` in the Augeas documentation for the full gory details.
          * @returns true on success, false on error
+         * @since 0.7
          */
         aug_load(): boolean;
 
@@ -5412,6 +5435,7 @@ export namespace Guestfs {
          * and sorting the resulting nodes into alphabetical order.
          * @param augpath 
          * @returns an array of returned strings, or NULL on error
+         * @since 0.8
          */
         aug_ls(augpath: string): string[];
 
@@ -5423,6 +5447,7 @@ export namespace Guestfs {
          * node in the current tree.
          * @param augpath 
          * @returns an array of returned strings, or NULL on error
+         * @since 0.7
          */
         aug_match(augpath: string): string[];
 
@@ -5434,6 +5459,7 @@ export namespace Guestfs {
          * @param src 
          * @param dest 
          * @returns true on success, false on error
+         * @since 0.7
          */
         aug_mv(src: string, dest: string): boolean;
 
@@ -5445,6 +5471,7 @@ export namespace Guestfs {
          * On success this returns the number of entries which were removed.
          * @param augpath 
          * @returns the returned value, or -1 on error
+         * @since 0.7
          */
         aug_rm(augpath: string): number;
 
@@ -5456,6 +5483,7 @@ export namespace Guestfs {
          * The flags which were passed to `guestfs_session_aug_init()` affect exactly
          * how files are saved.
          * @returns true on success, false on error
+         * @since 0.7
          */
         aug_save(): boolean;
 
@@ -5471,6 +5499,7 @@ export namespace Guestfs {
          * @param augpath 
          * @param val 
          * @returns true on success, false on error
+         * @since 0.7
          */
         aug_set(augpath: string, val: string): boolean;
 
@@ -5488,6 +5517,7 @@ export namespace Guestfs {
          * @param sub 
          * @param val 
          * @returns the returned value, or -1 on error
+         * @since 1.23.14
          */
         aug_setm(base: string, sub: string | null, val: string): number;
 
@@ -5503,6 +5533,7 @@ export namespace Guestfs {
          * @param file 
          * @param optargs a GuestfsAugTransform containing optional arguments
          * @returns true on success, false on error
+         * @since 1.35.2
          */
         aug_transform(lens: string, file: string, optargs: AugTransform | null): boolean;
 
@@ -5557,6 +5588,7 @@ export namespace Guestfs {
          * See also `guestfs_session_filesystem_available()`.
          * @param groups an array of strings
          * @returns true on success, false on error
+         * @since 1.0.80
          */
         available(groups: string[]): boolean;
 
@@ -5572,6 +5604,7 @@ export namespace Guestfs {
          * See also `guestfs_session_available()`,
          * `guestfs_session_feature_available()` and "AVAILABILITY" in guestfs(3).
          * @returns an array of returned strings, or NULL on error
+         * @since 1.3.15
          */
         available_all_groups(): string[];
 
@@ -5583,6 +5616,7 @@ export namespace Guestfs {
          * @param filename 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.3.5
          */
         base64_in(base64file: string, filename: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5595,6 +5629,7 @@ export namespace Guestfs {
          * @param base64file 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.3.5
          */
         base64_out(filename: string, base64file: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5614,6 +5649,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.25.44
          */
         blkdiscard(device: string): boolean;
 
@@ -5631,6 +5667,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns the returned value, or -1 on error
+         * @since 1.25.44
          */
         blkdiscardzeroes(device: string): number;
 
@@ -5657,6 +5694,7 @@ export namespace Guestfs {
          * The usage of this device, for example `filesystem` or `raid`.
          * @param device 
          * @returns a GHashTable of results, or NULL on error
+         * @since 1.15.9
          */
         blkid(device: string): { [key: string]: string };
 
@@ -5668,6 +5706,7 @@ export namespace Guestfs {
          * This uses the blockdev(8) command.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.9.3
          */
         blockdev_flushbufs(device: string): boolean;
 
@@ -5684,6 +5723,7 @@ export namespace Guestfs {
          * This uses the blockdev(8) command.
          * @param device 
          * @returns the returned value, or -1 on error
+         * @since 1.9.3
          */
         blockdev_getbsz(device: string): number;
 
@@ -5696,6 +5736,7 @@ export namespace Guestfs {
          * This uses the blockdev(8) command.
          * @param device 
          * @returns the returned value, or -1 on error
+         * @since 1.9.3
          */
         blockdev_getro(device: string): number;
 
@@ -5709,6 +5750,7 @@ export namespace Guestfs {
          * This uses the blockdev(8) command.
          * @param device 
          * @returns the returned value, or -1 on error
+         * @since 1.9.3
          */
         blockdev_getsize64(device: string): number;
 
@@ -5724,6 +5766,7 @@ export namespace Guestfs {
          * This uses the blockdev(8) command.
          * @param device 
          * @returns the returned value, or -1 on error
+         * @since 1.9.3
          */
         blockdev_getss(device: string): number;
 
@@ -5740,6 +5783,7 @@ export namespace Guestfs {
          * This uses the blockdev(8) command.
          * @param device 
          * @returns the returned value, or -1 on error
+         * @since 1.9.3
          */
         blockdev_getsz(device: string): number;
 
@@ -5751,6 +5795,7 @@ export namespace Guestfs {
          * This uses the blockdev(8) command.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.9.3
          */
         blockdev_rereadpt(device: string): boolean;
 
@@ -5765,6 +5810,8 @@ export namespace Guestfs {
          * @param device 
          * @param blocksize 
          * @returns true on success, false on error
+         * @since 1.9.3
+         * @deprecated There is no documented replacement
          */
         blockdev_setbsz(device: string, blocksize: number): boolean;
 
@@ -5777,6 +5824,7 @@ export namespace Guestfs {
          * @param device 
          * @param sectors 
          * @returns true on success, false on error
+         * @since 1.29.10
          */
         blockdev_setra(device: string, sectors: number): boolean;
 
@@ -5788,6 +5836,7 @@ export namespace Guestfs {
          * This uses the blockdev(8) command.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.9.3
          */
         blockdev_setro(device: string): boolean;
 
@@ -5799,6 +5848,7 @@ export namespace Guestfs {
          * This uses the blockdev(8) command.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.9.3
          */
         blockdev_setrw(device: string): boolean;
 
@@ -5811,6 +5861,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param path 
          * @returns true on success, false on error
+         * @since 1.29.22
          */
         btrfs_balance_cancel(path: string): boolean;
 
@@ -5823,6 +5874,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param path 
          * @returns true on success, false on error
+         * @since 1.29.22
          */
         btrfs_balance_pause(path: string): boolean;
 
@@ -5835,6 +5887,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param path 
          * @returns true on success, false on error
+         * @since 1.29.22
          */
         btrfs_balance_resume(path: string): boolean;
 
@@ -5847,6 +5900,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param path 
          * @returns a BTRFSBalance object, or NULL on error
+         * @since 1.29.26
          */
         btrfs_balance_status(path: string): BTRFSBalance;
 
@@ -5861,6 +5915,7 @@ export namespace Guestfs {
          * @param devices an array of strings
          * @param fs 
          * @returns true on success, false on error
+         * @since 1.17.35
          */
         btrfs_device_add(devices: string[], fs: string): boolean;
 
@@ -5875,6 +5930,7 @@ export namespace Guestfs {
          * @param devices an array of strings
          * @param fs 
          * @returns true on success, false on error
+         * @since 1.17.35
          */
         btrfs_device_delete(devices: string[], fs: string): boolean;
 
@@ -5888,6 +5944,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param fs 
          * @returns true on success, false on error
+         * @since 1.17.35
          */
         btrfs_filesystem_balance(fs: string): boolean;
 
@@ -5902,6 +5959,7 @@ export namespace Guestfs {
          * @param path 
          * @param optargs a GuestfsBTRFSFilesystemDefragment containing optional arguments
          * @returns true on success, false on error
+         * @since 1.29.22
          */
         btrfs_filesystem_defragment(path: string, optargs: BTRFSFilesystemDefragment | null): boolean;
 
@@ -5927,6 +5985,7 @@ export namespace Guestfs {
          * @param mountpoint 
          * @param optargs a GuestfsBTRFSFilesystemResize containing optional arguments
          * @returns true on success, false on error
+         * @since 1.11.17
          */
         btrfs_filesystem_resize(mountpoint: string, optargs: BTRFSFilesystemResize | null): boolean;
 
@@ -5942,6 +6001,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.33.29
          */
         btrfs_filesystem_show(device: string): string[];
 
@@ -5954,6 +6014,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param fs 
          * @returns true on success, false on error
+         * @since 1.17.35
          */
         btrfs_filesystem_sync(fs: string): boolean;
 
@@ -5968,6 +6029,7 @@ export namespace Guestfs {
          * @param device 
          * @param optargs a GuestfsBtrfsFsck containing optional arguments
          * @returns true on success, false on error
+         * @since 1.17.43
          */
         btrfs_fsck(device: string, optargs: BtrfsFsck | null): boolean;
 
@@ -5983,6 +6045,7 @@ export namespace Guestfs {
          * @param image 
          * @param optargs a GuestfsBTRFSImage containing optional arguments
          * @returns true on success, false on error
+         * @since 1.29.32
          */
         btrfs_image(source: string[], image: string, optargs: BTRFSImage | null): boolean;
 
@@ -5998,6 +6061,7 @@ export namespace Guestfs {
          * @param dst 
          * @param path 
          * @returns true on success, false on error
+         * @since 1.29.17
          */
         btrfs_qgroup_assign(src: string, dst: string, path: string): boolean;
 
@@ -6011,6 +6075,7 @@ export namespace Guestfs {
          * @param qgroupid 
          * @param subvolume 
          * @returns true on success, false on error
+         * @since 1.29.17
          */
         btrfs_qgroup_create(qgroupid: string, subvolume: string): boolean;
 
@@ -6024,6 +6089,7 @@ export namespace Guestfs {
          * @param qgroupid 
          * @param subvolume 
          * @returns true on success, false on error
+         * @since 1.29.17
          */
         btrfs_qgroup_destroy(qgroupid: string, subvolume: string): boolean;
 
@@ -6037,6 +6103,7 @@ export namespace Guestfs {
          * @param subvolume 
          * @param size 
          * @returns true on success, false on error
+         * @since 1.29.17
          */
         btrfs_qgroup_limit(subvolume: string, size: bigint | number): boolean;
 
@@ -6051,6 +6118,7 @@ export namespace Guestfs {
          * @param dst 
          * @param path 
          * @returns true on success, false on error
+         * @since 1.29.17
          */
         btrfs_qgroup_remove(src: string, dst: string, path: string): boolean;
 
@@ -6064,6 +6132,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param path 
          * @returns an array of BTRFSQgroup objects, or NULL on error
+         * @since 1.29.17
          */
         btrfs_qgroup_show(path: string): BTRFSQgroup[];
 
@@ -6078,6 +6147,7 @@ export namespace Guestfs {
          * @param fs 
          * @param enable 
          * @returns true on success, false on error
+         * @since 1.29.17
          */
         btrfs_quota_enable(fs: string, enable: boolean): boolean;
 
@@ -6091,6 +6161,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param fs 
          * @returns true on success, false on error
+         * @since 1.29.17
          */
         btrfs_quota_rescan(fs: string): boolean;
 
@@ -6112,6 +6183,7 @@ export namespace Guestfs {
          * @param targetdev 
          * @param mntpoint 
          * @returns true on success, false on error
+         * @since 1.29.48
          */
         btrfs_replace(srcdev: string, targetdev: string, mntpoint: string): boolean;
 
@@ -6125,6 +6197,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.29.22
          */
         btrfs_rescue_chunk_recover(device: string): boolean;
 
@@ -6137,6 +6210,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.29.22
          */
         btrfs_rescue_super_recover(device: string): boolean;
 
@@ -6149,6 +6223,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param path 
          * @returns true on success, false on error
+         * @since 1.29.22
          */
         btrfs_scrub_cancel(path: string): boolean;
 
@@ -6161,6 +6236,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param path 
          * @returns true on success, false on error
+         * @since 1.29.22
          */
         btrfs_scrub_resume(path: string): boolean;
 
@@ -6175,6 +6251,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param path 
          * @returns true on success, false on error
+         * @since 1.29.22
          */
         btrfs_scrub_start(path: string): boolean;
 
@@ -6187,6 +6264,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param path 
          * @returns a BTRFSScrub object, or NULL on error
+         * @since 1.29.26
          */
         btrfs_scrub_status(path: string): BTRFSScrub;
 
@@ -6201,6 +6279,7 @@ export namespace Guestfs {
          * @param device 
          * @param seeding 
          * @returns true on success, false on error
+         * @since 1.17.43
          */
         btrfs_set_seeding(device: string, seeding: boolean): boolean;
 
@@ -6217,6 +6296,7 @@ export namespace Guestfs {
          * @param dest 
          * @param optargs a GuestfsBTRFSSubvolumeCreate containing optional arguments
          * @returns true on success, false on error
+         * @since 1.17.35
          */
         btrfs_subvolume_create(dest: string, optargs: BTRFSSubvolumeCreate | null): boolean;
 
@@ -6229,6 +6309,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param subvolume 
          * @returns true on success, false on error
+         * @since 1.17.35
          */
         btrfs_subvolume_delete(subvolume: string): boolean;
 
@@ -6242,6 +6323,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param fs 
          * @returns the returned value, or -1 on error
+         * @since 1.29.17
          */
         btrfs_subvolume_get_default(fs: string): number;
 
@@ -6255,6 +6337,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param fs 
          * @returns an array of BTRFSSubvolume objects, or NULL on error
+         * @since 1.17.35
          */
         btrfs_subvolume_list(fs: string): BTRFSSubvolume[];
 
@@ -6270,6 +6353,7 @@ export namespace Guestfs {
          * @param id 
          * @param fs 
          * @returns true on success, false on error
+         * @since 1.17.35
          */
         btrfs_subvolume_set_default(id: bigint | number, fs: string): boolean;
 
@@ -6282,6 +6366,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param subvolume 
          * @returns a GHashTable of results, or NULL on error
+         * @since 1.29.17
          */
         btrfs_subvolume_show(subvolume: string): { [key: string]: string };
 
@@ -6301,6 +6386,7 @@ export namespace Guestfs {
          * @param dest 
          * @param optargs a GuestfsBTRFSSubvolumeSnapshot containing optional arguments
          * @returns true on success, false on error
+         * @since 1.17.35
          */
         btrfs_subvolume_snapshot(source: string, dest: string, optargs: BTRFSSubvolumeSnapshot | null): boolean;
 
@@ -6313,6 +6399,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.29.29
          */
         btrfstune_enable_extended_inode_refs(device: string): boolean;
 
@@ -6325,6 +6412,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.29.29
          */
         btrfstune_enable_skinny_metadata_extent_refs(device: string): boolean;
 
@@ -6339,6 +6427,7 @@ export namespace Guestfs {
          * @param device 
          * @param seeding 
          * @returns true on success, false on error
+         * @since 1.29.29
          */
         btrfstune_seeding(device: string, seeding: boolean): boolean;
 
@@ -6349,6 +6438,7 @@ export namespace Guestfs {
          * pointer to the handle (ie. "guestfs_h *"). The purpose of this is to
          * allow other libraries to interwork with libguestfs.
          * @returns the returned value, or -1 on error
+         * @since 1.29.17
          */
         c_pointer(): number;
 
@@ -6373,6 +6463,7 @@ export namespace Guestfs {
          * Other strings are returned unmodified.
          * @param device 
          * @returns the returned string, or NULL on error
+         * @since 1.19.7
          */
         canonical_device_name(device: string): string;
 
@@ -6388,6 +6479,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param path 
          * @returns the returned string, or NULL on error
+         * @since 1.19.63
          */
         cap_get_file(path: string): string;
 
@@ -6403,6 +6495,7 @@ export namespace Guestfs {
          * @param path 
          * @param cap 
          * @returns true on success, false on error
+         * @since 1.19.63
          */
         cap_set_file(path: string, cap: string): boolean;
 
@@ -6453,6 +6546,7 @@ export namespace Guestfs {
          * See also `guestfs_session_realpath()`.
          * @param path 
          * @returns the returned string, or NULL on error
+         * @since 1.0.75
          */
         case_sensitive_path(path: string): string;
 
@@ -6467,6 +6561,7 @@ export namespace Guestfs {
          * `guestfs_session_download()` functions.
          * @param path 
          * @returns the returned string, or NULL on error
+         * @since 0.4
          */
         cat(path: string): string;
 
@@ -6510,6 +6605,7 @@ export namespace Guestfs {
          * @param csumtype 
          * @param path 
          * @returns the returned string, or NULL on error
+         * @since 1.0.2
          */
         checksum(csumtype: string, path: string): string;
 
@@ -6522,6 +6618,7 @@ export namespace Guestfs {
          * @param csumtype 
          * @param device 
          * @returns the returned string, or NULL on error
+         * @since 1.3.2
          */
         checksum_device(csumtype: string, device: string): string;
 
@@ -6542,6 +6639,7 @@ export namespace Guestfs {
          * @param sumsfile 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.3.7
          */
         checksums_out(csumtype: string, directory: string, sumsfile: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6559,6 +6657,7 @@ export namespace Guestfs {
          * @param mode 
          * @param path 
          * @returns true on success, false on error
+         * @since 0.8
          */
         chmod(mode: number, path: string): boolean;
 
@@ -6574,6 +6673,7 @@ export namespace Guestfs {
          * @param group 
          * @param path 
          * @returns true on success, false on error
+         * @since 0.8
          */
         chown(owner: number, group: number, path: string): boolean;
 
@@ -6589,6 +6689,7 @@ export namespace Guestfs {
          * See "BACKEND" in guestfs(3), "BACKEND SETTINGS" in guestfs(3).
          * @param name 
          * @returns the returned value, or -1 on error
+         * @since 1.27.2
          */
         clear_backend_setting(name: string): number;
 
@@ -6627,6 +6728,7 @@ export namespace Guestfs {
          * are mounted at the right locations.
          * @param _arguments an array of strings
          * @returns the returned string, or NULL on error
+         * @since 1.9.1
          */
         command(_arguments: string[]): string;
 
@@ -6639,6 +6741,7 @@ export namespace Guestfs {
          * See also: `guestfs_session_sh_lines()`
          * @param _arguments an array of strings
          * @returns an array of returned strings, or NULL on error
+         * @since 1.9.1
          */
         command_lines(_arguments: string[]): string[];
 
@@ -6656,6 +6759,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsCompressDeviceOut containing optional arguments
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.13.15
          */
         compress_device_out(ctype: string, device: string, zdevice: string, optargs: CompressDeviceOut | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6679,6 +6783,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsCompressOut containing optional arguments
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.13.15
          */
         compress_out(ctype: string, file: string, zfile: string, optargs: CompressOut | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6696,6 +6801,7 @@ export namespace Guestfs {
          * @param hvparam 
          * @param hvvalue 
          * @returns true on success, false on error
+         * @since 0.3
          */
         config(hvparam: string, hvvalue: string | null): boolean;
 
@@ -6729,6 +6835,7 @@ export namespace Guestfs {
          * @param dest 
          * @param optargs a GuestfsCopyAttributes containing optional arguments
          * @returns true on success, false on error
+         * @since 1.25.21
          */
         copy_attributes(src: string, dest: string, optargs: CopyAttributes | null): boolean;
 
@@ -6766,6 +6873,7 @@ export namespace Guestfs {
          * @param dest 
          * @param optargs a GuestfsCopyDeviceToDevice containing optional arguments
          * @returns true on success, false on error
+         * @since 1.13.25
          */
         copy_device_to_device(src: string, dest: string, optargs: CopyDeviceToDevice | null): boolean;
 
@@ -6778,6 +6886,7 @@ export namespace Guestfs {
          * @param dest 
          * @param optargs a GuestfsCopyDeviceToFile containing optional arguments
          * @returns true on success, false on error
+         * @since 1.13.25
          */
         copy_device_to_file(src: string, dest: string, optargs: CopyDeviceToFile | null): boolean;
 
@@ -6790,6 +6899,7 @@ export namespace Guestfs {
          * @param dest 
          * @param optargs a GuestfsCopyFileToDevice containing optional arguments
          * @returns true on success, false on error
+         * @since 1.13.25
          */
         copy_file_to_device(src: string, dest: string, optargs: CopyFileToDevice | null): boolean;
 
@@ -6807,6 +6917,7 @@ export namespace Guestfs {
          * @param dest 
          * @param optargs a GuestfsCopyFileToFile containing optional arguments
          * @returns true on success, false on error
+         * @since 1.13.25
          */
         copy_file_to_file(src: string, dest: string, optargs: CopyFileToFile | null): boolean;
 
@@ -6821,6 +6932,7 @@ export namespace Guestfs {
          * @param localpath 
          * @param remotedir 
          * @returns true on success, false on error
+         * @since 1.29.24
          */
         copy_in(localpath: string, remotedir: string): boolean;
 
@@ -6839,6 +6951,7 @@ export namespace Guestfs {
          * @param remotepath 
          * @param localdir 
          * @returns true on success, false on error
+         * @since 1.29.24
          */
         copy_out(remotepath: string, localdir: string): boolean;
 
@@ -6854,6 +6967,8 @@ export namespace Guestfs {
          * @param dest 
          * @param size 
          * @returns true on success, false on error
+         * @since 1.0.87
+         * @deprecated In new code, use `guestfs_session_copy_device_to_device()` instead
          */
         copy_size(src: string, dest: string, size: bigint | number): boolean;
 
@@ -6865,6 +6980,7 @@ export namespace Guestfs {
          * @param src 
          * @param dest 
          * @returns true on success, false on error
+         * @since 1.0.18
          */
         cp(src: string, dest: string): boolean;
 
@@ -6876,6 +6992,7 @@ export namespace Guestfs {
          * @param src 
          * @param dest 
          * @returns true on success, false on error
+         * @since 1.0.18
          */
         cp_a(src: string, dest: string): boolean;
 
@@ -6892,6 +7009,7 @@ export namespace Guestfs {
          * @param src 
          * @param dest 
          * @returns true on success, false on error
+         * @since 1.21.38
          */
         cp_r(src: string, dest: string): boolean;
 
@@ -6917,6 +7035,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsCpioOut containing optional arguments
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.27.9
          */
         cpio_out(directory: string, cpiofile: string, optargs: CpioOut | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6933,6 +7052,8 @@ export namespace Guestfs {
          * @param src 
          * @param dest 
          * @returns true on success, false on error
+         * @since 1.0.80
+         * @deprecated In new code, use `guestfs_session_copy_device_to_device()` instead
          */
         dd(src: string, dest: string): boolean;
 
@@ -6948,6 +7069,7 @@ export namespace Guestfs {
          * @param subcmd 
          * @param extraargs an array of strings
          * @returns the returned string, or NULL on error
+         * @since 1.0.11
          */
         debug(subcmd: string, extraargs: string[]): string;
 
@@ -6957,6 +7079,7 @@ export namespace Guestfs {
          * This returns the internal list of drives. ‘debug’ commands are not part
          * of the formal API and can be removed or changed at any time.
          * @returns an array of returned strings, or NULL on error
+         * @since 1.13.22
          */
         debug_drives(): string[];
 
@@ -6973,6 +7096,7 @@ export namespace Guestfs {
          * @param mode 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.3.5
          */
         debug_upload(filename: string, tmpname: string, mode: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6988,6 +7112,7 @@ export namespace Guestfs {
          * See also `guestfs_session_list_devices()`, `guestfs_session_part_to_dev()`.
          * @param device 
          * @returns the returned value, or -1 on error
+         * @since 1.19.7
          */
         device_index(device: string): number;
 
@@ -7000,6 +7125,7 @@ export namespace Guestfs {
          * intended that you try to parse the output string. Use
          * `guestfs_session_statvfs()` from programs.
          * @returns the returned string, or NULL on error
+         * @since 1.0.54
          */
         df(): string;
 
@@ -7013,6 +7139,7 @@ export namespace Guestfs {
          * intended that you try to parse the output string. Use
          * `guestfs_session_statvfs()` from programs.
          * @returns the returned string, or NULL on error
+         * @since 1.0.54
          */
         df_h(): string;
 
@@ -7058,6 +7185,7 @@ export namespace Guestfs {
          * @param size 
          * @param optargs a GuestfsDiskCreate containing optional arguments
          * @returns true on success, false on error
+         * @since 1.25.31
          */
         disk_create(filename: string, format: string, size: bigint | number, optargs: DiskCreate | null): boolean;
 
@@ -7074,6 +7202,7 @@ export namespace Guestfs {
          * See also: "DISK IMAGE FORMATS" in guestfs(3)
          * @param filename 
          * @returns the returned string, or NULL on error
+         * @since 1.19.38
          */
         disk_format(filename: string): string;
 
@@ -7086,6 +7215,7 @@ export namespace Guestfs {
          * circumstances. See "CVE-2010-3851" in guestfs(3).
          * @param filename 
          * @returns the returned value, or -1 on error
+         * @since 1.19.39
          */
         disk_has_backing_file(filename: string): number;
 
@@ -7099,6 +7229,7 @@ export namespace Guestfs {
          * circumstances. See "CVE-2010-3851" in guestfs(3).
          * @param filename 
          * @returns the returned value, or -1 on error
+         * @since 1.19.39
          */
         disk_virtual_size(filename: string): number;
 
@@ -7112,6 +7243,7 @@ export namespace Guestfs {
          * with `guestfs_session_set_verbose()` or by setting the environment
          * variable "LIBGUESTFS_DEBUG=1" before running the program.
          * @returns the returned string, or NULL on error
+         * @since 1.0.18
          */
         dmesg(): string;
 
@@ -7128,6 +7260,7 @@ export namespace Guestfs {
          * @param filename 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.0.2
          */
         download(remotefilename: string, filename: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7159,6 +7292,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsDownloadBlocks containing optional arguments
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.33.45
          */
         download_blocks(device: string, start: bigint | number, stop: bigint | number, filename: string, optargs: DownloadBlocks | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7179,6 +7313,7 @@ export namespace Guestfs {
          * @param filename 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.33.14
          */
         download_inode(device: string, inode: bigint | number, filename: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7202,6 +7337,7 @@ export namespace Guestfs {
          * @param size 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.5.17
          */
         download_offset(remotefilename: string, filename: string, offset: bigint | number, size: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7219,6 +7355,7 @@ export namespace Guestfs {
          * maximum guest memory is freed.
          * @param whattodrop 
          * @returns true on success, false on error
+         * @since 1.0.18
          */
         drop_caches(whattodrop: number): boolean;
 
@@ -7236,6 +7373,7 @@ export namespace Guestfs {
          * bytes).
          * @param path 
          * @returns the returned value, or -1 on error
+         * @since 1.0.54
          */
         du(path: string): number;
 
@@ -7262,6 +7400,7 @@ export namespace Guestfs {
          * @param device 
          * @param optargs a GuestfsE2fsck containing optional arguments
          * @returns true on success, false on error
+         * @since 1.15.17
          */
         e2fsck(device: string, optargs: E2fsck | null): boolean;
 
@@ -7273,6 +7412,8 @@ export namespace Guestfs {
          * appears to be clean (*-f*).
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.29
+         * @deprecated In new code, use `guestfs_session_e2fsck()` instead
          */
         e2fsck_f(device: string): boolean;
 
@@ -7287,6 +7428,7 @@ export namespace Guestfs {
          * See also `guestfs_session_ping_daemon()`.
          * @param words an array of strings
          * @returns the returned string, or NULL on error
+         * @since 1.0.69
          */
         echo_daemon(words: string[]): string;
 
@@ -7297,6 +7439,8 @@ export namespace Guestfs {
          * @param regex 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.66
+         * @deprecated In new code, use `guestfs_session_grep()` instead
          */
         egrep(regex: string, path: string): string[];
 
@@ -7308,6 +7452,8 @@ export namespace Guestfs {
          * @param regex 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.66
+         * @deprecated In new code, use `guestfs_session_grep()` instead
          */
         egrepi(regex: string, path: string): string[];
 
@@ -7321,6 +7467,7 @@ export namespace Guestfs {
          * @param file1 
          * @param file2 
          * @returns the returned value, or -1 on error
+         * @since 1.0.18
          */
         equal(file1: string, file2: string): number;
 
@@ -7334,6 +7481,7 @@ export namespace Guestfs {
          * `guestfs_session_stat()`.
          * @param path 
          * @returns the returned value, or -1 on error
+         * @since 0.8
          */
         exists(path: string): number;
 
@@ -7364,6 +7512,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param directory 
          * @returns true on success, false on error
+         * @since 1.21.27
          */
         extlinux(directory: string): boolean;
 
@@ -7377,6 +7526,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.39.3
          */
         f2fs_expand(device: string): boolean;
 
@@ -7391,6 +7541,8 @@ export namespace Guestfs {
          * @param path 
          * @param len 
          * @returns true on success, false on error
+         * @since 1.0.66
+         * @deprecated In new code, use `guestfs_session_fallocate64()` instead
          */
         fallocate(path: string, len: number): boolean;
 
@@ -7413,6 +7565,7 @@ export namespace Guestfs {
          * @param path 
          * @param len 
          * @returns true on success, false on error
+         * @since 1.3.17
          */
         fallocate64(path: string, len: bigint | number): boolean;
 
@@ -7425,6 +7578,7 @@ export namespace Guestfs {
          * `guestfs_session_available()`.
          * @param groups an array of strings
          * @returns the returned value, or -1 on error
+         * @since 1.21.26
          */
         feature_available(groups: string[]): number;
 
@@ -7435,6 +7589,8 @@ export namespace Guestfs {
          * @param pattern 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.66
+         * @deprecated In new code, use `guestfs_session_grep()` instead
          */
         fgrep(pattern: string, path: string): string[];
 
@@ -7446,6 +7602,8 @@ export namespace Guestfs {
          * @param pattern 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.66
+         * @deprecated In new code, use `guestfs_session_grep()` instead
          */
         fgrepi(pattern: string, path: string): string[];
 
@@ -7470,6 +7628,7 @@ export namespace Guestfs {
          * `guestfs_session_is_zero()`.
          * @param path 
          * @returns the returned string, or NULL on error
+         * @since 1.9.1
          */
         file(path: string): string;
 
@@ -7560,6 +7719,7 @@ export namespace Guestfs {
          * associated initrd or kernel module(s) instead.
          * @param filename 
          * @returns the returned string, or NULL on error
+         * @since 1.5.3
          */
         file_architecture(filename: string): string;
 
@@ -7574,6 +7734,7 @@ export namespace Guestfs {
          * `guestfs_session_blockdev_getsize64()`.
          * @param file 
          * @returns the returned value, or -1 on error
+         * @since 1.0.82
          */
         filesize(file: string): number;
 
@@ -7595,6 +7756,7 @@ export namespace Guestfs {
          * `guestfs_session_feature_available()`, "AVAILABILITY" in guestfs(3).
          * @param filesystem 
          * @returns the returned value, or -1 on error
+         * @since 1.19.5
          */
         filesystem_available(filesystem: string): number;
 
@@ -7696,6 +7858,7 @@ export namespace Guestfs {
          * @param device 
          * @param cancellable A GCancellable object
          * @returns an array of TSKDirent objects, or NULL on error
+         * @since 1.33.39
          */
         filesystem_walk(device: string, cancellable: Gio.Cancellable | null): TSKDirent[];
 
@@ -7713,6 +7876,7 @@ export namespace Guestfs {
          * @param len 
          * @param path 
          * @returns true on success, false on error
+         * @since 1.0.79
          */
         fill(c: number, len: number, path: string): boolean;
 
@@ -7725,6 +7889,7 @@ export namespace Guestfs {
          * @param dir 
          * @param nr 
          * @returns true on success, false on error
+         * @since 1.19.32
          */
         fill_dir(dir: string, nr: number): boolean;
 
@@ -7739,6 +7904,7 @@ export namespace Guestfs {
          * @param len 
          * @param path 
          * @returns true on success, false on error
+         * @since 1.3.12
          */
         fill_pattern(pattern: string, len: number, path: string): boolean;
 
@@ -7775,6 +7941,7 @@ export namespace Guestfs {
          * The returned list is sorted.
          * @param directory 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.27
          */
         find(directory: string): string[];
 
@@ -7798,6 +7965,7 @@ export namespace Guestfs {
          * @param files 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.0.74
          */
         find0(directory: string, files: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7815,6 +7983,7 @@ export namespace Guestfs {
          * @param inode 
          * @param cancellable A GCancellable object
          * @returns an array of TSKDirent objects, or NULL on error
+         * @since 1.35.6
          */
         find_inode(device: string, inode: bigint | number, cancellable: Gio.Cancellable | null): TSKDirent[];
 
@@ -7827,6 +7996,7 @@ export namespace Guestfs {
          * To find the label of a filesystem, use `guestfs_session_vfs_label()`.
          * @param label 
          * @returns the returned string, or NULL on error
+         * @since 1.5.3
          */
         findfs_label(label: string): string;
 
@@ -7839,6 +8009,7 @@ export namespace Guestfs {
          * To find the UUID of a filesystem, use `guestfs_session_vfs_uuid()`.
          * @param uuid 
          * @returns the returned string, or NULL on error
+         * @since 1.5.3
          */
         findfs_uuid(uuid: string): string;
 
@@ -7865,6 +8036,7 @@ export namespace Guestfs {
          * @param fstype 
          * @param device 
          * @returns the returned value, or -1 on error
+         * @since 1.0.16
          */
         fsck(fstype: string, device: string): number;
 
@@ -7897,6 +8069,7 @@ export namespace Guestfs {
          * @param mountpoint 
          * @param optargs a GuestfsFstrim containing optional arguments
          * @returns true on success, false on error
+         * @since 1.19.6
          */
         fstrim(mountpoint: string, optargs: Fstrim | null): boolean;
 
@@ -7908,6 +8081,7 @@ export namespace Guestfs {
          * 
          * If `NULL` then no options are added.
          * @returns the returned string. Note that NULL does not indicate error
+         * @since 1.0.26
          */
         get_append(): string;
 
@@ -7918,6 +8092,8 @@ export namespace Guestfs {
          * 
          * See `guestfs_session_set_backend()` and "BACKEND" in guestfs(3).
          * @returns the returned string, or NULL on error
+         * @since 1.9.8
+         * @deprecated In new code, use `guestfs_session_get_backend()` instead
          */
         get_attach_method(): string;
 
@@ -7926,6 +8102,7 @@ export namespace Guestfs {
          * 
          * Get the autosync flag.
          * @returns the returned value, or -1 on error
+         * @since 0.3
          */
         get_autosync(): number;
 
@@ -7938,6 +8115,7 @@ export namespace Guestfs {
          * 
          * See `guestfs_session_set_backend()` and "BACKEND" in guestfs(3).
          * @returns the returned string, or NULL on error
+         * @since 1.21.26
          */
         get_backend(): string;
 
@@ -7954,6 +8132,7 @@ export namespace Guestfs {
          * See "BACKEND" in guestfs(3), "BACKEND SETTINGS" in guestfs(3).
          * @param name 
          * @returns the returned string, or NULL on error
+         * @since 1.27.2
          */
         get_backend_setting(name: string): string;
 
@@ -7967,6 +8146,7 @@ export namespace Guestfs {
          * 
          * See "BACKEND" in guestfs(3), "BACKEND SETTINGS" in guestfs(3).
          * @returns an array of returned strings, or NULL on error
+         * @since 1.25.24
          */
         get_backend_settings(): string[];
 
@@ -7975,6 +8155,7 @@ export namespace Guestfs {
          * 
          * Get the directory used by the handle to store the appliance cache.
          * @returns the returned string, or NULL on error
+         * @since 1.19.58
          */
         get_cachedir(): string;
 
@@ -7983,6 +8164,8 @@ export namespace Guestfs {
          * 
          * Return the direct appliance mode flag.
          * @returns the returned value, or -1 on error
+         * @since 1.0.72
+         * @deprecated In new code, use `guestfs_session_internal_get_console_socket()` instead
          */
         get_direct(): number;
 
@@ -8056,6 +8239,7 @@ export namespace Guestfs {
          * `guestfs_session_getxattr()`).
          * @param file 
          * @returns the returned string, or NULL on error
+         * @since 1.17.31
          */
         get_e2attrs(file: string): string;
 
@@ -8073,6 +8257,7 @@ export namespace Guestfs {
          * See `guestfs_session_set_e2generation()`.
          * @param file 
          * @returns the returned value, or -1 on error
+         * @since 1.17.31
          */
         get_e2generation(file: string): number;
 
@@ -8082,6 +8267,8 @@ export namespace Guestfs {
          * This returns the ext2/3/4 filesystem label of the filesystem on `device`.
          * @param device 
          * @returns the returned string, or NULL on error
+         * @since 1.0.15
+         * @deprecated In new code, use `guestfs_session_vfs_label()` instead
          */
         get_e2label(device: string): string;
 
@@ -8091,6 +8278,8 @@ export namespace Guestfs {
          * This returns the ext2/3/4 filesystem UUID of the filesystem on `device`.
          * @param device 
          * @returns the returned string, or NULL on error
+         * @since 1.0.15
+         * @deprecated In new code, use `guestfs_session_vfs_uuid()` instead
          */
         get_e2uuid(device: string): string;
 
@@ -8102,6 +8291,7 @@ export namespace Guestfs {
          * This is always non-NULL. If it wasn't set already, then this will return
          * the default qemu binary name.
          * @returns the returned string, or NULL on error
+         * @since 1.23.17
          */
         get_hv(): string;
 
@@ -8110,6 +8300,7 @@ export namespace Guestfs {
          * 
          * Get the handle identifier. See `guestfs_session_set_identifier()`.
          * @returns the returned string, or NULL on error
+         * @since 1.31.14
          */
         get_identifier(): string;
 
@@ -8124,6 +8315,7 @@ export namespace Guestfs {
          * code.
          * @param index 
          * @returns the returned string, or NULL on error
+         * @since 1.19.52
          */
         get_libvirt_requested_credential_challenge(index: number): string;
 
@@ -8138,6 +8330,7 @@ export namespace Guestfs {
          * code.
          * @param index 
          * @returns the returned string, or NULL on error
+         * @since 1.19.52
          */
         get_libvirt_requested_credential_defresult(index: number): string;
 
@@ -8152,6 +8345,7 @@ export namespace Guestfs {
          * code.
          * @param index 
          * @returns the returned string, or NULL on error
+         * @since 1.19.52
          */
         get_libvirt_requested_credential_prompt(index: number): string;
 
@@ -8168,6 +8362,7 @@ export namespace Guestfs {
          * See "LIBVIRT AUTHENTICATION" in guestfs(3) for documentation and example
          * code.
          * @returns an array of returned strings, or NULL on error
+         * @since 1.19.52
          */
         get_libvirt_requested_credentials(): string[];
 
@@ -8182,6 +8377,7 @@ export namespace Guestfs {
          * 
          * For more information on the architecture of libguestfs, see guestfs(3).
          * @returns the returned value, or -1 on error
+         * @since 1.0.55
          */
         get_memsize(): number;
 
@@ -8190,6 +8386,7 @@ export namespace Guestfs {
          * 
          * This returns the enable network flag.
          * @returns the returned value, or -1 on error
+         * @since 1.5.4
          */
         get_network(): number;
 
@@ -8201,6 +8398,7 @@ export namespace Guestfs {
          * This is always non-NULL. If it wasn't set already, then this will return
          * the default path.
          * @returns the returned string, or NULL on error
+         * @since 0.3
          */
         get_path(): string;
 
@@ -8209,6 +8407,7 @@ export namespace Guestfs {
          * 
          * This returns the process group flag.
          * @returns the returned value, or -1 on error
+         * @since 1.11.18
          */
         get_pgroup(): number;
 
@@ -8220,6 +8419,7 @@ export namespace Guestfs {
          * 
          * This is an internal call used for debugging and testing.
          * @returns the returned value, or -1 on error
+         * @since 1.0.56
          */
         get_pid(): number;
 
@@ -8228,6 +8428,7 @@ export namespace Guestfs {
          * 
          * Get the program name. See `guestfs_session_set_program()`.
          * @returns the returned string, or NULL on error
+         * @since 1.21.29
          */
         get_program(): string;
 
@@ -8239,6 +8440,8 @@ export namespace Guestfs {
          * This is always non-NULL. If it wasn't set already, then this will return
          * the default qemu binary name.
          * @returns the returned string, or NULL on error
+         * @since 1.0.6
+         * @deprecated In new code, use `guestfs_session_get_hv()` instead
          */
         get_qemu(): string;
 
@@ -8247,6 +8450,7 @@ export namespace Guestfs {
          * 
          * Return the recovery process enabled flag.
          * @returns the returned value, or -1 on error
+         * @since 1.0.77
          */
         get_recovery_proc(): number;
 
@@ -8258,6 +8462,8 @@ export namespace Guestfs {
          * 
          * For more information on the architecture of libguestfs, see guestfs(3).
          * @returns the returned value, or -1 on error
+         * @since 1.0.67
+         * @deprecated In new code, use `guestfs_session_selinux_relabel()` instead
          */
         get_selinux(): number;
 
@@ -8266,6 +8472,7 @@ export namespace Guestfs {
          * 
          * This returns the number of virtual CPUs assigned to the appliance.
          * @returns the returned value, or -1 on error
+         * @since 1.13.15
          */
         get_smp(): number;
 
@@ -8282,6 +8489,7 @@ export namespace Guestfs {
          * `XDG_RUNTIME_DIR` is set, then that is the default. Else /tmp is the
          * default.
          * @returns the returned string, or NULL on error
+         * @since 1.33.8
          */
         get_sockdir(): string;
 
@@ -8293,6 +8501,7 @@ export namespace Guestfs {
          * 
          * For more information on states, see guestfs(3).
          * @returns the returned value, or -1 on error
+         * @since 1.0.2
          */
         get_state(): number;
 
@@ -8301,6 +8510,7 @@ export namespace Guestfs {
          * 
          * Get the directory used by the handle to store temporary files.
          * @returns the returned string, or NULL on error
+         * @since 1.19.58
          */
         get_tmpdir(): string;
 
@@ -8309,6 +8519,7 @@ export namespace Guestfs {
          * 
          * Return the command trace flag.
          * @returns the returned value, or -1 on error
+         * @since 1.0.69
          */
         get_trace(): number;
 
@@ -8318,6 +8529,7 @@ export namespace Guestfs {
          * Return the current umask. By default the umask is @022 unless it has
          * been set by calling `guestfs_session_umask()`.
          * @returns the returned value, or -1 on error
+         * @since 1.3.4
          */
         get_umask(): number;
 
@@ -8326,6 +8538,7 @@ export namespace Guestfs {
          * 
          * This returns the verbose messages flag.
          * @returns the returned value, or -1 on error
+         * @since 0.3
          */
         get_verbose(): number;
 
@@ -8340,6 +8553,8 @@ export namespace Guestfs {
          * This function depends on the feature "selinux".
          * See also `guestfs_session_feature_available()`.
          * @returns the returned string, or NULL on error
+         * @since 1.0.67
+         * @deprecated In new code, use `guestfs_session_selinux_relabel()` instead
          */
         getcon(): string;
 
@@ -8368,6 +8583,7 @@ export namespace Guestfs {
          * @param path 
          * @param name 
          * @returns an array of binary data, or NULL on error
+         * @since 1.7.24
          */
         getxattr(path: string, name: string): Uint8Array;
 
@@ -8385,6 +8601,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param path 
          * @returns an array of XAttr objects, or NULL on error
+         * @since 1.0.59
          */
         getxattrs(path: string): XAttr[];
 
@@ -8409,6 +8626,7 @@ export namespace Guestfs {
          * @param pattern 
          * @param optargs a GuestfsGlobExpand containing optional arguments
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.50
          */
         glob_expand(pattern: string, optargs: GlobExpand | null): string[];
 
@@ -8437,6 +8655,7 @@ export namespace Guestfs {
          * @param path 
          * @param optargs a GuestfsGrep containing optional arguments
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.66
          */
         grep(regex: string, path: string, optargs: Grep | null): string[];
 
@@ -8448,6 +8667,8 @@ export namespace Guestfs {
          * @param regex 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.66
+         * @deprecated In new code, use `guestfs_session_grep()` instead
          */
         grepi(regex: string, path: string): string[];
 
@@ -8483,6 +8704,7 @@ export namespace Guestfs {
          * @param root 
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.17
          */
         grub_install(root: string, device: string): boolean;
 
@@ -8493,6 +8715,7 @@ export namespace Guestfs {
          * strings.
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.54
          */
         head(path: string): string[];
 
@@ -8509,6 +8732,7 @@ export namespace Guestfs {
          * @param nrlines 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.54
          */
         head_n(nrlines: number, path: string): string[];
 
@@ -8519,6 +8743,7 @@ export namespace Guestfs {
          * human-readable, canonical hex dump of the file.
          * @param path 
          * @returns the returned string, or NULL on error
+         * @since 1.0.22
          */
         hexdump(path: string): string;
 
@@ -8532,6 +8757,7 @@ export namespace Guestfs {
          * This function depends on the feature "hivex".
          * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
+         * @since 1.19.35
          */
         hivex_close(): boolean;
 
@@ -8551,6 +8777,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param filename 
          * @returns true on success, false on error
+         * @since 1.19.35
          */
         hivex_commit(filename: string | null): boolean;
 
@@ -8566,6 +8793,7 @@ export namespace Guestfs {
          * @param parent 
          * @param name 
          * @returns the returned value, or -1 on error
+         * @since 1.19.35
          */
         hivex_node_add_child(parent: bigint | number, name: string): number;
 
@@ -8580,6 +8808,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param nodeh 
          * @returns an array of HivexNode objects, or NULL on error
+         * @since 1.19.35
          */
         hivex_node_children(nodeh: bigint | number): HivexNode[];
 
@@ -8594,6 +8823,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param nodeh 
          * @returns true on success, false on error
+         * @since 1.19.35
          */
         hivex_node_delete_child(nodeh: bigint | number): boolean;
 
@@ -8610,6 +8840,7 @@ export namespace Guestfs {
          * @param nodeh 
          * @param name 
          * @returns the returned value, or -1 on error
+         * @since 1.19.35
          */
         hivex_node_get_child(nodeh: bigint | number, name: string): number;
 
@@ -8626,6 +8857,7 @@ export namespace Guestfs {
          * @param nodeh 
          * @param key 
          * @returns the returned value, or -1 on error
+         * @since 1.19.35
          */
         hivex_node_get_value(nodeh: bigint | number, key: string): number;
 
@@ -8640,6 +8872,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param nodeh 
          * @returns the returned string, or NULL on error
+         * @since 1.19.35
          */
         hivex_node_name(nodeh: bigint | number): string;
 
@@ -8654,6 +8887,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param nodeh 
          * @returns the returned value, or -1 on error
+         * @since 1.19.35
          */
         hivex_node_parent(nodeh: bigint | number): number;
 
@@ -8672,6 +8906,7 @@ export namespace Guestfs {
          * @param t 
          * @param val an array of binary data
          * @returns true on success, false on error
+         * @since 1.19.35
          */
         hivex_node_set_value(nodeh: bigint | number, key: string, t: bigint | number, val: Uint8Array | string): boolean;
 
@@ -8686,6 +8921,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param nodeh 
          * @returns an array of HivexValue objects, or NULL on error
+         * @since 1.19.35
          */
         hivex_node_values(nodeh: bigint | number): HivexValue[];
 
@@ -8703,6 +8939,7 @@ export namespace Guestfs {
          * @param filename 
          * @param optargs a GuestfsHivexOpen containing optional arguments
          * @returns true on success, false on error
+         * @since 1.19.35
          */
         hivex_open(filename: string, optargs: HivexOpen | null): boolean;
 
@@ -8716,6 +8953,7 @@ export namespace Guestfs {
          * This function depends on the feature "hivex".
          * See also `guestfs_session_feature_available()`.
          * @returns the returned value, or -1 on error
+         * @since 1.19.35
          */
         hivex_root(): number;
 
@@ -8730,6 +8968,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param valueh 
          * @returns the returned string, or NULL on error
+         * @since 1.19.35
          */
         hivex_value_key(valueh: bigint | number): string;
 
@@ -8749,6 +8988,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param valueh 
          * @returns the returned string, or NULL on error
+         * @since 1.37.22
          */
         hivex_value_string(valueh: bigint | number): string;
 
@@ -8763,6 +9003,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param valueh 
          * @returns the returned value, or -1 on error
+         * @since 1.19.35
          */
         hivex_value_type(valueh: bigint | number): number;
 
@@ -8782,6 +9023,8 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param valueh 
          * @returns the returned string, or NULL on error
+         * @since 1.19.35
+         * @deprecated In new code, use `guestfs_session_hivex_value_string()` instead
          */
         hivex_value_utf8(valueh: bigint | number): string;
 
@@ -8798,6 +9041,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param valueh 
          * @returns an array of binary data, or NULL on error
+         * @since 1.19.35
          */
         hivex_value_value(valueh: bigint | number): Uint8Array;
 
@@ -8818,6 +9062,7 @@ export namespace Guestfs {
          * @param initrdpath 
          * @param filename 
          * @returns an array of binary data, or NULL on error
+         * @since 1.0.84
          */
         initrd_cat(initrdpath: string, filename: string): Uint8Array;
 
@@ -8835,6 +9080,7 @@ export namespace Guestfs {
          * files).
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.54
          */
         initrd_list(path: string): string[];
 
@@ -8854,6 +9100,7 @@ export namespace Guestfs {
          * @param path 
          * @param mask 
          * @returns the returned value, or -1 on error
+         * @since 1.0.66
          */
         inotify_add_watch(path: string, mask: number): number;
 
@@ -8867,6 +9114,7 @@ export namespace Guestfs {
          * This function depends on the feature "inotify".
          * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         inotify_close(): boolean;
 
@@ -8880,6 +9128,7 @@ export namespace Guestfs {
          * This function depends on the feature "inotify".
          * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.66
          */
         inotify_files(): string[];
 
@@ -8920,6 +9169,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param maxevents 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         inotify_init(maxevents: number): boolean;
 
@@ -8939,6 +9189,7 @@ export namespace Guestfs {
          * This function depends on the feature "inotify".
          * See also `guestfs_session_feature_available()`.
          * @returns an array of INotifyEvent objects, or NULL on error
+         * @since 1.0.66
          */
         inotify_read(): INotifyEvent[];
 
@@ -8952,6 +9203,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param wd 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         inotify_rm_watch(wd: number): boolean;
 
@@ -8968,6 +9220,7 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.5.3
          */
         inspect_get_arch(root: string): string;
 
@@ -9097,6 +9350,7 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.5.3
          */
         inspect_get_distro(root: string): string;
 
@@ -9135,6 +9389,7 @@ export namespace Guestfs {
          * `guestfs_session_inspect_get_filesystems()`.
          * @param root 
          * @returns a GHashTable of results, or NULL on error
+         * @since 1.9.17
          */
         inspect_get_drive_mappings(root: string): { [key: string]: string };
 
@@ -9152,6 +9407,7 @@ export namespace Guestfs {
          * `guestfs_session_inspect_get_mountpoints()`.
          * @param root 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.5.3
          */
         inspect_get_filesystems(root: string): string[];
 
@@ -9177,6 +9433,8 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.9.4
+         * @deprecated There is no documented replacement
          */
         inspect_get_format(root: string): string;
 
@@ -9192,6 +9450,7 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.7.9
          */
         inspect_get_hostname(root: string): string;
 
@@ -9243,6 +9502,7 @@ export namespace Guestfs {
          * @param root 
          * @param optargs a GuestfsInspectGetIcon containing optional arguments
          * @returns an array of binary data, or NULL on error
+         * @since 1.11.12
          */
         inspect_get_icon(root: string, optargs: InspectGetIcon | null): Uint8Array;
 
@@ -9262,6 +9522,7 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned value, or -1 on error
+         * @since 1.5.3
          */
         inspect_get_major_version(root: string): number;
 
@@ -9276,6 +9537,7 @@ export namespace Guestfs {
          * `guestfs_session_inspect_get_major_version()`.
          * @param root 
          * @returns the returned value, or -1 on error
+         * @since 1.5.3
          */
         inspect_get_minor_version(root: string): number;
 
@@ -9305,6 +9567,7 @@ export namespace Guestfs {
          * `guestfs_session_inspect_get_filesystems()`.
          * @param root 
          * @returns a GHashTable of results, or NULL on error
+         * @since 1.5.3
          */
         inspect_get_mountpoints(root: string): { [key: string]: string };
 
@@ -9320,6 +9583,7 @@ export namespace Guestfs {
          * If no ID could not be determined, then the string `unknown` is returned.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.39.1
          */
         inspect_get_osinfo(root: string): string;
 
@@ -9341,6 +9605,7 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.7.5
          */
         inspect_get_package_format(root: string): string;
 
@@ -9363,6 +9628,7 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.7.5
          */
         inspect_get_package_management(root: string): string;
 
@@ -9379,6 +9645,7 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.5.3
          */
         inspect_get_product_name(root: string): string;
 
@@ -9407,6 +9674,7 @@ export namespace Guestfs {
          * `guestfs_session_inspect_get_major_version()`.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.9.13
          */
         inspect_get_product_variant(root: string): string;
 
@@ -9422,6 +9690,7 @@ export namespace Guestfs {
          * 
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @returns an array of returned strings, or NULL on error
+         * @since 1.7.3
          */
         inspect_get_roots(): string[];
 
@@ -9464,6 +9733,7 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.5.3
          */
         inspect_get_type(root: string): string;
 
@@ -9480,6 +9750,7 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.9.17
          */
         inspect_get_windows_current_control_set(root: string): string;
 
@@ -9499,6 +9770,7 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.35.26
          */
         inspect_get_windows_software_hive(root: string): string;
 
@@ -9518,6 +9790,7 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.35.26
          */
         inspect_get_windows_system_hive(root: string): string;
 
@@ -9534,6 +9807,7 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned string, or NULL on error
+         * @since 1.5.25
          */
         inspect_get_windows_systemroot(root: string): string;
 
@@ -9545,6 +9819,8 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned value, or -1 on error
+         * @since 1.9.4
+         * @deprecated There is no documented replacement
          */
         inspect_is_live(root: string): number;
 
@@ -9556,6 +9832,8 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned value, or -1 on error
+         * @since 1.9.4
+         * @deprecated There is no documented replacement
          */
         inspect_is_multipart(root: string): number;
 
@@ -9567,6 +9845,8 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns the returned value, or -1 on error
+         * @since 1.9.4
+         * @deprecated There is no documented replacement
          */
         inspect_is_netinst(root: string): number;
 
@@ -9648,6 +9928,8 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns an array of Application objects, or NULL on error
+         * @since 1.7.8
+         * @deprecated In new code, use `guestfs_session_inspect_list_applications2()` instead
          */
         inspect_list_applications(root: string): Application[];
 
@@ -9734,6 +10016,7 @@ export namespace Guestfs {
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root 
          * @returns an array of Application2 objects, or NULL on error
+         * @since 1.19.56
          */
         inspect_list_applications2(root: string): Application2[];
 
@@ -9770,6 +10053,7 @@ export namespace Guestfs {
          * 
          * See also `guestfs_session_list_filesystems()`.
          * @returns an array of returned strings, or NULL on error
+         * @since 1.5.3
          */
         inspect_os(): string[];
 
@@ -9779,6 +10063,7 @@ export namespace Guestfs {
          * This function is used internally when testing the appliance.
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.23.30
          */
         internal_exit(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10210,6 +10495,7 @@ export namespace Guestfs {
          * @param path 
          * @param optargs a GuestfsIsBlockdev containing optional arguments
          * @returns the returned value, or -1 on error
+         * @since 1.5.10
          */
         is_blockdev(path: string, optargs: IsBlockdev | null): number;
 
@@ -10221,6 +10507,7 @@ export namespace Guestfs {
          * 
          * For more information on states, see guestfs(3).
          * @returns the returned value, or -1 on error
+         * @since 1.0.2
          */
         is_busy(): number;
 
@@ -10238,6 +10525,7 @@ export namespace Guestfs {
          * @param path 
          * @param optargs a GuestfsIsChardev containing optional arguments
          * @returns the returned value, or -1 on error
+         * @since 1.5.10
          */
         is_chardev(path: string, optargs: IsChardev | null): number;
 
@@ -10249,6 +10537,7 @@ export namespace Guestfs {
          * 
          * For more information on states, see guestfs(3).
          * @returns the returned value, or -1 on error
+         * @since 1.0.2
          */
         is_config(): number;
 
@@ -10266,6 +10555,7 @@ export namespace Guestfs {
          * @param path 
          * @param optargs a GuestfsIsDir containing optional arguments
          * @returns the returned value, or -1 on error
+         * @since 0.8
          */
         is_dir(path: string, optargs: IsDir | null): number;
 
@@ -10283,6 +10573,7 @@ export namespace Guestfs {
          * @param path 
          * @param optargs a GuestfsIsFifo containing optional arguments
          * @returns the returned value, or -1 on error
+         * @since 1.5.10
          */
         is_fifo(path: string, optargs: IsFifo | null): number;
 
@@ -10301,6 +10592,7 @@ export namespace Guestfs {
          * @param path 
          * @param optargs a GuestfsIsFile containing optional arguments
          * @returns the returned value, or -1 on error
+         * @since 0.8
          */
         is_file(path: string, optargs: IsFile | null): number;
 
@@ -10312,6 +10604,7 @@ export namespace Guestfs {
          * 
          * For more information on states, see guestfs(3).
          * @returns the returned value, or -1 on error
+         * @since 1.0.2
          */
         is_launching(): number;
 
@@ -10322,6 +10615,7 @@ export namespace Guestfs {
          * true iff this is the case.
          * @param mountable 
          * @returns the returned value, or -1 on error
+         * @since 1.5.3
          */
         is_lv(mountable: string): number;
 
@@ -10333,6 +10627,7 @@ export namespace Guestfs {
          * 
          * For more information on states, see guestfs(3).
          * @returns the returned value, or -1 on error
+         * @since 1.0.2
          */
         is_ready(): number;
 
@@ -10350,6 +10645,7 @@ export namespace Guestfs {
          * @param path 
          * @param optargs a GuestfsIsSocket containing optional arguments
          * @returns the returned value, or -1 on error
+         * @since 1.5.10
          */
         is_socket(path: string, optargs: IsSocket | null): number;
 
@@ -10362,6 +10658,7 @@ export namespace Guestfs {
          * See also `guestfs_session_stat()`.
          * @param path 
          * @returns the returned value, or -1 on error
+         * @since 1.5.10
          */
         is_symlink(path: string): number;
 
@@ -10372,6 +10669,7 @@ export namespace Guestfs {
          * device. That is, not a partition or a logical device.
          * @param device 
          * @returns the returned value, or -1 on error
+         * @since 1.21.9
          */
         is_whole_device(device: string): number;
 
@@ -10382,6 +10680,7 @@ export namespace Guestfs {
          * contains all zero bytes.
          * @param path 
          * @returns the returned value, or -1 on error
+         * @since 1.11.8
          */
         is_zero(path: string): number;
 
@@ -10393,6 +10692,7 @@ export namespace Guestfs {
          * Note that for large devices this can take a long time to run.
          * @param device 
          * @returns the returned value, or -1 on error
+         * @since 1.11.8
          */
         is_zero_device(device: string): number;
 
@@ -10406,6 +10706,7 @@ export namespace Guestfs {
          * `guestfs_session_isoinfo_device()`.
          * @param isofile 
          * @returns a ISOInfo object, or NULL on error
+         * @since 1.17.19
          */
         isoinfo(isofile: string): ISOInfo;
 
@@ -10425,6 +10726,7 @@ export namespace Guestfs {
          * http://wiki.osdev.org/ISO_9660#The_Primary_Volume_Descriptor </ulink>
          * @param device 
          * @returns a ISOInfo object, or NULL on error
+         * @since 1.17.19
          */
         isoinfo_device(device: string): ISOInfo;
 
@@ -10436,6 +10738,7 @@ export namespace Guestfs {
          * This function depends on the feature "journal".
          * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
+         * @since 1.23.11
          */
         journal_close(): boolean;
 
@@ -10461,6 +10764,7 @@ export namespace Guestfs {
          * This function depends on the feature "journal".
          * See also `guestfs_session_feature_available()`.
          * @returns an array of XAttr objects, or NULL on error
+         * @since 1.23.11
          */
         journal_get(): XAttr[];
 
@@ -10477,6 +10781,7 @@ export namespace Guestfs {
          * This function depends on the feature "journal".
          * See also `guestfs_session_feature_available()`.
          * @returns the returned value, or -1 on error
+         * @since 1.23.11
          */
         journal_get_data_threshold(): number;
 
@@ -10488,6 +10793,7 @@ export namespace Guestfs {
          * This function depends on the feature "journal".
          * See also `guestfs_session_feature_available()`.
          * @returns the returned value, or -1 on error
+         * @since 1.27.18
          */
         journal_get_realtime_usec(): number;
 
@@ -10505,6 +10811,7 @@ export namespace Guestfs {
          * This function depends on the feature "journal".
          * See also `guestfs_session_feature_available()`.
          * @returns the returned value, or -1 on error
+         * @since 1.23.11
          */
         journal_next(): number;
 
@@ -10524,6 +10831,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param directory 
          * @returns true on success, false on error
+         * @since 1.23.11
          */
         journal_open(directory: string): boolean;
 
@@ -10541,6 +10849,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param threshold 
          * @returns true on success, false on error
+         * @since 1.23.11
          */
         journal_set_data_threshold(threshold: bigint | number): boolean;
 
@@ -10559,6 +10868,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param skip 
          * @returns the returned value, or -1 on error
+         * @since 1.23.11
          */
         journal_skip(skip: bigint | number): number;
 
@@ -10569,6 +10879,8 @@ export namespace Guestfs {
          * 
          * Do not call this. See: `guestfs_session_shutdown()` instead.
          * @returns true on success, false on error
+         * @since 0.3
+         * @deprecated In new code, use `guestfs_session_shutdown()` instead
          */
         kill_subprocess(): boolean;
 
@@ -10583,6 +10895,7 @@ export namespace Guestfs {
          * behaviour when you do this is not well defined. Handles are very cheap
          * to create, so create a new one for each launch.
          * @returns true on success, false on error
+         * @since 0.3
          */
         launch(): boolean;
 
@@ -10600,6 +10913,7 @@ export namespace Guestfs {
          * @param group 
          * @param path 
          * @returns true on success, false on error
+         * @since 1.0.77
          */
         lchown(owner: number, group: number, path: string): boolean;
 
@@ -10620,6 +10934,7 @@ export namespace Guestfs {
          * This function depends on the feature "ldm".
          * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
+         * @since 1.20.0
          */
         ldmtool_create_all(): boolean;
 
@@ -10634,6 +10949,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param diskgroup 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.20.0
          */
         ldmtool_diskgroup_disks(diskgroup: string): string[];
 
@@ -10648,6 +10964,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param diskgroup 
          * @returns the returned string, or NULL on error
+         * @since 1.20.0
          */
         ldmtool_diskgroup_name(diskgroup: string): string;
 
@@ -10662,6 +10979,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param diskgroup 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.20.0
          */
         ldmtool_diskgroup_volumes(diskgroup: string): string[];
 
@@ -10675,6 +10993,7 @@ export namespace Guestfs {
          * This function depends on the feature "ldm".
          * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
+         * @since 1.20.0
          */
         ldmtool_remove_all(): boolean;
 
@@ -10691,6 +11010,7 @@ export namespace Guestfs {
          * This function depends on the feature "ldm".
          * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
+         * @since 1.20.0
          */
         ldmtool_scan(): string[];
 
@@ -10708,6 +11028,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param devices an array of strings
          * @returns an array of returned strings, or NULL on error
+         * @since 1.20.0
          */
         ldmtool_scan_devices(devices: string[]): string[];
 
@@ -10724,6 +11045,7 @@ export namespace Guestfs {
          * @param diskgroup 
          * @param volume 
          * @returns the returned string, or NULL on error
+         * @since 1.20.0
          */
         ldmtool_volume_hint(diskgroup: string, volume: string): string;
 
@@ -10738,6 +11060,7 @@ export namespace Guestfs {
          * @param diskgroup 
          * @param volume 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.20.0
          */
         ldmtool_volume_partitions(diskgroup: string, volume: string): string[];
 
@@ -10755,6 +11078,7 @@ export namespace Guestfs {
          * @param diskgroup 
          * @param volume 
          * @returns the returned string, or NULL on error
+         * @since 1.20.0
          */
         ldmtool_volume_type(diskgroup: string, volume: string): string;
 
@@ -10783,6 +11107,7 @@ export namespace Guestfs {
          * @param path 
          * @param name 
          * @returns an array of binary data, or NULL on error
+         * @since 1.7.24
          */
         lgetxattr(path: string, name: string): Uint8Array;
 
@@ -10797,6 +11122,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param path 
          * @returns an array of XAttr objects, or NULL on error
+         * @since 1.0.59
          */
         lgetxattrs(path: string): XAttr[];
 
@@ -10806,6 +11132,7 @@ export namespace Guestfs {
          * List all 9p filesystems attached to the guest. A list of mount tags is
          * returned.
          * @returns an array of returned strings, or NULL on error
+         * @since 1.11.12
          */
         list_9p(): string[];
 
@@ -10818,6 +11145,7 @@ export namespace Guestfs {
          * 
          * See also `guestfs_session_list_filesystems()`.
          * @returns an array of returned strings, or NULL on error
+         * @since 0.4
          */
         list_devices(): string[];
 
@@ -10833,6 +11161,7 @@ export namespace Guestfs {
          * /dev/disk/guestfs prefix), and the values are the full raw block device
          * and partition names (eg. /dev/sda and /dev/sda1).
          * @returns a GHashTable of results, or NULL on error
+         * @since 1.19.49
          */
         list_disk_labels(): { [key: string]: string };
 
@@ -10848,6 +11177,7 @@ export namespace Guestfs {
          * returned in this list. Call `guestfs_session_lvs()` if you want to list
          * logical volumes.
          * @returns an array of returned strings, or NULL on error
+         * @since 1.11.15
          */
         list_dm_devices(): string[];
 
@@ -10889,6 +11219,7 @@ export namespace Guestfs {
          * may not all belong to a single logical operating system (use
          * `guestfs_session_inspect_os()` to look for OSes).
          * @returns a GHashTable of results, or NULL on error
+         * @since 1.5.15
          */
         list_filesystems(): { [key: string]: string };
 
@@ -10901,6 +11232,7 @@ export namespace Guestfs {
          * This function depends on the feature "ldm".
          * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
+         * @since 1.20.0
          */
         list_ldm_partitions(): string[];
 
@@ -10913,6 +11245,7 @@ export namespace Guestfs {
          * This function depends on the feature "ldm".
          * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
+         * @since 1.20.0
          */
         list_ldm_volumes(): string[];
 
@@ -10921,6 +11254,7 @@ export namespace Guestfs {
          * 
          * List all Linux md devices.
          * @returns an array of returned strings, or NULL on error
+         * @since 1.15.4
          */
         list_md_devices(): string[];
 
@@ -10936,6 +11270,7 @@ export namespace Guestfs {
          * 
          * See also `guestfs_session_list_filesystems()`.
          * @returns an array of returned strings, or NULL on error
+         * @since 0.4
          */
         list_partitions(): string[];
 
@@ -10949,6 +11284,7 @@ export namespace Guestfs {
          * intended that you try to parse the output string.
          * @param directory 
          * @returns the returned string, or NULL on error
+         * @since 0.4
          */
         ll(directory: string): string;
 
@@ -10961,6 +11297,8 @@ export namespace Guestfs {
          * intended that you try to parse the output string.
          * @param directory 
          * @returns the returned string, or NULL on error
+         * @since 1.17.6
+         * @deprecated In new code, use `guestfs_session_lgetxattrs()` instead
          */
         llz(directory: string): string;
 
@@ -10971,6 +11309,7 @@ export namespace Guestfs {
          * @param target 
          * @param linkname 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         ln(target: string, linkname: string): boolean;
 
@@ -10982,6 +11321,7 @@ export namespace Guestfs {
          * @param target 
          * @param linkname 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         ln_f(target: string, linkname: string): boolean;
 
@@ -10992,6 +11332,7 @@ export namespace Guestfs {
          * @param target 
          * @param linkname 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         ln_s(target: string, linkname: string): boolean;
 
@@ -11003,6 +11344,7 @@ export namespace Guestfs {
          * @param target 
          * @param linkname 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         ln_sf(target: string, linkname: string): boolean;
 
@@ -11017,6 +11359,7 @@ export namespace Guestfs {
          * @param xattr 
          * @param path 
          * @returns true on success, false on error
+         * @since 1.0.59
          */
         lremovexattr(xattr: string, path: string): boolean;
 
@@ -11028,6 +11371,7 @@ export namespace Guestfs {
          * shown.
          * @param directory 
          * @returns an array of returned strings, or NULL on error
+         * @since 0.4
          */
         ls(directory: string): string[];
 
@@ -11044,6 +11388,7 @@ export namespace Guestfs {
          * @param dir 
          * @param filenames 
          * @returns true on success, false on error
+         * @since 1.19.32
          */
         ls0(dir: string, filenames: string): boolean;
 
@@ -11060,6 +11405,7 @@ export namespace Guestfs {
          * @param vallen 
          * @param path 
          * @returns true on success, false on error
+         * @since 1.0.59
          */
         lsetxattr(xattr: string, val: string, vallen: number, path: string): boolean;
 
@@ -11074,6 +11420,8 @@ export namespace Guestfs {
          * This is the same as the lstat(2) system call.
          * @param path 
          * @returns a Stat object, or NULL on error
+         * @since 1.9.2
+         * @deprecated In new code, use `guestfs_session_lstatns()` instead
          */
         lstat(path: string): Stat;
 
@@ -11095,6 +11443,8 @@ export namespace Guestfs {
          * @param path 
          * @param names an array of strings
          * @returns an array of Stat objects, or NULL on error
+         * @since 1.0.77
+         * @deprecated In new code, use `guestfs_session_lstatnslist()` instead
          */
         lstatlist(path: string, names: string[]): Stat[];
 
@@ -11109,6 +11459,7 @@ export namespace Guestfs {
          * This is the same as the lstat(2) system call.
          * @param path 
          * @returns a StatNS object, or NULL on error
+         * @since 1.27.53
          */
         lstatns(path: string): StatNS;
 
@@ -11130,6 +11481,7 @@ export namespace Guestfs {
          * @param path 
          * @param names an array of strings
          * @returns an array of StatNS objects, or NULL on error
+         * @since 1.27.53
          */
         lstatnslist(path: string, names: string[]): StatNS[];
 
@@ -11151,6 +11503,7 @@ export namespace Guestfs {
          * @param newkey 
          * @param keyslot 
          * @returns true on success, false on error
+         * @since 1.5.2
          */
         luks_add_key(device: string, key: string, newkey: string, keyslot: number): boolean;
 
@@ -11166,6 +11519,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.5.1
          */
         luks_close(device: string): boolean;
 
@@ -11182,6 +11536,7 @@ export namespace Guestfs {
          * @param key 
          * @param keyslot 
          * @returns true on success, false on error
+         * @since 1.5.2
          */
         luks_format(device: string, key: string, keyslot: number): boolean;
 
@@ -11198,6 +11553,7 @@ export namespace Guestfs {
          * @param keyslot 
          * @param cipher 
          * @returns true on success, false on error
+         * @since 1.5.2
          */
         luks_format_cipher(device: string, key: string, keyslot: number, cipher: string): boolean;
 
@@ -11213,6 +11569,7 @@ export namespace Guestfs {
          * @param key 
          * @param keyslot 
          * @returns true on success, false on error
+         * @since 1.5.2
          */
         luks_kill_slot(device: string, key: string, keyslot: number): boolean;
 
@@ -11243,6 +11600,7 @@ export namespace Guestfs {
          * @param key 
          * @param mapname 
          * @returns true on success, false on error
+         * @since 1.5.1
          */
         luks_open(device: string, key: string, mapname: string): boolean;
 
@@ -11258,6 +11616,7 @@ export namespace Guestfs {
          * @param key 
          * @param mapname 
          * @returns true on success, false on error
+         * @since 1.5.1
          */
         luks_open_ro(device: string, key: string, mapname: string): boolean;
 
@@ -11273,6 +11632,7 @@ export namespace Guestfs {
          * @param volgroup 
          * @param mbytes 
          * @returns true on success, false on error
+         * @since 0.8
          */
         lvcreate(logvol: string, volgroup: string, mbytes: number): boolean;
 
@@ -11290,6 +11650,7 @@ export namespace Guestfs {
          * @param volgroup 
          * @param percent 
          * @returns true on success, false on error
+         * @since 1.17.18
          */
         lvcreate_free(logvol: string, volgroup: string, percent: number): boolean;
 
@@ -11307,6 +11668,7 @@ export namespace Guestfs {
          * `guestfs_session_canonical_device_name()`.
          * @param lvname 
          * @returns the returned string, or NULL on error
+         * @since 1.5.24
          */
         lvm_canonical_lv_name(lvname: string): string;
 
@@ -11318,6 +11680,7 @@ export namespace Guestfs {
          * 
          * This command also clears the LVM cache and performs a volume group scan.
          * @returns true on success, false on error
+         * @since 1.5.1
          */
         lvm_clear_filter(): boolean;
 
@@ -11330,6 +11693,7 @@ export namespace Guestfs {
          * This function depends on the feature "lvm2".
          * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
+         * @since 0.8
          */
         lvm_remove_all(): boolean;
 
@@ -11349,6 +11713,7 @@ export namespace Guestfs {
          * `guestfs_session_luks_open()` API is used).
          * @param activate 
          * @returns true on success, false on error
+         * @since 1.39.8
          */
         lvm_scan(activate: boolean): boolean;
 
@@ -11378,6 +11743,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param devices an array of strings
          * @returns true on success, false on error
+         * @since 1.5.1
          */
         lvm_set_filter(devices: string[]): boolean;
 
@@ -11394,6 +11760,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.13
          */
         lvremove(device: string): boolean;
 
@@ -11404,6 +11771,7 @@ export namespace Guestfs {
          * @param logvol 
          * @param newlogvol 
          * @returns true on success, false on error
+         * @since 1.0.83
          */
         lvrename(logvol: string, newlogvol: string): boolean;
 
@@ -11418,6 +11786,7 @@ export namespace Guestfs {
          * @param device 
          * @param mbytes 
          * @returns true on success, false on error
+         * @since 1.0.27
          */
         lvresize(device: string, mbytes: number): boolean;
 
@@ -11434,6 +11803,7 @@ export namespace Guestfs {
          * @param lv 
          * @param percent 
          * @returns true on success, false on error
+         * @since 1.3.3
          */
         lvresize_free(lv: string, percent: number): boolean;
 
@@ -11451,6 +11821,7 @@ export namespace Guestfs {
          * This function depends on the feature "lvm2".
          * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
+         * @since 0.4
          */
         lvs(): string[];
 
@@ -11463,6 +11834,7 @@ export namespace Guestfs {
          * This function depends on the feature "lvm2".
          * See also `guestfs_session_feature_available()`.
          * @returns an array of LV objects, or NULL on error
+         * @since 0.4
          */
         lvs_full(): LV[];
 
@@ -11472,6 +11844,7 @@ export namespace Guestfs {
          * This command returns the UUID of the LVM LV `device`.
          * @param device 
          * @returns the returned string, or NULL on error
+         * @since 1.0.87
          */
         lvuuid(device: string): string;
 
@@ -11501,6 +11874,7 @@ export namespace Guestfs {
          * @param path 
          * @param names an array of strings
          * @returns an array of XAttr objects, or NULL on error
+         * @since 1.0.77
          */
         lxattrlist(path: string, names: string[]): XAttr[];
 
@@ -11516,6 +11890,7 @@ export namespace Guestfs {
          * See "MAXIMUM NUMBER OF DISKS" in guestfs(3) for additional information
          * on this topic.
          * @returns the returned value, or -1 on error
+         * @since 1.19.7
          */
         max_disks(): number;
 
@@ -11573,6 +11948,7 @@ export namespace Guestfs {
          * @param devices an array of strings
          * @param optargs a GuestfsMDCreate containing optional arguments
          * @returns true on success, false on error
+         * @since 1.15.6
          */
         md_create(name: string, devices: string[], optargs: MDCreate | null): boolean;
 
@@ -11602,6 +11978,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param md 
          * @returns a GHashTable of results, or NULL on error
+         * @since 1.15.6
          */
         md_detail(md: string): { [key: string]: string };
 
@@ -11639,6 +12016,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param md 
          * @returns an array of MDStat objects, or NULL on error
+         * @since 1.17.21
          */
         md_stat(md: string): MDStat[];
 
@@ -11652,6 +12030,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param md 
          * @returns true on success, false on error
+         * @since 1.15.6
          */
         md_stop(md: string): boolean;
 
@@ -11661,6 +12040,7 @@ export namespace Guestfs {
          * Create a directory named `path`.
          * @param path 
          * @returns true on success, false on error
+         * @since 0.8
          */
         mkdir(path: string): boolean;
 
@@ -11678,6 +12058,7 @@ export namespace Guestfs {
          * @param path 
          * @param mode 
          * @returns true on success, false on error
+         * @since 1.0.77
          */
         mkdir_mode(path: string, mode: number): boolean;
 
@@ -11688,6 +12069,7 @@ export namespace Guestfs {
          * necessary. This is like the "mkdir -p" shell command.
          * @param path 
          * @returns true on success, false on error
+         * @since 0.8
          */
         mkdir_p(path: string): boolean;
 
@@ -11711,6 +12093,7 @@ export namespace Guestfs {
          * See also: mkdtemp(3)
          * @param tmpl 
          * @returns the returned string, or NULL on error
+         * @since 1.0.54
          */
         mkdtemp(tmpl: string): string;
 
@@ -11726,6 +12109,7 @@ export namespace Guestfs {
          * @param device 
          * @param optargs a GuestfsMke2fs containing optional arguments
          * @returns true on success, false on error
+         * @since 1.19.44
          */
         mke2fs(device: string, optargs: Mke2fs | null): boolean;
 
@@ -11743,6 +12127,8 @@ export namespace Guestfs {
          * @param device 
          * @param journal 
          * @returns true on success, false on error
+         * @since 1.0.68
+         * @deprecated In new code, use `guestfs_session_mke2fs()` instead
          */
         mke2fs_J(fstype: string, blocksize: number, device: string, journal: string): boolean;
 
@@ -11758,6 +12144,8 @@ export namespace Guestfs {
          * @param device 
          * @param label 
          * @returns true on success, false on error
+         * @since 1.0.68
+         * @deprecated In new code, use `guestfs_session_mke2fs()` instead
          */
         mke2fs_JL(fstype: string, blocksize: number, device: string, label: string): boolean;
 
@@ -11776,6 +12164,8 @@ export namespace Guestfs {
          * @param device 
          * @param uuid 
          * @returns true on success, false on error
+         * @since 1.0.68
+         * @deprecated In new code, use `guestfs_session_mke2fs()` instead
          */
         mke2fs_JU(fstype: string, blocksize: number, device: string, uuid: string): boolean;
 
@@ -11789,6 +12179,8 @@ export namespace Guestfs {
          * @param blocksize 
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.68
+         * @deprecated In new code, use `guestfs_session_mke2fs()` instead
          */
         mke2journal(blocksize: number, device: string): boolean;
 
@@ -11800,6 +12192,8 @@ export namespace Guestfs {
          * @param label 
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.68
+         * @deprecated In new code, use `guestfs_session_mke2fs()` instead
          */
         mke2journal_L(blocksize: number, label: string, device: string): boolean;
 
@@ -11814,6 +12208,8 @@ export namespace Guestfs {
          * @param uuid 
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.68
+         * @deprecated In new code, use `guestfs_session_mke2fs()` instead
          */
         mke2journal_U(blocksize: number, uuid: string, device: string): boolean;
 
@@ -11833,6 +12229,7 @@ export namespace Guestfs {
          * @param mode 
          * @param path 
          * @returns true on success, false on error
+         * @since 1.0.55
          */
         mkfifo(mode: number, path: string): boolean;
 
@@ -11875,6 +12272,7 @@ export namespace Guestfs {
          * @param device 
          * @param optargs a GuestfsMkfs containing optional arguments
          * @returns true on success, false on error
+         * @since 0.8
          */
         mkfs(fstype: string, device: string, optargs: Mkfs | null): boolean;
 
@@ -11892,6 +12290,8 @@ export namespace Guestfs {
          * @param blocksize 
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.68
+         * @deprecated In new code, use `guestfs_session_mkfs()` instead
          */
         mkfs_b(fstype: string, blocksize: number, device: string): boolean;
 
@@ -11911,6 +12311,7 @@ export namespace Guestfs {
          * @param devices an array of strings
          * @param optargs a GuestfsMkfsBtrfs containing optional arguments
          * @returns true on success, false on error
+         * @since 1.17.25
          */
         mkfs_btrfs(devices: string[], optargs: MkfsBtrfs | null): boolean;
 
@@ -11922,6 +12323,7 @@ export namespace Guestfs {
          * create the "lost+found" directory.
          * @param mountpoint 
          * @returns true on success, false on error
+         * @since 1.19.56
          */
         mklost_and_found(mountpoint: string): boolean;
 
@@ -11977,6 +12379,7 @@ export namespace Guestfs {
          * handle is closed which can also trigger these issues.
          * @param exemptpath 
          * @returns true on success, false on error
+         * @since 1.0.62
          */
         mkmountpoint(exemptpath: string): boolean;
 
@@ -12007,6 +12410,7 @@ export namespace Guestfs {
          * @param devminor 
          * @param path 
          * @returns true on success, false on error
+         * @since 1.0.55
          */
         mknod(mode: number, devmajor: number, devminor: number, path: string): boolean;
 
@@ -12029,6 +12433,7 @@ export namespace Guestfs {
          * @param devminor 
          * @param path 
          * @returns true on success, false on error
+         * @since 1.0.55
          */
         mknod_b(mode: number, devmajor: number, devminor: number, path: string): boolean;
 
@@ -12051,6 +12456,7 @@ export namespace Guestfs {
          * @param devminor 
          * @param path 
          * @returns true on success, false on error
+         * @since 1.0.55
          */
         mknod_c(mode: number, devmajor: number, devminor: number, path: string): boolean;
 
@@ -12080,6 +12486,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsMksquashfs containing optional arguments
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.35.25
          */
         mksquashfs(path: string, filename: string, optargs: Mksquashfs | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12093,6 +12500,7 @@ export namespace Guestfs {
          * @param device 
          * @param optargs a GuestfsMkswap containing optional arguments
          * @returns true on success, false on error
+         * @since 1.0.55
          */
         mkswap(device: string, optargs: Mkswap | null): boolean;
 
@@ -12107,6 +12515,8 @@ export namespace Guestfs {
          * @param label 
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.55
+         * @deprecated In new code, use `guestfs_session_mkswap()` instead
          */
         mkswap_L(label: string, device: string): boolean;
 
@@ -12120,6 +12530,8 @@ export namespace Guestfs {
          * @param uuid 
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.55
+         * @deprecated In new code, use `guestfs_session_mkswap()` instead
          */
         mkswap_U(uuid: string, device: string): boolean;
 
@@ -12132,6 +12544,7 @@ export namespace Guestfs {
          * create the file itself, use something like `guestfs_session_fallocate()`.
          * @param path 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         mkswap_file(path: string): boolean;
 
@@ -12158,6 +12571,7 @@ export namespace Guestfs {
          * @param tmpl 
          * @param optargs a GuestfsMktemp containing optional arguments
          * @returns the returned string, or NULL on error
+         * @since 1.19.53
          */
         mktemp(tmpl: string, optargs: Mktemp | null): string;
 
@@ -12170,6 +12584,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param modulename 
          * @returns true on success, false on error
+         * @since 1.0.68
          */
         modprobe(modulename: string): boolean;
 
@@ -12199,6 +12614,7 @@ export namespace Guestfs {
          * @param mountable 
          * @param mountpoint 
          * @returns true on success, false on error
+         * @since 0.3
          */
         mount(mountable: string, mountpoint: string): boolean;
 
@@ -12215,6 +12631,7 @@ export namespace Guestfs {
          * @param mountpoint 
          * @param optargs a GuestfsMount9P containing optional arguments
          * @returns true on success, false on error
+         * @since 1.11.12
          */
         mount_9p(mounttag: string, mountpoint: string, optargs: Mount9P | null): boolean;
 
@@ -12247,6 +12664,7 @@ export namespace Guestfs {
          * @param localmountpoint 
          * @param optargs a GuestfsMountLocal containing optional arguments
          * @returns true on success, false on error
+         * @since 1.17.22
          */
         mount_local(localmountpoint: string, optargs: MountLocal | null): boolean;
 
@@ -12270,6 +12688,7 @@ export namespace Guestfs {
          * See "MOUNT LOCAL" in guestfs(3) for full documentation.
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.17.22
          */
         mount_local_run(cancellable: Gio.Cancellable | null): boolean;
 
@@ -12282,6 +12701,7 @@ export namespace Guestfs {
          * @param file 
          * @param mountpoint 
          * @returns true on success, false on error
+         * @since 1.0.54
          */
         mount_loop(file: string, mountpoint: string): boolean;
 
@@ -12297,6 +12717,7 @@ export namespace Guestfs {
          * @param mountable 
          * @param mountpoint 
          * @returns true on success, false on error
+         * @since 1.0.10
          */
         mount_options(options: string, mountable: string, mountpoint: string): boolean;
 
@@ -12308,6 +12729,7 @@ export namespace Guestfs {
          * @param mountable 
          * @param mountpoint 
          * @returns true on success, false on error
+         * @since 1.0.10
          */
         mount_ro(mountable: string, mountpoint: string): boolean;
 
@@ -12322,6 +12744,7 @@ export namespace Guestfs {
          * @param mountable 
          * @param mountpoint 
          * @returns true on success, false on error
+         * @since 1.0.10
          */
         mount_vfs(options: string, vfstype: string, mountable: string, mountpoint: string): boolean;
 
@@ -12337,6 +12760,7 @@ export namespace Guestfs {
          * the mountable if any).
          * @param mountable 
          * @returns the returned string, or NULL on error
+         * @since 1.33.15
          */
         mountable_device(mountable: string): string;
 
@@ -12352,6 +12776,7 @@ export namespace Guestfs {
          * function fails and the `errno` is set to `EINVAL`.
          * @param mountable 
          * @returns the returned string, or NULL on error
+         * @since 1.33.15
          */
         mountable_subvolume(mountable: string): string;
 
@@ -12362,6 +12787,7 @@ export namespace Guestfs {
          * list of devices. This one returns a hash table (map) of device name to
          * directory where the device is mounted.
          * @returns a GHashTable of results, or NULL on error
+         * @since 1.0.62
          */
         mountpoints(): { [key: string]: string };
 
@@ -12375,6 +12801,7 @@ export namespace Guestfs {
          * 
          * See also: `guestfs_session_mountpoints()`
          * @returns an array of returned strings, or NULL on error
+         * @since 0.8
          */
         mounts(): string[];
 
@@ -12388,6 +12815,7 @@ export namespace Guestfs {
          * @param src 
          * @param dest 
          * @returns true on success, false on error
+         * @since 1.0.18
          */
         mv(src: string, dest: string): boolean;
 
@@ -12401,6 +12829,7 @@ export namespace Guestfs {
          * To find out the maximum number of devices that could be added, call
          * `guestfs_session_max_disks()`.
          * @returns the returned value, or -1 on error
+         * @since 1.19.15
          */
         nr_devices(): number;
 
@@ -12423,6 +12852,7 @@ export namespace Guestfs {
          * @param rw 
          * @param device 
          * @returns the returned value, or -1 on error
+         * @since 1.0.43
          */
         ntfs_3g_probe(rw: boolean, device: string): number;
 
@@ -12442,6 +12872,7 @@ export namespace Guestfs {
          * @param filename 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.33.14
          */
         ntfscat_i(device: string, inode: bigint | number, filename: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12458,6 +12889,7 @@ export namespace Guestfs {
          * @param device 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.17.9
          */
         ntfsclone_in(backupfile: string, device: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12485,6 +12917,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsNtfscloneOut containing optional arguments
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.17.9
          */
         ntfsclone_out(device: string, backupfile: string, optargs: NtfscloneOut | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12506,6 +12939,7 @@ export namespace Guestfs {
          * @param device 
          * @param optargs a GuestfsNtfsfix containing optional arguments
          * @returns true on success, false on error
+         * @since 1.17.9
          */
         ntfsfix(device: string, optargs: Ntfsfix | null): boolean;
 
@@ -12539,6 +12973,7 @@ export namespace Guestfs {
          * @param device 
          * @param optargs a GuestfsNTFSResizeOpts containing optional arguments
          * @returns true on success, false on error
+         * @since 1.3.2
          */
         ntfsresize(device: string, optargs: NTFSResizeOpts | null): boolean;
 
@@ -12553,6 +12988,8 @@ export namespace Guestfs {
          * @param device 
          * @param size 
          * @returns true on success, false on error
+         * @since 1.3.14
+         * @deprecated In new code, use `guestfs_session_ntfsresize()` instead
          */
         ntfsresize_size(device: string, size: bigint | number): boolean;
 
@@ -12571,6 +13008,7 @@ export namespace Guestfs {
          * "guestfs_create_flags" in guestfs(3), and
          * `guestfs_session_parse_environment_list()`.
          * @returns true on success, false on error
+         * @since 1.19.53
          */
         parse_environment(): boolean;
 
@@ -12585,6 +13023,7 @@ export namespace Guestfs {
          * parses an explicit list of strings instead of the program's environment.
          * @param environment an array of strings
          * @returns true on success, false on error
+         * @since 1.19.53
          */
         parse_environment_list(environment: string[]): boolean;
 
@@ -12609,6 +13048,7 @@ export namespace Guestfs {
          * @param startsect 
          * @param endsect 
          * @returns true on success, false on error
+         * @since 1.0.78
          */
         part_add(device: string, prlogex: string, startsect: bigint | number, endsect: bigint | number): boolean;
 
@@ -12622,6 +13062,7 @@ export namespace Guestfs {
          * @param device 
          * @param partnum 
          * @returns true on success, false on error
+         * @since 1.3.2
          */
         part_del(device: string, partnum: number): boolean;
 
@@ -12637,6 +13078,7 @@ export namespace Guestfs {
          * @param device 
          * @param parttype 
          * @returns true on success, false on error
+         * @since 1.0.78
          */
         part_disk(device: string, parttype: string): boolean;
 
@@ -12653,6 +13095,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.33.2
          */
         part_expand_gpt(device: string): boolean;
 
@@ -12666,6 +13109,7 @@ export namespace Guestfs {
          * @param device 
          * @param partnum 
          * @returns the returned value, or -1 on error
+         * @since 1.3.2
          */
         part_get_bootable(device: string, partnum: number): number;
 
@@ -12679,6 +13123,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns the returned string, or NULL on error
+         * @since 1.33.2
          */
         part_get_disk_guid(device: string): string;
 
@@ -12693,6 +13138,7 @@ export namespace Guestfs {
          * @param device 
          * @param partnum 
          * @returns the returned value, or -1 on error
+         * @since 1.21.1
          */
         part_get_gpt_attributes(device: string, partnum: number): number;
 
@@ -12706,6 +13152,7 @@ export namespace Guestfs {
          * @param device 
          * @param partnum 
          * @returns the returned string, or NULL on error
+         * @since 1.29.25
          */
         part_get_gpt_guid(device: string, partnum: number): string;
 
@@ -12721,6 +13168,7 @@ export namespace Guestfs {
          * @param device 
          * @param partnum 
          * @returns the returned string, or NULL on error
+         * @since 1.21.1
          */
         part_get_gpt_type(device: string, partnum: number): string;
 
@@ -12736,6 +13184,7 @@ export namespace Guestfs {
          * @param device 
          * @param partnum 
          * @returns the returned value, or -1 on error
+         * @since 1.3.2
          */
         part_get_mbr_id(device: string, partnum: number): number;
 
@@ -12749,6 +13198,7 @@ export namespace Guestfs {
          * @param device 
          * @param partnum 
          * @returns the returned string, or NULL on error
+         * @since 1.29.32
          */
         part_get_mbr_part_type(device: string, partnum: number): string;
 
@@ -12763,6 +13213,7 @@ export namespace Guestfs {
          * @param device 
          * @param partnum 
          * @returns the returned string, or NULL on error
+         * @since 1.25.33
          */
         part_get_name(device: string, partnum: number): string;
 
@@ -12778,6 +13229,7 @@ export namespace Guestfs {
          * list.
          * @param device 
          * @returns the returned string, or NULL on error
+         * @since 1.0.78
          */
         part_get_parttype(device: string): string;
 
@@ -12829,6 +13281,7 @@ export namespace Guestfs {
          * @param device 
          * @param parttype 
          * @returns true on success, false on error
+         * @since 1.0.78
          */
         part_init(device: string, parttype: string): boolean;
 
@@ -12854,6 +13307,7 @@ export namespace Guestfs {
          * Size of the partition in bytes.
          * @param device 
          * @returns an array of Partition objects, or NULL on error
+         * @since 1.0.78
          */
         part_list(device: string): Partition[];
 
@@ -12874,6 +13328,7 @@ export namespace Guestfs {
          * @param partnum 
          * @param endsect 
          * @returns true on success, false on error
+         * @since 1.37.20
          */
         part_resize(device: string, partnum: number, endsect: bigint | number): boolean;
 
@@ -12890,6 +13345,7 @@ export namespace Guestfs {
          * @param partnum 
          * @param bootable 
          * @returns true on success, false on error
+         * @since 1.0.78
          */
         part_set_bootable(device: string, partnum: number, bootable: boolean): boolean;
 
@@ -12905,6 +13361,7 @@ export namespace Guestfs {
          * @param device 
          * @param guid 
          * @returns true on success, false on error
+         * @since 1.33.2
          */
         part_set_disk_guid(device: string, guid: string): boolean;
 
@@ -12919,6 +13376,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.33.2
          */
         part_set_disk_guid_random(device: string): boolean;
 
@@ -12940,6 +13398,7 @@ export namespace Guestfs {
          * @param partnum 
          * @param attributes 
          * @returns true on success, false on error
+         * @since 1.21.1
          */
         part_set_gpt_attributes(device: string, partnum: number, attributes: bigint | number): boolean;
 
@@ -12956,6 +13415,7 @@ export namespace Guestfs {
          * @param partnum 
          * @param guid 
          * @returns true on success, false on error
+         * @since 1.29.25
          */
         part_set_gpt_guid(device: string, partnum: number, guid: string): boolean;
 
@@ -12978,6 +13438,7 @@ export namespace Guestfs {
          * @param partnum 
          * @param guid 
          * @returns true on success, false on error
+         * @since 1.21.1
          */
         part_set_gpt_type(device: string, partnum: number, guid: string): boolean;
 
@@ -12996,6 +13457,7 @@ export namespace Guestfs {
          * @param partnum 
          * @param idbyte 
          * @returns true on success, false on error
+         * @since 1.3.2
          */
         part_set_mbr_id(device: string, partnum: number, idbyte: number): boolean;
 
@@ -13011,6 +13473,7 @@ export namespace Guestfs {
          * @param partnum 
          * @param name 
          * @returns true on success, false on error
+         * @since 1.0.78
          */
         part_set_name(device: string, partnum: number, name: string): boolean;
 
@@ -13027,6 +13490,7 @@ export namespace Guestfs {
          * `guestfs_session_device_index()`.
          * @param partition 
          * @returns the returned string, or NULL on error
+         * @since 1.5.15
          */
         part_to_dev(partition: string): string;
 
@@ -13042,6 +13506,7 @@ export namespace Guestfs {
          * See also `guestfs_session_part_to_dev()`.
          * @param partition 
          * @returns the returned value, or -1 on error
+         * @since 1.13.25
          */
         part_to_partnum(partition: string): number;
 
@@ -13053,6 +13518,7 @@ export namespace Guestfs {
          * responds to the ping message, without affecting the daemon or attached
          * block device(s) in any other way.
          * @returns true on success, false on error
+         * @since 1.0.18
          */
         ping_daemon(): boolean;
 
@@ -13070,6 +13536,7 @@ export namespace Guestfs {
          * @param count 
          * @param offset 
          * @returns an array of binary data, or NULL on error
+         * @since 1.0.77
          */
         pread(path: string, count: number, offset: bigint | number): Uint8Array;
 
@@ -13087,6 +13554,7 @@ export namespace Guestfs {
          * @param count 
          * @param offset 
          * @returns an array of binary data, or NULL on error
+         * @since 1.5.21
          */
         pread_device(device: string, count: number, offset: bigint | number): Uint8Array;
 
@@ -13099,6 +13567,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.19.26
          */
         pvchange_uuid(device: string): boolean;
 
@@ -13110,6 +13579,7 @@ export namespace Guestfs {
          * This function depends on the feature "lvm2".
          * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
+         * @since 1.19.26
          */
         pvchange_uuid_all(): boolean;
 
@@ -13123,6 +13593,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 0.8
          */
         pvcreate(device: string): boolean;
 
@@ -13140,6 +13611,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.13
          */
         pvremove(device: string): boolean;
 
@@ -13153,6 +13625,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.26
          */
         pvresize(device: string): boolean;
 
@@ -13167,6 +13640,7 @@ export namespace Guestfs {
          * @param device 
          * @param size 
          * @returns true on success, false on error
+         * @since 1.3.14
          */
         pvresize_size(device: string, size: bigint | number): boolean;
 
@@ -13184,6 +13658,7 @@ export namespace Guestfs {
          * This function depends on the feature "lvm2".
          * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
+         * @since 0.4
          */
         pvs(): string[];
 
@@ -13196,6 +13671,7 @@ export namespace Guestfs {
          * This function depends on the feature "lvm2".
          * See also `guestfs_session_feature_available()`.
          * @returns an array of PV objects, or NULL on error
+         * @since 0.4
          */
         pvs_full(): PV[];
 
@@ -13205,6 +13681,7 @@ export namespace Guestfs {
          * This command returns the UUID of the LVM PV `device`.
          * @param device 
          * @returns the returned string, or NULL on error
+         * @since 1.0.87
          */
         pvuuid(device: string): string;
 
@@ -13225,6 +13702,7 @@ export namespace Guestfs {
          * @param content an array of binary data
          * @param offset 
          * @returns the returned value, or -1 on error
+         * @since 1.3.14
          */
         pwrite(path: string, content: Uint8Array | string, offset: bigint | number): number;
 
@@ -13244,6 +13722,7 @@ export namespace Guestfs {
          * @param content an array of binary data
          * @param offset 
          * @returns the returned value, or -1 on error
+         * @since 1.5.20
          */
         pwrite_device(device: string, content: Uint8Array | string, offset: bigint | number): number;
 
@@ -13256,6 +13735,7 @@ export namespace Guestfs {
          * that contain embedded ASCII NUL characters.
          * @param path 
          * @returns an array of binary data, or NULL on error
+         * @since 1.0.63
          */
         read_file(path: string): Uint8Array;
 
@@ -13273,6 +13753,7 @@ export namespace Guestfs {
          * function and split the buffer into lines yourself.
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 0.7
          */
         read_lines(path: string): string[];
 
@@ -13312,6 +13793,7 @@ export namespace Guestfs {
          * for human consumption, use `guestfs_session_ll()`.
          * @param dir 
          * @returns an array of Dirent objects, or NULL on error
+         * @since 1.0.55
          */
         readdir(dir: string): Dirent[];
 
@@ -13321,6 +13803,7 @@ export namespace Guestfs {
          * This command reads the target of a symbolic link.
          * @param path 
          * @returns the returned string, or NULL on error
+         * @since 1.0.66
          */
         readlink(path: string): string;
 
@@ -13345,6 +13828,7 @@ export namespace Guestfs {
          * @param path 
          * @param names an array of strings
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.77
          */
         readlinklist(path: string, names: string[]): string[];
 
@@ -13355,6 +13839,7 @@ export namespace Guestfs {
          * has no ".", ".." or symbolic link path elements.
          * @param path 
          * @returns the returned string, or NULL on error
+         * @since 1.0.66
          */
         realpath(path: string): string;
 
@@ -13370,6 +13855,7 @@ export namespace Guestfs {
          * @param mountpoint 
          * @param optargs a GuestfsRemount containing optional arguments
          * @returns true on success, false on error
+         * @since 1.23.2
          */
         remount(mountpoint: string, optargs: Remount | null): boolean;
 
@@ -13391,6 +13877,7 @@ export namespace Guestfs {
          * and stop you from doing this.
          * @param label 
          * @returns true on success, false on error
+         * @since 1.19.49
          */
         remove_drive(label: string): boolean;
 
@@ -13406,6 +13893,7 @@ export namespace Guestfs {
          * @param xattr 
          * @param path 
          * @returns true on success, false on error
+         * @since 1.0.59
          */
         removexattr(xattr: string, path: string): boolean;
 
@@ -13418,6 +13906,7 @@ export namespace Guestfs {
          * @param oldpath 
          * @param newpath 
          * @returns true on success, false on error
+         * @since 1.21.5
          */
         rename(oldpath: string, newpath: string): boolean;
 
@@ -13430,6 +13919,7 @@ export namespace Guestfs {
          * See also "RESIZE2FS ERRORS" in guestfs(3).
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.27
          */
         resize2fs(device: string): boolean;
 
@@ -13448,6 +13938,7 @@ export namespace Guestfs {
          * See also "RESIZE2FS ERRORS" in guestfs(3).
          * @param device 
          * @returns true on success, false on error
+         * @since 1.9.4
          */
         resize2fs_M(device: string): boolean;
 
@@ -13461,6 +13952,7 @@ export namespace Guestfs {
          * @param device 
          * @param size 
          * @returns true on success, false on error
+         * @since 1.3.14
          */
         resize2fs_size(device: string, size: bigint | number): boolean;
 
@@ -13470,6 +13962,7 @@ export namespace Guestfs {
          * Remove the single file `path`.
          * @param path 
          * @returns true on success, false on error
+         * @since 0.8
          */
         rm(path: string): boolean;
 
@@ -13486,6 +13979,7 @@ export namespace Guestfs {
          * directories recursively.
          * @param path 
          * @returns true on success, false on error
+         * @since 1.19.42
          */
         rm_f(path: string): boolean;
 
@@ -13496,6 +13990,7 @@ export namespace Guestfs {
          * its a directory. This is like the "rm -rf" shell command.
          * @param path 
          * @returns true on success, false on error
+         * @since 0.8
          */
         rm_rf(path: string): boolean;
 
@@ -13505,6 +14000,7 @@ export namespace Guestfs {
          * Remove the single directory `path`.
          * @param path 
          * @returns true on success, false on error
+         * @since 0.8
          */
         rmdir(path: string): boolean;
 
@@ -13516,6 +14012,7 @@ export namespace Guestfs {
          * full details.
          * @param exemptpath 
          * @returns true on success, false on error
+         * @since 1.0.62
          */
         rmmountpoint(exemptpath: string): boolean;
 
@@ -13544,6 +14041,7 @@ export namespace Guestfs {
          * @param dest 
          * @param optargs a GuestfsRsync containing optional arguments
          * @returns true on success, false on error
+         * @since 1.19.29
          */
         rsync(src: string, dest: string, optargs: Rsync | null): boolean;
 
@@ -13574,6 +14072,7 @@ export namespace Guestfs {
          * @param dest 
          * @param optargs a GuestfsRsyncIn containing optional arguments
          * @returns true on success, false on error
+         * @since 1.19.29
          */
         rsync_in(remote: string, dest: string, optargs: RsyncIn | null): boolean;
 
@@ -13611,6 +14110,7 @@ export namespace Guestfs {
          * @param remote 
          * @param optargs a GuestfsRsyncOut containing optional arguments
          * @returns true on success, false on error
+         * @since 1.19.29
          */
         rsync_out(src: string, remote: string, optargs: RsyncOut | null): boolean;
 
@@ -13627,6 +14127,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.52
          */
         scrub_device(device: string): boolean;
 
@@ -13645,6 +14146,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param file 
          * @returns true on success, false on error
+         * @since 1.0.52
          */
         scrub_file(file: string): boolean;
 
@@ -13663,6 +14165,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param dir 
          * @returns true on success, false on error
+         * @since 1.0.52
          */
         scrub_freespace(dir: string): boolean;
 
@@ -13690,6 +14193,7 @@ export namespace Guestfs {
          * @param path 
          * @param optargs a GuestfsSelinuxRelabel containing optional arguments
          * @returns true on success, false on error
+         * @since 1.33.43
          */
         selinux_relabel(specfile: string, path: string, optargs: SelinuxRelabel | null): boolean;
 
@@ -13706,6 +14210,7 @@ export namespace Guestfs {
          * (libguestfs always adds a few of its own).
          * @param append 
          * @returns true on success, false on error
+         * @since 1.0.26
          */
         set_append(append: string | null): boolean;
 
@@ -13718,6 +14223,8 @@ export namespace Guestfs {
          * See "BACKEND" in guestfs(3).
          * @param backend 
          * @returns true on success, false on error
+         * @since 1.9.8
+         * @deprecated In new code, use `guestfs_session_set_backend()` instead
          */
         set_attach_method(backend: string): boolean;
 
@@ -13732,6 +14239,7 @@ export namespace Guestfs {
          * disabled by default).
          * @param autosync 
          * @returns true on success, false on error
+         * @since 0.3
          */
         set_autosync(autosync: boolean): boolean;
 
@@ -13746,6 +14254,7 @@ export namespace Guestfs {
          * See "BACKEND" in guestfs(3).
          * @param backend 
          * @returns true on success, false on error
+         * @since 1.21.26
          */
         set_backend(backend: string): boolean;
 
@@ -13760,6 +14269,7 @@ export namespace Guestfs {
          * @param name 
          * @param val 
          * @returns true on success, false on error
+         * @since 1.27.2
          */
         set_backend_setting(name: string, val: string): boolean;
 
@@ -13782,6 +14292,7 @@ export namespace Guestfs {
          * See "BACKEND" in guestfs(3), "BACKEND SETTINGS" in guestfs(3).
          * @param settings an array of strings
          * @returns true on success, false on error
+         * @since 1.25.24
          */
         set_backend_settings(settings: string[]): boolean;
 
@@ -13798,6 +14309,7 @@ export namespace Guestfs {
          * default.
          * @param cachedir 
          * @returns true on success, false on error
+         * @since 1.19.58
          */
         set_cachedir(cachedir: string | null): boolean;
 
@@ -13816,6 +14328,8 @@ export namespace Guestfs {
          * The default is disabled.
          * @param direct 
          * @returns true on success, false on error
+         * @since 1.0.72
+         * @deprecated In new code, use `guestfs_session_internal_get_console_socket()` instead
          */
         set_direct(direct: boolean): boolean;
 
@@ -13844,6 +14358,7 @@ export namespace Guestfs {
          * @param attrs 
          * @param optargs a GuestfsSetE2attrs containing optional arguments
          * @returns true on success, false on error
+         * @since 1.17.31
          */
         set_e2attrs(file: string, attrs: string, optargs: SetE2attrs | null): boolean;
 
@@ -13856,6 +14371,7 @@ export namespace Guestfs {
          * @param file 
          * @param generation 
          * @returns true on success, false on error
+         * @since 1.17.31
          */
         set_e2generation(file: string, generation: bigint | number): boolean;
 
@@ -13871,6 +14387,8 @@ export namespace Guestfs {
          * @param device 
          * @param label 
          * @returns true on success, false on error
+         * @since 1.0.15
+         * @deprecated In new code, use `guestfs_session_set_label()` instead
          */
         set_e2label(device: string, label: string): boolean;
 
@@ -13886,6 +14404,8 @@ export namespace Guestfs {
          * @param device 
          * @param uuid 
          * @returns true on success, false on error
+         * @since 1.0.15
+         * @deprecated In new code, use `guestfs_session_set_uuid()` instead
          */
         set_e2uuid(device: string, uuid: string): boolean;
 
@@ -13911,6 +14431,7 @@ export namespace Guestfs {
          * created.
          * @param hv 
          * @returns true on success, false on error
+         * @since 1.23.17
          */
         set_hv(hv: string): boolean;
 
@@ -13943,6 +14464,7 @@ export namespace Guestfs {
          * `guestfs_session_get_identifier()`.
          * @param identifier 
          * @returns true on success, false on error
+         * @since 1.31.14
          */
         set_identifier(identifier: string): boolean;
 
@@ -13981,6 +14503,7 @@ export namespace Guestfs {
          * @param mountable 
          * @param label 
          * @returns true on success, false on error
+         * @since 1.17.9
          */
         set_label(mountable: string, label: string): boolean;
 
@@ -13995,6 +14518,7 @@ export namespace Guestfs {
          * @param index 
          * @param cred an array of binary data
          * @returns true on success, false on error
+         * @since 1.19.52
          */
         set_libvirt_requested_credential(index: number, cred: Uint8Array | string): boolean;
 
@@ -14024,6 +14548,7 @@ export namespace Guestfs {
          * code.
          * @param creds an array of strings
          * @returns true on success, false on error
+         * @since 1.19.52
          */
         set_libvirt_supported_credentials(creds: string[]): boolean;
 
@@ -14039,6 +14564,7 @@ export namespace Guestfs {
          * For more information on the architecture of libguestfs, see guestfs(3).
          * @param memsize 
          * @returns true on success, false on error
+         * @since 1.0.55
          */
         set_memsize(memsize: number): boolean;
 
@@ -14055,6 +14581,7 @@ export namespace Guestfs {
          * has no effect.
          * @param network 
          * @returns true on success, false on error
+         * @since 1.5.4
          */
         set_network(network: boolean): boolean;
 
@@ -14069,6 +14596,7 @@ export namespace Guestfs {
          * Setting `path` to `NULL` restores the default path.
          * @param searchpath 
          * @returns true on success, false on error
+         * @since 0.3
          */
         set_path(searchpath: string | null): boolean;
 
@@ -14087,6 +14615,7 @@ export namespace Guestfs {
          * (see `guestfs_session_user_cancel()`).
          * @param pgroup 
          * @returns true on success, false on error
+         * @since 1.11.18
          */
         set_pgroup(pgroup: boolean): boolean;
 
@@ -14100,6 +14629,7 @@ export namespace Guestfs {
          * basename from "argv[0]". The program name can never be `NULL`.
          * @param program 
          * @returns true on success, false on error
+         * @since 1.21.29
          */
         set_program(program: string): boolean;
 
@@ -14125,6 +14655,8 @@ export namespace Guestfs {
          * created.
          * @param hv 
          * @returns true on success, false on error
+         * @since 1.0.6
+         * @deprecated In new code, use `guestfs_session_set_hv()` instead
          */
         set_qemu(hv: string | null): boolean;
 
@@ -14145,6 +14677,7 @@ export namespace Guestfs {
          * disappeared and so kills the hypervisor, which is not very helpful.
          * @param recoveryproc 
          * @returns true on success, false on error
+         * @since 1.0.77
          */
         set_recovery_proc(recoveryproc: boolean): boolean;
 
@@ -14160,6 +14693,8 @@ export namespace Guestfs {
          * For more information on the architecture of libguestfs, see guestfs(3).
          * @param selinux 
          * @returns true on success, false on error
+         * @since 1.0.67
+         * @deprecated In new code, use `guestfs_session_selinux_relabel()` instead
          */
         set_selinux(selinux: boolean): boolean;
 
@@ -14173,6 +14708,7 @@ export namespace Guestfs {
          * This function must be called before `guestfs_session_launch()`.
          * @param smp 
          * @returns true on success, false on error
+         * @since 1.13.15
          */
         set_smp(smp: number): boolean;
 
@@ -14187,6 +14723,7 @@ export namespace Guestfs {
          * default.
          * @param tmpdir 
          * @returns true on success, false on error
+         * @since 1.19.58
          */
         set_tmpdir(tmpdir: string | null): boolean;
 
@@ -14207,6 +14744,7 @@ export namespace Guestfs {
          * `guestfs_session_set_event_callback()`).
          * @param trace 
          * @returns true on success, false on error
+         * @since 1.0.69
          */
         set_trace(trace: boolean): boolean;
 
@@ -14223,6 +14761,7 @@ export namespace Guestfs {
          * @param device 
          * @param uuid 
          * @returns true on success, false on error
+         * @since 1.23.10
          */
         set_uuid(device: string, uuid: string): boolean;
 
@@ -14238,6 +14777,7 @@ export namespace Guestfs {
          * To read the UUID on a filesystem, call `guestfs_session_vfs_uuid()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.29.50
          */
         set_uuid_random(device: string): boolean;
 
@@ -14254,6 +14794,7 @@ export namespace Guestfs {
          * `guestfs_session_set_event_callback()`).
          * @param verbose 
          * @returns true on success, false on error
+         * @since 0.3
          */
         set_verbose(verbose: boolean): boolean;
 
@@ -14269,6 +14810,8 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param context 
          * @returns true on success, false on error
+         * @since 1.0.67
+         * @deprecated In new code, use `guestfs_session_selinux_relabel()` instead
          */
         setcon(context: string): boolean;
 
@@ -14287,6 +14830,7 @@ export namespace Guestfs {
          * @param vallen 
          * @param path 
          * @returns true on success, false on error
+         * @since 1.0.59
          */
         setxattr(xattr: string, val: string, vallen: number, path: string): boolean;
 
@@ -14321,6 +14865,8 @@ export namespace Guestfs {
          * @param sectors 
          * @param lines an array of strings
          * @returns true on success, false on error
+         * @since 0.8
+         * @deprecated In new code, use `guestfs_session_part_add()` instead
          */
         sfdisk(device: string, cyls: number, heads: number, sectors: number, lines: string[]): boolean;
 
@@ -14337,6 +14883,8 @@ export namespace Guestfs {
          * @param device 
          * @param lines an array of strings
          * @returns true on success, false on error
+         * @since 1.0.55
+         * @deprecated In new code, use `guestfs_session_part_add()` instead
          */
         sfdiskM(device: string, lines: string[]): boolean;
 
@@ -14357,6 +14905,8 @@ export namespace Guestfs {
          * @param sectors 
          * @param line 
          * @returns true on success, false on error
+         * @since 1.0.26
+         * @deprecated In new code, use `guestfs_session_part_add()` instead
          */
         sfdisk_N(device: string, partnum: number, cyls: number, heads: number, sectors: number, line: string): boolean;
 
@@ -14371,6 +14921,7 @@ export namespace Guestfs {
          * The result is in human-readable format, and not designed to be parsed.
          * @param device 
          * @returns the returned string, or NULL on error
+         * @since 1.0.26
          */
         sfdisk_disk_geometry(device: string): string;
 
@@ -14382,6 +14933,7 @@ export namespace Guestfs {
          * The result is in human-readable format, and not designed to be parsed.
          * @param device 
          * @returns the returned string, or NULL on error
+         * @since 1.0.26
          */
         sfdisk_kernel_geometry(device: string): string;
 
@@ -14394,6 +14946,8 @@ export namespace Guestfs {
          * See also: `guestfs_session_part_list()`
          * @param device 
          * @returns the returned string, or NULL on error
+         * @since 1.0.26
+         * @deprecated In new code, use `guestfs_session_part_list()` instead
          */
         sfdisk_l(device: string): string;
 
@@ -14413,6 +14967,7 @@ export namespace Guestfs {
          * All the provisos about `guestfs_session_command()` apply to this call.
          * @param command 
          * @returns the returned string, or NULL on error
+         * @since 1.0.50
          */
         sh(command: string): string;
 
@@ -14425,6 +14980,7 @@ export namespace Guestfs {
          * See also: `guestfs_session_command_lines()`
          * @param command 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.50
          */
         sh_lines(command: string): string[];
 
@@ -14447,6 +15003,7 @@ export namespace Guestfs {
          * `guestfs_session_close()` will call this if you don't do it explicitly,
          * but note that any errors are ignored in that case.
          * @returns true on success, false on error
+         * @since 1.19.16
          */
         shutdown(): boolean;
 
@@ -14456,6 +15013,7 @@ export namespace Guestfs {
          * Sleep for `secs` seconds.
          * @param secs 
          * @returns true on success, false on error
+         * @since 1.0.41
          */
         sleep(secs: number): boolean;
 
@@ -14467,6 +15025,8 @@ export namespace Guestfs {
          * This is the same as the stat(2) system call.
          * @param path 
          * @returns a Stat object, or NULL on error
+         * @since 1.9.2
+         * @deprecated In new code, use `guestfs_session_statns()` instead
          */
         stat(path: string): Stat;
 
@@ -14478,6 +15038,7 @@ export namespace Guestfs {
          * This is the same as the stat(2) system call.
          * @param path 
          * @returns a StatNS object, or NULL on error
+         * @since 1.27.53
          */
         statns(path: string): StatNS;
 
@@ -14491,6 +15052,7 @@ export namespace Guestfs {
          * This is the same as the statvfs(2) system call.
          * @param path 
          * @returns a StatVFS object, or NULL on error
+         * @since 1.9.2
          */
         statvfs(path: string): StatVFS;
 
@@ -14505,6 +15067,7 @@ export namespace Guestfs {
          * libguestfs, but see "CVE-2014-8484" in guestfs(3).
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.22
          */
         strings(path: string): string[];
 
@@ -14541,6 +15104,7 @@ export namespace Guestfs {
          * @param encoding 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.22
          */
         strings_e(encoding: string, path: string): string[];
 
@@ -14551,6 +15115,7 @@ export namespace Guestfs {
          * named `device`. See `guestfs_session_swapon_device()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         swapoff_device(device: string): boolean;
 
@@ -14560,6 +15125,7 @@ export namespace Guestfs {
          * This command disables the libguestfs appliance swap on file.
          * @param file 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         swapoff_file(file: string): boolean;
 
@@ -14570,6 +15136,7 @@ export namespace Guestfs {
          * partition.
          * @param label 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         swapoff_label(label: string): boolean;
 
@@ -14583,6 +15150,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param uuid 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         swapoff_uuid(uuid: string): boolean;
 
@@ -14601,6 +15169,7 @@ export namespace Guestfs {
          * attach a new host device to the guest and swap on that.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         swapon_device(device: string): boolean;
 
@@ -14611,6 +15180,7 @@ export namespace Guestfs {
          * for other notes.
          * @param file 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         swapon_file(file: string): boolean;
 
@@ -14621,6 +15191,7 @@ export namespace Guestfs {
          * `guestfs_session_swapon_device()` for other notes.
          * @param label 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         swapon_label(label: string): boolean;
 
@@ -14634,6 +15205,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param uuid 
          * @returns true on success, false on error
+         * @since 1.0.66
          */
         swapon_uuid(uuid: string): boolean;
 
@@ -14646,6 +15218,7 @@ export namespace Guestfs {
          * You should always call this if you have modified a disk image, before
          * closing the handle.
          * @returns true on success, false on error
+         * @since 0.3
          */
         sync(): boolean;
 
@@ -14681,6 +15254,7 @@ export namespace Guestfs {
          * @param device 
          * @param optargs a GuestfsSyslinux containing optional arguments
          * @returns true on success, false on error
+         * @since 1.21.27
          */
         syslinux(device: string, optargs: Syslinux | null): boolean;
 
@@ -14691,6 +15265,7 @@ export namespace Guestfs {
          * strings.
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.54
          */
         tail(path: string): string[];
 
@@ -14707,6 +15282,7 @@ export namespace Guestfs {
          * @param nrlines 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.54
          */
         tail_n(nrlines: number, path: string): string[];
 
@@ -14736,6 +15312,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsTarIn containing optional arguments
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.0.3
          */
         tar_in(tarfile: string, directory: string, optargs: TarIn | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14774,6 +15351,7 @@ export namespace Guestfs {
          * @param optargs a GuestfsTarOut containing optional arguments
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.0.3
          */
         tar_out(directory: string, tarfile: string, optargs: TarOut | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14786,6 +15364,8 @@ export namespace Guestfs {
          * @param directory 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.0.3
+         * @deprecated In new code, use `guestfs_session_tar_in()` instead
          */
         tgz_in(tarball: string, directory: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14798,6 +15378,8 @@ export namespace Guestfs {
          * @param tarball 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.0.3
+         * @deprecated In new code, use `guestfs_session_tar_out()` instead
          */
         tgz_out(directory: string, tarball: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14812,6 +15394,7 @@ export namespace Guestfs {
          * types such as directories, symbolic links, block special etc.
          * @param path 
          * @returns true on success, false on error
+         * @since 0.3
          */
         touch(path: string): boolean;
 
@@ -14822,6 +15405,7 @@ export namespace Guestfs {
          * already.
          * @param path 
          * @returns true on success, false on error
+         * @since 1.0.77
          */
         truncate(path: string): boolean;
 
@@ -14838,6 +15422,7 @@ export namespace Guestfs {
          * @param path 
          * @param size 
          * @returns true on success, false on error
+         * @since 1.0.77
          */
         truncate_size(path: string, size: bigint | number): boolean;
 
@@ -14903,6 +15488,7 @@ export namespace Guestfs {
          * @param device 
          * @param optargs a GuestfsTune2FS containing optional arguments
          * @returns true on success, false on error
+         * @since 1.15.4
          */
         tune2fs(device: string, optargs: Tune2FS | null): boolean;
 
@@ -14918,6 +15504,7 @@ export namespace Guestfs {
          * against, and the filesystem itself.
          * @param device 
          * @returns a GHashTable of results, or NULL on error
+         * @since 1.9.2
          */
         tune2fs_l(device: string): { [key: string]: string };
 
@@ -14933,6 +15520,8 @@ export namespace Guestfs {
          * @param directory 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.3.2
+         * @deprecated In new code, use `guestfs_session_tar_in()` instead
          */
         txz_in(tarball: string, directory: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14948,6 +15537,8 @@ export namespace Guestfs {
          * @param tarball 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.3.2
+         * @deprecated In new code, use `guestfs_session_tar_out()` instead
          */
         txz_out(directory: string, tarball: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14971,6 +15562,7 @@ export namespace Guestfs {
          * This call returns the previous umask.
          * @param mask 
          * @returns the returned value, or -1 on error
+         * @since 1.0.55
          */
         umask(mask: number): number;
 
@@ -14983,6 +15575,7 @@ export namespace Guestfs {
          * @param pathordevice 
          * @param optargs a GuestfsUmount containing optional arguments
          * @returns true on success, false on error
+         * @since 0.8
          */
         umount(pathordevice: string, optargs: Umount | null): boolean;
 
@@ -14993,6 +15586,7 @@ export namespace Guestfs {
          * 
          * Some internal mounts are not unmounted by this call.
          * @returns true on success, false on error
+         * @since 0.8
          */
         umount_all(): boolean;
 
@@ -15005,6 +15599,7 @@ export namespace Guestfs {
          * See "MOUNT LOCAL" in guestfs(3) for full documentation.
          * @param optargs a GuestfsUmountLocal containing optional arguments
          * @returns true on success, false on error
+         * @since 1.17.22
          */
         umount_local(optargs: UmountLocal | null): boolean;
 
@@ -15020,6 +15615,7 @@ export namespace Guestfs {
          * @param remotefilename 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.0.2
          */
         upload(filename: string, remotefilename: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15044,6 +15640,7 @@ export namespace Guestfs {
          * @param offset 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.5.17
          */
         upload_offset(filename: string, remotefilename: string, offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15077,6 +15674,7 @@ export namespace Guestfs {
          * bar with a cancel button, wire up the cancel button to call this
          * function.
          * @returns true on success, false on error
+         * @since 1.11.18
          */
         user_cancel(): boolean;
 
@@ -15104,6 +15702,7 @@ export namespace Guestfs {
          * @param mtsecs 
          * @param mtnsecs 
          * @returns true on success, false on error
+         * @since 1.0.77
          */
         utimens(path: string, atsecs: bigint | number, atnsecs: bigint | number, mtsecs: bigint | number, mtnsecs: bigint | number): boolean;
 
@@ -15114,6 +15713,7 @@ export namespace Guestfs {
          * available. This information is only useful for debugging. Nothing in the
          * returned structure is defined by the API.
          * @returns a UTSName object, or NULL on error
+         * @since 1.19.27
          */
         utsname(): UTSName;
 
@@ -15147,6 +15747,7 @@ export namespace Guestfs {
          * Use `guestfs_session_available()` or `guestfs_session_feature_available()`
          * instead.
          * @returns a Version object, or NULL on error
+         * @since 1.0.58
          */
         version(): Version;
 
@@ -15160,6 +15761,7 @@ export namespace Guestfs {
          * To find a filesystem from the label, use `guestfs_session_findfs_label()`.
          * @param mountable 
          * @returns the returned string, or NULL on error
+         * @since 1.3.18
          */
         vfs_label(mountable: string): string;
 
@@ -15175,6 +15777,7 @@ export namespace Guestfs {
          * See also ntfsresize(8), resize2fs(8), btrfs(8), xfs_info(8).
          * @param mountable 
          * @returns the returned value, or -1 on error
+         * @since 1.31.18
          */
         vfs_minimum_size(mountable: string): number;
 
@@ -15190,6 +15793,7 @@ export namespace Guestfs {
          * `ntfs`.
          * @param mountable 
          * @returns the returned string, or NULL on error
+         * @since 1.0.75
          */
         vfs_type(mountable: string): string;
 
@@ -15203,6 +15807,7 @@ export namespace Guestfs {
          * To find a filesystem from the UUID, use `guestfs_session_findfs_uuid()`.
          * @param mountable 
          * @returns the returned string, or NULL on error
+         * @since 1.3.18
          */
         vfs_uuid(mountable: string): string;
 
@@ -15222,6 +15827,7 @@ export namespace Guestfs {
          * @param activate 
          * @param volgroups an array of strings
          * @returns true on success, false on error
+         * @since 1.0.26
          */
         vg_activate(activate: boolean, volgroups: string[]): boolean;
 
@@ -15237,6 +15843,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param activate 
          * @returns true on success, false on error
+         * @since 1.0.26
          */
         vg_activate_all(activate: boolean): boolean;
 
@@ -15249,6 +15856,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param vg 
          * @returns true on success, false on error
+         * @since 1.19.26
          */
         vgchange_uuid(vg: string): boolean;
 
@@ -15260,6 +15868,7 @@ export namespace Guestfs {
          * This function depends on the feature "lvm2".
          * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
+         * @since 1.19.26
          */
         vgchange_uuid_all(): boolean;
 
@@ -15274,6 +15883,7 @@ export namespace Guestfs {
          * @param volgroup 
          * @param physvols an array of strings
          * @returns true on success, false on error
+         * @since 0.8
          */
         vgcreate(volgroup: string, physvols: string[]): boolean;
 
@@ -15290,6 +15900,7 @@ export namespace Guestfs {
          * See also `guestfs_session_vgpvuuids()`.
          * @param vgname 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.87
          */
         vglvuuids(vgname: string): string[];
 
@@ -15306,6 +15917,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param vgname 
          * @returns an array of binary data, or NULL on error
+         * @since 1.17.20
          */
         vgmeta(vgname: string): Uint8Array;
 
@@ -15322,6 +15934,7 @@ export namespace Guestfs {
          * See also `guestfs_session_vglvuuids()`.
          * @param vgname 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.87
          */
         vgpvuuids(vgname: string): string[];
 
@@ -15337,6 +15950,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param vgname 
          * @returns true on success, false on error
+         * @since 1.0.13
          */
         vgremove(vgname: string): boolean;
 
@@ -15347,6 +15961,7 @@ export namespace Guestfs {
          * @param volgroup 
          * @param newvolgroup 
          * @returns true on success, false on error
+         * @since 1.0.83
          */
         vgrename(volgroup: string, newvolgroup: string): boolean;
 
@@ -15364,6 +15979,7 @@ export namespace Guestfs {
          * This function depends on the feature "lvm2".
          * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
+         * @since 0.4
          */
         vgs(): string[];
 
@@ -15376,6 +15992,7 @@ export namespace Guestfs {
          * This function depends on the feature "lvm2".
          * See also `guestfs_session_feature_available()`.
          * @returns an array of VG objects, or NULL on error
+         * @since 0.4
          */
         vgs_full(): VG[];
 
@@ -15385,6 +16002,8 @@ export namespace Guestfs {
          * This rescans all block devices and rebuilds the list of LVM physical
          * volumes, volume groups and logical volumes.
          * @returns true on success, false on error
+         * @since 1.3.2
+         * @deprecated In new code, use `guestfs_session_lvm_scan()` instead
          */
         vgscan(): boolean;
 
@@ -15394,6 +16013,7 @@ export namespace Guestfs {
          * This command returns the UUID of the LVM VG named `vgname`.
          * @param vgname 
          * @returns the returned string, or NULL on error
+         * @since 1.0.87
          */
         vguuid(vgname: string): string;
 
@@ -15411,6 +16031,8 @@ export namespace Guestfs {
          * them, unless you want to retain compatibility with older versions of the
          * API.
          * @returns true on success, false on error
+         * @since 0.3
+         * @deprecated There is no documented replacement
          */
         wait_ready(): boolean;
 
@@ -15421,6 +16043,7 @@ export namespace Guestfs {
          * command.
          * @param path 
          * @returns the returned value, or -1 on error
+         * @since 1.0.54
          */
         wc_c(path: string): number;
 
@@ -15431,6 +16054,7 @@ export namespace Guestfs {
          * command.
          * @param path 
          * @returns the returned value, or -1 on error
+         * @since 1.0.54
          */
         wc_l(path: string): number;
 
@@ -15441,6 +16065,7 @@ export namespace Guestfs {
          * command.
          * @param path 
          * @returns the returned value, or -1 on error
+         * @since 1.0.54
          */
         wc_w(path: string): number;
 
@@ -15460,6 +16085,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.17.6
          */
         wipefs(device: string): boolean;
 
@@ -15473,6 +16099,7 @@ export namespace Guestfs {
          * @param path 
          * @param content an array of binary data
          * @returns true on success, false on error
+         * @since 1.3.14
          */
         write(path: string, content: Uint8Array | string): boolean;
 
@@ -15486,6 +16113,7 @@ export namespace Guestfs {
          * @param path 
          * @param content an array of binary data
          * @returns true on success, false on error
+         * @since 1.11.18
          */
         write_append(path: string, content: Uint8Array | string): boolean;
 
@@ -15505,6 +16133,8 @@ export namespace Guestfs {
          * @param content 
          * @param size 
          * @returns true on success, false on error
+         * @since 0.8
+         * @deprecated In new code, use `guestfs_session_write()` instead
          */
         write_file(path: string, content: string, size: number): boolean;
 
@@ -15525,6 +16155,7 @@ export namespace Guestfs {
          * @param device 
          * @param optargs a GuestfsXfsAdmin containing optional arguments
          * @returns true on success, false on error
+         * @since 1.19.33
          */
         xfs_admin(device: string, optargs: XfsAdmin | null): boolean;
 
@@ -15541,6 +16172,7 @@ export namespace Guestfs {
          * @param path 
          * @param optargs a GuestfsXfsGrowfs containing optional arguments
          * @returns true on success, false on error
+         * @since 1.19.28
          */
         xfs_growfs(path: string, optargs: XfsGrowfs | null): boolean;
 
@@ -15557,6 +16189,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param pathordevice 
          * @returns a XFSInfo object, or NULL on error
+         * @since 1.19.21
          */
         xfs_info(pathordevice: string): XFSInfo;
 
@@ -15582,6 +16215,7 @@ export namespace Guestfs {
          * @param device 
          * @param optargs a GuestfsXfsRepair containing optional arguments
          * @returns the returned value, or -1 on error
+         * @since 1.19.36
          */
         xfs_repair(device: string, optargs: XfsRepair | null): number;
 
@@ -15594,6 +16228,7 @@ export namespace Guestfs {
          * This function depends on the feature "libyara".
          * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
+         * @since 1.37.13
          */
         yara_destroy(): boolean;
 
@@ -15620,6 +16255,7 @@ export namespace Guestfs {
          * @param filename 
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
+         * @since 1.37.13
          */
         yara_load(filename: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15643,6 +16279,7 @@ export namespace Guestfs {
          * @param path 
          * @param cancellable A GCancellable object
          * @returns an array of YaraDetection objects, or NULL on error
+         * @since 1.37.13
          */
         yara_scan(path: string, cancellable: Gio.Cancellable | null): YaraDetection[];
 
@@ -15653,6 +16290,8 @@ export namespace Guestfs {
          * @param regex 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.66
+         * @deprecated In new code, use `guestfs_session_grep()` instead
          */
         zegrep(regex: string, path: string): string[];
 
@@ -15664,6 +16303,8 @@ export namespace Guestfs {
          * @param regex 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.66
+         * @deprecated In new code, use `guestfs_session_grep()` instead
          */
         zegrepi(regex: string, path: string): string[];
 
@@ -15684,6 +16325,7 @@ export namespace Guestfs {
          * `guestfs_session_is_zero_device()`
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.16
          */
         zero(device: string): boolean;
 
@@ -15699,6 +16341,7 @@ export namespace Guestfs {
          * unnecessarily.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.3.1
          */
         zero_device(device: string): boolean;
 
@@ -15716,6 +16359,7 @@ export namespace Guestfs {
          * calling this, depending on your requirements.
          * @param directory 
          * @returns true on success, false on error
+         * @since 1.17.18
          */
         zero_free_space(directory: string): boolean;
 
@@ -15735,6 +16379,7 @@ export namespace Guestfs {
          * See also `guestfs_session_feature_available()`.
          * @param device 
          * @returns true on success, false on error
+         * @since 1.0.26
          */
         zerofree(device: string): boolean;
 
@@ -15745,6 +16390,8 @@ export namespace Guestfs {
          * @param pattern 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.66
+         * @deprecated In new code, use `guestfs_session_grep()` instead
          */
         zfgrep(pattern: string, path: string): string[];
 
@@ -15756,6 +16403,8 @@ export namespace Guestfs {
          * @param pattern 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.66
+         * @deprecated In new code, use `guestfs_session_grep()` instead
          */
         zfgrepi(pattern: string, path: string): string[];
 
@@ -15771,6 +16420,8 @@ export namespace Guestfs {
          * @param meth 
          * @param path 
          * @returns the returned string, or NULL on error
+         * @since 1.0.59
+         * @deprecated In new code, use `guestfs_session_file()` instead
          */
         zfile(meth: string, path: string): string;
 
@@ -15781,6 +16432,8 @@ export namespace Guestfs {
          * @param regex 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.66
+         * @deprecated In new code, use `guestfs_session_grep()` instead
          */
         zgrep(regex: string, path: string): string[];
 
@@ -15792,6 +16445,8 @@ export namespace Guestfs {
          * @param regex 
          * @param path 
          * @returns an array of returned strings, or NULL on error
+         * @since 1.0.66
+         * @deprecated In new code, use `guestfs_session_grep()` instead
          */
         zgrepi(regex: string, path: string): string[];
     }

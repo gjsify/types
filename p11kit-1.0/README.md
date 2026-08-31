@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/p11kit-1.0)
 
 
-GJS TypeScript type definitions for P11Kit-1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.3.0.
+GJS TypeScript type definitions for P11Kit-1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.4.0.
 
 ## Install
 

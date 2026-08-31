@@ -459,6 +459,7 @@ export namespace Gdaui {
          * (the widgets can then be removed using `gdaui_basic_form_remove_from_size_group()`).
          * @param size_group a {@link Gtk.SizeGroup} object
          * @param part specifies which widgets in `form` are concerned
+         * @since 4.2
          */
         add_to_size_group(size_group: Gtk.SizeGroup, part: BasicFormPart): void;
 
@@ -466,6 +467,7 @@ export namespace Gdaui {
          * Makes the data entry corresponding to `holder` grab the focus for the window it's in. If `holder` is `null`,
          * then the focus is on the first entry which needs attention.
          * @param holder a {@link Gda.Holder} object, or `null`
+         * @since 4.2
          */
         entry_grab_focus(holder: Gda.Holder | null): void;
 
@@ -475,6 +477,7 @@ export namespace Gdaui {
          * are concerned.
          * @param holder a {@link Gda.Holder} object; or `null`
          * @param editable `true` if corresponding data entry must be editable
+         * @since 4.2
          */
         entry_set_editable(holder: Gda.Holder | null, editable: boolean): void;
 
@@ -483,6 +486,7 @@ export namespace Gdaui {
          * `holder` data holder
          * @param holder a {@link Gda.Holder} object
          * @param show set to `true` to show the data entry, and to `false` to hide it
+         * @since 4.2
          */
         entry_set_visible(holder: Gda.Holder, show: boolean): void;
 
@@ -490,6 +494,7 @@ export namespace Gdaui {
          * Get a pointer to the {@link Gda.Set} object which
          * is modified by `form`
          * @returns a pointer to the {@link Gda.Set}
+         * @since 4.2
          */
         get_data_set(): Gda.Set;
 
@@ -497,6 +502,7 @@ export namespace Gdaui {
          * Get the {@link Gdaui.DataEntry} in `form` which corresponds to the `holder` place.
          * @param holder a {@link Gda.Holder} object
          * @returns the requested widget, or `null` if not found
+         * @since 4.2
          */
         get_entry_widget(holder: Gda.Holder): Gtk.Widget;
 
@@ -504,6 +510,7 @@ export namespace Gdaui {
          * Get the label in `form` which corresponds to the `holder` holder.
          * @param holder a {@link Gda.Holder} object
          * @returns the requested widget, or `null` if not found
+         * @since 4.2
          */
         get_label_widget(holder: Gda.Holder): Gtk.Widget;
 
@@ -512,6 +519,7 @@ export namespace Gdaui {
          * layout has been defined for `form` using `gdaui_basic_form_set_layout_from_file()`.
          * @param placeholder_id the name of the requested place holder
          * @returns a pointer to the requested place holder, or `null` if not found
+         * @since 4.2
          */
         get_place_holder(placeholder_id: string): Gtk.Widget;
 
@@ -519,12 +527,14 @@ export namespace Gdaui {
          * Tells if the form has had at least on entry changed since `form` was created or
          * `gdaui_basic_form_set_as_reference()` has been called.
          * @returns `true` if one entry has changed at least
+         * @since 4.2
          */
         has_changed(): boolean;
 
         /**
          * Tells if the form can be used as-is (if all the parameters do have some valid values)
          * @returns `true` if the form is valid
+         * @since 4.2
          */
         is_valid(): boolean;
 
@@ -533,12 +543,14 @@ export namespace Gdaui {
          * (the widgets must have been added using `gdaui_basic_form_add_to_size_group()`).
          * @param size_group a {@link Gtk.SizeGroup} object
          * @param part specifies which widgets in `form` are concerned
+         * @since 4.2
          */
         remove_from_size_group(size_group: Gtk.SizeGroup, part: BasicFormPart): void;
 
         /**
          * Resets all the entries in the form to their
          * original values
+         * @since 4.2
          */
         reset(): void;
 
@@ -547,11 +559,13 @@ export namespace Gdaui {
          * to be considered as the original values for all the entries; the immediate
          * consequence is that any sub-sequent call to `gdaui_basic_form_has_changed()`
          * will return `false` (of course until any entry is changed).
+         * @since 4.2
          */
         set_as_reference(): void;
 
         /**
          * For each entry in the form, sets it to a default value if it is possible to do so.
+         * @since 4.2
          */
         set_entries_to_default(): void;
 
@@ -560,6 +574,7 @@ export namespace Gdaui {
          * by the `form_name` name (as an XML layout file can contain the descriptions of several forms and grids).
          * @param file_name XML file name to use
          * @param form_name the name of the form to use, in `file_name`
+         * @since 4.2
          */
         set_layout_from_file(file_name: string, form_name: string): void;
 
@@ -570,6 +585,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          */
         set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
 
@@ -590,12 +606,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -777,24 +795,28 @@ export namespace Gdaui {
         /**
          * Creates a search widget linked directly to modify `cloud`'s appearance.
          * @returns a new widget
+         * @since 4.2
          */
         create_filter_widget(): Gtk.Widget;
 
         /**
          * Filters the elements displayed in `cloud`, by altering their color.
          * @param filter the filter to use, or `null` to remove any filter
+         * @since 4.2
          */
         filter(filter: string | null): void;
 
         /**
          * Sets `cloud`'s selection mode
          * @param mode the desired selection mode
+         * @since 4.2
          */
         set_selection_mode(mode: Gtk.SelectionMode): void;
 
         /**
          * Specifies a function called by `cloud` to compute each row's respective weight.
          * @param func a {@link Gdaui.CloudWeightFunc} function which computes weights, or `null` to unset
+         * @since 4.2
          */
         set_weight_func(func: CloudWeightFunc | null): void;
 
@@ -815,6 +837,7 @@ export namespace Gdaui {
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
          * @returns a pointer to a {@link Gda.DataModelIter} object, or `null`
+         * @since 4.2
          */
         get_data_set(): Gda.DataModelIter;
 
@@ -823,6 +846,7 @@ export namespace Gdaui {
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
          * @returns the {@link Gda.DataModel}
+         * @since 4.2
          */
         get_model(): Gda.DataModel;
 
@@ -834,6 +858,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @returns an array of `gint` values, one for each selected row. Use `g_array_free()` when finished (passing `true` as the last argument)
+         * @since 4.2
          */
         get_selected_rows(): number[];
 
@@ -846,6 +871,7 @@ export namespace Gdaui {
          * and {@link Gdaui.Grid}).
          * @param row the row to select
          * @returns `true` if the row has been selected
+         * @since 4.2
          */
         select_row(row: number): boolean;
 
@@ -853,12 +879,14 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          */
         set_column_visible(column: number, visible: boolean): void;
 
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          */
         set_model(model: Gda.DataModel): void;
 
@@ -868,6 +896,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          */
         unselect_row(row: number): void;
 
@@ -878,6 +907,7 @@ export namespace Gdaui {
          * 
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_data_set(): Gda.DataModelIter;
@@ -886,6 +916,7 @@ export namespace Gdaui {
          * Queries the {@link Gda.DataModel} from which the data displayed by the widget implementing `iface`
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_model(): Gda.DataModel;
@@ -897,6 +928,7 @@ export namespace Gdaui {
          * at the time it's being called, which may change if the widget implementing this interface
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_selected_rows(): number[];
@@ -909,6 +941,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to select
+         * @since 4.2
          * @virtual
          */
         vfunc_select_row(row: number): boolean;
@@ -922,6 +955,7 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          * @virtual
          */
         vfunc_set_column_visible(column: number, visible: boolean): void;
@@ -929,6 +963,7 @@ export namespace Gdaui {
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          * @virtual
          */
         vfunc_set_model(model: Gda.DataModel): void;
@@ -939,6 +974,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          * @virtual
          */
         vfunc_unselect_row(row: number): void;
@@ -946,12 +982,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -1093,12 +1131,14 @@ export namespace Gdaui {
          * Tells if `combo` should add a special entry representing an "undefined choice", as a `null` entry. The default is
          * that only the available choices in `combo`'s model are presented.
          * @param add_null set to `true` to add a NULL value to the combo box
+         * @since 4.2
          */
         add_null(add_null: boolean): void;
 
         /**
          * Tell if the currently selected entry represents the "undefined choice" entry.
          * @returns `true` if the `null` value is selected
+         * @since 4.2
          */
         is_null_selected(): boolean;
 
@@ -1111,6 +1151,7 @@ export namespace Gdaui {
          * if `n_cols` is %0, then all the columns of `model` will be displayed in `combo`.
          * @param model a {@link Gda.DataModel} object to get data from.
          * @param cols_index an array of columns to be shown, its size must be `n_cols`
+         * @since 5.2
          */
         set_data(model: Gda.DataModel, cols_index: number[]): void;
 
@@ -1146,6 +1187,7 @@ export namespace Gdaui {
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
          * @returns a pointer to a {@link Gda.DataModelIter} object, or `null`
+         * @since 4.2
          */
         get_data_set(): Gda.DataModelIter;
 
@@ -1154,6 +1196,7 @@ export namespace Gdaui {
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
          * @returns the {@link Gda.DataModel}
+         * @since 4.2
          */
         get_model(): Gda.DataModel;
 
@@ -1171,6 +1214,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @returns an array of `gint` values, one for each selected row. Use `g_array_free()` when finished (passing `true` as the last argument)
+         * @since 4.2
          */
         get_selected_rows(): number[];
 
@@ -1183,6 +1227,7 @@ export namespace Gdaui {
          * and {@link Gdaui.Grid}).
          * @param row the row to select
          * @returns `true` if the row has been selected
+         * @since 4.2
          */
         select_row(row: number): boolean;
 
@@ -1190,12 +1235,14 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          */
         set_column_visible(column: number, visible: boolean): void;
 
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          */
         set_model(model: Gda.DataModel): void;
 
@@ -1211,6 +1258,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          */
         unselect_row(row: number): void;
 
@@ -1221,6 +1269,7 @@ export namespace Gdaui {
          * 
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_data_set(): Gda.DataModelIter;
@@ -1229,6 +1278,7 @@ export namespace Gdaui {
          * Queries the {@link Gda.DataModel} from which the data displayed by the widget implementing `iface`
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_model(): Gda.DataModel;
@@ -1240,6 +1290,7 @@ export namespace Gdaui {
          * at the time it's being called, which may change if the widget implementing this interface
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_selected_rows(): number[];
@@ -1252,6 +1303,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to select
+         * @since 4.2
          * @virtual
          */
         vfunc_select_row(row: number): boolean;
@@ -1265,6 +1317,7 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          * @virtual
          */
         vfunc_set_column_visible(column: number, visible: boolean): void;
@@ -1272,6 +1325,7 @@ export namespace Gdaui {
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          * @virtual
          */
         vfunc_set_model(model: Gda.DataModel): void;
@@ -1282,6 +1336,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          * @virtual
          */
         vfunc_unselect_row(row: number): void;
@@ -1349,12 +1404,14 @@ export namespace Gdaui {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          */
         add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -1362,6 +1419,7 @@ export namespace Gdaui {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          */
         clear_attributes(cell: Gtk.CellRenderer): void;
 
@@ -1370,12 +1428,14 @@ export namespace Gdaui {
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
+         * @since 3.0
          */
         get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with `g_list_free()`     when no longer needed.
+         * @since 2.12
          */
         get_cells(): Gtk.CellRenderer[];
 
@@ -1387,6 +1447,7 @@ export namespace Gdaui {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -1398,6 +1459,7 @@ export namespace Gdaui {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -1408,6 +1470,7 @@ export namespace Gdaui {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          */
         reorder(cell: Gtk.CellRenderer, position: number): void;
 
@@ -1421,6 +1484,7 @@ export namespace Gdaui {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          */
         set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
@@ -1434,6 +1498,7 @@ export namespace Gdaui {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
@@ -1441,6 +1506,7 @@ export namespace Gdaui {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -1449,6 +1515,7 @@ export namespace Gdaui {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: Gtk.CellRenderer): void;
@@ -1457,12 +1524,14 @@ export namespace Gdaui {
          * Returns the underlying {@link Gtk.CellArea} which might be `cell_layout`
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): Gtk.CellRenderer[];
@@ -1475,6 +1544,7 @@ export namespace Gdaui {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -1487,6 +1557,7 @@ export namespace Gdaui {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -1498,6 +1569,7 @@ export namespace Gdaui {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: Gtk.CellRenderer, position: number): void;
@@ -1512,6 +1584,7 @@ export namespace Gdaui {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
@@ -1538,6 +1611,7 @@ export namespace Gdaui {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -1547,6 +1621,7 @@ export namespace Gdaui {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -2449,12 +2524,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -2570,6 +2647,7 @@ export namespace Gdaui {
          * Get the {@link Gtk.ToolItem} corresponding to the `action` action
          * @param action a {@link Gdaui.Action} action
          * @returns the {@link Gtk.ToolItem}, or `null` on error
+         * @since 6.0
          */
         get_item(action: Action): Gtk.ToolItem;
 
@@ -2585,12 +2663,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -2599,6 +2679,7 @@ export namespace Gdaui {
          * call this function directly, but rely on `gtk_tool_item_get_ellipsize_mode()`
          * instead.
          * @returns the current ellipsize mode of `shell`
+         * @since 2.20
          */
         get_ellipsize_mode(): Pango.EllipsizeMode;
 
@@ -2606,6 +2687,7 @@ export namespace Gdaui {
          * Retrieves the icon size for the tool shell. Tool items must not call this
          * function directly, but rely on `gtk_tool_item_get_icon_size()` instead.
          * @returns the current size ({@link Gtk.IconSize}) for icons of `shell`
+         * @since 2.14
          */
         get_icon_size(): number;
 
@@ -2619,6 +2701,7 @@ export namespace Gdaui {
          * Returns the relief style of buttons on `shell`. Tool items must not call this
          * function directly, but rely on `gtk_tool_item_get_relief_style()` instead.
          * @returns The relief style of buttons on `shell`.
+         * @since 2.14
          */
         get_relief_style(): Gtk.ReliefStyle;
 
@@ -2627,6 +2710,7 @@ export namespace Gdaui {
          * not call this function directly, but rely on `gtk_tool_item_get_toolbar_style()`
          * instead.
          * @returns the current style of `shell`
+         * @since 2.14
          */
         get_style(): Gtk.ToolbarStyle;
 
@@ -2641,6 +2725,7 @@ export namespace Gdaui {
          * call this function directly, but rely on `gtk_tool_item_get_text_alignment()`
          * instead.
          * @returns the current text alignment of `shell`
+         * @since 2.20
          */
         get_text_alignment(): number;
 
@@ -2649,6 +2734,7 @@ export namespace Gdaui {
          * call this function directly, but rely on `gtk_tool_item_get_text_orientation()`
          * instead.
          * @returns the current text orientation of `shell`
+         * @since 2.20
          */
         get_text_orientation(): Gtk.Orientation;
 
@@ -2657,6 +2743,7 @@ export namespace Gdaui {
          * call this function directly, but rely on `gtk_tool_item_get_text_size_group()`
          * instead.
          * @returns the current text size group of `shell`
+         * @since 2.20
          */
         get_text_size_group(): Gtk.SizeGroup;
 
@@ -2667,6 +2754,7 @@ export namespace Gdaui {
          * 
          * Tool items must not call this function directly, but rely on
          * `gtk_tool_item_rebuild_menu()` instead.
+         * @since 2.14
          */
         rebuild_menu(): void;
 
@@ -2674,6 +2762,7 @@ export namespace Gdaui {
          * Retrieves the current ellipsize mode for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_ellipsize_mode()`
          * instead.
+         * @since 2.20
          * @virtual
          */
         vfunc_get_ellipsize_mode(): Pango.EllipsizeMode;
@@ -2688,6 +2777,7 @@ export namespace Gdaui {
          * Retrieves the current orientation for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_orientation()`
          * instead.
+         * @since 2.14
          * @virtual
          */
         vfunc_get_orientation(): Gtk.Orientation;
@@ -2695,6 +2785,7 @@ export namespace Gdaui {
         /**
          * Returns the relief style of buttons on `shell`. Tool items must not call this
          * function directly, but rely on `gtk_tool_item_get_relief_style()` instead.
+         * @since 2.14
          * @virtual
          */
         vfunc_get_relief_style(): Gtk.ReliefStyle;
@@ -2703,6 +2794,7 @@ export namespace Gdaui {
          * Retrieves whether the tool shell has text, icons, or both. Tool items must
          * not call this function directly, but rely on `gtk_tool_item_get_toolbar_style()`
          * instead.
+         * @since 2.14
          * @virtual
          */
         vfunc_get_style(): Gtk.ToolbarStyle;
@@ -2711,6 +2803,7 @@ export namespace Gdaui {
          * Retrieves the current text alignment for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_text_alignment()`
          * instead.
+         * @since 2.20
          * @virtual
          */
         vfunc_get_text_alignment(): number;
@@ -2719,6 +2812,7 @@ export namespace Gdaui {
          * Retrieves the current text orientation for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_text_orientation()`
          * instead.
+         * @since 2.20
          * @virtual
          */
         vfunc_get_text_orientation(): Gtk.Orientation;
@@ -2727,6 +2821,7 @@ export namespace Gdaui {
          * Retrieves the current text size group for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_text_size_group()`
          * instead.
+         * @since 2.20
          * @virtual
          */
         vfunc_get_text_size_group(): Gtk.SizeGroup;
@@ -2738,6 +2833,7 @@ export namespace Gdaui {
          * 
          * Tool items must not call this function directly, but rely on
          * `gtk_tool_item_rebuild_menu()` instead.
+         * @since 2.14
          * @virtual
          */
         vfunc_rebuild_menu(): void;
@@ -2764,6 +2860,7 @@ export namespace Gdaui {
          * Used to set the {@link Gtk.Style} for a widget (`widget`->style). Since
          * GTK 3, this function does nothing, the passed in style is ignored.
          * @param style a {@link Gtk.Style}, or `null` to remove the effect     of a previous call to `gtk_widget_set_style()` and go back to     the default style
+         * @deprecated since 3.0: Use {@link Gtk.StyleContext} instead
          */
         set_style(style: Gtk.Style | null): void;
 
@@ -2852,6 +2949,7 @@ export namespace Gdaui {
         /**
          * Creates a {@link Gtk.TreeModel} interface with a {@link Gda.DataModel}
          * @param model a {@link Gda.DataModel} object
+         * @since 4.2
          */
         static ["new"](model: Gda.DataModel): Gtk.TreeModel;
 
@@ -2860,12 +2958,14 @@ export namespace Gdaui {
          * Appends a new row.
          * @param iter an unset {@link Gtk.TreeIter} to set to the appended row
          * @returns `true` if no error occurred
+         * @since 4.2
          */
         append(iter: Gtk.TreeIter): boolean;
 
         /**
          * Marks the row pointed by `iter` to be deleted
          * @param iter the considered row
+         * @since 4.2
          */
         ["delete"](iter: Gtk.TreeIter): void;
 
@@ -2877,11 +2977,13 @@ export namespace Gdaui {
          * @param values a list of {@link GObject.Value} values
          * @param cols_index an array of `gint` containing the column number to match each value of `values`
          * @returns `true` if the row has been identified `iter` was set
+         * @since 4.2
          */
         get_iter_from_values(values: (GObject.Value | any)[], cols_index: number): [boolean, Gtk.TreeIter];
 
         /**
          * @returns the internal {@link Gda.DataProxy} being used by `store`
+         * @since 4.2
          */
         get_proxy(): Gda.DataProxy;
 
@@ -2889,6 +2991,7 @@ export namespace Gdaui {
          * Get the number of the row represented by `iter`
          * @param iter a valid {@link Gtk.TreeIter}
          * @returns the row number, or -1 if an error occurred
+         * @since 4.2
          */
         get_row_from_iter(iter: Gtk.TreeIter): number;
 
@@ -2898,12 +3001,14 @@ export namespace Gdaui {
          * @param col the data model column
          * @param value the value to store (gets copied)
          * @returns `true` on success
+         * @since 4.2
          */
         set_value(iter: Gtk.TreeIter, col: number, value: GObject.Value | any): boolean;
 
         /**
          * Remove the "to be deleted" mark the row pointed by `iter`, if it existed.
          * @param iter the considered row
+         * @since 4.2
          */
         undelete(iter: Gtk.TreeIter): void;
 
@@ -2912,6 +3017,7 @@ export namespace Gdaui {
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
@@ -2988,6 +3094,7 @@ export namespace Gdaui {
          * return value for this string.
          * @param iter a {@link Gtk.TreeIter}-struct
          * @returns a newly-allocated string.     Must be freed with `g_free()`.
+         * @since 2.2
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
 
@@ -3078,6 +3185,7 @@ export namespace Gdaui {
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the previous node
+         * @since 3.0
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
 
@@ -3147,6 +3255,7 @@ export namespace Gdaui {
          * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
+         * @since 3.10
          */
         rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
@@ -3290,6 +3399,7 @@ export namespace Gdaui {
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
+         * @since 3.0
          * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
@@ -4033,24 +4143,28 @@ export namespace Gdaui {
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
          * @returns the OR'ed bits corresponding to the attributes.
+         * @since 4.2
          */
         get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
          * @returns `true` if `de` is editable
+         * @since 4.2
          */
         get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          * @returns the GdaDataHandler object
+         * @since 4.2
          */
         get_handler(): Gda.DataHandler;
 
         /**
          * Fetch the reference value held in the {@link Gdaui.DataEntry} widget
          * @returns the {@link GObject.Value} (not modifiable)
+         * @since 4.2
          */
         get_reference_value(): unknown;
 
@@ -4060,17 +4174,20 @@ export namespace Gdaui {
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @returns a new {@link GObject.Value}
+         * @since 4.2
          */
         get_value(): unknown;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
+         * @since 4.2
          */
         get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          */
         grab_focus(): void;
 
@@ -4079,6 +4196,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          */
         set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
 
@@ -4091,17 +4209,20 @@ export namespace Gdaui {
          *   <listitem><para>of type specified using `gdaui_data_entry_set_value_type()`.</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          */
         set_editable(editable: boolean): void;
 
         /**
          * Tells that the current value in `de` is to be considered as the reference value
+         * @since 4.2
          */
         set_reference_current(): void;
 
@@ -4109,6 +4230,7 @@ export namespace Gdaui {
          * Push a value into the GdauiDataEntry in the same way as `gdaui_data_entry_set_value()` but
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_reference_value(value: GObject.Value | any | null): void;
 
@@ -4119,6 +4241,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          */
         set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
 
@@ -4131,6 +4254,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_value(value: GObject.Value | any | null): void;
 
@@ -4138,6 +4262,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          */
         set_value_type(type: GObject.GType): void;
 
@@ -4146,6 +4271,7 @@ export namespace Gdaui {
          * 
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
+         * @since 5.2
          */
         validate(): boolean;
 
@@ -4172,18 +4298,21 @@ export namespace Gdaui {
 
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
+         * @since 4.2
          * @virtual
          */
         vfunc_get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
+         * @since 4.2
          * @virtual
          */
         vfunc_get_handler(): Gda.DataHandler;
@@ -4198,18 +4327,21 @@ export namespace Gdaui {
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          * @virtual
          */
         vfunc_grab_focus(): void;
@@ -4219,6 +4351,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          * @virtual
          */
         vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
@@ -4226,6 +4359,7 @@ export namespace Gdaui {
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          * @virtual
          */
         vfunc_set_editable(editable: boolean): void;
@@ -4243,6 +4377,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          * @virtual
          */
         vfunc_set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
@@ -4256,6 +4391,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value(value: unknown | null): void;
@@ -4270,6 +4406,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value_type(type: GObject.GType): void;
@@ -4283,6 +4420,7 @@ export namespace Gdaui {
          * Tests the validity of `de`'s contents. This function must be overrided by implementators.
          * 
          * Default implementation returns TRUE.
+         * @since 5.2
          * @virtual
          */
         vfunc_validate(): boolean;
@@ -4290,12 +4428,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -4424,24 +4564,28 @@ export namespace Gdaui {
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
          * @returns the OR'ed bits corresponding to the attributes.
+         * @since 4.2
          */
         get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
          * @returns `true` if `de` is editable
+         * @since 4.2
          */
         get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          * @returns the GdaDataHandler object
+         * @since 4.2
          */
         get_handler(): Gda.DataHandler;
 
         /**
          * Fetch the reference value held in the {@link Gdaui.DataEntry} widget
          * @returns the {@link GObject.Value} (not modifiable)
+         * @since 4.2
          */
         get_reference_value(): unknown;
 
@@ -4451,17 +4595,20 @@ export namespace Gdaui {
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @returns a new {@link GObject.Value}
+         * @since 4.2
          */
         get_value(): unknown;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
+         * @since 4.2
          */
         get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          */
         grab_focus(): void;
 
@@ -4470,6 +4617,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          */
         set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
 
@@ -4482,17 +4630,20 @@ export namespace Gdaui {
          *   <listitem><para>of type specified using `gdaui_data_entry_set_value_type()`.</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          */
         set_editable(editable: boolean): void;
 
         /**
          * Tells that the current value in `de` is to be considered as the reference value
+         * @since 4.2
          */
         set_reference_current(): void;
 
@@ -4500,6 +4651,7 @@ export namespace Gdaui {
          * Push a value into the GdauiDataEntry in the same way as `gdaui_data_entry_set_value()` but
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_reference_value(value: GObject.Value | any | null): void;
 
@@ -4510,6 +4662,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          */
         set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
 
@@ -4522,6 +4675,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_value(value: GObject.Value | any | null): void;
 
@@ -4529,6 +4683,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          */
         set_value_type(type: GObject.GType): void;
 
@@ -4537,6 +4692,7 @@ export namespace Gdaui {
          * 
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
+         * @since 5.2
          */
         validate(): boolean;
 
@@ -4563,18 +4719,21 @@ export namespace Gdaui {
 
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
+         * @since 4.2
          * @virtual
          */
         vfunc_get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
+         * @since 4.2
          * @virtual
          */
         vfunc_get_handler(): Gda.DataHandler;
@@ -4589,18 +4748,21 @@ export namespace Gdaui {
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          * @virtual
          */
         vfunc_grab_focus(): void;
@@ -4610,6 +4772,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          * @virtual
          */
         vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
@@ -4617,6 +4780,7 @@ export namespace Gdaui {
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          * @virtual
          */
         vfunc_set_editable(editable: boolean): void;
@@ -4634,6 +4798,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          * @virtual
          */
         vfunc_set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
@@ -4647,6 +4812,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value(value: unknown | null): void;
@@ -4661,6 +4827,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value_type(type: GObject.GType): void;
@@ -4674,6 +4841,7 @@ export namespace Gdaui {
          * Tests the validity of `de`'s contents. This function must be overrided by implementators.
          * 
          * Default implementation returns TRUE.
+         * @since 5.2
          * @virtual
          */
         vfunc_validate(): boolean;
@@ -4681,12 +4849,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -4885,24 +5055,28 @@ export namespace Gdaui {
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
          * @returns the OR'ed bits corresponding to the attributes.
+         * @since 4.2
          */
         get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
          * @returns `true` if `de` is editable
+         * @since 4.2
          */
         get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          * @returns the GdaDataHandler object
+         * @since 4.2
          */
         get_handler(): Gda.DataHandler;
 
         /**
          * Fetch the reference value held in the {@link Gdaui.DataEntry} widget
          * @returns the {@link GObject.Value} (not modifiable)
+         * @since 4.2
          */
         get_reference_value(): unknown;
 
@@ -4912,17 +5086,20 @@ export namespace Gdaui {
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @returns a new {@link GObject.Value}
+         * @since 4.2
          */
         get_value(): unknown;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
+         * @since 4.2
          */
         get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          */
         grab_focus(): void;
 
@@ -4931,6 +5108,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          */
         set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
 
@@ -4943,17 +5121,20 @@ export namespace Gdaui {
          *   <listitem><para>of type specified using `gdaui_data_entry_set_value_type()`.</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          */
         set_editable(editable: boolean): void;
 
         /**
          * Tells that the current value in `de` is to be considered as the reference value
+         * @since 4.2
          */
         set_reference_current(): void;
 
@@ -4961,6 +5142,7 @@ export namespace Gdaui {
          * Push a value into the GdauiDataEntry in the same way as `gdaui_data_entry_set_value()` but
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_reference_value(value: GObject.Value | any | null): void;
 
@@ -4971,6 +5153,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          */
         set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
 
@@ -4983,6 +5166,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_value(value: GObject.Value | any | null): void;
 
@@ -4990,6 +5174,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          */
         set_value_type(type: GObject.GType): void;
 
@@ -4998,6 +5183,7 @@ export namespace Gdaui {
          * 
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
+         * @since 5.2
          */
         validate(): boolean;
 
@@ -5024,18 +5210,21 @@ export namespace Gdaui {
 
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
+         * @since 4.2
          * @virtual
          */
         vfunc_get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
+         * @since 4.2
          * @virtual
          */
         vfunc_get_handler(): Gda.DataHandler;
@@ -5050,18 +5239,21 @@ export namespace Gdaui {
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          * @virtual
          */
         vfunc_grab_focus(): void;
@@ -5071,6 +5263,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          * @virtual
          */
         vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
@@ -5078,6 +5271,7 @@ export namespace Gdaui {
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          * @virtual
          */
         vfunc_set_editable(editable: boolean): void;
@@ -5095,6 +5289,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          * @virtual
          */
         vfunc_set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
@@ -5108,6 +5303,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value(value: unknown | null): void;
@@ -5122,6 +5318,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value_type(type: GObject.GType): void;
@@ -5135,6 +5332,7 @@ export namespace Gdaui {
          * Tests the validity of `de`'s contents. This function must be overrided by implementators.
          * 
          * Default implementation returns TRUE.
+         * @since 5.2
          * @virtual
          */
         vfunc_validate(): boolean;
@@ -5142,12 +5340,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -5293,24 +5493,28 @@ export namespace Gdaui {
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
          * @returns the OR'ed bits corresponding to the attributes.
+         * @since 4.2
          */
         get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
          * @returns `true` if `de` is editable
+         * @since 4.2
          */
         get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          * @returns the GdaDataHandler object
+         * @since 4.2
          */
         get_handler(): Gda.DataHandler;
 
         /**
          * Fetch the reference value held in the {@link Gdaui.DataEntry} widget
          * @returns the {@link GObject.Value} (not modifiable)
+         * @since 4.2
          */
         get_reference_value(): unknown;
 
@@ -5320,17 +5524,20 @@ export namespace Gdaui {
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @returns a new {@link GObject.Value}
+         * @since 4.2
          */
         get_value(): unknown;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
+         * @since 4.2
          */
         get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          */
         grab_focus(): void;
 
@@ -5339,6 +5546,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          */
         set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
 
@@ -5351,17 +5559,20 @@ export namespace Gdaui {
          *   <listitem><para>of type specified using `gdaui_data_entry_set_value_type()`.</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          */
         set_editable(editable: boolean): void;
 
         /**
          * Tells that the current value in `de` is to be considered as the reference value
+         * @since 4.2
          */
         set_reference_current(): void;
 
@@ -5369,6 +5580,7 @@ export namespace Gdaui {
          * Push a value into the GdauiDataEntry in the same way as `gdaui_data_entry_set_value()` but
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_reference_value(value: GObject.Value | any | null): void;
 
@@ -5379,6 +5591,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          */
         set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
 
@@ -5391,6 +5604,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_value(value: GObject.Value | any | null): void;
 
@@ -5398,6 +5612,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          */
         set_value_type(type: GObject.GType): void;
 
@@ -5406,6 +5621,7 @@ export namespace Gdaui {
          * 
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
+         * @since 5.2
          */
         validate(): boolean;
 
@@ -5432,18 +5648,21 @@ export namespace Gdaui {
 
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
+         * @since 4.2
          * @virtual
          */
         vfunc_get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
+         * @since 4.2
          * @virtual
          */
         vfunc_get_handler(): Gda.DataHandler;
@@ -5458,18 +5677,21 @@ export namespace Gdaui {
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          * @virtual
          */
         vfunc_grab_focus(): void;
@@ -5479,6 +5701,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          * @virtual
          */
         vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
@@ -5486,6 +5709,7 @@ export namespace Gdaui {
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          * @virtual
          */
         vfunc_set_editable(editable: boolean): void;
@@ -5503,6 +5727,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          * @virtual
          */
         vfunc_set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
@@ -5516,6 +5741,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value(value: unknown | null): void;
@@ -5530,6 +5756,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value_type(type: GObject.GType): void;
@@ -5543,6 +5770,7 @@ export namespace Gdaui {
          * Tests the validity of `de`'s contents. This function must be overrided by implementators.
          * 
          * Default implementation returns TRUE.
+         * @since 5.2
          * @virtual
          */
         vfunc_validate(): boolean;
@@ -5603,12 +5831,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -5747,24 +5977,28 @@ export namespace Gdaui {
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
          * @returns the OR'ed bits corresponding to the attributes.
+         * @since 4.2
          */
         get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
          * @returns `true` if `de` is editable
+         * @since 4.2
          */
         get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          * @returns the GdaDataHandler object
+         * @since 4.2
          */
         get_handler(): Gda.DataHandler;
 
         /**
          * Fetch the reference value held in the {@link Gdaui.DataEntry} widget
          * @returns the {@link GObject.Value} (not modifiable)
+         * @since 4.2
          */
         get_reference_value(): unknown;
 
@@ -5774,17 +6008,20 @@ export namespace Gdaui {
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @returns a new {@link GObject.Value}
+         * @since 4.2
          */
         get_value(): unknown;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
+         * @since 4.2
          */
         get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          */
         grab_focus(): void;
 
@@ -5793,6 +6030,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          */
         set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
 
@@ -5805,17 +6043,20 @@ export namespace Gdaui {
          *   <listitem><para>of type specified using `gdaui_data_entry_set_value_type()`.</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          */
         set_editable(editable: boolean): void;
 
         /**
          * Tells that the current value in `de` is to be considered as the reference value
+         * @since 4.2
          */
         set_reference_current(): void;
 
@@ -5823,6 +6064,7 @@ export namespace Gdaui {
          * Push a value into the GdauiDataEntry in the same way as `gdaui_data_entry_set_value()` but
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_reference_value(value: GObject.Value | any | null): void;
 
@@ -5833,6 +6075,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          */
         set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
 
@@ -5845,6 +6088,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_value(value: GObject.Value | any | null): void;
 
@@ -5852,6 +6096,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          */
         set_value_type(type: GObject.GType): void;
 
@@ -5860,6 +6105,7 @@ export namespace Gdaui {
          * 
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
+         * @since 5.2
          */
         validate(): boolean;
 
@@ -5886,18 +6132,21 @@ export namespace Gdaui {
 
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
+         * @since 4.2
          * @virtual
          */
         vfunc_get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
+         * @since 4.2
          * @virtual
          */
         vfunc_get_handler(): Gda.DataHandler;
@@ -5912,18 +6161,21 @@ export namespace Gdaui {
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          * @virtual
          */
         vfunc_grab_focus(): void;
@@ -5933,6 +6185,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          * @virtual
          */
         vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
@@ -5940,6 +6193,7 @@ export namespace Gdaui {
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          * @virtual
          */
         vfunc_set_editable(editable: boolean): void;
@@ -5957,6 +6211,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          * @virtual
          */
         vfunc_set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
@@ -5970,6 +6225,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value(value: unknown | null): void;
@@ -5984,6 +6240,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value_type(type: GObject.GType): void;
@@ -5997,6 +6254,7 @@ export namespace Gdaui {
          * Tests the validity of `de`'s contents. This function must be overrided by implementators.
          * 
          * Default implementation returns TRUE.
+         * @since 5.2
          * @virtual
          */
         vfunc_validate(): boolean;
@@ -6179,24 +6437,28 @@ export namespace Gdaui {
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
          * @returns the OR'ed bits corresponding to the attributes.
+         * @since 4.2
          */
         get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
          * @returns `true` if `de` is editable
+         * @since 4.2
          */
         get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          * @returns the GdaDataHandler object
+         * @since 4.2
          */
         get_handler(): Gda.DataHandler;
 
         /**
          * Fetch the reference value held in the {@link Gdaui.DataEntry} widget
          * @returns the {@link GObject.Value} (not modifiable)
+         * @since 4.2
          */
         get_reference_value(): unknown;
 
@@ -6206,17 +6468,20 @@ export namespace Gdaui {
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @returns a new {@link GObject.Value}
+         * @since 4.2
          */
         get_value(): unknown;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
+         * @since 4.2
          */
         get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          */
         grab_focus(): void;
 
@@ -6225,6 +6490,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          */
         set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
 
@@ -6237,17 +6503,20 @@ export namespace Gdaui {
          *   <listitem><para>of type specified using `gdaui_data_entry_set_value_type()`.</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          */
         set_editable(editable: boolean): void;
 
         /**
          * Tells that the current value in `de` is to be considered as the reference value
+         * @since 4.2
          */
         set_reference_current(): void;
 
@@ -6255,6 +6524,7 @@ export namespace Gdaui {
          * Push a value into the GdauiDataEntry in the same way as `gdaui_data_entry_set_value()` but
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_reference_value(value: GObject.Value | any | null): void;
 
@@ -6265,6 +6535,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          */
         set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
 
@@ -6277,6 +6548,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_value(value: GObject.Value | any | null): void;
 
@@ -6284,6 +6556,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          */
         set_value_type(type: GObject.GType): void;
 
@@ -6292,6 +6565,7 @@ export namespace Gdaui {
          * 
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
+         * @since 5.2
          */
         validate(): boolean;
 
@@ -6318,18 +6592,21 @@ export namespace Gdaui {
 
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
+         * @since 4.2
          * @virtual
          */
         vfunc_get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
+         * @since 4.2
          * @virtual
          */
         vfunc_get_handler(): Gda.DataHandler;
@@ -6344,18 +6621,21 @@ export namespace Gdaui {
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          * @virtual
          */
         vfunc_grab_focus(): void;
@@ -6365,6 +6645,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          * @virtual
          */
         vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
@@ -6372,6 +6653,7 @@ export namespace Gdaui {
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          * @virtual
          */
         vfunc_set_editable(editable: boolean): void;
@@ -6389,6 +6671,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          * @virtual
          */
         vfunc_set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
@@ -6402,6 +6685,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value(value: unknown | null): void;
@@ -6416,6 +6700,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value_type(type: GObject.GType): void;
@@ -6429,6 +6714,7 @@ export namespace Gdaui {
          * Tests the validity of `de`'s contents. This function must be overrided by implementators.
          * 
          * Default implementation returns TRUE.
+         * @since 5.2
          * @virtual
          */
         vfunc_validate(): boolean;
@@ -6436,12 +6722,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -6601,24 +6889,28 @@ export namespace Gdaui {
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
          * @returns the OR'ed bits corresponding to the attributes.
+         * @since 4.2
          */
         get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
          * @returns `true` if `de` is editable
+         * @since 4.2
          */
         get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          * @returns the GdaDataHandler object
+         * @since 4.2
          */
         get_handler(): Gda.DataHandler;
 
         /**
          * Fetch the reference value held in the {@link Gdaui.DataEntry} widget
          * @returns the {@link GObject.Value} (not modifiable)
+         * @since 4.2
          */
         get_reference_value(): unknown;
 
@@ -6628,17 +6920,20 @@ export namespace Gdaui {
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @returns a new {@link GObject.Value}
+         * @since 4.2
          */
         get_value(): unknown;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
+         * @since 4.2
          */
         get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          */
         grab_focus(): void;
 
@@ -6647,6 +6942,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          */
         set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
 
@@ -6659,17 +6955,20 @@ export namespace Gdaui {
          *   <listitem><para>of type specified using `gdaui_data_entry_set_value_type()`.</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          */
         set_editable(editable: boolean): void;
 
         /**
          * Tells that the current value in `de` is to be considered as the reference value
+         * @since 4.2
          */
         set_reference_current(): void;
 
@@ -6677,6 +6976,7 @@ export namespace Gdaui {
          * Push a value into the GdauiDataEntry in the same way as `gdaui_data_entry_set_value()` but
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_reference_value(value: GObject.Value | any | null): void;
 
@@ -6687,6 +6987,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          */
         set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
 
@@ -6699,6 +7000,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_value(value: GObject.Value | any | null): void;
 
@@ -6706,6 +7008,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          */
         set_value_type(type: GObject.GType): void;
 
@@ -6714,6 +7017,7 @@ export namespace Gdaui {
          * 
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
+         * @since 5.2
          */
         validate(): boolean;
 
@@ -6740,18 +7044,21 @@ export namespace Gdaui {
 
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
+         * @since 4.2
          * @virtual
          */
         vfunc_get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
+         * @since 4.2
          * @virtual
          */
         vfunc_get_handler(): Gda.DataHandler;
@@ -6766,18 +7073,21 @@ export namespace Gdaui {
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          * @virtual
          */
         vfunc_grab_focus(): void;
@@ -6787,6 +7097,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          * @virtual
          */
         vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
@@ -6794,6 +7105,7 @@ export namespace Gdaui {
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          * @virtual
          */
         vfunc_set_editable(editable: boolean): void;
@@ -6811,6 +7123,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          * @virtual
          */
         vfunc_set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
@@ -6824,6 +7137,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value(value: unknown | null): void;
@@ -6838,6 +7152,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value_type(type: GObject.GType): void;
@@ -6851,6 +7166,7 @@ export namespace Gdaui {
          * Tests the validity of `de`'s contents. This function must be overrided by implementators.
          * 
          * Default implementation returns TRUE.
+         * @since 5.2
          * @virtual
          */
         vfunc_validate(): boolean;
@@ -6911,12 +7227,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -7078,24 +7396,28 @@ export namespace Gdaui {
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
          * @returns the OR'ed bits corresponding to the attributes.
+         * @since 4.2
          */
         get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
          * @returns `true` if `de` is editable
+         * @since 4.2
          */
         get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          * @returns the GdaDataHandler object
+         * @since 4.2
          */
         get_handler(): Gda.DataHandler;
 
         /**
          * Fetch the reference value held in the {@link Gdaui.DataEntry} widget
          * @returns the {@link GObject.Value} (not modifiable)
+         * @since 4.2
          */
         get_reference_value(): unknown;
 
@@ -7105,17 +7427,20 @@ export namespace Gdaui {
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @returns a new {@link GObject.Value}
+         * @since 4.2
          */
         get_value(): unknown;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
+         * @since 4.2
          */
         get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          */
         grab_focus(): void;
 
@@ -7124,6 +7449,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          */
         set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
 
@@ -7136,17 +7462,20 @@ export namespace Gdaui {
          *   <listitem><para>of type specified using `gdaui_data_entry_set_value_type()`.</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          */
         set_editable(editable: boolean): void;
 
         /**
          * Tells that the current value in `de` is to be considered as the reference value
+         * @since 4.2
          */
         set_reference_current(): void;
 
@@ -7154,6 +7483,7 @@ export namespace Gdaui {
          * Push a value into the GdauiDataEntry in the same way as `gdaui_data_entry_set_value()` but
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_reference_value(value: GObject.Value | any | null): void;
 
@@ -7164,6 +7494,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          */
         set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
 
@@ -7176,6 +7507,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_value(value: GObject.Value | any | null): void;
 
@@ -7183,6 +7515,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          */
         set_value_type(type: GObject.GType): void;
 
@@ -7191,6 +7524,7 @@ export namespace Gdaui {
          * 
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
+         * @since 5.2
          */
         validate(): boolean;
 
@@ -7217,18 +7551,21 @@ export namespace Gdaui {
 
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
+         * @since 4.2
          * @virtual
          */
         vfunc_get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
+         * @since 4.2
          * @virtual
          */
         vfunc_get_handler(): Gda.DataHandler;
@@ -7243,18 +7580,21 @@ export namespace Gdaui {
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          * @virtual
          */
         vfunc_grab_focus(): void;
@@ -7264,6 +7604,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          * @virtual
          */
         vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
@@ -7271,6 +7612,7 @@ export namespace Gdaui {
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          * @virtual
          */
         vfunc_set_editable(editable: boolean): void;
@@ -7288,6 +7630,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          * @virtual
          */
         vfunc_set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
@@ -7301,6 +7644,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value(value: unknown | null): void;
@@ -7315,6 +7659,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value_type(type: GObject.GType): void;
@@ -7328,6 +7673,7 @@ export namespace Gdaui {
          * Tests the validity of `de`'s contents. This function must be overrided by implementators.
          * 
          * Default implementation returns TRUE.
+         * @since 5.2
          * @virtual
          */
         vfunc_validate(): boolean;
@@ -7388,12 +7734,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -7532,24 +7880,28 @@ export namespace Gdaui {
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
          * @returns the OR'ed bits corresponding to the attributes.
+         * @since 4.2
          */
         get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
          * @returns `true` if `de` is editable
+         * @since 4.2
          */
         get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          * @returns the GdaDataHandler object
+         * @since 4.2
          */
         get_handler(): Gda.DataHandler;
 
         /**
          * Fetch the reference value held in the {@link Gdaui.DataEntry} widget
          * @returns the {@link GObject.Value} (not modifiable)
+         * @since 4.2
          */
         get_reference_value(): unknown;
 
@@ -7559,17 +7911,20 @@ export namespace Gdaui {
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @returns a new {@link GObject.Value}
+         * @since 4.2
          */
         get_value(): unknown;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
+         * @since 4.2
          */
         get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          */
         grab_focus(): void;
 
@@ -7578,6 +7933,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          */
         set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
 
@@ -7590,17 +7946,20 @@ export namespace Gdaui {
          *   <listitem><para>of type specified using `gdaui_data_entry_set_value_type()`.</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          */
         set_editable(editable: boolean): void;
 
         /**
          * Tells that the current value in `de` is to be considered as the reference value
+         * @since 4.2
          */
         set_reference_current(): void;
 
@@ -7608,6 +7967,7 @@ export namespace Gdaui {
          * Push a value into the GdauiDataEntry in the same way as `gdaui_data_entry_set_value()` but
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_reference_value(value: GObject.Value | any | null): void;
 
@@ -7618,6 +7978,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          */
         set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
 
@@ -7630,6 +7991,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_value(value: GObject.Value | any | null): void;
 
@@ -7637,6 +7999,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          */
         set_value_type(type: GObject.GType): void;
 
@@ -7645,6 +8008,7 @@ export namespace Gdaui {
          * 
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
+         * @since 5.2
          */
         validate(): boolean;
 
@@ -7671,18 +8035,21 @@ export namespace Gdaui {
 
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
+         * @since 4.2
          * @virtual
          */
         vfunc_get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
+         * @since 4.2
          * @virtual
          */
         vfunc_get_handler(): Gda.DataHandler;
@@ -7697,18 +8064,21 @@ export namespace Gdaui {
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          * @virtual
          */
         vfunc_grab_focus(): void;
@@ -7718,6 +8088,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          * @virtual
          */
         vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
@@ -7725,6 +8096,7 @@ export namespace Gdaui {
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          * @virtual
          */
         vfunc_set_editable(editable: boolean): void;
@@ -7742,6 +8114,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          * @virtual
          */
         vfunc_set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
@@ -7755,6 +8128,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value(value: unknown | null): void;
@@ -7769,6 +8143,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value_type(type: GObject.GType): void;
@@ -7782,6 +8157,7 @@ export namespace Gdaui {
          * Tests the validity of `de`'s contents. This function must be overrided by implementators.
          * 
          * Default implementation returns TRUE.
+         * @since 5.2
          * @virtual
          */
         vfunc_validate(): boolean;
@@ -7974,24 +8350,28 @@ export namespace Gdaui {
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
          * @returns the OR'ed bits corresponding to the attributes.
+         * @since 4.2
          */
         get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
          * @returns `true` if `de` is editable
+         * @since 4.2
          */
         get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          * @returns the GdaDataHandler object
+         * @since 4.2
          */
         get_handler(): Gda.DataHandler;
 
         /**
          * Fetch the reference value held in the {@link Gdaui.DataEntry} widget
          * @returns the {@link GObject.Value} (not modifiable)
+         * @since 4.2
          */
         get_reference_value(): unknown;
 
@@ -8001,17 +8381,20 @@ export namespace Gdaui {
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @returns a new {@link GObject.Value}
+         * @since 4.2
          */
         get_value(): unknown;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
+         * @since 4.2
          */
         get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          */
         grab_focus(): void;
 
@@ -8020,6 +8403,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          */
         set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
 
@@ -8032,17 +8416,20 @@ export namespace Gdaui {
          *   <listitem><para>of type specified using `gdaui_data_entry_set_value_type()`.</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          */
         set_editable(editable: boolean): void;
 
         /**
          * Tells that the current value in `de` is to be considered as the reference value
+         * @since 4.2
          */
         set_reference_current(): void;
 
@@ -8050,6 +8437,7 @@ export namespace Gdaui {
          * Push a value into the GdauiDataEntry in the same way as `gdaui_data_entry_set_value()` but
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_reference_value(value: GObject.Value | any | null): void;
 
@@ -8060,6 +8448,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          */
         set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
 
@@ -8072,6 +8461,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_value(value: GObject.Value | any | null): void;
 
@@ -8079,6 +8469,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          */
         set_value_type(type: GObject.GType): void;
 
@@ -8087,6 +8478,7 @@ export namespace Gdaui {
          * 
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
+         * @since 5.2
          */
         validate(): boolean;
 
@@ -8113,18 +8505,21 @@ export namespace Gdaui {
 
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
+         * @since 4.2
          * @virtual
          */
         vfunc_get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
+         * @since 4.2
          * @virtual
          */
         vfunc_get_handler(): Gda.DataHandler;
@@ -8139,18 +8534,21 @@ export namespace Gdaui {
          * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value(): GObject.Value | any;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
+         * @since 4.2
          * @virtual
          */
         vfunc_get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          * @virtual
          */
         vfunc_grab_focus(): void;
@@ -8160,6 +8558,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          * @virtual
          */
         vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
@@ -8167,6 +8566,7 @@ export namespace Gdaui {
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          * @virtual
          */
         vfunc_set_editable(editable: boolean): void;
@@ -8184,6 +8584,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          * @virtual
          */
         vfunc_set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
@@ -8197,6 +8598,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value(value: unknown | null): void;
@@ -8211,6 +8613,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          * @virtual
          */
         vfunc_set_value_type(type: GObject.GType): void;
@@ -8224,6 +8627,7 @@ export namespace Gdaui {
          * Tests the validity of `de`'s contents. This function must be overrided by implementators.
          * 
          * Default implementation returns TRUE.
+         * @since 5.2
          * @virtual
          */
         vfunc_validate(): boolean;
@@ -8437,12 +8841,14 @@ export namespace Gdaui {
          * can be edited or not.
          * @param column column number of the data
          * @param editable set to `true` to make the column editable
+         * @since 4.2
          */
         column_set_editable(column: number, editable: boolean): void;
 
         /**
          * Get a pointer to the {@link Gda.DataProxy} being used by `iface`
          * @returns a {@link Gda.DataProxy} pointer
+         * @since 4.2
          */
         get_proxy(): Gda.DataProxy;
 
@@ -8450,6 +8856,7 @@ export namespace Gdaui {
          * Get the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @returns the write mode used by `iface`
+         * @since 4.2
          */
         get_write_mode(): DataProxyWriteMode;
 
@@ -8459,6 +8866,7 @@ export namespace Gdaui {
          * if the corresponding action is possible and if the `iface` widget
          * supports the action.
          * @param action a {@link Gdaui.Action} action
+         * @since 4.2
          */
         perform_action(action: Action): void;
 
@@ -8467,6 +8875,7 @@ export namespace Gdaui {
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @param mode the requested {@link Gdaui.DataProxyWriteMode} mode
          * @returns TRUE if the proposed mode has been taken into account
+         * @since 4.2
          */
         set_write_mode(mode: DataProxyWriteMode): boolean;
 
@@ -8474,11 +8883,13 @@ export namespace Gdaui {
          * Determines if `action` can be used on `iface` (using `gdaui_data_proxy_perform_action()`).
          * @param action a {@link Gdaui.Action} action
          * @returns `true` if the requested action is supported, `false` otherwise
+         * @since 6.0
          */
         supports_action(action: Action): boolean;
 
         /**
          * Get a pointer to the {@link Gda.DataProxy} being used by `iface`
+         * @since 4.2
          * @virtual
          */
         vfunc_get_proxy(): Gda.DataProxy;
@@ -8486,6 +8897,7 @@ export namespace Gdaui {
         /**
          * Get the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_write_mode(): DataProxyWriteMode;
@@ -8496,6 +8908,7 @@ export namespace Gdaui {
          * if the corresponding action is possible and if the `iface` widget
          * supports the action.
          * @param action a {@link Gdaui.Action} action
+         * @since 4.2
          * @virtual
          */
         vfunc_perform_action(action: Action): void;
@@ -8517,6 +8930,7 @@ export namespace Gdaui {
          * Specifies the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @param mode the requested {@link Gdaui.DataProxyWriteMode} mode
+         * @since 4.2
          * @virtual
          */
         vfunc_set_write_mode(mode: DataProxyWriteMode): boolean;
@@ -8524,6 +8938,7 @@ export namespace Gdaui {
         /**
          * Determines if `action` can be used on `iface` (using `gdaui_data_proxy_perform_action()`).
          * @param action a {@link Gdaui.Action} action
+         * @since 6.0
          * @virtual
          */
         vfunc_supports_action(action: Action): boolean;
@@ -8536,6 +8951,7 @@ export namespace Gdaui {
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
          * @returns a pointer to a {@link Gda.DataModelIter} object, or `null`
+         * @since 4.2
          */
         get_data_set(): Gda.DataModelIter;
 
@@ -8544,6 +8960,7 @@ export namespace Gdaui {
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
          * @returns the {@link Gda.DataModel}
+         * @since 4.2
          */
         get_model(): Gda.DataModel;
 
@@ -8555,6 +8972,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @returns an array of `gint` values, one for each selected row. Use `g_array_free()` when finished (passing `true` as the last argument)
+         * @since 4.2
          */
         get_selected_rows(): number[];
 
@@ -8567,6 +8985,7 @@ export namespace Gdaui {
          * and {@link Gdaui.Grid}).
          * @param row the row to select
          * @returns `true` if the row has been selected
+         * @since 4.2
          */
         select_row(row: number): boolean;
 
@@ -8574,12 +8993,14 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          */
         set_column_visible(column: number, visible: boolean): void;
 
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          */
         set_model(model: Gda.DataModel): void;
 
@@ -8589,6 +9010,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          */
         unselect_row(row: number): void;
 
@@ -8599,6 +9021,7 @@ export namespace Gdaui {
          * 
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_data_set(): Gda.DataModelIter;
@@ -8607,6 +9030,7 @@ export namespace Gdaui {
          * Queries the {@link Gda.DataModel} from which the data displayed by the widget implementing `iface`
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_model(): Gda.DataModel;
@@ -8618,6 +9042,7 @@ export namespace Gdaui {
          * at the time it's being called, which may change if the widget implementing this interface
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_selected_rows(): number[];
@@ -8630,6 +9055,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to select
+         * @since 4.2
          * @virtual
          */
         vfunc_select_row(row: number): boolean;
@@ -8643,6 +9069,7 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          * @virtual
          */
         vfunc_set_column_visible(column: number, visible: boolean): void;
@@ -8650,6 +9077,7 @@ export namespace Gdaui {
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          * @virtual
          */
         vfunc_set_model(model: Gda.DataModel): void;
@@ -8660,6 +9088,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          * @virtual
          */
         vfunc_unselect_row(row: number): void;
@@ -8667,12 +9096,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -8996,6 +9427,7 @@ export namespace Gdaui {
          * Sets the size of each chunk of data to display: the maximum number of rows which
          * can be displayed at a time. See `gdaui_raw_grid_set_sample_size()` and `gda_data_proxy_set_sample_size()`
          * @param sample_size the size of the sample displayed in `grid`
+         * @since 4.2
          */
         set_sample_size(sample_size: number): void;
 
@@ -9013,12 +9445,14 @@ export namespace Gdaui {
          * can be edited or not.
          * @param column column number of the data
          * @param editable set to `true` to make the column editable
+         * @since 4.2
          */
         column_set_editable(column: number, editable: boolean): void;
 
         /**
          * Get a pointer to the {@link Gda.DataProxy} being used by `iface`
          * @returns a {@link Gda.DataProxy} pointer
+         * @since 4.2
          */
         get_proxy(): Gda.DataProxy;
 
@@ -9026,6 +9460,7 @@ export namespace Gdaui {
          * Get the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @returns the write mode used by `iface`
+         * @since 4.2
          */
         get_write_mode(): DataProxyWriteMode;
 
@@ -9035,6 +9470,7 @@ export namespace Gdaui {
          * if the corresponding action is possible and if the `iface` widget
          * supports the action.
          * @param action a {@link Gdaui.Action} action
+         * @since 4.2
          */
         perform_action(action: Action): void;
 
@@ -9043,6 +9479,7 @@ export namespace Gdaui {
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @param mode the requested {@link Gdaui.DataProxyWriteMode} mode
          * @returns TRUE if the proposed mode has been taken into account
+         * @since 4.2
          */
         set_write_mode(mode: DataProxyWriteMode): boolean;
 
@@ -9050,11 +9487,13 @@ export namespace Gdaui {
          * Determines if `action` can be used on `iface` (using `gdaui_data_proxy_perform_action()`).
          * @param action a {@link Gdaui.Action} action
          * @returns `true` if the requested action is supported, `false` otherwise
+         * @since 6.0
          */
         supports_action(action: Action): boolean;
 
         /**
          * Get a pointer to the {@link Gda.DataProxy} being used by `iface`
+         * @since 4.2
          * @virtual
          */
         vfunc_get_proxy(): Gda.DataProxy;
@@ -9062,6 +9501,7 @@ export namespace Gdaui {
         /**
          * Get the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_write_mode(): DataProxyWriteMode;
@@ -9072,6 +9512,7 @@ export namespace Gdaui {
          * if the corresponding action is possible and if the `iface` widget
          * supports the action.
          * @param action a {@link Gdaui.Action} action
+         * @since 4.2
          * @virtual
          */
         vfunc_perform_action(action: Action): void;
@@ -9093,6 +9534,7 @@ export namespace Gdaui {
          * Specifies the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @param mode the requested {@link Gdaui.DataProxyWriteMode} mode
+         * @since 4.2
          * @virtual
          */
         vfunc_set_write_mode(mode: DataProxyWriteMode): boolean;
@@ -9100,6 +9542,7 @@ export namespace Gdaui {
         /**
          * Determines if `action` can be used on `iface` (using `gdaui_data_proxy_perform_action()`).
          * @param action a {@link Gdaui.Action} action
+         * @since 6.0
          * @virtual
          */
         vfunc_supports_action(action: Action): boolean;
@@ -9112,6 +9555,7 @@ export namespace Gdaui {
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
          * @returns a pointer to a {@link Gda.DataModelIter} object, or `null`
+         * @since 4.2
          */
         get_data_set(): Gda.DataModelIter;
 
@@ -9120,6 +9564,7 @@ export namespace Gdaui {
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
          * @returns the {@link Gda.DataModel}
+         * @since 4.2
          */
         get_model(): Gda.DataModel;
 
@@ -9131,6 +9576,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @returns an array of `gint` values, one for each selected row. Use `g_array_free()` when finished (passing `true` as the last argument)
+         * @since 4.2
          */
         get_selected_rows(): number[];
 
@@ -9143,6 +9589,7 @@ export namespace Gdaui {
          * and {@link Gdaui.Grid}).
          * @param row the row to select
          * @returns `true` if the row has been selected
+         * @since 4.2
          */
         select_row(row: number): boolean;
 
@@ -9150,12 +9597,14 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          */
         set_column_visible(column: number, visible: boolean): void;
 
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          */
         set_model(model: Gda.DataModel): void;
 
@@ -9165,6 +9614,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          */
         unselect_row(row: number): void;
 
@@ -9175,6 +9625,7 @@ export namespace Gdaui {
          * 
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_data_set(): Gda.DataModelIter;
@@ -9183,6 +9634,7 @@ export namespace Gdaui {
          * Queries the {@link Gda.DataModel} from which the data displayed by the widget implementing `iface`
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_model(): Gda.DataModel;
@@ -9194,6 +9646,7 @@ export namespace Gdaui {
          * at the time it's being called, which may change if the widget implementing this interface
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_selected_rows(): number[];
@@ -9206,6 +9659,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to select
+         * @since 4.2
          * @virtual
          */
         vfunc_select_row(row: number): boolean;
@@ -9219,6 +9673,7 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          * @virtual
          */
         vfunc_set_column_visible(column: number, visible: boolean): void;
@@ -9226,6 +9681,7 @@ export namespace Gdaui {
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          * @virtual
          */
         vfunc_set_model(model: Gda.DataModel): void;
@@ -9236,6 +9692,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          * @virtual
          */
         vfunc_unselect_row(row: number): void;
@@ -9243,12 +9700,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -9402,6 +9861,7 @@ export namespace Gdaui {
          * {@link Gda.DsnInfo} will be `null`, and otherwise it will contain the name of the selected DSN or `null`
          * if no DSN selected or connection specified but "OK" button pressed.
          * @returns a pointer to a (read-only) {@link Gda.DsnInfo} or `null`.
+         * @since 4.2
          */
         get_connection_information(): Gda.DsnInfo | null;
 
@@ -9433,6 +9893,7 @@ export namespace Gdaui {
         /**
          * Set how `login` operates
          * @param mode a flag
+         * @since 4.2
          */
         set_mode(mode: LoginMode): void;
 
@@ -9448,12 +9909,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -9762,12 +10225,14 @@ export namespace Gdaui {
         /**
          * Get the selected provider.
          * @returns the selected provider, or `null` if no provider is selected
+         * @since 4.2
          */
         get_provider(): string;
 
         /**
          * Get the selected provider as a {@link Gda.ServerProvider} object
          * @returns a {@link Gda.ServerProvider} or `null` if an error occurred
+         * @since 4.2
          */
         get_provider_obj(): Gda.ServerProvider;
 
@@ -9775,6 +10240,7 @@ export namespace Gdaui {
          * Forces `selector` to be set on `provider`
          * @param provider the provider to be selected, or `null` for the default (SQLite)
          * @returns `true` if `provider` has been selected
+         * @since 4.2
          */
         set_provider(provider: string | null): boolean;
 
@@ -9786,6 +10252,7 @@ export namespace Gdaui {
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
          * @returns a pointer to a {@link Gda.DataModelIter} object, or `null`
+         * @since 4.2
          */
         get_data_set(): Gda.DataModelIter;
 
@@ -9794,6 +10261,7 @@ export namespace Gdaui {
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
          * @returns the {@link Gda.DataModel}
+         * @since 4.2
          */
         get_model(): Gda.DataModel;
 
@@ -9811,6 +10279,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @returns an array of `gint` values, one for each selected row. Use `g_array_free()` when finished (passing `true` as the last argument)
+         * @since 4.2
          */
         get_selected_rows(): number[];
 
@@ -9823,6 +10292,7 @@ export namespace Gdaui {
          * and {@link Gdaui.Grid}).
          * @param row the row to select
          * @returns `true` if the row has been selected
+         * @since 4.2
          */
         select_row(row: number): boolean;
 
@@ -9830,12 +10300,14 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          */
         set_column_visible(column: number, visible: boolean): void;
 
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          */
         set_model(model: Gda.DataModel): void;
 
@@ -9851,6 +10323,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          */
         unselect_row(row: number): void;
 
@@ -9861,6 +10334,7 @@ export namespace Gdaui {
          * 
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_data_set(): Gda.DataModelIter;
@@ -9869,6 +10343,7 @@ export namespace Gdaui {
          * Queries the {@link Gda.DataModel} from which the data displayed by the widget implementing `iface`
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_model(): Gda.DataModel;
@@ -9880,6 +10355,7 @@ export namespace Gdaui {
          * at the time it's being called, which may change if the widget implementing this interface
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_selected_rows(): number[];
@@ -9892,6 +10368,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to select
+         * @since 4.2
          * @virtual
          */
         vfunc_select_row(row: number): boolean;
@@ -9905,6 +10382,7 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          * @virtual
          */
         vfunc_set_column_visible(column: number, visible: boolean): void;
@@ -9912,6 +10390,7 @@ export namespace Gdaui {
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          * @virtual
          */
         vfunc_set_model(model: Gda.DataModel): void;
@@ -9922,6 +10401,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          * @virtual
          */
         vfunc_unselect_row(row: number): void;
@@ -9970,6 +10450,7 @@ export namespace Gdaui {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -9979,6 +10460,7 @@ export namespace Gdaui {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -10092,12 +10574,14 @@ export namespace Gdaui {
          * can be edited or not.
          * @param column column number of the data
          * @param editable set to `true` to make the column editable
+         * @since 4.2
          */
         column_set_editable(column: number, editable: boolean): void;
 
         /**
          * Get a pointer to the {@link Gda.DataProxy} being used by `iface`
          * @returns a {@link Gda.DataProxy} pointer
+         * @since 4.2
          */
         get_proxy(): Gda.DataProxy;
 
@@ -10105,6 +10589,7 @@ export namespace Gdaui {
          * Get the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @returns the write mode used by `iface`
+         * @since 4.2
          */
         get_write_mode(): DataProxyWriteMode;
 
@@ -10114,6 +10599,7 @@ export namespace Gdaui {
          * if the corresponding action is possible and if the `iface` widget
          * supports the action.
          * @param action a {@link Gdaui.Action} action
+         * @since 4.2
          */
         perform_action(action: Action): void;
 
@@ -10122,6 +10608,7 @@ export namespace Gdaui {
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @param mode the requested {@link Gdaui.DataProxyWriteMode} mode
          * @returns TRUE if the proposed mode has been taken into account
+         * @since 4.2
          */
         set_write_mode(mode: DataProxyWriteMode): boolean;
 
@@ -10129,11 +10616,13 @@ export namespace Gdaui {
          * Determines if `action` can be used on `iface` (using `gdaui_data_proxy_perform_action()`).
          * @param action a {@link Gdaui.Action} action
          * @returns `true` if the requested action is supported, `false` otherwise
+         * @since 6.0
          */
         supports_action(action: Action): boolean;
 
         /**
          * Get a pointer to the {@link Gda.DataProxy} being used by `iface`
+         * @since 4.2
          * @virtual
          */
         vfunc_get_proxy(): Gda.DataProxy;
@@ -10141,6 +10630,7 @@ export namespace Gdaui {
         /**
          * Get the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_write_mode(): DataProxyWriteMode;
@@ -10151,6 +10641,7 @@ export namespace Gdaui {
          * if the corresponding action is possible and if the `iface` widget
          * supports the action.
          * @param action a {@link Gdaui.Action} action
+         * @since 4.2
          * @virtual
          */
         vfunc_perform_action(action: Action): void;
@@ -10172,6 +10663,7 @@ export namespace Gdaui {
          * Specifies the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @param mode the requested {@link Gdaui.DataProxyWriteMode} mode
+         * @since 4.2
          * @virtual
          */
         vfunc_set_write_mode(mode: DataProxyWriteMode): boolean;
@@ -10179,6 +10671,7 @@ export namespace Gdaui {
         /**
          * Determines if `action` can be used on `iface` (using `gdaui_data_proxy_perform_action()`).
          * @param action a {@link Gdaui.Action} action
+         * @since 6.0
          * @virtual
          */
         vfunc_supports_action(action: Action): boolean;
@@ -10191,6 +10684,7 @@ export namespace Gdaui {
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
          * @returns a pointer to a {@link Gda.DataModelIter} object, or `null`
+         * @since 4.2
          */
         get_data_set(): Gda.DataModelIter;
 
@@ -10199,6 +10693,7 @@ export namespace Gdaui {
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
          * @returns the {@link Gda.DataModel}
+         * @since 4.2
          */
         get_model(): Gda.DataModel;
 
@@ -10210,6 +10705,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @returns an array of `gint` values, one for each selected row. Use `g_array_free()` when finished (passing `true` as the last argument)
+         * @since 4.2
          */
         get_selected_rows(): number[];
 
@@ -10222,6 +10718,7 @@ export namespace Gdaui {
          * and {@link Gdaui.Grid}).
          * @param row the row to select
          * @returns `true` if the row has been selected
+         * @since 4.2
          */
         select_row(row: number): boolean;
 
@@ -10229,12 +10726,14 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          */
         set_column_visible(column: number, visible: boolean): void;
 
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          */
         set_model(model: Gda.DataModel): void;
 
@@ -10244,6 +10743,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          */
         unselect_row(row: number): void;
 
@@ -10254,6 +10754,7 @@ export namespace Gdaui {
          * 
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_data_set(): Gda.DataModelIter;
@@ -10262,6 +10763,7 @@ export namespace Gdaui {
          * Queries the {@link Gda.DataModel} from which the data displayed by the widget implementing `iface`
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_model(): Gda.DataModel;
@@ -10273,6 +10775,7 @@ export namespace Gdaui {
          * at the time it's being called, which may change if the widget implementing this interface
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_selected_rows(): number[];
@@ -10285,6 +10788,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to select
+         * @since 4.2
          * @virtual
          */
         vfunc_select_row(row: number): boolean;
@@ -10298,6 +10802,7 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          * @virtual
          */
         vfunc_set_column_visible(column: number, visible: boolean): void;
@@ -10305,6 +10810,7 @@ export namespace Gdaui {
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          * @virtual
          */
         vfunc_set_model(model: Gda.DataModel): void;
@@ -10315,6 +10821,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          * @virtual
          */
         vfunc_unselect_row(row: number): void;
@@ -10517,12 +11024,14 @@ export namespace Gdaui {
          * whenever the rendering of a cell in `grid` needs to be done. It is similar in purpose
          * to the `gtk_tree_view_column_set_cell_data_func()` function.
          * @param func a {@link Gdaui.RawGridFormatFunc} function pointer
+         * @since 5.0.3
          */
         add_formatting_function(func: RawGridFormatFunc): void;
 
         /**
          * This function undoes what has been specified before by `gdaui_raw_grid_add_formatting_function()`
          * @param func a {@link Gdaui.RawGridFormatFunc} function pointer
+         * @since 5.0.3
          */
         remove_formatting_function(func: RawGridFormatFunc): void;
 
@@ -10531,6 +11040,7 @@ export namespace Gdaui {
          * by the `grid_name` name (as an XML layout file can contain the descriptions of several forms and grids).
          * @param file_name XML file name to use
          * @param grid_name the name of the grid to use, in `file_name`
+         * @since 4.2
          */
         set_layout_from_file(file_name: string, grid_name: string): void;
 
@@ -10538,11 +11048,13 @@ export namespace Gdaui {
          * Sets the size of each chunk of data to display: the maximum number of rows which
          * can be displayed at a time. See `gdaui_grid_set_sample_size()` and `gda_data_proxy_set_sample_size()`
          * @param sample_size the size of the sample displayed in `grid`
+         * @since 4.2
          */
         set_sample_size(sample_size: number): void;
 
         /**
          * @param sample_start 
+         * @since 4.2
          */
         set_sample_start(sample_start: number): void;
 
@@ -10609,12 +11121,14 @@ export namespace Gdaui {
          * can be edited or not.
          * @param column column number of the data
          * @param editable set to `true` to make the column editable
+         * @since 4.2
          */
         column_set_editable(column: number, editable: boolean): void;
 
         /**
          * Get a pointer to the {@link Gda.DataProxy} being used by `iface`
          * @returns a {@link Gda.DataProxy} pointer
+         * @since 4.2
          */
         get_proxy(): Gda.DataProxy;
 
@@ -10622,6 +11136,7 @@ export namespace Gdaui {
          * Get the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @returns the write mode used by `iface`
+         * @since 4.2
          */
         get_write_mode(): DataProxyWriteMode;
 
@@ -10631,6 +11146,7 @@ export namespace Gdaui {
          * if the corresponding action is possible and if the `iface` widget
          * supports the action.
          * @param action a {@link Gdaui.Action} action
+         * @since 4.2
          */
         perform_action(action: Action): void;
 
@@ -10639,6 +11155,7 @@ export namespace Gdaui {
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @param mode the requested {@link Gdaui.DataProxyWriteMode} mode
          * @returns TRUE if the proposed mode has been taken into account
+         * @since 4.2
          */
         set_write_mode(mode: DataProxyWriteMode): boolean;
 
@@ -10646,11 +11163,13 @@ export namespace Gdaui {
          * Determines if `action` can be used on `iface` (using `gdaui_data_proxy_perform_action()`).
          * @param action a {@link Gdaui.Action} action
          * @returns `true` if the requested action is supported, `false` otherwise
+         * @since 6.0
          */
         supports_action(action: Action): boolean;
 
         /**
          * Get a pointer to the {@link Gda.DataProxy} being used by `iface`
+         * @since 4.2
          * @virtual
          */
         vfunc_get_proxy(): Gda.DataProxy;
@@ -10658,6 +11177,7 @@ export namespace Gdaui {
         /**
          * Get the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_write_mode(): DataProxyWriteMode;
@@ -10668,6 +11188,7 @@ export namespace Gdaui {
          * if the corresponding action is possible and if the `iface` widget
          * supports the action.
          * @param action a {@link Gdaui.Action} action
+         * @since 4.2
          * @virtual
          */
         vfunc_perform_action(action: Action): void;
@@ -10689,6 +11210,7 @@ export namespace Gdaui {
          * Specifies the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @param mode the requested {@link Gdaui.DataProxyWriteMode} mode
+         * @since 4.2
          * @virtual
          */
         vfunc_set_write_mode(mode: DataProxyWriteMode): boolean;
@@ -10696,6 +11218,7 @@ export namespace Gdaui {
         /**
          * Determines if `action` can be used on `iface` (using `gdaui_data_proxy_perform_action()`).
          * @param action a {@link Gdaui.Action} action
+         * @since 6.0
          * @virtual
          */
         vfunc_supports_action(action: Action): boolean;
@@ -10708,6 +11231,7 @@ export namespace Gdaui {
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
          * @returns a pointer to a {@link Gda.DataModelIter} object, or `null`
+         * @since 4.2
          */
         get_data_set(): Gda.DataModelIter;
 
@@ -10716,6 +11240,7 @@ export namespace Gdaui {
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
          * @returns the {@link Gda.DataModel}
+         * @since 4.2
          */
         get_model(): Gda.DataModel;
 
@@ -10733,6 +11258,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @returns an array of `gint` values, one for each selected row. Use `g_array_free()` when finished (passing `true` as the last argument)
+         * @since 4.2
          */
         get_selected_rows(): number[];
 
@@ -10745,6 +11271,7 @@ export namespace Gdaui {
          * and {@link Gdaui.Grid}).
          * @param row the row to select
          * @returns `true` if the row has been selected
+         * @since 4.2
          */
         select_row(row: number): boolean;
 
@@ -10752,12 +11279,14 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          */
         set_column_visible(column: number, visible: boolean): void;
 
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          */
         set_model(model: Gda.DataModel): void;
 
@@ -10773,6 +11302,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          */
         unselect_row(row: number): void;
 
@@ -10783,6 +11313,7 @@ export namespace Gdaui {
          * 
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_data_set(): Gda.DataModelIter;
@@ -10791,6 +11322,7 @@ export namespace Gdaui {
          * Queries the {@link Gda.DataModel} from which the data displayed by the widget implementing `iface`
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
+         * @since 4.2
          * @virtual
          */
         vfunc_get_model(): Gda.DataModel;
@@ -10802,6 +11334,7 @@ export namespace Gdaui {
          * at the time it's being called, which may change if the widget implementing this interface
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
+         * @since 4.2
          * @virtual
          */
         vfunc_get_selected_rows(): number[];
@@ -10814,6 +11347,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to select
+         * @since 4.2
          * @virtual
          */
         vfunc_select_row(row: number): boolean;
@@ -10827,6 +11361,7 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          * @virtual
          */
         vfunc_set_column_visible(column: number, visible: boolean): void;
@@ -10834,6 +11369,7 @@ export namespace Gdaui {
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          * @virtual
          */
         vfunc_set_model(model: Gda.DataModel): void;
@@ -10844,6 +11380,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          * @virtual
          */
         vfunc_unselect_row(row: number): void;
@@ -10855,36 +11392,42 @@ export namespace Gdaui {
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
          * @returns `true` if `border` has been set
+         * @since 3.16
          */
         get_border(): [boolean, Gtk.Border];
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_hadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_vadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
@@ -10893,12 +11436,14 @@ export namespace Gdaui {
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
@@ -10907,6 +11452,7 @@ export namespace Gdaui {
          * vertical scrolling should start below the minimum height or
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
@@ -10916,6 +11462,7 @@ export namespace Gdaui {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
@@ -11117,6 +11664,7 @@ export namespace Gdaui {
         /**
          * Get the contents of `editor`, using the markup syntax
          * @returns a new string, or `null` if there was an error
+         * @since 4.2.2
          */
         get_contents(): string;
 
@@ -11124,12 +11672,14 @@ export namespace Gdaui {
          * Set `editor`'s contents. If `length` is -1, `markup` must be nul-terminated
          * @param markup the text to set in `editor`, using the markup syntax (must be valid UTF-8)
          * @param length length of text in bytes.
+         * @since 4.2.2
          */
         set_contents(markup: string, length: number): void;
 
         /**
          * Set `editor`'s editability
          * @param editable whether it's editable
+         * @since 4.2.2
          */
         set_editable(editable: boolean): void;
 
@@ -11145,12 +11695,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -11296,12 +11848,14 @@ export namespace Gdaui {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -11379,6 +11933,7 @@ export namespace Gdaui {
         /**
          * Define the default path used when saving a file, or when showing a {@link Gtk.FileChooser} file chooser.
          * @param path a path, or `null` to unset
+         * @since 4.2.9
          */
         static default_path(path: string | null): void;
 
@@ -11398,6 +11953,7 @@ export namespace Gdaui {
         /**
          * @param holder 
          * @returns A new {@link Gdaui.SetGroup} struct
+         * @since 5.2
          */
         get_group(holder: Gda.Holder): SetGroup;
 
@@ -11497,6 +12053,7 @@ export namespace Gdaui {
          * @param n_columns number of columns in the tree store
          * @param types an array of `n_columns` GType to specify the type of each column
          * @param attribute_names an array of `n_columns` strings to specify the attribute name                   to map each column on
+         * @since 4.2
          */
         static newv(tree: Gda.Tree, n_columns: number, types: GObject.GType, attribute_names: string): Gtk.TreeModel;
 
@@ -11546,6 +12103,7 @@ export namespace Gdaui {
          * @param iter a {@link Gtk.TreeIter}
          * @param node a {@link Gda.TreeNode} in `store`
          * @returns `true` if no error occurred and `iter` is valid
+         * @since 5.2
          */
         get_iter_from_node(iter: Gtk.TreeIter, node: Gda.TreeNode): boolean;
 
@@ -11553,6 +12111,7 @@ export namespace Gdaui {
          * Get the  {@link Gda.TreeNode} represented by `iter`.
          * @param iter a valid {@link Gtk.TreeIter}
          * @returns the {@link Gda.TreeNode} represented by `iter`, or `null` if an error occurred
+         * @since 4.2.8
          */
         get_node(iter: Gtk.TreeIter): Gda.TreeNode;
 
@@ -11673,6 +12232,7 @@ export namespace Gdaui {
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
@@ -11749,6 +12309,7 @@ export namespace Gdaui {
          * return value for this string.
          * @param iter a {@link Gtk.TreeIter}-struct
          * @returns a newly-allocated string.     Must be freed with `g_free()`.
+         * @since 2.2
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
 
@@ -11839,6 +12400,7 @@ export namespace Gdaui {
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the previous node
+         * @since 3.0
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
 
@@ -11908,6 +12470,7 @@ export namespace Gdaui {
          * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
+         * @since 3.10
          */
         rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
@@ -12051,6 +12614,7 @@ export namespace Gdaui {
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
+         * @since 3.0
          * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
@@ -12374,35 +12938,41 @@ export namespace Gdaui {
         /**
          * Copy constructor.
          * @returns a new {@link Gdaui.SetGroup}
+         * @since 5.2
          */
         copy(): SetGroup;
 
         /**
          * Frees any resources taken by `sg` struct. If `sg` is `null`, then nothing happens.
+         * @since 5.2
          */
         free(): void;
 
         /**
          * Get group used by `sg`.
          * @returns used {@link Gda.SetGroup}
+         * @since 5.2
          */
         get_group(): Gda.SetGroup;
 
         /**
          * Get source used by `sg`.
          * @returns used {@link Gda.SetGroup}
+         * @since 5.2
          */
         get_source(): SetSource;
 
         /**
          * Set source to `source`.
          * @param group a {@link Gda.SetGroup} struct
+         * @since 5.2
          */
         set_group(group: Gda.SetGroup): void;
 
         /**
          * Set source to `source`. if `source` is `NULL`, then `group` nodes contains exactly one entry.
          * @param source 
+         * @since 5.2
          */
         set_source(source: SetSource): void;
     }
@@ -12431,55 +13001,65 @@ export namespace Gdaui {
         /**
          * Copy constructor.
          * @returns a new {@link Gdaui.SetSource}
+         * @since 5.2
          */
         copy(): SetSource;
 
         /**
          * Frees any resources taken by `s` struct. If `s` is `null`, then nothing happens.
+         * @since 5.2
          */
         free(): void;
 
         /**
          * @returns array of of columns to be shown.
+         * @since 5.2
          */
         get_ref_columns(): number[];
 
         /**
          * @returns number of columns to referenced.
+         * @since 5.2
          */
         get_ref_n_cols(): number;
 
         /**
          * @returns array of of columns to be shown.
+         * @since 5.2
          */
         get_shown_columns(): number[];
 
         /**
          * @returns number of columns to be shown.
+         * @since 5.2
          */
         get_shown_n_cols(): number;
 
         /**
          * Get source used by `sg`.
          * @returns used {@link Gda.SetSource}
+         * @since 5.2
          */
         get_source(): Gda.SetSource;
 
         /**
          * Set the columns to be shown.
          * @param columns an array of with columns numbers of referen (Primary Key) at {@link Gda.SetSource}
+         * @since 5.2
          */
         set_ref_columns(columns: number[]): void;
 
         /**
          * Set the columns to be shown.
          * @param columns an array of with columns numbers to be shown from a {@link Gda.SetSource}
+         * @since 5.2
          */
         set_shown_columns(columns: number[]): void;
 
         /**
          * Set source to `source`.
          * @param source a {@link Gda.SetSource} struct
+         * @since 5.2
          */
         set_source(source: Gda.SetSource): void;
     }
@@ -12521,18 +13101,21 @@ export namespace Gdaui {
 
             /**
              * Retrieves the parameters of the GdauiDataEntry widget.
+             * @since 4.2
              * @virtual
              */
             vfunc_get_attributes(): Gda.ValueAttribute;
 
             /**
              * Tells if `de` can be edited by the user
+             * @since 4.2
              * @virtual
              */
             vfunc_get_editable(): boolean;
 
             /**
              * Fetch the GdaDataHandler the GdauiDataEntry is using
+             * @since 4.2
              * @virtual
              */
             vfunc_get_handler(): Gda.DataHandler;
@@ -12547,18 +13130,21 @@ export namespace Gdaui {
              * the returned value is of type GDA_TYPE_NULL. If the value is set to default,
              * then the returned value is of type GDA_TYPE_NULL or is the default value if it
              * has been provided to the widget (and is of the same type as the one provided by `de`).
+             * @since 4.2
              * @virtual
              */
             vfunc_get_value(): GObject.Value | any;
 
             /**
              * Fetch the type of data the GdauiDataEntry handles
+             * @since 4.2
              * @virtual
              */
             vfunc_get_value_type(): GObject.GType;
 
             /**
              * Makes `de` grab the focus for the window it's in
+             * @since 4.2
              * @virtual
              */
             vfunc_grab_focus(): void;
@@ -12568,6 +13154,7 @@ export namespace Gdaui {
              * mask are set, the other ones are ignored.
              * @param attrs the attributes to set (OR'ed between them)
              * @param mask the mask corresponding to the considered attributes
+             * @since 4.2
              * @virtual
              */
             vfunc_set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
@@ -12575,6 +13162,7 @@ export namespace Gdaui {
             /**
              * Set if `de` can be modified or not by the user
              * @param editable set to `true` to have an editable data entry
+             * @since 4.2
              * @virtual
              */
             vfunc_set_editable(editable: boolean): void;
@@ -12592,6 +13180,7 @@ export namespace Gdaui {
              * @param green the green component of a color
              * @param blue the blue component of a color
              * @param alpha the alpha component of a color
+             * @since 5.0.3
              * @virtual
              */
             vfunc_set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
@@ -12605,6 +13194,7 @@ export namespace Gdaui {
              *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
              * </itemizedlist>
              * @param value a {@link GObject.Value}, or `null`
+             * @since 4.2
              * @virtual
              */
             vfunc_set_value(value: unknown | null): void;
@@ -12619,6 +13209,7 @@ export namespace Gdaui {
              * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
              * the widget can handle.
              * @param type the {@link GObject.GType} of the data to be displayed
+             * @since 4.2
              * @virtual
              */
             vfunc_set_value_type(type: GObject.GType): void;
@@ -12632,6 +13223,7 @@ export namespace Gdaui {
              * Tests the validity of `de`'s contents. This function must be overrided by implementators.
              * 
              * Default implementation returns TRUE.
+             * @since 5.2
              * @virtual
              */
             vfunc_validate(): boolean;
@@ -12656,24 +13248,28 @@ export namespace Gdaui {
         /**
          * Retrieves the parameters of the GdauiDataEntry widget.
          * @returns the OR'ed bits corresponding to the attributes.
+         * @since 4.2
          */
         get_attributes(): Gda.ValueAttribute;
 
         /**
          * Tells if `de` can be edited by the user
          * @returns `true` if `de` is editable
+         * @since 4.2
          */
         get_editable(): boolean;
 
         /**
          * Fetch the GdaDataHandler the GdauiDataEntry is using
          * @returns the GdaDataHandler object
+         * @since 4.2
          */
         get_handler(): Gda.DataHandler;
 
         /**
          * Fetch the reference value held in the {@link Gdaui.DataEntry} widget
          * @returns the {@link GObject.Value} (not modifiable)
+         * @since 4.2
          */
         get_reference_value(): unknown;
 
@@ -12683,17 +13279,20 @@ export namespace Gdaui {
          * then the returned value is of type GDA_TYPE_NULL or is the default value if it
          * has been provided to the widget (and is of the same type as the one provided by `de`).
          * @returns a new {@link GObject.Value}
+         * @since 4.2
          */
         get_value(): unknown;
 
         /**
          * Fetch the type of data the GdauiDataEntry handles
          * @returns the GType type
+         * @since 4.2
          */
         get_value_type(): GObject.GType;
 
         /**
          * Makes `de` grab the focus for the window it's in
+         * @since 4.2
          */
         grab_focus(): void;
 
@@ -12702,6 +13301,7 @@ export namespace Gdaui {
          * mask are set, the other ones are ignored.
          * @param attrs the attributes to set (OR'ed between them)
          * @param mask the mask corresponding to the considered attributes
+         * @since 4.2
          */
         set_attributes(attrs: Gda.ValueAttribute, mask: Gda.ValueAttribute): void;
 
@@ -12714,17 +13314,20 @@ export namespace Gdaui {
          *   <listitem><para>of type specified using `gdaui_data_entry_set_value_type()`.</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_default_value(value: GObject.Value | any | null): void;
 
         /**
          * Set if `de` can be modified or not by the user
          * @param editable set to `true` to have an editable data entry
+         * @since 4.2
          */
         set_editable(editable: boolean): void;
 
         /**
          * Tells that the current value in `de` is to be considered as the reference value
+         * @since 4.2
          */
         set_reference_current(): void;
 
@@ -12732,6 +13335,7 @@ export namespace Gdaui {
          * Push a value into the GdauiDataEntry in the same way as `gdaui_data_entry_set_value()` but
          * also sets this value as the reference value.
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_reference_value(value: GObject.Value | any | null): void;
 
@@ -12742,6 +13346,7 @@ export namespace Gdaui {
          * @param green the green component of a color
          * @param blue the blue component of a color
          * @param alpha the alpha component of a color
+         * @since 5.0.3
          */
         set_unknown_color(red: number, green: number, blue: number, alpha: number): void;
 
@@ -12754,6 +13359,7 @@ export namespace Gdaui {
          *   <listitem><para>NULL to represent an undetermined value (usually an error)</para></listitem>
          * </itemizedlist>
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_value(value: GObject.Value | any | null): void;
 
@@ -12761,6 +13367,7 @@ export namespace Gdaui {
          * Sets the type of value the GdauiDataEntry will handle. The type must be compatible with what
          * the widget can handle.
          * @param type the {@link GObject.GType} of the data to be displayed
+         * @since 4.2
          */
         set_value_type(type: GObject.GType): void;
 
@@ -12769,6 +13376,7 @@ export namespace Gdaui {
          * 
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
+         * @since 5.2
          */
         validate(): boolean;
     }
@@ -12788,6 +13396,7 @@ export namespace Gdaui {
             // Virtual methods
             /**
              * Get a pointer to the {@link Gda.DataProxy} being used by `iface`
+             * @since 4.2
              * @virtual
              */
             vfunc_get_proxy(): Gda.DataProxy;
@@ -12795,6 +13404,7 @@ export namespace Gdaui {
             /**
              * Get the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
              * the {@link Gda.DataModel} which holds the data displayed in `iface`.
+             * @since 4.2
              * @virtual
              */
             vfunc_get_write_mode(): DataProxyWriteMode;
@@ -12805,6 +13415,7 @@ export namespace Gdaui {
              * if the corresponding action is possible and if the `iface` widget
              * supports the action.
              * @param action a {@link Gdaui.Action} action
+             * @since 4.2
              * @virtual
              */
             vfunc_perform_action(action: Action): void;
@@ -12826,6 +13437,7 @@ export namespace Gdaui {
              * Specifies the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
              * the {@link Gda.DataModel} which holds the data displayed in `iface`.
              * @param mode the requested {@link Gdaui.DataProxyWriteMode} mode
+             * @since 4.2
              * @virtual
              */
             vfunc_set_write_mode(mode: DataProxyWriteMode): boolean;
@@ -12833,6 +13445,7 @@ export namespace Gdaui {
             /**
              * Determines if `action` can be used on `iface` (using `gdaui_data_proxy_perform_action()`).
              * @param action a {@link Gdaui.Action} action
+             * @since 6.0
              * @virtual
              */
             vfunc_supports_action(action: Action): boolean;
@@ -12858,12 +13471,14 @@ export namespace Gdaui {
          * can be edited or not.
          * @param column column number of the data
          * @param editable set to `true` to make the column editable
+         * @since 4.2
          */
         column_set_editable(column: number, editable: boolean): void;
 
         /**
          * Get a pointer to the {@link Gda.DataProxy} being used by `iface`
          * @returns a {@link Gda.DataProxy} pointer
+         * @since 4.2
          */
         get_proxy(): Gda.DataProxy;
 
@@ -12871,6 +13486,7 @@ export namespace Gdaui {
          * Get the way the modifications stored in the {@link Gda.DataProxy} used internally by `iface` are written back to
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @returns the write mode used by `iface`
+         * @since 4.2
          */
         get_write_mode(): DataProxyWriteMode;
 
@@ -12880,6 +13496,7 @@ export namespace Gdaui {
          * if the corresponding action is possible and if the `iface` widget
          * supports the action.
          * @param action a {@link Gdaui.Action} action
+         * @since 4.2
          */
         perform_action(action: Action): void;
 
@@ -12888,6 +13505,7 @@ export namespace Gdaui {
          * the {@link Gda.DataModel} which holds the data displayed in `iface`.
          * @param mode the requested {@link Gdaui.DataProxyWriteMode} mode
          * @returns TRUE if the proposed mode has been taken into account
+         * @since 4.2
          */
         set_write_mode(mode: DataProxyWriteMode): boolean;
 
@@ -12895,6 +13513,7 @@ export namespace Gdaui {
          * Determines if `action` can be used on `iface` (using `gdaui_data_proxy_perform_action()`).
          * @param action a {@link Gdaui.Action} action
          * @returns `true` if the requested action is supported, `false` otherwise
+         * @since 6.0
          */
         supports_action(action: Action): boolean;
     }
@@ -12919,6 +13538,7 @@ export namespace Gdaui {
              * 
              * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
              * returned by the `gdaui_data_selector_get_model()` method.
+             * @since 4.2
              * @virtual
              */
             vfunc_get_data_set(): Gda.DataModelIter;
@@ -12927,6 +13547,7 @@ export namespace Gdaui {
              * Queries the {@link Gda.DataModel} from which the data displayed by the widget implementing `iface`
              * are. Beware that the returned data model may be different than the one used when the
              * widget was created in case it internally uses a {@link Gda.DataProxy}.
+             * @since 4.2
              * @virtual
              */
             vfunc_get_model(): Gda.DataModel;
@@ -12938,6 +13559,7 @@ export namespace Gdaui {
              * at the time it's being called, which may change if the widget implementing this interface
              * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
              * and {@link Gdaui.Grid}).
+             * @since 4.2
              * @virtual
              */
             vfunc_get_selected_rows(): number[];
@@ -12950,6 +13572,7 @@ export namespace Gdaui {
              * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
              * and {@link Gdaui.Grid}).
              * @param row the row to select
+             * @since 4.2
              * @virtual
              */
             vfunc_select_row(row: number): boolean;
@@ -12963,6 +13586,7 @@ export namespace Gdaui {
              * Shows or hides the data at column `column`
              * @param column a column number, starting at %0, or -1 to apply to all the columns
              * @param visible required visibility of the data in the `column` column
+             * @since 4.2
              * @virtual
              */
             vfunc_set_column_visible(column: number, visible: boolean): void;
@@ -12970,6 +13594,7 @@ export namespace Gdaui {
             /**
              * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
              * @param model a {@link Gda.DataModel} to use
+             * @since 4.2
              * @virtual
              */
             vfunc_set_model(model: Gda.DataModel): void;
@@ -12980,6 +13605,7 @@ export namespace Gdaui {
              * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
              * and {@link Gdaui.Grid}).
              * @param row the row to unselect
+             * @since 4.2
              * @virtual
              */
             vfunc_unselect_row(row: number): void;
@@ -13008,6 +13634,7 @@ export namespace Gdaui {
          * Note that the returned {@link Gda.DataModelIter} is actually an iterator iterating on the {@link Gda.DataModel}
          * returned by the `gdaui_data_selector_get_model()` method.
          * @returns a pointer to a {@link Gda.DataModelIter} object, or `null`
+         * @since 4.2
          */
         get_data_set(): Gda.DataModelIter;
 
@@ -13016,6 +13643,7 @@ export namespace Gdaui {
          * are. Beware that the returned data model may be different than the one used when the
          * widget was created in case it internally uses a {@link Gda.DataProxy}.
          * @returns the {@link Gda.DataModel}
+         * @since 4.2
          */
         get_model(): Gda.DataModel;
 
@@ -13027,6 +13655,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @returns an array of `gint` values, one for each selected row. Use `g_array_free()` when finished (passing `true` as the last argument)
+         * @since 4.2
          */
         get_selected_rows(): number[];
 
@@ -13039,6 +13668,7 @@ export namespace Gdaui {
          * and {@link Gdaui.Grid}).
          * @param row the row to select
          * @returns `true` if the row has been selected
+         * @since 4.2
          */
         select_row(row: number): boolean;
 
@@ -13046,12 +13676,14 @@ export namespace Gdaui {
          * Shows or hides the data at column `column`
          * @param column a column number, starting at %0, or -1 to apply to all the columns
          * @param visible required visibility of the data in the `column` column
+         * @since 4.2
          */
         set_column_visible(column: number, visible: boolean): void;
 
         /**
          * Sets the data model from which the data being displayed are. Also see `gdaui_data_selector_get_model()`
          * @param model a {@link Gda.DataModel} to use
+         * @since 4.2
          */
         set_model(model: Gda.DataModel): void;
 
@@ -13061,6 +13693,7 @@ export namespace Gdaui {
          * uses a {@link Gda.DataProxy} (as is the case for example for the {@link Gdaui.RawForm}, {@link Gdaui.Form}, {@link Gdaui.RawGrid}
          * and {@link Gdaui.Grid}).
          * @param row the row to unselect
+         * @since 4.2
          */
         unselect_row(row: number): void;
     }

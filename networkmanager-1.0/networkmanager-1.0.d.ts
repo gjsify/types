@@ -850,6 +850,7 @@ export namespace NetworkManager {
         // Static methods
         /**
          * Registers an error quark for {@link NetworkManager.SettingBridge} if necessary.
+         * @since 0.9.8
          */
         static quark(): GLib.Quark;
     }
@@ -884,6 +885,7 @@ export namespace NetworkManager {
         // Static methods
         /**
          * Registers an error quark for {@link NetworkManager.SettingBridgePort} if necessary.
+         * @since 0.9.8
          */
         static quark(): GLib.Quark;
     }
@@ -1074,6 +1076,7 @@ export namespace NetworkManager {
         // Static methods
         /**
          * Registers an error quark for {@link NetworkManager.SettingDcb} if necessary.
+         * @since 0.9.10
          */
         static quark(): GLib.Quark;
     }
@@ -1221,6 +1224,7 @@ export namespace NetworkManager {
         // Static methods
         /**
          * Registers an error quark for {@link NetworkManager.SettingGeneric} if necessary.
+         * @since 0.9.10
          */
         static quark(): GLib.Quark;
     }
@@ -1790,6 +1794,7 @@ export namespace NetworkManager {
         // Static methods
         /**
          * Registers an error quark for {@link NetworkManager.SettingTeam} if necessary.
+         * @since 0.9.10
          */
         static quark(): GLib.Quark;
     }
@@ -1824,6 +1829,7 @@ export namespace NetworkManager {
         // Static methods
         /**
          * Registers an error quark for {@link NetworkManager.SettingTeamPort} if necessary.
+         * @since 0.9.10
          */
         static quark(): GLib.Quark;
     }
@@ -1932,6 +1938,7 @@ export namespace NetworkManager {
         // Static methods
         /**
          * Registers an error quark for {@link NetworkManager.SettingWimax} if necessary.
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         static quark(): GLib.Quark;
     }
@@ -4326,6 +4333,7 @@ export namespace NetworkManager {
         /**
          * A shortcut to return the type from the connection's {@link NetworkManager.SettingConnection}.
          * @returns the type from the connection's 'connection' setting
+         * @since 0.9.10
          */
         get_connection_type(): string;
 
@@ -4343,6 +4351,7 @@ export namespace NetworkManager {
          * this name is used to match the device. for software devices created by
          * NetworkManager, this is the name of the created interface.
          * @returns Name of the kernel interface or `null`
+         * @since 1.0
          */
         get_interface_name(): string;
 
@@ -4419,12 +4428,14 @@ export namespace NetworkManager {
         /**
          * A shortcut to return any {@link NetworkManager.SettingDcb} the connection might contain.
          * @returns an {@link NetworkManager.SettingDcb} if the connection contains one, otherwise NULL
+         * @since 0.9.10
          */
         get_setting_dcb(): SettingDcb;
 
         /**
          * A shortcut to return any {@link NetworkManager.SettingGeneric} the connection might contain.
          * @returns an {@link NetworkManager.SettingGeneric} if the connection contains one, otherwise NULL
+         * @since 0.9.10
          */
         get_setting_generic(): SettingGeneric;
 
@@ -4479,12 +4490,14 @@ export namespace NetworkManager {
         /**
          * A shortcut to return any {@link NetworkManager.SettingTeam} the connection might contain.
          * @returns an {@link NetworkManager.SettingTeam} if the connection contains one, otherwise `null`
+         * @since 0.9.10
          */
         get_setting_team(): SettingTeam;
 
         /**
          * A shortcut to return any {@link NetworkManager.SettingTeamPort} the connection might contain.
          * @returns an {@link NetworkManager.SettingTeamPort} if the connection contains one, otherwise `null`
+         * @since 0.9.10
          */
         get_setting_team_port(): SettingTeamPort;
 
@@ -4535,6 +4548,7 @@ export namespace NetworkManager {
          * return for the virtual device that would be created for `connection`.
          * Eg, "VLAN (eth1.1)".
          * @returns the name of `connection`'s device,   or `null` if `connection` is not a virtual connection type
+         * @since 0.9.10
          */
         get_virtual_device_description(): string;
 
@@ -4577,6 +4591,7 @@ export namespace NetworkManager {
          * cannot be normalized, the connection will not be modified.
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings, hashed by `g_str_hash()` and `g_str_equal()` functions. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
+         * @since 1.0
          */
         normalize(parameters: { [key: string]: never } | null): [boolean, boolean];
 
@@ -4598,6 +4613,7 @@ export namespace NetworkManager {
          * with the copied settings.
          * @param new_connection a {@link NetworkManager.Connection} to replace the settings of `connection` with
          * @returns `true` if the settings were valid after replacing the connection, `false` if they were not. Regardless of whether `true` or `false` is returned, the connection is successfully replaced. `false` only means, that the connection does not verify at the end of the operation.
+         * @since 0.9.10
          */
         replace_settings_from_connection(new_connection: Connection): boolean;
 
@@ -5762,6 +5778,7 @@ export namespace NetworkManager {
          * Removes the allowed altSubjectName `altsubject_match`.
          * @param altsubject_match the altSubjectName to remove
          * @returns `true` if the alternative subject name match was found and removed,          `false` if it was not.
+         * @since 0.9.10
          */
         remove_altsubject_match_by_value(altsubject_match: string): boolean;
 
@@ -5775,6 +5792,7 @@ export namespace NetworkManager {
          * Removes the allowed EAP method `method`.
          * @param eap the name of the EAP method to remove
          * @returns `true` if the EAP method was founs and removed, `false` if it was not.
+         * @since 0.9.10
          */
         remove_eap_method_by_value(eap: string): boolean;
 
@@ -5788,6 +5806,7 @@ export namespace NetworkManager {
          * Removes the allowed "phase 2" altSubjectName `phase2_altsubject_match`.
          * @param phase2_altsubject_match the "phase 2" altSubjectName to remove
          * @returns `true` if the alternative subject name match for "phase 2" was found and removed,          `false` if it was not.
+         * @since 0.9.10
          */
         remove_phase2_altsubject_match_by_value(phase2_altsubject_match: string): boolean;
 
@@ -6198,6 +6217,7 @@ export namespace NetworkManager {
          * the `name`. If `value` is `null`, the function only validates the option name.
          * @param name the name of the option to validate
          * @param value the value of the option to validate
+         * @since 0.9.10
          */
         static validate_option(name: string, value: string): boolean;
 
@@ -6425,41 +6445,49 @@ export namespace NetworkManager {
         // Methods
         /**
          * @returns the {@link NetworkManager.SettingBridge.ageing_time} property of the setting
+         * @since 0.9.8
          */
         get_ageing_time(): number;
 
         /**
          * @returns the {@link NetworkManager.SettingBridge.forward_delay} property of the setting
+         * @since 0.9.8
          */
         get_forward_delay(): number;
 
         /**
          * @returns the {@link NetworkManager.SettingBridge.hello_time} property of the setting
+         * @since 0.9.8
          */
         get_hello_time(): number;
 
         /**
          * @returns the {@link NetworkManager.SettingBridge.interface_name} property of the setting
+         * @since 0.9.8
          */
         get_interface_name(): string;
 
         /**
          * @returns the {@link NetworkManager.SettingBridge.mac_address} property of the setting
+         * @since 0.9.10
          */
         get_mac_address(): Uint8Array;
 
         /**
          * @returns the {@link NetworkManager.SettingBridge.max_age} property of the setting
+         * @since 0.9.8
          */
         get_max_age(): number;
 
         /**
          * @returns the {@link NetworkManager.SettingBridge.priority} property of the setting
+         * @since 0.9.8
          */
         get_priority(): number;
 
         /**
          * @returns the {@link NetworkManager.SettingBridge.stp} property of the setting
+         * @since 0.9.8
          */
         get_stp(): boolean;
     }
@@ -6562,16 +6590,19 @@ export namespace NetworkManager {
         // Methods
         /**
          * @returns the {@link NetworkManager.SettingBridgePort.hairpin_mode} property of the setting
+         * @since 0.9.8
          */
         get_hairpin_mode(): boolean;
 
         /**
          * @returns the {@link NetworkManager.SettingBridgePort.path_cost} property of the setting
+         * @since 0.9.8
          */
         get_path_cost(): number;
 
         /**
          * @returns the {@link NetworkManager.SettingBridgePort.priority} property of the setting
+         * @since 0.9.8
          */
         get_priority(): number;
     }
@@ -6935,6 +6966,7 @@ export namespace NetworkManager {
          * Adds a new secondary connection UUID to the setting.
          * @param sec_uuid the secondary connection UUID to add
          * @returns `true` if the secondary connection UUID was added; `false` if the UUID was already present
+         * @since 0.9.8
          */
         add_secondary(sec_uuid: string): boolean;
 
@@ -6952,6 +6984,7 @@ export namespace NetworkManager {
 
         /**
          * @returns the value contained in the {@link NetworkManager.SettingConnection.gateway_ping_timeout} property.
+         * @since 0.9.10
          */
         get_gateway_ping_timeout(): number;
 
@@ -6964,6 +6997,7 @@ export namespace NetworkManager {
         /**
          * Returns the {@link NetworkManager.SettingConnection.interface_name} property of the connection.
          * @returns the connection's interface name
+         * @since 0.9.10
          */
         get_interface_name(): string;
 
@@ -6982,6 +7016,7 @@ export namespace NetworkManager {
 
         /**
          * @returns the number of configured secondary connection UUIDs
+         * @since 0.9.8
          */
         get_num_secondaries(): number;
 
@@ -7005,6 +7040,7 @@ export namespace NetworkManager {
         /**
          * @param idx the zero-based index of the secondary connection UUID entry
          * @returns the secondary connection UUID at index `idx`
+         * @since 0.9.8
          */
         get_secondary(idx: number): string;
 
@@ -7059,12 +7095,14 @@ export namespace NetworkManager {
          * @param pitem the permission item formatted as required for `ptype`
          * @param detail unused at this time; must be `null`
          * @returns `true` if the permission was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_permission_by_value(ptype: string, pitem: string, detail: string | null): boolean;
 
         /**
          * Removes the secondary coonnection UUID at index `idx`.
          * @param idx index number of the secondary connection UUID
+         * @since 0.9.8
          */
         remove_secondary(idx: number): void;
 
@@ -7072,6 +7110,7 @@ export namespace NetworkManager {
          * Removes the secondary coonnection UUID `sec_uuid`.
          * @param sec_uuid the secondary connection UUID to remove
          * @returns `true` if the secondary connection UUID was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_secondary_by_value(sec_uuid: string): boolean;
     }
@@ -7314,82 +7353,97 @@ export namespace NetworkManager {
         // Methods
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_fcoe_flags} property of the setting
+         * @since 0.9.10
          */
         get_app_fcoe_flags(): SettingDcbFlags;
 
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_fcoe_mode} property of the setting
+         * @since 0.9.10
          */
         get_app_fcoe_mode(): string;
 
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_fcoe_priority} property of the setting
+         * @since 0.9.10
          */
         get_app_fcoe_priority(): number;
 
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_fip_flags} property of the setting
+         * @since 0.9.10
          */
         get_app_fip_flags(): SettingDcbFlags;
 
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_fip_priority} property of the setting
+         * @since 0.9.10
          */
         get_app_fip_priority(): number;
 
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_iscsi_flags} property of the setting
+         * @since 0.9.10
          */
         get_app_iscsi_flags(): SettingDcbFlags;
 
         /**
          * @returns the {@link NetworkManager.SettingDcb.app_iscsi_priority} property of the setting
+         * @since 0.9.10
          */
         get_app_iscsi_priority(): number;
 
         /**
          * @param user_priority the User Priority (0 - 7) to retrieve the group bandwidth percentage for
          * @returns the allowed bandwidth percentage of `user_priority` in its priority group. These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         * @since 0.9.10
          */
         get_priority_bandwidth(user_priority: number): number;
 
         /**
          * @param user_priority the User Priority (0 - 7) to retrieve flow control for
          * @returns `true` if flow control is enabled for the given `user_priority`, `false` if not enabled
+         * @since 0.9.10
          */
         get_priority_flow_control(user_priority: number): boolean;
 
         /**
          * @returns the {@link NetworkManager.SettingDcb.priority_flow_control_flags} property of the setting
+         * @since 0.9.10
          */
         get_priority_flow_control_flags(): SettingDcbFlags;
 
         /**
          * @param group_id the priority group (0 - 7) to retrieve the bandwidth percentage for
          * @returns the bandwidth percentage assigned to `group_id`.  These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         * @since 0.9.10
          */
         get_priority_group_bandwidth(group_id: number): number;
 
         /**
          * @returns the {@link NetworkManager.SettingDcb.priority_group_flags} property of the setting
+         * @since 0.9.10
          */
         get_priority_group_flags(): SettingDcbFlags;
 
         /**
          * @param user_priority the User Priority (0 - 7) to retrieve the group ID for
          * @returns the group number `user_priority` is assigned to.  These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         * @since 0.9.10
          */
         get_priority_group_id(user_priority: number): number;
 
         /**
          * @param user_priority the User Priority (0 - 7) to retrieve strict bandwidth for
          * @returns `true` if `user_priority` may use all of the bandwidth allocated to its assigned group, or `false` if not. These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         * @since 0.9.10
          */
         get_priority_strict_bandwidth(user_priority: number): boolean;
 
         /**
          * @param user_priority the User Priority (0 - 7) to retrieve the traffic class for
          * @returns the traffic class assigned to `user_priority`. These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         * @since 0.9.10
          */
         get_priority_traffic_class(user_priority: number): number;
 
@@ -7398,6 +7452,7 @@ export namespace NetworkManager {
          * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          * @param user_priority the User Priority (0 - 7) to set the bandwidth percentage for
          * @param bandwidth_percent the bandwidth percentage (0 - 100) that `user_priority` is allowed to use within its priority group
+         * @since 0.9.10
          */
         set_priority_bandwidth(user_priority: number, bandwidth_percent: number): void;
 
@@ -7406,6 +7461,7 @@ export namespace NetworkManager {
          * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          * @param user_priority the User Priority (0 - 7) to set flow control for
          * @param enabled `true` to enable flow control for this priority, `false` to disable it
+         * @since 0.9.10
          */
         set_priority_flow_control(user_priority: number, enabled: boolean): void;
 
@@ -7414,6 +7470,7 @@ export namespace NetworkManager {
          * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          * @param group_id the priority group (0 - 7) to set the bandwidth percentage for
          * @param bandwidth_percent the bandwidth percentage (0 - 100) to assign to `group_id` to
+         * @since 0.9.10
          */
         set_priority_group_bandwidth(group_id: number, bandwidth_percent: number): void;
 
@@ -7422,6 +7479,7 @@ export namespace NetworkManager {
          * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          * @param user_priority the User Priority (0 - 7) to set flow control for
          * @param group_id the group (0 - 7) to assign `user_priority` to, or 15 for the unrestricted group.
+         * @since 0.9.10
          */
         set_priority_group_id(user_priority: number, group_id: number): void;
 
@@ -7430,6 +7488,7 @@ export namespace NetworkManager {
          * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          * @param user_priority the User Priority (0 - 7) to set strict bandwidth for
          * @param strict `true` to allow `user_priority` to use all the bandwidth allocated to its priority group, or `false` if not
+         * @since 0.9.10
          */
         set_priority_strict_bandwidth(user_priority: number, strict: boolean): void;
 
@@ -7717,6 +7776,7 @@ export namespace NetworkManager {
         // Methods
         /**
          * @returns the {@link NetworkManager.SettingGsm.allowed_bands} property of the setting
+         * @deprecated since 0.9.10: No longer used. Bands setting should be done talking to ModemManager directly.
          */
         get_allowed_bands(): number;
 
@@ -7737,6 +7797,7 @@ export namespace NetworkManager {
 
         /**
          * @returns the {@link NetworkManager.SettingGsm.network_type} property of the setting
+         * @deprecated since 0.9.10: No longer used. Network type setting should be done talking to ModemManager directly.
          */
         get_network_type(): number;
 
@@ -8187,6 +8248,7 @@ export namespace NetworkManager {
          * Returns the value contained in the {@link NetworkManager.SettingIP4Config.route_metric}
          * property.
          * @returns the route metric that is used for IPv4 routes that don't explicitly specify a metric. See {@link NetworkManager.SettingIP4Config.route_metric} for more details.
+         * @since 1.0
          */
         get_route_metric(): number;
 
@@ -8200,6 +8262,7 @@ export namespace NetworkManager {
          * Removes the address `address`.
          * @param address the IP address to remove
          * @returns `true` if the address was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_address_by_value(address: IP4Address): boolean;
 
@@ -8213,6 +8276,7 @@ export namespace NetworkManager {
          * Removes the DNS server `dns`.
          * @param dns the DNS server to remove
          * @returns `true` if the DNS server was found and removed; `false` if it was not. domain was already known
+         * @since 0.9.10
          */
         remove_dns_by_value(dns: number): boolean;
 
@@ -8239,6 +8303,7 @@ export namespace NetworkManager {
          * Removes the route `route`.
          * @param route the route to remove
          * @returns `true` if the route was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_route_by_value(route: IP4Route): boolean;
     }
@@ -8532,6 +8597,7 @@ export namespace NetworkManager {
          * Returns the value contained in the {@link NetworkManager.SettingIP6Config.dhcp_hostname}
          * property.
          * @returns the configured hostname to send to the DHCP server
+         * @since 0.9.8
          */
         get_dhcp_hostname(): string;
 
@@ -8617,6 +8683,7 @@ export namespace NetworkManager {
          * Returns the value contained in the {@link NetworkManager.SettingIP6Config.route_metric}
          * property.
          * @returns the route metric that is used for IPv6 routes that don't explicitly specify a metric. See {@link NetworkManager.SettingIP6Config.route_metric} for more details.
+         * @since 1.0
          */
         get_route_metric(): number;
 
@@ -8630,6 +8697,7 @@ export namespace NetworkManager {
          * Removes the address `address`.
          * @param address the address to remove
          * @returns `true` if the address was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_address_by_value(address: IP6Address): boolean;
 
@@ -8643,6 +8711,7 @@ export namespace NetworkManager {
          * Removes the DNS server at index `i`.
          * @param dns the IPv6 address of the DNS server to remove
          * @returns `true` if the DNS server was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_dns_by_value(dns: null): boolean;
 
@@ -8669,6 +8738,7 @@ export namespace NetworkManager {
          * Removes the route `route`.
          * @param route the route to remove
          * @returns `true` if the route was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_route_by_value(route: IP6Route): boolean;
     }
@@ -9586,11 +9656,13 @@ export namespace NetworkManager {
         // Methods
         /**
          * @returns the {@link NetworkManager.SettingTeam.config} property of the setting
+         * @since 0.9.10
          */
         get_config(): string;
 
         /**
          * @returns the {@link NetworkManager.SettingTeam.interface_name} property of the setting
+         * @since 0.9.10
          */
         get_interface_name(): string;
     }
@@ -9657,6 +9729,7 @@ export namespace NetworkManager {
         // Methods
         /**
          * @returns the {@link NetworkManager.SettingTeamPort.config} property of the setting
+         * @since 0.9.10
          */
         get_config(): string;
     }
@@ -10054,6 +10127,7 @@ export namespace NetworkManager {
          * @param from the priority to map to `to`
          * @param to the priority to map `from` to
          * @returns `true` if the priority mapping was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_priority_by_value(map: VlanPriorityMap, from: number, to: number): boolean;
 
@@ -10064,6 +10138,7 @@ export namespace NetworkManager {
          * @param map the type of priority map
          * @param str the string which contains a priority map, like "3:7"
          * @returns `true` if the priority mapping was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_priority_str_by_value(map: VlanPriorityMap, str: string): boolean;
     }
@@ -10140,6 +10215,7 @@ export namespace NetworkManager {
          * Returns the MAC address of a WiMAX device which this connection is locked
          * to.
          * @returns the MAC address
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_mac_address(): Uint8Array;
 
@@ -10147,6 +10223,7 @@ export namespace NetworkManager {
          * Returns the WiMAX NSP name (ex "Sprint" or "CLEAR") which identifies the
          * specific WiMAX network this setting describes a connection to.
          * @returns the WiMAX NSP name
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_network_name(): string;
     }
@@ -10278,6 +10355,7 @@ export namespace NetworkManager {
          * Adds a new MAC address to the {@link NetworkManager.SettingWired.mac_address_blacklist} property.
          * @param mac the MAC address string (hex-digits-and-colons notation) to blacklist
          * @returns `true` if the MAC address was added; `false` if the MAC address is invalid or was already present
+         * @since 0.9.10
          */
         add_mac_blacklist_item(mac: string): boolean;
 
@@ -10294,6 +10372,7 @@ export namespace NetworkManager {
 
         /**
          * Removes all blacklisted MAC addresses.
+         * @since 0.9.10
          */
         clear_mac_blacklist_items(): void;
 
@@ -10325,6 +10404,7 @@ export namespace NetworkManager {
         /**
          * @param idx the zero-based index of the MAC address entry
          * @returns the blacklisted MAC address string (hex-digits-and-colons notation) at index `idx`
+         * @since 0.9.10
          */
         get_mac_blacklist_item(idx: number): string;
 
@@ -10335,6 +10415,7 @@ export namespace NetworkManager {
 
         /**
          * @returns the number of blacklisted MAC addresses
+         * @since 0.9.10
          */
         get_num_mac_blacklist_items(): number;
 
@@ -10393,12 +10474,14 @@ export namespace NetworkManager {
         /**
          * Returns a list of valid s390 options.
          * @returns a `null`-terminated array of strings of valid s390 options.
+         * @since 0.9.10
          */
         get_valid_s390_options(): string[];
 
         /**
          * Removes the MAC address at index `idx` from the blacklist.
          * @param idx index number of the MAC address
+         * @since 0.9.10
          */
         remove_mac_blacklist_item(idx: number): void;
 
@@ -10406,6 +10489,7 @@ export namespace NetworkManager {
          * Removes the MAC address `mac` from the blacklist.
          * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the blacklist
          * @returns `true` if the MAC address was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_mac_blacklist_item_by_value(mac: string): boolean;
 
@@ -10579,6 +10663,7 @@ export namespace NetworkManager {
          * Adds a new MAC address to the {@link NetworkManager.SettingWireless.mac_address_blacklist} property.
          * @param mac the MAC address string (hex-digits-and-colons notation) to blacklist
          * @returns `true` if the MAC address was added; `false` if the MAC address is invalid or was already present
+         * @since 0.9.10
          */
         add_mac_blacklist_item(mac: string): boolean;
 
@@ -10610,6 +10695,7 @@ export namespace NetworkManager {
 
         /**
          * Removes all blacklisted MAC addresses.
+         * @since 0.9.10
          */
         clear_mac_blacklist_items(): void;
 
@@ -10651,6 +10737,7 @@ export namespace NetworkManager {
         /**
          * @param idx the zero-based index of the MAC address entry
          * @returns the blacklisted MAC address string (hex-digits-and-colons notation) at index `idx`
+         * @since 0.9.10
          */
         get_mac_blacklist_item(idx: number): string;
 
@@ -10666,6 +10753,7 @@ export namespace NetworkManager {
 
         /**
          * @returns the number of blacklisted MAC addresses
+         * @since 0.9.10
          */
         get_num_mac_blacklist_items(): number;
 
@@ -10676,6 +10764,7 @@ export namespace NetworkManager {
 
         /**
          * @returns the {@link NetworkManager.SettingWireless.powersave} property of the setting
+         * @since 1.2
          */
         get_powersave(): number;
 
@@ -10686,6 +10775,7 @@ export namespace NetworkManager {
 
         /**
          * @returns the {@link NetworkManager.SettingWireless.security} property of the setting
+         * @deprecated since 0.9.10: No longer used. Security rescrictions are recognized by the presence of NM_SETTING_WIRELESS_SECURITY_SETTING_NAME in the connection.
          */
         get_security(): string;
 
@@ -10708,6 +10798,7 @@ export namespace NetworkManager {
         /**
          * Removes the MAC address at index `idx` from the blacklist.
          * @param idx index number of the MAC address
+         * @since 0.9.10
          */
         remove_mac_blacklist_item(idx: number): void;
 
@@ -10715,6 +10806,7 @@ export namespace NetworkManager {
          * Removes the MAC address `mac` from the blacklist.
          * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the blacklist
          * @returns `true` if the MAC address was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_mac_blacklist_item_by_value(mac: string): boolean;
     }
@@ -11181,6 +11273,7 @@ export namespace NetworkManager {
          * algorithm list.
          * @param group the encryption algorithm to remove, one of "wep40", "wep104", "tkip", or "ccmp"
          * @returns `true` if the algorithm was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_group_by_value(group: string): boolean;
 
@@ -11196,6 +11289,7 @@ export namespace NetworkManager {
          * algorithm list.
          * @param pairwise the encryption algorithm to remove, one of "tkip" or "ccmp"
          * @returns `true` if the encryption algorithm was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_pairwise_by_value(pairwise: string): boolean;
 
@@ -11209,6 +11303,7 @@ export namespace NetworkManager {
          * Removes a protocol from the allowed protocol list.
          * @param proto the protocol to remove, one of "wpa" or "rsn"
          * @returns `true` if the protocol was found and removed; `false` if it was not.
+         * @since 0.9.10
          */
         remove_proto_by_value(proto: string): boolean;
 

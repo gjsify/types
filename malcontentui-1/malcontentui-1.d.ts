@@ -206,6 +206,7 @@ export namespace MalcontentUi {
          * Typically this will be called in the handler for
          * `Gtk.Dialog::response`.
          * @param builder an existing {@link Malcontent.AppFilterBuilder} to modify
+         * @since 0.5.0
          */
         build_app_filter(builder: Malcontent.AppFilterBuilder): void;
 
@@ -216,6 +217,7 @@ export namespace MalcontentUi {
          * If the property was originally set to `NULL`, this will be the empty app
          * filter.
          * @returns the initial app filter used to   populate the dialog
+         * @since 0.5.0
          */
         get_app_filter(): Malcontent.AppFilter;
 
@@ -223,6 +225,7 @@ export namespace MalcontentUi {
          * Get the value of
          * {@link MalcontentUi.RestrictApplicationsDialog.user_display_name}.
          * @returns the display name of the user the dialog   is configured for, or `NULL` if unknown
+         * @since 0.5.0
          */
         get_user_display_name(): string | null;
 
@@ -230,6 +233,7 @@ export namespace MalcontentUi {
          * Set the value of
          * {@link MalcontentUi.RestrictApplicationsDialog.app_filter}.
          * @param app_filter the app filter to configure the   dialog from, or `NULL` to use an empty app filter
+         * @since 0.5.0
          */
         set_app_filter(app_filter: Malcontent.AppFilter | null): void;
 
@@ -237,6 +241,7 @@ export namespace MalcontentUi {
          * Set the value of
          * {@link MalcontentUi.RestrictApplicationsDialog.user_display_name}.
          * @param user_display_name the display name of the user   to configure the dialog for, or `NULL` if unknown
+         * @since 0.5.0
          */
         set_user_display_name(user_display_name: string | null): void;
     }
@@ -395,6 +400,7 @@ export namespace MalcontentUi {
          * Get the app filter settings currently configured in the selector, by modifying
          * the given `builder`.
          * @param builder an existing {@link Malcontent.AppFilterBuilder} to modify
+         * @since 0.5.0
          */
         build_app_filter(builder: Malcontent.AppFilterBuilder): void;
 
@@ -405,12 +411,14 @@ export namespace MalcontentUi {
          * If the property was originally set to `NULL`, this will be the empty app
          * filter.
          * @returns the initial app filter used to   populate the selector
+         * @since 0.5.0
          */
         get_app_filter(): Malcontent.AppFilter;
 
         /**
          * Get the value of {@link MalcontentUi.RestrictApplicationsSelector.search}.
          * @returns current search terms, or `NULL` if no search filtering   is active
+         * @since 0.12.0
          */
         get_search(): string | null;
 
@@ -423,6 +431,7 @@ export namespace MalcontentUi {
          * {@link MalcontentUi.RestrictApplicationsSelector.build_app_filter} if
          * desired.
          * @param app_filter the app filter to configure the   selector from, or `NULL` to use an empty app filter
+         * @since 0.5.0
          */
         set_app_filter(app_filter: Malcontent.AppFilter | null): void;
 
@@ -430,6 +439,7 @@ export namespace MalcontentUi {
          * Set the value of {@link MalcontentUi.RestrictApplicationsSelector.search},
          * or clear it to `NULL`.
          * @param search search terms, or `NULL` to not filter the app list
+         * @since 0.12.0
          */
         set_search(search: string | null): void;
 
@@ -746,6 +756,7 @@ export namespace MalcontentUi {
          * 
          * This can be used to save the settings manually.
          * @param builder an existing {@link Malcontent.AppFilterBuilder} to modify
+         * @since 0.5.0
          */
         build_app_filter(builder: Malcontent.AppFilterBuilder): void;
 
@@ -755,36 +766,42 @@ export namespace MalcontentUi {
          * If the app filter is unknown or could not be retrieved from
          * {@link MalcontentUi.UserControls.user}, this will be `NULL`.
          * @returns the initial app filter used to   populate the user controls, or `NULL` if unknown
+         * @since 0.5.0
          */
         get_app_filter(): Malcontent.AppFilter | null;
 
         /**
          * Get the value of {@link MalcontentUi.UserControls.permission}.
          * @returns a {@link Gio.Permission} indicating   whether the current user has permission to view or change parental   controls, or `NULL` if permission is not allowed or is unknown
+         * @since 0.5.0
          */
         get_permission(): Gio.Permission | null;
 
         /**
          * Get the value of {@link MalcontentUi.UserControls.user}.
          * @returns the user the controls are configured for,   or `NULL` if unknown
+         * @since 0.14.0
          */
         get_user(): Malcontent.User | null;
 
         /**
          * Get the value of {@link MalcontentUi.UserControls.user_account_type}.
          * @returns the account type of the user the controls are configured for
+         * @since 0.14.0
          */
         get_user_account_type(): Malcontent.UserType;
 
         /**
          * Get the value of {@link MalcontentUi.UserControls.user_display_name}.
          * @returns the display name of the user the   controls are configured for, or `NULL` if unknown
+         * @since 0.5.0
          */
         get_user_display_name(): string | null;
 
         /**
          * Get the value of {@link MalcontentUi.UserControls.user_locale}.
          * @returns the locale of the user the controls   are configured for, or `NULL` if unknown
+         * @since 0.5.0
          */
         get_user_locale(): string | null;
 
@@ -796,42 +813,49 @@ export namespace MalcontentUi {
          * They will be saved automatically if {@link MalcontentUi.UserControls.user}
          * is set.
          * @param app_filter the app filter to configure the user   controls from, or `NULL` if unknown
+         * @since 0.5.0
          */
         set_app_filter(app_filter: Malcontent.AppFilter | null): void;
 
         /**
          * Set the value of {@link MalcontentUi.UserControls.description}.
          * @param description the description shown   above the controls, or `NULL` if none.
+         * @since 0.11.0
          */
         set_description(description: string | null): void;
 
         /**
          * Set the value of {@link MalcontentUi.UserControls.permission}.
          * @param permission the {@link Gio.Permission} indicating   whether the current user has permission to view or change parental   controls, or `NULL` if permission is not allowed or is unknown
+         * @since 0.5.0
          */
         set_permission(permission: Gio.Permission | null): void;
 
         /**
          * Set the value of {@link MalcontentUi.UserControls.user}.
          * @param user the user to configure the controls for,   or `NULL` if unknown
+         * @since 0.14.0
          */
         set_user(user: Malcontent.User | null): void;
 
         /**
          * Set the value of {@link MalcontentUi.UserControls.user_account_type}.
          * @param user_account_type the account type of the user to configure the controls for
+         * @since 0.14.0
          */
         set_user_account_type(user_account_type: Malcontent.UserType): void;
 
         /**
          * Set the value of {@link MalcontentUi.UserControls.user_display_name}.
          * @param user_display_name the display name of the user   to configure the controls for, or `NULL` if unknown
+         * @since 0.5.0
          */
         set_user_display_name(user_display_name: string | null): void;
 
         /**
          * Set the value of {@link MalcontentUi.UserControls.user_locale}.
          * @param user_locale the locale of the user   to configure the controls for, or `NULL` if unknown
+         * @since 0.5.0
          */
         set_user_locale(user_locale: string | null): void;
     }

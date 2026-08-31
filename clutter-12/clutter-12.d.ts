@@ -13043,6 +13043,7 @@ export namespace Clutter {
          * This function does not realize child actors, except in the special
          * case that realizing the stage, when the stage is visible, will
          * suddenly map (and thus realize) the children of the stage.
+         * @deprecated since 1.16: Actors are automatically realized, and nothing   requires explicit realization.
          * @virtual
          */
         vfunc_realize(): void;
@@ -13123,6 +13124,7 @@ export namespace Clutter {
          * If you were using `clutter_actor_unrealize()` to implement
          * unrealizing children of your container, then don't, ClutterActor
          * will already take care of that.
+         * @deprecated since 1.16: Actors are automatically unrealized, and nothing   requires explicit realization.
          * @virtual
          */
         vfunc_unrealize(): void;
@@ -14658,6 +14660,7 @@ export namespace Clutter {
          * This function does not realize child actors, except in the special
          * case that realizing the stage, when the stage is visible, will
          * suddenly map (and thus realize) the children of the stage.
+         * @deprecated since 1.16: Actors are automatically realized, and nothing   requires explicit realization.
          */
         realize(): void;
 
@@ -15422,6 +15425,7 @@ export namespace Clutter {
          * If you were using `clutter_actor_unrealize()` to implement
          * unrealizing children of your container, then don't, ClutterActor
          * will already take care of that.
+         * @deprecated since 1.16: Actors are automatically unrealized, and nothing   requires explicit realization.
          */
         unrealize(): void;
 
@@ -15533,6 +15537,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Actor): void;
 
@@ -15668,6 +15673,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Actor): void;
 
@@ -15713,6 +15719,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Actor): void;
@@ -15809,6 +15816,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Actor): void;
@@ -17218,6 +17226,7 @@ export namespace Clutter {
 
         /**
          * @returns The value of the :pack-start property,   always `false`
+         * @deprecated No longer has any effect
          */
         get_pack_start(): boolean;
 
@@ -17242,6 +17251,7 @@ export namespace Clutter {
 
         /**
          * @param pack_start `true` if the `layout` should pack children at the   beginning of the layout
+         * @deprecated No longer has any effect
          */
         set_pack_start(pack_start: boolean): void;
 
@@ -18264,6 +18274,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: A): void;
 
@@ -18351,6 +18362,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: A): void;
 
@@ -18376,6 +18388,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: A): void;
@@ -18437,6 +18450,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: A): void;
@@ -20165,6 +20179,7 @@ export namespace Clutter {
          * Retrieves the edge trigger of the gesture `action`, as set using
          * {@link GestureAction.set_threshold_trigger_edge}.
          * @returns the edge trigger
+         * @deprecated since 1.20: Use {@link GestureAction.get_threshold_trigger_edge} instead.
          */
         get_threshold_trigger_egde(): GestureTriggerEdge;
 
@@ -24416,6 +24431,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: A): void;
 
@@ -24503,6 +24519,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: A): void;
 
@@ -24528,6 +24545,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: A): void;
@@ -24589,6 +24607,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: A): void;
@@ -26294,6 +26313,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: A): void;
 
@@ -26381,6 +26401,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: A): void;
 
@@ -26406,6 +26427,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: A): void;
@@ -26467,6 +26489,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: A): void;
@@ -28452,6 +28475,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: A): void;
 
@@ -28539,6 +28563,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: A): void;
 
@@ -28564,6 +28589,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: A): void;
@@ -28625,6 +28651,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: A): void;
@@ -33854,6 +33881,7 @@ export namespace Clutter {
              * deprecated virtual function. The default implementation will
              * call `clutter_actor_add_child()`.
              * @param actor the first {@link Clutter.Actor} to add
+             * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
              * @virtual
              */
             vfunc_add(actor: A): void;
@@ -33915,6 +33943,7 @@ export namespace Clutter {
              * deprecated virtual function. The default implementation will call
              * `clutter_actor_remove_child()`.
              * @param actor a {@link Clutter.Actor}
+             * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
              * @virtual
              */
             vfunc_remove(actor: A): void;
@@ -33962,6 +33991,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: A): void;
 
@@ -34049,6 +34079,7 @@ export namespace Clutter {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: A): void;
     }

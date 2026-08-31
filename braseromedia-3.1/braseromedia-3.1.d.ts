@@ -678,12 +678,14 @@ export namespace BraseroMedia {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          */
         add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -691,6 +693,7 @@ export namespace BraseroMedia {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          */
         clear_attributes(cell: Gtk.CellRenderer): void;
 
@@ -699,12 +702,14 @@ export namespace BraseroMedia {
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
+         * @since 3.0
          */
         get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with `g_list_free()`     when no longer needed.
+         * @since 2.12
          */
         get_cells(): Gtk.CellRenderer[];
 
@@ -716,6 +721,7 @@ export namespace BraseroMedia {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -727,6 +733,7 @@ export namespace BraseroMedia {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -737,6 +744,7 @@ export namespace BraseroMedia {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          */
         reorder(cell: Gtk.CellRenderer, position: number): void;
 
@@ -750,6 +758,7 @@ export namespace BraseroMedia {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          */
         set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
@@ -763,6 +772,7 @@ export namespace BraseroMedia {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
@@ -770,6 +780,7 @@ export namespace BraseroMedia {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -778,6 +789,7 @@ export namespace BraseroMedia {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: Gtk.CellRenderer): void;
@@ -786,12 +798,14 @@ export namespace BraseroMedia {
          * Returns the underlying {@link Gtk.CellArea} which might be `cell_layout`
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): Gtk.CellRenderer[];
@@ -804,6 +818,7 @@ export namespace BraseroMedia {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -816,6 +831,7 @@ export namespace BraseroMedia {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -827,6 +843,7 @@ export namespace BraseroMedia {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: Gtk.CellRenderer, position: number): void;
@@ -841,6 +858,7 @@ export namespace BraseroMedia {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
@@ -867,6 +885,7 @@ export namespace BraseroMedia {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -876,6 +895,7 @@ export namespace BraseroMedia {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -1473,12 +1493,14 @@ export namespace BraseroMedia {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          */
         add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -1486,6 +1508,7 @@ export namespace BraseroMedia {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          */
         clear_attributes(cell: Gtk.CellRenderer): void;
 
@@ -1494,12 +1517,14 @@ export namespace BraseroMedia {
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
+         * @since 3.0
          */
         get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with `g_list_free()`     when no longer needed.
+         * @since 2.12
          */
         get_cells(): Gtk.CellRenderer[];
 
@@ -1511,6 +1536,7 @@ export namespace BraseroMedia {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -1522,6 +1548,7 @@ export namespace BraseroMedia {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -1532,6 +1559,7 @@ export namespace BraseroMedia {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          */
         reorder(cell: Gtk.CellRenderer, position: number): void;
 
@@ -1545,6 +1573,7 @@ export namespace BraseroMedia {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          */
         set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
@@ -1558,6 +1587,7 @@ export namespace BraseroMedia {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
@@ -1565,6 +1595,7 @@ export namespace BraseroMedia {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -1573,6 +1604,7 @@ export namespace BraseroMedia {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: Gtk.CellRenderer): void;
@@ -1581,12 +1613,14 @@ export namespace BraseroMedia {
          * Returns the underlying {@link Gtk.CellArea} which might be `cell_layout`
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): Gtk.CellRenderer[];
@@ -1599,6 +1633,7 @@ export namespace BraseroMedia {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -1611,6 +1646,7 @@ export namespace BraseroMedia {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -1622,6 +1658,7 @@ export namespace BraseroMedia {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: Gtk.CellRenderer, position: number): void;
@@ -1636,6 +1673,7 @@ export namespace BraseroMedia {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
@@ -1662,6 +1700,7 @@ export namespace BraseroMedia {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -1671,6 +1710,7 @@ export namespace BraseroMedia {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }

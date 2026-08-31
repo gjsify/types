@@ -1,6 +1,6 @@
 {
     "name": "@girs/babl-0.1",
-    "version": "4.3.0",
+    "version": "4.4.0",
     "libraryVersion": "0.1.128",
     "description": "GJS TypeScript type definitions for Babl-0.1, generated from library version 0.1.128",
     "type": "module",
@@ -32,8 +32,8 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.3.0",
-      "@girs/gobject-2.0": "^4.3.0"    },
+      "@girs/gjs": "^4.4.0",
+      "@girs/gobject-2.0": "^4.4.0"    },
     "devDependencies": {
       "typescript": "*"
     },

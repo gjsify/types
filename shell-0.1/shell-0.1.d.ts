@@ -1749,6 +1749,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: A): void;
 
@@ -1836,6 +1837,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: A): void;
 
@@ -1861,6 +1863,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: A): void;
@@ -1922,6 +1925,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: A): void;
@@ -3010,6 +3014,7 @@ export namespace Shell {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3053,6 +3058,7 @@ export namespace Shell {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3096,6 +3102,7 @@ export namespace Shell {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3104,6 +3111,7 @@ export namespace Shell {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3112,6 +3120,7 @@ export namespace Shell {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): NetworkAgent;
 
@@ -3155,6 +3164,7 @@ export namespace Shell {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3163,6 +3173,7 @@ export namespace Shell {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -3208,6 +3219,7 @@ export namespace Shell {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3251,6 +3263,7 @@ export namespace Shell {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -3930,6 +3943,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: A): void;
 
@@ -4017,6 +4031,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: A): void;
 
@@ -4042,6 +4057,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: A): void;
@@ -4103,6 +4119,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: A): void;
@@ -4241,6 +4258,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: A): void;
 
@@ -4328,6 +4346,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: A): void;
 
@@ -4353,6 +4372,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: A): void;
@@ -4414,6 +4434,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: A): void;
@@ -4590,6 +4611,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: A): void;
 
@@ -4677,6 +4699,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: A): void;
 
@@ -4702,6 +4725,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: A): void;
@@ -4763,6 +4787,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: A): void;
@@ -5161,6 +5186,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: A): void;
 
@@ -5248,6 +5274,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: A): void;
 
@@ -5273,6 +5300,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: A): void;
@@ -5334,6 +5362,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: A): void;
@@ -5672,6 +5701,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: A): void;
 
@@ -5759,6 +5789,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: A): void;
 
@@ -5784,6 +5815,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: A): void;
@@ -5845,6 +5877,7 @@ export namespace Shell {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: A): void;

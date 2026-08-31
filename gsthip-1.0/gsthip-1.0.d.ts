@@ -197,6 +197,7 @@ export namespace GstHip {
         /**
          * Controls the active state of `allocator`.
          * @param active the new active state
+         * @since 1.28
          * @virtual
          */
         vfunc_set_active(active: boolean): boolean;
@@ -207,6 +208,7 @@ export namespace GstHip {
          * @param device a {@link GstHip.HipDevice}
          * @param info a {@link GstVideo.VideoInfo}
          * @returns a newly allocated {@link GstHip.HipMemory} or `null` if allocation failed
+         * @since 1.28
          */
         alloc(device: HipDevice, info: GstVideo.VideoInfo): Gst.Memory | null;
 
@@ -220,6 +222,7 @@ export namespace GstHip {
          * Controls the active state of `allocator`.
          * @param active the new active state
          * @returns `true` if active state of `allocator` was successfully updated.
+         * @since 1.28
          */
         set_active(active: boolean): boolean;
     }
@@ -376,18 +379,21 @@ export namespace GstHip {
         /**
          * Gets numeric device identifier of `device`
          * @returns the device identifier
+         * @since 1.28
          */
         get_device_id(): number;
 
         /**
          * Gets per {@link GstHip.HipDevice} default {@link GstHip.HipStream} owned by `device`
          * @returns a {@link GstHip.HipStream}
+         * @since 1.28
          */
         get_stream(): HipStream;
 
         /**
          * Gets vendor of `device`
          * @returns {@link GstHip.HipVendor}
+         * @since 1.28
          */
         get_vendor(): HipVendor;
 
@@ -395,12 +401,14 @@ export namespace GstHip {
          * Checks equality of `device1` and `device2`
          * @param device2 a {@link GstHip.HipDevice}
          * @returns `true` if both devices are associated with the same hardware device
+         * @since 1.28
          */
         is_equal(device2: HipDevice): boolean;
 
         /**
          * Sets `device` to current stack via hipSetDevice
          * @returns `true` if hipSetDevice call succeeded
+         * @since 1.28
          */
         set_current(): boolean;
     }
@@ -458,6 +466,7 @@ export namespace GstHip {
         /**
          * Acquires {@link GstHip.HipEvent} from `pool`
          * @returns `true` if succeeded
+         * @since 1.28
          */
         acquire(): [boolean, HipEvent | null];
     }
@@ -519,6 +528,7 @@ export namespace GstHip {
          * Acquires a {@link Gst.Memory} from `allocator`. `memory` should point to a memory
          * location that can hold a pointer to the new {@link Gst.Memory}.
          * @returns a {@link Gst.FlowReturn} such as {@link Gst.FlowReturn.FLUSHING} when the allocator is inactive.
+         * @since 1.28
          */
         acquire_memory(): [Gst.FlowReturn, Gst.Memory | null];
     }
@@ -573,23 +583,27 @@ export namespace GstHip {
         /**
          * Gets numeric device identifier of `event` object
          * @returns device identifier
+         * @since 1.28
          */
         get_device_id(): number;
 
         /**
          * Gets device vendor of `event` object
          * @returns {@link GstHip.HipVendor}
+         * @since 1.28
          */
         get_vendor(): HipVendor;
 
         /**
          * Increments the reference count on `event`
          * @returns a pointer to `event`
+         * @since 1.28
          */
         ref(): HipEvent;
 
         /**
          * Decrements the reference count on `event`
+         * @since 1.28
          */
         unref(): void;
     }
@@ -618,11 +632,13 @@ export namespace GstHip {
         /**
          * Increments the reference count on `resource`
          * @returns a pointer to `resource`
+         * @since 1.28
          */
         ref(): HipGraphicsResource;
 
         /**
          * Decrements the reference count on `resource`
+         * @since 1.28
          */
         unref(): void;
     }
@@ -643,6 +659,7 @@ export namespace GstHip {
         /**
          * Gets HIP stream object associated with `mem`
          * @returns a {@link GstHip.HipStream} or `null` if default HIP stream is in use
+         * @since 1.28
          */
         get_stream(): HipStream | null;
 
@@ -652,18 +669,21 @@ export namespace GstHip {
          * @param filter_mode filter mode
          * @param address_mode address mode
          * @returns `true` if succeeded
+         * @since 1.28
          */
         get_texture(plane: number, filter_mode: number, address_mode: number): [boolean, null];
 
         /**
          * Sets `event` to `mem` for later synchronization operation
          * @param event a {@link GstHip.HipEvent}
+         * @since 1.28
          */
         set_event(event: HipEvent | null): void;
 
         /**
          * Waits for device synchronization by using previously configured {@link GstHip.HipEvent}
          * via `gst_hip_memory_set_event()`
+         * @since 1.28
          */
         sync(): void;
     }
@@ -705,35 +725,41 @@ export namespace GstHip {
         /**
          * Gets numeric device identifier of `stream` object
          * @returns device identifier
+         * @since 1.28
          */
         get_device_id(): number;
 
         /**
          * Gets hipStream_t handle owned by `stream`
          * @returns hipStream_t handle
+         * @since 1.28
          */
         get_handle(): null;
 
         /**
          * Gets device vendor of `stream` object
          * @returns {@link GstHip.HipVendor}
+         * @since 1.28
          */
         get_vendor(): HipVendor;
 
         /**
          * Records currently scheduled operations in `stream` to {@link GstHip.HipEvent}
          * @returns `true` if succeeded
+         * @since 1.28
          */
         record_event(): [boolean, HipEvent | null];
 
         /**
          * Increments the reference count on `stream`
          * @returns a pointer to `stream`
+         * @since 1.28
          */
         ref(): HipStream;
 
         /**
          * Decrements the reference count on `stream`
+         * @since 1.28
          */
         unref(): void;
     }

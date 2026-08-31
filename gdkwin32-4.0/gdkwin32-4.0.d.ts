@@ -378,6 +378,7 @@ export namespace GdkWin32 {
          * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
          * @returns a {@link GLib.Variant}, or `null` when serialization fails. The {@link GLib.Variant} will not be floating.
+         * @since 2.38
          */
         serialize(): GLib.Variant | null;
 
@@ -399,6 +400,7 @@ export namespace GdkWin32 {
          * - If `icon` is a {@link Gio.ThemedIcon} with exactly one name and no fallbacks,
          *   the encoding is simply the name (such as `network-server`).
          * @returns An allocated NUL-terminated UTF8 string or `null` if `icon` can't be serialized. Use `g_free()` to free.
+         * @since 2.20
          */
         to_string(): string | null;
 
@@ -421,6 +423,7 @@ export namespace GdkWin32 {
          * As serialization will avoid using raw icon data when possible, it only
          * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
+         * @since 2.38
          * @virtual
          */
         vfunc_serialize(): GLib.Variant | null;
@@ -428,6 +431,7 @@ export namespace GdkWin32 {
         /**
          * Serializes the `icon` into string tokens.
          * This is can be invoked when `g_icon_new_for_string()` is called.
+         * @since 2.20
          * @virtual
          */
         vfunc_to_tokens(): [boolean, string[], number];
@@ -685,12 +689,14 @@ export namespace GdkWin32 {
          * possibly with changing properties in between.
          * @param data user data to pass to the destroy function
          * @returns a newly built {@link Gdk.Texture} or `NULL`   if the format is not supported
+         * @since 4.20
          */
         build(data: null): Gdk.Texture | null;
 
         /**
          * Gets the color state previously set via `gdk_d3d12_texture_builder_set_color_state()`.
          * @returns the color state
+         * @since 4.20
          */
         get_color_state(): Gdk.ColorState | null;
 
@@ -698,12 +704,14 @@ export namespace GdkWin32 {
          * Returns the value that GTK should wait for on the fence
          * before using the resource.
          * @returns the fence wait value
+         * @since 4.20
          */
         get_fence_wait(): number;
 
         /**
          * Whether the data is premultiplied.
          * @returns whether the data is premultiplied
+         * @since 4.20
          */
         get_premultiplied(): boolean;
 
@@ -711,6 +719,7 @@ export namespace GdkWin32 {
          * Gets the region previously set via `gdk_d3d12_texture_builder_set_update_region()` or
          * `null` if none was set.
          * @returns The region
+         * @since 4.20
          */
         get_update_region(): cairo.Region | null;
 
@@ -718,6 +727,7 @@ export namespace GdkWin32 {
          * Gets the texture previously set via `gdk_d3d12_texture_builder_set_update_texture()` or
          * `null` if none was set.
          * @returns The texture
+         * @since 4.20
          */
         get_update_texture(): Gdk.Texture | null;
 
@@ -728,6 +738,7 @@ export namespace GdkWin32 {
          * correct colorstate based on the format.
          * If you don't know what colorstates are, this is probably the right thing.
          * @param color_state a {@link Gdk.ColorState} or `NULL` to unset the colorstate.
+         * @since 4.20
          */
         set_color_state(color_state: Gdk.ColorState | null): void;
 
@@ -737,6 +748,7 @@ export namespace GdkWin32 {
          * 
          * When no fence is set, this value has no effect.
          * @param fence_wait the value to wait on
+         * @since 4.20
          */
         set_fence_wait(fence_wait: bigint | number): void;
 
@@ -746,6 +758,7 @@ export namespace GdkWin32 {
          * Unless otherwise specified, all formats including alpha channels are assumed
          * to be premultiplied.
          * @param premultiplied whether the data is premultiplied
+         * @since 4.20
          */
         set_premultiplied(premultiplied: boolean): void;
 
@@ -761,6 +774,7 @@ export namespace GdkWin32 {
          * 
          * An example would be a screen recording where only the mouse pointer moves.
          * @param region the region to update
+         * @since 4.20
          */
         set_update_region(region: cairo.Region | null): void;
 
@@ -768,6 +782,7 @@ export namespace GdkWin32 {
          * Sets the texture to be updated by this texture. See
          * {@link Gdk.D3d12TextureBuilder.set_update_region} for an explanation.
          * @param texture the texture to update
+         * @since 4.20
          */
         set_update_texture(texture: Gdk.Texture | null): void;
     }
@@ -840,6 +855,7 @@ export namespace GdkWin32 {
         /**
          * Retrieves the EGL display connection object for the given GDK display.
          * @returns the EGL display
+         * @since 4.4
          */
         get_egl_display(): null;
 
@@ -1202,11 +1218,13 @@ export namespace GdkWin32 {
         // Static methods
         /**
          * @param surface a {@link Gdk.Surface}
+         * @deprecated since 4.8: Use `gdk_win32_surface_get_handle()` instead.
          */
         static get_impl_hwnd(surface: Gdk.Surface): win32.HWND;
 
         /**
          * @param surface a {@link Gdk.Surface}
+         * @deprecated since 4.8: Use `GDK_IS_WIN32_SURFACE` instead.
          */
         static is_win32(surface: Gdk.Surface): boolean;
 

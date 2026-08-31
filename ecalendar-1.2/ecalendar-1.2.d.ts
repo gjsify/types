@@ -528,6 +528,7 @@ export namespace ECalendar {
          * Matches `tzid` against the system timezone definitions
          * and returns the matching TZID, or `null` if none found
          * @param tzid a timezone ID
+         * @since 2.24
          */
         static match_tzid(tzid: string): string;
 
@@ -537,12 +538,14 @@ export namespace ECalendar {
          * 
          * Note: Since 3.4 the returned timezone location is either NULL or
          * an equivalent within known libical timezones.
+         * @since 2.28
          */
         static system_timezone_get_location(): string;
 
         /**
          * Returns system timezone location string, NULL on an error.
          * Returned pointer should be freed with `g_free()`.
+         * @since 2.28
          */
         static util_get_system_timezone_location(): string;
 
@@ -690,6 +693,7 @@ export namespace ECalendar {
         /**
          * Checks whether a calendar supports explicit refreshing (see `e_cal_refresh`).
          * @returns TRUE if the calendar supports refreshing, FALSE otherwise.
+         * @since 2.30
          */
         get_refresh_supported(): boolean;
 
@@ -745,6 +749,7 @@ export namespace ECalendar {
         /**
          * Invokes refresh on a calendar. See `e_cal_get_refresh_supported`.
          * @returns TRUE if calendar supports refresh and it was invoked, FALSE otherwise.
+         * @since 2.30
          */
         refresh(): boolean;
 
@@ -828,6 +833,7 @@ export namespace ECalendar {
         /**
          * @param code an {@link ECalendar.CalClientError} code to create
          * @param custom_msg custom message to use for the error; can be `null`
+         * @since 3.2
          */
         static error_create(code: CalClientError, custom_msg: string): GLib.Error;
 
@@ -842,6 +848,7 @@ export namespace ECalendar {
         /**
          * FIXME: Document me.
          * @param code 
+         * @since 3.2
          */
         static error_to_string(code: CalClientError): string;
 
@@ -855,6 +862,7 @@ export namespace ECalendar {
          * Frees each element of the `ecalcomps` list and the list itself.
          * Each element is an object of type {@link ECalendar.CalComponent}.
          * @param ecalcomps list of {@link ECalendar.CalComponent} objects
+         * @since 3.2
          */
         static free_ecalcomp_slist(ecalcomps: CalComponent[]): void;
 
@@ -863,12 +871,14 @@ export namespace ECalendar {
          * Finishes previous call of `e_cal_client_add_timezone()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         add_timezone_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * Checks if a calendar supports only one alarm per component.
          * @returns TRUE if the calendar allows only one alarm, FALSE otherwise.
+         * @since 3.2
          */
         check_one_alarm_only(): boolean;
 
@@ -876,24 +886,28 @@ export namespace ECalendar {
          * Checks whether a calendar requires organizer to accept their attendance to
          * meetings.
          * @returns TRUE if the calendar requires organizers to accept, FALSE otherwise.
+         * @since 3.2
          */
         check_organizer_must_accept(): boolean;
 
         /**
          * Checks if a calendar forces organizers of meetings to be also attendees.
          * @returns TRUE if the calendar forces organizers to attend meetings, FALSE otherwise.
+         * @since 3.2
          */
         check_organizer_must_attend(): boolean;
 
         /**
          * Checks if the calendar has a master object for recurrences.
          * @returns TRUE if the calendar has a master object for recurrences, FALSE otherwise.
+         * @since 3.2
          */
         check_recurrences_no_master(): boolean;
 
         /**
          * Checks whether the calendar saves schedules.
          * @returns TRUE if it saves schedules, FALSE otherwise.
+         * @since 3.2
          */
         check_save_schedules(): boolean;
 
@@ -903,6 +917,7 @@ export namespace ECalendar {
          * This `uid` should be freed with `g_free()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         create_object_finish(result: Gio.AsyncResult): [boolean, string];
 
@@ -912,6 +927,7 @@ export namespace ECalendar {
          * This `uids` should be freed with `e_client_util_free_string_slist()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.6
          */
         create_objects_finish(result: Gio.AsyncResult): [boolean, string[]];
 
@@ -923,6 +939,7 @@ export namespace ECalendar {
          * @param rid Recurrence identifier
          * @param auid Alarm identifier to remove
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
          */
         discard_alarm(uid: string, rid: string, auid: string, cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
 
@@ -935,6 +952,7 @@ export namespace ECalendar {
          * @param auid Alarm identifier to remove
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         discard_alarm(uid: string, rid: string, auid: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
@@ -947,6 +965,7 @@ export namespace ECalendar {
          * @param auid Alarm identifier to remove
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         discard_alarm(uid: string, rid: string, auid: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<boolean> | void;
 
@@ -954,6 +973,7 @@ export namespace ECalendar {
          * Finishes previous call of `e_cal_client_discard_alarm()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         discard_alarm_finish(result: Gio.AsyncResult): boolean;
 
@@ -964,6 +984,7 @@ export namespace ECalendar {
          * @param auid Alarm identifier to remove
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         discard_alarm_sync(uid: string, rid: string, auid: string, cancellable: Gio.Cancellable): boolean;
 
@@ -979,6 +1000,7 @@ export namespace ECalendar {
          * @param end End time for query.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param cb Callback for each generated instance.
+         * @since 3.2
          */
         generate_instances(start: bigint | number, end: bigint | number, cancellable: Gio.Cancellable, cb: CalRecurInstanceFn): void;
 
@@ -992,6 +1014,7 @@ export namespace ECalendar {
          * @param start Start time for query
          * @param end End time for query
          * @param cb Callback for each generated instance
+         * @since 3.2
          */
         generate_instances_sync(start: bigint | number, end: bigint | number, cb: CalRecurInstanceFn): void;
 
@@ -1002,6 +1025,7 @@ export namespace ECalendar {
          * @param uid Unique identifier for a calendar component
          * @param rid Recurrence identifier
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
          */
         get_attachment_uris(uid: string, rid: string, cancellable: Gio.Cancellable): globalThis.Promise<string[]>;
 
@@ -1013,6 +1037,7 @@ export namespace ECalendar {
          * @param rid Recurrence identifier
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_attachment_uris(uid: string, rid: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
@@ -1024,6 +1049,7 @@ export namespace ECalendar {
          * @param rid Recurrence identifier
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_attachment_uris(uid: string, rid: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<string[]> | void;
 
@@ -1033,6 +1059,7 @@ export namespace ECalendar {
          * The list should be freed with `e_client_util_free_string_slist()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         get_attachment_uris_finish(result: Gio.AsyncResult): [boolean, string[]];
 
@@ -1043,6 +1070,7 @@ export namespace ECalendar {
          * @param rid Recurrence identifier
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         get_attachment_uris_sync(uid: string, rid: string, cancellable: Gio.Cancellable): [boolean, string[]];
 
@@ -1052,6 +1080,7 @@ export namespace ECalendar {
          * by `e_cal_client_get_default_object_finish()` from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_default_object(cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
@@ -1065,6 +1094,7 @@ export namespace ECalendar {
          * @param end End time for query
          * @param users List of users to retrieve free/busy information for
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
          */
         get_free_busy(start: bigint | number, end: bigint | number, users: string[], cancellable: Gio.Cancellable): globalThis.Promise<boolean>;
 
@@ -1079,6 +1109,7 @@ export namespace ECalendar {
          * @param users List of users to retrieve free/busy information for
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_free_busy(start: bigint | number, end: bigint | number, users: string[], cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
@@ -1093,6 +1124,7 @@ export namespace ECalendar {
          * @param users List of users to retrieve free/busy information for
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_free_busy(start: bigint | number, end: bigint | number, users: string[], cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<boolean> | void;
 
@@ -1101,6 +1133,7 @@ export namespace ECalendar {
          * All VFREEBUSY {@link ECalendar.CalComponent}-s were received by "free-busy-data" signal.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         get_free_busy_finish(result: Gio.AsyncResult): boolean;
 
@@ -1112,6 +1145,7 @@ export namespace ECalendar {
          * @param users List of users to retrieve free/busy information for
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         get_free_busy_sync(start: bigint | number, end: bigint | number, users: string[], cancellable: Gio.Cancellable): boolean;
 
@@ -1122,6 +1156,7 @@ export namespace ECalendar {
          * unless it specifically uses the attachments for open/sending
          * operations.
          * @returns The URL where the attachments are serialized in the local filesystem.
+         * @since 3.2
          */
         get_local_attachment_store(): string;
 
@@ -1137,6 +1172,7 @@ export namespace ECalendar {
          * @param rid Recurrence identifier.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_object(uid: string, rid: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
@@ -1148,6 +1184,7 @@ export namespace ECalendar {
          * @param sexp an S-expression representing the query
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_object_list(sexp: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
@@ -1158,6 +1195,7 @@ export namespace ECalendar {
          * the `callback`.
          * @param sexp an S-expression representing the query
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
          */
         get_object_list_as_comps(sexp: string, cancellable: Gio.Cancellable): globalThis.Promise<CalComponent[]>;
 
@@ -1169,6 +1207,7 @@ export namespace ECalendar {
          * @param sexp an S-expression representing the query
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_object_list_as_comps(sexp: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
@@ -1180,6 +1219,7 @@ export namespace ECalendar {
          * @param sexp an S-expression representing the query
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_object_list_as_comps(sexp: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<CalComponent[]> | void;
 
@@ -1189,6 +1229,7 @@ export namespace ECalendar {
          * This list should be freed with `e_cal_client_free_ecalcomp_slist`().
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         get_object_list_as_comps_finish(result: Gio.AsyncResult): [boolean, CalComponent[]];
 
@@ -1200,6 +1241,7 @@ export namespace ECalendar {
          * @param sexp an S-expression representing the query
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         get_object_list_as_comps_sync(sexp: string, cancellable: Gio.Cancellable): [boolean, CalComponent[]];
 
@@ -1211,6 +1253,7 @@ export namespace ECalendar {
          * the `callback`.
          * @param uid Unique identifier for a calendar component
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
          */
         get_objects_for_uid(uid: string, cancellable: Gio.Cancellable): globalThis.Promise<CalComponent[]>;
 
@@ -1223,6 +1266,7 @@ export namespace ECalendar {
          * @param uid Unique identifier for a calendar component
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_objects_for_uid(uid: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
@@ -1235,6 +1279,7 @@ export namespace ECalendar {
          * @param uid Unique identifier for a calendar component
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_objects_for_uid(uid: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<CalComponent[]> | void;
 
@@ -1245,6 +1290,7 @@ export namespace ECalendar {
          * This list should be freed with `e_cal_client_free_ecalcomp_slist()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         get_objects_for_uid_finish(result: Gio.AsyncResult): [boolean, CalComponent[]];
 
@@ -1256,12 +1302,14 @@ export namespace ECalendar {
          * @param uid Unique identifier for a calendar component
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         get_objects_for_uid_sync(uid: string, cancellable: Gio.Cancellable): [boolean, CalComponent[]];
 
         /**
          * Gets the source type of the calendar client.
          * @returns an {@link ECalendar.CalClientSourceType} value corresponding to the source type of the calendar client.
+         * @since 3.2
          */
         get_source_type(): CalClientSourceType;
 
@@ -1272,6 +1320,7 @@ export namespace ECalendar {
          * @param tzid ID of the timezone to retrieve
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_timezone(tzid: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
@@ -1281,6 +1330,7 @@ export namespace ECalendar {
          * from the `callback`.
          * @param sexp an S-expression representing the query.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
          */
         get_view(sexp: string, cancellable: Gio.Cancellable): globalThis.Promise<CalClientView>;
 
@@ -1291,6 +1341,7 @@ export namespace ECalendar {
          * @param sexp an S-expression representing the query.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_view(sexp: string, cancellable: Gio.Cancellable, callback: Gio.AsyncReadyCallback<this>): void;
 
@@ -1301,6 +1352,7 @@ export namespace ECalendar {
          * @param sexp an S-expression representing the query.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_view(sexp: string, cancellable: Gio.Cancellable, callback?: Gio.AsyncReadyCallback<this>): globalThis.Promise<CalClientView> | void;
 
@@ -1310,6 +1362,7 @@ export namespace ECalendar {
          * which should be freed with `g_object_unref()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         get_view_finish(result: Gio.AsyncResult): [boolean, CalClientView];
 
@@ -1320,6 +1373,7 @@ export namespace ECalendar {
          * @param sexp an S-expression representing the query.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         get_view_sync(sexp: string, cancellable: Gio.Cancellable): [boolean, CalClientView];
 
@@ -1327,6 +1381,7 @@ export namespace ECalendar {
          * Finishes previous call of `e_cal_client_modify_object()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         modify_object_finish(result: Gio.AsyncResult): boolean;
 
@@ -1334,6 +1389,7 @@ export namespace ECalendar {
          * Finishes previous call of `e_cal_client_modify_objects()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.6
          */
         modify_objects_finish(result: Gio.AsyncResult): boolean;
 
@@ -1341,6 +1397,7 @@ export namespace ECalendar {
          * Finishes previous call of `e_cal_client_receive_objects()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         receive_objects_finish(result: Gio.AsyncResult): boolean;
 
@@ -1348,6 +1405,7 @@ export namespace ECalendar {
          * Finishes previous call of `e_cal_client_remove_object()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         remove_object_finish(result: Gio.AsyncResult): boolean;
 
@@ -1355,6 +1413,7 @@ export namespace ECalendar {
          * Finishes previous call of `e_cal_client_remove_objects()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.6
          */
         remove_objects_finish(result: Gio.AsyncResult): boolean;
     }
@@ -1467,12 +1526,14 @@ export namespace ECalendar {
         /**
          * Get the {@link ECalendar.CalClient} associated with this view.
          * @returns the associated client.
+         * @since 3.2
          */
         get_client(): null;
 
         /**
          * Retunrs: Whether view is running. Not running views are ignoring
          * all events sent from the server.
+         * @since 3.2
          */
         is_running(): boolean;
 
@@ -1494,16 +1555,19 @@ export namespace ECalendar {
         /**
          * Sets the `flags` which control the behaviour of `view`.
          * @param flags the {@link ECalendar.CalClientViewFlags} for `view`.
+         * @since 3.6
          */
         set_flags(flags: CalClientViewFlags): void;
 
         /**
          * Starts a live query to the calendar/tasks backend.
+         * @since 3.2
          */
         start(): void;
 
         /**
          * Stops a live query to the calendar/tasks backend.
+         * @since 3.2
          */
         stop(): void;
     }
@@ -1843,6 +1907,9 @@ export namespace ECalendar {
          */
         get_percent(percent: number): void;
 
+        /**
+         * @since 2.28
+         */
         get_percent_as_int(): number;
 
         /**
@@ -2155,6 +2222,7 @@ export namespace ECalendar {
 
         /**
          * @param percent 
+         * @since 2.28
          */
         set_percent_as_int(percent: number): void;
 
@@ -2332,11 +2400,13 @@ export namespace ECalendar {
         // Methods
         /**
          * Starts a live query to the calendar/tasks backend.
+         * @since 2.22
          */
         start(): void;
 
         /**
          * Stops a live query to the calendar/tasks backend.
+         * @since 2.32
          */
         stop(): void;
     }

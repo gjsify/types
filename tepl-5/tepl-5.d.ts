@@ -566,11 +566,13 @@ export namespace Tepl {
          * 
          * If `tepl_abstract_factory_set_singleton()` has not been called, the singleton
          * is created with a {@link Tepl.AbstractFactory} instance.
+         * @since 3.0
          */
         static get_singleton(): AbstractFactory;
 
         // Virtual methods
         /**
+         * @since 4.0
          * @virtual
          */
         vfunc_create_file(): File;
@@ -588,11 +590,13 @@ export namespace Tepl {
          * `tepl_metadata_manager_load_from_disk()` and
          * `tepl_metadata_manager_save_to_disk()`. This function just creates the {@link Gio.File}
          * object, it doesn't call any {@link Tepl.MetadataManager} function.
+         * @since 5.0
          * @virtual
          */
         vfunc_create_metadata_manager_file(): Gio.File | null;
 
         /**
+         * @since 3.0
          * @virtual
          */
         vfunc_create_tab(): Tab;
@@ -600,6 +604,7 @@ export namespace Tepl {
         /**
          * Creates a new tab label for `tab`, suitable for `gtk_notebook_set_tab_label()`.
          * @param tab a {@link Tepl.Tab}.
+         * @since 3.0
          * @virtual
          */
         vfunc_create_tab_label(tab: Tab): Gtk.Widget | null;
@@ -607,6 +612,7 @@ export namespace Tepl {
         // Methods
         /**
          * @returns a new {@link Tepl.File}.
+         * @since 4.0
          */
         create_file(): File;
 
@@ -624,11 +630,13 @@ export namespace Tepl {
          * `tepl_metadata_manager_save_to_disk()`. This function just creates the {@link Gio.File}
          * object, it doesn't call any {@link Tepl.MetadataManager} function.
          * @returns a new {@link Gio.File}, or `null` if the vfunc is not implemented.
+         * @since 5.0
          */
         create_metadata_manager_file(): Gio.File | null;
 
         /**
          * @returns a new {@link Tepl.Tab}.
+         * @since 3.0
          */
         create_tab(): Tab;
 
@@ -636,6 +644,7 @@ export namespace Tepl {
          * Creates a new tab label for `tab`, suitable for `gtk_notebook_set_tab_label()`.
          * @param tab a {@link Tepl.Tab}.
          * @returns a new {@link Gtk.Widget}, or `null` for the default tab label (“page N” with {@link Gtk.Notebook}).
+         * @since 3.0
          */
         create_tab_label(tab: Tab): Gtk.Widget | null;
 
@@ -647,6 +656,7 @@ export namespace Tepl {
          * `tepl_abstract_factory_get_singleton()`.
          * 
          * Tepl takes ownership of the `factory` reference.
+         * @since 3.0
          */
         set_singleton(): void;
     }
@@ -710,6 +720,7 @@ export namespace Tepl {
          * Convenience function that calls `g_application_get_default()` followed by
          * `tepl_application_get_from_gtk_application()`. The object returned by
          * `g_application_get_default()` must be a {@link Gtk.Application}.
+         * @since 2.0
          */
         static get_default(): Application;
 
@@ -717,6 +728,7 @@ export namespace Tepl {
          * Returns the {@link Tepl.Application} of `gtk_app`. The returned object is guaranteed
          * to be the same for the lifetime of `gtk_app`.
          * @param gtk_app a {@link Gtk.Application}.
+         * @since 2.0
          */
         static get_from_gtk_application(gtk_app: Gtk.Application): Application;
 
@@ -725,6 +737,7 @@ export namespace Tepl {
          * Like `gtk_application_get_active_window()`, but returns the main window in the
          * sense of `tepl_application_window_is_main_window()`.
          * @returns the active main {@link Gtk.ApplicationWindow}, or `null`.
+         * @since 4.0
          */
         get_active_main_window(): Gtk.ApplicationWindow | null;
 
@@ -734,11 +747,13 @@ export namespace Tepl {
          * this store. Libraries should provide their own store if they want to share
          * {@link Amtk.ActionInfo}'s.
          * @returns the {@link Amtk.ActionInfoStore} reserved for the application.
+         * @since 2.0
          */
         get_app_action_info_store(): Amtk.ActionInfoStore;
 
         /**
          * @returns the {@link Gtk.Application} of `tepl_app`.
+         * @since 2.0
          */
         get_application(): Gtk.Application;
 
@@ -748,6 +763,7 @@ export namespace Tepl {
          * TeplApplicationWindow][tepl-application-window-gactions] and the [class
          * description of TeplApplication][tepl-application-gactions].
          * @returns the {@link Amtk.ActionInfoStore} of the Tepl library.
+         * @since 3.0
          */
         get_tepl_action_info_store(): Amtk.ActionInfoStore;
 
@@ -758,6 +774,7 @@ export namespace Tepl {
          * `tepl_abstract_factory_create_main_window()`. If a main window already exists,
          * it calls `gtk_window_present()` on the most recently focused window of the
          * application.
+         * @since 4.0
          */
         handle_activate(): void;
 
@@ -770,6 +787,7 @@ export namespace Tepl {
          * 
          * It gets the {@link Gio.File} by calling
          * `tepl_abstract_factory_create_metadata_manager_file()`.
+         * @since 5.0
          */
         handle_metadata(): void;
 
@@ -780,12 +798,14 @@ export namespace Tepl {
          * active main window as returned by `tepl_application_get_active_main_window()`.
          * If the active main window is `null`, it creates one with
          * `tepl_abstract_factory_create_main_window()`.
+         * @since 4.0
          */
         handle_open(): void;
 
         /**
          * Calls `g_application_open()` with a single file and an empty hint.
          * @param file a {@link Gio.File}.
+         * @since 2.0
          */
         open_simple(file: Gio.File): void;
     }
@@ -899,6 +919,7 @@ export namespace Tepl {
          * Returns the {@link Tepl.ApplicationWindow} of `gtk_window`. The returned object is
          * guaranteed to be the same for the lifetime of `gtk_window`.
          * @param gtk_window a {@link Gtk.ApplicationWindow}.
+         * @since 2.0
          */
         static get_from_gtk_application_window(gtk_window: Gtk.ApplicationWindow): ApplicationWindow;
 
@@ -909,17 +930,20 @@ export namespace Tepl {
          * This function takes a {@link Gtk.ApplicationWindow} parameter to avoid creating the
          * {@link Tepl.ApplicationWindow} object if it hasn't been created.
          * @param gtk_window a {@link Gtk.ApplicationWindow}.
+         * @since 4.0
          */
         static is_main_window(gtk_window: Gtk.ApplicationWindow): boolean;
 
         // Methods
         /**
          * @returns the {@link Gtk.ApplicationWindow} of `tepl_window`.
+         * @since 2.0
          */
         get_application_window(): Gtk.ApplicationWindow;
 
         /**
          * @returns the value of the {@link Tepl.ApplicationWindow.handle_title} property.
+         * @since 4.0
          */
         get_handle_title(): boolean;
 
@@ -929,6 +953,7 @@ export namespace Tepl {
          * You should call this function only on main windows, to add secondary windows
          * to the {@link Gtk.WindowGroup}.
          * @returns the {@link Gtk.WindowGroup}.
+         * @since 4.0
          */
         get_window_group(): Gtk.WindowGroup;
 
@@ -942,12 +967,14 @@ export namespace Tepl {
          * is finished.
          * @param location a {@link Gio.File}.
          * @param jump_to whether to set the tab where the file is loaded as the active tab.
+         * @since 4.0
          */
         open_file(location: Gio.File, jump_to: boolean): void;
 
         /**
          * Sets the {@link Tepl.ApplicationWindow.handle_title} property.
          * @param handle_title the new value.
+         * @since 4.0
          */
         set_handle_title(handle_title: boolean): void;
 
@@ -959,6 +986,7 @@ export namespace Tepl {
          * {@link Tepl.ApplicationWindow} implements the {@link Tepl.TabGroup} interface by delegating
          * the requests to `tab_group`.
          * @param tab_group a {@link Tepl.TabGroup}.
+         * @since 3.0
          */
         set_tab_group(tab_group: TabGroup): void;
 
@@ -1014,29 +1042,34 @@ export namespace Tepl {
          * Appends `tab` to `tab_group`.
          * @param tab a {@link Tepl.Tab}.
          * @param jump_to whether to set `tab` as the active tab after appending it.
+         * @since 3.0
          */
         append_tab(tab: Tab, jump_to: boolean): void;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
+         * @since 3.0
          */
         get_active_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
+         * @since 3.0
          */
         get_active_tab(): Tab | null;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
+         * @since 3.0
          */
         get_active_view(): View | null;
 
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.Buffer}'s.
+         * @since 3.0
          */
         get_buffers(): Buffer[];
 
@@ -1048,18 +1081,21 @@ export namespace Tepl {
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
          * @returns the list of all the {@link Tepl.Tab}'s contained in `tab_group`.
+         * @since 3.0
          */
         get_tabs(): Tab[];
 
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.View}'s.
+         * @since 3.0
          */
         get_views(): View[];
 
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
+         * @since 3.0
          */
         set_active_tab(tab: Tab): void;
 
@@ -1070,6 +1106,7 @@ export namespace Tepl {
         vfunc_append_tab_vfunc(tab: Tab): void;
 
         /**
+         * @since 3.0
          * @virtual
          */
         vfunc_get_active_tab(): Tab | null;
@@ -1081,6 +1118,7 @@ export namespace Tepl {
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_tabs(): Tab[];
@@ -1088,6 +1126,7 @@ export namespace Tepl {
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
+         * @since 3.0
          * @virtual
          */
         vfunc_set_active_tab(tab: Tab): void;
@@ -1238,6 +1277,7 @@ export namespace Tepl {
          * 
          * {@link Tepl.Buffer} creates the {@link Tepl.File} with `tepl_abstract_factory_create_file()`.
          * @returns the associated {@link Tepl.File}.
+         * @since 1.0
          */
         get_file(): File;
 
@@ -1247,6 +1287,7 @@ export namespace Tepl {
          * - the directory path in parenthesis if the {@link Tepl.File.location} isn't
          *   `null`.
          * @returns the `buffer` full title. Free the return value with `g_free()` when no longer needed.
+         * @since 3.0
          */
         get_full_title(): string;
 
@@ -1254,11 +1295,13 @@ export namespace Tepl {
          * Returns the {@link Tepl.Metadata} of `buffer`. The returned object is guaranteed to be
          * the same for the lifetime of `buffer`.
          * @returns the associated {@link Tepl.Metadata}.
+         * @since 5.0
          */
         get_metadata(): Metadata;
 
         /**
          * @returns the current {@link Tepl.SelectionType}.
+         * @since 1.0
          */
         get_selection_type(): SelectionType;
 
@@ -1267,11 +1310,13 @@ export namespace Tepl {
          * - '*' if the buffer is modified;
          * - the {@link Tepl.File.short_name}.
          * @returns the `buffer` short title. Free the return value with `g_free()` when no longer needed.
+         * @since 3.0
          */
         get_short_title(): string;
 
         /**
          * @returns the {@link Tepl.Buffer.tepl_style_scheme_id}. Free with `g_free()`.
+         * @since 2.0
          */
         get_style_scheme_id(): string;
 
@@ -1285,18 +1330,21 @@ export namespace Tepl {
          * the undo/redo {@link GtkSource.Buffer} history must be empty, and the
          * {@link Tepl.File.location} must be `null`.
          * @returns `true` if `buffer` has not been touched, `false` otherwise.
+         * @since 1.0
          */
         is_untouched(): boolean;
 
         /**
          * Calls `tepl_metadata_manager_copy_from()` for {@link Tepl.File.location} (if not `null`)
          * to the associated {@link Tepl.Metadata} of `buffer`.
+         * @since 5.0
          */
         load_metadata_from_metadata_manager(): void;
 
         /**
          * Calls `tepl_metadata_manager_merge_into()` for {@link Tepl.File.location} (if not
          * `null`) from the associated {@link Tepl.Metadata} of `buffer`.
+         * @since 5.0
          */
         save_metadata_into_metadata_manager(): void;
 
@@ -1307,6 +1355,7 @@ export namespace Tepl {
          * {@link GtkSource.StyleSchemeManager} as returned by
          * `gtk_source_style_scheme_manager_get_default()`.
          * @param style_scheme_id the new value.
+         * @since 2.0
          */
         set_style_scheme_id(style_scheme_id: string): void;
     }
@@ -1407,6 +1456,7 @@ export namespace Tepl {
          * depending on the `chooser` type.
          * @param chooser a {@link Gtk.FileChooser}.
          * @param modal the new value.
+         * @since 5.0
          */
         static chooser_set_modal(chooser: Gtk.FileChooser, modal: boolean): void;
 
@@ -1415,6 +1465,7 @@ export namespace Tepl {
          * right functions depending on the type of `chooser`.
          * @param chooser a {@link Gtk.FileChooser}.
          * @param parent a {@link Gtk.Window}, or `null`.
+         * @since 5.0
          */
         static chooser_set_parent(chooser: Gtk.FileChooser, parent: Gtk.Window | null): void;
 
@@ -1422,6 +1473,7 @@ export namespace Tepl {
          * Calls `gtk_native_dialog_show()` or `gtk_window_present()` depending on the type
          * of `chooser`.
          * @param chooser a {@link Gtk.FileChooser}.
+         * @since 5.0
          */
         static chooser_show(chooser: Gtk.FileChooser): void;
 
@@ -1429,16 +1481,19 @@ export namespace Tepl {
         /**
          * If the {@link Tepl.File.location} isn't `null`, adds its URI to the default
          * {@link Gtk.RecentManager} with `gtk_recent_manager_add_item()`.
+         * @since 4.0
          */
         add_uri_to_recent_manager(): void;
 
         /**
          * @returns the {@link Gio.File}.
+         * @since 1.0
          */
         get_location(): Gio.File;
 
         /**
          * @returns the newline type.
+         * @since 1.0
          */
         get_newline_type(): NewlineType;
 
@@ -1449,12 +1504,14 @@ export namespace Tepl {
          * application, starting at 1. When an untitled file is closed or its location
          * is set, its untitled number is released and can be used by a later file.
          * @returns the `file` short name. Free with `g_free()` when no longer needed.
+         * @since 5.0
          */
         get_short_name(): string;
 
         /**
          * Sets the location.
          * @param location the new {@link Gio.File}, or `null`.
+         * @since 1.0
          */
         set_location(location: Gio.File | null): void;
     }
@@ -1539,16 +1596,19 @@ export namespace Tepl {
         // Methods
         /**
          * @returns the {@link Tepl.Buffer} to load the content into.
+         * @since 1.0
          */
         get_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.File}.
+         * @since 1.0
          */
         get_file(): File | null;
 
         /**
          * @returns the {@link Gio.File} to load.
+         * @since 1.0
          */
         get_location(): Gio.File | null;
 
@@ -1558,6 +1618,7 @@ export namespace Tepl {
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 5.0
          */
         load_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1568,6 +1629,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 5.0
          */
         load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1578,6 +1640,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 5.0
          */
         load_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1585,6 +1648,7 @@ export namespace Tepl {
          * Finishes a file loading started with `tepl_file_loader_load_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the content has been loaded successfully.
+         * @since 1.0
          */
         load_finish(result: Gio.AsyncResult): boolean;
     }
@@ -1700,26 +1764,31 @@ export namespace Tepl {
         // Methods
         /**
          * @returns the {@link Tepl.Buffer} to save.
+         * @since 1.0
          */
         get_buffer(): Buffer;
 
         /**
          * @returns the {@link Tepl.File}.
+         * @since 1.0
          */
         get_file(): File;
 
         /**
          * @returns the flags.
+         * @since 1.0
          */
         get_flags(): FileSaverFlags;
 
         /**
          * @returns the {@link Gio.File} where to save the buffer to.
+         * @since 1.0
          */
         get_location(): Gio.File;
 
         /**
          * @returns the newline type.
+         * @since 1.0
          */
         get_newline_type(): NewlineType;
 
@@ -1728,6 +1797,7 @@ export namespace Tepl {
          * documentation to know how to use this function.
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 5.0
          */
         save_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1737,6 +1807,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 5.0
          */
         save_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1746,6 +1817,7 @@ export namespace Tepl {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 5.0
          */
         save_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1759,11 +1831,13 @@ export namespace Tepl {
          * saved successfully.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the file was saved successfully.
+         * @since 1.0
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @param flags the new flags.
+         * @since 1.0
          */
         set_flags(flags: FileSaverFlags): void;
 
@@ -1771,6 +1845,7 @@ export namespace Tepl {
          * Sets the newline type. By default the newline type is taken from the
          * {@link Tepl.File}.
          * @param newline_type the new newline type.
+         * @since 1.0
          */
         set_newline_type(newline_type: NewlineType): void;
     }
@@ -1845,16 +1920,19 @@ export namespace Tepl {
         /**
          * Obtains iterators pointing to the start and end of the {@link Tepl.FoldRegion}.
          * @returns `true` on success, `false` otherwise.
+         * @since 1.0
          */
         get_bounds(): [boolean, Gtk.TextIter, Gtk.TextIter];
 
         /**
          * @returns the {@link Gtk.TextBuffer} where the fold region   is applied.
+         * @since 1.0
          */
         get_buffer(): Gtk.TextBuffer | null;
 
         /**
          * @returns whether the {@link Tepl.FoldRegion} is folded.
+         * @since 1.0
          */
         get_folded(): boolean;
 
@@ -1862,12 +1940,14 @@ export namespace Tepl {
          * Sets the start and end of the {@link Tepl.FoldRegion}.
          * @param start a {@link Gtk.TextIter}.
          * @param end a {@link Gtk.TextIter}.
+         * @since 1.0
          */
         set_bounds(start: Gtk.TextIter, end: Gtk.TextIter): void;
 
         /**
          * Folds or unfolds the region.
          * @param folded the new value.
+         * @since 1.0
          */
         set_folded(folded: boolean): void;
     }
@@ -1968,6 +2048,7 @@ export namespace Tepl {
         // Methods
         /**
          * Calls `gtk_widget_grab_focus()` to the {@link Gtk.SearchEntry} of `bar`.
+         * @since 5.0
          */
         grab_focus_to_entry(): void;
 
@@ -1977,6 +2058,7 @@ export namespace Tepl {
          * 
          * Only one {@link Tepl.View} can be associated per {@link Tepl.GotoLineBar}.
          * @param view a {@link Tepl.View}.
+         * @since 5.0
          */
         set_view(view: View): void;
 
@@ -1992,12 +2074,14 @@ export namespace Tepl {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -2065,6 +2149,7 @@ export namespace Tepl {
          * This function is intended to be called from a subclass' draw method before
          * chaining-up to its parent's draw method.
          * @param state a {@link Tepl.GutterRendererFoldsState}.
+         * @since 1.0
          */
         set_state(state: GutterRendererFoldsState): void;
     }
@@ -2169,6 +2254,7 @@ export namespace Tepl {
          * Utility function to create a {@link Gtk.Label} suitable for a {@link Gtk.InfoBar}. The
          * wrapping and alignment is configured. The label is also set as selectable,
          * for example to copy an error message and search an explanation on the web.
+         * @since 1.0
          */
         static create_label(): Gtk.Label;
 
@@ -2177,6 +2263,7 @@ export namespace Tepl {
          * Calls `gtk_info_bar_set_show_close_button()`, and additionnally closes the
          * `info_bar` when the {@link Gtk.InfoBar.SignalSignatures.response | Gtk.InfoBar::response} signal is received with the
          * `response_id` {@link Gtk.ResponseType.CLOSE}.
+         * @since 2.0
          */
         add_close_button(): void;
 
@@ -2189,6 +2276,7 @@ export namespace Tepl {
          * {@link Tepl.InfoBar} and you need to add a custom {@link Gtk.Widget}, it is better to use
          * this function instead of adding the {@link Gtk.Widget} directly to the content area.
          * @param content a {@link Gtk.Widget}.
+         * @since 2.0
          */
         add_content_widget(content: Gtk.Widget): void;
 
@@ -2198,18 +2286,21 @@ export namespace Tepl {
          * 
          * The icon is not updated when the message type changes. Another {@link Tepl.InfoBar}
          * must be created in that case.
+         * @since 2.0
          */
         add_icon(): void;
 
         /**
          * Adds a primary message.
          * @param primary_msg a primary message.
+         * @since 2.0
          */
         add_primary_message(primary_msg: string): void;
 
         /**
          * Adds a secondary message.
          * @param secondary_msg a secondary message.
+         * @since 2.0
          */
         add_secondary_message(secondary_msg: string): void;
 
@@ -2225,6 +2316,7 @@ export namespace Tepl {
          * are packed vertically, there is usually no problem. A vertical action area
          * also follows the original design of {@link Gtk.InfoBar}.
          * @param buttons_orientation the desired orientation.
+         * @since 5.0
          */
         set_buttons_orientation(buttons_orientation: Gtk.Orientation): void;
     }
@@ -2356,6 +2448,7 @@ export namespace Tepl {
         /**
          * Selects `language` in the list of available languages.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
+         * @since 5.2
          */
         select_language(language: GtkSource.Language | null): void;
 
@@ -2368,6 +2461,7 @@ export namespace Tepl {
         /**
          * Selects `language` in the list of available languages.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
+         * @since 5.2
          * @virtual
          */
         vfunc_select_language(language: GtkSource.Language | null): void;
@@ -2478,18 +2572,21 @@ export namespace Tepl {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
         /**
          * Selects `language` in the list of available languages.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
+         * @since 5.2
          */
         select_language(language: GtkSource.Language | null): void;
 
@@ -2502,6 +2599,7 @@ export namespace Tepl {
         /**
          * Selects `language` in the list of available languages.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
+         * @since 5.2
          * @virtual
          */
         vfunc_select_language(language: GtkSource.Language | null): void;
@@ -2559,6 +2657,7 @@ export namespace Tepl {
          * description][tepl-metadata-keys-requirements].
          * @param key a key.
          * @returns the associated value (a UTF-8 string), or `null`. Free with `g_free()` when no longer needed.
+         * @since 5.0
          */
         get(key: string): string | null;
 
@@ -2570,6 +2669,7 @@ export namespace Tepl {
          * description][tepl-metadata-keys-requirements].
          * @param key a key.
          * @param value a nul-terminated UTF-8 string, or `null` to unset the key.
+         * @since 5.0
          */
         set(key: string, value: string | null): void;
 
@@ -2623,6 +2723,9 @@ export namespace Tepl {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @since 5.0
+         */
         static get_singleton(): MetadataManager;
 
         // Methods
@@ -2637,6 +2740,7 @@ export namespace Tepl {
          * the key/value pair is kept in `to_metadata`, it is not erased.
          * @param for_location a {@link Gio.File}.
          * @param to_metadata a {@link Tepl.Metadata}.
+         * @since 5.0
          */
         copy_from(for_location: Gio.File, to_metadata: Metadata): void;
 
@@ -2647,6 +2751,7 @@ export namespace Tepl {
          * {@link Gio.Application.SignalSignatures.startup | Gio.Application::startup} signal.
          * @param from_file the {@link Gio.File} to load metadata from.
          * @returns whether the operation was successful.
+         * @since 5.0
          */
         load_from_disk(from_file: Gio.File): boolean;
 
@@ -2662,6 +2767,7 @@ export namespace Tepl {
          * erased.
          * @param for_location a {@link Gio.File}.
          * @param from_metadata a {@link Tepl.Metadata}.
+         * @since 5.0
          */
         merge_into(for_location: Gio.File, from_metadata: Metadata): void;
 
@@ -2674,6 +2780,7 @@ export namespace Tepl {
          * @param to_file the {@link Gio.File} to save metadata to.
          * @param trim if `true`, `tepl_metadata_manager_trim()` is called with -1.
          * @returns whether the operation was successful.
+         * @since 5.0
          */
         save_to_disk(to_file: Gio.File, trim: boolean): boolean;
 
@@ -2688,6 +2795,7 @@ export namespace Tepl {
          * If `max_number_of_locations` is -1, a default internal value is used that
          * should fit most applications' needs.
          * @param max_number_of_locations the maximum size, or -1 for the default value.
+         * @since 5.0
          */
         trim(max_number_of_locations: number): void;
     }
@@ -2841,29 +2949,34 @@ export namespace Tepl {
          * Appends `tab` to `tab_group`.
          * @param tab a {@link Tepl.Tab}.
          * @param jump_to whether to set `tab` as the active tab after appending it.
+         * @since 3.0
          */
         append_tab(tab: Tab, jump_to: boolean): void;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
+         * @since 3.0
          */
         get_active_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
+         * @since 3.0
          */
         get_active_tab(): Tab | null;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
+         * @since 3.0
          */
         get_active_view(): View | null;
 
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.Buffer}'s.
+         * @since 3.0
          */
         get_buffers(): Buffer[];
 
@@ -2875,18 +2988,21 @@ export namespace Tepl {
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
          * @returns the list of all the {@link Tepl.Tab}'s contained in `tab_group`.
+         * @since 3.0
          */
         get_tabs(): Tab[];
 
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.View}'s.
+         * @since 3.0
          */
         get_views(): View[];
 
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
+         * @since 3.0
          */
         set_active_tab(tab: Tab): void;
 
@@ -2897,6 +3013,7 @@ export namespace Tepl {
         vfunc_append_tab_vfunc(tab: Tab): void;
 
         /**
+         * @since 3.0
          * @virtual
          */
         vfunc_get_active_tab(): Tab | null;
@@ -2908,6 +3025,7 @@ export namespace Tepl {
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_tabs(): Tab[];
@@ -2915,6 +3033,7 @@ export namespace Tepl {
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
+         * @since 3.0
          * @virtual
          */
         vfunc_set_active_tab(tab: Tab): void;
@@ -3023,11 +3142,13 @@ export namespace Tepl {
          * @param name the name for `component`.
          * @param title a human-readable title for `component`.
          * @param icon_name the icon name for `component`, or `null`.
+         * @since 5.0
          */
         add_component(component: Gtk.Widget, name: string, title: string, icon_name: string | null): void;
 
         /**
          * @returns the {@link Gtk.Stack} widget of `panel` (a direct child {@link Gtk.Widget} of `panel`).
+         * @since 5.0
          */
         get_stack(): Gtk.Stack;
 
@@ -3044,6 +3165,7 @@ export namespace Tepl {
          * call overrides the first one.
          * @param settings a {@link Gio.Settings} object.
          * @param setting_key a {@link Gio.Settings} key of type string.
+         * @since 5.0
          */
         provide_active_component_gsetting(settings: Gio.Settings, setting_key: string): void;
 
@@ -3052,11 +3174,13 @@ export namespace Tepl {
          * 
          * This function must be called when all components have been added to the
          * {@link Gtk.Stack} of `panel`.
+         * @since 5.0
          */
         restore_state_from_gsettings(): void;
 
         /**
          * Saves the current state of `panel` to the provided {@link Gio.Settings}.
+         * @since 5.0
          */
         save_state_to_gsettings(): void;
 
@@ -3072,12 +3196,14 @@ export namespace Tepl {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -3181,6 +3307,7 @@ export namespace Tepl {
          * guaranteed to be the same for the lifetime of `prefs`. Each
          * {@link Tepl.SpaceDrawerPrefs} object has a different {@link GtkSource.SpaceDrawer}.
          * @returns the {@link GtkSource.SpaceDrawer} associated with `prefs`.
+         * @since 5.2
          */
         get_space_drawer(): GtkSource.SpaceDrawer;
 
@@ -3196,12 +3323,14 @@ export namespace Tepl {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -3300,6 +3429,7 @@ export namespace Tepl {
         /**
          * The reverse action of `tepl_statusbar_show_cursor_position()`. This function
          * hides the text used to show the line and column numbers.
+         * @since 5.0
          */
         hide_cursor_position(): void;
 
@@ -3316,6 +3446,7 @@ export namespace Tepl {
          * {@link Tepl.TabGroup} afterwards (this restriction may be lifted in the future if
          * there is a compelling use-case).
          * @param tab_group a {@link Tepl.TabGroup}.
+         * @since 5.0
          */
         set_tab_group(tab_group: TabGroup): void;
 
@@ -3325,6 +3456,7 @@ export namespace Tepl {
          * function).
          * @param line the line number, must be >= 1.
          * @param column the column number, must be >= 1.
+         * @since 5.0
          */
         show_cursor_position(line: number, column: number): void;
     }
@@ -3447,6 +3579,7 @@ export namespace Tepl {
         // Methods
         /**
          * @returns the value of the {@link Tepl.StyleSchemeChooserWidget.tepl_style_scheme_id} property. Free with `g_free()` when no longer needed.
+         * @since 5.0
          */
         get_style_scheme_id(): string;
 
@@ -3457,6 +3590,7 @@ export namespace Tepl {
          * {@link GtkSource.StyleSchemeManager} as returned by
          * `gtk_source_style_scheme_manager_get_default()`.
          * @param style_scheme_id the new value.
+         * @since 5.0
          */
         set_style_scheme_id(style_scheme_id: string): void;
 
@@ -3483,17 +3617,20 @@ export namespace Tepl {
         /**
          * Gets the currently-selected scheme.
          * @returns the currently-selected scheme.
+         * @since 3.16
          */
         get_style_scheme(): GtkSource.StyleScheme;
 
         /**
          * Sets the scheme.
          * @param scheme a {@link GtkSource.StyleScheme}
+         * @since 3.16
          */
         set_style_scheme(scheme: GtkSource.StyleScheme): void;
 
         /**
          * Gets the currently-selected scheme.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_style_scheme(): GtkSource.StyleScheme;
@@ -3501,6 +3638,7 @@ export namespace Tepl {
         /**
          * Sets the scheme.
          * @param scheme a {@link GtkSource.StyleScheme}
+         * @since 3.16
          * @virtual
          */
         vfunc_set_style_scheme(scheme: GtkSource.StyleScheme): void;
@@ -3664,6 +3802,7 @@ export namespace Tepl {
          * 
          * This function calls the ::pack_info_bar virtual function.
          * @param info_bar a {@link Gtk.InfoBar}.
+         * @since 1.0
          */
         add_info_bar(info_bar: Gtk.InfoBar): void;
 
@@ -3671,6 +3810,7 @@ export namespace Tepl {
          * A convenience function that calls `gtk_text_view_get_buffer()` on the
          * {@link Tepl.Tab.view} associated with the `tab`.
          * @returns the {@link Tepl.Buffer} of the {@link Tepl.Tab.view}.
+         * @since 3.0
          */
         get_buffer(): Buffer;
 
@@ -3679,11 +3819,13 @@ export namespace Tepl {
          * not be destroyed by the application, the purpose of this function is to
          * show/hide the widget.
          * @returns the {@link Tepl.GotoLineBar} widget belonging to `tab`.
+         * @since 5.0
          */
         get_goto_line_bar(): GotoLineBar;
 
         /**
          * @returns the {@link Tepl.View} contained in `tab`.
+         * @since 3.0
          */
         get_view(): View;
 
@@ -3694,6 +3836,7 @@ export namespace Tepl {
          * This function is asynchronous, there is no way to know when the file loading
          * is finished.
          * @param location a {@link Gio.File}.
+         * @since 4.0
          */
         load_file(location: Gio.File): void;
 
@@ -3702,6 +3845,7 @@ export namespace Tepl {
          * appropriate {@link Tepl.FileSaver} and asynchronously runs it.
          * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @since 4.0
          */
         save_as_async(): globalThis.Promise<boolean>;
 
@@ -3711,6 +3855,7 @@ export namespace Tepl {
          * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 4.0
          */
         save_as_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3720,6 +3865,7 @@ export namespace Tepl {
          * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 4.0
          */
         save_as_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3729,6 +3875,7 @@ export namespace Tepl {
          * This function is useful when you don't need to know:
          * - when the operation is finished;
          * - and whether the operation ran successfully.
+         * @since 4.0
          */
         save_as_async_simple(): void;
 
@@ -3736,6 +3883,7 @@ export namespace Tepl {
          * Finishes a tab saving started with `tepl_tab_save_as_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the tab was saved successfully.
+         * @since 4.0
          */
         save_as_finish(result: Gio.AsyncResult): boolean;
 
@@ -3744,6 +3892,7 @@ export namespace Tepl {
          * be `null`.
          * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @since 4.0
          */
         save_async(): globalThis.Promise<boolean>;
 
@@ -3753,6 +3902,7 @@ export namespace Tepl {
          * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 4.0
          */
         save_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3762,6 +3912,7 @@ export namespace Tepl {
          * 
          * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 4.0
          */
         save_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3771,6 +3922,7 @@ export namespace Tepl {
          * This function is useful when you don't need to know:
          * - when the operation is finished;
          * - and whether the operation ran successfully.
+         * @since 4.0
          */
         save_async_simple(): void;
 
@@ -3778,6 +3930,7 @@ export namespace Tepl {
          * Finishes a tab saving started with `tepl_tab_save_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the tab was saved successfully.
+         * @since 4.0
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -3841,12 +3994,14 @@ export namespace Tepl {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -3854,29 +4009,34 @@ export namespace Tepl {
          * Appends `tab` to `tab_group`.
          * @param tab a {@link Tepl.Tab}.
          * @param jump_to whether to set `tab` as the active tab after appending it.
+         * @since 3.0
          */
         append_tab(tab: Tab, jump_to: boolean): void;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
+         * @since 3.0
          */
         get_active_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
+         * @since 3.0
          */
         get_active_tab(): Tab | null;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
+         * @since 3.0
          */
         get_active_view(): View | null;
 
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.Buffer}'s.
+         * @since 3.0
          */
         get_buffers(): Buffer[];
 
@@ -3888,18 +4048,21 @@ export namespace Tepl {
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
          * @returns the list of all the {@link Tepl.Tab}'s contained in `tab_group`.
+         * @since 3.0
          */
         get_tabs(): Tab[];
 
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.View}'s.
+         * @since 3.0
          */
         get_views(): View[];
 
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
+         * @since 3.0
          */
         set_active_tab(tab: Tab): void;
 
@@ -3910,6 +4073,7 @@ export namespace Tepl {
         vfunc_append_tab_vfunc(tab: Tab): void;
 
         /**
+         * @since 3.0
          * @virtual
          */
         vfunc_get_active_tab(): Tab | null;
@@ -3921,6 +4085,7 @@ export namespace Tepl {
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_tabs(): Tab[];
@@ -3928,6 +4093,7 @@ export namespace Tepl {
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
+         * @since 3.0
          * @virtual
          */
         vfunc_set_active_tab(tab: Tab): void;
@@ -4050,6 +4216,7 @@ export namespace Tepl {
         // Methods
         /**
          * @returns the {@link Tepl.TabLabel.tab}.
+         * @since 3.0
          */
         get_tab(): Tab | null;
 
@@ -4057,6 +4224,7 @@ export namespace Tepl {
          * Asks {@link Tepl.TabLabel} to update its tooltip. The ::get_tooltip_markup virtual
          * function is called and the result is set with
          * `gtk_widget_set_tooltip_markup()`.
+         * @since 3.0
          */
         update_tooltip(): void;
 
@@ -4072,12 +4240,14 @@ export namespace Tepl {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -4210,17 +4380,20 @@ export namespace Tepl {
         // Methods
         /**
          * Copies the clipboard.
+         * @since 1.0
          */
         copy_clipboard(): void;
 
         /**
          * Cuts the clipboard and then scrolls to the cursor position.
+         * @since 1.0
          */
         cut_clipboard(): void;
 
         /**
          * Deletes the text currently selected in the {@link Gtk.TextBuffer} associated
          * to the view and then scrolls to the cursor position.
+         * @since 1.0
          */
         delete_selection(): void;
 
@@ -4229,6 +4402,7 @@ export namespace Tepl {
          * `gtk_text_buffer_get_iter_at_line()`, and scrolls to that position.
          * @param line a line number, counting from 0.
          * @returns `true` if the cursor has been moved exactly to `line`, `false` if that   line didn't exist.
+         * @since 2.0
          */
         goto_line(line: number): boolean;
 
@@ -4238,21 +4412,25 @@ export namespace Tepl {
          * @param line a line number, counting from 0.
          * @param line_offset the line offset, in characters (not bytes).
          * @returns `true` if the cursor has been moved exactly to `line` and   `line_offset`, `false` if that position didn't exist.
+         * @since 2.0
          */
         goto_line_offset(line: number, line_offset: number): boolean;
 
         /**
          * Pastes the clipboard and then scrolls to the cursor position.
+         * @since 1.0
          */
         paste_clipboard(): void;
 
         /**
          * Scrolls the `view` to the cursor position.
+         * @since 1.0
          */
         scroll_to_cursor(): void;
 
         /**
          * Selects all the text.
+         * @since 1.0
          */
         select_all(): void;
 
@@ -4264,6 +4442,7 @@ export namespace Tepl {
          * the place where a warning or error occurred.
          * @param start_line start of the region to select.
          * @param end_line end of the region to select.
+         * @since 2.0
          */
         select_lines(start_line: number, end_line: number): void;
     }
@@ -4547,6 +4726,7 @@ export namespace Tepl {
             /**
              * Selects `language` in the list of available languages.
              * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
+             * @since 5.2
              * @virtual
              */
             vfunc_select_language(language: GtkSource.Language | null): void;
@@ -4570,6 +4750,7 @@ export namespace Tepl {
         /**
          * Selects `language` in the list of available languages.
          * @param language a {@link GtkSource.Language}, or `null` for "Plain Text".
+         * @since 5.2
          */
         select_language(language: GtkSource.Language | null): void;
     }
@@ -4594,6 +4775,7 @@ export namespace Tepl {
             vfunc_append_tab_vfunc(tab: Tab): void;
 
             /**
+             * @since 3.0
              * @virtual
              */
             vfunc_get_active_tab(): Tab | null;
@@ -4605,6 +4787,7 @@ export namespace Tepl {
              * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
              * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
              * the `tab_group` container.
+             * @since 3.0
              * @virtual
              */
             vfunc_get_tabs(): Tab[];
@@ -4612,6 +4795,7 @@ export namespace Tepl {
             /**
              * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
              * @param tab a {@link Tepl.Tab} part of `tab_group`.
+             * @since 3.0
              * @virtual
              */
             vfunc_set_active_tab(tab: Tab): void;
@@ -4686,29 +4870,34 @@ export namespace Tepl {
          * Appends `tab` to `tab_group`.
          * @param tab a {@link Tepl.Tab}.
          * @param jump_to whether to set `tab` as the active tab after appending it.
+         * @since 3.0
          */
         append_tab(tab: Tab, jump_to: boolean): void;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.Buffer} of the active tab.
+         * @since 3.0
          */
         get_active_buffer(): Buffer | null;
 
         /**
          * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
+         * @since 3.0
          */
         get_active_tab(): Tab | null;
 
         /**
          * Convenience function.
          * @returns the {@link Tepl.View} of the active tab.
+         * @since 3.0
          */
         get_active_view(): View | null;
 
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.Buffer}'s.
+         * @since 3.0
          */
         get_buffers(): Buffer[];
 
@@ -4720,18 +4909,21 @@ export namespace Tepl {
          * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
          * @returns the list of all the {@link Tepl.Tab}'s contained in `tab_group`.
+         * @since 3.0
          */
         get_tabs(): Tab[];
 
         /**
          * Convenience function.
          * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.View}'s.
+         * @since 3.0
          */
         get_views(): View[];
 
         /**
          * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
          * @param tab a {@link Tepl.Tab} part of `tab_group`.
+         * @since 3.0
          */
         set_active_tab(tab: Tab): void;
     }

@@ -177,6 +177,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The value of the binary literal.
+         * @since 0.12.0
          */
         get_value(): GLib.Bytes;
     }
@@ -231,6 +232,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The value of the boolean literal.
+         * @since 0.12.0
          */
         get_value(): boolean;
     }
@@ -283,6 +285,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The children of the boolean node.
+         * @since 0.17.0
          */
         get_children(): Node[];
     }
@@ -337,6 +340,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The value of the 64-bit floating point literal.
+         * @since 0.12.0
          */
         get_value(): number;
     }
@@ -424,6 +428,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The string representation of the node in the expression tree.   It should be freed with `g_free()` when no longer needed.
+         * @since 0.12.0
          */
         to_string(): string;
     }
@@ -535,6 +540,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The value of the 32-bit floating point literal.
+         * @since 0.12.0
          */
         get_value(): number;
     }
@@ -598,6 +604,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The parameters of the function node.
+         * @since 0.12.0
          */
         get_parameters(): Node[];
     }
@@ -649,12 +656,14 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The native functions in the function registry.
+         * @since 0.14.0
          */
         get_native_functions(): NativeFunction[];
 
         /**
          * @param function_signature A {@link Gandiva.FunctionSignature} to be looked up.
          * @returns The native functions associated to the given {@link Gandiva.FunctionSignature}.
+         * @since 0.14.0
          */
         lookup(function_signature: FunctionSignature): NativeFunction | null;
     }
@@ -723,26 +732,31 @@ export namespace Gandiva {
         /**
          * @param other_function_signature A {@link Gandiva.FunctionSignature} to be compared.
          * @returns `true` if both of them have the same data, `false` otherwise.
+         * @since 0.14.0
          */
         equal(other_function_signature: FunctionSignature): boolean;
 
         /**
          * @returns A base name of the function signature.   It should be freed with `g_free()` when no longer needed.
+         * @since 0.14.0
          */
         get_base_name(): string;
 
         /**
          * @returns A list of parameter data types of the function signature.
+         * @since 0.14.0
          */
         get_param_types(): Arrow.DataType[];
 
         /**
          * @returns A {@link Arrow.DataType} of the return value of the function signature.
+         * @since 0.14.0
          */
         get_return_type(): Arrow.DataType;
 
         /**
          * @returns The string representation of the function signature.   It should be freed with `g_free()` when no longer needed.
+         * @since 0.14.0
          */
         to_string(): string;
     }
@@ -886,6 +900,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The value of the 16-bit integer literal.
+         * @since 0.12.0
          */
         get_value(): number;
     }
@@ -940,6 +955,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The value of the 32-bit integer literal.
+         * @since 0.12.0
          */
         get_value(): number;
     }
@@ -994,6 +1010,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The value of the 64-bit integer literal.
+         * @since 0.12.0
          */
         get_value(): number;
     }
@@ -1048,6 +1065,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The value of the 8-bit integer literal.
+         * @since 0.12.0
          */
         get_value(): number;
     }
@@ -1159,37 +1177,44 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns `true` if the native function has the possibility of returning errors,   `false` otherwise.
+         * @since 0.14.0
          */
         can_return_errors(): boolean;
 
         /**
          * @param other_native_function A {@link Gandiva.NativeFunction} to be compared.
          * @returns `true` if both of them have the same data, `false` otherwise.
+         * @since 0.14.0
          */
         equal(other_native_function: NativeFunction): boolean;
 
         /**
          * @returns A value of {@link Gandiva.ResultNullableType}.
+         * @since 0.14.0
          */
         get_result_nullable_type(): ResultNullableType;
 
         /**
          * @returns A list of {@link Gandiva.FunctionSignature} supported by the native function.
+         * @since 0.15.0
          */
         get_signatures(): FunctionSignature[];
 
         /**
          * @returns `true` if the native function needs a context for evaluation,   `false` otherwise.
+         * @since 0.14.0
          */
         need_context(): boolean;
 
         /**
          * @returns `true` if the native function needs a function holder for evaluation,   `false` otherwise.
+         * @since 0.14.0
          */
         need_function_holder(): boolean;
 
         /**
          * @returns The string representation of the signatures of the native function.   It should be freed with `g_free()` when no longer needed.
+         * @since 0.14.0
          */
         to_string(): string;
     }
@@ -1262,6 +1287,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The string representation of the node.   It should be freed with `g_free()` when no longer needed.
+         * @since 1.0.0
          */
         to_string(): string;
     }
@@ -1420,6 +1446,7 @@ export namespace Gandiva {
         /**
          * @param record_batch A {@link Arrow.RecordBatch}.
          * @returns The {@link Arrow.Array} as the result evaluated on success, `null` on error.
+         * @since 0.12.0
          */
         evaluate(record_batch: Arrow.RecordBatch): Arrow.Array[] | null;
     }
@@ -1474,6 +1501,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The value of the UTF-8 encoded string literal.
+         * @since 0.12.0
          */
         get_value(): string;
     }
@@ -1528,6 +1556,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The value of the 16-bit unsigned integer literal.
+         * @since 0.12.0
          */
         get_value(): number;
     }
@@ -1582,6 +1611,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The value of the 32-bit unsigned integer literal.
+         * @since 0.12.0
          */
         get_value(): number;
     }
@@ -1636,6 +1666,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The value of the 64-bit unsigned integer literal.
+         * @since 0.12.0
          */
         get_value(): number;
     }
@@ -1690,6 +1721,7 @@ export namespace Gandiva {
         // Methods
         /**
          * @returns The value of the 8-bit unsigned integer literal.
+         * @since 0.12.0
          */
         get_value(): number;
     }

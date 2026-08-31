@@ -341,6 +341,7 @@ export namespace CambalachePrivate {
          * Returns context information about what XML attribute
          * the parsing error occurred in.
          * @param error an error in the {@link Gtk.SvgError} domain
+         * @since 4.22
          */
         static error_get_attribute(error: GLib.Error): string | null;
 
@@ -348,6 +349,7 @@ export namespace CambalachePrivate {
          * Returns context information about what XML element
          * the parsing error occurred in.
          * @param error an error in the {@link Gtk.SvgError} domain
+         * @since 4.22
          */
         static error_get_element(error: GLib.Error): string | null;
 
@@ -355,6 +357,7 @@ export namespace CambalachePrivate {
          * Returns context information about the end position
          * in the document where the parsing error occurred.
          * @param error an error in the {@link Gtk.SvgError} domain
+         * @since 4.22
          */
         static error_get_end(error: GLib.Error): SvgLocation | null;
 
@@ -362,6 +365,7 @@ export namespace CambalachePrivate {
          * Returns context information about the start position
          * in the document where the parsing error occurred.
          * @param error an error in the {@link Gtk.SvgError} domain
+         * @since 4.22
          */
         static error_get_start(error: GLib.Error): SvgLocation | null;
 
@@ -376,18 +380,21 @@ export namespace CambalachePrivate {
          * the value N, the meaningful states of the SVG are
          * 0, 1, ..., N - 1 and `CMB_PRIVATE_SVG_STATE_EMPTY`.
          * @returns the number of states
+         * @since 4.22
          */
         get_n_states(): number;
 
         /**
          * Gets the current state of the paintable.
          * @returns the state
+         * @since 4.22
          */
         get_state(): number;
 
         /**
          * Gets the value of the weight property.
          * @returns the weight
+         * @since 4.22
          */
         get_weight(): number;
 
@@ -399,6 +406,7 @@ export namespace CambalachePrivate {
          * 
          * This clears any previously loaded content.
          * @param bytes the data to load
+         * @since 4.22
          */
         load_from_bytes(bytes: GLib.Bytes | Uint8Array): void;
 
@@ -406,6 +414,7 @@ export namespace CambalachePrivate {
          * Stop any playing animations.
          * 
          * Animations can be paused and started repeatedly.
+         * @since 4.22
          */
         pause(): void;
 
@@ -414,6 +423,7 @@ export namespace CambalachePrivate {
          * 
          * Note that this is necessary for state changes as
          * well.
+         * @since 4.22
          */
         play(): void;
 
@@ -427,6 +437,7 @@ export namespace CambalachePrivate {
          * of parsing the SVG. It does not reflect the effect
          * of applying animations.
          * @returns the serialized contents
+         * @since 4.22
          */
         serialize(): GLib.Bytes;
 
@@ -436,6 +447,7 @@ export namespace CambalachePrivate {
          * Without a frame clock, GTK has to rely
          * on simple timeouts to run animations.
          * @param clock the frame clock
+         * @since 4.22
          */
         set_frame_clock(clock: Gdk.FrameClock): void;
 
@@ -448,6 +460,7 @@ export namespace CambalachePrivate {
          * Note that {@link Gtk.Svg.play} must have been
          * called for the SVG paintable to react to state changes.
          * @param state the state to set, as a value between 0 and 63,   or `(unsigned int) -1`
+         * @since 4.22
          */
         set_state(state: number): void;
 
@@ -457,6 +470,7 @@ export namespace CambalachePrivate {
          * The default value of -1 means to use the font weight
          * from CSS.
          * @param weight the font weight, as a value between -1 and 1000
+         * @since 4.22
          */
         set_weight(weight: number): void;
 
@@ -464,6 +478,7 @@ export namespace CambalachePrivate {
          * Serializes the paintable, and saves the result to a file.
          * @param filename the file to save to
          * @returns true, unless an error occurred
+         * @since 4.22
          */
         write_to_file(filename: string): boolean;
 
@@ -693,6 +708,7 @@ export namespace CambalachePrivate {
          * @param width width to snapshot in
          * @param height height to snapshot in
          * @param colors a pointer to an array of colors
+         * @since 4.6
          */
         snapshot_symbolic(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[]): void;
 
@@ -706,6 +722,7 @@ export namespace CambalachePrivate {
          * @param height height to snapshot in
          * @param colors a pointer to an array of colors
          * @param weight The font weight to use (from 1 to 1000, with default 400)
+         * @since 4.22
          */
         snapshot_with_weight(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[], weight: number): void;
 
@@ -718,6 +735,7 @@ export namespace CambalachePrivate {
          * @param width width to snapshot in
          * @param height height to snapshot in
          * @param colors a pointer to an array of colors
+         * @since 4.6
          * @virtual
          */
         vfunc_snapshot_symbolic(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[]): void;
@@ -732,6 +750,7 @@ export namespace CambalachePrivate {
          * @param height height to snapshot in
          * @param colors a pointer to an array of colors
          * @param weight The font weight to use (from 1 to 1000, with default 400)
+         * @since 4.22
          * @virtual
          */
         vfunc_snapshot_with_weight(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[], weight: number): void;

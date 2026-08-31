@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gcrgtk3-4)
 
 
-GJS TypeScript type definitions for GcrGtk3-4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.3.0.
+GJS TypeScript type definitions for GcrGtk3-4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.4.0.
 
 ## Install
 

@@ -131,6 +131,7 @@ export namespace GtkSpell {
          * Note: If the iso-codes package is not available, the unchanged code is
          * returned.
          * @param lang The language locale specifier (i.e. "en_US").
+         * @since 3.0.3
          */
         static decode_language_code(lang: string): string;
 
@@ -142,6 +143,7 @@ export namespace GtkSpell {
 
         /**
          * Requests the list of available languages from the enchant broker.
+         * @since 3.0.3
          */
         static get_language_list(): string[];
 
@@ -156,6 +158,7 @@ export namespace GtkSpell {
         /**
          * Add the specified word to the user dictionary.
          * @param word The word to add to the user dictionary.
+         * @since 3.0.9
          */
         add_to_dictionary(word: string): void;
 
@@ -173,6 +176,7 @@ export namespace GtkSpell {
          * Check the specified word.
          * @param word The word to check.
          * @returns TRUE if the word is correctly spelled, FALSE otherwise.
+         * @since 3.0.8
          */
         check_word(word: string): boolean;
 
@@ -198,6 +202,7 @@ export namespace GtkSpell {
          * Retreives a list of spelling suggestions for the specified word.
          * @param word The word for which to fetch suggestions
          * @returns the list of spelling suggestions for the specified word, or NULL if there are no suggestions.
+         * @since 3.0.8
          */
         get_suggestions(word: string): string[];
 
@@ -212,6 +217,7 @@ export namespace GtkSpell {
         /**
          * Add the specified word to the user ignore list.
          * @param word The word to add to the user ignore list.
+         * @since 3.0.9
          */
         ignore_word(word: string): void;
 

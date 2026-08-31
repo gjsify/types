@@ -5074,6 +5074,7 @@ export namespace Cogl {
          * `main()` function. It is allowed to use a program with only a vertex
          * shader or only a fragment shader.
          * @param shader a {@link Cogl.Shader} for a vertex of fragment shader.
+         * @deprecated since 1.16: Use {@link Cogl.Snippet} api
          */
         attach_shader(shader: Shader): void;
 
@@ -5083,6 +5084,7 @@ export namespace Cogl {
          * shader object and is possible to modify as an external parameter.
          * @param uniform_name the name of a uniform.
          * @returns the offset of a uniform in a specified program.
+         * @deprecated since 1.16: Use {@link Cogl.Snippet} api instead
          */
         get_uniform_location(uniform_name: string): number;
 
@@ -5090,6 +5092,7 @@ export namespace Cogl {
          * Links a program making it ready for use. Note that calling this
          * function is optional. If it is not called the program will
          * automatically be linked the first time it is used.
+         * @deprecated since 1.16: Use {@link Cogl.Snippet} api
          */
         link(): void;
 
@@ -5098,6 +5101,7 @@ export namespace Cogl {
          * `program`.
          * @param uniform_location the uniform location retrieved from    {@link Program.get_uniform_location}.
          * @param value the new value of the uniform.
+         * @deprecated since 1.16: Use {@link Cogl.Snippet} api instead
          */
         set_uniform_1f(uniform_location: number, value: number): void;
 
@@ -5106,6 +5110,7 @@ export namespace Cogl {
          * `program`.
          * @param uniform_location the uniform location retrieved from    {@link Program.get_uniform_location}.
          * @param value the new value of the uniform.
+         * @deprecated since 1.16: Use {@link Cogl.Snippet} api instead
          */
         set_uniform_1i(uniform_location: number, value: number): void;
 
@@ -5115,6 +5120,7 @@ export namespace Cogl {
          * @param uniform_location the uniform location retrieved from    {@link Program.get_uniform_location}.
          * @param n_components The number of components for the uniform. For example with glsl you'd use 3 for a vec3 or 4 for a vec4.
          * @param value the new value of the uniform[s].
+         * @deprecated since 1.16: Use {@link Cogl.Snippet} api instead
          */
         set_uniform_float(uniform_location: number, n_components: number, value: number[]): void;
 
@@ -5124,6 +5130,7 @@ export namespace Cogl {
          * @param uniform_location the uniform location retrieved from    {@link Program.get_uniform_location}.
          * @param n_components The number of components for the uniform. For example with glsl you'd use 3 for a vec3 or 4 for a vec4.
          * @param value the new value of the uniform[s].
+         * @deprecated since 1.16: Use {@link Cogl.Snippet} api instead
          */
         set_uniform_int(uniform_location: number, n_components: number, value: number[]): void;
 
@@ -5134,6 +5141,7 @@ export namespace Cogl {
          * @param dimensions The dimensions of the matrix. So for for example pass    2 for a 2x2 matrix or 3 for 3x3.
          * @param transpose Whether to transpose the matrix when setting the uniform.
          * @param value the new value of the uniform.
+         * @deprecated since 1.16: Use {@link Cogl.Snippet} api instead
          */
         set_uniform_matrix(uniform_location: number, dimensions: number, transpose: boolean, value: number[]): void;
     }
@@ -5484,6 +5492,7 @@ export namespace Cogl {
         /**
          * Retrieves the type of a shader
          * @returns {@link Cogl.ShaderType.VERTEX} if the shader is a vertex processor          or {@link Cogl.ShaderType.FRAGMENT} if the shader is a fragment processor
+         * @deprecated since 1.16: Use {@link Cogl.Snippet} api
          */
         get_shader_type(): ShaderType;
 
@@ -5491,6 +5500,7 @@ export namespace Cogl {
          * Replaces the current source associated with a shader with a new
          * one.
          * @param source Shader source.
+         * @deprecated since 1.16: Use {@link Cogl.Snippet} api
          */
         source(source: string): void;
     }

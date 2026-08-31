@@ -1667,6 +1667,7 @@ export namespace GES {
         /**
          * Retrieve the error that was set on the asset when it was loaded.
          * @returns The error set on `asset`, or `null` if no error occurred when `asset` was loaded.
+         * @since 1.8
          */
         get_error(): GLib.Error | null;
 
@@ -1831,6 +1832,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -2035,6 +2037,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -2107,6 +2110,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 
@@ -2186,6 +2190,7 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2229,6 +2234,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2272,6 +2278,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2280,6 +2287,7 @@ export namespace GES {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -2288,6 +2296,7 @@ export namespace GES {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Asset;
 
@@ -2331,6 +2340,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -2339,6 +2349,7 @@ export namespace GES {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -2384,6 +2395,7 @@ export namespace GES {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2427,6 +2439,7 @@ export namespace GES {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -2751,6 +2764,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -2955,6 +2969,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -3027,6 +3042,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 
@@ -3340,6 +3356,7 @@ export namespace GES {
          * with registered time properties or set translation functions is
          * considered a time effect.
          * @returns `true` if `effect` is considered a time effect.
+         * @since 1.18
          */
         is_time_effect(): boolean;
 
@@ -3355,6 +3372,7 @@ export namespace GES {
          * {@link GES.TrackElement.has_internal_source} set to `true`.
          * @param child_property_name The name of the child property to register as a time property
          * @returns `true` if the child property was found and newly registered.
+         * @since 1.18
          */
         register_time_property(child_property_name: string): boolean;
 
@@ -3381,6 +3399,7 @@ export namespace GES {
          * @param source_to_sink_func The function to use for querying how a time is translated from the source coordinates to the sink coordinates of `effect`
          * @param sink_to_source_func The function to use for querying how a time is translated from the sink coordinates to the source coordinates of `effect`
          * @returns `true` if the translation functions were set.
+         * @since 1.18
          */
         set_time_translation_funcs(source_to_sink_func: BaseEffectTimeTranslationFunc | null, sink_to_source_func: BaseEffectTimeTranslationFunc | null): boolean;
     }
@@ -3993,6 +4012,7 @@ export namespace GES {
          * @param child A child of `clip`
          * @param track The track to add `child` to
          * @returns The element that was added to `track`, either `child` or a copy of child, or `null` if the element could not be added.
+         * @since 1.18
          */
         add_child_to_track(child: TrackElement, track: Track): TrackElement;
 
@@ -4012,6 +4032,7 @@ export namespace GES {
          * @param effect A top effect to add
          * @param index The index to add `effect` at, or -1 to add at the highest,         see `ges_clip_get_top_effect_index` for more information
          * @returns `true` if `effect` was successfully added to `clip` at `index`.
+         * @since 1.18
          */
         add_top_effect(effect: BaseEffect, index: number): boolean;
 
@@ -4060,6 +4081,7 @@ export namespace GES {
         /**
          * Gets the {@link GES.Clip.duration_limit} of the clip.
          * @returns The duration-limit of `clip`.
+         * @since 1.18
          */
         get_duration_limit(): Gst.ClockTime;
 
@@ -4104,6 +4126,7 @@ export namespace GES {
          * @param child An {@link GES.TrackElement.active} child of `clip` with a {@link GES.TrackElement.track}
          * @param timeline_time A time in the timeline time coordinates
          * @returns The time in the internal coordinates of `child` corresponding to `timeline_time`, or #GST_CLOCK_TIME_NONE if the conversion could not be performed.
+         * @since 1.18
          */
         get_internal_time_from_timeline_time(child: TrackElement, timeline_time: Gst.ClockTime): Gst.ClockTime;
 
@@ -4166,6 +4189,7 @@ export namespace GES {
          * @param child An {@link GES.TrackElement.active} child of `clip` with a {@link GES.TrackElement.track}
          * @param internal_time A time in the internal time coordinates of `child`
          * @returns The time in the timeline coordinates corresponding to `internal_time`, or #GST_CLOCK_TIME_NONE if the conversion could not be performed.
+         * @since 1.18
          */
         get_timeline_time_from_internal_time(child: TrackElement, internal_time: Gst.ClockTime): Gst.ClockTime;
 
@@ -4182,6 +4206,7 @@ export namespace GES {
          * with `ges_clip_asset_get_frame_time()`.
          * @param frame_number The frame number to get the corresponding timestamp of in the timeline coordinates
          * @returns The timestamp corresponding to `frame_number` in the core children of `clip`, in the timeline coordinates, or #GST_CLOCK_TIME_NONE if the conversion could not be performed.
+         * @since 1.18
          */
         get_timeline_time_from_source_frame(frame_number: FrameNumber): Gst.ClockTime;
 
@@ -4217,6 +4242,7 @@ export namespace GES {
          * layers, or is being added/removed for other reasons (like being added
          * for the first time, or being actually removed).
          * @returns `true` if `clip` is currently being moved between layers, `false` otherwise.
+         * @since 1.28
          */
         is_moving_between_layers(): boolean;
 
@@ -4233,6 +4259,7 @@ export namespace GES {
          * layer.
          * @param layer The new layer
          * @returns `true` if `clip` was successfully moved to `layer`.
+         * @since 1.18
          */
         move_to_layer_full(layer: Layer): boolean;
 
@@ -4243,6 +4270,7 @@ export namespace GES {
          * would not be able to adapt itself once the effect is removed.
          * @param effect The top effect to remove
          * @returns `true` if `effect` was successfully added to `clip` at `index`.
+         * @since 1.18
          */
         remove_top_effect(effect: BaseEffect): boolean;
 
@@ -4271,6 +4299,7 @@ export namespace GES {
          * @param effect An effect within `clip` to move
          * @param newindex The index for `effect` in `clip`
          * @returns `true` if `effect` was successfully moved to `newindex`.
+         * @since 1.18
          */
         set_top_effect_index_full(effect: BaseEffect, newindex: number): boolean;
 
@@ -4317,6 +4346,7 @@ export namespace GES {
          * but at a different {@link GES.TimelineElement.in_point}.
          * @param position The timeline position at which to perform the split, between the start and end of the clip
          * @returns The newly created clip resulting from the splitting `clip`, or `null` if `clip` can't be split.
+         * @since 1.18
          */
         split_full(position: bigint | number): Clip | null;
     }
@@ -4393,6 +4423,7 @@ export namespace GES {
         // Virtual methods
         /**
          * Result: `true` if `self` has a natural framerate `false` otherwise
+         * @since 1.18
          * @virtual
          */
         vfunc_get_natural_framerate(): [boolean, number, number];
@@ -4406,11 +4437,13 @@ export namespace GES {
          * as, for example, the `in-point` or `max-duration` of a {@link GES.Clip}.
          * @param frame_number The frame number we want the internal time coordinate timestamp of
          * @returns The timestamp corresponding to `frame_number` in the element source, given in internal time coordinates, or #GST_CLOCK_TIME_NONE if the clip asset does not have a natural frame rate.
+         * @since 1.18
          */
         get_frame_time(frame_number: FrameNumber): Gst.ClockTime;
 
         /**
          * Result: `true` if `self` has a natural framerate `false` otherwise
+         * @since 1.18
          */
         get_natural_framerate(): [boolean, number, number];
 
@@ -4521,6 +4554,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -4725,6 +4759,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -4797,6 +4832,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 
@@ -4876,6 +4912,7 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -4919,6 +4956,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4962,6 +5000,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -4970,6 +5009,7 @@ export namespace GES {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -4978,6 +5018,7 @@ export namespace GES {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ClipAsset;
 
@@ -5021,6 +5062,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -5029,6 +5071,7 @@ export namespace GES {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -5074,6 +5117,7 @@ export namespace GES {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5117,6 +5161,7 @@ export namespace GES {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -5170,11 +5215,13 @@ export namespace GES {
          * 
          * Result: (transfer full): A help string.
          * @param commands Commands
+         * @since 1.10
          */
         static get_help(commands: string[]): string;
 
         /**
          * @param timeline A GESTimeline to serialize
+         * @since 1.10
          */
         static get_timeline_uri(timeline: Timeline): string;
 
@@ -5386,6 +5433,7 @@ export namespace GES {
          * @param mode The edit mode
          * @param edge The edge of `container` where the edit should occur
          * @param position The edit position: a new location for the edge of `container` (in nanoseconds)
+         * @deprecated since 1.18: use `ges_timeline_element_edit` instead.
          * @virtual
          */
         vfunc_edit(layers: Layer[] | null, new_layer_priority: number, mode: EditMode, edge: Edge, position: number): boolean;
@@ -5439,6 +5487,7 @@ export namespace GES {
          * @param edge The edge of `container` where the edit should occur
          * @param position The edit position: a new location for the edge of `container` (in nanoseconds)
          * @returns `true` if the edit of `container` completed, `false` on failure.
+         * @deprecated since 1.18: use `ges_timeline_element_edit` instead.
          */
         edit(layers: Layer[] | null, new_layer_priority: number, mode: EditMode, edge: Edge, position: bigint | number): boolean;
 
@@ -5645,6 +5694,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -5849,6 +5899,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -5921,6 +5972,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 
@@ -6056,28 +6108,35 @@ export namespace GES {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @since 1.24
+         */
         static get_default(): DiscovererManager;
 
         // Methods
         /**
          * @returns The timeout to use for the discoverer
+         * @since 1.24
          */
         get_timeout(): Gst.ClockTime;
 
         /**
          * @returns Whether to use the cache or not
+         * @since 1.24
          */
         get_use_cache(): boolean;
 
         /**
          * Sets the timeout to use for the discoverer
          * @param timeout The timeout to set
+         * @since 1.24
          */
         set_timeout(timeout: Gst.ClockTime): void;
 
         /**
          * Sets whether to use the cache or not
          * @param use_cache Whether to use the cache
+         * @since 1.24
          */
         set_use_cache(use_cache: boolean): void;
     }
@@ -6284,6 +6343,7 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -6327,6 +6387,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6370,6 +6431,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -6378,6 +6440,7 @@ export namespace GES {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -6386,6 +6449,7 @@ export namespace GES {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): EffectAsset;
 
@@ -6429,6 +6493,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -6437,6 +6502,7 @@ export namespace GES {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -6643,6 +6709,7 @@ export namespace GES {
          * Load data from the given URI into timeline.
          * @param timeline a {@link GES.Timeline}
          * @param uri a `gchar` * pointing to a URI
+         * @deprecated since 1.18: Use `ges_timeline_load_from_uri`
          * @virtual
          */
         vfunc_load_from_uri(timeline: Timeline, uri: string): boolean;
@@ -6652,6 +6719,7 @@ export namespace GES {
          * @param timeline a {@link GES.Timeline}
          * @param uri a `gchar` * pointing to a URI
          * @param overwrite `true` to overwrite file if it exists
+         * @deprecated since 1.18: Use `ges_timeline_save_to_uri`
          * @virtual
          */
         vfunc_save_to_uri(timeline: Timeline, uri: string, overwrite: boolean): boolean;
@@ -6662,6 +6730,7 @@ export namespace GES {
          * @param timeline a {@link GES.Timeline}
          * @param uri a `gchar` * pointing to a URI
          * @returns TRUE if the timeline data was successfully loaded from the URI, else FALSE.
+         * @deprecated since 1.18: Use `ges_timeline_load_from_uri`
          */
         load_from_uri(timeline: Timeline, uri: string): boolean;
 
@@ -6671,6 +6740,7 @@ export namespace GES {
          * @param uri a `gchar` * pointing to a URI
          * @param overwrite `true` to overwrite file if it exists
          * @returns TRUE if the timeline data was successfully saved to the URI else FALSE.
+         * @deprecated since 1.18: Use `ges_timeline_save_to_uri`
          */
         save_to_uri(timeline: Timeline, uri: string, overwrite: boolean): boolean;
 
@@ -7146,6 +7216,7 @@ export namespace GES {
          * @param duration The {@link GES.TimelineElement.duration} value to set on the new clip
          * @param track_types The {@link GES.Clip.supported_formats} to set on the the new clip, or #GES_TRACK_TYPE_UNKNOWN to use the default
          * @returns The newly created clip.
+         * @since 1.18
          */
         add_asset_full(asset: Asset, start: Gst.ClockTime, inpoint: Gst.ClockTime, duration: Gst.ClockTime, track_types: TrackType): Clip;
 
@@ -7165,6 +7236,7 @@ export namespace GES {
          * compositional rules (see {@link GES.TimelineElement}).
          * @param clip The clip to add
          * @returns `true` if `clip` was properly added to `layer`, or `false` if `layer` refused to add `clip`.
+         * @since 1.18
          */
         add_clip_full(clip: Clip): boolean;
 
@@ -7173,6 +7245,7 @@ export namespace GES {
          * `ges_layer_set_active_for_tracks()`.
          * @param track The {@link GES.Track} to check if `layer` is currently active for
          * @returns `true` if `layer` is active for `track`, or `false` otherwise.
+         * @since 1.18
          */
         get_active_for_track(track: Track): boolean;
 
@@ -7245,6 +7318,7 @@ export namespace GES {
          * @param active Whether elements in `tracks` should be active or not
          * @param tracks The list of tracks `layer` should be (de-)active in, or `null` to include all the tracks in the `layer`'s timeline
          * @returns `true` if the operation worked `false` otherwise.
+         * @since 1.18
          */
         set_active_for_tracks(active: boolean, tracks: Track[] | null): boolean;
 
@@ -7262,6 +7336,7 @@ export namespace GES {
         /**
          * Sets the layer to the given priority. See {@link GES.Layer.priority}.
          * @param priority The priority to set
+         * @deprecated since 1.16.0: use `ges_timeline_move_layer` instead. This deprecation means that you will not need to handle layer priorities at all yourself, GES will make sure there is never 'gaps' between layer priorities.
          */
         set_priority(priority: number): void;
 
@@ -7432,6 +7507,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -7636,6 +7712,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -7708,6 +7785,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 
@@ -7901,6 +7979,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -8105,6 +8184,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -8177,6 +8257,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 
@@ -8302,11 +8383,13 @@ export namespace GES {
         /**
          * @param position The position of the new marker
          * @returns The newly-added marker, the list keeps ownership of the marker
+         * @since 1.18
          */
         add(position: Gst.ClockTime): Marker;
 
         /**
          * @returns a {@link GLib.List} of the {@link GES.Marker} within the GESMarkerList. The user will have to unref each {@link GES.Marker} and free the {@link GLib.List}.
+         * @since 1.18
          */
         get_markers(): Marker[];
 
@@ -8315,6 +8398,7 @@ export namespace GES {
          * @param marker 
          * @param position 
          * @returns `true` if the marker could be moved, `false` otherwise   (if the marker was not present in the list for example)
+         * @since 1.18
          */
         move(marker: Marker, position: Gst.ClockTime): boolean;
 
@@ -8323,11 +8407,13 @@ export namespace GES {
          * marker by 1.
          * @param marker 
          * @returns `true` if the marker could be removed, `false` otherwise   (if the marker was not present in the list for example)
+         * @since 1.18
          */
         remove(marker: Marker): boolean;
 
         /**
          * @returns The number of markers in `list`
+         * @since 1.18
          */
         size(): number;
     }
@@ -9302,6 +9388,7 @@ export namespace GES {
 
         /**
          * @param timeline The loading timeline
+         * @since 1.18
          * @virtual
          */
         vfunc_loading(timeline: Timeline): void;
@@ -9342,6 +9429,7 @@ export namespace GES {
         /**
          * Adds a formatter to be used to load `project`
          * @param formatter A formatter used by `project`
+         * @since 1.18
          */
         add_formatter(formatter: Formatter): void;
 
@@ -9521,6 +9609,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -9725,6 +9814,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -9797,6 +9887,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 
@@ -9876,6 +9967,7 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -9919,6 +10011,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -9962,6 +10055,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -9970,6 +10064,7 @@ export namespace GES {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -9978,6 +10073,7 @@ export namespace GES {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Project;
 
@@ -10021,6 +10117,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -10029,6 +10126,7 @@ export namespace GES {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -10074,6 +10172,7 @@ export namespace GES {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10117,6 +10216,7 @@ export namespace GES {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -10185,6 +10285,7 @@ export namespace GES {
          * Creates the GstElement to put in the source topbin. Other elements will be
          * queued, like a volume. In the case of a AudioUriSource, for example, the
          * subclass will return a decodebin, and we will append a volume.
+         * @since 1.20
          * @virtual
          */
         vfunc_create_source(): Gst.Element;
@@ -10192,6 +10293,7 @@ export namespace GES {
         /**
          * Check whether `pad` should be exposed/used.
          * @param pad The pad to check
+         * @since 1.20
          * @virtual
          */
         vfunc_select_pad(pad: Gst.Pad): boolean;
@@ -10353,6 +10455,7 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -10396,6 +10499,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -10439,6 +10543,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -10447,6 +10552,7 @@ export namespace GES {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -10455,6 +10561,7 @@ export namespace GES {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): SourceClipAsset;
 
@@ -10498,6 +10605,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -10506,6 +10614,7 @@ export namespace GES {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -11458,6 +11567,7 @@ export namespace GES {
          * adding the clip would cause such an error.
          * @param layer The layer to add
          * @returns `true` if `layer` was properly added.
+         * @deprecated since 1.18: This method requires you to ensure the layer's {@link GES.Layer.priority} will be unique to the timeline. Use `ges_timeline_append_layer()` and `ges_timeline_move_layer()` instead.
          */
         add_layer(layer: Layer): boolean;
 
@@ -11530,6 +11640,7 @@ export namespace GES {
          *   * {@link GES.Timeline.snapping_distance}
          *   * {@link GES.Timeline.auto_transition}
          * @param disable_edit_apis `true` to disable all the edit APIs so the user is in full control of ensuring timeline state validity `false` otherwise.
+         * @since 1.22
          */
         disable_edit_apis(disable_edit_apis: boolean): void;
 
@@ -11540,6 +11651,7 @@ export namespace GES {
          * should call `ges_timeline_thaw_commit` so that committing becomes possible
          * again and any call to `commit()` that happened during the rendering is
          * actually taken into account.
+         * @since 1.20
          */
         freeze_commit(): void;
 
@@ -11557,6 +11669,7 @@ export namespace GES {
 
         /**
          * @returns `true` if edit APIs are disabled, `false` otherwise.
+         * @since 1.22
          */
         get_edit_apis_disabled(): boolean;
 
@@ -11572,6 +11685,7 @@ export namespace GES {
          * corresponding {@link GES.FrameNumber} in the timeline's output.
          * @param timestamp The timestamp to get the corresponding frame number of
          * @returns The frame number `timestamp` corresponds to.
+         * @since 1.18
          */
         get_frame_at(timestamp: Gst.ClockTime): FrameNumber;
 
@@ -11582,6 +11696,7 @@ export namespace GES {
          * an element within the timeline.
          * @param frame_number The frame number to get the corresponding timestamp of in the                timeline coordinates
          * @returns The timestamp corresponding to `frame_number` in the output of `self`.
+         * @since 1.18
          */
         get_frame_time(frame_number: FrameNumber): Gst.ClockTime;
 
@@ -11653,6 +11768,7 @@ export namespace GES {
          * present in the timeline, it will become the lowest priority layer.
          * @param layer A layer within `timeline`, whose priority should be changed
          * @param new_layer_priority The new index for `layer`
+         * @since 1.16
          */
         move_layer(layer: Layer, new_layer_priority: number): boolean;
 
@@ -11726,6 +11842,7 @@ export namespace GES {
          * Thaw the timeline so that comiting becomes possible
          * again and any call to `commit()` that happened during the rendering is
          * actually taken into account.
+         * @since 1.20
          */
         thaw_commit(): void;
 
@@ -11891,6 +12008,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -12095,6 +12213,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -12167,6 +12286,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 
@@ -12250,6 +12370,7 @@ export namespace GES {
          * element names only and should not contain any property names.
          * @param name the full-path child's name
          * @returns the child object or `null` if     not found.
+         * @since 1.22
          */
         get_child_by_name_recurse<T = GObject.Object>(name: string): T;
 
@@ -12778,6 +12899,7 @@ export namespace GES {
          * Gets the priority of the layer the element is in. A {@link GES.Group} may span
          * several layers, so this would return the highest priority (numerically,
          * the smallest) amongst them.
+         * @since 1.16
          * @virtual
          */
         vfunc_get_layer_priority(): number;
@@ -12792,6 +12914,7 @@ export namespace GES {
          * to a file that contains both a video and audio stream, then the corresponding
          * {@link GES.AudioUriSource} will share the natural framerate of the corresponding
          * {@link GES.VideoUriSource}.
+         * @since 1.18
          * @virtual
          */
         vfunc_get_natural_framerate(): [boolean, number, number];
@@ -12799,6 +12922,7 @@ export namespace GES {
         /**
          * Gets the track types that the element can interact with, i.e. the type
          * of {@link GES.Track} it can exist in, or will create {@link GES.TrackElement}-s for.
+         * @since 1.6.0
          * @virtual
          */
         vfunc_get_track_types(): TrackType;
@@ -12865,6 +12989,7 @@ export namespace GES {
          * @param child 
          * @param pspec 
          * @param value 
+         * @since 1.16
          * @virtual
          */
         vfunc_set_child_property(child: GObject.Object, pspec: GObject.ParamSpec, value: unknown): void;
@@ -12876,6 +13001,7 @@ export namespace GES {
          * @param child 
          * @param pspec 
          * @param value 
+         * @since 1.18
          * @virtual
          */
         vfunc_set_child_property_full(child: GObject.Object, pspec: GObject.ParamSpec, value: unknown): boolean;
@@ -12936,6 +13062,7 @@ export namespace GES {
         /**
          * Sets the priority of the element within the containing layer.
          * @param priority The priority
+         * @deprecated since 1.10: All priority management is done by GES itself now. To set {@link GES.Effect} priorities `ges_clip_set_top_effect_index` should be used.
          * @virtual
          */
         vfunc_set_priority(priority: number): boolean;
@@ -13009,6 +13136,7 @@ export namespace GES {
          * @param edge The edge of `self` where the edit should occur
          * @param position The edit position: a new location for the edge of `self` (in nanoseconds) in the timeline coordinates
          * @returns `true` if the edit of `self` completed, `false` on failure.
+         * @since 1.18
          */
         edit(layers: Layer[] | null, new_layer_priority: bigint | number, mode: EditMode, edge: Edge, position: bigint | number): boolean;
 
@@ -13040,6 +13168,7 @@ export namespace GES {
          * @param edge The edge of `self` where the edit should occur
          * @param position The edit position: a new location for the edge of `self` (in nanoseconds) in the timeline coordinates
          * @returns `true` if the edit of `self` completed, `false` on failure.
+         * @since 1.18
          */
         edit_full(new_layer_priority: bigint | number, mode: EditMode, edge: Edge, position: bigint | number): boolean;
 
@@ -13090,6 +13219,7 @@ export namespace GES {
          * several layers, so this would return the highest priority (numerically,
          * the smallest) amongst them.
          * @returns The priority of the layer `self` is in, or #GES_TIMELINE_ELEMENT_NO_LAYER_PRIORITY if `self` does not exist in a layer.
+         * @since 1.16
          */
         get_layer_priority(): number;
 
@@ -13116,6 +13246,7 @@ export namespace GES {
          * {@link GES.AudioUriSource} will share the natural framerate of the corresponding
          * {@link GES.VideoUriSource}.
          * @returns Whether `self` has a natural framerate or not, `framerate_n` and `framerate_d` will be set to, respectively, 0 and -1 if it is not the case.
+         * @since 1.18
          */
         get_natural_framerate(): [boolean, number, number];
 
@@ -13153,6 +13284,7 @@ export namespace GES {
          * Gets the track types that the element can interact with, i.e. the type
          * of {@link GES.Track} it can exist in, or will create {@link GES.TrackElement}-s for.
          * @returns The track types that `self` supports.
+         * @since 1.6.0
          */
         get_track_types(): TrackType;
 
@@ -13203,6 +13335,7 @@ export namespace GES {
          * See also `ges_timeline_paste_element()`.
          * @param paste_position The position in the timeline `element` should be pasted to, i.e. the {@link GES.TimelineElement.start} value for the pasted element.
          * @returns The newly created element, or `null` if pasting fails.
+         * @since 1.6.0
          */
         paste(paste_position: Gst.ClockTime): TimelineElement | null;
 
@@ -13291,6 +13424,7 @@ export namespace GES {
          * @param property_name The name of the child property to set
          * @param value The value to set the property to
          * @returns `true` if the property was found and set.
+         * @since 1.18
          */
         set_child_property_full(property_name: string, value: GObject.Value | any): boolean;
 
@@ -13374,6 +13508,7 @@ export namespace GES {
          * Sets the priority of the element within the containing layer.
          * @param priority The priority
          * @returns `true` if `priority` could be set for `self`.
+         * @deprecated since 1.10: All priority management is done by GES itself now. To set {@link GES.Effect} priorities `ges_clip_set_top_effect_index` should be used.
          */
         set_priority(priority: number): boolean;
 
@@ -13583,6 +13718,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -13787,6 +13923,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -13859,6 +13996,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 
@@ -14054,96 +14192,112 @@ export namespace GES {
         /**
          * Get the background used by `self`.
          * @returns The color used by `self`.
+         * @deprecated since 1.6: use `ges_timeline_element_get_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         get_background_color(): number;
 
         /**
          * Get the pango font description used by `self`.
          * @returns The pango font description used by `self`.
+         * @deprecated since 1.6: use `ges_timeline_element_get_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         get_font_desc(): string | null;
 
         /**
          * Get the horizontal aligment used by `self`.
          * @returns The horizontal aligment used by `self`.
+         * @deprecated since 1.6: use `ges_timeline_element_get_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         get_halignment(): TextHAlign;
 
         /**
          * Get the text currently set on `self`.
          * @returns The text currently set on `self`.
+         * @deprecated since 1.6: use `ges_timeline_element_get_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         get_text(): string | null;
 
         /**
          * Get the color used by `self`.
          * @returns The color used by `self`.
+         * @deprecated since 1.6: use `ges_timeline_element_get_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         get_text_color(): number;
 
         /**
          * Get the vertical aligment used by `self`.
          * @returns The vertical aligment used by `self`.
+         * @deprecated since 1.6: use `ges_timeline_element_get_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         get_valignment(): TextVAlign;
 
         /**
          * Get the horizontal position used by `self`.
          * @returns The horizontal position used by `self`.
+         * @deprecated since 1.6: use `ges_timeline_element_get_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         get_xpos(): number;
 
         /**
          * Get the vertical position used by `self`.
          * @returns The vertical position used by `self`.
+         * @deprecated since 1.6: use `ges_timeline_element_get_children_property` instead
          */
         get_ypos(): number;
 
         /**
          * Sets the background of the text.
          * @param background The color `self` is being set to
+         * @deprecated since 1.6: use `ges_timeline_element_set_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         set_background(background: number): void;
 
         /**
          * Sets the color of the text.
          * @param color The color `self` is being set to
+         * @deprecated since 1.6: use `ges_timeline_element_set_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         set_color(color: number): void;
 
         /**
          * Sets the pango font description of the text.
          * @param font_desc the pango font description
+         * @deprecated since 1.6: use `ges_timeline_element_set_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         set_font_desc(font_desc: string | null): void;
 
         /**
          * Sets the horizontal aligment of the text.
          * @param halign {@link GES.TextHAlign}
+         * @deprecated since 1.6: use `ges_timeline_element_set_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         set_halignment(halign: TextHAlign): void;
 
         /**
          * Sets the text this clip will render.
          * @param text the text to render. an internal copy of this text will be made.
+         * @deprecated since 1.6: use `ges_timeline_element_set_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         set_text(text: string | null): void;
 
         /**
          * Sets the vertical aligment of the text.
          * @param valign {@link GES.TextVAlign}
+         * @deprecated since 1.6: use `ges_timeline_element_set_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         set_valignment(valign: TextVAlign): void;
 
         /**
          * Sets the horizontal position of the text.
          * @param position The horizontal position `self` is being set to
+         * @deprecated since 1.6: use `ges_timeline_element_set_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         set_xpos(position: number): void;
 
         /**
          * Sets the vertical position of the text.
          * @param position The vertical position `self` is being set to
+         * @deprecated since 1.6: use `ges_timeline_element_set_children_properties` instead. See {@link GES.TitleSource} for more information about exposed properties
          */
         set_ypos(position: number): void;
     }
@@ -14217,6 +14371,7 @@ export namespace GES {
         /**
          * Get the pango font description used by `source`.
          * @returns The pango font description used by this `source`.
+         * @deprecated since 1.16: Use ges_timeline_element_get_child_property instead (this actually returns a newly allocated string)
          */
         get_font_desc(): string | null;
 
@@ -14229,6 +14384,7 @@ export namespace GES {
         /**
          * Get the text currently set on the `source`.
          * @returns The text currently set on the `source`.
+         * @deprecated since 1.16: Use ges_timeline_element_get_child_property instead (this actually returns a newly allocated string)
          */
         get_text(): string | null;
 
@@ -14278,6 +14434,7 @@ export namespace GES {
         /**
          * Sets the text this track element will render.
          * @param text the text to render. an internal copy of this text will be made.
+         * @deprecated use ges_track_element_get/set_children_properties on the GESTrackElement instead
          */
         set_text(text: string | null): void;
 
@@ -14537,6 +14694,7 @@ export namespace GES {
          * Note that a {@link GES.TrackElement} can only be added to one track.
          * @param object The element to add
          * @returns `true` if `object` was successfully added to `track`.
+         * @since 1.18
          */
         add_element_full(object: TrackElement): boolean;
 
@@ -14581,6 +14739,7 @@ export namespace GES {
         /**
          * Gets the {@link GES.Track.restriction_caps} of the track.
          * @returns The restriction-caps of `track`.
+         * @since 1.18
          */
         get_restriction_caps(): Gst.Caps | null;
 
@@ -14602,6 +14761,7 @@ export namespace GES {
          * ownership of the element.
          * @param object The element to remove
          * @returns `true` if `object` was successfully removed from `track`.
+         * @since 1.18
          */
         remove_element_full(object: TrackElement): boolean;
 
@@ -14746,6 +14906,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -14950,6 +15111,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -15022,6 +15184,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 
@@ -15105,6 +15268,7 @@ export namespace GES {
          * element names only and should not contain any property names.
          * @param name the full-path child's name
          * @returns the child object or `null` if     not found.
+         * @since 1.22
          */
         get_child_by_name_recurse<T = GObject.Object>(name: string): T;
 
@@ -15496,6 +15660,7 @@ export namespace GES {
          * contained elements have this property name you will get the first one, unless you
          * specify the class name in `name`.
          * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
+         * @deprecated since 1.14: Use `ges_timeline_element_lookup_child`
          * @virtual
          */
         vfunc_lookup_child(prop_name: string): [boolean, Gst.Element | null, GObject.ParamSpec | null];
@@ -15532,6 +15697,7 @@ export namespace GES {
          * element, or after its out-point, then it will be removed. At the
          * in-point and out-point times, a new interpolated value will be placed.
          * @param property_name The name of the child property to clamp the control source of
+         * @since 1.18
          */
         clamp_control_source(property_name: string): void;
 
@@ -15542,6 +15708,7 @@ export namespace GES {
          * @param edge The edge of `object` where the edit should occur
          * @param position The edit position: a new location for the edge of `object` (in nanoseconds)
          * @returns `true` if the edit of `object` completed, `false` on failure.
+         * @deprecated since 1.18: use `ges_timeline_element_edit` instead.
          */
         edit(layers: Layer[] | null, mode: EditMode, edge: Edge, position: bigint | number): boolean;
 
@@ -15565,6 +15732,7 @@ export namespace GES {
         /**
          * Gets {@link GES.TrackElement.auto_clamp_control_sources}.
          * @returns Whether the control sources for the child properties of `object` are automatically clamped.
+         * @since 1.18
          */
         get_auto_clamp_control_sources(): boolean;
 
@@ -15589,12 +15757,14 @@ export namespace GES {
         /**
          * Get the GNonLin object this object is controlling.
          * @returns The GNonLin object this object is controlling.
+         * @deprecated use `ges_track_element_get_nleobject` instead.
          */
         get_gnlobject(): Gst.Element;
 
         /**
          * Get the nleobject that this element wraps.
          * @returns The nleobject that `object` wraps.
+         * @since 1.6
          */
         get_nleobject(): Gst.Element;
 
@@ -15632,6 +15802,7 @@ export namespace GES {
          * added as a core child. Therefore, if this returns `true`, then `element`
          * will be a core child of its parent clip.
          * @returns `true` if `element` is a core track element.
+         * @since 1.18
          */
         is_core(): boolean;
 
@@ -15639,6 +15810,7 @@ export namespace GES {
          * Gets an array of {@link GObject.ParamSpec}* for all configurable properties of the
          * children of `object`.
          * @returns An array of {@link GObject.ParamSpec}* which should be freed after use or `null` if something went wrong.
+         * @deprecated Use `ges_timeline_element_list_children_properties`
          */
         list_children_properties(): GObject.ParamSpec[];
 
@@ -15648,6 +15820,7 @@ export namespace GES {
          * specify the class name in `name`.
          * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
          * @returns TRUE if `element` and `pspec` could be found. FALSE otherwise. In that case the values for `pspec` and `element` are not modified. Unref `element` after usage.
+         * @deprecated Use `ges_timeline_element_lookup_child`
          */
         lookup_child(prop_name: string): [boolean, Gst.Element | null, GObject.ParamSpec | null];
 
@@ -15673,6 +15846,7 @@ export namespace GES {
          * Sets {@link GES.TrackElement.auto_clamp_control_sources}. If set to `true`, this
          * will immediately clamp all the control sources.
          * @param auto_clamp Whether to automatically clamp the control sources for the child properties of `object`
+         * @since 1.18
          */
         set_auto_clamp_control_sources(auto_clamp: boolean): void;
 
@@ -15700,6 +15874,7 @@ export namespace GES {
          * {@link GES.TimelineElement.max_duration} to #GST_CLOCK_TIME_NONE.
          * @param has_internal_source Whether the `object` should be allowed to have its 'internal time' properties set.
          * @returns `false` if `has_internal_source` is forbidden for `object` and `true` in any other case.
+         * @since 1.18
          */
         set_has_internal_source(has_internal_source: boolean): boolean;
 
@@ -15871,6 +16046,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -16075,6 +16251,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -16147,6 +16324,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 
@@ -16255,6 +16433,7 @@ export namespace GES {
         // Virtual methods
         /**
          * Result: `true` if `self` has a natural framerate `false` otherwise
+         * @since 1.18
          * @virtual
          */
         vfunc_get_natural_framerate(): [boolean, number, number];
@@ -16262,6 +16441,7 @@ export namespace GES {
         // Methods
         /**
          * Result: `true` if `self` has a natural framerate `false` otherwise
+         * @since 1.18
          */
         get_natural_framerate(): [boolean, number, number];
 
@@ -16374,6 +16554,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -16578,6 +16759,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -16650,6 +16832,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 
@@ -16729,6 +16912,7 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -16772,6 +16956,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -16815,6 +17000,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -16823,6 +17009,7 @@ export namespace GES {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -16831,6 +17018,7 @@ export namespace GES {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): TrackElementAsset;
 
@@ -16874,6 +17062,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -16882,6 +17071,7 @@ export namespace GES {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -16927,6 +17117,7 @@ export namespace GES {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -16970,6 +17161,7 @@ export namespace GES {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -17339,6 +17531,7 @@ export namespace GES {
         /**
          * Finalize the request of an async {@link GES.UriClipAsset}
          * @param res The {@link Gio.AsyncResult} from which to get the newly created {@link GES.UriClipAsset}
+         * @since 1.16
          */
         static finish(res: Gio.AsyncResult): UriClipAsset;
 
@@ -17410,6 +17603,7 @@ export namespace GES {
          * but in the case of nested timelines, for example, they
          * are different as those can be extended 'infinitely'.
          * @returns The maximum duration of `self`
+         * @since 1.18
          */
         get_max_duration(): Gst.ClockTime;
 
@@ -17422,6 +17616,7 @@ export namespace GES {
         /**
          * Gets Whether the file represented by `self` is an image or not
          * @returns Whether the file represented by `self` is an image or not
+         * @since 1.18
          */
         is_image(): boolean;
 
@@ -17464,6 +17659,7 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -17507,6 +17703,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -17550,6 +17747,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -17558,6 +17756,7 @@ export namespace GES {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -17566,6 +17765,7 @@ export namespace GES {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): UriClipAsset;
 
@@ -17609,6 +17809,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -17617,6 +17818,7 @@ export namespace GES {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -17692,6 +17894,7 @@ export namespace GES {
         /**
          * Check if `asset` contains a single image
          * @returns `true` if the video stream corresponds to an image (i.e. only contains one frame)
+         * @since 1.18
          */
         is_image(): boolean;
 
@@ -17734,6 +17937,7 @@ export namespace GES {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -17777,6 +17981,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -17820,6 +18025,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -17828,6 +18034,7 @@ export namespace GES {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -17836,6 +18043,7 @@ export namespace GES {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): UriSourceAsset;
 
@@ -17879,6 +18087,7 @@ export namespace GES {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -17887,6 +18096,7 @@ export namespace GES {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -17960,6 +18170,7 @@ export namespace GES {
          * the clip which potentially also rotate the element are not taken into
          * account.
          * @returns `true` if the object has a natural size, `false` otherwise.
+         * @since 1.18
          */
         get_natural_size(): [boolean, number, number];
     }
@@ -18205,6 +18416,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -18409,6 +18621,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -18481,6 +18694,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 
@@ -18650,6 +18864,7 @@ export namespace GES {
          * Get the border property of `self`, this value represents
          * the border width of the transition.
          * @returns The border values of `self` or -1 if not meaningful (this will happen when not using a smpte transition).
+         * @deprecated since 1.20: Use ges_timeline_element_get_child_property instead.
          */
         get_border(): number;
 
@@ -18663,6 +18878,7 @@ export namespace GES {
          * Get the invert property of `self`, this value represents
          * the direction of the transition.
          * @returns The invert value of `self`
+         * @deprecated since 1.20: Use ges_timeline_element_get_child_property instead.
          */
         is_inverted(): boolean;
 
@@ -18672,6 +18888,7 @@ export namespace GES {
          * not make sense for the current transition type, it is cached
          * for later use.
          * @param value The value of the border to set on `object`
+         * @deprecated since 1.20: Use ges_timeline_element_set_child_property instead.
          */
         set_border(value: number): void;
 
@@ -18681,6 +18898,7 @@ export namespace GES {
          * not make sense for the current transition type, it is cached
          * for later use.
          * @param inverted `true` if the transition should be inverted `false` otherwise
+         * @deprecated since 1.20: Use ges_timeline_element_set_child_property instead.
          */
         set_inverted(inverted: boolean): void;
 
@@ -19791,6 +20009,7 @@ export namespace GES {
          * wrong type, the method will fail.
          * @param key The key for the `container` field to get
          * @returns A copy of the marker list value under `key`, or `null` if it could not be fetched.
+         * @since 1.18
          */
         get_marker_list(key: string): MarkerList | null;
 
@@ -19995,6 +20214,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to register
          * @param type The required value type for the registered field
          * @returns `true` if the `meta_item` field was successfully registered on `container` to only hold `type` values, with the given `flags`.
+         * @since 1.18
          */
         register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean;
 
@@ -20067,6 +20287,7 @@ export namespace GES {
          * @param meta_item The key for the `container` field to set
          * @param list The value to set under `meta_item`
          * @returns `true` if `value` was set under `meta_item` for `container`.
+         * @since 1.18
          */
         set_marker_list(meta_item: string, list: MarkerList): boolean;
 

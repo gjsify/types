@@ -132,48 +132,56 @@ export namespace Passim {
         /**
          * Gets the carbon saving from using this project.
          * @returns kgs of CO₂e
+         * @since 0.1.6
          */
         get_carbon_saving(): number;
 
         /**
          * Gets the total number of bytes saved from using this project.
          * @returns bytes
+         * @since 0.1.6
          */
         get_download_saving(): number;
 
         /**
          * Get items currently published by the daemon.
          * @returns items, or `null` for error
+         * @since 0.1.0
          */
         get_items(): Item[];
 
         /**
          * Gets the daemon name.
          * @returns the name string, or `null` if unset
+         * @since 0.1.6
          */
         get_name(): string;
 
         /**
          * Gets the daemon status.
          * @returns the {@link Passim.Status}
+         * @since 0.1.2
          */
         get_status(): Status;
 
         /**
          * Gets the daemon URI.
          * @returns the URI string, or `null` if unset
+         * @since 0.1.6
          */
         get_uri(): string;
 
         /**
          * Gets the daemon version.
          * @returns the version string, or `null` if unset
+         * @since 0.1.0
          */
         get_version(): string;
 
         /**
          * Loads properties from the passim daemon.
          * @returns `true` for success
+         * @since 0.1.0
          */
         load(): boolean;
 
@@ -181,6 +189,7 @@ export namespace Passim {
          * Connects to the remote server.
          * @param item a {@link Passim.Item}
          * @returns `true` for success
+         * @since 0.1.0
          */
         publish(item: Item): boolean;
 
@@ -188,6 +197,7 @@ export namespace Passim {
          * Unpublish a file from the index.
          * @param hash an item hash value
          * @returns `true` for success
+         * @since 0.1.0
          */
         unpublish(hash: string): boolean;
     }
@@ -241,18 +251,21 @@ export namespace Passim {
         /**
          * Converts a string to an enumerated item flag.
          * @param item_flag a string, e.g. `next-reboot`
+         * @since 0.1.0
          */
         static flag_from_string(item_flag: string | null): ItemFlags;
 
         /**
          * Converts an enumerated item flag to a string.
          * @param item_flag item flags, e.g. `PASSIM_ITEM_FLAG_NEXT_REBOOT`
+         * @since 0.1.0
          */
         static flag_to_string(item_flag: ItemFlags): string;
 
         /**
          * Creates a new item using serialized data.
          * @param value the serialized data
+         * @since 0.1.0
          */
         static from_variant(value: GLib.Variant): Item;
 
@@ -260,90 +273,105 @@ export namespace Passim {
         /**
          * Adds a specific item flag to the item.
          * @param flag the {@link Passim.ItemFlags}
+         * @since 0.1.0
          */
         add_flag(flag: ItemFlags): void;
 
         /**
          * Gets the current file age.
          * @returns time in seconds, or 0 for invalid.
+         * @since 0.1.0
          */
         get_age(): number;
 
         /**
          * Gets the basename of the file that was published.
          * @returns the test basename, or `null` if unset
+         * @since 0.1.0
          */
         get_basename(): string;
 
         /**
          * Gets the local bytes in the cache.
          * @returns a {@link GLib.Bytes}, or `null` if unset
+         * @since 0.1.0
          */
         get_bytes(): GLib.Bytes;
 
         /**
          * Gets the cmdline of the binary that published the item.
          * @returns the binary name, or `null` if unset
+         * @since 0.1.0
          */
         get_cmdline(): string;
 
         /**
          * Gets the creation time of the file.
          * @returns the creation time, or `null` if unset
+         * @since 0.1.0
          */
         get_ctime(): GLib.DateTime;
 
         /**
          * Gets the local file in the cache.
          * @returns a {@link Gio.File}, or `null` if unset
+         * @since 0.1.0
          */
         get_file(): Gio.File;
 
         /**
          * Gets the item flags.
          * @returns item flags, or 0 if unset
+         * @since 0.1.0
          */
         get_flags(): number;
 
         /**
          * Gets the item flags.
          * @returns string
+         * @since 0.1.0
          */
         get_flags_as_string(): string;
 
         /**
          * Gets the file hash.
          * @returns the typically in SHA-256 lowercase form, or `null` if unset
+         * @since 0.1.0
          */
         get_hash(): string;
 
         /**
          * Gets the maximum permitted file age.
          * @returns time in seconds
+         * @since 0.1.0
          */
         get_max_age(): number;
 
         /**
          * Gets the current number of times the item has been shared to other machines.
          * @returns the count, or 0 if unset
+         * @since 0.1.0
          */
         get_share_count(): number;
 
         /**
          * Gets the maximum number of times that the file can be shared.
          * @returns share limit, or 0 if unset
+         * @since 0.1.0
          */
         get_share_limit(): number;
 
         /**
          * Gets the size of the file in bytes.
          * @returns share limit, or 0 if unset
+         * @since 0.1.2
          */
         get_size(): number;
 
         /**
          * Gets the input stream for the item.
          * @returns a {@link Gio.InputStream}, or `null` if unset
+         * @since 0.1.5
          */
         get_stream(): Gio.InputStream;
 
@@ -351,30 +379,35 @@ export namespace Passim {
          * Finds if the item has a specific item flag.
          * @param flag a item flag
          * @returns `true` if the flag is set
+         * @since 0.1.0
          */
         has_flag(flag: ItemFlags): boolean;
 
         /**
          * Loads the item from a file on disk.
          * @param filename a filename with full path
+         * @since 0.1.0
          */
         load_filename(filename: string): boolean;
 
         /**
          * Removes a specific item flag from the item.
          * @param flag a item flag
+         * @since 0.1.0
          */
         remove_flag(flag: ItemFlags): void;
 
         /**
          * Sets the basename of the file that was published.
          * @param basename the basename name
+         * @since 0.1.0
          */
         set_basename(basename: string | null): void;
 
         /**
          * Sets the local bytes in the cache.
          * @param bytes a {@link GLib.Bytes}
+         * @since 0.1.0
          */
         set_bytes(bytes: GLib.Bytes | Uint8Array | null): void;
 
@@ -385,54 +418,63 @@ export namespace Passim {
          * obtained via /proc/<pid>/cmdline and it may be possible to falsify the data by a malicious
          * binary running as root under certain conditions.
          * @param cmdline the binary name
+         * @since 0.1.0
          */
         set_cmdline(cmdline: string | null): void;
 
         /**
          * Sets the creation time of the file.
          * @param ctime a {@link GLib.DateTime}
+         * @since 0.1.0
          */
         set_ctime(ctime: GLib.DateTime | null): void;
 
         /**
          * Sets the local file in the cache.
          * @param file a {@link Gio.File}
+         * @since 0.1.0
          */
         set_file(file: Gio.File | null): void;
 
         /**
          * Sets the item flags.
          * @param flags item flags, e.g. `PASSIM_ITEM_FLAG_NEXT_REBOOT`
+         * @since 0.1.0
          */
         set_flags(flags: bigint | number): void;
 
         /**
          * Sets the file hash.
          * @param hash the hash, typically in SHA-256 lowercase form
+         * @since 0.1.0
          */
         set_hash(hash: string | null): void;
 
         /**
          * Sets the maximum permitted file age.
          * @param max_age time in seconds
+         * @since 0.1.0
          */
         set_max_age(max_age: number): void;
 
         /**
          * Sets the current number of times the item has been shared to other machines.
          * @param share_count the count, or 0 to unset
+         * @since 0.1.0
          */
         set_share_count(share_count: number): void;
 
         /**
          * Sets the maximum number of times that the file can be shared.
          * @param share_limit the share limit, or 0
+         * @since 0.1.0
          */
         set_share_limit(share_limit: number): void;
 
         /**
          * Sets the size of the file in bytes.
          * @param size the share limit, or 0
+         * @since 0.1.2
          */
         set_size(size: bigint | number): void;
 
@@ -441,18 +483,21 @@ export namespace Passim {
          * 
          * NOTE: This *MUST* be a `GUnixInputStream`, or subclass thereof.
          * @param stream a {@link Gio.InputStream}
+         * @since 0.1.5
          */
         set_stream(stream: Gio.InputStream | null): void;
 
         /**
          * Builds a text representation of the object.
          * @returns text, or `null` for invalid
+         * @since 0.1.0
          */
         to_string(): string;
 
         /**
          * Serialize the item data.
          * @returns the serialized data, or `null` for error
+         * @since 0.1.0
          */
         to_variant(): GLib.Variant;
     }

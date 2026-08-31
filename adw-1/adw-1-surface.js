@@ -1,12 +1,12 @@
 // The widget vocabulary of Adw-1 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Adw-1 — library 1.10.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap
+// GENERATED — do not edit. Provenance: Adw-1 — library 1.10.0 — 1 child holder(s) — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
 // name here is real needs values, not declarations.
 
-export const SURFACE_PROVENANCE = 'Adw-1 — library 1.10.0 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap';
+export const SURFACE_PROVENANCE = 'Adw-1 — library 1.10.0 — 1 child holder(s) — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap';
 
 export const OWN_PROPS = {
     AdwAboutDialog: ['appdata-resource-path', 'application-icon', 'application-name', 'artists', 'comments', 'copyright', 'debug-info', 'debug-info-filename', 'designers', 'developer-name', 'developers', 'documenters', 'issue-url', 'license', 'license-type', 'other-apps-title', 'release-notes', 'release-notes-version', 'support-url', 'translator-credits', 'version', 'website'],
@@ -58,6 +58,7 @@ export const OWN_PROPS = {
     AdwTabOverview: ['child', 'enable-new-tab', 'enable-search', 'extra-drag-preload', 'inverted', 'open', 'secondary-menu', 'show-end-title-buttons', 'show-start-title-buttons', 'view'],
     AdwTabView: ['default-icon', 'menu-model', 'selected-page', 'shortcuts'],
     AdwToastOverlay: ['child'],
+    AdwToggle: ['child', 'description', 'enabled', 'icon-name', 'label', 'name', 'tooltip', 'use-underline'],
     AdwToggleGroup: ['active', 'active-name', 'can-shrink', 'homogeneous'],
     AdwToolbarView: ['bottom-bar-style', 'content', 'extend-content-to-bottom-edge', 'extend-content-to-top-edge', 'reveal-bottom-bars', 'reveal-top-bars', 'top-bar-style'],
     AdwViewStack: ['enable-transitions', 'hhomogeneous', 'transition-duration', 'vhomogeneous', 'visible-child', 'visible-child-name'],
@@ -147,6 +148,7 @@ export const DECLS = {
     AdwTabOverview: ['AdwTabOverview', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     AdwTabView: ['AdwTabView', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     AdwToastOverlay: ['AdwToastOverlay', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
+    AdwToggle: ['AdwToggle'],
     AdwToggleGroup: ['AdwToggleGroup', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
     AdwToolbarView: ['AdwToolbarView', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     AdwViewStack: ['AdwViewStack', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
@@ -158,6 +160,12 @@ export const DECLS = {
     AdwWindowTitle: ['AdwWindowTitle', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     AdwWrapBox: ['AdwWrapBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable'],
 };
+
+// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
+// and descend from `GObject.Object`. A renderer places them like a container; a check
+// asking "is this a widget" must not count them. Derived from the accessor pair, never
+// from a list — the count is in the provenance line above.
+export const CHILD_HOLDERS = ['AdwToggle'];
 
 export const ENUM_NICKS = {
     AdwAccentColor: ['blue', 'teal', 'green', 'yellow', 'orange', 'red', 'pink', 'purple', 'slate'],
@@ -304,6 +312,9 @@ export const SLOT_CANDIDATES = {
         'view': 'set_view',
     },
     AdwToastOverlay: {
+        'child': 'set_child',
+    },
+    AdwToggle: {
         'child': 'set_child',
     },
     AdwToolbarView: {
@@ -519,6 +530,14 @@ export const SINCE = {
     'AdwTabOverview.show-start-title-buttons': '1.3',
     'AdwTabOverview.view': '1.3',
     'AdwTabView.shortcuts': '1.2',
+    'AdwToggle.child': '1.7',
+    'AdwToggle.description': '1.9',
+    'AdwToggle.enabled': '1.7',
+    'AdwToggle.icon-name': '1.7',
+    'AdwToggle.label': '1.7',
+    'AdwToggle.name': '1.7',
+    'AdwToggle.tooltip': '1.7',
+    'AdwToggle.use-underline': '1.7',
     'AdwToggleGroup.active': '1.7',
     'AdwToggleGroup.active-name': '1.7',
     'AdwToggleGroup.can-shrink': '1.7',

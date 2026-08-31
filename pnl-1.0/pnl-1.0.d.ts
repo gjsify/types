@@ -482,6 +482,7 @@ export namespace Pnl {
          * Also see `gtk_widget_child_notify()`.
          * @param child the child widget
          * @param child_property the name of a child property installed on     the class of `container`
+         * @since 3.2
          */
         child_notify(child: Gtk.Widget, child_property: string): void;
 
@@ -1046,6 +1047,7 @@ export namespace Pnl {
          * Also see `gtk_widget_child_notify()`.
          * @param child the child widget
          * @param child_property the name of a child property installed on     the class of `container`
+         * @since 3.2
          */
         child_notify(child: Gtk.Widget, child_property: string): void;
 
@@ -1397,12 +1399,14 @@ export namespace Pnl {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -1842,12 +1846,14 @@ export namespace Pnl {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -2626,6 +2632,7 @@ export namespace Pnl {
          * Also see `gtk_widget_child_notify()`.
          * @param child the child widget
          * @param child_property the name of a child property installed on     the class of `container`
+         * @since 3.2
          */
         child_notify(child: Gtk.Widget, child_property: string): void;
 
@@ -2639,6 +2646,7 @@ export namespace Pnl {
          * Fetches the requested opacity for this widget.
          * See `gtk_widget_set_opacity()`.
          * @returns the requested opacity for this widget.
+         * @since 3.8
          */
         get_opacity(): number;
 
@@ -2652,6 +2660,7 @@ export namespace Pnl {
          * resources when a widget has been realized, and you should
          * free those resources when the widget is unrealized.
          * @returns the {@link Gdk.Screen} for the toplevel for this widget.
+         * @since 2.2
          */
         get_screen(): Gdk.Screen;
 
@@ -2684,6 +2693,7 @@ export namespace Pnl {
          * For child widgets it doesn’t work if any affected widget has a native window, or
          * disables double buffering.
          * @param opacity desired opacity, between 0 and 1
+         * @since 3.8
          */
         set_opacity(opacity: number): void;
     }
@@ -2814,12 +2824,14 @@ export namespace Pnl {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -2985,6 +2997,7 @@ export namespace Pnl {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -2994,6 +3007,7 @@ export namespace Pnl {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -3138,12 +3152,14 @@ export namespace Pnl {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }

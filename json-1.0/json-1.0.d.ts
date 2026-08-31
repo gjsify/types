@@ -879,18 +879,21 @@ export namespace Json {
         /**
          * Retrieves the value set using {@link Json.Generator.set_indent}.
          * @returns the number of repetitions per indentation level
+         * @since 0.14
          */
         get_indent(): number;
 
         /**
          * Retrieves the value set using {@link Json.Generator.set_indent_char}.
          * @returns the character to be used when indenting
+         * @since 0.14
          */
         get_indent_char(): string;
 
         /**
          * Retrieves the value set using {@link Json.Generator.set_pretty}.
          * @returns `TRUE` if the generated JSON should be pretty-printed, and   `FALSE` otherwise
+         * @since 0.14
          */
         get_pretty(): boolean;
 
@@ -898,18 +901,21 @@ export namespace Json {
          * Retrieves a pointer to the root node set using
          * {@link Json.Generator.set_root}.
          * @returns the root node
+         * @since 0.14
          */
         get_root(): Node | null;
 
         /**
          * Sets the number of repetitions for each indentation level.
          * @param indent_level the number of repetitions of the indentation character   that should be applied when pretty printing
+         * @since 0.14
          */
         set_indent(indent_level: number): void;
 
         /**
          * Sets the character to be used when indenting.
          * @param indent_char a Unicode character to be used when indenting
+         * @since 0.14
          */
         set_indent_char(indent_char: string): void;
 
@@ -920,6 +926,7 @@ export namespace Json {
          * {@link Json.Generator.indent_char} property and the spacing
          * specified in the {@link Json.Generator.indent} property.
          * @param is_pretty whether the generated string should be pretty printed
+         * @since 0.14
          */
         set_pretty(is_pretty: boolean): void;
 
@@ -939,6 +946,7 @@ export namespace Json {
          * 
          * The ownership of the passed `node` is transferred to the generator object.
          * @param node the root node
+         * @since 1.10
          */
         take_root(node: Node | null): void;
 
@@ -964,6 +972,7 @@ export namespace Json {
          * Generates a JSON data stream and appends it to the string buffer.
          * @param string a string buffer
          * @returns the passed string, updated with   the generated JSON data
+         * @since 1.4
          */
         to_gstring(string: GLib.String): GLib.String;
 
@@ -972,6 +981,7 @@ export namespace Json {
          * @param stream the output stream used to write the JSON data
          * @param cancellable a {@link Gio.Cancellable}
          * @returns whether the write operation was successful
+         * @since 0.12
          */
         to_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -1253,6 +1263,7 @@ export namespace Json {
         /**
          * Retrieves whether the parser is operating in strict mode.
          * @returns true if the parser is strict, and false otherwise
+         * @since 1.10
          */
         get_strict(): boolean;
 
@@ -1270,6 +1281,7 @@ export namespace Json {
          * existence of the assignment in the data stream and the variable name
          * used.
          * @returns `TRUE` if there was an assignment, and `FALSE` otherwise
+         * @since 0.4
          */
         has_assignment(): [boolean, string];
 
@@ -1307,6 +1319,7 @@ export namespace Json {
          * If mapping or reading the file fails, a `G_FILE_ERROR` will be returned.
          * @param filename the path for the file to parse
          * @returns `TRUE` if the file was successfully loaded and parsed.
+         * @since 1.6
          */
         load_from_mapped_file(filename: string): boolean;
 
@@ -1320,6 +1333,7 @@ export namespace Json {
          * @param stream the input stream with the JSON data
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `TRUE` if the data stream was successfully read and   parsed, and `FALSE` otherwise
+         * @since 0.12
          */
         load_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1334,6 +1348,7 @@ export namespace Json {
          * of the operation.
          * @param stream the input stream with the JSON data
          * @param cancellable a {@link Gio.Cancellable}
+         * @since 0.12
          */
         load_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1349,6 +1364,7 @@ export namespace Json {
          * @param stream the input stream with the JSON data
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback the function to call when the request is satisfied
+         * @since 0.12
          */
         load_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1364,6 +1380,7 @@ export namespace Json {
          * @param stream the input stream with the JSON data
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback the function to call when the request is satisfied
+         * @since 0.12
          */
         load_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1372,6 +1389,7 @@ export namespace Json {
          * {@link Json.Parser.load_from_stream_async}.
          * @param result the result of the asynchronous operation
          * @returns `TRUE` if the content of the stream was successfully retrieved   and parsed, and `FALSE` otherwise
+         * @since 0.12
          */
         load_from_stream_finish(result: Gio.AsyncResult): boolean;
 
@@ -1384,6 +1402,7 @@ export namespace Json {
          * If `strict` is false, {@link Json.Parser} will allow custom extensions
          * to the JSON format, like comments.
          * @param strict whether the parser should be strict
+         * @since 1.10
          */
         set_strict(strict: boolean): void;
 
@@ -1393,6 +1412,7 @@ export namespace Json {
          * This will be `NULL` in the same situations as {@link Json.Parser.get_root}
          * return `NULL`.
          * @returns the root node
+         * @since 1.4
          */
         steal_root(): Node | null;
     }
@@ -1579,6 +1599,7 @@ export namespace Json {
          * it against the JSON tree pointed by `root`.
          * @param expression a JSONPath expression
          * @param root the root of a JSON tree
+         * @since 0.14
          */
         static query(expression: string, root: Node): Node;
 
@@ -1590,6 +1611,7 @@ export namespace Json {
          * {@link Json.Path.match}.
          * @param expression a JSONPath expression
          * @returns `TRUE` if the compilation was successful, and `FALSE`   otherwise
+         * @since 0.14
          */
         compile(expression: string): boolean;
 
@@ -1600,6 +1622,7 @@ export namespace Json {
          * The nodes matching the expression will be copied into an array.
          * @param root the root node of the JSON data to match
          * @returns a newly-created node of type   `JSON_NODE_ARRAY` containing the array of matching nodes
+         * @since 0.14
          */
         match(root: Node): Node;
     }
@@ -1743,6 +1766,7 @@ export namespace Json {
          * 
          * In case of failure, the reader is set to an error state.
          * @returns the number of elements, or -1.
+         * @since 0.12
          */
         count_elements(): number;
 
@@ -1752,6 +1776,7 @@ export namespace Json {
          * 
          * In case of failure, the reader is set to an error state.
          * @returns the number of members, or -1
+         * @since 0.12
          */
         count_members(): number;
 
@@ -1760,6 +1785,7 @@ export namespace Json {
          * inside an array.
          * 
          * This function resets the error state of the reader, if any was set.
+         * @since 0.12
          */
         end_element(): void;
 
@@ -1768,6 +1794,7 @@ export namespace Json {
          * inside an object.
          * 
          * This function resets the error state of the reader, if any was set.
+         * @since 0.12
          */
         end_member(): void;
 
@@ -1776,12 +1803,14 @@ export namespace Json {
          * 
          * See also: {@link Json.Reader.get_value}
          * @returns the boolean value
+         * @since 0.12
          */
         get_boolean_value(): boolean;
 
         /**
          * Retrieves the reader node at the current position.
          * @returns the current node of the reader
+         * @since 1.8
          */
         get_current_node(): Node | null;
 
@@ -1790,12 +1819,14 @@ export namespace Json {
          * 
          * See also: {@link Json.Reader.get_value}
          * @returns the floating point value
+         * @since 0.12
          */
         get_double_value(): number;
 
         /**
          * Retrieves the error currently set on the reader.
          * @returns the current error
+         * @since 0.12
          */
         get_error(): GLib.Error | null;
 
@@ -1804,6 +1835,7 @@ export namespace Json {
          * 
          * See also: {@link Json.Reader.get_value}
          * @returns the integer value
+         * @since 0.12
          */
         get_int_value(): number;
 
@@ -1812,6 +1844,7 @@ export namespace Json {
          * 
          * In case of failure, the reader is set to an error state.
          * @returns the name of the member
+         * @since 0.14
          */
         get_member_name(): string | null;
 
@@ -1820,6 +1853,7 @@ export namespace Json {
          * 
          * See also: {@link Json.Reader.get_value}
          * @returns `TRUE` if `null` is set, and `FALSE` otherwise
+         * @since 0.12
          */
         get_null_value(): boolean;
 
@@ -1828,6 +1862,7 @@ export namespace Json {
          * 
          * See also: {@link Json.Reader.get_value}
          * @returns the string value
+         * @since 0.12
          */
         get_string_value(): string;
 
@@ -1837,24 +1872,28 @@ export namespace Json {
          * If the current position does not contain a scalar value, the reader
          * is set to an error state.
          * @returns the current value node
+         * @since 0.12
          */
         get_value(): Node | null;
 
         /**
          * Checks whether the reader is currently on an array.
          * @returns `TRUE` if the reader is on an array
+         * @since 0.12
          */
         is_array(): boolean;
 
         /**
          * Checks whether the reader is currently on an object.
          * @returns `TRUE` if the reader is on an object
+         * @since 0.12
          */
         is_object(): boolean;
 
         /**
          * Checks whether the reader is currently on a value.
          * @returns `TRUE` if the reader is on a value
+         * @since 0.12
          */
         is_value(): boolean;
 
@@ -1864,6 +1903,7 @@ export namespace Json {
          * 
          * In case of failure, the reader is set to an error state.
          * @returns the members of   the object
+         * @since 0.14
          */
         list_members(): string[];
 
@@ -1920,6 +1960,7 @@ export namespace Json {
          * ```c
          * @param index_ the index of the element
          * @returns `TRUE` on success, and `FALSE` otherwise
+         * @since 0.12
          */
         read_element(index_: number): boolean;
 
@@ -1972,6 +2013,7 @@ export namespace Json {
          * ```
          * @param member_name the name of the member to read
          * @returns `TRUE` on success, and `FALSE` otherwise
+         * @since 0.12
          */
         read_member(member_name: string): boolean;
 
@@ -1980,6 +2022,7 @@ export namespace Json {
          * 
          * The reader will take a copy of the node.
          * @param root the root node
+         * @since 0.12
          */
         set_root(root: Node | null): void;
     }
@@ -2022,6 +2065,7 @@ export namespace Json {
          * 
          * See also: {@link Json.Array.add_element}, {@link Json.Node.take_array}
          * @param value the array to add
+         * @since 0.8
          */
         add_array_element(value: Array | null): void;
 
@@ -2030,6 +2074,7 @@ export namespace Json {
          * 
          * See also: {@link Json.Array.add_element}, {@link Json.Node.set_boolean}
          * @param value the boolean value to add
+         * @since 0.8
          */
         add_boolean_element(value: boolean): void;
 
@@ -2038,6 +2083,7 @@ export namespace Json {
          * 
          * See also: {@link Json.Array.add_element}, {@link Json.Node.set_double}
          * @param value the floating point value to add
+         * @since 0.8
          */
         add_double_element(value: number): void;
 
@@ -2052,6 +2098,7 @@ export namespace Json {
          * 
          * See also: {@link Json.Array.add_element}, {@link Json.Node.set_int}
          * @param value the integer value to add
+         * @since 0.8
          */
         add_int_element(value: bigint | number): void;
 
@@ -2059,6 +2106,7 @@ export namespace Json {
          * Conveniently adds a `null` element into an array
          * 
          * See also: {@link Json.Array.add_element}, `JSON_NODE_NULL`
+         * @since 0.8
          */
         add_null_element(): void;
 
@@ -2069,6 +2117,7 @@ export namespace Json {
          * 
          * See also: {@link Json.Array.add_element}, {@link Json.Node.take_object}
          * @param value the object to add
+         * @since 0.8
          */
         add_object_element(value: Object | null): void;
 
@@ -2077,6 +2126,7 @@ export namespace Json {
          * 
          * See also: {@link Json.Array.add_element}, {@link Json.Node.set_string}
          * @param value the string value to add
+         * @since 0.8
          */
         add_string_element(value: string): void;
 
@@ -2084,6 +2134,7 @@ export namespace Json {
          * Retrieves a copy of the element at the given position in the array.
          * @param index_ the index of the element to retrieve
          * @returns a copy of the element at the given position
+         * @since 0.6
          */
         dup_element(index_: number): Node;
 
@@ -2096,6 +2147,7 @@ export namespace Json {
          *  - the values of elements in corresponding positions are equal
          * @param b another JSON array
          * @returns `TRUE` if the arrays are equal, and `FALSE` otherwise
+         * @since 1.2
          */
         equal(b: Array): boolean;
 
@@ -2107,6 +2159,7 @@ export namespace Json {
          * iterating over it, but it is not safe to add or remove elements
          * from the array.
          * @param func the function to be called on each element
+         * @since 0.8
          */
         foreach_element(func: ArrayForeach): void;
 
@@ -2116,6 +2169,7 @@ export namespace Json {
          * See also: {@link Json.Array.get_element}, {@link Json.Node.get_array}
          * @param index_ the index of the element to retrieve
          * @returns the array
+         * @since 0.8
          */
         get_array_element(index_: number): Array;
 
@@ -2126,6 +2180,7 @@ export namespace Json {
          * See also: {@link Json.Array.get_element}, {@link Json.Node.get_boolean}
          * @param index_ the index of the element to retrieve
          * @returns the boolean value
+         * @since 0.8
          */
         get_boolean_element(index_: number): boolean;
 
@@ -2136,6 +2191,7 @@ export namespace Json {
          * See also: {@link Json.Array.get_element}, {@link Json.Node.get_double}
          * @param index_ the index of the element to retrieve
          * @returns the floating point value
+         * @since 0.8
          */
         get_double_element(index_: number): number;
 
@@ -2159,6 +2215,7 @@ export namespace Json {
          * See also: {@link Json.Array.get_element}, {@link Json.Node.get_int}
          * @param index_ the index of the element to retrieve
          * @returns the integer value
+         * @since 0.8
          */
         get_int_element(index_: number): number;
 
@@ -2175,6 +2232,7 @@ export namespace Json {
          * See also: {@link Json.Array.get_element}, {@link Json.Node.is_null}
          * @param index_ the index of the element to retrieve
          * @returns `TRUE` if the element is `null`
+         * @since 0.8
          */
         get_null_element(index_: number): boolean;
 
@@ -2184,6 +2242,7 @@ export namespace Json {
          * See also: {@link Json.Array.get_element}, {@link Json.Node.get_object}
          * @param index_ the index of the element to retrieve
          * @returns the object
+         * @since 0.8
          */
         get_object_element(index_: number): Object;
 
@@ -2194,6 +2253,7 @@ export namespace Json {
          * See also: {@link Json.Array.get_element}, {@link Json.Node.get_string}
          * @param index_ the index of the element to retrieve
          * @returns the string value
+         * @since 0.8
          */
         get_string_element(index_: number): string;
 
@@ -2205,6 +2265,7 @@ export namespace Json {
          * If the array is immutable, this is a fast operation; otherwise, it scales
          * proportionally with the length of the array.
          * @returns hash value for the key
+         * @since 1.2
          */
         hash(): number;
 
@@ -2212,6 +2273,7 @@ export namespace Json {
          * Check whether the given `array` has been marked as immutable by calling
          * {@link Json.Array.seal} on it.
          * @returns `true` if the array is immutable
+         * @since 1.2
          */
         is_immutable(): boolean;
 
@@ -2235,6 +2297,7 @@ export namespace Json {
          * This function will recursively seal all elements in the array too.
          * 
          * If the `array` is already immutable, this is a no-op.
+         * @since 1.2
          */
         seal(): void;
 
@@ -2372,6 +2435,7 @@ export namespace Json {
          * double value 4.0 is equal to the integer value 4.
          * @param b another JSON node
          * @returns `TRUE` if `a` and `b` are equal; `FALSE` otherwise
+         * @since 1.2
          */
         equal(b: Node): boolean;
 
@@ -2432,6 +2496,7 @@ export namespace Json {
         /**
          * Retrieves the type of a `node`.
          * @returns the type of the node
+         * @since 0.8
          */
         get_node_type(): NodeType;
 
@@ -2474,6 +2539,7 @@ export namespace Json {
          * 
          * For `JSON_NODE_NULL` nodes, the returned type is `G_TYPE_INVALID`.
          * @returns the type for the payload
+         * @since 0.4
          */
         get_value_type(): GObject.GType;
 
@@ -2485,6 +2551,7 @@ export namespace Json {
          * with the size of the node’s value (for example, with the number of members
          * in the JSON object if this node contains an object).
          * @returns hash value for `key`
+         * @since 1.2
          */
         hash(): number;
 
@@ -2495,6 +2562,7 @@ export namespace Json {
          * the given type, and any data contained will be cleared.
          * @param type the type of JSON node to initialize `node` to
          * @returns the initialized node
+         * @since 0.16
          */
         init(type: NodeType): Node;
 
@@ -2507,6 +2575,7 @@ export namespace Json {
          * the given type, and any data contained will be cleared.
          * @param array the JSON array to initialize `node` with, or `NULL`
          * @returns the initialized node
+         * @since 0.16
          */
         init_array(array: Array | null): Node;
 
@@ -2517,6 +2586,7 @@ export namespace Json {
          * the given type, and any data contained will be cleared.
          * @param value a boolean value
          * @returns the initialized node
+         * @since 0.16
          */
         init_boolean(value: boolean): Node;
 
@@ -2527,6 +2597,7 @@ export namespace Json {
          * the given type, and any data contained will be cleared.
          * @param value a floating point value
          * @returns the initialized node
+         * @since 0.16
          */
         init_double(value: number): Node;
 
@@ -2537,6 +2608,7 @@ export namespace Json {
          * the given type, and any data contained will be cleared.
          * @param value an integer
          * @returns the initialized node
+         * @since 0.16
          */
         init_int(value: bigint | number): Node;
 
@@ -2546,6 +2618,7 @@ export namespace Json {
          * If the node has already been initialized once, it will be reset to
          * the given type, and any data contained will be cleared.
          * @returns the initialized node
+         * @since 0.16
          */
         init_null(): Node;
 
@@ -2558,6 +2631,7 @@ export namespace Json {
          * the given type, and any data contained will be cleared.
          * @param object the JSON object to initialize `node` with, or `NULL`
          * @returns the initialized node
+         * @since 0.16
          */
         init_object(object: Object | null): Node;
 
@@ -2568,6 +2642,7 @@ export namespace Json {
          * the given type, and any data contained will be cleared.
          * @param value a string value
          * @returns the initialized node
+         * @since 0.16
          */
         init_string(value: string | null): Node;
 
@@ -2575,6 +2650,7 @@ export namespace Json {
          * Check whether the given `node` has been marked as immutable by calling
          * {@link Json.Node.seal} on it.
          * @returns `TRUE` if the `node` is immutable
+         * @since 1.2
          */
         is_immutable(): boolean;
 
@@ -2584,12 +2660,14 @@ export namespace Json {
          * A `JSON_NODE_NULL` node is not the same as a `NULL` node; a `JSON_NODE_NULL`
          * represents a literal `null` value in the JSON tree.
          * @returns `TRUE` if the node is null
+         * @since 0.8
          */
         is_null(): boolean;
 
         /**
          * Increments the reference count of `node`.
          * @returns a pointer to `node`
+         * @since 1.2
          */
         ref(): Node;
 
@@ -2601,6 +2679,7 @@ export namespace Json {
          * will be sealed, etc.
          * 
          * If the `node` is already immutable, this is a no-op.
+         * @since 1.2
          */
         seal(): void;
 
@@ -2665,6 +2744,7 @@ export namespace Json {
          * 
          * The `node` may be immutable.
          * @param parent the parent node
+         * @since 0.8
          */
         set_parent(parent: Node | null): void;
 
@@ -2736,6 +2816,7 @@ export namespace Json {
          * Decrements the reference count of `node`.
          * 
          * If the reference count reaches zero, the node is freed.
+         * @since 1.2
          */
         unref(): void;
     }
@@ -2778,6 +2859,7 @@ export namespace Json {
          * with the same name.
          * @param member_name the name of the member
          * @param node the value of the member
+         * @deprecated since 0.8: Use {@link Json.Object.set_member} instead
          */
         add_member(member_name: string, node: Node): void;
 
@@ -2785,6 +2867,7 @@ export namespace Json {
          * Retrieves a copy of the value of the given member inside an object.
          * @param member_name the name of the JSON object member to access
          * @returns a copy of the value for the   requested object member
+         * @since 0.6
          */
         dup_member(member_name: string): Node | null;
 
@@ -2793,6 +2876,7 @@ export namespace Json {
          * set of members, and the values of corresponding members are equal.
          * @param b another JSON object
          * @returns `TRUE` if `a` and `b` are equal, and `FALSE` otherwise
+         * @since 1.2
          */
         equal(b: Object): boolean;
 
@@ -2807,6 +2891,7 @@ export namespace Json {
          * The order in which the object members are iterated is the
          * insertion order.
          * @param func the function to be called on each member
+         * @since 0.8
          */
         foreach_member(func: ObjectForeach): void;
 
@@ -2821,6 +2906,7 @@ export namespace Json {
          * See also: {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the member
          * @returns the array inside the object's member
+         * @since 0.8
          */
         get_array_member(member_name: string): Array | null;
 
@@ -2834,6 +2920,7 @@ export namespace Json {
          *   {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the member
          * @returns the boolean value of the object's member
+         * @since 0.8
          */
         get_boolean_member(member_name: string): boolean;
 
@@ -2848,6 +2935,7 @@ export namespace Json {
          * @param member_name the name of the `object` member
          * @param default_value the value to return if `member_name` is not valid
          * @returns the boolean value of the object's member, or the   given default
+         * @since 1.6
          */
         get_boolean_member_with_default(member_name: string, default_value: boolean): boolean;
 
@@ -2861,6 +2949,7 @@ export namespace Json {
          *   {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the member
          * @returns the floating point value of the object's member
+         * @since 0.8
          */
         get_double_member(member_name: string): number;
 
@@ -2875,6 +2964,7 @@ export namespace Json {
          * @param member_name the name of the `object` member
          * @param default_value the value to return if `member_name` is not valid
          * @returns the floating point value of the object's member, or the   given default
+         * @since 1.6
          */
         get_double_member_with_default(member_name: string, default_value: number): number;
 
@@ -2888,6 +2978,7 @@ export namespace Json {
          *   {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the object member
          * @returns the integer value of the object's member
+         * @since 0.8
          */
         get_int_member(member_name: string): number;
 
@@ -2902,6 +2993,7 @@ export namespace Json {
          * @param member_name the name of the object member
          * @param default_value the value to return if `member_name` is not valid
          * @returns the integer value of the object's member, or the   given default
+         * @since 1.6
          */
         get_int_member_with_default(member_name: string, default_value: bigint | number): number;
 
@@ -2929,6 +3021,7 @@ export namespace Json {
          * See also: {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the member
          * @returns `TRUE` if the value is `null`
+         * @since 0.8
          */
         get_null_member(member_name: string): boolean;
 
@@ -2942,6 +3035,7 @@ export namespace Json {
          * See also: {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the member
          * @returns the object inside the object's member
+         * @since 0.8
          */
         get_object_member(member_name: string): Object | null;
 
@@ -2961,6 +3055,7 @@ export namespace Json {
          *   {@link Json.Object.get_member}, {@link Json.Object.has_member}
          * @param member_name the name of the member
          * @returns the string value of the object's member
+         * @since 0.8
          */
         get_string_member(member_name: string): string;
 
@@ -2975,6 +3070,7 @@ export namespace Json {
          * @param member_name the name of the `object` member
          * @param default_value the value to return if `member_name` is not valid
          * @returns the string value of the object's member, or the   given default
+         * @since 1.6
          */
         get_string_member_with_default(member_name: string, default_value: string): string;
 
@@ -2998,6 +3094,7 @@ export namespace Json {
          * the object is immutable, this is a fast operation; otherwise, it scales
          * proportionally with the number of members in the object.
          * @returns hash value for `key`
+         * @since 1.2
          */
         hash(): number;
 
@@ -3005,6 +3102,7 @@ export namespace Json {
          * Checks whether the given object has been marked as immutable by calling
          * {@link Json.Object.seal} on it.
          * @returns `TRUE` if the object is immutable
+         * @since 1.2
          */
         is_immutable(): boolean;
 
@@ -3026,6 +3124,7 @@ export namespace Json {
          * This function will recursively seal all members of the object too.
          * 
          * If the object is already immutable, this is a no-op.
+         * @since 1.2
          */
         seal(): void;
 
@@ -3035,6 +3134,7 @@ export namespace Json {
          * See also: {@link Json.Object.set_member}, {@link Json.Node.take_array}
          * @param member_name the name of the member
          * @param value the value of the member
+         * @since 0.8
          */
         set_array_member(member_name: string, value: Array): void;
 
@@ -3044,6 +3144,7 @@ export namespace Json {
          * See also: {@link Json.Object.set_member}, {@link Json.Node.init_boolean}
          * @param member_name the name of the member
          * @param value the value of the member
+         * @since 0.8
          */
         set_boolean_member(member_name: string, value: boolean): void;
 
@@ -3053,6 +3154,7 @@ export namespace Json {
          * See also: {@link Json.Object.set_member}, {@link Json.Node.init_double}
          * @param member_name the name of the member
          * @param value the value of the member
+         * @since 0.8
          */
         set_double_member(member_name: string, value: number): void;
 
@@ -3062,6 +3164,7 @@ export namespace Json {
          * See also: {@link Json.Object.set_member}, {@link Json.Node.init_int}
          * @param member_name the name of the member
          * @param value the value of the member
+         * @since 0.8
          */
         set_int_member(member_name: string, value: bigint | number): void;
 
@@ -3075,6 +3178,7 @@ export namespace Json {
          * value is overwritten with the new.
          * @param member_name the name of the member
          * @param node the value of the member
+         * @since 0.8
          */
         set_member(member_name: string, node: Node): void;
 
@@ -3083,6 +3187,7 @@ export namespace Json {
          * 
          * See also: {@link Json.Object.set_member}, {@link Json.Node.init_null}
          * @param member_name the name of the member
+         * @since 0.8
          */
         set_null_member(member_name: string): void;
 
@@ -3092,6 +3197,7 @@ export namespace Json {
          * See also: {@link Json.Object.set_member}, {@link Json.Node.take_object}
          * @param member_name the name of the member
          * @param value the value of the member
+         * @since 0.8
          */
         set_object_member(member_name: string, value: Object): void;
 
@@ -3101,6 +3207,7 @@ export namespace Json {
          * See also: {@link Json.Object.set_member}, {@link Json.Node.init_string}
          * @param member_name the name of the member
          * @param value the value of the member
+         * @since 0.8
          */
         set_string_member(member_name: string, value: string): void;
 
@@ -3155,6 +3262,7 @@ export namespace Json {
          * 
          * See also: {@link Json.ObjectIter.init_ordered}
          * @param object the JSON object to iterate over
+         * @since 1.2
          */
         init(object: Object): void;
 
@@ -3175,6 +3283,7 @@ export namespace Json {
          * 
          * See also: {@link Json.ObjectIter.init}
          * @param object the JSON object to iterate over
+         * @since 1.6
          */
         init_ordered(object: Object): void;
 
@@ -3195,6 +3304,7 @@ export namespace Json {
          * 
          * See also: {@link Json.ObjectIter.next_ordered}
          * @returns `TRUE` if `member_name` and `member_node` are valid; `FALSE` if   there are no more members
+         * @since 1.2
          */
         next(): [boolean, string, Node | null];
 
@@ -3214,6 +3324,7 @@ export namespace Json {
          * 
          * See also: {@link Json.ObjectIter.next}
          * @returns `TRUE `if `member_name` and `member_node` are valid; `FALSE` if the end    of the object has been reached
+         * @since 1.6
          */
         next_ordered(): [boolean, string, Node | null];
     }
@@ -3289,6 +3400,7 @@ export namespace Json {
              * the {@link Json.Serializable} instance, which will return the property
              * description for the given name.
              * @param name the name of the property
+             * @since 0.14
              * @virtual
              */
             vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -3298,6 +3410,7 @@ export namespace Json {
              * on the {@link Json.Serializable} instance, which will get the value of
              * the given property.
              * @param pspec a property description
+             * @since 0.14
              * @virtual
              */
             vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -3324,6 +3437,7 @@ export namespace Json {
              * with the given value.
              * @param pspec a property description
              * @param value the property value to set
+             * @since 0.14
              * @virtual
              */
             vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -3379,6 +3493,7 @@ export namespace Json {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Node): boolean;
 
@@ -3406,6 +3521,7 @@ export namespace Json {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Node | null;
 
@@ -3436,6 +3552,7 @@ export namespace Json {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -3444,6 +3561,7 @@ export namespace Json {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -3458,6 +3576,7 @@ export namespace Json {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -3477,6 +3596,7 @@ export namespace Json {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -3535,6 +3655,7 @@ export namespace Json {
      * the {@link Json.Serializable} instance, which will return the property
      * description for the given name.
      * @param name the name of the property
+     * @since 0.14
      * @virtual
      */
     vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -3549,6 +3670,7 @@ export namespace Json {
      * on the {@link Json.Serializable} instance, which will get the value of
      * the given property.
      * @param pspec a property description
+     * @since 0.14
      * @virtual
      */
     vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -3592,6 +3714,7 @@ export namespace Json {
      * with the given value.
      * @param pspec a property description
      * @param value the property value to set
+     * @since 0.14
      * @virtual
      */
     vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;

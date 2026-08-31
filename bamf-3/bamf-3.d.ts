@@ -176,6 +176,7 @@ export namespace Bamf {
         /**
          * Used to fetch the bus name and the object path of the remote application menu.
          * @returns `true` if found, `false` otherwise.
+         * @deprecated since 0.5.0
          */
         get_application_menu(): [boolean, string, string];
 
@@ -208,6 +209,7 @@ export namespace Bamf {
          * Used to fetch the application contains a Window with given `xid`.
          * @param xid an X11 Window ID
          * @returns a {@link Bamf.Window} for the passed `xid` or `null` if not found.
+         * @since 0.5.2
          */
         get_window_for_xid(xid: number): Window;
 
@@ -853,6 +855,7 @@ export namespace Bamf {
         vfunc_is_urgent(): boolean;
 
         /**
+         * @since 0.4.0
          * @virtual
          */
         vfunc_is_user_visible(): boolean;
@@ -967,6 +970,7 @@ export namespace Bamf {
 
         /**
          * @returns a boolean useful for determining if a particular view is "user visible". User visible is a concept relating to whether or not a window should be shown in a launcher tasklist.
+         * @since 0.4.0
          */
         is_user_visible(): boolean;
 
@@ -974,6 +978,7 @@ export namespace Bamf {
          * Note: Makes sever dbus calls the first time this is called on a view.
          * Dbus messaging is reduced afterwards.
          * @returns Returns a list of {@link Bamf.View} which           is owned by the {@link Bamf.View} and should not freed or modified after usage.
+         * @since 0.5.2
          */
         peek_children(): View[];
 

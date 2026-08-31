@@ -731,6 +731,7 @@ export namespace GnomeDesktop {
          * started with `gnome_bg_slide_show_load_async()`.
          * @param res A {@link Gio.AsyncResult}
          * @returns `false` on error, `true` otherwise
+         * @since 50.
          */
         load_finish(res: Gio.AsyncResult): boolean;
     }
@@ -789,6 +790,7 @@ export namespace GnomeDesktop {
          * @param mime_type the mime type of the file
          * @param mtime the mtime of the file
          * @returns TRUE if the file can be thumbnailed.
+         * @since 2.2
          */
         can_thumbnail(uri: string, mime_type: string, mtime: bigint | number): boolean;
 
@@ -801,6 +803,7 @@ export namespace GnomeDesktop {
          * @param mtime the modification time of the file
          * @param cancellable a GCancellable object, or NULL
          * @returns TRUE if everything went fine; FALSE if there was an error.
+         * @since 2.2
          */
         create_failed_thumbnail(uri: string, mtime: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -851,6 +854,7 @@ export namespace GnomeDesktop {
          * @param mime_type the mime type of the file
          * @param cancellable a {@link Gio.Cancellable} object or NULL
          * @returns thumbnail pixbuf if thumbnailing succeeded, `null` otherwise and error will be set
+         * @since 42.0
          */
         generate_thumbnail(uri: string, mime_type: string, cancellable: Gio.Cancellable | null): GdkPixbuf.Pixbuf;
 
@@ -901,6 +905,7 @@ export namespace GnomeDesktop {
          * @param uri the uri of a file
          * @param mtime the mtime of the file
          * @returns TRUE if there is a failed thumbnail for the file.
+         * @since 2.2
          */
         has_valid_failed_thumbnail(uri: string, mtime: bigint | number): boolean;
 
@@ -911,6 +916,7 @@ export namespace GnomeDesktop {
          * @param uri the uri of a file
          * @param mtime the mtime of the file
          * @returns The absolute path of the thumbnail, or `null` if none exist.
+         * @since 2.2
          */
         lookup(uri: string, mtime: bigint | number): string;
 
@@ -924,6 +930,7 @@ export namespace GnomeDesktop {
          * @param original_mtime the modification time of the original file
          * @param cancellable a GCancellable object, or NULL
          * @returns TRUE if everything went fine; FALSE if there was an error.
+         * @since 2.2
          */
         save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1081,6 +1088,7 @@ export namespace GnomeDesktop {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1124,6 +1132,7 @@ export namespace GnomeDesktop {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -1371,6 +1380,7 @@ export namespace GnomeDesktop {
         /**
          * @param group_id identifier for group
          * @returns the translated description for the group `group_id`.
+         * @since 3.8
          */
         description_for_group(group_id: string): string;
 
@@ -1378,18 +1388,21 @@ export namespace GnomeDesktop {
          * @param group_id identifier for group containing the option
          * @param id option identifier
          * @returns the translated description for the option `id`.
+         * @since 3.6
          */
         description_for_option(group_id: string, id: string): string;
 
         /**
          * Returns a list of all layout identifiers we know about.
          * @returns the list of layout names. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         * @since 3.6
          */
         get_all_layouts(): string[];
 
         /**
          * Returns a list of all option group identifiers we know about.
          * @returns the list of option group ids. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         * @since 3.6
          */
         get_all_option_groups(): string[];
 
@@ -1398,6 +1411,7 @@ export namespace GnomeDesktop {
          * `layout_id`.
          * @param layout_id a layout identifier
          * @returns the list of ISO 639 code strings. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         * @since 3.18
          */
         get_languages_for_layout(layout_id: string): string[];
 
@@ -1414,6 +1428,7 @@ export namespace GnomeDesktop {
          * all the (out) parameters are set to `null`.
          * @param id layout's identifier about which to retrieve the info
          * @returns `true` if the layout exists or `false` otherwise.
+         * @since 3.6
          */
         get_layout_info(id: string): [boolean, string, string, string, string];
 
@@ -1422,6 +1437,7 @@ export namespace GnomeDesktop {
          * `country_code`.
          * @param country_code an ISO 3166 code string
          * @returns the list of layout ids. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         * @since 3.8
          */
         get_layouts_for_country(country_code: string): string[];
 
@@ -1430,6 +1446,7 @@ export namespace GnomeDesktop {
          * `language_code`.
          * @param language_code an ISO 639 code string
          * @returns the list of layout ids. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         * @since 3.8
          */
         get_layouts_for_language(language_code: string): string[];
 
@@ -1438,6 +1455,7 @@ export namespace GnomeDesktop {
          * `group_id`.
          * @param group_id group's identifier about which to retrieve the options
          * @returns the list of option ids. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         * @since 3.6
          */
         get_options_for_group(group_id: string): string[];
     }

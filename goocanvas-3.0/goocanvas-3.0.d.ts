@@ -1120,6 +1120,7 @@ export namespace GooCanvas {
          * in the call to `goo_canvas_set_bounds()`.
          * @param x a pointer to the x coordinate to convert.
          * @param y a pointer to the y coordinate to convert.
+         * @since 2.0.1
          */
         convert_units_from_pixels(x: number, y: number): [number, number];
 
@@ -1129,6 +1130,7 @@ export namespace GooCanvas {
          * in the call to `goo_canvas_set_bounds()`.
          * @param x a pointer to the x coordinate to convert.
          * @param y a pointer to the y coordinate to convert.
+         * @since 2.0.1
          */
         convert_units_to_pixels(x: number, y: number): [number, number];
 
@@ -1515,36 +1517,42 @@ export namespace GooCanvas {
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
          * @returns `true` if `border` has been set
+         * @since 3.16
          */
         get_border(): [boolean, Gtk.Border];
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_hadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_vadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
@@ -1553,12 +1561,14 @@ export namespace GooCanvas {
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
@@ -1567,6 +1577,7 @@ export namespace GooCanvas {
          * vertical scrolling should start below the minimum height or
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
@@ -1576,6 +1587,7 @@ export namespace GooCanvas {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
@@ -1983,6 +1995,7 @@ export namespace GooCanvas {
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
          * @returns `true` if the item's requested area changes due to the new allocated width.
+         * @since 2.0.1
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
 
@@ -2401,6 +2414,7 @@ export namespace GooCanvas {
          * @param cr a cairo context.
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
+         * @since 2.0.1
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
@@ -3797,6 +3811,7 @@ export namespace GooCanvas {
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
          * @returns `true` if the item's requested area changes due to the new allocated width.
+         * @since 2.0.1
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
 
@@ -4215,6 +4230,7 @@ export namespace GooCanvas {
          * @param cr a cairo context.
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
+         * @since 2.0.1
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
@@ -5558,6 +5574,7 @@ export namespace GooCanvas {
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
          * @returns `true` if the item's requested area changes due to the new allocated width.
+         * @since 2.0.1
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
 
@@ -5976,6 +5993,7 @@ export namespace GooCanvas {
          * @param cr a cairo context.
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
+         * @since 2.0.1
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
@@ -7072,6 +7090,7 @@ export namespace GooCanvas {
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
          * @returns `true` if the item's requested area changes due to the new allocated width.
+         * @since 2.0.1
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
 
@@ -7490,6 +7509,7 @@ export namespace GooCanvas {
          * @param cr a cairo context.
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
+         * @since 2.0.1
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
@@ -9648,6 +9668,7 @@ export namespace GooCanvas {
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
          * @returns `true` if the item's requested area changes due to the new allocated width.
+         * @since 2.0.1
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
 
@@ -10060,6 +10081,7 @@ export namespace GooCanvas {
          * @param cr a cairo context.
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
+         * @since 2.0.1
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
@@ -10614,6 +10636,7 @@ export namespace GooCanvas {
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
          * @returns `true` if the item's requested area changes due to the new allocated width.
+         * @since 2.0.1
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
 
@@ -11032,6 +11055,7 @@ export namespace GooCanvas {
          * @param cr a cairo context.
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
+         * @since 2.0.1
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
@@ -12164,6 +12188,7 @@ export namespace GooCanvas {
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
          * @returns `true` if the item's requested area changes due to the new allocated width.
+         * @since 2.0.1
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
 
@@ -12582,6 +12607,7 @@ export namespace GooCanvas {
          * @param cr a cairo context.
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
+         * @since 2.0.1
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
@@ -13792,6 +13818,7 @@ export namespace GooCanvas {
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
          * @returns `true` if the item's requested area changes due to the new allocated width.
+         * @since 2.0.1
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
 
@@ -14210,6 +14237,7 @@ export namespace GooCanvas {
          * @param cr a cairo context.
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
+         * @since 2.0.1
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
@@ -15883,6 +15911,7 @@ export namespace GooCanvas {
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
          * @returns `true` if the item's requested area changes due to the new allocated width.
+         * @since 2.0.1
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
 
@@ -16301,6 +16330,7 @@ export namespace GooCanvas {
          * @param cr a cairo context.
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
+         * @since 2.0.1
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
@@ -17414,6 +17444,7 @@ export namespace GooCanvas {
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
          * @returns `true` if the item's requested area changes due to the new allocated width.
+         * @since 2.0.1
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
 
@@ -17832,6 +17863,7 @@ export namespace GooCanvas {
          * @param cr a cairo context.
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
+         * @since 2.0.1
          * @virtual
          */
         vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
@@ -18337,6 +18369,7 @@ export namespace GooCanvas {
         /**
          * Sets the start offset into the dash pattern.
          * @param dash_offset the start offset into the dash pattern.
+         * @since 2.0.2
          */
         set_offset(dash_offset: number): void;
 
@@ -18403,6 +18436,7 @@ export namespace GooCanvas {
         /**
          * Gets the coordinates of a point in the {@link GooCanvas.CanvasPoints} struct.
          * @param idx index of point to get.
+         * @since 2.0.1
          */
         get_point(idx: number): [number, number];
 
@@ -18417,6 +18451,7 @@ export namespace GooCanvas {
          * @param idx index of point to set.
          * @param x x value to set point coordinate to.
          * @param y y value to set point coordinate to.
+         * @since 2.0.1
          */
         set_point(idx: number, x: number, y: number): void;
 
@@ -18899,6 +18934,7 @@ export namespace GooCanvas {
              * @param cr a cairo context.
              * @param width the allocated width.
              * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
+             * @since 2.0.1
              * @virtual
              */
             vfunc_get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
@@ -19371,6 +19407,7 @@ export namespace GooCanvas {
          * @param width the allocated width.
          * @param requested_area a {@link GooCanvas.CanvasBounds} to return the requested area in, in the  parent's coordinate space. If `false` is returned, this is undefined.
          * @returns `true` if the item's requested area changes due to the new allocated width.
+         * @since 2.0.1
          */
         get_requested_area_for_width(cr: cairo.Context, width: number, requested_area: CanvasBounds): boolean;
 

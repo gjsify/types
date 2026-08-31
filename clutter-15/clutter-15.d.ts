@@ -12472,6 +12472,7 @@ export namespace Clutter {
          * This function does not realize child actors, except in the special
          * case that realizing the stage, when the stage is visible, will
          * suddenly map (and thus realize) the children of the stage.
+         * @deprecated since 1.16: Actors are automatically realized, and nothing   requires explicit realization.
          * @virtual
          */
         vfunc_realize(): void;
@@ -12554,6 +12555,7 @@ export namespace Clutter {
          * If you were using `clutter_actor_unrealize()` to implement
          * unrealizing children of your container, then don't, ClutterActor
          * will already take care of that.
+         * @deprecated since 1.16: Actors are automatically unrealized, and nothing   requires explicit realization.
          * @virtual
          */
         vfunc_unrealize(): void;
@@ -14152,6 +14154,7 @@ export namespace Clutter {
          * This function does not realize child actors, except in the special
          * case that realizing the stage, when the stage is visible, will
          * suddenly map (and thus realize) the children of the stage.
+         * @deprecated since 1.16: Actors are automatically realized, and nothing   requires explicit realization.
          */
         realize(): void;
 
@@ -14954,6 +14957,7 @@ export namespace Clutter {
          * If you were using `clutter_actor_unrealize()` to implement
          * unrealizing children of your container, then don't, ClutterActor
          * will already take care of that.
+         * @deprecated since 1.16: Actors are automatically unrealized, and nothing   requires explicit realization.
          */
         unrealize(): void;
 
@@ -15131,6 +15135,7 @@ export namespace Clutter {
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
          * @returns An alpha value from 0 to 1.0, inclusive.
+         * @since 1.12
          */
         get_alpha(): number;
 
@@ -15163,6 +15168,7 @@ export namespace Clutter {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_position(coord_type: Atk.CoordType): [number, number];
 
@@ -15171,6 +15177,7 @@ export namespace Clutter {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_size(): [number, number];
 
@@ -15195,6 +15202,7 @@ export namespace Clutter {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          */
         remove_focus_handler(handler_id: number): void;
 
@@ -15206,6 +15214,7 @@ export namespace Clutter {
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to(type: Atk.ScrollType): boolean;
 
@@ -15216,6 +15225,7 @@ export namespace Clutter {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
 
@@ -15273,6 +15283,7 @@ export namespace Clutter {
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
+         * @since 1.12
          * @virtual
          */
         vfunc_get_alpha(): number;
@@ -15307,6 +15318,7 @@ export namespace Clutter {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_position(coord_type: Atk.CoordType): [number, number];
@@ -15316,6 +15328,7 @@ export namespace Clutter {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_size(): [number, number];
@@ -15341,6 +15354,7 @@ export namespace Clutter {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
@@ -15352,6 +15366,7 @@ export namespace Clutter {
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to(type: Atk.ScrollType): boolean;
@@ -15362,6 +15377,7 @@ export namespace Clutter {
          * @param coords specify whether coordinates are relative to the screen or to the parent object.
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
@@ -23400,6 +23416,7 @@ export namespace Clutter {
         // Static methods
         /**
          * Retrieves the singleton instance of {@link Clutter.Settings}
+         * @deprecated Use {@link Clutter.Context.get_settings} instead
          */
         static get_default(): Settings;
     }

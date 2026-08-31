@@ -672,6 +672,7 @@ export namespace GstRtspServer {
          * @param user the digest user name
          * @param pass the digest password
          * @param token authorisation token
+         * @since 1.12
          */
         add_digest(user: string, pass: string, token: RTSPToken): void;
 
@@ -684,12 +685,14 @@ export namespace GstRtspServer {
 
         /**
          * @returns the `realm` of `auth`
+         * @since 1.16
          */
         get_realm(): string | null;
 
         /**
          * Gets the supported authentication methods of `auth`.
          * @returns The supported authentication methods
+         * @since 1.12
          */
         get_supported_methods(): GstRtsp.RTSPAuthMethod;
 
@@ -708,6 +711,7 @@ export namespace GstRtspServer {
         /**
          * Get the {@link Gio.TlsDatabase} used for verifying client certificate.
          * @returns the {@link Gio.TlsDatabase} of `auth`. `g_object_unref()` after usage.
+         * @since 1.6
          */
         get_tls_database(): Gio.TlsDatabase | null;
 
@@ -721,6 +725,7 @@ export namespace GstRtspServer {
          * @param path Path to the htdigest file
          * @param token authorisation token
          * @returns `true` if the file was successfully parsed, `false` otherwise.
+         * @since 1.16
          */
         parse_htdigest(path: string, token: RTSPToken): boolean;
 
@@ -733,6 +738,7 @@ export namespace GstRtspServer {
         /**
          * Removes a digest user.
          * @param user the digest user name
+         * @since 1.12
          */
         remove_digest(user: string): void;
 
@@ -746,12 +752,14 @@ export namespace GstRtspServer {
         /**
          * Set the `realm` of `auth`
          * @param realm The realm to set
+         * @since 1.16
          */
         set_realm(realm: string | null): void;
 
         /**
          * Sets the supported authentication `methods` for `auth`.
          * @param methods supported methods
+         * @since 1.12
          */
         set_supported_methods(methods: GstRtsp.RTSPAuthMethod): void;
 
@@ -760,6 +768,7 @@ export namespace GstRtspServer {
          * When set to another value than {@link Gio.TlsAuthenticationMode.NONE},
          * {@link GstRtspServer.RTSPAuth.SignalSignatures.accept_certificate | GstRtspServer.RTSPAuth::accept-certificate} signal will be emitted and must be handled.
          * @param mode a {@link Gio.TlsAuthenticationMode}
+         * @since 1.6
          */
         set_tls_authentication_mode(mode: Gio.TlsAuthenticationMode): void;
 
@@ -775,6 +784,7 @@ export namespace GstRtspServer {
          * If set to `null` (the default), then peer certificate validation will always
          * set the {@link Gio.TlsCertificateFlags.UNKNOWN_CA} error.
          * @param database a {@link Gio.TlsDatabase}
+         * @since 1.6
          */
         set_tls_database(database: Gio.TlsDatabase | null): void;
     }
@@ -1025,6 +1035,7 @@ export namespace GstRtspServer {
          * possibility to adjust the error code.
          * @param ctx a {@link GstRtspServer.RTSPContext}
          * @param code a {@link GstRtsp.RTSPStatusCode}
+         * @since 1.22
          * @virtual
          */
         vfunc_adjust_error_code(ctx: RTSPContext, code: GstRtsp.RTSPStatusCode): GstRtsp.RTSPStatusCode;
@@ -1284,6 +1295,7 @@ export namespace GstRtspServer {
 
         /**
          * Close the connection of `client` and remove all media it was managing.
+         * @since 1.4
          */
         close(): void;
 
@@ -1302,6 +1314,7 @@ export namespace GstRtspServer {
         /**
          * Get the Content-Length limit of `client`.
          * @returns the Content-Length limit.
+         * @since 1.18
          */
         get_content_length_limit(): number;
 
@@ -1325,6 +1338,7 @@ export namespace GstRtspServer {
          * to continue.
          * @param channel 
          * @returns the {@link GstRtspServer.RTSPStreamTransport} associated with `channel`.
+         * @since 1.18
          */
         get_stream_transport(channel: number): RTSPStreamTransport | null;
 
@@ -1389,6 +1403,7 @@ export namespace GstRtspServer {
          * Define an appropriate request size limit and reject requests exceeding the
          * limit with response status 413 Request Entity Too Large
          * @param limit Content-Length limit
+         * @since 1.18
          */
         set_content_length_limit(limit: number): void;
 
@@ -1425,6 +1440,7 @@ export namespace GstRtspServer {
          * It is only allowed to set either a `send_func` or a `send_messages_func`
          * but not both at the same time.
          * @param func a {@link GstRtspServer.RTSPClientSendMessagesFunc}
+         * @since 1.16
          */
         set_send_messages_func(func: RTSPClientSendMessagesFunc): void;
 
@@ -2050,6 +2066,7 @@ export namespace GstRtspServer {
          * 
          * The function must be called with `gst_rtsp_media_lock()`.
          * @returns `true` if the media can be shared between clients.
+         * @since 1.24
          */
         can_be_shared(): boolean;
 
@@ -2070,6 +2087,7 @@ export namespace GstRtspServer {
          * SETUP.
          * @param transports a list of {@link GstRtsp.RTSPTransport}
          * @returns `true` if the media pipeline has been sucessfully updated.
+         * @since 1.14
          */
         complete_pipeline(transports: GstRtsp.RTSPTransport[]): boolean;
 
@@ -2119,12 +2137,14 @@ export namespace GstRtspServer {
 
         /**
          * @returns Whether retransmission requests will be sent
+         * @since 1.16
          */
         get_do_retransmission(): boolean;
 
         /**
          * Get the configured DSCP QoS of attached media.
          * @returns the DSCP QoS value of attached streams or -1 if disabled.
+         * @since 1.18
          */
         get_dscp_qos(): number;
 
@@ -2137,12 +2157,14 @@ export namespace GstRtspServer {
         /**
          * Get ensure-keyunit-on-start flag.
          * @returns The ensure-keyunit-on-start flag.
+         * @since 1.24
          */
         get_ensure_keyunit_on_start(): boolean;
 
         /**
          * Get ensure-keyunit-on-start-timeout time.
          * @returns The ensure-keyunit-on-start-timeout time.
+         * @since 1.24
          */
         get_ensure_keyunit_on_start_timeout(): number;
 
@@ -2155,6 +2177,7 @@ export namespace GstRtspServer {
         /**
          * Get the the maximum time-to-live value of outgoing multicast packets.
          * @returns the maximum time-to-live value of outgoing multicast packets.
+         * @since 1.16
          */
         get_max_mcast_ttl(): number;
 
@@ -2185,6 +2208,7 @@ export namespace GstRtspServer {
         /**
          * Gets if and how the media clock should be published according to RFC7273.
          * @returns The GstRTSPPublishClockMode
+         * @since 1.8
          */
         get_publish_clock_mode(): RTSPPublishClockMode;
 
@@ -2199,12 +2223,14 @@ export namespace GstRtspServer {
 
         /**
          * @returns whether `media` will follow the Rate-Control=no behaviour as specified in the ONVIF replay spec.
+         * @since 1.18
          */
         get_rate_control(): boolean;
 
         /**
          * Get the rate and applied_rate of the current segment.
          * @returns `false` if looking up the rate and applied rate failed. Otherwise `true` is returned and `rate` and `applied_rate` are set to the rate and applied_rate of the current segment.
+         * @since 1.18
          */
         get_rates(): [boolean, number, number];
 
@@ -2259,12 +2285,14 @@ export namespace GstRtspServer {
         /**
          * See `gst_rtsp_stream_is_complete()`, `gst_rtsp_stream_is_sender()`.
          * @returns whether `media` has at least one complete sender stream.
+         * @since 1.18
          */
         has_completed_sender(): boolean;
 
         /**
          * Check if multicast sockets are configured to be bound to multicast addresses.
          * @returns `true` if multicast sockets are configured to be bound to multicast addresses.
+         * @since 1.16
          */
         is_bind_mcast_address(): boolean;
 
@@ -2277,6 +2305,7 @@ export namespace GstRtspServer {
 
         /**
          * @returns `true` if `media` is receive-only, `false` otherwise.
+         * @since 1.18
          */
         is_receive_only(): boolean;
 
@@ -2322,6 +2351,7 @@ export namespace GstRtspServer {
          * 
          * As best practice take the lock as soon as the function get hold of a shared
          * media object. Release the lock right before the function returns.
+         * @since 1.18
          */
         lock(): void;
 
@@ -2357,6 +2387,7 @@ export namespace GstRtspServer {
          * @param range a {@link GstRtsp.RTSPTimeRange}
          * @param flags The minimal set of {@link Gst.SeekFlags} to use
          * @returns `true` on success.
+         * @since 1.18
          */
         seek_full(range: GstRtsp.RTSPTimeRange, flags: Gst.SeekFlags): boolean;
 
@@ -2371,6 +2402,7 @@ export namespace GstRtspServer {
          * @param rate the rate to use in the seek
          * @param trickmode_interval The trickmode interval to use for KEY_UNITS trick mode
          * @returns `true` on success.
+         * @since 1.18
          */
         seek_trickmode(range: GstRtsp.RTSPTimeRange, flags: Gst.SeekFlags, rate: number, trickmode_interval: Gst.ClockTime): boolean;
 
@@ -2378,6 +2410,7 @@ export namespace GstRtspServer {
          * Check if the pipeline for `media` seek and up to what point in time,
          * it can seek.
          * @returns -1 if the stream is not seekable, 0 if seekable only to the beginning and > 0 to indicate the longest duration between any two random access points. `G_MAXINT64` means any value is possible.
+         * @since 1.14
          */
         seekable(): Gst.ClockTimeDiff;
 
@@ -2391,6 +2424,7 @@ export namespace GstRtspServer {
          * Decide whether the multicast socket should be bound to a multicast address or
          * INADDR_ANY.
          * @param bind_mcast_addr the new value
+         * @since 1.16
          */
         set_bind_mcast_address(bind_mcast_addr: boolean): void;
 
@@ -2409,12 +2443,14 @@ export namespace GstRtspServer {
         /**
          * Set whether retransmission requests will be sent
          * @param do_retransmission 
+         * @since 1.16
          */
         set_do_retransmission(do_retransmission: boolean): void;
 
         /**
          * Configure the dscp qos of attached streams to `dscp_qos`.
          * @param dscp_qos a new dscp qos value (0-63, or -1 to disable)
+         * @since 1.18
          */
         set_dscp_qos(dscp_qos: number): void;
 
@@ -2425,6 +2461,7 @@ export namespace GstRtspServer {
          * 
          * Note that this will only affect non-shared medias for now.
          * @param ensure_keyunit_on_start the new value
+         * @since 1.24
          */
         set_ensure_keyunit_on_start(ensure_keyunit_on_start: boolean): void;
 
@@ -2435,6 +2472,7 @@ export namespace GstRtspServer {
          * Note that this will only have an effect when ensure-keyunit-on-start is
          * enabled.
          * @param timeout the new value
+         * @since 1.24
          */
         set_ensure_keyunit_on_start_timeout(timeout: number): void;
 
@@ -2455,6 +2493,7 @@ export namespace GstRtspServer {
          * Set the maximum time-to-live value of outgoing multicast packets.
          * @param ttl the new multicast ttl value
          * @returns `true` if the requested ttl has been set successfully.
+         * @since 1.16
          */
         set_max_mcast_ttl(ttl: number): boolean;
 
@@ -2491,6 +2530,7 @@ export namespace GstRtspServer {
         /**
          * Sets if and how the media clock should be published according to RFC7273.
          * @param mode the clock publish mode
+         * @since 1.8
          */
         set_publish_clock_mode(mode: RTSPPublishClockMode): void;
 
@@ -2498,6 +2538,7 @@ export namespace GstRtspServer {
          * Define whether `media` will follow the Rate-Control=no behaviour as specified
          * in the ONVIF replay spec.
          * @param enabled 
+         * @since 1.18
          */
         set_rate_control(enabled: boolean): void;
 
@@ -2582,6 +2623,7 @@ export namespace GstRtspServer {
 
         /**
          * Unlock the media.
+         * @since 1.18
          */
         unlock(): void;
 
@@ -2984,6 +3026,7 @@ export namespace GstRtspServer {
          * If `factory` had no permissions, new permissions will be created and the
          * role will be added to it.
          * @param structure 
+         * @since 1.14
          */
         add_role_from_structure(structure: Gst.Structure): void;
 
@@ -3032,29 +3075,34 @@ export namespace GstRtspServer {
          * Returns the clock that is going to be used by the pipelines
          * of all medias created from this factory.
          * @returns The GstClock
+         * @since 1.8
          */
         get_clock(): Gst.Clock | null;
 
         /**
          * @returns Whether retransmission requests will be sent for receiving media
+         * @since 1.16
          */
         get_do_retransmission(): boolean;
 
         /**
          * Get the configured media DSCP QoS.
          * @returns the media DSCP QoS value or -1 if disabled.
+         * @since 1.18
          */
         get_dscp_qos(): number;
 
         /**
          * Get ensure-keyunit-on-start flag.
          * @returns The ensure-keyunit-on-start flag.
+         * @since 1.24
          */
         get_ensure_keyunit_on_start(): boolean;
 
         /**
          * Get ensure-keyunit-on-start-timeout time.
          * @returns The ensure-keyunit-on-start-timeout time.
+         * @since 1.24
          */
         get_ensure_keyunit_on_start_timeout(): number;
 
@@ -3074,12 +3122,14 @@ export namespace GstRtspServer {
         /**
          * Get the the maximum time-to-live value of outgoing multicast packets.
          * @returns the maximum time-to-live value of outgoing multicast packets.
+         * @since 1.16
          */
         get_max_mcast_ttl(): number;
 
         /**
          * Return the GType of the GstRTSPMedia subclass this
          * factory will create.
+         * @since 1.6
          */
         get_media_gtype(): GObject.GType;
 
@@ -3110,6 +3160,7 @@ export namespace GstRtspServer {
         /**
          * Gets if and how the media clock should be published according to RFC7273.
          * @returns The GstRTSPPublishClockMode
+         * @since 1.8
          */
         get_publish_clock_mode(): RTSPPublishClockMode;
 
@@ -3135,12 +3186,14 @@ export namespace GstRtspServer {
         /**
          * Check if multicast sockets are configured to be bound to multicast addresses.
          * @returns `true` if multicast sockets are configured to be bound to multicast addresses.
+         * @since 1.16
          */
         is_bind_mcast_address(): boolean;
 
         /**
          * Check if created media will send and receive RTCP
          * @returns `true` if created media will send and receive RTCP
+         * @since 1.20
          */
         is_enable_rtcp(): boolean;
 
@@ -3169,6 +3222,7 @@ export namespace GstRtspServer {
          * Decide whether the multicast socket should be bound to a multicast address or
          * INADDR_ANY.
          * @param bind_mcast_addr the new value
+         * @since 1.16
          */
         set_bind_mcast_address(bind_mcast_addr: boolean): void;
 
@@ -3182,6 +3236,7 @@ export namespace GstRtspServer {
          * Configures a specific clock to be used by the pipelines
          * of all medias created from this factory.
          * @param clock the clock to be used by the media factory
+         * @since 1.8
          */
         set_clock(clock: Gst.Clock | null): void;
 
@@ -3189,24 +3244,28 @@ export namespace GstRtspServer {
          * Set whether retransmission requests will be sent for
          * receiving media
          * @param do_retransmission 
+         * @since 1.16
          */
         set_do_retransmission(do_retransmission: boolean): void;
 
         /**
          * Configure the media dscp qos to `dscp_qos`.
          * @param dscp_qos a new dscp qos value (0-63, or -1 to disable)
+         * @since 1.18
          */
         set_dscp_qos(dscp_qos: number): void;
 
         /**
          * Decide whether the created media should send and receive RTCP
          * @param enable the new value
+         * @since 1.20
          */
         set_enable_rtcp(enable: boolean): void;
 
         /**
          * If media from this factory should ensure a key unit when a client connects.
          * @param ensure_keyunit_on_start the new value
+         * @since 1.24
          */
         set_ensure_keyunit_on_start(ensure_keyunit_on_start: boolean): void;
 
@@ -3214,6 +3273,7 @@ export namespace GstRtspServer {
          * Configures medias from this factory to consider keyunits older than timeout
          * to be expired. Expired keyunits will be discarded.
          * @param timeout the new value
+         * @since 1.24
          */
         set_ensure_keyunit_on_start_timeout(timeout: number): void;
 
@@ -3248,6 +3308,7 @@ export namespace GstRtspServer {
          * Set the maximum time-to-live value of outgoing multicast packets.
          * @param ttl the new multicast ttl value
          * @returns `true` if the requested ttl has been set successfully.
+         * @since 1.16
          */
         set_max_mcast_ttl(ttl: number): boolean;
 
@@ -3256,6 +3317,7 @@ export namespace GstRtspServer {
          * create (by default, overridden construct vmethods
          * may of course do something different)
          * @param media_gtype the GType of the class to create
+         * @since 1.6
          */
         set_media_gtype(media_gtype: GObject.GType): void;
 
@@ -3286,6 +3348,7 @@ export namespace GstRtspServer {
         /**
          * Sets if and how the media clock should be published according to RFC7273.
          * @param mode the clock publish mode
+         * @since 1.8
          */
         set_publish_clock_mode(mode: RTSPPublishClockMode): void;
 
@@ -3636,6 +3699,7 @@ export namespace GstRtspServer {
          * 
          * A new {@link GstRtspServer.RTSPStream} is created for the backchannel if found.
          * @returns `true` if a backchannel stream could be found and created
+         * @since 1.14
          */
         collect_backchannel(): boolean;
 
@@ -3643,6 +3707,7 @@ export namespace GstRtspServer {
          * Get the configured/supported bandwidth of the ONVIF backchannel pipeline in
          * bits per second.
          * @returns the configured/supported backchannel bandwidth.
+         * @since 1.14
          */
         get_backchannel_bandwidth(): number;
 
@@ -3650,6 +3715,7 @@ export namespace GstRtspServer {
          * Set the configured/supported bandwidth of the ONVIF backchannel pipeline in
          * bits per second.
          * @param bandwidth the bandwidth in bits per second
+         * @since 1.14
          */
         set_backchannel_bandwidth(bandwidth: number): void;
     }
@@ -3722,6 +3788,7 @@ export namespace GstRtspServer {
          * Checks whether the client request requires backchannel.
          * @param factory a {@link GstRtspServer.RTSPMediaFactory}
          * @param ctx 
+         * @since 1.14
          */
         static requires_backchannel(factory: RTSPMediaFactory, ctx: RTSPContext): boolean;
 
@@ -3735,12 +3802,14 @@ export namespace GstRtspServer {
          * do so before the media finishes preparing.
          * @param media a {@link GstRtspServer.RTSPOnvifMedia}
          * @param ctx a {@link GstRtspServer.RTSPContext}
+         * @since 1.26
          * @virtual
          */
         vfunc_create_backchannel_stream(media: RTSPOnvifMedia, ctx: RTSPContext): boolean;
 
         /**
          * Returns `true` if an ONVIF backchannel is supported by the media factory.
+         * @since 1.14
          * @virtual
          */
         vfunc_has_backchannel_support(): boolean;
@@ -3750,6 +3819,7 @@ export namespace GstRtspServer {
          * Get the configured/supported bandwidth of the ONVIF backchannel pipeline in
          * bits per second.
          * @returns the configured/supported backchannel bandwidth.
+         * @since 1.14
          */
         get_backchannel_bandwidth(): number;
 
@@ -3757,17 +3827,20 @@ export namespace GstRtspServer {
          * Get the `gst_parse_launch()` pipeline description that will be used in the
          * default prepare vmethod for generating the ONVIF backchannel pipeline.
          * @returns the configured backchannel launch description. `g_free()` after usage.
+         * @since 1.14
          */
         get_backchannel_launch(): string | null;
 
         /**
          * Returns `true` if an ONVIF backchannel is supported by the media factory.
          * @returns `true` if an ONVIF backchannel is supported by the media factory.
+         * @since 1.14
          */
         has_backchannel_support(): boolean;
 
         /**
          * @returns `true` if ONVIF replay is supported by the media factory.
+         * @since 1.18
          */
         has_replay_support(): boolean;
 
@@ -3775,6 +3848,7 @@ export namespace GstRtspServer {
          * Set the configured/supported bandwidth of the ONVIF backchannel pipeline in
          * bits per second.
          * @param bandwidth the bandwidth in bits per second
+         * @since 1.14
          */
         set_backchannel_bandwidth(bandwidth: number): void;
 
@@ -3796,12 +3870,14 @@ export namespace GstRtspServer {
          * async=false on {@link GstBase.BaseSink}. Otherwise the whole media will not be able to
          * prepare.
          * @param launch the launch description
+         * @since 1.14
          */
         set_backchannel_launch(launch: string | null): void;
 
         /**
          * Set to `true` if ONVIF replay is supported by the media factory.
          * @param has_replay_support 
+         * @since 1.18
          */
         set_replay_support(has_replay_support: boolean): void;
     }
@@ -4093,6 +4169,7 @@ export namespace GstRtspServer {
         /**
          * Get the Content-Length limit of `server`.
          * @returns the Content-Length limit.
+         * @since 1.18
          */
         get_content_length_limit(): number;
 
@@ -4147,6 +4224,7 @@ export namespace GstRtspServer {
          * Define an appropriate request size limit and reject requests exceeding the
          * limit.
          * @param limit 
+         * @since 1.18
          */
         set_content_length_limit(limit: number): void;
 
@@ -4304,6 +4382,7 @@ export namespace GstRtspServer {
          * will contain the number of matched characters of `path`.
          * @param path the path for the media
          * @returns the configuration for `path` in `sess`, should be unreferenced when no longer needed.
+         * @since 1.20
          */
         dup_media(path: string): [RTSPSessionMedia | null, number];
 
@@ -4357,6 +4436,7 @@ export namespace GstRtspServer {
          * Check if `session` timeout out.
          * @param now the current system time
          * @returns `true` if `session` timed out
+         * @deprecated Use `gst_rtsp_session_is_expired_usec()` instead.
          */
         is_expired(now: GLib.TimeVal): boolean;
 
@@ -4382,6 +4462,7 @@ export namespace GstRtspServer {
          * Get the amount of milliseconds till the session will expire.
          * @param now the current system time
          * @returns the amount of milliseconds since the session will time out.
+         * @deprecated Use `gst_rtsp_session_next_timeout_usec()` instead.
          */
         next_timeout(now: GLib.TimeVal): number;
 
@@ -4505,6 +4586,7 @@ export namespace GstRtspServer {
         /**
          * Get a list of all available {@link GstRtspServer.RTSPStreamTransport} in this session.
          * @returns a list of {@link GstRtspServer.RTSPStreamTransport}, g_ptr_array_unref () after usage.
+         * @since 1.14
          */
         get_transports(): RTSPStreamTransport[];
 
@@ -4796,6 +4878,7 @@ export namespace GstRtspServer {
          * @param rtcp_port RTCP port
          * @param family socket family
          * @returns `true` if `destination` can be addedd and handled by `stream`.
+         * @since 1.16
          */
         add_multicast_client_address(destination: string, rtp_port: number, rtcp_port: number, family: Gio.SocketFamily): boolean;
 
@@ -4826,6 +4909,7 @@ export namespace GstRtspServer {
          * SETUP.
          * @param transport a {@link GstRtsp.RTSPTransport}
          * @returns `true` if the stream has been successfully updated.
+         * @since 1.14
          */
         complete_stream(transport: GstRtsp.RTSPTransport): boolean;
 
@@ -4838,6 +4922,7 @@ export namespace GstRtspServer {
         /**
          * Get the size of the UDP transmission buffer (in bytes)
          * @returns the size of the UDP TX buffer
+         * @since 1.6
          */
         get_buffer_size(): number;
 
@@ -4876,6 +4961,7 @@ export namespace GstRtspServer {
         /**
          * Get the the maximum time-to-live value of outgoing multicast packets.
          * @returns the maximum time-to-live value of outgoing multicast packets.
+         * @since 1.16
          */
         get_max_mcast_ttl(): number;
 
@@ -4897,6 +4983,7 @@ export namespace GstRtspServer {
         /**
          * Get all multicast client addresses that RTP data will be sent to
          * @returns A comma separated list of host:port pairs with destinations
+         * @since 1.16
          */
         get_multicast_client_addresses(): string;
 
@@ -4927,17 +5014,20 @@ export namespace GstRtspServer {
         /**
          * Gets if and how the stream clock should be published according to RFC7273.
          * @returns The GstRTSPPublishClockMode
+         * @since 1.8
          */
         get_publish_clock_mode(): RTSPPublishClockMode;
 
         /**
          * @returns whether `stream` will follow the Rate-Control=no behaviour as specified in the ONVIF replay spec.
+         * @since 1.18
          */
         get_rate_control(): boolean;
 
         /**
          * Retrieve the current rate and/or applied_rate.
          * @returns `true` if rate and/or applied_rate could be determined.
+         * @since 1.18
          */
         get_rates(): [boolean, number, number];
 
@@ -4957,6 +5047,7 @@ export namespace GstRtspServer {
          * Get the multicast RTCP socket from `stream` for a `family`.
          * @param family the socket family
          * @returns the multicast RTCP socket or `null` if no socket could be allocated for `family`. Unref after usage
+         * @since 1.14
          */
         get_rtcp_multicast_socket(family: Gio.SocketFamily): Gio.Socket | null;
 
@@ -5033,17 +5124,20 @@ export namespace GstRtspServer {
 
         /**
          * @returns the amount of redundancy applied when creating ULPFEC protection packets.
+         * @since 1.16
          */
         get_ulpfec_percentage(): number;
 
         /**
          * @returns the payload type used for ULPFEC protection packets
+         * @since 1.16
          */
         get_ulpfec_pt(): number;
 
         /**
          * Parse and handle a KeyMgmt header.
          * @param keymgmt a keymgmt header
+         * @since 1.16
          */
         handle_keymgmt(keymgmt: string): boolean;
 
@@ -5057,6 +5151,7 @@ export namespace GstRtspServer {
         /**
          * Check if multicast sockets are configured to be bound to multicast addresses.
          * @returns `true` if multicast sockets are configured to be bound to multicast addresses.
+         * @since 1.16
          */
         is_bind_mcast_address(): boolean;
 
@@ -5077,18 +5172,21 @@ export namespace GstRtspServer {
          * parts. As the stream contains sink(s) element(s), it's possible to perform
          * seek operations on it.
          * @returns `true` if the stream contains at least one sink element.
+         * @since 1.14
          */
         is_complete(): boolean;
 
         /**
          * Checks whether the stream is a receiver.
          * @returns `true` if the stream is a receiver and `false` otherwise.
+         * @since 1.14
          */
         is_receiver(): boolean;
 
         /**
          * Checks whether the stream is a sender.
          * @returns `true` if the stream is a sender and `false` otherwise.
+         * @since 1.14
          */
         is_sender(): boolean;
 
@@ -5169,6 +5267,7 @@ export namespace GstRtspServer {
          * Creating a rtxreceive bin
          * @param sessid the session id
          * @returns a {@link Gst.Element}.
+         * @since 1.16
          */
         request_aux_receiver(sessid: number): Gst.Element | null;
 
@@ -5176,6 +5275,7 @@ export namespace GstRtspServer {
          * Creating a rtxsend bin
          * @param sessid the session id
          * @returns a {@link Gst.Element}.
+         * @since 1.6
          */
         request_aux_sender(sessid: number): Gst.Element | null;
 
@@ -5184,6 +5284,7 @@ export namespace GstRtspServer {
          * @param rtpbin 
          * @param sessid 
          * @returns a {@link Gst.Element}.
+         * @since 1.16
          */
         request_ulpfec_decoder(rtpbin: Gst.Element, sessid: number): Gst.Element | null;
 
@@ -5191,6 +5292,7 @@ export namespace GstRtspServer {
          * Creating a rtpulpfecenc element
          * @param sessid 
          * @returns a {@link Gst.Element}.
+         * @since 1.16
          */
         request_ulpfec_encoder(sessid: number): Gst.Element | null;
 
@@ -5209,6 +5311,7 @@ export namespace GstRtspServer {
         /**
          * Checks whether the individual `stream` is seekable.
          * @returns `true` if `stream` is seekable, else `false`.
+         * @since 1.14
          */
         seekable(): boolean;
 
@@ -5222,6 +5325,7 @@ export namespace GstRtspServer {
          * Decide whether the multicast socket should be bound to a multicast address or
          * INADDR_ANY.
          * @param bind_mcast_addr the new value
+         * @since 1.16
          */
         set_bind_mcast_address(bind_mcast_addr: boolean): void;
 
@@ -5236,6 +5340,7 @@ export namespace GstRtspServer {
          * Set the size of the UDP transmission buffer (in bytes)
          * Needs to be set before the stream is joined to a bin.
          * @param size the buffer size
+         * @since 1.6
          */
         set_buffer_size(size: number): void;
 
@@ -5265,6 +5370,7 @@ export namespace GstRtspServer {
          * Set the maximum time-to-live value of outgoing multicast packets.
          * @param ttl the new multicast ttl value
          * @returns `true` if the requested ttl has been set successfully.
+         * @since 1.16
          */
         set_max_mcast_ttl(ttl: number): boolean;
 
@@ -5302,6 +5408,7 @@ export namespace GstRtspServer {
         /**
          * Sets if and how the stream clock should be published according to RFC7273.
          * @param mode the clock publish mode
+         * @since 1.8
          */
         set_publish_clock_mode(mode: RTSPPublishClockMode): void;
 
@@ -5309,6 +5416,7 @@ export namespace GstRtspServer {
          * Define whether `stream` will follow the Rate-Control=no behaviour as specified
          * in the ONVIF replay spec.
          * @param enabled 
+         * @since 1.18
          */
         set_rate_control(enabled: boolean): void;
 
@@ -5333,12 +5441,14 @@ export namespace GstRtspServer {
          * Sets the amount of redundancy to apply when creating ULPFEC
          * protection packets.
          * @param percentage 
+         * @since 1.16
          */
         set_ulpfec_percentage(percentage: number): void;
 
         /**
          * Set the payload type to be used for ULPFEC protection packets
          * @param pt 
+         * @since 1.16
          */
         set_ulpfec_pt(pt: number): void;
 
@@ -5369,6 +5479,7 @@ export namespace GstRtspServer {
          * RTCP it is initially blocked until this function is called.
          * This functions should be called once the pipeline is ready for handling RTCP
          * packets.
+         * @since 1.20
          */
         unblock_rtcp(): void;
 
@@ -5387,6 +5498,7 @@ export namespace GstRtspServer {
          * Check if the requested multicast ttl value is allowed.
          * @param ttl a requested multicast ttl
          * @returns TRUE if the requested ttl value is allowed.
+         * @since 1.16
          */
         verify_mcast_ttl(ttl: number): boolean;
     }
@@ -5497,6 +5609,7 @@ export namespace GstRtspServer {
 
         /**
          * Signal the installed message_sent / message_sent_full callback for `trans`.
+         * @since 1.16
          */
         message_sent(): void;
 
@@ -5519,6 +5632,7 @@ export namespace GstRtspServer {
          * Send `buffer_list` to the installed RTCP callback for `trans`.
          * @param buffer_list a {@link Gst.Buffer}
          * @returns `true` on success
+         * @since 1.16
          */
         send_rtcp_list(buffer_list: Gst.BufferList): boolean;
 
@@ -5533,6 +5647,7 @@ export namespace GstRtspServer {
          * Send `buffer_list` to the installed RTP callback for `trans`.
          * @param buffer_list a {@link Gst.BufferList}
          * @returns `true` on success
+         * @since 1.16
          */
         send_rtp_list(buffer_list: Gst.BufferList): boolean;
 
@@ -5563,6 +5678,7 @@ export namespace GstRtspServer {
          * to a client. This is usually used when sending RTP/RTCP over TCP.
          * @param send_rtp_list a callback called when RTP should be sent
          * @param send_rtcp_list a callback called when RTCP should be sent
+         * @since 1.16
          */
         set_list_callbacks(send_rtp_list: RTSPSendListFunc, send_rtcp_list: RTSPSendListFunc): void;
 
@@ -5575,6 +5691,7 @@ export namespace GstRtspServer {
         /**
          * Install a callback that will be called when a message has been sent on `trans`.
          * @param message_sent a callback called when a message has been sent
+         * @since 1.18
          */
         set_message_sent_full(message_sent: RTSPMessageSentFuncFull): void;
 
@@ -5843,6 +5960,7 @@ export namespace GstRtspServer {
         /**
          * Set the token for `ctx`.
          * @param token a {@link GstRtspServer.RTSPToken}
+         * @since 1.22
          */
         set_token(token: RTSPToken): void;
     }
@@ -5958,6 +6076,7 @@ export namespace GstRtspServer {
          * @param role a role
          * @param permission the permission
          * @param allowed whether the role has this permission or not
+         * @since 1.14
          */
         add_permission_for_role(role: string, permission: string, allowed: boolean): void;
 
@@ -5965,6 +6084,7 @@ export namespace GstRtspServer {
          * Add a new `role` to `permissions` without any permissions. You can add
          * permissions for the role with `gst_rtsp_permissions_add_permission_for_role()`.
          * @param role a role
+         * @since 1.14
          */
         add_role(role: string): void;
 
@@ -5977,6 +6097,7 @@ export namespace GstRtspServer {
          * gst_structure_new ("tester", "permission1", G_TYPE_BOOLEAN, TRUE, NULL);
          * ```
          * @param structure 
+         * @since 1.14
          */
         add_role_from_structure(structure: Gst.Structure): void;
 
@@ -6165,6 +6286,7 @@ export namespace GstRtspServer {
          * Sets a boolean value on `token`.
          * @param field field to set
          * @param bool_value boolean value to set
+         * @since 1.14
          */
         set_bool(field: string, bool_value: boolean): void;
 
@@ -6172,6 +6294,7 @@ export namespace GstRtspServer {
          * Sets a string value on `token`.
          * @param field field to set
          * @param string_value string value to set
+         * @since 1.14
          */
         set_string(field: string, string_value: string): void;
 

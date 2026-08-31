@@ -10094,6 +10094,7 @@ export namespace HarfBuzz {
          * 
          * Note that the feature value will be omitted if it is '1', but the
          * string won't include any whitespace.
+         * @since 0.9.5
          */
         _string(): string[];
     }
@@ -10243,6 +10244,7 @@ export namespace HarfBuzz {
         /**
          * Converts an {@link HarfBuzz.language_t} to a string.
          * @returns A `NULL`-terminated string representing the `language`. Must not be freed by the caller.
+         * @since 0.9.2
          */
         _string(): string;
     }
@@ -10556,6 +10558,7 @@ export namespace HarfBuzz {
          * allocating big enough size for `buf`, 128 bytes is more than enough.
          * 
          * Note that the string won't include any whitespace.
+         * @since 1.4.2
          */
         _string(): string[];
     }

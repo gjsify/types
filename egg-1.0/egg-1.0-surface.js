@@ -61,6 +61,12 @@ export const DECLS = {
     EggThreeGrid: ['EggThreeGrid', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
 };
 
+// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
+// and descend from `GObject.Object`. A renderer places them like a container; a check
+// asking "is this a widget" must not count them. Derived from the accessor pair, never
+// from a list — the count is in the provenance line above.
+export const CHILD_HOLDERS = [];
+
 export const ENUM_NICKS = {
     EggAnimationMode: ['linear', 'ease-in-quad', 'ease-in-out-quad', 'ease-out-quad', 'ease-in-cubic', 'ease-out-cubic', 'ease-in-out-cubic'],
     EggSliderPosition: ['none', 'top', 'right', 'bottom', 'left'],

@@ -732,6 +732,7 @@ export namespace XreaderDocument {
 
         /**
          * Get the color of `annot`.
+         * @deprecated since 1.2.1: Use `ev_annotation_get_rgba()` instead.
          */
         get_color(): Gdk.Color;
 
@@ -772,6 +773,7 @@ export namespace XreaderDocument {
 
         /**
          * Gets the color of `annot`.
+         * @since 1.2.1
          */
         get_rgba(): Gdk.RGBA;
 
@@ -779,6 +781,7 @@ export namespace XreaderDocument {
          * Set the area of the annotation to `area`.
          * @param area a {@link XreaderDocument.Rectangle}
          * @returns `true` if the area has been changed, `false` otherwise
+         * @since 3.18
          */
         set_area(area: Rectangle): boolean;
 
@@ -788,6 +791,7 @@ export namespace XreaderDocument {
          * notify::color signal on `annot`.
          * @param color a {@link Gdk.Color}
          * @returns `true`  when the color has been changed, `false` otherwise.
+         * @deprecated since 1.2.1: Use `ev_annotation_set_rgba()` instead.
          */
         set_color(color: Gdk.Color): boolean;
 
@@ -834,6 +838,7 @@ export namespace XreaderDocument {
          * Set the color of the annotation to `rgba`.
          * @param rgba a {@link Gdk.RGBA}
          * @returns `true` if the color has been changed, `false` otherwise
+         * @since 1.2.1
          */
         set_rgba(rgba: Gdk.RGBA): boolean;
     }

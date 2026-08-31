@@ -774,12 +774,14 @@ export namespace Clapper {
         /**
          * Get the {@link Clapper.DiscovererDiscoveryMode} of `discoverer`.
          * @returns a currently set {@link Clapper.DiscovererDiscoveryMode}.
+         * @deprecated since 0.10: Use Media Scanner from `clapper-enhancers` repo instead.
          */
         get_discovery_mode(): DiscovererDiscoveryMode;
 
         /**
          * Set the {@link Clapper.DiscovererDiscoveryMode} of `discoverer`.
          * @param mode a {@link Clapper.DiscovererDiscoveryMode}
+         * @deprecated since 0.10: Use Media Scanner from `clapper-enhancers` repo instead.
          */
         set_discovery_mode(mode: DiscovererDiscoveryMode): void;
     }
@@ -985,12 +987,14 @@ export namespace Clapper {
          * @param key name of the data to lookup
          * @param value string to check for
          * @returns whether list named with `key` existed and contained `value`.
+         * @since 0.10
          */
         extra_data_lists_value(key: string, value: string): boolean;
 
         /**
          * Get description from enhancer plugin info file.
          * @returns description of the proxied enhancer.
+         * @since 0.10
          */
         get_description(): string | null;
 
@@ -1001,6 +1005,7 @@ export namespace Clapper {
          * For example `X-Schemes=https`.
          * @param key name of the data to lookup
          * @returns extra data value of the proxied enhancer.
+         * @since 0.10
          */
         get_extra_data(key: string): string | null;
 
@@ -1011,12 +1016,14 @@ export namespace Clapper {
          * Name field in plugin info file is mandatory,
          * so this function never returns `null`.
          * @returns name of the proxied enhancer.
+         * @since 0.10
          */
         get_friendly_name(): string;
 
         /**
          * Get a path to the directory from which enhancer is loaded.
          * @returns installation directory of the proxied enhancer.
+         * @since 0.10
          */
         get_module_dir(): string;
 
@@ -1027,6 +1034,7 @@ export namespace Clapper {
          * Module name in plugin info file is mandatory,
          * so this function never returns `null`.
          * @returns name of the proxied enhancer.
+         * @since 0.10
          */
         get_module_name(): string;
 
@@ -1043,12 +1051,14 @@ export namespace Clapper {
          * This function returns a new instance of {@link Gio.Settings}, so settings can be accessed
          * from different threads if needed.
          * @returns A new {@link Gio.Settings} instance for an enhancer.
+         * @since 0.10
          */
         get_settings(): Gio.Settings | null;
 
         /**
          * Get whether it is allowed to create instances of enhancer that this proxy targets.
          * @returns whether target creation is allowed.
+         * @since 0.10
          */
         get_target_creation_allowed(): boolean;
 
@@ -1059,6 +1069,7 @@ export namespace Clapper {
          * for writing enhancers. Applications should not care about any
          * other interface types that given enhancer is using internally.
          * @returns an array of {@link GObject.GType} interfaces.
+         * @since 0.10
          */
         get_target_interfaces(): GObject.GType[] | null;
 
@@ -1074,12 +1085,14 @@ export namespace Clapper {
          * The returned array includes only Clapper enhancer specific properties (global and local).
          * Applications can not access any other properties that given enhancer is using internally.
          * @returns an array of {@link GObject.ParamSpec} objects.
+         * @since 0.10
          */
         get_target_properties(): GObject.ParamSpec[] | null;
 
         /**
          * Get version string from enhancer plugin info file.
          * @returns version string of the proxied enhancer.
+         * @since 0.10
          */
         get_version(): string | null;
 
@@ -1087,6 +1100,7 @@ export namespace Clapper {
          * Same as {@link Clapper.EnhancerProxy.set_locally}, but to configure uses
          * {@link GLib.HashTable} with string keys and {@link GObject.Value} as their values.
          * @param table a {@link GLib.HashTable} with property names and values
+         * @since 0.10
          */
         set_locally(table: { [key: string]: GObject.Value }): void;
 
@@ -1096,6 +1110,7 @@ export namespace Clapper {
          * See {@link Clapper.EnhancerProxy.target_creation_allowed} for
          * detailed descripton what this does.
          * @param allowed whether allowed
+         * @since 0.10
          */
         set_target_creation_allowed(allowed: boolean): void;
 
@@ -1107,6 +1122,7 @@ export namespace Clapper {
          * other interface types that given enhancer is using internally.
          * @param iface_type an interface {@link GObject.GType}
          * @returns whether target implements given interface.
+         * @since 0.10
          */
         target_has_interface(iface_type: GObject.GType): boolean;
     }
@@ -1186,6 +1202,7 @@ export namespace Clapper {
          * This behaves the same as {@link Gio.ListModel.get_n_items}, and is here
          * for code uniformity and convenience to avoid type casting by user.
          * @returns The number of proxies in {@link Clapper.EnhancerProxyList}.
+         * @since 0.10
          */
         get_n_proxies(): number;
 
@@ -1196,6 +1213,7 @@ export namespace Clapper {
          * for code uniformity and convenience to avoid type casting by user.
          * @param index an enhancer proxy index
          * @returns The {@link Clapper.EnhancerProxy} at `index`.
+         * @since 0.10
          */
         get_proxy(index: number): EnhancerProxy | null;
 
@@ -1206,6 +1224,7 @@ export namespace Clapper {
          * module name in the list.
          * @param module_name an enhancer module name
          * @returns The {@link Clapper.EnhancerProxy} with requested module name.
+         * @since 0.10
          */
         get_proxy_by_module(module_name: string): EnhancerProxy | null;
 
@@ -1219,6 +1238,7 @@ export namespace Clapper {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -1229,6 +1249,7 @@ export namespace Clapper {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -1247,6 +1268,7 @@ export namespace Clapper {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -1274,6 +1296,7 @@ export namespace Clapper {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -1286,6 +1309,7 @@ export namespace Clapper {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -1299,6 +1323,7 @@ export namespace Clapper {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -1309,6 +1334,7 @@ export namespace Clapper {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -1586,6 +1612,7 @@ export namespace Clapper {
          * @param media_type media mime type
          * @param data data to fill `harvest`
          * @returns `true` when filled successfully, `false` if taken data was empty.
+         * @since 0.8
          */
         fill(media_type: string, data: Uint8Array | string): boolean;
 
@@ -1596,6 +1623,7 @@ export namespace Clapper {
          * @param media_type media mime type
          * @param bytes a {@link GLib.Bytes} to fill `harvest`
          * @returns `true` when filled successfully, `false` if taken data was empty.
+         * @since 0.8
          */
         fill_with_bytes(media_type: string, bytes: GLib.Bytes | Uint8Array): boolean;
 
@@ -1606,6 +1634,7 @@ export namespace Clapper {
          * @param media_type media mime type
          * @param text data to fill `harvest` as `null` terminated string
          * @returns `true` when filled successfully, `false` if taken data was empty.
+         * @since 0.8
          */
         fill_with_text(media_type: string, text: string): boolean;
 
@@ -1615,6 +1644,7 @@ export namespace Clapper {
          * Setting again the same key will update its value to the new one.
          * @param key a header name
          * @param value a string {@link GObject.Value} of header
+         * @since 0.8
          */
         headers_set(key: string, value: GObject.Value | any): void;
 
@@ -1626,6 +1656,7 @@ export namespace Clapper {
          * play the same URI, recently harvested data can be reused without
          * the need to run {@link Clapper.Extractable.extract} again.
          * @param date_utc a {@link GLib.DateTime} in UTC time
+         * @since 0.10
          */
         set_expiration_date_utc(date_utc: GLib.DateTime): void;
 
@@ -1639,6 +1670,7 @@ export namespace Clapper {
          * It is safe to pass zero or negative number to this function in
          * case when calculating time manually and it already expired.
          * @param seconds time in seconds until expiration
+         * @since 0.10
          */
         set_expiration_seconds(seconds: number): void;
 
@@ -1646,6 +1678,7 @@ export namespace Clapper {
          * Append another tag into the tag list using {@link GObject.Value}.
          * @param tag a name of tag to set
          * @param value a {@link GObject.Value} of tag
+         * @since 0.8
          */
         tags_add(tag: string, value: GObject.Value | any): void;
 
@@ -1655,6 +1688,7 @@ export namespace Clapper {
          * @param title an entry title
          * @param start entry start time in seconds
          * @param end entry end time in seconds or -1 if none
+         * @since 0.8
          */
         toc_add(type: Gst.TocEntryType, title: string, start: number, end: number): void;
     }
@@ -2032,12 +2066,14 @@ export namespace Clapper {
         /**
          * Get downloaded cache file location of {@link Clapper.MediaItem}.
          * @returns a cache file location of {@link Clapper.MediaItem}.
+         * @since 0.10
          */
         get_cache_location(): string | null;
 
         /**
          * Get media item container format.
          * @returns media container format.
+         * @deprecated since 0.10: Get `container-format` from {@link Clapper.MediaItem.tags} instead.
          */
         get_container_format(): string | null;
 
@@ -2056,6 +2092,7 @@ export namespace Clapper {
         /**
          * Get permanent redirect URI of {@link Clapper.MediaItem}.
          * @returns a redirected URI of {@link Clapper.MediaItem}.
+         * @since 0.10
          */
         get_redirect_uri(): string | null;
 
@@ -2068,6 +2105,7 @@ export namespace Clapper {
         /**
          * Get readable list of tags stored in media item.
          * @returns a {@link Gst.TagList}.
+         * @since 0.10
          */
         get_tags(): Gst.TagList;
 
@@ -2109,6 +2147,7 @@ export namespace Clapper {
          * player video/audio filter instead.
          * @param tags a {@link Gst.TagList} of GLOBAL scope
          * @returns whether at least one tag got updated.
+         * @since 0.10
          */
         populate_tags(tags: Gst.TagList): boolean;
 
@@ -2277,18 +2316,21 @@ export namespace Clapper {
         /**
          * Get fallback art URL earlier set by user.
          * @returns fallback art URL.
+         * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
          */
         get_fallback_art_url(): string | null;
 
         /**
          * Get whether remote `MPRIS` clients can control {@link Clapper.Queue}.
          * @returns `true` if control over {@link Clapper.Queue} is allowed, `false` otherwise.
+         * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
          */
         get_queue_controllable(): boolean;
 
         /**
          * Set fallback artwork to show when media does not provide one.
          * @param art_url an art URL
+         * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
          */
         set_fallback_art_url(art_url: string | null): void;
 
@@ -2302,6 +2344,7 @@ export namespace Clapper {
          * You probably want to keep this disabled if your application
          * is supposed to manage what is played now and not MPRIS client.
          * @param controllable if {@link Clapper.Queue} should be controllable
+         * @deprecated since 0.10: Use MPRIS from `clapper-enhancers` repo instead.
          */
         set_queue_controllable(controllable: boolean): void;
     }
@@ -3498,6 +3541,7 @@ export namespace Clapper {
          * Request the player to perform a frame step operation.
          * 
          * Note that this will pause playback automatically.
+         * @since 0.10
          */
         advance_frame(): void;
 
@@ -3505,24 +3549,28 @@ export namespace Clapper {
          * Get last fragment download bandwidth (bits/s) during
          * adaptive streaming.
          * @returns the adaptive bandwidth.
+         * @since 0.8
          */
         get_adaptive_bandwidth(): number;
 
         /**
          * Get currently set maximal bitrate (bits/s) for adaptive streaming.
          * @returns the maximal bitrate value.
+         * @since 0.8
          */
         get_adaptive_max_bitrate(): number;
 
         /**
          * Get currently set minimal bitrate (bits/s) for adaptive streaming.
          * @returns the minimal bitrate value.
+         * @since 0.8
          */
         get_adaptive_min_bitrate(): number;
 
         /**
          * Get currently set initial bitrate (bits/s) for adaptive streaming.
          * @returns the start bitrate value.
+         * @since 0.8
          */
         get_adaptive_start_bitrate(): number;
 
@@ -3579,18 +3627,21 @@ export namespace Clapper {
         /**
          * Get path to a directory set for media downloads.
          * @returns the path of a directory   set for media downloads or `null` if no directory was set yet.
+         * @since 0.8
          */
         get_download_dir(): string | null;
 
         /**
          * Get whether progressive download buffering is enabled.
          * @returns `true` if enabled, `false` otherwise.
+         * @since 0.8
          */
         get_download_enabled(): boolean;
 
         /**
          * Get a list of available enhancers in the form of {@link Clapper.EnhancerProxy} objects.
          * @returns a {@link Clapper.EnhancerProxyList} of enhancer proxies.
+         * @since 0.10
          */
         get_enhancer_proxies(): EnhancerProxyList;
 
@@ -3692,6 +3743,7 @@ export namespace Clapper {
          * data or just save it to a file as-is for the user to do it manually.
          * @param details a {@link Gst.DebugGraphDetails} level
          * @returns current pipeline description in dot format.
+         * @since 0.10
          */
         make_pipeline_graph(details: Gst.DebugGraphDetails): string;
 
@@ -3726,6 +3778,7 @@ export namespace Clapper {
          * object can be done to determine who send given message.
          * @param msg a {@link Gst.Message}
          * @param destination a {@link Clapper.PlayerMessageDestination}
+         * @since 0.10
          */
         post_message(msg: Gst.Message, destination: PlayerMessageDestination): void;
 
@@ -3758,6 +3811,7 @@ export namespace Clapper {
          * Set maximal bitrate to select for adaptive streaming
          * such as DASH or HLS.
          * @param bitrate a bitrate to set (bits/s)
+         * @since 0.8
          */
         set_adaptive_max_bitrate(bitrate: number): void;
 
@@ -3765,6 +3819,7 @@ export namespace Clapper {
          * Set minimal bitrate to select for adaptive streaming
          * such as DASH or HLS.
          * @param bitrate a bitrate to set (bits/s)
+         * @since 0.8
          */
         set_adaptive_min_bitrate(bitrate: number): void;
 
@@ -3772,6 +3827,7 @@ export namespace Clapper {
          * Set initial bitrate to select when starting adaptive
          * streaming such as DASH or HLS.
          * @param bitrate a bitrate to set (bits/s)
+         * @since 0.8
          */
         set_adaptive_start_bitrate(bitrate: number): void;
 
@@ -3818,6 +3874,7 @@ export namespace Clapper {
          * See {@link Clapper.Player.download_enabled} description for more
          * info how this works.
          * @param path the path of a directory to use for media downloads
+         * @since 0.8
          */
         set_download_dir(path: string): void;
 
@@ -3827,6 +3884,7 @@ export namespace Clapper {
          * For this to actually work a {@link Clapper.Player.download_dir}
          * must also be set.
          * @param enabled whether enabled
+         * @since 0.8
          */
         set_download_enabled(enabled: boolean): void;
 
@@ -4106,6 +4164,7 @@ export namespace Clapper {
          * so it is safe to call multiple times if unsure.
          * @param item a {@link Clapper.MediaItem}
          * @param after_item a {@link Clapper.MediaItem} after which to   insert `item` or `null` to prepend
+         * @since 0.10
          */
         insert_item_after(item: MediaItem, after_item: MediaItem | null): void;
 
@@ -4235,6 +4294,7 @@ export namespace Clapper {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -4245,6 +4305,7 @@ export namespace Clapper {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -4263,6 +4324,7 @@ export namespace Clapper {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -4290,6 +4352,7 @@ export namespace Clapper {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -4302,6 +4365,7 @@ export namespace Clapper {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -4315,6 +4379,7 @@ export namespace Clapper {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -4325,6 +4390,7 @@ export namespace Clapper {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -4496,12 +4562,14 @@ export namespace Clapper {
         /**
          * Get port on which server is currently listening on.
          * @returns Current listening port or 0 if server is not listening.
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
          */
         get_current_port(): number;
 
         /**
          * Get whether {@link Clapper.Server} is set to be running.
          * @returns `true` if enabled, `false` otherwise.
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
          */
         get_enabled(): boolean;
 
@@ -4511,18 +4579,21 @@ export namespace Clapper {
          * If you want to know the port server is currently listening on,
          * use {@link Clapper.Server.get_current_port} instead.
          * @returns Requested listening port or 0 when using random port.
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
          */
         get_port(): number;
 
         /**
          * Get whether remote `server` clients can control {@link Clapper.Queue}.
          * @returns `true` if control over {@link Clapper.Queue} is allowed, `false` otherwise.
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
          */
         get_queue_controllable(): boolean;
 
         /**
          * Get whether {@link Clapper.Server} is currently running.
          * @returns `true` if running, `false` otherwise.
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
          */
         get_running(): boolean;
 
@@ -4536,12 +4607,14 @@ export namespace Clapper {
          * To be notified when server is actually running/stopped after being enabled/disabled,
          * you can listen for changes to {@link Clapper.Server.running} property.
          * @param enabled if {@link Clapper.Server} should run
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
          */
         set_enabled(enabled: boolean): void;
 
         /**
          * Set server listening port.
          * @param port a port number or 0 for random free port
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
          */
         set_port(port: number): void;
 
@@ -4554,6 +4627,7 @@ export namespace Clapper {
          * You probably want to keep this disabled if your application
          * is supposed to manage what is played now and not WebSocket client.
          * @param controllable if {@link Clapper.Queue} should be controllable
+         * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
          */
         set_queue_controllable(controllable: boolean): void;
     }
@@ -4812,6 +4886,7 @@ export namespace Clapper {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -4822,6 +4897,7 @@ export namespace Clapper {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -4840,6 +4916,7 @@ export namespace Clapper {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -4867,6 +4944,7 @@ export namespace Clapper {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -4879,6 +4957,7 @@ export namespace Clapper {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -4892,6 +4971,7 @@ export namespace Clapper {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -4902,6 +4982,7 @@ export namespace Clapper {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -5217,6 +5298,7 @@ export namespace Clapper {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -5227,6 +5309,7 @@ export namespace Clapper {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -5245,6 +5328,7 @@ export namespace Clapper {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -5272,6 +5356,7 @@ export namespace Clapper {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -5284,6 +5369,7 @@ export namespace Clapper {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -5297,6 +5383,7 @@ export namespace Clapper {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -5307,6 +5394,7 @@ export namespace Clapper {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -5609,6 +5697,7 @@ export namespace Clapper {
              * @param uri a {@link GLib.Uri}
              * @param harvest a {@link Clapper.Harvest} to be filled
              * @param cancellable a {@link Gio.Cancellable} object
+             * @since 0.8
              * @virtual
              */
             vfunc_extract(uri: GLib.Uri, harvest: Harvest, cancellable: Gio.Cancellable): boolean;
@@ -5652,6 +5741,7 @@ export namespace Clapper {
              * @param bytes a {@link GLib.Bytes}
              * @param playlist a {@link Gio.ListStore} for media items
              * @param cancellable a {@link Gio.Cancellable} object
+             * @since 0.10
              * @virtual
              */
             vfunc_parse(uri: GLib.Uri, bytes: GLib.Bytes, playlist: Gio.ListStore, cancellable: Gio.Cancellable): boolean;
@@ -5696,6 +5786,7 @@ export namespace Clapper {
              * need to know that.
              * @param item a {@link Clapper.MediaItem} that was updated
              * @param flags flags informing which properties were updated
+             * @since 0.10
              * @virtual
              */
             vfunc_item_updated(item: MediaItem, flags: ReactableItemUpdatedFlags): void;
@@ -5703,6 +5794,7 @@ export namespace Clapper {
             /**
              * Custom message from user was received on reactables bus.
              * @param msg a {@link Gst.Message}
+             * @since 0.10
              * @virtual
              */
             vfunc_message_received(msg: Gst.Message): void;
@@ -5710,6 +5802,7 @@ export namespace Clapper {
             /**
              * Player mute state changed.
              * @param mute `true` if player is muted, `false` otherwise
+             * @since 0.10
              * @virtual
              */
             vfunc_mute_changed(mute: boolean): void;
@@ -5718,6 +5811,7 @@ export namespace Clapper {
              * New media item started playing. All following events (such as position changes)
              * will be related to this `item` from now on.
              * @param item a {@link Clapper.MediaItem} that is now playing
+             * @since 0.10
              * @virtual
              */
             vfunc_played_item_changed(item: MediaItem): void;
@@ -5725,6 +5819,7 @@ export namespace Clapper {
             /**
              * Player position changed.
              * @param position a decimal number with current position in seconds
+             * @since 0.10
              * @virtual
              */
             vfunc_position_changed(position: number): void;
@@ -5735,6 +5830,7 @@ export namespace Clapper {
              * Note that in such event {@link Clapper.Reactable.queue_item_removed}
              * will NOT be called for each item for performance reasons. You probably
              * want to implement this function if you also implemented item removal.
+             * @since 0.10
              * @virtual
              */
             vfunc_queue_cleared(): void;
@@ -5743,6 +5839,7 @@ export namespace Clapper {
              * An item was added to the queue.
              * @param item a {@link Clapper.MediaItem} that was added
              * @param index position at which `item` was placed in queue
+             * @since 0.10
              * @virtual
              */
             vfunc_queue_item_added(item: MediaItem, index: number): void;
@@ -5754,6 +5851,7 @@ export namespace Clapper {
              * should also implement {@link Clapper.Reactable.queue_cleared}.
              * @param item a {@link Clapper.MediaItem} that was removed
              * @param index position from which `item` was removed in queue
+             * @since 0.10
              * @virtual
              */
             vfunc_queue_item_removed(item: MediaItem, index: number): void;
@@ -5762,6 +5860,7 @@ export namespace Clapper {
              * An item changed position within queue.
              * @param before position from which {@link Clapper.MediaItem} was removed
              * @param after position at which {@link Clapper.MediaItem} was inserted after removal
+             * @since 0.10
              * @virtual
              */
             vfunc_queue_item_repositioned(before: number, after: number): void;
@@ -5769,6 +5868,7 @@ export namespace Clapper {
             /**
              * Progression mode of the queue was changed.
              * @param mode a {@link Clapper.QueueProgressionMode}
+             * @since 0.10
              * @virtual
              */
             vfunc_queue_progression_changed(mode: QueueProgressionMode): void;
@@ -5776,6 +5876,7 @@ export namespace Clapper {
             /**
              * Player speed changed.
              * @param speed the playback speed multiplier
+             * @since 0.10
              * @virtual
              */
             vfunc_speed_changed(speed: number): void;
@@ -5783,6 +5884,7 @@ export namespace Clapper {
             /**
              * Player state changed.
              * @param state a {@link Clapper.PlayerState}
+             * @since 0.10
              * @virtual
              */
             vfunc_state_changed(state: PlayerState): void;
@@ -5790,6 +5892,7 @@ export namespace Clapper {
             /**
              * Player volume changed.
              * @param volume the volume level
+             * @since 0.10
              * @virtual
              */
             vfunc_volume_changed(volume: number): void;
@@ -5834,6 +5937,7 @@ export namespace Clapper {
          * monitor it with implemented {@link Clapper.Reactable.played_item_changed} instead,
          * as these functions are all serialized into your implementation thread.
          * @returns A reference to the parent {@link Clapper.Player}.
+         * @since 0.10
          */
         get_player(): Player | null;
 
@@ -5849,6 +5953,7 @@ export namespace Clapper {
          * set yet (e.g. inside enhancer construction) or if enhancer outlived the parent
          * instance somehow. Both cases are considered to be implementation bug.
          * @param item a {@link Clapper.MediaItem}
+         * @since 0.10
          */
         queue_append_sync(item: MediaItem): void;
 
@@ -5863,6 +5968,7 @@ export namespace Clapper {
          * Note that this function will do no operation if called when there is no player
          * set yet (e.g. inside enhancer construction) or if enhancer outlived the parent
          * instance somehow. Both cases are considered to be implementation bug.
+         * @since 0.10
          */
         queue_clear_sync(): void;
 
@@ -5883,6 +5989,7 @@ export namespace Clapper {
          * instance somehow. Both cases are considered to be implementation bug.
          * @param item a {@link Clapper.MediaItem}
          * @param after_item a {@link Clapper.MediaItem} after which to insert or `null` to prepend
+         * @since 0.10
          */
         queue_insert_sync(item: MediaItem, after_item: MediaItem): void;
 
@@ -5898,6 +6005,7 @@ export namespace Clapper {
          * set yet (e.g. inside enhancer construction) or if enhancer outlived the parent
          * instance somehow. Both cases are considered to be implementation bug.
          * @param item a {@link Clapper.MediaItem}
+         * @since 0.10
          */
         queue_remove_sync(item: MediaItem): void;
 
@@ -5910,6 +6018,7 @@ export namespace Clapper {
          * or using this convenience function that does so.
          * @param timeline a {@link Clapper.Timeline}
          * @param marker a {@link Clapper.Marker}
+         * @since 0.10
          */
         timeline_insert_sync(timeline: Timeline, marker: Marker): void;
 
@@ -5922,6 +6031,7 @@ export namespace Clapper {
          * or using this convenience function that does so.
          * @param timeline a {@link Clapper.Timeline}
          * @param marker a {@link Clapper.Marker}
+         * @since 0.10
          */
         timeline_remove_sync(timeline: Timeline, marker: Marker): void;
     }

@@ -79,9 +79,13 @@ export namespace GstPlay {
         /**
          * Gets a string representing the given error.
          * @param error a {@link GstPlay.PlayError}
+         * @since 1.20
          */
         static get_name(error: PlayError): string;
 
+        /**
+         * @since 1.20
+         */
         static quark(): GLib.Quark;
     }
 
@@ -709,21 +713,25 @@ export namespace GstPlay {
         // Static methods
         /**
          * @param config a {@link GstPlay.Play} configuration
+         * @since 1.28
          */
         static config_get_loop(config: Gst.Structure): PlayLoop;
 
         /**
          * @param config a {@link GstPlay.Play} configuration
+         * @since 1.24
          */
         static config_get_pipeline_dump_in_error_details(config: Gst.Structure): boolean;
 
         /**
          * @param config a {@link GstPlay.Play} configuration
+         * @since 1.20
          */
         static config_get_position_update_interval(config: Gst.Structure): number;
 
         /**
          * @param config a {@link GstPlay.Play} configuration
+         * @since 1.20
          */
         static config_get_seek_accurate(config: Gst.Structure): boolean;
 
@@ -731,6 +739,7 @@ export namespace GstPlay {
          * Return the user agent which has been configured using
          * `gst_play_config_set_user_agent()` if any.
          * @param config a {@link GstPlay.Play} configuration
+         * @since 1.20
          */
         static config_get_user_agent(config: Gst.Structure): string | null;
 
@@ -740,6 +749,7 @@ export namespace GstPlay {
          * Looping is disabled by default.
          * @param config a {@link GstPlay.Play} configuration
          * @param loop {@link GstPlay.PlayLoop}
+         * @since 1.28
          */
         static config_set_loop(config: Gst.Structure, loop: PlayLoop): void;
 
@@ -751,6 +761,7 @@ export namespace GstPlay {
          * This option is disabled by default.
          * @param config a {@link GstPlay.Play} configuration
          * @param value Include pipeline dumps in error details, or not.
+         * @since 1.24
          */
         static config_set_pipeline_dump_in_error_details(config: Gst.Structure, value: boolean): void;
 
@@ -759,6 +770,7 @@ export namespace GstPlay {
          * Pass 0 to stop updating the position.
          * @param config a {@link GstPlay.Play} configuration
          * @param interval interval in ms
+         * @since 1.20
          */
         static config_set_position_update_interval(config: Gst.Structure, interval: number): void;
 
@@ -774,6 +786,7 @@ export namespace GstPlay {
          * Accurate seeking is disabled by default.
          * @param config a {@link GstPlay.Play} configuration
          * @param accurate accurate seek or not
+         * @since 1.20
          */
         static config_set_seek_accurate(config: Gst.Structure, accurate: boolean): void;
 
@@ -783,41 +796,51 @@ export namespace GstPlay {
          * or RTSP streams.
          * @param config a {@link GstPlay.Play} configuration
          * @param agent the string to use as user agent
+         * @since 1.20
          */
         static config_set_user_agent(config: Gst.Structure, agent: string | null): void;
 
         /**
          * @param info a {@link GstPlay.PlayMediaInfo}
+         * @since 1.20
          */
         static get_audio_streams(info: PlayMediaInfo): PlayAudioInfo[];
 
         /**
          * @param info a {@link GstPlay.PlayMediaInfo}
+         * @since 1.20
          */
         static get_subtitle_streams(info: PlayMediaInfo): PlaySubtitleInfo[];
 
         /**
          * @param info a {@link GstPlay.PlayMediaInfo}
+         * @since 1.20
          */
         static get_video_streams(info: PlayMediaInfo): PlayVideoInfo[];
 
         /**
          * @param msg A {@link Gst.Message}
+         * @since 1.20
          */
         static is_play_message(msg: Gst.Message): boolean;
 
         /**
          * Frees a `null` terminated array of {@link GstPlay.PlayVisualization}.
          * @param viss a `null` terminated array of {@link GstPlay.PlayVisualization} to free
+         * @since 1.20
          */
         static visualizations_free(viss: PlayVisualization): void;
 
+        /**
+         * @since 1.20
+         */
         static visualizations_get(): PlayVisualization[];
 
         // Methods
         /**
          * Retrieve the current value of audio-video-offset property
          * @returns The current value of audio-video-offset in nanoseconds
+         * @since 1.20
          */
         get_audio_video_offset(): number;
 
@@ -825,6 +848,7 @@ export namespace GstPlay {
          * Retrieve the current value of the indicated `type`.
          * @param type {@link GstPlay.PlayColorBalanceType}
          * @returns The current value of `type`, between [0,1]. In case of   error -1 is returned.
+         * @since 1.20
          */
         get_color_balance(type: PlayColorBalanceType): number;
 
@@ -833,41 +857,48 @@ export namespace GstPlay {
          * can either be modified and used for the `gst_play_set_config()` call
          * or it must be freed after usage.
          * @returns a copy of the current configuration of `play`. Use `gst_structure_free()` after usage or `gst_play_set_config()`.
+         * @since 1.20
          */
         get_config(): Gst.Structure;
 
         /**
          * A Function to get current audio {@link GstPlay.PlayAudioInfo} instance.
          * @returns current audio track. The caller should free it with `g_object_unref()`
+         * @since 1.20
          */
         get_current_audio_track(): PlayAudioInfo | null;
 
         /**
          * A Function to get current subtitle {@link GstPlay.PlaySubtitleInfo} instance.
          * @returns current subtitle track. The caller should free it with `g_object_unref()`
+         * @since 1.20
          */
         get_current_subtitle_track(): PlaySubtitleInfo | null;
 
         /**
          * A Function to get current video {@link GstPlay.PlayVideoInfo} instance.
          * @returns current video track. The caller should free it with `g_object_unref()`
+         * @since 1.20
          */
         get_current_video_track(): PlayVideoInfo | null;
 
         /**
          * @returns Name of the currently enabled   visualization.   `g_free()` after usage.
+         * @since 1.20
          */
         get_current_visualization(): string | null;
 
         /**
          * Retrieves the duration of the media stream that self represents.
          * @returns the duration of the currently-playing media stream, in nanoseconds.
+         * @since 1.20
          */
         get_duration(): Gst.ClockTime;
 
         /**
          * A Function to get the current media info {@link GstPlay.PlayMediaInfo} instance.
          * @returns media info instance. The caller should free it with `g_object_unref()`
+         * @since 1.20
          */
         get_media_info(): PlayMediaInfo | null;
 
@@ -885,56 +916,66 @@ export namespace GstPlay {
          * consume the messages, the bus will accumulate these internally and eventually
          * fill memory. To avoid that, the bus has to be set "flushing".
          * @returns The play message bus instance
+         * @since 1.20
          */
         get_message_bus(): Gst.Bus;
 
         /**
          * Retrieve the current value of the indicated `type`.
          * @returns The current value of `type`, Default: 0x00000000 "none
+         * @since 1.20
          */
         get_multiview_flags(): GstVideo.VideoMultiviewFlags;
 
         /**
          * Retrieve the current value of the indicated `type`.
          * @returns The current value of `type`, Default: -1 "none"
+         * @since 1.20
          */
         get_multiview_mode(): GstVideo.VideoMultiviewFramePacking;
 
         /**
          * @returns `true` if the currently-playing stream is muted.
+         * @since 1.20
          */
         get_mute(): boolean;
 
         /**
          * @returns The internal playbin instance. The caller should free it with `g_object_unref()`
+         * @since 1.20
          */
         get_pipeline(): Gst.Element;
 
         /**
          * @returns the absolute position time, in nanoseconds, of the currently-playing stream.
+         * @since 1.20
          */
         get_position(): Gst.ClockTime;
 
         /**
          * @returns current playback rate
+         * @since 1.20
          */
         get_rate(): number;
 
         /**
          * Current subtitle URI
          * @returns URI of the current external subtitle.   `g_free()` after usage.
+         * @since 1.20
          */
         get_subtitle_uri(): string | null;
 
         /**
          * Retrieve the current value of subtitle-video-offset property
          * @returns The current value of subtitle-video-offset in nanoseconds
+         * @since 1.20
          */
         get_subtitle_video_offset(): number;
 
         /**
          * Gets the URI of the currently-playing stream.
          * @returns a string containing the URI of the currently-playing stream. `g_free()` after usage.
+         * @since 1.20
          */
         get_uri(): string | null;
 
@@ -948,28 +989,33 @@ export namespace GstPlay {
          * @param format output format of the video snapshot
          * @param config Additional configuration
          * @returns Current video snapshot sample or `null` on failure
+         * @since 1.20
          */
         get_video_snapshot(format: PlaySnapshotFormat, config: Gst.Structure | null): Gst.Sample | null;
 
         /**
          * Returns the current volume level, as a percentage between 0 and 1.
          * @returns the volume as percentage between 0 and 1.
+         * @since 1.20
          */
         get_volume(): number;
 
         /**
          * Checks whether the `play` has color balance support available.
          * @returns `true` if `play` has color balance support. Otherwise,   `false`.
+         * @since 1.20
          */
         has_color_balance(): boolean;
 
         /**
          * Pauses the current stream.
+         * @since 1.20
          */
         pause(): void;
 
         /**
          * Request to play the loaded stream.
+         * @since 1.20
          */
         play(): void;
 
@@ -977,30 +1023,36 @@ export namespace GstPlay {
          * Seeks the currently-playing stream to the absolute `position` time
          * in nanoseconds.
          * @param position position to seek in nanoseconds
+         * @since 1.20
          */
         seek(position: Gst.ClockTime): void;
 
         /**
          * @param stream_index stream index
          * @returns `true` or `false` Sets the audio track `stream_index`.
+         * @since 1.20
+         * @deprecated since 1.26: Use `gst_play_set_audio_track_id()` instead.
          */
         set_audio_track(stream_index: number): boolean;
 
         /**
          * Enable or disable the current audio track.
          * @param enabled TRUE or FALSE
+         * @since 1.20
          */
         set_audio_track_enabled(enabled: boolean): void;
 
         /**
          * @param stream_id stream id
          * @returns `true` or `false` Sets the audio track `stream_id`.
+         * @since 1.26
          */
         set_audio_track_id(stream_id: string | null): boolean;
 
         /**
          * Sets audio-video-offset property by value of `offset`
          * @param offset `gint64` in nanoseconds
+         * @since 1.20
          */
         set_audio_video_offset(offset: bigint | number): void;
 
@@ -1009,6 +1061,7 @@ export namespace GstPlay {
          * value.
          * @param type {@link GstPlay.PlayColorBalanceType}
          * @param value The new value for the `type`, ranged [0,1]
+         * @since 1.20
          */
         set_color_balance(type: PlayColorBalanceType, value: number): void;
 
@@ -1024,6 +1077,7 @@ export namespace GstPlay {
          * This function takes ownership of `config`.
          * @param config a {@link Gst.Structure}
          * @returns `true` when the configuration could be set.
+         * @since 1.20
          */
         set_config(config: Gst.Structure): boolean;
 
@@ -1031,6 +1085,7 @@ export namespace GstPlay {
          * Sets the current value of the indicated mode `type` to the passed
          * value.
          * @param flags The new value for the `type`
+         * @since 1.20
          */
         set_multiview_flags(flags: GstVideo.VideoMultiviewFlags): void;
 
@@ -1038,36 +1093,43 @@ export namespace GstPlay {
          * Sets the current value of the indicated mode `type` to the passed
          * value.
          * @param mode The new value for the `type`
+         * @since 1.20
          */
         set_multiview_mode(mode: GstVideo.VideoMultiviewFramePacking): void;
 
         /**
          * `true` if the currently-playing stream should be muted.
          * @param val Mute state the should be set
+         * @since 1.20
          */
         set_mute(val: boolean): void;
 
         /**
          * Playback at specified rate
          * @param rate playback rate
+         * @since 1.20
          */
         set_rate(rate: number): void;
 
         /**
          * @param stream_index stream index
          * @returns `true` or `false` Sets the subtitle stack `stream_index`.
+         * @since 1.20
+         * @deprecated since 1.26: Use `gst_play_set_subtitle_track_id()` instead.
          */
         set_subtitle_track(stream_index: number): boolean;
 
         /**
          * Enable or disable the current subtitle track.
          * @param enabled TRUE or FALSE
+         * @since 1.20
          */
         set_subtitle_track_enabled(enabled: boolean): void;
 
         /**
          * @param stream_id stream id
          * @returns `true` or `false` Sets the subtitle track `stream_id`.
+         * @since 1.26
          */
         set_subtitle_track_id(stream_id: string | null): boolean;
 
@@ -1076,12 +1138,14 @@ export namespace GstPlay {
          * gst_play_set_subtitle_track_enabled(`play`, TRUE) so the subtitles are actually
          * rendered.
          * @param uri subtitle URI
+         * @since 1.20
          */
         set_subtitle_uri(uri: string | null): void;
 
         /**
          * Sets subtitle-video-offset property by value of `offset`
          * @param offset `gint64` in nanoseconds
+         * @since 1.20
          */
         set_subtitle_video_offset(offset: bigint | number): void;
 
@@ -1090,54 +1154,64 @@ export namespace GstPlay {
          * @param video_stream_id video stream id
          * @param subtitle_stream_id subtitle stream id
          * @returns `true` or `false` Sets the selected track stream ids. Setting `null` as stream id disables the corresponding track.
+         * @since 1.26
          */
         set_track_ids(audio_stream_id: string | null, video_stream_id: string | null, subtitle_stream_id: string | null): boolean;
 
         /**
          * Sets the next URI to play.
          * @param uri next URI to play.
+         * @since 1.20
          */
         set_uri(uri: string | null): void;
 
         /**
          * @param stream_index stream index
          * @returns `true` or `false` Sets the video track `stream_index`.
+         * @since 1.20
+         * @deprecated since 1.26: Use `gst_play_set_video_track_id()` instead.
          */
         set_video_track(stream_index: number): boolean;
 
         /**
          * Enable or disable the current video track.
          * @param enabled TRUE or FALSE
+         * @since 1.20
          */
         set_video_track_enabled(enabled: boolean): void;
 
         /**
          * @param stream_id stream id
          * @returns `true` or `false` Sets the video track `stream_id`.
+         * @since 1.26
          */
         set_video_track_id(stream_id: string | null): boolean;
 
         /**
          * @param name visualization element obtained from `gst_play_visualizations_get`()
          * @returns `true` if the visualization was set correctly. Otherwise, `false`.
+         * @since 1.20
          */
         set_visualization(name: string | null): boolean;
 
         /**
          * Enable or disable the visualization.
          * @param enabled TRUE or FALSE
+         * @since 1.20
          */
         set_visualization_enabled(enabled: boolean): void;
 
         /**
          * Sets the volume level of the stream as a percentage between 0 and 1.
          * @param val the new volume level, as a percentage between 0 and 1
+         * @since 1.20
          */
         set_volume(val: number): void;
 
         /**
          * Stops playing the current stream and resets to the first position
          * in the stream.
+         * @since 1.20
          */
         stop(): void;
     }
@@ -1189,26 +1263,31 @@ export namespace GstPlay {
         // Methods
         /**
          * @returns the audio bitrate in {@link GstPlay.PlayAudioInfo} or -1 if unknown.
+         * @since 1.20
          */
         get_bitrate(): number;
 
         /**
          * @returns the number of audio channels in {@link GstPlay.PlayAudioInfo} or 0 if unknown.
+         * @since 1.20
          */
         get_channels(): number;
 
         /**
          * @returns the language of the stream, or `null` if unknown.
+         * @since 1.20
          */
         get_language(): string | null;
 
         /**
          * @returns the audio maximum bitrate in {@link GstPlay.PlayAudioInfo} or -1 if unknown.
+         * @since 1.20
          */
         get_max_bitrate(): number;
 
         /**
          * @returns the audio sample rate in {@link GstPlay.PlayAudioInfo} or 0 if unknown.
+         * @since 1.20
          */
         get_sample_rate(): number;
     }
@@ -1260,16 +1339,19 @@ export namespace GstPlay {
         // Methods
         /**
          * @returns A {@link GLib.List} of matching {@link GstPlay.PlayAudioInfo}.
+         * @since 1.20
          */
         get_audio_streams(): PlayAudioInfo[];
 
         /**
          * @returns the container format or `null` if unknown.
+         * @since 1.20
          */
         get_container_format(): string | null;
 
         /**
          * @returns duration of the media.
+         * @since 1.20
          */
         get_duration(): Gst.ClockTime;
 
@@ -1277,66 +1359,79 @@ export namespace GstPlay {
          * Function to get the image (or preview-image) stored in taglist.
          * Application can use `gst_sample_*_()` API's to get caps, buffer etc.
          * @returns GstSample or `null`.
+         * @since 1.20
          */
         get_image_sample(): Gst.Sample | null;
 
         /**
          * @returns number of audio streams.
+         * @since 1.20
          */
         get_number_of_audio_streams(): number;
 
         /**
          * @returns number of total streams.
+         * @since 1.20
          */
         get_number_of_streams(): number;
 
         /**
          * @returns number of subtitle streams.
+         * @since 1.20
          */
         get_number_of_subtitle_streams(): number;
 
         /**
          * @returns number of video streams.
+         * @since 1.20
          */
         get_number_of_video_streams(): number;
 
         /**
          * @returns A {@link GLib.List} of matching {@link GstPlay.PlayStreamInfo}.
+         * @since 1.20
          */
         get_stream_list(): PlayStreamInfo[];
 
         /**
          * @returns A {@link GLib.List} of matching {@link GstPlay.PlaySubtitleInfo}.
+         * @since 1.20
          */
         get_subtitle_streams(): PlaySubtitleInfo[];
 
         /**
          * @returns the tags contained in media info.
+         * @since 1.20
          */
         get_tags(): Gst.TagList | null;
 
         /**
          * @returns the media title or `null` if unknown.
+         * @since 1.20
          */
         get_title(): string | null;
 
         /**
          * @returns the URI associated with {@link GstPlay.PlayMediaInfo}.
+         * @since 1.20
          */
         get_uri(): string;
 
         /**
          * @returns A {@link GLib.List} of matching {@link GstPlay.PlayVideoInfo}.
+         * @since 1.20
          */
         get_video_streams(): PlayVideoInfo[];
 
         /**
          * @returns `true` if the media is live.
+         * @since 1.20
          */
         is_live(): boolean;
 
         /**
          * @returns `true` if the media is seekable.
+         * @since 1.20
          */
         is_seekable(): boolean;
     }
@@ -1470,6 +1565,7 @@ export namespace GstPlay {
         // Methods
         /**
          * @returns The {@link GstPlay.Play} owning this signal adapter.
+         * @since 1.20
          */
         get_play(): Play;
     }
@@ -1523,12 +1619,14 @@ export namespace GstPlay {
         // Methods
         /**
          * @returns the {@link Gst.Caps} of the stream or `null` if unknown.
+         * @since 1.20
          */
         get_caps(): Gst.Caps | null;
 
         /**
          * A string describing codec used in {@link GstPlay.PlayStreamInfo}.
          * @returns codec string or `null` on unknown.
+         * @since 1.20
          */
         get_codec(): string | null;
 
@@ -1536,12 +1634,15 @@ export namespace GstPlay {
          * Function to get stream index from {@link GstPlay.PlayStreamInfo} instance or -1 if
          * unknown.
          * @returns the stream index of this stream.
+         * @since 1.20
+         * @deprecated since 1.26: Use `gst_play_stream_info_get_stream_id()`.
          */
         get_index(): number;
 
         /**
          * A string stream id identifying this {@link GstPlay.PlayStreamInfo}.
          * @returns stream id string.
+         * @since 1.26
          */
         get_stream_id(): string;
 
@@ -1549,11 +1650,13 @@ export namespace GstPlay {
          * Function to return human readable name for the stream type
          * of the given `info` (ex: "audio", "video", "subtitle")
          * @returns a human readable name
+         * @since 1.20
          */
         get_stream_type(): string;
 
         /**
          * @returns the tags contained in this stream.
+         * @since 1.20
          */
         get_tags(): Gst.TagList | null;
     }
@@ -1605,6 +1708,7 @@ export namespace GstPlay {
         // Methods
         /**
          * @returns the language of the stream, or `null` if unknown.
+         * @since 1.20
          */
         get_language(): string | null;
     }
@@ -1656,28 +1760,36 @@ export namespace GstPlay {
         // Methods
         /**
          * @returns the current bitrate of video in {@link GstPlay.PlayVideoInfo} or -1 if unknown.
+         * @since 1.20
          */
         get_bitrate(): number;
 
+        /**
+         * @since 1.20
+         */
         get_framerate(): [number, number];
 
         /**
          * @returns the height of video in {@link GstPlay.PlayVideoInfo} or -1 if unknown.
+         * @since 1.20
          */
         get_height(): number;
 
         /**
          * @returns the maximum bitrate of video in {@link GstPlay.PlayVideoInfo} or -1 if unknown.
+         * @since 1.20
          */
         get_max_bitrate(): number;
 
         /**
          * Returns the pixel aspect ratio in `par_n` and `par_d`
+         * @since 1.20
          */
         get_pixel_aspect_ratio(): [number, number];
 
         /**
          * @returns the width of video in {@link GstPlay.PlayVideoInfo} or -1 if unknown.
+         * @since 1.20
          */
         get_width(): number;
     }
@@ -1749,12 +1861,14 @@ export namespace GstPlay {
         // Static methods
         /**
          * @param window_handle Window handle to use or `null`
+         * @since 1.20
          */
         static ["new"](window_handle: null): PlayVideoRenderer;
 
         /**
          * @param window_handle Window handle to use or `null`
          * @param video_sink the custom video_sink element to be set for the video renderer
+         * @since 1.20
          */
         static new_with_sink(window_handle: null, video_sink: Gst.Element): PlayVideoRenderer;
 
@@ -1762,17 +1876,20 @@ export namespace GstPlay {
         /**
          * Tell an overlay that it has been exposed. This will redraw the current frame
          * in the drawable even if the pipeline is PAUSED.
+         * @since 1.20
          */
         expose(): void;
 
         /**
          * Return the currently configured render rectangle. See `gst_play_video_overlay_video_renderer_set_render_rectangle()`
          * for details.
+         * @since 1.20
          */
         get_render_rectangle(): [number, number, number, number];
 
         /**
          * @returns The currently set, platform specific window handle
+         * @since 1.20
          */
         get_window_handle(): null;
 
@@ -1791,6 +1908,7 @@ export namespace GstPlay {
          * @param y the vertical offset of the render area inside the window
          * @param width the width of the render area inside the window
          * @param height the height of the render area inside the window
+         * @since 1.20
          */
         set_render_rectangle(x: number, y: number, width: number, height: number): void;
 
@@ -1798,6 +1916,7 @@ export namespace GstPlay {
          * Sets the platform specific window handle into which the video
          * should be rendered
          * @param window_handle handle referencing to the platform specific window
+         * @since 1.20
          */
         set_window_handle(window_handle: null): void;
     }
@@ -1873,11 +1992,13 @@ export namespace GstPlay {
          * Makes a copy of the {@link GstPlay.PlayVisualization}. The result must be
          * freed using `gst_play_visualization_free()`.
          * @returns an allocated copy of `vis`.
+         * @since 1.20
          */
         copy(): PlayVisualization;
 
         /**
          * Frees a {@link GstPlay.PlayVisualization}.
+         * @since 1.20
          */
         free(): void;
     }

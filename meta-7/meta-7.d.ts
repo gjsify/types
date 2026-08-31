@@ -2502,6 +2502,7 @@ export namespace Meta {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2545,6 +2546,7 @@ export namespace Meta {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -2795,6 +2797,7 @@ export namespace Meta {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -2808,6 +2811,7 @@ export namespace Meta {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -2825,6 +2829,7 @@ export namespace Meta {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -2832,12 +2837,14 @@ export namespace Meta {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -2852,6 +2859,7 @@ export namespace Meta {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -2869,6 +2877,7 @@ export namespace Meta {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -2877,6 +2886,7 @@ export namespace Meta {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -2891,6 +2901,8 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -2905,6 +2917,7 @@ export namespace Meta {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -2914,6 +2927,7 @@ export namespace Meta {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -2922,6 +2936,7 @@ export namespace Meta {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -2936,6 +2951,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -2949,6 +2965,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -2957,6 +2974,7 @@ export namespace Meta {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -2965,12 +2983,15 @@ export namespace Meta {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -2982,6 +3003,8 @@ export namespace Meta {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -2993,6 +3016,8 @@ export namespace Meta {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -3006,12 +3031,16 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -3037,6 +3066,8 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -3047,6 +3078,7 @@ export namespace Meta {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -3062,6 +3094,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -3076,6 +3109,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -3084,6 +3118,7 @@ export namespace Meta {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -3096,6 +3131,8 @@ export namespace Meta {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -3108,6 +3145,8 @@ export namespace Meta {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -3122,6 +3161,8 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -3129,6 +3170,8 @@ export namespace Meta {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -3136,6 +3179,7 @@ export namespace Meta {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -3147,6 +3191,7 @@ export namespace Meta {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -3156,6 +3201,7 @@ export namespace Meta {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -3167,11 +3213,13 @@ export namespace Meta {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -3183,6 +3231,7 @@ export namespace Meta {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -3193,6 +3242,7 @@ export namespace Meta {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -3205,6 +3255,7 @@ export namespace Meta {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -3360,6 +3411,7 @@ export namespace Meta {
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
+         * @since 1.10
          */
         get_preferred_size(): [boolean, number, number];
 
@@ -3369,6 +3421,7 @@ export namespace Meta {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          */
         invalidate(): void;
 
@@ -3399,6 +3452,7 @@ export namespace Meta {
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
+         * @since 1.10
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
@@ -3409,6 +3463,7 @@ export namespace Meta {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          * @virtual
          */
         vfunc_invalidate(): void;
@@ -3549,6 +3604,7 @@ export namespace Meta {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -3562,6 +3618,7 @@ export namespace Meta {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -3579,6 +3636,7 @@ export namespace Meta {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -3586,12 +3644,14 @@ export namespace Meta {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -3606,6 +3666,7 @@ export namespace Meta {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -3623,6 +3684,7 @@ export namespace Meta {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -3631,6 +3693,7 @@ export namespace Meta {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -3645,6 +3708,8 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -3659,6 +3724,7 @@ export namespace Meta {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -3668,6 +3734,7 @@ export namespace Meta {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -3676,6 +3743,7 @@ export namespace Meta {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -3690,6 +3758,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -3703,6 +3772,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -3711,6 +3781,7 @@ export namespace Meta {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -3719,12 +3790,15 @@ export namespace Meta {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -3736,6 +3810,8 @@ export namespace Meta {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -3747,6 +3823,8 @@ export namespace Meta {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -3760,12 +3838,16 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -3791,6 +3873,8 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -3801,6 +3885,7 @@ export namespace Meta {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -3816,6 +3901,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -3830,6 +3916,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -3838,6 +3925,7 @@ export namespace Meta {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -3850,6 +3938,8 @@ export namespace Meta {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -3862,6 +3952,8 @@ export namespace Meta {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -3876,6 +3968,8 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -3883,6 +3977,8 @@ export namespace Meta {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -3890,6 +3986,7 @@ export namespace Meta {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -3901,6 +3998,7 @@ export namespace Meta {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -3910,6 +4008,7 @@ export namespace Meta {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -3921,11 +4020,13 @@ export namespace Meta {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -3937,6 +4038,7 @@ export namespace Meta {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -3947,6 +4049,7 @@ export namespace Meta {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -3959,6 +4062,7 @@ export namespace Meta {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -6038,6 +6142,7 @@ export namespace Meta {
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
          * @returns `true` if the content has a preferred size, and `false`   otherwise
+         * @since 1.10
          */
         get_preferred_size(): [boolean, number, number];
 
@@ -6047,6 +6152,7 @@ export namespace Meta {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          */
         invalidate(): void;
 
@@ -6077,6 +6183,7 @@ export namespace Meta {
          * The natural size of a {@link Clutter.Content} is defined as the size the content
          * would have regardless of the allocation of the actor that is painting it,
          * for instance the size of an image data.
+         * @since 1.10
          * @virtual
          */
         vfunc_get_preferred_size(): [boolean, number, number];
@@ -6087,6 +6194,7 @@ export namespace Meta {
          * This function should be called by {@link Clutter.Content} implementations when
          * they change the way a the content should be painted regardless of the
          * actor state.
+         * @since 1.10
          * @virtual
          */
         vfunc_invalidate(): void;
@@ -7666,6 +7774,7 @@ export namespace Meta {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -7679,6 +7788,7 @@ export namespace Meta {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -7696,6 +7806,7 @@ export namespace Meta {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -7703,12 +7814,14 @@ export namespace Meta {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -7723,6 +7836,7 @@ export namespace Meta {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -7740,6 +7854,7 @@ export namespace Meta {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -7748,6 +7863,7 @@ export namespace Meta {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -7762,6 +7878,8 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -7776,6 +7894,7 @@ export namespace Meta {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -7785,6 +7904,7 @@ export namespace Meta {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -7793,6 +7913,7 @@ export namespace Meta {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -7807,6 +7928,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -7820,6 +7942,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -7828,6 +7951,7 @@ export namespace Meta {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -7836,12 +7960,15 @@ export namespace Meta {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -7853,6 +7980,8 @@ export namespace Meta {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -7864,6 +7993,8 @@ export namespace Meta {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -7877,12 +8008,16 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -7908,6 +8043,8 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -7918,6 +8055,7 @@ export namespace Meta {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -7933,6 +8071,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -7947,6 +8086,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -7955,6 +8095,7 @@ export namespace Meta {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -7967,6 +8108,8 @@ export namespace Meta {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -7979,6 +8122,8 @@ export namespace Meta {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -7993,6 +8138,8 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -8000,6 +8147,8 @@ export namespace Meta {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -8007,6 +8156,7 @@ export namespace Meta {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -8018,6 +8168,7 @@ export namespace Meta {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -8027,6 +8178,7 @@ export namespace Meta {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -8038,11 +8190,13 @@ export namespace Meta {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -8054,6 +8208,7 @@ export namespace Meta {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -8064,6 +8219,7 @@ export namespace Meta {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -8076,6 +8232,7 @@ export namespace Meta {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -8196,6 +8353,7 @@ export namespace Meta {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -8209,6 +8367,7 @@ export namespace Meta {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -8226,6 +8385,7 @@ export namespace Meta {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -8233,12 +8393,14 @@ export namespace Meta {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -8253,6 +8415,7 @@ export namespace Meta {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -8270,6 +8433,7 @@ export namespace Meta {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -8278,6 +8442,7 @@ export namespace Meta {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -8292,6 +8457,8 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -8306,6 +8473,7 @@ export namespace Meta {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -8315,6 +8483,7 @@ export namespace Meta {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -8323,6 +8492,7 @@ export namespace Meta {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -8337,6 +8507,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -8350,6 +8521,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -8358,6 +8530,7 @@ export namespace Meta {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -8366,12 +8539,15 @@ export namespace Meta {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -8383,6 +8559,8 @@ export namespace Meta {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -8394,6 +8572,8 @@ export namespace Meta {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -8407,12 +8587,16 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -8438,6 +8622,8 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -8448,6 +8634,7 @@ export namespace Meta {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -8463,6 +8650,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -8477,6 +8665,7 @@ export namespace Meta {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -8485,6 +8674,7 @@ export namespace Meta {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -8497,6 +8687,8 @@ export namespace Meta {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -8509,6 +8701,8 @@ export namespace Meta {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -8523,6 +8717,8 @@ export namespace Meta {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -8530,6 +8726,8 @@ export namespace Meta {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -8537,6 +8735,7 @@ export namespace Meta {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -8548,6 +8747,7 @@ export namespace Meta {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -8557,6 +8757,7 @@ export namespace Meta {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -8568,11 +8769,13 @@ export namespace Meta {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -8584,6 +8787,7 @@ export namespace Meta {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -8594,6 +8798,7 @@ export namespace Meta {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -8606,6 +8811,7 @@ export namespace Meta {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;

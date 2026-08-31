@@ -150,6 +150,7 @@ export namespace CoglGst {
          * would then make a copy of its template pipeline and call this to
          * set the textures.
          * @param pln A {@link Cogl.Pipeline}
+         * @since 1.16
          */
         attach_frame(pln: Cogl.Pipeline): void;
 
@@ -163,6 +164,7 @@ export namespace CoglGst {
          * filling the remaining space with black borders.
          * @param available The space available for video output
          * @param output The return location for the calculated output position
+         * @since 1.16
          */
         fit_size(available: Rectangle, output: Rectangle): Rectangle;
 
@@ -174,6 +176,7 @@ export namespace CoglGst {
          * This aspect ratio is calculated based on the underlying size of the
          * video buffers and the current pixel-aspect-ratio.
          * @returns a width-for-height aspect ratio
+         * @since 1.16
          */
         get_aspect(): number;
 
@@ -186,6 +189,7 @@ export namespace CoglGst {
          * be used by the application to add additional layers, for example to
          * blend in another color in the fragment processing.
          * @returns the index of the next available layer after the   sink's internal layers.
+         * @since 1.16
          */
         get_free_layer(): number;
 
@@ -194,6 +198,7 @@ export namespace CoglGst {
          * that will maintain the video's aspect ratio.
          * @param width A specific output `width`
          * @returns An output height for the given output `width`.
+         * @since 1.16
          */
         get_height_for_width(width: number): number;
 
@@ -209,6 +214,7 @@ export namespace CoglGst {
          * <note>This natural size is calculated assuming that the video will
          * be displayed on square pixels.</note>
          * @returns The video's natural height
+         * @since 1.18
          */
         get_natural_height(): number;
 
@@ -223,6 +229,7 @@ export namespace CoglGst {
          * 
          * <note>This natural size is calculated assuming that the video will
          * be displayed on square pixels.</note>
+         * @since 1.18
          */
         get_natural_size(): [number, number];
 
@@ -238,6 +245,7 @@ export namespace CoglGst {
          * <note>This natural size is calculated assuming that the video will
          * be displayed on square pixels.</note>
          * @returns The video's natural width
+         * @since 1.18
          */
         get_natural_width(): number;
 
@@ -255,6 +263,7 @@ export namespace CoglGst {
          * Note: it is considered an error to call this function before the
          * {@link CoglGst.VideoSink.SignalSignatures.pipeline_ready | CoglGst.VideoSink::pipeline-ready} signal is emitted.
          * @returns the pipeline for rendering the   current frame
+         * @since 1.16
          */
         get_pipeline(): Cogl.Pipeline;
 
@@ -263,6 +272,7 @@ export namespace CoglGst {
          * that will maintain the video's aspect ratio.
          * @param height A specific output `height`
          * @returns An output width for the given output `height`.
+         * @since 1.16
          */
         get_width_for_height(height: number): number;
 
@@ -277,6 +287,7 @@ export namespace CoglGst {
          * is passed between components that didn't have an opportunity to
          * connect a signal handler this can be useful.
          * @returns `true` if the sink is ready, else `false`
+         * @since 1.16
          */
         is_ready(): Cogl.Bool;
 
@@ -286,6 +297,7 @@ export namespace CoglGst {
          * sink was constructed via `gst_element_factory_make()` instead of
          * `cogl_gst_video_sink_new()`.
          * @param ctx The {@link Cogl.Context} for the sink to use
+         * @since 1.16
          */
         set_context(ctx: Cogl.Context): void;
 
@@ -305,6 +317,7 @@ export namespace CoglGst {
          * default snippet being added. In that case the application's snippet
          * can call cogl_gst_sample_video0 to sample the texture itself.
          * @param default_sample Whether to add the default sampling
+         * @since 1.16
          */
         set_default_sample(default_sample: Cogl.Bool): void;
 
@@ -320,6 +333,7 @@ export namespace CoglGst {
          * change. For example, if `first_layer` is three then the function
          * will be cogl_gst_sample_video3.
          * @param first_layer The new first layer
+         * @since 1.16
          */
         set_first_layer(first_layer: number): void;
 
@@ -333,6 +347,7 @@ export namespace CoglGst {
          * Note: it is considered an error to call this function before the
          * {@link CoglGst.VideoSink.SignalSignatures.pipeline_ready | CoglGst.VideoSink::pipeline-ready} signal is emitted.
          * @param pipeline A {@link Cogl.Pipeline}
+         * @since 1.16
          */
         setup_pipeline(pipeline: Cogl.Pipeline): void;
     }

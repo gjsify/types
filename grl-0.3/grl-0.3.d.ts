@@ -948,12 +948,19 @@ export namespace Grl {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @since 0.2.0
+         */
         get_key_filter(): KeyID[];
 
+        /**
+         * @since 0.2.0
+         */
         get_key_range_filter(): KeyID[];
 
         /**
          * @returns the supported {@link Grl.TypeFilter}
+         * @since 0.2.0
          */
         get_type_filter(): TypeFilter;
 
@@ -961,6 +968,7 @@ export namespace Grl {
          * Checks if `key` is supported for filtering in `caps`.
          * @param key a {@link Grl.KeyID}
          * @returns `true` if `key` can be used for filtering
+         * @since 0.2.0
          */
         is_key_filter(key: KeyID): boolean;
 
@@ -968,22 +976,26 @@ export namespace Grl {
          * Checks if `key` is supported for filtering by range in `caps`.
          * @param key a {@link Grl.KeyID}
          * @returns `true` if `key` can be used for filtering
+         * @since 0.2.0
          */
         is_key_range_filter(key: KeyID): boolean;
 
         /**
          * @param keys 
+         * @since 0.2.0
          */
         set_key_filter(keys: KeyID[]): void;
 
         /**
          * @param keys 
+         * @since 0.2.0
          */
         set_key_range_filter(keys: KeyID[]): void;
 
         /**
          * Sets the supported filter capability.
          * @param filter a {@link Grl.TypeFilter}
+         * @since 0.2.0
          */
         set_type_filter(filter: TypeFilter): void;
 
@@ -992,6 +1004,7 @@ export namespace Grl {
          * @param key a key to test
          * @param value the value corresponding to `key` to test against `caps`
          * @returns `true` if (`key`, `value`) obey to `caps`, `false` otherwise.
+         * @since 0.2.0
          */
         test_option(key: string, value: GObject.Value | any): boolean;
     }
@@ -1043,27 +1056,32 @@ export namespace Grl {
         // Methods
         /**
          * @returns the webservice API key
+         * @since 0.1.4
          */
         get_api_key(): string;
 
         /**
          * @param size pointer to size of data
          * @returns the binary API key, size will reflect the size of the buffer
+         * @since 0.1.9
          */
         get_api_key_blob(size: bigint | number): number;
 
         /**
          * @returns the webservice API passphrase
+         * @since 0.1.4
          */
         get_api_secret(): string;
 
         /**
          * @returns the webservice API token
+         * @since 0.1.4
          */
         get_api_token(): string;
 
         /**
          * @returns the webservice API token secret (Needed by OAuth)
+         * @since 0.2.6
          */
         get_api_token_secret(): string;
 
@@ -1073,34 +1091,40 @@ export namespace Grl {
          * @param param a binary type parameter
          * @param size place for size of value
          * @returns `param` value
+         * @since 0.1.9
          */
         get_binary(param: string, size: bigint | number | null): number;
 
         /**
          * @param param a boolean type parameter
          * @returns `param` value
+         * @since 0.1.8
          */
         get_boolean(param: string): boolean;
 
         /**
          * @param param a float type parameter
          * @returns `param` value
+         * @since 0.1.5
          */
         get_float(param: string): number;
 
         /**
          * @param param an integer type parameter
          * @returns `param` value
+         * @since 0.1.5
          */
         get_int(param: string): number;
 
         /**
          * @returns the password
+         * @since 0.1.8
          */
         get_password(): string;
 
         /**
          * @returns the plugin id
+         * @since 0.1.4
          */
         get_plugin(): string;
 
@@ -1112,17 +1136,20 @@ export namespace Grl {
         /**
          * @param param a string type paramter
          * @returns `param` value
+         * @since 0.1.5
          */
         get_string(param: string): string;
 
         /**
          * @returns the username
+         * @since 0.1.8
          */
         get_username(): string;
 
         /**
          * @param param the param
          * @returns TRUE if `params` has a defined value within `config`, FALSE otherwise.
+         * @since 0.1.8
          */
         has_param(param: string): boolean;
 
@@ -1130,6 +1157,7 @@ export namespace Grl {
          * Set `param` `value`.
          * @param param a parameter
          * @param value value
+         * @since 0.1.5
          */
         set(param: string, value: GObject.Value | any): void;
 
@@ -1142,6 +1170,7 @@ export namespace Grl {
         /**
          * Set the webservice API key in the configuration
          * @param key the API key
+         * @since 0.1.4
          */
         set_api_key(key: string): void;
 
@@ -1149,18 +1178,21 @@ export namespace Grl {
          * Set the binary API key in the configuration
          * @param blob the binary API key blob
          * @param size the size of the blob
+         * @since 0.1.9
          */
         set_api_key_blob(blob: number, size: bigint | number): void;
 
         /**
          * Set the webservice passphrase in the configuration
          * @param secret the webservice passphrase
+         * @since 0.1.4
          */
         set_api_secret(secret: string): void;
 
         /**
          * Set the webservice API token in the configuration
          * @param token the API token
+         * @since 0.1.4
          */
         set_api_token(token: string): void;
 
@@ -1168,6 +1200,7 @@ export namespace Grl {
          * Set the webservice API token secret in the configuration
          * (Needed by OAuth)
          * @param secret the API token
+         * @since 0.2.6
          */
         set_api_token_secret(secret: string): void;
 
@@ -1176,6 +1209,7 @@ export namespace Grl {
          * @param param a binary type parameter
          * @param blob a base64 encoded binary value
          * @param size size of `value`
+         * @since 0.1.9
          */
         set_binary(param: string, blob: number, size: bigint | number): void;
 
@@ -1183,6 +1217,7 @@ export namespace Grl {
          * Set `param` `value`.
          * @param param a boolean type parameter
          * @param value a value
+         * @since 0.1.8
          */
         set_boolean(param: string, value: boolean): void;
 
@@ -1190,6 +1225,7 @@ export namespace Grl {
          * Set `param` `value`.
          * @param param a float type parameter
          * @param value a value
+         * @since 0.1.5
          */
         set_float(param: string, value: number): void;
 
@@ -1197,24 +1233,28 @@ export namespace Grl {
          * Set `param` `value`.
          * @param param an integer type parameter
          * @param value a value
+         * @since 0.1.5
          */
         set_int(param: string, value: number): void;
 
         /**
          * Set the password in the configuration
          * @param password the password
+         * @since 0.1.8
          */
         set_password(password: string): void;
 
         /**
          * Set the plugin key in the configuration
          * @param plugin the plugin id
+         * @since 0.1.4
          */
         set_plugin(plugin: string): void;
 
         /**
          * Set the source key in the configuration
          * @param source the source id
+         * @since 0.1.4
          */
         set_source(source: string): void;
 
@@ -1222,12 +1262,14 @@ export namespace Grl {
          * Set `param` `value`.
          * @param param a string type parameter
          * @param value a value
+         * @since 0.1.5
          */
         set_string(param: string, value: string): void;
 
         /**
          * Set the username in the configuration
          * @param username the username
+         * @since 0.1.8
          */
         set_username(username: string): void;
     }
@@ -1282,6 +1324,7 @@ export namespace Grl {
          * @param key key to append
          * @param buf the buffer containing the new value
          * @param size size of buffer
+         * @since 0.1.10
          */
         add_binary(key: KeyID, buf: number, size: bigint | number): void;
 
@@ -1289,6 +1332,7 @@ export namespace Grl {
          * Appends a new boxed value for `key` in `data`.
          * @param key key to append
          * @param boxed the new value
+         * @since 0.2.0
          */
         add_boxed(key: KeyID, boxed: null): void;
 
@@ -1296,6 +1340,7 @@ export namespace Grl {
          * Appends a new float value for `key` in `data`.
          * @param key key to append
          * @param floatvalue the new value
+         * @since 0.1.10
          */
         add_float(key: KeyID, floatvalue: number): void;
 
@@ -1311,6 +1356,7 @@ export namespace Grl {
          * @param key_name name of the key to change or add
          * @param value the new value
          * @returns TRUE if `value` was added to `key_name`, FALSE otherwise.
+         * @since 0.3.6
          */
         add_for_id(key_name: string, value: GObject.Value | any): boolean;
 
@@ -1318,6 +1364,7 @@ export namespace Grl {
          * Appends a new int value for `key` in `data`.
          * @param key key to append
          * @param intvalue the new value
+         * @since 0.1.10
          */
         add_int(key: KeyID, intvalue: number): void;
 
@@ -1325,6 +1372,7 @@ export namespace Grl {
          * Appends a new int64 value for `key` in `data`.
          * @param key key to append
          * @param intvalue the new value
+         * @since 0.2.12
          */
         add_int64(key: KeyID, intvalue: bigint | number): void;
 
@@ -1335,6 +1383,7 @@ export namespace Grl {
          * 
          * `data` will take the ownership of `relkeys`, so do not modify it.
          * @param relkeys a set of related properties with their values
+         * @since 0.1.10
          */
         add_related_keys(relkeys: RelatedKeys): void;
 
@@ -1342,12 +1391,14 @@ export namespace Grl {
          * Appends a new string value for `key` in `data`.
          * @param key key to append
          * @param strvalue the new value
+         * @since 0.1.10
          */
         add_string(key: KeyID, strvalue: string): void;
 
         /**
          * Makes a deep copy of `data` and all its contents.
          * @returns a new {@link Grl.Data}. Free it with `g_object_unref`.
+         * @since 0.1.10
          */
         dup(): Data;
 
@@ -1355,6 +1406,7 @@ export namespace Grl {
          * Get the first value from `data` associated with `key`.
          * @param key key to look up.
          * @returns a {@link GObject.Value}. This value should not be modified nor freed by user.
+         * @since 0.1.4
          */
         get(key: KeyID): unknown;
 
@@ -1364,12 +1416,14 @@ export namespace Grl {
          * is returned.
          * @param key key to use
          * @returns buffer location associated with the `key`, or `null` in other case. If successful `size` will be set the to the buffer size.
+         * @since 0.1.9
          */
         get_binary(key: KeyID): [number, number];
 
         /**
          * @param key key to use
          * @returns the first boolean value associated with `key` from `data`. If `key` has no first value, or value is not a gboolean, or `key` is not in the data, then FALSE is returned
+         * @since 0.2.3
          */
         get_boolean(key: KeyID): boolean;
 
@@ -1379,6 +1433,7 @@ export namespace Grl {
          * then `null` is returned.
          * @param key key to use
          * @returns the boxed instance associated with `key` if possible, or `null` in other cases. The caller should not change nor free the value.
+         * @since 0.2.0
          */
         get_boxed(key: KeyID): null;
 
@@ -1388,6 +1443,7 @@ export namespace Grl {
          * returned.
          * @param key key to use
          * @returns float value associated with `key`, or 0 in other case.
+         * @since 0.1.5
          */
         get_float(key: KeyID): number;
 
@@ -1397,6 +1453,7 @@ export namespace Grl {
          * returned.
          * @param key key to use
          * @returns int value associated with `key`, or 0 in other case.
+         * @since 0.1.4
          */
         get_int(key: KeyID): number;
 
@@ -1406,12 +1463,14 @@ export namespace Grl {
          * returned.
          * @param key key to use
          * @returns int value associated with `key`, or 0 in other case.
+         * @since 0.2.12
          */
         get_int64(key: KeyID): number;
 
         /**
          * Returns a list with keys contained in `data`.
          * @returns an array with the keys. The content of the list should not be modified or freed. Use `g_list_free()` when done using the list.
+         * @since 0.1.4
          */
         get_keys(): KeyID[];
 
@@ -1424,6 +1483,7 @@ export namespace Grl {
          * @param key a metadata key
          * @param index element to retrieve, starting at 0
          * @returns a {@link Grl.RelatedKeys}. Do not free it.
+         * @since 0.1.10
          */
         get_related_keys(key: KeyID, index: number): RelatedKeys;
 
@@ -1431,6 +1491,7 @@ export namespace Grl {
          * Returns all non-`null` values for `key` from `data`. This ignores related keys.
          * @param key a metadata key
          * @returns a {@link GLib.List} with values. Do not change or free the values. Free the list with `g_list_free`.
+         * @since 0.1.13
          */
         get_single_values_for_key(key: KeyID): unknown[];
 
@@ -1439,6 +1500,7 @@ export namespace Grl {
          * registered as a string-type key. This ignores related keys.
          * @param key a metadata key
          * @returns a {@link GLib.List} with values. Do not change or free the strings. Free the list with `g_list_free`.
+         * @since 0.1.13
          */
         get_single_values_for_key_string(key: KeyID): string[];
 
@@ -1448,6 +1510,7 @@ export namespace Grl {
          * is returned.
          * @param key key to use
          * @returns string associated with `key`, or `null` in other case. Caller should not change nor free the value.
+         * @since 0.1.4
          */
         get_string(key: KeyID): string;
 
@@ -1455,6 +1518,7 @@ export namespace Grl {
          * Checks if `key` is in `data`.
          * @param key key to search
          * @returns `true` if `key` is in `data`, `false` in other case.
+         * @since 0.1.4
          */
         has_key(key: KeyID): boolean;
 
@@ -1471,6 +1535,7 @@ export namespace Grl {
          * considering K2 and the related keys (K1 and K3), there are 3 values.
          * @param key a metadata key
          * @returns number of values
+         * @since 0.1.10
          */
         length(key: KeyID): number;
 
@@ -1478,6 +1543,7 @@ export namespace Grl {
          * Removes the first value for `key` from `data`. If there are other keys related
          * to `key` their values will also be removed from `data`.
          * @param key key to remove
+         * @since 0.1.4
          */
         remove(key: KeyID): void;
 
@@ -1487,6 +1553,7 @@ export namespace Grl {
          * from `data`.
          * @param key a metadata key
          * @param index index of key to be removed, starting at 0
+         * @since 0.1.10
          */
         remove_nth(key: KeyID, index: number): void;
 
@@ -1499,6 +1566,7 @@ export namespace Grl {
          * `value` is outside this range, it will be adapted accordingly.
          * @param key key to change or add
          * @param value the new value
+         * @since 0.1.4
          */
         set(key: KeyID, value: GObject.Value | any): void;
 
@@ -1514,6 +1582,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param buf buffer holding the data
          * @param size size of the buffer
+         * @since 0.1.9
          */
         set_binary(key: KeyID, buf: number, size: bigint | number): void;
 
@@ -1522,6 +1591,7 @@ export namespace Grl {
          * has a first value, old value is replaced by the new one.
          * @param key key to change or add
          * @param boolvalue the new value
+         * @since 0.2.3
          */
         set_boolean(key: KeyID, boolvalue: boolean): void;
 
@@ -1530,6 +1600,7 @@ export namespace Grl {
          * has a value, the old value is freed and the new one is set.
          * @param key key to change or add
          * @param boxed the new value
+         * @since 0.2.0
          */
         set_boxed(key: KeyID, boxed: null): void;
 
@@ -1538,6 +1609,7 @@ export namespace Grl {
          * a first value old value is replaced by the new one.
          * @param key key to change or add
          * @param floatvalue the new value
+         * @since 0.1.5
          */
         set_float(key: KeyID, floatvalue: number): void;
 
@@ -1554,6 +1626,7 @@ export namespace Grl {
          * @param key_name name of the key to change or add
          * @param value the new value
          * @returns TRUE if `value` was set to `key_name`, FALSE otherwise.
+         * @since 0.3.6
          */
         set_for_id(key_name: string, value: GObject.Value | any): boolean;
 
@@ -1562,6 +1635,7 @@ export namespace Grl {
          * first value old value is replaced by the new one.
          * @param key key to change or add
          * @param intvalue the new value
+         * @since 0.1.4
          */
         set_int(key: KeyID, intvalue: number): void;
 
@@ -1570,6 +1644,7 @@ export namespace Grl {
          * first value old value is replaced by the new one.
          * @param key key to change or add
          * @param intvalue the new value
+         * @since 0.2.12
          */
         set_int64(key: KeyID, intvalue: bigint | number): void;
 
@@ -1580,6 +1655,7 @@ export namespace Grl {
          * function.
          * @param relkeys a set of related keys
          * @param index position to be updated, starting at 0
+         * @since 0.1.10
          */
         set_related_keys(relkeys: RelatedKeys, index: number): void;
 
@@ -1588,6 +1664,7 @@ export namespace Grl {
          * has a value old value is freed and the new one is set.
          * @param key key to change or add
          * @param strvalue the new value
+         * @since 0.1.4
          */
         set_string(key: KeyID, strvalue: string): void;
     }
@@ -1666,6 +1743,7 @@ export namespace Grl {
         /**
          * Unserializes a GrlMedia.
          * @param serial a serialized media
+         * @since 0.1.6
          */
         static unserialize(serial: string): Media;
 
@@ -1673,66 +1751,77 @@ export namespace Grl {
         /**
          * Adds a new artist to `media`.
          * @param artist an audio's artist
+         * @since 0.3.0
          */
         add_artist(artist: string): void;
 
         /**
          * Adds a new author to `media`.
          * @param author an author for `media`
+         * @since 0.1.10
          */
         add_author(author: string): void;
 
         /**
          * Adds the director of the media
          * @param director director of the movie
+         * @since 0.3.0
          */
         add_director(director: string): void;
 
         /**
          * Adds a new external player to `media`.
          * @param player an external player for `media`
+         * @since 0.1.10
          */
         add_external_player(player: string): void;
 
         /**
          * Adds a new external url to `media`.
          * @param url an external url for `media`
+         * @since 0.1.10
          */
         add_external_url(url: string): void;
 
         /**
          * Adds a new genre to `media`.
          * @param genre an audio's genre
+         * @since 0.3.0
          */
         add_genre(genre: string): void;
 
         /**
          * Adds the keyword describing the `media`.
          * @param keyword a keyword describing the media
+         * @since 0.2.3
          */
         add_keyword(keyword: string): void;
 
         /**
          * Adds a new lyrics to `media`.
          * @param lyrics an audio's lyrics
+         * @since 0.3.0
          */
         add_lyrics(lyrics: string): void;
 
         /**
          * Adds a new MusicBrainz artist id to `media`.
          * @param mb_artist_id a MusicBrainz artist identifier
+         * @since 0.3.0
          */
         add_mb_artist_id(mb_artist_id: string): void;
 
         /**
          * Adds the actor performing in the movie.
          * @param performer an actor performing in the movie
+         * @since 0.3.0
          */
         add_performer(performer: string): void;
 
         /**
          * Adds the producer of the media.
          * @param producer producer of the movie
+         * @since 0.3.0
          */
         add_producer(producer: string): void;
 
@@ -1741,12 +1830,14 @@ export namespace Grl {
          * @param region the region's ISO-3166-1 code
          * @param publication_date the publication date
          * @param certificate the age certification
+         * @since 0.2.3
          */
         add_region_data(region: string, publication_date: GLib.DateTime, certificate: string): void;
 
         /**
          * Adds a new thumbnail to `media`.
          * @param thumbnail a thumbnail for `media`
+         * @since 0.1.10
          */
         add_thumbnail(thumbnail: string): void;
 
@@ -1754,6 +1845,7 @@ export namespace Grl {
          * Adds a new thumbnail to `media`.
          * @param thumbnail a buffer containing the thumbnail for `media`
          * @param size size of buffer
+         * @since 0.1.10
          */
         add_thumbnail_binary(thumbnail: number, size: bigint | number): void;
 
@@ -1766,53 +1858,63 @@ export namespace Grl {
          * @param framerate media framerate, or -1 to ignore
          * @param width media width, or -1 to ignore
          * @param height media height, or -1 to ignore
+         * @since 0.3.0
          */
         add_url_data(url: string, mime: string, bitrate: number, framerate: number, width: number, height: number): void;
 
         /**
          * @returns the album of the media
+         * @since 0.3.0
          */
         get_album(): string;
 
         /**
          * @returns the main artist of the album of the media
+         * @since 0.3.1
          */
         get_album_artist(): string;
 
         /**
          * @returns the disc number of the media for multi-disc album sets.
+         * @since 0.3.1
          */
         get_album_disc_number(): number;
 
         /**
          * @returns the artist of the media
+         * @since 0.3.0
          */
         get_artist(): string;
 
         /**
          * @param index element to retrieve, starting at 0
          * @returns the n-th artist of the media
+         * @since 0.3.0
          */
         get_artist_nth(index: number): string;
 
         /**
          * @returns the media's author
+         * @since 0.1.4
          */
         get_author(): string;
 
         /**
          * @param index element to retrieve
          * @returns the n-th media's author.
+         * @since 0.1.10
          */
         get_author_nth(index: number): string;
 
         /**
          * @returns the bitrate of the media
+         * @since 0.3.0
          */
         get_bitrate(): number;
 
         /**
          * @returns model of camera used to take picture
+         * @since 0.3.0
          */
         get_camera_model(): string;
 
@@ -1822,268 +1924,320 @@ export namespace Grl {
          * age certificate. Use `grl_media_get_region_data_nth()` to
          * get other age certificates.
          * @returns the media's age certification
+         * @since 0.1.6
          */
         get_certificate(): string;
 
         /**
          * Number of children of this container.
          * @returns number of children, or #GRL_METADATA_KEY_CHILDCOUNT_UNKNOWN if unknown.
+         * @since 0.3.0
          */
         get_childcount(): number;
 
         /**
          * @returns the composer of the media
+         * @since 0.3.1
          */
         get_composer(): string;
 
         /**
          * @param index element to retrieve, starting at 0
          * @returns the n-th composer of the media
+         * @since 0.3.1
          */
         get_composer_nth(index: number): string;
 
         /**
          * @returns date when media was created (owned by `media`).
+         * @since 0.2.0
          */
         get_creation_date(): GLib.DateTime;
 
         /**
          * @returns the media's description
+         * @since 0.1.4
          */
         get_description(): string;
 
         /**
          * @returns the director of the movie (owned by `media`).
+         * @since 0.3.0
          */
         get_director(): string;
 
         /**
          * @param index element to retrieve
          * @returns the director of the movie (owned by `media`).
+         * @since 0.3.0
          */
         get_director_nth(index: number): string;
 
         /**
          * @returns the media's duration in seconds
+         * @since 0.1.4
          */
         get_duration(): number;
 
         /**
          * @returns the episode number of the media
+         * @since 0.3.0
          */
         get_episode(): number;
 
         /**
          * @returns the title of the episode
+         * @since 0.3.0
          */
         get_episode_title(): string;
 
         /**
          * @returns picture's exposure time
+         * @since 0.3.0
          */
         get_exposure_time(): number;
 
         /**
          * @returns URL of an external location where the user play the media.
+         * @since 0.1.6
          */
         get_external_url(): string;
 
         /**
          * @param index element to retrieve
          * @returns the n-th media's external location where the user can play it.
+         * @since 0.1.10
          */
         get_external_url_nth(index: number): string;
 
         /**
          * @returns whether the media is favourite or not
+         * @since 0.2.3
          */
         get_favourite(): boolean;
 
         /**
          * @returns whether the flash was used. See https://gnome.pages.gitlab.gnome.org/tracker/nmm-ontology.html#nmm:Flash
+         * @since 0.3.0
          */
         get_flash_used(): string;
 
         /**
          * @returns the framerate of the media
+         * @since 0.3.0
          */
         get_framerate(): number;
 
         /**
          * @returns the genre of the media
+         * @since 0.3.0
          */
         get_genre(): string;
 
         /**
          * @param index element to retrieve, starting at 0
          * @returns the n-th genre of the media
+         * @since 0.3.0
          */
         get_genre_nth(index: number): string;
 
         /**
          * @returns the height of the media
+         * @since 0.3.0
          */
         get_height(): number;
 
         /**
          * @returns the media's identifier
+         * @since 0.1.4
          */
         get_id(): string;
 
         /**
          * @returns picture's iso speed
+         * @since 0.3.0
          */
         get_iso_speed(): number;
 
         /**
          * @returns the keyword describing the `media` (owned by `media`).
+         * @since 0.2.3
          */
         get_keyword(): string;
 
         /**
          * @param index element to retrieve
          * @returns the keyword describing the `media` (owned by `media`).
+         * @since 0.2.3
          */
         get_keyword_nth(index: number): string;
 
         /**
          * @returns the media's last played time
+         * @since 0.3.0
          */
         get_last_played(): GLib.DateTime;
 
         /**
          * @returns the media's last_played position (in seconds)
+         * @since 0.1.4
          */
         get_last_position(): number;
 
         /**
          * @returns the license the media is under
+         * @since 0.1.6
          */
         get_license(): string;
 
         /**
          * @returns the lyrics of the media
+         * @since 0.3.0
          */
         get_lyrics(): string;
 
         /**
          * @param index element to retrieve, starting at 0
          * @returns the n-th lyrics of the media
+         * @since 0.3.0
          */
         get_lyrics_nth(index: number): string;
 
         /**
          * @returns the MusicBrainz album identifier
+         * @since 0.3.0
+         * @deprecated since 0.3.8: in favor of more specific metadata-keys GRL_METADATA_KEY_MB_RELEASE_ID and GRL_METADATA_KEY_MB_RELEASE_GROUP_ID
          */
         get_mb_album_id(): string;
 
         /**
          * @returns the MusicBrainz artist identifier
+         * @since 0.3.0
          */
         get_mb_artist_id(): string;
 
         /**
          * @param index element to retrieve, starting at 0
          * @returns the n-th MusicBrainz artist identifier of the media
+         * @since 0.3.0
          */
         get_mb_artist_id_nth(index: number): string;
 
         /**
          * @returns the MusicBrainz recording identifier
+         * @since 0.3.0
          */
         get_mb_recording_id(): string;
 
         /**
          * @returns the MusicBrainz release group identifier of the media
+         * @since 0.3.8
          */
         get_mb_release_group_id(): string;
 
         /**
          * @returns the MusicBrainz release identifier of the media
+         * @since 0.3.8
          */
         get_mb_release_id(): string;
 
         /**
          * @returns the MusicBrainz track identifier
+         * @since 0.3.0
          */
         get_mb_track_id(): string;
 
         /**
          * Gets the "media-type" property.
          * @returns media type
+         * @since 0.3.0
          */
         get_media_type(): MediaType;
 
         /**
          * @returns the media's mime-type
+         * @since 0.1.4
          */
         get_mime(): string;
 
         /**
          * @returns date when the media was last modified (owned by `media`).
+         * @since 0.2.0
          */
         get_modification_date(): GLib.DateTime;
 
         /**
          * @returns degrees clockwise orientation of the picture
+         * @since 0.3.0
          */
         get_orientation(): number;
 
         /**
          * @returns the original, untranslated title of the movie (owned by `media`).
+         * @since 0.3.0
          */
         get_original_title(): string;
 
         /**
          * @returns the actor performing in the movie (owned by `media`).
+         * @since 0.3.0
          */
         get_performer(): string;
 
         /**
          * @param index element to retrieve
          * @returns the actor performing in the movie (owned by `medi`).
+         * @since 0.3.0
          */
         get_performer_nth(index: number): string;
 
         /**
          * @returns the media's play count
+         * @since 0.1.4
          */
         get_play_count(): number;
 
         /**
          * @returns URL of an external player object for this media
+         * @since 0.1.6
          */
         get_player(): string;
 
         /**
          * @param index element to retrieve
          * @returns the n-th media's external player object.
+         * @since 0.1.10
          */
         get_player_nth(index: number): string;
 
         /**
          * @returns the producer of the movie (owned by `media`).
+         * @since 0.3.0
          */
         get_producer(): string;
 
         /**
          * @param index element to retrieve
          * @returns the producer of the movie (owned by `media`).
+         * @since 0.3.0
          */
         get_producer_nth(index: number): string;
 
         /**
          * @returns the publication date of `media` (owned by `media`).
+         * @since 0.2.0
          */
         get_publication_date(): GLib.DateTime;
 
         /**
          * @returns the media's rating
+         * @since 0.1.5
          */
         get_rating(): number;
 
         /**
          * @returns the ISO-3166-1 of the region where the media was published (owned by `media`).
+         * @since 0.2.3
          */
         get_region(): string;
 
@@ -2093,6 +2247,7 @@ export namespace Grl {
          * Use `grl_media_get_region_data_nth()` to get the age certificate and
          * publication date for other regions.
          * @returns the ISO-3166-1 of the region where the media was published (owned by `media`).
+         * @since 0.2.3
          */
         get_region_data(): [string, GLib.DateTime, string];
 
@@ -2116,52 +2271,62 @@ export namespace Grl {
          * </informalexample>
          * @param index element to retrieve
          * @returns the ISO-3166-1 of the region where the media was published (owned by `media`).
+         * @since 0.2.3
          */
         get_region_data_nth(index: number): [string, GLib.DateTime, string];
 
         /**
          * @returns the season number of the media
+         * @since 0.3.0
          */
         get_season(): number;
 
         /**
          * @returns the show title of the media
+         * @since 0.3.0
          */
         get_show(): string;
 
         /**
          * @returns the media's site
+         * @since 0.1.4
          */
         get_site(): string;
 
         /**
          * @returns the media's size, in bytes or -1 if unknown.
+         * @since 0.2.10
          */
         get_size(): number;
 
         /**
          * @returns the media's source
+         * @since 0.1.4
          */
         get_source(): string;
 
         /**
          * @returns the start time of the logical media resource inside the          file containing it, in seconds.
+         * @since 0.1.19
          */
         get_start_time(): number;
 
         /**
          * @returns the studio the media is from
+         * @since 0.1.6
          */
         get_studio(): string;
 
         /**
          * @returns the media's thumbnail URL
+         * @since 0.1.4
          */
         get_thumbnail(): string;
 
         /**
          * @param size pointer to storing the thumbnail buffer size
          * @returns the media's thumbnail data and set size to the thumbnail buffer size
+         * @since 0.1.9
          */
         get_thumbnail_binary(size: bigint | number): number;
 
@@ -2169,27 +2334,32 @@ export namespace Grl {
          * @param size pointer to store the thumbnail buffer size
          * @param index element to retrieve
          * @returns the n-th media's thumbnail binary and sets size to the thumbnail buffer size.
+         * @since 0.1.10
          */
         get_thumbnail_binary_nth(size: bigint | number, index: number): number;
 
         /**
          * @param index element to retrieve
          * @returns the n-th media's thumbnail.
+         * @since 0.1.10
          */
         get_thumbnail_nth(index: number): string;
 
         /**
          * @returns the media's title
+         * @since 0.1.4
          */
         get_title(): string;
 
         /**
          * @returns the track number of the media
+         * @since 0.3.0
          */
         get_track_number(): number;
 
         /**
          * @returns the media's URL
+         * @since 0.1.4
          */
         get_url(): string;
 
@@ -2198,6 +2368,7 @@ export namespace Grl {
          * @param width the url width, or `null` to ignore
          * @param height the url height, or `null` to ignore
          * @returns the media's URL and its related properties.
+         * @since 0.3.0
          */
         get_url_data(framerate: number, width: number, height: number): [string, string, number];
 
@@ -2207,35 +2378,41 @@ export namespace Grl {
          * @param width the url width, or `null` to ignore
          * @param height the url height, or `null` to ignore
          * @returns the n-th media's URL and its related properties.
+         * @since 0.3.0
          */
         get_url_data_nth(index: number, framerate: number, width: number, height: number): [string, string, number];
 
         /**
          * @returns the width of the media
+         * @since 0.3.0
          */
         get_width(): number;
 
         /**
          * Check if `media` is an audio
          * @returns `true` if `media` is an audio
+         * @since 0.3.0
          */
         is_audio(): boolean;
 
         /**
          * Check if `media` is a container
          * @returns `true` if `media` is a container
+         * @since 0.3.0
          */
         is_container(): boolean;
 
         /**
          * Check if `media` is an image
          * @returns `true` if `media` is an image
+         * @since 0.3.0
          */
         is_image(): boolean;
 
         /**
          * Check if `media` is a video
          * @returns `true` if `media` is a video
+         * @since 0.3.0
          */
         is_video(): boolean;
 
@@ -2244,48 +2421,56 @@ export namespace Grl {
          * 
          * See `grl_media_serialize_extended()` to get more serialization approaches.
          * @returns serialized media
+         * @since 0.1.6
          */
         serialize(): string;
 
         /**
          * Set the album of the media
          * @param album the audio's album
+         * @since 0.3.0
          */
         set_album(album: string): void;
 
         /**
          * Set the main artist of the album of the media
          * @param album_artist the audio's album main artist
+         * @since 0.3.1
          */
         set_album_artist(album_artist: string): void;
 
         /**
          * Set the disc number of the media for multi-disc album sets.
          * @param disc_number the disc number within an album
+         * @since 0.3.1
          */
         set_album_disc_number(disc_number: number): void;
 
         /**
          * Set the artist of the media
          * @param artist the audio's artist
+         * @since 0.3.0
          */
         set_artist(artist: string): void;
 
         /**
          * Set the media's author
          * @param author the media's author
+         * @since 0.1.4
          */
         set_author(author: string): void;
 
         /**
          * Set the bitrate of the media
          * @param bitrate the audio's bitrate
+         * @since 0.3.0
          */
         set_bitrate(bitrate: number): void;
 
         /**
          * Set the camera_model of the media
          * @param camera_model model of camera used to take picture
+         * @since 0.3.0
          */
         set_camera_model(camera_model: string): void;
 
@@ -2295,6 +2480,7 @@ export namespace Grl {
          * age certificate. Use `grl_media_set_region_data()` to
          * set other age certificates.
          * @param certificate The age certificate of the media
+         * @since 0.1.6
          */
         set_certificate(certificate: string): void;
 
@@ -2302,72 +2488,84 @@ export namespace Grl {
          * Sets the number of children of this container. Use
          * #GRL_METADATA_KEY_CHILDCOUNT_UNKNOWN if it is unknown.
          * @param childcount number of children
+         * @since 0.3.0
          */
         set_childcount(childcount: number): void;
 
         /**
          * Set the composer of the media
          * @param composer the audio's composer
+         * @since 0.3.1
          */
         set_composer(composer: string): void;
 
         /**
          * Set the creation_date of the media
          * @param creation_date date when media was created
+         * @since 0.2.0
          */
         set_creation_date(creation_date: GLib.DateTime): void;
 
         /**
          * Set the media's description
          * @param description the description
+         * @since 0.1.4
          */
         set_description(description: string): void;
 
         /**
          * Sets the director of the media.
          * @param director director of the movie
+         * @since 0.3.0
          */
         set_director(director: string): void;
 
         /**
          * Set the media's duration
          * @param duration the duration in seconds
+         * @since 0.1.4
          */
         set_duration(duration: number): void;
 
         /**
          * Sets the episode number of the media
          * @param episode the video's episode
+         * @since 0.3.0
          */
         set_episode(episode: number): void;
 
         /**
          * Sets the title of an media
          * @param episode_title the title of the episode
+         * @since 0.3.0
          */
         set_episode_title(episode_title: string): void;
 
         /**
          * Set the exposure_time of the media
          * @param exposure_time picture's exposure time
+         * @since 0.3.0
          */
         set_exposure_time(exposure_time: number): void;
 
         /**
          * Set the location of a player for the media (usually a flash player)
          * @param player location of an external player for this media
+         * @since 0.1.6
          */
         set_external_player(player: string): void;
 
         /**
          * Set an external location where users can play the media
          * @param url external location where this media can be played.
+         * @since 0.1.6
          */
         set_external_url(url: string): void;
 
         /**
          * Set if the media is favourite or not
          * @param favourite whether the item is favourite or not
+         * @since 0.2.3
          */
         set_favourite(favourite: boolean): void;
 
@@ -2376,150 +2574,176 @@ export namespace Grl {
          * See
          * https://gnome.pages.gitlab.gnome.org/tracker/nmm-ontology.html#nmm:Flash
          * @param flash_used whether the flash was used
+         * @since 0.3.0
          */
         set_flash_used(flash_used: string): void;
 
         /**
          * Set the framerate of the media
          * @param framerate the video's framerate
+         * @since 0.3.0
          */
         set_framerate(framerate: number): void;
 
         /**
          * Set the genre of the media
          * @param genre the audio's genre
+         * @since 0.3.0
          */
         set_genre(genre: string): void;
 
         /**
          * Set the height of the media
          * @param height the video's height
+         * @since 0.3.0
          */
         set_height(height: number): void;
 
         /**
          * Set the media identifier
          * @param id the identifier of the media
+         * @since 0.1.4
          */
         set_id(id: string): void;
 
         /**
          * Set the iso_speed of the media
          * @param iso_speed picture's iso speed
+         * @since 0.3.0
          */
         set_iso_speed(iso_speed: number): void;
 
         /**
          * Sets the keyword describing the `media`.
          * @param keyword a keyword describing the media
+         * @since 0.2.3
          */
         set_keyword(keyword: string): void;
 
         /**
          * Set the media last played date
          * @param last_played date when the media was last played
+         * @since 0.3.0
          */
         set_last_played(last_played: GLib.DateTime): void;
 
         /**
          * Set the media last played position
          * @param last_position second at which the media playback was interrupted
+         * @since 0.1.4
          */
         set_last_position(last_position: number): void;
 
         /**
          * Set the media license
          * @param license The license of the media
+         * @since 0.1.6
          */
         set_license(license: string): void;
 
         /**
          * Set the lyrics of the media
          * @param lyrics the audio's lyrics
+         * @since 0.3.0
          */
         set_lyrics(lyrics: string): void;
 
         /**
          * Set the MusicBrainz album identifier of the media
          * @param mb_album_id the MusicBrainz album identifier
+         * @since 0.3.0
+         * @deprecated since 0.3.8: in favor of more specific metadata-keys GRL_METADATA_KEY_MB_RELEASE_ID and GRL_METADATA_KEY_MB_RELEASE_GROUP_ID
          */
         set_mb_album_id(mb_album_id: string): void;
 
         /**
          * Set the MusicBrainz artist identifier of the media
          * @param mb_artist_id the MusicBrainz artist identifier
+         * @since 0.3.0
          */
         set_mb_artist_id(mb_artist_id: string): void;
 
         /**
          * Set the MusicBrainz recording identifier of the media
          * @param mb_recording_id the MusicBrainz recording identifier
+         * @since 0.3.0
          */
         set_mb_recording_id(mb_recording_id: string): void;
 
         /**
          * Set the MusicBrainz Release Group identifier of the media
          * @param mb_release_group_id Album group release identifier in MusicBrainz
+         * @since 0.3.8
          */
         set_mb_release_group_id(mb_release_group_id: string): void;
 
         /**
          * Set the MusicBrainz release identifier of the media
          * @param mb_release_id Album release identifier in MusicBrainz
+         * @since 0.3.8
          */
         set_mb_release_id(mb_release_id: string): void;
 
         /**
          * Set the MusicBrainz track identifier of the media
          * @param mb_track_id the MusicBrainz track identifier
+         * @since 0.3.0
          */
         set_mb_track_id(mb_track_id: string): void;
 
         /**
          * Set the media's mime-type
          * @param mime the mime type
+         * @since 0.1.4
          */
         set_mime(mime: string): void;
 
         /**
          * Set the modification date of the media
          * @param modification_date date when the media was last modified
+         * @since 0.2.0
          */
         set_modification_date(modification_date: GLib.DateTime): void;
 
         /**
          * Set the orientation of the media
          * @param orientation degrees clockwise orientation of the picture
+         * @since 0.3.0
          */
         set_orientation(orientation: number): void;
 
         /**
          * Sets the original, untranslated title of the media.
          * @param original_title original, untranslated title of the movie
+         * @since 0.3.0
          */
         set_original_title(original_title: string): void;
 
         /**
          * Sets the actor performing in the movie.
          * @param performer an actor performing in the movie
+         * @since 0.3.0
          */
         set_performer(performer: string): void;
 
         /**
          * Set the media play count
          * @param play_count the play count
+         * @since 0.1.4
          */
         set_play_count(play_count: number): void;
 
         /**
          * Sets the producer of the media.
          * @param producer producer of the movie
+         * @since 0.3.0
          */
         set_producer(producer: string): void;
 
         /**
          * Set the publication date of `media`.
          * @param date the date
+         * @since 0.2.0
          */
         set_publication_date(date: GLib.DateTime): void;
 
@@ -2528,12 +2752,14 @@ export namespace Grl {
          * from 0...5 to match the usual five-star rating.
          * @param rating a rating value
          * @param max maximum rating value
+         * @since 0.1.5
          */
         set_rating(rating: number, max: number): void;
 
         /**
          * Sets the `region` where `media` was published.
          * @param region the region's ISO-3166-1 code
+         * @since 0.2.3
          */
         set_region(region: string): void;
 
@@ -2542,18 +2768,21 @@ export namespace Grl {
          * @param region the region's ISO-3166-1 code
          * @param publication_date the publication date
          * @param certificate the age certification
+         * @since 0.2.3
          */
         set_region_data(region: string, publication_date: GLib.DateTime, certificate: string): void;
 
         /**
          * Sets the season number of the media
          * @param season the video's season
+         * @since 0.3.0
          */
         set_season(season: number): void;
 
         /**
          * Sets the show title of the media
          * @param show the video's show name
+         * @since 0.3.0
          */
         set_show(show: string): void;
 
@@ -2561,30 +2790,35 @@ export namespace Grl {
          * Set the media's site. A site is a website about the media such as a
          * studio's promotional website for a movie.
          * @param site the site
+         * @since 0.1.4
          */
         set_site(site: string): void;
 
         /**
          * Set the size of the media
          * @param size the size in bytes
+         * @since 0.2.10
          */
         set_size(size: bigint | number): void;
 
         /**
          * Set the media's source
          * @param source the source
+         * @since 0.1.4
          */
         set_source(source: string): void;
 
         /**
          * Set the media studio
          * @param studio The studio the media is from
+         * @since 0.1.6
          */
         set_studio(studio: string): void;
 
         /**
          * Set the media's thumbnail URL
          * @param thumbnail the thumbnail URL
+         * @since 0.1.4
          */
         set_thumbnail(thumbnail: string): void;
 
@@ -2592,24 +2826,28 @@ export namespace Grl {
          * Set the media's binary thumbnail
          * @param thumbnail thumbnail buffer
          * @param size thumbnail buffer size
+         * @since 0.1.9
          */
         set_thumbnail_binary(thumbnail: number, size: bigint | number): void;
 
         /**
          * Set the media's title
          * @param title the title
+         * @since 0.1.4
          */
         set_title(title: string): void;
 
         /**
          * Set the track number of the media
          * @param track_number the audio's track number
+         * @since 0.3.0
          */
         set_track_number(track_number: number): void;
 
         /**
          * Set the media's URL
          * @param url the media's URL
+         * @since 0.1.4
          */
         set_url(url: string): void;
 
@@ -2621,12 +2859,14 @@ export namespace Grl {
          * @param framerate media framerate, or -1 to ignore
          * @param width media width, or -1 to ignore
          * @param height media height, or -1 to ignore
+         * @since 0.3.0
          */
         set_url_data(url: string, mime: string, bitrate: number, framerate: number, width: number, height: number): void;
 
         /**
          * Set the width of the media
          * @param width the video's width
+         * @since 0.3.0
          */
         set_width(width: number): void;
     }
@@ -2678,6 +2918,7 @@ export namespace Grl {
         // Methods
         /**
          * @returns a new {@link Grl.OperationOptions} instance with its values being copies of the values of `options`.
+         * @since 0.2.0
          */
         copy(): OperationOptions;
 
@@ -2685,28 +2926,38 @@ export namespace Grl {
          * Get the count option, that is, the number of elements to retrieve in an
          * operation done with `options`.
          * @returns the value of the count option, or a default value if it is not set.
+         * @since 0.2.0
          */
         get_count(): number;
 
         /**
          * @param key 
          * @returns the filter
+         * @since 0.2.0
          */
         get_key_filter(key: KeyID): unknown;
 
+        /**
+         * @since 0.2.0
+         */
         get_key_filter_list(): KeyID[];
 
         /**
          * Stores the limits of the range in the filter for `key` in `min_value` and
          * `max_value`. If some of the values has no limit, it will set a `null`.
          * @param key a {@link Grl.KeyID}
+         * @since 0.2.0
          */
         get_key_range_filter(key: KeyID): [unknown | null, unknown | null];
 
+        /**
+         * @since 0.2.0
+         */
         get_key_range_filter_list(): KeyID[];
 
         /**
          * @returns resolution flags of `options`.
+         * @since 0.2.12
          */
         get_resolution_flags(): ResolutionFlags;
 
@@ -2714,11 +2965,13 @@ export namespace Grl {
          * Get the skip option, that is, the number of elements to skip before
          * retrieving media items in an operation done with `options`.
          * @returns the value of the skip option, or a default value if it is not set.
+         * @since 0.2.0
          */
         get_skip(): number;
 
         /**
          * @returns resolution flags of `options`
+         * @since 0.2.0
          */
         get_type_filter(): TypeFilter;
 
@@ -2730,6 +2983,7 @@ export namespace Grl {
          * {@link Grl.OperationOptions} instance that was created with `null` caps.
          * @param caps capabilities against which we want to test `options`
          * @returns `true` if `options` obey to `caps`, `false` otherwise.
+         * @since 0.2.0
          */
         obey_caps(caps: Caps): [boolean, OperationOptions, OperationOptions];
 
@@ -2738,12 +2992,14 @@ export namespace Grl {
          * the inherent capabilities of `options`.
          * @param count number of elements to retrieve in an operation
          * @returns `true` if `count` could be set, `false` otherwise.
+         * @since 0.2.0
          */
         set_count(count: number): boolean;
 
         /**
          * @param filters 
          * @returns `true` on success
+         * @since 0.2.0
          */
         set_key_filters(filters: never): boolean;
 
@@ -2752,6 +3008,7 @@ export namespace Grl {
          * @param key a {@link Grl.KeyID}
          * @param value a {@link GObject.Value}
          * @returns `true` on success
+         * @since 0.2.0
          */
         set_key_filter_value(key: KeyID, value: GObject.Value | any): boolean;
 
@@ -2769,6 +3026,7 @@ export namespace Grl {
          * @param min_value minimum value for range
          * @param max_value maximum value for range
          * @returns `true` on success
+         * @since 0.2.0
          */
         set_key_range_filter_value(key: KeyID, min_value: GObject.Value | any | null, max_value: GObject.Value | any | null): boolean;
 
@@ -2777,6 +3035,7 @@ export namespace Grl {
          * to the inherent capabilities of `options`.
          * @param flags the resolution flags to be set for an operation. See {@link Grl.ResolutionFlags} for possible values.
          * @returns `true` if `flags` could be set, `false` otherwise.
+         * @since 0.2.12
          */
         set_resolution_flags(flags: ResolutionFlags): boolean;
 
@@ -2785,6 +3044,7 @@ export namespace Grl {
          * inherent capabilities of `options`.
          * @param skip number of elements to skip in an operation
          * @returns `true` if `skip` could be set, `false` otherwise.
+         * @since 0.2.0
          */
         set_skip(skip: number): boolean;
 
@@ -2794,6 +3054,7 @@ export namespace Grl {
          * inherent capabilities of `options`.
          * @param filter the type of media to get
          * @returns `true` if `flags` could be set, `false` otherwise
+         * @since 0.2.0
          */
         set_type_filter(filter: TypeFilter): boolean;
     }
@@ -2857,60 +3118,70 @@ export namespace Grl {
         /**
          * Get the author of the plugin
          * @returns the author of the `plugin`
+         * @since 0.2.0
          */
         get_author(): string;
 
         /**
          * Get the description of the plugin
          * @returns the description of the `plugin`
+         * @since 0.2.0
          */
         get_description(): string;
 
         /**
          * Get the filename containing the plugin
          * @returns the filename containing `plugin`
+         * @since 0.2.0
          */
         get_filename(): string;
 
         /**
          * Get the id of the plugin
          * @returns the id of the `plugin`
+         * @since 0.2.0
          */
         get_id(): string;
 
         /**
          * Get the license of the plugin
          * @returns the license of the `plugin`
+         * @since 0.2.0
          */
         get_license(): string;
 
         /**
          * Get the plugin module name
          * @returns the module name containing `plugin`
+         * @since 0.3.0
          */
         get_module_name(): string;
 
         /**
          * Get the name of the plugin
          * @returns the name of the `plugin`
+         * @since 0.2.0
          */
         get_name(): string;
 
         /**
          * Get the site of the plugin
          * @returns the site of the `plugin`
+         * @since 0.2.0
          */
         get_site(): string;
 
         /**
          * Gets the sources belonging to `plugin`.
          * @returns a {@link GLib.List} of {@link Grl.Source}<!-- -->s. The content of the list should not be modified or freed. Use `g_list_free()` when done using the list.
+         * @since 0.2.0
          */
         get_sources(): Source[];
 
         /**
          * Get the version of the plugin
          * @returns the version of the `plugin`
+         * @since 0.2.0
          */
         get_version(): string;
     }
@@ -2987,6 +3258,7 @@ export namespace Grl {
          * As the registry is designed to work as a singleton, this
          * method is in charge of creating the only instance or
          * returned it if it is already in memory.
+         * @since 0.2.0
          */
         static get_default(): Registry;
 
@@ -2994,6 +3266,7 @@ export namespace Grl {
         /**
          * Activate all the plugins loaded.
          * @returns `true` if some plugin has been activated
+         * @since 0.3.0
          */
         activate_all_plugins(): boolean;
 
@@ -3001,6 +3274,7 @@ export namespace Grl {
          * Activates plugin identified by `plugin_id`.
          * @param plugin_id plugin identifier
          * @returns `true` if the plugin is loaded correctly
+         * @since 0.3.0
          */
         activate_plugin_by_id(plugin_id: string): boolean;
 
@@ -3008,6 +3282,7 @@ export namespace Grl {
          * Add a configuration for a plugin/source.
          * @param config a configuration set
          * @returns `true` on success
+         * @since 0.2.0
          */
         add_config(config: Config): boolean;
 
@@ -3015,6 +3290,7 @@ export namespace Grl {
          * Load plugin configurations from a .ini-like config file.
          * @param config_file a key-value file containing the configuration
          * @returns `true` on success
+         * @since 0.2.0
          */
         add_config_from_file(config_file: string): boolean;
 
@@ -3022,18 +3298,21 @@ export namespace Grl {
          * Load plugin configurations from a .ini-like resource file.
          * @param resource_path a key-value file containing the configuration
          * @returns `true` on success
+         * @since 0.2.8
          */
         add_config_from_resource(resource_path: string): boolean;
 
         /**
          * Set this path as part of default paths to load plugins.
          * @param path a path with plugins
+         * @since 0.2.0
          */
         add_directory(path: string): void;
 
         /**
          * Returns a list with all registered keys in system.
          * @returns a {@link GLib.List} with all the available {@link Grl.KeyID}<!-- -->s. The content of the list should not be modified or freed. Use `g_list_free()` when done using the list.
+         * @since 0.2.0
          */
         get_metadata_keys(): KeyID[];
 
@@ -3044,6 +3323,7 @@ export namespace Grl {
          * loaded.
          * @param only_loaded whether the returned list shall include only loaded plugins
          * @returns a {@link GLib.List} of available {@link Grl.Plugin}<!-- -->s. The content of the list should not be modified or freed. Use `g_list_free()` when done using the list.
+         * @since 0.2.0
          */
         get_plugins(only_loaded: boolean): Plugin[];
 
@@ -3053,6 +3333,7 @@ export namespace Grl {
          * If `ranked` is `true`, the source list will be ordered by rank.
          * @param ranked whether the returned list shall be returned ordered by rank
          * @returns a {@link GLib.List} of available {@link Grl.Source}<!-- -->s. The content of the list should not be modified or freed. Use `g_list_free()` when done using the list.
+         * @since 0.2.0
          */
         get_sources(ranked: boolean): Source[];
 
@@ -3064,6 +3345,7 @@ export namespace Grl {
          * @param ops a bitwise mangle of the requested operations.
          * @param ranked whether the returned list shall be returned ordered by rank
          * @returns a {@link GLib.List} of available {@link Grl.Source}<!-- -->s. The content of the list should not be modified or freed. Use `g_list_free()` when done using the list.
+         * @since 0.2.0
          */
         get_sources_by_operations(ops: SupportedOps, ranked: boolean): Source[];
 
@@ -3075,6 +3357,7 @@ export namespace Grl {
          * by ":"
          * @param activate `true` if plugins must be activated after loading
          * @returns `false`% is all the configured plugin paths are invalid, `true`% otherwise.
+         * @since 0.2.0
          */
         load_all_plugins(activate: boolean): boolean;
 
@@ -3082,6 +3365,7 @@ export namespace Grl {
          * Loads a module from shared object file stored in `path`
          * @param library_filename the path to the so file
          * @returns `true` if the module is loaded correctly
+         * @since 0.2.0
          */
         load_plugin(library_filename: string): boolean;
 
@@ -3090,6 +3374,7 @@ export namespace Grl {
          * a group shared object files.
          * @param path the path to the directory
          * @returns `true` if the directory is valid.
+         * @since 0.2.0
          */
         load_plugin_directory(path: string): boolean;
 
@@ -3097,6 +3382,7 @@ export namespace Grl {
          * Look up for the metadata key with name `key_name`.
          * @param key_name the key name
          * @returns The metadata key, or GRL_METADATA_KEY_INVALID if not found
+         * @since 0.2.0
          */
         lookup_metadata_key(key_name: string): KeyID;
 
@@ -3104,6 +3390,7 @@ export namespace Grl {
          * Returns `key` description.
          * @param key a metadata key
          * @returns metadata key description, or `NULL` if not found
+         * @since 0.2.0
          */
         lookup_metadata_key_desc(key: KeyID): string;
 
@@ -3111,6 +3398,7 @@ export namespace Grl {
          * Returns `key` name.
          * @param key a metadata key
          * @returns metadata key name, or `NULL` if not found
+         * @since 0.2.0
          */
         lookup_metadata_key_name(key: KeyID): string;
 
@@ -3120,6 +3408,7 @@ export namespace Grl {
          * `key` is included in that list.
          * @param key a metadata key
          * @returns a {@link GLib.List} of related keys, or `NULL` if key is invalid.
+         * @since 0.2.0
          */
         lookup_metadata_key_relation(key: KeyID): KeyID[];
 
@@ -3127,6 +3416,7 @@ export namespace Grl {
          * Returns `key` expected value type.
          * @param key a metadata key
          * @returns metadata key type, or `G_TYPE_INVALID` if not found
+         * @since 0.2.0
          */
         lookup_metadata_key_type(key: KeyID): GObject.GType;
 
@@ -3134,6 +3424,7 @@ export namespace Grl {
          * This function will search and retrieve a plugin given its identifier.
          * @param plugin_id the id of a plugin
          * @returns The plugin found
+         * @since 0.2.0
          */
         lookup_plugin(plugin_id: string): Plugin;
 
@@ -3141,6 +3432,7 @@ export namespace Grl {
          * This function will search and retrieve a source given its identifier.
          * @param source_id the id of a source
          * @returns The source found.
+         * @since 0.2.0
          */
         lookup_source(source_id: string): Source;
 
@@ -3151,6 +3443,7 @@ export namespace Grl {
          * @param key a metadata key
          * @param value value to be validate
          * @returns `true` if complies
+         * @since 0.2.0
          */
         metadata_key_validate(key: KeyID, value: GObject.Value | any): boolean;
 
@@ -3169,6 +3462,7 @@ export namespace Grl {
          * @param param_spec The definition of the key to register
          * @param bind_key The key the new key is bind to, or #GRL_METADATA_KEY_INVALID if it is not bound.
          * @returns The {@link Grl.KeyID} registered.
+         * @since 0.3.0
          */
         register_metadata_key(param_spec: GObject.ParamSpec, bind_key: KeyID): KeyID;
 
@@ -3177,6 +3471,7 @@ export namespace Grl {
          * @param plugin the plugin which owns the source
          * @param source the source to register
          * @returns `true` if success, `false`% otherwise.
+         * @since 0.2.0
          */
         register_source(plugin: Plugin, source: Source): boolean;
 
@@ -3185,6 +3480,7 @@ export namespace Grl {
          * module's deinit function.
          * @param plugin_id the identifier of the plugin
          * @returns `true`% on success.
+         * @since 0.2.0
          */
         unload_plugin(plugin_id: string): boolean;
 
@@ -3192,6 +3488,7 @@ export namespace Grl {
          * Removes the `source` from the `registry` hash table
          * @param source the source to unregister
          * @returns `true` if success, `false`% otherwise.
+         * @since 0.2.0
          */
         unregister_source(source: Source): boolean;
     }
@@ -3244,6 +3541,7 @@ export namespace Grl {
         /**
          * Makes a deep copy of `relkeys` and its contents.
          * @returns a new {@link Grl.RelatedKeys}. Free it with `g_object_unref`.
+         * @since 0.1.10
          */
         dup(): RelatedKeys;
 
@@ -3252,6 +3550,7 @@ export namespace Grl {
          * value, `null` will be returned.
          * @param key key to look up.
          * @returns a {@link GObject.Value}. This value should not be modified nor freed by user.
+         * @since 0.1.10
          */
         get(key: KeyID): unknown;
 
@@ -3260,6 +3559,7 @@ export namespace Grl {
          * or value is not a binary, or `key` is not in `relkeys`, then 0 is returned.
          * @param key key to use
          * @returns buffer location associated with `key`, or `null` in other case. If successful `size` will be set to the buffer size.
+         * @since 0.1.10
          */
         get_binary(key: KeyID): [number, number];
 
@@ -3269,6 +3569,7 @@ export namespace Grl {
          * returned.
          * @param key key to use
          * @returns float value associated with `key`, or `false` in other case.
+         * @since 0.2.3
          */
         get_boolean(key: KeyID): boolean;
 
@@ -3278,6 +3579,7 @@ export namespace Grl {
          * returned.
          * @param key key to use
          * @returns the `GBoxed` value associated with `key` if possible, or `null` in other case. The caller should not change nor free the value.
+         * @since 0.2.0
          */
         get_boxed(key: KeyID): null;
 
@@ -3286,6 +3588,7 @@ export namespace Grl {
          * or value is not a gfloat, or `key` is not in `relkeys`, then 0 is returned.
          * @param key key to use
          * @returns float value associated with `key`, or 0 in other case.
+         * @since 0.1.10
          */
         get_float(key: KeyID): number;
 
@@ -3294,6 +3597,7 @@ export namespace Grl {
          * or value is not a gint, or `key` is not in `relkeys`, then 0 is returned.
          * @param key key to use
          * @returns int value associated with `key`, or 0 in other case.
+         * @since 0.1.10
          */
         get_int(key: KeyID): number;
 
@@ -3302,12 +3606,14 @@ export namespace Grl {
          * or value is not a gint64, or `key` is not in `relkeys`, then 0 is returned.
          * @param key key to use
          * @returns int64 value associated with `key`, or 0 in other case.
+         * @since 0.2.12
          */
         get_int64(key: KeyID): number;
 
         /**
          * Returns a list with keys contained in `relkeys`.
          * @returns a list with the keys. The content of the list should not be modified or freed. Use `g_list_free()` when done using the list.
+         * @since 0.1.13
          */
         get_keys(): KeyID[];
 
@@ -3316,6 +3622,7 @@ export namespace Grl {
          * or value is not string, or `key` is not in `relkeys`, then `null` is returned.
          * @param key key to use
          * @returns string associated with `key`, or `null` in other case. Caller should not change nor free the value.
+         * @since 0.1.10
          */
         get_string(key: KeyID): string;
 
@@ -3323,12 +3630,14 @@ export namespace Grl {
          * Checks if `key` is in `relkeys`.
          * @param key key to search
          * @returns `true` if `key` is in `relkeys`, `false` in other case.
+         * @since 0.1.10
          */
         has_key(key: KeyID): boolean;
 
         /**
          * Removes `key` from `relkeys` set.
          * @param key key to remove
+         * @since 0.2.3
          */
         remove(key: KeyID): void;
 
@@ -3341,6 +3650,7 @@ export namespace Grl {
          * value is outside this range, it will be adapted accordingly.
          * @param key key to change or add
          * @param value the new value
+         * @since 0.1.10
          */
         set(key: KeyID, value: GObject.Value | any): void;
 
@@ -3356,6 +3666,7 @@ export namespace Grl {
          * @param key key to change or add
          * @param buf buffer holding the relkeys
          * @param size size of the buffer
+         * @since 0.1.10
          */
         set_binary(key: KeyID, buf: number, size: bigint | number): void;
 
@@ -3364,6 +3675,7 @@ export namespace Grl {
          * registered as a boolean-type key. Old value is replaced by the new one.
          * @param key key to change or add
          * @param booleanvalue the new value
+         * @since 0.2.3
          */
         set_boolean(key: KeyID, booleanvalue: boolean): void;
 
@@ -3372,6 +3684,7 @@ export namespace Grl {
          * registered as a boxed-type key. Old value is freed and the new one is set.
          * @param key key to change or add
          * @param boxed the new value
+         * @since 0.2.0
          */
         set_boxed(key: KeyID, boxed: null): void;
 
@@ -3380,6 +3693,7 @@ export namespace Grl {
          * registered as a float-type key. Old value is replaced by the new one.
          * @param key key to change or add
          * @param floatvalue the new value
+         * @since 0.1.10
          */
         set_float(key: KeyID, floatvalue: number): void;
 
@@ -3396,6 +3710,7 @@ export namespace Grl {
          * @param key_name name of the key to change or add
          * @param value the new value
          * @returns TRUE if `value` was set to `key_name`, FALSE otherwise.
+         * @since 0.3.13
          */
         set_for_id(key_name: string, value: GObject.Value | any): boolean;
 
@@ -3404,6 +3719,7 @@ export namespace Grl {
          * registered as an int-type key. Old value is replaced by the new one.
          * @param key key to change or add
          * @param intvalue the new value
+         * @since 0.1.10
          */
         set_int(key: KeyID, intvalue: number): void;
 
@@ -3412,6 +3728,7 @@ export namespace Grl {
          * registered as a int64-type key. Old value is replaced by the new one.
          * @param key key to change or add
          * @param intvalue the new value
+         * @since 0.2.12
          */
         set_int64(key: KeyID, intvalue: bigint | number): void;
 
@@ -3420,6 +3737,7 @@ export namespace Grl {
          * registered as a strying-type key. Old value is freed and the new one is set.
          * @param key key to change or add
          * @param strvalue the new value
+         * @since 0.1.10
          */
         set_string(key: KeyID, strvalue: string): void;
     }
@@ -3760,6 +4078,7 @@ export namespace Grl {
         /**
          * Get the capabilities of `source` for `operation`.
          * @param operation a supported operation. Even though the type allows to specify several operations, only one should be provided here.
+         * @since 0.2.0
          * @virtual
          */
         vfunc_get_caps(operation: SupportedOps): Caps;
@@ -3777,6 +4096,7 @@ export namespace Grl {
          * @param media a media on which we want more metadata
          * @param key_id the key corresponding to a metadata we might want
          * @param missing_keys an optional originally empty list
+         * @since 0.2.0
          * @virtual
          */
         vfunc_may_resolve(media: Media, key_id: KeyID, missing_keys: KeyID[]): boolean;
@@ -3793,6 +4113,7 @@ export namespace Grl {
          * Starts emitting ::content-changed signals when `source` discovers changes in
          * the content. This instructs `source` to setup the machinery needed to be aware
          * of changes in the content.
+         * @since 0.2.0
          * @virtual
          */
         vfunc_notify_change_start(): boolean;
@@ -3801,6 +4122,7 @@ export namespace Grl {
          * This will drop emission of ::content-changed signals from `source`. When this
          * is done `source` should stop the machinery required for it to track changes in
          * the content.
+         * @since 0.2.0
          * @virtual
          */
         vfunc_notify_change_stop(): boolean;
@@ -3837,6 +4159,7 @@ export namespace Grl {
          * Similar to `grl_source_supported_keys()`, but these keys
          * are marked as slow because of the amount of traffic/processing needed
          * to fetch them.
+         * @since 0.2.0
          * @virtual
          */
         vfunc_slow_keys(): KeyID[];
@@ -3859,6 +4182,7 @@ export namespace Grl {
         /**
          * Get a list of {@link Grl.KeyID}, which describe a metadata types that this
          * source can fetch and store.
+         * @since 0.2.0
          * @virtual
          */
         vfunc_supported_keys(): KeyID[];
@@ -3873,6 +4197,7 @@ export namespace Grl {
          * Tests whether `source` can instantiate a {@link Grl.Media} object representing
          * the media resource exposed at `uri`.
          * @param uri A URI that can be used to identify a media resource
+         * @since 0.2.0
          * @virtual
          */
         vfunc_test_media_from_uri(uri: string): boolean;
@@ -3881,6 +4206,7 @@ export namespace Grl {
          * Similar to `grl_source_supported_keys()`, but these keys
          * are marked as writable, meaning the source allows the client
          * to provide new values for these keys that will be stored permanently.
+         * @since 0.2.0
          * @virtual
          */
         vfunc_writable_keys(): KeyID[];
@@ -3895,6 +4221,7 @@ export namespace Grl {
          * @param options options wanted for that operation
          * @param callback the user defined callback
          * @returns the operation identifier
+         * @since 0.2.0
          */
         browse(container: Media | null, keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number;
 
@@ -3907,6 +4234,7 @@ export namespace Grl {
          * @param keys the {@link GLib.List} of {@link Grl.KeyID}<!-- -->s to request
          * @param options options wanted for that operation
          * @returns a {@link GLib.List} with {@link Grl.Media} elements. After use `g_object_unref()` every element and `g_list_free()` the list.
+         * @since 0.2.0
          */
         browse_sync(container: Media | null, keys: KeyID[], options: OperationOptions): Media[];
 
@@ -3915,6 +4243,7 @@ export namespace Grl {
          * 
          * See `grl_source_set_auto_split_threshold`()
          * @returns the assigned threshold, or 0 if there is no threshold
+         * @since 0.2.0
          */
         get_auto_split_threshold(): number;
 
@@ -3922,21 +4251,25 @@ export namespace Grl {
          * Get the capabilities of `source` for `operation`.
          * @param operation a supported operation. Even though the type allows to specify several operations, only one should be provided here.
          * @returns The capabilities
+         * @since 0.2.0
          */
         get_caps(operation: SupportedOps): Caps;
 
         /**
          * @returns the description of the `source`
+         * @since 0.2.0
          */
         get_description(): string;
 
         /**
          * @returns a {@link Gio.Icon}
+         * @since 0.2.8
          */
         get_icon(): Gio.Icon;
 
         /**
          * @returns the ID of the `source`
+         * @since 0.2.0
          */
         get_id(): string;
 
@@ -3953,6 +4286,7 @@ export namespace Grl {
          * @param options options wanted for that operation
          * @param callback the user defined callback
          * @returns the operation identifier
+         * @since 0.2.0
          */
         get_media_from_uri(uri: string, keys: KeyID[], options: OperationOptions, callback: SourceResolveCb): number;
 
@@ -3969,33 +4303,39 @@ export namespace Grl {
          * @param keys a list of keys to resolve
          * @param options options wanted for that operation
          * @returns a filled {@link Grl.Media}
+         * @since 0.2.0
          */
         get_media_from_uri_sync(uri: string, keys: KeyID[], options: OperationOptions): Media;
 
         /**
          * @returns the name of the `source`
+         * @since 0.2.0
          */
         get_name(): string;
 
         /**
          * @returns the plugin this source belongs to
+         * @since 0.2.0
          */
         get_plugin(): Plugin;
 
         /**
          * Gets the source rank
          * @returns rank value
+         * @since 0.2.0
          */
         get_rank(): number;
 
         /**
          * Gets the supported type of medias `source` can deal with.
          * @returns a {@link Grl.SupportedMedia} value
+         * @since 0.3.0
          */
         get_supported_media(): SupportedMedia;
 
         /**
          * @returns a `null`-terminated list of tags
+         * @since 0.2.10
          */
         get_tags(): string[];
 
@@ -4013,6 +4353,7 @@ export namespace Grl {
          * @param key_id the key corresponding to a metadata we might want
          * @param missing_keys an optional originally empty list
          * @returns `TRUE` if there's a possibility that `source` resolves `key_id` for `media`, `FALSE` otherwise.
+         * @since 0.2.0
          */
         may_resolve(media: Media, key_id: KeyID, missing_keys: KeyID[]): boolean;
 
@@ -4030,6 +4371,7 @@ export namespace Grl {
          * @param media the media which has changed, or `NULL` to use the root container.
          * @param change_type the type of change
          * @param location_unknown if change has happened in `media` or any descendant
+         * @since 0.2.0
          */
         notify_change(media: Media | null, change_type: SourceChangeType, location_unknown: boolean): void;
 
@@ -4051,6 +4393,7 @@ export namespace Grl {
          * @param changed_medias the list of medias that have changed
          * @param change_type the type of change
          * @param location_unknown if change has happpened in `media` or any descendant
+         * @since 0.2.0
          */
         notify_change_list(changed_medias: Media[], change_type: SourceChangeType, location_unknown: boolean): void;
 
@@ -4059,6 +4402,7 @@ export namespace Grl {
          * the content. This instructs `source` to setup the machinery needed to be aware
          * of changes in the content.
          * @returns `TRUE` if initialization has succeed.
+         * @since 0.2.0
          */
         notify_change_start(): boolean;
 
@@ -4067,6 +4411,7 @@ export namespace Grl {
          * is done `source` should stop the machinery required for it to track changes in
          * the content.
          * @returns `TRUE` if stop has succeed.
+         * @since 0.2.0
          */
         notify_change_stop(): boolean;
 
@@ -4083,6 +4428,7 @@ export namespace Grl {
          * @param options options wanted for that operation
          * @param callback the user defined callback
          * @returns the operation identifier
+         * @since 0.2.0
          */
         query(query: string, keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number;
 
@@ -4095,6 +4441,7 @@ export namespace Grl {
          * @param keys the {@link GLib.List} of {@link Grl.KeyID}<!-- -->s to request
          * @param options options wanted for that operation
          * @returns a {@link GLib.List} with {@link Grl.Media} elements. After use `g_object_unref()` every element and `g_list_free()` the list.
+         * @since 0.2.0
          */
         query_sync(query: string, keys: KeyID[], options: OperationOptions): Media[];
 
@@ -4104,6 +4451,7 @@ export namespace Grl {
          * This method is asynchronous.
          * @param media a data transfer object
          * @param callback the user defined callback
+         * @since 0.2.0
          */
         remove(media: Media, callback: SourceRemoveCb): void;
 
@@ -4112,6 +4460,7 @@ export namespace Grl {
          * 
          * This method is synchronous.
          * @param media a data transfer object
+         * @since 0.2.0
          */
         remove_sync(media: Media): void;
 
@@ -4125,6 +4474,7 @@ export namespace Grl {
          * @param options options to pass to this operation
          * @param callback the user defined callback
          * @returns the operation identifie
+         * @since 0.2.0
          */
         resolve(media: Media | null, keys: KeyID[], options: OperationOptions, callback: SourceResolveCb): number;
 
@@ -4137,6 +4487,7 @@ export namespace Grl {
          * @param keys the {@link GLib.List} of {@link Grl.KeyID}<!-- -->s to request
          * @param options options to pass to this operation
          * @returns a filled {@link Grl.Media}
+         * @since 0.2.0
          */
         resolve_sync(media: Media | null, keys: KeyID[], options: OperationOptions): Media;
 
@@ -4154,6 +4505,7 @@ export namespace Grl {
          * @param options options wanted for that operation
          * @param callback the user defined callback
          * @returns the operation identifier
+         * @since 0.2.0
          */
         search(text: string, keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number;
 
@@ -4170,6 +4522,7 @@ export namespace Grl {
          * @param keys the {@link GLib.List} of {@link Grl.KeyID}<!-- -->s to request
          * @param options options wanted for that operation
          * @returns a {@link GLib.List} with {@link Grl.Media} elements. After use `g_object_unref()` every element and `g_list_free()` the list.
+         * @since 0.2.0
          */
         search_sync(text: string, keys: KeyID[], options: OperationOptions): Media[];
 
@@ -4189,6 +4542,7 @@ export namespace Grl {
          *  </para>
          * </note>
          * @param threshold the threshold to set
+         * @since 0.2.0
          */
         set_auto_split_threshold(threshold: number): void;
 
@@ -4197,6 +4551,7 @@ export namespace Grl {
          * are marked as slow because of the amount of traffic/processing needed
          * to fetch them.
          * @returns a {@link GLib.List} with the keys
+         * @since 0.2.0
          */
         slow_keys(): KeyID[];
 
@@ -4208,6 +4563,7 @@ export namespace Grl {
          * @param media a data transfer object
          * @param flags flags to configure specific behaviour of the operation
          * @param callback the user defined callback
+         * @since 0.3.0
          */
         store(parent: Media | null, media: Media, flags: WriteFlags, callback: SourceStoreCb): void;
 
@@ -4221,6 +4577,7 @@ export namespace Grl {
          * @param keys a list of {@link Grl.KeyID} whose values we want to change.
          * @param flags Flags to configure specific behaviors of the operation.
          * @param callback the callback to execute when the operation is finished.
+         * @since 0.2.0
          */
         store_metadata(media: Media, keys: KeyID[] | null, flags: WriteFlags, callback: SourceStoreCb): void;
 
@@ -4234,6 +4591,7 @@ export namespace Grl {
          * @param keys a list of {@link Grl.KeyID} whose values we want to change
          * @param flags Flags to configure specific behaviors of the operation.
          * @returns a {@link GLib.List} of keys that could not be updated, or `NULL`
+         * @since 0.2.0
          */
         store_metadata_sync(media: Media, keys: KeyID[] | null, flags: WriteFlags): KeyID[];
 
@@ -4244,6 +4602,7 @@ export namespace Grl {
          * @param parent a {@link Grl.Media} container to store the data transfer objects
          * @param media a {@link Grl.Media} data transfer object
          * @param flags flags to configure specific behaviour of the operation
+         * @since 0.3.0
          */
         store_sync(parent: Media | null, media: Media, flags: WriteFlags): void;
 
@@ -4251,12 +4610,14 @@ export namespace Grl {
          * Get a list of {@link Grl.KeyID}, which describe a metadata types that this
          * source can fetch and store.
          * @returns a {@link GLib.List} with the keys
+         * @since 0.2.0
          */
         supported_keys(): KeyID[];
 
         /**
          * By default the derived objects of {@link Grl.Source} can only resolve.
          * @returns a bitwise mangle with the supported operations by the source
+         * @since 0.2.0
          */
         supported_operations(): number;
 
@@ -4265,6 +4626,7 @@ export namespace Grl {
          * the media resource exposed at `uri`.
          * @param uri A URI that can be used to identify a media resource
          * @returns `true` if it can, `false` otherwise. This method is synchronous.
+         * @since 0.2.0
          */
         test_media_from_uri(uri: string): boolean;
 
@@ -4273,6 +4635,7 @@ export namespace Grl {
          * are marked as writable, meaning the source allows the client
          * to provide new values for these keys that will be stored permanently.
          * @returns a {@link GLib.List} with the keys
+         * @since 0.2.0
          */
         writable_keys(): KeyID[];
     }
@@ -4326,6 +4689,7 @@ export namespace Grl {
         // Methods
         /**
          * Releases `domain`.
+         * @since 0.1.7
          */
         free(): void;
     }

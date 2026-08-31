@@ -1912,6 +1912,7 @@ export namespace GIRepository {
          * otherwise ensure the namespace has already been loaded.
          * @param domain a {@link GLib.Error} domain
          * @returns {@link GIRepository.EnumInfo} representing metadata about `domain`'s enum type, or `null`
+         * @since 1.30
          */
         find_by_error_domain(domain: GLib.Quark): EnumInfo;
 
@@ -1977,6 +1978,7 @@ export namespace GIRepository {
          * `g_irepository_get_dependencies()`.
          * @param namespace_ Namespace of interest
          * @returns Zero-terminated string array of immediate versioned   dependencies
+         * @since 1.44
          */
         get_immediate_dependencies(namespace_: string): string[];
 
@@ -2020,6 +2022,7 @@ export namespace GIRepository {
          * returning a concrete class of `GLocalFile`, which is a {@link GObject.GType} we
          * see at runtime, but not statically.
          * @param gtype a {@link GObject.GType} whose fundamental type is G_TYPE_OBJECT
+         * @since 1.62
          */
         get_object_gtype_interfaces(gtype: GObject.GType): InterfaceInfo[];
 

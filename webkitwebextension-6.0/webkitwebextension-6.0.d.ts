@@ -384,6 +384,7 @@ export namespace WebKitWebExtension {
          * </para></listitem>
          * </itemizedlist>
          * @returns the menu event or `null`.
+         * @since 2.40
          */
         get_event(): Gdk.Event;
 
@@ -412,6 +413,7 @@ export namespace WebKitWebExtension {
          * This function can be used from the UI Process to get user data previously set
          * from the Web Process with `webkit_context_menu_set_user_data()`.
          * @returns the user data of `menu`, or `null` if `menu` doesn't have user data
+         * @since 2.8
          */
         get_user_data(): GLib.Variant;
 
@@ -470,6 +472,7 @@ export namespace WebKitWebExtension {
          * that can be retrieved from the UI Process using `webkit_context_menu_get_user_data()`.
          * If the `user_data` {@link GLib.Variant} is floating, it is consumed.
          * @param user_data a {@link GLib.Variant}
+         * @since 2.8
          */
         set_user_data(user_data: GLib.Variant): void;
     }
@@ -537,6 +540,7 @@ export namespace WebKitWebExtension {
         /**
          * Gets the action associated to `item` as a {@link Gio.Action}.
          * @returns the {@link Gio.Action} associated to the {@link WebKitWebExtension.ContextMenuItem},    or `null` if `item` is a separator.
+         * @since 2.18
          */
         get_gaction(): Gio.Action;
 
@@ -626,6 +630,7 @@ export namespace WebKitWebExtension {
          * frame in the same web process will have the same ID; however, frames
          * in other web processes may.
          * @returns the identifier of `frame`
+         * @since 2.26
          */
         get_id(): number;
 
@@ -633,6 +638,7 @@ export namespace WebKitWebExtension {
          * Get the JavaScript execution context of `frame`. Use this function to bridge
          * between the WebKit and JavaScriptCore APIs.
          * @returns the {@link JavaScriptCore.Context} for the JavaScript execution context of `frame`.
+         * @since 2.22
          */
         get_js_context(): JavaScriptCore.Context;
 
@@ -640,18 +646,21 @@ export namespace WebKitWebExtension {
          * Get the JavaScript execution context of `frame` for the given {@link WebKitWebExtension.ScriptWorld}.
          * @param world a {@link WebKitWebExtension.ScriptWorld}
          * @returns the {@link JavaScriptCore.Context} for the JavaScript execution context of `frame` for `world`.
+         * @since 2.22
          */
         get_js_context_for_script_world(world: ScriptWorld): JavaScriptCore.Context;
 
         /**
          * Gets the current active URI of `frame`.
          * @returns the current active URI of `frame` or `null` if nothing has been    loaded yet.
+         * @since 2.2
          */
         get_uri(): string;
 
         /**
          * Gets whether `frame` is the main frame of a {@link WebKitWebExtension.WebPage}
          * @returns `true` if `frame` is a main frame or `false` otherwise
+         * @since 2.2
          */
         is_main_frame(): boolean;
     }
@@ -866,6 +875,7 @@ export namespace WebKitWebExtension {
          * Gets whether {@link WebKitWebExtension.HitTestResultContext.SELECTION} flag is present in
          * {@link WebKitWebExtension.HitTestResult.context}.
          * @returns `true` if there's a selected element at the coordinates of the `hit_test_result`,    or `false` otherwise
+         * @since 2.8
          */
         context_is_selection(): boolean;
 
@@ -970,6 +980,7 @@ export namespace WebKitWebExtension {
          * where all scripts are executed by default.
          * You can get the JavaScript execution context of a {@link WebKitWebExtension.ScriptWorld}
          * for a given {@link WebKitWebExtension.Frame} with `webkit_frame_get_javascript_context_for_script_world()`.
+         * @since 2.2
          */
         static get_default(): ScriptWorld;
 
@@ -977,6 +988,7 @@ export namespace WebKitWebExtension {
         /**
          * Get the name of a {@link WebKitWebExtension.ScriptWorld}.
          * @returns the name of `world`
+         * @since 2.22
          */
         get_name(): string;
     }
@@ -1052,6 +1064,7 @@ export namespace WebKitWebExtension {
         /**
          * Get the HTTP method of the {@link WebKitWebExtension.URIRequest}.
          * @returns the HTTP method of the {@link WebKitWebExtension.URIRequest} or `null` if `request` is not    an HTTP request.
+         * @since 2.12
          */
         get_http_method(): string;
 
@@ -1224,6 +1237,7 @@ export namespace WebKitWebExtension {
         /**
          * Get the HTTP headers of a {@link WebKitWebExtension.URIResponse} as a {@link Soup.MessageHeaders}.
          * @returns a {@link Soup.MessageHeaders} with the HTTP headers of `response`    or `null` if `response` is not an HTTP response.
+         * @since 2.6
          */
         get_http_headers(): Soup.MessageHeaders;
 
@@ -1367,18 +1381,21 @@ export namespace WebKitWebExtension {
         /**
          * Get the `message` list of file descritpor.
          * @returns the message list of file descriptors
+         * @since 2.28
          */
         get_fd_list(): Gio.UnixFDList | null;
 
         /**
          * Get the `message` name.
          * @returns the message name
+         * @since 2.28
          */
         get_name(): string;
 
         /**
          * Get the `message` parameters.
          * @returns the message parameters
+         * @since 2.28
          */
         get_parameters(): GLib.Variant | null;
 
@@ -1389,6 +1406,7 @@ export namespace WebKitWebExtension {
          * You can only send a reply to a {@link WebKitWebExtension.UserMessage} that has been
          * received.
          * @param reply a {@link WebKitWebExtension.UserMessage} to send as reply
+         * @since 2.28
          */
         send_reply(reply: UserMessage): void;
     }
@@ -1455,6 +1473,7 @@ export namespace WebKitWebExtension {
         /**
          * Gets the {@link WebKitWebExtension.WebPage} that is associated with the {@link WebKitWebExtension.WebEditor}.
          * @returns the associated {@link WebKitWebExtension.WebPage}
+         * @since 2.10
          */
         get_page(): WebPage;
     }
@@ -1606,6 +1625,7 @@ export namespace WebKitWebExtension {
          * `webkit_web_extension_send_message_to_context_finish()` to get the message reply.
          * @param message a {@link WebKitWebExtension.UserMessage}
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @since 2.28
          */
         send_message_to_context(message: UserMessage, cancellable: Gio.Cancellable | null): globalThis.Promise<UserMessage>;
 
@@ -1618,6 +1638,7 @@ export namespace WebKitWebExtension {
          * @param message a {@link WebKitWebExtension.UserMessage}
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback (nullable): A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
+         * @since 2.28
          */
         send_message_to_context(message: UserMessage, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1630,6 +1651,7 @@ export namespace WebKitWebExtension {
          * @param message a {@link WebKitWebExtension.UserMessage}
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback (nullable): A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
+         * @since 2.28
          */
         send_message_to_context(message: UserMessage, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<UserMessage> | void;
 
@@ -1637,6 +1659,7 @@ export namespace WebKitWebExtension {
          * Finish an asynchronous operation started with `webkit_web_extension_send_message_to_context()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link WebKitWebExtension.UserMessage} with the reply or `null` in case of error.
+         * @since 2.28
          */
         send_message_to_context_finish(result: Gio.AsyncResult): UserMessage;
     }
@@ -1737,18 +1760,21 @@ export namespace WebKitWebExtension {
          * If `element` is not an HTML input element this function does nothing.
          * @param element a {@link JavaScriptCore.Value}
          * @param value the text to set
+         * @since 2.40
          */
         static input_element_auto_fill(element: JavaScriptCore.Value, value: string): void;
 
         /**
          * Get whether `element` is an HTML input element that has been filled automatically.
          * @param element a {@link JavaScriptCore.Value}
+         * @since 2.40
          */
         static input_element_is_auto_filled(element: JavaScriptCore.Value): boolean;
 
         /**
          * Get whether `element` is an HTML text input element that has been edited by a user action.
          * @param element a {@link JavaScriptCore.Value}
+         * @since 2.40
          */
         static input_element_is_user_edited(element: JavaScriptCore.Value): boolean;
     }
@@ -1871,6 +1897,7 @@ export namespace WebKitWebExtension {
          * Get the {@link JavaScriptCore.Value} for the DOM node in `world` at the coordinates of the Hit Test.
          * @param world a {@link WebKitWebExtension.ScriptWorld}, or `null` to use the default
          * @returns a {@link JavaScriptCore.Value} for the DOM node, or `null`
+         * @since 2.40
          */
         get_js_node(world: ScriptWorld | null): JavaScriptCore.Value | null;
 
@@ -2014,6 +2041,7 @@ export namespace WebKitWebExtension {
         /**
          * Gets the {@link WebKitWebExtension.WebEditor} of a {@link WebKitWebExtension.WebPage}.
          * @returns the {@link WebKitWebExtension.WebEditor}
+         * @since 2.10
          */
         get_editor(): WebEditor;
 
@@ -2021,6 +2049,7 @@ export namespace WebKitWebExtension {
          * Get the {@link WebKitWebExtension.WebFormManager} of `web_page` in `world`.
          * @param world a {@link WebKitWebExtension.ScriptWorld}
          * @returns a {@link WebKitWebExtension.WebFormManager}
+         * @since 2.40
          */
         get_form_manager(world: ScriptWorld | null): WebFormManager;
 
@@ -2033,6 +2062,7 @@ export namespace WebKitWebExtension {
         /**
          * Returns the main frame of a {@link WebKitWebExtension.WebPage}.
          * @returns the {@link WebKitWebExtension.Frame} that is the main frame of `web_page`
+         * @since 2.2
          */
         get_main_frame(): Frame;
 
@@ -2053,6 +2083,7 @@ export namespace WebKitWebExtension {
          * `webkit_web_page_send_message_to_view_finish()` to get the message reply.
          * @param message a {@link WebKitWebExtension.UserMessage}
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @since 2.28
          */
         send_message_to_view(message: UserMessage, cancellable: Gio.Cancellable | null): globalThis.Promise<UserMessage>;
 
@@ -2065,6 +2096,7 @@ export namespace WebKitWebExtension {
          * @param message a {@link WebKitWebExtension.UserMessage}
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback (nullable): A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
+         * @since 2.28
          */
         send_message_to_view(message: UserMessage, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2077,6 +2109,7 @@ export namespace WebKitWebExtension {
          * @param message a {@link WebKitWebExtension.UserMessage}
          * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          * @param callback (nullable): A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
+         * @since 2.28
          */
         send_message_to_view(message: UserMessage, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<UserMessage> | void;
 
@@ -2084,6 +2117,7 @@ export namespace WebKitWebExtension {
          * Finish an asynchronous operation started with `webkit_web_page_send_message_to_view()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link WebKitWebExtension.UserMessage} with the reply or `null` in case of error.
+         * @since 2.28
          */
         send_message_to_view_finish(result: Gio.AsyncResult): UserMessage;
     }

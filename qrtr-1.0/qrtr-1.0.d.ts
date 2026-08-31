@@ -208,6 +208,7 @@ export namespace Qrtr {
          * @param lookup_timeout_ms the timeout, in milliseconds, to wait for the initial bus   lookup to complete. A zero timeout disables the lookup.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the initialization is finished.
+         * @since 1.0
          */
         static ["new"](lookup_timeout_ms: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Bus> | null): void;
 
@@ -218,12 +219,14 @@ export namespace Qrtr {
          * This method will fail if there is no node with the given `node_id` in the QRTR bus.
          * @param node_id the QRTR bus node ID to get
          * @returns a {@link Qrtr.Node} that must be freed with `g_object_unref()`,  or `null` if none available
+         * @since 1.0
          */
         get_node(node_id: number): Node;
 
         /**
          * Gets a list of all the {@link Qrtr.Node} objects in the bus.
          * @returns a list of  {@link Qrtr.Node} elements. The caller should free the result by using  `g_list_free_full()` with `g_object_unref()` as {@link GLib.DestroyNotify}.
+         * @since 1.0
          */
         get_nodes(): Node[] | null;
 
@@ -234,6 +237,7 @@ export namespace Qrtr {
          * This method will fail if there is no node with the given `node_id` in the QRTR bus.
          * @param node_id the QRTR bus node ID to get
          * @returns a {@link Qrtr.Node}, or `null` if none available.  Do not free the returned object, it is owned by `self`.
+         * @since 1.0
          */
         peek_node(node_id: number): Node;
 
@@ -241,6 +245,7 @@ export namespace Qrtr {
          * Gets a list of all the {@link Qrtr.Node} objects in the bus, without increasing
          * the reference count on the returned object or the list.
          * @returns a list of  {@link Qrtr.Node} elements. The caller should not free the result, it is  owned by `self`.
+         * @since 1.0
          */
         peek_nodes(): Node[] | null;
 
@@ -253,6 +258,7 @@ export namespace Qrtr {
          * @param node_id the QRTR bus node ID to lookup.
          * @param timeout_ms the timeout, in milliseconds, to wait for the node to appear in  the bus.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`.
+         * @since 1.0
          */
         wait_for_node(node_id: number, timeout_ms: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Node>;
 
@@ -266,6 +272,7 @@ export namespace Qrtr {
          * @param timeout_ms the timeout, in milliseconds, to wait for the node to appear in  the bus.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 1.0
          */
         wait_for_node(node_id: number, timeout_ms: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -279,6 +286,7 @@ export namespace Qrtr {
          * @param timeout_ms the timeout, in milliseconds, to wait for the node to appear in  the bus.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 1.0
          */
         wait_for_node(node_id: number, timeout_ms: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Node> | void;
 
@@ -286,6 +294,7 @@ export namespace Qrtr {
          * Finishes an operation started with `qrtr_bus_wait_for_node()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns A {@link Qrtr.Node}, or `null` if `error` is set.
+         * @since 1.0
          */
         wait_for_node_finish(res: Gio.AsyncResult): Node;
 
@@ -328,6 +337,7 @@ export namespace Qrtr {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -371,6 +381,7 @@ export namespace Qrtr {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -414,6 +425,7 @@ export namespace Qrtr {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -422,6 +434,7 @@ export namespace Qrtr {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -430,6 +443,7 @@ export namespace Qrtr {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Bus;
 
@@ -473,6 +487,7 @@ export namespace Qrtr {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -481,6 +496,7 @@ export namespace Qrtr {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -585,12 +601,14 @@ export namespace Qrtr {
         /**
          * Get the {@link Qrtr.Node} that this client refers to.
          * @returns a {@link Qrtr.Node} that must be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_node(): Node;
 
         /**
          * Gets the node port where this client communicates.
          * @returns the node port.
+         * @since 1.0
          */
         get_port(): number;
 
@@ -598,6 +616,7 @@ export namespace Qrtr {
          * Get the {@link Qrtr.Node} that this client refers to, without increasing the
          * reference count on the returned object.
          * @returns a {@link Qrtr.Node}. Do not free the returned object, it is  owned by `self`.
+         * @since 1.0
          */
         peek_node(): Node;
 
@@ -606,6 +625,7 @@ export namespace Qrtr {
          * @param message the message.
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` if the message is sent, or `false` if `error` is set.
+         * @since 1.0
          */
         send(message: Uint8Array | string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -650,6 +670,7 @@ export namespace Qrtr {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -693,6 +714,7 @@ export namespace Qrtr {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -807,18 +829,21 @@ export namespace Qrtr {
         /**
          * Get the {@link Qrtr.Bus} where this node is available.
          * @returns a {@link Qrtr.Bus} that must be freed with `g_object_unref()`.
+         * @since 1.0
          */
         get_bus(): Bus;
 
         /**
          * Gets the node ID in the QRTR bus.
          * @returns the node id.
+         * @since 1.0
          */
         get_id(): number;
 
         /**
          * Get the list of services currently supported by the {@link Qrtr.Node}.
          * @returns a {@link GLib.List} of {@link Qrtr.NodeServiceInfo} elements, that  must be freed with `g_list_free_full()` using `qrtr_node_service_info_free()`  as {@link GLib.DestroyNotify}.
+         * @since 1.0
          */
         get_service_info_list(): NodeServiceInfo[];
 
@@ -830,6 +855,7 @@ export namespace Qrtr {
          * for the service with the highest version number.
          * @param service a service number.
          * @returns the port number of the service in the node, or -1 if not found.
+         * @since 1.0
          */
         lookup_port(service: number): number;
 
@@ -838,6 +864,7 @@ export namespace Qrtr {
          * return the service it serves.
          * @param port a port number.
          * @returns the service number, or -1 if not found.
+         * @since 1.0
          */
         lookup_service(port: number): number;
 
@@ -845,12 +872,14 @@ export namespace Qrtr {
          * Get the {@link Qrtr.Bus} where this node is available, without increasing the
          * reference count on the returned object.
          * @returns a {@link Qrtr.Bus}. Do not free the returned object, it is  owned by `self`.
+         * @since 1.0
          */
         peek_bus(): Bus;
 
         /**
          * Get the list of services currently supported by the {@link Qrtr.Node}.
          * @returns a {@link GLib.List} of {@link Qrtr.NodeServiceInfo} elements. Do not  free the returned object, it is owned by `self`.
+         * @since 1.0
          */
         peek_service_info_list(): NodeServiceInfo[];
 
@@ -875,6 +904,7 @@ export namespace Qrtr {
          * @param services a {@link GLib.Array} of service types
          * @param timeout_ms the timeout, in milliseconds, to wait for the the services to  be exposed in the node.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`.
+         * @since 1.0
          */
         wait_for_services(services: number[], timeout_ms: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -892,6 +922,7 @@ export namespace Qrtr {
          * @param timeout_ms the timeout, in milliseconds, to wait for the the services to  be exposed in the node.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 1.0
          */
         wait_for_services(services: number[], timeout_ms: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -909,6 +940,7 @@ export namespace Qrtr {
          * @param timeout_ms the timeout, in milliseconds, to wait for the the services to  be exposed in the node.
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 1.0
          */
         wait_for_services(services: number[], timeout_ms: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -916,6 +948,7 @@ export namespace Qrtr {
          * Finishes an operation started with `qrtr_node_wait_for_services()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` if all requested services are present on this node, or `false` if `error` is set.
+         * @since 1.0
          */
         wait_for_services_finish(result: Gio.AsyncResult): boolean;
     }
@@ -971,30 +1004,35 @@ export namespace Qrtr {
         // Methods
         /**
          * Frees a single {@link Qrtr.NodeServiceInfo}, as returned by `qrtr_node_get_service_info_list()`.
+         * @since 1.0
          */
         free(): void;
 
         /**
          * Get the instance number from the {@link Qrtr.NodeServiceInfo}.
          * @returns the instance number.
+         * @since 1.0
          */
         get_instance(): number;
 
         /**
          * Get the port number from the {@link Qrtr.NodeServiceInfo}.
          * @returns the port number.
+         * @since 1.0
          */
         get_port(): number;
 
         /**
          * Get the service number from the {@link Qrtr.NodeServiceInfo}.
          * @returns the service number.
+         * @since 1.0
          */
         get_service(): number;
 
         /**
          * Get the version number from the {@link Qrtr.NodeServiceInfo}.
          * @returns the version number.
+         * @since 1.0
          */
         get_version(): number;
     }

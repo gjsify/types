@@ -583,6 +583,7 @@ export namespace Shumate {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -595,6 +596,7 @@ export namespace Shumate {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -603,6 +605,7 @@ export namespace Shumate {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -615,6 +618,7 @@ export namespace Shumate {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -625,18 +629,21 @@ export namespace Shumate {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -648,6 +655,7 @@ export namespace Shumate {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -681,6 +689,7 @@ export namespace Shumate {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -690,6 +699,7 @@ export namespace Shumate {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -700,6 +710,7 @@ export namespace Shumate {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -747,6 +758,7 @@ export namespace Shumate {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -755,12 +767,14 @@ export namespace Shumate {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -771,18 +785,21 @@ export namespace Shumate {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -794,6 +811,7 @@ export namespace Shumate {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -971,6 +989,7 @@ export namespace Shumate {
          * but is good enough for most purposes.
          * @param other a {@link Location}
          * @returns the distance in meters between `self` and `other`
+         * @since 1.2
          */
         distance(other: Location): number;
 
@@ -1137,6 +1156,7 @@ export namespace Shumate {
          * @param y Y coordinate to request
          * @param zoom_level zoom level to request
          * @param cancellable for cancelling the request
+         * @since 1.1
          * @virtual
          */
         vfunc_start_request(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null): DataSourceRequest;
@@ -1145,12 +1165,14 @@ export namespace Shumate {
         /**
          * Gets the data source's maximum zoom level.
          * @returns the maximum zoom level this data source supports
+         * @since 1.1
          */
         get_max_zoom_level(): number;
 
         /**
          * Gets the data source's minimum zoom level.
          * @returns the minimum zoom level this data source supports
+         * @since 1.1
          */
         get_min_zoom_level(): number;
 
@@ -1209,12 +1231,14 @@ export namespace Shumate {
         /**
          * Sets the data source's maximum zoom level.
          * @param zoom_level the maximum zoom level
+         * @since 1.1
          */
         set_max_zoom_level(zoom_level: number): void;
 
         /**
          * Sets the data source's minimum zoom level.
          * @param zoom_level the minimum zoom level
+         * @since 1.1
          */
         set_min_zoom_level(zoom_level: number): void;
 
@@ -1225,6 +1249,7 @@ export namespace Shumate {
          * @param zoom_level zoom level to request
          * @param cancellable for cancelling the request
          * @returns a {@link DataSourceRequest} object for tracking the request.
+         * @since 1.1
          */
         start_request(x: number, y: number, zoom_level: number, cancellable: Gio.Cancellable | null): DataSourceRequest;
     }
@@ -1372,6 +1397,7 @@ export namespace Shumate {
          * This can only be called if data has been emitted. If there is no data,
          * use {@link DataSourceRequest.emit_error} instead, which will automatically
          * complete the request.
+         * @since 1.1
          */
         complete(): void;
 
@@ -1383,6 +1409,7 @@ export namespace Shumate {
          * `true` as well.
          * @param data the data to emit
          * @param complete `true` to also complete the request, `false` otherwise
+         * @since 1.1
          */
         emit_data(data: GLib.Bytes | Uint8Array, complete: boolean): void;
 
@@ -1393,12 +1420,14 @@ export namespace Shumate {
          * 
          * If {@link DataSourceRequest.data} was previously set, it will be cleared.
          * @param error an error
+         * @since 1.1
          */
         emit_error(error: GLib.Error): void;
 
         /**
          * Gets the latest data from the request.
          * @returns The latest data, if any.
+         * @since 1.1
          */
         get_data(): GLib.Bytes | null;
 
@@ -1411,24 +1440,28 @@ export namespace Shumate {
         /**
          * Gets the latest error from the request.
          * @returns The latest error, if any.
+         * @since 1.1
          */
         get_error(): GLib.Error | null;
 
         /**
          * Gets the X coordinate of the requested tile.
          * @returns the X coordinate
+         * @since 1.1
          */
         get_x(): number;
 
         /**
          * Gets the Y coordinate of the requested tile.
          * @returns the Y coordinate
+         * @since 1.1
          */
         get_y(): number;
 
         /**
          * Gets the zoom level of the requested tile.
          * @returns the zoom level
+         * @since 1.1
          */
         get_zoom_level(): number;
 
@@ -1436,6 +1469,7 @@ export namespace Shumate {
          * Gets whether the request has been completed. Completed requests will not
          * receive new data or errors.
          * @returns `true` if the request is completed, otherwise `false`
+         * @since 1.1
          */
         is_completed(): boolean;
     }
@@ -1852,6 +1886,7 @@ export namespace Shumate {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -1864,6 +1899,7 @@ export namespace Shumate {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -1872,6 +1908,7 @@ export namespace Shumate {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -1884,6 +1921,7 @@ export namespace Shumate {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -1894,18 +1932,21 @@ export namespace Shumate {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -1917,6 +1958,7 @@ export namespace Shumate {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -1950,6 +1992,7 @@ export namespace Shumate {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -1959,6 +2002,7 @@ export namespace Shumate {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -1969,6 +2013,7 @@ export namespace Shumate {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -2016,6 +2061,7 @@ export namespace Shumate {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -2024,12 +2070,14 @@ export namespace Shumate {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -2040,18 +2088,21 @@ export namespace Shumate {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -2063,6 +2114,7 @@ export namespace Shumate {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -2353,6 +2405,7 @@ export namespace Shumate {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -2365,6 +2418,7 @@ export namespace Shumate {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -2373,6 +2427,7 @@ export namespace Shumate {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -2385,6 +2440,7 @@ export namespace Shumate {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -2395,18 +2451,21 @@ export namespace Shumate {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -2418,6 +2477,7 @@ export namespace Shumate {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -2451,6 +2511,7 @@ export namespace Shumate {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -2460,6 +2521,7 @@ export namespace Shumate {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -2470,6 +2532,7 @@ export namespace Shumate {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -2517,6 +2580,7 @@ export namespace Shumate {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -2525,12 +2589,14 @@ export namespace Shumate {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -2541,18 +2607,21 @@ export namespace Shumate {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -2564,6 +2633,7 @@ export namespace Shumate {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -3438,6 +3508,7 @@ export namespace Shumate {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -3450,6 +3521,7 @@ export namespace Shumate {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -3458,6 +3530,7 @@ export namespace Shumate {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -3470,6 +3543,7 @@ export namespace Shumate {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -3480,18 +3554,21 @@ export namespace Shumate {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -3503,6 +3580,7 @@ export namespace Shumate {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -3536,6 +3614,7 @@ export namespace Shumate {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -3545,6 +3624,7 @@ export namespace Shumate {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -3555,6 +3635,7 @@ export namespace Shumate {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -3602,6 +3683,7 @@ export namespace Shumate {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -3610,12 +3692,14 @@ export namespace Shumate {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -3626,18 +3710,21 @@ export namespace Shumate {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -3649,6 +3736,7 @@ export namespace Shumate {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -3883,11 +3971,13 @@ export namespace Shumate {
         /**
          * Gets the {@link MapSource} providing tiles for this map layer.
          * @returns the {@link MapSource}
+         * @since 1.7
          */
         get_map_source(): MapSource;
 
         /**
          * Refreshes all tiles from the current map source.
+         * @since 1.7
          */
         refresh(): void;
 
@@ -3896,6 +3986,7 @@ export namespace Shumate {
          * 
          * This can be used to recover from temporary errors. For example, you could use {@link Gio.NetworkMonitor} to listen
          * for changes in network connectivity, and call this function when the network becomes available again.
+         * @since 1.7
          */
         retry_failed(): void;
 
@@ -3904,6 +3995,7 @@ export namespace Shumate {
          * 
          * Setting a new map source will refresh all tiles from the new source.
          * @param map_source a {@link MapSource}
+         * @since 1.7
          */
         set_map_source(map_source: MapSource): void;
     }
@@ -4377,6 +4469,7 @@ export namespace Shumate {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -4387,6 +4480,7 @@ export namespace Shumate {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -4405,6 +4499,7 @@ export namespace Shumate {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -4432,6 +4527,7 @@ export namespace Shumate {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -4444,6 +4540,7 @@ export namespace Shumate {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -4457,6 +4554,7 @@ export namespace Shumate {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -4467,6 +4565,7 @@ export namespace Shumate {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -4664,6 +4763,7 @@ export namespace Shumate {
          * to the top-left corner. Any negative value means that the hotspot get
          * computed with the {@link Gtk.Widget.halign} or {@link Gtk.Widget.valign}
          * properties.
+         * @since 1.5
          */
         get_hotspot(): [number, number];
 
@@ -4696,6 +4796,7 @@ export namespace Shumate {
          * {@link Gtk.Widget.halign} or {@link Gtk.Widget.valign} properties.
          * @param x_hotspot the x hotspot
          * @param y_hotspot the y hotspot
+         * @since 1.5
          */
         set_hotspot(x_hotspot: number, y_hotspot: number): void;
 
@@ -4753,6 +4854,7 @@ export namespace Shumate {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -4765,6 +4867,7 @@ export namespace Shumate {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -4773,6 +4876,7 @@ export namespace Shumate {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -4785,6 +4889,7 @@ export namespace Shumate {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -4795,18 +4900,21 @@ export namespace Shumate {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -4818,6 +4926,7 @@ export namespace Shumate {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -4851,6 +4960,7 @@ export namespace Shumate {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -4860,6 +4970,7 @@ export namespace Shumate {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -4870,6 +4981,7 @@ export namespace Shumate {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -4917,6 +5029,7 @@ export namespace Shumate {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -4925,12 +5038,14 @@ export namespace Shumate {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -4941,18 +5056,21 @@ export namespace Shumate {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -4964,6 +5082,7 @@ export namespace Shumate {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -5074,6 +5193,7 @@ export namespace Shumate {
          * but is good enough for most purposes.
          * @param other a {@link Location}
          * @returns the distance in meters between `self` and `other`
+         * @since 1.2
          */
         distance(other: Location): number;
 
@@ -5769,6 +5889,7 @@ export namespace Shumate {
          * but is good enough for most purposes.
          * @param other a {@link Location}
          * @returns the distance in meters between `self` and `other`
+         * @since 1.2
          */
         distance(other: Location): number;
 
@@ -6088,6 +6209,7 @@ export namespace Shumate {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -6100,6 +6222,7 @@ export namespace Shumate {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -6108,6 +6231,7 @@ export namespace Shumate {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -6120,6 +6244,7 @@ export namespace Shumate {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -6130,18 +6255,21 @@ export namespace Shumate {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -6153,6 +6281,7 @@ export namespace Shumate {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -6186,6 +6315,7 @@ export namespace Shumate {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -6195,6 +6325,7 @@ export namespace Shumate {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -6205,6 +6336,7 @@ export namespace Shumate {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -6252,6 +6384,7 @@ export namespace Shumate {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -6260,12 +6393,14 @@ export namespace Shumate {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -6276,18 +6411,21 @@ export namespace Shumate {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -6299,6 +6437,7 @@ export namespace Shumate {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -6591,6 +6730,7 @@ export namespace Shumate {
         /**
          * Gets the {@link MapLayer} that displays the base map.
          * @returns the base map layer
+         * @since 1.4
          */
         get_base_map_layer(): MapLayer;
 
@@ -6643,6 +6783,7 @@ export namespace Shumate {
          * if `sibling` is `null`.
          * @param layer a {@link Layer} to insert
          * @param sibling 
+         * @since 1.5
          */
         insert_overlay_layer_above(layer: Layer, sibling: Layer): void;
 
@@ -6651,6 +6792,7 @@ export namespace Shumate {
          * appear just below `sibling`, or above everything else if `sibling` is `null`.
          * @param layer a {@link Layer} to insert
          * @param sibling 
+         * @since 1.5
          */
         insert_overlay_layer_behind(layer: Layer, sibling: Layer): void;
 
@@ -6704,6 +6846,7 @@ export namespace Shumate {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -6716,6 +6859,7 @@ export namespace Shumate {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -6724,6 +6868,7 @@ export namespace Shumate {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -6736,6 +6881,7 @@ export namespace Shumate {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -6746,18 +6892,21 @@ export namespace Shumate {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -6769,6 +6918,7 @@ export namespace Shumate {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -6802,6 +6952,7 @@ export namespace Shumate {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -6811,6 +6962,7 @@ export namespace Shumate {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -6821,6 +6973,7 @@ export namespace Shumate {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -6868,6 +7021,7 @@ export namespace Shumate {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -6876,12 +7030,14 @@ export namespace Shumate {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -6892,18 +7048,21 @@ export namespace Shumate {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -6915,6 +7074,7 @@ export namespace Shumate {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -7151,12 +7311,14 @@ export namespace Shumate {
          * Feature IDs in Mapbox Vector Tile format are integers, but they are
          * formatted as a string here for futureproofing.
          * @returns the feature ID
+         * @since 1.1
          */
         get_feature_id(): string;
 
         /**
          * Gets a list of the keys of the source feature's tags.
          * @returns a list of the tag keys
+         * @since 1.1
          */
         get_keys(): string[];
 
@@ -7168,12 +7330,14 @@ export namespace Shumate {
          * schema. Some styles have multiple symbol layers derived from the same
          * data source layer.
          * @returns the layer name
+         * @since 1.1
          */
         get_layer(): string;
 
         /**
          * Gets the number of clicks/presses that initiated the event.
          * @returns the number of presses
+         * @since 1.5
          */
         get_n_press(): number;
 
@@ -7181,6 +7345,7 @@ export namespace Shumate {
          * Gets the name of the source layer the clicked feature is in,
          * as named in the vector tile schema.
          * @returns the layer name
+         * @since 1.1
          */
         get_source_layer(): string;
 
@@ -7192,6 +7357,7 @@ export namespace Shumate {
          * is available.
          * @param tag_name the tag to get
          * @returns the tag value, formatted as a string
+         * @since 1.1
          */
         get_tag(tag_name: string): string;
 
@@ -7219,6 +7385,7 @@ export namespace Shumate {
          * but is good enough for most purposes.
          * @param other a {@link Location}
          * @returns the distance in meters between `self` and `other`
+         * @since 1.2
          */
         distance(other: Location): number;
 
@@ -7425,6 +7592,7 @@ export namespace Shumate {
         /**
          * Gets the scale factor of the tile.
          * @returns the scale factor
+         * @since 1.1
          */
         get_scale_factor(): number;
 
@@ -7473,6 +7641,7 @@ export namespace Shumate {
         /**
          * Sets the scale factor of the tile.
          * @param scale_factor the scale factor
+         * @since 1.1
          */
         set_scale_factor(scale_factor: number): void;
 
@@ -7648,6 +7817,7 @@ export namespace Shumate {
         /**
          * Creates a new {@link VectorReaderIter} for `self`.
          * @returns A new {@link VectorReaderIter}
+         * @since 1.2
          */
         iterate(): VectorReaderIter;
     }
@@ -7743,24 +7913,28 @@ export namespace Shumate {
          * @param x 
          * @param y 
          * @returns `true` if the feature contains the point, `false` otherwise.
+         * @since 1.2
          */
         feature_contains_point(x: number, y: number): boolean;
 
         /**
          * Gets the geometry type of the current feature.
          * @returns The geometry type of the current feature.
+         * @since 1.2
          */
         get_feature_geometry_type(): GeometryType;
 
         /**
          * Gets the ID of the current feature.
          * @returns The ID of the current feature.
+         * @since 1.2
          */
         get_feature_id(): number;
 
         /**
          * Gets the keys of the tags of the current feature.
          * @returns The keys of the tags of the current feature.
+         * @since 1.2
          */
         get_feature_keys(): string[];
 
@@ -7775,6 +7949,7 @@ export namespace Shumate {
          * Use {@link VectorReaderIter.get_feature_geometry_type} to check
          * the feature's geometry type.
          * @returns `true` if the feature is a point, `false` otherwise.
+         * @since 1.2
          */
         get_feature_point(): [boolean, number, number];
 
@@ -7782,12 +7957,14 @@ export namespace Shumate {
          * Gets the value of the tag with the given key.
          * @param key The key of the tag to get.
          * @returns `true` if the tag was found, `false` otherwise.
+         * @since 1.2
          */
         get_feature_tag(key: string): [boolean, unknown];
 
         /**
          * Gets the number of layers in the vector tile.
          * @returns The number of layers.
+         * @since 1.2
          */
         get_layer_count(): number;
 
@@ -7802,6 +7979,7 @@ export namespace Shumate {
          * the world, so it is up to the caller to know the tile's coordinates
          * and convert latitude/longitude to tile-space coordinates.
          * @returns The layer's extent
+         * @since 1.2
          */
         get_layer_extent(): number;
 
@@ -7813,24 +7991,28 @@ export namespace Shumate {
          * the feature count, but it might be easier to use
          * {@link VectorReaderIter.next_feature} instead.
          * @returns The number of features in the current layer.
+         * @since 1.2
          */
         get_layer_feature_count(): number;
 
         /**
          * Gets the name of the current layer.
          * @returns The name of the current layer.
+         * @since 1.2
          */
         get_layer_name(): string;
 
         /**
          * Gets the reader that the iterator is iterating over.
          * @returns The reader that the iterator is iterating over.
+         * @since 1.2
          */
         get_reader(): VectorReader;
 
         /**
          * Advances the iterator to the next feature in the current layer.
          * @returns `true` if there is a next feature, `false` otherwise.
+         * @since 1.2
          */
         next_feature(): boolean;
 
@@ -7840,12 +8022,14 @@ export namespace Shumate {
          * You can get the number of features in the current layer with
          * {@link VectorReaderIter.get_layer_feature_count}.
          * @param index The index of the feature to read.
+         * @since 1.2
          */
         read_feature(index: number): void;
 
         /**
          * Sets the current layer of the reader to the layer at the given index.
          * @param index The index of the layer to read.
+         * @since 1.2
          */
         read_layer(index: number): void;
 
@@ -7861,6 +8045,7 @@ export namespace Shumate {
          * in the layer.
          * @param name 
          * @returns `true` if the layer was found, `false` otherwise.
+         * @since 1.2
          */
         read_layer_by_name(name: string): boolean;
     }
@@ -7979,12 +8164,14 @@ export namespace Shumate {
          * undefined value will return `null`.
          * @param key the state key
          * @returns the state value, or `null` if none is set
+         * @since 1.6
          */
         get_global_state(key: string): VectorValue;
 
         /**
          * Gets the sprite sheet used to render icons and textures.
          * @returns the {@link VectorSpriteSheet}
+         * @since 1.1
          */
         get_sprite_sheet(): VectorSpriteSheet;
 
@@ -7992,6 +8179,7 @@ export namespace Shumate {
          * Resets a global state value to the default defined in the style, or to null
          * if no default is defined.
          * @param key the state key
+         * @since 1.6
          */
         reset_global_state(key: string): void;
 
@@ -8006,6 +8194,7 @@ export namespace Shumate {
          * will have no effect.
          * @param name the name of the data source
          * @param data_source a {@link DataSource}
+         * @since 1.2
          */
         set_data_source(name: string, data_source: DataSource): void;
 
@@ -8018,12 +8207,14 @@ export namespace Shumate {
          * Previously rendered tiles are not affected by changes to global state and must be re-rendered.
          * @param key the state key
          * @param value the state value
+         * @since 1.6
          */
         set_global_state(key: string, value: VectorValue): void;
 
         /**
          * Sets the sprite sheet used to render icons and textures.
          * @param sprites a {@link VectorSpriteSheet}
+         * @since 1.1
          */
         set_sprite_sheet(sprites: VectorSpriteSheet): void;
 
@@ -8035,6 +8226,7 @@ export namespace Shumate {
          * @param sprites_pixbuf a {@link GdkPixbuf.Pixbuf}
          * @param sprites_json a JSON string
          * @returns whether the sprite sheet was loaded successfully
+         * @deprecated since 1.1: Use the methods of {@link VectorRenderer.sprite_sheet} instead.
          */
         set_sprite_sheet_data(sprites_pixbuf: GdkPixbuf.Pixbuf, sprites_json: string): boolean;
 
@@ -8079,6 +8271,7 @@ export namespace Shumate {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8122,6 +8315,7 @@ export namespace Shumate {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -8262,12 +8456,14 @@ export namespace Shumate {
         /**
          * Gets the height at which the sprite should be drawn.
          * @returns the sprite's height in pixels
+         * @since 1.1
          */
         get_height(): number;
 
         /**
          * Gets the intended scale factor of the sprite.
          * @returns the sprite's scale factor
+         * @since 1.1
          */
         get_scale_factor(): number;
 
@@ -8277,18 +8473,21 @@ export namespace Shumate {
          * Note that {@link VectorSprite} also implements {@link Gdk.Paintable}.
          * In most cases, you should draw the sprite rather than the original paintable.
          * @returns the source paintable
+         * @since 1.1
          */
         get_source_paintable(): Gdk.Paintable;
 
         /**
          * Gets the source rectangle of the sprite.
          * @returns the sprite's source rectangle, or `null` if the entire paintable is used
+         * @since 1.1
          */
         get_source_rect(): Gdk.Rectangle | null;
 
         /**
          * Gets the width at which the sprite should be drawn.
          * @returns the sprite's width in pixels
+         * @since 1.1
          */
         get_width(): number;
 
@@ -8518,6 +8717,7 @@ export namespace Shumate {
          * @param width width to snapshot in
          * @param height height to snapshot in
          * @param colors a pointer to an array of colors
+         * @since 4.6
          */
         snapshot_symbolic(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[]): void;
 
@@ -8531,6 +8731,7 @@ export namespace Shumate {
          * @param height height to snapshot in
          * @param colors a pointer to an array of colors
          * @param weight The font weight to use (from 1 to 1000, with default 400)
+         * @since 4.22
          */
         snapshot_with_weight(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[], weight: number): void;
 
@@ -8543,6 +8744,7 @@ export namespace Shumate {
          * @param width width to snapshot in
          * @param height height to snapshot in
          * @param colors a pointer to an array of colors
+         * @since 4.6
          * @virtual
          */
         vfunc_snapshot_symbolic(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[]): void;
@@ -8557,6 +8759,7 @@ export namespace Shumate {
          * @param height height to snapshot in
          * @param colors a pointer to an array of colors
          * @param weight The font weight to use (from 1 to 1000, with default 400)
+         * @since 4.22
          * @virtual
          */
         vfunc_snapshot_with_weight(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[], weight: number): void;
@@ -8652,6 +8855,7 @@ export namespace Shumate {
          * @param json a JSON string
          * @param default_scale the default scale factor of the page
          * @returns `true` if the page was added successfully, `false` otherwise
+         * @since 1.1
          */
         add_page(texture: Gdk.Texture, json: string, default_scale: number): boolean;
 
@@ -8659,6 +8863,7 @@ export namespace Shumate {
          * Adds a sprite to the spritesheet.
          * @param name the name of the sprite
          * @param sprite a {@link VectorSprite}
+         * @since 1.1
          */
         add_sprite(name: string, sprite: VectorSprite): void;
 
@@ -8670,6 +8875,7 @@ export namespace Shumate {
          * @param name an icon name
          * @param scale the scale factor of the icon
          * @returns a {@link VectorSprite}, or `null` if the icon does not exist.
+         * @since 1.1
          */
         get_sprite(name: string, scale: number): VectorSprite | null;
 
@@ -8687,6 +8893,7 @@ export namespace Shumate {
          * 
          * `fallback` may be `null` to clear the fallback function.
          * @param fallback a {@link ShumateVectorSpriteFallbackFunc} or `null`
+         * @since 1.1
          */
         set_fallback(fallback: VectorSpriteFallbackFunc | null): void;
     }
@@ -8929,6 +9136,7 @@ export namespace Shumate {
          * but is good enough for most purposes.
          * @param other a {@link Location}
          * @returns the distance in meters between `self` and `other`
+         * @since 1.2
          */
         distance(other: Location): number;
 
@@ -9135,12 +9343,14 @@ export namespace Shumate {
         /**
          * Appends `element` to the array value of `self`. The value of `element` is copied.
          * @param element a {@link VectorValue} to append to the array
+         * @since 1.6
          */
         array_append(element: VectorValue): void;
 
         /**
          * Creates a duplicate of `self`.
          * @returns a new {@link VectorValue} which is a duplicate of `self`
+         * @since 1.6
          */
         dup(): VectorValue;
 
@@ -9150,17 +9360,20 @@ export namespace Shumate {
          * Either argument may be `NULL`, which is treated as equal to a {@link VectorValue} of type {@link Shumate.VectorValueType.NULL}.
          * @param b a {@link VectorValue}
          * @returns `true` if `a` and `b` are equal, `false` otherwise
+         * @since 1.6
          */
         equal(b: VectorValue | null): boolean;
 
         /**
          * Frees a {@link VectorValue}.
+         * @since 1.6
          */
         free(): void;
 
         /**
          * Gets the boolean value of `self`.
          * @returns `true` if `self` is a boolean value and `boolean` was set, `false` otherwise
+         * @since 1.6
          */
         get_boolean(): [boolean, boolean];
 
@@ -9169,70 +9382,82 @@ export namespace Shumate {
          * 
          * If `self` is a string value, it will attempt to parse the string as a color.
          * @returns `true` if `self` is a color value and `color` was set, `false` otherwise
+         * @since 1.6
          */
         get_color(): [boolean, Gdk.RGBA];
 
         /**
          * Gets the number value of `self`.
          * @returns `true` if `self` is a number value and `number` was set, `false` otherwise
+         * @since 1.6
          */
         get_number(): [boolean, number];
 
         /**
          * Gets the string value of `self`.
          * @returns `true` if `self` is a string value and `string` was set, `false` otherwise
+         * @since 1.6
          */
         get_string(): [boolean, string];
 
         /**
          * Gets the type of value stored in `self`.
          * @returns the type of `self`
+         * @since 1.6
          */
         get_value_type(): VectorValueType;
 
         /**
          * Calculates a hash value for `self`.
          * @returns a hash value for `self`
+         * @since 1.6
          */
         hash(): number;
 
         /**
          * Checks if `self` is a null value.
          * @returns `true` if `self` is a null value, `false` otherwise
+         * @since 1.6
          */
         is_null(): boolean;
 
         /**
          * Sets `self` to a boolean value.
          * @param _boolean a boolean value
+         * @since 1.6
          */
         set_boolean(_boolean: boolean): void;
 
         /**
          * Sets `self` to a color value.
          * @param color a {@link Gdk.RGBA}
+         * @since 1.6
          */
         set_color(color: Gdk.RGBA): void;
 
         /**
          * Sets `self` to a number value.
          * @param number a number value
+         * @since 1.6
          */
         set_number(number: number): void;
 
         /**
          * Sets `self` to a string value.
          * @param string a string value
+         * @since 1.6
          */
         set_string(string: string): void;
 
         /**
          * Sets `self` to an empty array value.
+         * @since 1.6
          */
         start_array(): void;
 
         /**
          * Sets `self` to a null value.
+         * @since 1.6
          */
         unset(): void;
     }
@@ -9317,6 +9542,7 @@ export namespace Shumate {
          * but is good enough for most purposes.
          * @param other a {@link Location}
          * @returns the distance in meters between `self` and `other`
+         * @since 1.2
          */
         distance(other: Location): number;
 

@@ -360,6 +360,7 @@ export namespace GnomeBG {
          * started with `gnome_bg_slide_show_load_async()`.
          * @param res A {@link Gio.AsyncResult}
          * @returns `false` on error, `true` otherwise
+         * @since 50.
          */
         load_finish(res: Gio.AsyncResult): boolean;
     }

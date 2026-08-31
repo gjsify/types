@@ -705,36 +705,42 @@ export namespace Builder {
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
          * @returns `true` if `border` has been set
+         * @since 3.16
          */
         get_border(): [boolean, Gtk.Border];
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_hadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_vadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
@@ -743,12 +749,14 @@ export namespace Builder {
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
@@ -757,6 +765,7 @@ export namespace Builder {
          * vertical scrolling should start below the minimum height or
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
@@ -766,6 +775,7 @@ export namespace Builder {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
@@ -1459,12 +1469,14 @@ export namespace Builder {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -2020,6 +2032,7 @@ export namespace Builder {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -2029,6 +2042,7 @@ export namespace Builder {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -2037,6 +2051,7 @@ export namespace Builder {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -2046,6 +2061,7 @@ export namespace Builder {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -2085,6 +2101,7 @@ export namespace Builder {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -2102,6 +2119,7 @@ export namespace Builder {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -2112,6 +2130,7 @@ export namespace Builder {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -2131,6 +2150,7 @@ export namespace Builder {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -2145,6 +2165,7 @@ export namespace Builder {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -2169,6 +2190,7 @@ export namespace Builder {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -2191,6 +2213,7 @@ export namespace Builder {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -2198,6 +2221,7 @@ export namespace Builder {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -2207,6 +2231,7 @@ export namespace Builder {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -2240,6 +2265,7 @@ export namespace Builder {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -2248,6 +2274,7 @@ export namespace Builder {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -2258,6 +2285,7 @@ export namespace Builder {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -2267,6 +2295,7 @@ export namespace Builder {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -2277,6 +2306,7 @@ export namespace Builder {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -2317,6 +2347,7 @@ export namespace Builder {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -2335,6 +2366,7 @@ export namespace Builder {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -2345,6 +2377,7 @@ export namespace Builder {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -2364,6 +2397,7 @@ export namespace Builder {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -2378,6 +2412,7 @@ export namespace Builder {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -2402,6 +2437,7 @@ export namespace Builder {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -2424,6 +2460,7 @@ export namespace Builder {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -2431,6 +2468,7 @@ export namespace Builder {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -2440,6 +2478,7 @@ export namespace Builder {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -2473,6 +2512,7 @@ export namespace Builder {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -2485,6 +2525,7 @@ export namespace Builder {
          * 
          * The action map takes its own reference on `action`.
          * @param action a {@link Gio.Action}
+         * @since 2.32
          */
         add_action(action: Gio.Action): void;
 
@@ -2501,6 +2542,7 @@ export namespace Builder {
          * If no such action exists, returns `NULL`.
          * @param action_name the name of an action
          * @returns a {@link Gio.Action}
+         * @since 2.32
          */
         lookup_action(action_name: string): Gio.Action | null;
 
@@ -2509,6 +2551,7 @@ export namespace Builder {
          * 
          * If no action of this name is in the map then nothing happens.
          * @param action_name the name of the action
+         * @since 2.32
          */
         remove_action(action_name: string): void;
 
@@ -2536,6 +2579,7 @@ export namespace Builder {
          * }
          * ```
          * @param entries a pointer to   the first item in an array of {@link Gio.ActionEntry} structs
+         * @since 2.78
          */
         remove_action_entries(entries: Gio.ActionEntry[]): void;
 
@@ -2547,6 +2591,7 @@ export namespace Builder {
          * 
          * The action map takes its own reference on `action`.
          * @param action a {@link Gio.Action}
+         * @since 2.32
          * @virtual
          */
         vfunc_add_action(action: Gio.Action): void;
@@ -2556,6 +2601,7 @@ export namespace Builder {
          * 
          * If no such action exists, returns `NULL`.
          * @param action_name the name of an action
+         * @since 2.32
          * @virtual
          */
         vfunc_lookup_action(action_name: string): Gio.Action | null;
@@ -2565,6 +2611,7 @@ export namespace Builder {
          * 
          * If no action of this name is in the map then nothing happens.
          * @param action_name the name of the action
+         * @since 2.32
          * @virtual
          */
         vfunc_remove_action(action_name: string): void;

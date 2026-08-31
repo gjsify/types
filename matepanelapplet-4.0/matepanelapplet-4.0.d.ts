@@ -384,6 +384,7 @@ export namespace MatePanelApplet {
          * `widget`. It is generally enough to call this function with `applet` as
          * `widget`.
          * @param widget a {@link Gtk.Widget}.
+         * @deprecated since 3.20: Do not use this API. Since 3.20 this function does nothing.
          */
         set_background_widget(widget: Gtk.Widget): void;
 
@@ -428,6 +429,7 @@ export namespace MatePanelApplet {
          * Menu</link> section.
          * @param resource_path a resource path
          * @param action_group a {@link Gtk.ActionGroup}.
+         * @since 1.20.1
          */
         setup_menu_from_resource(resource_path: string, action_group: Gtk.ActionGroup): void;
     }

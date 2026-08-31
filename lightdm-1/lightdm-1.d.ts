@@ -673,6 +673,7 @@ export namespace LightDM {
         /**
          * Connects the greeter to the display manager.  Will block until connected.
          * @returns `TRUE` if successfully connected
+         * @deprecated since 1.11.1: Use `lightdm_greeter_connect_to_daemon_sync()` instead
          */
         connect_sync(): boolean;
 

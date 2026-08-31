@@ -525,6 +525,7 @@ export namespace Gly {
          * @param memory_format 
          * @param texture Texture data
          * @returns a new {@link NewFrame}
+         * @since 2.0
          */
         add_frame(width: number, height: number, memory_format: MemoryFormat, texture: GLib.Bytes | Uint8Array): NewFrame;
 
@@ -535,6 +536,7 @@ export namespace Gly {
          * @param memory_format 
          * @param texture Texture data
          * @returns a new {@link NewFrame}
+         * @since 2.0
          */
         add_frame_with_stride(width: number, height: number, stride: number, memory_format: MemoryFormat, texture: GLib.Bytes | Uint8Array): NewFrame;
 
@@ -546,17 +548,20 @@ export namespace Gly {
          * @param key A null-terminated string.
          * @param value A null-terminated string.
          * @returns `TRUE` if format supports key-value storage.
+         * @since 2.0
          */
         add_metadata_key_value(key: string, value: string): boolean;
 
         /**
          * @returns The encoded image.
+         * @since 2.0
          */
         create(): EncodedImage | null;
 
         /**
          * Asynchronous version of {@link Creator.create}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
+         * @since 2.0
          */
         create_async(cancellable: Gio.Cancellable | null): globalThis.Promise<EncodedImage>;
 
@@ -564,6 +569,7 @@ export namespace Gly {
          * Asynchronous version of {@link Creator.create}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
+         * @since 2.0
          */
         create_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -571,6 +577,7 @@ export namespace Gly {
          * Asynchronous version of {@link Creator.create}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
+         * @since 2.0
          */
         create_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<EncodedImage> | void;
 
@@ -578,24 +585,28 @@ export namespace Gly {
          * Finishes the {@link Creator.create_async} call.
          * @param result A {@link Gio.AsyncResult}
          * @returns Encoded image.
+         * @since 2.0
          */
         create_finish(result: Gio.AsyncResult): EncodedImage;
 
         /**
          * @param compression Value between 0 and 100
          * @returns `TRUE` if the format supports compression setting.
+         * @since 2.0
          */
         set_encoding_compression(compression: number): boolean;
 
         /**
          * @param quality Value between 0 and 100
          * @returns `TRUE` if format supports a quality setting.
+         * @since 2.0
          */
         set_encoding_quality(quality: number): boolean;
 
         /**
          * Selects which sandbox mechanism should be used. The default without calling this function is {@link SandboxSelector}`.AUTO`.
          * @param sandbox_selector Method by which the sandbox mechanism is selected
+         * @since 2.0
          */
         set_sandbox_selector(sandbox_selector: SandboxSelector): boolean;
     }
@@ -657,6 +668,7 @@ export namespace Gly {
         // Methods
         /**
          * @returns The encoded image data
+         * @since 2.0
          */
         get_data(): GLib.Bytes;
 
@@ -715,6 +727,7 @@ export namespace Gly {
         /**
          * Image data arranged according to {@link Frame.get_memory_format}
          * @returns Image data
+         * @since 2.0
          */
         get_buf_bytes(): GLib.Bytes;
 
@@ -722,6 +735,7 @@ export namespace Gly {
          * Returns the CICP (coding-independent code point) for the frames texture.
          * This value is `NULL` if no CICP is used.
          * @returns CICP
+         * @since 2.0
          */
         get_color_cicp(): Cicp | null;
 
@@ -729,12 +743,14 @@ export namespace Gly {
          * Returns the ICC profile for the frames texture.
          * This value is `NULL` if no CICP is used.
          * @returns Binary ICC profile
+         * @since 2.2
          */
         get_color_icc_profile(): GLib.Bytes | null;
 
         /**
          * This function advertises which property contains the color information for the frame's texture. See [Enum.ColorMode] for details.
          * @returns Color Mode
+         * @since 2.2
          */
         get_color_mode(): ColorMode;
 
@@ -743,35 +759,41 @@ export namespace Gly {
          * 
          * If the value is zero, the image is not animated.
          * @returns Duration in microseconds.
+         * @since 2.0
          */
         get_delay(): number;
 
         /**
          * @returns More information about the frame
+         * @since 2.2
          */
         get_details(): FrameDetails;
 
         /**
          * Height for image data in pixels
          * @returns Height in pixels
+         * @since 2.0
          */
         get_height(): number;
 
         /**
          * Format of the image data in {@link Gly.Frame.get_buf_bytes}
          * @returns Format of image data
+         * @since 2.0
          */
         get_memory_format(): MemoryFormat;
 
         /**
          * Width of a row for image data in bytes
          * @returns Row stride in bytes
+         * @since 2.0
          */
         get_stride(): number;
 
         /**
          * Width for image data in pixels
          * @returns Width in pixels
+         * @since 2.0
          */
         get_width(): number;
     }
@@ -839,6 +861,7 @@ export namespace Gly {
         // Methods
         /**
          * @returns Pixel density.
+         * @since 2.2
          */
         get_pixel_density(): PixelDensity;
     }
@@ -949,6 +972,7 @@ export namespace Gly {
          * By default, this option is set to `TRUE`, returning the first frame, if
          * the previously requested frame was the last frame.
          * @param loop_animation 
+         * @since 2.0.1
          */
         set_loop_animation(loop_animation: boolean): void;
 
@@ -963,6 +987,7 @@ export namespace Gly {
          *     loader is known to obey it.
          * @param width Maximum width
          * @param height Maximum height
+         * @since 2.0
          */
         set_scale(width: number, height: number): void;
     }
@@ -1015,6 +1040,7 @@ export namespace Gly {
         /**
          * See {@link Image.get_width}
          * @returns height
+         * @since 2.0
          */
         get_height(): number;
 
@@ -1027,24 +1053,28 @@ export namespace Gly {
          *     keys do not carry prefixes like `tEXt::` or `zTXt::`.
          * @param key A null-terminated string.
          * @returns The UTF-8 encoded value associated with `key`.
+         * @since 2.0
          */
         get_metadata_key_value(key: string): string | null;
 
         /**
          * Get the list of available keys for {@link Image.get_metadata_key_value}.
          * @returns List of existing keys.
+         * @since 2.0
          */
         get_metadata_keys(): string[];
 
         /**
          * Returns detected MIME type of the file
          * @returns MIME type
+         * @since 2.0
          */
         get_mime_type(): string;
 
         /**
          * @param frame_request 
          * @returns Loaded frame.
+         * @since 2.0
          */
         get_specific_frame(frame_request: FrameRequest): Frame;
 
@@ -1052,6 +1082,7 @@ export namespace Gly {
          * Asynchronous version of {@link Image.get_specific_frame}.
          * @param frame_request 
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
+         * @since 2.0
          */
         get_specific_frame_async(frame_request: FrameRequest, cancellable: Gio.Cancellable | null): globalThis.Promise<Frame>;
 
@@ -1060,6 +1091,7 @@ export namespace Gly {
          * @param frame_request 
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
+         * @since 2.0
          */
         get_specific_frame_async(frame_request: FrameRequest, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1068,6 +1100,7 @@ export namespace Gly {
          * @param frame_request 
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
+         * @since 2.0
          */
         get_specific_frame_async(frame_request: FrameRequest, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Frame> | void;
 
@@ -1075,6 +1108,7 @@ export namespace Gly {
          * Finishes the {@link Image.get_specific_frame_async} call.
          * @param result a {@link Gio.AsyncResult}
          * @returns Loaded frame.
+         * @since 2.0
          */
         get_specific_frame_finish(result: Gio.AsyncResult): Frame;
 
@@ -1087,6 +1121,7 @@ export namespace Gly {
          * If {@link Loader.set_apply_transformations} is set to `FALSE`,
          * the orientation has to be corrected manually to display the image
          * correctly.
+         * @since 2.0
          */
         get_transformation_orientation(): number;
 
@@ -1097,6 +1132,7 @@ export namespace Gly {
          * an early rendering estimates. For everything else, the specific frame
          * information should be used. See {@link Frame.get_width}.
          * @returns Width
+         * @since 2.0
          */
         get_width(): number;
 
@@ -1106,12 +1142,14 @@ export namespace Gly {
          * For single still images, this can only be called once.
          * For animated images, this function will loop to the first frame, when the last frame is reached.
          * @returns a new {@link Frame} on success, or `NULL` with `error` filled in
+         * @since 2.0
          */
         next_frame(): Frame;
 
         /**
          * Asynchronous version of {@link Image.next_frame}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
+         * @since 2.0
          */
         next_frame_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Frame>;
 
@@ -1119,6 +1157,7 @@ export namespace Gly {
          * Asynchronous version of {@link Image.next_frame}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
+         * @since 2.0
          */
         next_frame_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1126,6 +1165,7 @@ export namespace Gly {
          * Asynchronous version of {@link Image.next_frame}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
+         * @since 2.0
          */
         next_frame_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Frame> | void;
 
@@ -1133,6 +1173,7 @@ export namespace Gly {
          * Finishes the {@link Image.next_frame_async} call.
          * @param result a {@link Gio.AsyncResult}
          * @returns Loaded frame.
+         * @since 2.0
          */
         next_frame_finish(result: Gio.AsyncResult): Frame;
     }
@@ -1305,6 +1346,7 @@ export namespace Gly {
          * This list is generated from the config on first use of a loader or
          * call of this function and cached afterwards. Hence, the first call
          * can be blocking.
+         * @since 2.0
          */
         static get_mime_types(): string[];
 
@@ -1312,12 +1354,14 @@ export namespace Gly {
          * Async variant of {@link Loader.get_mime_types}
          * @param cancellable 
          * @param callback 
+         * @since 2.0
          */
         static get_mime_types_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Loader> | null): void;
 
         /**
          * Finishes the {@link Loader.get_mime_types_async} call.
          * @param result A {@link Gio.AsyncResult}
+         * @since 2.0
          */
         static get_mime_types_finish(result: Gio.AsyncResult): string[];
 
@@ -1325,12 +1369,14 @@ export namespace Gly {
         /**
          * Synchronously loads an image and returns an {@link Image} when successful.
          * @returns a new {@link Image} on success, or `NULL` with `error` filled in
+         * @since 2.0
          */
         load(): Image;
 
         /**
          * Asynchronous version of {@link Loader.load}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
+         * @since 2.0
          */
         load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Image>;
 
@@ -1338,6 +1384,7 @@ export namespace Gly {
          * Asynchronous version of {@link Loader.load}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
+         * @since 2.0
          */
         load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1345,6 +1392,7 @@ export namespace Gly {
          * Asynchronous version of {@link Loader.load}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
+         * @since 2.0
          */
         load_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Image> | void;
 
@@ -1352,6 +1400,7 @@ export namespace Gly {
          * Finishes the {@link Loader.load_async} call.
          * @param result A {@link Gio.AsyncResult}
          * @returns Loaded image.
+         * @since 2.0
          */
         load_finish(result: Gio.AsyncResult): Image;
 
@@ -1361,6 +1410,7 @@ export namespace Gly {
          * If the memory format doesn't match one of the selected formats, the
          * format will be transformed into the best suitable format selected.
          * @param memory_format_selection Accepted memory formats
+         * @since 2.0
          */
         set_accepted_memory_formats(memory_format_selection: MemoryFormatSelection): void;
 
@@ -1372,6 +1422,7 @@ export namespace Gly {
          * 
          * This option is enabled by default.
          * @param apply_transformations 
+         * @since 2.0
          */
         set_apply_transformations(apply_transformations: boolean): void;
 
@@ -1380,12 +1431,14 @@ export namespace Gly {
          * 
          * This option is enabled by default.
          * @param convert 
+         * @since 2.2
          */
         set_color_convert_icc_srgb(convert: boolean): void;
 
         /**
          * Selects which sandbox mechanism should be used. The default without calling this function is {@link SandboxSelector}`.AUTO`.
          * @param sandbox_selector Method by which the sandbox mechanism is selected
+         * @since 2.0
          */
         set_sandbox_selector(sandbox_selector: SandboxSelector): void;
     }
@@ -1496,11 +1549,13 @@ export namespace Gly {
         /**
          * @param icc_profile ICC profile
          * @returns `TRUE` if format supports ICC color profiles.
+         * @since 2.0
          */
         set_color_icc_profile(icc_profile: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * @param pixel_density 
+         * @since 2.2
          */
         set_pixel_density(pixel_density: PixelDensity): void;
     }
@@ -1618,26 +1673,31 @@ export namespace Gly {
         /**
          * @param unit 
          * @returns Converted pixel density
+         * @since 2.2
          */
         convert(unit: PhysicalDimensionUnit): PixelDensity;
 
         /**
          * @returns Horizontal pixel density unit
+         * @since 2.2
          */
         get_x_unit(): PhysicalDimensionUnit;
 
         /**
          * @returns Horizontal pixel density
+         * @since 2.2
          */
         get_x_value(): number;
 
         /**
          * @returns Horizontal pixel density unit
+         * @since 2.2
          */
         get_y_unit(): PhysicalDimensionUnit;
 
         /**
          * @returns Vertical pixel density
+         * @since 2.2
          */
         get_y_value(): number;
     }

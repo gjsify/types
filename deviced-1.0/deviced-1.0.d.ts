@@ -287,18 +287,21 @@ export namespace Deviced {
          * If unset, a certificate will be reloaded or generated when
          * `devd_browser_load_async()` is called.
          * @returns a {@link Gio.TlsCertificate} or `null`
+         * @since 3.28
          */
         get_certificate(): Gio.TlsCertificate | null;
 
         /**
          * Gets a SHA256 hash for the {@link Deviced.Browser.certificate} property.
          * @returns the hash or `null`
+         * @since 3.28
          */
         get_certificate_hash(): string | null;
 
         /**
          * Gets a {@link GLib.PtrArray} of {@link Deviced.Device} that have been discovered.
          * @returns a {@link GLib.PtrArray}   of {@link Deviced.Device}.
+         * @since 3.28
          */
         get_devices(): Device[];
 
@@ -317,6 +320,7 @@ export namespace Deviced {
          * If you want to control the {@link Gio.TlsCertificate} to use, then call
          * `devd_browser_set_certificate()` before calling this function.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 3.28
          */
         load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -332,6 +336,7 @@ export namespace Deviced {
          * `devd_browser_set_certificate()` before calling this function.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion   of the asynchronous task.
+         * @since 3.28
          */
         load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -347,6 +352,7 @@ export namespace Deviced {
          * `devd_browser_set_certificate()` before calling this function.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion   of the asynchronous task.
+         * @since 3.28
          */
         load_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -356,6 +362,7 @@ export namespace Deviced {
          * segments for mDNS (Avahi) peers advertising Deviced nodes.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @since 3.28
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -365,6 +372,7 @@ export namespace Deviced {
          * To ensure this is being used on all new connnections, you should set this
          * property before calling `devd_browser_load_async()`.
          * @param certificate a {@link Gio.TlsCertificate}
+         * @since 3.28
          */
         set_certificate(certificate: Gio.TlsCertificate): void;
 
@@ -579,6 +587,7 @@ export namespace Deviced {
          * @param params the parameters for the method
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          * @virtual
          */
         vfunc_call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -596,6 +605,7 @@ export namespace Deviced {
          * `callback` should complete the operation by calling `devd_client_connect_finish()`.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
+         * @since 3.28
          * @virtual
          */
         vfunc_connect_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -604,6 +614,7 @@ export namespace Deviced {
          * Completes an asynchronous connection to the device, initiated with
          * `devd_client_connect_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
+         * @since 3.28
          * @virtual
          */
         vfunc_connect_finish(result: Gio.AsyncResult): boolean;
@@ -624,6 +635,8 @@ export namespace Deviced {
         /**
          * Gets the architecture of the device, such as "x86_64". Generally,
          * this is the machine value from `uname()`.
+         * @since 3.28
+         * @deprecated since 3.30: Use `devd_client_get_triplet()` instead.
          * @virtual
          */
         vfunc_get_arch(): string;
@@ -631,6 +644,8 @@ export namespace Deviced {
         /**
          * Gets the kernel of the device, such as "linux". This is the kernel
          * component of the familiar "target triplet".
+         * @since 3.28
+         * @deprecated since 3.30: Use `devd_client_get_triplet()` instead.
          * @virtual
          */
         vfunc_get_kernel(): string;
@@ -639,6 +654,7 @@ export namespace Deviced {
          * Gets the name of the peer that this client is connected to.
          * 
          * This value is discovered when initializing a connection with the peer.
+         * @since 3.28
          * @virtual
          */
         vfunc_get_name(): string | null;
@@ -646,12 +662,15 @@ export namespace Deviced {
         /**
          * Gets the system of the device, such as "gnu". This is the system
          * component of the familiar "target triplet".
+         * @since 3.28
+         * @deprecated since 3.30: Use `devd_client_get_triplet()` instead.
          * @virtual
          */
         vfunc_get_system(): string;
 
         /**
          * Gets the {@link Deviced.Triplet} object holding information about the architecture triplet
+         * @since 3.30
          * @virtual
          */
         vfunc_get_triplet(): Triplet;
@@ -664,6 +683,7 @@ export namespace Deviced {
          * `devd_client_list_apps_finish()` to obtain the result.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 3.28
          * @virtual
          */
         vfunc_list_apps_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -671,6 +691,7 @@ export namespace Deviced {
         /**
          * Completes an asynchronous request to `devd_client_list_apps_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
+         * @since 3.28
          * @virtual
          */
         vfunc_list_apps_finish(result: Gio.AsyncResult): AppInfo[];
@@ -684,6 +705,7 @@ export namespace Deviced {
          * @param attributes file attributes
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute up on completion
+         * @since 3.28
          * @virtual
          */
         vfunc_list_files_async(path: string, attributes: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -691,6 +713,7 @@ export namespace Deviced {
         /**
          * Completes an asynchronous request to list files on the device.
          * @param result a {@link Gio.AsyncResult} provided to callback
+         * @since 3.28
          * @virtual
          */
         vfunc_list_files_finish(result: Gio.AsyncResult): Gio.FileInfo[];
@@ -703,6 +726,7 @@ export namespace Deviced {
          * `devd_client_list_runtimes_finish()` to obtain the result.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 3.28
          * @virtual
          */
         vfunc_list_runtimes_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -710,6 +734,7 @@ export namespace Deviced {
         /**
          * Completes an asynchronous request to `devd_client_list_runtimes_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
+         * @since 3.28
          * @virtual
          */
         vfunc_list_runtimes_finish(result: Gio.AsyncResult): AppInfo[];
@@ -731,6 +756,7 @@ export namespace Deviced {
          * @param pty a pty ID
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 3.28
          * @virtual
          */
         vfunc_run_app_async(provider: string, app_id: string, pty: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -738,6 +764,7 @@ export namespace Deviced {
         /**
          * Completes an asynchronous request to `devd_client_run_app_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
+         * @since 3.28
          * @virtual
          */
         vfunc_run_app_finish(result: Gio.AsyncResult): string;
@@ -756,6 +783,7 @@ export namespace Deviced {
          * @param devices a comma-separated list of devices, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          * @virtual
          */
         vfunc_syncfs_async(devices: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -764,6 +792,7 @@ export namespace Deviced {
          * Completes an asynchronous request to sync file-system changes to
          * their underlying storage devices.
          * @param result a {@link Gio.AsyncResult} provided to callback
+         * @since 3.28
          * @virtual
          */
         vfunc_syncfs_finish(result: Gio.AsyncResult): boolean;
@@ -777,6 +806,7 @@ export namespace Deviced {
          * @param method the RPC method name
          * @param params the parameters for the method
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 3.28
          */
         call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
 
@@ -789,6 +819,7 @@ export namespace Deviced {
          * @param params the parameters for the method
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          */
         call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -801,6 +832,7 @@ export namespace Deviced {
          * @param params the parameters for the method
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          */
         call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant | null> | void;
 
@@ -816,6 +848,7 @@ export namespace Deviced {
          * 
          * `callback` should complete the operation by calling `devd_client_connect_finish()`.
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 3.28
          */
         connect_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -825,6 +858,7 @@ export namespace Deviced {
          * `callback` should complete the operation by calling `devd_client_connect_finish()`.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
+         * @since 3.28
          */
         connect_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -834,6 +868,7 @@ export namespace Deviced {
          * `callback` should complete the operation by calling `devd_client_connect_finish()`.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
+         * @since 3.28
          */
         connect_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -842,6 +877,7 @@ export namespace Deviced {
          * `devd_client_connect_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @since 3.28
          */
         connect_finish(result: Gio.AsyncResult): boolean;
 
@@ -882,6 +918,8 @@ export namespace Deviced {
          * Gets the architecture of the device, such as "x86_64". Generally,
          * this is the machine value from `uname()`.
          * @returns a string representing the architecture.
+         * @since 3.28
+         * @deprecated since 3.30: Use `devd_client_get_triplet()` instead.
          */
         get_arch(): string;
 
@@ -889,6 +927,8 @@ export namespace Deviced {
          * Gets the kernel of the device, such as "linux". This is the kernel
          * component of the familiar "target triplet".
          * @returns a string representing the kernel.
+         * @since 3.28
+         * @deprecated since 3.30: Use `devd_client_get_triplet()` instead.
          */
         get_kernel(): string;
 
@@ -897,12 +937,14 @@ export namespace Deviced {
          * 
          * This value is discovered when initializing a connection with the peer.
          * @returns a newly allocated string or `null`
+         * @since 3.28
          */
         get_name(): string | null;
 
         /**
          * Gets the names of services currently supported by the client.
          * @returns a {@link GObject.Strv} of service names
+         * @since 3.28
          */
         get_services(): string[];
 
@@ -910,6 +952,8 @@ export namespace Deviced {
          * Gets the system of the device, such as "gnu". This is the system
          * component of the familiar "target triplet".
          * @returns a string representing the system.
+         * @since 3.28
+         * @deprecated since 3.30: Use `devd_client_get_triplet()` instead.
          */
         get_system(): string;
 
@@ -918,6 +962,7 @@ export namespace Deviced {
         /**
          * Gets the {@link Deviced.Triplet} object holding information about the architecture triplet
          * @returns a {@link Deviced.Triplet} representing the architecture triplet.
+         * @since 3.30
          */
         get_triplet(): Triplet;
 
@@ -933,6 +978,7 @@ export namespace Deviced {
          * To complete the asynchronous request, `callback` must call
          * `devd_client_list_apps_finish()` to obtain the result.
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 3.28
          */
         list_apps_async(cancellable: Gio.Cancellable | null): globalThis.Promise<AppInfo[]>;
 
@@ -944,6 +990,7 @@ export namespace Deviced {
          * `devd_client_list_apps_finish()` to obtain the result.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 3.28
          */
         list_apps_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -955,6 +1002,7 @@ export namespace Deviced {
          * `devd_client_list_apps_finish()` to obtain the result.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 3.28
          */
         list_apps_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<AppInfo[]> | void;
 
@@ -962,6 +1010,7 @@ export namespace Deviced {
          * Completes an asynchronous request to `devd_client_list_apps_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns An array   of `DevdClientAppInfo` if successful; otherwise `null` and `error` is set.
+         * @since 3.28
          */
         list_apps_finish(result: Gio.AsyncResult): AppInfo[];
 
@@ -973,6 +1022,7 @@ export namespace Deviced {
          * @param path the path on the device
          * @param attributes file attributes
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 3.28
          */
         list_files_async(path: string, attributes: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.FileInfo[]>;
 
@@ -985,6 +1035,7 @@ export namespace Deviced {
          * @param attributes file attributes
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute up on completion
+         * @since 3.28
          */
         list_files_async(path: string, attributes: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -997,6 +1048,7 @@ export namespace Deviced {
          * @param attributes file attributes
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute up on completion
+         * @since 3.28
          */
         list_files_async(path: string, attributes: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.FileInfo[]> | void;
 
@@ -1004,6 +1056,7 @@ export namespace Deviced {
          * Completes an asynchronous request to list files on the device.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns a {@link GLib.PtrArray} of   {@link Gio.FileInfo} retrieved from the device.
+         * @since 3.28
          */
         list_files_finish(result: Gio.AsyncResult): Gio.FileInfo[];
 
@@ -1014,6 +1067,7 @@ export namespace Deviced {
          * To complete the asynchronous request, `callback` must call
          * `devd_client_list_runtimes_finish()` to obtain the result.
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 3.28
          */
         list_runtimes_async(cancellable: Gio.Cancellable | null): globalThis.Promise<AppInfo[]>;
 
@@ -1025,6 +1079,7 @@ export namespace Deviced {
          * `devd_client_list_runtimes_finish()` to obtain the result.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 3.28
          */
         list_runtimes_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1036,6 +1091,7 @@ export namespace Deviced {
          * `devd_client_list_runtimes_finish()` to obtain the result.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 3.28
          */
         list_runtimes_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<AppInfo[]> | void;
 
@@ -1043,6 +1099,7 @@ export namespace Deviced {
          * Completes an asynchronous request to `devd_client_list_runtimes_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns An array   of `DevdClientAppInfo` if successful; otherwise `null` and `error` is set.
+         * @since 3.28
          */
         list_runtimes_finish(result: Gio.AsyncResult): AppInfo[];
 
@@ -1055,6 +1112,7 @@ export namespace Deviced {
          * @param app_id the ID of the app to run
          * @param pty a pty ID
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 3.28
          */
         run_app_async(provider: string, app_id: string, pty: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -1068,6 +1126,7 @@ export namespace Deviced {
          * @param pty a pty ID
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 3.28
          */
         run_app_async(provider: string, app_id: string, pty: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1081,6 +1140,7 @@ export namespace Deviced {
          * @param pty a pty ID
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 3.28
          */
         run_app_async(provider: string, app_id: string, pty: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -1088,6 +1148,7 @@ export namespace Deviced {
          * Completes an asynchronous request to `devd_client_run_app_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns the identifier for the process, or `null` and `error` is set.
+         * @since 3.28
          */
         run_app_finish(result: Gio.AsyncResult): string;
 
@@ -1103,6 +1164,7 @@ export namespace Deviced {
          * Note, currently, only syncing all file-systems is supported.
          * @param devices a comma-separated list of devices, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 3.28
          */
         syncfs_async(devices: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1114,6 +1176,7 @@ export namespace Deviced {
          * @param devices a comma-separated list of devices, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          */
         syncfs_async(devices: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1125,6 +1188,7 @@ export namespace Deviced {
          * @param devices a comma-separated list of devices, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          */
         syncfs_async(devices: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1133,6 +1197,7 @@ export namespace Deviced {
          * their underlying storage devices.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @since 3.28
          */
         syncfs_finish(result: Gio.AsyncResult): boolean;
     }
@@ -1247,6 +1312,7 @@ export namespace Deviced {
          * to use multiple client simultaneously.
          * 
          * See `devd_client_connect_async()` to establish a connection.
+         * @since 3.28
          * @virtual
          */
         vfunc_create_client(): Client;
@@ -1263,18 +1329,21 @@ export namespace Deviced {
          * 
          * See `devd_client_connect_async()` to establish a connection.
          * @returns a newly created {@link Deviced.Client}
+         * @since 3.28
          */
         create_client(): Client;
 
         /**
          * Gets the {@link Deviced.Device.icon_name} property.
          * @returns the icon-name, or `null`
+         * @since 3.28
          */
         get_icon_name(): string | null;
 
         /**
          * Gets the identifier for the device.
          * @returns a string identifying the device
+         * @since 3.28
          */
         get_id(): string;
 
@@ -1283,12 +1352,14 @@ export namespace Deviced {
         /**
          * Gets the machine-id property, if specified
          * @returns a machine-id, or `null`
+         * @since 3.28
          */
         get_machine_id(): string | null;
 
         /**
          * Gets the "name" property of the device, if there is one.
          * @returns the device name
+         * @since 3.28
          */
         get_name(): string;
 
@@ -1297,6 +1368,7 @@ export namespace Deviced {
          * change the icon on the remove device. To interact with the remove device
          * use `devd_device_create_client()`.
          * @param icon_name the icon name for the device
+         * @since 3.28
          */
         set_icon_name(icon_name: string): void;
 
@@ -1308,6 +1380,7 @@ export namespace Deviced {
         /**
          * Sets the {@link Deviced.Device.machine_id} for the local object instance.
          * @param machine_id the identifier of the machine, if known
+         * @since 3.28
          */
         set_machine_id(machine_id: string): void;
 
@@ -1318,6 +1391,7 @@ export namespace Deviced {
          * not change the name on the remove device. To interact with the remote
          * device, use `devd_device_create_client()` to create a {@link Deviced.Client}.
          * @param name the name for the device
+         * @since 3.28
          */
         set_name(name: string): void;
     }
@@ -1471,12 +1545,14 @@ export namespace Deviced {
         /**
          * Gets the address that is to be used to connect to the device.
          * @returns a {@link Gio.InetSocketAddress}
+         * @since 3.28
          */
         get_address(): Gio.InetSocketAddress;
 
         /**
          * Gets the certificate for the network client.
          * @returns a {@link Gio.TlsCertificate}
+         * @since 3.28
          */
         get_certificate(): Gio.TlsCertificate;
     }
@@ -1550,6 +1626,7 @@ export namespace Deviced {
          * Gets the {@link Gio.InetSocketAddress} that can be used to connect to the
          * device daemon.
          * @returns a {@link Gio.InetSocketAddress} or `null`
+         * @since 3.28
          */
         get_address(): Gio.InetSocketAddress;
 
@@ -1557,6 +1634,7 @@ export namespace Deviced {
          * Gets the {@link Gio.TlsCertificate} that will be used as the client-side certificate
          * when communicating with this network device.
          * @returns a {@link Gio.TlsCertificate} or `null`
+         * @since 3.28
          */
         get_certificate(): Gio.TlsCertificate | null;
     }
@@ -1641,6 +1719,7 @@ export namespace Deviced {
          * delivered to `local_pty_fd`.
          * @param local_pty_fd a PTY slave fd to proxy PTY data to
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 3.28
          */
         create_pty_async(local_pty_fd: number, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -1653,6 +1732,7 @@ export namespace Deviced {
          * @param local_pty_fd a PTY slave fd to proxy PTY data to
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a calllback to execute upon completion
+         * @since 3.28
          */
         create_pty_async(local_pty_fd: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1665,6 +1745,7 @@ export namespace Deviced {
          * @param local_pty_fd a PTY slave fd to proxy PTY data to
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a calllback to execute upon completion
+         * @since 3.28
          */
         create_pty_async(local_pty_fd: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -1686,6 +1767,7 @@ export namespace Deviced {
          * PTY device.
          * @param pty_id the identifier of a previously created PTY
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 3.28
          */
         destroy_pty_async(pty_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1696,6 +1778,7 @@ export namespace Deviced {
          * @param pty_id the identifier of a previously created PTY
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          */
         destroy_pty_async(pty_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1706,6 +1789,7 @@ export namespace Deviced {
          * @param pty_id the identifier of a previously created PTY
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          */
         destroy_pty_async(pty_id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1713,6 +1797,7 @@ export namespace Deviced {
          * Completes an asynchronous request to destroy a PTY device.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @since 3.28
          */
         destroy_pty_finish(result: Gio.AsyncResult): boolean;
 
@@ -1725,6 +1810,7 @@ export namespace Deviced {
          * pair is provided for this. Calling this function only ensures an attempt
          * to force exit the program.
          * @param identifier the process identifier
+         * @since 3.28
          */
         force_exit(identifier: string): void;
 
@@ -1739,6 +1825,7 @@ export namespace Deviced {
          * to send the signal to the program.
          * @param identifier the process identifier
          * @param signum the signal number
+         * @since 3.28
          */
         send_signal(identifier: string, signum: number): void;
 
@@ -1887,6 +1974,7 @@ export namespace Deviced {
          * @param method the RPC method name
          * @param params the parameters for the method
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 3.28
          */
         call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
 
@@ -1900,6 +1988,7 @@ export namespace Deviced {
          * @param params the parameters for the method
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          */
         call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1913,6 +2002,7 @@ export namespace Deviced {
          * @param params the parameters for the method
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          */
         call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant | null> | void;
 
@@ -1926,6 +2016,7 @@ export namespace Deviced {
         /**
          * Gets the client that the service was initialized with.
          * @returns a {@link Deviced.Client}
+         * @since 3.28
          */
         get_client(): Client;
     }
@@ -1988,6 +2079,7 @@ export namespace Deviced {
          * @param file a {@link Gio.File} to write to
          * @param progress A progress callback or `null` to execute when transfer progress is updated.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 3.28
          */
         get_file_async(path: string, file: Gio.File, progress: Gio.FileProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2000,6 +2092,7 @@ export namespace Deviced {
          * @param progress A progress callback or `null` to execute when transfer progress is updated.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          */
         get_file_async(path: string, file: Gio.File, progress: Gio.FileProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2012,6 +2105,7 @@ export namespace Deviced {
          * @param progress A progress callback or `null` to execute when transfer progress is updated.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          */
         get_file_async(path: string, file: Gio.File, progress: Gio.FileProgressCallback | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2019,6 +2113,7 @@ export namespace Deviced {
          * Completes an asynchronous request to download a file from the device.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @since 3.28
          */
         get_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -2030,6 +2125,7 @@ export namespace Deviced {
          * @param path the path on the remote device
          * @param progress A progress callback or `null` to execute when transfer progress is updated.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 3.28
          */
         put_file_async(file: Gio.File, path: string, progress: Gio.FileProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2042,6 +2138,7 @@ export namespace Deviced {
          * @param progress A progress callback or `null` to execute when transfer progress is updated.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          */
         put_file_async(file: Gio.File, path: string, progress: Gio.FileProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2054,6 +2151,7 @@ export namespace Deviced {
          * @param progress A progress callback or `null` to execute when transfer progress is updated.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a callback to execute upon completion
+         * @since 3.28
          */
         put_file_async(file: Gio.File, path: string, progress: Gio.FileProgressCallback | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2065,6 +2163,7 @@ export namespace Deviced {
          * version or new version of the file.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @since 3.28
          */
         put_file_finish(result: Gio.AsyncResult): boolean;
     }
@@ -2146,36 +2245,42 @@ export namespace Deviced {
          * Gets the full name of the machine configuration name (can be an architecture name,
          * a duet, a triplet or a quadruplet).
          * @returns The full name of the machine configuration name
+         * @since 3.30
          */
         get_full_name(): string;
 
         /**
          * Gets name of the kernel of the machine
          * @returns The name of the kernel of the machine
+         * @since 3.30
          */
         get_kernel(): string | null;
 
         /**
          * Gets name of the operating system of the machine
          * @returns The name of the operating system of the machine
+         * @since 3.30
          */
         get_operating_system(): string | null;
 
         /**
          * Gets the vendor name of the machine
          * @returns The vendor name of the machine
+         * @since 3.30
          */
         get_vendor(): string | null;
 
         /**
          * Increases the reference count of `self`
          * @returns An {@link Deviced.Triplet}.
+         * @since 3.30
          */
         ref(): Triplet;
 
         /**
          * Decreases the reference count of `self`
          * Once the reference count reaches 0, the object is freed.
+         * @since 3.30
          */
         unref(): void;
     }

@@ -469,6 +469,7 @@ export namespace Gspell {
          * Returns the {@link Gspell.Entry} of `gtk_entry`. The returned object is guaranteed
          * to be the same for the lifetime of `gtk_entry`.
          * @param gtk_entry a {@link Gtk.Entry}.
+         * @since 1.4
          */
         static get_from_gtk_entry(gtk_entry: Gtk.Entry): Entry;
 
@@ -509,22 +510,26 @@ export namespace Gspell {
          * gspell_entry_set_inline_spell_checking (gspell_entry, TRUE);
          * ```
          * 
+         * @since 1.4
          */
         basic_setup(): void;
 
         /**
          * @returns the {@link Gtk.Entry} of `gspell_entry`.
+         * @since 1.4
          */
         get_entry(): Gtk.Entry;
 
         /**
          * @returns the value of the {@link Gspell.Entry.inline_spell_checking} property.
+         * @since 1.4
          */
         get_inline_spell_checking(): boolean;
 
         /**
          * Sets the {@link Gspell.Entry.inline_spell_checking} property.
          * @param enable the new state.
+         * @since 1.4
          */
         set_inline_spell_checking(enable: boolean): void;
     }
@@ -605,17 +610,20 @@ export namespace Gspell {
          * Returns the {@link Gspell.EntryBuffer} of `gtk_buffer`. The returned object is
          * guaranteed to be the same for the lifetime of `gtk_buffer`.
          * @param gtk_buffer a {@link Gtk.EntryBuffer}.
+         * @since 1.4
          */
         static get_from_gtk_entry_buffer(gtk_buffer: Gtk.EntryBuffer): EntryBuffer;
 
         // Methods
         /**
          * @returns the {@link Gtk.EntryBuffer} of `gspell_buffer`.
+         * @since 1.4
          */
         get_buffer(): Gtk.EntryBuffer;
 
         /**
          * @returns the {@link Gspell.Checker} if one has been set,   or `null`.
+         * @since 1.4
          */
         get_spell_checker(): Checker | null;
 
@@ -624,6 +632,7 @@ export namespace Gspell {
          * reference to `spell_checker`, so you can release your reference to
          * `spell_checker` if you no longer need it.
          * @param spell_checker a {@link Gspell.Checker}, or `null` to unset the spell   checker.
+         * @since 1.4
          */
         set_spell_checker(spell_checker: Checker | null): void;
     }
@@ -883,6 +892,7 @@ export namespace Gspell {
          * 
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
+         * @since 3.4
          */
         get_action_name(): string | null;
 
@@ -891,6 +901,7 @@ export namespace Gspell {
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
          * @returns the current target value
+         * @since 3.4
          */
         get_action_target_value(): GLib.Variant;
 
@@ -907,6 +918,7 @@ export namespace Gspell {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          */
         set_action_name(action_name: string | null): void;
 
@@ -931,6 +943,7 @@ export namespace Gspell {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          */
         set_action_target_value(target_value: GLib.Variant | null): void;
 
@@ -947,6 +960,7 @@ export namespace Gspell {
          * `action` is the action name and `target` is the string to use
          * as the target.)
          * @param detailed_action_name the detailed action name
+         * @since 3.4
          */
         set_detailed_action_name(detailed_action_name: string): void;
 
@@ -954,6 +968,7 @@ export namespace Gspell {
          * Gets the action name for `actionable`.
          * 
          * See `gtk_actionable_set_action_name()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_name(): string | null;
@@ -962,6 +977,7 @@ export namespace Gspell {
          * Gets the current target value of `actionable`.
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant;
@@ -979,6 +995,7 @@ export namespace Gspell {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_name(action_name: string | null): void;
@@ -1004,6 +1021,7 @@ export namespace Gspell {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
@@ -1025,12 +1043,16 @@ export namespace Gspell {
          * > `gtk_activatable_get_related_action()` to retrieve the
          * > previous action.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         do_set_related_action(action: Gtk.Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_related_action(): Gtk.Action;
 
@@ -1039,6 +1061,8 @@ export namespace Gspell {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_use_action_appearance(): boolean;
 
@@ -1048,6 +1072,8 @@ export namespace Gspell {
          * > {@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * > property and call `gtk_activatable_do_set_related_action()` when it changes.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_related_action(action: Gtk.Action): void;
 
@@ -1060,6 +1086,8 @@ export namespace Gspell {
          * > `gtk_activatable_sync_action_properties()` to update `activatable`
          * > if needed.
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -1069,6 +1097,8 @@ export namespace Gspell {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          */
         sync_action_properties(action: Gtk.Action | null): void;
 
@@ -1078,6 +1108,8 @@ export namespace Gspell {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          * @virtual
          */
         vfunc_sync_action_properties(action: Gtk.Action | null): void;
@@ -1114,6 +1146,7 @@ export namespace Gspell {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -1123,6 +1156,7 @@ export namespace Gspell {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -1676,11 +1710,13 @@ export namespace Gspell {
          * gspell_text_view_set_enable_language_menu (gspell_view, TRUE);
          * ```
          * 
+         * @since 1.2
          */
         basic_setup(): void;
 
         /**
          * @returns whether the language context menu is enabled.
+         * @since 1.2
          */
         get_enable_language_menu(): boolean;
 
@@ -1701,6 +1737,7 @@ export namespace Gspell {
          * {@link Gspell.Checker.language} property of the {@link Gspell.TextBuffer.spell_checker} of
          * the {@link Gtk.TextView.buffer} of the {@link Gspell.TextView.view}.
          * @param enable_language_menu whether to enable the language context menu.
+         * @since 1.2
          */
         set_enable_language_menu(enable_language_menu: boolean): void;
 

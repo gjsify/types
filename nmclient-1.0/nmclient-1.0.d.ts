@@ -50,6 +50,7 @@ export namespace NMClient {
         // Static methods
         /**
          * Registers an error quark for {@link NMClient.Client} if necessary.
+         * @since 0.9.10
          */
         static quark(): GLib.Quark;
     }
@@ -291,6 +292,7 @@ export namespace NMClient {
         // Static methods
         /**
          * Registers an error quark for {@link NMClient.DeviceBridge} if necessary.
+         * @since 0.9.8
          */
         static quark(): GLib.Quark;
     }
@@ -368,6 +370,7 @@ export namespace NMClient {
         // Static methods
         /**
          * Registers an error quark for {@link NMClient.Device} if necessary.
+         * @since 0.9.10
          */
         static quark(): GLib.Quark;
     }
@@ -444,6 +447,7 @@ export namespace NMClient {
         // Static methods
         /**
          * Registers an error quark for {@link NMClient.DeviceGeneric} if necessary.
+         * @since 0.9.10
          */
         static quark(): GLib.Quark;
     }
@@ -596,6 +600,7 @@ export namespace NMClient {
         // Static methods
         /**
          * Registers an error quark for {@link NMClient.DeviceTeam} if necessary.
+         * @since 0.9.10
          */
         static quark(): GLib.Quark;
     }
@@ -742,6 +747,7 @@ export namespace NMClient {
         // Static methods
         /**
          * Registers an error quark for {@link NMClient.DeviceWimax} if necessary.
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         static quark(): GLib.Quark;
     }
@@ -1763,6 +1769,7 @@ export namespace NMClient {
         /**
          * Gets the hardware (MAC) address of the access point.
          * @returns the hardware address of the access point. This is the internal string used by the access point and must not be modified.
+         * @deprecated since 0.9: Use `nm_access_point_get_bssid()` instead.
          */
         get_hw_address(): string;
 
@@ -1771,6 +1778,7 @@ export namespace NMClient {
          * access point was found in scan results.  A value of -1 means the access
          * point has not been found in a scan.
          * @returns the last seen time in seconds
+         * @since 1.2
          */
         get_last_seen(): number;
 
@@ -1850,6 +1858,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1893,6 +1902,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1936,6 +1946,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1944,6 +1955,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1952,6 +1964,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): AccessPoint;
 
@@ -1995,6 +2008,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -2003,6 +2017,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -2048,6 +2063,7 @@ export namespace NMClient {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2091,6 +2107,7 @@ export namespace NMClient {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -2327,6 +2344,7 @@ export namespace NMClient {
         /**
          * Gets the {@link NetworkManager.Connection}'s type.
          * @returns the type of the {@link NetworkManager.Connection} that backs the {@link NMClient.ActiveConnection}. This is the internal string used by the connection, and must not be modified.
+         * @since 0.9.10
          */
         get_connection_type(): string;
 
@@ -2354,6 +2372,7 @@ export namespace NMClient {
          * Gets the current {@link NMClient.DHCP4Config} (if any) associated with the
          * {@link NMClient.ActiveConnection}.
          * @returns the {@link NMClient.DHCP4Config}, or `null` if the   connection does not use DHCP, or is not in the   {@link NetworkManager.ActiveConnectionState.ACTIVATED} state.
+         * @since 0.9.10
          */
         get_dhcp4_config(): DHCP4Config;
 
@@ -2361,24 +2380,28 @@ export namespace NMClient {
          * Gets the current {@link NMClient.DHCP6Config} (if any) associated with the
          * {@link NMClient.ActiveConnection}.
          * @returns the {@link NMClient.DHCP6Config}, or `null` if the   connection does not use DHCPv6, or is not in the   {@link NetworkManager.ActiveConnectionState.ACTIVATED} state.
+         * @since 0.9.10
          */
         get_dhcp6_config(): DHCP6Config;
 
         /**
          * Gets the {@link NetworkManager.Connection}'s ID.
          * @returns the ID of the {@link NetworkManager.Connection} that backs the {@link NMClient.ActiveConnection}. This is the internal string used by the connection, and must not be modified.
+         * @since 0.9.10
          */
         get_id(): string;
 
         /**
          * Gets the current {@link NMClient.IP4Config} associated with the {@link NMClient.ActiveConnection}.
          * @returns the {@link NMClient.IP4Config}, or `null` if the   connection is not in the {@link NetworkManager.ActiveConnectionState.ACTIVATED}   state.
+         * @since 0.9.10
          */
         get_ip4_config(): IP4Config;
 
         /**
          * Gets the current {@link NMClient.IP6Config} associated with the {@link NMClient.ActiveConnection}.
          * @returns the {@link NMClient.IP6Config}, or `null` if the   connection is not in the {@link NetworkManager.ActiveConnectionState.ACTIVATED}   state.
+         * @since 0.9.10
          */
         get_ip6_config(): IP6Config;
 
@@ -2409,6 +2432,7 @@ export namespace NMClient {
         /**
          * Whether the active connection is a VPN connection.
          * @returns `true` if the active connection is a VPN connection
+         * @since 0.9.10
          */
         get_vpn(): boolean;
 
@@ -2451,6 +2475,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2494,6 +2519,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2537,6 +2563,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2545,6 +2572,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -2553,6 +2581,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ActiveConnection;
 
@@ -2596,6 +2625,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -2604,6 +2634,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -2649,6 +2680,7 @@ export namespace NMClient {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2692,6 +2724,7 @@ export namespace NMClient {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -3102,6 +3135,7 @@ export namespace NMClient {
          * if you do not want to block.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the (new) current connectivity state
+         * @since 0.9.8.6
          */
         check_connectivity(cancellable: Gio.Cancellable | null): NetworkManager.ConnectivityState;
 
@@ -3111,6 +3145,7 @@ export namespace NMClient {
          * which (immediately) returns the most recent known state without
          * re-checking, and `nm_client_check_connectivity()`, which blocks.
          * @param cancellable a {@link Gio.Cancellable}
+         * @since 0.9.8.6
          */
         check_connectivity_async(cancellable: Gio.Cancellable | null): globalThis.Promise<NetworkManager.ConnectivityState>;
 
@@ -3121,6 +3156,7 @@ export namespace NMClient {
          * re-checking, and `nm_client_check_connectivity()`, which blocks.
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback callback to call with the result
+         * @since 0.9.8.6
          */
         check_connectivity_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3131,6 +3167,7 @@ export namespace NMClient {
          * re-checking, and `nm_client_check_connectivity()`, which blocks.
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback callback to call with the result
+         * @since 0.9.8.6
          */
         check_connectivity_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<NetworkManager.ConnectivityState> | void;
 
@@ -3139,6 +3176,7 @@ export namespace NMClient {
          * call.
          * @param result the {@link Gio.AsyncResult}
          * @returns the (new) current connectivity state
+         * @since 0.9.8.6
          */
         check_connectivity_finish(result: Gio.AsyncResult): NetworkManager.ConnectivityState;
 
@@ -3153,6 +3191,7 @@ export namespace NMClient {
          * currently-activating connection that is expected to become the new
          * {@link NMClient.Client.primary_connection} upon successful activation.
          * @returns the appropriate {@link NMClient.ActiveConnection}, if any.
+         * @since 0.9.8.6
          */
         get_activating_connection(): ActiveConnection;
 
@@ -3173,6 +3212,7 @@ export namespace NMClient {
          * what kind of device each member of the returned array is, and then you may
          * use device-specific methods such as `nm_device_ethernet_get_hw_address()`.
          * @returns a {@link GLib.PtrArray} containing all the `NMDevices`.  The returned array is owned by the {@link NMClient.Client} object and should not be modified.
+         * @since 1.2
          */
         get_all_devices(): Device[];
 
@@ -3182,6 +3222,7 @@ export namespace NMClient {
          * `nm_client_check_connectivity_async()`, which re-check the
          * connectivity state first before returning any information.
          * @returns the current connectivity state
+         * @since 0.9.8.6
          */
         get_connectivity(): NetworkManager.ConnectivityState;
 
@@ -3213,6 +3254,7 @@ export namespace NMClient {
          * @param level return location for logging level string
          * @param domains return location for log domains string. The string is   a list of domains separated by ","
          * @returns `true` on success, `false` otherwise
+         * @since 0.9.8
          */
         get_logging(level: string | null, domains: string | null): boolean;
 
@@ -3243,6 +3285,7 @@ export namespace NMClient {
          * If there is no default route, or the default route is over a
          * non-NetworkManager-recognized device, this will return `null`.
          * @returns the appropriate {@link NMClient.ActiveConnection}, if any
+         * @since 0.9.8.6
          */
         get_primary_connection(): ActiveConnection;
 
@@ -3250,6 +3293,7 @@ export namespace NMClient {
          * Tests whether the daemon is still in the process of activating
          * connections at startup.
          * @returns whether the daemon is still starting up
+         * @since 0.9.10
          */
         get_startup(): boolean;
 
@@ -3284,6 +3328,7 @@ export namespace NMClient {
          * @param level logging level to set (`null` or an empty string for no change)
          * @param domains logging domains to set. The string should be a list of log   domains separated by ",". (`null` or an empty string for no change)
          * @returns `true` on success, `false` otherwise
+         * @since 0.9.8
          */
         set_logging(level: string | null, domains: string | null): boolean;
 
@@ -3386,6 +3431,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3429,6 +3475,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3472,6 +3519,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3480,6 +3528,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3488,6 +3537,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Client;
 
@@ -3531,6 +3581,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3539,6 +3590,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -3584,6 +3636,7 @@ export namespace NMClient {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3627,6 +3680,7 @@ export namespace NMClient {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -3741,6 +3795,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3784,6 +3839,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3827,6 +3883,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3835,6 +3892,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3843,6 +3901,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DHCP4Config;
 
@@ -3886,6 +3945,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3894,6 +3954,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -3939,6 +4000,7 @@ export namespace NMClient {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3982,6 +4044,7 @@ export namespace NMClient {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -4096,6 +4159,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -4139,6 +4203,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4182,6 +4247,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -4190,6 +4256,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -4198,6 +4265,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DHCP6Config;
 
@@ -4241,6 +4309,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -4249,6 +4318,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -4294,6 +4364,7 @@ export namespace NMClient {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4337,6 +4408,7 @@ export namespace NMClient {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -4688,6 +4760,7 @@ export namespace NMClient {
          * Generates a list of short-ish unique presentation names for the
          * devices in `devices`.
          * @param devices an array of {@link NMClient.Device}
+         * @since 0.9.10
          */
         static disambiguate_names(devices: Device[]): string[];
 
@@ -4711,6 +4784,7 @@ export namespace NMClient {
 
         /**
          * Gets the current a hardware address (MAC) for the `device`.
+         * @since 0.9.10
          * @virtual
          */
         vfunc_get_hw_address(): string;
@@ -4718,6 +4792,7 @@ export namespace NMClient {
         /**
          * Gets the (primary) {@link NetworkManager.Setting} subtype associated with connections
          * that can be used on `device`.
+         * @since 0.9.10
          * @virtual
          */
         vfunc_get_setting_type(): GObject.GType;
@@ -4725,6 +4800,7 @@ export namespace NMClient {
         /**
          * Gets a (non-localized) description of the type of device that
          * `device` is.
+         * @since 0.9.10
          * @virtual
          */
         vfunc_get_type_description(): string;
@@ -4771,6 +4847,7 @@ export namespace NMClient {
         /**
          * Deletes the software device. Hardware devices can't be deleted.
          * @param callback callback to be called when delete operation completes
+         * @since 1.0
          */
         ["delete"](callback: DeviceCallbackFn | null): void;
 
@@ -4818,6 +4895,7 @@ export namespace NMClient {
          * Gets the `NMRemoteConnections` currently known to the daemon that could
          * be activated on `device`.
          * @returns the {@link GLib.PtrArray} containing `NMRemoteConnections`. This is the internal copy used by the connection, and must not be modified.
+         * @since 0.9.8
          */
         get_available_connections(): RemoteConnection[];
 
@@ -4830,6 +4908,7 @@ export namespace NMClient {
         /**
          * Gets a description of `device`, based on its vendor and product names.
          * @returns a description of `device`. If either the vendor or the   product name is unknown, this returns the interface name.
+         * @since 0.9.10
          */
         get_description(): string;
 
@@ -4887,6 +4966,7 @@ export namespace NMClient {
         /**
          * Gets the current a hardware address (MAC) for the `device`.
          * @returns the current MAC of the device, or `null`. This is the internal string used by the device, and must not be modified.
+         * @since 0.9.10
          */
         get_hw_address(): string;
 
@@ -4932,6 +5012,7 @@ export namespace NMClient {
         /**
          * Gets the  MTU of the {@link NMClient.Device}.
          * @returns the MTU of the device in bytes.
+         * @since 0.9.10
          */
         get_mtu(): number;
 
@@ -4941,6 +5022,7 @@ export namespace NMClient {
          * seemingly-unrelated `NMDevices` are actually just different virtual
          * ports on a single physical port. (Eg, NPAR / SR-IOV.)
          * @returns the physical port ID of the device, or `null` if the port   ID is unknown. This is the internal string used by the device and   must not be modified.
+         * @since 0.9.10
          */
         get_physical_port_id(): string;
 
@@ -4954,6 +5036,7 @@ export namespace NMClient {
          * Gets the (primary) {@link NetworkManager.Setting} subtype associated with connections
          * that can be used on `device`.
          * @returns `device`'s associated {@link NetworkManager.Setting} type
+         * @since 0.9.10
          */
         get_setting_type(): GObject.GType;
 
@@ -4974,6 +5057,7 @@ export namespace NMClient {
          * Gets a (non-localized) description of the type of device that
          * `device` is.
          * @returns the type description of the device. This is the internal string used by the device, and must not be modified.
+         * @since 0.9.10
          */
         get_type_description(): string;
 
@@ -4991,12 +5075,14 @@ export namespace NMClient {
 
         /**
          * @returns `true` if the device exists, or `false` if it is a placeholder device that could be automatically created by NetworkManager if one of its {@link NMClient.Device.available_connections} was activated.
+         * @since 1.2
          */
         is_real(): boolean;
 
         /**
          * Whether the device is a software device.
          * @returns `true` if `device` is a software device, `false` if it is a hardware device.
+         * @since 1.0
          */
         is_software(): boolean;
 
@@ -5009,6 +5095,7 @@ export namespace NMClient {
         /**
          * Enables or disables management of  {@link NMClient.Device} by NetworkManager.
          * @param managed `true` to make the device managed by NetworkManager.
+         * @since 1.2
          */
         set_managed(managed: boolean): void;
 
@@ -5051,6 +5138,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5094,6 +5182,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5137,6 +5226,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5145,6 +5235,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5153,6 +5244,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Device;
 
@@ -5196,6 +5288,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -5204,6 +5297,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -5249,6 +5343,7 @@ export namespace NMClient {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5292,6 +5387,7 @@ export namespace NMClient {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -5422,6 +5518,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5465,6 +5562,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5508,6 +5606,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5516,6 +5615,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5524,6 +5624,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceAdsl;
 
@@ -5567,6 +5668,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -5575,6 +5677,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -5711,6 +5814,7 @@ export namespace NMClient {
         /**
          * Gets the devices currently enslaved to `device`.
          * @returns the {@link GLib.PtrArray} containing `NMDevices` that are slaves of `device`. This is the internal copy used by the device, and must not be modified.
+         * @since 0.9.6.4
          */
         get_slaves(): Device[];
 
@@ -5753,6 +5857,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5796,6 +5901,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5839,6 +5945,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5847,6 +5954,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5855,6 +5963,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceBond;
 
@@ -5898,6 +6007,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -5906,6 +6016,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -6033,18 +6144,21 @@ export namespace NMClient {
         /**
          * Whether the device has carrier.
          * @returns `true` if the device has carrier
+         * @since 0.9.8
          */
         get_carrier(): boolean;
 
         /**
          * Gets the hardware (MAC) address of the {@link NMClient.DeviceBridge}
          * @returns the hardware address. This is the internal string used by the device, and must not be modified.
+         * @since 0.9.8
          */
         get_hw_address(): string;
 
         /**
          * Gets the devices currently enslaved to `device`.
          * @returns the {@link GLib.PtrArray} containing `NMDevices` that are slaves of `device`. This is the internal copy used by the device, and must not be modified.
+         * @since 0.9.8
          */
         get_slaves(): Device[];
 
@@ -6087,6 +6201,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -6130,6 +6245,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6173,6 +6289,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -6181,6 +6298,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -6189,6 +6307,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceBridge;
 
@@ -6232,6 +6351,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -6240,6 +6360,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -6430,6 +6551,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -6473,6 +6595,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6516,6 +6639,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -6524,6 +6648,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -6532,6 +6657,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceBt;
 
@@ -6575,6 +6701,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -6583,6 +6710,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -6781,6 +6909,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -6824,6 +6953,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6867,6 +6997,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -6875,6 +7006,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -6883,6 +7015,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceEthernet;
 
@@ -6926,6 +7059,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -6934,6 +7068,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -7058,6 +7193,7 @@ export namespace NMClient {
         /**
          * Gets the hardware address of the {@link NMClient.DeviceGeneric}
          * @returns the hardware address. This is the internal string used by the device, and must not be modified.
+         * @since 0.9.10
          */
         get_hw_address(): string;
 
@@ -7100,6 +7236,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -7143,6 +7280,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7186,6 +7324,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -7194,6 +7333,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7202,6 +7342,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceGeneric;
 
@@ -7245,6 +7386,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7253,6 +7395,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -7416,6 +7559,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -7459,6 +7603,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7502,6 +7647,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -7510,6 +7656,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7518,6 +7665,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceInfiniband;
 
@@ -7561,6 +7709,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7569,6 +7718,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -7749,6 +7899,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -7792,6 +7943,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7835,6 +7987,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -7843,6 +7996,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7851,6 +8005,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceModem;
 
@@ -7894,6 +8049,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7902,6 +8058,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -8086,6 +8243,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8129,6 +8287,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8172,6 +8331,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8180,6 +8340,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -8188,6 +8349,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceOlpcMesh;
 
@@ -8231,6 +8393,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -8239,6 +8402,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -8362,18 +8526,21 @@ export namespace NMClient {
         /**
          * Whether the device has carrier.
          * @returns `true` if the device has carrier
+         * @since 0.9.10
          */
         get_carrier(): boolean;
 
         /**
          * Gets the hardware (MAC) address of the {@link NMClient.DeviceTeam}
          * @returns the hardware address. This is the internal string used by the device, and must not be modified.
+         * @since 0.9.10
          */
         get_hw_address(): string;
 
         /**
          * Gets the devices currently enslaved to `device`.
          * @returns the {@link GLib.PtrArray} containing `NMDevices` that are slaves of `device`. This is the internal copy used by the device, and must not be modified.
+         * @since 0.9.10
          */
         get_slaves(): Device[];
 
@@ -8416,6 +8583,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8459,6 +8627,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8502,6 +8671,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8510,6 +8680,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -8518,6 +8689,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceTeam;
 
@@ -8561,6 +8733,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -8569,6 +8742,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -8719,6 +8893,7 @@ export namespace NMClient {
 
         /**
          * @returns the device's parent device
+         * @since 1.0
          */
         get_parent(): Device;
 
@@ -8766,6 +8941,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8809,6 +8985,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8852,6 +9029,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8860,6 +9038,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -8868,6 +9047,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceVlan;
 
@@ -8911,6 +9091,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -8919,6 +9100,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -9186,6 +9368,7 @@ export namespace NMClient {
          * instructs NM to perform scanning. Use `nm_device_wifi_get_access_points()`
          * to get available access points.
          * @param callback the function to call when the call is done
+         * @since 0.9.8
          */
         request_scan_simple(callback: DeviceWifiRequestScanFn | null): void;
 
@@ -9228,6 +9411,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -9271,6 +9455,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -9314,6 +9499,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -9322,6 +9508,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -9330,6 +9517,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceWifi;
 
@@ -9373,6 +9561,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -9381,6 +9570,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -9619,12 +9809,14 @@ export namespace NMClient {
         /**
          * Gets the active {@link NMClient.WimaxNsp}.
          * @returns the access point or `null` if none is active
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_active_nsp(): WimaxNsp;
 
         /**
          * Gets the ID of the serving Base Station when the device is connected.
          * @returns the ID of the serving Base Station, or `null`
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_bsid(): string;
 
@@ -9633,6 +9825,7 @@ export namespace NMClient {
          * to communicate with the network when connected.  Has no meaning when the
          * device is not connected.
          * @returns the center frequency in KHz, or 0
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_center_frequency(): number;
 
@@ -9641,12 +9834,14 @@ export namespace NMClient {
          * link in dB.  CINR is a more accurate measure of radio link quality.  Has no
          * meaning when the device is not connected.
          * @returns the CINR in dB, or 0
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_cinr(): number;
 
         /**
          * Gets the hardware (MAC) address of the {@link NMClient.DeviceWimax}
          * @returns the hardware address. This is the internal string used by the          device, and must not be modified.
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_hw_address(): string;
 
@@ -9654,12 +9849,14 @@ export namespace NMClient {
          * Gets a {@link NMClient.WimaxNsp} by path.
          * @param path the object path of the NSP
          * @returns the access point or `null` if none is found.
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_nsp_by_path(path: string): WimaxNsp;
 
         /**
          * Gets all the scanned NSPs of the {@link NMClient.DeviceWimax}.
          * @returns a {@link GLib.PtrArray} containing          all the scanned `NMWimaxNsps`. The returned array is owned by the client and should not be modified.
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_nsps(): WimaxNsp[];
 
@@ -9669,6 +9866,7 @@ export namespace NMClient {
          * indicate the overall quality of the radio link.  Has no meaning when the
          * device is not connected.
          * @returns the RSSI in dBm, or 0
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_rssi(): number;
 
@@ -9677,6 +9875,7 @@ export namespace NMClient {
          * 0.5 dBm.  i.e. a TxPower of -11 represents an actual device TX power of
          * -5.5 dBm.  Has no meaning when the device is not connected.
          * @returns the TX power in dBm, or 0
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_tx_power(): number;
 
@@ -9719,6 +9918,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -9762,6 +9962,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -9805,6 +10006,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -9813,6 +10015,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -9821,6 +10024,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): DeviceWimax;
 
@@ -9864,6 +10068,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -9872,6 +10077,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -10018,6 +10224,7 @@ export namespace NMClient {
         /**
          * Gets the IP4 gateway address.
          * @returns the IP4 address of the gateway.
+         * @since 0.9.10
          */
         get_gateway(): string;
 
@@ -10036,6 +10243,7 @@ export namespace NMClient {
         /**
          * Gets the dns searches.
          * @returns the {@link GLib.PtrArray} containing dns searches as strings. This is the internal copy used by the configuration, and must not be modified.
+         * @since 0.9.10
          */
         get_searches(): string[];
 
@@ -10084,6 +10292,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -10127,6 +10336,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -10170,6 +10380,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -10178,6 +10389,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -10186,6 +10398,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): IP4Config;
 
@@ -10229,6 +10442,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -10237,6 +10451,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -10282,6 +10497,7 @@ export namespace NMClient {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10325,6 +10541,7 @@ export namespace NMClient {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -10449,6 +10666,7 @@ export namespace NMClient {
         /**
          * Gets the IP6 gateway.
          * @returns the IPv6 gateway of the configuration.
+         * @since 0.9.10
          */
         get_gateway(): string;
 
@@ -10456,12 +10674,14 @@ export namespace NMClient {
          * Gets the domain name server at index `idx` in the configuration.
          * @param idx index of the nameserver to return
          * @returns the IPv6 address of domain name server at index `iidx`
+         * @since 0.9.10
          */
         get_nameserver(idx: number): Uint8Array;
 
         /**
          * Gets the number of the domain name servers in the configuration.
          * @returns the number of domain name servers
+         * @since 0.9.10
          */
         get_num_nameservers(): number;
 
@@ -10474,6 +10694,7 @@ export namespace NMClient {
         /**
          * Gets the dns searches.
          * @returns the {@link GLib.PtrArray} containing dns searches as strings. This is the internal copy used by the configuration, and must not be modified.
+         * @since 0.9.10
          */
         get_searches(): string[];
 
@@ -10516,6 +10737,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -10559,6 +10781,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -10602,6 +10825,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -10610,6 +10834,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -10618,6 +10843,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): IP6Config;
 
@@ -10661,6 +10887,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -10669,6 +10896,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -10714,6 +10942,7 @@ export namespace NMClient {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10757,6 +10986,7 @@ export namespace NMClient {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -10890,6 +11120,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -10933,6 +11164,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -10976,6 +11208,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -10984,6 +11217,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -10992,6 +11226,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Object;
 
@@ -11035,6 +11270,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -11043,6 +11279,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -11088,6 +11325,7 @@ export namespace NMClient {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11131,6 +11369,7 @@ export namespace NMClient {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -11255,6 +11494,7 @@ export namespace NMClient {
          * `nm_remote_connection_save()` or `nm_remote_connection_commit_changes()` is
          * called.
          * @param callback a function to be called when the commit completes
+         * @since 0.9.10
          */
         commit_changes_unsaved(callback: RemoteConnectionResultFunc | null): void;
 
@@ -11273,6 +11513,7 @@ export namespace NMClient {
 
         /**
          * @returns `true` if the remote connection contains changes that have not been saved to disk, `false` if the connection is the same as its on-disk representation.
+         * @since 0.9.10
          */
         get_unsaved(): boolean;
 
@@ -11280,6 +11521,7 @@ export namespace NMClient {
          * Saves the connection to disk if the connection has changes that have not yet
          * been written to disk, or if the connection has never been saved.
          * @param callback a function to be called when the save completes
+         * @since 0.9.10
          */
         save(callback: RemoteConnectionResultFunc | null): void;
 
@@ -11322,6 +11564,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -11365,6 +11608,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -11408,6 +11652,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -11416,6 +11661,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -11424,6 +11670,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): RemoteConnection;
 
@@ -11467,6 +11714,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -11475,6 +11723,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -11520,6 +11769,7 @@ export namespace NMClient {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11563,6 +11813,7 @@ export namespace NMClient {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -11718,6 +11969,7 @@ export namespace NMClient {
          * @param connection the connection to add. Note that this object's settings will be   added, not the object itself
          * @param callback callback to be called when the add operation completes
          * @returns `true` if the request was successful, `false` if it failed
+         * @since 0.9.10
          */
         add_connection_unsaved(connection: NetworkManager.Connection, callback: RemoteSettingsAddConnectionFunc): boolean;
 
@@ -11725,6 +11977,7 @@ export namespace NMClient {
          * Returns the first matching %NMRemoteConnection matching a given `id`.
          * @param id the id of the remote connection
          * @returns the remote connection object on success, or `null` if no  matching object was found.
+         * @since 0.9.10
          */
         get_connection_by_id(id: string): RemoteConnection;
 
@@ -11761,6 +12014,7 @@ export namespace NMClient {
          * filenames that failed to load.
          * @param filenames `null`-terminated array of filenames to load
          * @returns `true` if NetworkManager at least tried to load `filenames`, `false` if an error occurred (eg, permission denied).
+         * @since 0.9.10
          */
         load_connections(filenames: string): [boolean, string];
 
@@ -11769,6 +12023,7 @@ export namespace NMClient {
          * files from disk, adding, updating, and removing connections until
          * the in-memory state matches the on-disk state.
          * @returns `true` on success, `false` on failure
+         * @since 0.9.10
          */
         reload_connections(): boolean;
 
@@ -11820,6 +12075,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -11863,6 +12119,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -11906,6 +12163,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -11914,6 +12172,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -11922,6 +12181,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): RemoteSettings;
 
@@ -11965,6 +12225,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -11973,6 +12234,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -12018,6 +12280,7 @@ export namespace NMClient {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -12061,6 +12324,7 @@ export namespace NMClient {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -12431,6 +12695,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -12474,6 +12739,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -12517,6 +12783,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -12525,6 +12792,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -12533,6 +12801,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): VPNConnection;
 
@@ -12576,6 +12845,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -12584,6 +12854,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -12751,6 +13022,7 @@ export namespace NMClient {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -12794,6 +13066,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -12837,6 +13110,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -12845,6 +13119,7 @@ export namespace NMClient {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -12853,6 +13128,7 @@ export namespace NMClient {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): WimaxNsp;
 
@@ -12896,6 +13172,7 @@ export namespace NMClient {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -12904,6 +13181,7 @@ export namespace NMClient {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -12949,6 +13227,7 @@ export namespace NMClient {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -12992,6 +13271,7 @@ export namespace NMClient {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;

@@ -716,6 +716,7 @@ export namespace AtrilDocument {
 
         /**
          * Get the color of `annot`.
+         * @deprecated since 1.2.1: Use `ev_annotation_get_rgba()` instead.
          */
         get_color(): Gdk.Color;
 
@@ -756,6 +757,7 @@ export namespace AtrilDocument {
 
         /**
          * Gets the color of `annot`.
+         * @since 1.2.1
          */
         get_rgba(): Gdk.RGBA;
 
@@ -765,6 +767,7 @@ export namespace AtrilDocument {
          * notify::color signal on `annot`.
          * @param color a {@link Gdk.Color}
          * @returns `true`  when the color has been changed, `false` otherwise.
+         * @deprecated since 1.2.1: Use `ev_annotation_set_rgba()` instead.
          */
         set_color(color: Gdk.Color): boolean;
 
@@ -811,6 +814,7 @@ export namespace AtrilDocument {
          * Set the color of the annotation to `rgba`.
          * @param rgba a {@link Gdk.RGBA}
          * @returns `true` if the color has been changed, `false` otherwise
+         * @since 1.2.1
          */
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
@@ -3216,6 +3220,7 @@ export namespace AtrilDocument {
 
         /**
          * @param mapping {@link AtrilDocument.Mapping} to remove
+         * @since 3.14
          */
         remove(mapping: Mapping): void;
 

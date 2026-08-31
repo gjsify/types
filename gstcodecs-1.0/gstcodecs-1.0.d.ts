@@ -459,6 +459,7 @@ export namespace GstCodecs {
          * bitstream for subclass to decode it.
          * @param picture a {@link GstCodecs.AV1Picture}
          * @param tile a {@link GstCodecs.AV1Tile}
+         * @since 1.20
          * @virtual
          */
         vfunc_decode_tile(picture: AV1Picture, tile: AV1Tile): Gst.FlowReturn;
@@ -469,6 +470,7 @@ export namespace GstCodecs {
          * function is not optional.
          * @param frame the current {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.AV1Picture}
+         * @since 1.22
          * @virtual
          */
         vfunc_duplicate_picture(frame: GstVideo.VideoCodecFrame, picture: AV1Picture): AV1Picture;
@@ -477,6 +479,7 @@ export namespace GstCodecs {
          * Optional. Called per one {@link GstCodecs.AV1Picture} to notify subclass to finish
          * decoding process for the {@link GstCodecs.AV1Picture}
          * @param picture a {@link GstCodecs.AV1Picture}
+         * @since 1.20
          * @virtual
          */
         vfunc_end_picture(picture: AV1Picture): Gst.FlowReturn;
@@ -485,6 +488,7 @@ export namespace GstCodecs {
          * Optional. Called by baseclass to query whether delaying output is
          * preferred by subclass or not.
          * @param live whether upstream is live or not
+         * @since 1.22
          * @virtual
          */
         vfunc_get_preferred_output_delay(live: boolean): number;
@@ -495,6 +499,7 @@ export namespace GstCodecs {
          * on the {@link GstCodecs.AV1Picture} via gst_av1_picture_set_user_data
          * @param frame a {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.AV1Picture}
+         * @since 1.20
          * @virtual
          */
         vfunc_new_picture(frame: GstVideo.VideoCodecFrame, picture: AV1Picture): Gst.FlowReturn;
@@ -503,6 +508,7 @@ export namespace GstCodecs {
          * Notifies subclass of SPS update
          * @param seq_hdr a {@link GstCodecParsers.AV1SequenceHeaderOBU}
          * @param max_dpb_size the size of dpb including preferred output delay   by subclass reported via get_preferred_output_delay method.
+         * @since 1.20
          * @virtual
          */
         vfunc_new_sequence(seq_hdr: GstCodecParsers.AV1SequenceHeaderOBU, max_dpb_size: number): Gst.FlowReturn;
@@ -512,6 +518,7 @@ export namespace GstCodecs {
          * The {@link GstVideo.VideoCodecFrame} must be consumed by subclass.
          * @param frame a {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.AV1Picture}
+         * @since 1.20
          * @virtual
          */
         vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: AV1Picture): Gst.FlowReturn;
@@ -521,6 +528,7 @@ export namespace GstCodecs {
          * decoding process for the {@link GstCodecs.AV1Picture}
          * @param picture a {@link GstCodecs.AV1Picture}
          * @param dpb a {@link GstCodecs.AV1Dpb}
+         * @since 1.20
          * @virtual
          */
         vfunc_start_picture(picture: AV1Picture, dpb: AV1Dpb): Gst.FlowReturn;
@@ -624,6 +632,7 @@ export namespace GstCodecs {
          * Optional. Called by baseclass to query whether delaying output is
          * preferred by subclass or not.
          * @param live whether upstream is live or not
+         * @since 1.20
          * @virtual
          */
         vfunc_get_preferred_output_delay(live: boolean): number;
@@ -634,6 +643,7 @@ export namespace GstCodecs {
          * gst_h264_picture_set_user_data
          * @param first_field the first field {@link GstCodecs.H264Picture} already decoded
          * @param second_field a {@link GstCodecs.H264Picture} for the second field
+         * @since 1.20
          * @virtual
          */
         vfunc_new_field_picture(first_field: H264Picture, second_field: H264Picture): Gst.FlowReturn;
@@ -681,12 +691,14 @@ export namespace GstCodecs {
          * the `system_frame_number`
          * @param system_frame_number a target system frame number of {@link GstCodecs.H264Picture}
          * @returns a {@link GstCodecs.H264Picture} if successful, or `null` otherwise
+         * @since 1.18
          */
         get_picture(system_frame_number: number): H264Picture | null;
 
         /**
          * Called to en/disable reference picture modification process.
          * @param process whether subclass is requiring reference picture modification process
+         * @since 1.18
          */
         set_process_ref_pic_lists(process: boolean): void;
     }
@@ -769,6 +781,7 @@ export namespace GstCodecs {
          * Optional. Called by baseclass to query whether delaying output is
          * preferred by subclass or not.
          * @param live whether upstream is live or not
+         * @since 1.22
          * @virtual
          */
         vfunc_get_preferred_output_delay(live: boolean): number;
@@ -814,6 +827,7 @@ export namespace GstCodecs {
          * the `system_frame_number`
          * @param system_frame_number a target system frame number of {@link GstCodecs.H265Picture}
          * @returns a {@link GstCodecs.H265Picture} if successful, or `null` otherwise
+         * @since 1.20
          */
         get_picture(system_frame_number: number): H265Picture | null;
 
@@ -821,12 +835,14 @@ export namespace GstCodecs {
          * Retrieve the extended SPS values attached to the given {@link GstCodecParsers.H265SPS}
          * @param sps the {@link GstCodecParsers.H265SPS} matching the requested {@link GstCodecParsers.H265SPSEXT}
          * @returns a {@link GstCodecParsers.H265SPSEXT} if successful, or `null` otherwise
+         * @since 1.28
          */
         get_sps_ext(sps: GstCodecParsers.H265SPS): GstCodecParsers.H265SPSEXT | null;
 
         /**
          * Called to en/disable reference picture modification process.
          * @param process whether subclass is requiring reference picture modification process
+         * @since 1.20
          */
         set_process_ref_pic_lists(process: boolean): void;
     }
@@ -890,6 +906,7 @@ export namespace GstCodecs {
          * for subclass to decode it.
          * @param picture a {@link GstCodecs.H266Picture}
          * @param slice a {@link GstCodecs.H266Slice}
+         * @since 1.26
          * @virtual
          */
         vfunc_decode_slice(picture: H266Picture, slice: H266Slice): Gst.FlowReturn;
@@ -898,6 +915,7 @@ export namespace GstCodecs {
          * Optional. Called per one {@link GstCodecs.H266Picture} to notify subclass to finish
          * decoding process for the {@link GstCodecs.H266Picture}
          * @param picture a {@link GstCodecs.H266Picture}
+         * @since 1.26
          * @virtual
          */
         vfunc_end_picture(picture: H266Picture): Gst.FlowReturn;
@@ -906,6 +924,7 @@ export namespace GstCodecs {
          * Optional. Called by baseclass to query whether delaying output is
          * preferred by subclass or not.
          * @param live whether upstream is live or not
+         * @since 1.26
          * @virtual
          */
         vfunc_get_preferred_output_delay(live: boolean): number;
@@ -916,6 +935,7 @@ export namespace GstCodecs {
          * on the {@link GstCodecs.H266Picture} via gst_h266_picture_set_user_data
          * @param frame a {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.H266Picture}
+         * @since 1.26
          * @virtual
          */
         vfunc_new_picture(frame: GstVideo.VideoCodecFrame, picture: H266Picture): Gst.FlowReturn;
@@ -924,6 +944,7 @@ export namespace GstCodecs {
          * Notifies subclass of video sequence update
          * @param sps a {@link GstCodecParsers.H266SPS}
          * @param max_dpb_size the size of dpb including preferred output delay   by subclass reported via get_preferred_output_delay method.
+         * @since 1.26
          * @virtual
          */
         vfunc_new_sequence(sps: GstCodecParsers.H266SPS, max_dpb_size: number): Gst.FlowReturn;
@@ -941,6 +962,7 @@ export namespace GstCodecs {
          * @param picture a {@link GstCodecs.H266Picture}
          * @param slice a {@link GstCodecs.H266Slice}
          * @param dpb a {@link GstCodecs.H266Dpb}
+         * @since 1.26
          * @virtual
          */
         vfunc_start_picture(picture: H266Picture, slice: H266Slice, dpb: H266Dpb): Gst.FlowReturn;
@@ -1005,6 +1027,7 @@ export namespace GstCodecs {
          * for subclass to decode it.
          * @param picture a {@link GstCodecs.Mpeg2Picture}
          * @param slice a {@link GstCodecs.Mpeg2Slice}
+         * @since 1.20
          * @virtual
          */
         vfunc_decode_slice(picture: Mpeg2Picture, slice: Mpeg2Slice): Gst.FlowReturn;
@@ -1013,6 +1036,7 @@ export namespace GstCodecs {
          * Optional. Called per one {@link GstCodecs.Mpeg2Picture} to notify subclass to finish
          * decoding process for the {@link GstCodecs.Mpeg2Picture}
          * @param picture a {@link GstCodecs.Mpeg2Picture}
+         * @since 1.20
          * @virtual
          */
         vfunc_end_picture(picture: Mpeg2Picture): Gst.FlowReturn;
@@ -1021,6 +1045,7 @@ export namespace GstCodecs {
          * Optional. Called by baseclass to query whether delaying output is
          * preferred by subclass or not.
          * @param is_live whether upstream is live or not
+         * @since 1.20
          * @virtual
          */
         vfunc_get_preferred_output_delay(is_live: boolean): number;
@@ -1031,6 +1056,7 @@ export namespace GstCodecs {
          * gst_mpeg2_picture_set_user_data
          * @param first_field the first field {@link GstCodecs.Mpeg2Picture} already decoded
          * @param second_field a {@link GstCodecs.Mpeg2Picture} for the second field
+         * @since 1.20
          * @virtual
          */
         vfunc_new_field_picture(first_field: Mpeg2Picture, second_field: Mpeg2Picture): Gst.FlowReturn;
@@ -1041,6 +1067,7 @@ export namespace GstCodecs {
          * on the {@link GstCodecs.Mpeg2Picture} via gst_mpeg2_picture_set_user_data
          * @param frame a {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.Mpeg2Picture}
+         * @since 1.20
          * @virtual
          */
         vfunc_new_picture(frame: GstVideo.VideoCodecFrame, picture: Mpeg2Picture): Gst.FlowReturn;
@@ -1052,6 +1079,7 @@ export namespace GstCodecs {
          * @param seq_display_ext 
          * @param seq_scalable_ext 
          * @param max_dpb_size the size of dpb including preferred output delay   by subclass reported via get_preferred_output_delay method.
+         * @since 1.20
          * @virtual
          */
         vfunc_new_sequence(seq: GstCodecParsers.MpegVideoSequenceHdr, seq_ext: GstCodecParsers.MpegVideoSequenceExt, seq_display_ext: GstCodecParsers.MpegVideoSequenceDisplayExt, seq_scalable_ext: GstCodecParsers.MpegVideoSequenceScalableExt, max_dpb_size: number): Gst.FlowReturn;
@@ -1061,6 +1089,7 @@ export namespace GstCodecs {
          * The {@link GstVideo.VideoCodecFrame} must be consumed by subclass.
          * @param frame a {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.Mpeg2Picture}
+         * @since 1.20
          * @virtual
          */
         vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: Mpeg2Picture): Gst.FlowReturn;
@@ -1072,6 +1101,7 @@ export namespace GstCodecs {
          * @param slice a {@link GstCodecs.Mpeg2Slice}
          * @param prev_picture a {@link GstCodecs.Mpeg2Picture}
          * @param next_picture a {@link GstCodecs.Mpeg2Picture}
+         * @since 1.20
          * @virtual
          */
         vfunc_start_picture(picture: Mpeg2Picture, slice: Mpeg2Slice, prev_picture: Mpeg2Picture, next_picture: Mpeg2Picture): Gst.FlowReturn;
@@ -1150,6 +1180,7 @@ export namespace GstCodecs {
          * Optional. Called by baseclass to query whether delaying output is
          * preferred by subclass or not.
          * @param is_live whether upstream is live or not
+         * @since 1.20
          * @virtual
          */
         vfunc_get_preferred_output_delay(is_live: boolean): number;
@@ -1253,6 +1284,7 @@ export namespace GstCodecs {
          * given `dpb`
          * @param picture a {@link GstCodecs.Vp9Picture} to decoder
          * @param dpb a {@link GstCodecs.Vp9Dpb}
+         * @since 1.18
          * @virtual
          */
         vfunc_decode_picture(picture: Vp9Picture, dpb: Vp9Dpb): Gst.FlowReturn;
@@ -1269,6 +1301,7 @@ export namespace GstCodecs {
          * frame.
          * @param frame a {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.Vp9Picture} to be duplicated
+         * @since 1.18
          * @virtual
          */
         vfunc_duplicate_picture(frame: GstVideo.VideoCodecFrame, picture: Vp9Picture): Vp9Picture | null;
@@ -1277,6 +1310,7 @@ export namespace GstCodecs {
          * Optional. Called per one {@link GstCodecs.Vp9Picture} to notify subclass to finish
          * decoding process for the {@link GstCodecs.Vp9Picture}
          * @param picture a {@link GstCodecs.Vp9Picture}
+         * @since 1.18
          * @virtual
          */
         vfunc_end_picture(picture: Vp9Picture): Gst.FlowReturn;
@@ -1286,6 +1320,7 @@ export namespace GstCodecs {
          * controls how many frames to delay when calling
          * GstVp9DecoderClass::output_picture
          * @param is_live whether upstream is live or not
+         * @since 1.20
          * @virtual
          */
         vfunc_get_preferred_output_delay(is_live: boolean): number;
@@ -1296,6 +1331,7 @@ export namespace GstCodecs {
          * via gst_vp9_picture_set_user_data
          * @param frame a {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.Vp9Picture}
+         * @since 1.18
          * @virtual
          */
         vfunc_new_picture(frame: GstVideo.VideoCodecFrame, picture: Vp9Picture): Gst.FlowReturn;
@@ -1305,6 +1341,7 @@ export namespace GstCodecs {
          * profile.
          * @param frame_hdr a {@link GstCodecs.Vp9FrameHeader}
          * @param max_dpb_size the size of dpb including preferred output delay   by subclass reported via get_preferred_output_delay method.
+         * @since 1.18
          * @virtual
          */
         vfunc_new_sequence(frame_hdr: Vp9FrameHeader, max_dpb_size: number): Gst.FlowReturn;
@@ -1313,6 +1350,7 @@ export namespace GstCodecs {
          * Called to notify `picture` is ready to be outputted.
          * @param frame a {@link GstVideo.VideoCodecFrame}
          * @param picture a {@link GstCodecs.Vp9Picture}
+         * @since 1.18
          * @virtual
          */
         vfunc_output_picture(frame: GstVideo.VideoCodecFrame, picture: Vp9Picture): Gst.FlowReturn;
@@ -1321,6 +1359,7 @@ export namespace GstCodecs {
          * Optional. Called to notify subclass to prepare decoding process for
          * `picture`
          * @param picture a {@link GstCodecs.Vp9Picture}
+         * @since 1.18
          * @virtual
          */
         vfunc_start_picture(picture: Vp9Picture): Gst.FlowReturn;
@@ -1329,6 +1368,7 @@ export namespace GstCodecs {
         /**
          * Called to set non-keyframe format change awareness
          * @param support whether subclass can support non-keyframe format change
+         * @since 1.20
          */
         set_non_keyframe_format_change_support(support: boolean): void;
     }
@@ -1361,16 +1401,19 @@ export namespace GstCodecs {
         /**
          * Store the `picture`
          * @param picture a {@link GstCodecs.AV1Picture}
+         * @since 1.20
          */
         add(picture: AV1Picture): void;
 
         /**
          * Clear all stored {@link GstCodecs.AV1Picture}
+         * @since 1.20
          */
         clear(): void;
 
         /**
          * Free the `dpb`
+         * @since 1.20
          */
         free(): void;
     }
@@ -1415,12 +1458,14 @@ export namespace GstCodecs {
          * Gets private data set on the picture via
          * `gst_codec_picture_set_user_data()` previously.
          * @returns The previously set user_data
+         * @since 1.24
          */
         get_user_data(): null;
 
         /**
          * Sets `discont_state` to `picture`
          * @param discont_state a {@link GstVideo.VideoCodecState}
+         * @since 1.24
          */
         set_discont_state(discont_state: GstVideo.VideoCodecState | null): void;
 
@@ -1431,6 +1476,7 @@ export namespace GstCodecs {
          * If a `user_data` was previously set, then the previous set `notify` will be called
          * before the `user_data` is replaced.
          * @param user_data private data
+         * @since 1.24
          */
         set_user_data(user_data: null): void;
     }
@@ -1468,6 +1514,7 @@ export namespace GstCodecs {
          * so that returned {@link GstCodecs.H264Picture} could hold the last reference of it
          * @param drain whether draining or not
          * @returns a {@link GstCodecs.H264Picture} which is needed to be outputted
+         * @since 1.20
          */
         bump(drain: boolean): H264Picture | null;
 
@@ -1488,6 +1535,7 @@ export namespace GstCodecs {
 
         /**
          * @returns `true` if `dpb` is configured for interlaced stream
+         * @since 1.20
          */
         get_interlaced(): boolean;
 
@@ -1495,6 +1543,7 @@ export namespace GstCodecs {
          * Find a long term reference picture which has matching long term picture number
          * @param long_term_pic_num a long term picture number
          * @returns a {@link GstCodecs.H264Picture}
+         * @since 1.20
          */
         get_long_ref_by_long_term_pic_num(long_term_pic_num: number): H264Picture | null;
 
@@ -1506,17 +1555,20 @@ export namespace GstCodecs {
 
         /**
          * @returns the number of maximum frames
+         * @since 1.20
          */
         get_max_num_frames(): number;
 
         /**
          * @returns Maximum number of reorder frames
+         * @since 1.22.2
          */
         get_max_num_reorder_frames(): number;
 
         /**
          * @param system_frame_number 
          * @returns the picture identified with the specified `system_frame_number`, or `null` if DPB does not contain a {@link GstCodecs.H264Picture} corresponding to the `system_frame_number`
+         * @since 1.18
          */
         get_picture(system_frame_number: number): H264Picture | null;
 
@@ -1529,6 +1581,7 @@ export namespace GstCodecs {
          * Retrieve all long-term reference pictures from `dpb`. The picture will be
          * appended to the array.
          * @param include_second_field `true` if the second field pictures need to be included
+         * @since 1.20
          */
         get_pictures_long_term_ref(include_second_field: boolean): H264Picture[];
 
@@ -1537,6 +1590,7 @@ export namespace GstCodecs {
          * appended to the array.
          * @param include_non_existing `true` if non-existing pictures need to be included
          * @param include_second_field `true` if the second field pictures need to be included
+         * @since 1.20
          */
         get_pictures_short_term_ref(include_non_existing: boolean, include_second_field: boolean): H264Picture[];
 
@@ -1554,6 +1608,7 @@ export namespace GstCodecs {
 
         /**
          * @returns `true` if `dpb` still has empty frame buffers.
+         * @since 1.20
          */
         has_empty_frame_buffer(): boolean;
 
@@ -1566,11 +1621,13 @@ export namespace GstCodecs {
          * @param to_insert the current {@link GstCodecs.H264Picture} to insert to dpb.
          * @param latency_mode The required {@link GstCodecs.H264DpbBumpMode} for bumping.
          * @returns `true` if bumping is required
+         * @since 1.20
          */
         needs_bump(to_insert: H264Picture, latency_mode: H264DpbBumpMode): boolean;
 
         /**
          * @returns The number of referenced frames
+         * @since 1.20
          */
         num_ref_frames(): number;
 
@@ -1579,11 +1636,13 @@ export namespace GstCodecs {
          * @param ref_pic_marking a {@link GstCodecParsers.H264RefPicMarking}
          * @param picture a {@link GstCodecs.H264Picture}
          * @returns `true` if successful
+         * @since 1.20
          */
         perform_memory_management_control_operation(ref_pic_marking: GstCodecParsers.H264RefPicMarking, picture: H264Picture): boolean;
 
         /**
          * @param interlaced `true` if interlaced
+         * @since 1.20
          */
         set_interlaced(interlaced: boolean): void;
 
@@ -1591,17 +1650,20 @@ export namespace GstCodecs {
          * Notify the DPB that `picture` is output directly without storing
          * in the DPB.
          * @param picture a {@link GstCodecs.H264Picture} of the last output.
+         * @since 1.20
          */
         set_last_output(picture: H264Picture): void;
 
         /**
          * Set the number of maximum allowed frames to store
          * @param max_num_frames the maximum number of picture
+         * @since 1.20
          */
         set_max_num_frames(max_num_frames: number): void;
 
         /**
          * @param max_num_reorder_frames the max number of reorder frames, which should not exceed the max size of DPB.
+         * @since 1.20
          */
         set_max_num_reorder_frames(max_num_reorder_frames: number): void;
     }
@@ -1673,6 +1735,7 @@ export namespace GstCodecs {
          * so that returned {@link GstCodecs.H265Picture} could hold the last reference of it
          * @param drain whether draining or not
          * @returns a {@link GstCodecs.H265Picture} which is needed to be outputted
+         * @since 1.20
          */
         bump(drain: boolean): H265Picture | null;
 
@@ -1706,6 +1769,7 @@ export namespace GstCodecs {
         /**
          * @param system_frame_number 
          * @returns the picture identified with the specified `system_frame_number`, or `null` if DPB does not contain a {@link GstCodecs.H265Picture} corresponding to the `system_frame_number`
+         * @since 1.20
          */
         get_picture(system_frame_number: number): H265Picture | null;
 
@@ -1750,6 +1814,7 @@ export namespace GstCodecs {
          * @param max_latency_increase SpsMaxLatencyPictures[HighestTid]
          * @param max_dec_pic_buffering sps_max_dec_pic_buffering_minus1[HighestTid ] + 1   or zero if this shouldn't be used for bumping decision
          * @returns `true` if bumping is required
+         * @since 1.20
          */
         needs_bump(max_num_reorder_pics: number, max_latency_increase: number, max_dec_pic_buffering: number): boolean;
 
@@ -1825,6 +1890,7 @@ export namespace GstCodecs {
          * Store the `picture` and perform increase pic_latency_cnt as defined in
          * "C.5.2.3 Additional bumping" process
          * @param picture a {@link GstCodecs.H266Picture}
+         * @since 1.26
          */
         add(picture: H266Picture): void;
 
@@ -1834,27 +1900,32 @@ export namespace GstCodecs {
          * so that returned {@link GstCodecs.H266Picture} could hold the last reference of it.
          * @param drain whether draining or not
          * @returns a {@link GstCodecs.H266Picture} which is needed to be outputted
+         * @since 1.26
          */
         bump(drain: boolean): H266Picture | null;
 
         /**
          * Clear all stored {@link GstCodecs.H266Picture}
+         * @since 1.26
          */
         clear(): void;
 
         /**
          * Delete unneeded pictures from dpb as defined in "C.5.2.2 Output and
          * removal of pictures from the DPB".
+         * @since 1.26
          */
         delete_unused(): void;
 
         /**
          * Free the `dpb`
+         * @since 1.26
          */
         free(): void;
 
         /**
          * @returns the number of maximum pictures
+         * @since 1.26
          */
         get_max_num_pics(): number;
 
@@ -1862,6 +1933,7 @@ export namespace GstCodecs {
          * Find a picture which has matching poc
          * @param poc a picture order count
          * @returns a {@link GstCodecs.H266Picture}
+         * @since 1.26
          */
         get_picture_by_poc(poc: number): H266Picture | null;
 
@@ -1869,26 +1941,31 @@ export namespace GstCodecs {
          * Find a picture which has matching poc_lsb
          * @param poc_lsb a picture order count lsb
          * @returns a {@link GstCodecs.H266Picture}
+         * @since 1.26
          */
         get_picture_by_poc_lsb(poc_lsb: number): H266Picture | null;
 
         /**
          * @returns a {@link GLib.Array} of   {@link GstCodecs.H266Picture} stored in `dpb`
+         * @since 1.26
          */
         get_pictures_all(): H266Picture[];
 
         /**
          * @returns the length of stored dpb array
+         * @since 1.26
          */
         get_size(): number;
 
         /**
          * Mark all pictures are no needed for output
+         * @since 1.26
          */
         mark_all_non_output(): void;
 
         /**
          * Mark all pictures are not referenced
+         * @since 1.26
          */
         mark_all_non_ref(): void;
 
@@ -1897,17 +1974,20 @@ export namespace GstCodecs {
          * @param max_latency_increase MaxLatencyPictures[HighestTid]
          * @param max_dec_pic_buffering dpb_max_dec_pic_buffering_minus1[HighestTid] + 1   or zero if this shouldn't be used for bumping decision.
          * @returns `true` if bumping is required
+         * @since 1.26
          */
         needs_bump(max_num_reorder_pics: number, max_latency_increase: number, max_dec_pic_buffering: number): boolean;
 
         /**
          * @returns The number of referenced pictures in dpb.
+         * @since 1.26
          */
         num_ref_pictures(): number;
 
         /**
          * Set the number of maximum allowed pictures to store
          * @param max_num_pics the maximum number of picture
+         * @since 1.26
          */
         set_max_num_pics(max_num_pics: number): void;
     }
@@ -1965,33 +2045,39 @@ export namespace GstCodecs {
         /**
          * Store the `picture`
          * @param picture a {@link GstCodecs.Mpeg2Picture}
+         * @since 1.20
          */
         add(picture: Mpeg2Picture): void;
 
         /**
          * @returns a {@link GstCodecs.Mpeg2Picture} which is needed to be outputted
+         * @since 1.20
          */
         bump(): Mpeg2Picture | null;
 
         /**
          * Clear all stored {@link GstCodecs.Mpeg2Picture}
+         * @since 1.20
          */
         clear(): void;
 
         /**
          * Free the `dpb`
+         * @since 1.20
          */
         free(): void;
 
         /**
          * Gets the neighbours {@link GstCodecs.Mpeg2Picture} of `picture` in `dpb`.
          * @param picture current {@link GstCodecs.Mpeg2Picture}
+         * @since 1.20
          */
         get_neighbours(picture: Mpeg2Picture): [Mpeg2Picture | null, Mpeg2Picture | null];
 
         /**
          * Checks if `dbp` has a new picture.
          * @returns `TRUE` if `dpb` needs to be bumped; otherwise, `FALSE`
+         * @since 1.20
          */
         need_bump(): boolean;
     }
@@ -2352,6 +2438,7 @@ export namespace GstCodecs {
         // Methods
         /**
          * Frees `parser`.
+         * @since 1.20
          */
         free(): void;
 
@@ -2363,6 +2450,7 @@ export namespace GstCodecs {
          * @param data The data to parse
          * @param size The size of the `data` to parse
          * @returns a {@link GstCodecParsers.Vp9ParserResult}
+         * @since 1.20
          */
         parse_compressed_frame_header(header: Vp9FrameHeader, data: number, size: bigint | number): GstCodecParsers.Vp9ParserResult;
 
@@ -2373,6 +2461,7 @@ export namespace GstCodecs {
          * @param data The data to parse
          * @param size The size of the `data` to parse
          * @returns a {@link GstCodecParsers.Vp9ParserResult}
+         * @since 1.20
          */
         parse_uncompressed_frame_header(header: Vp9FrameHeader, data: number, size: bigint | number): GstCodecParsers.Vp9ParserResult;
     }

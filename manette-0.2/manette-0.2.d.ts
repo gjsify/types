@@ -236,6 +236,7 @@ export namespace Manette {
         /**
          * Gets the device type of `self`.
          * @returns the device type
+         * @since 0.2.10
          */
         get_device_type(): DeviceType;
 
@@ -243,6 +244,7 @@ export namespace Manette {
          * Gets the identifier used by SDL mappings to discriminate game controller
          * devices.
          * @returns the identifier used by SDL mappings
+         * @since 0.2.10
          */
         get_guid(): string;
 
@@ -251,6 +253,7 @@ export namespace Manette {
          * 
          * Can return `NULL` if there's no mapping or `self` doesn't support mappings.
          * @returns the mapping for `self`
+         * @since 0.2.10
          */
         get_mapping(): string | null;
 
@@ -311,6 +314,7 @@ export namespace Manette {
         /**
          * Gets whether `self` supports mapping.
          * @returns whether `self` supports mapping
+         * @since 0.2.10
          */
         supports_mapping(): boolean;
     }

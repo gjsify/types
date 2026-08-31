@@ -517,6 +517,7 @@ export namespace TotemPlParser {
          * Adds a glob to the list of mimetypes to ignore, so that
          * any URI of that glob is ignored during playlist parsing.
          * @param glob a glob to ignore
+         * @since 3.26.4
          */
         add_ignored_glob(glob: string): void;
 

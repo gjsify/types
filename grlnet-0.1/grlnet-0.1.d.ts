@@ -165,6 +165,7 @@ export namespace GrlNet {
          * supporting.  If sets `true`, a new cache will be created. If sets to `false`,
          * current cache is clean and removed.
          * @param use_cache if cache must be used or not
+         * @since 0.1.12
          */
         set_cache(use_cache: boolean): void;
 
@@ -172,6 +173,7 @@ export namespace GrlNet {
          * Sets the new maximum size of cache, in Megabytes. Default value is 10. Using
          * 0 means no cache will be done.
          * @param cache_size size of cache (in Mb)
+         * @since 0.1.12
          */
         set_cache_size(cache_size: number): void;
 

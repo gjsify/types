@@ -1101,6 +1101,7 @@ export namespace GstRtsp {
          * Only applicable in HTTP tunnel mode.
          * @param key HTTP header name
          * @param value HTTP header value
+         * @since 1.24
          */
         add_extra_http_request_header(key: string, value: string): void;
 
@@ -1125,6 +1126,7 @@ export namespace GstRtsp {
          * This function can be cancelled with `gst_rtsp_connection_flush()`.
          * @param timeout a GTimeVal timeout
          * @returns #GST_RTSP_OK when a connection could be made.
+         * @deprecated since 1.18
          */
         connect(timeout: GLib.TimeVal): RTSPResult;
 
@@ -1137,6 +1139,7 @@ export namespace GstRtsp {
          * This function can be cancelled with `gst_rtsp_connection_flush()`.
          * @param timeout a timeout in microseconds
          * @returns #GST_RTSP_OK when a connection could be made.
+         * @since 1.18
          */
         connect_usec(timeout: bigint | number): RTSPResult;
 
@@ -1151,6 +1154,8 @@ export namespace GstRtsp {
          * @param timeout a GTimeVal timeout
          * @param response a {@link GstRtsp.RTSPMessage}
          * @returns #GST_RTSP_OK when a connection could be made.
+         * @since 1.8
+         * @deprecated since 1.18
          */
         connect_with_response(timeout: GLib.TimeVal, response: RTSPMessage): RTSPResult;
 
@@ -1165,6 +1170,7 @@ export namespace GstRtsp {
          * @param timeout a timeout in microseconds
          * @param response a {@link GstRtsp.RTSPMessage}
          * @returns #GST_RTSP_OK when a connection could be made.
+         * @since 1.18
          */
         connect_with_response_usec(timeout: bigint | number, response: RTSPMessage): RTSPResult;
 
@@ -1201,6 +1207,7 @@ export namespace GstRtsp {
         /**
          * Get the ignore_x_server_reply value.
          * @returns returns `true` if the x-server-ip-address header reply will be          ignored, else returns `false`
+         * @since 1.20
          */
         get_ignore_x_server_reply(): boolean;
 
@@ -1231,6 +1238,7 @@ export namespace GstRtsp {
          * when called the first time and will return that same connection on subsequent
          * calls. The server is then responsible for configuring the TLS connection.
          * @returns the TLS connection for `conn`.
+         * @since 1.2
          */
         get_tls(): Gio.TlsConnection;
 
@@ -1239,6 +1247,7 @@ export namespace GstRtsp {
          * after a server certificate can't be verified with the default
          * certificate database.
          * @returns the anchor certificate authorities database, or NULL if no database has been previously set. Use `g_object_unref()` to release the certificate database.
+         * @since 1.4
          */
         get_tls_database(): Gio.TlsDatabase | null;
 
@@ -1247,6 +1256,7 @@ export namespace GstRtsp {
          * database need to interact with the user. This will be used to prompt the
          * user for passwords where necessary.
          * @returns a reference on the {@link Gio.TlsInteraction}. Use `g_object_unref()` to release.
+         * @since 1.6
          */
         get_tls_interaction(): Gio.TlsInteraction | null;
 
@@ -1263,6 +1273,7 @@ export namespace GstRtsp {
          * you want to allow expired certificates, because this could potentially be
          * the only error flag set even if other problems exist with the certificate.
          * @returns the validation flags.
+         * @since 1.2.1
          */
         get_tls_validation_flags(): Gio.TlsCertificateFlags;
 
@@ -1294,12 +1305,14 @@ export namespace GstRtsp {
          * Calculate the next timeout for `conn`, storing the result in `timeout`.
          * @param timeout a timeout
          * @returns #GST_RTSP_OK.
+         * @deprecated since 1.18
          */
         next_timeout(timeout: GLib.TimeVal): RTSPResult;
 
         /**
          * Calculate the next timeout for `conn`
          * @returns #the next timeout in microseconds
+         * @since 1.18
          */
         next_timeout_usec(): number;
 
@@ -1315,6 +1328,7 @@ export namespace GstRtsp {
          * @param events a bitmask of {@link GstRtsp.RTSPEvent} flags to check
          * @param timeout a timeout
          * @returns #GST_RTSP_OK on success.
+         * @deprecated since 1.18
          */
         poll(events: RTSPEvent, timeout: GLib.TimeVal): [RTSPResult, RTSPEvent];
 
@@ -1330,6 +1344,7 @@ export namespace GstRtsp {
          * @param events a bitmask of {@link GstRtsp.RTSPEvent} flags to check
          * @param timeout a timeout in microseconds
          * @returns #GST_RTSP_OK on success.
+         * @since 1.18
          */
         poll_usec(events: RTSPEvent, timeout: bigint | number): [RTSPResult, RTSPEvent];
 
@@ -1342,6 +1357,7 @@ export namespace GstRtsp {
          * @param data the data to read
          * @param timeout a timeout value or `null`
          * @returns #GST_RTSP_OK on success.
+         * @deprecated since 1.18
          */
         read(data: Uint8Array | string, timeout: GLib.TimeVal): RTSPResult;
 
@@ -1354,6 +1370,7 @@ export namespace GstRtsp {
          * @param data the data to read
          * @param timeout a timeout value in microseconds
          * @returns #GST_RTSP_OK on success.
+         * @since 1.18
          */
         read_usec(data: Uint8Array | string, timeout: bigint | number): RTSPResult;
 
@@ -1366,6 +1383,7 @@ export namespace GstRtsp {
          * @param message the message to read
          * @param timeout a timeout value or `null`
          * @returns #GST_RTSP_OK on success.
+         * @deprecated since 1.18
          */
         receive(message: RTSPMessage, timeout: GLib.TimeVal): RTSPResult;
 
@@ -1378,6 +1396,7 @@ export namespace GstRtsp {
          * @param message the message to read
          * @param timeout a timeout value or 0
          * @returns #GST_RTSP_OK on success.
+         * @since 1.18
          */
         receive_usec(message: RTSPMessage, timeout: bigint | number): RTSPResult;
 
@@ -1396,6 +1415,7 @@ export namespace GstRtsp {
          * @param message the message to send
          * @param timeout a timeout value or `null`
          * @returns #GST_RTSP_OK on success.
+         * @deprecated since 1.18
          */
         send(message: RTSPMessage, timeout: GLib.TimeVal): RTSPResult;
 
@@ -1408,6 +1428,8 @@ export namespace GstRtsp {
          * @param messages the messages to send
          * @param timeout a timeout value or `null`
          * @returns #GST_RTSP_OK on success.
+         * @since 1.16
+         * @deprecated since 1.18
          */
         send_messages(messages: RTSPMessage[], timeout: GLib.TimeVal): RTSPResult;
 
@@ -1420,6 +1442,7 @@ export namespace GstRtsp {
          * @param messages the messages to send
          * @param timeout a timeout value in microseconds
          * @returns #GST_RTSP_OK on Since.
+         * @since 1.18
          */
         send_messages_usec(messages: RTSPMessage[], timeout: bigint | number): RTSPResult;
 
@@ -1432,6 +1455,7 @@ export namespace GstRtsp {
          * @param message the message to send
          * @param timeout a timeout value in microseconds
          * @returns #GST_RTSP_OK on success.
+         * @since 1.18
          */
         send_usec(message: RTSPMessage, timeout: bigint | number): RTSPResult;
 
@@ -1443,6 +1467,7 @@ export namespace GstRtsp {
          * have failed. If no {@link Gio.TlsDatabase} is set on this connection, only `func` will
          * be called.
          * @param func a {@link GstRtsp.RTSPConnectionAcceptCertificateFunc} to check certificates
+         * @since 1.14
          */
         set_accept_certificate_func(func: RTSPConnectionAcceptCertificateFunc): void;
 
@@ -1472,6 +1497,7 @@ export namespace GstRtsp {
          * Both requests and responses are validated. If content-length is
          * exceeded, ENOMEM error will be returned.
          * @param limit Content-Length limit
+         * @since 1.18
          */
         set_content_length_limit(limit: number): void;
 
@@ -1487,6 +1513,7 @@ export namespace GstRtsp {
          * Set whether to ignore the x-server-ip-address header reply or not. If the
          * header is ignored, the original address will be used instead.
          * @param ignore `true` to ignore the x-server-ip-address header reply or `false` to          comply with it (`false` is the default).
+         * @since 1.20
          */
         set_ignore_x_server_reply(ignore: boolean): void;
 
@@ -1525,6 +1552,7 @@ export namespace GstRtsp {
          * database will be used to verify the server's certificate in case it
          * can't be verified with the default certificate database first.
          * @param database a {@link Gio.TlsDatabase}
+         * @since 1.4
          */
         set_tls_database(database: Gio.TlsDatabase | null): void;
 
@@ -1533,6 +1561,7 @@ export namespace GstRtsp {
          * database need to interact with the user. This will be used to prompt the
          * user for passwords where necessary.
          * @param interaction a {@link Gio.TlsInteraction}
+         * @since 1.6
          */
         set_tls_interaction(interaction: Gio.TlsInteraction | null): void;
 
@@ -1550,6 +1579,7 @@ export namespace GstRtsp {
          * the only error flag set even if other problems exist with the certificate.
          * @param flags the validation flags.
          * @returns TRUE if the validation flags are set correctly, or FALSE if `conn` is NULL or is not a TLS connection.
+         * @since 1.2.1
          */
         set_tls_validation_flags(flags: Gio.TlsCertificateFlags): boolean;
 
@@ -1569,6 +1599,7 @@ export namespace GstRtsp {
          * @param data the data to write
          * @param timeout a timeout value or `null`
          * @returns #GST_RTSP_OK on success.
+         * @deprecated since 1.18
          */
         write(data: Uint8Array | string, timeout: GLib.TimeVal): RTSPResult;
 
@@ -1581,6 +1612,7 @@ export namespace GstRtsp {
          * @param data the data to write
          * @param timeout a timeout value or 0
          * @returns #GST_RTSP_OK on success.
+         * @since 1.18
          */
         write_usec(data: Uint8Array | string, timeout: bigint | number): RTSPResult;
     }
@@ -1617,6 +1649,7 @@ export namespace GstRtsp {
          * @param header header string
          * @param value the value of the header
          * @returns a {@link GstRtsp.RTSPResult}.
+         * @since 1.6
          */
         add_header_by_name(header: string, value: string): RTSPResult;
 
@@ -1632,6 +1665,7 @@ export namespace GstRtsp {
          * Allocate a new copy of `msg` and store the result in `copy`. The value in
          * `copy` should be release with gst_rtsp_message_free function.
          * @returns a {@link GstRtsp.RTSPResult}
+         * @since 1.14
          */
         copy(): [RTSPResult, RTSPMessage | null];
 
@@ -1666,6 +1700,7 @@ export namespace GstRtsp {
          * will always return `null`. The caller can check if there is a body buffer by
          * calling `gst_rtsp_message_has_body_buffer()`.
          * @returns #GST_RTSP_OK.
+         * @since 1.16
          */
         get_body_buffer(): [RTSPResult, Gst.Buffer];
 
@@ -1684,6 +1719,7 @@ export namespace GstRtsp {
          * @param header a {@link GstRtsp.RTSPHeaderField}
          * @param index the index of the header
          * @returns #GST_RTSP_OK when `field` was found, #GST_RTSP_ENOTIMPL if the key was not found.
+         * @since 1.6
          */
         get_header_by_name(header: string, index: number): [RTSPResult, string];
 
@@ -1696,6 +1732,7 @@ export namespace GstRtsp {
         /**
          * Checks if `msg` has a body and the body is stored as {@link Gst.Buffer}.
          * @returns `true` if `msg` has a body and it's stored as {@link Gst.Buffer}, `false` otherwise.
+         * @since 1.16
          */
         has_body_buffer(): boolean;
 
@@ -1740,6 +1777,7 @@ export namespace GstRtsp {
          * Parses the credentials given in a WWW-Authenticate or Authorization header.
          * @param field a {@link GstRtsp.RTSPHeaderField}
          * @returns `null`-terminated array of GstRTSPAuthCredential or `null`.
+         * @since 1.12
          */
         parse_auth_credentials(field: RTSPHeaderField): RTSPAuthCredential[];
 
@@ -1784,6 +1822,7 @@ export namespace GstRtsp {
          * @param header the header string
          * @param index the index of the header
          * @returns a {@link GstRtsp.RTSPResult}
+         * @since 1.6
          */
         remove_header_by_name(header: string, index: number): RTSPResult;
 
@@ -1800,6 +1839,7 @@ export namespace GstRtsp {
          * will be replaced by the new body.
          * @param buffer a {@link Gst.Buffer}
          * @returns #GST_RTSP_OK.
+         * @since 1.16
          */
         set_body_buffer(buffer: Gst.Buffer): RTSPResult;
 
@@ -1818,6 +1858,7 @@ export namespace GstRtsp {
          * will always return `null`. The caller can check if there is a body buffer by
          * calling `gst_rtsp_message_has_body_buffer()`.
          * @returns #GST_RTSP_OK.
+         * @since 1.16
          */
         steal_body_buffer(): [RTSPResult, Gst.Buffer];
 
@@ -1834,6 +1875,7 @@ export namespace GstRtsp {
          * Any existing body or body buffer will be replaced by the new body.
          * @param buffer a {@link Gst.Buffer}
          * @returns #GST_RTSP_OK.
+         * @since 1.16
          */
         take_body_buffer(buffer: Gst.Buffer): RTSPResult;
 
@@ -1852,6 +1894,7 @@ export namespace GstRtsp {
          * @param header a header string
          * @param value the value of the header
          * @returns a {@link GstRtsp.RTSPResult}.
+         * @since 1.6
          */
         take_header_by_name(header: string, value: string): RTSPResult;
 
@@ -1910,6 +1953,7 @@ export namespace GstRtsp {
          * 
          * UTC times will be converted to nanoseconds since 1900.
          * @param range a {@link GstRtsp.RTSPTimeRange}
+         * @since 1.2
          */
         static get_times(range: RTSPTimeRange): [boolean, Gst.ClockTime, Gst.ClockTime];
 
@@ -2041,6 +2085,7 @@ export namespace GstRtsp {
          * Get the mime type of the transport mode `trans`. This mime type is typically
          * used to generate {@link Gst.Caps} events.
          * @param trans a {@link GstRtsp.RTSPTransMode}
+         * @deprecated This functions only deals with the GstRTSPTransMode and only    returns the mime type for #GST_RTSP_PROFILE_AVP. Use    `gst_rtsp_transport_get_media_type()` instead.
          */
         static get_mime(trans: RTSPTransMode): [RTSPResult, string];
 
@@ -2079,6 +2124,7 @@ export namespace GstRtsp {
          * Get the media type of `transport`. This media type is typically
          * used to generate {@link Gst.Caps} events.
          * @returns #GST_RTSP_OK.
+         * @since 1.4
          */
         get_media_type(): [RTSPResult, string];
     }
@@ -2161,6 +2207,7 @@ export namespace GstRtsp {
          * combined with the control path for `control_path`
          * @param control_path an RTSP aggregate control path
          * @returns a string with the request URI combined with the control path. `g_free()` after usage.
+         * @since 1.18
          */
         get_request_uri_with_control(control_path: string): string;
 
@@ -2192,6 +2239,7 @@ export namespace GstRtsp {
         /**
          * Get the maximum amount of bytes and messages that will be queued in `watch`.
          * See `gst_rtsp_watch_set_send_backlog()`.
+         * @since 1.2
          */
         get_send_backlog(): [number, number];
 
@@ -2223,6 +2271,7 @@ export namespace GstRtsp {
          * once for the last message.
          * @param messages the messages to send
          * @returns #GST_RTSP_OK on success.
+         * @since 1.16
          */
         send_messages(messages: RTSPMessage[]): [RTSPResult, number];
 
@@ -2231,6 +2280,7 @@ export namespace GstRtsp {
          * and make sure `gst_rtsp_watch_write_data()` returns immediately with
          * #GST_RTSP_EINTR. And empty the queue.
          * @param flushing new flushing state
+         * @since 1.4
          */
         set_flushing(flushing: boolean): void;
 
@@ -2242,6 +2292,7 @@ export namespace GstRtsp {
          * A value of 0 for `bytes` or `messages` means no limits.
          * @param bytes maximum bytes
          * @param messages maximum messages
+         * @since 1.2
          */
         set_send_backlog(bytes: bigint | number, messages: number): void;
 
@@ -2264,6 +2315,8 @@ export namespace GstRtsp {
          * free space in the backlog queue and try again.
          * @param timeout a GTimeVal timeout
          * @returns {@link GstRtsp.RTSPResult.OK} when if there is room in queue.          {@link GstRtsp.RTSPResult.ETIMEOUT} when `timeout` was reached.          {@link GstRtsp.RTSPResult.EINTR} when `watch` is flushing          {@link GstRtsp.RTSPResult.EINVAL} when called with invalid parameters.
+         * @since 1.4
+         * @deprecated since 1.18
          */
         wait_backlog(timeout: GLib.TimeVal): RTSPResult;
 
@@ -2280,6 +2333,7 @@ export namespace GstRtsp {
          * free space in the backlog queue and try again.
          * @param timeout a timeout in microseconds
          * @returns {@link GstRtsp.RTSPResult.OK} when if there is room in queue.          {@link GstRtsp.RTSPResult.ETIMEOUT} when `timeout` was reached.          {@link GstRtsp.RTSPResult.EINTR} when `watch` is flushing          {@link GstRtsp.RTSPResult.EINVAL} when called with invalid parameters.
+         * @since 1.18
          */
         wait_backlog_usec(timeout: bigint | number): RTSPResult;
 

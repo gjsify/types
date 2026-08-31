@@ -426,6 +426,7 @@ export namespace Unique {
          * returned string is owned by the {@link Unique.MessageData} and should
          * never be modified or freed
          * @returns the contents of the message data or `null`. The
+         * @since 1.0.2
          */
         get(): [number, number];
 
@@ -435,6 +436,7 @@ export namespace Unique {
          * filename. Use `g_free()` to free the resources used by the returned
          * value.
          * @returns a newly allocated string containing the
+         * @since 1.0.2
          */
         get_filename(): string;
 
@@ -493,6 +495,7 @@ export namespace Unique {
         /**
          * Sets `filename` as the contents of `message_data`.
          * @param filename a filename
+         * @since 1.0.2
          */
         set_filename(filename: string): void;
 

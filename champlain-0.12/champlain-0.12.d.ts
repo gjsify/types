@@ -459,12 +459,14 @@ export namespace Champlain {
         /**
          * Gets the latitude coordinate.
          * @returns the latitude coordinate.
+         * @since 0.10
          */
         get_latitude(): number;
 
         /**
          * Gets the longitude coordinate.
          * @returns the longitude coordinate.
+         * @since 0.10
          */
         get_longitude(): number;
 
@@ -472,17 +474,20 @@ export namespace Champlain {
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
+         * @since 0.10
          */
         set_location(latitude: number, longitude: number): void;
 
         /**
          * Gets the latitude coordinate.
+         * @since 0.10
          * @virtual
          */
         vfunc_get_latitude(): number;
 
         /**
          * Gets the longitude coordinate.
+         * @since 0.10
          * @virtual
          */
         vfunc_get_longitude(): number;
@@ -491,6 +496,7 @@ export namespace Champlain {
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
+         * @since 0.10
          * @virtual
          */
         vfunc_set_location(latitude: number, longitude: number): void;
@@ -654,12 +660,14 @@ export namespace Champlain {
         /**
          * Gets the latitude coordinate.
          * @returns the latitude coordinate.
+         * @since 0.10
          */
         get_latitude(): number;
 
         /**
          * Gets the longitude coordinate.
          * @returns the longitude coordinate.
+         * @since 0.10
          */
         get_longitude(): number;
 
@@ -667,17 +675,20 @@ export namespace Champlain {
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
+         * @since 0.10
          */
         set_location(latitude: number, longitude: number): void;
 
         /**
          * Gets the latitude coordinate.
+         * @since 0.10
          * @virtual
          */
         vfunc_get_latitude(): number;
 
         /**
          * Gets the longitude coordinate.
+         * @since 0.10
          * @virtual
          */
         vfunc_get_longitude(): number;
@@ -686,6 +697,7 @@ export namespace Champlain {
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
+         * @since 0.10
          * @virtual
          */
         vfunc_set_location(latitude: number, longitude: number): void;
@@ -764,12 +776,14 @@ export namespace Champlain {
         /**
          * Gets the size of the rendered error tiles.
          * @returns the size of the rendered error tiles
+         * @since 0.8
          */
         get_tile_size(): number;
 
         /**
          * Sets the size of the rendered error tile.
          * @param size the size of the rendered error tiles
+         * @since 0.8
          */
         set_tile_size(size: number): void;
     }
@@ -872,29 +886,34 @@ export namespace Champlain {
         /**
          * Gets the directory where the cache database is stored.
          * @returns the directory
+         * @since 0.6
          */
         get_cache_dir(): string;
 
         /**
          * Gets the cache size limit in bytes.
          * @returns size limit
+         * @since 0.4
          */
         get_size_limit(): number;
 
         /**
          * Purge the cache from the less popular tiles until cache's size limit is reached.
+         * @since 0.4
          */
         purge(): void;
 
         /**
          * Purge the cache from the less popular tiles until cache's size limit is reached.
          * This is a non blocking call as the purge will happen when the application is idle
+         * @since 0.4
          */
         purge_on_idle(): void;
 
         /**
          * Sets the cache size limit in bytes.
          * @param size_limit the cache limit in bytes
+         * @since 0.4
          */
         set_size_limit(size_limit: number): void;
     }
@@ -962,6 +981,7 @@ export namespace Champlain {
         /**
          * Loads the OpenStreetMap XML file at the given path.
          * @param map_path a path to a map data file
+         * @since 0.8
          */
         load_map_data(map_path: string): void;
     }
@@ -1209,6 +1229,8 @@ export namespace Champlain {
          * @param progress the progress factor
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          */
         animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
@@ -1216,6 +1238,7 @@ export namespace Champlain {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -1223,6 +1246,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -1240,6 +1264,7 @@ export namespace Champlain {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -1247,6 +1272,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
@@ -1265,6 +1291,8 @@ export namespace Champlain {
          * @param final_value the final value of the animation interval
          * @param progress the progress factor
          * @param value return location for the animation value
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          * @virtual
          */
         vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
@@ -1272,6 +1300,7 @@ export namespace Champlain {
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -1280,6 +1309,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -1297,6 +1327,7 @@ export namespace Champlain {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -1305,6 +1336,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -1319,6 +1351,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -1333,6 +1367,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -1342,6 +1377,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -1350,6 +1386,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -1364,6 +1401,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -1377,6 +1415,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -1385,6 +1424,7 @@ export namespace Champlain {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -1397,6 +1437,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          */
         foreach(callback: Clutter.Callback): void;
 
@@ -1408,6 +1450,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          */
         foreach_with_internals(callback: Clutter.Callback): void;
 
@@ -1416,12 +1460,15 @@ export namespace Champlain {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -1433,6 +1480,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -1444,6 +1493,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -1457,12 +1508,16 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -1488,6 +1543,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -1498,6 +1555,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -1513,6 +1571,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -1527,6 +1586,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -1540,6 +1600,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
@@ -1552,6 +1614,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
@@ -1560,6 +1624,7 @@ export namespace Champlain {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -1572,6 +1637,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -1584,6 +1651,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -1598,6 +1667,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -1605,6 +1676,8 @@ export namespace Champlain {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -1612,6 +1685,7 @@ export namespace Champlain {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -1623,6 +1697,7 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -1632,6 +1707,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -1643,11 +1719,13 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -1659,6 +1737,7 @@ export namespace Champlain {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -1669,6 +1748,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -1681,6 +1761,7 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -2027,168 +2108,196 @@ export namespace Champlain {
         /**
          * Get the label's text alignment.
          * @returns the label's text alignment.
+         * @since 0.10
          */
         get_alignment(): Pango.Alignment;
 
         /**
          * Gets the label's text attributes.
          * @returns the label's text attributes.
+         * @since 0.10
          */
         get_attributes(): Pango.AttrList;
 
         /**
          * Gets the label's background color.
          * @returns the label's background color.
+         * @since 0.10
          */
         get_color(): Clutter.Color;
 
         /**
          * Checks whether the label has a background.
          * @returns if the label has a background.
+         * @since 0.10
          */
         get_draw_background(): boolean;
 
         /**
          * Checks whether the label's background has a shadow.
          * @returns if the label's background has a shadow.
+         * @since 0.12.10
          */
         get_draw_shadow(): boolean;
 
         /**
          * Gets the label's text ellipsize mode.
          * @returns the label's text ellipsize mode.
+         * @since 0.10
          */
         get_ellipsize(): Pango.EllipsizeMode;
 
         /**
          * Gets the label's font name.
          * @returns the label's font name.
+         * @since 0.10
          */
         get_font_name(): string;
 
         /**
          * Get the label's image.
          * @returns the label's image.
+         * @since 0.10
          */
         get_image(): Clutter.Actor;
 
         /**
          * Checks the label's single line mode.
          * @returns the label's text single line mode.
+         * @since 0.10
          */
         get_single_line_mode(): boolean;
 
         /**
          * Get the label's text.
          * @returns the label's text.
+         * @since 0.10
          */
         get_text(): string;
 
         /**
          * Gets the label's text color.
          * @returns the label's text color.
+         * @since 0.10
          */
         get_text_color(): Clutter.Color;
 
         /**
          * Check whether the label uses markup.
          * @returns if the label's text contains markup.
+         * @since 0.10
          */
         get_use_markup(): boolean;
 
         /**
          * Checks whether the label text wraps.
          * @returns if the label's text wraps.
+         * @since 0.10
          */
         get_wrap(): boolean;
 
         /**
          * Gets the label's text wrap mode.
          * @returns the label's text wrap mode.
+         * @since 0.10
          */
         get_wrap_mode(): Pango.WrapMode;
 
         /**
          * Sets the label's text alignment.
          * @param alignment The label's alignment
+         * @since 0.10
          */
         set_alignment(alignment: Pango.Alignment): void;
 
         /**
          * Sets the label's text attributes.
          * @param list The label's text attributes.
+         * @since 0.10
          */
         set_attributes(list: Pango.AttrList): void;
 
         /**
          * Sets the label's background color.
          * @param color The label's background color or NULL to reset the background to the         default color. The color parameter is copied.
+         * @since 0.10
          */
         set_color(color: Clutter.Color | null): void;
 
         /**
          * Sets if the label has a background.
          * @param background value.
+         * @since 0.10
          */
         set_draw_background(background: boolean): void;
 
         /**
          * Sets if the label's background has a shadow.
          * @param shadow value.
+         * @since 0.12.10
          */
         set_draw_shadow(shadow: boolean): void;
 
         /**
          * Sets the label's text ellipsize mode.
          * @param mode The label's ellipsize mode.
+         * @since 0.10
          */
         set_ellipsize(mode: Pango.EllipsizeMode): void;
 
         /**
          * Sets the label's font name such as "Sans 12".
          * @param font_name The label's font name or NULL to reset the font to the default             value.
+         * @since 0.10
          */
         set_font_name(font_name: string | null): void;
 
         /**
          * Sets the label's image.
          * @param image The image as a `ClutterActor` or NULL to remove the current image.
+         * @since 0.10
          */
         set_image(image: Clutter.Actor | null): void;
 
         /**
          * Sets if the label's text is on a single line.
          * @param mode The label's single line mode
+         * @since 0.10
          */
         set_single_line_mode(mode: boolean): void;
 
         /**
          * Sets the label's text.
          * @param text The new text of the label
+         * @since 0.10
          */
         set_text(text: string): void;
 
         /**
          * Sets the label's text color.
          * @param color The label's text color or NULL to reset the text to the default         color. The color parameter is copied.
+         * @since 0.10
          */
         set_text_color(color: Clutter.Color | null): void;
 
         /**
          * Sets if the label's text uses markup.
          * @param use_markup The value
+         * @since 0.10
          */
         set_use_markup(use_markup: boolean): void;
 
         /**
          * Sets if the label's text wrap.
          * @param wrap The label's wrap.
+         * @since 0.10
          */
         set_wrap(wrap: boolean): void;
 
         /**
          * Sets the label's text wrap mode.
          * @param wrap_mode The label's wrap mode.
+         * @since 0.10
          */
         set_wrap_mode(wrap_mode: Pango.WrapMode): void;
 
@@ -2213,12 +2322,14 @@ export namespace Champlain {
         /**
          * Gets the latitude coordinate.
          * @returns the latitude coordinate.
+         * @since 0.10
          */
         get_latitude(): number;
 
         /**
          * Gets the longitude coordinate.
          * @returns the longitude coordinate.
+         * @since 0.10
          */
         get_longitude(): number;
 
@@ -2226,17 +2337,20 @@ export namespace Champlain {
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
+         * @since 0.10
          */
         set_location(latitude: number, longitude: number): void;
 
         /**
          * Gets the latitude coordinate.
+         * @since 0.10
          * @virtual
          */
         vfunc_get_latitude(): number;
 
         /**
          * Gets the longitude coordinate.
+         * @since 0.10
          * @virtual
          */
         vfunc_get_longitude(): number;
@@ -2245,6 +2359,7 @@ export namespace Champlain {
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
+         * @since 0.10
          * @virtual
          */
         vfunc_set_location(latitude: number, longitude: number): void;
@@ -2382,6 +2497,7 @@ export namespace Champlain {
         // Virtual methods
         /**
          * Gets the bounding box occupied by the elements inside the layer.
+         * @since 0.10
          * @virtual
          */
         vfunc_get_bounding_box(): BoundingBox;
@@ -2393,6 +2509,7 @@ export namespace Champlain {
          * and perform the necessary initialization. This method should not be called
          * by user code.
          * @param view a {@link Champlain.View}
+         * @since 0.10
          * @virtual
          */
         vfunc_set_view(view: View | null): void;
@@ -2401,6 +2518,7 @@ export namespace Champlain {
         /**
          * Gets the bounding box occupied by the elements inside the layer.
          * @returns The bounding box.
+         * @since 0.10
          */
         get_bounding_box(): BoundingBox;
 
@@ -2411,6 +2529,7 @@ export namespace Champlain {
          * and perform the necessary initialization. This method should not be called
          * by user code.
          * @param view a {@link Champlain.View}
+         * @since 0.10
          */
         set_view(view: View | null): void;
 
@@ -2430,6 +2549,8 @@ export namespace Champlain {
          * @param progress the progress factor
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          */
         animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
@@ -2437,6 +2558,7 @@ export namespace Champlain {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -2444,6 +2566,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -2461,6 +2584,7 @@ export namespace Champlain {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -2468,6 +2592,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
@@ -2486,6 +2611,8 @@ export namespace Champlain {
          * @param final_value the final value of the animation interval
          * @param progress the progress factor
          * @param value return location for the animation value
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          * @virtual
          */
         vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
@@ -2493,6 +2620,7 @@ export namespace Champlain {
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -2501,6 +2629,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -2518,6 +2647,7 @@ export namespace Champlain {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -2526,6 +2656,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -2540,6 +2671,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -2554,6 +2687,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -2563,6 +2697,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -2571,6 +2706,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -2585,6 +2721,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -2598,6 +2735,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -2606,6 +2744,7 @@ export namespace Champlain {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -2618,6 +2757,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          */
         foreach(callback: Clutter.Callback): void;
 
@@ -2629,6 +2770,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          */
         foreach_with_internals(callback: Clutter.Callback): void;
 
@@ -2637,12 +2780,15 @@ export namespace Champlain {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -2654,6 +2800,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -2665,6 +2813,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -2678,12 +2828,16 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -2709,6 +2863,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -2719,6 +2875,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -2734,6 +2891,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -2748,6 +2906,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -2761,6 +2920,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
@@ -2773,6 +2934,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
@@ -2781,6 +2944,7 @@ export namespace Champlain {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -2793,6 +2957,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -2805,6 +2971,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -2819,6 +2987,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -2826,6 +2996,8 @@ export namespace Champlain {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -2833,6 +3005,7 @@ export namespace Champlain {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -2844,6 +3017,7 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -2853,6 +3027,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -2864,11 +3039,13 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -2880,6 +3057,7 @@ export namespace Champlain {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -2890,6 +3068,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -2902,6 +3081,7 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -3076,29 +3256,34 @@ export namespace Champlain {
          * This method connects to the necessary signals of {@link Champlain.View} to make the
          * license change automatically when the map source changes.
          * @param view a {@link Champlain.View}
+         * @since 0.10
          */
         connect_view(view: View): void;
 
         /**
          * This method disconnects from the signals previously connected by `champlain_license_connect_view()`.
+         * @since 0.10
          */
         disconnect_view(): void;
 
         /**
          * Get the license's text alignment.
          * @returns the license's text alignment.
+         * @since 0.10
          */
         get_alignment(): Pango.Alignment;
 
         /**
          * Gets the additional license text.
          * @returns the additional license text
+         * @since 0.10
          */
         get_extra_text(): string;
 
         /**
          * Set the license's text alignment.
          * @param alignment The license's text alignment
+         * @since 0.10
          */
         set_alignment(alignment: Pango.Alignment): void;
 
@@ -3106,6 +3291,7 @@ export namespace Champlain {
          * Show the additional license text on the map view.  The text will preceed the
          * map's licence when displayed. Use "\n" to separate the lines.
          * @param text the additional license text
+         * @since 0.10
          */
         set_extra_text(text: string): void;
 
@@ -3125,6 +3311,8 @@ export namespace Champlain {
          * @param progress the progress factor
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          */
         animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
@@ -3132,6 +3320,7 @@ export namespace Champlain {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -3139,6 +3328,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -3156,6 +3346,7 @@ export namespace Champlain {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -3163,6 +3354,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
@@ -3181,6 +3373,8 @@ export namespace Champlain {
          * @param final_value the final value of the animation interval
          * @param progress the progress factor
          * @param value return location for the animation value
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          * @virtual
          */
         vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
@@ -3188,6 +3382,7 @@ export namespace Champlain {
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -3196,6 +3391,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -3213,6 +3409,7 @@ export namespace Champlain {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -3221,6 +3418,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -3235,6 +3433,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -3249,6 +3449,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -3258,6 +3459,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -3266,6 +3468,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -3280,6 +3483,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -3293,6 +3497,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -3301,6 +3506,7 @@ export namespace Champlain {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -3313,6 +3519,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          */
         foreach(callback: Clutter.Callback): void;
 
@@ -3324,6 +3532,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          */
         foreach_with_internals(callback: Clutter.Callback): void;
 
@@ -3332,12 +3542,15 @@ export namespace Champlain {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -3349,6 +3562,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -3360,6 +3575,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -3373,12 +3590,16 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -3404,6 +3625,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -3414,6 +3637,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -3429,6 +3653,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -3443,6 +3668,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -3456,6 +3682,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
@@ -3468,6 +3696,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
@@ -3476,6 +3706,7 @@ export namespace Champlain {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -3488,6 +3719,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -3500,6 +3733,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -3514,6 +3749,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -3521,6 +3758,8 @@ export namespace Champlain {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -3528,6 +3767,7 @@ export namespace Champlain {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -3539,6 +3779,7 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -3548,6 +3789,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -3559,11 +3801,13 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -3575,6 +3819,7 @@ export namespace Champlain {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -3585,6 +3830,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -3597,6 +3843,7 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -3681,54 +3928,63 @@ export namespace Champlain {
          * Fills the tile with image data (either from cache, network or rendered
          * locally).
          * @param tile a {@link Champlain.Tile}
+         * @since 0.4
          * @virtual
          */
         vfunc_fill_tile(tile: Tile): void;
 
         /**
          * Gets map source's id.
+         * @since 0.4
          * @virtual
          */
         vfunc_get_id(): string;
 
         /**
          * Gets map source's license.
+         * @since 0.4
          * @virtual
          */
         vfunc_get_license(): string;
 
         /**
          * Gets map source's license URI.
+         * @since 0.4
          * @virtual
          */
         vfunc_get_license_uri(): string;
 
         /**
          * Gets map source's maximum zoom level.
+         * @since 0.4
          * @virtual
          */
         vfunc_get_max_zoom_level(): number;
 
         /**
          * Gets map source's minimum zoom level.
+         * @since 0.4
          * @virtual
          */
         vfunc_get_min_zoom_level(): number;
 
         /**
          * Gets map source's name.
+         * @since 0.4
          * @virtual
          */
         vfunc_get_name(): string;
 
         /**
          * Gets map source's projection.
+         * @since 0.4
          * @virtual
          */
         vfunc_get_projection(): MapProjection;
 
         /**
          * Gets map source's tile size.
+         * @since 0.4
          * @virtual
          */
         vfunc_get_tile_size(): number;
@@ -3738,6 +3994,7 @@ export namespace Champlain {
          * Fills the tile with image data (either from cache, network or rendered
          * locally).
          * @param tile a {@link Champlain.Tile}
+         * @since 0.4
          */
         fill_tile(tile: Tile): void;
 
@@ -3746,12 +4003,14 @@ export namespace Champlain {
          * source.
          * @param zoom_level the zoom level
          * @returns the number of tiles in a column
+         * @since 0.4
          */
         get_column_count(zoom_level: number): number;
 
         /**
          * Gets map source's id.
          * @returns the map source's id.
+         * @since 0.4
          */
         get_id(): string;
 
@@ -3761,18 +4020,21 @@ export namespace Champlain {
          * @param zoom_level the zoom level
          * @param y a y position
          * @returns the latitude
+         * @since 0.4
          */
         get_latitude(zoom_level: number, y: number): number;
 
         /**
          * Gets map source's license.
          * @returns the map source's license.
+         * @since 0.4
          */
         get_license(): string;
 
         /**
          * Gets map source's license URI.
          * @returns the map source's license URI.
+         * @since 0.4
          */
         get_license_uri(): string;
 
@@ -3782,12 +4044,14 @@ export namespace Champlain {
          * @param zoom_level the zoom level
          * @param x a x position
          * @returns the longitude
+         * @since 0.4
          */
         get_longitude(zoom_level: number, x: number): number;
 
         /**
          * Gets map source's maximum zoom level.
          * @returns the maximum zoom level this map source supports
+         * @since 0.4
          */
         get_max_zoom_level(): number;
 
@@ -3797,36 +4061,42 @@ export namespace Champlain {
          * @param latitude a latitude
          * @param longitude a longitude
          * @returns the meters per pixel
+         * @since 0.4.3
          */
         get_meters_per_pixel(zoom_level: number, latitude: number, longitude: number): number;
 
         /**
          * Gets map source's minimum zoom level.
          * @returns the miminum zoom level this map source supports
+         * @since 0.4
          */
         get_min_zoom_level(): number;
 
         /**
          * Gets map source's name.
          * @returns the map source's name.
+         * @since 0.4
          */
         get_name(): string;
 
         /**
          * Get the next source in the chain.
          * @returns the next source in the chain.
+         * @since 0.6
          */
         get_next_source(): MapSource;
 
         /**
          * Gets map source's projection.
          * @returns the map source's projection.
+         * @since 0.4
          */
         get_projection(): MapProjection;
 
         /**
          * Get the renderer used for tiles rendering.
          * @returns the renderer.
+         * @since 0.8
          */
         get_renderer(): Renderer;
 
@@ -3834,12 +4104,14 @@ export namespace Champlain {
          * Gets the number of tiles in a row at this zoom level for this map source.
          * @param zoom_level the zoom level
          * @returns the number of tiles in a row
+         * @since 0.4
          */
         get_row_count(zoom_level: number): number;
 
         /**
          * Gets map source's tile size.
          * @returns the tile's size (width and height) in pixels for this map source
+         * @since 0.4
          */
         get_tile_size(): number;
 
@@ -3849,6 +4121,7 @@ export namespace Champlain {
          * @param zoom_level the zoom level
          * @param longitude a longitude
          * @returns the x position
+         * @since 0.4
          */
         get_x(zoom_level: number, longitude: number): number;
 
@@ -3858,18 +4131,21 @@ export namespace Champlain {
          * @param zoom_level the zoom level
          * @param latitude a latitude
          * @returns the y position
+         * @since 0.4
          */
         get_y(zoom_level: number, latitude: number): number;
 
         /**
          * Sets the next map source in the chain.
          * @param next_source the next {@link Champlain.MapSource} in the chain
+         * @since 0.6
          */
         set_next_source(next_source: MapSource): void;
 
         /**
          * Sets the renderer used for tiles rendering.
          * @param renderer the renderer
+         * @since 0.8
          */
         set_renderer(renderer: Renderer): void;
     }
@@ -3927,12 +4203,14 @@ export namespace Champlain {
         // Methods
         /**
          * Pops a map source from the top of the stack from the chain.
+         * @since 0.6
          */
         pop(): void;
 
         /**
          * Pushes a map source into the chain.
          * @param map_source the {@link Champlain.MapSource} to be pushed into the chain
+         * @since 0.6
          */
         push(map_source: MapSource): void;
     }
@@ -4126,60 +4404,70 @@ export namespace Champlain {
         /**
          * Gets user data.
          * @returns the user data.
+         * @since 0.10
          */
         get_data(): null;
 
         /**
          * Gets map source's id.
          * @returns the map source's id.
+         * @since 0.10
          */
         get_id(): string;
 
         /**
          * Gets map source's license.
          * @returns the map source's license.
+         * @since 0.10
          */
         get_license(): string;
 
         /**
          * Gets map source's license URI.
          * @returns the map source's license URI.
+         * @since 0.10
          */
         get_license_uri(): string;
 
         /**
          * Gets map source's maximum zoom level.
          * @returns the maximum zoom level this map source supports
+         * @since 0.10
          */
         get_max_zoom_level(): number;
 
         /**
          * Gets map source's minimum zoom level.
          * @returns the miminum zoom level this map source supports
+         * @since 0.10
          */
         get_min_zoom_level(): number;
 
         /**
          * Gets map source's name.
          * @returns the map source's name.
+         * @since 0.10
          */
         get_name(): string;
 
         /**
          * Gets map source's projection.
          * @returns the map source's projection.
+         * @since 0.10
          */
         get_projection(): MapProjection;
 
         /**
          * Gets map source's tile size.
          * @returns the tile's size (width and height) in pixels for this map source
+         * @since 0.10
          */
         get_tile_size(): number;
 
         /**
          * Gets network map source's URI format.
          * @returns the URI format.
+         * @since 0.10
          */
         get_uri_format(): string;
     }
@@ -4232,6 +4520,7 @@ export namespace Champlain {
         // Static methods
         /**
          * A method to obtain the singleton object.
+         * @since 0.4
          */
         static dup_default(): MapSourceFactory;
 
@@ -4241,6 +4530,7 @@ export namespace Champlain {
          * will be used as the cache directory name for that map source.
          * @param id the wanted map source id
          * @returns a ready to use {@link Champlain.MapSource} matching the given name; returns NULL if the source with the given name doesn't exist.
+         * @since 0.4
          */
         create(id: string): MapSource;
 
@@ -4248,6 +4538,7 @@ export namespace Champlain {
          * Creates a cached map source.
          * @param id the wanted map source id
          * @returns a ready to use {@link Champlain.MapSourceChain} consisting of {@link Champlain.MemoryCache}, {@link Champlain.FileCache}, {@link Champlain.MapSource} matching the given name, and an error tile source created with champlain_map_source_factory_create_error_source (). Returns NULL if the source with the given name doesn't exist.
+         * @since 0.6
          */
         create_cached_source(id: string): MapSource;
 
@@ -4255,6 +4546,7 @@ export namespace Champlain {
          * Creates a map source generating error tiles.
          * @param tile_size the size of the error tile
          * @returns a ready to use map source generating error tiles.
+         * @since 0.8
          */
         create_error_source(tile_size: number): MapSource;
 
@@ -4262,12 +4554,14 @@ export namespace Champlain {
          * Creates a memory cached map source.
          * @param id the wanted map source id
          * @returns a ready to use {@link Champlain.MapSourceChain} consisting of {@link Champlain.MemoryCache} and {@link Champlain.MapSource} matching the given name. Returns NULL if the source with the given name doesn't exist.
+         * @since 0.12.5
          */
         create_memcached_source(id: string): MapSource;
 
         /**
          * Get the list of registered map sources.
          * @returns the list of registered map sources, the items should not be freed, the list should be freed with `g_slist_free`.
+         * @since 0.4
          */
         get_registered(): MapSourceDesc[];
 
@@ -4278,6 +4572,7 @@ export namespace Champlain {
          * {@link Champlain.MapSourceDesc}, so don't free it.
          * @param desc the description of the map source
          * @returns TRUE if the registration suceeded.
+         * @since 0.10
          */
         register(desc: MapSourceDesc): boolean;
     }
@@ -4480,11 +4775,13 @@ export namespace Champlain {
         // Static methods
         /**
          * Gets the selection color.
+         * @since 0.10
          */
         static get_selection_color(): Clutter.Color;
 
         /**
          * Gets the selection text color.
+         * @since 0.10
          */
         static get_selection_text_color(): Clutter.Color;
 
@@ -4492,6 +4789,7 @@ export namespace Champlain {
          * Changes the selection color, this is to ensure a better integration with
          * the desktop, this is automatically done by GtkChamplainEmbed.
          * @param color a {@link Clutter.Color}
+         * @since 0.10
          */
         static set_selection_color(color: Clutter.Color): void;
 
@@ -4499,12 +4797,14 @@ export namespace Champlain {
          * Changes the selection text color, this is to ensure a better integration with
          * the desktop, this is automatically done by GtkChamplainEmbed.
          * @param color a {@link Clutter.Color}
+         * @since 0.10
          */
         static set_selection_text_color(color: Clutter.Color): void;
 
         // Methods
         /**
          * Animates the marker as if it were falling from the sky onto the map.
+         * @since 0.10
          */
         animate_in(): void;
 
@@ -4512,11 +4812,13 @@ export namespace Champlain {
          * Animates the marker as if it were falling from the sky onto the map after
          * delay.
          * @param delay The delay in milliseconds
+         * @since 0.10
          */
         animate_in_with_delay(delay: number): void;
 
         /**
          * Animates the marker as if it were drawn through the sky.
+         * @since 0.10
          */
         animate_out(): void;
 
@@ -4524,36 +4826,42 @@ export namespace Champlain {
          * Animates the marker as if it were drawn through the sky after
          * delay.
          * @param delay The delay in milliseconds
+         * @since 0.10
          */
         animate_out_with_delay(delay: number): void;
 
         /**
          * Checks whether the marker is draggable.
          * @returns the draggable or not state of the marker.
+         * @since 0.10
          */
         get_draggable(): boolean;
 
         /**
          * Checks whether the marker is selectable.
          * @returns the selectable or not state of the marker.
+         * @since 0.10
          */
         get_selectable(): boolean;
 
         /**
          * Checks whether the marker is selected.
          * @returns the selected or not state of the marker.
+         * @since 0.10
          */
         get_selected(): boolean;
 
         /**
          * Sets the marker as draggable or not.
          * @param value the draggable state
+         * @since 0.10
          */
         set_draggable(value: boolean): void;
 
         /**
          * Sets the marker as selectable or not.
          * @param value the selectable state
+         * @since 0.10
          */
         set_selectable(value: boolean): void;
 
@@ -4561,6 +4869,7 @@ export namespace Champlain {
          * Sets the marker as selected or not. This will affect the "Selected" look
          * of the marker.
          * @param value the selected state
+         * @since 0.10
          */
         set_selected(value: boolean): void;
 
@@ -4585,12 +4894,14 @@ export namespace Champlain {
         /**
          * Gets the latitude coordinate.
          * @returns the latitude coordinate.
+         * @since 0.10
          */
         get_latitude(): number;
 
         /**
          * Gets the longitude coordinate.
          * @returns the longitude coordinate.
+         * @since 0.10
          */
         get_longitude(): number;
 
@@ -4598,17 +4909,20 @@ export namespace Champlain {
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
+         * @since 0.10
          */
         set_location(latitude: number, longitude: number): void;
 
         /**
          * Gets the latitude coordinate.
+         * @since 0.10
          * @virtual
          */
         vfunc_get_latitude(): number;
 
         /**
          * Gets the longitude coordinate.
+         * @since 0.10
          * @virtual
          */
         vfunc_get_longitude(): number;
@@ -4617,6 +4931,7 @@ export namespace Champlain {
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
+         * @since 0.10
          * @virtual
          */
         vfunc_set_location(latitude: number, longitude: number): void;
@@ -4637,6 +4952,8 @@ export namespace Champlain {
          * @param progress the progress factor
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          */
         animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
@@ -4644,6 +4961,7 @@ export namespace Champlain {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -4651,6 +4969,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -4668,6 +4987,7 @@ export namespace Champlain {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -4675,6 +4995,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
@@ -4693,6 +5014,8 @@ export namespace Champlain {
          * @param final_value the final value of the animation interval
          * @param progress the progress factor
          * @param value return location for the animation value
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          * @virtual
          */
         vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
@@ -4700,6 +5023,7 @@ export namespace Champlain {
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -4708,6 +5032,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -4725,6 +5050,7 @@ export namespace Champlain {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -4733,6 +5059,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -4747,6 +5074,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -4761,6 +5090,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -4770,6 +5100,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -4778,6 +5109,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -4792,6 +5124,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -4805,6 +5138,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -4813,6 +5147,7 @@ export namespace Champlain {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -4825,6 +5160,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          */
         foreach(callback: Clutter.Callback): void;
 
@@ -4836,6 +5173,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          */
         foreach_with_internals(callback: Clutter.Callback): void;
 
@@ -4844,12 +5183,15 @@ export namespace Champlain {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -4861,6 +5203,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -4872,6 +5216,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -4885,12 +5231,16 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -4916,6 +5266,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -4926,6 +5278,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -4941,6 +5294,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -4955,6 +5309,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -4968,6 +5323,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
@@ -4980,6 +5337,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
@@ -4988,6 +5347,7 @@ export namespace Champlain {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -5000,6 +5360,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -5012,6 +5374,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -5026,6 +5390,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -5033,6 +5399,8 @@ export namespace Champlain {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -5040,6 +5408,7 @@ export namespace Champlain {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -5051,6 +5420,7 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -5060,6 +5430,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -5071,11 +5442,13 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -5087,6 +5460,7 @@ export namespace Champlain {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -5097,6 +5471,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -5109,6 +5484,7 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -5273,16 +5649,19 @@ export namespace Champlain {
         /**
          * Adds the marker to the layer.
          * @param marker a {@link Champlain.Marker}
+         * @since 0.10
          */
         add_marker(marker: Marker): void;
 
         /**
          * Fade in all markers in the layer with an animation
+         * @since 0.10
          */
         animate_in_all_markers(): void;
 
         /**
          * Fade out all markers in the layer with an animation
+         * @since 0.10
          */
         animate_out_all_markers(): void;
 
@@ -5290,49 +5669,58 @@ export namespace Champlain {
          * Gets a copy of the list of all markers inserted into the layer. You should
          * free the list but not its contents.
          * @returns the list
+         * @since 0.10
          */
         get_markers(): Marker[];
 
         /**
          * Gets a list of selected markers in the layer.
          * @returns the list
+         * @since 0.10
          */
         get_selected(): Marker[];
 
         /**
          * Gets the selection mode of the layer.
          * @returns the selection mode of the layer.
+         * @since 0.10
          */
         get_selection_mode(): SelectionMode;
 
         /**
          * Hides all the markers in the layer
+         * @since 0.10
          */
         hide_all_markers(): void;
 
         /**
          * Removes all markers from the layer.
+         * @since 0.10
          */
         remove_all(): void;
 
         /**
          * Removes the marker from the layer.
          * @param marker a {@link Champlain.Marker}
+         * @since 0.10
          */
         remove_marker(marker: Marker): void;
 
         /**
          * Selects all markers in the layer.
+         * @since 0.10
          */
         select_all_markers(): void;
 
         /**
          * Sets all markers draggable in the layer
+         * @since 0.10
          */
         set_all_markers_draggable(): void;
 
         /**
          * Sets all markers undraggable in the layer
+         * @since 0.10
          */
         set_all_markers_undraggable(): void;
 
@@ -5342,16 +5730,19 @@ export namespace Champlain {
          * NOTE: changing selection mode to CHAMPLAIN_SELECTION_NONE or
          * CHAMPLAIN_SELECTION_SINGLE will clear all previously selected markers.
          * @param mode a {@link Champlain.SelectionMode} value
+         * @since 0.10
          */
         set_selection_mode(mode: SelectionMode): void;
 
         /**
          * Shows all markers in the layer
+         * @since 0.10
          */
         show_all_markers(): void;
 
         /**
          * Unselects all markers in the layer.
+         * @since 0.10
          */
         unselect_all_markers(): void;
 
@@ -5366,17 +5757,20 @@ export namespace Champlain {
         /**
          * Gets the surface
          * @returns the {@link cairo.Surface} of the object
+         * @since 0.12.12
          */
         get_surface(): cairo.Surface;
 
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
+         * @since 0.12.12
          */
         set_surface(surface: cairo.Surface): void;
 
         /**
          * Gets the surface
+         * @since 0.12.12
          * @virtual
          */
         vfunc_get_surface(): cairo.Surface;
@@ -5384,6 +5778,7 @@ export namespace Champlain {
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
+         * @since 0.12.12
          * @virtual
          */
         vfunc_set_surface(surface: cairo.Surface): void;
@@ -5463,18 +5858,21 @@ export namespace Champlain {
         // Methods
         /**
          * Cleans the contents of the cache.
+         * @since 0.8
          */
         clean(): void;
 
         /**
          * Gets the maximum number of tiles stored in the cache.
          * @returns maximum number of stored tiles
+         * @since 0.8
          */
         get_size_limit(): number;
 
         /**
          * Sets the maximum number of tiles stored in the cache.
          * @param size_limit maximum number of tiles stored in the cache
+         * @since 0.8
          */
         set_size_limit(size_limit: number): void;
     }
@@ -5610,6 +6008,7 @@ export namespace Champlain {
         /**
          * Gets the URI of the API server.
          * @returns the URI of the API server.
+         * @since 0.8
          */
         get_api_uri(): string;
 
@@ -5622,18 +6021,21 @@ export namespace Champlain {
          * url="https://api.openstreetmap.org/api/capabilities">
          * https://api.openstreetmap.org/api/capabilities</ulink>
          * @param bbox bounding box of the requested area
+         * @since 0.10
          */
         load_map_data(bbox: BoundingBox): void;
 
         /**
          * Sets the URI of the API server.
          * @param api_uri an URI of an API server
+         * @since 0.8
          */
         set_api_uri(api_uri: string): void;
 
         /**
          * Sets the User-Agent header used communicating with the server.
          * @param user_agent A User-Agent string
+         * @since 0.12.16
          */
         set_user_agent(user_agent: string): void;
     }
@@ -5794,24 +6196,28 @@ export namespace Champlain {
          * Gets the max number of allowed simultaneous connections for this tile
          * source.
          * @returns the max number of allowed simultaneous connections for this tile source.
+         * @since 0.12.14
          */
         get_max_conns(): number;
 
         /**
          * Gets offline status.
          * @returns TRUE when the tile source is set to be offline; FALSE otherwise.
+         * @since 0.6
          */
         get_offline(): boolean;
 
         /**
          * Gets the proxy uri used to access network.
          * @returns the proxy uri
+         * @since 0.6
          */
         get_proxy_uri(): string;
 
         /**
          * Default constructor of {@link Champlain.NetworkTileSource}.
          * @returns A URI format used for URI creation when downloading tiles. See `champlain_network_tile_source_set_uri_format()` for more information.
+         * @since 0.6
          */
         get_uri_format(): string;
 
@@ -5821,18 +6227,21 @@ export namespace Champlain {
          * Before changing this remember to verify how many simultaneous connections
          * your tile provider allows you to make.
          * @param max_conns the number of allowed simultaneous connections
+         * @since 0.12.14
          */
         set_max_conns(max_conns: number): void;
 
         /**
          * Sets offline status.
          * @param offline TRUE when the tile source should be offline; FALSE otherwise
+         * @since 0.6
          */
         set_offline(offline: boolean): void;
 
         /**
          * Override the default proxy for accessing the network.
          * @param proxy_uri the proxy uri used to access network
+         * @since 0.6
          */
         set_proxy_uri(proxy_uri: string): void;
 
@@ -5846,12 +6255,14 @@ export namespace Champlain {
          * For example, this is the OpenStreetMap URI format:
          * "https://tile.openstreetmap.org/\#Z\#/\#X\#/\#Y\#.png"
          * @param uri_format the URI format
+         * @since 0.4
          */
         set_uri_format(uri_format: string): void;
 
         /**
          * Sets the User-Agent header used communicating with the server.
          * @param user_agent A User-Agent string
+         * @since 0.12.16
          */
         set_user_agent(user_agent: string): void;
     }
@@ -6151,30 +6562,35 @@ export namespace Champlain {
          * Adds a {@link Champlain.Location} object to the layer.
          * The node is prepended to the list.
          * @param location a {@link Champlain.Location}
+         * @since 0.10
          */
         add_node(location: Location): void;
 
         /**
          * Gets information whether the path is closed.
          * @returns TRUE when the path is closed, FALSE otherwise
+         * @since 0.10
          */
         get_closed(): boolean;
 
         /**
          * Returns the list of dash segment lengths.
          * @returns the list
+         * @since 0.12.4
          */
         get_dash(): number[];
 
         /**
          * Checks whether the path is filled.
          * @returns TRUE if the path is filled, FALSE otherwise.
+         * @since 0.10
          */
         get_fill(): boolean;
 
         /**
          * Gets the path's fill color.
          * @returns the path's fill color.
+         * @since 0.10
          */
         get_fill_color(): Clutter.Color;
 
@@ -6182,30 +6598,35 @@ export namespace Champlain {
          * Gets a copy of the list of all {@link Champlain.Location} objects inserted into the layer. You should
          * free the list but not its contents.
          * @returns the list
+         * @since 0.10
          */
         get_nodes(): Location[];
 
         /**
          * Checks whether the path is stroked.
          * @returns TRUE if the path is stroked, FALSE otherwise.
+         * @since 0.10
          */
         get_stroke(): boolean;
 
         /**
          * Gets the path's stroke color.
          * @returns the path's stroke color.
+         * @since 0.10
          */
         get_stroke_color(): Clutter.Color;
 
         /**
          * Gets the width of the stroke.
          * @returns the width of the stroke
+         * @since 0.10
          */
         get_stroke_width(): number;
 
         /**
          * Gets path visibility.
          * @returns TRUE when the path is visible, FALSE otherwise
+         * @since 0.10
          */
         get_visible(): boolean;
 
@@ -6213,23 +6634,27 @@ export namespace Champlain {
          * Inserts a {@link Champlain.Location} object to the specified position.
          * @param location a {@link Champlain.Location}
          * @param position position in the list where the {@link Champlain.Location} object should be inserted
+         * @since 0.10
          */
         insert_node(location: Location, position: number): void;
 
         /**
          * Removes all {@link Champlain.Location} objects from the layer.
+         * @since 0.10
          */
         remove_all(): void;
 
         /**
          * Removes the {@link Champlain.Location} object from the layer.
          * @param location a {@link Champlain.Location}
+         * @since 0.10
          */
         remove_node(location: Location): void;
 
         /**
          * Makes the path closed.
          * @param value TRUE to make the path closed
+         * @since 0.10
          */
         set_closed(value: boolean): void;
 
@@ -6240,42 +6665,49 @@ export namespace Champlain {
          * 
          * Pass NULL to use solid line.
          * @param dash_pattern list of integer values representing lengths     of dashes/spaces (see cairo documentation of `cairo_set_dash()`)
+         * @since 0.12.4
          */
         set_dash(dash_pattern: number[]): void;
 
         /**
          * Sets the path to be filled
          * @param value if the path is filled
+         * @since 0.10
          */
         set_fill(value: boolean): void;
 
         /**
          * Set the path's fill color.
          * @param color The path's fill color or NULL to reset to the         default color. The color parameter is copied.
+         * @since 0.10
          */
         set_fill_color(color: Clutter.Color | null): void;
 
         /**
          * Sets the path to be stroked
          * @param value if the path is stroked
+         * @since 0.10
          */
         set_stroke(value: boolean): void;
 
         /**
          * Set the path's stroke color.
          * @param color The path's stroke color or NULL to reset to the         default color. The color parameter is copied.
+         * @since 0.10
          */
         set_stroke_color(color: Clutter.Color | null): void;
 
         /**
          * Sets the width of the stroke
          * @param value the width of the stroke (in pixels)
+         * @since 0.10
          */
         set_stroke_width(value: number): void;
 
         /**
          * Sets path visibility.
          * @param value TRUE to make the path visible
+         * @since 0.10
          */
         set_visible(value: boolean): void;
 
@@ -6290,17 +6722,20 @@ export namespace Champlain {
         /**
          * Gets the surface
          * @returns the {@link cairo.Surface} of the object
+         * @since 0.12.12
          */
         get_surface(): cairo.Surface;
 
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
+         * @since 0.12.12
          */
         set_surface(surface: cairo.Surface): void;
 
         /**
          * Gets the surface
+         * @since 0.12.12
          * @virtual
          */
         vfunc_get_surface(): cairo.Surface;
@@ -6308,6 +6743,7 @@ export namespace Champlain {
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
+         * @since 0.12.12
          * @virtual
          */
         vfunc_set_surface(surface: cairo.Surface): void;
@@ -6475,12 +6911,14 @@ export namespace Champlain {
         /**
          * Gets the color of the point.
          * @returns the color.
+         * @since 0.10
          */
         get_color(): Clutter.Color;
 
         /**
          * Gets the size of the point.
          * @returns the size.
+         * @since 0.10
          */
         get_size(): number;
 
@@ -6493,12 +6931,14 @@ export namespace Champlain {
         /**
          * Set the color of the point.
          * @param color The color of the point or NULL to reset the background to the         default color. The color parameter is copied.
+         * @since 0.10
          */
         set_color(color: Clutter.Color | null): void;
 
         /**
          * Set the size of the point.
          * @param size The size of the point.
+         * @since 0.10
          */
         set_size(size: number): void;
 
@@ -6531,17 +6971,20 @@ export namespace Champlain {
         /**
          * Gets the surface
          * @returns the {@link cairo.Surface} of the object
+         * @since 0.12.12
          */
         get_surface(): cairo.Surface;
 
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
+         * @since 0.12.12
          */
         set_surface(surface: cairo.Surface): void;
 
         /**
          * Gets the surface
+         * @since 0.12.12
          * @virtual
          */
         vfunc_get_surface(): cairo.Surface;
@@ -6549,6 +6992,7 @@ export namespace Champlain {
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
+         * @since 0.12.12
          * @virtual
          */
         vfunc_set_surface(surface: cairo.Surface): void;
@@ -6556,12 +7000,14 @@ export namespace Champlain {
         /**
          * Gets the latitude coordinate.
          * @returns the latitude coordinate.
+         * @since 0.10
          */
         get_latitude(): number;
 
         /**
          * Gets the longitude coordinate.
          * @returns the longitude coordinate.
+         * @since 0.10
          */
         get_longitude(): number;
 
@@ -6569,17 +7015,20 @@ export namespace Champlain {
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
+         * @since 0.10
          */
         set_location(latitude: number, longitude: number): void;
 
         /**
          * Gets the latitude coordinate.
+         * @since 0.10
          * @virtual
          */
         vfunc_get_latitude(): number;
 
         /**
          * Gets the longitude coordinate.
+         * @since 0.10
          * @virtual
          */
         vfunc_get_longitude(): number;
@@ -6588,6 +7037,7 @@ export namespace Champlain {
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
+         * @since 0.10
          * @virtual
          */
         vfunc_set_location(latitude: number, longitude: number): void;
@@ -6645,6 +7095,7 @@ export namespace Champlain {
          * emits the {@link Champlain.Tile.SignalSignatures.render_complete | Champlain.Tile::render-complete} signal. The tile has to be displayed manually by
          * calling `champlain_tile_display_content()`.
          * @param tile the tile to render
+         * @since 0.8
          * @virtual
          */
         vfunc_render(tile: Tile): void;
@@ -6652,6 +7103,7 @@ export namespace Champlain {
         /**
          * Sets the data which is used to render tiles by the renderer.
          * @param data data used for tile rendering
+         * @since 0.8
          * @virtual
          */
         vfunc_set_data(data: Uint8Array): void;
@@ -6663,12 +7115,14 @@ export namespace Champlain {
          * emits the {@link Champlain.Tile.SignalSignatures.render_complete | Champlain.Tile::render-complete} signal. The tile has to be displayed manually by
          * calling `champlain_tile_display_content()`.
          * @param tile the tile to render
+         * @since 0.8
          */
         render(tile: Tile): void;
 
         /**
          * Sets the data which is used to render tiles by the renderer.
          * @param data data used for tile rendering
+         * @since 0.8
          */
         set_data(data: Uint8Array | string): void;
 
@@ -6846,35 +7300,41 @@ export namespace Champlain {
          * This method connects to the necessary signals of {@link Champlain.View} to make the
          * scale adapt to the current latitude and longitude.
          * @param view a {@link Champlain.View}
+         * @since 0.10
          */
         connect_view(view: View): void;
 
         /**
          * This method disconnects from the signals previously connected by `champlain_scale_connect_view()`.
+         * @since 0.10
          */
         disconnect_view(): void;
 
         /**
          * Gets the maximum scale width.
          * @returns The maximum scale width in pixels.
+         * @since 0.10
          */
         get_max_width(): number;
 
         /**
          * Gets the unit used by the scale.
          * @returns The unit used by the scale
+         * @since 0.10
          */
         get_unit(): Unit;
 
         /**
          * Sets the maximum width of the scale on the screen in pixels
          * @param value the number of pixels
+         * @since 0.10
          */
         set_max_width(value: number): void;
 
         /**
          * Sets the scale unit.
          * @param unit a {@link Champlain.Unit}
+         * @since 0.10
          */
         set_unit(unit: Unit): void;
 
@@ -6894,6 +7354,8 @@ export namespace Champlain {
          * @param progress the progress factor
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          */
         animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
@@ -6901,6 +7363,7 @@ export namespace Champlain {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -6908,6 +7371,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -6925,6 +7389,7 @@ export namespace Champlain {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -6932,6 +7397,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
@@ -6950,6 +7416,8 @@ export namespace Champlain {
          * @param final_value the final value of the animation interval
          * @param progress the progress factor
          * @param value return location for the animation value
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          * @virtual
          */
         vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
@@ -6957,6 +7425,7 @@ export namespace Champlain {
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -6965,6 +7434,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -6982,6 +7452,7 @@ export namespace Champlain {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -6990,6 +7461,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -7004,6 +7476,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -7018,6 +7492,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -7027,6 +7502,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -7035,6 +7511,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -7049,6 +7526,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -7062,6 +7540,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -7070,6 +7549,7 @@ export namespace Champlain {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -7082,6 +7562,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          */
         foreach(callback: Clutter.Callback): void;
 
@@ -7093,6 +7575,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          */
         foreach_with_internals(callback: Clutter.Callback): void;
 
@@ -7101,12 +7585,15 @@ export namespace Champlain {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -7118,6 +7605,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -7129,6 +7618,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -7142,12 +7633,16 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -7173,6 +7668,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -7183,6 +7680,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -7198,6 +7696,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -7212,6 +7711,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -7225,6 +7725,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
@@ -7237,6 +7739,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
@@ -7245,6 +7749,7 @@ export namespace Champlain {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -7257,6 +7762,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -7269,6 +7776,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -7283,6 +7792,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -7290,6 +7801,8 @@ export namespace Champlain {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -7297,6 +7810,7 @@ export namespace Champlain {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -7308,6 +7822,7 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -7317,6 +7832,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -7328,11 +7844,13 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -7344,6 +7862,7 @@ export namespace Champlain {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -7354,6 +7873,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -7366,6 +7886,7 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -7618,12 +8139,14 @@ export namespace Champlain {
         // Methods
         /**
          * Displays the tile's content.
+         * @since 0.8
          */
         display_content(): void;
 
         /**
          * Gets the tile's content actor.
          * @returns the tile's content, this actor will change each time the tile's content changes. You should not unref this content, it is owned by the tile.
+         * @since 0.4
          */
         get_content(): Clutter.Actor;
 
@@ -7636,24 +8159,28 @@ export namespace Champlain {
         /**
          * Gets the tile's ETag.
          * @returns the tile's ETag
+         * @since 0.4
          */
         get_etag(): string;
 
         /**
          * Checks whether the tile should fade in.
          * @returns the return value determines whether the tile should fade in when loading.
+         * @since 0.6
          */
         get_fade_in(): boolean;
 
         /**
          * Gets the tile's last modified time.
          * @returns the tile's last modified time
+         * @since 0.4
          */
         get_modified_time(): GLib.TimeVal;
 
         /**
          * Gets the tile's size.
          * @returns the tile's size in pixels
+         * @since 0.4
          */
         get_size(): number;
 
@@ -7666,24 +8193,28 @@ export namespace Champlain {
         /**
          * Gets the current state of tile loading.
          * @returns the tile's {@link Champlain.State}
+         * @since 0.4
          */
         get_state(): State;
 
         /**
          * Gets the tile's x position.
          * @returns the tile's x position
+         * @since 0.4
          */
         get_x(): number;
 
         /**
          * Gets the tile's y position.
          * @returns the tile's y position
+         * @since 0.4
          */
         get_y(): number;
 
         /**
          * Gets the tile's zoom level.
          * @returns the tile's zoom level
+         * @since 0.4
          */
         get_zoom_level(): number;
 
@@ -7691,6 +8222,7 @@ export namespace Champlain {
          * Sets the tile's content. To also disppay the tile, you have to call
          * `champlain_tile_display_content()` in addition.
          * @param actor the new content
+         * @since 0.4
          */
         set_content(actor: Clutter.Actor): void;
 
@@ -7703,48 +8235,56 @@ export namespace Champlain {
         /**
          * Sets the tile's ETag
          * @param etag the tile's ETag as sent by the server
+         * @since 0.4
          */
         set_etag(etag: string): void;
 
         /**
          * Sets the flag determining whether the tile should fade in when loading
          * @param fade_in determines whether the tile should fade in when loading
+         * @since 0.6
          */
         set_fade_in(fade_in: boolean): void;
 
         /**
          * Sets the tile's modified time
          * @param time a {@link GLib.TimeVal}, the value will be copied
+         * @since 0.4
          */
         set_modified_time(time: GLib.TimeVal): void;
 
         /**
          * Sets the tile's size
          * @param size the size in pixels
+         * @since 0.4
          */
         set_size(size: number): void;
 
         /**
          * Sets the tile's {@link Champlain.State}
          * @param state a {@link Champlain.State}
+         * @since 0.4
          */
         set_state(state: State): void;
 
         /**
          * Sets the tile's x position
          * @param x the position
+         * @since 0.4
          */
         set_x(x: number): void;
 
         /**
          * Sets the tile's y position
          * @param y the position
+         * @since 0.4
          */
         set_y(y: number): void;
 
         /**
          * Sets the tile's zoom level
          * @param zoom_level the zoom level
+         * @since 0.4
          */
         set_zoom_level(zoom_level: number): void;
 
@@ -7759,17 +8299,20 @@ export namespace Champlain {
         /**
          * Gets the surface
          * @returns the {@link cairo.Surface} of the object
+         * @since 0.12.12
          */
         get_surface(): cairo.Surface;
 
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
+         * @since 0.12.12
          */
         set_surface(surface: cairo.Surface): void;
 
         /**
          * Gets the surface
+         * @since 0.12.12
          * @virtual
          */
         vfunc_get_surface(): cairo.Surface;
@@ -7777,6 +8320,7 @@ export namespace Champlain {
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
+         * @since 0.12.12
          * @virtual
          */
         vfunc_set_surface(surface: cairo.Surface): void;
@@ -7797,6 +8341,8 @@ export namespace Champlain {
          * @param progress the progress factor
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          */
         animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
@@ -7804,6 +8350,7 @@ export namespace Champlain {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -7811,6 +8358,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -7828,6 +8376,7 @@ export namespace Champlain {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -7835,6 +8384,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
@@ -7853,6 +8403,8 @@ export namespace Champlain {
          * @param final_value the final value of the animation interval
          * @param progress the progress factor
          * @param value return location for the animation value
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          * @virtual
          */
         vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
@@ -7860,6 +8412,7 @@ export namespace Champlain {
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -7868,6 +8421,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -7885,6 +8439,7 @@ export namespace Champlain {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -7893,6 +8448,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -7907,6 +8463,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -7921,6 +8479,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -7930,6 +8489,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -7938,6 +8498,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -7952,6 +8513,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -7965,6 +8527,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -7973,6 +8536,7 @@ export namespace Champlain {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -7985,6 +8549,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          */
         foreach(callback: Clutter.Callback): void;
 
@@ -7996,6 +8562,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          */
         foreach_with_internals(callback: Clutter.Callback): void;
 
@@ -8004,12 +8572,15 @@ export namespace Champlain {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -8021,6 +8592,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -8032,6 +8605,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -8045,12 +8620,16 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -8076,6 +8655,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -8086,6 +8667,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -8101,6 +8683,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -8115,6 +8698,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -8128,6 +8712,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
@@ -8140,6 +8726,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
@@ -8148,6 +8736,7 @@ export namespace Champlain {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -8160,6 +8749,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -8172,6 +8763,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -8186,6 +8779,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -8193,6 +8788,8 @@ export namespace Champlain {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -8200,6 +8797,7 @@ export namespace Champlain {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -8211,6 +8809,7 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -8220,6 +8819,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -8231,11 +8831,13 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -8247,6 +8849,7 @@ export namespace Champlain {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -8257,6 +8860,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -8269,6 +8873,7 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -8332,6 +8937,7 @@ export namespace Champlain {
          * implementation of this function it should be called on the next source
          * in the chain when next source is a tile cache.
          * @param tile a {@link Champlain.Tile}
+         * @since 0.6
          * @virtual
          */
         vfunc_on_tile_filled(tile: Tile): void;
@@ -8339,6 +8945,7 @@ export namespace Champlain {
         /**
          * Refreshes the tile access time in the cache.
          * @param tile a {@link Champlain.Tile}
+         * @since 0.6
          * @virtual
          */
         vfunc_refresh_tile_time(tile: Tile): void;
@@ -8348,6 +8955,7 @@ export namespace Champlain {
          * @param tile a {@link Champlain.Tile}
          * @param contents the tile contents that should be stored
          * @param size size of the contents in bytes
+         * @since 0.6
          * @virtual
          */
         vfunc_store_tile(tile: Tile, contents: string, size: number): void;
@@ -8362,12 +8970,14 @@ export namespace Champlain {
          * implementation of this function it should be called on the next source
          * in the chain when next source is a tile cache.
          * @param tile a {@link Champlain.Tile}
+         * @since 0.6
          */
         on_tile_filled(tile: Tile): void;
 
         /**
          * Refreshes the tile access time in the cache.
          * @param tile a {@link Champlain.Tile}
+         * @since 0.6
          */
         refresh_tile_time(tile: Tile): void;
 
@@ -8376,6 +8986,7 @@ export namespace Champlain {
          * @param tile a {@link Champlain.Tile}
          * @param contents the tile contents that should be stored
          * @param size size of the contents in bytes
+         * @since 0.6
          */
         store_tile(tile: Tile, contents: string, size: bigint | number): void;
     }
@@ -8554,60 +9165,70 @@ export namespace Champlain {
         /**
          * Gets the cache used for storing tiles by this tile source.
          * @returns the cache
+         * @since 0.6
          */
         get_cache(): TileCache;
 
         /**
          * Sets the map source's cache used for storing tiles.
          * @param cache a {@link Champlain.TileCache}
+         * @since 0.6
          */
         set_cache(cache: TileCache): void;
 
         /**
          * Sets the tile source's id.
          * @param id an id
+         * @since 0.4
          */
         set_id(id: string): void;
 
         /**
          * Sets the tile source's license.
          * @param license the licence
+         * @since 0.4
          */
         set_license(license: string): void;
 
         /**
          * Sets the tile source's license URI.
          * @param license_uri the licence URI
+         * @since 0.4
          */
         set_license_uri(license_uri: string): void;
 
         /**
          * Sets the tile source's maximum zoom level.
          * @param zoom_level the maximum zoom level
+         * @since 0.6
          */
         set_max_zoom_level(zoom_level: number): void;
 
         /**
          * Sets the tile source's minimal zoom level.
          * @param zoom_level the minimal zoom level
+         * @since 0.6
          */
         set_min_zoom_level(zoom_level: number): void;
 
         /**
          * Sets the tile source's name.
          * @param name a name
+         * @since 0.4
          */
         set_name(name: string): void;
 
         /**
          * Sets the tile source's projection.
          * @param projection a {@link Champlain.MapProjection}
+         * @since 0.4
          */
         set_projection(projection: MapProjection): void;
 
         /**
          * Sets the tile source's tile size.
          * @param tile_size the tile size
+         * @since 0.6
          */
         set_tile_size(tile_size: number): void;
     }
@@ -10157,6 +10778,7 @@ export namespace Champlain {
         /**
          * Adds a new layer to the view
          * @param layer a {@link Champlain.Layer}
+         * @since 0.2
          */
         add_layer(layer: Layer): void;
 
@@ -10165,6 +10787,7 @@ export namespace Champlain {
          * of the ordinary map source. Multiple overlay sources can be added.
          * @param map_source a {@link Champlain.MapSource}
          * @param opacity opacity to use
+         * @since 0.12.5
          */
         add_overlay_source(map_source: MapSource, opacity: number): void;
 
@@ -10175,6 +10798,8 @@ export namespace Champlain {
          * @param child The child to be inserted
          * @param x_align x alignment
          * @param y_align y alignment
+         * @since 0.10
+         * @deprecated since 0.12.4: Use {@link Clutter.ActorAlign} and the {@link Clutter.Actor} API instead.
          */
         bin_layout_add(child: Clutter.Actor, x_align: Clutter.BinAlignment, y_align: Clutter.BinAlignment): void;
 
@@ -10182,6 +10807,7 @@ export namespace Champlain {
          * Centers the map on these coordinates.
          * @param latitude the longitude to center the map at
          * @param longitude the longitude to center the map at
+         * @since 0.1
          */
         center_on(latitude: number, longitude: number): void;
 
@@ -10189,6 +10815,7 @@ export namespace Champlain {
          * Changes the map's zoom level and center to make sure that the bounding
          * boxes of all inserted layers are visible.
          * @param animate TRUE to perform animation, FALSE otherwise
+         * @since 0.10
          */
         ensure_layers_visible(animate: boolean): void;
 
@@ -10197,24 +10824,28 @@ export namespace Champlain {
          * is visible
          * @param bbox bounding box of the area that should be visible
          * @param animate TRUE to perform animation, FALSE otherwise
+         * @since 0.10
          */
         ensure_visible(bbox: BoundingBox, animate: boolean): void;
 
         /**
          * Checks whether the view animates zoom level changes.
          * @returns TRUE if the view animates zooms, FALSE otherwise.
+         * @since 0.12
          */
         get_animate_zoom(): boolean;
 
         /**
          * Gets the current background texture displayed behind the map.
          * @returns The texture.
+         * @since 0.12.4
          */
         get_background_pattern(): Clutter.Content;
 
         /**
          * Gets the bounding box for view `view` at current zoom-level.
          * @returns the bounding box
+         * @since 0.12.4
          */
         get_bounding_box(): BoundingBox;
 
@@ -10222,24 +10853,28 @@ export namespace Champlain {
          * Gets the bounding box for view `view` at `zoom_level`.
          * @param zoom_level the level of zoom, a guint between 1 and 20
          * @returns the bounding box for the view at `zoom_level`.
+         * @since 0.12.6
          */
         get_bounding_box_for_zoom_level(zoom_level: number): BoundingBox;
 
         /**
          * Gets the latitude of the view's center.
          * @returns the latitude.
+         * @since 0.10
          */
         get_center_latitude(): number;
 
         /**
          * Gets the longitude of the view's center.
          * @returns the longitude.
+         * @since 0.10
          */
         get_center_longitude(): number;
 
         /**
          * Gets the view's deceleration rate.
          * @returns the view's deceleration rate.
+         * @since 0.4
          */
         get_deceleration(): number;
 
@@ -10252,12 +10887,14 @@ export namespace Champlain {
         /**
          * Checks whether to keep the center on resize
          * @returns TRUE if the view keeps the center on resize, FALSE otherwise.
+         * @since 0.4
          */
         get_keep_center_on_resize(): boolean;
 
         /**
          * Gets the view's scroll mode behaviour.
          * @returns TRUE for kinetic mode, FALSE for push mode.
+         * @since 0.10
          */
         get_kinetic_mode(): boolean;
 
@@ -10266,64 +10903,75 @@ export namespace Champlain {
          * layout manager. It can be manipulated using standard {@link Clutter.Actor} methods
          * (hidden and so on).
          * @returns the license actor
+         * @since 0.10
          */
         get_license_actor(): License;
 
         /**
          * Gets the view's current map source.
          * @returns the view's current map source. If you need to keep a reference to the map source then you have to call `g_object_ref`().
+         * @since 0.4
          */
         get_map_source(): MapSource;
 
         /**
          * Gets the view's maximum allowed zoom level.
          * @returns the view's maximum allowed zoom level.
+         * @since 0.4
          */
         get_max_zoom_level(): number;
 
         /**
          * Gets the view's minimal allowed zoom level.
          * @returns the view's minimal allowed zoom level.
+         * @since 0.4
          */
         get_min_zoom_level(): number;
 
         /**
          * Gets a list of overlay sources.
          * @returns the list
+         * @since 0.12.5
          */
         get_overlay_sources(): MapSource[];
 
         /**
          * Gets the view's state.
          * @returns the state.
+         * @since 0.10
          */
         get_state(): State;
 
         /**
          * Gets the x and y coordinate of the viewport anchor in respect to the layer origin.
+         * @since 0.12.14
          */
         get_viewport_anchor(): [number, number];
 
         /**
          * Gets the x and y coordinate of the viewport in respect to the layer origin.
+         * @since 0.10
          */
         get_viewport_origin(): [number, number];
 
         /**
          * Get the bounding box that represents the extent of the world.
          * @returns a {@link Champlain.BoundingBox} that represents the current world
+         * @since 0.12.11
          */
         get_world(): BoundingBox;
 
         /**
          * Gets the view's current zoom level.
          * @returns the view's current zoom level.
+         * @since 0.4
          */
         get_zoom_level(): number;
 
         /**
          * Checks whether the view zooms on double click.
          * @returns TRUE if the view zooms on double click, FALSE otherwise.
+         * @since 0.4
          */
         get_zoom_on_double_click(): boolean;
 
@@ -10332,6 +10980,7 @@ export namespace Champlain {
          * intermediate view WILL be loaded!
          * @param latitude the longitude to center the map at
          * @param longitude the longitude to center the map at
+         * @since 0.4
          */
         go_to(latitude: number, longitude: number): void;
 
@@ -10339,6 +10988,7 @@ export namespace Champlain {
          * Converts the latitude to view's y coordinate.
          * @param latitude the latitude
          * @returns the y coordinate
+         * @since 0.10
          */
         latitude_to_y(latitude: number): number;
 
@@ -10346,29 +10996,34 @@ export namespace Champlain {
          * Converts the longitude to view's x coordinate.
          * @param longitude the longitude
          * @returns the x coordinate
+         * @since 0.10
          */
         longitude_to_x(longitude: number): number;
 
         /**
          * Reloads all visible tiles.
+         * @since 0.8
          */
         reload_tiles(): void;
 
         /**
          * Removes the given layer from the view
          * @param layer a {@link Champlain.Layer}
+         * @since 0.4.1
          */
         remove_layer(layer: Layer): void;
 
         /**
          * Removes an overlay source from {@link Champlain.View}.
          * @param map_source a {@link Champlain.MapSource}
+         * @since 0.12.5
          */
         remove_overlay_source(map_source: MapSource): void;
 
         /**
          * Should the view animate zoom level changes.
          * @param value a `gboolean`
+         * @since 0.12
          */
         set_animate_zoom(value: boolean): void;
 
@@ -10377,12 +11032,14 @@ export namespace Champlain {
          * pattern affects performence slightly - use reasonably large patterns for
          * better performance.
          * @param background The background texture
+         * @since 0.12.4
          */
         set_background_pattern(background: Clutter.Content): void;
 
         /**
          * The deceleration rate for the kinetic mode.
          * @param rate a `gdouble` between 1.001 and 2.0
+         * @since 0.4
          */
         set_deceleration(rate: number): void;
 
@@ -10395,12 +11052,14 @@ export namespace Champlain {
         /**
          * Keep the current centered position when resizing the view.
          * @param value a `gboolean`
+         * @since 0.4
          */
         set_keep_center_on_resize(value: boolean): void;
 
         /**
          * Determines the way the view reacts to scroll events.
          * @param kinetic TRUE for kinetic mode, FALSE for push mode
+         * @since 0.10
          */
         set_kinetic_mode(kinetic: boolean): void;
 
@@ -10411,18 +11070,21 @@ export namespace Champlain {
          * As a side effect, changing the primary map source will also clear all
          * secondary map sources.
          * @param map_source a {@link Champlain.MapSource}
+         * @since 0.4
          */
         set_map_source(map_source: MapSource): void;
 
         /**
          * Changes the highest allowed level of zoom
          * @param zoom_level the level of zoom
+         * @since 0.4
          */
         set_max_zoom_level(zoom_level: number): void;
 
         /**
          * Changes the lowest allowed level of zoom
          * @param zoom_level the level of zoom
+         * @since 0.4
          */
         set_min_zoom_level(zoom_level: number): void;
 
@@ -10431,24 +11093,28 @@ export namespace Champlain {
          * outside of this bounding box. It will not be possible to scroll outside
          * of this bounding box.
          * @param bbox the {@link Champlain.BoundingBox} of the world
+         * @since 0.12.11
          */
         set_world(bbox: BoundingBox): void;
 
         /**
          * Changes the current level of zoom
          * @param zoom_level the level of zoom, a guint between 1 and 20
+         * @since 0.4
          */
         set_zoom_level(zoom_level: number): void;
 
         /**
          * Should the view zoom in and recenter when the user double click on the map.
          * @param value a `gboolean`
+         * @since 0.4
          */
         set_zoom_on_double_click(value: boolean): void;
 
         /**
          * Stop the go to animation.  The view will stay where it was when the
          * animation was stopped.
+         * @since 0.4
          */
         stop_go_to(): void;
 
@@ -10470,6 +11136,7 @@ export namespace Champlain {
          * Converts the view's x coordinate to longitude.
          * @param x x coordinate of the view
          * @returns the longitude
+         * @since 0.10
          */
         x_to_longitude(x: number): number;
 
@@ -10477,16 +11144,19 @@ export namespace Champlain {
          * Converts the view's y coordinate to latitude.
          * @param y y coordinate of the view
          * @returns the latitude
+         * @since 0.10
          */
         y_to_latitude(y: number): number;
 
         /**
          * Zoom in the map by one level.
+         * @since 0.1
          */
         zoom_in(): void;
 
         /**
          * Zoom out the map by one level.
+         * @since 0.1
          */
         zoom_out(): void;
 
@@ -10506,6 +11176,8 @@ export namespace Champlain {
          * @param progress the progress factor
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          */
         animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
@@ -10513,6 +11185,7 @@ export namespace Champlain {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -10520,6 +11193,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -10537,6 +11211,7 @@ export namespace Champlain {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -10544,6 +11219,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
@@ -10562,6 +11238,8 @@ export namespace Champlain {
          * @param final_value the final value of the animation interval
          * @param progress the progress factor
          * @param value return location for the animation value
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          * @virtual
          */
         vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
@@ -10569,6 +11247,7 @@ export namespace Champlain {
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -10577,6 +11256,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -10594,6 +11274,7 @@ export namespace Champlain {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -10602,6 +11283,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -10616,6 +11298,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -10630,6 +11314,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -10639,6 +11324,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -10647,6 +11333,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -10661,6 +11348,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -10674,6 +11362,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -10682,6 +11371,7 @@ export namespace Champlain {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -10694,6 +11384,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          */
         foreach(callback: Clutter.Callback): void;
 
@@ -10705,6 +11397,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          */
         foreach_with_internals(callback: Clutter.Callback): void;
 
@@ -10713,12 +11407,15 @@ export namespace Champlain {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -10730,6 +11427,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -10741,6 +11440,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -10754,12 +11455,16 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -10785,6 +11490,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -10795,6 +11502,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -10810,6 +11518,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -10824,6 +11533,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -10837,6 +11547,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
@@ -10849,6 +11561,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
@@ -10857,6 +11571,7 @@ export namespace Champlain {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -10869,6 +11584,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -10881,6 +11598,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -10895,6 +11614,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -10902,6 +11623,8 @@ export namespace Champlain {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -10909,6 +11632,7 @@ export namespace Champlain {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -10920,6 +11644,7 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -10929,6 +11654,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -10940,11 +11666,13 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -10956,6 +11684,7 @@ export namespace Champlain {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -10966,6 +11695,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -10978,6 +11708,7 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -11219,6 +11950,8 @@ export namespace Champlain {
          * @param progress the progress factor
          * @param value return location for the animation value
          * @returns `true` if the value has been validated and can   be applied to the {@link Clutter.Animatable}, and `false` otherwise
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          */
         animate_property(animation: Clutter.Animation, property_name: string, initial_value: GObject.Value | any, final_value: GObject.Value | any, progress: number, value: GObject.Value | any): boolean;
 
@@ -11226,6 +11959,7 @@ export namespace Champlain {
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
          * @returns The {@link GObject.ParamSpec} for the given property   or `null`
+         * @since 1.4
          */
         find_property(property_name: string): GObject.ParamSpec;
 
@@ -11233,6 +11967,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          */
         get_initial_state(property_name: string, value: GObject.Value | any): void;
 
@@ -11250,6 +11985,7 @@ export namespace Champlain {
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
          * @returns `true` if the interpolation was successful,   and `false` otherwise
+         * @since 1.8
          */
         interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, unknown];
 
@@ -11257,6 +11993,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          */
         set_final_state(property_name: string, value: GObject.Value | any): void;
 
@@ -11275,6 +12012,8 @@ export namespace Champlain {
          * @param final_value the final value of the animation interval
          * @param progress the progress factor
          * @param value return location for the animation value
+         * @since 1.0
+         * @deprecated since 1.8: Use `clutter_animatable_interpolate_value()`   instead
          * @virtual
          */
         vfunc_animate_property(animation: Clutter.Animation, property_name: string, initial_value: unknown, final_value: unknown, progress: number, value: unknown): boolean;
@@ -11282,6 +12021,7 @@ export namespace Champlain {
         /**
          * Finds the {@link GObject.ParamSpec} for `property_name`
          * @param property_name the name of the animatable property to find
+         * @since 1.4
          * @virtual
          */
         vfunc_find_property(property_name: string): GObject.ParamSpec;
@@ -11290,6 +12030,7 @@ export namespace Champlain {
          * Retrieves the current state of `property_name` and sets `value` with it
          * @param property_name the name of the animatable property to retrieve
          * @param value a {@link GObject.Value} initialized to the type of the property to retrieve
+         * @since 1.4
          * @virtual
          */
         vfunc_get_initial_state(property_name: string, value: unknown): void;
@@ -11307,6 +12048,7 @@ export namespace Champlain {
          * @param property_name the name of the property to interpolate
          * @param interval a {@link Clutter.Interval} with the animation range
          * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
+         * @since 1.8
          * @virtual
          */
         vfunc_interpolate_value(property_name: string, interval: Clutter.Interval, progress: number): [boolean, GObject.Value | any];
@@ -11315,6 +12057,7 @@ export namespace Champlain {
          * Sets the current state of `property_name` to `value`
          * @param property_name the name of the animatable property to set
          * @param value the value of the animatable property to set
+         * @since 1.4
          * @virtual
          */
         vfunc_set_final_state(property_name: string, value: unknown): void;
@@ -11329,6 +12072,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          */
         add_actor(actor: Clutter.Actor): void;
 
@@ -11343,6 +12088,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_get_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -11352,6 +12098,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          */
         child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
 
@@ -11360,6 +12107,7 @@ export namespace Champlain {
          * @param child a {@link Clutter.Actor} that is a child of `container`.
          * @param property the name of the property to set.
          * @param value the value.
+         * @since 0.8
          */
         child_set_property(child: Clutter.Actor, property: string, value: GObject.Value | any): void;
 
@@ -11374,6 +12122,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         create_child_meta(actor: Clutter.Actor): void;
 
@@ -11387,6 +12136,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          */
         destroy_child_meta(actor: Clutter.Actor): void;
 
@@ -11395,6 +12145,7 @@ export namespace Champlain {
          * into any child container.
          * @param child_name the name of the requested child.
          * @returns The child actor with the requested name,   or `null` if no actor with that name was found.
+         * @since 0.6
          */
         find_child_by_name(child_name: string): Clutter.Actor;
 
@@ -11407,6 +12158,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          */
         foreach(callback: Clutter.Callback): void;
 
@@ -11418,6 +12171,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          */
         foreach_with_internals(callback: Clutter.Callback): void;
 
@@ -11426,12 +12181,15 @@ export namespace Champlain {
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
          * @returns the {@link Clutter.ChildMeta} for the `actor` child   of `container` or `null` if the specifiec actor does not exist or the   container is not configured to provide {@link Clutter.ChildMeta}<!-- -->s
+         * @since 0.8
          */
         get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
 
         /**
          * Retrieves all the children of `container`.
          * @returns a list   of {@link Clutter.Actor}<!-- -->s. Use `g_list_free()` on the returned   list when done.
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_children()` instead.
          */
         get_children(): Clutter.Actor[];
 
@@ -11443,6 +12201,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          */
         lower_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -11454,6 +12214,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          */
         raise_child(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
 
@@ -11467,12 +12229,16 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          */
         remove_actor(actor: Clutter.Actor): void;
 
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          */
         sort_depth_order(): void;
 
@@ -11498,6 +12264,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will
          * call `clutter_actor_add_child()`.
          * @param actor the first {@link Clutter.Actor} to add
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_add_child()` instead.
          * @virtual
          */
         vfunc_add(actor: Clutter.Actor): void;
@@ -11508,6 +12276,7 @@ export namespace Champlain {
          * {@link Clutter.Container.SignalSignatures.child_notify | Clutter.Container::child-notify} signal.
          * @param child a {@link Clutter.Actor}
          * @param pspec a {@link GObject.ParamSpec}
+         * @since 1.6
          * @virtual
          */
         vfunc_child_notify(child: Clutter.Actor, pspec: GObject.ParamSpec): void;
@@ -11523,6 +12292,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_create_child_meta(actor: Clutter.Actor): void;
@@ -11537,6 +12307,7 @@ export namespace Champlain {
          * 
          * Applications should not call this function.
          * @param actor a {@link Clutter.Actor}
+         * @since 1.2
          * @virtual
          */
         vfunc_destroy_child_meta(actor: Clutter.Actor): void;
@@ -11550,6 +12321,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_get_first_child()` or   `clutter_actor_get_last_child()` to retrieve the beginning of   the list of children, and `clutter_actor_get_next_sibling()`   and `clutter_actor_get_previous_sibling()` to iterate over it;   alternatively, use the {@link Clutter.ActorIter} API.
          * @virtual
          */
         vfunc_foreach(callback: Clutter.Callback): void;
@@ -11562,6 +12335,8 @@ export namespace Champlain {
          * This function calls the {@link Clutter.ContainerIface}.foreach_with_internals()
          * virtual function, which has been deprecated.
          * @param callback a function to be called for each child
+         * @since 1.0
+         * @deprecated since 1.10: See `clutter_container_foreach()`.
          * @virtual
          */
         vfunc_foreach_with_internals(callback: Clutter.Callback): void;
@@ -11570,6 +12345,7 @@ export namespace Champlain {
          * Retrieves the {@link Clutter.ChildMeta} which contains the data about the
          * `container` specific state for `actor`.
          * @param actor a {@link Clutter.Actor} that is a child of `container`.
+         * @since 0.8
          * @virtual
          */
         vfunc_get_child_meta(actor: Clutter.Actor): Clutter.ChildMeta;
@@ -11582,6 +12358,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_below_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to lower to, or `null` to lower   to the bottom
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_below_sibling()` instead.
          * @virtual
          */
         vfunc_lower(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -11594,6 +12372,8 @@ export namespace Champlain {
          * `clutter_actor_set_child_above_sibling()`.
          * @param actor the actor to raise
          * @param sibling the sibling to raise to, or `null` to raise   to the top
+         * @since 0.6
+         * @deprecated since 1.10: Use `clutter_actor_set_child_above_sibling()` instead.
          * @virtual
          */
         vfunc_raise(actor: Clutter.Actor, sibling: Clutter.Actor | null): void;
@@ -11608,6 +12388,8 @@ export namespace Champlain {
          * deprecated virtual function. The default implementation will call
          * `clutter_actor_remove_child()`.
          * @param actor a {@link Clutter.Actor}
+         * @since 0.4
+         * @deprecated since 1.10: Use `clutter_actor_remove_child()` instead.
          * @virtual
          */
         vfunc_remove(actor: Clutter.Actor): void;
@@ -11615,6 +12397,8 @@ export namespace Champlain {
         /**
          * Sorts a container's children using their depth. This function should not
          * be normally used by applications.
+         * @since 0.6
+         * @deprecated since 1.10: The {@link Clutter.ContainerIface}.sort_depth_order() virtual   function should not be used any more; the default implementation in   {@link Clutter.Container} does not do anything.
          * @virtual
          */
         vfunc_sort_depth_order(): void;
@@ -11622,6 +12406,7 @@ export namespace Champlain {
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
          * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
+         * @since 0.6
          */
         get_id(): string;
 
@@ -11633,6 +12418,7 @@ export namespace Champlain {
          * @param name the name of the node
          * @param node the JSON node to be parsed
          * @returns `true` if the node was successfully parsed, `false` otherwise.
+         * @since 0.6
          */
         parse_custom_node(script: Clutter.Script, value: GObject.Value | any, name: string, node: Json.Node): boolean;
 
@@ -11642,6 +12428,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          */
         set_custom_property(script: Clutter.Script, name: string, value: GObject.Value | any): void;
 
@@ -11653,11 +12440,13 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          */
         set_id(id_: string): void;
 
         /**
          * Retrieves the id of `scriptable` set using `clutter_scriptable_set_id()`.
+         * @since 0.6
          * @virtual
          */
         vfunc_get_id(): string;
@@ -11669,6 +12458,7 @@ export namespace Champlain {
          * @param value the generic value to be set
          * @param name the name of the node
          * @param node the JSON node to be parsed
+         * @since 0.6
          * @virtual
          */
         vfunc_parse_custom_node(script: Clutter.Script, value: unknown, name: string, node: Json.Node): boolean;
@@ -11679,6 +12469,7 @@ export namespace Champlain {
          * @param script the {@link Clutter.Script} creating the scriptable instance
          * @param name the name of the property
          * @param value the value of the property
+         * @since 0.6
          * @virtual
          */
         vfunc_set_custom_property(script: Clutter.Script, name: string, value: unknown): void;
@@ -11691,6 +12482,7 @@ export namespace Champlain {
          * define a unique name for an object constructable using the UI
          * definition language parsed by {@link Clutter.Script}.
          * @param id_ the {@link Clutter.Script} id of the object
+         * @since 0.6
          * @virtual
          */
         vfunc_set_id(id_: string): void;
@@ -11742,6 +12534,7 @@ export namespace Champlain {
         /**
          * Sets bbox equal to the bounding box containing both `bbox` and `other`.
          * @param other a {@link Champlain.BoundingBox}
+         * @since 0.10
          */
         compose(other: BoundingBox): void;
 
@@ -11749,6 +12542,7 @@ export namespace Champlain {
          * Makes a copy of the bounding box structure. The result must be
          * freed using `champlain_bounding_box_free()`.
          * @returns an allocated copy of `bbox`.
+         * @since 0.6
          */
         copy(): BoundingBox;
 
@@ -11757,6 +12551,7 @@ export namespace Champlain {
          * @param latitude the latitude of the point
          * @param longitude the longitude of the point
          * @returns TRUE when the bounding box covers given coordinates, FALSE otherwise.
+         * @since 0.12.4
          */
         covers(latitude: number, longitude: number): boolean;
 
@@ -11765,23 +12560,27 @@ export namespace Champlain {
          * Do nothing if the point is already inside the bounding box.
          * @param latitude the latitude of the point
          * @param longitude the longitude of the point
+         * @since 0.10
          */
         extend(latitude: number, longitude: number): void;
 
         /**
          * Frees a bounding box structure created with `champlain_bounding_box_new()` or
          * `champlain_bounding_box_copy()`.
+         * @since 0.6
          */
         free(): void;
 
         /**
          * Gets the center's latitude and longitude of the box to `latitude` and `longitude`.
+         * @since 0.6
          */
         get_center(): [number, number];
 
         /**
          * Checks whether `bbox` represents a valid bounding box on the map.
          * @returns TRUE when the bounding box is valid, FALSE otherwise.
+         * @since 0.10
          */
         is_valid(): boolean;
     }
@@ -12168,6 +12967,7 @@ export namespace Champlain {
             // Virtual methods
             /**
              * Gets the surface
+             * @since 0.12.12
              * @virtual
              */
             vfunc_get_surface(): cairo.Surface;
@@ -12175,6 +12975,7 @@ export namespace Champlain {
             /**
              * Set a {@link cairo.Surface} to be associated with this tile.
              * @param surface the {@link cairo.Surface}
+             * @since 0.12.12
              * @virtual
              */
             vfunc_set_surface(surface: cairo.Surface): void;
@@ -12209,12 +13010,14 @@ export namespace Champlain {
         /**
          * Gets the surface
          * @returns the {@link cairo.Surface} of the object
+         * @since 0.12.12
          */
         get_surface(): cairo.Surface;
 
         /**
          * Set a {@link cairo.Surface} to be associated with this tile.
          * @param surface the {@link cairo.Surface}
+         * @since 0.12.12
          */
         set_surface(surface: cairo.Surface): void;
     }
@@ -12234,12 +13037,14 @@ export namespace Champlain {
             // Virtual methods
             /**
              * Gets the latitude coordinate.
+             * @since 0.10
              * @virtual
              */
             vfunc_get_latitude(): number;
 
             /**
              * Gets the longitude coordinate.
+             * @since 0.10
              * @virtual
              */
             vfunc_get_longitude(): number;
@@ -12248,6 +13053,7 @@ export namespace Champlain {
              * Sets the coordinates of the location
              * @param latitude the latitude
              * @param longitude the longitude
+             * @since 0.10
              * @virtual
              */
             vfunc_set_location(latitude: number, longitude: number): void;
@@ -12292,12 +13098,14 @@ export namespace Champlain {
         /**
          * Gets the latitude coordinate.
          * @returns the latitude coordinate.
+         * @since 0.10
          */
         get_latitude(): number;
 
         /**
          * Gets the longitude coordinate.
          * @returns the longitude coordinate.
+         * @since 0.10
          */
         get_longitude(): number;
 
@@ -12305,6 +13113,7 @@ export namespace Champlain {
          * Sets the coordinates of the location
          * @param latitude the latitude
          * @param longitude the longitude
+         * @since 0.10
          */
         set_location(latitude: number, longitude: number): void;
     }

@@ -149,16 +149,19 @@ export namespace ArrowDataset {
         // Methods
         /**
          * @returns A newly created {@link ArrowDataset.ScannerBuilder} on success, `null` on error.
+         * @since 5.0.0
          */
         begin_scan(): ScannerBuilder | null;
 
         /**
          * @returns The type name of `dataset`.   It should be freed with `g_free()` when no longer needed.
+         * @since 5.0.0
          */
         get_type_name(): string;
 
         /**
          * @returns A loaded {@link Arrow.Table} on success, `null` on error.
+         * @since 5.0.0
          */
         to_table(): Arrow.Table | null;
     }
@@ -224,6 +227,7 @@ export namespace ArrowDataset {
         // Methods
         /**
          * @returns A newly created {@link ArrowDataset.Dataset} on success, `null` on error.
+         * @since 5.0.0
          */
         finish(): Dataset | null;
     }
@@ -334,16 +338,19 @@ export namespace ArrowDataset {
         /**
          * @param other_format A {@link ArrowDataset.FileFormat} to be compared.
          * @returns `true` if they are the same content file format, `false` otherwise.
+         * @since 3.0.0
          */
         equal(other_format: FileFormat): boolean;
 
         /**
          * @returns The default {@link ArrowDataset.FileWriteOptions} of `format`.
+         * @since 6.0.0
          */
         get_default_write_options(): FileWriteOptions;
 
         /**
          * @returns The type name of `format`.   It should be freed with `g_free()` when no longer needed.
+         * @since 3.0.0
          */
         get_type_name(): string;
 
@@ -354,6 +361,7 @@ export namespace ArrowDataset {
          * @param schema A {@link Arrow.Schema} that is used by written record batches.
          * @param options A {@link ArrowDataset.FileWriteOptions}.
          * @returns The newly created {@link ArrowDataset.FileWriter} of `format`   on success, `null` on error.
+         * @since 6.0.0
          */
         open_writer(destination: Arrow.OutputStream, file_system: Arrow.FileSystem, path: string, schema: Arrow.Schema, options: FileWriteOptions): FileWriter;
     }
@@ -443,6 +451,7 @@ export namespace ArrowDataset {
         /**
          * @param scanner A {@link ArrowDataset.Scanner} that produces data to be written.
          * @param options A {@link ArrowDataset.FileSystemDatasetWriteOptions}.
+         * @since 6.0.0
          */
         static write_scanner(scanner: Scanner, options: FileSystemDatasetWriteOptions): boolean;
     }
@@ -551,23 +560,27 @@ export namespace ArrowDataset {
         /**
          * @param path A path to be added.
          * @returns `true` on success, `false` otherwise.
+         * @since 5.0.0
          */
         add_path(path: string): boolean;
 
         /**
          * @returns A newly created {@link ArrowDataset.FileSystemDataset} on success, `null` on error.
+         * @since 5.0.0
          */
         finish(): FileSystemDataset | null;
 
         /**
          * @param file_system A {@link Arrow.FileSystem}.
          * @returns `true` on success, `false` otherwise.
+         * @since 5.0.0
          */
         set_file_system(file_system: Arrow.FileSystem): boolean;
 
         /**
          * @param uri An URI for file system.
          * @returns `true` on success, `false` otherwise.
+         * @since 5.0.0
          */
         set_file_system_uri(uri: string): boolean;
     }
@@ -800,18 +813,21 @@ export namespace ArrowDataset {
         // Methods
         /**
          * @returns `true` on success, `false` on error.
+         * @since 6.0.0
          */
         finish(): boolean;
 
         /**
          * @param record_batch A {@link Arrow.RecordBatch} to be written.
          * @returns `true` on success, `false` on error.
+         * @since 6.0.0
          */
         write_record_batch(record_batch: Arrow.RecordBatch): boolean;
 
         /**
          * @param reader A {@link Arrow.RecordBatchReader} to be written.
          * @returns `true` on success, `false` on error.
+         * @since 6.0.0
          */
         write_record_batch_reader(reader: Arrow.RecordBatchReader): boolean;
     }
@@ -1112,6 +1128,7 @@ export namespace ArrowDataset {
         // Methods
         /**
          * @returns The type name of `partitioning`.   It should be freed with `g_free()` when no longer needed.
+         * @since 6.0.0
          */
         get_type_name(): string;
     }
@@ -1274,6 +1291,7 @@ export namespace ArrowDataset {
         // Methods
         /**
          * @returns A newly created {@link Arrow.Table} on success, `null` on error.
+         * @since 5.0.0
          */
         to_table(): Arrow.Table | null;
     }
@@ -1343,12 +1361,14 @@ export namespace ArrowDataset {
         // Methods
         /**
          * @returns A newly created {@link ArrowDataset.Scanner} on success, `null` on error.
+         * @since 5.0.0
          */
         finish(): Scanner | null;
 
         /**
          * @param expression A {@link Arrow.Expression} to filter rows with.
          * @returns `true` on success, `false` on error.
+         * @since 6.0.0
          */
         set_filter(expression: Arrow.Expression): boolean;
     }

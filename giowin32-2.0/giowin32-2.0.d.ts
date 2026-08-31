@@ -117,12 +117,14 @@ export namespace GioWin32 {
          * Returns whether the handle of `stream` will be
          * closed when the stream is closed.
          * @returns `true` if the handle is closed when done
+         * @since 2.26
          */
         get_close_handle(): boolean;
 
         /**
          * Return the Windows file handle that the stream reads from.
          * @returns The file handle of `stream`
+         * @since 2.26
          */
         get_handle(): null;
 
@@ -130,6 +132,7 @@ export namespace GioWin32 {
          * Sets whether the handle of `stream` shall be closed
          * when the stream is closed.
          * @param close_handle `true` to close the handle when done
+         * @since 2.26
          */
         set_close_handle(close_handle: boolean): void;
     }
@@ -220,12 +223,14 @@ export namespace GioWin32 {
          * Returns whether the handle of `stream` will be closed when the
          * stream is closed.
          * @returns `true` if the handle is closed when done
+         * @since 2.26
          */
         get_close_handle(): boolean;
 
         /**
          * Return the Windows handle that the stream writes to.
          * @returns The handle descriptor of `stream`
+         * @since 2.26
          */
         get_handle(): null;
 
@@ -233,6 +238,7 @@ export namespace GioWin32 {
          * Sets whether the handle of `stream` shall be closed when the stream
          * is closed.
          * @param close_handle `true` to close the handle when done
+         * @since 2.26
          */
         set_close_handle(close_handle: boolean): void;
     }

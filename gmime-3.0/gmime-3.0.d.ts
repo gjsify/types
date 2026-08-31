@@ -3669,24 +3669,28 @@ export namespace GMime {
         /**
          * Gets the comment that was either previously set or retrieved when decoding a gzip stream.
          * @returns a string containing the comment.
+         * @since 3.2
          */
         get_comment(): string;
 
         /**
          * Gets the filename that was either previously set or retrieved when decoding a gzip stream.
          * @returns a string containing th ename of the file.
+         * @since 3.2
          */
         get_filename(): string;
 
         /**
          * Sets the comment that should be used when generating the gzip header.
          * @param comment The comment
+         * @since 3.2
          */
         set_comment(comment: string): void;
 
         /**
          * Sets the filename that should be used when generating the gzip header.
          * @param filename The name of the file
+         * @since 3.2
          */
         set_filename(filename: string): void;
     }
@@ -3805,18 +3809,21 @@ export namespace GMime {
         /**
          * Gets the stream offset of the beginning of the OpenPGP data block, if any have been found.
          * @returns The stream offset or %-1 if no OpenPGP block was found.
+         * @since 3.2
          */
         get_begin_offset(): number;
 
         /**
          * Gets the type of OpenPGP data that has been detected.
          * @returns a {@link GMime.OpenPGPData} value.
+         * @since 3.2
          */
         get_data_type(): OpenPGPData;
 
         /**
          * Gets the stream offset of the end of the OpenPGP data block, if any have been found.
          * @returns The stream offset or %-1 if no OpenPGP block was found.
+         * @since 3.2
          */
         get_end_offset(): number;
     }
@@ -7907,6 +7914,7 @@ export namespace GMime {
         /**
          * Gets whether or not `stream` owns the backend file descriptor.
          * @returns `true` if `stream` owns the backend file descriptor or `false` otherwise.
+         * @since 3.2
          */
         get_owner(): boolean;
 
@@ -7916,6 +7924,7 @@ export namespace GMime {
          * Note: `owner` should be `true` if the stream should `close()` the
          * backend file descriptor when destroyed or `false` otherwise.
          * @param owner `true` if this stream should own the file descriptor or `false` otherwise
+         * @since 3.2
          */
         set_owner(owner: boolean): void;
     }

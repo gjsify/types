@@ -277,12 +277,14 @@ export namespace GUsb {
         /**
          * Gets the BOS descriptor capability.
          * @returns capability
+         * @since 0.4.0
          */
         get_capability(): number;
 
         /**
          * Gets any extra data from the BOS descriptor.
          * @returns a {@link GLib.Bytes}, or `null` for failure
+         * @since 0.4.0
          */
         get_extra(): GLib.Bytes;
     }
@@ -381,6 +383,9 @@ export namespace GUsb {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @since 0.1.0
+         */
         static error_quark(): GLib.Quark;
 
         // Virtual methods
@@ -408,6 +413,7 @@ export namespace GUsb {
          * 
          * You only need to call this function once, and any subsequent calls
          * are silently ignored.
+         * @since 0.2.2
          */
         enumerate(): void;
 
@@ -416,6 +422,7 @@ export namespace GUsb {
          * @param bus a bus number
          * @param address a bus address
          * @returns a new {@link GUsb.Device}, or `null` if not found.
+         * @since 0.2.2
          */
         find_by_bus_address(bus: number, address: number): Device;
 
@@ -423,6 +430,7 @@ export namespace GUsb {
          * Finds a device based on its platform id value.
          * @param platform_id a platform id, e.g. "usb:00:03:03:02"
          * @returns a new {@link GUsb.Device}, or `null` if not found.
+         * @since 0.2.4
          */
         find_by_platform_id(platform_id: string): Device;
 
@@ -431,23 +439,27 @@ export namespace GUsb {
          * @param vid a vendor ID
          * @param pid a product ID
          * @returns a new {@link GUsb.Device}, or `null` if not found.
+         * @since 0.2.2
          */
         find_by_vid_pid(vid: number, pid: number): Device;
 
         /**
          * @returns a new {@link GLib.PtrArray} of {@link GUsb.Device}'s.
+         * @since 0.2.2
          */
         get_devices(): Device[];
 
         /**
          * Sets the flags to use for the context.
          * @returns the {@link GUsb.ContextFlags}, e.g. {@link GUsb.ContextFlags.AUTO_OPEN_DEVICES}
+         * @since 0.2.11
          */
         get_flags(): ContextFlags;
 
         /**
          * Gets the poll interval for platforms like Windows that do not support `LIBUSB_CAP_HAS_HOTPLUG`.
          * @returns interval in ms
+         * @since 0.3.10
          */
         get_hotplug_poll_interval(): number;
 
@@ -455,6 +467,7 @@ export namespace GUsb {
          * Gets the internal GMainContext to use for synchronous methods.
          * By default the value is set to the value of `g_main_context_default()`
          * @returns the {@link GLib.MainContext}
+         * @since 0.2.5
          */
         get_main_context(): GLib.MainContext;
 
@@ -462,6 +475,7 @@ export namespace GUsb {
          * This function does nothing.
          * @param main_ctx a {@link GLib.MainContext}, or `null`
          * @returns the {@link GUsb.Source}.
+         * @since 0.1.0
          */
         get_source(main_ctx: GLib.MainContext): Source;
 
@@ -469,6 +483,7 @@ export namespace GUsb {
          * Loads the context from a JSON object.
          * @param json_object a {@link Json.Object}
          * @returns `true` on success
+         * @since 0.4.0
          */
         load(json_object: Json.Object): boolean;
 
@@ -477,6 +492,7 @@ export namespace GUsb {
          * @param json_object a {@link Json.Object}
          * @param tag a string tag, e.g. `runtime-reload`, or `null`
          * @returns `true` on success
+         * @since 0.4.1
          */
         load_with_tag(json_object: Json.Object, tag: string): boolean;
 
@@ -484,6 +500,7 @@ export namespace GUsb {
          * Saves the context to an existing JSON builder.
          * @param json_builder a {@link Json.Builder}
          * @returns `true` on success
+         * @since 0.4.0
          */
         save(json_builder: Json.Builder): boolean;
 
@@ -492,6 +509,7 @@ export namespace GUsb {
          * @param json_builder a {@link Json.Builder}
          * @param tag a string tag, e.g. `runtime-reload`, or `null`
          * @returns `true` on success
+         * @since 0.4.1
          */
         save_with_tag(json_builder: Json.Builder, tag: string): boolean;
 
@@ -501,6 +519,7 @@ export namespace GUsb {
          * Using {@link GLib.LogLevelFlags.LEVEL_INFO} will output to standard out, and everything
          * else logs to standard error.
          * @param flags a GLogLevelFlags such as {@link GLib.LogLevelFlags.LEVEL_ERROR} | {@link GLib.LogLevelFlags.LEVEL_INFO}, or 0
+         * @since 0.1.0
          */
         set_debug(flags: GLib.LogLevelFlags): void;
 
@@ -508,6 +527,7 @@ export namespace GUsb {
          * Sets the flags to use for the context. These should be set before
          * `g_usb_context_enumerate()` is called.
          * @param flags some {@link GUsb.ContextFlags}, e.g. {@link GUsb.ContextFlags.AUTO_OPEN_DEVICES}
+         * @since 0.2.11
          */
         set_flags(flags: ContextFlags): void;
 
@@ -516,12 +536,14 @@ export namespace GUsb {
          * This defaults to 1000ms and can be changed before or after `g_usb_context_enumerate()` has been
          * called.
          * @param hotplug_poll_interval the interval in ms
+         * @since 0.3.10
          */
         set_hotplug_poll_interval(hotplug_poll_interval: number): void;
 
         /**
          * Sets the internal GMainContext to use for synchronous methods.
          * @param main_ctx 
+         * @since 0.2.5
          */
         set_main_context(main_ctx: GLib.MainContext): void;
 
@@ -534,6 +556,7 @@ export namespace GUsb {
          * @param device a {@link GUsb.Device}
          * @param timeout_ms timeout to wait
          * @returns a new {@link GUsb.Device}, or `null` for invalid
+         * @since 0.2.9
          */
         wait_for_replug(device: Device, timeout_ms: number): Device;
 
@@ -578,6 +601,7 @@ export namespace GUsb {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -621,6 +645,7 @@ export namespace GUsb {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -707,6 +732,9 @@ export namespace GUsb {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @since 0.1.0
+         */
         static error_quark(): GLib.Quark;
 
         // Methods
@@ -717,6 +745,7 @@ export namespace GUsb {
          * and allowing tags to be saved to the backend object allows us to identify each version of
          * the same physical device.
          * @param tag a tag, for example `bootloader` or `runtime-reload`
+         * @since 0.4.1
          */
         add_tag(tag: string): void;
 
@@ -729,6 +758,7 @@ export namespace GUsb {
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success
+         * @since 0.1.0
          */
         bulk_transfer(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -738,6 +768,7 @@ export namespace GUsb {
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.0
          */
         bulk_transfer_async(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
@@ -748,6 +779,7 @@ export namespace GUsb {
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.0
          */
         bulk_transfer_async(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -758,6 +790,7 @@ export namespace GUsb {
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.0
          */
         bulk_transfer_async(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
@@ -765,6 +798,7 @@ export namespace GUsb {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns the actual number of bytes sent, or -1 on error.
+         * @since 0.1.0
          */
         bulk_transfer_finish(res: Gio.AsyncResult): number;
 
@@ -773,17 +807,20 @@ export namespace GUsb {
          * @param iface bInterfaceNumber of the interface you wish to claim
          * @param flags {@link GUsb.DeviceClaimInterfaceFlags}
          * @returns `true` on success
+         * @since 0.1.0
          */
         claim_interface(iface: number, flags: DeviceClaimInterfaceFlags): boolean;
 
         /**
          * Clear all the events saved by the device.
+         * @since 0.4.4
          */
         clear_events(): void;
 
         /**
          * Closes the device when it is no longer required.
          * @returns `true` on success
+         * @since 0.1.0
          */
         close(): boolean;
 
@@ -801,6 +838,7 @@ export namespace GUsb {
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success
+         * @since 0.1.0
          */
         control_transfer(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -815,6 +853,7 @@ export namespace GUsb {
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.0
          */
         control_transfer_async(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
@@ -830,6 +869,7 @@ export namespace GUsb {
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.0
          */
         control_transfer_async(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -845,6 +885,7 @@ export namespace GUsb {
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.0
          */
         control_transfer_async(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
@@ -852,12 +893,14 @@ export namespace GUsb {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns the actual number of bytes sent, or -1 on error.
+         * @since 0.1.0
          */
         control_transfer_finish(res: Gio.AsyncResult): number;
 
         /**
          * Gets the USB address for the device.
          * @returns The 8-bit address
+         * @since 0.1.0
          */
         get_address(): number;
 
@@ -867,6 +910,7 @@ export namespace GUsb {
          * descriptors you have to use `g_usb_device_get_bos_descriptors()` and check each one manually.
          * @param capability a BOS capability type
          * @returns a {@link GUsb.BosDescriptor} or `null` for not found
+         * @since 0.4.0
          */
         get_bos_descriptor(capability: number): BosDescriptor;
 
@@ -876,18 +920,21 @@ export namespace GUsb {
          * The first time this method is used the hardware is queried and then after that cached results
          * are returned. To invalidate the caches use `g_usb_device_invalidate()`.
          * @returns an array of BOS descriptors
+         * @since 0.4.0
          */
         get_bos_descriptors(): BosDescriptor[];
 
         /**
          * Gets the USB bus number for the device.
          * @returns The 8-bit bus number
+         * @since 0.1.0
          */
         get_bus(): number;
 
         /**
          * Gets the device children if any exist.
          * @returns an array of {@link GUsb.Device}
+         * @since 0.2.4
          */
         get_children(): Device[];
 
@@ -896,6 +943,7 @@ export namespace GUsb {
          * 
          * Warning: this function is synchronous.
          * @returns The bConfigurationValue of the active config, or -1 on error
+         * @since 0.1.0
          */
         get_configuration(): number;
 
@@ -903,6 +951,7 @@ export namespace GUsb {
          * Get the index for the active Configuration string descriptor
          * ie, iConfiguration.
          * @returns a string descriptor index.
+         * @since 0.3.5
          */
         get_configuration_index(): number;
 
@@ -912,6 +961,7 @@ export namespace GUsb {
          * This can be used as an indicator if the device replugged, as the vendor and product IDs may not
          * change for some devices. Use `g_date_time_equal()` to verify equality.
          * @returns a {@link GLib.DateTime}
+         * @since 0.4.5
          */
         get_created(): GLib.DateTime;
 
@@ -921,12 +971,14 @@ export namespace GUsb {
          * @param subclass_id a device subclass
          * @param protocol_id a protocol number
          * @returns a non-zero index, or 0x00 for failure
+         * @since 0.2.5
          */
         get_custom_index(class_id: number, subclass_id: number, protocol_id: number): number;
 
         /**
          * Gets the device class, typically a {@link GUsb.DeviceClassCode}.
          * @returns a device class number, e.g. 0x09 is a USB hub.
+         * @since 0.1.7
          */
         get_device_class(): number;
 
@@ -934,6 +986,7 @@ export namespace GUsb {
          * Gets the device protocol qualified by the class and subclass numbers.
          * See `g_usb_device_get_device_class()` and `g_usb_device_get_device_subclass()`.
          * @returns a device protocol number.
+         * @since 0.2.4
          */
         get_device_protocol(): number;
 
@@ -941,6 +994,7 @@ export namespace GUsb {
          * Gets the device subclass qualified by the class number.
          * See `g_usb_device_get_device_class()`.
          * @returns a device subclass number.
+         * @since 0.2.4
          */
         get_device_subclass(): number;
 
@@ -950,6 +1004,7 @@ export namespace GUsb {
          * Events are only collected when the `G_USB_CONTEXT_FLAGS_SAVE_EVENTS` flag is used before
          * enumerating the context. Events can be used to replay device transactions.
          * @returns an array of events
+         * @since 0.4.0
          */
         get_events(): DeviceEvent[];
 
@@ -959,6 +1014,7 @@ export namespace GUsb {
          * If more than one interface exports a HID descriptor, use `g_usb_device_get_hid_descriptors()`
          * instead.
          * @returns a HID descriptor, or `null`
+         * @since 0.4.7
          */
         get_hid_descriptor_default(): GLib.Bytes;
 
@@ -968,6 +1024,7 @@ export namespace GUsb {
          * The first time this method is used the hardware is queried and then after that cached results
          * are returned. To invalidate the caches use `g_usb_device_invalidate()`.
          * @returns an array of HID descriptors
+         * @since 0.4.7
          */
         get_hid_descriptors(): GLib.Bytes[];
 
@@ -980,6 +1037,7 @@ export namespace GUsb {
          * @param subclass_id a device subclass
          * @param protocol_id a protocol number
          * @returns a {@link GUsb.Interface} or `null` for not found
+         * @since 0.2.8
          */
         get_interface(class_id: number, subclass_id: number, protocol_id: number): Interface;
 
@@ -989,30 +1047,35 @@ export namespace GUsb {
          * The first time this method is used the hardware is queried and then after that cached results
          * are returned. To invalidate the caches use `g_usb_device_invalidate()`.
          * @returns an array of interfaces or `null` for error
+         * @since 0.2.8
          */
         get_interfaces(): Interface[];
 
         /**
          * Gets the index for the Manufacturer string descriptor.
          * @returns a string descriptor index.
+         * @since 0.1.0
          */
         get_manufacturer_index(): number;
 
         /**
          * Gets the device parent if one exists.
          * @returns {@link GUsb.Device} or `null`
+         * @since 0.2.4
          */
         get_parent(): Device;
 
         /**
          * Gets the product ID for the device.
          * @returns an ID.
+         * @since 0.1.0
          */
         get_pid(): number;
 
         /**
          * Gets the product ID for the device as a string.
          * @returns an string ID, or `null` if not available.
+         * @since 0.2.4
          */
         get_pid_as_str(): string;
 
@@ -1022,30 +1085,35 @@ export namespace GUsb {
          * When the device is removed and then replugged, this value is not expected to
          * be different.
          * @returns The platform ID, e.g. "usb:02:00:03:01"
+         * @since 0.1.1
          */
         get_platform_id(): string;
 
         /**
          * Gets the USB port number for the device.
          * @returns The 8-bit port number
+         * @since 0.2.4
          */
         get_port_number(): number;
 
         /**
          * Gets the index for the Product string descriptor.
          * @returns a string descriptor index.
+         * @since 0.1.0
          */
         get_product_index(): number;
 
         /**
          * Gets the BCD firmware version number for the device.
          * @returns a version number in BCD format.
+         * @since 0.2.8
          */
         get_release(): number;
 
         /**
          * Gets the index for the Serial Number string descriptor.
          * @returns a string descriptor index.
+         * @since 0.1.0
          */
         get_serial_number_index(): number;
 
@@ -1053,6 +1121,7 @@ export namespace GUsb {
          * Gets the BCD specification revision for the device. For example,
          * `0x0110` indicates USB 1.1 and 0x0320 indicates USB 3.2
          * @returns a specification revision in BCD format.
+         * @since 0.3.1
          */
         get_spec(): number;
 
@@ -1061,6 +1130,7 @@ export namespace GUsb {
          * with `g_free()` when no longer needed.
          * @param desc_index the index for the string descriptor to retrieve
          * @returns a newly-allocated string holding the descriptor, or NULL on error.
+         * @since 0.1.0
          */
         get_string_descriptor(desc_index: number): string;
 
@@ -1073,6 +1143,7 @@ export namespace GUsb {
          * @param desc_index the index for the string descriptor to retrieve
          * @param langid the language ID
          * @returns a possibly UTF-16 string, or NULL on error.
+         * @since 0.3.6
          */
         get_string_descriptor_bytes(desc_index: number, langid: number): GLib.Bytes;
 
@@ -1083,24 +1154,28 @@ export namespace GUsb {
          * @param langid the language ID
          * @param length size of the request data buffer
          * @returns a possibly UTF-16 string, or NULL on error.
+         * @since 0.3.8
          */
         get_string_descriptor_bytes_full(desc_index: number, langid: number, length: bigint | number): GLib.Bytes;
 
         /**
          * Gets all the tags.
          * @returns string tags
+         * @since 0.4.4
          */
         get_tags(): string[];
 
         /**
          * Gets the vendor ID for the device.
          * @returns an ID.
+         * @since 0.1.0
          */
         get_vid(): number;
 
         /**
          * Gets the vendor ID for the device as a string.
          * @returns an string ID, or `null` if not available.
+         * @since 0.2.4
          */
         get_vid_as_str(): string;
 
@@ -1108,6 +1183,7 @@ export namespace GUsb {
          * Checks if a tag has been used to identify the specific device.
          * @param tag a tag, for example `bootloader` or `runtime-reload`
          * @returns `true` on success
+         * @since 0.4.3
          */
         has_tag(tag: string): boolean;
 
@@ -1120,6 +1196,7 @@ export namespace GUsb {
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success
+         * @since 0.1.0
          */
         interrupt_transfer(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -1129,6 +1206,7 @@ export namespace GUsb {
          * @param data a suitably-sized data buffer for either input or output
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.0
          */
         interrupt_transfer_async(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
@@ -1139,6 +1217,7 @@ export namespace GUsb {
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.0
          */
         interrupt_transfer_async(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1149,6 +1228,7 @@ export namespace GUsb {
          * @param timeout timeout timeout (in milliseconds) that this function should wait before giving up due to no response being received. For an unlimited timeout, use 0.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.0
          */
         interrupt_transfer_async(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
@@ -1156,17 +1236,20 @@ export namespace GUsb {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns the actual number of bytes sent, or -1 on error.
+         * @since 0.1.0
          */
         interrupt_transfer_finish(res: Gio.AsyncResult): number;
 
         /**
          * Invalidates the caches used in `g_usb_device_get_interfaces()`.
+         * @since 0.4.0
          */
         invalidate(): void;
 
         /**
          * Gets if the device is emulated.
          * @returns `true` if the device is emulated and not backed by a physical device.
+         * @since 0.4.4
          */
         is_emulated(): boolean;
 
@@ -1175,6 +1258,7 @@ export namespace GUsb {
          * 
          * Warning: this function is synchronous.
          * @returns `true` on success
+         * @since 0.1.0
          */
         open(): boolean;
 
@@ -1183,12 +1267,14 @@ export namespace GUsb {
          * @param iface bInterfaceNumber of the interface you wish to release
          * @param flags {@link GUsb.DeviceClaimInterfaceFlags}
          * @returns `true` on success
+         * @since 0.1.0
          */
         release_interface(iface: number, flags: DeviceClaimInterfaceFlags): boolean;
 
         /**
          * Removes a tag, which is included in the JSON log to identify the specific device.
          * @param tag a tag, for example `bootloader` or `runtime-reload`
+         * @since 0.4.4
          */
         remove_tag(tag: string): void;
 
@@ -1201,6 +1287,7 @@ export namespace GUsb {
          * 
          * This is a blocking function which usually incurs a noticeable delay.
          * @returns `true` on success
+         * @since 0.1.0
          */
         reset(): boolean;
 
@@ -1210,6 +1297,7 @@ export namespace GUsb {
          * Warning: this function is synchronous.
          * @param configuration the configuration value to set
          * @returns `true` on success
+         * @since 0.1.0
          */
         set_configuration(configuration: number): boolean;
 
@@ -1218,6 +1306,7 @@ export namespace GUsb {
          * @param iface bInterfaceNumber of the interface you wish to release
          * @param alt alternative setting number
          * @returns `true` on success
+         * @since 0.2.8
          */
         set_interface_alt(iface: number, alt: number): boolean;
 
@@ -1262,6 +1351,7 @@ export namespace GUsb {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1305,6 +1395,7 @@ export namespace GUsb {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -1356,30 +1447,35 @@ export namespace GUsb {
         /**
          * Gets any bytes data from the event.
          * @returns a {@link GLib.Bytes}, or `null`
+         * @since 0.4.0
          */
         get_bytes(): GLib.Bytes;
 
         /**
          * Gets the event ID.
          * @returns string, or `null`
+         * @since 0.4.0
          */
         get_id(): string;
 
         /**
          * Gets any return code from the event.
          * @returns a `enum libusb_error`
+         * @since 0.4.5
          */
         get_rc(): number;
 
         /**
          * Gets any status data from the event.
          * @returns a `enum libusb_transfer_status`, or -1 for failure
+         * @since 0.4.0
          */
         get_status(): number;
 
         /**
          * Set the bytes data to the event.
          * @param bytes a {@link GLib.Bytes}
+         * @since 0.4.0
          */
         set_bytes(bytes: GLib.Bytes | Uint8Array): void;
     }
@@ -1466,6 +1562,7 @@ export namespace GUsb {
         // Methods
         /**
          * This function does nothing.
+         * @since 0.1.0
          */
         coldplug(): void;
 
@@ -1474,6 +1571,7 @@ export namespace GUsb {
          * @param bus a bus number
          * @param address a bus address
          * @returns a new {@link GUsb.Device}, or `null` if not found.
+         * @since 0.1.0
          */
         find_by_bus_address(bus: number, address: number): Device;
 
@@ -1482,11 +1580,13 @@ export namespace GUsb {
          * @param vid a vendor ID
          * @param pid a product ID
          * @returns a new {@link GUsb.Device}, or `null` if not found.
+         * @since 0.1.0
          */
         find_by_vid_pid(vid: number, pid: number): Device;
 
         /**
          * @returns a new {@link GLib.PtrArray} of {@link GUsb.Device}'s.
+         * @since 0.1.0
          */
         get_devices(): Device[];
     }
@@ -1537,54 +1637,63 @@ export namespace GUsb {
         /**
          * Gets the address of the endpoint.
          * @returns The 4-bit endpoint address
+         * @since 0.3.3
          */
         get_address(): number;
 
         /**
          * Gets the direction of the endpoint.
          * @returns The endpoint direction
+         * @since 0.3.3
          */
         get_direction(): DeviceDirection;
 
         /**
          * Gets any extra data from the endpoint.
          * @returns a {@link GLib.Bytes}, or `null` for failure
+         * @since 0.3.3
          */
         get_extra(): GLib.Bytes;
 
         /**
          * Gets the type of endpoint.
          * @returns The 8-bit type
+         * @since 0.3.3
          */
         get_kind(): number;
 
         /**
          * Gets the maximum packet size this endpoint is capable of sending/receiving.
          * @returns The maximum packet size
+         * @since 0.3.3
          */
         get_maximum_packet_size(): number;
 
         /**
          * Gets the number part of endpoint address.
          * @returns The lower 4-bit of endpoint address
+         * @since 0.3.3
          */
         get_number(): number;
 
         /**
          * Gets the endpoint polling interval.
          * @returns The endpoint polling interval
+         * @since 0.3.3
          */
         get_polling_interval(): number;
 
         /**
          * Gets the rate at which synchronization feedback is provided, for audio device only.
          * @returns The endpoint refresh
+         * @since 0.3.3
          */
         get_refresh(): number;
 
         /**
          * Gets the address if the synch endpoint, for audio device only.
          * @returns The synch endpoint address
+         * @since 0.3.3
          */
         get_synch_address(): number;
     }
@@ -1635,48 +1744,56 @@ export namespace GUsb {
         /**
          * Gets the alternate setting for the interface.
          * @returns alt setting, typically zero.
+         * @since 0.2.8
          */
         get_alternate(): number;
 
         /**
          * Gets the interface class, typically a `GUsbInterfaceClassCode`.
          * @returns a interface class number, e.g. 0x09 is a USB hub.
+         * @since 0.2.8
          */
         get_class(): number;
 
         /**
          * Gets interface endpoints.
          * @returns an array of endpoints, or `null` on failure.
+         * @since 0.3.3
          */
         get_endpoints(): Endpoint[];
 
         /**
          * Gets any extra data from the interface.
          * @returns a {@link GLib.Bytes}, or `null` for failure
+         * @since 0.2.8
          */
         get_extra(): GLib.Bytes;
 
         /**
          * Gets the index for the string descriptor.
          * @returns a string descriptor index.
+         * @since 0.2.8
          */
         get_index(): number;
 
         /**
          * Gets the type of interface.
          * @returns The 8-bit address
+         * @since 0.2.8
          */
         get_kind(): number;
 
         /**
          * Gets the USB bus number for the interface.
          * @returns The 8-bit bus number
+         * @since 0.2.8
          */
         get_length(): number;
 
         /**
          * Gets the interface number.
          * @returns The interface ID
+         * @since 0.2.8
          */
         get_number(): number;
 
@@ -1684,6 +1801,7 @@ export namespace GUsb {
          * Gets the interface protocol qualified by the class and subclass numbers.
          * See `g_usb_interface_get_class()` and `g_usb_interface_get_subclass()`.
          * @returns a interface protocol number.
+         * @since 0.2.8
          */
         get_protocol(): number;
 
@@ -1691,6 +1809,7 @@ export namespace GUsb {
          * Gets the interface subclass qualified by the class number.
          * See `g_usb_interface_get_class()`.
          * @returns a interface subclass number.
+         * @since 0.2.8
          */
         get_subclass(): number;
     }
@@ -1738,12 +1857,16 @@ export namespace GUsb {
         static $gtype: GObject.GType<Source>;
 
         // Static methods
+        /**
+         * @since 0.1.0
+         */
         static error_quark(): GLib.Quark;
 
         // Methods
         /**
          * This function does nothing.
          * @param func a function to call
+         * @since 0.1.0
          */
         set_callback(func: GLib.SourceFunc): void;
     }

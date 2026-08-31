@@ -110,6 +110,7 @@ export namespace Uhm {
          * @param hostname the hostname to match
          * @param addr the IP address to resolve to
          * @returns `true` on success; `false` otherwise
+         * @since 0.1.0
          */
         add_A(hostname: string, addr: string): boolean;
 
@@ -121,6 +122,7 @@ export namespace Uhm {
          * @param addr the IP address to resolve to
          * @param port the port to resolve to
          * @returns `true` on success; `false` otherwise
+         * @since 0.1.0
          */
         add_SRV(service: string, protocol: string, domain: string, addr: string, port: number): boolean;
 
@@ -372,6 +374,7 @@ export namespace Uhm {
          * @param direction the transmission direction of the message
          * @param data message data
          * @param user_data user data passed to the {@link Soup.Logger}, or `null`
+         * @since 0.3.0
          */
         static received_message_chunk_from_soup(logger: Soup.Logger, level: Soup.LoggerLogLevel, direction: number, data: string, user_data: null): void;
 
@@ -398,6 +401,7 @@ export namespace Uhm {
          * 
          * It is an error to call this function with an invalid `filter_id`.
          * @param filter_id filter ID returned by the filter addition function
+         * @since 0.5.0
          */
         compare_messages_remove_filter(filter_id: bigint | number): void;
 
@@ -406,6 +410,7 @@ export namespace Uhm {
          * `uhm_server_start_trace_full()`.
          * 
          * If {@link Uhm.Server.enable_online} is `false`, this will shut down the mock server (as if `uhm_server_stop()` had been called).
+         * @since 0.1.0
          */
         end_trace(): void;
 
@@ -423,48 +428,56 @@ export namespace Uhm {
          * used. This may change in future.
          * @param parameter_names `null`-terminated array of    parameter names to ignore
          * @returns opaque filter ID used with    `uhm_server_compare_messages_remove_filter()` to remove the filter later
+         * @since 0.5.0
          */
         filter_ignore_parameter_values(parameter_names: string[]): number;
 
         /**
          * Gets the value of the {@link Uhm.Server.address} property.
          * @returns the physical address of the listening socket the server is currently bound to; or `null` if the server is not running
+         * @since 0.1.0
          */
         get_address(): string | null;
 
         /**
          * Gets the value of the {@link Uhm.Server.enable_logging} property.
          * @returns `true` if client network traffic is being logged to a trace file; `false` otherwise
+         * @since 0.1.0
          */
         get_enable_logging(): boolean;
 
         /**
          * Gets the value of the {@link Uhm.Server.enable_online} property.
          * @returns `true` if the server does not intercept and handle network connections from client code; `false` otherwise
+         * @since 0.1.0
          */
         get_enable_online(): boolean;
 
         /**
          * Gets the value of the {@link Uhm.Server.port} property.
          * @returns the port of the listening socket the server is currently bound to; or <code class="literal">0</code> if the server is not running
+         * @since 0.1.0
          */
         get_port(): number;
 
         /**
          * Gets the value of the {@link Uhm.Server.resolver} property.
          * @returns the mock resolver in use by the mock server, or `null` if no resolver is active
+         * @since 0.1.0
          */
         get_resolver(): Resolver | null;
 
         /**
          * Gets the value of the {@link Uhm.Server.tls_certificate} property.
          * @returns the server's current TLS certificate; or `null` if it's serving HTTP only
+         * @since 0.1.0
          */
         get_tls_certificate(): Gio.TlsCertificate | null;
 
         /**
          * Gets the value of the {@link Uhm.Server.trace_directory} property.
          * @returns the directory to load/store trace files from, or `null`
+         * @since 0.1.0
          */
         get_trace_directory(): Gio.File | null;
 
@@ -479,6 +492,7 @@ export namespace Uhm {
          * a problem reading the trace file.
          * @param trace_file trace file to load
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.0
          */
         load_trace(trace_file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
@@ -486,6 +500,7 @@ export namespace Uhm {
          * Asynchronous version of `uhm_server_load_trace()`. In `callback`, call `uhm_server_load_trace_finish()` to complete the operation.
          * @param trace_file trace file to load
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.0
          */
         load_trace_async(trace_file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>;
 
@@ -494,6 +509,7 @@ export namespace Uhm {
          * @param trace_file trace file to load
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback function to call once the async operation is complete
+         * @since 0.1.0
          */
         load_trace_async(trace_file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -502,6 +518,7 @@ export namespace Uhm {
          * @param trace_file trace file to load
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback function to call once the async operation is complete
+         * @since 0.1.0
          */
         load_trace_async(trace_file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
 
@@ -511,6 +528,7 @@ export namespace Uhm {
          * On error, `error` will be set and the state of the {@link Uhm.Server} will not change.
          * See `uhm_server_load_trace()` for details on the error domains used.
          * @param result asynchronous operation result passed to the callback
+         * @since 0.1.0
          */
         load_trace_finish(result: Gio.AsyncResult): void;
 
@@ -530,6 +548,7 @@ export namespace Uhm {
          * it directly to `soup_logger_set_printer()`. See the documentation for `uhm_server_received_message_chunk_from_soup()` for details.</para></note>
          * @param message_chunk single line of a message which was received
          * @param message_chunk_length length of `message_chunk` in bytes
+         * @since 0.1.0
          */
         received_message_chunk(message_chunk: string, message_chunk_length: bigint | number): void;
 
@@ -564,6 +583,7 @@ export namespace Uhm {
          * @param direction single character indicating the direction of message transmission
          * @param data single line of a message which was received
          * @param data_length length of `data` in bytes
+         * @since 0.3.0
          */
         received_message_chunk_with_direction(direction: number, data: string, data_length: bigint | number): void;
 
@@ -576,6 +596,7 @@ export namespace Uhm {
          * to shut it down.
          * 
          * This function always succeeds.
+         * @since 0.1.0
          */
         run(): void;
 
@@ -585,18 +606,21 @@ export namespace Uhm {
          * be used by clients which have no special certificate requirements; clients which have special requirements should
          * construct a custom {@link Gio.TlsCertificate} and pass it to `uhm_server_set_tls_certificate()`.
          * @returns the default certificate set as {@link Uhm.Server.tls_certificate}
+         * @since 0.1.0
          */
         set_default_tls_certificate(): Gio.TlsCertificate;
 
         /**
          * Sets the value of the {@link Uhm.Server.enable_logging} property.
          * @param enable_logging `true` to log client network traffic to a trace file; `false` otherwise
+         * @since 0.1.0
          */
         set_enable_logging(enable_logging: boolean): void;
 
         /**
          * Sets the value of the {@link Uhm.Server.enable_online} property.
          * @param enable_online `true` to not intercept and handle network connections from client code; `false` otherwise
+         * @since 0.1.0
          */
         set_enable_online(enable_online: boolean): void;
 
@@ -611,18 +635,21 @@ export namespace Uhm {
          * It is safe to add further domain names to the {@link Uhm.Resolver} in a callback for the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal for {@link Uhm.Server.resolver};
          * that signal is emitted after the resolver is cleared and these `domain_names` are added.
          * @param domain_names `null`-terminated array of domain names to expect, or `null` to not expect any
+         * @since 0.3.0
          */
         set_expected_domain_names(domain_names: string[] | null): void;
 
         /**
          * Sets the value of the {@link Uhm.Server.tls_certificate} property.
          * @param tls_certificate TLS certificate for the server to use; or `null` to serve HTTP only
+         * @since 0.1.0
          */
         set_tls_certificate(tls_certificate: Gio.TlsCertificate | null): void;
 
         /**
          * Sets the value of the {@link Uhm.Server.trace_directory} property.
          * @param trace_directory a directory to load/store trace files from, or `null` to unset it
+         * @since 0.1.0
          */
         set_trace_directory(trace_directory: Gio.File | null): void;
 
@@ -635,6 +662,7 @@ export namespace Uhm {
          * On failure, `error` will be set and the {@link Uhm.Server} state will remain unchanged. See `uhm_server_start_trace_full()` for
          * details of the error domains used.
          * @param trace_name name of the trace
+         * @since 0.1.0
          */
         start_trace(trace_name: string): void;
 
@@ -652,6 +680,7 @@ export namespace Uhm {
          * ({@link Uhm.Server.enable_logging}) and there is a problem writing to the trace file; or if a trace needs to be loaded and there is a problem
          * reading from the trace file.
          * @param trace_file a trace file to load
+         * @since 0.1.0
          */
         start_trace_full(trace_file: Gio.File): void;
 
@@ -662,11 +691,13 @@ export namespace Uhm {
          * names loaded into the {@link Uhm.Server.resolver}.
          * 
          * This function always succeeds.
+         * @since 0.1.0
          */
         stop(): void;
 
         /**
          * Unloads the current trace file of network messages, as loaded by `uhm_server_load_trace()` or `uhm_server_load_trace_async()`.
+         * @since 0.1.0
          */
         unload_trace(): void;
     }

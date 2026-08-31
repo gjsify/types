@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/pango-1.0)
 
 
-GJS TypeScript type definitions for Pango-1.0, generated from library version 1.58.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.3.0.
+GJS TypeScript type definitions for Pango-1.0, generated from library version 1.58.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.4.0.
 
 ## Install
 

@@ -56,6 +56,7 @@ export namespace Vte {
         /**
          * Error domain for VTE PTY errors. Errors in this domain will be from the {@link Vte.PtyError}
          * enumeration. See {@link GLib.Error} for more information on error domains.
+         * @since 0.26
          */
         static quark(): GLib.Quark;
     }
@@ -339,12 +340,14 @@ export namespace Vte {
         // Methods
         /**
          * FIXMEchpe
+         * @since 0.26
          */
         child_setup(): void;
 
         /**
          * Cleans up the PTY, specifically any logging performed for the session.
          * The file descriptor to the PTY master remains open.
+         * @since 0.26
          */
         close(): void;
 
@@ -358,6 +361,7 @@ export namespace Vte {
          * 
          * If getting the window size failed, `error` will be set to a {@link GLib.IOError}.
          * @returns `true` on success, `false` on failure with `error` filled in
+         * @since 0.26
          */
         get_size(): [boolean, number, number];
 
@@ -369,12 +373,14 @@ export namespace Vte {
          * @param rows the desired number of rows
          * @param columns the desired number of columns
          * @returns `true` on success, `false` on failure with `error` filled in
+         * @since 0.26
          */
         set_size(rows: number, columns: number): boolean;
 
         /**
          * Sets what value of the TERM environment variable to set just after forking.
          * @param emulation the name of a terminal description, or `null`
+         * @since 0.26
          */
         set_term(emulation: string | null): void;
 
@@ -384,6 +390,7 @@ export namespace Vte {
          * discipline do multibyte backspace correctly.
          * @param utf8 whether or not the pty is in UTF-8 mode
          * @returns `true` on success, `false` on failure with `error` filled in
+         * @since 0.26
          */
         set_utf8(utf8: boolean): boolean;
 
@@ -428,6 +435,7 @@ export namespace Vte {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -471,6 +479,7 @@ export namespace Vte {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -1535,6 +1544,7 @@ export namespace Vte {
          * Sends a block of binary data to the child.
          * @param data data to send to the child
          * @param length length of `data`
+         * @since 0.12.1
          */
         feed_child_binary(data: string, length: bigint | number): void;
 
@@ -1559,12 +1569,14 @@ export namespace Vte {
          * @param spawn_flags flags from {@link GLib.SpawnFlags}
          * @param child_setup function to run in the child just before `exec()`, or `null`
          * @returns `true` on success, or `false` on error with `error` filled in
+         * @since 0.26
          */
         fork_command_full(pty_flags: PtyFlags, working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null): [boolean, GLib.Pid | null];
 
         /**
          * An accessor function provided for the benefit of language bindings.
          * @returns the contents of `terminal`'s adjustment field
+         * @deprecated since 0.28: Use `gtk_scrollable_get_vadjustment()` instead
          */
         get_adjustment(): Gtk.Adjustment;
 
@@ -1600,6 +1612,7 @@ export namespace Vte {
          * Note that this function may only be called from the signal handler of
          * the {@link Vte.Terminal.SignalSignatures.child_exited | Vte.Terminal::child-exited} signal.
          * @returns the child's exit status
+         * @since 0.20
          */
         get_child_exit_status(): number;
 
@@ -1611,6 +1624,7 @@ export namespace Vte {
         /**
          * Returns the currently set cursor blink mode.
          * @returns cursor blink mode.
+         * @since 0.17.1
          */
         get_cursor_blink_mode(): TerminalCursorBlinkMode;
 
@@ -1623,6 +1637,7 @@ export namespace Vte {
         /**
          * Returns the currently set cursor shape.
          * @returns cursor shape.
+         * @since 0.17.6
          */
         get_cursor_shape(): TerminalCursorShape;
 
@@ -1630,6 +1645,7 @@ export namespace Vte {
          * Queries the terminal for its default emulation, which is attempted if the
          * terminal type passed to `vte_terminal_set_emulation()` is `null`.
          * @returns an interned string containing the name of the default terminal   type the widget attempts to emulate
+         * @since 0.11.11
          */
         get_default_emulation(): string;
 
@@ -1679,6 +1695,7 @@ export namespace Vte {
         /**
          * Returns the {@link Vte.Pty} of `terminal`.
          * @returns a {@link Vte.Pty}, or `null`
+         * @since 0.26
          */
         get_pty_object(): Pty;
 
@@ -1716,6 +1733,7 @@ export namespace Vte {
          * lines are included.
          * @param is_selected a {@link Vte.SelectionFunc} callback
          * @returns a newly allocated text string, or `null`.
+         * @since 0.11.11
          */
         get_text_include_trailing_spaces(is_selected: SelectionFunc): [string, CharAttributes[]];
 
@@ -1772,6 +1790,7 @@ export namespace Vte {
          * @param regex a {@link GLib.Regex}
          * @param flags the {@link GLib.RegexMatchFlags} to use when matching the regex
          * @returns an integer associated with this expression
+         * @since 0.17.1
          */
         match_add_gregex(regex: GLib.Regex, flags: GLib.RegexMatchFlags): number;
 
@@ -1809,6 +1828,7 @@ export namespace Vte {
          * specified by `tag`.  The terminal keeps a reference to `cursor`.
          * @param tag the tag of the regex which should use the specified cursor
          * @param cursor the {@link Gdk.Cursor} which the terminal should use when the pattern is   highlighted, or `null` to use the standard cursor
+         * @since 0.11
          */
         match_set_cursor(tag: number, cursor: Gdk.Cursor | null): void;
 
@@ -1817,6 +1837,7 @@ export namespace Vte {
          * specified by `tag`.
          * @param tag the tag of the regex which should use the specified cursor
          * @param cursor_name the name of the cursor
+         * @since 0.17.1
          */
         match_set_cursor_name(tag: number, cursor_name: string): void;
 
@@ -1825,6 +1846,7 @@ export namespace Vte {
          * specified by `tag`.
          * @param tag the tag of the regex which should use the specified cursor
          * @param cursor_type a {@link Gdk.CursorType}
+         * @since 0.11.9
          */
         match_set_cursor_type(tag: number, cursor_type: Gdk.CursorType): void;
 
@@ -1852,6 +1874,7 @@ export namespace Vte {
          * See `vte_pty_new()` for more information.
          * @param flags flags from {@link Vte.PtyFlags}
          * @returns a new {@link Vte.Pty}
+         * @since 0.26
          */
         pty_new(flags: PtyFlags): Pty;
 
@@ -1869,6 +1892,7 @@ export namespace Vte {
          * Searches the next string matching the search regex set with
          * `vte_terminal_search_set_gregex()`.
          * @returns `true` if a match was found
+         * @since 0.26
          */
         search_find_next(): boolean;
 
@@ -1876,22 +1900,26 @@ export namespace Vte {
          * Searches the previous string matching the search regex set with
          * `vte_terminal_search_set_gregex()`.
          * @returns `true` if a match was found
+         * @since 0.26
          */
         search_find_previous(): boolean;
 
         /**
          * @returns the search {@link GLib.Regex} regex set in `terminal`, or `null`
+         * @since 0.26
          */
         search_get_gregex(): GLib.Regex;
 
         /**
          * @returns whether searching will wrap around
+         * @since 0.26
          */
         search_get_wrap_around(): boolean;
 
         /**
          * Sets the {@link GLib.Regex} regex to search for. Unsets the search regex when passed `null`.
          * @param regex a {@link GLib.Regex}, or `null`
+         * @since 0.26
          */
         search_set_gregex(regex: GLib.Regex | null): void;
 
@@ -1899,16 +1927,19 @@ export namespace Vte {
          * Sets whether search should wrap around to the beginning of the
          * terminal content when reaching its end.
          * @param wrap_around whether search should wrap
+         * @since 0.26
          */
         search_set_wrap_around(wrap_around: boolean): void;
 
         /**
          * Selects all text within the terminal (including the scrollback buffer).
+         * @since 0.16
          */
         select_all(): void;
 
         /**
          * Clears the current selection.
+         * @since 0.16
          */
         select_none(): void;
 
@@ -1969,6 +2000,7 @@ export namespace Vte {
          * the root window) and modify its pixel values.  The initial tint color
          * is black.
          * @param color a color which the terminal background should be tinted to if its   saturation is not 1.0.
+         * @since 0.11
          */
         set_background_tint_color(color: Gdk.Color): void;
 
@@ -2007,6 +2039,7 @@ export namespace Vte {
          * under the cursor will be drawn with foreground and background colors
          * reversed.
          * @param cursor_background the new color to use for the text cursor, or `null`
+         * @since 0.11.11
          */
         set_color_cursor(cursor_background: Gdk.Color | null): void;
 
@@ -2027,6 +2060,7 @@ export namespace Vte {
          * highlighted text (which is usually highlighted because it is selected) will
          * be drawn with foreground and background colors reversed.
          * @param highlight_background the new color to use for highlighted text, or `null`
+         * @since 0.11.11
          */
         set_color_highlight(highlight_background: Gdk.Color | null): void;
 
@@ -2054,12 +2088,14 @@ export namespace Vte {
          * Sets whether or not the cursor will blink. Using {@link Vte.TerminalCursorBlinkMode.SYSTEM}
          * will use the {@link Gtk.Settings.SignalSignatures.gtk_cursor_blink | Gtk.Settings::gtk-cursor-blink} setting.
          * @param mode the {@link Vte.TerminalCursorBlinkMode} to use
+         * @since 0.17.1
          */
         set_cursor_blink_mode(mode: TerminalCursorBlinkMode): void;
 
         /**
          * Sets the shape of the cursor drawn.
          * @param shape the {@link Vte.TerminalCursorShape} to use
+         * @since 0.20
          */
         set_cursor_shape(shape: TerminalCursorShape): void;
 
@@ -2130,6 +2166,7 @@ export namespace Vte {
          * Sets `pty` as the PTY to use in `terminal`.
          * Use `null` to unset the PTY.
          * @param pty a {@link Vte.Pty}, or `null`
+         * @since 0.26.
          */
         set_pty_object(pty: Pty | null): void;
 
@@ -2137,6 +2174,7 @@ export namespace Vte {
          * Controls whether or not the terminal will scroll the background image (if
          * one is set) when the text in the window must be scrolled.
          * @param scroll whether the terminal should scroll the background image along with   the text
+         * @since 0.11
          */
         set_scroll_background(scroll: boolean): void;
 
@@ -2214,6 +2252,7 @@ export namespace Vte {
          * Note: when using the `g_spawn_async()` family of functions,
          * the {@link GLib.SpawnFlags.DO_NOT_REAP_CHILD} flag MUST have been passed.
          * @param child_pid a {@link GLib.Pid}
+         * @since 0.26
          */
         watch_child(child_pid: GLib.Pid): void;
 
@@ -2232,6 +2271,7 @@ export namespace Vte {
          * @param flags a set of {@link Vte.TerminalWriteFlags}
          * @param cancellable a {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` if there was an error
+         * @since 0.24
          */
         write_contents(stream: Gio.OutputStream, flags: TerminalWriteFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2241,6 +2281,7 @@ export namespace Vte {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -2252,6 +2293,7 @@ export namespace Vte {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -2262,6 +2304,7 @@ export namespace Vte {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -2272,6 +2315,7 @@ export namespace Vte {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -2281,6 +2325,7 @@ export namespace Vte {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -2289,6 +2334,7 @@ export namespace Vte {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -2299,6 +2345,7 @@ export namespace Vte {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -2309,6 +2356,7 @@ export namespace Vte {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -2317,12 +2365,14 @@ export namespace Vte {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -2332,6 +2382,7 @@ export namespace Vte {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -2343,6 +2394,7 @@ export namespace Vte {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -2354,6 +2406,7 @@ export namespace Vte {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -2365,6 +2418,7 @@ export namespace Vte {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -2374,6 +2428,7 @@ export namespace Vte {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -2382,6 +2437,7 @@ export namespace Vte {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -2392,6 +2448,7 @@ export namespace Vte {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -2403,6 +2460,7 @@ export namespace Vte {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -2412,6 +2470,7 @@ export namespace Vte {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -2419,6 +2478,7 @@ export namespace Vte {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;

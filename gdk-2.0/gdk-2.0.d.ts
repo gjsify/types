@@ -7621,6 +7621,7 @@ export namespace Gdk {
          * it is up to the window manager to pick one, typically it will
          * be the current workspace.
          * @param desktop the number of a workspace, or -1
+         * @since 2.14
          */
         set_desktop(desktop: number): void;
 
@@ -7628,6 +7629,7 @@ export namespace Gdk {
          * Sets the display on which applications will be launched when
          * using this context. See also `gdk_app_launch_context_set_screen()`.
          * @param display a {@link Gdk.Display}
+         * @since 2.14
          */
         set_display(display: Display): void;
 
@@ -7640,6 +7642,7 @@ export namespace Gdk {
          * 
          * See also `gdk_app_launch_context_set_icon_name()`.
          * @param icon a {@link Gio.Icon}, or `null`
+         * @since 2.14
          */
         set_icon(icon: Gio.Icon | null): void;
 
@@ -7653,6 +7656,7 @@ export namespace Gdk {
          * the file that is passed to launched application or from the {@link Gio.AppInfo}
          * for the launched application itself.
          * @param icon_name an icon name, or `null`
+         * @since 2.14
          */
         set_icon_name(icon_name: string | null): void;
 
@@ -7664,6 +7668,7 @@ export namespace Gdk {
          * If neither `screen` or `display` are set, the default screen and
          * display are used.
          * @param screen a {@link Gdk.Screen}
+         * @since 2.14
          */
         set_screen(screen: Screen): void;
 
@@ -7676,6 +7681,7 @@ export namespace Gdk {
          * typing in another window. This is also known as 'focus stealing
          * prevention'.
          * @param timestamp a timestamp
+         * @since 2.14
          */
         set_timestamp(timestamp: number): void;
     }
@@ -7792,6 +7798,7 @@ export namespace Gdk {
 
         /**
          * Deprecated function; use `g_object_unref()` instead.
+         * @deprecated since 2.0: Use `g_object_unref()` instead.
          */
         unref(): void;
     }
@@ -7874,12 +7881,14 @@ export namespace Gdk {
          * Returns the axis use for `index`.
          * @param index the index of the axis.
          * @returns a {@link Gdk.AxisUse} specifying how the axis is used.
+         * @since 2.22
          */
         get_axis_use(index: number): AxisUse;
 
         /**
          * Determines whether the pointer follows device motion.
          * @returns `true` if the pointer follows device motion
+         * @since 2.22
          */
         get_has_cursor(): boolean;
 
@@ -7903,36 +7912,42 @@ export namespace Gdk {
          * @param index the index of the macro button to get.
          * @param keyval return value for the keyval.
          * @param modifiers return value for modifiers.
+         * @since 2.22
          */
         get_key(index: number, keyval: number, modifiers: ModifierType): void;
 
         /**
          * Determines the mode of the device.
          * @returns a {@link Gdk.InputSource}
+         * @since 2.22
          */
         get_mode(): InputMode;
 
         /**
          * Gets the number of axes of a device.
          * @returns the number of axes of `device`
+         * @since 2.22
          */
         get_n_axes(): number;
 
         /**
          * Gets the number of keys of a device.
          * @returns the number of keys of `device`
+         * @since 2.24
          */
         get_n_keys(): number;
 
         /**
          * Determines the name of the device.
          * @returns a name
+         * @since 2.22
          */
         get_name(): string;
 
         /**
          * Determines the type of the device.
          * @returns a {@link Gdk.InputSource}
+         * @since 2.22
          */
         get_source(): InputSource;
 
@@ -8023,6 +8038,7 @@ export namespace Gdk {
          * Gets the default {@link Gdk.Display}. This is a convenience
          * function for
          * <literal>gdk_display_manager_get_default_display (gdk_display_manager_get ())</literal>.
+         * @since 2.2
          */
         static get_default(): Display;
 
@@ -8040,6 +8056,7 @@ export namespace Gdk {
 
         /**
          * Gets the number of screen managed by the `display`.
+         * @since 2.2
          * @virtual
          */
         vfunc_get_n_screens(): number;
@@ -8047,12 +8064,14 @@ export namespace Gdk {
         // Methods
         /**
          * Emits a short beep on `display`
+         * @since 2.2
          */
         beep(): void;
 
         /**
          * Closes the connection to the windowing system for the given display,
          * and cleans up associated resources.
+         * @since 2.2
          */
         close(): void;
 
@@ -8066,12 +8085,14 @@ export namespace Gdk {
          * 
          * This is most useful for X11. On windowing systems where requests are
          * handled synchronously, this function will do nothing.
+         * @since 2.4
          */
         flush(): void;
 
         /**
          * Returns the default size to use for cursors on `display`.
          * @returns the default cursor size.
+         * @since 2.4
          */
         get_default_cursor_size(): number;
 
@@ -8079,29 +8100,34 @@ export namespace Gdk {
          * Gets the next {@link Gdk.Event} to be processed for `display`, fetching events from the
          * windowing system if necessary.
          * @returns the next {@link Gdk.Event} to be processed, or `null` if no events are pending. The returned {@link Gdk.Event} should be freed with `gdk_event_free()`.
+         * @since 2.2
          */
         get_event(): Event;
 
         /**
          * Gets the maximal size to use for cursors on `display`.
+         * @since 2.4
          */
         get_maximal_cursor_size(): [number, number];
 
         /**
          * Gets the number of screen managed by the `display`.
          * @returns number of screens.
+         * @since 2.2
          */
         get_n_screens(): number;
 
         /**
          * Gets the name of the display.
          * @returns a string representing the display name. This string is owned by GDK and should not be modified or freed.
+         * @since 2.2
          */
         get_name(): string;
 
         /**
          * Gets the current location of the pointer and the current modifier
          * mask for a given display.
+         * @since 2.2
          */
         get_pointer(): [Screen | null, number, number, ModifierType | null];
 
@@ -8111,18 +8137,21 @@ export namespace Gdk {
          * if the window under the mouse pointer is not known to GDK (for example,
          * belongs to another application).
          * @returns the window under the mouse pointer, or `null`
+         * @since 2.2
          */
         get_window_at_pointer(): [Window, number, number];
 
         /**
          * Finds out if the display has been closed.
          * @returns `true` if the display is closed.
+         * @since 2.22
          */
         is_closed(): boolean;
 
         /**
          * Release any keyboard grab
          * @param time_ a timestap (e.g #GDK_CURRENT_TIME).
+         * @since 2.2
          */
         keyboard_ungrab(time_: number): void;
 
@@ -8132,18 +8161,21 @@ export namespace Gdk {
          * not get more events from the windowing system.  It only checks the events
          * that have already been moved to the GDK event queue.)
          * @returns a copy of the first {@link Gdk.Event} on the event queue, or `null` if no events are in the queue. The returned {@link Gdk.Event} should be freed with `gdk_event_free()`.
+         * @since 2.2
          */
         peek_event(): Event;
 
         /**
          * Test if the pointer is grabbed.
          * @returns `true` if an active X pointer grab is in effect
+         * @since 2.2
          */
         pointer_is_grabbed(): boolean;
 
         /**
          * Release any pointer grab.
          * @param time_ a timestap (e.g. `GDK_CURRENT_TIME`).
+         * @since 2.2
          */
         pointer_ungrab(time_: number): void;
 
@@ -8151,6 +8183,7 @@ export namespace Gdk {
          * Appends a copy of the given event onto the front of the event
          * queue for `display`.
          * @param event a {@link Gdk.Event}.
+         * @since 2.2
          */
         put_event(event: Event): void;
 
@@ -8159,6 +8192,7 @@ export namespace Gdk {
          * of the selection named by the given atom.
          * @param selection the {@link Gdk.Atom} naming the selection for which             ownership change notification is requested
          * @returns whether {@link Gdk.EventOwnerChange} events will               be sent.
+         * @since 2.6
          */
         request_selection_notification(selection: Atom): boolean;
 
@@ -8169,6 +8203,7 @@ export namespace Gdk {
          * Applications should <emphasis>not</emphasis> set this, it is a global
          * user-configured setting.
          * @param distance distance in pixels
+         * @since 2.4
          */
         set_double_click_distance(distance: number): void;
 
@@ -8178,6 +8213,7 @@ export namespace Gdk {
          * Applications should <emphasis>not</emphasis> set this, it is a global
          * user-configured setting.
          * @param msec double click time in milliseconds (thousandths of a second)
+         * @since 2.2
          */
         set_double_click_time(msec: number): void;
 
@@ -8191,6 +8227,7 @@ export namespace Gdk {
          * @param time_ a timestamp
          * @param targets an array of targets that should be saved, or `null`                    if all available targets should be saved.
          * @param n_targets length of the `targets` array
+         * @since 2.6
          */
         store_clipboard(clipboard_window: Window, time_: number, targets: Atom, n_targets: number): void;
 
@@ -8200,6 +8237,7 @@ export namespace Gdk {
          * application has quit. On X11 this checks if a clipboard daemon is
          * running.
          * @returns `true` if the display supports clipboard persistance.
+         * @since 2.6
          */
         supports_clipboard_persistence(): boolean;
 
@@ -8210,6 +8248,7 @@ export namespace Gdk {
          * Currently this only works on X11 with XComposite and
          * XDamage extensions available.
          * @returns `true` if windows may be composited.
+         * @since 2.12
          */
         supports_composite(): boolean;
 
@@ -8218,6 +8257,7 @@ export namespace Gdk {
          * on `display`. Otherwise, cursors are restricted to bilevel
          * alpha (i.e. a mask).
          * @returns whether cursors can have alpha channels.
+         * @since 2.4
          */
         supports_cursor_alpha(): boolean;
 
@@ -8226,6 +8266,7 @@ export namespace Gdk {
          * on `display`. Otherwise, cursors have only a forground
          * and a background color.
          * @returns whether cursors can have multiple colors.
+         * @since 2.4
          */
         supports_cursor_color(): boolean;
 
@@ -8233,6 +8274,7 @@ export namespace Gdk {
          * Returns `true` if `gdk_window_input_shape_combine_mask()` can
          * be used to modify the input shape of windows on `display`.
          * @returns `true` if windows with modified input shape are supported
+         * @since 2.10
          */
         supports_input_shapes(): boolean;
 
@@ -8240,6 +8282,7 @@ export namespace Gdk {
          * Returns whether {@link Gdk.EventOwnerChange} events will be
          * sent when the owner of a selection changes.
          * @returns whether {@link Gdk.EventOwnerChange} events will               be sent.
+         * @since 2.6
          */
         supports_selection_notification(): boolean;
 
@@ -8247,6 +8290,7 @@ export namespace Gdk {
          * Returns `true` if `gdk_window_shape_combine_mask()` can
          * be used to create shaped windows on `display`.
          * @returns `true` if shaped windows are supported
+         * @since 2.10
          */
         supports_shapes(): boolean;
 
@@ -8260,6 +8304,7 @@ export namespace Gdk {
          * 
          * This is most useful for X11. On windowing systems where requests are
          * handled synchronously, this function will do nothing.
+         * @since 2.2
          */
         sync(): void;
 
@@ -8278,6 +8323,7 @@ export namespace Gdk {
          * @param screen the screen of `display` to warp the pointer to
          * @param x the x coordinate of the destination
          * @param y the y coordinate of the destination
+         * @since 2.8
          */
         warp_pointer(screen: Screen, x: number, y: number): void;
     }
@@ -8346,6 +8392,7 @@ export namespace Gdk {
         // Static methods
         /**
          * Gets the singleton {@link Gdk.DisplayManager} object.
+         * @since 2.2
          */
         static get(): DisplayManager;
 
@@ -8360,18 +8407,21 @@ export namespace Gdk {
         /**
          * Gets the default {@link Gdk.Display}.
          * @returns a {@link Gdk.Display}, or `null` if there is no default   display.
+         * @since 2.2
          */
         get_default_display(): Display;
 
         /**
          * List all currently open displays.
          * @returns a newly allocated {@link GLib.SList} of {@link Gdk.Display} objects. Free this list with `g_slist_free()` when you are done with it.
+         * @since 2.2
          */
         list_displays(): Display[];
 
         /**
          * Sets `display` as the default display.
          * @param display a {@link Gdk.Display}
+         * @since 2.2
          */
         set_default_display(display: Display): void;
     }
@@ -8444,47 +8494,55 @@ export namespace Gdk {
          * Determines the bitmask of actions proposed by the source if
          * `gdk_drag_context_suggested_action()` returns GDK_ACTION_ASK.
          * @returns the {@link Gdk.DragAction} flags
+         * @since 2.22
          */
         get_actions(): DragAction;
 
         /**
          * Returns the destination windw for the DND operation.
          * @returns a {@link Gdk.Window}
+         * @since 2.24
          */
         get_dest_window(): Window;
 
         /**
          * Returns the drag protocol thats used by this context.
          * @returns the drag protocol
+         * @since 2.24
          */
         get_protocol(): DragProtocol;
 
         /**
          * Determines the action chosen by the drag destination.
          * @returns a {@link Gdk.DragAction} value
+         * @since 2.22
          */
         get_selected_action(): DragAction;
 
         /**
          * Returns the {@link Gdk.Window} where the DND operation started.
          * @returns a {@link Gdk.Window}
+         * @since 2.22
          */
         get_source_window(): Window;
 
         /**
          * Determines the suggested drag action of the context.
          * @returns a {@link Gdk.DragAction} value
+         * @since 2.22
          */
         get_suggested_action(): DragAction;
 
         /**
          * Retrieves the list of targets of the context.
          * @returns a {@link GLib.List} of targets
+         * @since 2.22
          */
         list_targets(): Atom[];
 
         /**
          * Deprecated function; use `g_object_ref()` instead.
+         * @deprecated since 2.2: Use `g_object_ref()` instead.
          */
         ref(): void;
 
@@ -8496,6 +8554,7 @@ export namespace Gdk {
 
         /**
          * Deprecated function; use `g_object_unref()` instead.
+         * @deprecated since 2.2: Use `g_object_unref()` instead.
          */
         unref(): void;
     }
@@ -8729,6 +8788,7 @@ export namespace Gdk {
          * On the X11 platform, if `drawable` is a {@link Gdk.Window}, the returned
          * size is the size reported in the most-recently-processed configure
          * event, rather than the current size on the X server.
+         * @deprecated since 2.24: Use `gdk_window_get_width()` and `gdk_window_get_height()` for             `GdkWindows`. Use `gdk_pixmap_get_size()` for `GdkPixmaps`.
          * @virtual
          */
         vfunc_get_size(): [number, number];
@@ -8782,6 +8842,7 @@ export namespace Gdk {
          * On the X11 platform, if `drawable` is a {@link Gdk.Window}, the returned
          * size is the size reported in the most-recently-processed configure
          * event, rather than the current size on the X server.
+         * @deprecated since 2.24: Use `gdk_window_get_width()` and `gdk_window_get_height()` for             `GdkWindows`. Use `gdk_pixmap_get_size()` for `GdkPixmaps`.
          */
         get_size(): [number, number];
 
@@ -8808,6 +8869,7 @@ export namespace Gdk {
 
         /**
          * Deprecated equivalent of calling `g_object_unref()` on `drawable`.
+         * @deprecated since 2.0: Use `g_object_unref()` instead.
          */
         unref(): void;
     }
@@ -8876,6 +8938,7 @@ export namespace Gdk {
          * are filled, use `gdk_colormap_query_color()` to obtain the rgb values
          * if you need them.
          * @param values the {@link Gdk.GCValues} structure in which to store the results.
+         * @deprecated since 2.22: Use Cairo for rendering.
          * @virtual
          */
         vfunc_get_values(values: GCValues): void;
@@ -8894,6 +8957,7 @@ export namespace Gdk {
          * @param dash_offset the phase of the dash pattern.
          * @param dash_list an array of dash lengths.
          * @param n the number of elements in `dash_list`.
+         * @deprecated since 2.22: Use `cairo_set_dash()` to set the dash in Cairo.
          * @virtual
          */
         vfunc_set_dashes(dash_offset: number, dash_list: number, n: number): void;
@@ -8906,6 +8970,7 @@ export namespace Gdk {
          * convenient.
          * @param values struct containing the new values
          * @param mask 
+         * @deprecated since 2.22: Use Cairo for rendering.
          * @virtual
          */
         vfunc_set_values(values: GCValues, mask: GCValuesMask): void;
@@ -8915,6 +8980,7 @@ export namespace Gdk {
          * Copy the set of values from one graphics context
          * onto another graphics context.
          * @param src_gc the source graphics context.
+         * @deprecated since 2.22: Use Cairo for drawing. `cairo_save()` and `cairo_restore()` can be helpful in cases where you'd have copied a {@link Gdk.GC}.
          */
         copy(src_gc: GC): void;
 
@@ -8924,6 +8990,7 @@ export namespace Gdk {
          * are filled, use `gdk_colormap_query_color()` to obtain the rgb values
          * if you need them.
          * @param values the {@link Gdk.GCValues} structure in which to store the results.
+         * @deprecated since 2.22: Use Cairo for rendering.
          */
         get_values(values: GCValues): void;
 
@@ -8934,6 +9001,7 @@ export namespace Gdk {
          * GC.
          * @param x_offset amount by which to offset the GC in the X direction
          * @param y_offset amount by which to offset the GC in the Y direction
+         * @deprecated since 2.22: There is no direct replacement, as this is just a convenience function for gdk_gc_set_ts_origin and `gdk_gc_set_clip_origin()`.
          */
         offset(x_offset: number, y_offset: number): void;
 
@@ -8943,6 +9011,7 @@ export namespace Gdk {
          * `gdk_gc_set_rgb_bg_color()` to specify the background
          * color as red, green, blue components.
          * @param color the new background color.
+         * @deprecated since 2.22: Use `gdk_cairo_set_source_color()` to use a {@link Gdk.Color} as the source in Cairo. Note that if you want to draw a background and a foreground in Cairo, you need to call drawing functions (like `cairo_fill()`) twice.
          */
         set_background(color: Color): void;
 
@@ -8951,6 +9020,7 @@ export namespace Gdk {
          * The clip mask is interpreted relative to the clip
          * origin. (See `gdk_gc_set_clip_origin()`).
          * @param mask a bitmap.
+         * @deprecated since 2.22: Use `cairo_mask()` instead.
          */
         set_clip_mask(mask: Bitmap): void;
 
@@ -8960,6 +9030,7 @@ export namespace Gdk {
          * the destination drawable of the current operation.
          * @param x the x-coordinate of the origin.
          * @param y the y-coordinate of the origin.
+         * @deprecated since 2.22: Use `cairo_translate()` before applying the clip path in Cairo.
          */
         set_clip_origin(x: number, y: number): void;
 
@@ -8968,6 +9039,7 @@ export namespace Gdk {
          * rectangle. The clip mask is interpreted relative to the clip
          * origin. (See `gdk_gc_set_clip_origin()`).
          * @param rectangle the rectangle to clip to.
+         * @deprecated since 2.22: Use `cairo_rectangle()` and `cairo_clip()` in Cairo.
          */
         set_clip_rectangle(rectangle: Rectangle): void;
 
@@ -8976,6 +9048,7 @@ export namespace Gdk {
          * The clip mask is interpreted relative to the clip origin. (See
          * `gdk_gc_set_clip_origin()`).
          * @param region the {@link Gdk.Region}.
+         * @deprecated since 2.22: Use `gdk_cairo_region()` and `cairo_clip()` in Cairo.
          */
         set_clip_region(region: Region): void;
 
@@ -8984,6 +9057,7 @@ export namespace Gdk {
          * of the colormap's visual must match the depth of the drawable
          * for which the GC was created.
          * @param colormap a {@link Gdk.Colormap}
+         * @deprecated since 2.22: There is no replacement. Cairo handles colormaps automatically, so there is no need to care about them.
          */
         set_colormap(colormap: Colormap): void;
 
@@ -9001,6 +9075,7 @@ export namespace Gdk {
          * @param dash_offset the phase of the dash pattern.
          * @param dash_list an array of dash lengths.
          * @param n the number of elements in `dash_list`.
+         * @deprecated since 2.22: Use `cairo_set_dash()` to set the dash in Cairo.
          */
         set_dashes(dash_offset: number, dash_list: number, n: number): void;
 
@@ -9010,12 +9085,14 @@ export namespace Gdk {
          * for the corresponding regions of the destination
          * drawable. (See `gdk_draw_drawable()`).
          * @param exposures if `true`, exposure events will be generated.
+         * @deprecated since 2.22: There is no replacement. If you need to control exposures, you must use drawing operations of the underlying window system or use `gdk_window_invalidate_rect()`. Cairo will never generate exposures.
          */
         set_exposures(exposures: boolean): void;
 
         /**
          * Set the fill mode for a graphics context.
          * @param fill the new fill mode.
+         * @deprecated since 2.22: You can achieve tiling in Cairo by using `cairo_pattern_set_extend()` on the source. For stippling, see the deprecation comments on `gdk_gc_set_stipple()`.
          */
         set_fill(fill: Fill): void;
 
@@ -9034,6 +9111,7 @@ export namespace Gdk {
          * `gdk_gc_set_rgb_fg_color()` to specify the foreground
          * color as red, green, blue components.
          * @param color the new foreground color.
+         * @deprecated since 2.22: Use `gdk_cairo_set_source_color()` to use a {@link Gdk.Color} as the source in Cairo.
          */
         set_foreground(color: Color): void;
 
@@ -9042,6 +9120,7 @@ export namespace Gdk {
          * pixel values being drawn are combined to produce
          * the final pixel values.
          * @param _function the {@link Gdk.Function} to use
+         * @deprecated since 2.22: Use `cairo_set_operator()` with Cairo.
          */
         set_function(_function: Function): void;
 
@@ -9053,6 +9132,7 @@ export namespace Gdk {
          * @param line_style the dash-style for lines.
          * @param cap_style the manner in which the ends of lines are drawn.
          * @param join_style the in which lines are joined together.
+         * @deprecated since 2.22: Use the Cairo functions `cairo_set_line_width()`, `cairo_set_line_join()`, `cairo_set_line_cap()` and `cairo_set_dash()` to affect the stroking behavior in Cairo. Keep in mind that the default attributes of a {@link cairo.Context} are different from the default attributes of a {@link Gdk.GC}.
          */
         set_line_attributes(line_width: number, line_style: LineStyle, cap_style: CapStyle, join_style: JoinStyle): void;
 
@@ -9065,6 +9145,7 @@ export namespace Gdk {
          * 
          * Calling this function for a GC without a colormap is an error.
          * @param color an unallocated {@link Gdk.Color}.
+         * @deprecated since 2.22: Use `gdk_cairo_set_source_color()` instead.
          */
         set_rgb_bg_color(color: Color): void;
 
@@ -9077,6 +9158,7 @@ export namespace Gdk {
          * 
          * Calling this function for a GC without a colormap is an error.
          * @param color an unallocated {@link Gdk.Color}.
+         * @deprecated since 2.22: Use `gdk_cairo_set_source_color()` instead.
          */
         set_rgb_fg_color(color: Color): void;
 
@@ -9085,6 +9167,7 @@ export namespace Gdk {
          * stipple will only be used if the fill mode is
          * {@link Gdk.Fill.STIPPLED} or {@link Gdk.Fill.OPAQUE_STIPPLED}.
          * @param stipple the new stipple bitmap.
+         * @deprecated since 2.22: Stippling has no direct replacement in Cairo. If you want to achieve an identical look, you can use the stipple bitmap as a mask. Most likely, this involves rendering the source to an intermediate surface using `cairo_push_group()` first, so that you can then use `cairo_mask()` to achieve the stippled look.
          */
         set_stipple(stipple: Pixmap): void;
 
@@ -9092,6 +9175,7 @@ export namespace Gdk {
          * Sets how drawing with this GC on a window will affect child
          * windows of that window.
          * @param mode the subwindow mode.
+         * @deprecated since 2.22: There is no replacement. If you need to control subwindows, you must use drawing operations of the underlying window system manually. Cairo will always use {@link Gdk.SubwindowMode.INCLUDE_INFERIORS} on sources and masks and {@link Gdk.SubwindowMode.CLIP_BY_CHILDREN} on targets.
          */
         set_subwindow(mode: SubwindowMode): void;
 
@@ -9100,6 +9184,7 @@ export namespace Gdk {
          * This will only be used if the fill mode
          * is {@link Gdk.Fill.TILED}.
          * @param tile the new tile pixmap.
+         * @deprecated since 2.22: The following code snippet sets a tiling {@link Gdk.Pixmap} as the source in Cairo: |[gdk_cairo_set_source_pixmap (cr, tile, ts_origin_x, ts_origin_y); cairo_pattern_set_extend (cairo_get_source (cr), CAIRO_EXTEND_REPEAT);]|
          */
         set_tile(tile: Pixmap): void;
 
@@ -9110,6 +9195,7 @@ export namespace Gdk {
          * will coincide with this point.
          * @param x the x-coordinate of the origin.
          * @param y the y-coordinate of the origin.
+         * @deprecated since 2.22: You can set the origin for tiles and stipples in Cairo by changing the source's matrix using `cairo_pattern_set_matrix()`. Or you can specify it with `gdk_cairo_set_source_pixmap()` as shown in the example for `gdk_gc_set_tile()`.
          */
         set_ts_origin(x: number, y: number): void;
 
@@ -9121,11 +9207,13 @@ export namespace Gdk {
          * convenient.
          * @param values struct containing the new values
          * @param values_mask mask indicating which struct fields are to be used
+         * @deprecated since 2.22: Use Cairo for rendering.
          */
         set_values(values: GCValues, values_mask: GCValuesMask): void;
 
         /**
          * Decrement the reference count of `gc`.
+         * @deprecated since 2.0: Use `g_object_unref()` instead.
          */
         unref(): void;
     }
@@ -9201,42 +9289,56 @@ export namespace Gdk {
         /**
          * Determines the number of bits per pixel of the image.
          * @returns the bits per pixel
+         * @since 2.22
+         * @deprecated since 2.22: {@link Gdk.Image} should not be used anymore.
          */
         get_bits_per_pixel(): number;
 
         /**
          * Determines the byte order of the image.
          * @returns a {@link Gdk.Visual}
+         * @since 2.22
+         * @deprecated since 2.22: {@link Gdk.Image} should not be used anymore.
          */
         get_byte_order(): ByteOrder;
 
         /**
          * Determines the number of bytes per line of the image.
          * @returns the bytes per line
+         * @since 2.22
+         * @deprecated since 2.22: {@link Gdk.Image} should not be used anymore.
          */
         get_bytes_per_line(): number;
 
         /**
          * Determines the number of bytes per pixel of the image.
          * @returns the bytes per pixel
+         * @since 2.22
+         * @deprecated since 2.22: {@link Gdk.Image} should not be used anymore.
          */
         get_bytes_per_pixel(): number;
 
         /**
          * Determines the depth of the image.
          * @returns the depth
+         * @since 2.22
+         * @deprecated since 2.22: {@link Gdk.Image} should not be used anymore.
          */
         get_depth(): number;
 
         /**
          * Determines the height of the image.
          * @returns the height
+         * @since 2.22
+         * @deprecated since 2.22: {@link Gdk.Image} should not be used anymore.
          */
         get_height(): number;
 
         /**
          * Determines the type of a given image.
          * @returns the {@link Gdk.ImageType} of the image
+         * @since 2.22
+         * @deprecated since 2.22: {@link Gdk.Image} should not be used anymore.
          */
         get_image_type(): ImageType;
 
@@ -9249,12 +9351,16 @@ export namespace Gdk {
         /**
          * Returns a pointer to the pixel data of the image.
          * @returns the pixel data of the image
+         * @since 2.22
+         * @deprecated since 2.22: {@link Gdk.Image} should not be used anymore.
          */
         get_pixels(): null;
 
         /**
          * Determines the width of the image.
          * @returns the width
+         * @since 2.22
+         * @deprecated since 2.22: {@link Gdk.Image} should not be used anymore.
          */
         get_width(): number;
 
@@ -9272,11 +9378,13 @@ export namespace Gdk {
          * create the image from scratch, use the colormap of the drawable you
          * intend to render the image to.
          * @param colormap a {@link Gdk.Colormap}
+         * @deprecated since 2.22: {@link Gdk.Image} should not be used anymore.
          */
         set_colormap(colormap: Colormap): void;
 
         /**
          * Deprecated function; use `g_object_unref()` instead.
+         * @deprecated since 2.0: Use `g_object_unref()` instead.
          */
         unref(): void;
     }
@@ -9382,12 +9490,14 @@ export namespace Gdk {
          * This function is useful when matching key events against
          * accelerators.
          * @param state pointer to the modifier mask to change
+         * @since 2.20
          */
         add_virtual_modifiers(state: ModifierType): void;
 
         /**
          * Returns whether the Caps Lock modifer is locked.
          * @returns `true` if Caps Lock is on
+         * @since 2.16
          */
         get_caps_lock_state(): boolean;
 
@@ -9443,6 +9553,7 @@ export namespace Gdk {
          * Note that passing `null` for `keymap` is deprecated and will stop
          * to work in GTK+ 3.0. Use `gdk_keymap_get_for_display()` instead.
          * @returns `true` if there are layouts in both directions, `false` otherwise
+         * @since 2.12
          */
         have_bidi_layouts(): boolean;
 
@@ -9469,6 +9580,7 @@ export namespace Gdk {
          * accelerators.
          * @param state pointer to the modifier state to map
          * @returns `true` if no virtual modifiers were mapped to the     same non-virtual modifier. Note that `false` is also returned     if a virtual modifier is mapped to a non-virtual modifier that     was already set in `state`.
+         * @since 2.20
          */
         map_virtual_modifiers(state: ModifierType): boolean;
 
@@ -9613,6 +9725,7 @@ export namespace Gdk {
         /**
          * Sets the drawable the renderer draws to.
          * @param drawable the new target drawable, or `null`
+         * @since 2.6
          */
         set_drawable(drawable: Drawable | null): void;
 
@@ -9623,6 +9736,7 @@ export namespace Gdk {
          * of the GC which won't be updated to follow changes to the
          * original GC.
          * @param gc the new GC to use for drawing, or `null`
+         * @since 2.6
          */
         set_gc(gc: GC | null): void;
 
@@ -9632,6 +9746,7 @@ export namespace Gdk {
          * renderered with this renderer.
          * @param part the part to render to set the color of
          * @param color the color to use, or `null` to unset a previously         set override color.
+         * @since 2.6
          */
         set_override_color(part: Pango.RenderPart, color: Color | null): void;
 
@@ -9644,6 +9759,7 @@ export namespace Gdk {
          * {@link Gdk.PangoRenderer}.
          * @param part the part to render with the stipple
          * @param stipple the new stipple value.
+         * @since 2.6
          */
         set_stipple(part: Pango.RenderPart, stipple: Bitmap): void;
     }
@@ -9706,6 +9822,7 @@ export namespace Gdk {
          * @param mask a pointer to a place to store a bitmap representing the transparency mask of the XPM file. Can be `null`, in which case transparency will be ignored.
          * @param transparent_color the color to be used for the pixels that are transparent in the input file. Can be `null`, in which case a default color will be used.
          * @param filename the filename of a file containing XPM data.
+         * @deprecated since 2.22: Use a {@link GdkPixbuf.Pixbuf} instead. You can use `gdk_pixbuf_new_from_file()` to create it. If you must use a pixmap, use `gdk_pixmap_new()` to create it and Cairo to draw the pixbuf onto it.
          */
         static colormap_create_from_xpm(drawable: Drawable, colormap: Colormap, mask: Bitmap, transparent_color: Color, filename: string): Pixmap;
 
@@ -9717,6 +9834,7 @@ export namespace Gdk {
          * @param mask a pointer to a place to store a bitmap representing     the transparency mask of the XPM file. Can be `null`,     in which case transparency will be ignored.
          * @param transparent_color the color to be used for the pixels     that are transparent in the input file. Can be `null`,     in which case a default color will be used.
          * @param data Pointer to a string containing the XPM data.
+         * @deprecated since 2.22: Use a {@link GdkPixbuf.Pixbuf} instead. You can use `gdk_pixbuf_new_from_xpm_data()` to create it. If you must use a pixmap, use `gdk_pixmap_new()` to create it and Cairo to draw the pixbuf onto it.
          */
         static colormap_create_from_xpm_d(drawable: Drawable, colormap: Colormap, mask: Bitmap, transparent_color: Color, data: string): Pixmap;
 
@@ -9725,6 +9843,7 @@ export namespace Gdk {
          * @param drawable a {@link Gdk.Drawable}, used to determine default values for the new pixmap.
          * @param transparent_color the color to be used for the pixels that are transparent in the input file. Can be `null`, in which case a default color will be used.
          * @param filename the filename of a file containing XPM data.
+         * @deprecated since 2.22: Use a {@link GdkPixbuf.Pixbuf} instead. You can use `gdk_pixbuf_new_from_file()` to create it. If you must use a pixmap, use `gdk_pixmap_new()` to create it and Cairo to draw the pixbuf onto it.
          */
         static create_from_xpm(drawable: Drawable, transparent_color: Color, filename: string): [Pixmap, Bitmap];
 
@@ -9733,6 +9852,7 @@ export namespace Gdk {
          * @param drawable a {@link Gdk.Drawable}, used to determine default values     for the new pixmap.
          * @param transparent_color This color will be used for the pixels     that are transparent in the input file. Can be `null`     in which case a default color will be used.
          * @param data Pointer to a string containing the XPM data.
+         * @deprecated since 2.22: Use a {@link GdkPixbuf.Pixbuf} instead. You can use `gdk_pixbuf_new_from_xpm_data()` to create it. If you must use a pixmap, use `gdk_pixmap_new()` to create it and Cairo to draw the pixbuf onto it.
          */
         static create_from_xpm_d(drawable: Drawable, transparent_color: Color, data: string): [Pixmap, Bitmap];
 
@@ -9741,6 +9861,7 @@ export namespace Gdk {
          * This function is purely to make it possible to query the size of pixmaps
          * even when compiling without deprecated symbols and you must use pixmaps.
          * It is identical to `gdk_drawable_get_size()`, but for pixmaps.
+         * @since 2.24
          */
         get_size(): [number, number];
     }
@@ -9847,6 +9968,7 @@ export namespace Gdk {
         /**
          * Gets the default screen for the default display. (See
          * gdk_display_get_default ()).
+         * @since 2.2
          */
         static get_default(): Screen;
 
@@ -9897,18 +10019,21 @@ export namespace Gdk {
         /**
          * Gets the default colormap for `screen`.
          * @returns the default {@link Gdk.Colormap}.
+         * @since 2.2
          */
         get_default_colormap(): Colormap;
 
         /**
          * Gets any options previously set with `gdk_screen_set_font_options()`.
          * @returns the current font options, or `null` if no default  font options have been set.
+         * @since 2.10
          */
         get_font_options(): cairo.FontOptions;
 
         /**
          * Gets the height of `screen` in pixels
          * @returns the height of `screen` in pixels.
+         * @since 2.2
          */
         get_height(): number;
 
@@ -9916,6 +10041,7 @@ export namespace Gdk {
          * Returns the height of `screen` in millimeters.
          * Note that on some X servers this value will not be correct.
          * @returns the heigth of `screen` in millimeters.
+         * @since 2.2
          */
         get_height_mm(): number;
 
@@ -9924,6 +10050,7 @@ export namespace Gdk {
          * @param x the x coordinate in the virtual screen.
          * @param y the y coordinate in the virtual screen.
          * @returns the monitor number in which the point (`x`,`y`) lies, or   a monitor close to (`x`,`y`) if the point is not in any monitor.
+         * @since 2.2
          */
         get_monitor_at_point(x: number, y: number): number;
 
@@ -9932,6 +10059,7 @@ export namespace Gdk {
          * bounding rectangle of `window` resides.
          * @param window a {@link Gdk.Window}
          * @returns the monitor number in which most of `window` is located,           or if `window` does not intersect any monitors, a monitor,           close to `window`.
+         * @since 2.2
          */
         get_monitor_at_window(window: Window): number;
 
@@ -9943,6 +10071,7 @@ export namespace Gdk {
          * `gdk_screen_get_width()` and `gdk_screen_get_height()`.
          * @param monitor_num the monitor number, between 0 and gdk_screen_get_n_monitors (screen)
          * @param dest a {@link Gdk.Rectangle} to be filled with the monitor geometry
+         * @since 2.2
          */
         get_monitor_geometry(monitor_num: number, dest: Rectangle): void;
 
@@ -9950,6 +10079,7 @@ export namespace Gdk {
          * Gets the height in millimeters of the specified monitor.
          * @param monitor_num number of the monitor, between 0 and gdk_screen_get_n_monitors (screen)
          * @returns the height of the monitor, or -1 if not available
+         * @since 2.14
          */
         get_monitor_height_mm(monitor_num: number): number;
 
@@ -9959,6 +10089,7 @@ export namespace Gdk {
          * product name of the display device.
          * @param monitor_num number of the monitor, between 0 and gdk_screen_get_n_monitors (screen)
          * @returns a newly-allocated string containing the name of the monitor,   or `null` if the name cannot be determined
+         * @since 2.14
          */
         get_monitor_plug_name(monitor_num: number): string;
 
@@ -9966,12 +10097,14 @@ export namespace Gdk {
          * Gets the width in millimeters of the specified monitor, if available.
          * @param monitor_num number of the monitor, between 0 and gdk_screen_get_n_monitors (screen)
          * @returns the width of the monitor, or -1 if not available
+         * @since 2.14
          */
         get_monitor_width_mm(monitor_num: number): number;
 
         /**
          * Returns the number of monitors which `screen` consists of.
          * @returns number of monitors which `screen` consists of
+         * @since 2.2
          */
         get_n_monitors(): number;
 
@@ -9979,6 +10112,7 @@ export namespace Gdk {
          * Gets the index of `screen` among the screens in the display
          * to which it belongs. (See `gdk_screen_get_display()`)
          * @returns the index
+         * @since 2.2
          */
         get_number(): number;
 
@@ -9992,6 +10126,7 @@ export namespace Gdk {
          * If no primary monitor is configured by the user, the return value
          * will be 0, defaulting to the first monitor.
          * @returns An integer index for the primary monitor, or 0 if none is configured.
+         * @since 2.20
          */
         get_primary_monitor(): number;
 
@@ -9999,6 +10134,7 @@ export namespace Gdk {
          * Gets the resolution for font handling on the screen; see
          * `gdk_screen_set_resolution()` for full details.
          * @returns the current resolution, or -1 if no resolution has been set.
+         * @since 2.10
          */
         get_resolution(): number;
 
@@ -10009,6 +10145,8 @@ export namespace Gdk {
          * it can render to any colormap and visual. So there's no need to
          * call this function.
          * @returns the preferred colormap
+         * @since 2.2
+         * @deprecated since 2.22: Use `gdk_screen_get_system_colormap()`
          */
         get_rgb_colormap(): Colormap;
 
@@ -10020,6 +10158,8 @@ export namespace Gdk {
          * the optimal one in those previous versions. GdkRGB can now render to
          * drawables with any visual.
          * @returns The {@link Gdk.Visual} chosen by GdkRGB.
+         * @since 2.2
+         * @deprecated since 2.22: Use `gdk_screen_get_system_visual()`
          */
         get_rgb_visual(): Visual;
 
@@ -10038,6 +10178,7 @@ export namespace Gdk {
          * For setting an overall opacity for a top-level window, see
          * `gdk_window_set_opacity()`.
          * @returns a colormap to use for windows with     an alpha channel or `null` if the capability is not available.
+         * @since 2.8
          */
         get_rgba_colormap(): Colormap;
 
@@ -10046,12 +10187,14 @@ export namespace Gdk {
          * alpha channel. See the docs for `gdk_screen_get_rgba_colormap()`
          * for caveats.
          * @returns a visual to use for windows with an     alpha channel or `null` if the capability is not available.
+         * @since 2.8
          */
         get_rgba_visual(): Visual;
 
         /**
          * Gets the root window of `screen`.
          * @returns the root window
+         * @since 2.2
          */
         get_root_window(): Window;
 
@@ -10064,6 +10207,7 @@ export namespace Gdk {
         /**
          * Gets the system's default colormap for `screen`
          * @returns the default colormap for `screen`.
+         * @since 2.2
          */
         get_system_colormap(): Colormap;
 
@@ -10072,6 +10216,7 @@ export namespace Gdk {
          * This is the visual for the root window of the display.
          * The return value should not be freed.
          * @returns the system visual
+         * @since 2.2
          */
         get_system_visual(): Visual;
 
@@ -10083,12 +10228,14 @@ export namespace Gdk {
          * The returned list should be freed with `g_list_free()`, but
          * its elements need not be freed.
          * @returns list of toplevel windows, free with `g_list_free()`
+         * @since 2.2
          */
         get_toplevel_windows(): Window[];
 
         /**
          * Gets the width of `screen` in pixels
          * @returns the width of `screen` in pixels.
+         * @since 2.2
          */
         get_width(): number;
 
@@ -10096,6 +10243,7 @@ export namespace Gdk {
          * Gets the width of `screen` in millimeters.
          * Note that on some X servers this value will not be correct.
          * @returns the width of `screen` in millimeters.
+         * @since 2.2
          */
         get_width_mm(): number;
 
@@ -10116,6 +10264,7 @@ export namespace Gdk {
          * windows it contains, so it should be freed using `g_list_free()` and
          * its windows unrefed using `g_object_unref()` when no longer needed.
          * @returns a list of {@link Gdk.Window}<!-- -->s for the current window stack,               or `null`.
+         * @since 2.10
          */
         get_window_stack(): Window[];
 
@@ -10127,6 +10276,7 @@ export namespace Gdk {
          * On X11 this function returns whether a compositing manager is
          * compositing `screen`.
          * @returns Whether windows with RGBA visuals can reasonably be expected to have their alpha channels drawn correctly on the screen.
+         * @since 2.10
          */
         is_composited(): boolean;
 
@@ -10138,6 +10288,7 @@ export namespace Gdk {
          * 
          * Call `g_list_free()` on the return value when you're finished with it.
          * @returns a list of visuals; the list must be freed, but not its contents
+         * @since 2.2
          */
         list_visuals(): Visual[];
 
@@ -10145,12 +10296,14 @@ export namespace Gdk {
          * Determines the name to pass to `gdk_display_open()` to get
          * a {@link Gdk.Display} with this screen as the default screen.
          * @returns a newly allocated string, free with `g_free()`
+         * @since 2.2
          */
         make_display_name(): string;
 
         /**
          * Sets the default `colormap` for `screen`.
          * @param colormap a {@link Gdk.Colormap}
+         * @since 2.2
          */
         set_default_colormap(colormap: Colormap): void;
 
@@ -10161,6 +10314,7 @@ export namespace Gdk {
          * default set of font options does not affect contexts that
          * have already been created.
          * @param options a {@link cairo.FontOptions}, or `null` to unset any   previously set default font options.
+         * @since 2.10
          */
         set_font_options(options: cairo.FontOptions | null): void;
 
@@ -10170,6 +10324,7 @@ export namespace Gdk {
          * and cairo units. The default value is 96, meaning that a 10 point
          * font will be 13 units high. (10 * 96. / 72. = 13.3).
          * @param dpi the resolution in "dots per inch". (Physical inches aren't actually   involved; the terminology is conventional.)
+         * @since 2.10
          */
         set_resolution(dpi: number): void;
     }
@@ -10300,6 +10455,7 @@ export namespace Gdk {
         /**
          * Returns the number of significant bits per red, green and blue value.
          * @returns The number of significant bits per color value for `visual`.
+         * @since 2.22
          */
         get_bits_per_rgb(): number;
 
@@ -10309,24 +10465,28 @@ export namespace Gdk {
          * The "shift" is the number of bits left we must shift a primary for it
          * to be in position (according to the "mask").  Finally, "precision" refers
          * to how much precision the pixel value contains for a particular primary.
+         * @since 2.22
          */
         get_blue_pixel_details(): [number, number, number];
 
         /**
          * Returns the byte order of this visual.
          * @returns A {@link Gdk.ByteOrder} stating the byte order of `visual`.
+         * @since 2.22
          */
         get_byte_order(): ByteOrder;
 
         /**
          * Returns the size of a colormap for this visual.
          * @returns The size of a colormap that is suitable for `visual`.
+         * @since 2.22
          */
         get_colormap_size(): number;
 
         /**
          * Returns the bit depth of this visual.
          * @returns The bit depth of this visual.
+         * @since 2.22
          */
         get_depth(): number;
 
@@ -10336,6 +10496,7 @@ export namespace Gdk {
          * The "shift" is the number of bits left we must shift a primary for it
          * to be in position (according to the "mask").  Finally, "precision" refers
          * to how much precision the pixel value contains for a particular primary.
+         * @since 2.22
          */
         get_green_pixel_details(): [number, number, number];
 
@@ -10345,18 +10506,21 @@ export namespace Gdk {
          * The "shift" is the number of bits left we must shift a primary for it
          * to be in position (according to the "mask").  Finally, "precision" refers
          * to how much precision the pixel value contains for a particular primary.
+         * @since 2.22
          */
         get_red_pixel_details(): [number, number, number];
 
         /**
          * Gets the screen to which this visual belongs
          * @returns the screen to which this visual belongs.
+         * @since 2.2
          */
         get_screen(): Screen;
 
         /**
          * Returns the type of visual this is (PseudoColor, TrueColor, etc).
          * @returns A {@link Gdk.VisualType} stating the type of `visual`.
+         * @since 2.22
          */
         get_visual_type(): VisualType;
     }
@@ -10449,6 +10613,7 @@ export namespace Gdk {
          * Emits a short beep associated to `window` in the appropriate
          * display, if supported. Otherwise, emits a short beep on
          * the display just as `gdk_display_beep()`.
+         * @since 2.12
          */
         beep(): void;
 
@@ -10567,6 +10732,7 @@ export namespace Gdk {
          * 
          * This function can only be called if `gdk_window_enable_synchronized_configure()`
          * was called previously.
+         * @since 2.6
          */
         configure_finished(): void;
 
@@ -10589,6 +10755,7 @@ export namespace Gdk {
          * See also: `gdk_window_coords_to_parent()`
          * @param parent_x X coordinate in parent's coordinate system
          * @param parent_y Y coordinate in parent's coordinate system
+         * @since 2.22
          */
         coords_from_parent(parent_x: number, parent_y: number): [number, number];
 
@@ -10611,6 +10778,7 @@ export namespace Gdk {
          * See also: `gdk_window_coords_from_parent()`
          * @param x X coordinate in child's coordinate system
          * @param y Y coordinate in child's coordinate system
+         * @since 2.22
          */
         coords_to_parent(x: number, y: number): [number, number];
 
@@ -10628,6 +10796,7 @@ export namespace Gdk {
          * @param width width of the new surface
          * @param height height of the new surface
          * @returns a pointer to the newly allocated surface. The caller owns the surface and should call `cairo_surface_destroy()` when done with it. This function always returns a valid pointer, but it will return a pointer to a "nil" surface if `other` is already in an error state or any other error occurs.
+         * @since 2.22
          */
         create_similar_surface(content: cairo.Content, width: number, height: number): cairo.Surface;
 
@@ -10663,6 +10832,7 @@ export namespace Gdk {
          * 
          * On X, calling this function makes `window` participate in the
          * _NET_WM_SYNC_REQUEST window manager protocol.
+         * @since 2.6
          */
         enable_synchronized_configure(): void;
 
@@ -10685,6 +10855,7 @@ export namespace Gdk {
          * 
          * Some backends may not support native child windows.
          * @returns `true` if the window has a native window, `false` otherwise
+         * @since 2.18
          */
         ensure_native(): boolean;
 
@@ -10704,6 +10875,7 @@ export namespace Gdk {
          * be needed if you for instance mix direct native drawing with
          * gdk drawing. For Gtk widgets that don't use double buffering this
          * will be called automatically before sending the expose event.
+         * @since 2.18
          */
         flush(): void;
 
@@ -10751,6 +10923,7 @@ export namespace Gdk {
          * fullscreenification actually happening. But it will happen with
          * most standard window managers, and GDK makes a best effort to get
          * it to happen.
+         * @since 2.2
          */
         fullscreen(): void;
 
@@ -10758,6 +10931,7 @@ export namespace Gdk {
          * This function informs GDK that the geometry of an embedded
          * offscreen window has changed. This is necessary for GDK to keep
          * track of which offscreen window the pointer is in.
+         * @since 2.18
          */
         geometry_changed(): void;
 
@@ -10765,6 +10939,7 @@ export namespace Gdk {
          * Determines whether or not the desktop environment shuld be hinted that
          * the window does not want to receive input focus.
          * @returns whether or not the window should receive input focus.
+         * @since 2.22
          */
         get_accept_focus(): boolean;
 
@@ -10773,6 +10948,7 @@ export namespace Gdk {
          * does not have its own background and reuses the parent's, `null` is
          * returned and you'll have to query it yourself.
          * @returns The pattern to use for the background or     `null` to use the parent's background.
+         * @since 2.22
          */
         get_background_pattern(): cairo.Pattern;
 
@@ -10793,6 +10969,7 @@ export namespace Gdk {
          * 
          * See `gdk_window_set_composited()`.
          * @returns `true` if the window is composited.
+         * @since 2.22
          */
         get_composited(): boolean;
 
@@ -10802,6 +10979,7 @@ export namespace Gdk {
          * there is no custom cursor set on the specified window, and it is
          * using the cursor for its parent window.
          * @returns a {@link Gdk.Cursor}, or `null`. The returned   object is owned by the {@link Gdk.Window} and should not be unreferenced   directly. Use `gdk_window_set_cursor()` to unset the cursor of the   window
+         * @since 2.18
          */
         get_cursor(): Cursor;
 
@@ -10835,6 +11013,7 @@ export namespace Gdk {
          * Determines whether or not the desktop environment should be hinted that the
          * window does not want to receive input focus when it is mapped.
          * @returns whether or not the window wants to receive input focus when it is mapped.
+         * @since 2.22
          */
         get_focus_on_map(): boolean;
 
@@ -10885,6 +11064,7 @@ export namespace Gdk {
          * most-recently-processed configure event, rather than the current
          * size on the X server.
          * @returns The height of `window`
+         * @since 2.24
          */
         get_height(): number;
 
@@ -10906,6 +11086,7 @@ export namespace Gdk {
          * Determines whether or not the window manager is hinted that `window`
          * has modal behaviour.
          * @returns whether or not the window has the modal hint set.
+         * @since 2.22
          */
         get_modal_hint(): boolean;
 
@@ -10946,6 +11127,7 @@ export namespace Gdk {
          * in any position in the window, not just the origin.
          * @param x X coordinate in window
          * @param y Y coordinate in window
+         * @since 2.18
          */
         get_root_coords(x: number, y: number): [number, number];
 
@@ -10967,6 +11149,7 @@ export namespace Gdk {
         /**
          * This function returns the type hint set for a window.
          * @returns The type hint set for `window`
+         * @since 2.10
          */
         get_type_hint(): WindowTypeHint;
 
@@ -10983,6 +11166,7 @@ export namespace Gdk {
          * most-recently-processed configure event, rather than the current
          * size on the X server.
          * @returns The width of `window`
+         * @since 2.24
          */
         get_width(): number;
 
@@ -10996,6 +11180,7 @@ export namespace Gdk {
          * Checks whether the window has a native window or not. Note that
          * you can use `gdk_window_ensure_native()` if a native window is needed.
          * @returns `true` if the %window has a native window, `false` otherwise.
+         * @since 2.22
          */
         has_native(): boolean;
 
@@ -11036,6 +11221,7 @@ export namespace Gdk {
          * @param mask shape mask, or `null`
          * @param x X position of shape mask with respect to `window`
          * @param y Y position of shape mask with respect to `window`
+         * @since 2.10
          */
         input_shape_combine_mask(mask: Bitmap | null, x: number, y: number): void;
 
@@ -11059,6 +11245,7 @@ export namespace Gdk {
          * @param shape_region region of window to be non-transparent
          * @param offset_x X position of `shape_region` in `window` coordinates
          * @param offset_y Y position of `shape_region` in `window` coordinates
+         * @since 2.10
          */
         input_shape_combine_region(shape_region: Region, offset_x: number, offset_y: number): void;
 
@@ -11120,18 +11307,21 @@ export namespace Gdk {
         /**
          * Check to see if a window is destroyed..
          * @returns `true` if the window is destroyed
+         * @since 2.18
          */
         is_destroyed(): boolean;
 
         /**
          * Determines whether or not the window is an input only window.
          * @returns `true` if `window` is input only
+         * @since 2.22
          */
         is_input_only(): boolean;
 
         /**
          * Determines whether or not the window is shaped.
          * @returns `true` if `window` is shaped
+         * @since 2.22
          */
         is_shaped(): boolean;
 
@@ -11189,6 +11379,7 @@ export namespace Gdk {
          * This function is distinct from `gdk_window_set_child_input_shapes()`
          * because it includes `window`'s input shape mask in the set of
          * shapes to be merged.
+         * @since 2.10
          */
         merge_child_input_shapes(): void;
 
@@ -11227,6 +11418,7 @@ export namespace Gdk {
          * @param region The {@link Gdk.Region} to move
          * @param dx Amount to move in the X direction
          * @param dy Amount to move in the Y direction
+         * @since 2.8
          */
         move_region(region: Region, dx: number, dy: number): void;
 
@@ -11303,6 +11495,7 @@ export namespace Gdk {
          * @param dest_y y position in `drawable`
          * @param width width of redirection, or -1 to use the width of `window`
          * @param height height of redirection or -1 to use the height of `window`
+         * @since 2.14
          */
         redirect_to_drawable(drawable: Drawable, src_x: number, src_y: number, dest_x: number, dest_y: number, width: number, height: number): void;
 
@@ -11311,6 +11504,7 @@ export namespace Gdk {
         /**
          * Removes any active redirection started by
          * `gdk_window_redirect_to_drawable()`.
+         * @since 2.14
          */
         remove_redirection(): void;
 
@@ -11350,6 +11544,7 @@ export namespace Gdk {
          * requests the restack, does not guarantee it.
          * @param sibling a {@link Gdk.Window} that is a sibling of `window`, or `null`
          * @param above a boolean
+         * @since 2.18
          */
         restack(sibling: Window | null, above: boolean): void;
 
@@ -11377,6 +11572,7 @@ export namespace Gdk {
          * On X, it is the responsibility of the window manager to interpret this
          * hint. ICCCM-compliant window manager usually respect it.
          * @param accept_focus `true` if the window should receive input focus
+         * @since 2.4
          */
         set_accept_focus(accept_focus: boolean): void;
 
@@ -11423,6 +11619,7 @@ export namespace Gdk {
          * for all children of `window`, ignoring the input shape mask of `window`
          * itself. Contrast with `gdk_window_merge_child_input_shapes()` which includes
          * the input shape mask of `window` in the masks to be merged.
+         * @since 2.10
          */
         set_child_input_shapes(): void;
 
@@ -11459,6 +11656,7 @@ export namespace Gdk {
          * setting a window as composited is supported before
          * attempting to do so.
          * @param composited `true` to set the window as composited
+         * @since 2.12
          */
         set_composited(composited: boolean): void;
 
@@ -11510,6 +11708,7 @@ export namespace Gdk {
          * this hint. Window managers following the freedesktop.org window
          * manager extension specification should respect it.
          * @param focus_on_map `true` if the window should receive input focus when mapped
+         * @since 2.6
          */
         set_focus_on_map(focus_on_map: boolean): void;
 
@@ -11640,6 +11839,7 @@ export namespace Gdk {
          * But it will happen with most standard window managers,
          * and GDK makes a best effort to get it to happen.
          * @param setting whether to keep `window` above other windows
+         * @since 2.4
          */
         set_keep_above(setting: boolean): void;
 
@@ -11654,6 +11854,7 @@ export namespace Gdk {
          * But it will happen with most standard window managers,
          * and GDK makes a best effort to get it to happen.
          * @param setting whether to keep `window` below other windows
+         * @since 2.4
          */
         set_keep_below(setting: boolean): void;
 
@@ -11681,6 +11882,7 @@ export namespace Gdk {
          * For making non-toplevel windows translucent, see
          * `gdk_window_set_composited()`.
          * @param opacity opacity
+         * @since 2.12
          */
         set_opacity(opacity: number): void;
 
@@ -11724,6 +11926,7 @@ export namespace Gdk {
          * allow the window to be treated according to standard policy for
          * its semantic type.
          * @param skips_pager `true` to skip the pager
+         * @since 2.2
          */
         set_skip_pager_hint(skips_pager: boolean): void;
 
@@ -11735,6 +11938,7 @@ export namespace Gdk {
          * instead you should allow the window to be treated according to
          * standard policy for its semantic type.
          * @param skips_taskbar `true` to skip the taskbar
+         * @since 2.2
          */
         set_skip_taskbar_hint(skips_taskbar: boolean): void;
 
@@ -11742,6 +11946,7 @@ export namespace Gdk {
          * When using GTK+, typically you should use `gtk_window_set_startup_id()`
          * instead of this low-level function.
          * @param startup_id a string with startup-notification identifier
+         * @since 2.12
          */
         set_startup_id(startup_id: string): void;
 
@@ -11792,6 +11997,7 @@ export namespace Gdk {
          * Toggles whether a window needs the user's
          * urgent attention.
          * @param urgent `true` if the window is urgent
+         * @since 2.8
          */
         set_urgency_hint(urgent: boolean): void;
 
@@ -11913,6 +12119,7 @@ export namespace Gdk {
          * unfullscreenification actually happening. But it will happen with
          * most standard window managers, and GDK makes a best effort to get
          * it to happen.
+         * @since 2.2
          */
         unfullscreen(): void;
 
@@ -12007,6 +12214,7 @@ export namespace Gdk {
          * Allocates a single color from a colormap.
          * @param colormap a {@link Gdk.Colormap}.
          * @param color The color to allocate. On return, the    <structfield>pixel</structfield> field will be filled in.
+         * @deprecated since 2.2: Use `gdk_colormap_alloc_color()` instead.
          */
         static alloc(colormap: Colormap, color: Color): number;
 
@@ -12088,6 +12296,7 @@ export namespace Gdk {
          * <literal>g</literal> and <literal>b</literal> are hex digits
          * representing the red, green and blue components respectively.
          * @returns a newly-allocated text string
+         * @since 2.12
          */
         to_string(): string;
     }
@@ -12124,6 +12333,7 @@ export namespace Gdk {
         /**
          * Returns the cursor type for this cursor.
          * @returns a {@link Gdk.CursorType}
+         * @since 2.22
          */
         get_cursor_type(): CursorType;
 
@@ -12871,6 +13081,7 @@ export namespace Gdk {
         /**
          * Creates a new attribute specifying the color to emboss text with.
          * @param color a GdkColor representing the color to emboss with
+         * @since 2.12
          */
         static ["new"](color: Color): Pango.Attribute;
     }
@@ -13114,6 +13325,8 @@ export namespace Gdk {
          * Finds out if a regions is the same as a rectangle.
          * @param rectangle a {@link Gdk.Rectangle}
          * @returns `true` if `region` and `rectangle` are equal.
+         * @since 2.18
+         * @deprecated since 2.22: Use `gdk_region_new_rect()` and `gdk_region_equal()` to             achieve the same effect.
          */
         rect_equal(rectangle: Rectangle): boolean;
 
@@ -13129,6 +13342,7 @@ export namespace Gdk {
          * Positive values shrink the region. Negative values expand it.
          * @param dx the number of pixels to shrink the region horizontally
          * @param dy the number of pixels to shrink the region vertically
+         * @deprecated since 2.22: There is no replacement for this function.
          */
         shrink(dx: number, dy: number): void;
 
@@ -13424,6 +13638,7 @@ export namespace Gdk {
          * ```
          * 
          * @param event a valid {@link Gdk.Event}
+         * @since 2.12
          */
         static request_motions(event: EventMotion): void;
 
@@ -13519,6 +13734,7 @@ export namespace Gdk {
          * have been allocated by GTK+, for instance, by
          * `gdk_event_copy()`.
          * @param screen a {@link Gdk.Screen}
+         * @since 2.2
          */
         set_screen(screen: Screen): void;
     }

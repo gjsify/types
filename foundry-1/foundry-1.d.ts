@@ -1702,11 +1702,13 @@ export namespace Foundry {
 
         // Virtual methods
         /**
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_id(): string;
 
         /**
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_name(): string;
@@ -1718,6 +1720,7 @@ export namespace Foundry {
          * {@link Foundry.AcpAgent.resume_session} is a supported operation for
          * session identifiers previously issued by this agent or provider. It does not
          * imply that every arbitrary session identifier is valid.
+         * @since 1.2
          * @virtual
          */
         vfunc_get_capabilities(): AcpAgentCapabilityFlags;
@@ -1726,6 +1729,7 @@ export namespace Foundry {
          * Starts a fresh ACP session for `self`.
          * @param client a {@link Foundry.AcpClient} to receive client-side requests
          * @param pipeline a {@link Foundry.BuildPipeline} to use for launch
+         * @since 1.2
          * @virtual
          */
         vfunc_open_session(client: AcpClient, pipeline: BuildPipeline | null): Dex.Future;
@@ -1736,6 +1740,7 @@ export namespace Foundry {
          * @param client a {@link Foundry.AcpClient} to receive client-side requests
          * @param pipeline a {@link Foundry.BuildPipeline} to use for launch
          * @param session_id session identifier to resume
+         * @since 1.2
          * @virtual
          */
         vfunc_resume_session(client: AcpClient, pipeline: BuildPipeline | null, session_id: string): Dex.Future;
@@ -1743,11 +1748,13 @@ export namespace Foundry {
         // Methods
         /**
          * @returns the agent identifier
+         * @since 1.2
          */
         dup_id(): string;
 
         /**
          * @returns the user-visible agent name
+         * @since 1.2
          */
         dup_name(): string;
 
@@ -1759,6 +1766,7 @@ export namespace Foundry {
          * session identifiers previously issued by this agent or provider. It does not
          * imply that every arbitrary session identifier is valid.
          * @returns the agent capability flags
+         * @since 1.2
          */
         get_capabilities(): AcpAgentCapabilityFlags;
 
@@ -1767,6 +1775,7 @@ export namespace Foundry {
          * @param client a {@link Foundry.AcpClient} to receive client-side requests
          * @param pipeline a {@link Foundry.BuildPipeline} to use for launch
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         open_session(client: AcpClient, pipeline: BuildPipeline | null): Dex.Future;
 
@@ -1777,6 +1786,7 @@ export namespace Foundry {
          * @param pipeline a {@link Foundry.BuildPipeline} to use for launch
          * @param session_id session identifier to resume
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         resume_session(client: AcpClient, pipeline: BuildPipeline | null, session_id: string): Dex.Future;
 
@@ -1803,6 +1813,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -1830,6 +1841,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -1860,6 +1872,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -1868,6 +1881,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -1882,6 +1896,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -1901,6 +1916,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -1936,6 +1952,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -1945,6 +1962,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -1972,6 +1990,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -2073,21 +2092,25 @@ export namespace Foundry {
         // Methods
         /**
          * @returns the last event identifier known to   reference this file
+         * @since 1.2
          */
         dup_last_event_id(): string | null;
 
         /**
          * @returns the changed file path
+         * @since 1.2
          */
         dup_path(): string;
 
         /**
          * @returns status flags for the changed file
+         * @since 1.2
          */
         get_flags(): AcpChangedFileFlags;
 
         /**
          * @returns the kind of change
+         * @since 1.2
          */
         get_kind(): AcpChangedFileKind;
     }
@@ -2154,38 +2177,45 @@ export namespace Foundry {
          * Requests authentication using `method_id`.
          * @param method_id the ACP authentication method identifier
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         authenticate(method_id: string): Dex.Future;
 
         /**
          * Waits for the ACP connection to close.
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         ["await"](): Dex.Future;
 
         /**
          * Closes the ACP transport.
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         close(): Dex.Future;
 
         /**
          * @returns the negotiated agent name
+         * @since 1.2
          */
         dup_agent_name(): string | null;
 
         /**
          * @returns the negotiated agent title
+         * @since 1.2
          */
         dup_agent_title(): string | null;
 
         /**
          * @returns the negotiated agent version
+         * @since 1.2
          */
         dup_agent_version(): string | null;
 
         /**
          * @returns the connection state
+         * @since 1.2
          */
         get_state(): AcpConnectionState;
 
@@ -2196,6 +2226,7 @@ export namespace Foundry {
          * @param client_version client version
          * @param client_capabilities enabled client capability flags
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         initialize(client_name: string, client_title: string, client_version: string, client_capabilities: AcpClientCapabilityFlags): Dex.Future;
 
@@ -2203,12 +2234,14 @@ export namespace Foundry {
          * Creates a new ACP session using `session/new`.
          * @param cwd an absolute working directory, or `null` for the project root
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.AcpSession}
+         * @since 1.2
          */
         new_session(cwd: string | null): Dex.Future;
 
         /**
          * Starts the connection transport.
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         start(): Dex.Future;
     }
@@ -2264,21 +2297,25 @@ export namespace Foundry {
         // Methods
         /**
          * @returns the MIME type
+         * @since 1.2
          */
         dup_mime_type(): string | null;
 
         /**
          * @returns the display name
+         * @since 1.2
          */
         dup_name(): string | null;
 
         /**
          * @returns the text
+         * @since 1.2
          */
         dup_text(): string | null;
 
         /**
          * @returns the resource URI
+         * @since 1.2
          */
         dup_uri(): string | null;
     }
@@ -2455,56 +2492,67 @@ export namespace Foundry {
         // Methods
         /**
          * @returns event detail text
+         * @since 1.2
          */
         dup_body(): string | null;
 
         /**
          * @returns the event identifier
+         * @since 1.2
          */
         dup_event_id(): string | null;
 
         /**
          * @returns the parent event identifier
+         * @since 1.2
          */
         dup_parent_event_id(): string | null;
 
         /**
          * @returns the raw protocol JSON for diagnostics
+         * @since 1.2
          */
         dup_raw(): Json.Node | null;
 
         /**
          * @returns the protocol-specific kind
+         * @since 1.2
          */
         dup_raw_kind(): string | null;
 
         /**
          * @returns the ACP session identifier
+         * @since 1.2
          */
         dup_session_id(): string;
 
         /**
          * @returns a short human-facing summary
+         * @since 1.2
          */
         dup_title(): string | null;
 
         /**
          * @returns the prompt turn identifier
+         * @since 1.2
          */
         dup_turn_id(): string | null;
 
         /**
          * @returns the normalized event kind
+         * @since 1.2
          */
         get_kind(): AcpEventKind;
 
         /**
          * @returns the event state
+         * @since 1.2
          */
         get_state(): AcpEventState;
 
         /**
          * @returns a wall-clock timestamp in microseconds since the Unix epoch
+         * @since 1.2
          */
         get_timestamp(): number;
     }
@@ -2558,17 +2606,20 @@ export namespace Foundry {
          * Finds an available ACP agent by identifier.
          * @param id the agent identifier
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.AcpAgent}
+         * @since 1.2
          */
         find_agent(id: string): Dex.Future;
 
         /**
          * @returns a {@link Gio.ListModel} of {@link Foundry.AcpAgent}
+         * @since 1.2
          */
         list_agents(): Gio.ListModel;
 
         /**
          * Lists loaded ACP providers.
          * @returns a {@link Gio.ListModel} of {@link Foundry.AcpProvider}
+         * @since 1.2
          */
         list_providers(): Gio.ListModel;
 
@@ -2582,6 +2633,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -2592,6 +2644,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -2610,6 +2663,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -2637,6 +2691,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -2649,6 +2704,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -2662,6 +2718,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -2672,6 +2729,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -2724,26 +2782,31 @@ export namespace Foundry {
         // Methods
         /**
          * @returns the option description
+         * @since 1.2
          */
         dup_description(): string | null;
 
         /**
          * @returns the option identifier
+         * @since 1.2
          */
         dup_id(): string;
 
         /**
          * @returns the option label
+         * @since 1.2
          */
         dup_label(): string | null;
 
         /**
          * @returns the raw protocol JSON
+         * @since 1.2
          */
         dup_raw(): Json.Node | null;
 
         /**
          * @returns `true` if the option is marked destructive
+         * @since 1.2
          */
         get_destructive(): boolean;
     }
@@ -2800,6 +2863,7 @@ export namespace Foundry {
          * are resolved below the project directory when one is configured.
          * @param path a local path from a permission request
          * @returns `true` if `path` is contained by the project directory
+         * @since 1.2
          */
         contains_path(path: string): boolean;
 
@@ -2813,11 +2877,13 @@ export namespace Foundry {
          * replaces this decision.
          * @param request a {@link Foundry.AcpPermissionRequest}
          * @returns a {@link Foundry.AcpPermissionResponse}
+         * @since 1.2
          */
         decide(request: AcpPermissionRequest): AcpPermissionResponse;
 
         /**
          * @returns the project directory used for   containment checks
+         * @since 1.2
          */
         dup_project_directory(): Gio.File | null;
 
@@ -2826,6 +2892,7 @@ export namespace Foundry {
          * {@link Foundry.AcpClient} implementations.
          * @param request a {@link Foundry.AcpPermissionRequest}
          * @returns a {@link Dex.Future} resolving to a   {@link Foundry.AcpPermissionResponse}
+         * @since 1.2
          */
         request_permission(request: AcpPermissionRequest): Dex.Future;
     }
@@ -2875,62 +2942,74 @@ export namespace Foundry {
         // Methods
         /**
          * @returns the command when provided
+         * @since 1.2
          */
         dup_command(): string | null;
 
         /**
          * @returns the default or recommended option
+         * @since 1.2
          */
         dup_default_option(): string | null;
 
         /**
          * @returns the request description
+         * @since 1.2
          */
         dup_description(): string | null;
 
         /**
          * @returns the path or target resource when provided
+         * @since 1.2
          */
         dup_path(): string | null;
 
         /**
          * @returns the raw request JSON
+         * @since 1.2
          */
         dup_raw(): Json.Node;
 
         /**
          * @returns the request identifier
+         * @since 1.2
          */
         dup_request_id(): string | null;
 
         /**
          * @returns the risk level when provided
+         * @since 1.2
          */
         dup_risk_level(): string | null;
 
         /**
          * @returns the session identifier
+         * @since 1.2
          */
         dup_session_id(): string | null;
 
         /**
          * @returns the request title
+         * @since 1.2
          */
         dup_title(): string | null;
 
         /**
          * @returns the associated tool call identifier
+         * @since 1.2
          */
         dup_tool_call_id(): string | null;
 
         /**
          * @returns the tool name
+         * @since 1.2
          */
         dup_tool_name(): string | null;
 
         /**
          * Lists structured permission options.
          * @returns a {@link Gio.ListModel} of   {@link Foundry.AcpPermissionOption}
+         * @since 1.2
          */
         list_options(): Gio.ListModel;
     }
@@ -2984,11 +3063,13 @@ export namespace Foundry {
         // Methods
         /**
          * @returns the selected option identifier
+         * @since 1.2
          */
         dup_option_id(): string | null;
 
         /**
          * @returns `true` if the permission was cancelled
+         * @since 1.2
          */
         get_cancelled(): boolean;
     }
@@ -3042,11 +3123,13 @@ export namespace Foundry {
         // Methods
         /**
          * @returns the permission policy used by `self`
+         * @since 1.2
          */
         dup_permission_policy(): AcpPermissionPolicy;
 
         /**
          * @returns the project directory used for containment checks
+         * @since 1.2
          */
         dup_project_directory(): Gio.File;
 
@@ -3058,6 +3141,7 @@ export namespace Foundry {
          * expose a list-status API.
          * @param session a {@link Foundry.AcpSession}
          * @returns a {@link Dex.Future} that resolves when refresh   has completed
+         * @since 1.2
          */
         refresh_changed_files(session: AcpSession): Dex.Future;
 
@@ -3072,6 +3156,7 @@ export namespace Foundry {
          * @param environ environment
          * @param output_byte_limit output byte limit, or -1 for default
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         create_terminal(session: AcpSession, command: string, argv: string[] | null, cwd: string | null, environ: string[] | null, output_byte_limit: bigint | number): Dex.Future;
 
@@ -3084,6 +3169,7 @@ export namespace Foundry {
          * @param line 1-based start line, or zero for the beginning
          * @param limit maximum line count, or zero for no explicit limit
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         read_text_file(session: AcpSession, path: string, line: number, limit: number): Dex.Future;
 
@@ -3094,6 +3180,7 @@ export namespace Foundry {
          * @param session a {@link Foundry.AcpSession}
          * @param request a {@link Foundry.AcpPermissionRequest}
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         request_permission(session: AcpSession, request: AcpPermissionRequest): Dex.Future;
 
@@ -3102,6 +3189,7 @@ export namespace Foundry {
          * @param session a {@link Foundry.AcpSession}
          * @param update a {@link Foundry.AcpSessionUpdate}
          * @returns a {@link Dex.Future} resolving when local delivery   is complete
+         * @since 1.2
          */
         session_update(session: AcpSession, update: AcpSessionUpdate): Dex.Future;
 
@@ -3110,6 +3198,7 @@ export namespace Foundry {
          * @param session a {@link Foundry.AcpSession}
          * @param terminal_id the protocol terminal identifier
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         terminal_kill(session: AcpSession, terminal_id: string): Dex.Future;
 
@@ -3120,6 +3209,7 @@ export namespace Foundry {
          * @param session a {@link Foundry.AcpSession}
          * @param terminal_id the protocol terminal identifier
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         terminal_output(session: AcpSession, terminal_id: string): Dex.Future;
 
@@ -3128,6 +3218,7 @@ export namespace Foundry {
          * @param session a {@link Foundry.AcpSession}
          * @param terminal_id the protocol terminal identifier
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         terminal_release(session: AcpSession, terminal_id: string): Dex.Future;
 
@@ -3136,6 +3227,7 @@ export namespace Foundry {
          * @param session a {@link Foundry.AcpSession}
          * @param terminal_id the protocol terminal identifier
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         terminal_wait_for_exit(session: AcpSession, terminal_id: string): Dex.Future;
 
@@ -3145,6 +3237,7 @@ export namespace Foundry {
          * @param path an absolute path
          * @param content UTF-8 content
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         write_text_file(session: AcpSession, path: string, content: string): Dex.Future;
 
@@ -3158,6 +3251,7 @@ export namespace Foundry {
          * @param cwd working directory
          * @param environ environment
          * @param output_byte_limit output byte limit, or -1 for default
+         * @since 1.2
          * @virtual
          */
         vfunc_create_terminal(session: AcpSession, command: string, argv: string[] | null, cwd: string | null, environ: string[] | null, output_byte_limit: number): Dex.Future;
@@ -3170,6 +3264,7 @@ export namespace Foundry {
          * @param path an absolute path
          * @param line 1-based start line, or zero for the beginning
          * @param limit maximum line count, or zero for no explicit limit
+         * @since 1.2
          * @virtual
          */
         vfunc_read_text_file(session: AcpSession, path: string, line: number, limit: number): Dex.Future;
@@ -3178,6 +3273,7 @@ export namespace Foundry {
          * Refreshes `session`'s changed-file model after a prompt or terminal has
          * completed.
          * @param session a {@link Foundry.AcpSession}
+         * @since 1.2
          * @virtual
          */
         vfunc_refresh_changed_files(session: AcpSession): Dex.Future;
@@ -3188,6 +3284,7 @@ export namespace Foundry {
          * The returned future must resolve to a {@link Foundry.AcpPermissionResponse}.
          * @param session a {@link Foundry.AcpSession}
          * @param request a {@link Foundry.AcpPermissionRequest}
+         * @since 1.2
          * @virtual
          */
         vfunc_request_permission(session: AcpSession, request: AcpPermissionRequest): Dex.Future;
@@ -3196,6 +3293,7 @@ export namespace Foundry {
          * Delivers an ACP `session/update` notification to the client.
          * @param session a {@link Foundry.AcpSession}
          * @param update a {@link Foundry.AcpSessionUpdate}
+         * @since 1.2
          * @virtual
          */
         vfunc_session_update(session: AcpSession, update: AcpSessionUpdate): Dex.Future;
@@ -3204,6 +3302,7 @@ export namespace Foundry {
          * Handles an ACP `terminal/kill` request.
          * @param session a {@link Foundry.AcpSession}
          * @param terminal_id the protocol terminal identifier
+         * @since 1.2
          * @virtual
          */
         vfunc_terminal_kill(session: AcpSession, terminal_id: string): Dex.Future;
@@ -3214,6 +3313,7 @@ export namespace Foundry {
          * The returned future must resolve to a {@link Foundry.AcpTerminalOutput}.
          * @param session a {@link Foundry.AcpSession}
          * @param terminal_id the protocol terminal identifier
+         * @since 1.2
          * @virtual
          */
         vfunc_terminal_output(session: AcpSession, terminal_id: string): Dex.Future;
@@ -3222,6 +3322,7 @@ export namespace Foundry {
          * Handles an ACP `terminal/release` request.
          * @param session a {@link Foundry.AcpSession}
          * @param terminal_id the protocol terminal identifier
+         * @since 1.2
          * @virtual
          */
         vfunc_terminal_release(session: AcpSession, terminal_id: string): Dex.Future;
@@ -3230,6 +3331,7 @@ export namespace Foundry {
          * Handles an ACP `terminal/wait_for_exit` request.
          * @param session a {@link Foundry.AcpSession}
          * @param terminal_id the protocol terminal identifier
+         * @since 1.2
          * @virtual
          */
         vfunc_terminal_wait_for_exit(session: AcpSession, terminal_id: string): Dex.Future;
@@ -3239,6 +3341,7 @@ export namespace Foundry {
          * @param session a {@link Foundry.AcpSession}
          * @param path an absolute path
          * @param content UTF-8 content
+         * @since 1.2
          * @virtual
          */
         vfunc_write_text_file(session: AcpSession, path: string, content: string): Dex.Future;
@@ -3289,11 +3392,13 @@ export namespace Foundry {
         // Methods
         /**
          * @returns the protocol stop reason
+         * @since 1.2
          */
         dup_raw_stop_reason(): string | null;
 
         /**
          * @returns the normalized stop reason
+         * @since 1.2
          */
         get_stop_reason(): AcpStopReason;
     }
@@ -3360,6 +3465,7 @@ export namespace Foundry {
         // Virtual methods
         /**
          * Gets a user-visible name for the provider.
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_name(): string;
@@ -3368,24 +3474,28 @@ export namespace Foundry {
         /**
          * Adds `agent` to the provider.
          * @param agent a {@link Foundry.AcpAgent}
+         * @since 1.2
          */
         agent_added(agent: AcpAgent): void;
 
         /**
          * Removes `agent` from the provider.
          * @param agent a {@link Foundry.AcpAgent}
+         * @since 1.2
          */
         agent_removed(agent: AcpAgent): void;
 
         /**
          * Gets a user-visible name for the provider.
          * @returns the provider name
+         * @since 1.2
          */
         dup_name(): string;
 
         /**
          * Gets the plugin information for the provider.
          * @returns a {@link Peas.PluginInfo}
+         * @since 1.2
          */
         dup_plugin_info(): Peas.PluginInfo | null;
 
@@ -3399,6 +3509,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -3409,6 +3520,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -3427,6 +3539,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -3454,6 +3567,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -3466,6 +3580,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -3479,6 +3594,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -3489,6 +3605,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -3516,6 +3633,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -3543,6 +3661,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -3573,6 +3692,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -3581,6 +3701,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -3595,6 +3716,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -3614,6 +3736,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -3649,6 +3772,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -3658,6 +3782,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -3685,6 +3810,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -3754,37 +3880,44 @@ export namespace Foundry {
         /**
          * Sends an ACP `session/cancel` notification.
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         cancel(): Dex.Future;
 
         /**
          * Requests the agent close the session.
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         close(): Dex.Future;
 
         /**
          * @returns the active permission request
+         * @since 1.2
          */
         dup_active_permission_request(): AcpPermissionRequest | null;
 
         /**
          * @returns the owning ACP connection
+         * @since 1.2
          */
         dup_connection(): AcpConnection;
 
         /**
          * @returns the current running or blocking event
+         * @since 1.2
          */
         dup_current_activity(): AcpEvent | null;
 
         /**
          * @returns the ACP session identifier
+         * @since 1.2
          */
         dup_id(): string;
 
         /**
          * @returns the session state
+         * @since 1.2
          */
         get_state(): AcpSessionState;
 
@@ -3792,18 +3925,21 @@ export namespace Foundry {
          * Lists terminal handles known to the session. Terminals remain in the model
          * after exit until they are released by the ACP agent.
          * @returns a {@link Gio.ListModel} of {@link Foundry.AcpTerminal}
+         * @since 1.2
          */
         list_active_terminals(): Gio.ListModel;
 
         /**
          * Lists files known to have changed during the session.
          * @returns a {@link Gio.ListModel} of   {@link Foundry.AcpChangedFile}
+         * @since 1.2
          */
         list_changed_files(): Gio.ListModel;
 
         /**
          * Lists normalized monitoring events for the session.
          * @returns a {@link Gio.ListModel} of {@link Foundry.AcpEvent}
+         * @since 1.2
          */
         list_events(): Gio.ListModel;
 
@@ -3811,6 +3947,7 @@ export namespace Foundry {
          * Sends a prompt turn to the ACP agent.
          * @param blocks content blocks for the prompt
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.AcpPromptResult}
+         * @since 1.2
          */
         prompt(blocks: AcpContentBlock[]): Dex.Future;
 
@@ -3819,6 +3956,7 @@ export namespace Foundry {
          * @param config_id the ACP config option identifier
          * @param value_id the ACP config value identifier
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         set_config_option(config_id: string, value_id: string): Dex.Future;
 
@@ -3826,6 +3964,7 @@ export namespace Foundry {
          * Requests a session mode change.
          * @param mode_id the ACP mode identifier
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         set_mode(mode_id: string): Dex.Future;
     }
@@ -3875,117 +4014,139 @@ export namespace Foundry {
         // Methods
         /**
          * @returns a command from the update
+         * @since 1.2
          */
         dup_command(): string | null;
 
         /**
          * Gets parsed content blocks from the update.
          * @returns content blocks
+         * @since 1.2
          */
         dup_content_blocks(): AcpContentBlock[];
 
         /**
          * @returns a working directory from the update
+         * @since 1.2
          */
         dup_cwd(): string | null;
 
         /**
          * @returns a summary of the file edit
+         * @since 1.2
          */
         dup_edit_summary(): string | null;
 
         /**
          * @returns the error domain from the update
+         * @since 1.2
          */
         dup_error_domain(): string | null;
 
         /**
          * @returns an error message from the update
+         * @since 1.2
          */
         dup_error_message(): string | null;
 
         /**
          * @returns the update variant name
+         * @since 1.2
          */
         dup_kind(): string | null;
 
         /**
          * @returns the previous file path from the update
+         * @since 1.2
          */
         dup_old_path(): string | null;
 
         /**
          * @returns a file path from the update
+         * @since 1.2
          */
         dup_path(): string | null;
 
         /**
          * @returns progress or status text from the update
+         * @since 1.2
          */
         dup_progress_text(): string | null;
 
         /**
          * @returns the raw update JSON
+         * @since 1.2
          */
         dup_raw(): Json.Node;
 
         /**
          * @returns a terminal identifier from the update
+         * @since 1.2
          */
         dup_terminal_id(): string | null;
 
         /**
          * @returns a text-like payload when present
+         * @since 1.2
          */
         dup_text(): string | null;
 
         /**
          * @returns the tool call identifier
+         * @since 1.2
          */
         dup_tool_call_id(): string | null;
 
         /**
          * @returns the tool name
+         * @since 1.2
          */
         dup_tool_name(): string | null;
 
         /**
          * @returns the tool status
+         * @since 1.2
          */
         dup_tool_status(): string | null;
 
         /**
          * @returns a human-facing tool title
+         * @since 1.2
          */
         dup_tool_title(): string | null;
 
         /**
          * Gets the byte count from `self`, if present.
          * @returns `true` if a byte count was found
+         * @since 1.2
          */
         get_byte_count(): [boolean, number];
 
         /**
          * Gets the error code from `self`, if present.
          * @returns `true` if an error code was found
+         * @since 1.2
          */
         get_error_code(): [boolean, number];
 
         /**
          * Gets the affected line range from `self`, if present.
          * @returns `true` if line range data was found
+         * @since 1.2
          */
         get_line_range(): [boolean, number, number];
 
         /**
          * Gets the terminal exit status from `self`, if present.
          * @returns `true` if an exit status was found
+         * @since 1.2
          */
         get_terminal_exit_status(): [boolean, number];
 
         /**
          * Gets the normalized update kind for `self`.
          * @returns a {@link Foundry.AcpSessionUpdateKind}
+         * @since 1.2
          */
         get_update_kind(): AcpSessionUpdateKind;
     }
@@ -4230,76 +4391,91 @@ export namespace Foundry {
         // Methods
         /**
          * @returns the argument vector used to create the terminal
+         * @since 1.2
          */
         dup_argv(): string[] | null;
 
         /**
          * @returns the command used to create the terminal
+         * @since 1.2
          */
         dup_command(): string | null;
 
         /**
          * @returns the working directory for the terminal
+         * @since 1.2
          */
         dup_cwd(): string | null;
 
         /**
          * @returns the exit signal name, if any
+         * @since 1.2
          */
         dup_exit_signal(): string | null;
 
         /**
          * @returns the protocol terminal identifier
+         * @since 1.2
          */
         dup_id(): string;
 
         /**
          * @returns the most recent terminal output text
+         * @since 1.2
          */
         dup_latest_output(): string | null;
 
         /**
          * @returns accumulated terminal output
+         * @since 1.2
          */
         dup_scrollback(): string;
 
         /**
          * @returns the prompt turn identifier that   created the terminal
+         * @since 1.2
          */
         dup_turn_id(): string | null;
 
         /**
          * @returns wall-clock creation time in microseconds since the Unix epoch
+         * @since 1.2
          */
         get_created_at(): number;
 
         /**
          * @returns the exit status, or zero if none has been reported
+         * @since 1.2
          */
         get_exit_status(): number;
 
         /**
          * @returns wall-clock subprocess exit time in microseconds since the Unix   epoch, or zero if the terminal has not exited
+         * @since 1.2
          */
         get_exited_at(): number;
 
         /**
          * @returns the configured output byte limit, or -1 for the default
+         * @since 1.2
          */
         get_output_byte_limit(): number;
 
         /**
          * @returns wall-clock subprocess start time in microseconds since the Unix   epoch, or zero if unknown
+         * @since 1.2
          */
         get_started_at(): number;
 
         /**
          * @returns the terminal state
+         * @since 1.2
          */
         get_state(): AcpTerminalState;
 
         /**
          * @returns `true` if output has been truncated
+         * @since 1.2
          */
         get_truncated(): boolean;
     }
@@ -4351,26 +4527,31 @@ export namespace Foundry {
         // Methods
         /**
          * @returns the signal name
+         * @since 1.2
          */
         dup_signal(): string | null;
 
         /**
          * @returns the terminal output
+         * @since 1.2
          */
         dup_text(): string;
 
         /**
          * @returns the exit code
+         * @since 1.2
          */
         get_exit_code(): number;
 
         /**
          * @returns `true` if output was truncated
+         * @since 1.2
          */
         get_truncated(): boolean;
 
         /**
          * @returns `true` if an exit status is available
+         * @since 1.2
          */
         has_exit_status(): boolean;
     }
@@ -4460,12 +4641,14 @@ export namespace Foundry {
         /**
          * Gets a copy of the action name.
          * @returns a newly allocated copy of the action name
+         * @since 1.1
          */
         dup_action_name(): string;
 
         /**
          * Gets a copy of the action target parameters.
          * @returns a {@link GLib.Variant} with the action target,   or `null` if no target is set
+         * @since 1.1
          */
         dup_action_target(): GLib.Variant | null;
     }
@@ -4571,6 +4754,7 @@ export namespace Foundry {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -4580,6 +4764,7 @@ export namespace Foundry {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -4588,6 +4773,7 @@ export namespace Foundry {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -4597,6 +4783,7 @@ export namespace Foundry {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -4636,6 +4823,7 @@ export namespace Foundry {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -4653,6 +4841,7 @@ export namespace Foundry {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -4663,6 +4852,7 @@ export namespace Foundry {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -4682,6 +4872,7 @@ export namespace Foundry {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -4696,6 +4887,7 @@ export namespace Foundry {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -4720,6 +4912,7 @@ export namespace Foundry {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -4742,6 +4935,7 @@ export namespace Foundry {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -4749,6 +4943,7 @@ export namespace Foundry {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -4758,6 +4953,7 @@ export namespace Foundry {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -4791,6 +4987,7 @@ export namespace Foundry {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -4799,6 +4996,7 @@ export namespace Foundry {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -4809,6 +5007,7 @@ export namespace Foundry {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -4818,6 +5017,7 @@ export namespace Foundry {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -4828,6 +5028,7 @@ export namespace Foundry {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -4868,6 +5069,7 @@ export namespace Foundry {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -4886,6 +5088,7 @@ export namespace Foundry {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -4896,6 +5099,7 @@ export namespace Foundry {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -4915,6 +5119,7 @@ export namespace Foundry {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -4929,6 +5134,7 @@ export namespace Foundry {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -4953,6 +5159,7 @@ export namespace Foundry {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -4975,6 +5182,7 @@ export namespace Foundry {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -4982,6 +5190,7 @@ export namespace Foundry {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -4991,6 +5200,7 @@ export namespace Foundry {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -5024,6 +5234,7 @@ export namespace Foundry {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -5117,6 +5328,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -5144,6 +5356,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -5174,6 +5387,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -5182,6 +5396,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -5196,6 +5411,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -5215,6 +5431,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -5250,6 +5467,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -5259,6 +5477,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -5286,6 +5505,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -5376,6 +5596,7 @@ export namespace Foundry {
          * that addins may discover what build system should be used. If the user
          * has already specified a build system then this will not be called during
          * pipeline initialization.
+         * @since 1.1
          * @virtual
          */
         vfunc_discover_build_system(): Dex.Future;
@@ -5389,6 +5610,7 @@ export namespace Foundry {
          * has already specified a build system then this will not be called during
          * pipeline initialization.
          * @returns a {@link Dex.Future} that resolves to a   string name of the build system or rejects with error.
+         * @since 1.1
          */
         discover_build_system(): Dex.Future;
 
@@ -5426,6 +5648,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -5453,6 +5676,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -5483,6 +5707,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -5491,6 +5716,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -5505,6 +5731,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -5524,6 +5751,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -5559,6 +5787,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -5568,6 +5797,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -5595,6 +5825,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -5764,6 +5995,7 @@ export namespace Foundry {
         /**
          * Runs the build pipeline to the export phase.
          * @returns a {@link Dex.Future} that resolves   to a {@link Gio.ListModel} of {@link Gio.File} or rejects   with error.
+         * @since 1.1
          */
         ["export"](): Dex.Future;
 
@@ -5778,6 +6010,7 @@ export namespace Foundry {
         /**
          * Runs the build pipeline to the install phase.
          * @returns a {@link Dex.Future} that resolves   to any value or rejects with error.
+         * @since 1.1
          */
         install(): Dex.Future;
 
@@ -5956,6 +6189,7 @@ export namespace Foundry {
         /**
          * Adds a path to the list of paths that will be appended to PATH.
          * @param path the path to append
+         * @since 1.1
          */
         append_path(path: string): void;
 
@@ -5986,6 +6220,7 @@ export namespace Foundry {
         /**
          * Gets the joined form of all append paths (e.g. "a:b:c").
          * @returns the joined append paths, or `null`
+         * @since 1.1
          */
         dup_append_path(): string | null;
 
@@ -5993,6 +6228,7 @@ export namespace Foundry {
 
         /**
          * Get the expected build system for the pipeline.
+         * @since 1.1
          */
         dup_build_system(): string | null;
 
@@ -6017,6 +6253,7 @@ export namespace Foundry {
         /**
          * Gets the joined form of all prepend paths (e.g. "a:b:c").
          * @returns the joined prepend paths, or `null`
+         * @since 1.1
          */
         dup_prepend_path(): string | null;
 
@@ -6029,6 +6266,7 @@ export namespace Foundry {
         /**
          * Gets the project directory path from the context as a string.
          * @returns a string containing the project directory path
+         * @since 1.1
          */
         dup_srcdir(): string;
 
@@ -6053,6 +6291,7 @@ export namespace Foundry {
          * completed. If two stages in the same phase have different values for
          * completed, that phase has not been reached.
          * @returns the maximum phase reached
+         * @since 1.1
          */
         get_phase(): BuildPipelinePhase;
 
@@ -6084,6 +6323,7 @@ export namespace Foundry {
         /**
          * Adds a path to the list of paths that will be prepended to PATH.
          * @param path the path to prepend
+         * @since 1.1
          */
         prepend_path(path: string): void;
 
@@ -6101,6 +6341,7 @@ export namespace Foundry {
          * and update as necessary. This method calls {@link Foundry.BuildStage.query}
          * for each stage in parallel and resolves when all queries are complete.
          * @returns a {@link Dex.Future} that resolves when all stage   queries have completed or rejects with an error.
+         * @since 1.1
          */
         query(): Dex.Future;
 
@@ -6125,6 +6366,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -6135,6 +6377,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -6153,6 +6396,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -6180,6 +6424,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -6192,6 +6437,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -6205,6 +6451,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -6215,6 +6462,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -6242,6 +6490,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -6269,6 +6518,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -6299,6 +6549,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -6307,6 +6558,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -6321,6 +6573,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -6340,6 +6593,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -6375,6 +6629,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -6384,6 +6639,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -6411,6 +6667,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -6548,6 +6805,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -6575,6 +6833,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -6605,6 +6864,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -6613,6 +6873,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -6627,6 +6888,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -6646,6 +6908,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -6681,6 +6944,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -6690,6 +6954,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -6717,6 +6982,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -7016,6 +7282,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -7043,6 +7310,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -7073,6 +7341,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -7081,6 +7350,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -7095,6 +7365,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -7114,6 +7385,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -7149,6 +7421,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -7158,6 +7431,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -7185,6 +7459,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -7360,18 +7635,21 @@ export namespace Foundry {
         // Methods
         /**
          * @returns a {@link Gio.File}
+         * @since 1.2
          */
         dup_file(): Gio.File;
 
         /**
          * Gets the user-visible name of the artifact.
          * @returns the artifact name
+         * @since 1.2
          */
         dup_name(): string;
 
         /**
          * Gets the kind of artifact.
          * @returns the artifact kind
+         * @since 1.2
          */
         get_kind(): CiArtifactKind;
     }
@@ -7546,60 +7824,70 @@ export namespace Foundry {
         // Virtual methods
         /**
          * Gets the provider-specific identifier for the job.
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_id(): string | null;
 
         /**
          * Gets the execution image requested by the job, if any.
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_image(): string | null;
 
         /**
          * Gets the pipeline containing the job.
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_pipeline(): CiPipeline | null;
 
         /**
          * Gets the provider which created the job.
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_provider(): CiProvider | null;
 
         /**
          * Gets the provider's explanation for the job disposition.
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_reason(): string | null;
 
         /**
          * Gets the pipeline stage containing the job.
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_stage(): string | null;
 
         /**
          * Gets the user-visible title of the job.
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_title(): string | null;
 
         /**
          * Checks whether the job can be run locally.
+         * @since 1.2
          * @virtual
          */
         vfunc_get_can_run(): boolean;
 
         /**
          * Checks whether an interactive shell can be opened for the job.
+         * @since 1.2
          * @virtual
          */
         vfunc_get_can_shell(): boolean;
 
         /**
          * Gets how the provider selected or excluded the job.
+         * @since 1.2
          * @virtual
          */
         vfunc_get_disposition(): CiJobDisposition;
@@ -7608,60 +7896,70 @@ export namespace Foundry {
         /**
          * Gets the provider-specific identifier for the job.
          * @returns the job identifier
+         * @since 1.2
          */
         dup_id(): string | null;
 
         /**
          * Gets the execution image requested by the job, if any.
          * @returns the image reference
+         * @since 1.2
          */
         dup_image(): string | null;
 
         /**
          * Gets the pipeline containing the job.
          * @returns a {@link Foundry.CiPipeline}
+         * @since 1.2
          */
         dup_pipeline(): CiPipeline | null;
 
         /**
          * Gets the provider which created the job.
          * @returns a {@link Foundry.CiProvider}
+         * @since 1.2
          */
         dup_provider(): CiProvider | null;
 
         /**
          * Gets the provider's explanation for the job disposition.
          * @returns the disposition reason
+         * @since 1.2
          */
         dup_reason(): string | null;
 
         /**
          * Gets the pipeline stage containing the job.
          * @returns the stage name
+         * @since 1.2
          */
         dup_stage(): string | null;
 
         /**
          * Gets the user-visible title of the job.
          * @returns the job title
+         * @since 1.2
          */
         dup_title(): string | null;
 
         /**
          * Checks whether the job can be run locally.
          * @returns `true` if the job can be run
+         * @since 1.2
          */
         get_can_run(): boolean;
 
         /**
          * Checks whether an interactive shell can be opened for the job.
          * @returns `true` if a shell can be opened
+         * @since 1.2
          */
         get_can_shell(): boolean;
 
         /**
          * Gets how the provider selected or excluded the job.
          * @returns the job disposition
+         * @since 1.2
          */
         get_disposition(): CiJobDisposition;
     }
@@ -7731,6 +8029,7 @@ export namespace Foundry {
          * should call this only in response to an explicit user action, such as
          * opening a continuous integration panel.
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.CiPipeline} or rejects with error
+         * @since 1.2
          */
         list_pipelines(): Dex.Future;
 
@@ -7740,6 +8039,7 @@ export namespace Foundry {
          * @param job_ids job identifiers, or `null`
          * @param options options for the run
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.CiRun} or rejects with error
+         * @since 1.2
          */
         run(pipeline: CiPipeline, job_ids: string[] | null, options: CiRunOptions | null): Dex.Future;
 
@@ -7748,6 +8048,7 @@ export namespace Foundry {
          * @param job a job whose environment should be opened
          * @param options options for the shell
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.CiRun} or rejects with error
+         * @since 1.2
          */
         run_shell(job: CiJob, options: CiRunOptions | null): Dex.Future;
     }
@@ -7837,24 +8138,28 @@ export namespace Foundry {
         // Virtual methods
         /**
          * Gets the provider-specific identifier for the pipeline.
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_id(): string | null;
 
         /**
          * Gets the provider which created the pipeline.
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_provider(): CiProvider | null;
 
         /**
          * Gets the user-visible title of the pipeline.
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_title(): string | null;
 
         /**
          * Lists the jobs known to the pipeline.
+         * @since 1.2
          * @virtual
          */
         vfunc_list_jobs(): Gio.ListModel;
@@ -7863,18 +8168,21 @@ export namespace Foundry {
         /**
          * Gets the provider-specific identifier for the pipeline.
          * @returns the pipeline identifier
+         * @since 1.2
          */
         dup_id(): string | null;
 
         /**
          * Gets the provider which created the pipeline.
          * @returns a {@link Foundry.CiProvider}
+         * @since 1.2
          */
         dup_provider(): CiProvider | null;
 
         /**
          * Gets the user-visible title of the pipeline.
          * @returns the pipeline title
+         * @since 1.2
          */
         dup_title(): string | null;
 
@@ -7882,12 +8190,14 @@ export namespace Foundry {
          * Finds a job in the pipeline by identifier.
          * @param id a job identifier
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.CiJob} or rejects with error
+         * @since 1.2
          */
         find_job(id: string): Dex.Future;
 
         /**
          * Lists the jobs known to the pipeline.
          * @returns a {@link Gio.ListModel} of   {@link Foundry.CiJob}
+         * @since 1.2
          */
         list_jobs(): Gio.ListModel;
     }
@@ -7960,6 +8270,7 @@ export namespace Foundry {
          * 
          * This is active discovery and may access remote resources. UI consumers
          * should call this only in response to an explicit user action.
+         * @since 1.2
          * @virtual
          */
         vfunc_list_pipelines(): Dex.Future;
@@ -7972,6 +8283,7 @@ export namespace Foundry {
          * @param pipeline a pipeline created by `self`
          * @param job_ids job identifiers, or `null`
          * @param options options for the run
+         * @since 1.2
          * @virtual
          */
         vfunc_run(pipeline: CiPipeline, job_ids: string[] | null, options: CiRunOptions): Dex.Future;
@@ -7982,6 +8294,7 @@ export namespace Foundry {
          * of the run.
          * @param job a job created by `self`
          * @param options options for the shell
+         * @since 1.2
          * @virtual
          */
         vfunc_run_shell(job: CiJob, options: CiRunOptions): Dex.Future;
@@ -7989,6 +8302,7 @@ export namespace Foundry {
         // Methods
         /**
          * Notifies the CI manager that the provider's pipelines have changed.
+         * @since 1.2
          */
         invalidate(): void;
 
@@ -7998,6 +8312,7 @@ export namespace Foundry {
          * This is active discovery and may access remote resources. UI consumers
          * should call this only in response to an explicit user action.
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.CiPipeline} or rejects with error
+         * @since 1.2
          */
         list_pipelines(): Dex.Future;
 
@@ -8010,6 +8325,7 @@ export namespace Foundry {
          * @param job_ids job identifiers, or `null`
          * @param options options for the run
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.CiRun} or rejects with error
+         * @since 1.2
          */
         run(pipeline: CiPipeline, job_ids: string[] | null, options: CiRunOptions): Dex.Future;
 
@@ -8020,6 +8336,7 @@ export namespace Foundry {
          * @param job a job created by `self`
          * @param options options for the shell
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.CiRun} or rejects with error
+         * @since 1.2
          */
         run_shell(job: CiJob, options: CiRunOptions): Dex.Future;
 
@@ -8046,6 +8363,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -8073,6 +8391,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -8103,6 +8422,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -8111,6 +8431,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -8125,6 +8446,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -8144,6 +8466,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -8179,6 +8502,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -8188,6 +8512,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -8215,6 +8540,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -8342,36 +8668,42 @@ export namespace Foundry {
         // Virtual methods
         /**
          * Awaits completion of the run.
+         * @since 1.2
          * @virtual
          */
         vfunc_await(): Dex.Future;
 
         /**
          * Requests cancellation of the run.
+         * @since 1.2
          * @virtual
          */
         vfunc_cancel(): void;
 
         /**
          * Gets the directory containing the run's durable output.
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_output_dir(): string | null;
 
         /**
          * Gets the exit status, or -1 before successful completion.
+         * @since 1.2
          * @virtual
          */
         vfunc_get_exit_status(): number;
 
         /**
          * Gets the current progress.
+         * @since 1.2
          * @virtual
          */
         vfunc_get_progress(): number;
 
         /**
          * Gets the current run state.
+         * @since 1.2
          * @virtual
          */
         vfunc_get_state(): CiRunState;
@@ -8381,6 +8713,7 @@ export namespace Foundry {
          * 
          * The returned model may emit `Gio.ListModel::items-changed` as the
          * provider discovers artifacts.
+         * @since 1.2
          * @virtual
          */
         vfunc_list_artifacts(): Gio.ListModel;
@@ -8389,35 +8722,41 @@ export namespace Foundry {
         /**
          * Awaits completion of the run.
          * @returns a {@link Dex.Future} that resolves to the exit   status or rejects with error
+         * @since 1.2
          */
         ["await"](): Dex.Future;
 
         /**
          * Requests cancellation of the run.
+         * @since 1.2
          */
         cancel(): void;
 
         /**
          * Gets the directory containing the run's durable output.
          * @returns the output directory
+         * @since 1.2
          */
         dup_output_dir(): string | null;
 
         /**
          * Gets the exit status, or -1 before successful completion.
          * @returns the exit status
+         * @since 1.2
          */
         get_exit_status(): number;
 
         /**
          * Gets the current progress.
          * @returns progress from 0.0 to 1.0
+         * @since 1.2
          */
         get_progress(): number;
 
         /**
          * Gets the current run state.
          * @returns the current state
+         * @since 1.2
          */
         get_state(): CiRunState;
 
@@ -8427,6 +8766,7 @@ export namespace Foundry {
          * The returned model may emit `Gio.ListModel::items-changed` as the
          * provider discovers artifacts.
          * @returns a {@link Gio.ListModel} of   {@link Foundry.CiArtifact}
+         * @since 1.2
          */
         list_artifacts(): Gio.ListModel;
 
@@ -8453,6 +8793,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -8480,6 +8821,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -8510,6 +8852,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -8518,6 +8861,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -8532,6 +8876,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -8551,6 +8896,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -8586,6 +8932,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -8595,6 +8942,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -8622,6 +8970,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -8689,60 +9038,70 @@ export namespace Foundry {
         /**
          * Gets the requested directory for durable run output.
          * @returns the output directory
+         * @since 1.2
          */
         dup_output_dir(): string | null;
 
         /**
          * Gets whether execution stops after the first failed job.
          * @returns `true` if execution stops after the first failure
+         * @since 1.2
          */
         get_fail_fast(): boolean;
 
         /**
          * Gets the maximum number of jobs which may run concurrently.
          * @returns the maximum concurrent job count
+         * @since 1.2
          */
         get_max_jobs(): number;
 
         /**
          * Gets whether network access should be avoided.
          * @returns `true` if the run should remain offline
+         * @since 1.2
          */
         get_offline(): boolean;
 
         /**
          * Gets whether execution state should be preserved.
          * @returns `true` if execution state should be preserved
+         * @since 1.2
          */
         get_save_state(): boolean;
 
         /**
          * Gets whether the job workspace should be preserved.
          * @returns `true` if the workspace should be preserved
+         * @since 1.2
          */
         get_save_workspace(): boolean;
 
         /**
          * Gets the borrowed standard error file descriptor.
          * @returns the standard error file descriptor, or -1
+         * @since 1.2
          */
         get_stderr_fd(): number;
 
         /**
          * Gets the borrowed standard input file descriptor.
          * @returns the standard input file descriptor, or -1
+         * @since 1.2
          */
         get_stdin_fd(): number;
 
         /**
          * Gets the borrowed standard output file descriptor.
          * @returns the standard output file descriptor, or -1
+         * @since 1.2
          */
         get_stdout_fd(): number;
 
         /**
          * Sets whether execution stops after the first failed job.
          * @param fail_fast whether to stop after the first failed job
+         * @since 1.2
          */
         set_fail_fast(fail_fast: boolean): void;
 
@@ -8752,30 +9111,35 @@ export namespace Foundry {
          * @param stdin_fd standard input, or -1
          * @param stdout_fd standard output, or -1
          * @param stderr_fd standard error, or -1
+         * @since 1.2
          */
         set_fds(stdin_fd: number, stdout_fd: number, stderr_fd: number): void;
 
         /**
          * Sets the maximum number of jobs which may run concurrently.
          * @param max_jobs the maximum concurrent job count
+         * @since 1.2
          */
         set_max_jobs(max_jobs: number): void;
 
         /**
          * Sets whether the provider should avoid network access.
          * @param offline whether network access should be avoided
+         * @since 1.2
          */
         set_offline(offline: boolean): void;
 
         /**
          * Sets the requested directory for durable run output.
          * @param output_dir a directory for durable run output
+         * @since 1.2
          */
         set_output_dir(output_dir: string | null): void;
 
         /**
          * Sets whether execution state should be preserved after the run.
          * @param save_state whether execution state should be preserved
+         * @since 1.2
          */
         set_save_state(save_state: boolean): void;
 
@@ -8784,6 +9148,7 @@ export namespace Foundry {
          * 
          * Enabling this option also enables preservation of execution state.
          * @param save_workspace whether the workspace should be preserved
+         * @since 1.2
          */
         set_save_workspace(save_workspace: boolean): void;
     }
@@ -8880,6 +9245,7 @@ export namespace Foundry {
          * @param command the command implementation
          * @param summary a short summary of the command, or `null` to preserve   an existing group summary
          * @param _arguments the command's positional argument synopsis
+         * @since 1.2
          */
         register_full(path: string[], command: CliCommand, summary: string | null, _arguments: string | null): void;
 
@@ -8889,6 +9255,7 @@ export namespace Foundry {
          * @param path the command group path
          * @param gettext_package gettext package for `summary`
          * @param summary a short summary of the command group
+         * @since 1.2
          */
         register_group(path: string[], gettext_package: string | null, summary: string): void;
     }
@@ -9302,6 +9669,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -9329,6 +9697,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -9359,6 +9728,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -9367,6 +9737,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -9381,6 +9752,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -9400,6 +9772,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -9435,6 +9808,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -9444,6 +9818,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -9471,6 +9846,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -9677,6 +10053,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -9687,6 +10064,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -9705,6 +10083,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -9732,6 +10111,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -9744,6 +10124,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -9757,6 +10138,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -9767,6 +10149,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -9853,6 +10236,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -9863,6 +10247,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -9881,6 +10266,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -9908,6 +10294,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -9920,6 +10307,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -9933,6 +10321,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -9943,6 +10332,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -9970,6 +10360,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -9997,6 +10388,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -10027,6 +10419,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -10035,6 +10428,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -10049,6 +10443,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -10068,6 +10463,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -10103,6 +10499,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -10112,6 +10509,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -10139,6 +10537,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -10639,6 +11038,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -10666,6 +11066,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -10696,6 +11097,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -10704,6 +11106,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -10718,6 +11121,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -10737,6 +11141,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -10772,6 +11177,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -10781,6 +11187,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -10808,6 +11215,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -11076,6 +11484,7 @@ export namespace Foundry {
         /**
          * Change the SDK for the config and write the config to disk.
          * @param sdk a {@link Foundry.Sdk}
+         * @since 1.1
          * @virtual
          */
         vfunc_change_sdk(sdk: Sdk): Dex.Future;
@@ -11127,6 +11536,7 @@ export namespace Foundry {
 
         /**
          * Requests the config save back to disk.
+         * @since 1.1
          * @virtual
          */
         vfunc_save(): Dex.Future;
@@ -11138,6 +11548,7 @@ export namespace Foundry {
          * all configurations support all SDKs, but subclasses can override this
          * behavior.
          * @param sdk a {@link Foundry.Sdk}
+         * @since 1.1
          * @virtual
          */
         vfunc_supports_sdk(sdk: Sdk): boolean;
@@ -11147,6 +11558,7 @@ export namespace Foundry {
          * Change the SDK for the config and write the config to disk.
          * @param sdk a {@link Foundry.Sdk}
          * @returns a {@link Dex.Future} that resolves   to any value or rejects with error.
+         * @since 1.1
          */
         change_sdk(sdk: Sdk): Dex.Future;
 
@@ -11198,6 +11610,7 @@ export namespace Foundry {
 
         /**
          * Gets the provider which provides this config.
+         * @since 1.1
          */
         dup_provider(): ConfigProvider | null;
 
@@ -11216,6 +11629,7 @@ export namespace Foundry {
         /**
          * Requests the config save back to disk.
          * @returns a {@link Dex.Future} that resolves to any value   or rejects with error.
+         * @since 1.1
          */
         save(): Dex.Future;
 
@@ -11244,6 +11658,7 @@ export namespace Foundry {
          * behavior.
          * @param sdk a {@link Foundry.Sdk}
          * @returns `true` if `self` supports `sdk`, `false` otherwise
+         * @since 1.1
          */
         supports_sdk(sdk: Sdk): boolean;
 
@@ -11270,6 +11685,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -11297,6 +11713,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -11327,6 +11744,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -11335,6 +11753,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -11349,6 +11768,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -11368,6 +11788,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -11403,6 +11824,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -11412,6 +11834,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -11439,6 +11862,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -11536,6 +11960,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -11546,6 +11971,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -11564,6 +11990,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -11591,6 +12018,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -11603,6 +12031,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -11616,6 +12045,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -11626,6 +12056,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -11712,6 +12143,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -11722,6 +12154,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -11740,6 +12173,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -11767,6 +12201,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -11779,6 +12214,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -11792,6 +12228,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -11802,6 +12239,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -11829,6 +12267,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -11856,6 +12295,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -11886,6 +12326,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -11894,6 +12335,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -11908,6 +12350,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -11927,6 +12370,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -11962,6 +12406,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -11971,6 +12416,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -11998,6 +12444,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -12522,6 +12969,7 @@ export namespace Foundry {
         /**
          * Gets the {@link Foundry.AcpManager} instance.
          * @returns a {@link Foundry.AcpManager}
+         * @since 1.2
          */
         dup_acp_manager(): AcpManager;
 
@@ -12558,6 +13006,7 @@ export namespace Foundry {
         /**
          * Gets the CI manager for the project.
          * @returns a {@link Foundry.CiManager}
+         * @since 1.2
          */
         dup_ci_manager(): CiManager;
 
@@ -12608,6 +13057,7 @@ export namespace Foundry {
         /**
          * Gets the {@link Foundry.DoapService} instance.
          * @returns a {@link Foundry.DoapService}
+         * @since 1.1
          */
         dup_doap_service(): DoapService;
 
@@ -12726,6 +13176,7 @@ export namespace Foundry {
          * If {@link Foundry.Context.title} is unset, the basename of
          * {@link Foundry.Context.project_directory} will be used instead.
          * @returns the title of the context, or `null`   when the context is shared
+         * @since 1.2
          */
         dup_title_with_fallback(): string | null;
 
@@ -12863,6 +13314,7 @@ export namespace Foundry {
          * If the resulting context is `null`, then the error is set to an
          * appropriate error.
          * @returns a {@link Foundry.Context} or `error` is set.
+         * @since 1.1
          */
         acquire(): Context;
 
@@ -12908,6 +13360,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -12935,6 +13388,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -12965,6 +13419,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -12973,6 +13428,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -12987,6 +13443,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -13006,6 +13463,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -13041,6 +13499,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -13050,6 +13509,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -13077,6 +13537,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -13148,12 +13609,14 @@ export namespace Foundry {
         /**
          * Gets the D-Bus address of the embedded D-Bus server.
          * @returns A D-Bus server address if started   successfully otherwise `null`.
+         * @deprecated since 1.1
          */
         dup_address(): string | null;
 
         /**
          * Ensures the GDBusServer is running and provides the address.
          * @returns a {@link Dex.Future} that resolves to   a string containing the address, or rejects with error.
+         * @since 1.1
          */
         query_address(): Dex.Future;
     }
@@ -13246,11 +13709,18 @@ export namespace Foundry {
          * via the resulting future, even if the reply contains an error.
          * @param node 
          * @returns a {@link Dex.Future} that resolves to   a {@link Json.Node} or rejects with error.
+         * @since 1.1
          */
         call(node: Json.Node): Dex.Future;
 
+        /**
+         * @since 1.1
+         */
         dup_stream(): Gio.IOStream | null;
 
+        /**
+         * @since 1.1
+         */
         dup_subprocess(): Gio.Subprocess | null;
 
         get_quirks(): DapDebuggerQuirk;
@@ -13259,6 +13729,7 @@ export namespace Foundry {
          * Send a message to the peer without expecting a reply.
          * @param node 
          * @returns a {@link Dex.Future} that resolves to   any value or rejects with error.
+         * @since 1.1
          */
         send(node: Json.Node): Dex.Future;
     }
@@ -13401,6 +13872,7 @@ export namespace Foundry {
          * 
          * Use {@link Foundry.DebuggerThread.can_move} in new code.
          * @param movement 
+         * @deprecated since 1.1
          * @virtual
          */
         vfunc_can_move(movement: DebuggerMovement): boolean;
@@ -13431,6 +13903,7 @@ export namespace Foundry {
 
         /**
          * Gets a copy of the primary thread (the first thread created by the debugger).
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_primary_thread(): DebuggerThread | null;
@@ -13469,6 +13942,7 @@ export namespace Foundry {
          * This should cause the child process to pause.
          * 
          * Use {@link Foundry.DebuggerThread.interrupt} in new code.
+         * @deprecated since 1.1
          * @virtual
          */
         vfunc_interrupt(): Dex.Future;
@@ -13482,6 +13956,7 @@ export namespace Foundry {
 
         /**
          * Lists available log messages from the debugger instance.
+         * @since 1.1
          * @virtual
          */
         vfunc_list_log_messages(): Gio.ListModel;
@@ -13514,6 +13989,7 @@ export namespace Foundry {
         /**
          * Use {@link Foundry.DebuggerThread.move} in new code.
          * @param movement how to move within the debugger
+         * @deprecated since 1.1
          * @virtual
          */
         vfunc_move(movement: DebuggerMovement): Dex.Future;
@@ -13546,6 +14022,7 @@ export namespace Foundry {
          * Use {@link Foundry.DebuggerThread.can_move} in new code.
          * @param movement 
          * @returns `true` if `movement` can be performed
+         * @deprecated since 1.1
          */
         can_move(movement: DebuggerMovement): boolean;
 
@@ -13576,6 +14053,7 @@ export namespace Foundry {
         /**
          * Gets a copy of the primary thread (the first thread created by the debugger).
          * @returns a {@link Foundry.DebuggerThread} or `null`
+         * @since 1.1
          */
         dup_primary_thread(): DebuggerThread | null;
 
@@ -13611,6 +14089,7 @@ export namespace Foundry {
          * 
          * Use {@link Foundry.DebuggerThread.interrupt} in new code.
          * @returns a {@link Dex.Future} that resolves to any   value or rejects with error.
+         * @deprecated since 1.1
          */
         interrupt(): Dex.Future;
 
@@ -13623,6 +14102,7 @@ export namespace Foundry {
         /**
          * Lists available log messages from the debugger instance.
          * @returns a {@link Gio.ListModel} of   {@link Foundry.DebuggerLogMessage}.
+         * @since 1.1
          */
         list_log_messages(): Gio.ListModel;
 
@@ -13655,6 +14135,7 @@ export namespace Foundry {
          * Use {@link Foundry.DebuggerThread.move} in new code.
          * @param movement how to move within the debugger
          * @returns a {@link Dex.Future} that resolves to   any value or rejects with error.
+         * @deprecated since 1.1
          */
         move(movement: DebuggerMovement): Dex.Future;
 
@@ -13702,6 +14183,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -13729,6 +14211,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -13759,6 +14242,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -13767,6 +14251,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -13781,6 +14266,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -13800,6 +14286,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -13835,6 +14322,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -13844,6 +14332,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -13871,6 +14360,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -13957,18 +14447,21 @@ export namespace Foundry {
         /**
          * Gets the debugger instance.
          * @returns the debugger instance
+         * @since 1.1
          */
         dup_debugger(): Debugger | null;
 
         /**
          * Gets the debugger thread.
          * @returns the debugger thread
+         * @since 1.1
          */
         dup_thread(): DebuggerThread | null;
 
         /**
          * Sets the debugger instance.
          * @param _debugger the debugger instance
+         * @since 1.1
          */
         set_debugger(_debugger: Debugger | null): void;
 
@@ -13976,6 +14469,7 @@ export namespace Foundry {
          * Sets the debugger thread and connects to its "changed" signal
          * to update action states.
          * @param thread the debugger thread
+         * @since 1.1
          */
         set_thread(thread: DebuggerThread | null): void;
 
@@ -13984,6 +14478,7 @@ export namespace Foundry {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -13993,6 +14488,7 @@ export namespace Foundry {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -14001,6 +14497,7 @@ export namespace Foundry {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -14010,6 +14507,7 @@ export namespace Foundry {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -14049,6 +14547,7 @@ export namespace Foundry {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -14066,6 +14565,7 @@ export namespace Foundry {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -14076,6 +14576,7 @@ export namespace Foundry {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -14095,6 +14596,7 @@ export namespace Foundry {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -14109,6 +14611,7 @@ export namespace Foundry {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -14133,6 +14636,7 @@ export namespace Foundry {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -14155,6 +14659,7 @@ export namespace Foundry {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -14162,6 +14667,7 @@ export namespace Foundry {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -14171,6 +14677,7 @@ export namespace Foundry {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -14204,6 +14711,7 @@ export namespace Foundry {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -14212,6 +14720,7 @@ export namespace Foundry {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -14222,6 +14731,7 @@ export namespace Foundry {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -14231,6 +14741,7 @@ export namespace Foundry {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -14241,6 +14752,7 @@ export namespace Foundry {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -14281,6 +14793,7 @@ export namespace Foundry {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -14299,6 +14812,7 @@ export namespace Foundry {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -14309,6 +14823,7 @@ export namespace Foundry {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -14328,6 +14843,7 @@ export namespace Foundry {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -14342,6 +14858,7 @@ export namespace Foundry {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -14366,6 +14883,7 @@ export namespace Foundry {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -14388,6 +14906,7 @@ export namespace Foundry {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -14395,6 +14914,7 @@ export namespace Foundry {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -14404,6 +14924,7 @@ export namespace Foundry {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -14437,6 +14958,7 @@ export namespace Foundry {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -14742,6 +15264,7 @@ export namespace Foundry {
         // Virtual methods
         /**
          * The message string from the debugger instance.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_message(): string | null;
@@ -14749,6 +15272,7 @@ export namespace Foundry {
         // Methods
         /**
          * The message string from the debugger instance.
+         * @since 1.1
          */
         dup_message(): string | null;
     }
@@ -14816,6 +15340,7 @@ export namespace Foundry {
         /**
          * @param module_name module name of the plugin
          * @returns a {@link Foundry.DebuggerProvider}
+         * @since 1.1
          */
         find(module_name: string): DebuggerProvider | null;
     }
@@ -15080,6 +15605,7 @@ export namespace Foundry {
         vfunc_dup_id(): string;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_name(): string;
@@ -15099,6 +15625,9 @@ export namespace Foundry {
 
         dup_id(): string;
 
+        /**
+         * @since 1.1
+         */
         dup_name(): string;
 
         dup_path(): string;
@@ -15189,6 +15718,9 @@ export namespace Foundry {
         vfunc_supports(pipeline: BuildPipeline | null, command: Command): Dex.Future;
 
         // Methods
+        /**
+         * @since 1.1
+         */
         dup_plugin_info(): Peas.PluginInfo | null;
 
         /**
@@ -15226,6 +15758,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -15253,6 +15786,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -15283,6 +15817,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -15291,6 +15826,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -15305,6 +15841,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -15324,6 +15861,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -15359,6 +15897,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -15368,6 +15907,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -15395,6 +15935,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -16198,6 +16739,7 @@ export namespace Foundry {
 
         /**
          * Stops the thread.
+         * @since 1.1
          * @virtual
          */
         vfunc_interrupt(): Dex.Future;
@@ -16207,6 +16749,7 @@ export namespace Foundry {
          * 
          * Subclasses should {@link GObject.Object.notify} the "stopped" property
          * when this value changes.
+         * @since 1.1
          * @virtual
          */
         vfunc_is_stopped(): boolean;
@@ -16218,6 +16761,7 @@ export namespace Foundry {
 
         /**
          * @param movement 
+         * @since 1.1
          * @virtual
          */
         vfunc_move(movement: DebuggerMovement): Dex.Future;
@@ -16237,6 +16781,7 @@ export namespace Foundry {
         /**
          * Stops the thread.
          * @returns a {@link Dex.Future} that resolves to any value   or rejects with error.
+         * @since 1.1
          */
         interrupt(): Dex.Future;
 
@@ -16246,6 +16791,7 @@ export namespace Foundry {
          * Subclasses should {@link GObject.Object.notify} the "stopped" property
          * when this value changes.
          * @returns `true` if thread is stopped
+         * @since 1.1
          */
         is_stopped(): boolean;
 
@@ -16257,6 +16803,7 @@ export namespace Foundry {
         /**
          * @param movement 
          * @returns a {@link Dex.Future} that resolves to   any value or rejects with error.
+         * @since 1.1
          */
         move(movement: DebuggerMovement): Dex.Future;
     }
@@ -16766,12 +17313,14 @@ export namespace Foundry {
         /**
          * If the number of children is known, it will be set to `n_children`. Otherwise
          * it should be set to zero.
+         * @since 1.1
          * @virtual
          */
         vfunc_is_structured(): [boolean, number];
 
         /**
          * Queries the structured children of the variable.
+         * @since 1.1
          * @virtual
          */
         vfunc_list_children(): Dex.Future;
@@ -16795,12 +17344,14 @@ export namespace Foundry {
          * If the number of children is known, it will be set to `n_children`. Otherwise
          * it should be set to zero.
          * @returns `True` if `self` is known to have children that may be queried;   otherwise `False`.
+         * @since 1.1
          */
         is_structured(): [boolean, number];
 
         /**
          * Queries the structured children of the variable.
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.DebuggerVariable} or   rejects with error.
+         * @since 1.1
          */
         list_children(): Dex.Future;
 
@@ -16990,6 +17541,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -17017,6 +17569,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -17047,6 +17600,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -17055,6 +17609,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -17069,6 +17624,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -17088,6 +17644,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -17123,6 +17680,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -17132,6 +17690,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -17159,6 +17718,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -17365,6 +17925,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -17392,6 +17953,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -17422,6 +17984,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -17430,6 +17993,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -17444,6 +18008,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -17463,6 +18028,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -17498,6 +18064,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -17507,6 +18074,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -17534,6 +18102,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -17700,6 +18269,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -17727,6 +18297,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -17757,6 +18328,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -17765,6 +18337,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -17779,6 +18352,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -17798,6 +18372,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -17833,6 +18408,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -17842,6 +18418,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -17869,6 +18446,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -18002,6 +18580,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -18029,6 +18608,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -18059,6 +18639,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -18067,6 +18648,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -18081,6 +18663,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -18100,6 +18683,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -18135,6 +18719,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -18144,6 +18729,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -18171,6 +18757,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -18394,6 +18981,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -18404,6 +18992,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -18422,6 +19011,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -18449,6 +19039,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -18461,6 +19052,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -18474,6 +19066,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -18484,6 +19077,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -18570,6 +19164,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -18580,6 +19175,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -18598,6 +19194,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -18625,6 +19222,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -18637,6 +19235,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -18650,6 +19249,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -18660,6 +19260,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -18687,6 +19288,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -18714,6 +19316,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -18744,6 +19347,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -18752,6 +19356,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -18766,6 +19371,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -18785,6 +19391,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -18820,6 +19427,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -18829,6 +19437,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -18856,6 +19465,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -19064,6 +19674,7 @@ export namespace Foundry {
 
         /**
          * Gets the {@link Foundry.Diagnostic.rule_id} property.
+         * @since 1.1
          */
         dup_rule_id(): string | null;
 
@@ -19093,6 +19704,7 @@ export namespace Foundry {
         /**
          * Gets the available {@link Foundry.DiagnosticFix} for the diagnostic.
          * @returns a {@link Gio.ListModel} of   {@link Foundry.DiagnosticFix}
+         * @since 1.1
          */
         list_fixes(): Gio.ListModel | null;
 
@@ -19171,11 +19783,15 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @since 1.1
+         */
         dup_description(): string;
 
         /**
          * Gets the list of changes to be applied to fix the diagnostic.
          * @returns a {@link Gio.ListModel} of   {@link Foundry.TextEdit}.
+         * @since 1.1
          */
         list_text_edits(): Gio.ListModel;
     }
@@ -19359,6 +19975,7 @@ export namespace Foundry {
          * 
          * It is encouraged that providers update the listmodel as new diagnostics
          * are made available.
+         * @since 1.1
          * @virtual
          */
         vfunc_list_all(): Dex.Future;
@@ -19395,6 +20012,7 @@ export namespace Foundry {
          * It is encouraged that providers update the listmodel as new diagnostics
          * are made available.
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.Diagnostic}.
+         * @since 1.1
          */
         list_all(): Dex.Future;
 
@@ -19421,6 +20039,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -19448,6 +20067,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -19478,6 +20098,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -19486,6 +20107,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -19500,6 +20122,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -19519,6 +20142,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -19554,6 +20178,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -19563,6 +20188,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -19590,6 +20216,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -20055,12 +20682,14 @@ export namespace Foundry {
 
         /**
          * Gets the directory for the listing.
+         * @since 1.1
          */
         dup_directory(): Gio.File;
 
         /**
          * Loads a similar directory listing for the parent directory.
          * @returns a {@link Foundry.DirectoryListing}
+         * @since 1.1
          */
         load_parent(): DirectoryListing;
 
@@ -20074,6 +20703,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -20084,6 +20714,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -20102,6 +20733,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -20129,6 +20761,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -20141,6 +20774,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -20154,6 +20788,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -20164,6 +20799,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -20191,6 +20827,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -20218,6 +20855,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -20248,6 +20886,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -20256,6 +20895,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -20270,6 +20910,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -20289,6 +20930,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -20324,6 +20966,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -20333,6 +20976,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -20360,6 +21004,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -20776,6 +21421,7 @@ export namespace Foundry {
         // Methods
         /**
          * @returns a {@link Foundry.DoapFile} or `null`
+         * @since 1.1
          */
         dup_doap_file(): DoapFile | null;
     }
@@ -21164,6 +21810,7 @@ export namespace Foundry {
 
         /**
          * Gets whether the documentation bundle has reached end of life.
+         * @since 1.1
          * @virtual
          */
         vfunc_get_eol(): boolean;
@@ -21196,6 +21843,7 @@ export namespace Foundry {
         /**
          * Gets whether the documentation bundle has reached end of life.
          * @returns `true` if the bundle has reached end of life, `false` otherwise
+         * @since 1.1
          */
         get_eol(): boolean;
 
@@ -21231,6 +21879,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -21258,6 +21907,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -21288,6 +21938,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -21296,6 +21947,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -21310,6 +21962,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -21329,6 +21982,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -21364,6 +22018,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -21373,6 +22028,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -21400,6 +22056,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -21477,6 +22134,7 @@ export namespace Foundry {
         /**
          * Gets a copy of the documentation object.
          * @returns a {@link Foundry.Documentation}
+         * @since 1.1
          */
         dup_documentation(): Documentation;
     }
@@ -21672,6 +22330,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -21682,6 +22341,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -21700,6 +22360,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -21727,6 +22388,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -21739,6 +22401,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -21752,6 +22415,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -21762,6 +22426,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -21950,6 +22615,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -21977,6 +22643,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -22007,6 +22674,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -22015,6 +22683,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -22029,6 +22698,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -22048,6 +22718,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -22083,6 +22754,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -22092,6 +22764,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -22119,6 +22792,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -22536,6 +23210,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -22563,6 +23238,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -22593,6 +23269,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -22601,6 +23278,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -22615,6 +23293,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -22634,6 +23313,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -22669,6 +23349,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -22678,6 +23359,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -22705,6 +23387,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -22874,6 +23557,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -22884,6 +23568,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -22902,6 +23587,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -22929,6 +23615,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -22941,6 +23628,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -22954,6 +23642,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -22964,6 +23653,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -22991,6 +23681,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -23018,6 +23709,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -23048,6 +23740,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -23056,6 +23749,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -23070,6 +23764,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -23089,6 +23784,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -23124,6 +23820,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -23133,6 +23830,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -23160,6 +23858,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -23263,6 +23962,7 @@ export namespace Foundry {
          * @param options the options for the search
          * @param operation the operation tracker
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.FileSearchMatch}   or rejects with error.
+         * @since 1.1
          */
         search(options: FileSearchOptions, operation: Operation): Dex.Future;
 
@@ -23576,42 +24276,49 @@ export namespace Foundry {
         // Virtual methods
         /**
          * Gets the text after the search text.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_after_context(): string | null;
 
         /**
          * Gets the text before the search text.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_before_context(): string | null;
 
         /**
          * Gets a copy of the file associated with the search match.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_file(): Gio.File;
 
         /**
          * Gets the matched text.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_text(): string | null;
 
         /**
          * Gets the length of the search text in characters.
+         * @since 1.1
          * @virtual
          */
         vfunc_get_length(): number;
 
         /**
          * Gets the line number where the search match was found.
+         * @since 1.1
          * @virtual
          */
         vfunc_get_line(): number;
 
         /**
          * Gets the character offset within the line where the search match starts.
+         * @since 1.1
          * @virtual
          */
         vfunc_get_line_offset(): number;
@@ -23620,48 +24327,56 @@ export namespace Foundry {
         /**
          * Gets the text after the search text.
          * @returns the text after the match, or `null`
+         * @since 1.1
          */
         dup_after_context(): string | null;
 
         /**
          * Gets the text before the search text.
          * @returns the text before the match, or `null`
+         * @since 1.1
          */
         dup_before_context(): string | null;
 
         /**
          * Gets a copy of the file associated with the search match.
          * @returns a {@link Gio.File}
+         * @since 1.1
          */
         dup_file(): Gio.File;
 
         /**
          * Gets the icon for the file associated with the search match.
          * @returns a {@link Gio.Icon} or `null`
+         * @since 1.1
          */
         dup_icon(): Gio.Icon | null;
 
         /**
          * Gets the matched text.
          * @returns the matched text, or `null`
+         * @since 1.1
          */
         dup_text(): string | null;
 
         /**
          * Gets the length of the search text in characters.
          * @returns the length of the text in characters
+         * @since 1.1
          */
         get_length(): number;
 
         /**
          * Gets the line number where the search match was found.
          * @returns the line number (0-based)
+         * @since 1.1
          */
         get_line(): number;
 
         /**
          * Gets the character offset within the line where the search match starts.
          * @returns the character offset within the line (0-based)
+         * @since 1.1
          */
         get_line_offset(): number;
     }
@@ -23848,6 +24563,7 @@ export namespace Foundry {
         /**
          * Adds a file as a target for searching.
          * @param file a {@link Gio.File} to add as a search target
+         * @since 1.1
          */
         add_target(file: Gio.File): void;
 
@@ -23865,6 +24581,7 @@ export namespace Foundry {
          * Files that match any of these patterns will be skipped during the search.
          * The patterns use shell-style globbing (e.g. "*.o").
          * @returns a newly allocated array of excluded file   patterns, or `null` if not set. Free with `g_strfreev()` when no longer needed.
+         * @since 1.1
          */
         dup_excluded_patterns(): string[] | null;
 
@@ -23875,18 +24592,21 @@ export namespace Foundry {
          * Files that do not match any of these patterns will be excluded from the search.
          * The patterns use shell-style globbing (e.g. "*.c", "*.h").
          * @returns a newly allocated array of required file   patterns, or `null` if not set. Free with `g_strfreev()` when no longer needed.
+         * @since 1.1
          */
         dup_required_patterns(): string[] | null;
 
         /**
          * Gets a copy of the search text.
          * @returns a newly allocated copy of the search text,   or `null` if not set
+         * @since 1.1
          */
         dup_search_text(): string | null;
 
         /**
          * Gets whether the search should be case sensitive.
          * @returns `true` if the search should be case sensitive
+         * @since 1.1
          */
         get_case_sensitive(): boolean;
 
@@ -23894,48 +24614,56 @@ export namespace Foundry {
          * Gets the number of context lines to include with each match.
          * A value of 1 means 1 line before and 1 line after the match.
          * @returns the number of context lines
+         * @since 1.1
          */
         get_context_lines(): number;
 
         /**
          * Gets whether the search should match whole words only.
          * @returns `true` if the search should match whole words only
+         * @since 1.1
          */
         get_match_whole_words(): boolean;
 
         /**
          * Gets the maximum number of matches to return.
          * @returns the maximum number of matches
+         * @since 1.1
          */
         get_max_matches(): number;
 
         /**
          * Gets whether the search should be recursive.
          * @returns `true` if the search should be recursive
+         * @since 1.1
          */
         get_recursive(): boolean;
 
         /**
          * Gets whether the search should use regular expressions.
          * @returns `true` if the search should use regular expressions
+         * @since 1.1
          */
         get_use_regex(): boolean;
 
         /**
          * Gets the list of files that are targets for searching.
          * @returns a {@link Gio.ListModel} of   {@link Gio.File} that are targets for searching.
+         * @since 1.1
          */
         list_targets(): Gio.ListModel;
 
         /**
          * Removes a file from the search targets.
          * @param file a {@link Gio.File} to remove from search targets
+         * @since 1.1
          */
         remove_target(file: Gio.File): void;
 
         /**
          * Sets whether the search should be case sensitive.
          * @param case_sensitive whether the search should be case sensitive
+         * @since 1.1
          */
         set_case_sensitive(case_sensitive: boolean): void;
 
@@ -23943,6 +24671,7 @@ export namespace Foundry {
          * Sets the number of context lines to include with each match.
          * A value of 1 means 1 line before and 1 line after the match.
          * @param context_lines the number of context lines to include with each match
+         * @since 1.1
          */
         set_context_lines(context_lines: number): void;
 
@@ -23953,24 +24682,28 @@ export namespace Foundry {
          * Files that match any of these patterns will be skipped during the search.
          * The patterns use shell-style globbing (e.g. "*.o").
          * @param excluded_patterns array of excluded file patterns
+         * @since 1.1
          */
         set_excluded_patterns(excluded_patterns: string | null): void;
 
         /**
          * Sets whether the search should match whole words only.
          * @param match_whole_words whether the search should match whole words only
+         * @since 1.1
          */
         set_match_whole_words(match_whole_words: boolean): void;
 
         /**
          * Sets the maximum number of matches to return.
          * @param max_matches the maximum number of matches to return
+         * @since 1.1
          */
         set_max_matches(max_matches: number): void;
 
         /**
          * Sets whether the search should be recursive.
          * @param recursive whether the search should be recursive
+         * @since 1.1
          */
         set_recursive(recursive: boolean): void;
 
@@ -23981,18 +24714,21 @@ export namespace Foundry {
          * Files that do not match any of these patterns will be excluded from the search.
          * The patterns use shell-style globbing (e.g. "*.c", "*.h").
          * @param required_patterns array of required file patterns
+         * @since 1.1
          */
         set_required_patterns(required_patterns: string | null): void;
 
         /**
          * Sets the search text.
          * @param search_text the text to search for
+         * @since 1.1
          */
         set_search_text(search_text: string | null): void;
 
         /**
          * Sets whether the search should use regular expressions.
          * @param use_regex whether the search should use regular expressions
+         * @since 1.1
          */
         set_use_regex(use_regex: boolean): void;
     }
@@ -24080,11 +24816,15 @@ export namespace Foundry {
          * so that the next implementation may be used.
          * @param options a {@link Foundry.FileSearchOptions}
          * @param operation a {@link Foundry.Operation}
+         * @since 1.1
          * @virtual
          */
         vfunc_search(options: FileSearchOptions, operation: Operation): Dex.Future;
 
         // Methods
+        /**
+         * @since 1.1
+         */
         dup_plugin_info(): Peas.PluginInfo | null;
 
         /**
@@ -24102,6 +24842,7 @@ export namespace Foundry {
          * @param options a {@link Foundry.FileSearchOptions}
          * @param operation a {@link Foundry.Operation}
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.FileSearchMatch} or    rejects with error.
+         * @since 1.1
          */
         search(options: FileSearchOptions, operation: Operation): Dex.Future;
 
@@ -24128,6 +24869,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -24155,6 +24897,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -24185,6 +24928,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -24193,6 +24937,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -24207,6 +24952,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -24226,6 +24972,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -24261,6 +25008,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -24270,6 +25018,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -24297,6 +25046,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -24371,6 +25121,7 @@ export namespace Foundry {
          * Each replacement is performed using {@link Foundry.TextEdit} and applied
          * using {@link Foundry.TextManager}.
          * @returns a {@link Dex.Future} that completes when   all replacements are finished
+         * @since 1.1
          */
         apply(): Dex.Future;
     }
@@ -24448,6 +25199,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -24475,6 +25227,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -24505,6 +25258,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -24513,6 +25267,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -24527,6 +25282,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -24546,6 +25302,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -24581,6 +25338,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -24590,6 +25348,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -24617,6 +25376,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -24888,6 +25648,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -24915,6 +25676,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -24945,6 +25707,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -24953,6 +25716,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -24967,6 +25731,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -24986,6 +25751,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -25021,6 +25787,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -25030,6 +25797,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -25057,6 +25825,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -25123,6 +25892,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -25133,6 +25903,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -25151,6 +25922,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -25178,6 +25950,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -25190,6 +25963,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -25203,6 +25977,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -25213,6 +25988,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -25292,6 +26068,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -25302,6 +26079,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -25320,6 +26098,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -25347,6 +26126,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -25359,6 +26139,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -25372,6 +26153,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -25382,6 +26164,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -25409,6 +26192,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -25436,6 +26220,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -25466,6 +26251,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -25474,6 +26260,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -25488,6 +26275,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -25507,6 +26295,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -25542,6 +26331,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -25551,6 +26341,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -25578,6 +26369,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -26240,6 +27032,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -26267,6 +27060,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -26297,6 +27091,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -26305,6 +27100,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -26319,6 +27115,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -26338,6 +27135,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -26373,6 +27171,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -26382,6 +27181,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -26409,6 +27209,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -26866,6 +27667,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -26893,6 +27695,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -26923,6 +27726,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -26931,6 +27735,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -26945,6 +27750,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -26964,6 +27770,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -26999,6 +27806,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -27008,6 +27816,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -27035,6 +27844,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -27107,6 +27917,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -27117,6 +27928,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -27135,6 +27947,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -27162,6 +27975,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -27174,6 +27988,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -27187,6 +28002,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -27197,6 +28013,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -27561,6 +28378,9 @@ export namespace Foundry {
 
         dup_build_args(): string[] | null;
 
+        /**
+         * @since 1.1
+         */
         dup_env(): string[] | null;
 
         dup_prepend_path(): string;
@@ -27588,6 +28408,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -27615,6 +28436,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -27645,6 +28467,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -27653,6 +28476,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -27667,6 +28491,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -27686,6 +28511,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -27721,6 +28547,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -27730,6 +28557,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -27757,6 +28585,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -27857,6 +28686,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -27884,6 +28714,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -27914,6 +28745,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -27922,6 +28754,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -27936,6 +28769,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -27955,6 +28789,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -27990,6 +28825,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -27999,6 +28835,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -28026,6 +28863,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -28156,6 +28994,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -28183,6 +29022,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -28213,6 +29053,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -28221,6 +29062,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -28235,6 +29077,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -28254,6 +29097,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -28289,6 +29133,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -28298,6 +29143,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -28325,6 +29171,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -29454,6 +30301,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -29464,6 +30312,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -29482,6 +30331,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -29509,6 +30359,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -29521,6 +30372,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -29534,6 +30386,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -29544,6 +30397,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -29629,12 +30483,14 @@ export namespace Foundry {
         // Virtual methods
         /**
          * Find the {@link Foundry.ForgeProject} that represents the current project.
+         * @since 1.1
          * @virtual
          */
         vfunc_find_project(): Dex.Future;
 
         /**
          * Find the {@link Foundry.ForgeUser} that represents the current user.
+         * @since 1.1
          * @virtual
          */
         vfunc_find_user(): Dex.Future;
@@ -29645,12 +30501,14 @@ export namespace Foundry {
         /**
          * Find the {@link Foundry.ForgeProject} that represents the current project.
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.ForgeProject} or rejects with error.
+         * @since 1.1
          */
         find_project(): Dex.Future;
 
         /**
          * Find the {@link Foundry.ForgeUser} that represents the current user.
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.ForgeUser} or rejects with error.
+         * @since 1.1
          */
         find_user(): Dex.Future;
 
@@ -29677,6 +30535,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -29704,6 +30563,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -29734,6 +30594,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -29742,6 +30603,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -29756,6 +30618,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -29775,6 +30638,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -29810,6 +30674,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -29819,6 +30684,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -29846,6 +30712,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -29979,36 +30846,43 @@ export namespace Foundry {
         // Virtual methods
         /**
          * Gets a copy of the user who authored the issue.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_author(): ForgeUser | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_created_at(): GLib.DateTime | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_description(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_id(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_online_url(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_state(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_title(): string | null;
@@ -30017,22 +30891,39 @@ export namespace Foundry {
         /**
          * Gets a copy of the user who authored the issue.
          * @returns a {@link Foundry.ForgeUser}, or `null`
+         * @since 1.1
          */
         dup_author(): ForgeUser | null;
 
         /**
          * @returns a {@link GLib.DateTime}
+         * @since 1.1
          */
         dup_created_at(): GLib.DateTime | null;
 
+        /**
+         * @since 1.1
+         */
         dup_description(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_id(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_online_url(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_state(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_title(): string | null;
     }
 
@@ -30136,18 +31027,21 @@ export namespace Foundry {
         // Virtual methods
         /**
          * Gets the number of pages.
+         * @since 1.1
          * @virtual
          */
         vfunc_get_n_pages(): number;
 
         /**
          * Gets the number of items per page.
+         * @since 1.1
          * @virtual
          */
         vfunc_get_page_size(): number;
 
         /**
          * @param page 
+         * @since 1.1
          * @virtual
          */
         vfunc_load_page(page: number): Dex.Future;
@@ -30156,16 +31050,19 @@ export namespace Foundry {
         /**
          * Gets the auto-load property.
          * @returns `true` if auto-loading is enabled
+         * @since 1.1
          */
         get_auto_load(): boolean;
 
         /**
          * Gets the number of pages.
+         * @since 1.1
          */
         get_n_pages(): number;
 
         /**
          * Gets the number of items per page.
+         * @since 1.1
          */
         get_page_size(): number;
 
@@ -30180,6 +31077,7 @@ export namespace Foundry {
         /**
          * @param page 
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} or rejects with error.
+         * @since 1.1
          */
         load_page(page: number): Dex.Future;
 
@@ -30189,6 +31087,7 @@ export namespace Foundry {
          * When enabled, the listing will automatically fetch the next page
          * when a request for an item falls into the last currently loaded page.
          * @param auto_load `true` to enable auto-loading
+         * @since 1.1
          */
         set_auto_load(auto_load: boolean): void;
 
@@ -30202,6 +31101,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -30212,6 +31112,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -30230,6 +31131,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -30257,6 +31159,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -30269,6 +31172,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -30282,6 +31186,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -30292,6 +31197,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -30353,15 +31259,20 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @since 1.1
+         */
         dup_forge(): Forge | null;
 
         /**
          * @param forge_id the id of the forge
+         * @since 1.1
          */
         find_by_id(forge_id: string): Forge | null;
 
         /**
          * @param forge a {@link Foundry.Forge}
+         * @since 1.1
          */
         set_forge(forge: Forge | null): void;
 
@@ -30375,6 +31286,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -30385,6 +31297,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -30403,6 +31316,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -30430,6 +31344,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -30442,6 +31357,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -30455,6 +31371,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -30465,6 +31382,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -30591,42 +31509,49 @@ export namespace Foundry {
         // Virtual methods
         /**
          * Gets a copy of the user who authored the merge request.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_author(): ForgeUser | null;
 
         /**
          * Gets a copy of the date and time when the merge request was created.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_created_at(): GLib.DateTime | null;
 
         /**
          * Gets a copy of the merge request description.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_description(): string | null;
 
         /**
          * Gets a copy of the merge request identifier.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_id(): string | null;
 
         /**
          * Gets a copy of the URL to view the merge request online.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_online_url(): string | null;
 
         /**
          * Gets a copy of the merge request state (e.g. "open", "closed", "merged").
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_state(): string | null;
 
         /**
          * Gets a copy of the merge request title.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_title(): string | null;
@@ -30635,42 +31560,49 @@ export namespace Foundry {
         /**
          * Gets a copy of the user who authored the merge request.
          * @returns a {@link Foundry.ForgeUser}, or `null`
+         * @since 1.1
          */
         dup_author(): ForgeUser | null;
 
         /**
          * Gets a copy of the date and time when the merge request was created.
          * @returns a {@link GLib.DateTime}, or `null`
+         * @since 1.1
          */
         dup_created_at(): GLib.DateTime | null;
 
         /**
          * Gets a copy of the merge request description.
          * @returns the description, or `null`
+         * @since 1.1
          */
         dup_description(): string | null;
 
         /**
          * Gets a copy of the merge request identifier.
          * @returns the merge request ID, or `null`
+         * @since 1.1
          */
         dup_id(): string | null;
 
         /**
          * Gets a copy of the URL to view the merge request online.
          * @returns the online URL, or `null`
+         * @since 1.1
          */
         dup_online_url(): string | null;
 
         /**
          * Gets a copy of the merge request state (e.g. "open", "closed", "merged").
          * @returns the state, or `null`
+         * @since 1.1
          */
         dup_state(): string | null;
 
         /**
          * Gets a copy of the merge request title.
          * @returns the title, or `null`
+         * @since 1.1
          */
         dup_title(): string | null;
     }
@@ -30803,31 +31735,37 @@ export namespace Foundry {
 
         // Virtual methods
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_avatar_url(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_description(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_issues_url(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_merge_requests_url(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_online_url(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_title(): string | null;
@@ -30835,6 +31773,7 @@ export namespace Foundry {
         /**
          * Queries the forge for a list of issues in the project.
          * @param query 
+         * @since 1.1
          * @virtual
          */
         vfunc_list_issues(query: ForgeQuery | null): Dex.Future;
@@ -30842,32 +31781,53 @@ export namespace Foundry {
         /**
          * Queries the forge for a list of merge requests in the project.
          * @param query 
+         * @since 1.1
          * @virtual
          */
         vfunc_list_merge_requests(query: ForgeQuery | null): Dex.Future;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_load_avatar(): Dex.Future;
 
         // Methods
+        /**
+         * @since 1.1
+         */
         dup_avatar_url(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_description(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_issues_url(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_merge_requests_url(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_online_url(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_title(): string | null;
 
         /**
          * Queries the forge for a list of issues in the project.
          * @param query 
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.ForgeListing} or rejects with error.
+         * @since 1.1
          */
         list_issues(query: ForgeQuery | null): Dex.Future;
 
@@ -30875,11 +31835,13 @@ export namespace Foundry {
          * Queries the forge for a list of merge requests in the project.
          * @param query 
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.ForgeListing} or rejects with error.
+         * @since 1.1
          */
         list_merge_requests(query: ForgeQuery | null): Dex.Future;
 
         /**
          * @returns a {@link Dex.Future} that resolves to a   {@link GLib.Bytes} or rejects with error.
+         * @since 1.1
          */
         load_avatar(): Dex.Future;
     }
@@ -30968,6 +31930,7 @@ export namespace Foundry {
          * `keywords_scope` while handling "," separators.
          * @param keywords_scope the keywords scope to check for
          * @returns `true` if `keywords_scope` was found otherwise `false`
+         * @since 1.1
          */
         contains_keywords_scope(keywords_scope: string): boolean;
 
@@ -30976,12 +31939,14 @@ export namespace Foundry {
          * `state` while handling "," separators.
          * @param state 
          * @returns `true` if `state` was found otherwise `false`
+         * @since 1.1
          */
         contains_state(state: string): boolean;
 
         /**
          * Gets the keywords for the query.
          * @returns the keywords string
+         * @since 1.1
          */
         dup_keywords(): string | null;
 
@@ -30990,6 +31955,7 @@ export namespace Foundry {
          * 
          * Multiple scopes are supported by separating with a comma.
          * @returns the keywords scope string
+         * @since 1.1
          */
         dup_keywords_scope(): string | null;
 
@@ -30997,12 +31963,14 @@ export namespace Foundry {
          * Gets the states for the query.
          * 
          * Multiple states are supported by separating with a comma.
+         * @since 1.1
          */
         dup_state(): string | null;
 
         /**
          * Sets the keywords for the query.
          * @param keywords the keywords to set
+         * @since 1.1
          */
         set_keywords(keywords: string | null): void;
 
@@ -31011,6 +31979,7 @@ export namespace Foundry {
          * 
          * You may specify multiple scopes with a comma.
          * @param keywords_scope the keywords scope to set
+         * @since 1.1
          */
         set_keywords_scope(keywords_scope: string | null): void;
 
@@ -31019,6 +31988,7 @@ export namespace Foundry {
          * 
          * You may specify multiple states with a comma.
          * @param state 
+         * @since 1.1
          */
         set_state(state: string): void;
     }
@@ -31133,55 +32103,81 @@ export namespace Foundry {
 
         // Virtual methods
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_avatar_url(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_bio(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_handle(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_location(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_name(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_online_url(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_load_avatar(): Dex.Future;
 
         // Methods
+        /**
+         * @since 1.1
+         */
         dup_avatar_url(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_bio(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_handle(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_location(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_name(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_online_url(): string | null;
 
         /**
          * @returns a {@link Dex.Future} that resolves to a   {@link GLib.Bytes} or rejects with error.
+         * @since 1.1
          */
         load_avatar(): Dex.Future;
     }
@@ -31263,12 +32259,14 @@ export namespace Foundry {
         /**
          * Gets the future currently observed by `self`.
          * @returns a {@link Dex.Future} or `null`
+         * @since 1.2
          */
         dup_future(): Dex.Future | null;
 
         /**
          * Gets the object resolved by the observed future.
          * @returns a   {@link GObject.Object} or `null`
+         * @since 1.2
          */
         dup_item<T = GObject.Object>(): T;
 
@@ -31279,6 +32277,7 @@ export namespace Foundry {
          * `future` completes. If an older future completes after this call, its result is
          * ignored.
          * @param future a future resolving to a {@link GObject.Object}
+         * @since 1.2
          */
         set_future(future: Dex.Future | null): void;
     }
@@ -31339,15 +32338,25 @@ export namespace Foundry {
         static error_quark(): GLib.Quark;
 
         // Methods
+        /**
+         * @since 1.1
+         */
         get_file(): Gio.File;
 
         /**
          * @param namespace_name 
+         * @since 1.1
          */
         get_namespace(namespace_name: string): GirNode | null;
 
+        /**
+         * @since 1.1
+         */
         get_repository(): GirNode;
 
+        /**
+         * @since 1.1
+         */
         list_namespaces(): GirNode[];
     }
 
@@ -31521,6 +32530,7 @@ export namespace Foundry {
          * The commit ID is the hash of the commit that last modified the line.
          * @param line the line number (0-indexed)
          * @returns a newly allocated string containing the commit ID,   or `null` if the line is not found or not tracked
+         * @since 1.1
          */
         dup_commit_id(line: number): string;
     }
@@ -32077,60 +33087,70 @@ export namespace Foundry {
         /**
          * Creates a commit using the fields from the builder.
          * @returns a {@link Dex.Future} that resolves to   a {@link Foundry.GitCommit} or rejects with error
+         * @since 1.1
          */
         commit(): Dex.Future;
 
         /**
          * Gets the author email address that will be used for the commit.
          * @returns the author email, or `null` if not set.   The caller should free the returned string with `g_free()` when done.
+         * @since 1.1
          */
         dup_author_email(): string | null;
 
         /**
          * Gets the author name that will be used for the commit.
          * @returns the author name, or `null` if not set.   The caller should free the returned string with `g_free()` when done.
+         * @since 1.1
          */
         dup_author_name(): string | null;
 
         /**
          * Gets the commit message that will be used for the commit.
          * @returns the commit message, or `null` if not set.   The caller should free the returned string with `g_free()` when done.
+         * @since 1.1
          */
         dup_message(): string | null;
 
         /**
          * Gets the signing format that will be used for signing the commit.
          * @returns the signing format (e.g. "gpg" or   "ssh"), or `null` if not set. The caller should free the returned string   with `g_free()` when done.
+         * @since 1.1
          */
         dup_signing_format(): string | null;
 
         /**
          * Gets the signing key identifier that will be used for signing the commit.
          * @returns the signing key identifier, or `null`   if not set. The caller should free the returned string with `g_free()`   when done.
+         * @since 1.1
          */
         dup_signing_key(): string | null;
 
         /**
          * Gets the timestamp that will be used for the commit.
          * @returns a {@link GLib.DateTime} representing   the commit timestamp, or `null` if not set. The caller should free the   returned object with `g_date_time_unref()` when done.
+         * @since 1.1
          */
         dup_when(): GLib.DateTime | null;
 
         /**
          * Gets whether the builder will amend the selected commit.
          * @returns `true` if the builder is in amend mode
+         * @since 1.2
          */
         get_amend(): boolean;
 
         /**
          * Gets whether the builder is asynchronously reloading its internal state.
          * @returns `true` if the builder is busy
+         * @since 1.2
          */
         get_busy(): boolean;
 
         /**
          * Gets whether the builder has a commit that can be amended.
          * @returns `true` if amend mode can be enabled
+         * @since 1.2
          */
         get_can_amend(): boolean;
 
@@ -32140,6 +33160,7 @@ export namespace Foundry {
          * Returns `true` if both a non-empty commit message and at least one staged
          * file are present. Returns `false` otherwise.
          * @returns `true` if a commit can be created, `false` otherwise
+         * @since 1.1
          */
         get_can_commit(): boolean;
 
@@ -32151,6 +33172,7 @@ export namespace Foundry {
          * state when the builder was created, not the current git status.
          * @param file a {@link Gio.File} to check
          * @returns `true` if `file` was untracked when the builder was created,   `false` otherwise
+         * @since 1.1
          */
         is_untracked(file: Gio.File): boolean;
 
@@ -32161,6 +33183,7 @@ export namespace Foundry {
          * files in the working tree or index that have changes. Files with both
          * staged and unstaged changes appear only once.
          * @returns a {@link Gio.ListModel} of   {@link Foundry.GitStatusEntry} objects representing changed files
+         * @since 1.2
          */
         list_changed(): Gio.ListModel;
 
@@ -32171,6 +33194,7 @@ export namespace Foundry {
          * files in the working tree that have been staged. The list is updated
          * automatically as files are staged or unstaged.
          * @returns a {@link Gio.ListModel} of   {@link Foundry.GitStatusEntry} objects representing staged files
+         * @since 1.1
          */
         list_staged(): Gio.ListModel;
 
@@ -32181,6 +33205,7 @@ export namespace Foundry {
          * files in the working tree that have been modified but not staged. The list
          * is updated automatically as files are staged or unstaged.
          * @returns a {@link Gio.ListModel} of   {@link Foundry.GitStatusEntry} objects representing files with unstaged   changes
+         * @since 1.1
          */
         list_unstaged(): Gio.ListModel;
 
@@ -32191,6 +33216,7 @@ export namespace Foundry {
          * files in the working tree that are not tracked by git. The list is updated
          * automatically as files are staged or untracked files are added.
          * @returns a {@link Gio.ListModel} of   {@link Foundry.GitStatusEntry} objects representing untracked files
+         * @since 1.1
          */
         list_untracked(): Gio.ListModel;
 
@@ -32200,6 +33226,7 @@ export namespace Foundry {
          * lines on/off for staging in the background.
          * @param file a {@link Gio.File} in the working tree
          * @returns a {@link Dex.Future} that resolves to   a {@link Foundry.GitDelta} or rejects with error.
+         * @since 1.1
          */
         load_staged_delta(file: Gio.File): Dex.Future;
 
@@ -32209,6 +33236,7 @@ export namespace Foundry {
          * lines on/off for staging in the background.
          * @param file a {@link Gio.File} in the working tree
          * @returns a {@link Dex.Future} that resolves to   a {@link Foundry.GitDelta} or rejects with error.
+         * @since 1.1
          */
         load_unstaged_delta(file: Gio.File): Dex.Future;
 
@@ -32223,6 +33251,7 @@ export namespace Foundry {
          * a single hunk with all lines marked as additions.
          * @param file a {@link Gio.File} in the working tree
          * @returns a {@link Dex.Future} that resolves to   a {@link Foundry.GitDelta} or rejects with error.
+         * @since 1.1
          */
         load_untracked_delta(file: Gio.File): Dex.Future;
 
@@ -32234,6 +33263,7 @@ export namespace Foundry {
          * commit (or HEAD if no baseline was set), context lines, author name, author
          * email, signing key, signing format, and timestamp as `self`.
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.GitCommitBuilder}.
+         * @since 1.1
          */
         new_similar(): Dex.Future;
 
@@ -32257,6 +33287,7 @@ export namespace Foundry {
          * reload behavior, or when preserving the parent set of the commit being
          * amended matters.
          * @param amend whether to amend the selected commit
+         * @since 1.2
          */
         set_amend(amend: boolean): void;
 
@@ -32266,6 +33297,7 @@ export namespace Foundry {
          * If set to `null` or not set, the value from git config "user.email" will be
          * used when creating the commit.
          * @param author_email the author email to use, or `null` to unset
+         * @since 1.1
          */
         set_author_email(author_email: string | null): void;
 
@@ -32275,6 +33307,7 @@ export namespace Foundry {
          * If set to `null` or not set, the value from git config "user.name" will be
          * used when creating the commit.
          * @param author_name the author name to use, or `null` to unset
+         * @since 1.1
          */
         set_author_name(author_name: string | null): void;
 
@@ -32285,6 +33318,7 @@ export namespace Foundry {
          * Setting this will automatically update the {@link Foundry.GitCommitBuilder.can_commit}
          * property.
          * @param message the commit message to use, or `null` to unset
+         * @since 1.1
          */
         set_message(message: string | null): void;
 
@@ -32294,6 +33328,7 @@ export namespace Foundry {
          * Common values are "gpg" for GPG signatures or "ssh" for SSH signatures.
          * If set to `null`, defaults to "gpg".
          * @param signing_format the signing format to use (e.g. "gpg" or "ssh"), or `null` for default
+         * @since 1.1
          */
         set_signing_format(signing_format: string | null): void;
 
@@ -32303,6 +33338,7 @@ export namespace Foundry {
          * If set, the commit will be signed using the specified key and the signing
          * format. If set to `null`, the commit will not be signed.
          * @param signing_key the signing key identifier to use, or `null` to disable signing
+         * @since 1.1
          */
         set_signing_key(signing_key: string | null): void;
 
@@ -32312,6 +33348,7 @@ export namespace Foundry {
          * If set to `null` or not set, the current time will be used when creating
          * the commit. The builder takes ownership of `when`.
          * @param when the timestamp to use for the commit, or `null` to use current time
+         * @since 1.1
          */
         set_when(when: GLib.DateTime | null): void;
 
@@ -32320,6 +33357,7 @@ export namespace Foundry {
          * This stages the fully applied version (all changes from the delta).
          * @param file a {@link Gio.File} in the working tree
          * @returns a {@link Dex.Future} that resolves to any value   or rejects with error
+         * @since 1.1
          */
         stage_file(file: Gio.File): Dex.Future;
 
@@ -32328,6 +33366,7 @@ export namespace Foundry {
          * @param file a {@link Gio.File} in the working tree
          * @param hunks a {@link Gio.ListModel} of {@link Foundry.GitDiffHunk}
          * @returns a {@link Dex.Future} that resolves to any value   or rejects with error
+         * @since 1.1
          */
         stage_hunks(file: Gio.File, hunks: Gio.ListModel): Dex.Future;
 
@@ -32336,6 +33375,7 @@ export namespace Foundry {
          * @param file a {@link Gio.File} in the working tree
          * @param lines a {@link Gio.ListModel} of {@link Foundry.GitDiffLine}
          * @returns a {@link Dex.Future} that resolves to any value   or rejects with error
+         * @since 1.1
          */
         stage_lines(file: Gio.File, lines: Gio.ListModel): Dex.Future;
 
@@ -32344,6 +33384,7 @@ export namespace Foundry {
          * This restores the file to the fully unapplied version (HEAD version).
          * @param file a {@link Gio.File} in the working tree
          * @returns a {@link Dex.Future} that resolves to any value   or rejects with error
+         * @since 1.1
          */
         unstage_file(file: Gio.File): Dex.Future;
 
@@ -32352,6 +33393,7 @@ export namespace Foundry {
          * @param file a {@link Gio.File} in the working tree
          * @param hunks a {@link Gio.ListModel} of {@link Foundry.GitDiffHunk}
          * @returns a {@link Dex.Future} that resolves to any value   or rejects with error
+         * @since 1.1
          */
         unstage_hunks(file: Gio.File, hunks: Gio.ListModel): Dex.Future;
 
@@ -32360,6 +33402,7 @@ export namespace Foundry {
          * @param file a {@link Gio.File} in the working tree
          * @param lines a {@link Gio.ListModel} of {@link Foundry.GitDiffLine}
          * @returns a {@link Dex.Future} that resolves to any value   or rejects with error
+         * @since 1.1
          */
         unstage_lines(file: Gio.File, lines: Gio.ListModel): Dex.Future;
     }
@@ -32952,6 +33995,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -32962,6 +34006,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -32980,6 +34025,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -33007,6 +34053,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -33019,6 +34066,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -33032,6 +34080,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -33042,6 +34091,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -33209,6 +34259,7 @@ export namespace Foundry {
          * Discards all changes in the working directory and index, including untracked
          * files, returning the checkout to `HEAD`.
          * @returns a {@link Dex.Future} that resolves to any value   or rejects with error.
+         * @since 1.2
          */
         discard_changes(): Dex.Future;
 
@@ -33224,6 +34275,7 @@ export namespace Foundry {
          * {@link Dex.Future} that resolves to the config value as a string.
          * @param key the config key to query
          * @returns a {@link Dex.Future} that resolves to a string   containing the config value, or rejects with an error if the key is not   found or an error occurs
+         * @since 1.1
          */
         query_config(key: string): Dex.Future;
 
@@ -33235,6 +34287,7 @@ export namespace Foundry {
          * @param signing_key the signing key to use such as from the config   value for "user.signingKey"
          * @param bytes the bytes to sign
          * @returns a {@link Dex.Future} that resolves to a   armor contained string.
+         * @since 1.1
          */
         sign_bytes(signing_format: string, signing_key: string, bytes: GLib.Bytes | Uint8Array): Dex.Future;
 
@@ -33252,12 +34305,14 @@ export namespace Foundry {
          * similar to running "git stash". The changes are saved with the default stash
          * options.
          * @returns a {@link Dex.Future} that resolves to   a {@link Foundry.GitCommit} representing the stash commit or   rejects with error.
+         * @since 1.1
          */
         stash(): Dex.Future;
 
         /**
          * Stashes the current working directory changes, including untracked files.
          * @returns a {@link Dex.Future} that resolves to   a {@link Foundry.GitCommit} representing the stash commit or   rejects with error.
+         * @since 1.2
          */
         stash_all(): Dex.Future;
 
@@ -33385,6 +34440,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -33412,6 +34468,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -33442,6 +34499,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -33450,6 +34508,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -33464,6 +34523,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -33483,6 +34543,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -33518,6 +34579,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -33527,6 +34589,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -33554,6 +34617,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -34600,6 +35664,7 @@ export namespace Foundry {
          * owned by the intent and should not be unref'd.
          * @param attribute the attribute name
          * @returns the {@link GObject.Object}, or `null`   if not found or not an object
+         * @since 1.1
          */
         dup_attribute_object(attribute: string): null;
 
@@ -34608,6 +35673,7 @@ export namespace Foundry {
          * by the intent and should not be modified or freed.
          * @param attribute the attribute name
          * @returns the string value, or `null` if not found or not a string
+         * @since 1.1
          */
         dup_attribute_string(attribute: string): string | null;
 
@@ -34616,6 +35682,7 @@ export namespace Foundry {
          * by the intent and should not be modified or freed.
          * @param attribute the attribute name
          * @returns the string value, or `null` if not found or not a string
+         * @since 1.1
          */
         dup_attribute_strv(attribute: string): string[];
 
@@ -34623,6 +35690,7 @@ export namespace Foundry {
          * Gets the attribute value as a boolean.
          * @param attribute the attribute name
          * @returns the boolean value, or `false` if not found or not a boolean
+         * @since 1.1
          */
         get_attribute_boolean(attribute: string): boolean;
 
@@ -34630,6 +35698,7 @@ export namespace Foundry {
          * Gets the {@link GObject.GType} of the attribute value.
          * @param attribute the attribute name
          * @returns the {@link GObject.GType} of the attribute, or `G_TYPE_INVALID` if not found
+         * @since 1.1
          */
         get_attribute_type(attribute: string): GObject.GType;
 
@@ -34644,6 +35713,7 @@ export namespace Foundry {
          * and should not be modified or freed.
          * @param attribute the attribute name
          * @returns the {@link GObject.Value}, or `null` if not found
+         * @since 1.1
          */
         get_attribute_value(attribute: string): unknown;
 
@@ -34651,6 +35721,7 @@ export namespace Foundry {
          * Checks if the intent has an attribute with the given name.
          * @param attribute the attribute name to check
          * @returns `true` if the attribute exists, `false` otherwise
+         * @since 1.1
          */
         has_attribute(attribute: string): boolean;
 
@@ -34658,6 +35729,7 @@ export namespace Foundry {
          * Sets an attribute value for the intent. The value is copied.
          * @param attribute the attribute name
          * @param value the {@link GObject.Value} to set
+         * @since 1.1
          */
         set_attribute_value(attribute: string, value: GObject.Value | any): void;
     }
@@ -34757,6 +35829,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -34784,6 +35857,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -34814,6 +35888,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -34822,6 +35897,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -34836,6 +35912,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -34855,6 +35932,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -34890,6 +35968,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -34899,6 +35978,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -34926,6 +36006,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -34996,6 +36077,7 @@ export namespace Foundry {
          * Dispatch the intent to the first handler which can handle it.
          * @param intent a {@link Foundry.Intent}
          * @returns a {@link Dex.Future} that resolves to any value   if sucessful or rejects with error.
+         * @since 1.1
          */
         dispatch(intent: Intent): Dex.Future;
     }
@@ -35107,15 +36189,20 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @since 1.1
+         */
         get_node(): Json.Node | null;
 
         /**
          * @param node 
+         * @since 1.1
          */
         set_node(node: Json.Node | null): void;
 
         /**
          * @param node 
+         * @since 1.1
          */
         take_node(node: Json.Node | null): void;
     }
@@ -35177,6 +36264,7 @@ export namespace Foundry {
          * @param host the host name for the API key
          * @param service_name the service name for the API key
          * @param secret the current secret value
+         * @since 1.1
          * @virtual
          */
         vfunc_can_rotate(host: string, service_name: string, secret: string): boolean;
@@ -35186,6 +36274,7 @@ export namespace Foundry {
          * @param host the hostname
          * @param service_name the name of the service such as "gitlab"
          * @param secret the current secret
+         * @since 1.1
          * @virtual
          */
         vfunc_check_expires_at(host: string, service_name: string, secret: string): Dex.Future;
@@ -35196,6 +36285,7 @@ export namespace Foundry {
          * @param service_name the service name for the API key
          * @param secret the current secret value
          * @param expire_at when the new key should expire, or `null`
+         * @since 1.1
          * @virtual
          */
         vfunc_rotate(host: string, service_name: string, secret: string, expire_at: GLib.DateTime | null): Dex.Future;
@@ -35208,6 +36298,7 @@ export namespace Foundry {
          * @param service_name the service name for the API key
          * @param secret the current secret value
          * @returns `true` if the key can be rotated, `false` otherwise
+         * @since 1.1
          */
         can_rotate(host: string, service_name: string, secret: string): boolean;
 
@@ -35217,6 +36308,7 @@ export namespace Foundry {
          * @param service_name the name of the service such as "gitlab"
          * @param secret the current secret
          * @returns a {@link Dex.Future} that resolves to   a GDateTime or rejects with error.
+         * @since 1.1
          */
         check_expires_at(host: string, service_name: string, secret: string): Dex.Future;
 
@@ -35227,6 +36319,7 @@ export namespace Foundry {
          * @param secret the current secret value
          * @param expire_at when the new key should expire, or `null`
          * @returns a {@link Dex.Future} that resolves to a string   containing the replacement secret, or rejects with an error
+         * @since 1.1
          */
         rotate(host: string, service_name: string, secret: string, expire_at: GLib.DateTime | null): Dex.Future;
 
@@ -35253,6 +36346,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -35280,6 +36374,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -35310,6 +36405,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -35318,6 +36414,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -35332,6 +36429,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -35351,6 +36449,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -35386,6 +36485,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -35395,6 +36495,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -35422,6 +36523,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -35640,6 +36742,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -35667,6 +36770,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -35697,6 +36801,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -35705,6 +36810,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -35719,6 +36825,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -35738,6 +36845,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -35773,6 +36881,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -35782,6 +36891,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -35809,6 +36919,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -36424,6 +37535,7 @@ export namespace Foundry {
          * Finds the first resource which matches `uri`.
          * @param uri the URI of the resource
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.LlmResource} or rejects with error.
+         * @since 1.1
          */
         find_resource(uri: string): Dex.Future;
 
@@ -36444,6 +37556,7 @@ export namespace Foundry {
          * If you want to be sure that all providers have completed populating,
          * you may await completion by calling {@link Foundry.list_model_await}.
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.LlmResource}.
+         * @since 1.1
          */
         list_resources(): Dex.Future;
 
@@ -36465,6 +37578,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -36475,6 +37589,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -36493,6 +37608,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -36520,6 +37636,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -36532,6 +37649,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -36545,6 +37663,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -36555,6 +37674,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -36825,6 +37945,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -36852,6 +37973,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -36882,6 +38004,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -36890,6 +38013,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -36904,6 +38028,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -36923,6 +38048,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -36958,6 +38084,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -36967,6 +38094,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -36994,6 +38122,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -37081,6 +38210,7 @@ export namespace Foundry {
 
         /**
          * List resources that may be made available to the model.
+         * @since 1.1
          * @virtual
          */
         vfunc_list_resources(): Dex.Future;
@@ -37110,6 +38240,7 @@ export namespace Foundry {
         /**
          * List resources that may be made available to the model.
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.LlmResource}.
+         * @since 1.1
          */
         list_resources(): Dex.Future;
 
@@ -37142,6 +38273,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -37169,6 +38301,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -37199,6 +38332,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -37207,6 +38341,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -37221,6 +38356,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -37240,6 +38376,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -37275,6 +38412,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -37284,6 +38422,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -37311,6 +38450,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -37446,24 +38586,28 @@ export namespace Foundry {
         // Virtual methods
         /**
          * Gets the content type for the resource.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_content_type(): string | null;
 
         /**
          * Gets the description for the resource.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_description(): string | null;
 
         /**
          * Gets the name for the resource.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_name(): string | null;
 
         /**
          * Gets the URI for the resource.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_uri(): string | null;
@@ -37473,6 +38617,7 @@ export namespace Foundry {
          * 
          * This method asynchronously loads the resource content and returns
          * a future that resolves to a {@link GLib.Bytes} containing the data.
+         * @since 1.1
          * @virtual
          */
         vfunc_load_bytes(): Dex.Future;
@@ -37483,6 +38628,7 @@ export namespace Foundry {
          * of a serialized byte buffer. This is helpful in situations
          * where the protocol can pass structured information for JSON
          * such as Model Context Protocol.
+         * @since 1.1
          * @virtual
          */
         vfunc_load_json(): Dex.Future;
@@ -37491,24 +38637,28 @@ export namespace Foundry {
         /**
          * Gets the content type for the resource.
          * @returns a newly allocated string containing   the content type, or `null` if not available
+         * @since 1.1
          */
         dup_content_type(): string | null;
 
         /**
          * Gets the description for the resource.
          * @returns a newly allocated string containing   the description, or `null` if not available
+         * @since 1.1
          */
         dup_description(): string | null;
 
         /**
          * Gets the name for the resource.
          * @returns a newly allocated string containing   the name, or `null` if not available
+         * @since 1.1
          */
         dup_name(): string | null;
 
         /**
          * Gets the URI for the resource.
          * @returns a newly allocated string containing   the URI, or `null` if not available
+         * @since 1.1
          */
         dup_uri(): string | null;
 
@@ -37517,6 +38667,7 @@ export namespace Foundry {
          * 
          * Subclasses should call this function when the resource's properties
          * or content have been modified to notify listeners of the change.
+         * @since 1.1
          */
         emit_changed(): void;
 
@@ -37526,6 +38677,7 @@ export namespace Foundry {
          * This method asynchronously loads the resource content and returns
          * a future that resolves to a {@link GLib.Bytes} containing the data.
          * @returns a {@link Dex.Future} that resolves to a   {@link GLib.Bytes}, or rejects with error.
+         * @since 1.1
          */
         load_bytes(): Dex.Future;
 
@@ -37536,6 +38688,7 @@ export namespace Foundry {
          * where the protocol can pass structured information for JSON
          * such as Model Context Protocol.
          * @returns a {@link Dex.Future} that resolves to   a {@link Json.Node} or rejects with error.
+         * @since 1.1
          */
         load_json(): Dex.Future;
     }
@@ -37691,6 +38844,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -37718,6 +38872,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -37748,6 +38903,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -37756,6 +38912,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -37770,6 +38927,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -37789,6 +38947,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -37824,6 +38983,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -37833,6 +38993,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -37860,6 +39021,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -38101,6 +39263,7 @@ export namespace Foundry {
         // Methods
         /**
          * Remove all log entries from the list model
+         * @since 1.1
          */
         remove_all(): void;
 
@@ -38114,6 +39277,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -38124,6 +39288,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -38142,6 +39307,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -38169,6 +39335,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -38181,6 +39348,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -38194,6 +39362,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -38204,6 +39373,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -38455,6 +39625,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -38482,6 +39653,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -38512,6 +39684,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -38520,6 +39693,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -38534,6 +39708,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -38553,6 +39728,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -38588,6 +39764,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -38597,6 +39774,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -38624,6 +39802,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -38803,6 +39982,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -38813,6 +39993,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -38831,6 +40012,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -38858,6 +40040,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -38870,6 +40053,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -38883,6 +40067,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -38893,6 +40078,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -38996,6 +40182,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -39006,6 +40193,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -39024,6 +40212,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -39051,6 +40240,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -39063,6 +40253,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -39076,6 +40267,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -39086,6 +40278,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -39113,6 +40306,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -39140,6 +40334,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -39170,6 +40365,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -39178,6 +40374,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -39192,6 +40389,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -39211,6 +40409,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -39246,6 +40445,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -39255,6 +40455,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -39282,6 +40483,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -39424,6 +40626,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -39451,6 +40654,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -39481,6 +40685,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -39489,6 +40694,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -39503,6 +40709,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -39522,6 +40729,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -39557,6 +40765,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -39566,6 +40775,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -39593,6 +40803,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -39755,6 +40966,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -39782,6 +40994,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -39812,6 +41025,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -39820,6 +41034,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -39834,6 +41049,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -39853,6 +41069,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -39888,6 +41105,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -39897,6 +41115,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -39924,6 +41143,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -40040,6 +41260,9 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @since 1.1
+         */
         dup_menu_model(): Gio.MenuModel;
 
         get_index(): number;
@@ -40244,6 +41467,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -40254,6 +41478,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -40272,6 +41497,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -40299,6 +41525,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -40311,6 +41538,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -40324,6 +41552,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -40334,6 +41563,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -40637,6 +41867,7 @@ export namespace Foundry {
 
         /**
          * Checks if the operation has been cancelled.
+         * @since 1.1
          */
         is_cancelled(): boolean;
 
@@ -40741,6 +41972,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -40751,6 +41983,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -40769,6 +42002,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -40796,6 +42030,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -40808,6 +42043,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -40821,6 +42057,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -40831,6 +42068,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -41026,6 +42264,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -41036,6 +42275,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -41054,6 +42294,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -41081,6 +42322,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -41093,6 +42335,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -41106,6 +42349,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -41116,6 +42360,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -41556,6 +42801,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -41566,6 +42812,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -41584,6 +42831,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -41611,6 +42859,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -41623,6 +42872,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -41636,6 +42886,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -41646,6 +42897,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -41673,6 +42925,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -41700,6 +42953,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -41730,6 +42984,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -41738,6 +42993,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -41752,6 +43008,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -41771,6 +43028,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -41806,6 +43064,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -41815,6 +43074,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -41842,6 +43102,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -41971,6 +43232,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -41998,6 +43260,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -42028,6 +43291,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -42036,6 +43300,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -42050,6 +43315,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -42069,6 +43335,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -42104,6 +43371,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -42113,6 +43381,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -42140,6 +43409,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -42206,6 +43476,7 @@ export namespace Foundry {
         /**
          * Deploys the application using the deploy strategy without running it.
          * @returns a {@link Dex.Future} that resolves to any value   or rejects with error.
+         * @since 1.1
          */
         deploy(): Dex.Future;
 
@@ -42397,6 +43668,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -42424,6 +43696,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -42454,6 +43727,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -42462,6 +43736,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -42476,6 +43751,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -42495,6 +43771,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -42530,6 +43807,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -42539,6 +43817,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -42566,6 +43845,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -42728,6 +44008,7 @@ export namespace Foundry {
 
         /**
          * Gets whether the SDK has reached end of life.
+         * @since 1.1
          * @virtual
          */
         vfunc_get_eol(): boolean;
@@ -42776,6 +44057,7 @@ export namespace Foundry {
          * environment which might route through `file:///var/run/host/...`.
          * @param pipeline a {@link Foundry.BuildPipeline}
          * @param path the path within the SDK to be translated
+         * @since 1.1
          * @virtual
          */
         vfunc_translate_path(pipeline: BuildPipeline | null, path: string): Dex.Future;
@@ -42791,6 +44073,7 @@ export namespace Foundry {
          * @param pipeline a {@link Foundry.BuildPipeline}
          * @param argv the arguments to run
          * @returns a {@link Dex.Future} that resolves to a UTF-8   encoded string or rejects with error.
+         * @since 1.1
          */
         build_simple(pipeline: BuildPipeline | null, argv: string): Dex.Future;
 
@@ -42847,6 +44130,7 @@ export namespace Foundry {
         /**
          * Gets whether the SDK has reached end of life.
          * @returns `true` if the SDK has reached end of life, `false` otherwise
+         * @since 1.1
          */
         get_eol(): boolean;
 
@@ -42941,6 +44225,7 @@ export namespace Foundry {
          * @param pipeline a {@link Foundry.BuildPipeline}
          * @param path the path within the SDK to be translated
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.File} or rejects with error.
+         * @since 1.1
          */
         translate_path(pipeline: BuildPipeline | null, path: string): Dex.Future;
 
@@ -42967,6 +44252,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -42994,6 +44280,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -43024,6 +44311,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -43032,6 +44320,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -43046,6 +44335,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -43065,6 +44355,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -43100,6 +44391,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -43109,6 +44401,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -43136,6 +44429,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -43231,6 +44525,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -43241,6 +44536,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -43259,6 +44555,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -43286,6 +44583,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -43298,6 +44596,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -43311,6 +44610,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -43321,6 +44621,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -43428,6 +44729,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -43438,6 +44740,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -43456,6 +44759,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -43483,6 +44787,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -43495,6 +44800,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -43508,6 +44814,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -43518,6 +44825,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -43545,6 +44853,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -43572,6 +44881,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -43602,6 +44912,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -43610,6 +44921,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -43624,6 +44936,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -43643,6 +44956,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -43678,6 +44992,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -43687,6 +45002,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -43714,6 +45030,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -43863,6 +45180,7 @@ export namespace Foundry {
 
         /**
          * @returns a {@link Peas.PluginInfo}
+         * @since 1.1
          */
         dup_plugin_info(): Peas.PluginInfo | null;
 
@@ -43895,6 +45213,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -43922,6 +45241,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -43952,6 +45272,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -43960,6 +45281,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -43974,6 +45296,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -43993,6 +45316,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -44028,6 +45352,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -44037,6 +45362,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -44064,6 +45390,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -44188,6 +45515,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -44215,6 +45543,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -44245,6 +45574,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -44253,6 +45583,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -44267,6 +45598,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -44286,6 +45618,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -44321,6 +45654,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -44330,6 +45664,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -44357,6 +45692,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -44466,6 +45802,7 @@ export namespace Foundry {
          * should be handled for the user and dispatched via
          * {@link Foundry.IntentManager.dispatch}.
          * @param context a {@link Foundry.Context}
+         * @since 1.1
          * @virtual
          */
         vfunc_create_intent(context: Context): Intent | null;
@@ -44487,6 +45824,7 @@ export namespace Foundry {
 
         /**
          * Gets whether the search result should use underline.
+         * @since 1.1
          * @virtual
          */
         vfunc_get_use_underline(): boolean;
@@ -44514,6 +45852,7 @@ export namespace Foundry {
          * should be handled for the user and dispatched via
          * {@link Foundry.IntentManager.dispatch}.
          * @param context a {@link Foundry.Context}
+         * @since 1.1
          */
         create_intent(context: Context): Intent | null;
 
@@ -44526,6 +45865,7 @@ export namespace Foundry {
         /**
          * Gets whether the search result should use underline.
          * @returns `true` if underline should be used, `false` otherwise
+         * @since 1.1
          */
         get_use_underline(): boolean;
 
@@ -44601,6 +45941,7 @@ export namespace Foundry {
          * @param host the hostname of the api server
          * @param service the name of the service such as "gitlab"
          * @returns a {@link Dex.Future} that resolves to   a GDateTime on success; or rejects with error.
+         * @since 1.1
          */
         check_expires_at(host: string, service: string): Dex.Future;
 
@@ -44609,6 +45950,7 @@ export namespace Foundry {
          * @param host the hostname of the api server
          * @param service the name of the service such as "gitlab"
          * @returns a {@link Dex.Future} that resolves to   any value on success or rejects with error.
+         * @since 1.1
          */
         delete_api_key(host: string, service: string): Dex.Future;
 
@@ -44617,6 +45959,7 @@ export namespace Foundry {
          * @param host the hostname of the api server
          * @param service the name of the service such as "gitlab"
          * @returns a {@link Dex.Future} that resolves to   a string on success or rejects with error.
+         * @since 1.1
          */
         lookup_api_key(host: string, service: string): Dex.Future;
 
@@ -44626,6 +45969,7 @@ export namespace Foundry {
          * @param service the name of the service such as "gitlab"
          * @param expire_at when the new key should expire, or `null`
          * @returns a {@link Dex.Future} that resolves to   the new API key as a string on success; or rejects with error.
+         * @since 1.1
          */
         rotate_api_key(host: string, service: string, expire_at: GLib.DateTime | null): Dex.Future;
 
@@ -44635,6 +45979,7 @@ export namespace Foundry {
          * @param service the name of the service such as "gitlab"
          * @param api_key the actual API key
          * @returns a {@link Dex.Future} that resolves to   any value on success or rejects with error.
+         * @since 1.1
          */
         store_api_key(host: string, service: string, api_key: string): Dex.Future;
     }
@@ -44753,6 +46098,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -44780,6 +46126,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -44810,6 +46157,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -44818,6 +46166,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -44832,6 +46181,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -44851,6 +46201,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -44886,6 +46237,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -44895,6 +46247,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -44922,6 +46275,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -45096,6 +46450,7 @@ export namespace Foundry {
 
         /**
          * @param key 
+         * @since 1.1
          */
         get_strv(key: string): string[] | null;
 
@@ -45160,6 +46515,7 @@ export namespace Foundry {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -45169,6 +46525,7 @@ export namespace Foundry {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -45177,6 +46534,7 @@ export namespace Foundry {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -45186,6 +46544,7 @@ export namespace Foundry {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -45225,6 +46584,7 @@ export namespace Foundry {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -45242,6 +46602,7 @@ export namespace Foundry {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -45252,6 +46613,7 @@ export namespace Foundry {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -45271,6 +46633,7 @@ export namespace Foundry {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -45285,6 +46648,7 @@ export namespace Foundry {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -45309,6 +46673,7 @@ export namespace Foundry {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -45331,6 +46696,7 @@ export namespace Foundry {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -45338,6 +46704,7 @@ export namespace Foundry {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -45347,6 +46714,7 @@ export namespace Foundry {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -45380,6 +46748,7 @@ export namespace Foundry {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -45388,6 +46757,7 @@ export namespace Foundry {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -45398,6 +46768,7 @@ export namespace Foundry {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -45407,6 +46778,7 @@ export namespace Foundry {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -45417,6 +46789,7 @@ export namespace Foundry {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -45457,6 +46830,7 @@ export namespace Foundry {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -45475,6 +46849,7 @@ export namespace Foundry {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -45485,6 +46860,7 @@ export namespace Foundry {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -45504,6 +46880,7 @@ export namespace Foundry {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -45518,6 +46895,7 @@ export namespace Foundry {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -45542,6 +46920,7 @@ export namespace Foundry {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -45564,6 +46943,7 @@ export namespace Foundry {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -45571,6 +46951,7 @@ export namespace Foundry {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -45580,6 +46961,7 @@ export namespace Foundry {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -45613,6 +46995,7 @@ export namespace Foundry {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -45640,6 +47023,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -45667,6 +47051,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -45697,6 +47082,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -45705,6 +47091,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -45719,6 +47106,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -45738,6 +47126,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -45773,6 +47162,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -45782,6 +47172,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -45809,6 +47200,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -45970,6 +47362,7 @@ export namespace Foundry {
          * @param flags non-zero flags to dispatch
          * @param commit_notify 
          * @returns a non-zero commit handler id if supported; otherwise zero.
+         * @since 1.1
          */
         add_commit_notify(flags: TextBufferNotifyFlags, commit_notify: TextBufferCommitNotify): number;
 
@@ -46013,6 +47406,7 @@ export namespace Foundry {
         /**
          * Remove a commit notify handler.
          * @param commit_notify_handler the previously registered non-zero commit handler
+         * @since 1.1
          */
         remove_commit_notify(commit_notify_handler: number): void;
 
@@ -46029,6 +47423,7 @@ export namespace Foundry {
          * If the implementation does not support this, zero is returned.
          * @param flags non-zero flags to dispatch
          * @param commit_notify 
+         * @since 1.1
          * @virtual
          */
         vfunc_add_commit_notify(flags: TextBufferNotifyFlags, commit_notify: TextBufferCommitNotify): number;
@@ -46069,6 +47464,7 @@ export namespace Foundry {
         /**
          * Remove a commit notify handler.
          * @param commit_notify_handler the previously registered non-zero commit handler
+         * @since 1.1
          * @virtual
          */
         vfunc_remove_commit_notify(commit_notify_handler: number): void;
@@ -46157,12 +47553,14 @@ export namespace Foundry {
         // Virtual methods
         /**
          * Gets the icon representing the symbol.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_icon(): Gio.Icon | null;
 
         /**
          * Gets the locator to find the location of the symbol.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_locator(): SymbolLocator;
@@ -46182,6 +47580,7 @@ export namespace Foundry {
         /**
          * Gets if the symbol can have children even if it is not yet known
          * if it does have any children.
+         * @since 1.1
          * @virtual
          */
         vfunc_has_children(): boolean;
@@ -46196,12 +47595,14 @@ export namespace Foundry {
         /**
          * Gets the icon representing the symbol.
          * @returns a {@link Gio.Icon} or `null`
+         * @since 1.1
          */
         dup_icon(): Gio.Icon | null;
 
         /**
          * Gets the locator to find the location of the symbol.
          * @returns a {@link Dex.Future} that resolves to   a {@link Foundry.SymbolLocator}.
+         * @since 1.1
          */
         dup_locator(): SymbolLocator;
 
@@ -46221,6 +47622,7 @@ export namespace Foundry {
          * Gets if the symbol can have children even if it is not yet known
          * if it does have any children.
          * @returns TRUE if children are possible from this symbol.
+         * @since 1.1
          */
         has_children(): boolean;
 
@@ -46307,6 +47709,7 @@ export namespace Foundry {
         /**
          * Gets a copy of the symbol locator object.
          * @returns a {@link Foundry.SymbolLocator}
+         * @since 1.1
          */
         dup_locator(): SymbolLocator;
     }
@@ -46403,6 +47806,9 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @since 1.1
+         */
         dup_file(): Gio.File | null;
 
         get_line(): number;
@@ -46421,6 +47827,7 @@ export namespace Foundry {
          * If the locator uses a pattern, this will try to locate the pattern
          * within `contents`.
          * @param contents 
+         * @since 1.1
          */
         locate(contents: GLib.Bytes | Uint8Array): SymbolLocator | null;
     }
@@ -46528,6 +47935,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -46555,6 +47963,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -46585,6 +47994,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -46593,6 +48003,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -46607,6 +48018,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -46626,6 +48038,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -46661,6 +48074,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -46670,6 +48084,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -46697,6 +48112,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -47139,6 +48555,9 @@ export namespace Foundry {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @since 1.1
+         */
         dup_launcher(): TerminalLauncher;
     }
 
@@ -47279,6 +48698,7 @@ export namespace Foundry {
          * application may handle to show a terminal.
          * @param lancher 
          * @returns A {@link Dex.Future} that resolves to   any value if succesfull; otherwise rejects with error.
+         * @since 1.1
          */
         launch(lancher: TerminalLauncher): Dex.Future;
     }
@@ -47373,6 +48793,7 @@ export namespace Foundry {
 
         /**
          * Get the suites for which this test belongs.
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_suites(): string[] | null;
@@ -47389,6 +48810,7 @@ export namespace Foundry {
 
         /**
          * Get the suites for which this test belongs.
+         * @since 1.1
          */
         dup_suites(): string[] | null;
 
@@ -47417,6 +48839,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -47444,6 +48867,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -47474,6 +48898,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -47482,6 +48907,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -47496,6 +48922,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -47515,6 +48942,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -47550,6 +48978,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -47559,6 +48988,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -47586,6 +49016,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -47653,6 +49084,7 @@ export namespace Foundry {
         /**
          * Loads available tests and groups them within a {@link Foundry.TestSuite}.
          * @returns a {@link Dex.Future} that resolves to a   {@link Gio.ListModel} of {@link Foundry.TestSuite}.
+         * @since 1.1
          */
         list_suites(): Dex.Future;
 
@@ -47680,6 +49112,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -47690,6 +49123,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -47708,6 +49142,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -47735,6 +49170,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -47747,6 +49183,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -47760,6 +49197,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -47770,6 +49208,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -47858,6 +49297,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -47885,6 +49325,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -47915,6 +49356,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -47923,6 +49365,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -47937,6 +49380,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -47956,6 +49400,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -47991,6 +49436,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -48000,6 +49446,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -48027,6 +49474,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -48098,6 +49546,7 @@ export namespace Foundry {
         // Methods
         /**
          * Gets the name of the suite if any.
+         * @since 1.1
          */
         dup_name(): string | null;
 
@@ -48111,6 +49560,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -48121,6 +49571,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -48139,6 +49590,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -48166,6 +49618,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -48178,6 +49631,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -48191,6 +49645,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -48201,6 +49656,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -48322,6 +49778,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -48349,6 +49806,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -48379,6 +49837,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -48387,6 +49846,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -48401,6 +49861,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -48420,6 +49881,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -48455,6 +49917,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -48464,6 +49927,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -48491,6 +49955,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -48677,6 +50142,7 @@ export namespace Foundry {
          * @param line the line number (starting from 0)
          * @param line_offset the character offset (starting from 0)
          * @returns a {@link Dex.Future} that resolves to   a {@link Foundry.Symbol} or rejects with error.
+         * @since 1.1
          */
         find_symbol_at(line: number, line_offset: number): Dex.Future;
 
@@ -48762,6 +50228,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -48789,6 +50256,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -48819,6 +50287,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -48827,6 +50296,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -48841,6 +50311,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -48860,6 +50331,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -48895,6 +50367,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -48904,6 +50377,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -48931,6 +50405,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -49096,6 +50571,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -49123,6 +50599,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -49153,6 +50630,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -49161,6 +50639,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -49175,6 +50654,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -49194,6 +50674,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -49229,6 +50710,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -49238,6 +50720,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -49265,6 +50748,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -49475,6 +50959,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -49502,6 +50987,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -49532,6 +51018,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -49540,6 +51027,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -49554,6 +51042,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -49573,6 +51062,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -49608,6 +51098,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -49617,6 +51108,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -49644,6 +51136,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -50439,6 +51932,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -50466,6 +51960,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -50496,6 +51991,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -50504,6 +52000,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -50518,6 +52015,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -50537,6 +52035,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -50572,6 +52071,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -50581,6 +52081,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -50608,6 +52109,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -50753,6 +52255,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -50780,6 +52283,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -50810,6 +52314,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -50818,6 +52323,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -50832,6 +52338,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -50851,6 +52358,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -50886,6 +52394,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -50895,6 +52404,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -50922,6 +52432,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -51286,6 +52797,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -51313,6 +52825,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -51343,6 +52856,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -51351,6 +52865,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -51365,6 +52880,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -51384,6 +52900,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -51419,6 +52936,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -51428,6 +52946,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -51455,6 +52974,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -51821,12 +53341,14 @@ export namespace Foundry {
          * @param start a {@link Foundry.VcsCommit}
          * @param end optional exclusive end commit
          * @param limit maximum number of rows to load, or 0 for no limit
+         * @since 1.2
          * @virtual
          */
         vfunc_load_graph(start: VcsCommit, end: VcsCommit | null, limit: number): Dex.Future;
 
         /**
          * Loads the tip (most recent commit) from the repository.
+         * @since 1.1
          * @virtual
          */
         vfunc_load_tip(): Dex.Future;
@@ -51882,6 +53404,7 @@ export namespace Foundry {
         /**
          * Emits the "tip-changed" signal. This method is intended for use
          * by subclasses to notify when the tip (most recent commit) has changed.
+         * @since 1.1
          */
         emit_tip_changed(): void;
 
@@ -51969,12 +53492,14 @@ export namespace Foundry {
          * @param end optional exclusive end commit
          * @param limit maximum number of rows to load, or 0 for no limit
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.VcsGraph} or rejects with error.
+         * @since 1.2
          */
         load_graph(start: VcsCommit, end: VcsCommit | null, limit: number): Dex.Future;
 
         /**
          * Loads the tip (most recent commit) from the repository.
          * @returns a {@link Dex.Future} that resolves to a   {@link Foundry.VcsCommit} or rejects with error.
+         * @since 1.1
          */
         load_tip(): Dex.Future;
 
@@ -52008,6 +53533,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -52035,6 +53561,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -52065,6 +53592,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -52073,6 +53601,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -52087,6 +53616,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -52106,6 +53636,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -52141,6 +53672,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -52150,6 +53682,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -52177,6 +53710,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -52676,6 +54210,7 @@ export namespace Foundry {
 
         /**
          * Queries the VCS for the list of hunks that are part of this delta.
+         * @since 1.1
          * @virtual
          */
         vfunc_list_hunks(): Dex.Future;
@@ -52683,6 +54218,7 @@ export namespace Foundry {
         /**
          * Serializes the delta to a unified diff format string.
          * @param context_lines the number of context lines to include
+         * @since 1.1
          * @virtual
          */
         vfunc_serialize(context_lines: number): Dex.Future;
@@ -52705,6 +54241,7 @@ export namespace Foundry {
         /**
          * Queries the VCS for the list of hunks that are part of this delta.
          * @returns a {@link Dex.Future} that resolves to   a {@link Gio.ListModel} of {@link Foundry.VcsDiffHunk}.
+         * @since 1.1
          */
         list_hunks(): Dex.Future;
 
@@ -52712,6 +54249,7 @@ export namespace Foundry {
          * Serializes the delta to a unified diff format string.
          * @param context_lines the number of context lines to include
          * @returns a {@link Dex.Future} that resolves to   a string containing the serialized diff
+         * @since 1.1
          */
         serialize(context_lines: number): Dex.Future;
     }
@@ -52897,30 +54435,35 @@ export namespace Foundry {
         // Virtual methods
         /**
          * The header for the hunk which is the part after the second "@@".
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_header(): string | null;
 
         /**
          * Gets the number of lines in the new file for this hunk.
+         * @since 1.1
          * @virtual
          */
         vfunc_get_new_lines(): number;
 
         /**
          * Gets the starting line number in the new file for this hunk.
+         * @since 1.1
          * @virtual
          */
         vfunc_get_new_start(): number;
 
         /**
          * Gets the number of lines in the old file for this hunk.
+         * @since 1.1
          * @virtual
          */
         vfunc_get_old_lines(): number;
 
         /**
          * Gets the starting line number in the old file for this hunk.
+         * @since 1.1
          * @virtual
          */
         vfunc_get_old_start(): number;
@@ -52934,30 +54477,35 @@ export namespace Foundry {
         // Methods
         /**
          * The header for the hunk which is the part after the second "@@".
+         * @since 1.1
          */
         dup_header(): string | null;
 
         /**
          * Gets the number of lines in the new file for this hunk.
          * @returns the number of lines in the new file
+         * @since 1.1
          */
         get_new_lines(): number;
 
         /**
          * Gets the starting line number in the new file for this hunk.
          * @returns the starting line number in the new file
+         * @since 1.1
          */
         get_new_start(): number;
 
         /**
          * Gets the number of lines in the old file for this hunk.
          * @returns the number of lines in the old file
+         * @since 1.1
          */
         get_old_lines(): number;
 
         /**
          * Gets the starting line number in the old file for this hunk.
          * @returns the starting line number in the old file
+         * @since 1.1
          */
         get_old_start(): number;
 
@@ -53260,6 +54808,7 @@ export namespace Foundry {
         /**
          * Gets the graph entry at `position`.
          * @param position the entry position
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_entry(position: number): VcsGraphEntry | null;
@@ -53271,6 +54820,7 @@ export namespace Foundry {
 
         /**
          * Gets the maximum number of lanes used by the graph.
+         * @since 1.2
          * @virtual
          */
         vfunc_get_n_lanes(): number;
@@ -53280,12 +54830,14 @@ export namespace Foundry {
          * Gets the graph entry at `position`.
          * @param position the entry position
          * @returns a {@link Foundry.VcsGraphEntry}
+         * @since 1.2
          */
         dup_entry(position: number): VcsGraphEntry | null;
 
         /**
          * Gets the maximum number of lanes used by the graph.
          * @returns the number of lanes
+         * @since 1.2
          */
         get_n_lanes(): number;
 
@@ -53299,6 +54851,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -53309,6 +54862,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -53327,6 +54881,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -53354,6 +54909,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -53366,6 +54922,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -53379,6 +54936,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -53477,24 +55035,28 @@ export namespace Foundry {
         // Virtual methods
         /**
          * Gets the commit identifier represented by this graph row.
+         * @since 1.2
          * @virtual
          */
         vfunc_dup_commit_id(): string;
 
         /**
          * Gets the lane containing the commit node.
+         * @since 1.2
          * @virtual
          */
         vfunc_get_commit_lane(): number;
 
         /**
          * Gets the number of lanes required by this graph row.
+         * @since 1.2
          * @virtual
          */
         vfunc_get_n_lanes(): number;
 
         /**
          * Gets the number of graph segments in this row.
+         * @since 1.2
          * @virtual
          */
         vfunc_get_n_segments(): number;
@@ -53502,6 +55064,7 @@ export namespace Foundry {
         /**
          * Gets a graph segment for this row.
          * @param position the segment position
+         * @since 1.2
          * @virtual
          */
         vfunc_get_segment(position: number): [boolean, VcsGraphSegment];
@@ -53510,24 +55073,28 @@ export namespace Foundry {
         /**
          * Gets the commit identifier represented by this graph row.
          * @returns the commit identifier
+         * @since 1.2
          */
         dup_commit_id(): string;
 
         /**
          * Gets the lane containing the commit node.
          * @returns the commit lane
+         * @since 1.2
          */
         get_commit_lane(): number;
 
         /**
          * Gets the number of lanes required by this graph row.
          * @returns the number of lanes
+         * @since 1.2
          */
         get_n_lanes(): number;
 
         /**
          * Gets the number of graph segments in this row.
          * @returns the number of segments
+         * @since 1.2
          */
         get_n_segments(): number;
 
@@ -53535,6 +55102,7 @@ export namespace Foundry {
          * Gets a graph segment for this row.
          * @param position the segment position
          * @returns `true` if `segment` was set, otherwise `false`
+         * @since 1.2
          */
         get_segment(position: number): [boolean, VcsGraphSegment];
     }
@@ -53676,6 +55244,7 @@ export namespace Foundry {
          * {@link Peas.PluginInfo.module_name} of each provider's plugin info.
          * @param module_name the module name to match against plugin info
          * @returns a {@link Foundry.VcsProvider} or `null`
+         * @since 1.1
          */
         find_provider(module_name: string): VcsProvider | null;
 
@@ -53701,6 +55270,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -53711,6 +55281,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -53729,6 +55300,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -53756,6 +55328,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -53768,6 +55341,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -53781,6 +55355,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -53791,6 +55366,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -53870,6 +55446,7 @@ export namespace Foundry {
          * 
          * The provider should also update the VcsManager to the new Vcs
          * that is created/initialized as part of this.
+         * @since 1.1
          * @virtual
          */
         vfunc_initialize(): Dex.Future;
@@ -53895,6 +55472,7 @@ export namespace Foundry {
         /**
          * Gets the plugin the provider belongs to.
          * @returns a {@link Peas.PluginInfo} or `null`
+         * @since 1.1
          */
         dup_plugin_info(): Peas.PluginInfo | null;
 
@@ -53904,6 +55482,7 @@ export namespace Foundry {
          * The provider should also update the VcsManager to the new Vcs
          * that is created/initialized as part of this.
          * @returns a {@link Dex.Future} that resolves to any   value or rejects with error.
+         * @since 1.1
          */
         initialize(): Dex.Future;
 
@@ -53932,6 +55511,7 @@ export namespace Foundry {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -53942,6 +55522,7 @@ export namespace Foundry {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -53960,6 +55541,7 @@ export namespace Foundry {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -53987,6 +55569,7 @@ export namespace Foundry {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -53999,6 +55582,7 @@ export namespace Foundry {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -54012,6 +55596,7 @@ export namespace Foundry {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -54022,6 +55607,7 @@ export namespace Foundry {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -54049,6 +55635,7 @@ export namespace Foundry {
          * @param pspec a property description
          * @param property_node the JSON node containing the serialized property
          * @returns `TRUE` if the property was successfully deserialized
+         * @since 0.10
          */
         default_deserialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec, property_node: Json.Node): boolean;
 
@@ -54076,6 +55663,7 @@ export namespace Foundry {
          * @param value the value of the property to serialize
          * @param pspec a property description
          * @returns a node containing the   serialized property
+         * @since 0.10
          */
         default_serialize_property(property_name: string, value: GObject.Value | any, pspec: GObject.ParamSpec): Json.Node | null;
 
@@ -54106,6 +55694,7 @@ export namespace Foundry {
          * description for the given name.
          * @param name the name of the property
          * @returns the property description
+         * @since 0.14
          */
         find_property(name: string): GObject.ParamSpec | null;
 
@@ -54114,6 +55703,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          */
         get_property(pspec: GObject.ParamSpec): unknown;
 
@@ -54128,6 +55718,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the list of serializable
          * properties.
          * @returns the serializable   properties of the object
+         * @since 0.14
          */
         list_properties(): GObject.ParamSpec[];
 
@@ -54147,6 +55738,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          */
         set_property(pspec: GObject.ParamSpec, value: GObject.Value | any): void;
 
@@ -54182,6 +55774,7 @@ export namespace Foundry {
          * the {@link Json.Serializable} instance, which will return the property
          * description for the given name.
          * @param name the name of the property
+         * @since 0.14
          * @virtual
          */
         vfunc_find_property(name: string): GObject.ParamSpec | null;
@@ -54191,6 +55784,7 @@ export namespace Foundry {
          * on the {@link Json.Serializable} instance, which will get the value of
          * the given property.
          * @param pspec a property description
+         * @since 0.14
          * @virtual
          */
         vfunc_get_property(pspec: GObject.ParamSpec): GObject.Value | any;
@@ -54218,6 +55812,7 @@ export namespace Foundry {
          * with the given value.
          * @param pspec a property description
          * @param value the property value to set
+         * @since 0.14
          * @virtual
          */
         vfunc_set_property(pspec: GObject.ParamSpec, value: unknown): void;
@@ -54422,6 +56017,7 @@ export namespace Foundry {
         vfunc_dup_name(): string | null;
 
         /**
+         * @since 1.1
          * @virtual
          */
         vfunc_dup_uri(): string | null;
@@ -54429,6 +56025,9 @@ export namespace Foundry {
         // Methods
         dup_name(): string | null;
 
+        /**
+         * @since 1.1
+         */
         dup_uri(): string | null;
     }
 
@@ -55515,6 +57114,7 @@ export namespace Foundry {
          * Adds a potential fix to the diagnostic.
          * @param description 
          * @param text_edits {@link Gio.ListModel} of {@link Foundry.TextEdit}
+         * @since 1.1
          */
         add_fix(description: string | null, text_edits: Gio.ListModel): void;
 
@@ -56919,6 +58519,7 @@ export namespace Foundry {
              * @param cwd working directory
              * @param environ environment
              * @param output_byte_limit output byte limit, or -1 for default
+             * @since 1.2
              * @virtual
              */
             vfunc_create_terminal(session: AcpSession, command: string, argv: string[] | null, cwd: string | null, environ: string[] | null, output_byte_limit: number): Dex.Future;
@@ -56931,6 +58532,7 @@ export namespace Foundry {
              * @param path an absolute path
              * @param line 1-based start line, or zero for the beginning
              * @param limit maximum line count, or zero for no explicit limit
+             * @since 1.2
              * @virtual
              */
             vfunc_read_text_file(session: AcpSession, path: string, line: number, limit: number): Dex.Future;
@@ -56939,6 +58541,7 @@ export namespace Foundry {
              * Refreshes `session`'s changed-file model after a prompt or terminal has
              * completed.
              * @param session a {@link Foundry.AcpSession}
+             * @since 1.2
              * @virtual
              */
             vfunc_refresh_changed_files(session: AcpSession): Dex.Future;
@@ -56949,6 +58552,7 @@ export namespace Foundry {
              * The returned future must resolve to a {@link Foundry.AcpPermissionResponse}.
              * @param session a {@link Foundry.AcpSession}
              * @param request a {@link Foundry.AcpPermissionRequest}
+             * @since 1.2
              * @virtual
              */
             vfunc_request_permission(session: AcpSession, request: AcpPermissionRequest): Dex.Future;
@@ -56957,6 +58561,7 @@ export namespace Foundry {
              * Delivers an ACP `session/update` notification to the client.
              * @param session a {@link Foundry.AcpSession}
              * @param update a {@link Foundry.AcpSessionUpdate}
+             * @since 1.2
              * @virtual
              */
             vfunc_session_update(session: AcpSession, update: AcpSessionUpdate): Dex.Future;
@@ -56965,6 +58570,7 @@ export namespace Foundry {
              * Handles an ACP `terminal/kill` request.
              * @param session a {@link Foundry.AcpSession}
              * @param terminal_id the protocol terminal identifier
+             * @since 1.2
              * @virtual
              */
             vfunc_terminal_kill(session: AcpSession, terminal_id: string): Dex.Future;
@@ -56975,6 +58581,7 @@ export namespace Foundry {
              * The returned future must resolve to a {@link Foundry.AcpTerminalOutput}.
              * @param session a {@link Foundry.AcpSession}
              * @param terminal_id the protocol terminal identifier
+             * @since 1.2
              * @virtual
              */
             vfunc_terminal_output(session: AcpSession, terminal_id: string): Dex.Future;
@@ -56983,6 +58590,7 @@ export namespace Foundry {
              * Handles an ACP `terminal/release` request.
              * @param session a {@link Foundry.AcpSession}
              * @param terminal_id the protocol terminal identifier
+             * @since 1.2
              * @virtual
              */
             vfunc_terminal_release(session: AcpSession, terminal_id: string): Dex.Future;
@@ -56991,6 +58599,7 @@ export namespace Foundry {
              * Handles an ACP `terminal/wait_for_exit` request.
              * @param session a {@link Foundry.AcpSession}
              * @param terminal_id the protocol terminal identifier
+             * @since 1.2
              * @virtual
              */
             vfunc_terminal_wait_for_exit(session: AcpSession, terminal_id: string): Dex.Future;
@@ -57000,6 +58609,7 @@ export namespace Foundry {
              * @param session a {@link Foundry.AcpSession}
              * @param path an absolute path
              * @param content UTF-8 content
+             * @since 1.2
              * @virtual
              */
             vfunc_write_text_file(session: AcpSession, path: string, content: string): Dex.Future;
@@ -57031,6 +58641,7 @@ export namespace Foundry {
          * @param environ environment
          * @param output_byte_limit output byte limit, or -1 for default
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         create_terminal(session: AcpSession, command: string, argv: string[] | null, cwd: string | null, environ: string[] | null, output_byte_limit: bigint | number): Dex.Future;
 
@@ -57043,6 +58654,7 @@ export namespace Foundry {
          * @param line 1-based start line, or zero for the beginning
          * @param limit maximum line count, or zero for no explicit limit
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         read_text_file(session: AcpSession, path: string, line: number, limit: number): Dex.Future;
 
@@ -57051,6 +58663,7 @@ export namespace Foundry {
          * completed.
          * @param session a {@link Foundry.AcpSession}
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         refresh_changed_files(session: AcpSession): Dex.Future;
 
@@ -57061,6 +58674,7 @@ export namespace Foundry {
          * @param session a {@link Foundry.AcpSession}
          * @param request a {@link Foundry.AcpPermissionRequest}
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         request_permission(session: AcpSession, request: AcpPermissionRequest): Dex.Future;
 
@@ -57069,6 +58683,7 @@ export namespace Foundry {
          * @param session a {@link Foundry.AcpSession}
          * @param update a {@link Foundry.AcpSessionUpdate}
          * @returns a {@link Dex.Future} resolving when local delivery   is complete
+         * @since 1.2
          */
         session_update(session: AcpSession, update: AcpSessionUpdate): Dex.Future;
 
@@ -57077,6 +58692,7 @@ export namespace Foundry {
          * @param session a {@link Foundry.AcpSession}
          * @param terminal_id the protocol terminal identifier
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         terminal_kill(session: AcpSession, terminal_id: string): Dex.Future;
 
@@ -57087,6 +58703,7 @@ export namespace Foundry {
          * @param session a {@link Foundry.AcpSession}
          * @param terminal_id the protocol terminal identifier
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         terminal_output(session: AcpSession, terminal_id: string): Dex.Future;
 
@@ -57095,6 +58712,7 @@ export namespace Foundry {
          * @param session a {@link Foundry.AcpSession}
          * @param terminal_id the protocol terminal identifier
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         terminal_release(session: AcpSession, terminal_id: string): Dex.Future;
 
@@ -57103,6 +58721,7 @@ export namespace Foundry {
          * @param session a {@link Foundry.AcpSession}
          * @param terminal_id the protocol terminal identifier
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         terminal_wait_for_exit(session: AcpSession, terminal_id: string): Dex.Future;
 
@@ -57112,6 +58731,7 @@ export namespace Foundry {
          * @param path an absolute path
          * @param content UTF-8 content
          * @returns a {@link Dex.Future}
+         * @since 1.2
          */
         write_text_file(session: AcpSession, path: string, content: string): Dex.Future;
     }
@@ -57135,6 +58755,7 @@ export namespace Foundry {
              * If the implementation does not support this, zero is returned.
              * @param flags non-zero flags to dispatch
              * @param commit_notify 
+             * @since 1.1
              * @virtual
              */
             vfunc_add_commit_notify(flags: TextBufferNotifyFlags, commit_notify: TextBufferCommitNotify): number;
@@ -57175,6 +58796,7 @@ export namespace Foundry {
             /**
              * Remove a commit notify handler.
              * @param commit_notify_handler the previously registered non-zero commit handler
+             * @since 1.1
              * @virtual
              */
             vfunc_remove_commit_notify(commit_notify_handler: number): void;
@@ -57231,6 +58853,7 @@ export namespace Foundry {
          * @param flags non-zero flags to dispatch
          * @param commit_notify 
          * @returns a non-zero commit handler id if supported; otherwise zero.
+         * @since 1.1
          */
         add_commit_notify(flags: TextBufferNotifyFlags, commit_notify: TextBufferCommitNotify): number;
 
@@ -57274,6 +58897,7 @@ export namespace Foundry {
         /**
          * Remove a commit notify handler.
          * @param commit_notify_handler the previously registered non-zero commit handler
+         * @since 1.1
          */
         remove_commit_notify(commit_notify_handler: number): void;
 

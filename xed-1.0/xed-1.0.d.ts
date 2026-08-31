@@ -1005,12 +1005,14 @@ export namespace Xed {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          */
         add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -1018,6 +1020,7 @@ export namespace Xed {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          */
         clear_attributes(cell: Gtk.CellRenderer): void;
 
@@ -1026,12 +1029,14 @@ export namespace Xed {
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
+         * @since 3.0
          */
         get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with `g_list_free()`     when no longer needed.
+         * @since 2.12
          */
         get_cells(): Gtk.CellRenderer[];
 
@@ -1043,6 +1048,7 @@ export namespace Xed {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -1054,6 +1060,7 @@ export namespace Xed {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -1064,6 +1071,7 @@ export namespace Xed {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          */
         reorder(cell: Gtk.CellRenderer, position: number): void;
 
@@ -1077,6 +1085,7 @@ export namespace Xed {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          */
         set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
@@ -1090,6 +1099,7 @@ export namespace Xed {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
@@ -1097,6 +1107,7 @@ export namespace Xed {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -1105,6 +1116,7 @@ export namespace Xed {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: Gtk.CellRenderer): void;
@@ -1113,12 +1125,14 @@ export namespace Xed {
          * Returns the underlying {@link Gtk.CellArea} which might be `cell_layout`
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): Gtk.CellRenderer[];
@@ -1131,6 +1145,7 @@ export namespace Xed {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -1143,6 +1158,7 @@ export namespace Xed {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -1154,6 +1170,7 @@ export namespace Xed {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: Gtk.CellRenderer, position: number): void;
@@ -1168,6 +1185,7 @@ export namespace Xed {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
@@ -1194,6 +1212,7 @@ export namespace Xed {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -1203,6 +1222,7 @@ export namespace Xed {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -1503,6 +1523,7 @@ export namespace Xed {
          * @param label user-visible label for the added choice
          * @param options ids for the options of the choice, or `null` for a boolean choice
          * @param option_labels user-visible labels for the options, must be the same length as `options`
+         * @since 3.22
          */
         add_choice(id: string, label: string, options: string[] | null, option_labels: string[] | null): void;
 
@@ -1514,6 +1535,7 @@ export namespace Xed {
          * Note that the `chooser` takes ownership of the filter, so you have to
          * ref and sink it if you want to keep a reference.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         add_filter(filter: Gtk.FileFilter): void;
 
@@ -1524,6 +1546,7 @@ export namespace Xed {
          * “/usr/share/mydrawprogram/Clipart” folder to the volume list.
          * @param folder filename of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
+         * @since 2.4
          */
         add_shortcut_folder(folder: string): boolean;
 
@@ -1534,6 +1557,7 @@ export namespace Xed {
          * “file:///usr/share/mydrawprogram/Clipart” folder to the volume list.
          * @param uri URI of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
+         * @since 2.4
          */
         add_shortcut_folder_uri(uri: string): boolean;
 
@@ -1541,6 +1565,7 @@ export namespace Xed {
          * Gets the type of operation that the file chooser is performing; see
          * `gtk_file_chooser_set_action()`.
          * @returns the action that the file selector is performing
+         * @since 2.4
          */
         get_action(): Gtk.FileChooserAction;
 
@@ -1548,6 +1573,7 @@ export namespace Xed {
          * Gets the currently selected option in the 'choice' with the given ID.
          * @param id the ID of the choice to get
          * @returns the ID of the currenly selected option
+         * @since 3.22
          */
         get_choice(id: string): string;
 
@@ -1555,6 +1581,7 @@ export namespace Xed {
          * Gets whether file choser will offer to create new folders.
          * See `gtk_file_chooser_set_create_folders()`.
          * @returns `true` if the Create Folder button should be displayed.
+         * @since 2.18
          */
         get_create_folders(): boolean;
 
@@ -1570,6 +1597,7 @@ export namespace Xed {
          * currently-selected folder in that mode, use `gtk_file_chooser_get_uri()` as the
          * usual way to get the selection.
          * @returns the full path of the current folder, or `null` if the current path cannot be represented as a local filename.  Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder()` on a nonexistent folder.
+         * @since 2.4
          */
         get_current_folder(): string | null;
 
@@ -1577,6 +1605,7 @@ export namespace Xed {
          * Gets the current folder of `chooser` as {@link Gio.File}.
          * See `gtk_file_chooser_get_current_folder_uri()`.
          * @returns the {@link Gio.File} for the current folder.
+         * @since 2.14
          */
         get_current_folder_file(): Gio.File | null;
 
@@ -1592,6 +1621,7 @@ export namespace Xed {
          * currently-selected folder in that mode, use `gtk_file_chooser_get_uri()` as the
          * usual way to get the selection.
          * @returns the URI for the current folder. Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder_uri()` on a nonexistent folder.
+         * @since 2.4
          */
         get_current_folder_uri(): string | null;
 
@@ -1605,6 +1635,7 @@ export namespace Xed {
          * change the extension of the typed filename based on the chosen format, say,
          * from “.jpg” to “.png”.
          * @returns The raw text from the file chooser’s “Name” entry.  Free this with `g_free()`.  Note that this string is not a full pathname or URI; it is whatever the contents of the entry are.  Note also that this string is in UTF-8 encoding, which is not necessarily the system’s encoding for filenames.
+         * @since 3.10
          */
         get_current_name(): string;
 
@@ -1612,6 +1643,7 @@ export namespace Xed {
          * Queries whether a file chooser is set to confirm for overwriting when the user
          * types a file name that already exists.
          * @returns `true` if the file chooser will present a confirmation dialog; `false` otherwise.
+         * @since 2.8
          */
         get_do_overwrite_confirmation(): boolean;
 
@@ -1619,6 +1651,7 @@ export namespace Xed {
          * Gets the current extra widget; see
          * `gtk_file_chooser_set_extra_widget()`.
          * @returns the current extra widget, or `null`
+         * @since 2.4
          */
         get_extra_widget(): Gtk.Widget | null;
 
@@ -1630,6 +1663,7 @@ export namespace Xed {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns a selected {@link Gio.File}. You own the returned file;     use `g_object_unref()` to release it.
+         * @since 2.14
          */
         get_file(): Gio.File;
 
@@ -1642,6 +1676,7 @@ export namespace Xed {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns The currently selected filename,  or `null` if no file is selected, or the selected file can't  be represented with a local filename. Free with `g_free()`.
+         * @since 2.4
          */
         get_filename(): string | null;
 
@@ -1651,6 +1686,7 @@ export namespace Xed {
          * folder cannot be represented as local filenames they will be ignored. (See
          * `gtk_file_chooser_get_uris()`)
          * @returns a {@link GLib.SList}    containing the filenames of all selected files and subfolders in    the current folder. Free the returned list with `g_slist_free()`,    and the filenames with `g_free()`.
+         * @since 2.4
          */
         get_filenames(): string[];
 
@@ -1658,12 +1694,14 @@ export namespace Xed {
          * Lists all the selected files and subfolders in the current folder of `chooser`
          * as {@link Gio.File}. An internal function, see `gtk_file_chooser_get_uris()`.
          * @returns a {@link GLib.SList}   containing a {@link Gio.File} for each selected file and subfolder in the   current folder.  Free the returned list with `g_slist_free()`, and   the files with `g_object_unref()`.
+         * @since 2.14
          */
         get_files(): Gio.File[];
 
         /**
          * Gets the current filter; see `gtk_file_chooser_set_filter()`.
          * @returns the current filter, or `null`
+         * @since 2.4
          */
         get_filter(): Gtk.FileFilter | null;
 
@@ -1671,6 +1709,7 @@ export namespace Xed {
          * Gets whether only local files can be selected in the
          * file selector. See `gtk_file_chooser_set_local_only()`
          * @returns `true` if only local files can be selected.
+         * @since 2.4
          */
         get_local_only(): boolean;
 
@@ -1678,6 +1717,7 @@ export namespace Xed {
          * Gets the {@link Gio.File} that should be previewed in a custom preview
          * Internal function, see `gtk_file_chooser_get_preview_uri()`.
          * @returns the {@link Gio.File} for the file to preview,     or `null` if no file is selected. Free with `g_object_unref()`.
+         * @since 2.14
          */
         get_preview_file(): Gio.File | null;
 
@@ -1685,6 +1725,7 @@ export namespace Xed {
          * Gets the filename that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the filename to preview, or `null` if  no file is selected, or if the selected file cannot be represented  as a local filename. Free with `g_free()`
+         * @since 2.4
          */
         get_preview_filename(): string | null;
 
@@ -1692,6 +1733,7 @@ export namespace Xed {
          * Gets the URI that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the URI for the file to preview,     or `null` if no file is selected. Free with `g_free()`.
+         * @since 2.4
          */
         get_preview_uri(): string | null;
 
@@ -1699,6 +1741,7 @@ export namespace Xed {
          * Gets the current preview widget; see
          * `gtk_file_chooser_set_preview_widget()`.
          * @returns the current preview widget, or `null`
+         * @since 2.4
          */
         get_preview_widget(): Gtk.Widget | null;
 
@@ -1707,6 +1750,7 @@ export namespace Xed {
          * should be shown for the current filename. See
          * `gtk_file_chooser_set_preview_widget_active()`.
          * @returns `true` if the preview widget is active for the current filename.
+         * @since 2.4
          */
         get_preview_widget_active(): boolean;
 
@@ -1714,6 +1758,7 @@ export namespace Xed {
          * Gets whether multiple files can be selected in the file
          * selector. See `gtk_file_chooser_set_select_multiple()`.
          * @returns `true` if multiple files can be selected.
+         * @since 2.4
          */
         get_select_multiple(): boolean;
 
@@ -1721,6 +1766,7 @@ export namespace Xed {
          * Gets whether hidden files and folders are displayed in the file selector.
          * See `gtk_file_chooser_set_show_hidden()`.
          * @returns `true` if hidden files and folders are displayed.
+         * @since 2.6
          */
         get_show_hidden(): boolean;
 
@@ -1732,6 +1778,7 @@ export namespace Xed {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns The currently selected URI, or `null`    if no file is selected. If `gtk_file_chooser_set_local_only()` is set to    `true` (the default) a local URI will be returned for any FUSE locations.    Free with `g_free()`
+         * @since 2.4
          */
         get_uri(): string | null;
 
@@ -1739,6 +1786,7 @@ export namespace Xed {
          * Lists all the selected files and subfolders in the current folder of
          * `chooser`. The returned names are full absolute URIs.
          * @returns a {@link GLib.SList} containing the URIs of all selected   files and subfolders in the current folder. Free the returned list   with `g_slist_free()`, and the filenames with `g_free()`.
+         * @since 2.4
          */
         get_uris(): string[];
 
@@ -1753,6 +1801,7 @@ export namespace Xed {
          * Lists the current set of user-selectable filters; see
          * `gtk_file_chooser_add_filter()`, `gtk_file_chooser_remove_filter()`.
          * @returns a  {@link GLib.SList} containing the current set of user selectable filters. The  contents of the list are owned by GTK+, but you must free the list  itself with `g_slist_free()` when you are done with it.
+         * @since 2.4
          */
         list_filters(): Gtk.FileFilter[];
 
@@ -1760,6 +1809,7 @@ export namespace Xed {
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder_uri()`.
          * @returns A list of folder URIs, or `null` if there are no shortcut folders.  Free the returned list with `g_slist_free()`, and the URIs with `g_free()`.
+         * @since 2.4
          */
         list_shortcut_folder_uris(): string[] | null;
 
@@ -1767,18 +1817,21 @@ export namespace Xed {
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder()`.
          * @returns A list of folder filenames, or `null` if there are no shortcut folders. Free the returned list with `g_slist_free()`, and the filenames with `g_free()`.
+         * @since 2.4
          */
         list_shortcut_folders(): string[] | null;
 
         /**
          * Removes a 'choice' that has been added with `gtk_file_chooser_add_choice()`.
          * @param id the ID of the choice to remove
+         * @since 3.22
          */
         remove_choice(id: string): void;
 
         /**
          * Removes `filter` from the list of filters that the user can select between.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         remove_filter(filter: Gtk.FileFilter): void;
 
@@ -1786,6 +1839,7 @@ export namespace Xed {
          * Removes a folder from a file chooser’s list of shortcut folders.
          * @param folder filename of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder()`
+         * @since 2.4
          */
         remove_shortcut_folder(folder: string): boolean;
 
@@ -1793,11 +1847,13 @@ export namespace Xed {
          * Removes a folder URI from a file chooser’s list of shortcut folders.
          * @param uri URI of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder_uri()`
+         * @since 2.4
          */
         remove_shortcut_folder_uri(uri: string): boolean;
 
         /**
          * Selects all the files in the current folder of a file chooser.
+         * @since 2.4
          */
         select_all(): void;
 
@@ -1806,6 +1862,7 @@ export namespace Xed {
          * _gtk_file_chooser_select_uri().
          * @param file the file to select
          * @returns Not useful.
+         * @since 2.14
          */
         select_file(file: Gio.File): boolean;
 
@@ -1815,6 +1872,7 @@ export namespace Xed {
          * be changed to the folder containing `filename`.
          * @param filename the filename to select
          * @returns Not useful. See also: `gtk_file_chooser_set_filename()`
+         * @since 2.4
          */
         select_filename(filename: string): boolean;
 
@@ -1824,6 +1882,7 @@ export namespace Xed {
          * `chooser` will be changed to the folder containing `filename`.
          * @param uri the URI to select
          * @returns Not useful.
+         * @since 2.4
          */
         select_uri(uri: string): boolean;
 
@@ -1834,6 +1893,7 @@ export namespace Xed {
          * {@link Gtk.FileChooserAction.SAVE} but not if the action is
          * {@link Gtk.FileChooserAction.OPEN}.
          * @param action the action that the file selector is performing
+         * @since 2.4
          */
         set_action(action: Gtk.FileChooserAction): void;
 
@@ -1843,6 +1903,7 @@ export namespace Xed {
          * possible options are "true" and "false".
          * @param id the ID of the choice to set
          * @param option the ID of the option to select
+         * @since 3.22
          */
         set_choice(id: string, option: string): void;
 
@@ -1851,6 +1912,7 @@ export namespace Xed {
          * This is only relevant if the action is not set to be
          * {@link Gtk.FileChooserAction.OPEN}.
          * @param create_folders `true` if the Create Folder button should be displayed
+         * @since 2.18
          */
         set_create_folders(create_folders: boolean): void;
 
@@ -1864,6 +1926,7 @@ export namespace Xed {
          * for the rationale behind this.
          * @param filename the full path of the new current folder
          * @returns Not useful.
+         * @since 2.4
          */
         set_current_folder(filename: string): boolean;
 
@@ -1872,6 +1935,7 @@ export namespace Xed {
          * Internal function, see `gtk_file_chooser_set_current_folder_uri()`.
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.14
          */
         set_current_folder_file(file: Gio.File): boolean;
 
@@ -1885,6 +1949,7 @@ export namespace Xed {
          * for the rationale behind this.
          * @param uri the URI for the new current folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.4
          */
         set_current_folder_uri(uri: string): boolean;
 
@@ -1900,6 +1965,7 @@ export namespace Xed {
          * Please see the documentation for those functions for an example of using
          * `gtk_file_chooser_set_current_name()` as well.
          * @param name the filename to use, as a UTF-8 string
+         * @since 2.4
          */
         set_current_name(name: string): void;
 
@@ -1916,12 +1982,14 @@ export namespace Xed {
          * {@link Gtk.FileChooser.SignalSignatures.confirm_overwrite | Gtk.FileChooser::confirm-overwrite} signal; please refer to its documentation
          * for the details.
          * @param do_overwrite_confirmation whether to confirm overwriting in save mode
+         * @since 2.8
          */
         set_do_overwrite_confirmation(do_overwrite_confirmation: boolean): void;
 
         /**
          * Sets an application-supplied widget to provide extra options to the user.
          * @param extra_widget widget for extra options
+         * @since 2.4
          */
         set_extra_widget(extra_widget: Gtk.Widget): void;
 
@@ -1963,6 +2031,7 @@ export namespace Xed {
          * 
          * @param file the {@link Gio.File} to set as current
          * @returns Not useful.
+         * @since 2.14
          */
         set_file(file: Gio.File): boolean;
 
@@ -2003,6 +2072,7 @@ export namespace Xed {
          * is already known, so the file chooser will use it.
          * @param filename the filename to set as current
          * @returns Not useful.
+         * @since 2.4
          */
         set_filename(filename: string): boolean;
 
@@ -2014,6 +2084,7 @@ export namespace Xed {
          * filters is empty is useful if you want to restrict the displayed
          * set of files without letting the user change it.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         set_filter(filter: Gtk.FileFilter): void;
 
@@ -2032,6 +2103,7 @@ export namespace Xed {
          * available using the native filesystem via a userspace
          * filesystem (FUSE).
          * @param local_only `true` if only local files can be selected
+         * @since 2.4
          */
         set_local_only(local_only: boolean): void;
 
@@ -2049,6 +2121,7 @@ export namespace Xed {
          * application-supplied preview widget is not active, the file chooser
          * will display no preview at all.
          * @param preview_widget widget for displaying preview.
+         * @since 2.4
          */
         set_preview_widget(preview_widget: Gtk.Widget): void;
 
@@ -2060,6 +2133,7 @@ export namespace Xed {
          * or it may display no preview at all. See
          * `gtk_file_chooser_set_preview_widget()` for more details.
          * @param active whether to display the user-specified preview widget
+         * @since 2.4
          */
         set_preview_widget_active(active: boolean): void;
 
@@ -2068,12 +2142,14 @@ export namespace Xed {
          * only relevant if the action is set to be {@link Gtk.FileChooserAction.OPEN} or
          * {@link Gtk.FileChooserAction.SELECT_FOLDER}.
          * @param select_multiple `true` if multiple files can be selected.
+         * @since 2.4
          */
         set_select_multiple(select_multiple: boolean): void;
 
         /**
          * Sets whether hidden files and folders are displayed in the file selector.
          * @param show_hidden `true` if hidden files and folders should be displayed.
+         * @since 2.6
          */
         set_show_hidden(show_hidden: boolean): void;
 
@@ -2114,6 +2190,7 @@ export namespace Xed {
          * is already known, so the file chooser will use it.
          * @param uri the URI to set as current
          * @returns Not useful.
+         * @since 2.4
          */
         set_uri(uri: string): boolean;
 
@@ -2125,11 +2202,13 @@ export namespace Xed {
          * 
          * See also: `gtk_file_chooser_set_preview_widget()`
          * @param use_label whether to display a stock label with the name of the previewed file
+         * @since 2.4
          */
         set_use_preview_label(use_label: boolean): void;
 
         /**
          * Unselects all the files in the current folder of a file chooser.
+         * @since 2.4
          */
         unselect_all(): void;
 
@@ -2137,6 +2216,7 @@ export namespace Xed {
          * Unselects the file referred to by `file`. If the file is not in the current
          * directory, does not exist, or is otherwise not currently selected, does nothing.
          * @param file a {@link Gio.File}
+         * @since 2.14
          */
         unselect_file(file: Gio.File): void;
 
@@ -2145,6 +2225,7 @@ export namespace Xed {
          * is not in the current directory, does not exist, or
          * is otherwise not currently selected, does nothing.
          * @param filename the filename to unselect
+         * @since 2.4
          */
         unselect_filename(filename: string): void;
 
@@ -2153,6 +2234,7 @@ export namespace Xed {
          * is not in the current directory, does not exist, or
          * is otherwise not currently selected, does nothing.
          * @param uri the URI to unselect
+         * @since 2.4
          */
         unselect_uri(uri: string): void;
     }
@@ -3226,12 +3308,14 @@ export namespace Xed {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -3569,12 +3653,14 @@ export namespace Xed {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -4120,6 +4206,7 @@ export namespace Xed {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_added(action_name: string): void;
 
@@ -4129,6 +4216,7 @@ export namespace Xed {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
 
@@ -4137,6 +4225,7 @@ export namespace Xed {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          */
         action_removed(action_name: string): void;
 
@@ -4146,6 +4235,7 @@ export namespace Xed {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          */
         action_state_changed(action_name: string, state: GLib.Variant): void;
 
@@ -4185,6 +4275,7 @@ export namespace Xed {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          */
         activate_action(action_name: string, parameter: GLib.Variant | null): void;
 
@@ -4202,6 +4293,7 @@ export namespace Xed {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          */
         change_action_state(action_name: string, value: GLib.Variant): void;
 
@@ -4212,6 +4304,7 @@ export namespace Xed {
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
          * @returns whether the action is currently enabled
+         * @since 2.28
          */
         get_action_enabled(action_name: string): boolean;
 
@@ -4231,6 +4324,7 @@ export namespace Xed {
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
          * @returns the parameter type
+         * @since 2.28
          */
         get_action_parameter_type(action_name: string): GLib.VariantType | null;
 
@@ -4245,6 +4339,7 @@ export namespace Xed {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
+         * @since 2.28
          */
         get_action_state(action_name: string): GLib.Variant | null;
 
@@ -4269,6 +4364,7 @@ export namespace Xed {
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
+         * @since 2.28
          */
         get_action_state_hint(action_name: string): GLib.Variant | null;
 
@@ -4291,6 +4387,7 @@ export namespace Xed {
          * with the same name but a different state type.
          * @param action_name the name of the action to query
          * @returns the state type, if the action is stateful
+         * @since 2.28
          */
         get_action_state_type(action_name: string): GLib.VariantType | null;
 
@@ -4298,6 +4395,7 @@ export namespace Xed {
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
          * @returns whether the named action exists
+         * @since 2.28
          */
         has_action(action_name: string): boolean;
 
@@ -4307,6 +4405,7 @@ export namespace Xed {
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
+         * @since 2.28
          */
         list_actions(): string[];
 
@@ -4340,6 +4439,7 @@ export namespace Xed {
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
          * @returns `TRUE` if the action exists, else `FALSE`
+         * @since 2.32
          */
         query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
 
@@ -4348,6 +4448,7 @@ export namespace Xed {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_added(action_name: string): void;
@@ -4358,6 +4459,7 @@ export namespace Xed {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @since 2.28
          * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
@@ -4367,6 +4469,7 @@ export namespace Xed {
          * 
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @since 2.28
          * @virtual
          */
         vfunc_action_removed(action_name: string): void;
@@ -4377,6 +4480,7 @@ export namespace Xed {
          * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @since 2.28
          * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
@@ -4417,6 +4521,7 @@ export namespace Xed {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @since 2.28
          * @virtual
          */
         vfunc_activate_action(action_name: string, parameter: GLib.Variant | null): void;
@@ -4435,6 +4540,7 @@ export namespace Xed {
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @since 2.28
          * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
@@ -4445,6 +4551,7 @@ export namespace Xed {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
@@ -4464,6 +4571,7 @@ export namespace Xed {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
@@ -4478,6 +4586,7 @@ export namespace Xed {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
@@ -4502,6 +4611,7 @@ export namespace Xed {
          * The return value (if non-`NULL`) should be freed with
          * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
@@ -4524,6 +4634,7 @@ export namespace Xed {
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @since 2.28
          * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
@@ -4531,6 +4642,7 @@ export namespace Xed {
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @since 2.28
          * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
@@ -4540,6 +4652,7 @@ export namespace Xed {
          * 
          * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @since 2.28
          * @virtual
          */
         vfunc_list_actions(): string[];
@@ -4573,6 +4686,7 @@ export namespace Xed {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @since 2.32
          * @virtual
          */
         vfunc_query_action(action_name: string): [boolean, boolean, GLib.VariantType | null, GLib.VariantType | null, GLib.Variant | null, GLib.Variant | null];
@@ -4585,6 +4699,7 @@ export namespace Xed {
          * 
          * The action map takes its own reference on `action`.
          * @param action a {@link Gio.Action}
+         * @since 2.32
          */
         add_action(action: Gio.Action): void;
 
@@ -4601,6 +4716,7 @@ export namespace Xed {
          * If no such action exists, returns `NULL`.
          * @param action_name the name of an action
          * @returns a {@link Gio.Action}
+         * @since 2.32
          */
         lookup_action(action_name: string): Gio.Action | null;
 
@@ -4609,6 +4725,7 @@ export namespace Xed {
          * 
          * If no action of this name is in the map then nothing happens.
          * @param action_name the name of the action
+         * @since 2.32
          */
         remove_action(action_name: string): void;
 
@@ -4636,6 +4753,7 @@ export namespace Xed {
          * }
          * ```
          * @param entries a pointer to   the first item in an array of {@link Gio.ActionEntry} structs
+         * @since 2.78
          */
         remove_action_entries(entries: Gio.ActionEntry[]): void;
 
@@ -4647,6 +4765,7 @@ export namespace Xed {
          * 
          * The action map takes its own reference on `action`.
          * @param action a {@link Gio.Action}
+         * @since 2.32
          * @virtual
          */
         vfunc_add_action(action: Gio.Action): void;
@@ -4656,6 +4775,7 @@ export namespace Xed {
          * 
          * If no such action exists, returns `NULL`.
          * @param action_name the name of an action
+         * @since 2.32
          * @virtual
          */
         vfunc_lookup_action(action_name: string): Gio.Action | null;
@@ -4665,6 +4785,7 @@ export namespace Xed {
          * 
          * If no action of this name is in the map then nothing happens.
          * @param action_name the name of the action
+         * @since 2.32
          * @virtual
          */
         vfunc_remove_action(action_name: string): void;

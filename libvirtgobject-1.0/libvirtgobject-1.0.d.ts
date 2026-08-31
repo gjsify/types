@@ -1477,6 +1477,7 @@ export namespace LibvirtGObject {
          * @param idx the graphics index
          * @param flags extra flags, currently unused
          * @returns An fd on success, -1 on failure.
+         * @since 0.2.0
          */
         open_graphics_fd(idx: number, flags: number): number;
 

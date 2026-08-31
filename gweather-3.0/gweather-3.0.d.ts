@@ -1454,12 +1454,14 @@ export namespace GWeather {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          */
         add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -1467,6 +1469,7 @@ export namespace GWeather {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          */
         clear_attributes(cell: Gtk.CellRenderer): void;
 
@@ -1475,12 +1478,14 @@ export namespace GWeather {
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
          * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
+         * @since 3.0
          */
         get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with `g_list_free()`     when no longer needed.
+         * @since 2.12
          */
         get_cells(): Gtk.CellRenderer[];
 
@@ -1492,6 +1497,7 @@ export namespace GWeather {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -1503,6 +1509,7 @@ export namespace GWeather {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          */
         pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
 
@@ -1513,6 +1520,7 @@ export namespace GWeather {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          */
         reorder(cell: Gtk.CellRenderer, position: number): void;
 
@@ -1526,6 +1534,7 @@ export namespace GWeather {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          */
         set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
 
@@ -1539,6 +1548,7 @@ export namespace GWeather {
          * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
@@ -1546,6 +1556,7 @@ export namespace GWeather {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -1554,6 +1565,7 @@ export namespace GWeather {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: Gtk.CellRenderer): void;
@@ -1562,12 +1574,14 @@ export namespace GWeather {
          * Returns the underlying {@link Gtk.CellArea} which might be `cell_layout`
          * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
+         * @since 3.0
          * @virtual
          */
         vfunc_get_area(): Gtk.CellArea | null;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): Gtk.CellRenderer[];
@@ -1580,6 +1594,7 @@ export namespace GWeather {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -1592,6 +1607,7 @@ export namespace GWeather {
          * Note that reusing the same cell renderer is not supported.
          * @param cell a {@link Gtk.CellRenderer}
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
@@ -1603,6 +1619,7 @@ export namespace GWeather {
          * for this to function properly.
          * @param cell a {@link Gtk.CellRenderer} to reorder
          * @param position new position to insert `cell` at
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: Gtk.CellRenderer, position: number): void;
@@ -1617,6 +1634,7 @@ export namespace GWeather {
          * `func` may be `null` to remove a previously set function.
          * @param cell a {@link Gtk.CellRenderer}
          * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func: Gtk.CellLayoutDataFunc | null): void;
@@ -1643,6 +1661,7 @@ export namespace GWeather {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -1652,6 +1671,7 @@ export namespace GWeather {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -1746,6 +1766,7 @@ export namespace GWeather {
          * @param lon Longitude, in degrees
          * @param cancellable optional, NULL to ignore
          * @param callback callback function for GAsyncReadyCallback argument for GAsyncResult
+         * @since 3.12
          */
         detect_nearest_city(lat: number, lon: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1800,6 +1821,7 @@ export namespace GWeather {
          * @param lat Latitude, in degrees
          * @param lon Longitude, in degrees
          * @returns the city closest to (`lat`, `lon`), in the          region or administrative district of `loc`.
+         * @since 3.12
          */
         find_nearest_city(lat: number, lon: number): Location;
 
@@ -1816,6 +1838,7 @@ export namespace GWeather {
          * @param lon Longitude, in degrees
          * @param func returns true to continue check for                                       the location and false to filter the location out
          * @returns the city closest to (`lat`, `lon`), in the          region or administrative district of `loc` with validation of filter function.
+         * @since 3.12
          */
         find_nearest_city_full(lat: number, lon: number, func: FilterFunc | null): Location;
 
@@ -1830,6 +1853,7 @@ export namespace GWeather {
          * Gets an array of `loc`'s children; this is owned by `loc` and will
          * not remain valid if `loc` is freed.
          * @returns `loc`'s children. (May be empty, but will not be `null`.)
+         * @deprecated since 40.: Use `gweather_location_next_child()` instead to avoid high memory consumption
          */
         get_children(): Location[];
 
@@ -1885,6 +1909,7 @@ export namespace GWeather {
         /**
          * Gets `loc`'s English name.
          * @returns `loc`'s English name
+         * @since 3.36
          */
         get_english_name(): string;
 
@@ -1894,6 +1919,7 @@ export namespace GWeather {
          * called on it. You can use this to sort locations, or to comparing
          * user input against a location name.
          * @returns `loc`'s English name for sorting
+         * @since 3.38
          */
         get_english_sort_name(): string;
 
@@ -1975,6 +2001,7 @@ export namespace GWeather {
          * 
          * @param child The child
          * @returns The next child, or `null`
+         * @since 40
          */
         next_child(child: Location | null): Location | null;
 
@@ -2037,6 +2064,7 @@ export namespace GWeather {
          * 
          * Prior to version 40 no reference was returned.
          * @param tzid A timezone identifier, like "America/New_York" or "Europe/London"
+         * @since 3.12
          */
         static get_by_tzid(tzid: string): Timezone;
 

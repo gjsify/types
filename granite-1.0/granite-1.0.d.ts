@@ -1009,6 +1009,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          * @param style 
          * @param gicon 
          * @param size 
+         * @deprecated since 5.2.4
          */
         load_symbolic_icon_from_gicon(style: Gtk.StyleContext, gicon: Gio.Icon, size: number): GdkPixbuf.Pixbuf | null;
 
@@ -1016,6 +1017,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          * @param style 
          * @param iconname 
          * @param size 
+         * @deprecated since 5.2.4
          */
         load_symbolic_icon(style: Gtk.StyleContext, iconname: string, size: number): GdkPixbuf.Pixbuf | null;
     }
@@ -1397,32 +1399,38 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
         // Static methods
         /**
          * @param uri 
+         * @deprecated since 5.2.4
          */
         static open_uri(uri: string): void;
 
         /**
          * @param file 
+         * @deprecated since 5.2.4
          */
         static open(file: Gio.File): void;
 
         /**
          * @param files 
+         * @deprecated since 5.2.4
          */
         static open_files(files: Gio.File[]): void;
 
         /**
          * @param app 
+         * @deprecated since 5.2.4
          */
         static launch(app: Gio.File): void;
 
         /**
          * @param command 
+         * @deprecated since 5.2.4
          */
         static execute_command(command: string): boolean;
 
         /**
          * @param app 
          * @param files 
+         * @deprecated since 5.2.4
          */
         static launch_with_files(app: Gio.File | null, files: Gio.File[]): void;
 
@@ -4293,6 +4301,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
         // Virtual methods
         /**
+         * @deprecated since 5.2.0
          * @virtual
          */
         vfunc_position_dropdown(): [number, number];
@@ -4309,6 +4318,9 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
          */
         set_time(value: GLib.DateTime): void;
 
+        /**
+         * @deprecated since 5.2.0
+         */
         position_dropdown(): [number, number];
     }
 

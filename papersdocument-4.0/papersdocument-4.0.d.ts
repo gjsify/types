@@ -896,6 +896,7 @@ export namespace PapersDocument {
 
         /**
          * Gets the border width of `annot`.
+         * @since 48.0
          */
         get_border_width(): number;
 
@@ -909,6 +910,7 @@ export namespace PapersDocument {
 
         /**
          * Gets the hidden flag of `annot`, i.e. whether it is hidden or not.
+         * @since 48.0
          */
         get_hidden(): boolean;
 
@@ -960,6 +962,7 @@ export namespace PapersDocument {
          * Set the area of the annotation to `area`.
          * @param width double
          * @returns `true` if the border width has been changed, `false` otherwise
+         * @since 48.0
          */
         set_border_width(width: number): boolean;
 
@@ -976,6 +979,7 @@ export namespace PapersDocument {
          * Set whether the annotation is hidden or not.
          * @param hidden a boolean
          * @returns `true` if the visibility of the annotation has been changed, `false` otherwise
+         * @since 48.0
          */
         set_hidden(hidden: boolean): boolean;
 
@@ -1174,18 +1178,21 @@ export namespace PapersDocument {
          * This should typically be called every time the content is changed unless the free text
          * annotation is supposed to be fixed width for instance.
          * @param ctx a valid {@link Pango.Context}
+         * @since 48.0
          */
         auto_resize(ctx: Pango.Context): void;
 
         /**
          * Returns a copy of the font descption used by the annotation.
          * @returns the font description used to display the annotation.
+         * @since 48.0
          */
         get_font_description(): Pango.FontDescription;
 
         /**
          * Gets the text color of `annot`.
          * @returns the font RGBA, must be freed by the caller
+         * @since 48.0
          */
         get_font_rgba(): Gdk.RGBA;
 
@@ -1193,6 +1200,7 @@ export namespace PapersDocument {
          * Set the font of the free text annotation to annotation to `font_desc`.
          * @param font_desc a {@link Pango.FontDescription}
          * @returns `true` if the font description has been changed, `false` otherwise
+         * @since 48.0
          */
         set_font_description(font_desc: Pango.FontDescription): boolean;
 
@@ -1200,6 +1208,7 @@ export namespace PapersDocument {
          * Set the text color of the annotation to `rgba`.
          * @param rgba a {@link Gdk.RGBA}
          * @returns `true` if the color has been changed, `false` otherwise
+         * @since 48.0
          */
         set_font_rgba(rgba: Gdk.RGBA): boolean;
     }
@@ -1529,12 +1538,14 @@ export namespace PapersDocument {
         /**
          * Set the custom cairo surface of the stamp.
          * @returns the custom cairo surface of the stamp, if it exists.
+         * @since 48.0
          */
         get_surface(): cairo.Surface;
 
         /**
          * Set the custom cairo surface of the stamp.
          * @param surface a {@link cairo.Surface}
+         * @since 48.0
          */
         set_surface(surface: cairo.Surface): void;
     }
@@ -2119,6 +2130,7 @@ export namespace PapersDocument {
          * is destroyed, or if this function returns `null`.
          * @param fd a file descriptor
          * @param mime_type the mime type
+         * @since 42.0
          */
         static factory_get_document_for_fd(fd: number, mime_type: string): Document;
 
@@ -2240,6 +2252,7 @@ export namespace PapersDocument {
          * 
          * See `pps_document_load()` for more information.
          * @param fd a file descriptor
+         * @since 42.0
          * @virtual
          */
         vfunc_load_fd(fd: number): boolean;
@@ -2314,6 +2327,7 @@ export namespace PapersDocument {
          * used on very specific cases, where it is not desired that the cache should
          * be loaded. Calling with a loaded cache is a programmers' error.
          * @param page a {@link PapersDocument.Page}
+         * @since 49.0
          */
         get_page_size_uncached(page: Page): [number, number];
 
@@ -2365,6 +2379,7 @@ export namespace PapersDocument {
          * See `pps_document_load()` for more information.
          * @param fd a file descriptor
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
+         * @since 42.0
          */
         load_fd(fd: number): boolean;
 
@@ -5818,6 +5833,7 @@ export namespace PapersDocument {
             /**
              * @param page a {@link PapersDocument.Page} of that document
              * @param area a {@link PapersDocument.Rectangle} on that page
+             * @since 47
              * @virtual
              */
             vfunc_get_text_in_area(page: Page, area: Rectangle): string | null;
@@ -5866,6 +5882,7 @@ export namespace PapersDocument {
          * @param page a {@link PapersDocument.Page} of that document
          * @param area a {@link PapersDocument.Rectangle} on that page
          * @returns the text inside the area of the specified page or `null`
+         * @since 47
          */
         get_text_in_area(page: Page, area: Rectangle): string | null;
 

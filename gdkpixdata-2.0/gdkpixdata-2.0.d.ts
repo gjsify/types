@@ -210,6 +210,7 @@ export namespace GdkPixdata {
          * or `GDK_PIXBUF_ERROR_UNKNOWN_TYPE`.
          * @param stream stream of bytes containing a   serialized {@link GdkPixdata.Pixdata} structure.
          * @returns Upon successful deserialization `TRUE` is returned, `FALSE` otherwise.
+         * @deprecated since 2.32: Use {@link Gio.Resource} instead.
          */
         deserialize(stream: Uint8Array | string): boolean;
 
@@ -219,6 +220,7 @@ export namespace GdkPixdata {
          * {@link GdkPixdata.Pixdata} fields in network byte order, plus the `pixel_data`
          * bytes the structure points to.
          * @returns A newly-allocated string containing the serialized {@link GdkPixdata.Pixdata} structure.
+         * @deprecated since 2.32: Use {@link Gio.Resource} instead.
          */
         serialize(): Uint8Array;
 
@@ -231,6 +233,7 @@ export namespace GdkPixdata {
          * @param name used for naming generated data structures or macros
          * @param dump_type the kind of C source to be generated
          * @returns a newly-allocated string buffer containing   the C source form of `pixdata`.
+         * @deprecated since 2.32: Use {@link Gio.Resource} instead.
          */
         to_csource(name: string, dump_type: PixdataDumpType): GLib.String;
     }

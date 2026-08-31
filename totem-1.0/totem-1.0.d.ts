@@ -456,11 +456,13 @@ export namespace Totem {
         // Static methods
         /**
          * Get the full list of file content types which Totem supports playing.
+         * @since 3.1.5
          */
         static get_supported_content_types(): string[];
 
         /**
          * Get the full list of URI schemes which Totem supports accessing.
+         * @since 3.1.5
          */
         static get_supported_uri_schemes(): string[];
 

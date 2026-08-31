@@ -1271,6 +1271,7 @@ export namespace Gpseq {
          * @param g_type 
          * @param g_dup_func 
          * @param exception 
+         * @since 0.2.0-beta
          */
         static err(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, exception: GLib.Error): Future;
 
@@ -1278,6 +1279,7 @@ export namespace Gpseq {
          * @param g_type 
          * @param g_dup_func 
          * @param result 
+         * @since 0.3.0-alpha
          */
         static done(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, result: Result): Future;
 
@@ -1349,11 +1351,15 @@ export namespace Gpseq {
 
         get_is_err(): boolean;
 
+        /**
+         * @since 0.3.0-beta
+         */
         ok(): Result;
 
         /**
          * @param expected 
          * @param equal 
+         * @since 0.3.0-beta
          */
         ok_with(expected: never, equal: Gee.EqualDataFunc): Result;
 
@@ -2534,6 +2540,7 @@ export namespace Gpseq {
 
         /**
          * @param compare 
+         * @since 0.4.0-alpha
          */
         reverse_order_by(compare: GLib.CompareDataFunc): Seq;
 
@@ -2572,13 +2579,20 @@ export namespace Gpseq {
          */
         partition(pred: Predicate): Future;
 
+        /**
+         * @since 0.4.0-alpha
+         */
         to_generic_array(): Future;
 
+        /**
+         * @since 0.4.0-alpha
+         */
         to_list(): Future;
 
         /**
          * @param hash 
          * @param equal 
+         * @since 0.4.0-alpha
          */
         to_set(hash: Gee.HashDataFunc, equal: Gee.EqualDataFunc): Future;
 
@@ -2593,6 +2607,7 @@ export namespace Gpseq {
          * @param key_hash 
          * @param key_equal 
          * @param value_equal 
+         * @since 0.4.0-alpha
          */
         to_map(k_type: GObject.GType, k_dup_func: GObject.BoxedCopyFunc, v_type: GObject.GType, v_dup_func: GObject.BoxedCopyFunc, key_mapper: MapFunc, val_mapper: MapFunc, merger: CombineFunc, key_hash: Gee.HashDataFunc, key_equal: Gee.EqualDataFunc, value_equal: Gee.EqualDataFunc): Future;
     }
@@ -3609,18 +3624,26 @@ export namespace Gpseq {
          */
         static set_default_task_env(task_env: TaskEnv): void;
 
+        /**
+         * @since 0.2.0-alpha
+         */
         static get_common_task_env(): TaskEnv;
 
         /**
          * @param task_env 
+         * @since 0.2.0-alpha
          */
         static push(task_env: TaskEnv): void;
 
+        /**
+         * @since 0.2.0-alpha
+         */
         static pop(): void;
 
         /**
          * @param task_env 
          * @param func 
+         * @since 0.2.0-alpha
          */
         static apply(task_env: TaskEnv, func: VoidFunc): void;
 
@@ -3717,11 +3740,13 @@ export namespace Gpseq {
          * @param g_type 
          * @param g_dup_func 
          * @param func 
+         * @since 0.4.0-alpha
          */
         task(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: TaskFunc): Future;
 
         /**
          * @param func 
+         * @since 0.4.0-alpha
          */
         run(func: VoidTaskFunc): Future;
 
@@ -4052,6 +4077,7 @@ export namespace Gpseq {
          * @param g_type 
          * @param g_dup_func 
          * @param func 
+         * @since 0.2.0-alpha
          */
         blocking(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: TaskFunc): null;
     }
@@ -4933,11 +4959,15 @@ export namespace Gpseq {
 
         get_is_err(): boolean;
 
+        /**
+         * @since 0.3.0-beta
+         */
         ok(): Result;
 
         /**
          * @param expected 
          * @param equal 
+         * @since 0.3.0-beta
          */
         ok_with(expected: never, equal: Gee.EqualDataFunc): Result;
 

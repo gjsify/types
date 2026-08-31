@@ -313,6 +313,12 @@ export const DECLS = {
     GtkWindow: ['GtkWindow', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable'],
 };
 
+// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
+// and descend from `GObject.Object`. A renderer places them like a container; a check
+// asking "is this a widget" must not count them. Derived from the accessor pair, never
+// from a list — the count is in the provenance line above.
+export const CHILD_HOLDERS = [];
+
 export const ENUM_NICKS = {
     GdkGravity: ['north-west', 'north', 'north-east', 'west', 'center', 'east', 'south-west', 'south', 'south-east', 'static'],
     GdkWindowTypeHint: ['normal', 'dialog', 'menu', 'toolbar', 'splashscreen', 'utility', 'dock', 'desktop', 'dropdown-menu', 'popup-menu', 'tooltip', 'notification', 'combo', 'dnd'],

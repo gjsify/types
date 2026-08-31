@@ -3152,6 +3152,9 @@ export namespace LibvirtGConfig {
 
         get_driver_name(): string;
 
+        /**
+         * @deprecated since 0.1.7: Use `gvir_config_domain_disk_get_driver_format()` instead
+         */
         get_driver_type(): string;
 
         get_guest_device_type(): DomainDiskGuestDeviceType;
@@ -3189,6 +3192,7 @@ export namespace LibvirtGConfig {
 
         /**
          * @param driver_type 
+         * @deprecated since 0.1.7: Use `gvir_config_domain_disk_set_driver_format()` instead
          */
         set_driver_type(driver_type: string): void;
 

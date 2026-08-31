@@ -692,6 +692,7 @@ export namespace Farstream {
          * element names only and should not contain any property names.
          * @param name the full-path child's name
          * @returns the child object or `null` if     not found.
+         * @since 1.22
          */
         get_child_by_name_recurse<T = GObject.Object>(name: string): T;
 

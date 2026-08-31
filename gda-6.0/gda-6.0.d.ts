@@ -3657,6 +3657,7 @@ export namespace Gda {
          * @param dsn data sourcename.
          * @param auth_string authentication string, or `null`
          * @param options options for the connection (see {@link Gda.ConnectionOptions}).
+         * @since 6.0
          */
         static open_from_dsn(dsn: DsnInfo, auth_string: string | null, options: ConnectionOptions): Connection;
 
@@ -3838,6 +3839,7 @@ export namespace Gda {
          * GdaDbCatalog *catalog = gda_db_catalog_new ();
          * g_object_set (catalog, "connection", cnc, NULL);
          * @returns A new instance of {@link Gda.DbCatalog}. The new object should be deallocated using `g_object_unref()`.
+         * @since 6.0
          */
         create_db_catalog(): DbCatalog;
 
@@ -3918,6 +3920,7 @@ export namespace Gda {
          * @param condition_column_name the name of the column to used in the WHERE condition clause
          * @param condition_value the `condition_column_type`'s GType
          * @returns TRUE if no error occurred, FALSE otherwise
+         * @since 4.2.3
          */
         delete_row_from_table(table: string, condition_column_name: string, condition_value: GObject.Value | any): boolean;
 
@@ -3933,6 +3936,7 @@ export namespace Gda {
          * returned value, see `gda_connection_statement_execute_non_select()`'s documentation.
          * @param sql a query statement that must not begin with "SELECT"
          * @returns the number of rows affected or -1, or -2
+         * @since 4.2.3
          */
         execute_non_select_command(sql: string): number;
 
@@ -3940,6 +3944,7 @@ export namespace Gda {
          * Execute a SQL SELECT command over an opened connection.
          * @param sql a query statement that must begin with "SELECT"
          * @returns a new {@link Gda.DataModel} if successful, `null` otherwise
+         * @since 4.2.3
          */
         execute_select_command(sql: string): DataModel;
 
@@ -3962,6 +3967,7 @@ export namespace Gda {
         /**
          * This function allows you to determine the actual format for the date values.
          * @returns `true` if no error occurred
+         * @since 5.2
          */
         get_date_format(): [boolean, GLib.DateDMY | null, GLib.DateDMY | null, GLib.DateDMY | null, string];
 
@@ -3988,6 +3994,7 @@ export namespace Gda {
          * operation has finished.
          * @param thread the {@link GLib.Thread} in which `context` will be used, or `null` (for the current thread)
          * @returns a {@link GLib.MainContext}, or `null`
+         * @since 6.0
          */
         get_main_context(thread: GLib.Thread | null): GLib.MainContext;
 
@@ -4035,6 +4042,7 @@ export namespace Gda {
          * Get the current status of `cnc`. Note that this function needs to lock the connection (see {@link Gda.Lockable})
          * to obtain the result.
          * @returns the connection's status
+         * @since 6.0
          */
         get_status(): ConnectionStatus;
 
@@ -4058,6 +4066,7 @@ export namespace Gda {
          * @param col_names a list of column names (as const gchar *)
          * @param values a list of values (as {@link GObject.Value})
          * @returns TRUE if no error occurred, FALSE otherwise
+         * @since 4.2.3
          */
         insert_row_into_table_v(table: string, col_names: string[], values: (GObject.Value | any)[]): boolean;
 
@@ -4072,6 +4081,7 @@ export namespace Gda {
          * Get the opaque pointer previously set using `gda_connection_internal_set_provider_data()`.
          * If it's not set, then add a connection event and returns `null`
          * @returns the pointer to the opaque structure set using `gda_connection_internal_set_provider_data()`, or `null`
+         * @since 5.0.2
          */
         internal_get_provider_data_error(): ServerProviderConnectionData | null;
 
@@ -4192,6 +4202,7 @@ export namespace Gda {
          * `gda_connection_set_main_context()`, for example when there is a main loop for that main context.
          * @param callback a {@link Gda.ConnectionOpenFunc} which will be called after the connection has been opened (of failed to open)
          * @returns a job ID
+         * @since 6.0
          */
         open_async(callback: ConnectionOpenFunc): number;
 
@@ -4202,6 +4213,7 @@ export namespace Gda {
          * @param op a {@link Gda.ServerOperation} object
          * @param path a complete path to a node (starting with "/")
          * @returns a new string, or `null` if the value is undefined or if the `path` is not defined or `path` does not hold any value, or if the value held is not a string or a valid SQL identifier.
+         * @since 6.0
          */
         operation_get_sql_identifier_at_path(op: ServerOperation, path: string): string | null;
 
@@ -4209,6 +4221,7 @@ export namespace Gda {
          * This function helps to parse a SQL string which uses parameters and store them at `params`.
          * @param sql an SQL command to parse, not `null`
          * @returns a {@link Gda.Statement} representing the SQL command, or `null` if an error occurred
+         * @since 4.2.3
          */
         parse_sql_string(sql: string): [Statement, Set | null];
 
@@ -4226,6 +4239,7 @@ export namespace Gda {
          * and taken into account using `gda_connection_add_event()`.
          * @param type a {@link Gda.ConnectionEventType}
          * @returns a pointer to the next available connection event, or `null` if event should be ignored
+         * @since 4.2
          */
         point_available_event(type: ConnectionEventType): ConnectionEvent;
 
@@ -4255,6 +4269,7 @@ export namespace Gda {
          * @param table_name name of the table to create
          * @param _arguments list of arguments as `GdaServerOperationPrepareCreateTableArg` containing column's name, column's {@link GObject.GType} and a {@link Gda.ServerOperationCreateTableFlag} flag
          * @returns a {@link Gda.ServerOperation} if no errors; NULL and set `error` otherwise
+         * @since 6.0
          */
         prepare_operation_create_table(table_name: string, _arguments: ServerOperationCreateTableArg[]): ServerOperation | null;
 
@@ -4263,6 +4278,7 @@ export namespace Gda {
          * table in an opened connection.
          * @param table_name name of the table to drop
          * @returns a new {@link Gda.ServerOperation} or `null` if couldn't create the opereration.
+         * @since 6.0
          */
         prepare_operation_drop_table(table_name: string): ServerOperation | null;
 
@@ -4284,6 +4300,7 @@ export namespace Gda {
          * double quote (") character.
          * @param id an SQL identifier
          * @returns a new string, to free with `g_free()` once not needed anymore
+         * @since 4.0.3
          */
         quote_sql_identifier(id: string): string;
 
@@ -4297,6 +4314,7 @@ export namespace Gda {
          * @param col_types an array of GType to request each returned GdaDataModel's column's GType, see `gda_connection_statement_execute_select_full()` for more information
          * @param stop_on_error set to TRUE if the method has to stop on the first error.
          * @returns a new list of {@link GObject.Object} pointers (see `gda_connection_statement_execute()` for more information about what they represent), one for each actual execution of the statement upon which `rstmt` is built. If `stop_on_error` is `false`, then the list may contain some `null` pointers which refer to statements which failed to execute.
+         * @since 4.2
          */
         repetitive_statement_execute(rstmt: RepetitiveStatement, model_usage: StatementModelUsage, col_types: GObject.GType[] | null, stop_on_error: boolean): GObject.Object[];
 
@@ -4340,6 +4358,7 @@ export namespace Gda {
          * while the blocking operation is being performed.
          * @param thread the {@link GLib.Thread} in which `context` will be used, or `null` (for the current thread)
          * @param context a {@link GLib.MainContext}, or `null`
+         * @since 6.0
          */
         set_main_context(thread: GLib.Thread | null, context: GLib.MainContext | null): void;
 
@@ -4552,6 +4571,7 @@ export namespace Gda {
          * @param col_names a list of column names (as const gchar *)
          * @param values a list of values (as {@link GObject.Value})
          * @returns TRUE if no error occurred, FALSE otherwise
+         * @since 4.2.3
          */
         update_row_in_table_v(table: string, condition_column_name: string, condition_value: GObject.Value | any, col_names: string[], values: (GObject.Value | any)[]): boolean;
 
@@ -4935,6 +4955,7 @@ export namespace Gda {
          * had just been created.
          * @param mapping an array of `gint` which represents the mapping between `wrapper`'s columns and the columns of the wrapped data model
          * @returns `true` if the mapping actually changed
+         * @since 5.2
          */
         set_mapping(mapping: number[] | null): boolean;
 
@@ -4981,6 +5002,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -5154,6 +5176,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -5169,6 +5192,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -5375,6 +5399,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -5618,6 +5643,7 @@ export namespace Gda {
          * specified.
          * @param cols number of columns for rows in this data model.
          * @param types array of types of the columns of the model to create as {@link GObject.GType}, as many as indicated by `cols`
+         * @since 4.2.6
          */
         static new_with_g_types(cols: number, types: GObject.GType[]): DataModel;
 
@@ -5686,6 +5712,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -5859,6 +5886,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -5874,6 +5902,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -6080,6 +6109,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -6238,6 +6268,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -6411,6 +6442,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -6426,6 +6458,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -6632,6 +6665,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -6899,6 +6933,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -7072,6 +7107,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -7087,6 +7123,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -7293,6 +7330,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -7593,6 +7631,7 @@ export namespace Gda {
          * Get the value stored at the column `col` in `iter`. The returned value must not be modified.
          * @param col the requested column
          * @returns the {@link GObject.Value}, or `null` if the value could not be fetched
+         * @since 4.2.10
          */
         get_value_at_e(col: number): unknown | null;
 
@@ -7811,6 +7850,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -7984,6 +8024,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -7999,6 +8040,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -8205,6 +8247,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -8327,6 +8370,7 @@ export namespace Gda {
          * @param field the field description, see below
          * @param alias the field alias, or `null`
          * @returns `true` if no error occurred
+         * @since 5.0
          */
         add_data(aggregate_type: DataPivotAggregate, field: string, alias: string | null): boolean;
 
@@ -8349,12 +8393,14 @@ export namespace Gda {
          * @param field the field description, see below
          * @param alias the field alias, or `null`
          * @returns `true` if no error occurred
+         * @since 5.0
          */
         add_field(field_type: DataPivotFieldType, field: string, alias: string | null): boolean;
 
         /**
          * Acutally populates `pivot` by analysing the data from the provided data model.
          * @returns `true` if no error occurred.
+         * @since 5.0
          */
         populate(): boolean;
 
@@ -8401,6 +8447,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -8574,6 +8621,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -8589,6 +8637,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -8795,6 +8844,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -9323,6 +9373,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -9496,6 +9547,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -9511,6 +9563,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -9717,6 +9770,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -9988,6 +10042,7 @@ export namespace Gda {
          * Note: any modification statement set using `gda_data_select_set_modification_statement()` will first be unset
          * @param cond_type the type of condition for the modifications where one row only should be identified
          * @returns `true` if no error occurred. If `false` is returned, then some modification statement may still have been computed
+         * @since 4.2.9
          */
         compute_modification_statements_ext(cond_type: DataSelectConditionType): boolean;
 
@@ -10035,6 +10090,7 @@ export namespace Gda {
          *   <listitem><para>the data model has been modified since it was created</para></listitem>
          * </itemizedlist>
          * @returns `true` if no error occurred
+         * @since 5.2.0
          */
         prepare_for_offline(): boolean;
 
@@ -10172,6 +10228,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -10345,6 +10402,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -10360,6 +10418,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -10566,6 +10625,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -10710,12 +10770,14 @@ export namespace Gda {
          * Compares two objects similar to `g_strcmp()`.
          * @param b second {@link Gda.DbBase} object
          * @returns 0 if catalog, schema and name are the same
+         * @since 6.0
          */
         compare(b: DbBase): number;
 
         /**
          * Returns current catalog name. The returned string should not be freed.
          * @returns Current catalog or `null`
+         * @since 6.0
          */
         get_catalog(): string;
 
@@ -10725,30 +10787,35 @@ export namespace Gda {
          * returned. If catalog is `null` then full name will be in the format:
          * schema.name. If all three components are not set, then `null` is returned.
          * @returns Full name of the database object or `null`.
+         * @since 6.0
          */
         get_full_name(): string;
 
         /**
          * Returns current object name. The returned string should not be freed.
          * @returns Current object name or `null`
+         * @since 6.0
          */
         get_name(): string;
 
         /**
          * Returns current schema name. The returned string should not be freed.
          * @returns Current scheme or `null`
+         * @since 6.0
          */
         get_schema(): string;
 
         /**
          * Set catalog name
          * @param catalog Catalog name as a string
+         * @since 6.0
          */
         set_catalog(catalog: string): void;
 
         /**
          * Set object name. If `name` is `null` the function just returns.
          * @param name Object name as a string
+         * @since 6.0
          */
         set_name(name: string): void;
 
@@ -10760,12 +10827,14 @@ export namespace Gda {
          * @param catalog a catalog name associated with the table
          * @param schema a schema name associated with the table
          * @param name a table name associated with the table
+         * @since 6.0
          */
         set_names(catalog: string | null, schema: string | null, name: string): void;
 
         /**
          * Set object schema. If `schema` is `null` the function just returns.
          * @param schema Schema name as a string
+         * @since 6.0
          */
         set_schema(schema: string): void;
     }
@@ -10843,6 +10912,7 @@ export namespace Gda {
         /**
          * Convenient method to varify xmlfile before prsing it.
          * @param xmlfile xml file to validate
+         * @since 6.0
          */
         static validate_file_from_path(xmlfile: string): boolean;
 
@@ -10851,6 +10921,7 @@ export namespace Gda {
          * This method append `table` to the total list of all tables stored in `self`. This method increase
          * reference count for `table`.
          * @param table table to append
+         * @since 6.0
          */
         append_table(table: DbTable): void;
 
@@ -10858,16 +10929,19 @@ export namespace Gda {
          * This method append `view` to the total list of all views stored in `self`. This method increase
          * reference count for `view`.
          * @param view view to append
+         * @since 6.0
          */
         append_view(view: DbView): void;
 
         /**
          * @returns a list of tables as {@link Gda.DbTable} or `null`.
+         * @since 6.0
          */
         get_tables(): DbTable[];
 
         /**
          * @returns a list of views as {@link Gda.DbView} or `null`
+         * @since 6.0
          */
         get_views(): DbView[];
 
@@ -10876,12 +10950,14 @@ export namespace Gda {
          * database was modified or `self` was just created using `gda_connection_create_db_catalog()`. The
          * method will return `false` if no internal {@link Gda.Connection} available.
          * @returns Returns `true` if succeeded, `false` otherwise.
+         * @since 6.0
          */
         parse_cnc(): boolean;
 
         /**
          * For detailed description see `gda_db_catalog_parse_file_from_path()`
          * @param xmlfile xml file as {@link Gio.File} instance
+         * @since 6.0
          */
         parse_file(xmlfile: Gio.File): boolean;
 
@@ -10974,6 +11050,7 @@ export namespace Gda {
          * Similar to `gda_db_catalog_write_to_path()`
          * @param file a {@link Gio.File} to write database description
          * @returns `true` if no error occurred, `false` otherwise.
+         * @since 6.0
          */
         write_to_file(file: Gio.File): boolean;
 
@@ -10981,6 +11058,7 @@ export namespace Gda {
          * Save content of `self` to a user friendly xml file.
          * @param path path to xml file to save {@link Gda.DbCatalog}
          * @returns `true` is no error, `false` otherwise.
+         * @since 6.0
          */
         write_to_path(path: string): boolean;
     }
@@ -11124,53 +11202,62 @@ export namespace Gda {
         /**
          * Get value for autoinc key
          * @returns `true` if column should be auto-incremented, `false` otherwise.
+         * @since 6.0
          */
         get_autoinc(): boolean;
 
         /**
          * Returns value of the check field.
          * @returns Column check string
+         * @since 6.0
          */
         get_check(): string;
 
         /**
          * Get value for column comment.
          * @returns Column comment as a string. `null` is returned if comment is not set.
+         * @since 6.0
          */
         get_comment(): string;
 
         /**
          * Returns column type as a string derivied from {@link GObject.GType}
          * @returns column type as a string or `null`
+         * @since 6.0
          */
         get_ctype(): string;
 
         /**
          * Returns default value for the column. Can be `null` if the default value hasn't been set.
          * @returns Default value for the column as a string.
+         * @since 6.0
          */
         get_default(): string;
 
         /**
          * Return of column type as {@link GObject.GType}
+         * @since 6.0
          */
         get_gtype(): GObject.GType;
 
         /**
          * Returns name of the column
          * @returns Column name as a string or `null`.
+         * @since 6.0
          */
         get_name(): string;
 
         /**
          * Specify if the column's value can be NULL.
          * @returns `true` if value can be `null`, `false` otherwise.
+         * @since 6.0
          */
         get_nnul(): boolean;
 
         /**
          * Returns a primary key flag
          * @returns `true` if the column is primary key, `false` otherwise
+         * @since 6.0
          */
         get_pkey(): boolean;
 
@@ -11178,17 +11265,20 @@ export namespace Gda {
          * Scale is used for float number representation to specify a number of decimal digits.
          * This value is ignore for column types except float or double.
          * @returns Current scale value
+         * @since 6.0
          */
         get_scale(): number;
 
         /**
          * @returns Current value for column size.
+         * @since 6.0
          */
         get_size(): number;
 
         /**
          * Get value for unique key
          * @returns `true` if column should have a unique value, `false` otherwise.
+         * @since 6.0
          */
         get_unique(): boolean;
 
@@ -11197,6 +11287,7 @@ export namespace Gda {
          * prepare `op` for {@link Gda.ServerOperationType.ADD_COLUMN} operation.
          * @param op {@link Gda.ServerOperation} to add information
          * @returns `true` if success, `false` otherwise.
+         * @since 6.0
          */
         prepare_add(op: ServerOperation): boolean;
 
@@ -11205,46 +11296,54 @@ export namespace Gda {
          * @param op a {@link Gda.ServerOperation} instance to update for TABLE_CREATE operation
          * @param order Order number for the column
          * @returns `true` if successful, `false` otherwise.
+         * @since 6.0
          */
         prepare_create(op: ServerOperation, order: number): boolean;
 
         /**
          * Set value for auto-incremented key.
          * @param autoinc value to set
+         * @since 6.0
          */
         set_autoinc(autoinc: boolean): void;
 
         /**
          * Sets check string to the column.
          * @param value value to set
+         * @since 6.0
          */
         set_check(value: string): void;
 
         /**
          * Set value for column comment.
          * @param comnt comment to set
+         * @since 6.0
          */
         set_comment(comnt: string): void;
 
         /**
          * @param value default value to set for column as a string
+         * @since 6.0
          */
         set_default(value: string): void;
 
         /**
          * Set column name.
          * @param name name as a string
+         * @since 6.0
          */
         set_name(name: string): void;
 
         /**
          * @param nnul value to set for nnul If `nnul` is `true` the column will be marked with NON NULL flag
+         * @since 6.0
          */
         set_nnul(nnul: boolean): void;
 
         /**
          * If `pkey` is `true`, the given column will be marked with PRIMERY KEY flag
          * @param pkey value to set
+         * @since 6.0
          */
         set_pkey(pkey: boolean): void;
 
@@ -11252,12 +11351,14 @@ export namespace Gda {
          * Scale is used for float number representation to specify a number of decimal digits.
          * This value is ignore for column types except float or double.
          * @param scale scale value to set
+         * @since 6.0
          */
         set_scale(scale: number): void;
 
         /**
          * Set value for column size. This is relevant only for string column type.
          * @param size value to set
+         * @since 6.0
          */
         set_size(size: number): void;
 
@@ -11266,12 +11367,14 @@ export namespace Gda {
          * types, e.g. `G_TYPE_FLOAT` or `G_TYPE_DOUBLE` can also be used but precision and scale should not be
          * set. In this case appropriate types for DB implementation will be used, e.g. float4.
          * @param type {@link GObject.GType} for column
+         * @since 6.0
          */
         set_type(type: GObject.GType): void;
 
         /**
          * Set value for unique key.
          * @param unique value to set
+         * @since 6.0
          */
         set_unique(unique: boolean): void;
 
@@ -11279,6 +11382,7 @@ export namespace Gda {
          * This method parse XML node and populate `self` object.
          * @param node a node to parse
          * @returns `true` on success, `false` if an error occurred
+         * @since 6.0
          */
         parse_node(node: libxml2.NodePtr): boolean;
 
@@ -11286,12 +11390,14 @@ export namespace Gda {
          * Write content from the `self` to the `node`
          * @param node a node to write data in
          * @returns `true` on success, `false` if an error occurred
+         * @since 6.0
          */
         write_node(node: libxml2.NodePtr): boolean;
 
         /**
          * This method parse XML node and populate `self` object.
          * @param node a node to parse
+         * @since 6.0
          * @virtual
          */
         vfunc_parse_node(node: libxml2.NodePtr): boolean;
@@ -11299,6 +11405,7 @@ export namespace Gda {
         /**
          * Write content from the `self` to the `node`
          * @param node a node to write data in
+         * @since 6.0
          * @virtual
          */
         vfunc_write_node(node: libxml2.NodePtr): boolean;
@@ -11309,6 +11416,7 @@ export namespace Gda {
          * implements ADD COLUMN operation as part of ALTER TABLE operation.
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         create(cnc: Connection, user_data: null): boolean;
 
@@ -11316,6 +11424,7 @@ export namespace Gda {
          * Execute corresponding DROP operation
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         drop(cnc: Connection, user_data: null): boolean;
 
@@ -11324,6 +11433,7 @@ export namespace Gda {
          * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         rename(cnc: Connection, user_data: null): boolean;
 
@@ -11332,6 +11442,7 @@ export namespace Gda {
          * implement corresponding CREATE TABLE | CREATE INDEX | CREATE VIEW operations. {@link Gda.DbColumn}
          * implements ADD COLUMN operation as part of ALTER TABLE operation.
          * @param cnc Opened connection
+         * @since 6.0
          * @virtual
          */
         vfunc_create(cnc: Connection): boolean;
@@ -11339,6 +11450,7 @@ export namespace Gda {
         /**
          * Execute corresponding DROP operation
          * @param cnc Opened connection
+         * @since 6.0
          * @virtual
          */
         vfunc_drop(cnc: Connection): boolean;
@@ -11347,6 +11459,7 @@ export namespace Gda {
          * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
          * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
          * @param cnc Opened connection
+         * @since 6.0
          * @virtual
          */
         vfunc_rename(cnc: Connection): boolean;
@@ -11399,37 +11512,44 @@ export namespace Gda {
         // Methods
         /**
          * @returns A const {@link GLib.List} of strings where each string corresponds to a foreign key field or `null`.
+         * @since 6.0
          */
         get_field_name(): string[];
 
         /**
          * @returns ON DELETE action as a string. If the action is not set then the string corresponding to NO_ACTION is returned.
+         * @since 6.0
          */
         get_ondelete(): string;
 
         /**
          * The default value is `NO_ACTION`
          * @returns ON DELETE action as a {@link Gda.DbFkeyReferenceAction}.
+         * @since 6.0
          */
         get_ondelete_id(): DbFkeyReferenceAction;
 
         /**
          * @returns ON_UPDATE action as a string. Never `null`
+         * @since 6.0
          */
         get_onupdate(): string;
 
         /**
          * @returns ON_UPDATE action as a {@link Gda.DbFkeyReferenceAction}
+         * @since 6.0
          */
         get_onupdate_id(): DbFkeyReferenceAction;
 
         /**
          * @returns A {@link GLib.List} of strings where each string corresponds to a foreign key reference field or `null`.
+         * @since 6.0
          */
         get_ref_field(): string[];
 
         /**
          * @returns Returns reference table name as a string or `null` if table name hasn't been set.
+         * @since 6.0
          */
         get_ref_table(): string;
 
@@ -11438,6 +11558,7 @@ export namespace Gda {
          * @param op a {@link Gda.ServerOperation} to populate
          * @param i Order number
          * @returns `true` if no error or `false` otherwise.
+         * @since 6.0
          */
         prepare_create(op: ServerOperation, i: number): boolean;
 
@@ -11445,24 +11566,28 @@ export namespace Gda {
          * All arguments should be valid strings.
          * @param field Field name as a string
          * @param reffield A reference field name as a string
+         * @since 6.0
          */
         set_field(field: string, reffield: string): void;
 
         /**
          * Set action for ON_DELETE
          * @param id {@link Gda.DbFkeyReferenceAction} action to set
+         * @since 6.0
          */
         set_ondelete(id: DbFkeyReferenceAction): void;
 
         /**
          * Set action for ON_UPDATE
          * @param id {@link Gda.DbFkeyReferenceAction} action to set
+         * @since 6.0
          */
         set_onupdate(id: DbFkeyReferenceAction): void;
 
         /**
          * Set reference table
          * @param rtable reference table name
+         * @since 6.0
          */
         set_ref_table(rtable: string): void;
 
@@ -11470,6 +11595,7 @@ export namespace Gda {
          * This method parse XML node and populate `self` object.
          * @param node a node to parse
          * @returns `true` on success, `false` if an error occurred
+         * @since 6.0
          */
         parse_node(node: libxml2.NodePtr): boolean;
 
@@ -11477,12 +11603,14 @@ export namespace Gda {
          * Write content from the `self` to the `node`
          * @param node a node to write data in
          * @returns `true` on success, `false` if an error occurred
+         * @since 6.0
          */
         write_node(node: libxml2.NodePtr): boolean;
 
         /**
          * This method parse XML node and populate `self` object.
          * @param node a node to parse
+         * @since 6.0
          * @virtual
          */
         vfunc_parse_node(node: libxml2.NodePtr): boolean;
@@ -11490,6 +11618,7 @@ export namespace Gda {
         /**
          * Write content from the `self` to the `node`
          * @param node a node to write data in
+         * @since 6.0
          * @virtual
          */
         vfunc_write_node(node: libxml2.NodePtr): boolean;
@@ -11556,22 +11685,26 @@ export namespace Gda {
          * ownership of the field. After this call, the reference count for `field` will be increased and
          * the instance of `fiels` must be destroyed by calling `g_object_unref()`
          * @param field a field to set
+         * @since 6.0
          */
         append_field(field: DbIndexField): void;
 
         /**
          * This function is thread safe, that is, `cnc` will be locked.
          * @returns A list of {@link Gda.DbIndexField}
+         * @since 6.0
          */
         get_fields(): DbIndexField[] | null;
 
         /**
          * @returns state for UNIQUE. This method will abort if `self` is `null`
+         * @since 6.0
          */
         get_unique(): boolean;
 
         /**
          * @param name Name of the column where field should be removed.
+         * @since 6.0
          */
         remove_field(name: string): void;
 
@@ -11579,6 +11712,7 @@ export namespace Gda {
          * If `val` is `true` a "UNIQUE" will be added to the INDEX CREATE command, e.g.
          * CREATE UNIQUE INDEX ...
          * @param val if set to `true` UNIQUE index type will be used.
+         * @since 6.0
          */
         set_unique(val: boolean): void;
 
@@ -11588,6 +11722,7 @@ export namespace Gda {
          * implements ADD COLUMN operation as part of ALTER TABLE operation.
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         create(cnc: Connection, user_data: null): boolean;
 
@@ -11595,6 +11730,7 @@ export namespace Gda {
          * Execute corresponding DROP operation
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         drop(cnc: Connection, user_data: null): boolean;
 
@@ -11603,6 +11739,7 @@ export namespace Gda {
          * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         rename(cnc: Connection, user_data: null): boolean;
 
@@ -11611,6 +11748,7 @@ export namespace Gda {
          * implement corresponding CREATE TABLE | CREATE INDEX | CREATE VIEW operations. {@link Gda.DbColumn}
          * implements ADD COLUMN operation as part of ALTER TABLE operation.
          * @param cnc Opened connection
+         * @since 6.0
          * @virtual
          */
         vfunc_create(cnc: Connection): boolean;
@@ -11618,6 +11756,7 @@ export namespace Gda {
         /**
          * Execute corresponding DROP operation
          * @param cnc Opened connection
+         * @since 6.0
          * @virtual
          */
         vfunc_drop(cnc: Connection): boolean;
@@ -11626,6 +11765,7 @@ export namespace Gda {
          * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
          * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
          * @param cnc Opened connection
+         * @since 6.0
          * @virtual
          */
         vfunc_rename(cnc: Connection): boolean;
@@ -11678,22 +11818,26 @@ export namespace Gda {
         // Methods
         /**
          * @returns Collate value
+         * @since 6.0
          */
         get_collate(): string;
 
         /**
          * Returns an active column that was asigned to {@link Gda.DbIndexField} instance
          * @returns A {@link Gda.DbColumn} where index should be added
+         * @since 6.0
          */
         get_column(): DbColumn;
 
         /**
          * @returns sort order as a {@link Gda.DbIndexSortOrder} object
+         * @since 6.0
          */
         get_sort_order(): DbIndexSortOrder;
 
         /**
          * @returns SORT ORDER string or `null`
+         * @since 6.0
          */
         get_sort_order_str(): string;
 
@@ -11703,6 +11847,7 @@ export namespace Gda {
          * "NOCASE", and "RTRIM" values. PostgreSQL, on the other hand expects a name of a callable object,
          * e.g. function.
          * @param collate collate to set
+         * @since 6.0
          */
         set_collate(collate: string): void;
 
@@ -11711,11 +11856,13 @@ export namespace Gda {
          * `g_object_unref()`. The instance `self` take a copy of the `column` object by increasing its
          * referecne count.
          * @param column column to add index to
+         * @since 6.0
          */
         set_column(column: DbColumn): void;
 
         /**
          * @param sorder sort order to set
+         * @since 6.0
          */
         set_sort_order(sorder: DbIndexSortOrder): void;
     }
@@ -11790,6 +11937,7 @@ export namespace Gda {
         /**
          * Append `column` to the internal list of columns
          * @param column column to add
+         * @since 6.0
          */
         append_column(column: DbColumn): void;
 
@@ -11798,12 +11946,14 @@ export namespace Gda {
          * if it supports it. Usually, table constraint is very complex and the current method just append
          * a list of constraints to the sql string.
          * @param constr a constraint string to append
+         * @since 6.0
          */
         append_constraint(constr: string): void;
 
         /**
          * Append `fkey` to the internal list of columns
          * @param fkey fkry to add
+         * @since 6.0
          */
         append_fkey(fkey: DbFkey): void;
 
@@ -11811,6 +11961,7 @@ export namespace Gda {
          * Use this method to obtain internal list of all columns. The internal list
          * should not be freed.
          * @returns A list of {@link Gda.DbColumn} objects or `null` if the internal list is not set or if `null` is passed.
+         * @since 6.0
          */
         get_columns(): DbColumn[];
 
@@ -11818,6 +11969,7 @@ export namespace Gda {
          * Use this method to obtain internal list of all fkeys. The internal list
          * should not be freed.
          * @returns A list of {@link Gda.DbFkey} objects or `null` if the internal list is not set or `null` is passed
+         * @since 6.0
          */
         get_fkeys(): DbFkey[];
 
@@ -11827,6 +11979,7 @@ export namespace Gda {
          * This method returns `true` if at least one column is added to the table. It ruturns `false` if the
          * table has no columns.
          * @returns `true` or `false`
+         * @since 6.0
          */
         is_valid(): boolean;
 
@@ -11836,12 +11989,14 @@ export namespace Gda {
          * @param op an instance of {@link Gda.ServerOperation} to populate.
          * @param ifnotexists Set it to TRUE if "IF NOT EXISTS" should be added
          * @returns `true` if no error occured and `false` otherwise.
+         * @since 6.0
          */
         prepare_create(op: ServerOperation, ifnotexists: boolean): boolean;
 
         /**
          * Set if the table should be temporary or not.  `false` is set by default.
          * @param istemp Set if the table should be temporary
+         * @since 6.0
          */
         set_is_temp(istemp: boolean): void;
 
@@ -11859,6 +12014,7 @@ export namespace Gda {
          * This method parse XML node and populate `self` object.
          * @param node a node to parse
          * @returns `true` on success, `false` if an error occurred
+         * @since 6.0
          */
         parse_node(node: libxml2.NodePtr): boolean;
 
@@ -11866,12 +12022,14 @@ export namespace Gda {
          * Write content from the `self` to the `node`
          * @param node a node to write data in
          * @returns `true` on success, `false` if an error occurred
+         * @since 6.0
          */
         write_node(node: libxml2.NodePtr): boolean;
 
         /**
          * This method parse XML node and populate `self` object.
          * @param node a node to parse
+         * @since 6.0
          * @virtual
          */
         vfunc_parse_node(node: libxml2.NodePtr): boolean;
@@ -11879,6 +12037,7 @@ export namespace Gda {
         /**
          * Write content from the `self` to the `node`
          * @param node a node to write data in
+         * @since 6.0
          * @virtual
          */
         vfunc_write_node(node: libxml2.NodePtr): boolean;
@@ -11889,6 +12048,7 @@ export namespace Gda {
          * implements ADD COLUMN operation as part of ALTER TABLE operation.
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         create(cnc: Connection, user_data: null): boolean;
 
@@ -11896,6 +12056,7 @@ export namespace Gda {
          * Execute corresponding DROP operation
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         drop(cnc: Connection, user_data: null): boolean;
 
@@ -11904,6 +12065,7 @@ export namespace Gda {
          * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         rename(cnc: Connection, user_data: null): boolean;
 
@@ -11912,6 +12074,7 @@ export namespace Gda {
          * implement corresponding CREATE TABLE | CREATE INDEX | CREATE VIEW operations. {@link Gda.DbColumn}
          * implements ADD COLUMN operation as part of ALTER TABLE operation.
          * @param cnc Opened connection
+         * @since 6.0
          * @virtual
          */
         vfunc_create(cnc: Connection): boolean;
@@ -11919,6 +12082,7 @@ export namespace Gda {
         /**
          * Execute corresponding DROP operation
          * @param cnc Opened connection
+         * @since 6.0
          * @virtual
          */
         vfunc_drop(cnc: Connection): boolean;
@@ -11927,6 +12091,7 @@ export namespace Gda {
          * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
          * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
          * @param cnc Opened connection
+         * @since 6.0
          * @virtual
          */
         vfunc_rename(cnc: Connection): boolean;
@@ -12014,21 +12179,25 @@ export namespace Gda {
         // Methods
         /**
          * @returns view definition string
+         * @since 6.0
          */
         get_defstring(): string;
 
         /**
          * @returns `true` if th view should be created with "IF NOT EXISTS" key, `false` otherwise
+         * @since 6.0
          */
         get_ifnoexist(): boolean;
 
         /**
          * @returns `true` if the view is temporary, `false` otherwise
+         * @since 6.0
          */
         get_istemp(): boolean;
 
         /**
          * @returns `true` if the current view should replace the existing one in the database, `false` otherwise.
+         * @since 6.0
          */
         get_replace(): boolean;
 
@@ -12042,21 +12211,25 @@ export namespace Gda {
 
         /**
          * @param str view definition string to set. Should be valid SQL string
+         * @since 6.0
          */
         set_defstring(str: string): void;
 
         /**
          * @param noexist a value to set
+         * @since 6.0
          */
         set_ifnoexist(noexist: boolean): void;
 
         /**
          * @param temp value to set
+         * @since 6.0
          */
         set_istemp(temp: boolean): void;
 
         /**
          * @param replace a value to set
+         * @since 6.0
          */
         set_replace(replace: boolean): void;
 
@@ -12064,6 +12237,7 @@ export namespace Gda {
          * This method parse XML node and populate `self` object.
          * @param node a node to parse
          * @returns `true` on success, `false` if an error occurred
+         * @since 6.0
          */
         parse_node(node: libxml2.NodePtr): boolean;
 
@@ -12071,12 +12245,14 @@ export namespace Gda {
          * Write content from the `self` to the `node`
          * @param node a node to write data in
          * @returns `true` on success, `false` if an error occurred
+         * @since 6.0
          */
         write_node(node: libxml2.NodePtr): boolean;
 
         /**
          * This method parse XML node and populate `self` object.
          * @param node a node to parse
+         * @since 6.0
          * @virtual
          */
         vfunc_parse_node(node: libxml2.NodePtr): boolean;
@@ -12084,6 +12260,7 @@ export namespace Gda {
         /**
          * Write content from the `self` to the `node`
          * @param node a node to write data in
+         * @since 6.0
          * @virtual
          */
         vfunc_write_node(node: libxml2.NodePtr): boolean;
@@ -12094,6 +12271,7 @@ export namespace Gda {
          * implements ADD COLUMN operation as part of ALTER TABLE operation.
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         create(cnc: Connection, user_data: null): boolean;
 
@@ -12101,6 +12279,7 @@ export namespace Gda {
          * Execute corresponding DROP operation
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         drop(cnc: Connection, user_data: null): boolean;
 
@@ -12109,6 +12288,7 @@ export namespace Gda {
          * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         rename(cnc: Connection, user_data: null): boolean;
 
@@ -12117,6 +12297,7 @@ export namespace Gda {
          * implement corresponding CREATE TABLE | CREATE INDEX | CREATE VIEW operations. {@link Gda.DbColumn}
          * implements ADD COLUMN operation as part of ALTER TABLE operation.
          * @param cnc Opened connection
+         * @since 6.0
          * @virtual
          */
         vfunc_create(cnc: Connection): boolean;
@@ -12124,6 +12305,7 @@ export namespace Gda {
         /**
          * Execute corresponding DROP operation
          * @param cnc Opened connection
+         * @since 6.0
          * @virtual
          */
         vfunc_drop(cnc: Connection): boolean;
@@ -12132,6 +12314,7 @@ export namespace Gda {
          * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
          * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
          * @param cnc Opened connection
+         * @since 6.0
          * @virtual
          */
         vfunc_rename(cnc: Connection): boolean;
@@ -13189,6 +13372,7 @@ export namespace Gda {
          * Get a string giving the user a hint about the locale-dependent requested format.
          * @param type the type of data being handled
          * @returns a new string
+         * @since 6.0
          */
         get_hint(type: GObject.GType): string;
 
@@ -13226,6 +13410,7 @@ export namespace Gda {
          * @param third what comes third in the date representation
          * @param separator separator character used between year, month and day
          * @param twodigits_years TRUE if year part of date must be rendered on 2 digits
+         * @since 4.2.1
          */
         set_str_spec(first: GLib.DateDMY, sec: GLib.DateDMY, third: GLib.DateDMY, separator: number, twodigits_years: boolean): void;
 
@@ -13819,6 +14004,7 @@ export namespace Gda {
          * 
          * `holder`'s value is set to `null`.
          * @param error a {@link GLib.Error} explaining why `holder` is declared invalid, or `null`
+         * @since 4.2.10
          */
         force_invalid_e(error: GLib.Error | null): void;
 
@@ -13903,6 +14089,7 @@ export namespace Gda {
         /**
          * Get the validity of `holder` (that is, of the value held by `holder`)
          * @returns TRUE if `holder`'s value can safely be used
+         * @since 4.2.10
          */
         is_valid_e(): boolean;
 
@@ -14219,6 +14406,7 @@ export namespace Gda {
          * `gda_meta_store_extract()`.
          * @param id an SQL identifier
          * @param cnc a {@link Gda.Connection}
+         * @since 4.0.3
          */
         static sql_identifier_quote(id: string, cnc: Connection): string;
 
@@ -14280,6 +14468,7 @@ export namespace Gda {
          * @param colnames an array of column names from the table for which the foreign key is for
          * @param ref_colnames an array of column names from the referenced table
          * @returns `true` if no error occurred
+         * @since 4.2.4
          */
         declare_foreign_key(mstruct: MetaStruct | null, fk_name: string, catalog: string | null, schema: string | null, table: string, ref_catalog: string | null, ref_schema: string | null, ref_table: string, colnames: string[], ref_colnames: string[]): boolean;
 
@@ -14294,6 +14483,7 @@ export namespace Gda {
          * @param select_sql a SELECT statement
          * @param vars a hash table with all variables names as keys and GValue* as value, representing values for all the variables mentioned in `select_sql`. If there is no variable then this part can be omitted.
          * @returns a new {@link Gda.DataModel}, or `null` if an error occurred
+         * @since 4.2.6
          */
         extract(select_sql: string, vars: { [key: string]: GObject.Value } | null): DataModel;
 
@@ -14338,6 +14528,7 @@ export namespace Gda {
          * @param value_names names of values
          * @param values values
          * @returns `true` if no error occurred
+         * @since 4.2.6
          */
         modify(table_name: string, new_data: DataModel | null, condition: string | null, value_names: string[], values: (GObject.Value | any)[]): boolean;
 
@@ -14447,6 +14638,7 @@ export namespace Gda {
          * Specifies how `store` must handle SQL identifiers it has to store. This method is mainly used by
          * database providers.
          * @param style a style
+         * @since 4.2
          */
         set_identifiers_style(style: SqlIdentifierStyle): void;
 
@@ -14456,6 +14648,7 @@ export namespace Gda {
          * 
          * This method is mainly used by database providers.
          * @param func a {@link Gda.SqlReservedKeywordsFunc} function, or `null`
+         * @since 4.2
          */
         set_reserved_keywords_func(func: SqlReservedKeywordsFunc | null): void;
 
@@ -14481,6 +14674,7 @@ export namespace Gda {
          * @param ref_schema the schema in which the referenced table is, or `null`
          * @param ref_table the name of the referenced table
          * @returns `true` if no error occurred
+         * @since 4.2.4
          */
         undeclare_foreign_key(mstruct: MetaStruct | null, fk_name: string, catalog: string | null, schema: string | null, table: string, ref_catalog: string | null, ref_schema: string | null, ref_table: string): boolean;
     }
@@ -14865,12 +15059,14 @@ export namespace Gda {
          * @param values a {@link Gda.Set} object with the values to be used
          * @param make_copy `true` if `values` is copied, and `false` if `values` is only ref'ed
          * @returns a new {@link Gda.RepetitiveStatement} object
+         * @since 4.2
          */
         append_set(values: Set, make_copy: boolean): boolean;
 
         /**
          * Get all the values sets which will have been added using `gda_repetitive_statement_append_set()`.
          * @returns a new {@link GLib.SList} of {@link Gda.Set} objects (free with `g_slist_free()`).
+         * @since 4.2
          */
         get_all_sets(): Set[];
 
@@ -14881,6 +15077,7 @@ export namespace Gda {
          * Use this object with `gda_repetitive_statement_append_set()`.
          * @param set a place to store the returned template set
          * @returns `true` on success, `false` on error
+         * @since 4.2
          */
         get_template_set(set: Set): boolean;
     }
@@ -14999,6 +15196,7 @@ export namespace Gda {
          * providers' implementations to report any error while reading a value from the database.
          * @param value a {@link GObject.Value} belonging to `row` (obtained with `gda_row_get_value()`).
          * @param error the error which lead to the invalidation
+         * @since 4.2.10
          */
         invalidate_value_e(value: GObject.Value | any, error: GLib.Error | null): void;
 
@@ -15017,6 +15215,7 @@ export namespace Gda {
          * providers' implementations to report any error while reading a value from the database.
          * @param value a {@link GObject.Value} belonging to `row` (obtained with `gda_row_get_value()`).
          * @returns `true` if `value` is valid
+         * @since 4.2.10
          */
         value_is_valid_e(value: GObject.Value | any): boolean;
     }
@@ -15157,6 +15356,7 @@ export namespace Gda {
          * returned {@link Gda.ServerOperation} using `gda_server_operation_set_value_at()`.
          * @param provider the database provider to use
          * @param db_name the name of the database to create, or `null`
+         * @since 4.2.3
          */
         static prepare_create_database(provider: string, db_name: string | null): ServerOperation | null;
 
@@ -15169,12 +15369,14 @@ export namespace Gda {
          * returned {@link Gda.ServerOperation} using `gda_server_operation_set_value_at()`.
          * @param provider the database provider to use
          * @param db_name the name of the database to drop, or `null`
+         * @since 4.2.3
          */
         static prepare_drop_database(provider: string, db_name: string | null): ServerOperation | null;
 
         /**
          * Performs the reverse of `gda_server_operation_op_type_to_string()`
          * @param str a string
+         * @since 4.2
          */
         static string_to_op_type(str: string): ServerOperationType;
 
@@ -15281,6 +15483,7 @@ export namespace Gda {
          * Get the value for the node at the `path` path
          * @param path a complete path to a node (starting with "/")
          * @returns a constant {@link GObject.Value} if a value has been defined, or `null` if the value is undefined or if the `path` is not defined or `path` does not hold any value.
+         * @since 4.2.6
          */
         get_value_at(path: string): unknown | null;
 
@@ -15291,6 +15494,7 @@ export namespace Gda {
          * and not against the current `op`'s specification.
          * @param xml_file an XML specification file (see `gda_server_operation_new()`) or `null`
          * @returns `true` if `op` is valid
+         * @since 6.0
          */
         is_valid(xml_file: string | null): boolean;
 
@@ -15317,6 +15521,7 @@ export namespace Gda {
          * `gda_server_provider_create_operation()`, or `gda_server_operation_prepare_create_database()`.
          * @param provider the database provider to use, or `null` if `op` has been created using `gda_server_operation_prepare_create_database()`
          * @returns TRUE if no error occurred and the database has been created, FALSE otherwise
+         * @since 4.2.3
          */
         perform_create_database(provider: string | null): boolean;
 
@@ -15325,6 +15530,7 @@ export namespace Gda {
          * `gda_server_provider_create_operation()`, or `gda_server_operation_prepare_drop_database()`.
          * @param provider the database provider to use, or `null` if `op` has been created using `gda_server_operation_prepare_drop_database()`
          * @returns TRUE if no error occurred and the database has been destroyed
+         * @since 4.2.3
          */
         perform_drop_database(provider: string | null): boolean;
 
@@ -15376,6 +15582,7 @@ export namespace Gda {
          * @param value a string
          * @param path a complete path to a node (starting with "/")
          * @returns `true` if no error occurred
+         * @since 4.2.6
          */
         set_value_at(value: string | null, path: string): boolean;
     }
@@ -15445,6 +15652,7 @@ export namespace Gda {
          * This function should only be used by database provider's implementations
          * @param prov_name the provider's name
          * @param resource the name of the resource to load
+         * @since 6.0
          */
         static load_resource_contents(prov_name: string, resource: string): string;
 
@@ -15459,6 +15667,7 @@ export namespace Gda {
          * @param klass a {@link Gda.ServerProviderClass} object
          * @param type a {@link Gda.ServerProviderFunctionsType} type
          * @param functions_set a pointer to the function set, or `null`
+         * @since 6.0
          */
         static set_impl_functions(klass: typeof ServerProvider, type: ServerProviderFunctionsType, functions_set: null): void;
 
@@ -15569,6 +15778,7 @@ export namespace Gda {
          * `provider`, and returns that {@link Gda.DataHandler}.
          * @param type a {@link GObject.GType}
          * @returns a {@link Gda.DataHandler}, or `null`
+         * @since 5.2
          */
         handler_use_default(type: GObject.GType): DataHandler;
 
@@ -15985,6 +16195,7 @@ export namespace Gda {
          * Finds a {@link Gda.Holder} using its position
          * @param pos the position of the requested {@link Gda.Holder}, starting at %0
          * @returns the requested {@link Gda.Holder} or `null`
+         * @since 4.2
          */
         get_nth_holder(pos: number): Holder;
 
@@ -16042,6 +16253,7 @@ export namespace Gda {
          * the source by the new model
          * @param source a pointer to a {@link Gda.SetSource} in `set`
          * @param model a {@link Gda.DataModel}
+         * @since 4.2
          */
         replace_source_model(source: SetSource, model: DataModel): void;
     }
@@ -16132,6 +16344,7 @@ export namespace Gda {
          * @param when_array an array containing each WHEN expression ID, having at least `args_size` elements
          * @param then_array an array containing each THEN expression ID, having at least `args_size` elements
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_case(test_expr: SqlBuilderId, else_expr: SqlBuilderId, when_array: SqlBuilderId[], then_array: SqlBuilderId[]): SqlBuilderId;
 
@@ -16142,6 +16355,7 @@ export namespace Gda {
          * @param op2 the ID of the 2nd argument (may be %0 if `op` needs only one operand)
          * @param op3 the ID of the 3rd argument (may be %0 if `op` needs only one or two operand)
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_cond(op: SqlOperatorType, op1: SqlBuilderId, op2: SqlBuilderId, op3: SqlBuilderId): SqlBuilderId;
 
@@ -16154,6 +16368,7 @@ export namespace Gda {
          * @param op type of condition
          * @param op_ids an array of ID for the arguments (not %0)
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_cond_v(op: SqlOperatorType, op_ids: SqlBuilderId[]): SqlBuilderId;
 
@@ -16167,6 +16382,7 @@ export namespace Gda {
          * be `null`.
          * @param value value to set the expression to, or `null` or a GDA_TYPE_NULL value to represent an SQL NULL
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_expr_value(value: GObject.Value | any | null): SqlBuilderId;
 
@@ -16182,6 +16398,7 @@ export namespace Gda {
          * @param field_name a field name
          * @param table_name a table name, or `null`
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_field_id(field_name: string, table_name: string | null): SqlBuilderId;
 
@@ -16192,6 +16409,7 @@ export namespace Gda {
          * by `value`
          * @param field_name a field name
          * @param value value to set the field to, or `null` or a GDA_TYPE_NULL value to represent an SQL NULL
+         * @since 4.2
          */
         add_field_value_as_gvalue(field_name: string, value: GObject.Value | any | null): void;
 
@@ -16212,6 +16430,7 @@ export namespace Gda {
          * See also `gda_sql_builder_add_field_value()` and `gda_sql_builder_add_field_value_as_gvalue()`.
          * @param field_id the ID of the field's name or definition
          * @param value_id the ID of the value to set the field to, or %0
+         * @since 4.2
          */
         add_field_value_id(field_id: SqlBuilderId, value_id: SqlBuilderId): void;
 
@@ -16220,6 +16439,7 @@ export namespace Gda {
          * @param func_name the functions's name
          * @param args an array of IDs representing the function's arguments
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_function(func_name: string, args: SqlBuilderId[]): SqlBuilderId;
 
@@ -16247,6 +16467,7 @@ export namespace Gda {
          * For fields, see `gda_sql_builder_add_field_id()`.
          * @param str a string
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_id(str: string): SqlBuilderId;
 
@@ -16268,6 +16489,7 @@ export namespace Gda {
          * @param type parameter's type
          * @param nullok TRUE if the parameter can be set to `null`
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_param(param_name: string, type: GObject.GType, nullok: boolean): SqlBuilderId;
 
@@ -16275,24 +16497,28 @@ export namespace Gda {
          * Adds an expression which is a subselect.
          * @param sqlst a pointer to a {@link Gda.SqlStatement}, which has to be a SELECT or compound SELECT. This will be copied.
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_sub_select(sqlst: SqlStatement): SqlBuilderId;
 
         /**
          * Add a sub select to a COMPOUND statement
          * @param sqlst a pointer to a {@link Gda.SqlStatement}, which has to be a SELECT or compound SELECT. This will be copied.
+         * @since 4.2
          */
         compound_add_sub_select(sqlst: SqlStatement): void;
 
         /**
          * Add a sub select to a COMPOUND statement
          * @param subselect a {@link Gda.SqlBuilder}, which has to be a SELECT or compound SELECT. This will be copied.
+         * @since 4.2
          */
         compound_add_sub_select_from_builder(subselect: SqlBuilder): void;
 
         /**
          * Changes the type of compound which `builder` is making, for a COMPOUND statement
          * @param compound_type a type of compound
+         * @since 4.2
          */
         compound_set_type(compound_type: SqlStatementCompoundType): void;
 
@@ -16301,6 +16527,7 @@ export namespace Gda {
          * in a statement.
          * @param id the ID of the expression to be exported, (must be a valid ID in `builder`, not %0)
          * @returns a pointer to a new {@link Gda.SqlExpr} structure, free using `gda_sql_expr_free()` when not needed anymore. If the part with `id` as ID cannot be found, the returned value is `null`.
+         * @since 4.2
          */
         export_expression(id: SqlBuilderId): SqlExpr;
 
@@ -16310,12 +16537,14 @@ export namespace Gda {
          * The returned pointer belongs to `builder`'s internal representation.
          * Use `gda_sql_statement_copy()` if you need to keep it.
          * @returns a {@link Gda.SqlStatement} pointer
+         * @since 4.2
          */
         get_sql_statement(): SqlStatement | null;
 
         /**
          * Creates a new {@link Gda.Statement} statement from `builder`'s contents.
          * @returns a new {@link Gda.Statement} object, or `null` if an error occurred
+         * @since 4.2
          */
         get_statement(): Statement;
 
@@ -16323,6 +16552,7 @@ export namespace Gda {
          * Imports the `expr` into `builder`.
          * @param expr a {@link Gda.SqlExpr} obtained using `gda_sql_builder_export_expression()`
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         import_expression(expr: SqlExpr): SqlBuilderId;
 
@@ -16331,6 +16561,7 @@ export namespace Gda {
          * @param query a {@link Gda.SqlBuilder} object to get expression from
          * @param expr_id a {@link Gda.SqlBuilderId} of the expression in `query`
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         import_expression_from_builder(query: SqlBuilder, expr_id: SqlBuilderId): SqlBuilderId;
 
@@ -16339,6 +16570,7 @@ export namespace Gda {
          * values in the fields named `field_name` in both tables, via the USING keyword.
          * @param join_id the ID of the join to modify (not %0)
          * @param field_name the name of the field to use in the join condition (not `null`)
+         * @since 4.2
          */
         join_add_field(join_id: SqlBuilderId, field_name: string): void;
 
@@ -16352,6 +16584,7 @@ export namespace Gda {
          * @param table_name a table name, or `null`
          * @param alias an alias (eg. for the "AS" clause), or `null`
          * @returns the ID of the added field, or %0 if there was an error
+         * @since 4.2
          */
         select_add_field(field_name: string, table_name: string | null, alias: string | null): SqlBuilderId;
 
@@ -16360,6 +16593,7 @@ export namespace Gda {
          * @param table_name the name of the target table
          * @param alias the alias to give to the target, or `null`
          * @returns the ID of the new target, or %0 if there was an error
+         * @since 4.2
          */
         select_add_target(table_name: string, alias: string | null): SqlBuilderId;
 
@@ -16370,6 +16604,7 @@ export namespace Gda {
          * @param table_id the ID of the expression holding a table reference (not %0)
          * @param alias the alias to give to the target, or `null`
          * @returns the ID of the new (or existing) target, or %0 if there was an error
+         * @since 4.2
          */
         select_add_target_id(table_id: SqlBuilderId, alias: string | null): SqlBuilderId;
 
@@ -16378,6 +16613,7 @@ export namespace Gda {
          * 
          * Adds the `expr_id` expression to the GROUP BY clause's expressions list
          * @param expr_id the ID of the expression to set use in the GROUP BY clause, or 0 to unset any previous GROUP BY clause
+         * @since 4.2
          */
         select_group_by(expr_id: SqlBuilderId): void;
 
@@ -16393,6 +16629,7 @@ export namespace Gda {
          * @param join_type the type of join
          * @param join_expr joining expression's ID, or %0
          * @returns the ID of the new join, or %0 if there was an error
+         * @since 4.2
          */
         select_join_targets(left_target_id: SqlBuilderId, right_target_id: SqlBuilderId, join_type: SqlSelectJoinType, join_expr: SqlBuilderId): SqlBuilderId;
 
@@ -16401,6 +16638,7 @@ export namespace Gda {
          * @param expr_id the ID of the expression to use during sorting (not %0)
          * @param asc `true` for an ascending sorting
          * @param collation_name name of the collation to use when sorting, or `null`
+         * @since 4.2
          */
         select_order_by(expr_id: SqlBuilderId, asc: boolean, collation_name: string | null): void;
 
@@ -16413,6 +16651,7 @@ export namespace Gda {
          * will then usually be "... DISTINCT ON &lt;expression&gt;...").
          * @param distinct set to `true` to have the DISTINCT requirement
          * @param expr_id the ID of the DISTINCT ON expression, or %0 if no expression is to be used. It is ignored           if `distinct` is `false`.
+         * @since 4.2
          */
         select_set_distinct(distinct: boolean, expr_id: SqlBuilderId): void;
 
@@ -16421,6 +16660,7 @@ export namespace Gda {
          * 
          * Sets the HAVING condition of the statement
          * @param cond_id the ID of the expression to set as HAVING condition, or 0 to unset any previous HAVING condition
+         * @since 4.2
          */
         select_set_having(cond_id: SqlBuilderId): void;
 
@@ -16434,6 +16674,7 @@ export namespace Gda {
          * call to this method.
          * @param limit_count_expr_id the ID of the LIMIT expression, or %0
          * @param limit_offset_expr_id the ID of the OFFSET expression, or %0
+         * @since 4.2
          */
         select_set_limit(limit_count_expr_id: SqlBuilderId, limit_offset_expr_id: SqlBuilderId): void;
 
@@ -16442,6 +16683,7 @@ export namespace Gda {
          * 
          * Sets the name of the table on which the built statement operates.
          * @param table_name a table name
+         * @since 4.2
          */
         set_table(table_name: string): void;
 
@@ -16450,6 +16692,7 @@ export namespace Gda {
          * 
          * Sets the WHERE condition of the statement
          * @param cond_id the ID of the expression to set as WHERE condition, or 0 to unset any previous WHERE condition
+         * @since 4.2
          */
         set_where(cond_id: SqlBuilderId): void;
     }
@@ -16810,6 +17053,7 @@ export namespace Gda {
          * @param params a {@link Gda.Set} containing the variable's values to be bound when executing `stmt`
          * @param remove set to `true` if DEFAULT fields are removed, of `false` if the "DEFAULT" keyword is used
          * @returns a new {@link Gda.SqlStatement}, or `null` if an error occurred
+         * @since 4.2
          */
         rewrite_for_default_values(params: Set, remove: boolean): SqlStatement | null;
 
@@ -17054,11 +17298,13 @@ export namespace Gda {
         /**
          * Sets `manager` as a top {@link Gda.TreeManager} object, which will be responsible for creating top level nodes in `tree`.
          * @param manager a {@link Gda.TreeManager} object
+         * @since 4.2
          */
         add_manager(manager: TreeManager): void;
 
         /**
          * Removes any node in `tree`
+         * @since 4.2
          */
         clean(): void;
 
@@ -17066,6 +17312,7 @@ export namespace Gda {
          * Dumps the contents of `tree` to `stream`, using a hierarchical view.
          * @param node a {@link Gda.TreeNode} to start the dump from, or `null` for a full dump
          * @param stream a stream to send the dump to, or `null` for STDOUT
+         * @since 4.2
          */
         dump(node: TreeNode | null, stream: null): void;
 
@@ -17074,6 +17321,7 @@ export namespace Gda {
          * @param tree_path full path to the required nodes (if `use_names` is `true`, then it must start with '/')
          * @param use_names if `true`, then `tree_path` will be interpreted as a unix style path, and if `false`,             then `tree_path` will be interpreted similarly to the `GtkTreePath`'s string representation.
          * @returns the requested {@link Gda.TreeNode} pointer, or `null` if not found
+         * @since 4.2
          */
         get_node(tree_path: string, use_names: boolean): TreeNode | null;
 
@@ -17081,6 +17329,7 @@ export namespace Gda {
          * Get the {@link Gda.TreeManager} which created `node` in `tree`
          * @param node a {@link Gda.TreeNode} present in `tree`
          * @returns the {@link Gda.TreeManager}, or `null` if `node` is not present in `tree`
+         * @since 4.2
          */
         get_node_manager(node: TreeNode): TreeManager;
 
@@ -17088,6 +17337,7 @@ export namespace Gda {
          * Get the path associated to `node` in `tree`.
          * @param node a {@link Gda.TreeNode} node in `tree`
          * @returns a new string, or `null` if `node` is not in `tree`
+         * @since 4.2
          */
         get_node_path(node: TreeNode): string;
 
@@ -17099,6 +17349,7 @@ export namespace Gda {
          * @param tree_path full path to the required nodes (if `use_names` is `true`, then it must start with '/'), or `null`
          * @param use_names if `true`, then `tree_path` will be interpreted as a unix style path, and if `false`,             then `tree_path` will be interpreted similarly to the `GtkTreePath`'s string representation.
          * @returns a new list of {@link Gda.TreeNode} pointers, free it with `g_slist_free()`
+         * @since 4.2
          */
         get_nodes_in_path(tree_path: string | null, use_names: boolean): TreeNode[];
 
@@ -17106,6 +17357,7 @@ export namespace Gda {
          * Sets an attribute to `tree`, which will be accessible to any node in it.
          * @param attribute attribute name
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_attribute(attribute: string, value: GObject.Value | any): void;
 
@@ -17113,6 +17365,7 @@ export namespace Gda {
          * Requests that `tree` be populated with nodes. If an error occurs, then `tree`'s contents is left
          * unchanged, and otherwise `tree`'s previous contents is completely replaced by the new one.
          * @returns TRUE if no error occurred.
+         * @since 4.2
          */
         update_all(): boolean;
 
@@ -17121,6 +17374,7 @@ export namespace Gda {
          * `gda_tree_update_part()`). If `node` is `null` then the top level nodes are updated.
          * @param node a {@link Gda.TreeNode} node in `tree`, or `null`
          * @returns TRUE if no error occurred.
+         * @since 4.2.8
          */
         update_children(node: TreeNode | null): boolean;
 
@@ -17128,6 +17382,7 @@ export namespace Gda {
          * Requests that `tree` be populated with nodes, starting from `node`
          * @param node a {@link Gda.TreeNode} node in `tree`
          * @returns TRUE if no error occurred.
+         * @since 4.2
          */
         update_part(node: TreeNode): boolean;
     }
@@ -17215,6 +17470,7 @@ export namespace Gda {
          * infinite recursive behaviour in this case when creating children nodes
          * (depending on the actual implementation of the {@link Gda.TreeManager}).
          * @param sub a {@link Gda.TreeManager} object to add
+         * @since 4.2
          */
         add_manager(sub: TreeManager): void;
 
@@ -17225,6 +17481,7 @@ export namespace Gda {
          * As a side effect, if `value` is `null`, then the corresponding attribute, if it was set, is unset.
          * @param attribute an attribute name
          * @param value the attribute's value, or `null`
+         * @since 4.2
          */
         add_new_node_attribute(attribute: string, value: GObject.Value | any | null): void;
 
@@ -17237,12 +17494,14 @@ export namespace Gda {
          * @param parent the parent the new node may have, or `null`
          * @param name name given to the new node, or `null`
          * @returns a new {@link Gda.TreeNode}
+         * @since 4.2
          */
         create_node(parent: TreeNode | null, name: string | null): TreeNode;
 
         /**
          * Get the list of sub managers which have already been added using `gda_tree_manager_add_manager()`
          * @returns a list of `GdaTreeMenager` which should not be modified.
+         * @since 4.2
          */
         get_managers(): TreeManager[];
 
@@ -17253,6 +17512,7 @@ export namespace Gda {
          * Specifying a custom {@link Gda.TreeManagerNodeFunc} function for example allows one to use
          * specialized sub-classed {@link Gda.TreeNode} objects.
          * @param func a {@link Gda.TreeManagerNodeFunc} function pointer, or `null`
+         * @since 4.2
          */
         set_node_create_func(func: TreeManagerNodeFunc | null): void;
     }
@@ -17796,6 +18056,7 @@ export namespace Gda {
          * see <link linkend="libgda-40-Attributes-manager.synopsis">this section</link>.
          * @param attribute attribute name as a string
          * @returns a read-only {@link GObject.Value}, or `null` if not attribute named `attribute` has been set for `node`
+         * @since 4.2
          */
         fetch_attribute(attribute: string): unknown;
 
@@ -17803,6 +18064,7 @@ export namespace Gda {
          * Get the {@link Gda.TreeNode} child of `node` at position `index` (starting at 0).
          * @param index a index
          * @returns the {@link Gda.TreeNode}, or `null` if not found
+         * @since 4.2
          */
         get_child_index(index: number): TreeNode;
 
@@ -17810,12 +18072,14 @@ export namespace Gda {
          * Get the {@link Gda.TreeNode} child of `node` which has the #GDA_ATTRIBUTE_NAME set to `name`
          * @param name requested node's name
          * @returns the {@link Gda.TreeNode}, or `null` if not found
+         * @since 4.2
          */
         get_child_name(name: string): TreeNode;
 
         /**
          * Get a list of all `node`'s children, free it with `g_slist_free()` after usage
          * @returns a new {@link GLib.SList} of {@link Gda.TreeNode} objects, or `null` if `node` does not have any child
+         * @since 4.2
          */
         get_children(): TreeNode[];
 
@@ -17828,6 +18092,7 @@ export namespace Gda {
          * see <link linkend="libgda-40-Attributes-manager.synopsis">this section</link>.
          * @param attribute attribute name as a string
          * @returns a read-only {@link GObject.Value}, or `null` if not attribute named `attribute` has been set for `node`
+         * @since 4.2
          */
         get_node_attribute(attribute: string): unknown;
 
@@ -17835,6 +18100,7 @@ export namespace Gda {
          * Get the {@link Gda.TreeNode} parent of `node` in the {@link Gda.Tree} node belongs to. If `node` is at the top level,
          * then this method return `null`.
          * @returns the parent {@link Gda.TreeNode}
+         * @since 4.2
          */
         get_parent(): TreeNode;
 
@@ -17858,6 +18124,7 @@ export namespace Gda {
          * copied), except if `value` is `null`, in which case the attribute is removed.
          * @param attribute attribute name
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_node_attribute(attribute: string, value: GObject.Value | any | null): void;
     }
@@ -18073,22 +18340,26 @@ export namespace Gda {
 
         /**
          * @returns associated data to {@link Gda.Binary}.
+         * @since 6.0
          */
         get_data(): null;
 
         /**
          * @returns size of associated data to {@link Gda.Binary} or -1 in case of error.
+         * @since 6.0
          */
         get_size(): number;
 
         /**
          * Frees data referenced by {@link Gda.Binary}
+         * @since 6.0
          */
         reset_data(): void;
 
         /**
          * Set binary data to a {@link Gda.Binary}, holding a copy of the data.
          * @param val value to be copied by {@link Gda.Binary}.
+         * @since 6.0
          */
         set_data(val: Uint8Array | string): void;
 
@@ -18145,11 +18416,13 @@ export namespace Gda {
 
         /**
          * @returns associated {@link Gda.Binary}.
+         * @since 6.0
          */
         get_binary(): Binary;
 
         /**
          * @returns associated {@link Gda.BlobOp}.
+         * @since 6.0
          */
         get_op(): BlobOp;
 
@@ -18426,6 +18699,7 @@ export namespace Gda {
         /**
          * Copy constructor.
          * @returns a new {@link Gda.DsnInfo}
+         * @since 5.2
          */
         copy(): DsnInfo;
 
@@ -18441,6 +18715,7 @@ export namespace Gda {
 
         /**
          * Frees any resources taken by `dsn` struct. If `dsn` is `null`, then nothing happens.
+         * @since 5.2
          */
         free(): void;
     }
@@ -18585,11 +18860,13 @@ export namespace Gda {
         /**
          * Copy constructor.
          * @returns a new {@link Gda.MetaContext}
+         * @since 5.2
          */
         copy(): MetaContext;
 
         /**
          * Frees any resources taken by `ctx` struct. If `ctx` is `null`, then nothing happens.
+         * @since 5.2
          */
         free(): void;
 
@@ -18601,6 +18878,7 @@ export namespace Gda {
         /**
          * Get table's name to used in the context.
          * @returns A string with the table's name used in the context.
+         * @since 5.2
          */
         get_table(): string;
 
@@ -18613,6 +18891,7 @@ export namespace Gda {
          * @param column the column's name
          * @param value the column's value
          * @param cnc a {@link Gda.Connection} to be used when identifier are normalized, or NULL
+         * @since 5.2
          */
         set_column(column: string, value: GObject.Value | any, cnc: Connection | null): void;
 
@@ -18623,6 +18902,7 @@ export namespace Gda {
          * `columns` incements its reference counting. Is recommended to use `gda_meta_context_free` in order to free them.
          * @param columns a {@link GLib.HashTable} with the table's columns' name and their values to use in context.
          * @param cnc a {@link Gda.Connection} to used to normalize identifiers quoting, or NULL
+         * @since 5.2
          */
         set_columns(columns: { [key: string]: GObject.Value }, cnc: Connection | null): void;
 
@@ -18631,6 +18911,7 @@ export namespace Gda {
          * schema</link> used to store meta information about the database. Use "_tables" to update meta information
          * about database's tables.
          * @param table a string with the table's name to use in context
+         * @since 5.2
          */
         set_table(table: string): void;
 
@@ -18829,48 +19110,56 @@ export namespace Gda {
 
         /**
          * @returns a `gdouble` representation of `numeric`
+         * @since 5.0.2
          */
         get_double(): number;
 
         /**
          * Gets the precision of a {@link Gda.Numeric}.
          * @returns an integer with the precision of a {@link Gda.Numeric}.
+         * @since 5.0.2
          */
         get_precision(): number;
 
         /**
          * Get the string representation of `numeric`, in the C locale format (dot as a fraction separator).
          * @returns a new string representing the stored valued in `numeric`
+         * @since 5.0.2
          */
         get_string(): string | null;
 
         /**
          * Gets the width of a {@link Gda.Numeric}. (Not yet implemented).
          * @returns an integer with the width of a {@link Gda.Numeric}. (Not jet implemented).
+         * @since 5.0.2
          */
         get_width(): number;
 
         /**
          * Sets `numeric` using a `gdouble` represented by `number`.
          * @param number a `gdouble`
+         * @since 5.0.2
          */
         set_double(number: number): void;
 
         /**
          * Sets `numeric` with a number represented by `str`, in the C locale format (dot as a fraction separator).
          * @param str a string representing a number, in the C locale format
+         * @since 5.0.2
          */
         set_from_string(str: string): void;
 
         /**
          * Sets the precision of a {@link Gda.Numeric}.
          * @param precision a `glong`
+         * @since 5.0.2
          */
         set_precision(precision: bigint | number): void;
 
         /**
          * Sets the width of a {@link Gda.Numeric}. (Not yet implemented).
          * @param width a `glong`
+         * @since 5.0.2
          */
         set_width(width: bigint | number): void;
     }
@@ -18997,6 +19286,7 @@ export namespace Gda {
         /**
          * Call this function to get rid of the clear version of all the values stored in `qlist`. If `qlist` is `null`,
          * then this function does nothing.
+         * @since 5.2.0
          */
         protect_values(): void;
 
@@ -19305,28 +19595,33 @@ export namespace Gda {
         // Methods
         /**
          * @param node a {@link Gda.SetNode} to set
+         * @since 5.2
          */
         add_node(node: SetNode): void;
 
         /**
          * Copy constructor.
          * @returns a new {@link Gda.SetGroup}
+         * @since 5.2
          */
         copy(): SetGroup;
 
         /**
          * Frees any resources taken by `sg` struct. If `sg` is `null`, then nothing happens.
+         * @since 5.2
          */
         free(): void;
 
         /**
          * @returns number of nodes in `sg`.
+         * @since 5.2
          */
         get_n_nodes(): number;
 
         /**
          * This method always return first {@link Gda.SetNode} in `sg`.
          * @returns first {@link Gda.SetNode} in `sg`.
+         * @since 5.2
          */
         get_node(): SetNode;
 
@@ -19334,16 +19629,19 @@ export namespace Gda {
          * Returns a {@link GLib.SList} with the {@link Gda.SetNode} grouped by `sg`. You must use
          * `g_slist_free` on returned list.
          * @returns a {@link GLib.SList} with all nodes in `sg`.
+         * @since 5.2
          */
         get_nodes(): SetNode[];
 
         /**
          * @returns a {@link Gda.SetSource}. If `null` then `sg` contains just one element.
+         * @since 5.2
          */
         get_source(): SetSource;
 
         /**
          * @param source a {@link Gda.SetSource} to set
+         * @since 5.2
          */
         set_source(source: SetSource): void;
     }
@@ -19366,26 +19664,31 @@ export namespace Gda {
         /**
          * Copy constructor.
          * @returns a new {@link Gda.SetNode}
+         * @since 5.2
          */
         copy(): SetNode;
 
         /**
          * Frees any resources taken by `node` struct. If `node` is `null`, then nothing happens.
+         * @since 5.2
          */
         free(): void;
 
         /**
          * @returns the {@link Gda.DataModel} used by `node`
+         * @since 5.2
          */
         get_data_model(): DataModel;
 
         /**
          * @returns the {@link Gda.Holder} used by `node`
+         * @since 5.2
          */
         get_holder(): Holder;
 
         /**
          * @returns the number of column referenced in a given {@link Gda.DataModel}. If negative no column is referenced or no {@link Gda.DataModel} is used by `node`.
+         * @since 5.2
          */
         get_source_column(): number;
 
@@ -19394,12 +19697,14 @@ export namespace Gda {
          * counting when set. Internally referenced column number is set to first column
          * in `model`.
          * @param model a {@link Gda.DataModel} to be used by `node`
+         * @since 5.2
          */
         set_data_model(model: DataModel | null): void;
 
         /**
          * Set a {@link Gda.Holder} to `node`.
          * @param holder 
+         * @since 5.2
          */
         set_holder(holder: Holder): void;
 
@@ -19407,6 +19712,7 @@ export namespace Gda {
          * Set column number in the {@link Gda.DataModel} used `node`. If no {@link Gda.DataModel} is set
          * then column is set to invalid (-1);
          * @param column 
+         * @since 5.2
          */
         set_source_column(column: number): void;
     }
@@ -19429,38 +19735,45 @@ export namespace Gda {
         /**
          * Set a {@link Gda.DataModel}
          * @param node a {@link Gda.SetNode} to add
+         * @since 5.2
          */
         add_node(node: SetNode): void;
 
         /**
          * Copy constructor.
          * @returns a new {@link Gda.SetSource}
+         * @since 5.2
          */
         copy(): SetSource;
 
         /**
          * Frees any resources taken by `s` struct. If `s` is `null`, then nothing happens.
+         * @since 5.2
          */
         free(): void;
 
         /**
          * @returns a {@link Gda.DataModel} used by `s`
+         * @since 5.2
          */
         get_data_model(): DataModel;
 
         /**
          * @returns number of nodes in `sg`.
+         * @since 5.2
          */
         get_n_nodes(): number;
 
         /**
          * @returns a list of {@link Gda.SetNode} structs
+         * @since 5.2
          */
         get_nodes(): SetNode[];
 
         /**
          * Set a {@link Gda.DataModel}
          * @param model a {@link Gda.DataModel}
+         * @since 5.2
          */
         set_data_model(model: DataModel): void;
     }
@@ -20177,6 +20490,7 @@ export namespace Gda {
          * objects names will be removed.
          * @param mstruct a {@link Gda.MetaStruct} object, or `null`
          * @returns TRUE if no error occurred
+         * @since 4.2
          */
         check_validity_m(mstruct: MetaStruct | null): boolean;
 
@@ -20709,67 +21023,79 @@ export namespace Gda {
 
         /**
          * Free resources holded by the {@link Gda.Time} instance
+         * @since 6.0
          */
         free(): void;
 
         /**
          * Extract fraction of seconds from the instance of {@link Gda.Time}
          * @returns fraction of seconds
+         * @since 6.0
          */
         get_fraction(): number;
 
         /**
          * Get hours from the {@link Gda.Time} instance
+         * @since 6.0
          */
         get_hour(): number;
 
         /**
          * Get minutes from the {@link Gda.Time} instance
+         * @since 6.0
          */
         get_minute(): number;
 
         /**
          * Get second component from {@link Gda.Time}
+         * @since 6.0
          */
         get_second(): number;
 
         /**
          * Returns number of seconds to be added to UTC time.
+         * @since 6.0
          */
         get_timezone(): number;
 
         /**
          * Returns a {@link GLib.TimeZone} in use in this `time`.
+         * @since 6.0
          */
         get_tz(): GLib.TimeZone;
 
         /**
          * Set new value for the second fraction
          * @param fraction new second fraction to set to.
+         * @since 6.0
          */
         set_fraction(fraction: bigint | number): void;
 
         /**
          * Set hour component to the {@link Gda.Time} instance.
          * @param hour new hours to set to
+         * @since 6.0
          */
         set_hour(hour: number): void;
 
         /**
          * Set minutes to the {@link Gda.Time} instance
          * @param minute new minutes to set to
+         * @since 6.0
          */
         set_minute(minute: number): void;
 
         /**
          * Set second component
          * @param second new seconds to set to
+         * @since 6.0
          */
         set_second(second: number): void;
 
         /**
          * Set timezone component for the instance of {@link Gda.Time}
          * @param timezone new time zone to set to. See `gda_time_change_timezone`
+         * @since 6.0
          */
         set_timezone(timezone: bigint | number): void;
 
@@ -20777,6 +21103,7 @@ export namespace Gda {
          * Creates a string representation of a {@link Gda.Time} in local time
          * with the timezone designation.
          * @returns a new string
+         * @since 6.0
          */
         to_string(): string;
 
@@ -20784,6 +21111,7 @@ export namespace Gda {
          * Creates a string representation of a {@link Gda.Time} in local time
          * without timezone designation.
          * @returns a new string
+         * @since 6.0
          */
         to_string_local(): string;
 
@@ -20791,12 +21119,14 @@ export namespace Gda {
          * Creates a string representation of a {@link Gda.Time} in UTC time
          * with time zone indication.
          * @returns a new string
+         * @since 6.0
          */
         to_string_utc(): string;
 
         /**
          * Translate `time`'s to give timezone
          * @param ntz a new {@link GLib.TimeZone} to use
+         * @since 6.0
          */
         to_timezone(ntz: GLib.TimeZone): Time;
 
@@ -20808,6 +21138,8 @@ export namespace Gda {
         /**
          * A time is always valid, so this method has been deprecated.
          * @returns `TRUE` if {@link Gda.Time} is valid; `false` otherwise.
+         * @since 4.2
+         * @deprecated since 6.0
          */
         valid(): boolean;
     }
@@ -20911,6 +21243,7 @@ export namespace Gda {
          * This function can be called on already cancelled jobs, and simply returns `true` in that case.
          * @param job_id the ID of the job, as returned by `gda_worker_submit_job()`
          * @returns `true` if the job was cancelled
+         * @since 6.0
          */
         cancel_job(job_id: number): boolean;
 
@@ -20947,6 +21280,7 @@ export namespace Gda {
          * @param out_job_id a place to store the ID of the job having been submitted, or `null`
          * @param func the function to call from the worker thread
          * @returns `true` if no error occurred
+         * @since 6.0
          */
         do_job(context: GLib.MainContext | null, timeout_ms: number, out_result: null, out_job_id: number | null, func: WorkerFunc): boolean;
 
@@ -20962,6 +21296,7 @@ export namespace Gda {
          * @param job_id the ID of the job, as returned by `gda_worker_submit_job()`
          * @param out_result a place to store the value returned by the execution of the requested function within the worker thread, or `null`
          * @returns `true` if the jobs has completed
+         * @since 6.0
          */
         fetch_job_result(job_id: number, out_result: null): boolean;
 
@@ -20970,18 +21305,21 @@ export namespace Gda {
          * `worker` that whatever happens to the specific job, you are not interrested anymore (i.e. that `worker` can
          * do whatever is possible to simple discard everything related to that job).
          * @param job_id the ID of the job, as returned by `gda_worker_submit_job()`
+         * @since 6.0
          */
         forget_job(job_id: number): void;
 
         /**
          * Get a pointer to `worker`'s inner worker thread
          * @returns the {@link GLib.Thread}
+         * @since 6.0
          */
         get_worker_thread(): GLib.Thread;
 
         /**
          * Increases `worker`'s reference count.
          * @returns `worker`
+         * @since 6.0
          */
         ref(): Worker;
 
@@ -21005,6 +21343,7 @@ export namespace Gda {
          * @param context a {@link GLib.MainContext}, or `null`
          * @param callback the function to call when a job submitted from within the calling thread using `gda_worker_submit_job()` has finished being processed.
          * @returns `true` if no error occurred.
+         * @since 6.0
          */
         set_callback(context: GLib.MainContext | null, callback: WorkerCallback | null): boolean;
 
@@ -21027,12 +21366,14 @@ export namespace Gda {
          * @param callback_context a {@link GLib.MainContext}, or `null` (ignored if no setting has been defined with `gda_worker_set_callback()`)
          * @param func the function to call from the worker thread
          * @returns a job ID, or %0 if an error occurred
+         * @since 6.0
          */
         submit_job(callback_context: GLib.MainContext | null, func: WorkerFunc): number;
 
         /**
          * Tells if the thread from which this function is called is `worker`'s worker thread.
          * @returns `true` if this function is called is `worker`'s worker thread
+         * @since 6.0
          */
         thread_is_worker(): boolean;
 
@@ -21042,6 +21383,7 @@ export namespace Gda {
          * worker thread actually has terminated, which can take some time if it's busy.
          * 
          * If `worker` is `null`, then nothing happens.
+         * @since 6.0
          */
         unref(): void;
 
@@ -21053,6 +21395,7 @@ export namespace Gda {
          * transfered to the caller).
          * @param func the function to call from the worker thread
          * @returns the result of `func`'s execution
+         * @since 6.0
          */
         wait_job(func: WorkerFunc): null;
     }
@@ -21796,6 +22139,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -21969,6 +22313,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -21984,6 +22329,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -22190,6 +22536,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -22249,6 +22596,7 @@ export namespace Gda {
             /**
              * This method parse XML node and populate `self` object.
              * @param node a node to parse
+             * @since 6.0
              * @virtual
              */
             vfunc_parse_node(node: libxml2.NodePtr): boolean;
@@ -22256,6 +22604,7 @@ export namespace Gda {
             /**
              * Write content from the `self` to the `node`
              * @param node a node to write data in
+             * @since 6.0
              * @virtual
              */
             vfunc_write_node(node: libxml2.NodePtr): boolean;
@@ -22280,6 +22629,7 @@ export namespace Gda {
          * This method parse XML node and populate `self` object.
          * @param node a node to parse
          * @returns `true` on success, `false` if an error occurred
+         * @since 6.0
          */
         parse_node(node: libxml2.NodePtr): boolean;
 
@@ -22287,6 +22637,7 @@ export namespace Gda {
          * Write content from the `self` to the `node`
          * @param node a node to write data in
          * @returns `true` on success, `false` if an error occurred
+         * @since 6.0
          */
         write_node(node: libxml2.NodePtr): boolean;
     }
@@ -22309,6 +22660,7 @@ export namespace Gda {
              * implement corresponding CREATE TABLE | CREATE INDEX | CREATE VIEW operations. {@link Gda.DbColumn}
              * implements ADD COLUMN operation as part of ALTER TABLE operation.
              * @param cnc Opened connection
+             * @since 6.0
              * @virtual
              */
             vfunc_create(cnc: Connection): boolean;
@@ -22316,6 +22668,7 @@ export namespace Gda {
             /**
              * Execute corresponding DROP operation
              * @param cnc Opened connection
+             * @since 6.0
              * @virtual
              */
             vfunc_drop(cnc: Connection): boolean;
@@ -22324,6 +22677,7 @@ export namespace Gda {
              * Execute corresponding RENAME operation. A lot of RENAME operations are not implemented by
              * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
              * @param cnc Opened connection
+             * @since 6.0
              * @virtual
              */
             vfunc_rename(cnc: Connection): boolean;
@@ -22351,6 +22705,7 @@ export namespace Gda {
          * implements ADD COLUMN operation as part of ALTER TABLE operation.
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         create(cnc: Connection, user_data: null): boolean;
 
@@ -22358,6 +22713,7 @@ export namespace Gda {
          * Execute corresponding DROP operation
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         drop(cnc: Connection, user_data: null): boolean;
 
@@ -22366,6 +22722,7 @@ export namespace Gda {
          * SQLite3 provider. In this case, the SQL object must be deleted and a new one should be created.
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
+         * @since 6.0
          */
         rename(cnc: Connection, user_data: null): boolean;
     }
@@ -23256,6 +23613,7 @@ export namespace Gda {
             /**
              * @param cnc 
              * @param name 
+             * @since 6.0
              * @virtual
              */
             vfunc_add_savepoint(cnc: Connection, name: string): boolean;
@@ -23264,12 +23622,14 @@ export namespace Gda {
              * @param cnc 
              * @param name 
              * @param level 
+             * @since 6.0
              * @virtual
              */
             vfunc_begin_transaction(cnc: Connection, name: string, level: TransactionIsolation): boolean;
 
             /**
              * @param cnc 
+             * @since 6.0
              * @virtual
              */
             vfunc_close_connection(cnc: Connection): boolean;
@@ -23277,11 +23637,13 @@ export namespace Gda {
             /**
              * @param cnc 
              * @param name 
+             * @since 6.0
              * @virtual
              */
             vfunc_commit_transaction(cnc: Connection, name: string): boolean;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_create_connection(): Connection;
@@ -23290,12 +23652,14 @@ export namespace Gda {
              * @param cnc 
              * @param type 
              * @param options 
+             * @since 6.0
              * @virtual
              */
             vfunc_create_operation(cnc: Connection, type: ServerOperationType, options: Set): ServerOperation;
 
             /**
              * @param cnc 
+             * @since 6.0
              * @virtual
              */
             vfunc_create_parser(cnc: Connection): SqlParser;
@@ -23303,6 +23667,7 @@ export namespace Gda {
             /**
              * @param cnc 
              * @param name 
+             * @since 6.0
              * @virtual
              */
             vfunc_delete_savepoint(cnc: Connection, name: string): boolean;
@@ -23310,6 +23675,7 @@ export namespace Gda {
             /**
              * @param cnc 
              * @param str 
+             * @since 6.0
              * @virtual
              */
             vfunc_escape_string(cnc: Connection, str: string): string;
@@ -23318,6 +23684,7 @@ export namespace Gda {
              * @param cnc 
              * @param g_type 
              * @param dbms_type 
+             * @since 6.0
              * @virtual
              */
             vfunc_get_data_handler(cnc: Connection, g_type: GObject.GType, dbms_type: string): DataHandler;
@@ -23325,6 +23692,7 @@ export namespace Gda {
             /**
              * @param cnc 
              * @param g_type 
+             * @since 6.0
              * @virtual
              */
             vfunc_get_def_dbms_type(cnc: Connection, g_type: GObject.GType): string;
@@ -23337,17 +23705,20 @@ export namespace Gda {
             vfunc_get_last_inserted(cnc: Connection): Set;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_get_name(): string;
 
             /**
              * @param cnc 
+             * @since 6.0
              * @virtual
              */
             vfunc_get_server_version(cnc: Connection): string;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_get_version(): string;
@@ -23357,6 +23728,7 @@ export namespace Gda {
              * @param id 
              * @param for_meta_store 
              * @param force_quotes 
+             * @since 6.0
              * @virtual
              */
             vfunc_identifier_quote(cnc: Connection | null, id: string, for_meta_store: boolean, force_quotes: boolean): string;
@@ -23365,6 +23737,7 @@ export namespace Gda {
              * @param cnc 
              * @param params 
              * @param auth 
+             * @since 6.0
              * @virtual
              */
             vfunc_open_connection(cnc: Connection, params: QuarkList, auth: QuarkList): boolean;
@@ -23372,6 +23745,7 @@ export namespace Gda {
             /**
              * @param cnc 
              * @param op 
+             * @since 6.0
              * @virtual
              */
             vfunc_perform_operation(cnc: Connection, op: ServerOperation): boolean;
@@ -23380,6 +23754,7 @@ export namespace Gda {
              * @param cnc 
              * @param params 
              * @param auth 
+             * @since 6.0
              * @virtual
              */
             vfunc_prepare_connection(cnc: Connection, params: QuarkList, auth: QuarkList): boolean;
@@ -23387,6 +23762,7 @@ export namespace Gda {
             /**
              * @param cnc 
              * @param op 
+             * @since 6.0
              * @virtual
              */
             vfunc_render_operation(cnc: Connection, op: ServerOperation): string;
@@ -23394,6 +23770,7 @@ export namespace Gda {
             /**
              * @param cnc 
              * @param name 
+             * @since 6.0
              * @virtual
              */
             vfunc_rollback_savepoint(cnc: Connection, name: string): boolean;
@@ -23401,6 +23778,7 @@ export namespace Gda {
             /**
              * @param cnc 
              * @param name 
+             * @since 6.0
              * @virtual
              */
             vfunc_rollback_transaction(cnc: Connection, name: string): boolean;
@@ -23412,6 +23790,7 @@ export namespace Gda {
              * @param model_usage 
              * @param col_types 
              * @param last_inserted_row 
+             * @since 6.0
              * @virtual
              */
             vfunc_statement_execute<T = GObject.Object>(cnc: Connection, stmt: Statement, params: Set, model_usage: StatementModelUsage, col_types: GObject.GType, last_inserted_row: Set): T;
@@ -23419,6 +23798,7 @@ export namespace Gda {
             /**
              * @param cnc 
              * @param stmt 
+             * @since 6.0
              * @virtual
              */
             vfunc_statement_prepare(cnc: Connection, stmt: Statement): boolean;
@@ -23427,6 +23807,7 @@ export namespace Gda {
              * @param cnc 
              * @param stmt 
              * @param params 
+             * @since 6.0
              * @virtual
              */
             vfunc_statement_rewrite(cnc: Connection, stmt: Statement, params: Set): SqlStatement;
@@ -23436,6 +23817,7 @@ export namespace Gda {
              * @param stmt 
              * @param params 
              * @param flags 
+             * @since 6.0
              * @virtual
              */
             vfunc_statement_to_sql(cnc: Connection, stmt: Statement, params: Set | null, flags: StatementSqlFlag): [string, Holder[] | null];
@@ -23443,6 +23825,7 @@ export namespace Gda {
             /**
              * @param cnc 
              * @param feature 
+             * @since 6.0
              * @virtual
              */
             vfunc_supports_feature(cnc: Connection, feature: ConnectionFeature): boolean;
@@ -23451,6 +23834,7 @@ export namespace Gda {
              * @param cnc 
              * @param type 
              * @param options 
+             * @since 6.0
              * @virtual
              */
             vfunc_supports_operation(cnc: Connection, type: ServerOperationType, options: Set): boolean;
@@ -23458,6 +23842,7 @@ export namespace Gda {
             /**
              * @param cnc 
              * @param str 
+             * @since 6.0
              * @virtual
              */
             vfunc_unescape_string(cnc: Connection, str: string): string;
@@ -23481,6 +23866,7 @@ export namespace Gda {
         /**
          * @param cnc 
          * @param name 
+         * @since 6.0
          */
         add_savepoint(cnc: Connection, name: string): boolean;
 
@@ -23488,43 +23874,53 @@ export namespace Gda {
          * @param cnc 
          * @param name 
          * @param level 
+         * @since 6.0
          */
         begin_transaction(cnc: Connection, name: string, level: TransactionIsolation): boolean;
 
         /**
          * @param cnc 
+         * @since 6.0
          */
         close_connection(cnc: Connection): boolean;
 
         /**
          * @param cnc 
          * @param name 
+         * @since 6.0
          */
         commit_transaction(cnc: Connection, name: string): boolean;
 
+        /**
+         * @since 6.0
+         */
         create_connection(): Connection;
 
         /**
          * @param cnc 
          * @param type 
          * @param options 
+         * @since 6.0
          */
         create_operation(cnc: Connection, type: ServerOperationType, options: Set): ServerOperation;
 
         /**
          * @param cnc 
+         * @since 6.0
          */
         create_parser(cnc: Connection): SqlParser;
 
         /**
          * @param cnc 
          * @param name 
+         * @since 6.0
          */
         delete_savepoint(cnc: Connection, name: string): boolean;
 
         /**
          * @param cnc 
          * @param str 
+         * @since 6.0
          */
         escape_string(cnc: Connection, str: string): string;
 
@@ -23532,12 +23928,14 @@ export namespace Gda {
          * @param cnc 
          * @param g_type 
          * @param dbms_type 
+         * @since 6.0
          */
         get_data_handler(cnc: Connection, g_type: GObject.GType, dbms_type: string): DataHandler;
 
         /**
          * @param cnc 
          * @param g_type 
+         * @since 6.0
          */
         get_def_dbms_type(cnc: Connection, g_type: GObject.GType): string;
 
@@ -23548,13 +23946,20 @@ export namespace Gda {
          */
         get_last_inserted(cnc: Connection): Set;
 
+        /**
+         * @since 6.0
+         */
         get_name(): string;
 
         /**
          * @param cnc 
+         * @since 6.0
          */
         get_server_version(cnc: Connection): string;
 
+        /**
+         * @since 6.0
+         */
         get_version(): string;
 
         /**
@@ -23562,6 +23967,7 @@ export namespace Gda {
          * @param id 
          * @param for_meta_store 
          * @param force_quotes 
+         * @since 6.0
          */
         identifier_quote(cnc: Connection | null, id: string, for_meta_store: boolean, force_quotes: boolean): string;
 
@@ -23569,12 +23975,14 @@ export namespace Gda {
          * @param cnc 
          * @param params 
          * @param auth 
+         * @since 6.0
          */
         open_connection(cnc: Connection, params: QuarkList, auth: QuarkList): boolean;
 
         /**
          * @param cnc 
          * @param op 
+         * @since 6.0
          */
         perform_operation(cnc: Connection, op: ServerOperation): boolean;
 
@@ -23582,24 +23990,28 @@ export namespace Gda {
          * @param cnc 
          * @param params 
          * @param auth 
+         * @since 6.0
          */
         prepare_connection(cnc: Connection, params: QuarkList, auth: QuarkList): boolean;
 
         /**
          * @param cnc 
          * @param op 
+         * @since 6.0
          */
         render_operation(cnc: Connection, op: ServerOperation): string;
 
         /**
          * @param cnc 
          * @param name 
+         * @since 6.0
          */
         rollback_savepoint(cnc: Connection, name: string): boolean;
 
         /**
          * @param cnc 
          * @param name 
+         * @since 6.0
          */
         rollback_transaction(cnc: Connection, name: string): boolean;
 
@@ -23610,12 +24022,14 @@ export namespace Gda {
          * @param model_usage 
          * @param col_types 
          * @param last_inserted_row 
+         * @since 6.0
          */
         statement_execute<T = GObject.Object>(cnc: Connection, stmt: Statement, params: Set, model_usage: StatementModelUsage, col_types: GObject.GType, last_inserted_row: Set): T;
 
         /**
          * @param cnc 
          * @param stmt 
+         * @since 6.0
          */
         statement_prepare(cnc: Connection, stmt: Statement): boolean;
 
@@ -23623,6 +24037,7 @@ export namespace Gda {
          * @param cnc 
          * @param stmt 
          * @param params 
+         * @since 6.0
          */
         statement_rewrite(cnc: Connection, stmt: Statement, params: Set): SqlStatement;
 
@@ -23631,12 +24046,14 @@ export namespace Gda {
          * @param stmt 
          * @param params 
          * @param flags 
+         * @since 6.0
          */
         statement_to_sql(cnc: Connection, stmt: Statement, params: Set | null, flags: StatementSqlFlag): [string, Holder[] | null];
 
         /**
          * @param cnc 
          * @param feature 
+         * @since 6.0
          */
         supports_feature(cnc: Connection, feature: ConnectionFeature): boolean;
 
@@ -23644,12 +24061,14 @@ export namespace Gda {
          * @param cnc 
          * @param type 
          * @param options 
+         * @since 6.0
          */
         supports_operation(cnc: Connection, type: ServerOperationType, options: Set): boolean;
 
         /**
          * @param cnc 
          * @param str 
+         * @since 6.0
          */
         unescape_string(cnc: Connection, str: string): string;
     }
@@ -23668,6 +24087,7 @@ export namespace Gda {
 
             // Virtual methods
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_btypes(): DataModel;
@@ -23676,11 +24096,13 @@ export namespace Gda {
              * @param chset_catalog 
              * @param chset_schema 
              * @param chset_name_n 
+             * @since 6.0
              * @virtual
              */
             vfunc_character_set(chset_catalog: string, chset_schema: string, chset_name_n: string): Row;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_character_sets(): DataModel;
@@ -23690,11 +24112,13 @@ export namespace Gda {
              * @param table_schema 
              * @param table_name 
              * @param constraint_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_check_column(table_catalog: string, table_schema: string, table_name: string, constraint_name: string): Row;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_check_columns(): DataModel;
@@ -23703,16 +24127,19 @@ export namespace Gda {
              * @param collation_catalog 
              * @param collation_schema 
              * @param collation_name_n 
+             * @since 6.0
              * @virtual
              */
             vfunc_collation(collation_catalog: string, collation_schema: string, collation_name_n: string): Row;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_collations(): DataModel;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_columns(): DataModel;
@@ -23722,6 +24149,7 @@ export namespace Gda {
              * @param table_schema 
              * @param table_name 
              * @param constraint_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_constraint_ref(table_catalog: string, table_schema: string, table_name: string, constraint_name: string): Row;
@@ -23731,11 +24159,13 @@ export namespace Gda {
              * @param table_schema 
              * @param table_name 
              * @param constraint_name_n 
+             * @since 6.0
              * @virtual
              */
             vfunc_constraint_table(table_catalog: string, table_schema: string, table_name: string, constraint_name_n: string): Row;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_constraints_ref(): DataModel;
@@ -23744,6 +24174,7 @@ export namespace Gda {
              * @param table_catalog 
              * @param table_schema 
              * @param table_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_constraints_ref_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
@@ -23752,11 +24183,13 @@ export namespace Gda {
              * @param table_catalog 
              * @param table_schema 
              * @param table_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_constraints_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_constraints_tables(): DataModel;
@@ -23764,6 +24197,7 @@ export namespace Gda {
             /**
              * @param domain_catalog 
              * @param domain_schema 
+             * @since 6.0
              * @virtual
              */
             vfunc_domain(domain_catalog: string, domain_schema: string): Row;
@@ -23773,6 +24207,7 @@ export namespace Gda {
              * @param domain_schema 
              * @param domain_name 
              * @param constraint_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_domain_constraint(domain_catalog: string, domain_schema: string, domain_name: string, constraint_name: string): Row;
@@ -23781,27 +24216,32 @@ export namespace Gda {
              * @param domain_catalog 
              * @param domain_schema 
              * @param domain_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_domain_constraints(domain_catalog: string, domain_schema: string, domain_name: string): DataModel;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_domains(): DataModel;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_domains_constraints(): DataModel;
 
             /**
              * @param specific_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_element_type(specific_name: string): Row;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_element_types(): DataModel;
@@ -23810,11 +24250,13 @@ export namespace Gda {
              * @param udt_catalog 
              * @param udt_schema 
              * @param udt_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_enum_type(udt_catalog: string, udt_schema: string, udt_name: string): Row;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_enums_type(): DataModel;
@@ -23824,11 +24266,13 @@ export namespace Gda {
              * @param table_schema 
              * @param table_name 
              * @param index_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_index_col(table_catalog: string, table_schema: string, table_name: string, index_name: string): Row;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_index_cols(): DataModel;
@@ -23838,6 +24282,7 @@ export namespace Gda {
              * @param table_schema 
              * @param table_name 
              * @param index_name_n 
+             * @since 6.0
              * @virtual
              */
             vfunc_index_table(table_catalog: string, table_schema: string, table_name: string, index_name_n: string): Row;
@@ -23846,11 +24291,13 @@ export namespace Gda {
              * @param table_catalog 
              * @param table_schema 
              * @param table_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_indexes_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_indexes_tables(): DataModel;
@@ -23860,11 +24307,13 @@ export namespace Gda {
              * @param table_schema 
              * @param table_name 
              * @param constraint_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_key_column(table_catalog: string, table_schema: string, table_name: string, constraint_name: string): Row;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_key_columns(): DataModel;
@@ -23873,6 +24322,7 @@ export namespace Gda {
              * @param routine_catalog 
              * @param routine_schema 
              * @param routine_name_n 
+             * @since 6.0
              * @virtual
              */
             vfunc_routine(routine_catalog: string, routine_schema: string, routine_name_n: string): Row;
@@ -23881,6 +24331,7 @@ export namespace Gda {
              * @param rout_catalog 
              * @param rout_schema 
              * @param rout_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_routine_col(rout_catalog: string, rout_schema: string, rout_name: string): Row;
@@ -23889,21 +24340,25 @@ export namespace Gda {
              * @param rout_catalog 
              * @param rout_schema 
              * @param rout_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_routine_pars(rout_catalog: string, rout_schema: string, rout_name: string): Row;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_routines(): DataModel;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_routines_col(): DataModel;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_routines_pars(): DataModel;
@@ -23911,11 +24366,13 @@ export namespace Gda {
             /**
              * @param catalog_name 
              * @param schema_name_n 
+             * @since 6.0
              * @virtual
              */
             vfunc_schemata(catalog_name: string, schema_name_n: string): Row;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_schematas(): DataModel;
@@ -23924,6 +24381,7 @@ export namespace Gda {
              * @param table_catalog 
              * @param table_schema 
              * @param table_name_n 
+             * @since 6.0
              * @virtual
              */
             vfunc_table(table_catalog: string, table_schema: string, table_name_n: string): Row;
@@ -23933,6 +24391,7 @@ export namespace Gda {
              * @param table_schema 
              * @param table_name 
              * @param column_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_table_column(table_catalog: string, table_schema: string, table_name: string, column_name: string): Row;
@@ -23941,16 +24400,19 @@ export namespace Gda {
              * @param table_catalog 
              * @param table_schema 
              * @param table_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_table_columns(table_catalog: string, table_schema: string, table_name: string): DataModel;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_tables(): DataModel;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_tables_columns(): DataModel;
@@ -23959,11 +24421,13 @@ export namespace Gda {
              * @param table_catalog 
              * @param table_schema 
              * @param table_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_trigger(table_catalog: string, table_schema: string, table_name: string): Row;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_triggers(): DataModel;
@@ -23971,6 +24435,7 @@ export namespace Gda {
             /**
              * @param udt_catalog 
              * @param udt_schema 
+             * @since 6.0
              * @virtual
              */
             vfunc_udt(udt_catalog: string, udt_schema: string): Row;
@@ -23979,16 +24444,19 @@ export namespace Gda {
              * @param udt_catalog 
              * @param udt_schema 
              * @param udt_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_udt_col(udt_catalog: string, udt_schema: string, udt_name: string): Row;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_udt_cols(): DataModel;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_udts(): DataModel;
@@ -23997,6 +24465,7 @@ export namespace Gda {
              * @param view_catalog 
              * @param view_schema 
              * @param view_name_n 
+             * @since 6.0
              * @virtual
              */
             vfunc_view(view_catalog: string, view_schema: string, view_name_n: string): Row;
@@ -24006,6 +24475,7 @@ export namespace Gda {
              * @param view_schema 
              * @param view_name 
              * @param column_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_view_column(view_catalog: string, view_schema: string, view_name: string, column_name: string): Row;
@@ -24014,16 +24484,19 @@ export namespace Gda {
              * @param view_catalog 
              * @param view_schema 
              * @param view_name 
+             * @since 6.0
              * @virtual
              */
             vfunc_view_columns(view_catalog: string, view_schema: string, view_name: string): DataModel;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_views(): DataModel;
 
             /**
+             * @since 6.0
              * @virtual
              */
             vfunc_views_columns(): DataModel;
@@ -24053,15 +24526,22 @@ export namespace Gda {
         get connection(): Connection;
 
         // Methods
+        /**
+         * @since 6.0
+         */
         btypes(): DataModel;
 
         /**
          * @param chset_catalog 
          * @param chset_schema 
          * @param chset_name_n 
+         * @since 6.0
          */
         character_set(chset_catalog: string, chset_schema: string, chset_name_n: string): Row;
 
+        /**
+         * @since 6.0
+         */
         character_sets(): DataModel;
 
         /**
@@ -24069,20 +24549,31 @@ export namespace Gda {
          * @param table_schema 
          * @param table_name 
          * @param constraint_name 
+         * @since 6.0
          */
         check_column(table_catalog: string, table_schema: string, table_name: string, constraint_name: string): Row;
 
+        /**
+         * @since 6.0
+         */
         check_columns(): DataModel;
 
         /**
          * @param collation_catalog 
          * @param collation_schema 
          * @param collation_name_n 
+         * @since 6.0
          */
         collation(collation_catalog: string, collation_schema: string, collation_name_n: string): Row;
 
+        /**
+         * @since 6.0
+         */
         collations(): DataModel;
 
+        /**
+         * @since 6.0
+         */
         columns(): DataModel;
 
         /**
@@ -24090,6 +24581,7 @@ export namespace Gda {
          * @param table_schema 
          * @param table_name 
          * @param constraint_name 
+         * @since 6.0
          */
         constraint_ref(table_catalog: string, table_schema: string, table_name: string, constraint_name: string): Row;
 
@@ -24098,15 +24590,20 @@ export namespace Gda {
          * @param table_schema 
          * @param table_name 
          * @param constraint_name_n 
+         * @since 6.0
          */
         constraint_table(table_catalog: string, table_schema: string, table_name: string, constraint_name_n: string): Row;
 
+        /**
+         * @since 6.0
+         */
         constraints_ref(): DataModel;
 
         /**
          * @param table_catalog 
          * @param table_schema 
          * @param table_name 
+         * @since 6.0
          */
         constraints_ref_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
 
@@ -24114,14 +24611,19 @@ export namespace Gda {
          * @param table_catalog 
          * @param table_schema 
          * @param table_name 
+         * @since 6.0
          */
         constraints_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
 
+        /**
+         * @since 6.0
+         */
         constraints_tables(): DataModel;
 
         /**
          * @param domain_catalog 
          * @param domain_schema 
+         * @since 6.0
          */
         domain(domain_catalog: string, domain_schema: string): Row;
 
@@ -24130,6 +24632,7 @@ export namespace Gda {
          * @param domain_schema 
          * @param domain_name 
          * @param contraint_name 
+         * @since 6.0
          */
         domain_constraint(domain_catalog: string, domain_schema: string, domain_name: string, contraint_name: string): Row;
 
@@ -24137,27 +24640,42 @@ export namespace Gda {
          * @param domain_catalog 
          * @param domain_schema 
          * @param domain_name 
+         * @since 6.0
          */
         domain_constraints(domain_catalog: string, domain_schema: string, domain_name: string): DataModel;
 
+        /**
+         * @since 6.0
+         */
         domains(): DataModel;
 
+        /**
+         * @since 6.0
+         */
         domains_constraints(): DataModel;
 
         /**
          * @param specific_name 
+         * @since 6.0
          */
         element_type(specific_name: string): Row;
 
+        /**
+         * @since 6.0
+         */
         element_types(): DataModel;
 
         /**
          * @param udt_catalog 
          * @param udt_schema 
          * @param udt_name 
+         * @since 6.0
          */
         enum_type(udt_catalog: string, udt_schema: string, udt_name: string): Row;
 
+        /**
+         * @since 6.0
+         */
         enums_type(): DataModel;
 
         /**
@@ -24165,6 +24683,7 @@ export namespace Gda {
          * @param sql a string with the SQL to execute on provider
          * @param params a {@link Gda.Set} with all paramaters to use in query
          * @returns a new {@link Gda.DataModel} with as a result of the query
+         * @since 6.0
          */
         execute_query(sql: string, params: Set | null): DataModel | null;
 
@@ -24173,11 +24692,13 @@ export namespace Gda {
          * @param sql a string with the SQL to execute on provider
          * @param params 
          * @returns a new {@link Gda.DataModel} with as a result of the query
+         * @since 6.0
          */
         execute_query_row(sql: string, params: Set): Row | null;
 
         /**
          * @returns a {@link Gda.Connection} used by this object.
+         * @since 6.0
          */
         get_connection(): Connection;
 
@@ -24186,9 +24707,13 @@ export namespace Gda {
          * @param table_schema 
          * @param table_name 
          * @param index_name 
+         * @since 6.0
          */
         index_col(table_catalog: string, table_schema: string, table_name: string, index_name: string): Row;
 
+        /**
+         * @since 6.0
+         */
         index_cols(): DataModel;
 
         /**
@@ -24196,6 +24721,7 @@ export namespace Gda {
          * @param table_schema 
          * @param table_name 
          * @param index_name_n 
+         * @since 6.0
          */
         index_table(table_catalog: string, table_schema: string, table_name: string, index_name_n: string): Row;
 
@@ -24203,9 +24729,13 @@ export namespace Gda {
          * @param table_catalog 
          * @param table_schema 
          * @param table_name 
+         * @since 6.0
          */
         indexes_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
 
+        /**
+         * @since 6.0
+         */
         indexes_tables(): DataModel;
 
         /**
@@ -24213,15 +24743,20 @@ export namespace Gda {
          * @param table_schema 
          * @param table_name 
          * @param constraint_name 
+         * @since 6.0
          */
         key_column(table_catalog: string, table_schema: string, table_name: string, constraint_name: string): Row;
 
+        /**
+         * @since 6.0
+         */
         key_columns(): DataModel;
 
         /**
          * @param routine_catalog 
          * @param routine_schema 
          * @param routine_name_n 
+         * @since 6.0
          */
         routine(routine_catalog: string, routine_schema: string, routine_name_n: string): Row;
 
@@ -24229,6 +24764,7 @@ export namespace Gda {
          * @param rout_catalog 
          * @param rout_schema 
          * @param rout_name 
+         * @since 6.0
          */
         routine_col(rout_catalog: string, rout_schema: string, rout_name: string): Row;
 
@@ -24236,27 +24772,42 @@ export namespace Gda {
          * @param rout_catalog 
          * @param rout_schema 
          * @param rout_name 
+         * @since 6.0
          */
         routine_pars(rout_catalog: string, rout_schema: string, rout_name: string): Row;
 
+        /**
+         * @since 6.0
+         */
         routines(): DataModel;
 
+        /**
+         * @since 6.0
+         */
         routines_col(): DataModel;
 
+        /**
+         * @since 6.0
+         */
         routines_pars(): DataModel;
 
         /**
          * @param catalog_name 
          * @param schema_name_n 
+         * @since 6.0
          */
         schemata(catalog_name: string, schema_name_n: string): Row;
 
+        /**
+         * @since 6.0
+         */
         schematas(): DataModel;
 
         /**
          * @param table_catalog 
          * @param table_schema 
          * @param table_name_n 
+         * @since 6.0
          */
         table(table_catalog: string, table_schema: string, table_name_n: string): Row;
 
@@ -24265,6 +24816,7 @@ export namespace Gda {
          * @param table_schema 
          * @param table_name 
          * @param column_name 
+         * @since 6.0
          */
         table_column(table_catalog: string, table_schema: string, table_name: string, column_name: string): Row;
 
@@ -24272,25 +24824,37 @@ export namespace Gda {
          * @param table_catalog 
          * @param table_schema 
          * @param table_name 
+         * @since 6.0
          */
         table_columns(table_catalog: string, table_schema: string, table_name: string): DataModel;
 
+        /**
+         * @since 6.0
+         */
         tables(): DataModel;
 
+        /**
+         * @since 6.0
+         */
         tables_columns(): DataModel;
 
         /**
          * @param table_catalog 
          * @param table_schema 
          * @param table_name 
+         * @since 6.0
          */
         trigger(table_catalog: string, table_schema: string, table_name: string): Row;
 
+        /**
+         * @since 6.0
+         */
         triggers(): DataModel;
 
         /**
          * @param udt_catalog 
          * @param udt_schema 
+         * @since 6.0
          */
         udt(udt_catalog: string, udt_schema: string): Row;
 
@@ -24298,17 +24862,25 @@ export namespace Gda {
          * @param udt_catalog 
          * @param udt_schema 
          * @param udt_name 
+         * @since 6.0
          */
         udt_col(udt_catalog: string, udt_schema: string, udt_name: string): Row;
 
+        /**
+         * @since 6.0
+         */
         udt_cols(): DataModel;
 
+        /**
+         * @since 6.0
+         */
         udts(): DataModel;
 
         /**
          * @param view_catalog 
          * @param view_schema 
          * @param view_name_n 
+         * @since 6.0
          */
         view(view_catalog: string, view_schema: string, view_name_n: string): Row;
 
@@ -24317,6 +24889,7 @@ export namespace Gda {
          * @param view_schema 
          * @param view_name 
          * @param column_name 
+         * @since 6.0
          */
         view_column(view_catalog: string, view_schema: string, view_name: string, column_name: string): Row;
 
@@ -24324,11 +24897,18 @@ export namespace Gda {
          * @param view_catalog 
          * @param view_schema 
          * @param view_name 
+         * @since 6.0
          */
         view_columns(view_catalog: string, view_schema: string, view_name: string): DataModel;
 
+        /**
+         * @since 6.0
+         */
         views(): DataModel;
 
+        /**
+         * @since 6.0
+         */
         views_columns(): DataModel;
     }
 

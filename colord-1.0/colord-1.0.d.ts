@@ -1219,14 +1219,19 @@ export namespace Colord {
         /**
          * Converts a string to a {@link Colord.ClientError}.
          * @param error_desc 
+         * @since 0.1.26
          */
         static error_from_string(error_desc: string): ClientError;
 
+        /**
+         * @since 0.1.0
+         */
         static error_quark(): GLib.Quark;
 
         /**
          * Converts a {@link Colord.ClientError} to a string.
          * @param error_enum 
+         * @since 0.1.26
          */
         static error_to_string(error_enum: ClientError): string;
 
@@ -1294,6 +1299,7 @@ export namespace Colord {
         /**
          * Connects to the colord daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 0.1.6
          */
         connect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1301,6 +1307,7 @@ export namespace Colord {
          * Connects to the colord daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
+         * @since 0.1.6
          */
         connect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1308,6 +1315,7 @@ export namespace Colord {
          * Connects to the colord daemon.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
+         * @since 0.1.6
          */
         connect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1320,6 +1328,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.6
          */
         connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -1330,6 +1339,7 @@ export namespace Colord {
          * Do not use it in GUI applications.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.0
          */
         connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1339,6 +1349,7 @@ export namespace Colord {
          * @param scope the scope of the device
          * @param properties properties to   set on the device, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         create_device(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Device>;
 
@@ -1349,6 +1360,7 @@ export namespace Colord {
          * @param properties properties to   set on the device, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         create_device(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1359,6 +1371,7 @@ export namespace Colord {
          * @param properties properties to   set on the device, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         create_device(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Device> | void;
 
@@ -1366,6 +1379,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Device} or `null`
+         * @since 0.1.8
          */
         create_device_finish(res: Gio.AsyncResult): Device;
 
@@ -1379,6 +1393,7 @@ export namespace Colord {
          * @param properties properties to   set on the device, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Device} object, or `null` for error
+         * @since 0.1.2
          */
         create_device_sync(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null): Device;
 
@@ -1388,6 +1403,7 @@ export namespace Colord {
          * @param scope the scope of the profile
          * @param properties properties to   set on the profile, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         create_profile(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Profile>;
 
@@ -1398,6 +1414,7 @@ export namespace Colord {
          * @param properties properties to   set on the profile, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         create_profile(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1408,6 +1425,7 @@ export namespace Colord {
          * @param properties properties to   set on the profile, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         create_profile(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Profile> | void;
 
@@ -1415,6 +1433,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
+         * @since 0.1.8
          */
         create_profile_finish(res: Gio.AsyncResult): Profile;
 
@@ -1423,6 +1442,7 @@ export namespace Colord {
          * @param icc {@link Colord.Icc} object
          * @param scope the scope of the profile
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.1.1
          */
         create_profile_for_icc(icc: Icc, scope: ObjectScope, cancellable: Gio.Cancellable | null): globalThis.Promise<Profile>;
 
@@ -1432,6 +1452,7 @@ export namespace Colord {
          * @param scope the scope of the profile
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 1.1.1
          */
         create_profile_for_icc(icc: Icc, scope: ObjectScope, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1441,6 +1462,7 @@ export namespace Colord {
          * @param scope the scope of the profile
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 1.1.1
          */
         create_profile_for_icc(icc: Icc, scope: ObjectScope, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Profile> | void;
 
@@ -1448,6 +1470,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
+         * @since 1.1.1
          */
         create_profile_for_icc_finish(res: Gio.AsyncResult): Profile;
 
@@ -1460,6 +1483,7 @@ export namespace Colord {
          * @param scope the scope of the profile
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
+         * @since 1.1.1
          */
         create_profile_for_icc_sync(icc: Icc, scope: ObjectScope, cancellable: Gio.Cancellable | null): Profile;
 
@@ -1473,6 +1497,7 @@ export namespace Colord {
          * @param properties properties to   set on the profile, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
+         * @since 0.1.2
          */
         create_profile_sync(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null): Profile;
 
@@ -1480,6 +1505,7 @@ export namespace Colord {
          * Deletes a device.
          * @param device a {@link Colord.Device}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         delete_device(device: Device, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1488,6 +1514,7 @@ export namespace Colord {
          * @param device a {@link Colord.Device}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         delete_device(device: Device, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1496,6 +1523,7 @@ export namespace Colord {
          * @param device a {@link Colord.Device}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         delete_device(device: Device, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1503,6 +1531,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         delete_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -1514,6 +1543,7 @@ export namespace Colord {
          * @param device a {@link Colord.Device}.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` is the device was deleted
+         * @since 0.1.8
          */
         delete_device_sync(device: Device, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1521,6 +1551,7 @@ export namespace Colord {
          * Deletes a profile.
          * @param profile a {@link Colord.Profile}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         delete_profile(profile: Profile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1529,6 +1560,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         delete_profile(profile: Profile, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1537,6 +1569,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         delete_profile(profile: Profile, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1544,6 +1577,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         delete_profile_finish(res: Gio.AsyncResult): boolean;
 
@@ -1555,6 +1589,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile}.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` is the profile was deleted
+         * @since 0.1.8
          */
         delete_profile_sync(profile: Profile, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1562,6 +1597,7 @@ export namespace Colord {
          * Finds a device by an ID.
          * @param id a device id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         find_device(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Device>;
 
@@ -1570,6 +1606,7 @@ export namespace Colord {
          * @param id a device id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         find_device(id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1578,6 +1615,7 @@ export namespace Colord {
          * @param id a device id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         find_device(id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Device> | void;
 
@@ -1586,6 +1624,7 @@ export namespace Colord {
          * @param key the device property key
          * @param value the device property value
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         find_device_by_property(key: string, value: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Device>;
 
@@ -1595,6 +1634,7 @@ export namespace Colord {
          * @param value the device property value
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         find_device_by_property(key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1604,6 +1644,7 @@ export namespace Colord {
          * @param value the device property value
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         find_device_by_property(key: string, value: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Device> | void;
 
@@ -1611,6 +1652,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Device} or `null`
+         * @since 0.1.8
          */
         find_device_by_property_finish(res: Gio.AsyncResult): Device;
 
@@ -1623,6 +1665,7 @@ export namespace Colord {
          * @param value The device property value.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A {@link Colord.Device} object, or `null` for error
+         * @since 0.1.8
          */
         find_device_by_property_sync(key: string, value: string, cancellable: Gio.Cancellable | null): Device;
 
@@ -1630,6 +1673,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Device} or `null`
+         * @since 0.1.8
          */
         find_device_finish(res: Gio.AsyncResult): Device;
 
@@ -1641,6 +1685,7 @@ export namespace Colord {
          * @param id The device ID.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A {@link Colord.Device} object, or `null` for error
+         * @since 0.1.0
          */
         find_device_sync(id: string, cancellable: Gio.Cancellable | null): Device;
 
@@ -1648,6 +1693,7 @@ export namespace Colord {
          * Finds a profile by an ID.
          * @param id a profile id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         find_profile(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Profile>;
 
@@ -1656,6 +1702,7 @@ export namespace Colord {
          * @param id a profile id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         find_profile(id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1664,6 +1711,7 @@ export namespace Colord {
          * @param id a profile id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         find_profile(id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Profile> | void;
 
@@ -1671,6 +1719,7 @@ export namespace Colord {
          * Finds a profile by a filename.
          * @param filename a profile filename
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         find_profile_by_filename(filename: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Profile>;
 
@@ -1679,6 +1728,7 @@ export namespace Colord {
          * @param filename a profile filename
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         find_profile_by_filename(filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1687,6 +1737,7 @@ export namespace Colord {
          * @param filename a profile filename
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         find_profile_by_filename(filename: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Profile> | void;
 
@@ -1694,6 +1745,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
+         * @since 0.1.8
          */
         find_profile_by_filename_finish(res: Gio.AsyncResult): Profile;
 
@@ -1705,6 +1757,7 @@ export namespace Colord {
          * @param filename filename for the profile
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
+         * @since 0.1.3
          */
         find_profile_by_filename_sync(filename: string, cancellable: Gio.Cancellable | null): Profile;
 
@@ -1713,6 +1766,7 @@ export namespace Colord {
          * @param key the profile property key
          * @param value the profile property value
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.24
          */
         find_profile_by_property(key: string, value: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Profile>;
 
@@ -1722,6 +1776,7 @@ export namespace Colord {
          * @param value the profile property value
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.24
          */
         find_profile_by_property(key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1731,6 +1786,7 @@ export namespace Colord {
          * @param value the profile property value
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.24
          */
         find_profile_by_property(key: string, value: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Profile> | void;
 
@@ -1738,6 +1794,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
+         * @since 0.1.24
          */
         find_profile_by_property_finish(res: Gio.AsyncResult): Profile;
 
@@ -1750,6 +1807,7 @@ export namespace Colord {
          * @param value The profile property value.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
+         * @since 0.1.24
          */
         find_profile_by_property_sync(key: string, value: string, cancellable: Gio.Cancellable | null): Profile;
 
@@ -1757,6 +1815,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
+         * @since 0.1.8
          */
         find_profile_finish(res: Gio.AsyncResult): Profile;
 
@@ -1768,6 +1827,7 @@ export namespace Colord {
          * @param id id for the profile
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
+         * @since 0.1.0
          */
         find_profile_sync(id: string, cancellable: Gio.Cancellable | null): Profile;
 
@@ -1775,6 +1835,7 @@ export namespace Colord {
          * Finds a sensor by an ID.
          * @param id a sensor id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.26
          */
         find_sensor(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Sensor>;
 
@@ -1783,6 +1844,7 @@ export namespace Colord {
          * @param id a sensor id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.26
          */
         find_sensor(id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1791,6 +1853,7 @@ export namespace Colord {
          * @param id a sensor id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.26
          */
         find_sensor(id: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Sensor> | void;
 
@@ -1798,6 +1861,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Sensor} or `null`
+         * @since 0.1.26
          */
         find_sensor_finish(res: Gio.AsyncResult): Sensor;
 
@@ -1809,24 +1873,28 @@ export namespace Colord {
          * @param id The sensor ID.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A {@link Colord.Sensor} object, or `null` for error
+         * @since 0.1.26
          */
         find_sensor_sync(id: string, cancellable: Gio.Cancellable | null): Sensor;
 
         /**
          * Gets if the client has been connected.
          * @returns `true` if properties are valid
+         * @since 0.1.9
          */
         get_connected(): boolean;
 
         /**
          * Get colord daemon version.
          * @returns string containing the daemon version, e.g. "0.1.0"
+         * @since 0.1.0
          */
         get_daemon_version(): string;
 
         /**
          * Gets an array of color devices.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         get_devices(cancellable: Gio.Cancellable | null): globalThis.Promise<Device[]>;
 
@@ -1834,6 +1902,7 @@ export namespace Colord {
          * Gets an array of color devices.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_devices(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1841,6 +1910,7 @@ export namespace Colord {
          * Gets an array of color devices.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_devices(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Device[]> | void;
 
@@ -1848,6 +1918,7 @@ export namespace Colord {
          * Gets an array of color devices.
          * @param kind the type of device.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         get_devices_by_kind(kind: DeviceKind, cancellable: Gio.Cancellable | null): globalThis.Promise<Device[]>;
 
@@ -1856,6 +1927,7 @@ export namespace Colord {
          * @param kind the type of device.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_devices_by_kind(kind: DeviceKind, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1864,6 +1936,7 @@ export namespace Colord {
          * @param kind the type of device.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_devices_by_kind(kind: DeviceKind, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Device[]> | void;
 
@@ -1871,6 +1944,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns the devices
+         * @since 0.1.8
          */
         get_devices_by_kind_finish(res: Gio.AsyncResult): Device[];
 
@@ -1882,6 +1956,7 @@ export namespace Colord {
          * @param kind a {@link Colord.DeviceKind}, e.g. {@link Colord.DeviceKind.DISPLAY}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns an array of 	 {@link Colord.Device} objects.
+         * @since 0.1.0
          */
         get_devices_by_kind_sync(kind: DeviceKind, cancellable: Gio.Cancellable | null): Device[];
 
@@ -1889,6 +1964,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns the devices
+         * @since 0.1.8
          */
         get_devices_finish(res: Gio.AsyncResult): Device[];
 
@@ -1899,6 +1975,7 @@ export namespace Colord {
          * Do not use it in GUI applications.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns an array of 	 {@link Colord.Device} objects.
+         * @since 0.1.0
          */
         get_devices_sync(cancellable: Gio.Cancellable | null): Device[];
 
@@ -1907,12 +1984,14 @@ export namespace Colord {
          * WARNING: This function may block for up to 5 seconds waiting for the daemon
          * to start if it is not already running.
          * @returns `true` if the colord process is running
+         * @since 0.1.12
          */
         get_has_server(): boolean;
 
         /**
          * Gets an array of color profiles.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         get_profiles(cancellable: Gio.Cancellable | null): globalThis.Promise<Profile[]>;
 
@@ -1920,6 +1999,7 @@ export namespace Colord {
          * Gets an array of color profiles.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_profiles(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1927,6 +2007,7 @@ export namespace Colord {
          * Gets an array of color profiles.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_profiles(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Profile[]> | void;
 
@@ -1934,6 +2015,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns the profiles
+         * @since 0.1.8
          */
         get_profiles_finish(res: Gio.AsyncResult): Profile[];
 
@@ -1944,12 +2026,14 @@ export namespace Colord {
          * Do not use it in GUI applications.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns an array of 	 {@link Colord.Profile} objects.
+         * @since 0.1.0
          */
         get_profiles_sync(cancellable: Gio.Cancellable | null): Profile[];
 
         /**
          * Gets an array of color sensors.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         get_sensors(cancellable: Gio.Cancellable | null): globalThis.Promise<Sensor[]>;
 
@@ -1957,6 +2041,7 @@ export namespace Colord {
          * Gets an array of color sensors.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_sensors(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1964,6 +2049,7 @@ export namespace Colord {
          * Gets an array of color sensors.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_sensors(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Sensor[]> | void;
 
@@ -1971,6 +2057,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns the sensors
+         * @since 0.1.8
          */
         get_sensors_finish(res: Gio.AsyncResult): Sensor[];
 
@@ -1981,6 +2068,7 @@ export namespace Colord {
          * Do not use it in GUI applications.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns an array of 	 {@link Colord.Sensor} objects.
+         * @since 0.1.0
          */
         get_sensors_sync(cancellable: Gio.Cancellable | null): Sensor[];
 
@@ -1988,6 +2076,7 @@ export namespace Colord {
          * Finds a standard profile space.
          * @param standard_space a profile id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         get_standard_space(standard_space: StandardSpace, cancellable: Gio.Cancellable | null): globalThis.Promise<Profile>;
 
@@ -1996,6 +2085,7 @@ export namespace Colord {
          * @param standard_space a profile id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_standard_space(standard_space: StandardSpace, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2004,6 +2094,7 @@ export namespace Colord {
          * @param standard_space a profile id
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_standard_space(standard_space: StandardSpace, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Profile> | void;
 
@@ -2011,6 +2102,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
+         * @since 0.1.8
          */
         get_standard_space_finish(res: Gio.AsyncResult): Profile;
 
@@ -2022,18 +2114,21 @@ export namespace Colord {
          * @param standard_space standard colorspace value
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
+         * @since 0.1.2
          */
         get_standard_space_sync(standard_space: StandardSpace, cancellable: Gio.Cancellable | null): Profile;
 
         /**
          * Get system model.
          * @returns string containing the system model, e.g. "T61"
+         * @since 1.0.2
          */
         get_system_model(): string;
 
         /**
          * Get system vendor.
          * @returns string containing the system vendor, e.g. "Lenovo"
+         * @since 1.0.2
          */
         get_system_vendor(): string;
 
@@ -2044,6 +2139,7 @@ export namespace Colord {
          * `cd_profile_install_system_wide()` on the result.
          * @param file a {@link Gio.File}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.12
          */
         import_profile(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<Profile>;
 
@@ -2055,6 +2151,7 @@ export namespace Colord {
          * @param file a {@link Gio.File}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.12
          */
         import_profile(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2066,6 +2163,7 @@ export namespace Colord {
          * @param file a {@link Gio.File}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.12
          */
         import_profile(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Profile> | void;
 
@@ -2073,6 +2171,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
+         * @since 0.1.12
          */
         import_profile_finish(res: Gio.AsyncResult): Profile;
 
@@ -2084,6 +2183,7 @@ export namespace Colord {
          * @param file A {@link Gio.File}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
+         * @since 0.1.12
          */
         import_profile_sync(file: Gio.File, cancellable: Gio.Cancellable | null): Profile;
     }
@@ -2340,32 +2440,40 @@ export namespace Colord {
         /**
          * Converts a string to a {@link Colord.DeviceError}.
          * @param error_desc 
+         * @since 0.1.26
          */
         static error_from_string(error_desc: string): DeviceError;
 
+        /**
+         * @since 0.1.0
+         */
         static error_quark(): GLib.Quark;
 
         /**
          * Converts a {@link Colord.DeviceError} to a string.
          * @param error_enum 
+         * @since 0.1.26
          */
         static error_to_string(error_enum: DeviceError): string;
 
         /**
          * Converts a string to a {@link Colord.DeviceKind}.
          * @param kind 
+         * @since 0.1.0
          */
         static kind_from_string(kind: string): DeviceKind;
 
         /**
          * Gets the most suitable profile kind for a device kind.
          * @param device_kind A {@link Colord.DeviceKind}
+         * @since 0.1.6
          */
         static kind_to_profile_kind(device_kind: DeviceKind): ProfileKind;
 
         /**
          * Converts a {@link Colord.DeviceKind} to a string.
          * @param kind_enum 
+         * @since 0.1.0
          */
         static kind_to_string(kind_enum: DeviceKind): string;
 
@@ -2401,6 +2509,7 @@ export namespace Colord {
          * @param relation a {@link Colord.DeviceRelation}, e.g. #CD_DEVICE_RELATION_HARD
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         add_profile(relation: DeviceRelation, profile: Profile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2410,6 +2519,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         add_profile(relation: DeviceRelation, profile: Profile, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2419,6 +2529,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         add_profile(relation: DeviceRelation, profile: Profile, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2426,6 +2537,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         add_profile_finish(res: Gio.AsyncResult): boolean;
 
@@ -2438,12 +2550,14 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.3
          */
         add_profile_sync(relation: DeviceRelation, profile: Profile, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Connects to the object and fills up initial properties.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         connect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2451,6 +2565,7 @@ export namespace Colord {
          * Connects to the object and fills up initial properties.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         connect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2458,6 +2573,7 @@ export namespace Colord {
          * Connects to the object and fills up initial properties.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         connect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2470,6 +2586,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -2480,6 +2597,7 @@ export namespace Colord {
          * Do not use it in GUI applications.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.8
          */
         connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2487,24 +2605,28 @@ export namespace Colord {
          * Tests two devices for equality.
          * @param device2 another {@link Colord.Device} instance.
          * @returns `true` if the devices are the same device
+         * @since 0.1.8
          */
         equal(device2: Device): boolean;
 
         /**
          * Gets the device colorspace.
          * @returns A colorspace, e.g. {@link Colord.Colorspace.RGB}
+         * @since 0.1.1
          */
         get_colorspace(): Colorspace;
 
         /**
          * Gets if the device has been connected.
          * @returns `true` if properties are valid
+         * @since 0.1.9
          */
         get_connected(): boolean;
 
         /**
          * Gets the device creation date.
          * @returns A value in microseconds, or 0 for invalid
+         * @since 0.1.0
          */
         get_created(): number;
 
@@ -2512,6 +2634,7 @@ export namespace Colord {
          * Gets the default device profile. A profile will not be returned
          * if the device is being profiled or is disabled.
          * @returns A {@link Colord.Profile}'s or NULL
+         * @since 0.1.1
          */
         get_default_profile(): Profile;
 
@@ -2519,36 +2642,42 @@ export namespace Colord {
          * Returns if the device is embedded in the computer and cannot be
          * removed.
          * @returns `true` if embedded.
+         * @since 0.1.27
          */
         get_embedded(): boolean;
 
         /**
          * Gets the device enabled state.
          * @returns `true` if the device is enabled
+         * @since 0.1.26
          */
         get_enabled(): boolean;
 
         /**
          * Gets the device format.
          * @returns A string, or `null` for invalid
+         * @since 0.1.9
          */
         get_format(): string;
 
         /**
          * Gets the device ID.
          * @returns A string, or `null` for invalid
+         * @since 0.1.0
          */
         get_id(): string;
 
         /**
          * Gets the device kind.
          * @returns A device kind, e.g. {@link Colord.DeviceKind.DISPLAY}
+         * @since 0.1.0
          */
         get_kind(): DeviceKind;
 
         /**
          * Returns the device metadata.
          * @returns a               {@link GLib.HashTable}.
+         * @since 0.1.5
          */
         get_metadata(): { [key: string]: string };
 
@@ -2556,36 +2685,42 @@ export namespace Colord {
          * Returns the device metadata for a specific key.
          * @param key a key for the metadata dictionary
          * @returns the metadata value, or `null` if not set.
+         * @since 0.1.5
          */
         get_metadata_item(key: string): string;
 
         /**
          * Gets the device mode.
          * @returns A colorspace, e.g. {@link Colord.DeviceMode.VIRTUAL}
+         * @since 0.1.2
          */
         get_mode(): DeviceMode;
 
         /**
          * Gets the device model.
          * @returns A string, or `null` for invalid
+         * @since 0.1.0
          */
         get_model(): string;
 
         /**
          * Gets the device modified date.
          * @returns A value in microseconds, or 0 for invalid
+         * @since 0.1.1
          */
         get_modified(): number;
 
         /**
          * Gets the object path for the device.
          * @returns the object path, or `null`
+         * @since 0.1.0
          */
         get_object_path(): string;
 
         /**
          * Gets the device owner.
          * @returns The UID of the user that created the device
+         * @since 0.1.13
          */
         get_owner(): number;
 
@@ -2593,6 +2728,7 @@ export namespace Colord {
          * Gets the preferred profile for some qualifiers.
          * @param qualifiers a set of qualifiers that can included wildcards
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         get_profile_for_qualifiers(qualifiers: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Profile>;
 
@@ -2601,6 +2737,7 @@ export namespace Colord {
          * @param qualifiers a set of qualifiers that can included wildcards
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_profile_for_qualifiers(qualifiers: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2609,6 +2746,7 @@ export namespace Colord {
          * @param qualifiers a set of qualifiers that can included wildcards
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_profile_for_qualifiers(qualifiers: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Profile> | void;
 
@@ -2616,6 +2754,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
+         * @since 0.1.8
          */
         get_profile_for_qualifiers_finish(res: Gio.AsyncResult): Profile;
 
@@ -2627,6 +2766,7 @@ export namespace Colord {
          * @param qualifiers a set of qualifiers that can included wildcards
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link Colord.Profile} or `null`
+         * @since 0.1.8
          */
         get_profile_for_qualifiers_sync(qualifiers: string, cancellable: Gio.Cancellable | null): Profile;
 
@@ -2634,6 +2774,7 @@ export namespace Colord {
          * Gets the property relationship to the device.
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         get_profile_relation(profile: Profile, cancellable: Gio.Cancellable | null): globalThis.Promise<DeviceRelation>;
 
@@ -2642,6 +2783,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_profile_relation(profile: Profile, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2650,6 +2792,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_profile_relation(profile: Profile, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DeviceRelation> | void;
 
@@ -2657,6 +2800,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         get_profile_relation_finish(res: Gio.AsyncResult): DeviceRelation;
 
@@ -2668,42 +2812,49 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile} instance.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.8
          */
         get_profile_relation_sync(profile: Profile, cancellable: Gio.Cancellable | null): DeviceRelation;
 
         /**
          * Gets the device profiles.
          * @returns An array of {@link Colord.Profile}'s
+         * @since 0.1.0
          */
         get_profiles(): Profile[];
 
         /**
          * Gets any profiling inhibitors for the device.
          * @returns A strv, or `null` for invalid
+         * @since 0.1.17
          */
         get_profiling_inhibitors(): string[];
 
         /**
          * Gets the device scope.
          * @returns An object scope, e.g. {@link Colord.ObjectScope.TEMP}
+         * @since 0.1.10
          */
         get_scope(): ObjectScope;
 
         /**
          * Gets the device seat identifier.
          * @returns A string, or `null` for invalid
+         * @since 0.1.24
          */
         get_seat(): string;
 
         /**
          * Gets the device serial number.
          * @returns A string, or `null` for invalid
+         * @since 0.1.0
          */
         get_serial(): string;
 
         /**
          * Gets the device vendor.
          * @returns A string, or `null` for invalid
+         * @since 0.1.1
          */
         get_vendor(): string;
 
@@ -2711,6 +2862,7 @@ export namespace Colord {
          * Makes an already added profile default for a device.
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         make_profile_default(profile: Profile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2719,6 +2871,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         make_profile_default(profile: Profile, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2727,6 +2880,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         make_profile_default(profile: Profile, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2734,6 +2888,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         make_profile_default_finish(res: Gio.AsyncResult): boolean;
 
@@ -2745,6 +2900,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.8
          */
         make_profile_default_sync(profile: Profile, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2752,6 +2908,7 @@ export namespace Colord {
          * Sets up the device for profiling and causes no profiles to be
          * returned if `cd_device_get_profile_for_qualifiers_sync()` is used.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         profiling_inhibit(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2760,6 +2917,7 @@ export namespace Colord {
          * returned if `cd_device_get_profile_for_qualifiers_sync()` is used.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         profiling_inhibit(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2768,6 +2926,7 @@ export namespace Colord {
          * returned if `cd_device_get_profile_for_qualifiers_sync()` is used.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         profiling_inhibit(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2775,6 +2934,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         profiling_inhibit_finish(res: Gio.AsyncResult): boolean;
 
@@ -2786,6 +2946,7 @@ export namespace Colord {
          * Do not use it in GUI applications.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.1
          */
         profiling_inhibit_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2793,6 +2954,7 @@ export namespace Colord {
          * Restores the device after profiling and causes normal profiles to be
          * returned if `cd_device_get_profile_for_qualifiers_sync()` is used.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         profiling_uninhibit(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2801,6 +2963,7 @@ export namespace Colord {
          * returned if `cd_device_get_profile_for_qualifiers_sync()` is used.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         profiling_uninhibit(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2809,6 +2972,7 @@ export namespace Colord {
          * returned if `cd_device_get_profile_for_qualifiers_sync()` is used.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         profiling_uninhibit(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2816,6 +2980,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         profiling_uninhibit_finish(res: Gio.AsyncResult): boolean;
 
@@ -2827,6 +2992,7 @@ export namespace Colord {
          * Do not use it in GUI applications.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.1
          */
         profiling_uninhibit_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2834,6 +3000,7 @@ export namespace Colord {
          * Removes a profile from a device.
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         remove_profile(profile: Profile, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2842,6 +3009,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         remove_profile(profile: Profile, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2850,6 +3018,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         remove_profile(profile: Profile, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2857,6 +3026,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         remove_profile_finish(res: Gio.AsyncResult): boolean;
 
@@ -2868,6 +3038,7 @@ export namespace Colord {
          * @param profile a {@link Colord.Profile} instance
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.2
          */
         remove_profile_sync(profile: Profile, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2879,6 +3050,7 @@ export namespace Colord {
          * @param colorspace The device colorspace, e.g. #CD_COLORSPACE_RGB
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
+         * @since 0.1.1
          */
         set_colorspace_sync(colorspace: Colorspace, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2886,6 +3058,7 @@ export namespace Colord {
          * Enables or disables a device.
          * @param enabled the enabled state
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.26
          */
         set_enabled(enabled: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2894,6 +3067,7 @@ export namespace Colord {
          * @param enabled the enabled state
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.26
          */
         set_enabled(enabled: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2902,6 +3076,7 @@ export namespace Colord {
          * @param enabled the enabled state
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.26
          */
         set_enabled(enabled: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2909,6 +3084,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.26
          */
         set_enabled_finish(res: Gio.AsyncResult): boolean;
 
@@ -2920,6 +3096,7 @@ export namespace Colord {
          * @param enabled the enabled state
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.26
          */
         set_enabled_sync(enabled: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2931,6 +3108,7 @@ export namespace Colord {
          * @param kind The device kind, e.g. #CD_DEVICE_KIND_DISPLAY
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
+         * @since 0.1.0
          */
         set_kind_sync(kind: DeviceKind, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2942,6 +3120,7 @@ export namespace Colord {
          * @param mode The device kind, e.g. #CD_DEVICE_MODE_VIRTUAL
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
+         * @since 0.1.2
          */
         set_mode_sync(mode: DeviceMode, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2953,12 +3132,14 @@ export namespace Colord {
          * @param value The model.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
+         * @since 0.1.0
          */
         set_model_sync(value: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets the object path of the device.
          * @param object_path The colord object path.
+         * @since 0.1.8
          */
         set_object_path(object_path: string): void;
 
@@ -2967,6 +3148,7 @@ export namespace Colord {
          * @param key a property key
          * @param value a property key
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         set_property(key: string, value: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2976,6 +3158,7 @@ export namespace Colord {
          * @param value a property key
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         set_property(key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2985,6 +3168,7 @@ export namespace Colord {
          * @param value a property key
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         set_property(key: string, value: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2998,6 +3182,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         set_property_finish(res: Gio.AsyncResult): boolean;
 
@@ -3010,6 +3195,7 @@ export namespace Colord {
          * @param value The property value
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.8
          */
         set_property_sync(key: string, value: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3021,6 +3207,7 @@ export namespace Colord {
          * @param value The string value.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
+         * @since 0.1.1
          */
         set_serial_sync(value: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3032,12 +3219,14 @@ export namespace Colord {
          * @param value The string value.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
+         * @since 0.1.1
          */
         set_vendor_sync(value: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Converts the device to a string description.
          * @returns text representation of {@link Colord.Device}
+         * @since 0.1.0
          */
         to_string(): string;
     }
@@ -3089,6 +3278,7 @@ export namespace Colord {
         // Static methods
         /**
          * Gets the {@link Colord.Edid} error quark.
+         * @since 1.1.2
          */
         static error_quark(): GLib.Quark;
 
@@ -3096,78 +3286,91 @@ export namespace Colord {
         /**
          * Gets the blue primary.
          * @returns {@link Colord.ColorYxy} chromaticity
+         * @since 1.1.2
          */
         get_blue(): ColorYxy;
 
         /**
          * Gets the EDID MD5 checksum.
          * @returns string value
+         * @since 1.1.2
          */
         get_checksum(): string;
 
         /**
          * Gets the EDID EISA ID.
          * @returns string value
+         * @since 1.1.2
          */
         get_eisa_id(): string;
 
         /**
          * Gets the native panel gamma.
          * @returns floating point value
+         * @since 1.1.2
          */
         get_gamma(): number;
 
         /**
          * Gets the green primary.
          * @returns {@link Colord.ColorYxy} chromaticity
+         * @since 1.1.2
          */
         get_green(): ColorYxy;
 
         /**
          * Gets the panel height in inches.
          * @returns integer value
+         * @since 1.1.2
          */
         get_height(): number;
 
         /**
          * Gets the EDID monitor name.
          * @returns string value
+         * @since 1.1.2
          */
         get_monitor_name(): string;
 
         /**
          * Gets the EDID PNP ID.
          * @returns string value
+         * @since 1.1.2
          */
         get_pnp_id(): string;
 
         /**
          * Gets the red primary.
          * @returns `true` for success
+         * @since 1.1.2
          */
         get_red(): ColorYxy;
 
         /**
          * Gets the EDID serial number.
          * @returns string value
+         * @since 1.1.2
          */
         get_serial_number(): string;
 
         /**
          * Gets the EDID vendor name.
          * @returns string value
+         * @since 1.1.2
          */
         get_vendor_name(): string;
 
         /**
          * Gets the whitepoint.
          * @returns {@link Colord.ColorYxy} chromaticity
+         * @since 1.1.2
          */
         get_white(): ColorYxy;
 
         /**
          * Gets the panel width in inches.
          * @returns integer value
+         * @since 1.1.2
          */
         get_width(): number;
 
@@ -3175,11 +3378,13 @@ export namespace Colord {
          * Parses the EDID.
          * @param edid_data data to parse
          * @returns `true` for success
+         * @since 1.1.2
          */
         parse(edid_data: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * Resets all cached data.
+         * @since 1.1.2
          */
         reset(): void;
     }
@@ -3331,6 +3536,9 @@ export namespace Colord {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @since 0.1.32
+         */
         static error_quark(): GLib.Quark;
 
         // Methods
@@ -3339,12 +3547,14 @@ export namespace Colord {
          * it already exists.
          * @param key the metadata key
          * @param value the UTF-8 metadata value
+         * @since 0.1.32
          */
         add_metadata(key: string, value: string): void;
 
         /**
          * Creates a default sRGB ICC profile.
          * @returns `true` for success
+         * @since 1.1.2
          */
         create_default(): boolean;
 
@@ -3352,6 +3562,7 @@ export namespace Colord {
          * Creates a default sRGB ICC profile.
          * @param flags a set of {@link Colord.IccLoadFlags}
          * @returns `true` for success
+         * @since 1.4.5
          */
         create_default_full(flags: IccLoadFlags): boolean;
 
@@ -3363,6 +3574,7 @@ export namespace Colord {
          * @param blue primary color value
          * @param white whitepoint value
          * @returns `true` for success
+         * @since 0.1.32
          */
         create_from_edid(gamma_value: number, red: ColorYxy, green: ColorYxy, blue: ColorYxy, white: ColorYxy): boolean;
 
@@ -3370,6 +3582,7 @@ export namespace Colord {
          * Creates an ICC profile from EDID data.
          * @param edid EDID data
          * @returns `true` for success
+         * @since 1.1.2
          */
         create_from_edid_data(edid: Edid): boolean;
 
@@ -3378,6 +3591,7 @@ export namespace Colord {
          * This function will only return results if the profile was loaded with the
          * {@link Colord.IccLoadFlags.PRIMARIES} flag.
          * @returns the {@link Colord.ColorXYZ} value
+         * @since 0.1.32
          */
         get_blue(): ColorXYZ;
 
@@ -3386,6 +3600,7 @@ export namespace Colord {
          * This is only applicable for profiles loaded with `cd_icc_load_file()` as
          * obviously data and fd's cannot be sanely unlinked.
          * @returns `true` if `g_file_delete()` would likely work
+         * @since 0.1.32
          */
         get_can_delete(): boolean;
 
@@ -3394,6 +3609,7 @@ export namespace Colord {
          * This function will only return results if the profile was loaded with the
          * {@link Colord.IccLoadFlags.CHARACTERIZATION} flag.
          * @returns TI3 string data
+         * @since 1.1.1
          */
         get_characterization_data(): string;
 
@@ -3403,12 +3619,14 @@ export namespace Colord {
          * the {@link Colord.Icc} object was loaded using `cd_icc_load_data()` or `cd_icc_load_file()`
          * and the {@link Colord.IccLoadFlags.FALLBACK_MD5} flag is used.
          * @returns An embedded MD5 checksum, or `null` for not set
+         * @since 0.1.32
          */
         get_checksum(): string;
 
         /**
          * Gets the profile colorspace
          * @returns The profile colorspace, e.g. {@link Colord.Colorspace.RGB}
+         * @since 0.1.32
          */
         get_colorspace(): Colorspace;
 
@@ -3416,6 +3634,7 @@ export namespace Colord {
          * Return the cmsContext instance used locally. This may be required if you
          * are using native LCMS calls and then `cd_icc_load_handle()`.
          * @returns Do not call cmsDeleteContext() on this value!
+         * @since 1.1.7
          */
         get_context(): null;
 
@@ -3425,12 +3644,14 @@ export namespace Colord {
          * default untranslated (en_US) text is returned.
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @returns The text as a UTF-8 string, or `null` of the locale is invalid               or the tag does not exist.
+         * @since 0.1.32
          */
         get_copyright(locale: string): string;
 
         /**
          * Gets the ICC creation date and time.
          * @returns A {@link GLib.DateTime} object, or `null` for not set
+         * @since 0.1.32
          */
         get_created(): GLib.DateTime;
 
@@ -3440,12 +3661,14 @@ export namespace Colord {
          * default untranslated (en_US) text is returned.
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @returns The text as a UTF-8 string, or `null` of the locale is invalid               or the tag does not exist.
+         * @since 0.1.32
          */
         get_description(locale: string): string;
 
         /**
          * Gets the filename of the ICC data, if one exists.
          * @returns A filename, or `null`
+         * @since 0.1.32
          */
         get_filename(): string;
 
@@ -3454,6 +3677,7 @@ export namespace Colord {
          * This function will only return results if the profile was loaded with the
          * {@link Colord.IccLoadFlags.PRIMARIES} flag.
          * @returns the {@link Colord.ColorXYZ} value
+         * @since 0.1.32
          */
         get_green(): ColorXYZ;
 
@@ -3467,6 +3691,7 @@ export namespace Colord {
         /**
          * Gets the profile kind.
          * @returns The kind, e.g. `CD_PROFILE_KIND_INPUT`
+         * @since 0.1.32
          */
         get_kind(): ProfileKind;
 
@@ -3476,12 +3701,14 @@ export namespace Colord {
          * default untranslated (en_US) text is returned.
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @returns The text as a UTF-8 string, or `null` of the locale is invalid               or the tag does not exist.
+         * @since 0.1.32
          */
         get_manufacturer(locale: string): string;
 
         /**
          * Gets all the metadata from the ICC profile.
          * @returns The profile metadata
+         * @since 0.1.32
          */
         get_metadata(): never;
 
@@ -3489,6 +3716,7 @@ export namespace Colord {
          * Gets an item of data from the ICC metadata store.
          * @param key the dictionary key
          * @returns The dictionary data, or `null` if the key does not exist.
+         * @since 0.1.32
          */
         get_metadata_item(key: string): string;
 
@@ -3498,6 +3726,7 @@ export namespace Colord {
          * default untranslated (en_US) text is returned.
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @returns The text as a UTF-8 string, or `null` of the locale is invalid               or the tag does not exist.
+         * @since 0.1.32
          */
         get_model(locale: string): string;
 
@@ -3506,6 +3735,7 @@ export namespace Colord {
          * This function will only return results if the profile was loaded with the
          * {@link Colord.IccLoadFlags.NAMED_COLORS} flag.
          * @returns An array of color swatches
+         * @since 0.1.32
          */
         get_named_colors(): ColorSwatch[];
 
@@ -3514,6 +3744,7 @@ export namespace Colord {
          * This function will only return results if the profile was loaded with the
          * {@link Colord.IccLoadFlags.PRIMARIES} flag.
          * @returns the {@link Colord.ColorXYZ} value
+         * @since 0.1.32
          */
         get_red(): ColorXYZ;
 
@@ -3521,12 +3752,14 @@ export namespace Colord {
          * Generates a response curve of a specified size.
          * @param size the size of the curve to generate
          * @returns response data, or `null` for error
+         * @since 0.1.34
          */
         get_response(size: number): ColorRGB[];
 
         /**
          * Gets the ICC profile file size
          * @returns The size in bytes, or 0 for unknown.
+         * @since 0.1.32
          */
         get_size(): number;
 
@@ -3535,12 +3768,14 @@ export namespace Colord {
          * Most users do not need to do this.
          * @param tag a 4 bytes tag description, e.g. "cprt" or "vcgt"
          * @returns the data for the tag
+         * @since 1.1.6
          */
         get_tag_data(tag: string): GLib.Bytes;
 
         /**
          * Returns the internal tag table. Most users do not need to do this.
          * @returns the tag tables as an array of strings
+         * @since 1.1.6
          */
         get_tags(): string[];
 
@@ -3549,6 +3784,7 @@ export namespace Colord {
          * This function will only return results if the profile was loaded with the
          * {@link Colord.IccLoadFlags.PRIMARIES} flag.
          * @returns The color temperature in Kelvin, or 0 for error.
+         * @since 0.1.32
          */
         get_temperature(): number;
 
@@ -3556,18 +3792,21 @@ export namespace Colord {
          * Gets the video card calibration data from the profile.
          * @param size the desired size of the table data
          * @returns VCGT data, or `null` for error
+         * @since 0.1.34
          */
         get_vcgt(size: number): ColorRGB[];
 
         /**
          * Gets the ICC profile version, typically 2.1 or 4.2
          * @returns A floating point version number, or 0.0 for unknown
+         * @since 0.1.32
          */
         get_version(): number;
 
         /**
          * Returns any warnings with profiles
          * @returns An array of warning values
+         * @since 0.1.34
          */
         get_warnings(): ProfileWarning[];
 
@@ -3576,6 +3815,7 @@ export namespace Colord {
          * This function will only return results if the profile was loaded with the
          * {@link Colord.IccLoadFlags.PRIMARIES} flag.
          * @returns the {@link Colord.ColorXYZ} value
+         * @since 0.1.32
          */
         get_white(): ColorXYZ;
 
@@ -3583,6 +3823,7 @@ export namespace Colord {
          * Loads an ICC profile from raw byte data.
          * @param data binary data
          * @param flags a set of {@link Colord.IccLoadFlags}
+         * @since 0.1.32
          */
         load_data(data: Uint8Array | string, flags: IccLoadFlags): boolean;
 
@@ -3590,6 +3831,7 @@ export namespace Colord {
          * Loads an ICC profile from an open file descriptor.
          * @param fd a file descriptor
          * @param flags a set of {@link Colord.IccLoadFlags}
+         * @since 0.1.32
          */
         load_fd(fd: number, flags: IccLoadFlags): boolean;
 
@@ -3598,6 +3840,7 @@ export namespace Colord {
          * @param file a {@link Gio.File}
          * @param flags a set of {@link Colord.IccLoadFlags}
          * @param cancellable A {@link Gio.Cancellable} or `null`
+         * @since 0.1.32
          */
         load_file(file: Gio.File, flags: IccLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3618,12 +3861,14 @@ export namespace Colord {
          * be called if `cd_icc_load_file()` has previously been used on the `icc` object.
          * @param handle a cmsHPROFILE instance
          * @param flags a set of {@link Colord.IccLoadFlags}
+         * @since 0.1.33
          */
         load_handle(handle: null, flags: IccLoadFlags): boolean;
 
         /**
          * Removes an item of metadata.
          * @param key the metadata key
+         * @since 0.1.32
          */
         remove_metadata(key: string): void;
 
@@ -3632,6 +3877,7 @@ export namespace Colord {
          * 
          * Return vale: A {@link GLib.Bytes} structure, or `null` for error
          * @param flags a set of {@link Colord.IccSaveFlags}
+         * @since 1.0.2
          */
         save_data(flags: IccSaveFlags): GLib.Bytes;
 
@@ -3641,6 +3887,7 @@ export namespace Colord {
          * Return vale: `true` for success.
          * @param flags a set of {@link Colord.IccSaveFlags}
          * @param cancellable A {@link Gio.Cancellable} or `null`
+         * @since 1.1.1
          */
         save_default(flags: IccSaveFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3651,18 +3898,21 @@ export namespace Colord {
          * @param file a {@link Gio.File}
          * @param flags a set of {@link Colord.IccSaveFlags}
          * @param cancellable A {@link Gio.Cancellable} or `null`
+         * @since 0.1.32
          */
         save_file(file: Gio.File, flags: IccSaveFlags, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets the characterization data used to build the profile.
          * @param data TI3 string data, or `null`
+         * @since 1.1.1
          */
         set_characterization_data(data: string): void;
 
         /**
          * Sets the colorspace kind.
          * @param colorspace the profile colorspace, e.g. {@link Colord.Colorspace.RGB}
+         * @since 0.1.32
          */
         set_colorspace(colorspace: Colorspace): void;
 
@@ -3670,18 +3920,21 @@ export namespace Colord {
          * Sets the profile _copyright for a specific locale.
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @param value New UTF-8 string value
+         * @since 0.1.32
          */
         set_copyright(locale: string, value: string | null): void;
 
         /**
          * Sets the profile copyrights for specific locales.
          * @param values New translated values, with the key being the locale.
+         * @since 0.1.32
          */
         set_copyright_items(values: never): void;
 
         /**
          * Sets the ICC creation date and time.
          * @param creation_time 
+         * @since 1.4.2
          */
         set_created(creation_time: GLib.DateTime): void;
 
@@ -3689,12 +3942,14 @@ export namespace Colord {
          * Sets the profile description for a specific locale.
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @param value New UTF-8 string value
+         * @since 0.1.32
          */
         set_description(locale: string, value: string | null): void;
 
         /**
          * Sets the profile descriptions for specific locales.
          * @param values New translated values, with the key being the locale.
+         * @since 0.1.32
          */
         set_description_items(values: never): void;
 
@@ -3702,12 +3957,14 @@ export namespace Colord {
          * Sets the filename, which may be required if the ICC profile has been loaded
          * using `cd_icc_load_fd()` from a disk cache.
          * @param filename a filename, or `null`
+         * @since 1.1.1
          */
         set_filename(filename: string): void;
 
         /**
          * Sets the profile kind.
          * @param kind the profile kind, e.g. {@link Colord.ProfileKind.DISPLAY_DEVICE}
+         * @since 0.1.32
          */
         set_kind(kind: ProfileKind): void;
 
@@ -3715,12 +3972,14 @@ export namespace Colord {
          * Sets the profile manufacturer for a specific locale.
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @param value New UTF-8 string value
+         * @since 0.1.32
          */
         set_manufacturer(locale: string, value: string | null): void;
 
         /**
          * Sets the profile manufacturers for specific locales.
          * @param values New translated values, with the key being the locale.
+         * @since 0.1.32
          */
         set_manufacturer_items(values: never): void;
 
@@ -3728,12 +3987,14 @@ export namespace Colord {
          * Sets the profile model for a specific locale.
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @param value New UTF-8 string value
+         * @since 0.1.32
          */
         set_model(locale: string, value: string | null): void;
 
         /**
          * Sets the profile models for specific locales.
          * @param values New translated values, with the key being the locale.
+         * @since 0.1.32
          */
         set_model_items(values: never): void;
 
@@ -3742,6 +4003,7 @@ export namespace Colord {
          * Most users do not need to do this.
          * @param tag a 4 bytes tag description, e.g. "cprt" or "vcgt"
          * @param data a variable sized data entry
+         * @since 1.1.6
          */
         set_tag_data(tag: string, data: GLib.Bytes | Uint8Array): boolean;
 
@@ -3750,18 +4012,21 @@ export namespace Colord {
          * 
          * Return vale: `true` for success.
          * @param vcgt video card calibration data
+         * @since 0.1.34
          */
         set_vcgt(vcgt: ColorRGB[]): boolean;
 
         /**
          * Sets the profile version.
          * @param version the profile version, e.g. 2.1 or 4.0
+         * @since 0.1.32
          */
         set_version(version: number): void;
 
         /**
          * Returns a string representation of the ICC profile.
          * @returns an allocated string
+         * @since 0.1.32
          */
         to_string(): string;
     }
@@ -3886,6 +4151,9 @@ export namespace Colord {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @since 0.1.0
+         */
         static error_quark(): GLib.Quark;
 
         // Methods
@@ -3894,18 +4162,21 @@ export namespace Colord {
          * a black reading (0.0, 0.0, 0.0) is added instead.
          * @param rgb a {@link Colord.ColorRGB}, or `null`
          * @param xyz a {@link Colord.ColorXYZ}, or `null`
+         * @since 0.1.20
          */
         add_data(rgb: ColorRGB, xyz: ColorXYZ): void;
 
         /**
          * Sets any extra options that have to be set in the CCMX file
          * @param option A IT8 option, e.g. "TYPE_LCD"
+         * @since 0.1.20
          */
         add_option(option: string): void;
 
         /**
          * Adds a spectrum to the spectral array.
          * @param spectrum the spectral data
+         * @since 1.1.6
          */
         add_spectrum(spectrum: Spectrum): void;
 
@@ -3916,12 +4187,14 @@ export namespace Colord {
          * @param rgb the returned RGB value
          * @param xyz the returned XYZ value
          * @returns `true` if the index existed.
+         * @since 0.1.20
          */
         get_data_item(idx: number, rgb: ColorRGB, xyz: ColorXYZ): boolean;
 
         /**
          * Gets the data size.
          * @returns The number of RGB-XYZ readings in this object.
+         * @since 0.1.20
          */
         get_data_size(): number;
 
@@ -3929,54 +4202,63 @@ export namespace Colord {
          * Gets if the 'CREATED' attribute will be written. This is typically only
          * set in the self test programs.
          * @returns The reference, or `null` if unset
+         * @since 0.1.33
          */
         get_enable_created(): boolean;
 
         /**
          * Gets the instrument the file was created by.
          * @returns The instrument, or `null` if unset
+         * @since 0.1.20
          */
         get_instrument(): string;
 
         /**
          * Gets the kind of IT8 file.
          * @returns a {@link Colord.It8Kind}, e.g {@link Colord.It8Kind.TI3}.
+         * @since 0.1.20
          */
         get_kind(): It8Kind;
 
         /**
          * Gets the calibration matrix in the it8 file.
          * @returns a {@link Colord.Mat3x3}.
+         * @since 0.1.20
          */
         get_matrix(): Mat3x3;
 
         /**
          * Gets if the data should be written normlaised to y=100.
          * @returns `true` if the data should be normalised.
+         * @since 0.1.20
          */
         get_normalized(): boolean;
 
         /**
          * Gets the file orginator.
          * @returns The originator, or `null` if unset
+         * @since 0.1.20
          */
         get_originator(): string;
 
         /**
          * Gets the reference the file was created against.
          * @returns The reference, or `null` if unset
+         * @since 0.1.20
          */
         get_reference(): string;
 
         /**
          * Gets if the data is spectral or XYZ.
          * @returns `true` if the data is in spectral bands.
+         * @since 0.1.20
          */
         get_spectral(): boolean;
 
         /**
          * Gets the spectral data of IT8 file.
          * @returns spectral data
+         * @since 1.1.6
          */
         get_spectrum_array(): Spectrum[];
 
@@ -3984,12 +4266,14 @@ export namespace Colord {
          * Gets a specific spectrum in an IT8 file.
          * @param id the spectrum ID value
          * @returns spectrum, or `null`
+         * @since 1.1.6
          */
         get_spectrum_by_id(id: string): Spectrum;
 
         /**
          * Gets the file title.
          * @returns The title, or `null` if unset
+         * @since 0.1.20
          */
         get_title(): string;
 
@@ -4000,6 +4284,7 @@ export namespace Colord {
          * @param B the blue value
          * @param delta the smallest difference between colors, e.g. 0.01f
          * @returns A CdColorXYZ, or `null` if the sample does not exist.
+         * @since 1.2.6
          */
         get_xyz_for_rgb(R: number, G: number, B: number, delta: number): ColorXYZ;
 
@@ -4007,6 +4292,7 @@ export namespace Colord {
          * Finds an option in the file.
          * @param option a option, e.g. "TYPE_CRT"
          * @returns `true` if the option is set
+         * @since 0.1.20
          */
         has_option(option: string): boolean;
 
@@ -4014,6 +4300,7 @@ export namespace Colord {
          * Loads a it8 file from data.
          * @param data text data
          * @returns `true` if a valid it8 file was read.
+         * @since 0.1.20
          */
         load_from_data(data: string[]): boolean;
 
@@ -4021,6 +4308,7 @@ export namespace Colord {
          * Loads a it8 file from disk.
          * @param file a {@link Gio.File}
          * @returns `true` if a valid it8 file was read.
+         * @since 0.1.20
          */
         load_from_file(file: Gio.File): boolean;
 
@@ -4028,6 +4316,7 @@ export namespace Colord {
          * Saves a it8 file to an area of memory.
          * @param data a pointer to returned data
          * @returns `true` if it8 file was saved.
+         * @since 0.1.26
          */
         save_to_data(data: string[]): boolean;
 
@@ -4035,6 +4324,7 @@ export namespace Colord {
          * Saves a it8 file to disk
          * @param file a {@link Gio.File}
          * @returns `true` if it8 file was saved.
+         * @since 0.1.20
          */
         save_to_file(file: Gio.File): boolean;
 
@@ -4043,60 +4333,70 @@ export namespace Colord {
          * in the self test programs where we want to string compare the output data
          * with a known reference.
          * @param enable_created Is 'CREATED' should be written
+         * @since 0.1.33
          */
         set_enable_created(enable_created: boolean): void;
 
         /**
          * Sets the measuring instrument that created the .it8 file
          * @param instrument the instruemnt name, e.g. "huey"
+         * @since 0.1.20
          */
         set_instrument(instrument: string): void;
 
         /**
          * Set the kind of IT8 file.
          * @param kind a {@link Colord.It8Kind}, e.g {@link Colord.It8Kind.TI3}.
+         * @since 0.1.20
          */
         set_kind(kind: It8Kind): void;
 
         /**
          * Set the calibration matrix in the it8 file.
          * @param matrix a {@link Colord.Mat3x3}.
+         * @since 0.1.20
          */
         set_matrix(matrix: Mat3x3): void;
 
         /**
          * Sets if normalized data should be written to the .it8 file.
          * @param normalized If the data is normalized
+         * @since 0.1.20
          */
         set_normalized(normalized: boolean): void;
 
         /**
          * Sets the program name that created the .it8 file
          * @param originator the program name, e.g. "gcm-calibrate"
+         * @since 0.1.20
          */
         set_originator(originator: string): void;
 
         /**
          * Sets the reference that as used to create the .it8 reference
          * @param reference the instruemnt name, e.g. "colormunki"
+         * @since 0.1.20
          */
         set_reference(reference: string): void;
 
         /**
          * Sets if spectral data should be written to the .it8 file.
          * @param spectral If the data is spectral
+         * @since 0.1.20
          */
         set_spectral(spectral: boolean): void;
 
         /**
          * Set the spectral data
          * @param data the spectral data
+         * @since 1.1.6
          */
         set_spectrum_array(data: Spectrum[]): void;
 
         /**
          * Sets the display name for the file.
          * @param title the title name, e.g. "Factory calibration"
+         * @since 0.1.20
          */
         set_title(title: string): void;
     }
@@ -4337,48 +4637,59 @@ export namespace Colord {
         /**
          * Converts a string to a {@link Colord.ProfileError}.
          * @param error_desc 
+         * @since 0.1.26
          */
         static error_from_string(error_desc: string): ProfileError;
 
+        /**
+         * @since 0.1.0
+         */
         static error_quark(): GLib.Quark;
 
         /**
          * Converts a {@link Colord.ProfileError} to a string.
          * @param error_enum 
+         * @since 0.1.26
          */
         static error_to_string(error_enum: ProfileError): string;
 
         /**
          * @param profile_kind 
+         * @since 2.91.1
          */
         static kind_from_string(profile_kind: string): ProfileKind;
 
         /**
          * @param profile_kind 
+         * @since 2.91.1
          */
         static kind_to_string(profile_kind: ProfileKind): string;
 
         /**
          * Converts a string to a {@link Colord.ProfileQuality}.
          * @param quality 
+         * @since 0.1.27
          */
         static quality_from_string(quality: string): ProfileQuality;
 
         /**
          * Converts a {@link Colord.ProfileQuality} to a string.
          * @param quality_enum 
+         * @since 0.1.27
          */
         static quality_to_string(quality_enum: ProfileQuality): string;
 
         /**
          * Converts a string to a {@link Colord.ProfileWarning}.
          * @param type 
+         * @since 0.1.25
          */
         static warning_from_string(type: string): ProfileWarning;
 
         /**
          * Converts a {@link Colord.ProfileWarning} to a string.
          * @param kind_enum 
+         * @since 0.1.25
          */
         static warning_to_string(kind_enum: ProfileWarning): string;
 
@@ -4392,6 +4703,7 @@ export namespace Colord {
         /**
          * Connects to the object and fills up initial properties.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         connect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -4399,6 +4711,7 @@ export namespace Colord {
          * Connects to the object and fills up initial properties.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         connect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4406,6 +4719,7 @@ export namespace Colord {
          * Connects to the object and fills up initial properties.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         connect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -4418,6 +4732,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -4428,6 +4743,7 @@ export namespace Colord {
          * Do not use it in GUI applications.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.8
          */
         connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4435,54 +4751,63 @@ export namespace Colord {
          * Tests two profiles for equality.
          * @param profile2 another {@link Colord.Profile} instance.
          * @returns `true` if the profiles are the same device
+         * @since 0.1.8
          */
         equal(profile2: Profile): boolean;
 
         /**
          * Gets the profile age in seconds relative to the current time.
          * @returns A UNIX time, or 0 if the profile has no creation date
+         * @since 0.1.8
          */
         get_age(): number;
 
         /**
          * Gets the profile colorspace.
          * @returns A {@link Colord.Colorspace}, e.g. {@link Colord.Colorspace.RGB}
+         * @since 0.1.2
          */
         get_colorspace(): Colorspace;
 
         /**
          * Gets if the profile has been connected.
          * @returns `true` if properties are valid
+         * @since 0.1.9
          */
         get_connected(): boolean;
 
         /**
          * Gets the profile created date and time.
          * @returns A UNIX time, or 0 if the profile has no creation date
+         * @since 0.1.8
          */
         get_created(): number;
 
         /**
          * Gets the profile filename.
          * @returns A string, or `null` for invalid
+         * @since 0.1.0
          */
         get_filename(): string;
 
         /**
          * Gets the profile format.
          * @returns A string, or `null` for invalid
+         * @since 0.1.4
          */
         get_format(): string;
 
         /**
          * Returns if the profile has a VCGT table.
          * @returns `true` if VCGT is valid.
+         * @since 0.1.2
          */
         get_has_vcgt(): boolean;
 
         /**
          * Gets the profile ID.
          * @returns A string, or `null` for invalid
+         * @since 0.1.0
          */
         get_id(): string;
 
@@ -4490,18 +4815,21 @@ export namespace Colord {
          * Returns if the profile is installed system wide and available for all
          * users.
          * @returns `true` if system wide.
+         * @since 0.1.2
          */
         get_is_system_wide(): boolean;
 
         /**
          * Gets the profile kind.
          * @returns A {@link Colord.ProfileKind}, e.g. {@link Colord.ProfileKind.DISPLAY_DEVICE}
+         * @since 0.1.1
          */
         get_kind(): ProfileKind;
 
         /**
          * Returns the profile metadata.
          * @returns a               {@link GLib.HashTable}.
+         * @since 0.1.2
          */
         get_metadata(): { [key: string]: string };
 
@@ -4509,54 +4837,63 @@ export namespace Colord {
          * Returns the profile metadata for a specific key.
          * @param key a key for the metadata dictionary
          * @returns the metadata value, or `null` if not set.
+         * @since 0.1.5
          */
         get_metadata_item(key: string): string;
 
         /**
          * Gets the object path for the profile.
          * @returns the object path, or `null`
+         * @since 0.1.0
          */
         get_object_path(): string;
 
         /**
          * Gets the profile owner.
          * @returns The UID of the user that created the device
+         * @since 0.1.13
          */
         get_owner(): number;
 
         /**
          * Gets the profile qualifier.
          * @returns A string, or `null` for invalid
+         * @since 0.1.0
          */
         get_qualifier(): string;
 
         /**
          * Gets the profile scope.
          * @returns A {@link Colord.ObjectScope}, e.g. {@link Colord.ObjectScope.UNKNOWN}
+         * @since 0.1.10
          */
         get_scope(): ObjectScope;
 
         /**
          * Gets the profile title.
          * @returns A string, or `null` for invalid
+         * @since 0.1.0
          */
         get_title(): string;
 
         /**
          * Gets the profile warnings as a string array.
          * @returns Any profile warnings, e.g. "vcgt-non-monotonic"
+         * @since 0.1.25
          */
         get_warnings(): string[];
 
         /**
          * Gets if the current user has access permissions to the profile.
          * @returns A string, or `null` for invalid
+         * @since 0.1.13
          */
         has_access(): boolean;
 
         /**
          * Sets the profile system wide.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         install_system_wide(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -4564,6 +4901,7 @@ export namespace Colord {
          * Sets the profile system wide.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         install_system_wide(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4571,6 +4909,7 @@ export namespace Colord {
          * Sets the profile system wide.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         install_system_wide(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -4578,6 +4917,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         install_system_wide_finish(res: Gio.AsyncResult): boolean;
 
@@ -4588,6 +4928,7 @@ export namespace Colord {
          * Do not use it in GUI applications.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.8
          */
         install_system_wide_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4596,12 +4937,14 @@ export namespace Colord {
          * @param flags options for loading the profile
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @returns A new {@link Colord.Icc} object, or `null` for error
+         * @since 0.1.32
          */
         load_icc(flags: IccLoadFlags, cancellable: Gio.Cancellable | null): Icc;
 
         /**
          * Sets the object path of the profile.
          * @param object_path The colord object path.
+         * @since 0.1.8
          */
         set_object_path(object_path: string): void;
 
@@ -4610,6 +4953,7 @@ export namespace Colord {
          * @param key a key name
          * @param value a key value
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         set_property(key: string, value: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -4619,6 +4963,7 @@ export namespace Colord {
          * @param value a key value
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         set_property(key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4628,6 +4973,7 @@ export namespace Colord {
          * @param value a key value
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         set_property(key: string, value: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -4641,6 +4987,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         set_property_finish(res: Gio.AsyncResult): boolean;
 
@@ -4653,12 +5000,14 @@ export namespace Colord {
          * @param value The value
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.8
          */
         set_property_sync(key: string, value: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Converts the profile to a string description.
          * @returns text representation of {@link Colord.Profile}
+         * @since 0.1.0
          */
         to_string(): string;
     }
@@ -4864,14 +5213,19 @@ export namespace Colord {
         /**
          * Converts a string to a {@link Colord.SensorError}.
          * @param error_desc 
+         * @since 0.1.26
          */
         static error_from_string(error_desc: string): SensorError;
 
+        /**
+         * @since 0.1.6
+         */
         static error_quark(): GLib.Quark;
 
         /**
          * Converts a {@link Colord.SensorError} to a string.
          * @param error_enum 
+         * @since 0.1.26
          */
         static error_to_string(error_enum: SensorError): string;
 
@@ -4909,6 +5263,7 @@ export namespace Colord {
         /**
          * Connects to the sensor.
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 0.1.8
          */
         connect(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -4916,6 +5271,7 @@ export namespace Colord {
          * Connects to the sensor.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         connect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4923,6 +5279,7 @@ export namespace Colord {
          * Connects to the sensor.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         connect(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -4935,6 +5292,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns `true` if we could connect to to the sensor
+         * @since 0.1.8
          */
         connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -4945,6 +5303,7 @@ export namespace Colord {
          * Do not use it in GUI applications.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.8
          */
         connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4952,48 +5311,56 @@ export namespace Colord {
          * Tests two sensors for equality.
          * @param sensor2 another {@link Colord.Sensor} instance.
          * @returns `true` if the sensors are the same device
+         * @since 0.1.8
          */
         equal(sensor2: Sensor): boolean;
 
         /**
          * Returns the sensor metadata.
          * @returns The sensor capability bitfield.
+         * @since 0.1.6
          */
         get_caps(): number;
 
         /**
          * Gets if the sensor has been connected.
          * @returns `true` if properties are valid
+         * @since 0.1.9
          */
         get_connected(): boolean;
 
         /**
          * Returns if the sensor is embedded into the computer.
          * @returns `true` if embedded.
+         * @since 0.1.26
          */
         get_embedded(): boolean;
 
         /**
          * Gets the object ID for the sensor.
          * @returns the object ID, or `null`
+         * @since 0.1.26
          */
         get_id(): string;
 
         /**
          * Gets the sensor kind.
          * @returns A {@link Colord.SensorKind}, e.g. {@link Colord.SensorKind.HUEY}
+         * @since 0.1.6
          */
         get_kind(): SensorKind;
 
         /**
          * Returns if the sensor is locked.
          * @returns `true` if VCGT is valid.
+         * @since 0.1.6
          */
         get_locked(): boolean;
 
         /**
          * Returns the sensor metadata.
          * @returns a               {@link GLib.HashTable}.
+         * @since 0.1.28
          */
         get_metadata(): { [key: string]: string };
 
@@ -5001,30 +5368,35 @@ export namespace Colord {
          * Returns the sensor metadata for a specific key.
          * @param key a key for the metadata dictionary
          * @returns the metadata value, or `null` if not set.
+         * @since 0.1.28
          */
         get_metadata_item(key: string): string;
 
         /**
          * Gets the sensor operating mode.
          * @returns A {@link Colord.SensorCap}, e.g. {@link Colord.SensorCap.AMBIENT}
+         * @since 0.1.6
          */
         get_mode(): SensorCap;
 
         /**
          * Gets the sensor model.
          * @returns A string, or `null` for invalid
+         * @since 0.1.6
          */
         get_model(): string;
 
         /**
          * Returns if the sensor has a native driver.
          * @returns `true` if VCGT is valid.
+         * @since 0.1.6
          */
         get_native(): boolean;
 
         /**
          * Gets the object path for the sensor.
          * @returns the object path, or `null`
+         * @since 0.1.6
          */
         get_object_path(): string;
 
@@ -5032,12 +5404,14 @@ export namespace Colord {
          * Gets a specific sensor option.
          * @param key a key to search for.
          * @returns A const string, or `null` of not found.
+         * @since 0.1.20
          */
         get_option(key: string): string;
 
         /**
          * Gets any sensor options.
          * @returns A               refcounted {@link GLib.HashTable} of (string, GVariant).
+         * @since 0.1.20
          */
         get_options(): { [key: string]: GLib.Variant };
 
@@ -5045,6 +5419,7 @@ export namespace Colord {
          * Gets a color sample from a sensor
          * @param cap a {@link Colord.SensorCap}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         get_sample(cap: SensorCap, cancellable: Gio.Cancellable | null): globalThis.Promise<ColorXYZ>;
 
@@ -5053,6 +5428,7 @@ export namespace Colord {
          * @param cap a {@link Colord.SensorCap}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_sample(cap: SensorCap, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5061,6 +5437,7 @@ export namespace Colord {
          * @param cap a {@link Colord.SensorCap}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         get_sample(cap: SensorCap, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ColorXYZ> | void;
 
@@ -5068,6 +5445,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns the XYZ reading, or `null`
+         * @since 0.1.8
          */
         get_sample_finish(res: Gio.AsyncResult): ColorXYZ;
 
@@ -5079,12 +5457,14 @@ export namespace Colord {
          * @param cap The device capability, e.g. {@link Colord.SensorCap.AMBIENT}.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns the XYZ reading, with ambient levels in Lux encoded in X, or `null` for error.
+         * @since 0.1.8
          */
         get_sample_sync(cap: SensorCap, cancellable: Gio.Cancellable | null): ColorXYZ;
 
         /**
          * Gets the sensor serial number.
          * @returns A string, or `null` for invalid
+         * @since 0.1.6
          */
         get_serial(): string;
 
@@ -5092,6 +5472,7 @@ export namespace Colord {
          * Gets a color spectrum from a sensor
          * @param cap a {@link Colord.SensorCap}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.3.1
          */
         get_spectrum(cap: SensorCap, cancellable: Gio.Cancellable | null): globalThis.Promise<Spectrum>;
 
@@ -5100,6 +5481,7 @@ export namespace Colord {
          * @param cap a {@link Colord.SensorCap}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 1.3.1
          */
         get_spectrum(cap: SensorCap, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5108,6 +5490,7 @@ export namespace Colord {
          * @param cap a {@link Colord.SensorCap}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 1.3.1
          */
         get_spectrum(cap: SensorCap, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Spectrum> | void;
 
@@ -5115,6 +5498,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns the XYZ reading, or `null`
+         * @since 1.3.1
          */
         get_spectrum_finish(res: Gio.AsyncResult): Spectrum;
 
@@ -5126,18 +5510,21 @@ export namespace Colord {
          * @param cap The device capability, e.g. {@link Colord.SensorCap.AMBIENT}.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns the XYZ reading, with ambient levels in Lux encoded in X, or `null` for error.
+         * @since 1.3.1
          */
         get_spectrum_sync(cap: SensorCap, cancellable: Gio.Cancellable | null): Spectrum;
 
         /**
          * Gets the sensor state.
          * @returns A {@link Colord.SensorState}, e.g. {@link Colord.SensorState.IDLE}
+         * @since 0.1.6
          */
         get_state(): SensorState;
 
         /**
          * Gets the sensor vendor.
          * @returns A string, or `null` for invalid
+         * @since 0.1.6
          */
         get_vendor(): string;
 
@@ -5145,12 +5532,14 @@ export namespace Colord {
          * Returns the sensor metadata for a specific key.
          * @param cap a specified capability, e.g. {@link Colord.SensorCap.LCD}
          * @returns `true` if the sensor has the specified capability
+         * @since 0.1.6
          */
         has_cap(cap: SensorCap): boolean;
 
         /**
          * Locks the device so we can use it.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         lock(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5158,6 +5547,7 @@ export namespace Colord {
          * Locks the device so we can use it.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         lock(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5165,6 +5555,7 @@ export namespace Colord {
          * Locks the device so we can use it.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         lock(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5172,6 +5563,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -5182,12 +5574,14 @@ export namespace Colord {
          * Do not use it in GUI applications.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.6
          */
         lock_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Sets the object path of the sensor.
          * @param object_path The colord object path.
+         * @since 0.1.8
          */
         set_object_path(object_path: string): void;
 
@@ -5195,6 +5589,7 @@ export namespace Colord {
          * Sets options on the sensor device.
          * @param values the options
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.20
          */
         set_options(values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5203,6 +5598,7 @@ export namespace Colord {
          * @param values the options
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.20
          */
         set_options(values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5211,6 +5607,7 @@ export namespace Colord {
          * @param values the options
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.20
          */
         set_options(values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5218,6 +5615,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.20
          */
         set_options_finish(res: Gio.AsyncResult): boolean;
 
@@ -5229,6 +5627,7 @@ export namespace Colord {
          * @param values the options
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.20
          */
         set_options_sync(values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5237,6 +5636,7 @@ export namespace Colord {
         /**
          * Unlocks the sensor for use by other programs.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.1.8
          */
         unlock(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -5244,6 +5644,7 @@ export namespace Colord {
          * Unlocks the sensor for use by other programs.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         unlock(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5251,6 +5652,7 @@ export namespace Colord {
          * Unlocks the sensor for use by other programs.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback the function to run on completion
+         * @since 0.1.8
          */
         unlock(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -5258,6 +5660,7 @@ export namespace Colord {
          * Gets the result from the asynchronous function.
          * @param res the {@link Gio.AsyncResult}
          * @returns success
+         * @since 0.1.8
          */
         unlock_finish(res: Gio.AsyncResult): boolean;
 
@@ -5268,6 +5671,7 @@ export namespace Colord {
          * Do not use it in GUI applications.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
+         * @since 0.1.6
          */
         unlock_sync(cancellable: Gio.Cancellable | null): boolean;
     }
@@ -5305,6 +5709,7 @@ export namespace Colord {
         /**
          * Deep copies a color value.
          * @param dest the destination color
+         * @since 0.1.32
          */
         copy(dest: ColorLab): void;
 
@@ -5312,13 +5717,18 @@ export namespace Colord {
          * Calculates the ΔE of two colors using the 1976 formula.
          * @param p2 Lab value 2
          * @returns distance metric, where JND ΔE ≈ 2.3
+         * @since 0.1.32
          */
         delta_e76(p2: ColorLab): number;
 
+        /**
+         * @since 0.1.32
+         */
         dup(): ColorLab;
 
         /**
          * Deallocates a color value.
+         * @since 0.1.32
          */
         free(): void;
 
@@ -5327,6 +5737,7 @@ export namespace Colord {
          * @param L component value
          * @param a component value
          * @param b component value
+         * @since 0.1.32
          */
         set(L: number, a: number, b: number): void;
     }
@@ -5362,17 +5773,20 @@ export namespace Colord {
          * non-monotonic, in which case it falls back to linear interpolation.
          * @param array Input array
          * @param new_length the target length of the return array
+         * @since 0.1.31
          */
         static array_interpolate(array: ColorRGB[], new_length: number): ColorRGB[];
 
         /**
          * Checks the array for monotonicity.
          * @param array Input array
+         * @since 0.1.31
          */
         static array_is_monotonic(array: ColorRGB[]): boolean;
 
         /**
          * Creates a new RGB array.
+         * @since 0.1.31
          */
         static array_new(): ColorRGB[];
 
@@ -5380,19 +5794,25 @@ export namespace Colord {
         /**
          * Deep copies a color value.
          * @param dest the destination color
+         * @since 0.1.27
          */
         copy(dest: ColorRGB): void;
 
+        /**
+         * @since 0.1.27
+         */
         dup(): ColorRGB;
 
         /**
          * Deallocates a color value.
+         * @since 0.1.0
          */
         free(): void;
 
         /**
          * Set an RGB color which is roughly representative to the wavelength.
          * @param wavelength the wavelength roughly between 380nm and 780nm
+         * @since 1.3.4
          */
         from_wavelength(wavelength: number): void;
 
@@ -5400,6 +5820,7 @@ export namespace Colord {
          * @param p2 
          * @param index 
          * @param result 
+         * @since 0.1.26
          */
         interpolate(p2: ColorRGB, index: number, result: ColorRGB): void;
 
@@ -5408,12 +5829,14 @@ export namespace Colord {
          * @param R component value
          * @param G component value
          * @param B component value
+         * @since 0.1.27
          */
         set(R: number, G: number, B: number): void;
 
         /**
          * Convert from one color format to another.
          * @param dest the destination color
+         * @since 0.1.27
          */
         to_rgb8(dest: ColorRGB8): void;
     }
@@ -5454,26 +5877,38 @@ export namespace Colord {
         static ["new"](): ColorSwatch;
 
         // Methods
+        /**
+         * @since 0.1.32
+         */
         dup(): ColorSwatch;
 
         /**
          * Deallocates a color swatch.
+         * @since 0.1.32
          */
         free(): void;
 
+        /**
+         * @since 0.1.32
+         */
         get_name(): string;
 
+        /**
+         * @since 0.1.32
+         */
         get_value(): ColorLab;
 
         /**
          * Initialises a swatch name.
          * @param name component name
+         * @since 0.1.32
          */
         set_name(name: string): void;
 
         /**
          * Initialises a swatch value.
          * @param value component value
+         * @since 0.1.32
          */
         set_value(value: ColorLab): void;
     }
@@ -5506,13 +5941,18 @@ export namespace Colord {
         /**
          * Deep copies a color value.
          * @param dest the destination color
+         * @since 1.1.6
          */
         copy(dest: ColorUVW): void;
 
+        /**
+         * @since 1.1.6
+         */
         dup(): ColorUVW;
 
         /**
          * Deallocates a color value.
+         * @since 1.1.6
          */
         free(): void;
 
@@ -5520,6 +5960,7 @@ export namespace Colord {
          * Gets the chromaticity distance in the CIE 1960 UCS.
          * @param p2 color
          * @returns The Euclidean distance
+         * @since 1.1.6
          */
         get_chroma_difference(p2: ColorUVW): number;
 
@@ -5528,12 +5969,14 @@ export namespace Colord {
          * @param U component value
          * @param V component value
          * @param W component value
+         * @since 1.1.6
          */
         set(U: number, V: number, W: number): void;
 
         /**
          * Sets the CIEUVW color from a Planckian locus of specific temperature.
          * @param temp temperature in Kelvin
+         * @since 1.1.6
          */
         set_planckian_locus(temp: number): void;
     }
@@ -5565,19 +6008,25 @@ export namespace Colord {
         // Methods
         /**
          * Initialises a color value.
+         * @since 0.1.27
          */
         clear(): void;
 
         /**
          * Deep copies a color value.
          * @param dest the destination color
+         * @since 0.1.27
          */
         copy(dest: ColorXYZ): void;
 
+        /**
+         * @since 0.1.27
+         */
         dup(): ColorXYZ;
 
         /**
          * Deallocates a color value.
+         * @since 0.1.0
          */
         free(): void;
 
@@ -5585,6 +6034,7 @@ export namespace Colord {
          * Normalizes `src` to y=1.0
          * @param max 
          * @param dest the destination color
+         * @since 1.1.6
          */
         normalize(max: number, dest: ColorXYZ): void;
 
@@ -5593,11 +6043,13 @@ export namespace Colord {
          * @param X component value
          * @param Y component value
          * @param Z component value
+         * @since 0.1.27
          */
         set(X: number, Y: number, Z: number): void;
 
         /**
          * Gets the correlated color temperature for the XYZ value.
+         * @since 1.1.6
          */
         to_cct(): number;
 
@@ -5605,12 +6057,14 @@ export namespace Colord {
          * Convert from one color format to another.
          * @param whitepoint the whitepoint
          * @param dest the destination color
+         * @since 1.1.6
          */
         to_uvw(whitepoint: ColorXYZ, dest: ColorUVW): void;
 
         /**
          * Convert from one color format to another.
          * @param dest the destination color
+         * @since 0.1.27
          */
         to_yxy(dest: ColorYxy): void;
     }
@@ -5643,13 +6097,18 @@ export namespace Colord {
         /**
          * Deep copies a color value.
          * @param dest the destination color
+         * @since 0.1.27
          */
         copy(dest: ColorYxy): void;
 
+        /**
+         * @since 0.1.27
+         */
         dup(): ColorYxy;
 
         /**
          * Deallocates a color value.
+         * @since 0.1.0
          */
         free(): void;
 
@@ -5658,18 +6117,21 @@ export namespace Colord {
          * @param Y component value
          * @param x component value
          * @param y component value
+         * @since 0.1.27
          */
         set(Y: number, x: number, y: number): void;
 
         /**
          * Convert from one color format to another.
          * @param dest the destination color
+         * @since 1.1.6
          */
         to_uvw(dest: ColorUVW): void;
 
         /**
          * Convert from one color format to another.
          * @param dest the destination color
+         * @since 0.1.27
          */
         to_xyz(dest: ColorXYZ): void;
     }
@@ -5767,13 +6229,18 @@ export namespace Colord {
         /**
          * Adds a value in nm to the spectrum.
          * @param data 
+         * @since 1.1.6
          */
         add_value(data: number): void;
 
+        /**
+         * @since 1.1.6
+         */
         dup(): Spectrum;
 
         /**
          * Deallocates a color spectrum.
+         * @since 1.1.6
          */
         free(): void;
 
@@ -5781,18 +6248,21 @@ export namespace Colord {
          * Gets the spectral data.
          * NOTE: This is not normalized
          * @returns spectral data
+         * @since 1.1.6
          */
         get_data(): number[];
 
         /**
          * Gets the end value of the spectral data.
          * @returns the value in nm
+         * @since 1.1.6
          */
         get_end(): number;
 
         /**
          * Gets the spectral data.
          * @returns the textual ID of the sample
+         * @since 1.1.6
          */
         get_id(): string;
 
@@ -5800,24 +6270,28 @@ export namespace Colord {
          * Gets the normalization value of the spectral data.
          * NOTE: This affects every value in the spectrum.
          * @returns the value
+         * @since 1.1.6
          */
         get_norm(): number;
 
         /**
          * Gets the divisor of the spectra, for instance a .
          * @returns the value
+         * @since 1.2.6
          */
         get_resolution(): number;
 
         /**
          * Gets the size of the spectrum data.
          * @returns number of data items in this spectrum
+         * @since 1.1.6
          */
         get_size(): number;
 
         /**
          * Gets the start value of the spectral data.
          * @returns the value in nm
+         * @since 1.1.6
          */
         get_start(): number;
 
@@ -5825,6 +6299,7 @@ export namespace Colord {
          * Gets the spectrum data at a specified index.
          * @param idx an index into the data
          * @returns spectral data value, or -1 for invalid
+         * @since 1.1.6
          */
         get_value(idx: number): number;
 
@@ -5832,16 +6307,19 @@ export namespace Colord {
          * Gets the value from the spectral data for a given wavelength.
          * @param wavelength the wavelength in nm
          * @returns the value for the wavelength
+         * @since 1.1.6
          */
         get_value_for_nm(wavelength: number): number;
 
         /**
          * Gets the largest normalised value in the spectrum.
+         * @since 1.3.1
          */
         get_value_max(): number;
 
         /**
          * Gets the smallest normalised value in the spectrum.
+         * @since 1.3.1
          */
         get_value_min(): number;
 
@@ -5850,6 +6328,7 @@ export namespace Colord {
          * applied. Most people should use `cd_spectrum_get_value()` instead.
          * @param idx an index into the data
          * @returns spectral data value, or -1 for invalid
+         * @since 1.2.6
          */
         get_value_raw(idx: number): number;
 
@@ -5857,6 +6336,7 @@ export namespace Colord {
          * Gets the wavelenth that corresponds to the specified index.
          * @param idx an index into the data
          * @returns wavelenth value in nm, or -1 for invalid
+         * @since 1.1.6
          */
         get_wavelength(idx: number): number;
 
@@ -5866,6 +6346,7 @@ export namespace Colord {
          * @param c1 the 1st coefficient
          * @param c2 the 2nd coefficient
          * @param c3 the 3rd coefficient
+         * @since 1.3.1
          */
         get_wavelength_cal(c1: number, c2: number, c3: number): void;
 
@@ -5873,6 +6354,7 @@ export namespace Colord {
          * Ensures no values in the spectrum fall above a set limit. If they
          * are found, set them to `value`.
          * @param value the threshold value to limit the spectrum
+         * @since 1.3.1
          */
         limit_max(value: number): void;
 
@@ -5880,6 +6362,7 @@ export namespace Colord {
          * Ensures no values in the spectrum fall below a set limit. If they
          * are found, set them to `value`.
          * @param value the threshold value to limit the spectrum
+         * @since 1.3.1
          */
         limit_min(value: number): void;
 
@@ -5888,6 +6371,7 @@ export namespace Colord {
          * @param s2 a {@link Colord.Spectrum} instance, possibly an absorption spectrum.
          * @param resolution the step size in nm
          * @returns a {@link Colord.Spectrum} instance
+         * @since 1.1.6
          */
         multiply(s2: Spectrum, resolution: number): Spectrum;
 
@@ -5895,6 +6379,7 @@ export namespace Colord {
          * Multiplies a spectra with a scalar value.
          * @param value a scalar value
          * @returns a {@link Colord.Spectrum} instance
+         * @since 1.3.5
          */
         multiply_scalar(value: number): Spectrum;
 
@@ -5902,12 +6387,14 @@ export namespace Colord {
          * Normalizes a spectrum to a specific value at a specific wavelength.
          * @param wavelength the wavelength in nm
          * @param value the value to normalize to
+         * @since 1.1.6
          */
         normalize(wavelength: number, value: number): void;
 
         /**
          * Normalizes a spectrum to a specific value at its maximum value.
          * @param value the value to normalize to
+         * @since 1.2.6
          */
         normalize_max(value: number): void;
 
@@ -5917,6 +6404,7 @@ export namespace Colord {
          * @param end the new spectrum end
          * @param resolution the resolution to use when resampling
          * @returns a {@link Colord.Spectrum} instance
+         * @since 1.3.1
          */
         resample(start: number, end: number, resolution: number): Spectrum;
 
@@ -5924,12 +6412,14 @@ export namespace Colord {
          * Resample a new spectrum with the desired number of points.
          * @param size the output spectrum size
          * @returns a {@link Colord.Spectrum} instance
+         * @since 1.3.4
          */
         resample_to_size(size: number): Spectrum;
 
         /**
          * Sets the spectrum data.
          * @param value component value
+         * @since 1.1.6
          */
         set_data(value: number[]): void;
 
@@ -5939,12 +6429,14 @@ export namespace Colord {
          * If there is already spectral data, the wavelength calibration will
          * also be set automatically.
          * @param end the end value of the spectral data
+         * @since 1.1.6
          */
         set_end(end: number): void;
 
         /**
          * Sets a spectrum id.
          * @param id component id
+         * @since 1.1.6
          */
         set_id(id: string): void;
 
@@ -5952,12 +6444,14 @@ export namespace Colord {
          * Set the normalization value of the spectrum.
          * NOTE: This affects every value in the spectrum.
          * @param norm the end value of the spectral data
+         * @since 1.1.6
          */
         set_norm(norm: number): void;
 
         /**
          * Set the start value of the spectal data in nm.
          * @param start the start value of the spectral data
+         * @since 1.1.6
          */
         set_start(start: number): void;
 
@@ -5965,6 +6459,7 @@ export namespace Colord {
          * Overwrites the spectrum data at a specified index.
          * @param idx an index into the data
          * @param data a data value
+         * @since 1.2.6
          */
         set_value(idx: number, data: number): void;
 
@@ -5977,6 +6472,7 @@ export namespace Colord {
          * @param c1 the 1st coefficient
          * @param c2 the 2nd coefficient
          * @param c3 the 3rd coefficient
+         * @since 1.3.1
          */
         set_wavelength_cal(c1: number, c2: number, c3: number): void;
 
@@ -5986,6 +6482,7 @@ export namespace Colord {
          * @param s2 a {@link Colord.Spectrum} instance, e.g. a dark calibration
          * @param resolution the resolution to use when resampling
          * @returns a {@link Colord.Spectrum} instance
+         * @since 1.3.1
          */
         subtract(s2: Spectrum, resolution: number): Spectrum;
 
@@ -5994,6 +6491,7 @@ export namespace Colord {
          * @param max_width the terminal width
          * @param max_height the terminal height
          * @returns a printable ASCII string
+         * @since 1.3.1
          */
         to_string(max_width: number, max_height: number): string;
     }

@@ -1,12 +1,12 @@
 // The widget vocabulary of Gtk-4.0 as runtime data.
 //
-// GENERATED — do not edit. Provenance: Gtk-4.0 — library 4.23.3 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap
+// GENERATED — do not edit. Provenance: Gtk-4.0 — library 4.23.3 — 3 child holder(s) — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap
 //
 // The type half of this subpath is the sibling `.d.ts`. This file exists because
 // types are erased: a consumer that wants to ask the installed library whether every
 // name here is real needs values, not declarations.
 
-export const SURFACE_PROVENANCE = 'Gtk-4.0 — library 4.23.3 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap';
+export const SURFACE_PROVENANCE = 'Gtk-4.0 — library 4.23.3 — 3 child holder(s) — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap';
 
 export const OWN_PROPS = {
     GtkAboutDialog: ['artists', 'authors', 'comments', 'copyright', 'documenters', 'license', 'license-type', 'logo', 'logo-icon-name', 'program-name', 'system-information', 'translator-credits', 'version', 'website', 'website-label', 'wrap-license'],
@@ -33,6 +33,7 @@ export const OWN_PROPS = {
     GtkColorChooserWidget: ['show-editor'],
     GtkColorDialogButton: ['dialog', 'rgba'],
     GtkColumnView: ['enable-rubberband', 'header-factory', 'model', 'reorderable', 'row-factory', 'show-column-separators', 'show-row-separators', 'single-click-activate', 'tab-behavior'],
+    GtkColumnViewCell: ['child', 'focusable'],
     GtkComboBox: ['active', 'active-id', 'button-sensitivity', 'child', 'entry-text-column', 'has-entry', 'has-frame', 'id-column', 'model', 'popup-fixed-width'],
     GtkDialog: ['use-header-bar'],
     GtkDragIcon: ['child'],
@@ -65,6 +66,8 @@ export const OWN_PROPS = {
     GtkListBase: ['orientation'],
     GtkListBox: ['accept-unpaired-release', 'activate-on-single-click', 'selection-mode', 'show-separators', 'tab-behavior'],
     GtkListBoxRow: ['activatable', 'child', 'selectable'],
+    GtkListHeader: ['child'],
+    GtkListItem: ['accessible-description', 'accessible-label', 'activatable', 'child', 'focusable', 'selectable'],
     GtkListView: ['enable-rubberband', 'factory', 'header-factory', 'model', 'show-separators', 'single-click-activate', 'tab-behavior'],
     GtkLockButton: ['permission', 'text-lock', 'text-unlock', 'tooltip-lock', 'tooltip-not-authorized', 'tooltip-unlock'],
     GtkMediaControls: ['media-stream'],
@@ -193,6 +196,7 @@ export const DECLS = {
     GtkColorChooserWidget: ['GtkColorChooserWidget', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkColorChooser', 'GtkConstraintTarget'],
     GtkColorDialogButton: ['GtkColorDialogButton', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     GtkColumnView: ['GtkColumnView', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkScrollable'],
+    GtkColumnViewCell: ['GtkColumnViewCell', 'GtkListItem'],
     GtkComboBox: ['GtkComboBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout', 'GtkConstraintTarget'],
     GtkComboBoxText: ['GtkComboBoxText', 'GtkComboBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout', 'GtkConstraintTarget'],
     GtkDialog: ['GtkDialog', 'GtkWindow', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkNative', 'GtkRoot', 'GtkShortcutManager'],
@@ -227,6 +231,8 @@ export const DECLS = {
     GtkLinkButton: ['GtkLinkButton', 'GtkButton', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
     GtkListBox: ['GtkListBox', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     GtkListBoxRow: ['GtkListBoxRow', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
+    GtkListHeader: ['GtkListHeader'],
+    GtkListItem: ['GtkListItem'],
     GtkListView: ['GtkListView', 'GtkListBase', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget', 'GtkOrientable', 'GtkScrollable'],
     GtkLockButton: ['GtkLockButton', 'GtkButton', 'GtkWidget', 'GtkAccessible', 'GtkActionable', 'GtkBuildable', 'GtkConstraintTarget'],
     GtkMediaControls: ['GtkMediaControls', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
@@ -278,6 +284,12 @@ export const DECLS = {
     GtkWindowControls: ['GtkWindowControls', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
     GtkWindowHandle: ['GtkWindowHandle', 'GtkWidget', 'GtkAccessible', 'GtkBuildable', 'GtkConstraintTarget'],
 };
+
+// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
+// and descend from `GObject.Object`. A renderer places them like a container; a check
+// asking "is this a widget" must not count them. Derived from the accessor pair, never
+// from a list — the count is in the provenance line above.
+export const CHILD_HOLDERS = ['GtkColumnViewCell', 'GtkListHeader', 'GtkListItem'];
 
 export const ENUM_NICKS = {
     GtkAccessibleAnnouncementPriority: ['low', 'medium', 'high'],
@@ -413,6 +425,9 @@ export const SLOT_CANDIDATES = {
         'child': 'set_child',
         'group': 'set_group',
     },
+    GtkColumnViewCell: {
+        'child': 'set_child',
+    },
     GtkComboBox: {
         'child': 'set_child',
     },
@@ -450,6 +465,12 @@ export const SLOT_CANDIDATES = {
     GtkListBoxRow: {
         'child': 'set_child',
         'header': 'set_header',
+    },
+    GtkListHeader: {
+        'child': 'set_child',
+    },
+    GtkListItem: {
+        'child': 'set_child',
     },
     GtkMenuButton: {
         'child': 'set_child',
@@ -540,6 +561,8 @@ export const SINCE = {
     'GtkColumnView.header-factory': '4.12',
     'GtkColumnView.row-factory': '4.12',
     'GtkColumnView.tab-behavior': '4.12',
+    'GtkColumnViewCell.child': '4.12',
+    'GtkColumnViewCell.focusable': '4.12',
     'GtkDropDown.header-factory': '4.12',
     'GtkDropDown.search-match-mode': '4.12',
     'GtkDropDown.show-arrow': '4.6',
@@ -570,6 +593,10 @@ export const SINCE = {
     'GtkLabel.natural-wrap-mode': '4.6',
     'GtkLabel.tabs': '4.8',
     'GtkListBox.tab-behavior': '4.18',
+    'GtkListHeader.child': '4.12',
+    'GtkListItem.accessible-description': '4.12',
+    'GtkListItem.accessible-label': '4.12',
+    'GtkListItem.focusable': '4.12',
     'GtkListView.header-factory': '4.12',
     'GtkListView.tab-behavior': '4.12',
     'GtkMenuButton.active': '4.10',

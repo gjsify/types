@@ -369,6 +369,7 @@ export namespace EDataServerUI4 {
          * is read either by `e_certificate_widget_set_der()` or by
          * `e_certificate_widget_set_pem()`.
          * @returns whether shows any data
+         * @since 3.60
          */
         get_has_data(): boolean;
 
@@ -380,6 +381,7 @@ export namespace EDataServerUI4 {
          * The content of the `self` is cleared when the `der_data` is `null`.
          * @param der_data certificate data in DER format, or `null`
          * @param der_data_len length of the `der_data`
+         * @since 3.46
          */
         set_der(der_data: null, der_data_len: number): void;
 
@@ -389,6 +391,7 @@ export namespace EDataServerUI4 {
          * 
          * The content of the `self` is cleared when the `pem_data` is `null`.
          * @param pem_data certificate data in PEM format, or `null`
+         * @since 3.46
          */
         set_pem(pem_data: string | null): void;
 
@@ -524,6 +527,7 @@ export namespace EDataServerUI4 {
          * by an ECredentialsPrompter::get-dialog-parent signal emission. If there is no callback
          * registered or the current callbacks don't have any suitable window, then there's
          * chosen the last active window from the default GApplication, if any available.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_dialog_parent(): Gtk.Window | null;
@@ -535,6 +539,7 @@ export namespace EDataServerUI4 {
          * 
          * This property does not influence direct calls of `e_credentials_prompter_prompt()`.
          * @returns Whether can respond to credential prompts automatically.
+         * @since 3.16
          */
         get_auto_prompt(): boolean;
 
@@ -546,6 +551,7 @@ export namespace EDataServerUI4 {
          * This value does not influence direct calls of `e_credentials_prompter_prompt()`.
          * @param source an {@link EDataServer.Source}
          * @returns Whether the auto-prompt is disabled for the given `source`
+         * @since 3.16
          */
         get_auto_prompt_disabled_for(source: EDataServer.Source): boolean;
 
@@ -555,6 +561,7 @@ export namespace EDataServerUI4 {
          * registered or the current callbacks don't have any suitable window, then there's
          * chosen the last active window from the default GApplication, if any available.
          * @returns a {@link Gtk.Window}, to be used as a dialog parent,    or `null`.
+         * @since 3.16
          */
         get_dialog_parent(): Gtk.Window | null;
 
@@ -568,18 +575,21 @@ export namespace EDataServerUI4 {
          * if any available.
          * @param auth_source an {@link EDataServer.Source}
          * @returns a {@link Gtk.Window}, to be used as a dialog parent,    or `null`.
+         * @since 3.42
          */
         get_dialog_parent_full(auth_source: EDataServer.Source | null): Gtk.Window | null;
 
         /**
          * Returns an {@link EDataServer.SourceCredentialsProvider}, which the `prompter` uses.
          * @returns an {@link EDataServer.SourceCredentialsProvider}, which the `prompter` uses.
+         * @since 3.16
          */
         get_provider(): EDataServer.SourceCredentialsProvider;
 
         /**
          * Returns an {@link EDataServer.SourceRegistry}, to which the `prompter` listens.
          * @returns an {@link EDataServer.SourceRegistry}, to which the `prompter` listens.
+         * @since 3.16
          */
         get_registry(): EDataServer.SourceRegistry;
 
@@ -599,12 +609,14 @@ export namespace EDataServerUI4 {
          * @param func an {@link EDataServerUI4.CredentialsPrompterLoopPromptFunc} user function to call to check provided credentials
          * @param cancellable an optional {@link Gio.Cancellable}, or `null`
          * @returns `true`, when the credentials were provided successfully and they   can be used to authenticate the `source`; `false` otherwise.
+         * @since 3.16
          */
         loop_prompt_sync(source: EDataServer.Source, flags: CredentialsPrompterPromptFlags, func: CredentialsPrompterLoopPromptFunc, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Process all enabled sources with connection state #E_SOURCE_CONNECTION_STATUS_AWAITING_CREDENTIALS,
          * like if they just asked for its credentials for the first time.
+         * @since 3.16
          */
         process_awaiting_credentials(): void;
 
@@ -614,6 +626,7 @@ export namespace EDataServerUI4 {
          * the {@link EDataServer.SourceConnectionStatus.AWAITING_CREDENTIALS} or it is disabled.
          * @param source an {@link EDataServer.Source}
          * @returns Whether continues with the credentials prompt.
+         * @since 3.16
          */
         process_source(source: EDataServer.Source): boolean;
 
@@ -627,6 +640,7 @@ export namespace EDataServerUI4 {
          * @param source an {@link EDataServer.Source}, which prompt the credentials for
          * @param error_text Additional error text to show to a user, or `null`
          * @param flags a bit-or of {@link EDataServerUI4.CredentialsPrompterPromptFlags}
+         * @since 3.16
          */
         prompt(source: EDataServer.Source, error_text: string | null, flags: CredentialsPrompterPromptFlags): globalThis.Promise<[EDataServer.Source | null, EDataServer.NamedParameters | null]>;
 
@@ -641,6 +655,7 @@ export namespace EDataServerUI4 {
          * @param error_text Additional error text to show to a user, or `null`
          * @param flags a bit-or of {@link EDataServerUI4.CredentialsPrompterPromptFlags}
          * @param callback a callback to call when the credentials are ready, or `null`
+         * @since 3.16
          */
         prompt(source: EDataServer.Source, error_text: string | null, flags: CredentialsPrompterPromptFlags, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -655,6 +670,7 @@ export namespace EDataServerUI4 {
          * @param error_text Additional error text to show to a user, or `null`
          * @param flags a bit-or of {@link EDataServerUI4.CredentialsPrompterPromptFlags}
          * @param callback a callback to call when the credentials are ready, or `null`
+         * @since 3.16
          */
         prompt(source: EDataServer.Source, error_text: string | null, flags: CredentialsPrompterPromptFlags, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[EDataServer.Source | null, EDataServer.NamedParameters | null]> | void;
 
@@ -667,6 +683,7 @@ export namespace EDataServerUI4 {
          * Both output arguments will be set to `null` on error and `false` will be returned.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` otherwise.
+         * @since 3.16
          */
         prompt_finish(result: Gio.AsyncResult): [boolean, EDataServer.Source | null, EDataServer.NamedParameters | null];
 
@@ -683,6 +700,7 @@ export namespace EDataServerUI4 {
          * @param authentication_method an authentication method to registr `prompter_impl` for; or `null`
          * @param prompter_impl an {@link EDataServerUI4.CredentialsPrompterImpl}
          * @returns `true` on success, `false` on failure or when there was another prompter implementation registered for the given authentication method.
+         * @since 3.16
          */
         register_impl(authentication_method: string | null, prompter_impl: CredentialsPrompterImpl): boolean;
 
@@ -695,6 +713,7 @@ export namespace EDataServerUI4 {
          * 
          * This property does not influence direct calls of `e_credentials_prompter_prompt()`.
          * @param auto_prompt new value of the auto-prompt property
+         * @since 3.16
          */
         set_auto_prompt(auto_prompt: boolean): void;
 
@@ -706,6 +725,7 @@ export namespace EDataServerUI4 {
          * This value does not influence direct calls of `e_credentials_prompter_prompt()`.
          * @param source an {@link EDataServer.Source}
          * @param is_disabled whether the auto-prompt should be disabled for this `source`
+         * @since 3.16
          */
         set_auto_prompt_disabled_for(source: EDataServer.Source, is_disabled: boolean): void;
 
@@ -715,6 +735,7 @@ export namespace EDataServerUI4 {
          * method is registered or if it has set a different prompter implementation.
          * @param authentication_method an authentication method to registr `prompter_impl` for; or `null`
          * @param prompter_impl an {@link EDataServerUI4.CredentialsPrompterImpl}
+         * @since 3.16
          */
         unregister_impl(authentication_method: string | null, prompter_impl: CredentialsPrompterImpl): void;
 
@@ -727,6 +748,7 @@ export namespace EDataServerUI4 {
          * objects are owned by `extensible` and should not be unreferenced.
          * @param extension_type the type of extensions to list
          * @returns a list of extension objects derived from `extension_type`
+         * @since 3.4
          */
         list_extensions(extension_type: GObject.GType): EDataServer.Extension[];
 
@@ -735,6 +757,7 @@ export namespace EDataServerUI4 {
          * target the class of `extensible`.  The lifetimes of these newly created
          * {@link EDataServer.Extension} objects are bound to `extensible` such that they are finalized
          * when `extensible` is finalized.
+         * @since 3.4
          */
         load_extensions(): void;
 
@@ -742,6 +765,7 @@ export namespace EDataServerUI4 {
          * Similar to `e_extensible_load_extensions()`, only loads newly discovered
          * extensions again. This can help in case a new module had been loaded
          * to the process, which provides the extensions for the `extensible`.
+         * @since 3.46
          */
         reload_extensions(): void;
     }
@@ -806,6 +830,7 @@ export namespace EDataServerUI4 {
         /**
          * Asks the `prompt_impl` to cancel current prompt, which should have ID `prompt_id`.
          * @param prompt_id a prompt ID to cancel
+         * @since 3.16
          * @virtual
          */
         vfunc_cancel_prompt(prompt_id: null): void;
@@ -831,12 +856,14 @@ export namespace EDataServerUI4 {
         /**
          * Asks the `prompt_impl` to cancel current prompt, which should have ID `prompt_id`.
          * @param prompt_id a prompt ID to cancel
+         * @since 3.16
          */
         cancel_prompt(prompt_id: null): void;
 
         /**
          * Returns an {@link EDataServerUI4.CredentialsPrompter} with which the `prompter_impl` is associated.
          * @returns an {@link EDataServerUI4.CredentialsPrompter}
+         * @since 3.16
          */
         get_credentials_prompter(): null;
 
@@ -857,6 +884,7 @@ export namespace EDataServerUI4 {
          * @param cred_source a parent {@link EDataServer.Source}, from which credentials were taken, or should be stored to
          * @param error_text an optional error text from the previous credentials prompt; can be `null`
          * @param credentials credentials, as saved in keyring; can be empty, but not `null`
+         * @since 3.16
          */
         prompt(prompt_id: null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string | null, credentials: EDataServer.NamedParameters): void;
 
@@ -870,6 +898,7 @@ export namespace EDataServerUI4 {
          * for authentication of the associated {@link EDataServer.Source}.
          * @param prompt_id a prompt ID
          * @param credentials credentials to use; can be `null` for cancelled prompts
+         * @since 3.16
          */
         prompt_finish(prompt_id: null, credentials: EDataServer.NamedParameters | null): void;
     }
@@ -1104,11 +1133,13 @@ export namespace EDataServerUI4 {
         // Methods
         /**
          * @returns a {@link Gtk.Paned} used to split list of events and    the description of the reminders. It's owned by the `reminders` widget.
+         * @since 3.38
          */
         get_paned(): Gtk.Paned;
 
         /**
          * @returns a {@link Gio.Settings} pointing to org.gnome.evolution-data-server.calendar    used by the `reminders` widget.
+         * @since 3.30
          */
         get_settings(): Gio.Settings;
 
@@ -1120,16 +1151,19 @@ export namespace EDataServerUI4 {
 
         /**
          * @returns a {@link Gtk.TreeView} with past reminders. It's owned    by the `reminders` widget.
+         * @since 3.30
          */
         get_tree_view(): Gtk.TreeView;
 
         /**
          * @returns an {@link ECal.ReminderWatcher} with which the `reminders` had    been created. Do on unref it, it's owned by the `reminders`.
+         * @since 3.30
          */
         get_watcher(): ECal.ReminderWatcher;
 
         /**
          * @returns `true`, when there is no past reminder left, `false` otherwise.
+         * @since 3.30
          */
         is_empty(): boolean;
 
@@ -1139,6 +1173,7 @@ export namespace EDataServerUI4 {
          * instead.
          * @param prefix an optional prefix to show before the error message, or `null` for none
          * @param error a {@link GLib.Error} to show the message from in the UI, or `null` for unknown error
+         * @since 3.30
          */
         report_error(prefix: string | null, error: GLib.Error | null): void;
 
@@ -1159,6 +1194,7 @@ export namespace EDataServerUI4 {
          * objects are owned by `extensible` and should not be unreferenced.
          * @param extension_type the type of extensions to list
          * @returns a list of extension objects derived from `extension_type`
+         * @since 3.4
          */
         list_extensions(extension_type: GObject.GType): EDataServer.Extension[];
 
@@ -1167,6 +1203,7 @@ export namespace EDataServerUI4 {
          * target the class of `extensible`.  The lifetimes of these newly created
          * {@link EDataServer.Extension} objects are bound to `extensible` such that they are finalized
          * when `extensible` is finalized.
+         * @since 3.4
          */
         load_extensions(): void;
 
@@ -1174,6 +1211,7 @@ export namespace EDataServerUI4 {
          * Similar to `e_extensible_load_extensions()`, only loads newly discovered
          * extensions again. This can help in case a new module had been loaded
          * to the process, which provides the extensions for the `extensible`.
+         * @since 3.46
          */
         reload_extensions(): void;
 
@@ -1285,11 +1323,13 @@ export namespace EDataServerUI4 {
          * set on the {@link EDataServer.Source} from the creation time. The URL can be either a full URL, a path
          * or even a `null`.
          * @returns currently set base URL for the `content`.
+         * @since 3.18
          */
         get_base_url(): string;
 
         /**
          * @returns whether multiselect is allowed for the `content`.
+         * @since 3.18
          */
         get_multiselect(): boolean;
 
@@ -1302,6 +1342,7 @@ export namespace EDataServerUI4 {
          * be freed with `g_free()`, when no longer needed.
          * @param index an index of the selected source; counts from 0
          * @returns `true`, when a selected source of index `index` exists, `false` otherwise.
+         * @since 3.18
          */
         get_selected(index: number): [boolean, string, number, string, string, number];
 
@@ -1309,6 +1350,7 @@ export namespace EDataServerUI4 {
          * Returns inner `GtkTreeViewSelection`. This is meant to be able to connect
          * to its "changed" signal and update other parts of the parent widgets accordingly.
          * @returns inner `GtkTreeViewSelection`
+         * @since 3.18
          */
         get_tree_selection(): Gtk.TreeSelection;
 
@@ -1316,6 +1358,7 @@ export namespace EDataServerUI4 {
          * Get currently selected user address in the `content`, if the server returned any.
          * This value has meaning only with calendar sources.
          * @returns currently selected user address. The   returned string is newly allocated and should be freed with `g_free()` when   no longer needed. If there are none addresses provided by the server, or   no calendar sources were found, then `null` is returned instead.
+         * @since 3.18
          */
         get_user_address(): string | null;
 
@@ -1331,6 +1374,7 @@ export namespace EDataServerUI4 {
          * call `e_webdav_discover_content_refresh_finish()` to get the result of the operation.
          * @param display_name optional display name to use for scratch sources
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.18
          */
         refresh(display_name: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1347,6 +1391,7 @@ export namespace EDataServerUI4 {
          * @param display_name optional display name to use for scratch sources
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.18
          */
         refresh(display_name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1363,6 +1408,7 @@ export namespace EDataServerUI4 {
          * @param display_name optional display name to use for scratch sources
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.18
          */
         refresh(display_name: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1374,6 +1420,7 @@ export namespace EDataServerUI4 {
          * the content.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
+         * @since 3.18
          */
         refresh_finish(result: Gio.AsyncResult): boolean;
 
@@ -1382,12 +1429,14 @@ export namespace EDataServerUI4 {
          * the {@link EDataServer.Source} from the creation time. The URL can be either a full URL, a path
          * or even a `null`.
          * @param base_url a base URL
+         * @since 3.18
          */
         set_base_url(base_url: string): void;
 
         /**
          * Sets whether the WebDAV discovery content allows multiselect.
          * @param multiselect whether multiselect is allowed
+         * @since 3.18
          */
         set_multiselect(multiselect: boolean): void;
 
@@ -1396,6 +1445,7 @@ export namespace EDataServerUI4 {
          * which are safely ignored. The advantage of this function is that the error
          * message is removed when the refresh operation is started.
          * @param error a {@link GLib.Error} to show in the UI, or `null`
+         * @since 3.18
          */
         show_error(error: GLib.Error): void;
 
@@ -1534,11 +1584,13 @@ export namespace EDataServerUI4 {
         /**
          * Returns inner WebDAV discovery content, which can be further manipulated.
          * @returns inner WebDAV discovery content
+         * @since 3.18
          */
         get_content(): WebDAVDiscoverContent;
 
         /**
          * Invokes refresh of the inner content of the WebDAV discovery dialog.
+         * @since 3.18
          */
         refresh(): void;
     }

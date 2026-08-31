@@ -362,6 +362,7 @@ export namespace Easyfc {
          * @param family_name a family name to be substituted.
          * @param subst a {@link Easyfc.Font} for substitute font
          * @returns `true` if it's successfully completed, otherwise `false`.
+         * @since 0.11
          */
         add_subst(family_name: string, subst: Font): boolean;
 
@@ -404,6 +405,7 @@ export namespace Easyfc {
         /**
          * Obtains the list of the family name being substituted
          * @returns a {@link GLib.List} contains languages or `null`.
+         * @since 0.11
          */
         get_subst_family(): string[];
 
@@ -411,6 +413,7 @@ export namespace Easyfc {
          * Obtains the list of {@link Easyfc.Font} to be substituted for `family_name`.
          * @param family_name a family name being substituted.
          * @returns a {@link GLib.List} contains {@link Easyfc.Font} or `null`.
+         * @since 0.11
          */
         get_substs(family_name: string): Font[];
 
@@ -461,6 +464,7 @@ export namespace Easyfc {
          * @param family_name a family name to be substituted.
          * @param subst_name a substitute font name
          * @returns `true` if it's successfully completed, otherwise `false`.
+         * @since 0.11
          */
         remove_subst(family_name: string, subst_name: string): boolean;
 
@@ -468,6 +472,7 @@ export namespace Easyfc {
          * Remove all of substitute font list of `family_name`.
          * @param family_name a family name to be substituted.
          * @returns `true` if it's successfully completed, otherwise `false`.
+         * @since 0.11
          */
         remove_substs(family_name: string): boolean;
 
@@ -494,6 +499,7 @@ export namespace Easyfc {
          * 
          * This feature is enabled by default.
          * @param flag a `gboolean`.
+         * @since 0.8
          */
         set_migration(flag: boolean): void;
 
@@ -568,6 +574,7 @@ export namespace Easyfc {
          * Add `font_name` as the font family name used for the font font.
          * @param font_name a font name.
          * @returns `true` if it successfully is set. otherwise `false`.
+         * @since 0.11
          */
         add_family(font_name: string): boolean;
 
@@ -575,12 +582,14 @@ export namespace Easyfc {
          * Add `feature` font feature to `font`.
          * @param feature feature name to be added
          * @returns `true` if it's successfully completed, otherwise `false`.
+         * @since 0.12
          */
         add_feature(feature: string): boolean;
 
         /**
          * Split up `font` to {@link Easyfc.Font} that has one family name only.
          * @returns a {@link GLib.List} contains          {@link Easyfc.Font}, otherwise `null`.
+         * @since 0.11
          */
         canonicalize(): Font[];
 
@@ -595,6 +604,7 @@ export namespace Easyfc {
          * Check if `font` contains `font_name`.
          * @param font_name a font name.
          * @returns `true` if it contains, otherwise `false`.
+         * @since 0.11
          */
         find(font_name: string): boolean;
 
@@ -619,6 +629,7 @@ export namespace Easyfc {
         /**
          * Obtains available font features in `font`.
          * @returns a {@link GLib.List} containing          memory-allocated string of feature name that is available          in `font`. strings in {@link GLib.List} has to be freed when it isn't          needed anymore.
+         * @since 0.12
          */
         get_available_features(): string[];
 
@@ -637,6 +648,7 @@ export namespace Easyfc {
         /**
          * Obtains font family names in `font`.
          * @returns a {@link GLib.List} containing          the static string of font family names
+         * @since 0.11
          */
         get_families(): string[];
 
@@ -649,6 +661,7 @@ export namespace Easyfc {
         /**
          * Obtains font features list that `font` has.
          * @returns a {@link GLib.List} containing          the static string of feature name.
+         * @since 0.12
          */
         get_features(): string[];
 
@@ -685,6 +698,7 @@ export namespace Easyfc {
         /**
          * Removes all of families in `font`.
          * @returns `true` if it's successfully completed, otherwise `false`.
+         * @since 0.11
          */
         remove(): boolean;
 
@@ -692,6 +706,7 @@ export namespace Easyfc {
          * Removes `font_name` from `font`.
          * @param font_name a font name to be removed.
          * @returns `true` if it's successfully completed, otherwise `false`.
+         * @since 0.11
          */
         remove_family(font_name: string): boolean;
 
@@ -699,6 +714,7 @@ export namespace Easyfc {
          * Remove `feature` from `font` if available.
          * @param feature feature name to be removed
          * @returns `true` if it's successfully completed, otherwise `false`.
+         * @since 0.12
          */
         remove_feature(feature: string): boolean;
 
@@ -725,6 +741,7 @@ export namespace Easyfc {
          * Set `font_name` as the font family name used for the font font.
          * @param font_name a font name.
          * @returns `true` if it successfully is set. otherwise `false`.
+         * @deprecated since 0.11.: Use `ezfc_font_add_family()`.
          */
         set_family(font_name: string): boolean;
 

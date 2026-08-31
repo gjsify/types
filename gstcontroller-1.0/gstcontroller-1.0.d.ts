@@ -595,6 +595,7 @@ export namespace GstController {
          * Returns a read-only copy of the list of {@link GstController.ControlPoint} for the given property.
          * Free the list after done with it.
          * @returns a copy of the list, or `null` if the property isn't handled by the controller
+         * @deprecated since 1.28: Use `gst_timed_value_control_source_list_control_points()` instead.
          */
         get_all(): ControlPoint[];
 
@@ -609,6 +610,7 @@ export namespace GstController {
          * that have been set on this control source. To modify the value of a
          * control point, use `gst_timed_value_control_source_set`.
          * @returns an array of control points, or `null` if no control points are set.
+         * @since 1.28
          */
         list_control_points(): Gst.TimedValue[] | null;
 

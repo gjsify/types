@@ -1310,18 +1310,21 @@ export namespace ICalGLib {
         /**
          * Creates a deep copy of {@link ICalGLib.Array} with the same properties as the `array`.
          * @returns The newly cloned {@link ICalGLib.Array} with the same value as the `array`
+         * @since 1.0
          */
         copy(): Array;
 
         /**
          * Removes the element at the `position` from the array.
          * @param position The position in which the element will be removed from the array
+         * @since 1.0
          */
         remove_element_at(position: number): void;
 
         /**
          * Gets the size of the array.
          * @returns The size of current array.
+         * @since 1.0
          */
         size(): number;
     }
@@ -1385,6 +1388,7 @@ export namespace ICalGLib {
         /**
          * Gets the data, if the {@link ICalGLib.Attach} is built from the data.
          * @returns The data component of the `attach`. `null` if it is built from url or there is an error.
+         * @since 1.0
          */
         get_data(): string | null;
 
@@ -1397,12 +1401,14 @@ export namespace ICalGLib {
         /**
          * Checks whether the {@link ICalGLib.Attach} is built from url.
          * @returns Whether the `attach` is built from url
+         * @since 1.0
          */
         get_is_url(): boolean;
 
         /**
          * Gets the url, if the {@link ICalGLib.Attach} is built from the url.
          * @returns The url component of the `attach`. `null` if it is built from data or there is an error.
+         * @since 1.0
          */
         get_url(): string | null;
     }
@@ -1460,18 +1466,21 @@ export namespace ICalGLib {
         /**
          * Gets the current {@link ICalGLib.Component} pointed by {@link ICalGLib.CompIter}.
          * @returns A {@link ICalGLib.Component}
+         * @since 1.0
          */
         deref(): Component;
 
         /**
          * Gets the next {@link ICalGLib.Component} pointed by {@link ICalGLib.CompIter}.
          * @returns A {@link ICalGLib.CompIter}
+         * @since 1.0
          */
         next(): Component;
 
         /**
          * Gets the prior {@link ICalGLib.Component} pointed by {@link ICalGLib.CompIter}.
          * @returns A {@link ICalGLib.CompIter}
+         * @since 1.0
          */
         prior(): Component;
     }
@@ -1567,18 +1576,21 @@ export namespace ICalGLib {
         /**
          * Converts a string to a {@link ICalGLib.ComponentKind}.
          * @param string A string
+         * @since 1.0
          */
         static kind_from_string(string: string): ComponentKind;
 
         /**
          * Checks if a {@link ICalGLib.ComponentKind} is valid.
          * @param kind A {@link ICalGLib.ComponentKind}
+         * @since 1.0
          */
         static kind_is_valid(kind: ComponentKind): boolean;
 
         /**
          * Converts a {@link ICalGLib.ComponentKind} to a string.
          * @param kind A {@link ICalGLib.ComponentKind}
+         * @since 1.0
          */
         static kind_to_string(kind: ComponentKind): string;
 
@@ -1586,18 +1598,21 @@ export namespace ICalGLib {
         /**
          * Adds a {@link ICalGLib.Component} into another {@link ICalGLib.Component} as a child component.
          * @param child A child {@link ICalGLib.Component}
+         * @since 1.0
          */
         add_component(child: Component): void;
 
         /**
          * Adds an {@link ICalGLib.Property} into {@link ICalGLib.Component}.
          * @param property An {@link ICalGLib.Property}
+         * @since 1.0
          */
         add_property(property: Property): void;
 
         /**
          * Converts a {@link ICalGLib.Component} to a string.
          * @returns The string representation of {@link ICalGLib.Component}.
+         * @since 1.0
          */
         as_ical_string(): string;
 
@@ -1605,23 +1620,27 @@ export namespace ICalGLib {
          * Gets the {@link ICalGLib.CompIter} pointing to the first child {@link ICalGLib.Component}.
          * @param kind A {@link ICalGLib.ComponentKind}
          * @returns A {@link ICalGLib.CompIter}
+         * @since 1.0
          */
         begin_component(kind: ComponentKind): CompIter;
 
         /**
          * Checks the number of restrictions in {@link ICalGLib.Component}.
          * @returns The number of restrictions in `comp`
+         * @since 1.0
          */
         check_restrictions(): number;
 
         /**
          * Deeply clone a {@link ICalGLib.Component}.
          * @returns The newly deeply cloned {@link ICalGLib.Component}.
+         * @since 1.0
          */
         clone(): Component;
 
         /**
          * Converts some X-LIC-ERROR properties into RETURN-STATUS properties.
+         * @since 1.0
          */
         convert_errors(): void;
 
@@ -1629,12 +1648,14 @@ export namespace ICalGLib {
          * Counts the child {@link ICalGLib.Component} with the target kind in the parent one.
          * @param kind The target {@link ICalGLib.ComponentKind}
          * @returns The count of child {@link ICalGLib.Component} in the parent one.
+         * @since 1.0
          */
         count_components(kind: ComponentKind): number;
 
         /**
          * Counts the number of errors in {@link ICalGLib.Component}.
          * @returns The count of errors.
+         * @since 1.0
          */
         count_errors(): number;
 
@@ -1642,6 +1663,7 @@ export namespace ICalGLib {
          * Counts the number of {@link ICalGLib.Property} in {@link ICalGLib.Component}.
          * @param kind A {@link ICalGLib.PropertyKind}
          * @returns The number of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         count_properties(kind: PropertyKind): number;
 
@@ -1649,6 +1671,7 @@ export namespace ICalGLib {
          * Gets the {@link ICalGLib.CompIter} pointing to the end child {@link ICalGLib.Component}.
          * @param kind A {@link ICalGLib.ComponentKind}
          * @returns A {@link ICalGLib.CompIter}
+         * @since 1.0
          */
         end_component(kind: ComponentKind): CompIter;
 
@@ -1659,66 +1682,77 @@ export namespace ICalGLib {
          * @param start Ignore timespans before this
          * @param end Ignore timespans after this
          * @param callback Function called for each timespan within the range
+         * @since 3.0.5
          */
         foreach_recurrence(start: Time, end: Time, callback: ComponentForeachRecurrenceFunc): void;
 
         /**
          * Applies the same manipulation on every tzid in {@link ICalGLib.Component}.
          * @param callback The callback function
+         * @since 3.0.5
          */
         foreach_tzid(callback: ComponentForeachTZIDFunc): void;
 
         /**
          * Gets the comment of the {@link ICalGLib.Component}.
          * @returns The comment of `comp`.
+         * @since 1.0
          */
         get_comment(): string;
 
         /**
          * Gets the current {@link ICalGLib.Component} in {@link ICalGLib.Component}.
          * @returns The current {@link ICalGLib.Component}.
+         * @since 1.0
          */
         get_current_component(): Component;
 
         /**
          * Gets the current {@link ICalGLib.Property} in {@link ICalGLib.Component}.
          * @returns The current {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_current_property(): Property;
 
         /**
          * Gets the description of the {@link ICalGLib.Component}.
          * @returns The description of `comp`.
+         * @since 1.0
          */
         get_description(): string;
 
         /**
          * Gets the dtend of the {@link ICalGLib.Component}.
          * @returns A {@link ICalGLib.Time}.
+         * @since 1.0
          */
         get_dtend(): Time;
 
         /**
          * Gets the dtstamp of the {@link ICalGLib.Component}.
          * @returns A {@link ICalGLib.Time}.
+         * @since 1.0
          */
         get_dtstamp(): Time;
 
         /**
          * Gets the dtstart of the {@link ICalGLib.Component}.
          * @returns A {@link ICalGLib.Time}.
+         * @since 1.0
          */
         get_dtstart(): Time;
 
         /**
          * Gets the due of the {@link ICalGLib.Component}.
          * @returns A {@link ICalGLib.Time}.
+         * @since 1.0
          */
         get_due(): Time;
 
         /**
          * Gets the duration of the {@link ICalGLib.Component}.
          * @returns An {@link ICalGLib.Duration}.
+         * @since 1.0
          */
         get_duration(): Duration;
 
@@ -1726,6 +1760,7 @@ export namespace ICalGLib {
          * Gets the first {@link ICalGLib.Component} with specific kind in {@link ICalGLib.Component}.
          * @param kind A {@link ICalGLib.ComponentKind}
          * @returns The first {@link ICalGLib.Component}.
+         * @since 1.0
          */
         get_first_component(kind: ComponentKind): Component | null;
 
@@ -1733,30 +1768,35 @@ export namespace ICalGLib {
          * Gets the first {@link ICalGLib.Property} with specific kind in {@link ICalGLib.Component}.
          * @param kind A {@link ICalGLib.PropertyKind}
          * @returns The first {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_first_property(kind: PropertyKind): Property | null;
 
         /**
          * For VCOMPONENT: Returns a reference to the first VEVENT, VTODO or VJOURNAL.
          * @returns A reference to the first VEVENT, VTODO or VJOURNAL
+         * @since 1.0
          */
         get_first_real_component(): Component;
 
         /**
          * Returns the first VEVENT, VTODO or VJOURNAL sub-component of cop, or comp if it is one of those types.
          * @returns The first VEVENT, VTODO or VJOURNAL sub-component.
+         * @since 1.0
          */
         get_inner(): Component | null;
 
         /**
          * Gets the location of the {@link ICalGLib.Component}.
          * @returns The location of `comp`.
+         * @since 1.0
          */
         get_location(): string;
 
         /**
          * Gets the method of the {@link ICalGLib.Component}.
          * @returns A {@link ICalGLib.PropertyMethod}.
+         * @since 1.0
          */
         get_method(): PropertyMethod;
 
@@ -1764,6 +1804,7 @@ export namespace ICalGLib {
          * Gets the next {@link ICalGLib.Component} with specific kind in {@link ICalGLib.Component}.
          * @param kind A {@link ICalGLib.ComponentKind}
          * @returns The next {@link ICalGLib.Component}.
+         * @since 1.0
          */
         get_next_component(kind: ComponentKind): Component | null;
 
@@ -1771,48 +1812,56 @@ export namespace ICalGLib {
          * Gets the next {@link ICalGLib.Property} with specific kind in {@link ICalGLib.Component}.
          * @param kind A {@link ICalGLib.PropertyKind}
          * @returns The next {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_next_property(kind: PropertyKind): Property | null;
 
         /**
          * Gets the parent component of the `component`.
          * @returns The parent {@link ICalGLib.Component} of the `component`.
+         * @since 3.0
          */
         get_parent(): Component | null;
 
         /**
          * Gets the recurrenceid of the {@link ICalGLib.Component}.
          * @returns A {@link ICalGLib.Time}.
+         * @since 1.0
          */
         get_recurrenceid(): Time;
 
         /**
          * Gets the relcalid of the {@link ICalGLib.Component}.
          * @returns The relcalid of `comp`.
+         * @since 1.0
          */
         get_relcalid(): string;
 
         /**
          * Gets the sequence of the {@link ICalGLib.Component}.
          * @returns The sequence of `comp`.
+         * @since 1.0
          */
         get_sequence(): number;
 
         /**
          * For VEVENT, VTODO, VJOURNAL and VTIMEZONE: reports the start and end times of an event in UTC.
          * @returns A {@link ICalGLib.TimeSpan}.
+         * @since 1.0
          */
         get_span(): TimeSpan;
 
         /**
          * Gets the status of the {@link ICalGLib.Component}.
          * @returns A {@link ICalGLib.PropertyStatus}.
+         * @since 1.0
          */
         get_status(): PropertyStatus;
 
         /**
          * Gets the summary of the {@link ICalGLib.Component}.
          * @returns The summary of `comp`.
+         * @since 1.0
          */
         get_summary(): string;
 
@@ -1820,30 +1869,35 @@ export namespace ICalGLib {
          * Returns the icaltimezone in the component corresponding to the TZID, or NULL if it can't be found.
          * @param tzid A string representing timezone
          * @returns A {@link ICalGLib.Timezone}.
+         * @since 1.0
          */
         get_timezone(tzid: string): Timezone | null;
 
         /**
          * Gets the uid of the {@link ICalGLib.Component}.
          * @returns The uid of `comp`.
+         * @since 1.0
          */
         get_uid(): string;
 
         /**
          * Checks whether {@link ICalGLib.Component} is valid.
          * @returns 1 if yes, 0 if not.
+         * @since 1.0
          */
         is_valid(): boolean;
 
         /**
          * Gets the type of {@link ICalGLib.Component}.
          * @returns A {@link ICalGLib.ComponentKind}.
+         * @since 1.0
          */
         isa(): ComponentKind;
 
         /**
          * Checks whether the native part of {@link ICalGLib.Component} is icalcomponent.
          * @returns 1 if yes, 0 if not.
+         * @since 1.0
          */
         isa_component(): number;
 
@@ -1851,12 +1905,14 @@ export namespace ICalGLib {
          * Takes 2 VCALENDAR components and merges the second one into the first, resolving any problems with conflicting
          * TZIDs. comp_to_merge will no longer exist after calling this function.
          * @param comp_to_merge A {@link ICalGLib.Component}. After merged it will not exist any more.
+         * @since 1.0
          */
         merge_component(comp_to_merge: Component): void;
 
         /**
          * Removes a child {@link ICalGLib.Component} from another {@link ICalGLib.Component}.
          * @param child A child {@link ICalGLib.Component}
+         * @since 1.0
          */
         remove_component(child: Component): void;
 
@@ -1864,107 +1920,125 @@ export namespace ICalGLib {
          * Removes {@link ICalGLib.Property} from {@link ICalGLib.Component}. Caution: The compare is based on address. So you must use
          * the original {@link ICalGLib.Property} as the target.
          * @param property A {@link ICalGLib.Property}
+         * @since 1.0
          */
         remove_property(property: Property): void;
 
         /**
          * Sets the comment of the {@link ICalGLib.Component}.
          * @param v A string representing comment
+         * @since 1.0
          */
         set_comment(v: string): void;
 
         /**
          * Sets the description of the {@link ICalGLib.Component}.
          * @param v A string representing description
+         * @since 1.0
          */
         set_description(v: string): void;
 
         /**
          * Sets the dtend of the {@link ICalGLib.Component}.
          * @param v A {@link ICalGLib.Time}
+         * @since 1.0
          */
         set_dtend(v: Time): void;
 
         /**
          * Sets the dtstamp of the {@link ICalGLib.Component}.
          * @param v A {@link ICalGLib.Time}
+         * @since 1.0
          */
         set_dtstamp(v: Time): void;
 
         /**
          * Sets the dtstart of the {@link ICalGLib.Component}.
          * @param v A {@link ICalGLib.Time}
+         * @since 1.0
          */
         set_dtstart(v: Time): void;
 
         /**
          * Sets the due of the {@link ICalGLib.Component}.
          * @param v A {@link ICalGLib.Time}
+         * @since 1.0
          */
         set_due(v: Time): void;
 
         /**
          * Sets the duration of the {@link ICalGLib.Component}.
          * @param v A {@link ICalGLib.Duration}
+         * @since 1.0
          */
         set_duration(v: Duration): void;
 
         /**
          * Sets the location of the {@link ICalGLib.Component}.
          * @param v A string representing location
+         * @since 1.0
          */
         set_location(v: string): void;
 
         /**
          * Sets the method of the {@link ICalGLib.Component}.
          * @param method A {@link ICalGLib.PropertyMethod}
+         * @since 1.0
          */
         set_method(method: PropertyMethod): void;
 
         /**
          * Sets the `parent` {@link ICalGLib.Component} of the specified `component`.
          * @param parent An {@link ICalGLib.Component}, a new parent
+         * @since 3.0
          */
         set_parent(parent: Component | null): void;
 
         /**
          * Sets the recurrenceid of the {@link ICalGLib.Component}.
          * @param v A {@link ICalGLib.Time}
+         * @since 1.0
          */
         set_recurrenceid(v: Time): void;
 
         /**
          * Sets the relcalid of the {@link ICalGLib.Component}.
          * @param v A string representing relcalid
+         * @since 1.0
          */
         set_relcalid(v: string): void;
 
         /**
          * Sets the sequence of the {@link ICalGLib.Component}.
          * @param v The sequence number
+         * @since 1.0
          */
         set_sequence(v: number): void;
 
         /**
          * Sets the status of the {@link ICalGLib.Component}.
          * @param status A {@link ICalGLib.PropertyStatus}
+         * @since 1.0
          */
         set_status(status: PropertyStatus): void;
 
         /**
          * Sets the summary of the {@link ICalGLib.Component}.
          * @param v A string representing summary
+         * @since 1.0
          */
         set_summary(v: string): void;
 
         /**
          * Sets the uid of the {@link ICalGLib.Component}.
          * @param v A string representing uid
+         * @since 1.0
          */
         set_uid(v: string): void;
 
         /**
          * Removes all X-LIC-ERROR properties.
+         * @since 1.0
          */
         strip_errors(): void;
     }
@@ -2024,24 +2098,28 @@ export namespace ICalGLib {
         /**
          * Gets the period attribute of {@link ICalGLib.Datetimeperiod}.
          * @returns The period attribute of `dtp`.
+         * @since 1.0
          */
         get_period(): Period;
 
         /**
          * Gets the time attribute of {@link ICalGLib.Datetimeperiod}.
          * @returns The time attribute of `dtp`.
+         * @since 1.0
          */
         get_time(): Time;
 
         /**
          * Sets the period attribute of {@link ICalGLib.Datetimeperiod}.
          * @param period The period attribute of `dtp`
+         * @since 1.0
          */
         set_period(period: Period): void;
 
         /**
          * Sets the time attribute of {@link ICalGLib.Datetimeperiod}.
          * @param time The time attribute of `dtp`
+         * @since 1.0
          */
         set_time(time: Time): void;
     }
@@ -2107,96 +2185,112 @@ export namespace ICalGLib {
         /**
          * Converts the {@link ICalGLib.Duration} to the representation in string.
          * @returns The duration in string
+         * @since 1.0
          */
         as_ical_string(): string;
 
         /**
          * Converts the {@link ICalGLib.Duration} to the representation in second.
          * @returns The duration in second
+         * @since 1.0
          */
         as_int(): number;
 
         /**
          * Gets the days of {@link ICalGLib.Duration}.
          * @returns The days.
+         * @since 1.0
          */
         get_days(): number;
 
         /**
          * Gets the hours of {@link ICalGLib.Duration}.
          * @returns The hours.
+         * @since 1.0
          */
         get_hours(): number;
 
         /**
          * Gets the minutes of {@link ICalGLib.Duration}.
          * @returns The minutes.
+         * @since 1.0
          */
         get_minutes(): number;
 
         /**
          * Gets the seconds of {@link ICalGLib.Duration}.
          * @returns The seconds.
+         * @since 1.0
          */
         get_seconds(): number;
 
         /**
          * Gets the weeks of {@link ICalGLib.Duration}.
          * @returns The weeks.
+         * @since 1.0
          */
         get_weeks(): number;
 
         /**
          * Checks whether the {@link ICalGLib.Duration} is the bad_duration.
          * @returns 1 if `duration` is the bad_duration, 0 if not.
+         * @since 1.0
          */
         is_bad_duration(): boolean;
 
         /**
          * Gets the is_neg of {@link ICalGLib.Duration}.
          * @returns The is_neg.
+         * @since 1.0
          */
         is_neg(): boolean;
 
         /**
          * Checks whether the {@link ICalGLib.Duration} is the null_duration.
          * @returns 1 if `duration` is the null_duration, 0 if not.
+         * @since 1.0
          */
         is_null_duration(): boolean;
 
         /**
          * Sets the days of {@link ICalGLib.Duration}.
          * @param days The days
+         * @since 1.0
          */
         set_days(days: number): void;
 
         /**
          * Sets the hours of {@link ICalGLib.Duration}.
          * @param hours The hours
+         * @since 1.0
          */
         set_hours(hours: number): void;
 
         /**
          * Sets the is_neg of {@link ICalGLib.Duration}.
          * @param is_neg The is_neg
+         * @since 1.0
          */
         set_is_neg(is_neg: boolean): void;
 
         /**
          * Sets the minutes of {@link ICalGLib.Duration}.
          * @param minutes The minutes
+         * @since 1.0
          */
         set_minutes(minutes: number): void;
 
         /**
          * Sets the seconds of {@link ICalGLib.Duration}.
          * @param seconds The seconds
+         * @since 1.0
          */
         set_seconds(seconds: number): void;
 
         /**
          * Sets the weeks of {@link ICalGLib.Duration}.
          * @param weeks The weeks
+         * @since 1.0
          */
         set_weeks(weeks: number): void;
     }
@@ -2256,30 +2350,35 @@ export namespace ICalGLib {
         /**
          * Creates a new {@link ICalGLib.Geo}, copy of `geo`.
          * @returns The newly created {@link ICalGLib.Geo}, copy of `geo`.
+         * @since 1.0
          */
         clone(): Geo;
 
         /**
          * Gets the latitude of {@link ICalGLib.Geo}.
          * @returns The latitude.
+         * @since 1.0
          */
         get_lat(): number;
 
         /**
          * Gets the longitude of {@link ICalGLib.Geo}.
          * @returns The longitude.
+         * @since 1.0
          */
         get_lon(): number;
 
         /**
          * Sets the latitude of {@link ICalGLib.Geo}.
          * @param lat The latitude
+         * @since 1.0
          */
         set_lat(lat: number): void;
 
         /**
          * Sets the longitude of {@link ICalGLib.Geo}.
          * @param lon The longitude
+         * @since 1.0
          */
         set_lon(lon: number): void;
     }
@@ -2406,6 +2505,7 @@ export namespace ICalGLib {
         /**
          * Frees all global objects. Any references to them are invalidated
          * by this call, unless they had been `g_object_ref()`-ed manually.
+         * @since 3.0.5
          */
         static free_global_objects(): void;
 
@@ -2416,12 +2516,14 @@ export namespace ICalGLib {
          * structure from the `depender`. The `depender` is referenced. It's illegal to try
          * to add one `depender` multiple times.
          * @param depender a {@link GObject.Object} depender
+         * @since 1.0
          */
         add_depender(depender: GObject.Object): void;
 
         /**
          * Obtain the `ICalObject`::always-destroy property value.
          * @returns Whether the native libical structure is freed even when an owner is set.
+         * @since 3.0.11
          */
         get_always_destroy(): boolean;
 
@@ -2429,6 +2531,7 @@ export namespace ICalGLib {
          * Obtains whether the native libical structure is a global shared memory,
          * thus should not be destroyed. This can be set only during construction time.
          * @returns Whether the native libical structure is a global shared memory.
+         * @since 1.0
          */
         get_is_global_memory(): boolean;
 
@@ -2437,6 +2540,7 @@ export namespace ICalGLib {
          * if not NULL, is referenced for thread safety. Unref it with g_object_unref
          * when done with it.
          * @returns Current owner of the libical    native structure. Returns `null` when there is no owner.
+         * @since 1.0
          */
         ref_owner<T = GObject.Object>(): T;
 
@@ -2445,11 +2549,13 @@ export namespace ICalGLib {
          * this `iobject`, previously added with `i_cal_object_add_depender()`. It's illegal to try
          * to remove the `depender` which is not in the internal list.
          * @param depender a {@link GObject.Object} depender
+         * @since 1.0
          */
         remove_depender(depender: GObject.Object): void;
 
         /**
          * Unref and remove the owner.
+         * @since 1.0
          */
         remove_owner(): void;
 
@@ -2457,11 +2563,13 @@ export namespace ICalGLib {
          * Sets the `ICalObject`::always-destroy property value. When `true`, the native
          * libical structure is always freed, even when an owner of the `iobject` is set.
          * @param value value to set
+         * @since 3.0.11
          */
         set_always_destroy(value: boolean): void;
 
         /**
          * Sets a function to be used to destroy the native libical structure.
+         * @since 1.0
          */
         set_native_destroy_func(): void;
 
@@ -2469,6 +2577,7 @@ export namespace ICalGLib {
          * Sets an owner of the native libical structure, that is an object responsible
          * for a destroy of the native libical structure.
          * @param owner Owner of the native libical structure
+         * @since 1.0
          */
         set_owner(owner: GObject.Object): void;
 
@@ -2476,6 +2585,7 @@ export namespace ICalGLib {
          * Obtain native libical structure pointer associated with this `iobject` and sets the one
          * at `iobject` to NULL, thus it's invalid since now on.
          * @returns Native libical structure pointer associated with this `iobject`.
+         * @since 1.0
          */
         steal_native(): null;
     }
@@ -2639,24 +2749,28 @@ export namespace ICalGLib {
         /**
          * Converts a string to the {@link ICalGLib.ParameterKind}.
          * @param string The string representation of the {@link ICalGLib.Parameter}
+         * @since 1.0
          */
         static kind_from_string(string: string): ParameterKind;
 
         /**
          * Checks whether {@link ICalGLib.ParameterKind} is valid.
          * @param kind The {@link ICalGLib.PropertyKind}
+         * @since 3.0.5
          */
         static kind_is_valid(kind: ParameterKind): boolean;
 
         /**
          * Converts the {@link ICalGLib.Parameter} to the string representation.
          * @param kind The {@link ICalGLib.ParameterKind} to be converted
+         * @since 1.0
          */
         static kind_to_string(kind: ParameterKind): string;
 
         /**
          * Converts the {@link ICalGLib.ParameterValue} to {@link ICalGLib.ValueKind}.
          * @param value A {@link ICalGLib.ParameterValue}
+         * @since 1.0
          */
         static value_to_value_kind(value: ParameterValue): ValueKind;
 
@@ -2664,292 +2778,349 @@ export namespace ICalGLib {
         /**
          * Converts an {@link ICalGLib.Parameter} to the string representation.
          * @returns The string representation of the `parameter`.
+         * @since 1.0
          */
         as_ical_string(): string;
 
         /**
          * Deep clone a {@link ICalGLib.Parameter}.
          * @returns The newly created {@link ICalGLib.Parameter} with the same properties as the `p`.
+         * @since 1.0
          */
         clone(): Parameter;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_actionparam(): ParameterAction;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_altrep(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_charset(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_cn(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_cutype(): ParameterCutype | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_delegatedfrom(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_delegatedto(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_dir(): string | null;
 
         /**
          * @returns The {@link ICalGLib.ParameterDisplay} value of the `param`
+         * @since 3.0.15
          */
         get_display(): ParameterDisplay;
 
         /**
          * @returns The string value of the `param`
+         * @since 3.0.15
          */
         get_email(): string | null;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_enable(): ParameterEnable;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_encoding(): ParameterEncoding;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_fbtype(): ParameterFbtype;
 
         /**
          * @returns The {@link ICalGLib.ParameterFeature} value of the `param`
+         * @since 3.0.15
          */
         get_feature(): ParameterFeature;
 
         /**
          * @returns The property of the `value`
+         * @since 2.0
          */
         get_filename(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_fmttype(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_iana(): string | null;
 
         /**
          * Gets the iana_name property of the native part of the {@link ICalGLib.Parameter}.
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_iana_name(): string | null;
 
         /**
          * Gets the iana_value property of the native part of the {@link ICalGLib.Parameter}.
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_iana_value(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_id(): string | null;
 
         /**
          * @returns The string value of the `param`
+         * @since 3.0.15
          */
         get_label(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_language(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_latency(): string | null;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_local(): ParameterLocal;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_localize(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 2.0
          */
         get_managedid(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_member(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 2.0
          */
         get_modified(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_options(): string | null;
 
         /**
          * Gets the parent {@link ICalGLib.Property} of the specified {@link ICalGLib.Parameter}.
          * @returns The parent {@link ICalGLib.Property}
+         * @since 3.0
          */
         get_parent(): Property | null;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_partstat(): ParameterPartstat;
 
         /**
          * @returns The {@link ICalGLib.ParameterPatchaction} value of the `param`
+         * @since 3.0.15
          */
         get_patchaction(): ParameterPatchaction;
 
         /**
          * @returns The property of the `value`
+         * @since 2.0
          */
         get_publiccomment(): string | null;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_range(): ParameterRange;
 
         /**
          * @returns The property of the `value`
+         * @since 2.0
          */
         get_reason(): string | null;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_related(): ParameterRelated;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_reltype(): ParameterReltype;
 
         /**
          * @returns The type of the `value`
+         * @since 2.0
          */
         get_required(): ParameterRequired;
 
         /**
          * @returns The type of the `value`
+         * @since 2.0
          */
         get_response(): number;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_role(): ParameterRole;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_rsvp(): ParameterRsvp;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_scheduleagent(): ParameterScheduleagent;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_scheduleforcesend(): ParameterScheduleforcesend;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_schedulestatus(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_sentby(): string | null;
 
         /**
          * @returns The property of the `value`
+         * @since 2.0
          */
         get_size(): string | null;
 
         /**
          * @returns The type of the `value`
+         * @since 2.0
          */
         get_stayinformed(): ParameterStayinformed;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_substate(): ParameterSubstate;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_tzid(): string | null;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_value(): ParameterValue;
 
         /**
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_x(): string | null;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_xliccomparetype(): ParameterXliccomparetype;
 
         /**
          * @returns The type of the `value`
+         * @since 1.0
          */
         get_xlicerrortype(): ParameterXlicerrortype;
 
         /**
          * Gets the xname property of the native part of the {@link ICalGLib.Parameter}.
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_xname(): string | null;
 
         /**
          * Gets the xvalue property of the native part of the {@link ICalGLib.Parameter}.
          * @returns The property of the `value`
+         * @since 1.0
          */
         get_xvalue(): string | null;
 
@@ -2957,298 +3128,356 @@ export namespace ICalGLib {
          * Checks whether native parts of two `ICalParameters` have the same name.
          * @param param2 The {@link ICalGLib.Parameter} to be checked
          * @returns 1 if the parameters have the same name, 0 or not.
+         * @since 1.0
          */
         has_same_name(param2: Parameter): number;
 
         /**
          * Checks the type of a {@link ICalGLib.Parameter}.
          * @returns The type of the `parameter`.
+         * @since 1.0
          */
         isa(): ParameterKind;
 
         /**
          * Checks whether the native part of the {@link ICalGLib.Parameter} is of type icalparameter.
          * @returns 1 if the native part is of type icalparameter, 0 if not.
+         * @since 1.0
          */
         isa_parameter(): number;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_actionparam(v: ParameterAction): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_altrep(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_charset(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_cn(v: string): void;
 
         /**
          * @param v The `ICalParameterCutype` used to set `value`
+         * @since 1.0
          */
         set_cutype(v: ParameterCutype): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_delegatedfrom(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_delegatedto(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_dir(v: string): void;
 
         /**
          * @param value The {@link ICalGLib.ParameterDisplay} to set into the `param`
+         * @since 3.0.15
          */
         set_display(value: ParameterDisplay): void;
 
         /**
          * @param value The string value to set into the `param`
+         * @since 3.0.15
          */
         set_email(value: string): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_enable(v: ParameterEnable): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_encoding(v: ParameterEncoding): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_fbtype(v: ParameterFbtype): void;
 
         /**
          * @param value The {@link ICalGLib.ParameterFeature} to set into the `param`
+         * @since 3.0.15
          */
         set_feature(value: ParameterFeature): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 2.0
          */
         set_filename(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_fmttype(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_iana(v: string): void;
 
         /**
          * Sets the iana_name property of the native part of the {@link ICalGLib.Parameter}.
          * @param v The name to be set into the `param`
+         * @since 1.0
          */
         set_iana_name(v: string): void;
 
         /**
          * Sets the iana_value property of the native part of the {@link ICalGLib.Parameter}.
          * @param v The value to be set into the `param`
+         * @since 1.0
          */
         set_iana_value(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_id(v: string): void;
 
         /**
          * @param value The string value to set into the `param`
+         * @since 3.0.15
          */
         set_label(value: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_language(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_latency(v: string): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_local(v: ParameterLocal): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_localize(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 2.0
          */
         set_managedid(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_member(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 2.0
          */
         set_modified(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_options(v: string): void;
 
         /**
          * Sets the parent {@link ICalGLib.Property} of an {@link ICalGLib.Parameter}.
          * @param property The parent {@link ICalGLib.Property}
+         * @since 3.0
          */
         set_parent(property: Property | null): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_partstat(v: ParameterPartstat): void;
 
         /**
          * @param value The {@link ICalGLib.ParameterPatchaction} to set into the `param`
+         * @since 3.0.15
          */
         set_patchaction(value: ParameterPatchaction): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 2.0
          */
         set_publiccomment(v: string): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_range(v: ParameterRange): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 2.0
          */
         set_reason(v: string): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_related(v: ParameterRelated): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_reltype(v: ParameterReltype): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 2.0
          */
         set_required(v: ParameterRequired): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 2.0
          */
         set_response(v: number): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_role(v: ParameterRole): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_rsvp(v: ParameterRsvp): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_scheduleagent(v: ParameterScheduleagent): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_scheduleforcesend(v: ParameterScheduleforcesend): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_schedulestatus(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_sentby(v: string): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 2.0
          */
         set_size(v: string): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 2.0
          */
         set_stayinformed(v: ParameterStayinformed): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_substate(v: ParameterSubstate): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_tzid(v: string): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_value(v: ParameterValue): void;
 
         /**
          * @param v The string used to set into the `value`
+         * @since 1.0
          */
         set_x(v: string): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_xliccomparetype(v: ParameterXliccomparetype): void;
 
         /**
          * @param v The type of {@link ICalGLib.Parameter} to be set in the `value`
+         * @since 1.0
          */
         set_xlicerrortype(v: ParameterXlicerrortype): void;
 
         /**
          * Sets the xname property of the native part of the {@link ICalGLib.Parameter}.
          * @param v The name to be set into the `param`
+         * @since 1.0
          */
         set_xname(v: string): void;
 
         /**
          * Sets the xvalue property of the native part of the {@link ICalGLib.Parameter}.
          * @param v The value to be set into the `param`
+         * @since 1.0
          */
         set_xvalue(v: string): void;
     }
@@ -3308,6 +3537,7 @@ export namespace ICalGLib {
         /**
          * Parses the string into a {@link ICalGLib.Component}.
          * @param str The string to be parsed
+         * @since 1.0
          */
         static parse_string(str: string): Component;
 
@@ -3317,6 +3547,7 @@ export namespace ICalGLib {
          * returned.
          * @param str A line of string representation of the {@link ICalGLib.Component}
          * @returns The complete {@link ICalGLib.Component}.
+         * @since 1.0
          */
         add_line(str: string | null): Component | null;
 
@@ -3324,11 +3555,13 @@ export namespace ICalGLib {
          * We won't get a clean exit if some components did not have an "END" tag. Clear off any component that
          * may be left in the list.
          * @returns The root {@link ICalGLib.Component} in `parser`.
+         * @since 1.0
          */
         clean(): Component | null;
 
         /**
          * Frees a {@link ICalGLib.Parser}.
+         * @since 1.0
          */
         free(): void;
 
@@ -3336,12 +3569,14 @@ export namespace ICalGLib {
          * Given a line generator function, returns a single iCal content line.
          * @param func A line generator function
          * @returns A single iCal content line.
+         * @since 1.0
          */
         get_line(func: ParserLineGenFunc): string;
 
         /**
          * Gets the state of the target parser.
          * @returns The parser state stored in the {@link ICalGLib.Parser}.
+         * @since 1.0
          */
         get_state(): ParserState;
 
@@ -3351,6 +3586,7 @@ export namespace ICalGLib {
          * line per invocation.
          * @param func The function used to parse
          * @returns The component output by the parser.
+         * @since 1.0
          */
         parse(func: ParserLineGenFunc): Component;
     }
@@ -3412,54 +3648,63 @@ export namespace ICalGLib {
         /**
          * Translates {@link ICalGLib.Period} to string.
          * @returns The string representation of {@link ICalGLib.Period}.
+         * @since 1.0
          */
         as_ical_string(): string;
 
         /**
          * Gets the duration from an {@link ICalGLib.Period}.
          * @returns The duration of `period`.
+         * @since 1.0
          */
         get_duration(): Duration;
 
         /**
          * Gets the end time from an {@link ICalGLib.Period}.
          * @returns The end of `period`.
+         * @since 1.0
          */
         get_end(): Time;
 
         /**
          * Gets the start time from an {@link ICalGLib.Period}.
          * @returns The start of `period`.
+         * @since 1.0
          */
         get_start(): Time;
 
         /**
          * Checks the {@link ICalGLib.Period} is null_period.
          * @returns 1 if yes, 0 if not.
+         * @since 1.0
          */
         is_null_period(): boolean;
 
         /**
          * Checks the {@link ICalGLib.Period} is valid_period.
          * @returns 1 if yes, 0 if not.
+         * @since 1.0
          */
         is_valid_period(): boolean;
 
         /**
          * Sets the duration of an {@link ICalGLib.Period}.
          * @param duration The duration of `period`
+         * @since 1.0
          */
         set_duration(duration: Duration): void;
 
         /**
          * Sets the end time of an {@link ICalGLib.Period}.
          * @param end The end of `period`
+         * @since 1.0
          */
         set_end(end: Time): void;
 
         /**
          * Sets the start time of an {@link ICalGLib.Period}.
          * @param start The start of `period`
+         * @since 1.0
          */
         set_start(start: Time): void;
     }
@@ -3749,6 +3994,7 @@ export namespace ICalGLib {
         /**
          * Converts the enum to string.
          * @param e The enum to be converted
+         * @since 1.0
          */
         static enum_to_string(e: number): string;
 
@@ -3756,12 +4002,14 @@ export namespace ICalGLib {
          * Converts a integer and string into an enum.
          * @param kind The kind
          * @param str A string
+         * @since 1.0
          */
         static kind_and_string_to_enum(kind: number, str: string): number;
 
         /**
          * Converts the string to {@link ICalGLib.PropertyKind}.
          * @param string A string representing {@link ICalGLib.PropertyKind}
+         * @since 1.0
          */
         static kind_from_string(string: string): PropertyKind;
 
@@ -3769,36 +4017,42 @@ export namespace ICalGLib {
          * Checks whether the enum belongs to the {@link ICalGLib.PropertyKind}.
          * @param kind A {@link ICalGLib.PropertyKind}
          * @param e The enum to be checked
+         * @since 1.0
          */
         static kind_has_property(kind: PropertyKind, e: number): number;
 
         /**
          * Checks whether {@link ICalGLib.PropertyKind} is valid.
          * @param kind The {@link ICalGLib.PropertyKind}
+         * @since 1.0
          */
         static kind_is_valid(kind: PropertyKind): boolean;
 
         /**
          * Converts the {@link ICalGLib.PropertyKind} to a string.
          * @param kind A {@link ICalGLib.PropertyKind}
+         * @since 1.0
          */
         static kind_to_string(kind: PropertyKind): string;
 
         /**
          * Converts the {@link ICalGLib.PropertyKind} to {@link ICalGLib.ValueKind}.
          * @param kind A {@link ICalGLib.PropertyKind}
+         * @since 1.0
          */
         static kind_to_value_kind(kind: PropertyKind): ValueKind;
 
         /**
          * Converts the string to {@link ICalGLib.PropertyKind}.
          * @param str A string
+         * @since 1.0
          */
         static method_from_string(str: string): PropertyMethod;
 
         /**
          * Converts the {@link ICalGLib.PropertyMethod} to string.
          * @param method The {@link ICalGLib.PropertyMethod}
+         * @since 1.0
          */
         static method_to_string(method: PropertyMethod): string;
 
@@ -3808,18 +4062,21 @@ export namespace ICalGLib {
          * @param comp A {@link ICalGLib.Component}
          * @param dtstart The base dtstart value for this component
          * @param recurtime The time to test against
+         * @since 1.0
          */
         static recurrence_is_excluded(comp: Component, dtstart: Time, recurtime: Time): boolean;
 
         /**
          * Converts the string to {@link ICalGLib.PropertyKind}.
          * @param str A string
+         * @since 1.0
          */
         static status_from_string(str: string): PropertyStatus;
 
         /**
          * Converts the {@link ICalGLib.PropertyStatus} to string.
          * @param method The {@link ICalGLib.PropertyStatus}
+         * @since 1.0
          */
         static status_to_string(method: PropertyStatus): string;
 
@@ -3828,174 +4085,203 @@ export namespace ICalGLib {
          * Adds a {@link ICalGLib.Parameter} into the {@link ICalGLib.Property}. It behaves like set the copy of the {@link ICalGLib.Parameter}. Upon
          * completion the native part of {@link ICalGLib.Parameter} will be set to NULL.
          * @param parameter The parameter to be added into `prop`
+         * @since 1.0
          */
         add_parameter(parameter: Parameter): void;
 
         /**
          * Converts a {@link ICalGLib.Property} to a string representation.
          * @returns The string representation of `prop`.
+         * @since 1.0
          */
         as_ical_string(): string;
 
         /**
          * Deeply clone a {@link ICalGLib.Property}.
          * @returns The newly created {@link ICalGLib.Property} deeply cloned from `prop`.
+         * @since 1.0
          */
         clone(): Property;
 
         /**
          * Counts the parameters in the {@link ICalGLib.Property}.
          * @returns The count of the parameters in the {@link ICalGLib.Property}.
+         * @since 1.0
          */
         count_parameters(): number;
 
         /**
          * Gets the acceptresponse of {@link ICalGLib.Property}.
          * @returns Get the acceptresponse of {@link ICalGLib.Property}.
+         * @since 2.0
          */
         get_acceptresponse(): string;
 
         /**
          * Gets the acknowledged time of {@link ICalGLib.Property}.
          * @returns Get the acknowledged time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_acknowledged(): Time;
 
         /**
          * Gets the action of {@link ICalGLib.Property}.
          * @returns Get the action of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_action(): PropertyAction;
 
         /**
          * Gets the allowconflict of {@link ICalGLib.Property}.
          * @returns Get the allowconflict of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_allowconflict(): string;
 
         /**
          * Gets the attach of {@link ICalGLib.Property}.
          * @returns Get the attach of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_attach(): Attach;
 
         /**
          * Gets the attendee of {@link ICalGLib.Property}.
          * @returns Get the attendee of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_attendee(): string;
 
         /**
          * Gets the busytype of {@link ICalGLib.Property}.
          * @returns Get the busytype of {@link ICalGLib.Property}.
+         * @since 2.0
          */
         get_busytype(): PropertyBusytype;
 
         /**
          * Gets the calid of {@link ICalGLib.Property}.
          * @returns Get the calid of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_calid(): string;
 
         /**
          * Gets the calmaster of {@link ICalGLib.Property}.
          * @returns Get the calmaster of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_calmaster(): string;
 
         /**
          * Gets the calscale of {@link ICalGLib.Property}.
          * @returns Get the calscale of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_calscale(): string;
 
         /**
          * Gets the capversion of {@link ICalGLib.Property}.
          * @returns Get the capversion of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_capversion(): string;
 
         /**
          * Gets the carid of {@link ICalGLib.Property}.
          * @returns Get the carid of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_carid(): string;
 
         /**
          * Gets the carlevel of {@link ICalGLib.Property}.
          * @returns Get the carlevel of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_carlevel(): PropertyCarlevel;
 
         /**
          * Gets the categories of {@link ICalGLib.Property}.
          * @returns Get the categories of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_categories(): string;
 
         /**
          * Gets the class of {@link ICalGLib.Property}.
          * @returns Get the class of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_class(): Property_Class;
 
         /**
          * Gets the cmd of {@link ICalGLib.Property}.
          * @returns Get the cmd of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_cmd(): PropertyCmd;
 
         /**
          * Gets the color property of the `prop`.
          * @returns Get the color property.
+         * @since 3.0.5
          */
         get_color(): string;
 
         /**
          * Gets the comment of {@link ICalGLib.Property}.
          * @returns Get the comment of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_comment(): string;
 
         /**
          * Gets the completed time of {@link ICalGLib.Property}.
          * @returns Get the completed time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_completed(): Time;
 
         /**
          * Gets the components of {@link ICalGLib.Property}.
          * @returns Get the components of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_components(): string;
 
         /**
          * Gets the contact of {@link ICalGLib.Property}.
          * @returns Get the contact of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_contact(): string;
 
         /**
          * Gets the created time of {@link ICalGLib.Property}.
          * @returns Get the created time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_created(): Time;
 
         /**
          * Gets the csid of {@link ICalGLib.Property}.
          * @returns Get the csid of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_csid(): string;
 
         /**
          * Gets the datemax time of {@link ICalGLib.Property}.
          * @returns Get the datemax time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_datemax(): Time;
 
         /**
          * Gets the datemin time of {@link ICalGLib.Property}.
          * @returns Get the datemin time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_datemin(): Time;
 
@@ -4008,102 +4294,119 @@ export namespace ICalGLib {
          * the corresponding time zone.
          * @param comp An {@link ICalGLib.Component}
          * @returns Get a DATE or DATE-TIME property as an {@link ICalGLib.Time}.
+         * @since 3.0.5
          */
         get_datetime_with_component(comp: Component | null): Time;
 
         /**
          * Gets the decreed of {@link ICalGLib.Property}.
          * @returns Get the decreed of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_decreed(): string;
 
         /**
          * Gets the defaultcharset of {@link ICalGLib.Property}.
          * @returns Get the defaultcharset of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_defaultcharset(): string;
 
         /**
          * Gets the defaultlocale of {@link ICalGLib.Property}.
          * @returns Get the defaultlocale of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_defaultlocale(): string;
 
         /**
          * Gets the defaulttzid of {@link ICalGLib.Property}.
          * @returns Get the defaulttzid of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_defaulttzid(): string;
 
         /**
          * Gets the defaultvcars of {@link ICalGLib.Property}.
          * @returns Get the defaultvcars of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_defaultvcars(): string;
 
         /**
          * Gets the deny of {@link ICalGLib.Property}.
          * @returns Get the deny of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_deny(): string;
 
         /**
          * Gets the description of {@link ICalGLib.Property}.
          * @returns Get the description of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_description(): string;
 
         /**
          * Gets the dtend time of {@link ICalGLib.Property}.
          * @returns Get the dtend time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_dtend(): Time;
 
         /**
          * Gets the dtstamp time of {@link ICalGLib.Property}.
          * @returns Get the dtstamp time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_dtstamp(): Time;
 
         /**
          * Gets the dtstart time of {@link ICalGLib.Property}.
          * @returns Get the dtstart time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_dtstart(): Time;
 
         /**
          * Gets the due time of {@link ICalGLib.Property}.
          * @returns Get the due time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_due(): Time;
 
         /**
          * Gets the duration of {@link ICalGLib.Property}.
          * @returns Get the duration of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_duration(): Duration;
 
         /**
          * Gets the estimatedduration of {@link ICalGLib.Property}.
          * @returns Get the estimatedduration of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_estimatedduration(): Duration;
 
         /**
          * Gets the exdate time of {@link ICalGLib.Property}.
          * @returns Get the exdate time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_exdate(): Time;
 
         /**
          * Gets the expand of {@link ICalGLib.Property}.
          * @returns Get the expand of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_expand(): number;
 
         /**
          * Gets the exrule recurrence type of {@link ICalGLib.Property}.
          * @returns Get the exrule recurrence type of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_exrule(): Recurrence;
 
@@ -4111,90 +4414,105 @@ export namespace ICalGLib {
          * Gets the first {@link ICalGLib.Parameter} from the parent {@link ICalGLib.Property}.
          * @param kind The target kind of {@link ICalGLib.Parameter} to be retrieved
          * @returns The first {@link ICalGLib.Parameter} of `prop`.
+         * @since 1.0
          */
         get_first_parameter(kind: ParameterKind): Parameter;
 
         /**
          * Gets the freebusy period type of {@link ICalGLib.Property}.
          * @returns Get the freebusy period type of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_freebusy(): Period;
 
         /**
          * Gets the geo type of {@link ICalGLib.Property}.
          * @returns Get the geo type of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_geo(): Geo;
 
         /**
          * Gets the grant of {@link ICalGLib.Property}.
          * @returns Get the grant of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_grant(): string;
 
         /**
          * Gets the itipversion of {@link ICalGLib.Property}.
          * @returns Get the itipversion of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_itipversion(): string;
 
         /**
          * Gets the lastmodified time of {@link ICalGLib.Property}.
          * @returns Get the lastmodified time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_lastmodified(): Time;
 
         /**
          * Gets the location of {@link ICalGLib.Property}.
          * @returns Get the location of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_location(): string;
 
         /**
          * Gets the maxcomponentsize of {@link ICalGLib.Property}.
          * @returns Get the maxcomponentsize of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_maxcomponentsize(): number;
 
         /**
          * Gets the maxdate time of {@link ICalGLib.Property}.
          * @returns Get the maxdate time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_maxdate(): Time;
 
         /**
          * Gets the maxresults of {@link ICalGLib.Property}.
          * @returns Get the maxresults of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_maxresults(): number;
 
         /**
          * Gets the maxresultssize of {@link ICalGLib.Property}.
          * @returns Get the maxresultssize of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_maxresultssize(): number;
 
         /**
          * Gets the method of {@link ICalGLib.Property}.
          * @returns Get the method of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_method(): PropertyMethod;
 
         /**
          * Gets the mindate time of {@link ICalGLib.Property}.
          * @returns Get the mindate time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_mindate(): Time;
 
         /**
          * Gets the multipart of {@link ICalGLib.Property}.
          * @returns Get the multipart of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_multipart(): string;
 
         /**
          * Gets the name of {@link ICalGLib.Property}.
          * @returns Get the name of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_name(): string;
 
@@ -4202,18 +4520,21 @@ export namespace ICalGLib {
          * Gets the next {@link ICalGLib.Parameter} from the parent {@link ICalGLib.Property}.
          * @param kind The target kind of {@link ICalGLib.Parameter} to be retrieved
          * @returns The next {@link ICalGLib.Parameter} of `prop`.
+         * @since 1.0
          */
         get_next_parameter(kind: ParameterKind): Parameter;
 
         /**
          * Gets the organizer of {@link ICalGLib.Property}.
          * @returns Get the organizer of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_organizer(): string;
 
         /**
          * Gets the owner of {@link ICalGLib.Property}.
          * @returns Get the owner of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_owner(): string;
 
@@ -4221,6 +4542,7 @@ export namespace ICalGLib {
          * Gets the string representation of the target parameter in the {@link ICalGLib.Property}.
          * @param name The name of the target parameter
          * @returns The string representation of the parameter.
+         * @since 1.0
          */
         get_parameter_as_string(name: string): string;
 
@@ -4230,744 +4552,868 @@ export namespace ICalGLib {
          * (if no reference in other places). So You need to make sure there is another reference except the one
          * in {@link ICalGLib.Property}.
          * @returns The parent {@link ICalGLib.Component} of {@link ICalGLib.Property}.
+         * @since 2.0
          */
         get_parent(): Component | null;
 
         /**
          * Gets the percentcomplete of {@link ICalGLib.Property}.
          * @returns Get the percentcomplete of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_percentcomplete(): number;
 
         /**
          * Gets the permission of {@link ICalGLib.Property}.
          * @returns Get the permission of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_permission(): string;
 
         /**
          * Gets the pollcompletion of {@link ICalGLib.Property}.
          * @returns Get the pollcompletion of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_pollcompletion(): PropertyPollcompletion;
 
         /**
          * Gets the pollitemid of {@link ICalGLib.Property}.
          * @returns Get the pollitemid of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_pollitemid(): number;
 
         /**
          * Gets the pollmode of {@link ICalGLib.Property}.
          * @returns Get the pollmode of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_pollmode(): PropertyPollmode;
 
         /**
          * Gets the pollproperties of {@link ICalGLib.Property}.
          * @returns Get the pollproperties of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_pollproperties(): string;
 
         /**
          * Gets the pollwinner of {@link ICalGLib.Property}.
          * @returns Get the pollwinner of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_pollwinner(): number;
 
         /**
          * Gets the priority of {@link ICalGLib.Property}.
          * @returns Get the priority of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_priority(): number;
 
         /**
          * Gets the prodid of {@link ICalGLib.Property}.
          * @returns Get the prodid of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_prodid(): string;
 
         /**
          * Gets the property name of {@link ICalGLib.Property}.
          * @returns Property name of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_property_name(): string;
 
         /**
          * Gets the query of {@link ICalGLib.Property}.
          * @returns Get the query of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_query(): string;
 
         /**
          * Gets the queryid of {@link ICalGLib.Property}.
          * @returns Get the queryid of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_queryid(): string;
 
         /**
          * Gets the querylevel of {@link ICalGLib.Property}.
          * @returns Get the querylevel of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_querylevel(): PropertyQuerylevel;
 
         /**
          * Gets the queryname of {@link ICalGLib.Property}.
          * @returns Get the queryname of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_queryname(): string;
 
         /**
          * Gets the rdate  of {@link ICalGLib.Property}.
          * @returns Get the rdate  of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_rdate(): Datetimeperiod;
 
         /**
          * Gets the recuraccepted of {@link ICalGLib.Property}.
          * @returns Get the recuraccepted of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_recuraccepted(): string;
 
         /**
          * Gets the recurexpand of {@link ICalGLib.Property}.
          * @returns Get the recurexpand of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_recurexpand(): string;
 
         /**
          * Gets the recurlimit of {@link ICalGLib.Property}.
          * @returns Get the recurlimit of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_recurlimit(): string;
 
         /**
          * Gets the recurrenceid time of {@link ICalGLib.Property}.
          * @returns Get the recurrenceid time of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_recurrenceid(): Time;
 
         /**
          * Gets the relatedto of {@link ICalGLib.Property}.
          * @returns Get the relatedto of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_relatedto(): string;
 
         /**
          * Gets the relcalid of {@link ICalGLib.Property}.
          * @returns Get the relcalid of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_relcalid(): string;
 
         /**
          * Gets the repeat of {@link ICalGLib.Property}.
          * @returns Get the repeat of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_repeat(): number;
 
         /**
          * Gets the replyurl of {@link ICalGLib.Property}.
          * @returns Get the replyurl of {@link ICalGLib.Property}.
+         * @since 2.0
          */
         get_replyurl(): string;
 
         /**
          * Gets the requeststatus of {@link ICalGLib.Property}.
          * @returns Get the requeststatus of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_requeststatus(): Reqstat;
 
         /**
          * Gets the resources of {@link ICalGLib.Property}.
          * @returns Get the resources of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_resources(): string;
 
         /**
          * Gets the response of {@link ICalGLib.Property}.
          * @returns Get the response of {@link ICalGLib.Property}.
+         * @since 2.0
          */
         get_response(): number;
 
         /**
          * Gets the restriction of {@link ICalGLib.Property}.
          * @returns Get the restriction of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_restriction(): string;
 
         /**
          * Gets the rrule recurrence type of {@link ICalGLib.Property}.
          * @returns Get the rrule recurrence type of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_rrule(): Recurrence;
 
         /**
          * Gets the scope of {@link ICalGLib.Property}.
          * @returns Get the scope of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_scope(): string;
 
         /**
          * Gets the sequence of {@link ICalGLib.Property}.
          * @returns Get the sequence of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_sequence(): number;
 
         /**
          * Gets the status of {@link ICalGLib.Property}.
          * @returns Get the status of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_status(): PropertyStatus;
 
         /**
          * Gets the storesexpanded of {@link ICalGLib.Property}.
          * @returns Get the storesexpanded of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_storesexpanded(): string;
 
         /**
          * Gets the summary of {@link ICalGLib.Property}.
          * @returns Get the summary of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_summary(): string;
 
         /**
          * Gets the target of {@link ICalGLib.Property}.
          * @returns Get the target of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_target(): string;
 
         /**
          * Gets the taskmode of {@link ICalGLib.Property}.
          * @returns Get the taskmode of {@link ICalGLib.Property}.
+         * @since 2.0
          */
         get_taskmode(): PropertyTaskmode;
 
         /**
          * Gets the transp of {@link ICalGLib.Property}.
          * @returns Get the transp of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_transp(): PropertyTransp;
 
         /**
          * Gets the trigger period type of {@link ICalGLib.Property}.
          * @returns Get the trigger period type of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_trigger(): Trigger;
 
         /**
          * Gets the tzid of {@link ICalGLib.Property}.
          * @returns Get the tzid of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_tzid(): string;
 
         /**
          * Gets the tzidaliasof of {@link ICalGLib.Property}.
          * @returns Get the tzidaliasof of {@link ICalGLib.Property}.
+         * @since 2.0
          */
         get_tzidaliasof(): string;
 
         /**
          * Gets the tzname of {@link ICalGLib.Property}.
          * @returns Get the tzname of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_tzname(): string;
 
         /**
          * Gets the tzoffsetfrom of {@link ICalGLib.Property}.
          * @returns Get the tzoffsetfrom of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_tzoffsetfrom(): number;
 
         /**
          * Gets the tzoffsetto of {@link ICalGLib.Property}.
          * @returns Get the tzoffsetto of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_tzoffsetto(): number;
 
         /**
          * Gets the tzuntil time of {@link ICalGLib.Property}.
          * @returns Get the tzuntil time of {@link ICalGLib.Property}.
+         * @since 2.0
          */
         get_tzuntil(): Time;
 
         /**
          * Gets the tzurl of {@link ICalGLib.Property}.
          * @returns Get the tzurl of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_tzurl(): string;
 
         /**
          * Gets the uid of {@link ICalGLib.Property}.
          * @returns Get the uid of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_uid(): string;
 
         /**
          * Gets the url of {@link ICalGLib.Property}.
          * @returns Get the url of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_url(): string;
 
         /**
          * Gets the {@link ICalGLib.Value} of {@link ICalGLib.Property}.
          * @returns The {@link ICalGLib.Value} of `prop`.
+         * @since 1.0
          */
         get_value(): Value;
 
         /**
          * Gets the string representation of the value in {@link ICalGLib.Property}.
          * @returns The string representation of the value of the {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_value_as_string(): string;
 
         /**
          * Gets the version of {@link ICalGLib.Property}.
          * @returns Get the version of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_version(): string;
 
         /**
          * Gets the voter of {@link ICalGLib.Property}.
          * @returns Get the voter of {@link ICalGLib.Property}.
+         * @since 2.0
          */
         get_voter(): string;
 
         /**
          * Gets the x of {@link ICalGLib.Property}.
          * @returns Get the x of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_x(): string;
 
         /**
          * Gets the name of x property.
          * @returns The name of x property.
+         * @since 1.0
          */
         get_x_name(): string | null;
 
         /**
          * Gets the xlicclass of {@link ICalGLib.Property}.
          * @returns Get the xlicclass of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_xlicclass(): PropertyXlicclass;
 
         /**
          * Gets the xlicclustercount of {@link ICalGLib.Property}.
          * @returns Get the xlicclustercount of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_xlicclustercount(): string;
 
         /**
          * Gets the xlicerror of {@link ICalGLib.Property}.
          * @returns Get the xlicerror of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_xlicerror(): string;
 
         /**
          * Gets the xlicmimecharset of {@link ICalGLib.Property}.
          * @returns Get the xlicmimecharset of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_xlicmimecharset(): string;
 
         /**
          * Gets the xlicmimecid of {@link ICalGLib.Property}.
          * @returns Get the xlicmimecid of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_xlicmimecid(): string;
 
         /**
          * Gets the xlicmimecontenttype of {@link ICalGLib.Property}.
          * @returns Get the xlicmimecontenttype of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_xlicmimecontenttype(): string;
 
         /**
          * Gets the xlicmimeencoding of {@link ICalGLib.Property}.
          * @returns Get the xlicmimeencoding of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_xlicmimeencoding(): string;
 
         /**
          * Gets the xlicmimefilename of {@link ICalGLib.Property}.
          * @returns Get the xlicmimefilename of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_xlicmimefilename(): string;
 
         /**
          * Gets the xlicmimeoptinfo of {@link ICalGLib.Property}.
          * @returns Get the xlicmimeoptinfo of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         get_xlicmimeoptinfo(): string;
 
         /**
          * Gets the kind of {@link ICalGLib.Property}.
          * @returns The type of {@link ICalGLib.Property}.
+         * @since 1.0
          */
         isa(): PropertyKind;
 
         /**
          * Checks whether the native part of {@link ICalGLib.Property} is of the type icalproperty.
          * @returns 1 if the native part of `property` is of the type icalproperty, 0 if not.
+         * @since 1.0
          */
         isa_property(): number;
 
         /**
          * Removes the target kind of the parameters in the {@link ICalGLib.Property}.
          * @param kind The {@link ICalGLib.ParameterKind} to be removed
+         * @since 1.0
          */
         remove_parameter_by_kind(kind: ParameterKind): void;
 
         /**
          * Removes parameter in the {@link ICalGLib.Property} by name.
          * @param name The name of the parameter to be removed
+         * @since 1.0
          */
         remove_parameter_by_name(name: string): void;
 
         /**
          * Removes the parameter in the {@link ICalGLib.Property} by ref.
          * @param param The {@link ICalGLib.Parameter} to be removed
+         * @since 1.0
          */
         remove_parameter_by_ref(param: Parameter): void;
 
         /**
          * Sets the acceptresponse for the {@link ICalGLib.Property}.
          * @param v The acceptresponse
+         * @since 2.0
          */
         set_acceptresponse(v: string): void;
 
         /**
          * Sets the acknowledged time for the {@link ICalGLib.Property}.
          * @param v The acknowledgement time
+         * @since 1.0
          */
         set_acknowledged(v: Time): void;
 
         /**
          * Sets the action for the {@link ICalGLib.Property}.
          * @param v The action
+         * @since 1.0
          */
         set_action(v: PropertyAction): void;
 
         /**
          * Sets the allowconflict for the {@link ICalGLib.Property}.
          * @param v The allowconflict
+         * @since 1.0
          */
         set_allowconflict(v: string): void;
 
         /**
          * Sets the attach for the {@link ICalGLib.Property}.
          * @param v The attach
+         * @since 1.0
          */
         set_attach(v: Attach): void;
 
         /**
          * Sets the attendee for the {@link ICalGLib.Property}.
          * @param v The attendee
+         * @since 1.0
          */
         set_attendee(v: string): void;
 
         /**
          * Sets the busytype for the {@link ICalGLib.Property}.
          * @param v The busytype
+         * @since 2.0
          */
         set_busytype(v: PropertyBusytype): void;
 
         /**
          * Sets the calid for the {@link ICalGLib.Property}.
          * @param v The calid
+         * @since 1.0
          */
         set_calid(v: string): void;
 
         /**
          * Sets the calmaster for the {@link ICalGLib.Property}.
          * @param v The calmaster
+         * @since 1.0
          */
         set_calmaster(v: string): void;
 
         /**
          * Sets the calscale for the {@link ICalGLib.Property}.
          * @param v The calscale
+         * @since 1.0
          */
         set_calscale(v: string): void;
 
         /**
          * Sets the capversion for the {@link ICalGLib.Property}.
          * @param v The capversion
+         * @since 1.0
          */
         set_capversion(v: string): void;
 
         /**
          * Sets the carid for the {@link ICalGLib.Property}.
          * @param v The carid
+         * @since 1.0
          */
         set_carid(v: string): void;
 
         /**
          * Sets the carlevel for the {@link ICalGLib.Property}.
          * @param v The carlevel
+         * @since 1.0
          */
         set_carlevel(v: PropertyCarlevel): void;
 
         /**
          * Sets the categories for the {@link ICalGLib.Property}.
          * @param v The categories
+         * @since 1.0
          */
         set_categories(v: string): void;
 
         /**
          * Sets the class for the {@link ICalGLib.Property}.
          * @param v The class
+         * @since 1.0
          */
         set_class(v: Property_Class): void;
 
         /**
          * Sets the cmd for the {@link ICalGLib.Property}.
          * @param v The cmd
+         * @since 1.0
          */
         set_cmd(v: PropertyCmd): void;
 
         /**
          * Sets the color for the `prop`.
          * @param v The color
+         * @since 1.0
          */
         set_color(v: string): void;
 
         /**
          * Sets the comment for the {@link ICalGLib.Property}.
          * @param v The comment
+         * @since 1.0
          */
         set_comment(v: string): void;
 
         /**
          * Sets the completed time for the {@link ICalGLib.Property}.
          * @param v The completed time
+         * @since 1.0
          */
         set_completed(v: Time): void;
 
         /**
          * Sets the components for the {@link ICalGLib.Property}.
          * @param v The components
+         * @since 1.0
          */
         set_components(v: string): void;
 
         /**
          * Sets the contact for the {@link ICalGLib.Property}.
          * @param v The contact
+         * @since 1.0
          */
         set_contact(v: string): void;
 
         /**
          * Sets the created time for the {@link ICalGLib.Property}.
          * @param v The created time
+         * @since 1.0
          */
         set_created(v: Time): void;
 
         /**
          * Sets the csid for the {@link ICalGLib.Property}.
          * @param v The csid
+         * @since 1.0
          */
         set_csid(v: string): void;
 
         /**
          * Sets the datemax time for the {@link ICalGLib.Property}.
          * @param v The datemax time
+         * @since 1.0
          */
         set_datemax(v: Time): void;
 
         /**
          * Sets the datemin time for the {@link ICalGLib.Property}.
          * @param v The datemin time
+         * @since 1.0
          */
         set_datemin(v: Time): void;
 
         /**
          * Sets the decreed for the {@link ICalGLib.Property}.
          * @param v The decreed
+         * @since 1.0
          */
         set_decreed(v: string): void;
 
         /**
          * Sets the defaultcharset for the {@link ICalGLib.Property}.
          * @param v The defaultcharset
+         * @since 1.0
          */
         set_defaultcharset(v: string): void;
 
         /**
          * Sets the defaultlocale for the {@link ICalGLib.Property}.
          * @param v The defaultlocale
+         * @since 1.0
          */
         set_defaultlocale(v: string): void;
 
         /**
          * Sets the defaulttzid for the {@link ICalGLib.Property}.
          * @param v The defaulttzid
+         * @since 1.0
          */
         set_defaulttzid(v: string): void;
 
         /**
          * Sets the defaultvcars for the {@link ICalGLib.Property}.
          * @param v The defaultvcars
+         * @since 1.0
          */
         set_defaultvcars(v: string): void;
 
         /**
          * Sets the deny for the {@link ICalGLib.Property}.
          * @param v The deny
+         * @since 1.0
          */
         set_deny(v: string): void;
 
         /**
          * Sets the description for the {@link ICalGLib.Property}.
          * @param v The description
+         * @since 1.0
          */
         set_description(v: string): void;
 
         /**
          * Sets the dtend time for the {@link ICalGLib.Property}.
          * @param v The dtend time
+         * @since 1.0
          */
         set_dtend(v: Time): void;
 
         /**
          * Sets the dtstamp time for the {@link ICalGLib.Property}.
          * @param v The dtstamp time
+         * @since 1.0
          */
         set_dtstamp(v: Time): void;
 
         /**
          * Sets the dtstart time for the {@link ICalGLib.Property}.
          * @param v The dtstart time
+         * @since 1.0
          */
         set_dtstart(v: Time): void;
 
         /**
          * Sets the due time for the {@link ICalGLib.Property}.
          * @param v The due time
+         * @since 1.0
          */
         set_due(v: Time): void;
 
         /**
          * Sets the duration for the {@link ICalGLib.Property}.
          * @param v The duration
+         * @since 1.0
          */
         set_duration(v: Duration): void;
 
         /**
          * Sets the estimatedduration for the {@link ICalGLib.Property}.
          * @param v The estimatedduration
+         * @since 1.0
          */
         set_estimatedduration(v: Duration): void;
 
         /**
          * Sets the exdate time for the {@link ICalGLib.Property}.
          * @param v The exdate time
+         * @since 1.0
          */
         set_exdate(v: Time): void;
 
         /**
          * Sets the expand for the {@link ICalGLib.Property}.
          * @param v The expand
+         * @since 1.0
          */
         set_expand(v: number): void;
 
         /**
          * Sets the exrule time for the {@link ICalGLib.Property}.
          * @param v The exrule recurrence type
+         * @since 1.0
          */
         set_exrule(v: Recurrence): void;
 
         /**
          * Sets the freebusy time for the {@link ICalGLib.Property}.
          * @param v The freebusy period type
+         * @since 1.0
          */
         set_freebusy(v: Period): void;
 
         /**
          * Sets the geo for the {@link ICalGLib.Property}.
          * @param v The geo type
+         * @since 1.0
          */
         set_geo(v: Geo): void;
 
         /**
          * Sets the grant for the {@link ICalGLib.Property}.
          * @param v The grant
+         * @since 1.0
          */
         set_grant(v: string): void;
 
         /**
          * Sets the itipversion for the {@link ICalGLib.Property}.
          * @param v The itipversion
+         * @since 1.0
          */
         set_itipversion(v: string): void;
 
         /**
          * Sets the lastmodified time for the {@link ICalGLib.Property}.
          * @param v The lastmodified time
+         * @since 1.0
          */
         set_lastmodified(v: Time): void;
 
         /**
          * Sets the location for the {@link ICalGLib.Property}.
          * @param v The location
+         * @since 1.0
          */
         set_location(v: string): void;
 
         /**
          * Sets the maxcomponentsize for the {@link ICalGLib.Property}.
          * @param v The maxcomponentsize
+         * @since 1.0
          */
         set_maxcomponentsize(v: number): void;
 
         /**
          * Sets the maxdate time for the {@link ICalGLib.Property}.
          * @param v The maxdate time
+         * @since 1.0
          */
         set_maxdate(v: Time): void;
 
         /**
          * Sets the maxresults for the {@link ICalGLib.Property}.
          * @param v The maxresults
+         * @since 1.0
          */
         set_maxresults(v: number): void;
 
         /**
          * Sets the maxresultssize for the {@link ICalGLib.Property}.
          * @param v The maxresultssize
+         * @since 1.0
          */
         set_maxresultssize(v: number): void;
 
         /**
          * Sets the method for the {@link ICalGLib.Property}.
          * @param v The method
+         * @since 1.0
          */
         set_method(v: PropertyMethod): void;
 
         /**
          * Sets the mindate time for the {@link ICalGLib.Property}.
          * @param v The mindate time
+         * @since 1.0
          */
         set_mindate(v: Time): void;
 
         /**
          * Sets the multipart for the {@link ICalGLib.Property}.
          * @param v The multipart
+         * @since 1.0
          */
         set_multipart(v: string): void;
 
         /**
          * Sets the name for the {@link ICalGLib.Property}.
          * @param v The name
+         * @since 1.0
          */
         set_name(v: string): void;
 
         /**
          * Sets the organizer for the {@link ICalGLib.Property}.
          * @param v The organizer
+         * @since 1.0
          */
         set_organizer(v: string): void;
 
         /**
          * Sets the owner for the {@link ICalGLib.Property}.
          * @param v The owner
+         * @since 1.0
          */
         set_owner(v: string): void;
 
@@ -4981,6 +5427,7 @@ export namespace ICalGLib {
          * Sets a {@link ICalGLib.Parameter} into the {@link ICalGLib.Property}. It behaves like set the copy of the {@link ICalGLib.Parameter}. Upon
          * completion the native part of {@link ICalGLib.Parameter} will be set to NULL.
          * @param parameter The parameter to be set into `prop`
+         * @since 1.0
          */
         set_parameter(parameter: Parameter): void;
 
@@ -4988,288 +5435,336 @@ export namespace ICalGLib {
          * Sets the {@link ICalGLib.Property} with the parameter defined by the name and value.
          * @param name The name of the parameter
          * @param value The value of the parameter
+         * @since 1.0
          */
         set_parameter_from_string(name: string, value: string): void;
 
         /**
          * Sets the parent {@link ICalGLib.Component} of the specified {@link ICalGLib.Property}.
          * @param component An {@link ICalGLib.Component}
+         * @since 3.0
          */
         set_parent(component: Component | null): void;
 
         /**
          * Sets the percentcomplete for the {@link ICalGLib.Property}.
          * @param v The percentcomplete
+         * @since 1.0
          */
         set_percentcomplete(v: number): void;
 
         /**
          * Sets the permission for the {@link ICalGLib.Property}.
          * @param v The permission
+         * @since 1.0
          */
         set_permission(v: string): void;
 
         /**
          * Sets the pollcompletion for the {@link ICalGLib.Property}.
          * @param v The pollcompletion
+         * @since 1.0
          */
         set_pollcompletion(v: PropertyPollcompletion): void;
 
         /**
          * Sets the pollitemid for the {@link ICalGLib.Property}.
          * @param v The pollitemid
+         * @since 1.0
          */
         set_pollitemid(v: number): void;
 
         /**
          * Sets the pollmode for the {@link ICalGLib.Property}.
          * @param v The pollmode
+         * @since 1.0
          */
         set_pollmode(v: PropertyPollmode): void;
 
         /**
          * Sets the pollproperties for the {@link ICalGLib.Property}.
          * @param v The pollproperties
+         * @since 1.0
          */
         set_pollproperties(v: string): void;
 
         /**
          * Sets the pollwinner for the {@link ICalGLib.Property}.
          * @param v The pollwinner
+         * @since 1.0
          */
         set_pollwinner(v: number): void;
 
         /**
          * Sets the priority for the {@link ICalGLib.Property}.
          * @param v The priority
+         * @since 1.0
          */
         set_priority(v: number): void;
 
         /**
          * Sets the prodid for the {@link ICalGLib.Property}.
          * @param v The prodid
+         * @since 1.0
          */
         set_prodid(v: string): void;
 
         /**
          * Sets the query for the {@link ICalGLib.Property}.
          * @param v The query
+         * @since 1.0
          */
         set_query(v: string): void;
 
         /**
          * Sets the queryid for the {@link ICalGLib.Property}.
          * @param v The queryid
+         * @since 1.0
          */
         set_queryid(v: string): void;
 
         /**
          * Sets the querylevel for the {@link ICalGLib.Property}.
          * @param v The querylevel
+         * @since 1.0
          */
         set_querylevel(v: PropertyQuerylevel): void;
 
         /**
          * Sets the queryname for the {@link ICalGLib.Property}.
          * @param v The queryname
+         * @since 1.0
          */
         set_queryname(v: string): void;
 
         /**
          * Sets the rdate for the {@link ICalGLib.Property}.
          * @param v The rdate
+         * @since 1.0
          */
         set_rdate(v: Datetimeperiod): void;
 
         /**
          * Sets the recuraccepted for the {@link ICalGLib.Property}.
          * @param v The recuraccepted
+         * @since 1.0
          */
         set_recuraccepted(v: string): void;
 
         /**
          * Sets the recurexpand for the {@link ICalGLib.Property}.
          * @param v The recurexpand
+         * @since 1.0
          */
         set_recurexpand(v: string): void;
 
         /**
          * Sets the recurlimit for the {@link ICalGLib.Property}.
          * @param v The recurlimit
+         * @since 1.0
          */
         set_recurlimit(v: string): void;
 
         /**
          * Sets the recurrenceid time for the {@link ICalGLib.Property}.
          * @param v The recurrenceid time
+         * @since 1.0
          */
         set_recurrenceid(v: Time): void;
 
         /**
          * Sets the relatedto for the {@link ICalGLib.Property}.
          * @param v The relatedto
+         * @since 1.0
          */
         set_relatedto(v: string): void;
 
         /**
          * Sets the relcalid for the {@link ICalGLib.Property}.
          * @param v The relcalid
+         * @since 1.0
          */
         set_relcalid(v: string): void;
 
         /**
          * Sets the repeat for the {@link ICalGLib.Property}.
          * @param v The repeat
+         * @since 1.0
          */
         set_repeat(v: number): void;
 
         /**
          * Sets the replyurl for the {@link ICalGLib.Property}.
          * @param v The replyurl
+         * @since 2.0
          */
         set_replyurl(v: string): void;
 
         /**
          * Sets the requeststatus for the {@link ICalGLib.Property}.
          * @param v The requeststatus
+         * @since 1.0
          */
         set_requeststatus(v: Reqstat): void;
 
         /**
          * Sets the resources for the {@link ICalGLib.Property}.
          * @param v The resources
+         * @since 1.0
          */
         set_resources(v: string): void;
 
         /**
          * Sets the response for the {@link ICalGLib.Property}.
          * @param v The response
+         * @since 2.0
          */
         set_response(v: number): void;
 
         /**
          * Sets the restriction for the {@link ICalGLib.Property}.
          * @param v The restriction
+         * @since 1.0
          */
         set_restriction(v: string): void;
 
         /**
          * Sets the rrule for the {@link ICalGLib.Property}.
          * @param v The rrule recurrence type
+         * @since 1.0
          */
         set_rrule(v: Recurrence): void;
 
         /**
          * Sets the scope for the {@link ICalGLib.Property}.
          * @param v The scope
+         * @since 1.0
          */
         set_scope(v: string): void;
 
         /**
          * Sets the sequence for the {@link ICalGLib.Property}.
          * @param v The sequence
+         * @since 1.0
          */
         set_sequence(v: number): void;
 
         /**
          * Sets the status for the {@link ICalGLib.Property}.
          * @param v The status
+         * @since 1.0
          */
         set_status(v: PropertyStatus): void;
 
         /**
          * Sets the storesexpanded for the {@link ICalGLib.Property}.
          * @param v The storesexpanded
+         * @since 1.0
          */
         set_storesexpanded(v: string): void;
 
         /**
          * Sets the summary for the {@link ICalGLib.Property}.
          * @param v The summary
+         * @since 1.0
          */
         set_summary(v: string): void;
 
         /**
          * Sets the target for the {@link ICalGLib.Property}.
          * @param v The target
+         * @since 1.0
          */
         set_target(v: string): void;
 
         /**
          * Sets the taskmode for the {@link ICalGLib.Property}.
          * @param v The taskmode
+         * @since 2.0
          */
         set_taskmode(v: PropertyTaskmode): void;
 
         /**
          * Sets the transp for the {@link ICalGLib.Property}.
          * @param v The transp
+         * @since 1.0
          */
         set_transp(v: PropertyTransp): void;
 
         /**
          * Sets the trigger time for the {@link ICalGLib.Property}.
          * @param v The trigger period type
+         * @since 1.0
          */
         set_trigger(v: Trigger): void;
 
         /**
          * Sets the tzid for the {@link ICalGLib.Property}.
          * @param v The tzid
+         * @since 1.0
          */
         set_tzid(v: string): void;
 
         /**
          * Sets the tzidaliasof for the {@link ICalGLib.Property}.
          * @param v The tzidaliasof
+         * @since 2.0
          */
         set_tzidaliasof(v: string): void;
 
         /**
          * Sets the tzname for the {@link ICalGLib.Property}.
          * @param v The tzname
+         * @since 1.0
          */
         set_tzname(v: string): void;
 
         /**
          * Sets the tzoffsetfrom for the {@link ICalGLib.Property}.
          * @param v The tzoffsetfrom
+         * @since 1.0
          */
         set_tzoffsetfrom(v: number): void;
 
         /**
          * Sets the tzoffsetto for the {@link ICalGLib.Property}.
          * @param v The tzoffsetto
+         * @since 1.0
          */
         set_tzoffsetto(v: number): void;
 
         /**
          * Sets the tzuntil time for the {@link ICalGLib.Property}.
          * @param v The acknowledgement time
+         * @since 2.0
          */
         set_tzuntil(v: Time): void;
 
         /**
          * Sets the tzurl for the {@link ICalGLib.Property}.
          * @param v The tzurl
+         * @since 1.0
          */
         set_tzurl(v: string): void;
 
         /**
          * Sets the uid for the {@link ICalGLib.Property}.
          * @param v The uid
+         * @since 1.0
          */
         set_uid(v: string): void;
 
         /**
          * Sets the url for the {@link ICalGLib.Property}.
          * @param v The url
+         * @since 1.0
          */
         set_url(v: string): void;
 
         /**
          * Sets the {@link ICalGLib.Property} with the {@link ICalGLib.Value}.
          * @param value The {@link ICalGLib.Value} will be set as the property of `prop`
+         * @since 1.0
          */
         set_value(value: Value): void;
 
@@ -5277,84 +5772,98 @@ export namespace ICalGLib {
          * Sets the {@link ICalGLib.Property} with the {@link ICalGLib.Value} constructed from string.
          * @param value The value used to construct the {@link ICalGLib.Value}
          * @param kind The kind used to construct the {@link ICalGLib.Value}
+         * @since 1.0
          */
         set_value_from_string(value: string, kind: string): void;
 
         /**
          * Sets the version for the {@link ICalGLib.Property}.
          * @param v The version
+         * @since 1.0
          */
         set_version(v: string): void;
 
         /**
          * Sets the voter for the {@link ICalGLib.Property}.
          * @param v The voter
+         * @since 2.0
          */
         set_voter(v: string): void;
 
         /**
          * Sets the x for the {@link ICalGLib.Property}.
          * @param v The x
+         * @since 1.0
          */
         set_x(v: string): void;
 
         /**
          * Sets the name of x property for the {@link ICalGLib.Property}.
          * @param name The name string
+         * @since 1.0
          */
         set_x_name(name: string): void;
 
         /**
          * Sets the xlicclass for the {@link ICalGLib.Property}.
          * @param v The xlicclass
+         * @since 1.0
          */
         set_xlicclass(v: PropertyXlicclass): void;
 
         /**
          * Sets the xlicclustercount for the {@link ICalGLib.Property}.
          * @param v The xlicclustercount
+         * @since 1.0
          */
         set_xlicclustercount(v: string): void;
 
         /**
          * Sets the xlicerror for the {@link ICalGLib.Property}.
          * @param v The xlicerror
+         * @since 1.0
          */
         set_xlicerror(v: string): void;
 
         /**
          * Sets the xlicmimecharset for the {@link ICalGLib.Property}.
          * @param v The xlicmimecharset
+         * @since 1.0
          */
         set_xlicmimecharset(v: string): void;
 
         /**
          * Sets the xlicmimecid for the {@link ICalGLib.Property}.
          * @param v The xlicmimecid
+         * @since 1.0
          */
         set_xlicmimecid(v: string): void;
 
         /**
          * Sets the xlicmimecontenttype for the {@link ICalGLib.Property}.
          * @param v The xlicmimecontenttype
+         * @since 1.0
          */
         set_xlicmimecontenttype(v: string): void;
 
         /**
          * Sets the xlicmimeencoding for the {@link ICalGLib.Property}.
          * @param v The xlicmimeencoding
+         * @since 1.0
          */
         set_xlicmimeencoding(v: string): void;
 
         /**
          * Sets the xlicmimefilename for the {@link ICalGLib.Property}.
          * @param v The xlicmimefilename
+         * @since 1.0
          */
         set_xlicmimefilename(v: string): void;
 
         /**
          * Sets the xlicmimeoptinfo for the {@link ICalGLib.Property}.
          * @param v The xlicmimeoptinfo
+         * @since 1.0
          */
         set_xlicmimeoptinfo(v: string): void;
     }
@@ -5414,6 +5923,7 @@ export namespace ICalGLib {
         /**
          * Gets the next occurrence from an iterator.
          * @returns The next occurrence according to this recurrence rule.
+         * @since 1.0
          */
         next(): Time;
 
@@ -5423,6 +5933,7 @@ export namespace ICalGLib {
          * CAN NOT be used with RRULEs that contain COUNT.
          * @param start The date-time to move the iterator to
          * @returns 1 if succeeded, 0 if failed, like when the recurrence type is unsupported.
+         * @since 3.0
          */
         set_start(start: Time): number;
     }
@@ -5484,75 +5995,88 @@ export namespace ICalGLib {
         /**
          * Decodes a day to a weekday in a week.
          * @param day The encoded day which represents the day of the week and Nth day of the week
+         * @since 1.0
          */
         static day_day_of_week(day: number): RecurrenceWeekday;
 
         /**
          * Decodes a day to a position of the weekday.
          * @param day The encoded day which represents the day of the week and Nth day of the week
+         * @since 1.0
          */
         static day_position(day: number): number;
 
         /**
          * Converts a string representation to an enum representation for the frequency.
          * @param str The string representation of the frequency
+         * @since 2.0
          */
         static frequency_from_string(str: string): RecurrenceFrequency;
 
         /**
          * Converts a enum representation to a string representation for the frequency.
          * @param kind The frequency enum
+         * @since 2.0
          */
         static frequency_to_string(kind: RecurrenceFrequency): string;
 
         /**
          * Decodes a month and check whether it is a leap month.
          * @param month The month to be decoded
+         * @since 2.0
          */
         static month_is_leap(month: number): boolean;
 
         /**
          * @param month The month to be decoded
+         * @since 2.0
          */
         static month_month(month: number): number;
 
         /**
          * Checks whether rscale is supported.
+         * @since 2.0
          */
         static rscale_is_supported(): boolean;
 
         /**
          * Gets an array of calendars supporting rscale (currently always return NULL).
+         * @since 2.0
          */
         static rscale_supported_calendars(): Array;
 
         /**
          * Converts a string representation to an enum representation for the skip.
          * @param str The string representation of the skip
+         * @since 2.0
          */
         static skip_from_string(str: string): RecurrenceSkip;
 
         /**
          * Converts a enum representation to a string representation for the skip.
          * @param kind The frequency enum
+         * @since 2.0
          */
         static skip_to_string(kind: RecurrenceSkip): string;
 
         /**
          * Converts a string representation to an enum representation for the weekday.
          * @param str The string representation of the weekday
+         * @since 1.0
          */
         static weekday_from_string(str: string): RecurrenceWeekday;
 
         /**
          * Converts a enum representation to a string representation for the weekday.
          * @param kind The frequency enum
+         * @since 2.0
          */
         static weekday_to_string(kind: RecurrenceWeekday): string;
 
         // Methods
         /**
          * Resets an {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         clear(): void;
 
@@ -5560,12 +6084,14 @@ export namespace ICalGLib {
          * Gets the by_day value at index `index`. The index should be less than {@link ICalGLib.RecurrenceArraySizes.DAY_SIZE}.
          * @param index The index in by_day of {@link ICalGLib.Recurrence}, less than {@link ICalGLib.RecurrenceArraySizes.DAY_SIZE}
          * @returns The by_day of {@link ICalGLib.Recurrence} at index `index`.
+         * @since 1.0
          */
         get_by_day(index: number): number;
 
         /**
          * Gets the by_day array from {@link ICalGLib.Recurrence}. The array size is I_CAL_BY_DAY_SIZE.
          * @returns The by_day of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_by_day_array(): number[];
 
@@ -5573,12 +6099,14 @@ export namespace ICalGLib {
          * Gets the by_hour value at index `index`. The index should be less than {@link ICalGLib.RecurrenceArraySizes.HOUR_SIZE}.
          * @param index The index in by_hour of {@link ICalGLib.Recurrence}, less than {@link ICalGLib.RecurrenceArraySizes.HOUR_SIZE}
          * @returns The by_hour of {@link ICalGLib.Recurrence} at index `index`.
+         * @since 1.0
          */
         get_by_hour(index: number): number;
 
         /**
          * Gets the by_hour array from {@link ICalGLib.Recurrence}. The array size is I_CAL_BY_HOUR_SIZE.
          * @returns The by_hour of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_by_hour_array(): number[];
 
@@ -5586,12 +6114,14 @@ export namespace ICalGLib {
          * Gets the by_minute value at index `index`. The index should be less than {@link ICalGLib.RecurrenceArraySizes.MINUTE_SIZE}.
          * @param index The index in by_minute of {@link ICalGLib.Recurrence}, less than {@link ICalGLib.RecurrenceArraySizes.MINUTE_SIZE}
          * @returns The by_minute of {@link ICalGLib.Recurrence} at index `index`.
+         * @since 1.0
          */
         get_by_minute(index: number): number;
 
         /**
          * Gets the by_minute array from {@link ICalGLib.Recurrence}. The array size is I_CAL_BY_MINUTE_SIZE.
          * @returns The by_minute of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_by_minute_array(): number[];
 
@@ -5599,12 +6129,14 @@ export namespace ICalGLib {
          * Gets the by_month value at index `index`. The index should be less than {@link ICalGLib.RecurrenceArraySizes.MONTH_SIZE}.
          * @param index The index in by_month of {@link ICalGLib.Recurrence}, less than {@link ICalGLib.RecurrenceArraySizes.MONTH_SIZE}
          * @returns The by_month of {@link ICalGLib.Recurrence} at index `index`.
+         * @since 1.0
          */
         get_by_month(index: number): number;
 
         /**
          * Gets the by_month array from {@link ICalGLib.Recurrence}. The array size is I_CAL_BY_MONTH_SIZE.
          * @returns The by_month of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_by_month_array(): number[];
 
@@ -5612,12 +6144,14 @@ export namespace ICalGLib {
          * Gets the by_month_day value at index `index`. The index should be less than {@link ICalGLib.RecurrenceArraySizes.MONTHDAY_SIZE}.
          * @param index The index in by_month_day of {@link ICalGLib.Recurrence}, less than {@link ICalGLib.RecurrenceArraySizes.MONTHDAY_SIZE}
          * @returns The by_month_day of {@link ICalGLib.Recurrence} at index `index`.
+         * @since 1.0
          */
         get_by_month_day(index: number): number;
 
         /**
          * Gets the by_month_day array from {@link ICalGLib.Recurrence}. The array size is I_CAL_BY_MONTHDAY_SIZE.
          * @returns The by_month_day of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_by_month_day_array(): number[];
 
@@ -5625,12 +6159,14 @@ export namespace ICalGLib {
          * Gets the by_second value at index `index`. The index should be less than {@link ICalGLib.RecurrenceArraySizes.SECOND_SIZE}.
          * @param index The index in by_second of {@link ICalGLib.Recurrence}, less than {@link ICalGLib.RecurrenceArraySizes.SECOND_SIZE}
          * @returns The by_second of {@link ICalGLib.Recurrence} at index `index`.
+         * @since 1.0
          */
         get_by_second(index: number): number;
 
         /**
          * Gets the by_second array from {@link ICalGLib.Recurrence}. The array size if I_CAL_BY_SECOND_SIZE.
          * @returns The by_second of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_by_second_array(): number[];
 
@@ -5638,12 +6174,14 @@ export namespace ICalGLib {
          * Gets the by_set_pos value at index `index`. The index should be less than {@link ICalGLib.RecurrenceArraySizes.SETPOS_SIZE}.
          * @param index The index in by_set_pos of {@link ICalGLib.Recurrence}, less than {@link ICalGLib.RecurrenceArraySizes.SETPOS_SIZE}
          * @returns The by_week_no of {@link ICalGLib.Recurrence} at index `index`.
+         * @since 1.0
          */
         get_by_set_pos(index: number): number;
 
         /**
          * Gets the by_set_pos array from {@link ICalGLib.Recurrence}. The array size is I_CAL_BY_SETPOS_SIZE.
          * @returns The by_set_pos of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_by_set_pos_array(): number[];
 
@@ -5651,12 +6189,14 @@ export namespace ICalGLib {
          * Gets the by_week_no value at index `index`. The index should be less than {@link ICalGLib.RecurrenceArraySizes.WEEKNO_SIZE}.
          * @param index The index in by_week_no of {@link ICalGLib.Recurrence}, less than {@link ICalGLib.RecurrenceArraySizes.WEEKNO_SIZE}
          * @returns The by_week_no of {@link ICalGLib.Recurrence} at index `index`.
+         * @since 1.0
          */
         get_by_week_no(index: number): number;
 
         /**
          * Gets the by_week_no array from {@link ICalGLib.Recurrence}. The array size is I_CAL_BY_WEEKNO_SIZE.
          * @returns The by_week_no of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_by_week_no_array(): number[];
 
@@ -5664,42 +6204,49 @@ export namespace ICalGLib {
          * Gets the by_year_day value at index `index`. The index should be less than {@link ICalGLib.RecurrenceArraySizes.YEARDAY_SIZE}.
          * @param index The index in by_year_day of {@link ICalGLib.Recurrence}, less than {@link ICalGLib.RecurrenceArraySizes.YEARDAY_SIZE}
          * @returns The by_year_day of {@link ICalGLib.Recurrence} at index `index`.
+         * @since 1.0
          */
         get_by_year_day(index: number): number;
 
         /**
          * Gets the by_year_day array from {@link ICalGLib.Recurrence}. The array size is I_CAL_BY_YEARDAY_SIZE.
          * @returns The by_year_day of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_by_year_day_array(): number[];
 
         /**
          * Gets the count from {@link ICalGLib.Recurrence}.
          * @returns The count of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_count(): number;
 
         /**
          * Gets the freq from {@link ICalGLib.Recurrence}.
          * @returns The freq of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_freq(): RecurrenceFrequency;
 
         /**
          * Gets the interval from {@link ICalGLib.Recurrence}.
          * @returns The interval of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_interval(): number;
 
         /**
          * Gets the until from {@link ICalGLib.Recurrence}.
          * @returns The until of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_until(): Time;
 
         /**
          * Gets the week_start from {@link ICalGLib.Recurrence}.
          * @returns The week_start of {@link ICalGLib.Recurrence}.
+         * @since 1.0
          */
         get_week_start(): RecurrenceWeekday;
 
@@ -5707,6 +6254,7 @@ export namespace ICalGLib {
          * Sets the by_day array from {@link ICalGLib.Recurrence} at the given index. The array size if I_CAL_BY_DAY_SIZE.
          * @param index The index in by_day of {@link ICalGLib.Recurrence}
          * @param value The value to be set into by_day of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_by_day(index: number, value: number): void;
 
@@ -5714,6 +6262,7 @@ export namespace ICalGLib {
          * Sets the by_day array in `recur` at once. The array size can be less than I_CAL_BY_DAY_SIZE. Shorter arrays
          * are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
          * @param values The array of values
+         * @since 1.0
          */
         set_by_day_array(values: number[]): void;
 
@@ -5721,6 +6270,7 @@ export namespace ICalGLib {
          * Sets the by_hour array from {@link ICalGLib.Recurrence} at the given index. The array size is I_CAL_BY_HOUR_SIZE.
          * @param index The index in by_hour of {@link ICalGLib.Recurrence}
          * @param value The value to be set into by_hour of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_by_hour(index: number, value: number): void;
 
@@ -5728,6 +6278,7 @@ export namespace ICalGLib {
          * Sets the by_hour array in `recur` at once. The array size can be less than I_CAL_BY_HOUR_SIZE. Shorter
          * arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
          * @param values The array of values
+         * @since 1.0
          */
         set_by_hour_array(values: number[]): void;
 
@@ -5735,6 +6286,7 @@ export namespace ICalGLib {
          * Sets the by_minute array from {@link ICalGLib.Recurrence} at the given index. The array size is I_CAL_BY_MINUTE_SIZE.
          * @param index The index in by_minute of {@link ICalGLib.Recurrence}
          * @param value The value to be set into by_minute of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_by_minute(index: number, value: number): void;
 
@@ -5742,6 +6294,7 @@ export namespace ICalGLib {
          * Sets the by_minute array in `recur` at once. The array size can be less than I_CAL_BY_MINUTE_SIZE. Shorter
          * arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
          * @param values The array of values
+         * @since 1.0
          */
         set_by_minute_array(values: number[]): void;
 
@@ -5749,6 +6302,7 @@ export namespace ICalGLib {
          * Sets the by_month array from {@link ICalGLib.Recurrence} at the given index. The array size is I_CAL_BY_MONTH_SIZE.
          * @param index The index in by_month of {@link ICalGLib.Recurrence}
          * @param value The value to be set into by_month of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_by_month(index: number, value: number): void;
 
@@ -5756,6 +6310,7 @@ export namespace ICalGLib {
          * Sets the by_month array in `recur` at once. The array size can be less than I_CAL_BY_MONTH_SIZE. Shorter
          * arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
          * @param values The array of values
+         * @since 1.0
          */
         set_by_month_array(values: number[]): void;
 
@@ -5763,6 +6318,7 @@ export namespace ICalGLib {
          * Sets the by_month_day array from {@link ICalGLib.Recurrence} at the given index. The array size if I_CAL_BY_MONTHDAY_SIZE.
          * @param index The index in by_month_day of {@link ICalGLib.Recurrence}
          * @param value The value to be set into by_month_day of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_by_month_day(index: number, value: number): void;
 
@@ -5770,6 +6326,7 @@ export namespace ICalGLib {
          * Sets the by_month_day array in `recur` at once. The array size can be less than I_CAL_BY_MONTHDAY_SIZE.
          * Shorter arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
          * @param values The array of values
+         * @since 1.0
          */
         set_by_month_day_array(values: number[]): void;
 
@@ -5777,6 +6334,7 @@ export namespace ICalGLib {
          * Sets the by_second array from {@link ICalGLib.Recurrence} at the given index. The array size is I_CAL_BY_SECOND_SIZE.
          * @param index The index in by_second of {@link ICalGLib.Recurrence}, less than I_CAL_BY_SECOND_SIZE
          * @param value The value to be set into by_second of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_by_second(index: number, value: number): void;
 
@@ -5784,6 +6342,7 @@ export namespace ICalGLib {
          * Sets the by_second array in `recur` at once. The array size can be less than I_CAL_BY_SECOND_SIZE. Shorter
          * arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
          * @param values The array of values
+         * @since 1.0
          */
         set_by_second_array(values: number[]): void;
 
@@ -5791,6 +6350,7 @@ export namespace ICalGLib {
          * Sets the by_set_pos array from {@link ICalGLib.Recurrence} at the given index. The array size is I_CAL_BY_SETPOS_SIZE.
          * @param index The index in by_set_pos of {@link ICalGLib.Recurrence}
          * @param value The value to be set into by_set_pos of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_by_set_pos(index: number, value: number): void;
 
@@ -5798,6 +6358,7 @@ export namespace ICalGLib {
          * Sets the by_set_pos array in `recur` at once. The array size can be less than I_CAL_BY_SETPOS_SIZE. Shorter
          * arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
          * @param values The array of values
+         * @since 1.0
          */
         set_by_set_pos_array(values: number[]): void;
 
@@ -5805,6 +6366,7 @@ export namespace ICalGLib {
          * Sets the by_week_no array from {@link ICalGLib.Recurrence} at the given index. The array size is I_CAL_BY_WEEKNO_SIZE.
          * @param index The index in by_week_no of {@link ICalGLib.Recurrence}
          * @param value The value to be set into by_week_no of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_by_week_no(index: number, value: number): void;
 
@@ -5812,6 +6374,7 @@ export namespace ICalGLib {
          * Sets the by_week_no array in `recur` at once. The array size can be less than I_CAL_BY_WEEKNO_SIZE. Shorter
          * arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
          * @param values The array of values
+         * @since 1.0
          */
         set_by_week_no_array(values: number[]): void;
 
@@ -5819,6 +6382,7 @@ export namespace ICalGLib {
          * Sets the by_year_day array from {@link ICalGLib.Recurrence} at the given index. The array size if I_CAL_BY_YEARDAY_SIZE.
          * @param index The index in by_year_day of {@link ICalGLib.Recurrence}
          * @param value The value to be set into by_year_day of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_by_year_day(index: number, value: number): void;
 
@@ -5826,42 +6390,49 @@ export namespace ICalGLib {
          * Sets the by_year_day array in `recur` at once. The array size can be less than I_CAL_BY_YEARDAY_SIZE.
          * Shorter arrays are terminated with I_CAL_RECURRENCE_ARRAY_MAX value, longer arrays are truncated.
          * @param values The array of values
+         * @since 1.0
          */
         set_by_year_day_array(values: number[]): void;
 
         /**
          * Sets the count from {@link ICalGLib.Recurrence}.
          * @param count The count of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_count(count: number): void;
 
         /**
          * Sets the freq from {@link ICalGLib.Recurrence}.
          * @param freq The freq of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_freq(freq: RecurrenceFrequency): void;
 
         /**
          * Sets the interval from {@link ICalGLib.Recurrence}.
          * @param interval The interval of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_interval(interval: number): void;
 
         /**
          * Sets the until from {@link ICalGLib.Recurrence}.
          * @param until The until of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_until(until: Time): void;
 
         /**
          * Sets the week_start from {@link ICalGLib.Recurrence}.
          * @param week_start The week_start of {@link ICalGLib.Recurrence}
+         * @since 1.0
          */
         set_week_start(week_start: RecurrenceWeekday): void;
 
         /**
          * Converts a {@link ICalGLib.Recurrence} to a string.
          * @returns The string representation of `recur`.
+         * @since 1.0
          */
         to_string(): string;
     }
@@ -5921,30 +6492,35 @@ export namespace ICalGLib {
         /**
          * Gets the code of {@link ICalGLib.Reqstat}.
          * @returns The code of `reqstat`.
+         * @since 1.0
          */
         get_code(): RequestStatus;
 
         /**
          * Gets the debug of {@link ICalGLib.Reqstat}.
          * @returns The debug of `reqstat`.
+         * @since 1.0
          */
         get_debug(): string;
 
         /**
          * Gets the desc of {@link ICalGLib.Reqstat}.
          * @returns The desc of `reqstat`.
+         * @since 1.0
          */
         get_desc(): string;
 
         /**
          * Sets the code of {@link ICalGLib.Reqstat}.
          * @param code The code of `reqstat`
+         * @since 1.0
          */
         set_code(code: RequestStatus): void;
 
         /**
          * Converts {@link ICalGLib.Reqstat} to a string representation.
          * @returns A string.
+         * @since 1.0
          */
         to_string(): string;
     }
@@ -6019,18 +6595,21 @@ export namespace ICalGLib {
          * Gets the number of days in the target month in the target year.
          * @param month The target month
          * @param year The target year
+         * @since 1.0
          */
         static days_in_month(month: number, year: number): number;
 
         /**
          * Returns the number of days in this year.
          * @param year The target year
+         * @since 2.0
          */
         static days_in_year(year: number): number;
 
         /**
          * Checks whether a year is a leap year.
          * @param year The target year
+         * @since 1.0
          */
         static days_is_leap_year(year: number): boolean;
 
@@ -6039,6 +6618,7 @@ export namespace ICalGLib {
          * @param comp The {@link ICalGLib.Component}
          * @param end_year The end year
          * @param changes The changes to be applies
+         * @since 2.0
          */
         static timezone_expand_vtimezone(comp: Component, end_year: number, changes: Array): void;
 
@@ -6047,6 +6627,7 @@ export namespace ICalGLib {
          * Adds a time duration on the time.
          * @param d A {@link ICalGLib.Duration} as the difference
          * @returns The {@link ICalGLib.Time} results. The native object is the same. But since it is a bare object, so it won't cause segmentation.
+         * @since 2.0
          */
         add(d: Duration): Time;
 
@@ -6056,18 +6637,21 @@ export namespace ICalGLib {
          * @param hours Difference of hours adjusted
          * @param minutes Difference of minutes adjusted
          * @param seconds Difference of seconds adjusted
+         * @since 1.0
          */
         adjust(days: number, hours: number, minutes: number, seconds: number): void;
 
         /**
          * Returns a string representation of the time, in RFC2445 format.
          * @returns The string representation
+         * @since 1.0
          */
         as_ical_string(): string;
 
         /**
          * Returns the time as seconds past the UNIX epoch.
          * @returns The time as seconds past the UNIX epoch
+         * @since 1.0
          */
         as_timet(): number;
 
@@ -6075,12 +6659,14 @@ export namespace ICalGLib {
          * Returns the time as seconds past the UNIX epoch, using timezones.
          * @param zone The timezone
          * @returns The time as seconds past the UNIX epoch
+         * @since 1.0
          */
         as_timet_with_zone(zone: Timezone | null): number;
 
         /**
          * Creates a new {@link ICalGLib.Time}, copy of `timetype`.
          * @returns The newly created {@link ICalGLib.Time}, copy of `timetype`.
+         * @since 1.0
          */
         clone(): Time;
 
@@ -6088,6 +6674,7 @@ export namespace ICalGLib {
          * i_cal_time_compare returns an integer indicating the result of the comparison, as follow:
          * @param b The {@link ICalGLib.Time} to be compared
          * @returns -1, 0, or 1 to indicate that a less than b, a==b or a larger than b.
+         * @since 1.0
          */
         compare(b: Time): number;
 
@@ -6095,6 +6682,7 @@ export namespace ICalGLib {
          * Like `i_cal_time_compare()`, but only use the date parts.
          * @param b The {@link ICalGLib.Time} to be compared
          * @returns -1, 0, or 1 to indicate that a less than b, a==b or a larger than b.
+         * @since 1.0
          */
         compare_date_only(b: Time): number;
 
@@ -6103,6 +6691,7 @@ export namespace ICalGLib {
          * @param b The {@link ICalGLib.Time} to be compared
          * @param zone The target timezone
          * @returns -1, 0, or 1 to indicate that a less than b, a==b or a larger than b.
+         * @since 1.0
          */
         compare_date_only_tz(b: Time, zone: Timezone | null): number;
 
@@ -6110,6 +6699,7 @@ export namespace ICalGLib {
          * Convert time from one timezone to another.
          * @param from_zone From timezone
          * @param to_zone To timezone
+         * @since 1.0
          */
         convert_timezone(from_zone: Timezone | null, to_zone: Timezone | null): void;
 
@@ -6117,64 +6707,75 @@ export namespace ICalGLib {
          * Converts `tt` to `zone` and return new {@link ICalGLib.Time} object.
          * @param zone The target timezone
          * @returns The converted {@link ICalGLib.Time}
+         * @since 1.0
          */
         convert_to_zone(zone: Timezone | null): Time;
 
         /**
          * Converts `tt` to `zone` and store the result into `tt`.
          * @param zone The target timezone
+         * @since 3.0.5
          */
         convert_to_zone_inplace(zone: Timezone | null): void;
 
         /**
          * Returns the day of the week of the given time. Sunday is 1.
          * @returns The day of the week of the given time. Sunday is 1.
+         * @since 1.0
          */
         day_of_week(): number;
 
         /**
          * Returns the day of the year of the given time.
          * @returns The day of the year of the given time
+         * @since 1.0
          */
         day_of_year(): number;
 
         /**
          * Gets the year/month/date parts of the `timetype` in one call.
+         * @since 1.0
          */
         get_date(): [number, number, number];
 
         /**
          * Gets the day of {@link ICalGLib.Time}.
          * @returns The day.
+         * @since 1.0
          */
         get_day(): number;
 
         /**
          * Gets the hour of {@link ICalGLib.Time}.
          * @returns The hour.
+         * @since 1.0
          */
         get_hour(): number;
 
         /**
          * Gets the minute of {@link ICalGLib.Time}.
          * @returns The minute.
+         * @since 1.0
          */
         get_minute(): number;
 
         /**
          * Gets the month of {@link ICalGLib.Time}.
          * @returns The month.
+         * @since 1.0
          */
         get_month(): number;
 
         /**
          * Gets the second of {@link ICalGLib.Time}.
          * @returns The second.
+         * @since 1.0
          */
         get_second(): number;
 
         /**
          * Gets the hour/minute/second parts of the `timetype` in one call.
+         * @since 1.0
          */
         get_time(): [number, number, number];
 
@@ -6183,59 +6784,69 @@ export namespace ICalGLib {
          * instance is used or can be kept until `i_cal_object_free_global_objects()` is called (usually at the very
          * end of the program).
          * @returns The timezone information
+         * @since 1.0
          */
         get_timezone(): Timezone;
 
         /**
          * Returns the tzid, or NULL for a floating time.
          * @returns The tzid of {@link ICalGLib.Time}, or NULL if floating type
+         * @since 1.0
          */
         get_tzid(): string | null;
 
         /**
          * Gets the year of {@link ICalGLib.Time}.
          * @returns The year.
+         * @since 1.0
          */
         get_year(): number;
 
         /**
          * Returns true if time is of DATE type, false if DATE-TIME.
          * @returns True if time is of DATE type, false if DATE-TIME.
+         * @since 1.0
          */
         is_date(): boolean;
 
         /**
          * Gets the is_daylight of {@link ICalGLib.Time}.
          * @returns The is_daylight.
+         * @since 1.0
          */
         is_daylight(): boolean;
 
         /**
          * Returns true if the time is null.
          * @returns Whether `tt` is null_time. 1 if yes, 0 if not.
+         * @since 1.0
          */
         is_null_time(): boolean;
 
         /**
          * Returns true if time is relative to UTC zone.
          * @returns True if time is relative to UTC zone.
+         * @since 1.0
          */
         is_utc(): boolean;
 
         /**
          * Returns true if the time is null.
          * @returns Whether `tt` is null_time. 1 if yes, 0 if not.
+         * @since 1.0
          */
         is_valid_time(): boolean;
 
         /**
          * Normalizes the icaltime, so that all fields are within the normal range.
          * @returns The {@link ICalGLib.Time} normalized
+         * @since 1.0
          */
         normalize(): Time;
 
         /**
          * Normalizes the `tt`, so that all fields are within the normal range.
+         * @since 3.0.5
          */
         normalize_inplace(): void;
 
@@ -6245,48 +6856,56 @@ export namespace ICalGLib {
          * @param year The 'year' part of the date
          * @param month The 'month' part of the date
          * @param day The 'day' part of the date
+         * @since 1.0
          */
         set_date(year: number, month: number, day: number): void;
 
         /**
          * Sets the day of {@link ICalGLib.Time}.
          * @param day The day
+         * @since 1.0
          */
         set_day(day: number): void;
 
         /**
          * Sets the hour of {@link ICalGLib.Time}.
          * @param hour The hour
+         * @since 1.0
          */
         set_hour(hour: number): void;
 
         /**
          * Sets the is_date of {@link ICalGLib.Time}.
          * @param is_date The is_date
+         * @since 1.0
          */
         set_is_date(is_date: boolean): void;
 
         /**
          * Sets the is_daylight of {@link ICalGLib.Time}.
          * @param is_daylight The is_daylight
+         * @since 1.0
          */
         set_is_daylight(is_daylight: boolean): void;
 
         /**
          * Sets the minute of {@link ICalGLib.Time}.
          * @param minute The minute
+         * @since 1.0
          */
         set_minute(minute: number): void;
 
         /**
          * Sets the month of {@link ICalGLib.Time}.
          * @param month The month
+         * @since 1.0
          */
         set_month(month: number): void;
 
         /**
          * Sets the second of {@link ICalGLib.Time}.
          * @param second The second
+         * @since 1.0
          */
         set_second(second: number): void;
 
@@ -6296,18 +6915,21 @@ export namespace ICalGLib {
          * @param hour The 'hour' part of the time
          * @param minute The 'minute' part of the time
          * @param second The 'second' part of the time
+         * @since 1.0
          */
         set_time(hour: number, minute: number, second: number): void;
 
         /**
          * Sets the timezone of the `tt`.
          * @param zone The timezone
+         * @since 1.0
          */
         set_timezone(zone: Timezone | null): void;
 
         /**
          * Sets the year of {@link ICalGLib.Time}.
          * @param year The year
+         * @since 1.0
          */
         set_year(year: number): void;
 
@@ -6315,6 +6937,7 @@ export namespace ICalGLib {
          * Returns the day of the year for the first day of the week that the given time is within.
          * @param fdow The first day of the week
          * @returns The day of the year for the Sunday of the week that the given time is within.
+         * @since 1.0
          */
         start_doy_week(fdow: number): number;
 
@@ -6322,12 +6945,14 @@ export namespace ICalGLib {
          * Gets the duration between two time.
          * @param t2 The subtracting {@link ICalGLib.Time}
          * @returns The {@link ICalGLib.Duration} between two {@link ICalGLib.Time}.
+         * @since 2.0
          */
         subtract(t2: Time): Duration;
 
         /**
          * Returns the week number for the week the given time is within.
          * @returns The week number for the week the given time is within.
+         * @since 1.0
          */
         week_number(): number;
     }
@@ -6389,6 +7014,7 @@ export namespace ICalGLib {
         /**
          * Creates a new {@link ICalGLib.TimeSpan}, clone of `src`. Free it with `g_object_unref()`, when no longer needed.
          * @returns The newly created {@link ICalGLib.TimeSpan}, clone of `src`.
+         * @since 3.0.5
          */
         clone(): TimeSpan;
 
@@ -6396,24 +7022,28 @@ export namespace ICalGLib {
          * Checks whether one {@link ICalGLib.TimeSpan} is contained in another {@link ICalGLib.TimeSpan}.
          * @param container The target container of {@link ICalGLib.TimeSpan}
          * @returns Whether one {@link ICalGLib.TimeSpan} is contained in another {@link ICalGLib.TimeSpan}.
+         * @since 1.0
          */
         contains(container: TimeSpan): number;
 
         /**
          * Gets the end of {@link ICalGLib.TimeSpan}.
          * @returns The end.
+         * @since 1.0
          */
         get_end(): number;
 
         /**
          * Gets the is_busy of {@link ICalGLib.TimeSpan}.
          * @returns The is_busy.
+         * @since 1.0
          */
         get_is_busy(): boolean;
 
         /**
          * Gets the start of {@link ICalGLib.TimeSpan}.
          * @returns The start.
+         * @since 1.0
          */
         get_start(): number;
 
@@ -6421,24 +7051,28 @@ export namespace ICalGLib {
          * Checks whether two spans overlap.
          * @param s2 The second {@link ICalGLib.TimeSpan}
          * @returns Whether these two span are overlapped.
+         * @since 1.0
          */
         overlaps(s2: TimeSpan): number;
 
         /**
          * Sets the end of {@link ICalGLib.TimeSpan}.
          * @param end The end
+         * @since 1.0
          */
         set_end(end: bigint | number): void;
 
         /**
          * Sets the is_busy of {@link ICalGLib.TimeSpan}.
          * @param is_busy The is_busy
+         * @since 1.0
          */
         set_is_busy(is_busy: boolean): void;
 
         /**
          * Sets the start of {@link ICalGLib.TimeSpan}.
          * @param start The start
+         * @since 1.0
          */
         set_start(start: bigint | number): void;
     }
@@ -6504,6 +7138,7 @@ export namespace ICalGLib {
          * `child`, thus make sure you pass an unowned {@link ICalGLib.Component}.
          * @param timezones The timezones to be populated
          * @param child The component to be appended to `timezones`
+         * @since 1.0
          */
         static array_append_from_vtimezone(timezones: Array, child: Component): void;
 
@@ -6511,22 +7146,26 @@ export namespace ICalGLib {
          * Gets the {@link ICalGLib.Timezone} at specified position in array.
          * @param timezones The array to be visited
          * @param index The index
+         * @since 1.0
          */
         static array_element_at(timezones: Array, index: number): Timezone;
 
         /**
          * Frees any builtin timezone information.
+         * @since 1.0
          */
         static free_builtin_timezones(): void;
 
         /**
          * Frees memory dedicated to the zonefile directory.
+         * @since 1.0
          */
         static free_zone_directory(): void;
 
         /**
          * Returns a single builtin timezone, given its Olson city name.
          * @param location The location representing the timezone
+         * @since 1.0
          */
         static get_builtin_timezone(location: string | null): Timezone | null;
 
@@ -6534,55 +7173,65 @@ export namespace ICalGLib {
          * Returns a single builtin timezone, given its offset.
          * @param offset The offset used to get the {@link ICalGLib.Timezone}
          * @param tzname The reference {@link ICalGLib.Timezone} name
+         * @since 1.0
          */
         static get_builtin_timezone_from_offset(offset: number, tzname: string | null): Timezone;
 
         /**
          * Returns a single builtin timezone, given its TZID.
          * @param tzid The tzid name
+         * @since 1.0
          */
         static get_builtin_timezone_from_tzid(tzid: string | null): Timezone;
 
         /**
          * Returns a list of builtin timezones.
+         * @since 1.0
          */
         static get_builtin_timezones(): Array;
 
         /**
          * Gets whether to use builtin timezones files.
+         * @since 2.0
          */
         static get_builtin_tzdata(): boolean;
 
         /**
          * Gets the location of the vtimezone in component.
          * @param component The {@link ICalGLib.Component} to be queried
+         * @since 2.0
          */
         static get_location_from_vtimezone(component: Component): string;
 
         /**
          * Gets the name of the vtimezone in component.
          * @param component The {@link ICalGLib.Component} to be queried
+         * @since 2.0
          */
         static get_tznames_from_vtimezone(component: Component): string;
 
         /**
          * Returns the UTC timezone.
+         * @since 1.0
          */
         static get_utc_timezone(): Timezone;
 
         /**
          * Gets the directory to look for the zonefiles.
+         * @since 3.0.17
          */
         static get_zone_directory(): string;
 
         /**
          * Frees memory dedicated to the zonefile directory.
+         * @since 1.0
          */
         static release_zone_tab(): void;
 
         /**
          * Sets whether to use builtin timezones files.
          * @param set Whether to use builtin timezones files
+         * @since 2.0
          */
         static set_builtin_tzdata(set: boolean): void;
 
@@ -6591,12 +7240,14 @@ export namespace ICalGLib {
          * a domain name owned by the developer of the calling application), and begin and end with forward slashes.
          * Do not change or de-allocate the string buffer after calling this.
          * @param new_prefix The {@link ICalGLib.Timezone} to be set
+         * @since 1.0
          */
         static set_tzid_prefix(new_prefix: string): void;
 
         /**
          * Sets the directory to look for the zonefiles.
          * @param path The path to look for the zonefiles
+         * @since 1.0
          */
         static set_zone_directory(path: string): void;
 
@@ -6604,6 +7255,7 @@ export namespace ICalGLib {
         /**
          * The clone method for {@link ICalGLib.Timezone}.
          * @returns The newly created {@link ICalGLib.Timezone} with the same values as `zone`
+         * @since 1.0
          */
         copy(): Timezone;
 
@@ -6612,42 +7264,49 @@ export namespace ICalGLib {
          * @param max_year Max year
          * @param fp The file handle
          * @returns 1 if success.
+         * @since 1.0
          */
         dump_changes(max_year: number, fp: null): number;
 
         /**
          * Returns the VTIMEZONE component of a timezone.
          * @returns The VTIMEZONE component of the `zone`.
+         * @since 1.0
          */
         get_component(): Component;
 
         /**
          * Gets the display name of the `zone`.
          * @returns The display name of `zone`
+         * @since 1.0
          */
         get_display_name(): string;
 
         /**
          * Returns the latitude of a builtin timezone.
          * @returns The latitude of the {@link ICalGLib.Timezone}
+         * @since 1.0
          */
         get_latitude(): number;
 
         /**
          * Returns the city name of a timezone, or `null`, when none is set or when `zone` is also `null`.
          * @returns The location of the {@link ICalGLib.Timezone}, or `null`
+         * @since 1.0
          */
         get_location(): string | null;
 
         /**
          * Returns the longitude of a builtin timezone.
          * @returns The longitude of the {@link ICalGLib.Timezone}.
+         * @since 1.0
          */
         get_longitude(): number;
 
         /**
          * Returns the TZID of a timezone, or `null`, when none is set or when `zone` is also `null`.
          * @returns The timezone id, or `null`
+         * @since 1.0
          */
         get_tzid(): string | null;
 
@@ -6656,6 +7315,7 @@ export namespace ICalGLib {
          * it will return just one, e.g. "LMT". If they are different it will format them like "EST/EDT". Note that
          * this may also return NULL.
          * @returns The timezone name
+         * @since 1.0
          */
         get_tznames(): string | null;
 
@@ -6664,6 +7324,7 @@ export namespace ICalGLib {
          * add to UTC to get local time.  The is_daylight flag is set to 1 if the time is in daylight-savings time.
          * @param tt The local time
          * @returns UTC offset of the `zone`
+         * @since 1.0
          */
         get_utc_offset(tt: Time | null): [number, number];
 
@@ -6672,6 +7333,7 @@ export namespace ICalGLib {
          * add to UTC to get local time.  The is_daylight flag is set to 1 if the time is in daylight-savings time.
          * @param tt The local time
          * @returns UTC offset of the `zone`
+         * @since 1.0
          */
         get_utc_offset_of_utc_time(tt: Time): [number, number];
 
@@ -6683,6 +7345,7 @@ export namespace ICalGLib {
          * of the `comp`, thus make sure you pass an unowned {@link ICalGLib.Component}.
          * @param comp The VTIMEZONE component of an {@link ICalGLib.Timezone}, initializing the tzid, location and tzname fields
          * @returns Whether the action is successful. 1 for success, 0 for failure.
+         * @since 1.0
          */
         set_component(comp: Component): number;
     }
@@ -6744,36 +7407,42 @@ export namespace ICalGLib {
         /**
          * Gets the duration from {@link ICalGLib.Trigger}.
          * @returns The duration of {@link ICalGLib.Trigger}.
+         * @since 1.0
          */
         get_duration(): Duration;
 
         /**
          * Gets the time from {@link ICalGLib.Trigger}.
          * @returns The time of {@link ICalGLib.Trigger}.
+         * @since 1.0
          */
         get_time(): Time;
 
         /**
          * Checks if a {@link ICalGLib.Trigger} is a bad trigger.
          * @returns 1 if yes, 0 if not.
+         * @since 1.0
          */
         is_bad_trigger(): boolean;
 
         /**
          * Checks if a {@link ICalGLib.Trigger} is a null trigger.
          * @returns 1 if yes, 0 if not.
+         * @since 1.0
          */
         is_null_trigger(): boolean;
 
         /**
          * Sets the duration from {@link ICalGLib.Trigger}.
          * @param duration The duration of {@link ICalGLib.Trigger}
+         * @since 1.0
          */
         set_duration(duration: Duration): void;
 
         /**
          * Sets the time from {@link ICalGLib.Trigger}.
          * @param time The time of {@link ICalGLib.Trigger}
+         * @since 1.0
          */
         set_time(time: Time): void;
     }
@@ -6905,36 +7574,42 @@ export namespace ICalGLib {
         /**
          * Extracts the original character string encoded by the above function.
          * @param szText A string
+         * @since 1.0
          */
         static decode_ical_string(szText: string): string | null;
 
         /**
          * Encodes a character string in ical format, escape certain characters, etc.
          * @param szText A string
+         * @since 1.0
          */
         static encode_ical_string(szText: string): string | null;
 
         /**
          * Converts a string to {@link ICalGLib.ValueKind}.
          * @param str A string
+         * @since 1.0
          */
         static kind_from_string(str: string): ValueKind;
 
         /**
          * Checks whether the {@link ICalGLib.ValueKind} is valid.
          * @param kind The {@link ICalGLib.ValueKind} to be checked
+         * @since 1.0
          */
         static kind_is_valid(kind: ValueKind): boolean;
 
         /**
          * Converts a {@link ICalGLib.ValueKind} to a {@link ICalGLib.PropertyKind}.
          * @param kind A {@link ICalGLib.ValueKind}
+         * @since 1.0
          */
         static kind_to_property_kind(kind: ValueKind): PropertyKind;
 
         /**
          * Converts the {@link ICalGLib.ValueKind} to a string.
          * @param kind A {@link ICalGLib.ValueKind}
+         * @since 1.0
          */
         static kind_to_string(kind: ValueKind): string;
 
@@ -6942,12 +7617,14 @@ export namespace ICalGLib {
         /**
          * Converts the {@link ICalGLib.Value} to a string.
          * @returns The string representation.
+         * @since 1.0
          */
         as_ical_string(): string;
 
         /**
          * Deeply clone a {@link ICalGLib.Value}.
          * @returns The newly created {@link ICalGLib.Value} with the same property as `value`.
+         * @since 1.0
          */
         clone(): Value;
 
@@ -6955,461 +7632,538 @@ export namespace ICalGLib {
          * Compares two {@link ICalGLib.Value}.
          * @param b A {@link ICalGLib.Value}
          * @returns The compare result.
+         * @since 1.0
          */
         compare(b: Value): ParameterXliccomparetype;
 
         /**
          * Gets the action of {@link ICalGLib.Value}.
          * @returns The action within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_action(): PropertyAction;
 
         /**
          * Gets the attach of {@link ICalGLib.Value}.
          * @returns The attach within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_attach(): Attach | null;
 
         /**
          * Gets the binary of {@link ICalGLib.Value}.
          * @returns The binary within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_binary(): string | null;
 
         /**
          * Gets the boolean of {@link ICalGLib.Value}.
          * @returns The boolean within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_boolean(): number;
 
         /**
          * Gets the busytype of {@link ICalGLib.Value}.
          * @returns The busytype within {@link ICalGLib.Value}
+         * @since 2.0
          */
         get_busytype(): PropertyBusytype;
 
         /**
          * Gets the caladdress of {@link ICalGLib.Value}.
          * @returns The caladdress within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_caladdress(): string | null;
 
         /**
          * Gets the carlevel of {@link ICalGLib.Value}.
          * @returns The carlevel within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_carlevel(): PropertyCarlevel;
 
         /**
          * Gets the class of {@link ICalGLib.Value}.
          * @returns The class within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_class(): Property_Class;
 
         /**
          * Gets the cmd of {@link ICalGLib.Value}.
          * @returns The cmd within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_cmd(): PropertyCmd;
 
         /**
          * Gets the date of {@link ICalGLib.Value}.
          * @returns The date within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_date(): Time | null;
 
         /**
          * Gets the datetime of {@link ICalGLib.Value}.
          * @returns The datetime within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_datetime(): Time | null;
 
         /**
          * Gets the datetimedate (DATE-TIME or DATE) of {@link ICalGLib.Value}.
          * @returns The datetimedate within {@link ICalGLib.Value}
+         * @since 3.0
          */
         get_datetimedate(): Time | null;
 
         /**
          * Gets the datetimeperiod of {@link ICalGLib.Value}.
          * @returns The datetimeperiod within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_datetimeperiod(): Datetimeperiod | null;
 
         /**
          * Gets the duration of {@link ICalGLib.Value}.
          * @returns The duration within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_duration(): Duration | null;
 
         /**
          * Gets the float of {@link ICalGLib.Value}.
          * @returns The float within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_float(): number;
 
         /**
          * Gets the geo of {@link ICalGLib.Value}.
          * @returns The geo within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_geo(): Geo | null;
 
         /**
          * Gets the integer of {@link ICalGLib.Value}.
          * @returns The integer within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_integer(): number;
 
         /**
          * Gets the method of {@link ICalGLib.Value}.
          * @returns The method within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_method(): PropertyMethod;
 
         /**
          * Gets the parent {@link ICalGLib.Property} of the specified {@link ICalGLib.Value}.
          * @returns The parent {@link ICalGLib.Property}
+         * @since 3.0
          */
         get_parent(): Property | null;
 
         /**
          * Gets the period of {@link ICalGLib.Value}.
          * @returns The period within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_period(): Period | null;
 
         /**
          * Gets the pollcompletion of {@link ICalGLib.Value}.
          * @returns The pollcompletion within {@link ICalGLib.Value}
+         * @since 2.0
          */
         get_pollcompletion(): PropertyPollcompletion;
 
         /**
          * Gets the pollmode of {@link ICalGLib.Value}.
          * @returns The pollmode within {@link ICalGLib.Value}
+         * @since 2.0
          */
         get_pollmode(): PropertyPollmode;
 
         /**
          * Gets the query of {@link ICalGLib.Value}.
          * @returns The query within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_query(): string | null;
 
         /**
          * Gets the querylevel of {@link ICalGLib.Value}.
          * @returns The querylevel within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_querylevel(): PropertyQuerylevel;
 
         /**
          * Gets the recur of {@link ICalGLib.Value}.
          * @returns The recur within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_recur(): Recurrence | null;
 
         /**
          * Gets the requeststatus of {@link ICalGLib.Value}.
          * @returns The requeststatus within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_requeststatus(): Reqstat | null;
 
         /**
          * Gets the status of {@link ICalGLib.Value}.
          * @returns The status within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_status(): PropertyStatus;
 
         /**
          * Gets the string of {@link ICalGLib.Value}.
          * @returns The string within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_string(): string | null;
 
         /**
          * Gets the taskmode of {@link ICalGLib.Value}.
          * @returns The taskmode within {@link ICalGLib.Value}
+         * @since 2.0
          */
         get_taskmode(): PropertyTaskmode;
 
         /**
          * Gets the text of {@link ICalGLib.Value}.
          * @returns The text within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_text(): string | null;
 
         /**
          * Gets the transp of {@link ICalGLib.Value}.
          * @returns The transp within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_transp(): PropertyTransp;
 
         /**
          * Gets the trigger of {@link ICalGLib.Value}.
          * @returns The trigger within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_trigger(): Trigger | null;
 
         /**
          * Gets the uri of {@link ICalGLib.Value}.
          * @returns The uri within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_uri(): string | null;
 
         /**
          * Gets the utcoffset of {@link ICalGLib.Value}.
          * @returns The utcoffset within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_utcoffset(): number;
 
         /**
          * Gets the x of {@link ICalGLib.Value}.
          * @returns The x within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_x(): string | null;
 
         /**
          * Gets the xlicclass of {@link ICalGLib.Value}.
          * @returns The xlicclass within {@link ICalGLib.Value}
+         * @since 1.0
          */
         get_xlicclass(): PropertyXlicclass;
 
         /**
          * Checks if {@link ICalGLib.Value} is valid.
          * @returns 1 if valid, 0 if not.
+         * @since 1.0
          */
         is_valid(): boolean;
 
         /**
          * Gets the kind of {@link ICalGLib.Value}.
          * @returns The kind of `value`.
+         * @since 1.0
          */
         isa(): ValueKind;
 
         /**
          * Checks whether the native part of {@link ICalGLib.Value} is an icalvalue.
          * @returns 1 if yes, 0 if not.
+         * @since 1.0
          */
         isa_value(): number;
 
         /**
          * Resets the kind of {@link ICalGLib.Value}.
+         * @since 1.0
          */
         reset_kind(): void;
 
         /**
          * Sets the action in the {@link ICalGLib.Value}.
          * @param v The action value
+         * @since 1.0
          */
         set_action(v: PropertyAction): void;
 
         /**
          * Sets the attach in the {@link ICalGLib.Value}.
          * @param v The attach value
+         * @since 1.0
          */
         set_attach(v: Attach): void;
 
         /**
          * Sets the binary in the {@link ICalGLib.Value}.
          * @param v The binary value
+         * @since 1.0
          */
         set_binary(v: string): void;
 
         /**
          * Sets the boolean in the {@link ICalGLib.Value}.
          * @param v The boolean value
+         * @since 1.0
          */
         set_boolean(v: number): void;
 
         /**
          * Sets the busytype in the {@link ICalGLib.Value}.
          * @param v The busytype value
+         * @since 2.0
          */
         set_busytype(v: PropertyBusytype): void;
 
         /**
          * Sets the caladdress in the {@link ICalGLib.Value}.
          * @param v The caladdress value
+         * @since 1.0
          */
         set_caladdress(v: string): void;
 
         /**
          * Sets the carlevel in the {@link ICalGLib.Value}.
          * @param v The carlevel value
+         * @since 1.0
          */
         set_carlevel(v: PropertyCarlevel): void;
 
         /**
          * Sets the class in the {@link ICalGLib.Value}.
          * @param v The class value
+         * @since 1.0
          */
         set_class(v: Property_Class): void;
 
         /**
          * Sets the cmd in the {@link ICalGLib.Value}.
          * @param v The cmd value
+         * @since 1.0
          */
         set_cmd(v: PropertyCmd): void;
 
         /**
          * Sets the date in the {@link ICalGLib.Value}.
          * @param v The date value
+         * @since 1.0
          */
         set_date(v: Time): void;
 
         /**
          * Sets the datetime in the {@link ICalGLib.Value}.
          * @param v The datetime value
+         * @since 1.0
          */
         set_datetime(v: Time): void;
 
         /**
          * Sets the datetimedate (DATE-TIME or DATE) in the {@link ICalGLib.Value}.
          * @param v The datetimedate (DATE-TIME or DATE) value
+         * @since 3.0
          */
         set_datetimedate(v: Time): void;
 
         /**
          * Sets the datetimeperiod in the {@link ICalGLib.Value}.
          * @param v The datetimeperiod value
+         * @since 1.0
          */
         set_datetimeperiod(v: Datetimeperiod): void;
 
         /**
          * Sets the duration in the {@link ICalGLib.Value}.
          * @param v The duration value
+         * @since 1.0
          */
         set_duration(v: Duration): void;
 
         /**
          * Sets the float in the {@link ICalGLib.Value}.
          * @param v The float value
+         * @since 1.0
          */
         set_float(v: number): void;
 
         /**
          * Sets the geo in the {@link ICalGLib.Value}.
          * @param v The geo value
+         * @since 1.0
          */
         set_geo(v: Geo): void;
 
         /**
          * Sets the integer in the {@link ICalGLib.Value}.
          * @param v The integer value
+         * @since 1.0
          */
         set_integer(v: number): void;
 
         /**
          * Sets the method in the {@link ICalGLib.Value}.
          * @param v The method value
+         * @since 1.0
          */
         set_method(v: PropertyMethod): void;
 
         /**
          * Sets the parent property of a value.
          * @param property The parent {@link ICalGLib.Property}
+         * @since 2.0
          */
         set_parent(property: Property | null): void;
 
         /**
          * Sets the period in the {@link ICalGLib.Value}.
          * @param v The period value
+         * @since 1.0
          */
         set_period(v: Period): void;
 
         /**
          * Sets the pollcompletion in the {@link ICalGLib.Value}.
          * @param v The pollcompletion value
+         * @since 2.0
          */
         set_pollcompletion(v: PropertyPollcompletion): void;
 
         /**
          * Sets the pollmode in the {@link ICalGLib.Value}.
          * @param v The pollmode value
+         * @since 2.0
          */
         set_pollmode(v: PropertyPollmode): void;
 
         /**
          * Sets the query in the {@link ICalGLib.Value}.
          * @param v The query value
+         * @since 1.0
          */
         set_query(v: string): void;
 
         /**
          * Sets the querylevel in the {@link ICalGLib.Value}.
          * @param v The querylevel value
+         * @since 1.0
          */
         set_querylevel(v: PropertyQuerylevel): void;
 
         /**
          * Sets the recur in the {@link ICalGLib.Value}.
          * @param v The recur value
+         * @since 1.0
          */
         set_recur(v: Recurrence): void;
 
         /**
          * Sets the requeststatus in the {@link ICalGLib.Value}.
          * @param v The requeststatus value
+         * @since 1.0
          */
         set_requeststatus(v: Reqstat): void;
 
         /**
          * Sets the status in the {@link ICalGLib.Value}.
          * @param v The status value
+         * @since 1.0
          */
         set_status(v: PropertyStatus): void;
 
         /**
          * Sets the string in the {@link ICalGLib.Value}.
          * @param v The string value
+         * @since 1.0
          */
         set_string(v: string): void;
 
         /**
          * Sets the taskmode in the {@link ICalGLib.Value}.
          * @param v The taskmode value
+         * @since 2.0
          */
         set_taskmode(v: PropertyTaskmode): void;
 
         /**
          * Sets the text in the {@link ICalGLib.Value}.
          * @param v The text value
+         * @since 1.0
          */
         set_text(v: string): void;
 
         /**
          * Sets the transp in the {@link ICalGLib.Value}.
          * @param v The transp value
+         * @since 1.0
          */
         set_transp(v: PropertyTransp): void;
 
         /**
          * Sets the trigger in the {@link ICalGLib.Value}.
          * @param v The trigger value
+         * @since 1.0
          */
         set_trigger(v: Trigger): void;
 
         /**
          * Sets the uri in the {@link ICalGLib.Value}.
          * @param v The uri value
+         * @since 1.0
          */
         set_uri(v: string): void;
 
         /**
          * Sets the utcoffset in the {@link ICalGLib.Value}.
          * @param v The utcoffset value
+         * @since 1.0
          */
         set_utcoffset(v: number): void;
 
         /**
          * Sets the x in the {@link ICalGLib.Value}.
          * @param v The x value
+         * @since 1.0
          */
         set_x(v: string): void;
 
         /**
          * Sets the xlicclass in the {@link ICalGLib.Value}.
          * @param v The xlicclass value
+         * @since 1.0
          */
         set_xlicclass(v: PropertyXlicclass): void;
     }

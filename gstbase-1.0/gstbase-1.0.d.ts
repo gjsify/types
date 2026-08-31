@@ -633,6 +633,7 @@ export namespace GstBase {
          * @param offset the bytes offset in the adapter to start from
          * @param size the number of bytes to copy
          * @returns A new {@link GLib.Bytes} structure containing the copied data.
+         * @since 1.4
          */
         copy(offset: bigint | number, size: bigint | number): GLib.Bytes;
 
@@ -644,6 +645,7 @@ export namespace GstBase {
          * {@link Gst.BufferFlags.DISCONT} on them, and then calculated for all other
          * following buffers based on their size.
          * @returns The offset. Can be `GST_BUFFER_OFFSET_NONE`.
+         * @since 1.10
          */
         distance_from_discont(): number;
 
@@ -651,6 +653,7 @@ export namespace GstBase {
          * Get the DTS that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
          * flag, or GST_CLOCK_TIME_NONE.
          * @returns The DTS at the last discont or GST_CLOCK_TIME_NONE.
+         * @since 1.10
          */
         dts_at_discont(): Gst.ClockTime;
 
@@ -674,6 +677,7 @@ export namespace GstBase {
          * Free-function: gst_buffer_unref
          * @param nbytes the number of bytes to get
          * @returns a {@link Gst.Buffer} containing the first     `nbytes` of the adapter, or `null` if `nbytes` bytes are not available.     `gst_buffer_unref()` when no longer needed.
+         * @since 1.6
          */
         get_buffer(nbytes: bigint | number): Gst.Buffer | null;
 
@@ -688,6 +692,7 @@ export namespace GstBase {
          * Free-function: gst_buffer_unref
          * @param nbytes the number of bytes to get
          * @returns a {@link Gst.Buffer} containing the first     `nbytes` of the adapter, or `null` if `nbytes` bytes are not available.     `gst_buffer_unref()` when no longer needed.
+         * @since 1.6
          */
         get_buffer_fast(nbytes: bigint | number): Gst.Buffer | null;
 
@@ -700,6 +705,7 @@ export namespace GstBase {
          * the list after usage.
          * @param nbytes the number of bytes to get
          * @returns a {@link Gst.BufferList} of buffers containing     the first `nbytes` of the adapter, or `null` if `nbytes` bytes are not     available
+         * @since 1.6
          */
         get_buffer_list(nbytes: bigint | number): Gst.BufferList | null;
 
@@ -712,6 +718,7 @@ export namespace GstBase {
          * buffer in the list before freeing the list after usage.
          * @param nbytes the number of bytes to get
          * @returns a {@link GLib.List} of     buffers containing the first `nbytes` of the adapter, or `null` if `nbytes`     bytes are not available
+         * @since 1.6
          */
         get_list(nbytes: bigint | number): Gst.Buffer[] | null;
 
@@ -777,6 +784,7 @@ export namespace GstBase {
          * Get the offset that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
          * flag, or GST_BUFFER_OFFSET_NONE.
          * @returns The offset at the last discont or GST_BUFFER_OFFSET_NONE.
+         * @since 1.10
          */
         offset_at_discont(): number;
 
@@ -804,6 +812,7 @@ export namespace GstBase {
          * and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
          * @param offset the offset in the adapter at which to get timestamp
          * @returns The previously seen dts at given offset.
+         * @since 1.2
          */
         prev_dts_at_offset(offset: bigint | number): [Gst.ClockTime, number];
 
@@ -817,6 +826,7 @@ export namespace GstBase {
          * before the first byte with an offset is added to the adapter, the offset
          * and distance returned are GST_BUFFER_OFFSET_NONE and 0 respectively.
          * @returns The previous seen offset.
+         * @since 1.10
          */
         prev_offset(): [number, number];
 
@@ -844,6 +854,7 @@ export namespace GstBase {
          * and distance returned are GST_CLOCK_TIME_NONE and 0 respectively.
          * @param offset the offset in the adapter at which to get timestamp
          * @returns The previously seen pts at given offset.
+         * @since 1.2
          */
         prev_pts_at_offset(offset: bigint | number): [Gst.ClockTime, number];
 
@@ -851,6 +862,7 @@ export namespace GstBase {
          * Get the PTS that was on the last buffer with the GST_BUFFER_FLAG_DISCONT
          * flag, or GST_CLOCK_TIME_NONE.
          * @returns The PTS at the last discont or GST_CLOCK_TIME_NONE.
+         * @since 1.10
          */
         pts_at_discont(): Gst.ClockTime;
 
@@ -931,6 +943,7 @@ export namespace GstBase {
          * Free-function: gst_buffer_unref
          * @param nbytes the number of bytes to take
          * @returns a {@link Gst.Buffer} containing the first     `nbytes` of the adapter, or `null` if `nbytes` bytes are not available.     `gst_buffer_unref()` when no longer needed.
+         * @since 1.2
          */
         take_buffer_fast(nbytes: bigint | number): Gst.Buffer | null;
 
@@ -944,6 +957,7 @@ export namespace GstBase {
          * the list after usage.
          * @param nbytes the number of bytes to take
          * @returns a {@link Gst.BufferList} of buffers containing     the first `nbytes` of the adapter, or `null` if `nbytes` bytes are not     available
+         * @since 1.6
          */
         take_buffer_list(nbytes: bigint | number): Gst.BufferList | null;
 
@@ -1235,6 +1249,7 @@ export namespace GstBase {
          * mandatory events such as stream-start, caps, and segment events will be
          * sent before pushing the buffer.
          * @param bufferlist the {@link Gst.BufferList} to push.
+         * @since 1.18
          * @virtual
          */
         vfunc_finish_buffer_list(bufferlist: Gst.BufferList): Gst.FlowReturn;
@@ -1272,6 +1287,7 @@ export namespace GstBase {
          * Negotiates src pad caps with downstream elements.
          * Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
          * if {@link GstBase.AggregatorClass.SignalSignatures.negotiate | GstBase.AggregatorClass::negotiate} fails.
+         * @since 1.18
          * @virtual
          */
         vfunc_negotiate(): boolean;
@@ -1290,6 +1306,7 @@ export namespace GstBase {
          * a {@link GstBase.Aggregator.SignalSignatures.samples_selected | GstBase.Aggregator::samples-selected} handler, and can be used to precisely
          * control aggregating parameters for a given set of input samples.
          * @param aggregator_pad a {@link GstBase.AggregatorPad}
+         * @since 1.18
          * @virtual
          */
         vfunc_peek_next_sample(aggregator_pad: AggregatorPad): Gst.Sample | null;
@@ -1406,6 +1423,7 @@ export namespace GstBase {
          * mandatory events such as stream-start, caps, and segment events will be
          * sent before pushing the buffer.
          * @param bufferlist the {@link Gst.BufferList} to push.
+         * @since 1.18
          */
         finish_buffer_list(bufferlist: Gst.BufferList): Gst.FlowReturn;
 
@@ -1426,11 +1444,13 @@ export namespace GstBase {
          * Subclasses may use the return value to inform whether they should return
          * {@link Gst.FlowReturn.EOS} from their aggregate implementation.
          * @returns whether live status was forced on `self`.
+         * @since 1.22
          */
         get_force_live(): boolean;
 
         /**
          * @returns whether inactive pads will not be waited on
+         * @since 1.20
          */
         get_ignore_inactive_pads(): boolean;
 
@@ -1449,6 +1469,7 @@ export namespace GstBase {
          * Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
          * if {@link GstBase.AggregatorClass.SignalSignatures.negotiate | GstBase.AggregatorClass::negotiate} fails.
          * @returns `true` if the negotiation succeeded, else `false`.
+         * @since 1.18
          */
         negotiate(): boolean;
 
@@ -1459,6 +1480,7 @@ export namespace GstBase {
          * control aggregating parameters for a given set of input samples.
          * @param pad 
          * @returns The sample that is about to be aggregated. It may hold a {@link Gst.Buffer}   or a {@link Gst.BufferList}. The contents of its info structure is subclass-dependent,   and documented on a subclass basis. The buffers held by the sample are   not writable.
+         * @since 1.18
          */
         peek_next_sample(pad: AggregatorPad): Gst.Sample | null;
 
@@ -1470,6 +1492,7 @@ export namespace GstBase {
          * This API does not allow pushing stream-start, caps, segment and EOS events.
          * Specific API like `gst_aggregator_set_src_caps()` should be used for these.
          * @param event the {@link Gst.Event} to push.
+         * @since 1.26
          */
         push_src_event(event: Gst.Event): boolean;
 
@@ -1489,6 +1512,7 @@ export namespace GstBase {
          * @param dts The decoding timestamp of the next output buffer
          * @param duration The duration of the next output buffer
          * @param info a {@link Gst.Structure} containing additional information
+         * @since 1.18
          */
         selected_samples(pts: Gst.ClockTime, dts: Gst.ClockTime, duration: Gst.ClockTime, info: Gst.Structure | null): void;
 
@@ -1496,6 +1520,7 @@ export namespace GstBase {
          * Subclasses should call this at construction time in order for `self` to
          * aggregate on a timeout even when no live source is connected.
          * @param force_live The new value
+         * @since 1.22
          */
         set_force_live(force_live: boolean): void;
 
@@ -1507,6 +1532,7 @@ export namespace GstBase {
          * {@link GstBase.Aggregator} will still wait once on each newly-added pad, making
          * sure upstream has had a fair chance to start up.
          * @param ignore whether inactive pads should not be waited on
+         * @since 1.20
          */
         set_ignore_inactive_pads(ignore: boolean): void;
 
@@ -1533,6 +1559,7 @@ export namespace GstBase {
          * This is the desired behaviour in most cases where you have a live source
          * and you have a dead line based aggregator subclass.
          * @returns The running time based on the position
+         * @since 1.16
          */
         simple_get_next_time(): Gst.ClockTime;
 
@@ -1544,6 +1571,7 @@ export namespace GstBase {
          * Subclasses MUST call this before `gst_aggregator_selected_samples()`,
          * if it is used at all.
          * @param segment The new {@link Gst.Segment}
+         * @since 1.18
          */
         update_segment(segment: Gst.Segment): void;
     }
@@ -1717,6 +1745,7 @@ export namespace GstBase {
          * a call to `gst_aggregator_pad_peek_buffer()` or
          * `gst_aggregator_pad_pop_buffer()`.
          * @returns `true` if the pad has a buffer available as the next thing.
+         * @since 1.14.1
          */
         has_buffer(): boolean;
 
@@ -1728,6 +1757,7 @@ export namespace GstBase {
         /**
          * It is only valid to call this method from {@link GstBase.AggregatorClass.SignalSignatures.aggregate | GstBase.AggregatorClass::aggregate}()
          * @returns `true` if the pad is inactive, `false` otherwise.   See `gst_aggregator_ignore_inactive_pads()` for more info.
+         * @since 1.20
          */
         is_inactive(): boolean;
 
@@ -2127,6 +2157,7 @@ export namespace GstBase {
          * Drains the adapter until it is empty. It decreases the min_frame_size to
          * match the current adapter size and calls chain method until the adapter
          * is emptied or chain returns with error.
+         * @since 1.12
          */
         drain(): void;
 
@@ -2160,6 +2191,7 @@ export namespace GstBase {
          * not required to use this and can still do tag handling on its own.
          * @param tags a {@link Gst.TagList} to merge, or NULL to unset     previously-set tags
          * @param mode the {@link Gst.TagMergeMode} to use, usually #GST_TAG_MERGE_REPLACE
+         * @since 1.6
          */
         merge_tags(tags: Gst.TagList | null, mode: Gst.TagMergeMode): void;
 
@@ -2317,6 +2349,7 @@ export namespace GstBase {
          * This function can be used to set the timestamps based on the offset
          * into the frame data that the picture starts.
          * @param offset offset into current buffer
+         * @since 1.2
          */
         set_ts_at_offset(offset: bigint | number): void;
     }
@@ -2886,6 +2919,7 @@ export namespace GstBase {
          * Checks if `sink` is currently configured to drop buffers which are outside
          * the current segment
          * @returns `true` if the sink is configured to drop buffers outside the current segment.
+         * @since 1.12
          */
         get_drop_out_of_segment(): boolean;
 
@@ -2909,6 +2943,7 @@ export namespace GstBase {
         /**
          * Get the maximum amount of bits per second that the sink will render.
          * @returns the maximum number of bits per second `sink` will render.
+         * @since 1.2
          */
         get_max_bitrate(): number;
 
@@ -2924,6 +2959,7 @@ export namespace GstBase {
          * `gst_base_sink_set_processing_deadline()` for more information about
          * the processing deadline.
          * @returns the processing deadline
+         * @since 1.16
          */
         get_processing_deadline(): Gst.ClockTime;
 
@@ -2942,6 +2978,7 @@ export namespace GstBase {
          * - "dropped" G_TYPE_UINT64   Number of dropped frames
          * - "rendered" G_TYPE_UINT64   Number of rendered frames
          * @returns pointer to {@link Gst.Structure}
+         * @since 1.18
          */
         get_stats(): Gst.Structure;
 
@@ -3020,6 +3057,7 @@ export namespace GstBase {
         /**
          * Configure `sink` to drop buffers which are outside the current segment
          * @param drop_out_of_segment drop buffers outside the segment
+         * @since 1.12
          */
         set_drop_out_of_segment(drop_out_of_segment: boolean): void;
 
@@ -3033,6 +3071,7 @@ export namespace GstBase {
         /**
          * Set the maximum amount of bits per second that the sink will render.
          * @param max_bitrate the max_bitrate in bits per second
+         * @since 1.2
          */
         set_max_bitrate(max_bitrate: bigint | number): void;
 
@@ -3052,6 +3091,7 @@ export namespace GstBase {
          * 
          * This function is usually called by subclasses.
          * @param processing_deadline the new processing deadline in nanoseconds.
+         * @since 1.16
          */
         set_processing_deadline(processing_deadline: Gst.ClockTime): void;
 
@@ -3503,6 +3543,7 @@ export namespace GstBase {
          * Do not call this in the {@link GstBase.BaseSrcClass.SignalSignatures.fill | GstBase.BaseSrcClass::fill} vmethod. Call this in
          * {@link GstBase.BaseSrcClass.SignalSignatures.create | GstBase.BaseSrcClass::create} or in {@link GstBase.BaseSrcClass.SignalSignatures.alloc | GstBase.BaseSrcClass::alloc}, _before_ any
          * buffer is allocated.
+         * @since 1.18
          * @virtual
          */
         vfunc_negotiate(): boolean;
@@ -3615,6 +3656,7 @@ export namespace GstBase {
          * {@link GstBase.BaseSrcClass.SignalSignatures.create | GstBase.BaseSrcClass::create} or in {@link GstBase.BaseSrcClass.SignalSignatures.alloc | GstBase.BaseSrcClass::alloc}, _before_ any
          * buffer is allocated.
          * @returns `true` if the negotiation succeeded, else `false`.
+         * @since 1.18
          */
         negotiate(): boolean;
 
@@ -3629,6 +3671,7 @@ export namespace GstBase {
          * @param stop Stop value for the new segment
          * @param time The new time value for the start of the new segment
          * @returns `true` if preparation of the seamless segment succeeded.
+         * @deprecated since 1.18: Use `gst_base_src_new_segment()`
          */
         new_seamless_segment(start: bigint | number, stop: bigint | number, time: bigint | number): boolean;
 
@@ -3644,6 +3687,7 @@ export namespace GstBase {
          * should be configured via `gst_base_src_set_format()` before calling this method.
          * @param segment a pointer to a {@link Gst.Segment}
          * @returns `true` if preparation of new segment succeeded.
+         * @since 1.18
          */
         new_segment(segment: Gst.Segment): boolean;
 
@@ -3664,6 +3708,7 @@ export namespace GstBase {
          * which can be useful to ensure events ordering.
          * @param segment a pointer to a {@link Gst.Segment}
          * @returns `true` if sending of new segment succeeded.
+         * @since 1.24
          */
         push_segment(segment: Gst.Segment): boolean;
 
@@ -3699,6 +3744,7 @@ export namespace GstBase {
          * EOS will be pushed only when the {@link GstBase.BaseSrcClass.SignalSignatures.create | GstBase.BaseSrcClass::create} implementation
          * returns {@link Gst.FlowReturn.EOS}.
          * @param automatic_eos automatic eos
+         * @since 1.4
          */
         set_automatic_eos(automatic_eos: boolean): void;
 
@@ -3790,6 +3836,7 @@ export namespace GstBase {
          * subclasses must only call this function when the source operates in push
          * mode.
          * @param buffer_list a {@link Gst.BufferList}
+         * @since 1.14
          */
         submit_buffer_list(buffer_list: Gst.BufferList): void;
 
@@ -4240,6 +4287,7 @@ export namespace GstBase {
          * very beginning of the default {@link GstBase.BaseTransformClass.SignalSignatures.submit_input_buffer | GstBase.BaseTransformClass::submit_input_buffer}
          * implementation.
          * @returns `true` if the negotiation succeeded, else `false`.
+         * @since 1.18
          */
         reconfigure(): boolean;
 
@@ -4307,6 +4355,7 @@ export namespace GstBase {
          * 
          * MT safe.
          * @param prefer_passthrough New state
+         * @since 1.0.1
          */
         set_prefer_passthrough(prefer_passthrough: boolean): void;
 
@@ -4338,6 +4387,7 @@ export namespace GstBase {
          * buffer.
          * @param updated_caps An updated version of the srcpad caps to be pushed downstream
          * @returns `true` if the caps could be sent downstream `false` otherwise
+         * @since 1.6
          */
         update_src_caps(updated_caps: Gst.Caps): boolean;
     }
@@ -4616,6 +4666,7 @@ export namespace GstBase {
          * state of all pads should be flushed as part of flushing seek
          * handling. See {@link GstBase.CollectPadsFlushFunction} for more info.
          * @param func flush function to install
+         * @since 1.4
          */
         set_flush_function(func: CollectPadsFlushFunction): void;
 
@@ -4680,6 +4731,7 @@ export namespace GstBase {
          * be done by {@link GstBase.CollectPads}.
          * @param pad src {@link Gst.Pad} that received the event
          * @param event event being processed
+         * @since 1.4
          */
         src_event_default(pad: Gst.Pad, event: Gst.Event): boolean;
 
@@ -5011,6 +5063,7 @@ export namespace GstBase {
         /**
          * Copies a {@link GstBase.BaseParseFrame}.
          * @returns A copy of `frame`
+         * @since 1.12.1
          */
         copy(): BaseParseFrame;
 
@@ -5679,6 +5732,7 @@ export namespace GstBase {
          * @param offset offset from which to start scanning, relative to the current     position
          * @param size number of bytes to scan from offset
          * @returns offset of the first match, or -1 if no match was found.
+         * @since 1.6
          */
         masked_scan_uint32_peek(mask: number, pattern: number, offset: number, size: number): [number, number];
 
@@ -6313,38 +6367,45 @@ export namespace GstBase {
         /**
          * Adds a new {@link Gst.Pad} to the {@link GstBase.FlowCombiner}.
          * @param pad the {@link Gst.Pad} that is being added
+         * @since 1.4
          */
         add_pad(pad: Gst.Pad): void;
 
         /**
          * Removes all pads from a {@link GstBase.FlowCombiner} and resets it to its initial state.
+         * @since 1.6
          */
         clear(): void;
 
         /**
          * Frees a {@link GstBase.FlowCombiner} struct and all its internal data.
+         * @since 1.4
          */
         free(): void;
 
         /**
          * Increments the reference count on the {@link GstBase.FlowCombiner}.
          * @returns the {@link GstBase.FlowCombiner}.
+         * @since 1.12.1
          */
         ref(): FlowCombiner;
 
         /**
          * Removes a {@link Gst.Pad} from the {@link GstBase.FlowCombiner}.
          * @param pad the {@link Gst.Pad} to remove
+         * @since 1.4
          */
         remove_pad(pad: Gst.Pad): void;
 
         /**
          * Reset flow combiner and all pads to their initial state without removing pads.
+         * @since 1.6
          */
         reset(): void;
 
         /**
          * Decrements the reference count on the {@link GstBase.FlowCombiner}.
+         * @since 1.12.1
          */
         unref(): void;
 
@@ -6357,6 +6418,7 @@ export namespace GstBase {
          * return is the same as the latest obtained {@link Gst.FlowReturn}.
          * @param fret the latest {@link Gst.FlowReturn} received for a pad in this {@link GstBase.FlowCombiner}
          * @returns The combined {@link Gst.FlowReturn}
+         * @since 1.4
          */
         update_flow(fret: Gst.FlowReturn): Gst.FlowReturn;
 
@@ -6371,6 +6433,7 @@ export namespace GstBase {
          * @param pad the {@link Gst.Pad} whose {@link Gst.FlowReturn} to update
          * @param fret the latest {@link Gst.FlowReturn} received for a pad in this {@link GstBase.FlowCombiner}
          * @returns The combined {@link Gst.FlowReturn}
+         * @since 1.6
          */
         update_pad_flow(pad: Gst.Pad, fret: Gst.FlowReturn): Gst.FlowReturn;
     }
@@ -6390,6 +6453,9 @@ export namespace GstBase {
         static $gtype: GObject.GType<TypeFindData>;
 
         // Methods
+        /**
+         * @since 1.22
+         */
         free(): void;
     }
 

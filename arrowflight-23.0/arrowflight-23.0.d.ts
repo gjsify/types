@@ -119,17 +119,20 @@ export namespace ArrowFlight {
          * Add a header.
          * @param name A header name.
          * @param value A header value.
+         * @since 9.0.0
          */
         add_header(name: string, value: string): void;
 
         /**
          * Clear all headers.
+         * @since 9.0.0
          */
         clear_headers(): void;
 
         /**
          * Iterates over all headers in the options.
          * @param func The user's callback function.
+         * @since 9.0.0
          */
         foreach_header(func: HeaderFunc): void;
     }
@@ -195,11 +198,13 @@ export namespace ArrowFlight {
          * @param password Password to be used.
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns `true` on success, `false` if there was an error.
+         * @since 12.0.0
          */
         authenticate_basic_token(user: string, password: string, options: CallOptions | null): [boolean, string, string];
 
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @since 8.0.0
          */
         close(): boolean;
 
@@ -207,6 +212,7 @@ export namespace ArrowFlight {
          * @param ticket A {@link ArrowFlight.Ticket}.
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The {@link ArrowFlight.StreamReader} to read record batched from the server   on success, `null` on error.
+         * @since 6.0.0
          */
         do_get(ticket: Ticket, options: CallOptions | null): StreamReader | null;
 
@@ -222,6 +228,7 @@ export namespace ArrowFlight {
          * @param schema A {@link Arrow.Schema}.
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The `GAFlighDoPutResult` holding a reader and a writer on success,   `null` on error.
+         * @since 18.0.0
          */
         do_put(descriptor: Descriptor, schema: Arrow.Schema, options: CallOptions | null): DoPutResult | null;
 
@@ -229,6 +236,7 @@ export namespace ArrowFlight {
          * @param descriptor A {@link ArrowFlight.Descriptor} to be processed.
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The returned {@link ArrowFlight.Info} on   success, `null` on error.
+         * @since 9.0.0
          */
         get_flight_info(descriptor: Descriptor, options: CallOptions | null): Info | null;
 
@@ -236,6 +244,7 @@ export namespace ArrowFlight {
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The returned list of {@link ArrowFlight.Info} on success, `null` on error.
+         * @since 5.0.0
          */
         list_flights(criteria: Criteria | null, options: CallOptions | null): Info[] | null;
     }
@@ -455,6 +464,7 @@ export namespace ArrowFlight {
         // Methods
         /**
          * @returns The opaque value used to express a command.   It should be freed with `g_free()` when no longer needed.
+         * @since 5.0.0
          */
         get_command(): string;
     }
@@ -625,11 +635,13 @@ export namespace ArrowFlight {
         /**
          * @param other_descriptor A {@link ArrowFlight.Descriptor} to be compared.
          * @returns `true` if both of them represents the same descriptor,   `false` otherwise.
+         * @since 5.0.0
          */
         equal(other_descriptor: Descriptor): boolean;
 
         /**
          * @returns A descriptor as a string.   It should be freed with `g_free()` when no longer needed.
+         * @since 5.0.0
          */
         to_string(): string;
     }
@@ -765,11 +777,13 @@ export namespace ArrowFlight {
         /**
          * @param other_endpoint A {@link ArrowFlight.Endpoint} to be compared.
          * @returns `true` if both of them represents the same endpoint,   `false` otherwise.
+         * @since 5.0.0
          */
         equal(other_endpoint: Endpoint): boolean;
 
         /**
          * @returns The locations in this endpoint.   It must be freed with `g_list_free()` and `g_object_unref()` when no   longer needed. You can use `g_list_free_full(locations,   g_object_unref)`.
+         * @since 5.0.0
          */
         get_locations(): Location[] | null;
     }
@@ -832,32 +846,38 @@ export namespace ArrowFlight {
         /**
          * @param other_info A {@link ArrowFlight.Info} to be compared.
          * @returns `true` if both of them represents the same information,   `false` otherwise.
+         * @since 5.0.0
          */
         equal(other_info: Info): boolean;
 
         /**
          * @returns The {@link ArrowFlight.Descriptor} of the information.
+         * @since 5.0.0
          */
         get_descriptor(): Descriptor;
 
         /**
          * @returns The list of {@link ArrowFlight.Endpoint} of the information.
+         * @since 5.0.0
          */
         get_endpoints(): Endpoint[];
 
         /**
          * @param options A {@link Arrow.ReadOptions}.
          * @returns Deserialized {@link Arrow.Schema}, `null` on error.
+         * @since 5.0.0
          */
         get_schema(options: Arrow.ReadOptions | null): Arrow.Schema;
 
         /**
          * @returns The number of total bytes of the information.
+         * @since 5.0.0
          */
         get_total_bytes(): number;
 
         /**
          * @returns The number of total records of the information.
+         * @since 5.0.0
          */
         get_total_records(): number;
     }
@@ -910,16 +930,19 @@ export namespace ArrowFlight {
         /**
          * @param other_location A {@link ArrowFlight.Location} to be compared.
          * @returns `true` if both of them represents the same URI, `false` otherwise.
+         * @since 5.0.0
          */
         equal(other_location: Location): boolean;
 
         /**
          * @returns The scheme of this URI.   It should be freed with `g_free()` when no longer needed.
+         * @since 5.0.0
          */
         get_scheme(): string;
 
         /**
          * @returns A representation of this URI as a string.   It should be freed with `g_free()` when no longer needed.
+         * @since 5.0.0
          */
         to_string(): string;
     }
@@ -972,6 +995,7 @@ export namespace ArrowFlight {
         // Methods
         /**
          * @returns The descriptor for this upload.
+         * @since 14.0.0
          */
         get_descriptor(): Descriptor;
     }
@@ -1031,6 +1055,7 @@ export namespace ArrowFlight {
         // Methods
         /**
          * @returns The metadata on success, `null` on error.
+         * @since 18.0.0
          */
         read(): Arrow.Buffer;
     }
@@ -1092,6 +1117,7 @@ export namespace ArrowFlight {
          * Writes metadata to the client.
          * @param metadata A {@link Arrow.Buffer} to be sent.
          * @returns `true` on success, `false` on error.
+         * @since 18.0.0
          */
         write(metadata: Arrow.Buffer): boolean;
     }
@@ -1145,6 +1171,7 @@ export namespace ArrowFlight {
         // Methods
         /**
          * @returns The paths in this descriptor.   It must be freed with `g_strfreev()` when no longer needed.
+         * @since 5.0.0
          */
         get_paths(): string[] | null;
     }
@@ -1219,11 +1246,13 @@ export namespace ArrowFlight {
         // Methods
         /**
          * @returns The all data on success, `null` on error.
+         * @since 6.0.0
          */
         read_all(): Arrow.Table;
 
         /**
          * @returns The next chunk on success, `null` on end   of stream, `null` on error.
+         * @since 6.0.0
          */
         read_next(): StreamChunk;
     }
@@ -1337,6 +1366,7 @@ export namespace ArrowFlight {
          * @param schema A {@link Arrow.Schema}.
          * @param options A {@link Arrow.WriteOptions}.
          * @returns `true` on success, `false` on error.
+         * @since 18.0.0
          */
         begin(schema: Arrow.Schema, options: Arrow.WriteOptions | null): boolean;
 
@@ -1344,6 +1374,7 @@ export namespace ArrowFlight {
          * Write metadata.
          * @param metadata A {@link Arrow.Buffer}.
          * @returns `true` on success, `false` on error.
+         * @since 18.0.0
          */
         write_metadata(metadata: Arrow.Buffer): boolean;
 
@@ -1352,6 +1383,7 @@ export namespace ArrowFlight {
          * @param record_batch A {@link Arrow.RecordBatch}.
          * @param metadata A {@link Arrow.Buffer}.
          * @returns `true` on success, `false` on error.
+         * @since 18.0.0
          */
         write_record_batch(record_batch: Arrow.RecordBatch, metadata: Arrow.Buffer | null): boolean;
 
@@ -1409,6 +1441,7 @@ export namespace ArrowFlight {
          * A virtual function to implement `DoGet` API.
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param ticket A {@link ArrowFlight.Ticket}.
+         * @since 6.0.0
          * @virtual
          */
         vfunc_do_get(context: ServerCallContext, ticket: Ticket): DataStream;
@@ -1418,6 +1451,7 @@ export namespace ArrowFlight {
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param reader A {@link ArrowFlight.MessageReader}.
          * @param writer A {@link ArrowFlight.MetadataWriter}.
+         * @since 18.0.0
          * @virtual
          */
         vfunc_do_put(context: ServerCallContext, reader: MessageReader, writer: MetadataWriter): boolean;
@@ -1425,6 +1459,7 @@ export namespace ArrowFlight {
         /**
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param request A {@link ArrowFlight.Descriptor}.
+         * @since 9.0.0
          * @virtual
          */
         vfunc_get_flight_info(context: ServerCallContext, request: Descriptor): Info;
@@ -1433,6 +1468,7 @@ export namespace ArrowFlight {
          * A virtual function to implement `ListFlights` API.
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param criteria A {@link ArrowFlight.Criteria}.
+         * @since 5.0.0
          * @virtual
          */
         vfunc_list_flights(context: ServerCallContext, criteria: Criteria | null): Info[];
@@ -1442,6 +1478,7 @@ export namespace ArrowFlight {
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param ticket A {@link ArrowFlight.Ticket}.
          * @returns {@link ArrowFlight.DataStream} on success, `null` on error.
+         * @since 6.0.0
          */
         do_get(context: ServerCallContext, ticket: Ticket): DataStream;
 
@@ -1451,6 +1488,7 @@ export namespace ArrowFlight {
          * @param reader A {@link ArrowFlight.MessageReader}.
          * @param writer A {@link ArrowFlight.MetadataWriter}.
          * @returns `true` on success, `false` on error.
+         * @since 18.0.0
          */
         do_put(context: ServerCallContext, reader: MessageReader, writer: MetadataWriter): boolean;
 
@@ -1458,6 +1496,7 @@ export namespace ArrowFlight {
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param request A {@link ArrowFlight.Descriptor}.
          * @returns A {@link ArrowFlight.Info} on success, `null` on error.
+         * @since 9.0.0
          */
         get_flight_info(context: ServerCallContext, request: Descriptor): Info;
 
@@ -1467,12 +1506,14 @@ export namespace ArrowFlight {
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @returns {@link GLib.List} of {@link ArrowFlight.Info} on success, `null` on error.
+         * @since 5.0.0
          */
         list_flights(context: ServerCallContext, criteria: Criteria | null): Info[];
 
         /**
          * @param options A {@link ArrowFlight.ServerOptions}.
          * @returns `true` on success, `false` on error.
+         * @since 5.0.0
          */
         listen(options: ServerOptions): boolean;
 
@@ -1480,6 +1521,7 @@ export namespace ArrowFlight {
          * Shuts down the serve. This function can be called from signal
          * handler or another thread.
          * @returns `true` on success, `false` on error.
+         * @since 5.0.0
          */
         shutdown(): boolean;
 
@@ -1595,6 +1637,7 @@ export namespace ArrowFlight {
         /**
          * Reads a message from the client.
          * @returns Read data as {@link GLib.Bytes} on   success, `null` on error.
+         * @since 12.0.0
          */
         read(): GLib.Bytes | null;
     }
@@ -1656,6 +1699,7 @@ export namespace ArrowFlight {
          * Writes a message to the client.
          * @param message A {@link GLib.Bytes} to be sent.
          * @returns `true` on success, `false` on error.
+         * @since 12.0.0
          */
         write(message: GLib.Bytes | Uint8Array): boolean;
     }
@@ -1722,6 +1766,7 @@ export namespace ArrowFlight {
         /**
          * Iterates over all incoming headers.
          * @param func The user's callback function.
+         * @since 14.0.0
          */
         foreach_incoming_header(func: HeaderFunc): void;
     }
@@ -1777,6 +1822,7 @@ export namespace ArrowFlight {
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param sender A {@link ArrowFlight.ServerAuthSender}.
          * @param reader A {@link ArrowFlight.ServerAuthReader}.
+         * @since 12.0.0
          * @virtual
          */
         vfunc_authenticate(context: ServerCallContext, sender: ServerAuthSender, reader: ServerAuthReader): void;
@@ -1785,6 +1831,7 @@ export namespace ArrowFlight {
          * Validates a per-call client token.
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param token The client token. May be the empty string if the client does not   provide a token.
+         * @since 12.0.0
          * @virtual
          */
         vfunc_is_valid(context: ServerCallContext, token: GLib.Bytes): GLib.Bytes | Uint8Array | null;
@@ -1796,6 +1843,7 @@ export namespace ArrowFlight {
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param sender A {@link ArrowFlight.ServerAuthSender}.
          * @param reader A {@link ArrowFlight.ServerAuthReader}.
+         * @since 12.0.0
          */
         authenticate(context: ServerCallContext, sender: ServerAuthSender, reader: ServerAuthReader): void;
 
@@ -1804,6 +1852,7 @@ export namespace ArrowFlight {
          * @param context A {@link ArrowFlight.ServerCallContext}.
          * @param token The client token. May be the empty string if the client does not   provide a token.
          * @returns The identity of the peer, if   this authentication method supports it.
+         * @since 12.0.0
          */
         is_valid(context: ServerCallContext, token: GLib.Bytes | Uint8Array): GLib.Bytes | null;
     }
@@ -1937,6 +1986,7 @@ export namespace ArrowFlight {
         // Methods
         /**
          * @returns The data of the chunk.
+         * @since 6.0.0
          */
         get_data(): Arrow.RecordBatch;
 
@@ -1948,6 +1998,7 @@ export namespace ArrowFlight {
 
         /**
          * @returns The metadata of the chunk.   The metadata may be NULL.
+         * @since 6.0.0
          */
         get_metadata(): Arrow.Buffer | null;
     }
@@ -2045,6 +2096,7 @@ export namespace ArrowFlight {
         // Methods
         /**
          * @returns `true` on success, `false` on error.
+         * @since 18.0.0
          */
         done_writing(): boolean;
     }
@@ -2110,6 +2162,7 @@ export namespace ArrowFlight {
         /**
          * @param other_ticket A {@link ArrowFlight.Ticket} to be compared.
          * @returns `true` if both of them represents the same ticket, `false` otherwise.
+         * @since 5.0.0
          */
         equal(other_ticket: Ticket): boolean;
     }

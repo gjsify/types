@@ -1516,6 +1516,7 @@ export namespace Nice {
          * Calling this function before freeing the agent makes sure the allocated relay
          * ports aren't left behind on TURN server but properly removed.
          * @param callback A callback that will be called when the closing is  complete
+         * @since 0.1.16
          */
         close_async(callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1533,6 +1534,7 @@ export namespace Nice {
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
          * @returns `false` if the stream or component could not be found or consent     freshness is not enabled, `true` otherwise
+         * @since 0.1.19
          */
         consent_lost(stream_id: number, component_id: number): boolean;
 
@@ -1544,6 +1546,7 @@ export namespace Nice {
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
          * @returns `false` if the component could not be found, `true` otherwise
+         * @since 0.1.6
          */
         forget_relays(stream_id: number, component_id: number): boolean;
 
@@ -1572,6 +1575,7 @@ export namespace Nice {
          * <para>See also: `nice_agent_generate_local_stream_sdp()` </para>
          * @param candidate The candidate to generate
          * @returns A string representing the SDP for the candidate. Must be freed with `g_free()` once done.
+         * @since 0.1.4
          */
         generate_local_candidate_sdp(candidate: Candidate): string;
 
@@ -1602,6 +1606,7 @@ export namespace Nice {
          * <para>See also: `nice_agent_generate_local_candidate_sdp()` </para>
          * <para>See also: `nice_agent_get_default_local_candidate()` </para>
          * @returns A string representing the local SDP. Must be freed with `g_free()` once done.
+         * @since 0.1.4
          */
         generate_local_sdp(): string;
 
@@ -1632,6 +1637,7 @@ export namespace Nice {
          * @param stream_id The ID of the stream
          * @param include_non_ice Whether or not to include non ICE specific lines (m=, c= and a=rtcp: lines)
          * @returns A string representing the local SDP for the stream. Must be freed with `g_free()` once done.
+         * @since 0.1.4
          */
         generate_local_stream_sdp(stream_id: number, include_non_ice: boolean): string;
 
@@ -1640,6 +1646,7 @@ export namespace Nice {
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
          * @returns the {@link Nice.ComponentState} of the component and {@link Nice.ComponentState.FAILED} if the component was invalid.
+         * @since 0.1.8
          */
         get_component_state(stream_id: number, component_id: number): ComponentState;
 
@@ -1672,6 +1679,7 @@ export namespace Nice {
          * @param stream_id The ID of the stream to wrap
          * @param component_id The ID of the component to wrap
          * @returns A {@link Gio.IOStream}.
+         * @since 0.1.5
          */
         get_io_stream(stream_id: number, component_id: number): Gio.IOStream;
 
@@ -1751,6 +1759,7 @@ export namespace Nice {
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
          * @returns pointer to the {@link Gio.Socket}, or `null` if there is no selected candidate or if the selected candidate is a relayed candidate.
+         * @since 0.1.5
          */
         get_selected_socket(stream_id: number, component_id: number): Gio.Socket | null;
 
@@ -1765,6 +1774,7 @@ export namespace Nice {
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
          * @returns An array containing all of the sockets for this component. Free with `g_ptr_array_unref()` when done.
+         * @since 0.1.17
          */
         get_sockets(stream_id: number, component_id: number): Gio.Socket[];
 
@@ -1774,6 +1784,7 @@ export namespace Nice {
          * <para>See also: `nice_agent_set_stream_name()`</para>
          * @param stream_id The ID of the stream to change
          * @returns The name of the stream. The name is only valid while the stream exists or until it changes through a call to `nice_agent_set_stream_name()`.
+         * @since 0.1.4
          */
         get_stream_name(stream_id: number): string;
 
@@ -1786,6 +1797,7 @@ export namespace Nice {
          * @param stream_id The ID of the stream the candidate belongs to
          * @param sdp The remote SDP to parse
          * @returns The parsed candidate or `null` if there was an error.
+         * @since 0.1.4
          */
         parse_remote_candidate_sdp(stream_id: number, sdp: string): Candidate;
 
@@ -1799,6 +1811,7 @@ export namespace Nice {
          * <para>See also: `nice_agent_parse_remote_candidate_sdp()` </para>
          * @param sdp The remote SDP to parse
          * @returns The number of candidates added, negative on errors
+         * @since 0.1.4
          */
         parse_remote_sdp(sdp: string): number;
 
@@ -1814,6 +1827,7 @@ export namespace Nice {
          * @param ufrag Pointer to store the ice ufrag if non `null`. Must be freed with `g_free()` after use
          * @param pwd Pointer to store the ice password if non `null`. Must be freed with `g_free()` after use
          * @returns A {@link GLib.SList} of candidates parsed from the SDP, or `null` in case of errors
+         * @since 0.1.4
          */
         parse_remote_stream_sdp(stream_id: number, sdp: string, ufrag: string, pwd: string): Candidate[];
 
@@ -1828,6 +1842,7 @@ export namespace Nice {
          * Calling the function has an effect only when {@link Nice.Agent.trickle_ice} is `true`.
          * @param stream_id The ID of the stream
          * @returns `false` if the stream could not be found, `true` otherwise
+         * @since 0.1.16
          */
         peer_candidate_gathering_done(stream_id: number): boolean;
 
@@ -1837,6 +1852,7 @@ export namespace Nice {
          * @param component_id the ID of the component to receive on
          * @param cancellable a {@link Gio.Cancellable} to allow the operation to be cancelled from another thread, or `null`
          * @returns the number of bytes written to `buf` on success (guaranteed to be greater than 0 unless `buf_len` is 0), 0 if in reliable mode and the remote peer closed the stream, or -1 on error
+         * @since 0.1.5
          */
         recv(stream_id: number, component_id: number, cancellable: Gio.Cancellable | null): [number, Uint8Array];
 
@@ -1878,6 +1894,7 @@ export namespace Nice {
          * @param component_id the ID of the component to receive on
          * @param cancellable a {@link Gio.Cancellable} to allow the operation to be cancelled from another thread, or `null`
          * @returns the number of valid messages written to `messages` on success (guaranteed to be greater than 0 unless `n_messages` is 0), 0 if the remote peer closed the stream, or -1 on error
+         * @since 0.1.5
          */
         recv_messages(stream_id: number, component_id: number, cancellable: Gio.Cancellable | null): [number, InputMessage[]];
 
@@ -1911,6 +1928,7 @@ export namespace Nice {
          * @param component_id the ID of the component to receive on
          * @param cancellable a {@link Gio.Cancellable} to allow the operation to be cancelled from another thread, or `null`
          * @returns the number of valid messages written to `messages` on success (guaranteed to be greater than 0 unless `n_messages` is 0), 0 if in reliable mode and the remote peer closed the stream, or -1 on error
+         * @since 0.1.5
          */
         recv_messages_nonblocking(stream_id: number, component_id: number, cancellable: Gio.Cancellable | null): [number, InputMessage[]];
 
@@ -1920,6 +1938,7 @@ export namespace Nice {
          * @param component_id the ID of the component to receive on
          * @param cancellable a {@link Gio.Cancellable} to allow the operation to be cancelled from another thread, or `null`
          * @returns the number of bytes received into `buf` on success (guaranteed to be greater than 0 unless `buf_len` is 0), 0 if in reliable mode and the remote peer closed the stream, or -1 on error
+         * @since 0.1.5
          */
         recv_nonblocking(stream_id: number, component_id: number, cancellable: Gio.Cancellable | null): [number, Uint8Array];
 
@@ -1957,6 +1976,7 @@ export namespace Nice {
          * then restart `stream_id` will restore the local consent for that stream.
          * @param stream_id The ID of the stream
          * @returns `true` on success `false` on error
+         * @since 0.1.6
          */
         restart_stream(stream_id: number): boolean;
 
@@ -2026,6 +2046,7 @@ export namespace Nice {
          * @param messages array of messages to send, of at least `n_messages` entries in length
          * @param cancellable a {@link Gio.Cancellable} to cancel the operation from another thread, or `null`
          * @returns the number of messages sent (may be zero), or -1 on error
+         * @since 0.1.5
          */
         send_messages_nonblocking(stream_id: number, component_id: number, messages: OutputMessage[], cancellable: Gio.Cancellable | null): number;
 
@@ -2174,6 +2195,7 @@ export namespace Nice {
          *      </para>
          *    </note>
          * @param software The value of the SOFTWARE attribute to add.
+         * @since 0.0.10
          */
         set_software(software: string): void;
 
@@ -2191,6 +2213,7 @@ export namespace Nice {
          * @param stream_id The ID of the stream to change
          * @param name The new name of the stream or `null`
          * @returns `true` if the name has been set. `false` in case of error (invalid stream or duplicate name).
+         * @since 0.1.4
          */
         set_stream_name(stream_id: number, name: string): boolean;
 
@@ -2198,6 +2221,7 @@ export namespace Nice {
          * Sets the IP_TOS and/or IPV6_TCLASS field on the stream's sockets' options
          * @param stream_id The ID of the stream
          * @param tos The ToS to set
+         * @since 0.0.9
          */
         set_stream_tos(stream_id: number, tos: number): void;
     }
@@ -2369,6 +2393,7 @@ export namespace Nice {
         /**
          * Returns if there is space in the send buffer to send any data.
          * @returns `true` if data can be sent, `false` otherwise
+         * @since 0.1.5
          */
         can_send(): boolean;
 
@@ -2395,6 +2420,7 @@ export namespace Nice {
          * 
          * <para> See also: `pseudo_tcp_socket_get_next_clock()` </para>
          * @param force `true` to close the socket forcefully, `false` to close it gracefully
+         * @since 0.0.11
          */
         close(force: boolean): void;
 
@@ -2403,6 +2429,7 @@ export namespace Nice {
          * The connection will only be successful after the
          * %PseudoTcpCallbacks:PseudoTcpOpened callback is called
          * @returns `true` on success, `false` on failure (not in `TCP_LISTEN` state) <para> See also: `pseudo_tcp_socket_get_error()` </para>
+         * @since 0.0.11
          */
         connect(): boolean;
 
@@ -2415,12 +2442,14 @@ export namespace Nice {
          * Gets the number of bytes of data in the buffer that can be read without
          * receiving more packets from the network.
          * @returns The number of bytes or -1 if the connection is not established
+         * @since 0.1.5
          */
         get_available_bytes(): number;
 
         /**
          * Gets the number of bytes of space available in the transmission buffer.
          * @returns The number of bytes, or 0 if the connection is not established.
+         * @since 0.1.5
          */
         get_available_send_space(): number;
 
@@ -2440,6 +2469,7 @@ export namespace Nice {
          *    </para>
          *  </note>
          * @returns The error code <para> See also: `pseudo_tcp_socket_connect()` </para> <para> See also: `pseudo_tcp_socket_recv()` </para> <para> See also: `pseudo_tcp_socket_send()` </para>
+         * @since 0.0.11
          */
         get_error(): number;
 
@@ -2448,6 +2478,7 @@ export namespace Nice {
          * to `pseudo_tcp_socket_notify_clock()` should be made.
          * @param timeout A pointer to be filled with the new timeout.
          * @returns `true` if `timeout` was filled, `false` if the socket is closed and ready to be destroyed. <para> See also: `pseudo_tcp_socket_notify_clock()` </para>
+         * @since 0.0.11
          */
         get_next_clock(timeout: bigint | number): boolean;
 
@@ -2455,6 +2486,7 @@ export namespace Nice {
          * Gets whether the socket is closed, with the shutdown handshake completed,
          * and both peers no longer able to read or write data to the connection.
          * @returns `true` if the socket is closed in both directions, `false` otherwise
+         * @since 0.1.8
          */
         is_closed(): boolean;
 
@@ -2465,6 +2497,7 @@ export namespace Nice {
          * `true`. It will not return `true` after `pseudo_tcp_socket_close()` is called
          * until a FIN segment is received from the remote peer.
          * @returns `true` if the remote peer has closed its side of the connection, `false` otherwise
+         * @since 0.1.8
          */
         is_closed_remotely(): boolean;
 
@@ -2475,6 +2508,7 @@ export namespace Nice {
          * It's ok to call this too frequently.
          * 
          * <para> See also: `pseudo_tcp_socket_get_next_clock()` </para>
+         * @since 0.0.11
          */
         notify_clock(): void;
 
@@ -2483,12 +2517,14 @@ export namespace Nice {
          * data in its buffers to the {@link Nice.PseudoTcpSocket}’s receive buffer.
          * @param message A {@link Nice.InputMessage} containing the received data.
          * @returns `true` if the packet was processed successfully, `false` otherwise
+         * @since 0.1.5
          */
         notify_message(message: InputMessage): boolean;
 
         /**
          * Set the MTU of the socket
          * @param mtu The new MTU of the socket
+         * @since 0.0.11
          */
         notify_mtu(mtu: number): void;
 
@@ -2497,6 +2533,7 @@ export namespace Nice {
          * @param buffer The buffer containing the received data
          * @param len The length of `buffer`
          * @returns `true` if the packet was processed successfully, `false` otherwise
+         * @since 0.0.11
          */
         notify_packet(buffer: string, len: number): boolean;
 
@@ -2516,6 +2553,7 @@ export namespace Nice {
          * @param buffer The buffer to fill with received data
          * @param len The length of `buffer`
          * @returns The number of bytes received or -1 in case of error <para> See also: `pseudo_tcp_socket_get_error()` </para>
+         * @since 0.0.11
          */
         recv(buffer: string, len: bigint | number): number;
 
@@ -2532,6 +2570,7 @@ export namespace Nice {
          * @param buffer The buffer with data to send
          * @param len The length of `buffer`
          * @returns The number of bytes sent or -1 in case of error <para> See also: `pseudo_tcp_socket_get_error()` </para>
+         * @since 0.0.11
          */
         send(buffer: string, len: number): number;
 
@@ -2545,6 +2584,7 @@ export namespace Nice {
          * This function is intended for testing only, and should not be used in
          * production code.
          * @param current_time Current monotonic time, in milliseconds; or zero to use the system monotonic clock.
+         * @since 0.1.8
          */
         set_time(current_time: number): void;
 
@@ -2559,6 +2599,7 @@ export namespace Nice {
          * This is equivalent to the POSIX `shutdown()` function. Setting `how` to
          * {@link Nice.PseudoTcpShutdown.RDWR} is equivalent to calling `pseudo_tcp_socket_close()`.
          * @param how The directions of the connection to shut down.
+         * @since 0.1.8
          */
         shutdown(how: PseudoTcpShutdown): void;
     }
@@ -2592,6 +2633,7 @@ export namespace Nice {
         /**
          * Transforms the address `addr` into a newly allocated human readable string
          * @returns the address string
+         * @since 0.1.20
          */
         dup_string(): string;
 
@@ -2608,6 +2650,7 @@ export namespace Nice {
          * ignoring the port.
          * @param b Second {@link Nice.Address} to compare
          * @returns `true` if `a` and `b` are the same address, `false` if they are different
+         * @since 0.1.8
          */
         equal_no_port(b: Address): boolean;
 
@@ -2636,6 +2679,7 @@ export namespace Nice {
         /**
          * Verifies if the address in `addr` is a link-local address or not
          * @returns `true` if `addr` is a link-local address, `false` otherwise
+         * @since 0.1.19
          */
         is_linklocal(): boolean;
 
@@ -2745,6 +2789,7 @@ export namespace Nice {
          * Useful for debugging functions, just returns a static string with the
          * candidate transport.
          * @param transport a {@link Nice.CandidateTransport}
+         * @since 0.1.19
          */
         static transport_to_string(transport: CandidateTransport): string;
 
@@ -2752,6 +2797,7 @@ export namespace Nice {
          * Useful for debugging functions, just returns a static string with the
          * candidate type.
          * @param type a {@link Nice.CandidateType}
+         * @since 0.1.19
          */
         static type_to_string(type: CandidateType): string;
 
@@ -2767,6 +2813,7 @@ export namespace Nice {
          * the same transport and the same address. It ignores all other aspects.
          * @param candidate2 A candidate
          * @returns `true` if the candidates point to the same place
+         * @since 0.1.15
          */
         equal_target(candidate2: Candidate): boolean;
 
@@ -2779,6 +2826,7 @@ export namespace Nice {
          * In case the given candidate is relayed through a TURN server, use this utility function to get
          * its address.
          * @param addr The {@link Nice.Address} to fill
+         * @since 0.1.19
          */
         relay_address(addr: Address): void;
 
@@ -2787,6 +2835,7 @@ export namespace Nice {
          * address will be filled only if the candidate was generated using an STUN server.
          * @param addr The {@link Nice.Address} to fill
          * @returns TRUE if it's a STUN created ICE candidate, or FALSE if the reflexed's server was not STUN.
+         * @since 0.1.20
          */
         stun_server_address(addr: Address): boolean;
     }

@@ -695,6 +695,7 @@ export namespace Libxfce4windowing {
          * On Wayland, it's the [application ID](https://wayland.app/protocols/wlr-foreign-toplevel-management-unstable-v1#zwlr_foreign_toplevel_handle_v1:event:app_id),
          * which should correspond to the basename of the application's desktop file.
          * @returns A UTF-8 formatted string, owned by `app`.
+         * @since 4.19.3
          */
         get_class_id(): string;
 
@@ -704,6 +705,7 @@ export namespace Libxfce4windowing {
          * not the returned icon is a fallback icon can be determined using
          * `xfw_application_icon_is_fallback`().
          * @returns a {@link Gio.Icon}, owned by `app`.
+         * @since 4.19.1
          */
         get_gicon(): Gio.Icon;
 
@@ -747,6 +749,7 @@ export namespace Libxfce4windowing {
          * will be returned from `xfw_application_get_icon`() and
          * `xfw_application_get_gicon`().
          * @returns `true` or `false`, depending on if `app`'s icon uses a fallback icon or not.
+         * @since 4.19.1
          */
         icon_is_fallback(): boolean;
     }
@@ -1066,6 +1069,7 @@ export namespace Libxfce4windowing {
          * environments where the monitor is "virtual", a synthetic connector name may
          * be returned.
          * @returns A string owned by `monitor`.
+         * @since 4.19.4
          */
         get_connector(): string;
 
@@ -1073,24 +1077,28 @@ export namespace Libxfce4windowing {
          * Returns a human-readable description of this monitor, suitable for
          * displaying in a user interface.
          * @returns A string owned by `monitor`.
+         * @since 4.19.4
          */
         get_description(): string;
 
         /**
          * Returns the monitor's raw EDID number, if available.
          * @returns A byte array owned by `monitor`, or `null`.  The number of bytes is returned in `len`.
+         * @since 4.20.7
          */
         get_edid(): [number | null, number];
 
         /**
          * Returns the monitor's scaling factor.
          * @returns A positive fractional scale.
+         * @since 4.19.4
          */
         get_fractional_scale(): number;
 
         /**
          * Returns the {@link Gdk.Monitor} that corresponds to `monitor`.
          * @returns A {@link Gdk.Monitor}.
+         * @since 4.19.4
          */
         get_gdk_monitor(): Gdk.Monitor;
 
@@ -1106,46 +1114,54 @@ export namespace Libxfce4windowing {
          * If the monitor's hardware is not set up properly, the identifier may not be
          * unique.  Unfortunately, this library cannot determine when this is the case.
          * @returns A string owned by `monitor`.
+         * @since 4.19.4
          */
         get_identifier(): string;
 
         /**
          * Retrieves the position and size of the monitor in logical application
          * pixels, which are affected by the monitor's fractional scale factor.
+         * @since 4.19.4
          */
         get_logical_geometry(): Gdk.Rectangle;
 
         /**
          * Returns the monitor's manufacturer's name, if available.
          * @returns A string owned by `monitor`, or `null`.
+         * @since 4.19.4
          */
         get_make(): string | null;
 
         /**
          * Returns the monitor's product model name, if available.
          * @returns A string owned by `monitor`, or `null`.
+         * @since 4.19.4
          */
         get_model(): string | null;
 
         /**
          * Retrieves the position and size of the monitor in physical device pixels.
+         * @since 4.19.4
          */
         get_physical_geometry(): Gdk.Rectangle;
 
         /**
          * Retrieves the physical width and height of the monitor in millimeters.
+         * @since 4.19.4
          */
         get_physical_size(): [number, number];
 
         /**
          * Returns the monitor's current refresh rate, in millihertz.
          * @returns A non-negative integer in mHz.
+         * @since 4.19.4
          */
         get_refresh(): number;
 
         /**
          * Returns the monitor's scaling factor, as an integer.
          * @returns A positive integer scale.
+         * @since 4.19.4
          */
         get_scale(): number;
 
@@ -1154,18 +1170,21 @@ export namespace Libxfce4windowing {
          * manufacturers do not program their monitor's hardware with unique serial
          * numbers.
          * @returns A string owned by `monitor`, or `null`.
+         * @since 4.19.4
          */
         get_serial(): string | null;
 
         /**
          * Returns the subpixel ordering of `monitor`.
          * @returns A value from the {@link Libxfce4windowing.MonitorSubpixel} enum.
+         * @since 4.19.4
          */
         get_subpixel(): MonitorSubpixel;
 
         /**
          * Returns the rotation and reflection transform set on `monitor`.
          * @returns A value from the {@link Libxfce4windowing.MonitorTransform} enum.
+         * @since 4.19.4
          */
         get_transform(): MonitorTransform;
 
@@ -1176,6 +1195,7 @@ export namespace Libxfce4windowing {
          * The returned geometry is in logical application pixels, which are affected
          * by the monitor's integer scale factor.  The origin is set to the top-left
          * corner of the monitor.
+         * @since 4.19.4
          */
         get_workarea(): Gdk.Rectangle;
     }
@@ -1391,12 +1411,14 @@ export namespace Libxfce4windowing {
          * Attempts to find the {@link Libxfce4windowing.Monitor} corresponding to `monitor`.
          * @param monitor a {@link Gdk.Monitor}.
          * @returns An {@link Libxfce4windowing.Monitor}, or `null` if the corresponding {@link Libxfce4windowing.Monitor} could not be determined.
+         * @since 4.20.6
          */
         get_monitor_from_gdk_monitor(monitor: Gdk.Monitor): Monitor | null;
 
         /**
          * Retrieves the list of monitors currently attached and enabled on `screen`.
          * @returns the list of {@link Libxfce4windowing.Monitor} on `screen`, or `null` if there are no connected/enabled monitors.  The list and its contents are owned by `screen`.
+         * @since 4.19.4
          */
         get_monitors(): Monitor[] | null;
 
@@ -1410,6 +1432,7 @@ export namespace Libxfce4windowing {
          * 
          * However, if no monitors are connected, `null` can still be returned.
          * @returns `screen`'s primary {@link Libxfce4windowing.Monitor}, or `null`.
+         * @since 4.19.4
          */
         get_primary_monitor(): Monitor | null;
 
@@ -1743,6 +1766,7 @@ export namespace Libxfce4windowing {
          * On Wayland, it's likely to be limited to the [application ID](https://wayland.app/protocols/wlr-foreign-toplevel-management-unstable-v1#zwlr_foreign_toplevel_handle_v1:event:app_id),
          * which should correspond to the basename of the application's desktop file.
          * @returns a `null`-terminated array of strings owned by the {@link Libxfce4windowing.Window}.
+         * @since 4.19.3
          */
         get_class_ids(): string[];
 
@@ -1758,6 +1782,7 @@ export namespace Libxfce4windowing {
          * not the returned icon is a fallback icon can be determined using
          * `xfw_window_icon_is_fallback`().
          * @returns a {@link Gio.Icon}, owned by `window`.
+         * @since 4.19.1
          */
         get_gicon(): Gio.Icon;
 
@@ -1808,6 +1833,7 @@ export namespace Libxfce4windowing {
          * Determines if `window` does not have an icon, and thus a fallback icon
          * will be returned from `xfw_window_get_icon`() and `xfw_window_get_gicon`().
          * @returns `true` or `false`, depending on if `window`'s icon uses a fallback icon or not.
+         * @since 4.19.1
          */
         icon_is_fallback(): boolean;
 
@@ -1915,6 +1941,7 @@ export namespace Libxfce4windowing {
          * It is an error to call this function if the application is not currently
          * running on X11.
          * @returns An X11 {@link Libxfce4windowing.Window} handle.
+         * @since 4.19.3
          */
         x11_get_xid(): xlib.Window;
     }
@@ -1936,18 +1963,21 @@ export namespace Libxfce4windowing {
         /**
          * Fetches `instance`'s name, which can often be the same as the application name.
          * @returns A string owned by `instance`.
+         * @since 4.19.1
          */
         get_name(): string;
 
         /**
          * Fetches `instance`'s PID.
          * @returns The process ID of `instance`, or 0 if none is available.
+         * @since 4.19.1
          */
         get_pid(): number;
 
         /**
          * Lists all windows belonging to the application instance.
          * @returns The list of {@link Libxfce4windowing.Window} belonging to `instance`. The list and its contents are owned by `instance`.
+         * @since 4.19.1
          */
         get_windows(): Window[];
     }

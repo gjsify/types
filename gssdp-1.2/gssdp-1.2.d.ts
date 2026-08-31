@@ -376,6 +376,7 @@ export namespace GSSDP {
          * Check if the peer at `address` is reachable using this `client`.
          * @param address A {@link Gio.InetSocketAddress} of the target. The port part of the address may be 0
          * @returns `true` if considered reachable, `false` otherwise.
+         * @since 1.2.4
          */
         can_reach(address: Gio.InetSocketAddress): boolean;
 
@@ -398,6 +399,7 @@ export namespace GSSDP {
 
         /**
          * @returns Address mask of this client
+         * @since 1.2.3
          */
         get_address_mask(): Gio.InetAddressMask;
 
@@ -529,6 +531,7 @@ export namespace GSSDP {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -572,6 +575,7 @@ export namespace GSSDP {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -940,6 +944,7 @@ export namespace GSSDP {
          * Send an `ssdp::update` message if the underlying {@link GSSDP.Client} is running
          * the UDA 1.1 protocol. Does nothing otherwise.
          * @param new_boot_id The new boot id of the device
+         * @since 1.2.0
          */
         update(new_boot_id: number): void;
     }

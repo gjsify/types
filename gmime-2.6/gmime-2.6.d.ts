@@ -1545,6 +1545,7 @@ export namespace GMime {
         /**
          * Determines if a Content-Disposition has a value of "attachment".
          * @returns `true` if the value matches "attachment", otherwise `false`.
+         * @since 2.6.21
          */
         is_attachment(): boolean;
 
@@ -5068,6 +5069,7 @@ export namespace GMime {
          * Determines whether or not the part is an attachment based on the
          * value of the Content-Disposition header.
          * @returns `true` if the part is an attachment, otherwise `false`.
+         * @since 2.6.21
          */
         is_attachment(): boolean;
 

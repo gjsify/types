@@ -786,6 +786,7 @@ export namespace CinnamonDesktop {
          * @param mime_type the mime type of the file
          * @param mtime the mtime of the file
          * @returns TRUE if the file can be thumbnailed.
+         * @since 2.2
          */
         can_thumbnail(uri: string, mime_type: string, mtime: bigint | number): boolean;
 
@@ -796,6 +797,7 @@ export namespace CinnamonDesktop {
          * Usage of this function is threadsafe.
          * @param uri the uri of a file
          * @param mtime the modification time of the file
+         * @since 2.2
          */
         create_failed_thumbnail(uri: string, mtime: bigint | number): void;
 
@@ -807,6 +809,7 @@ export namespace CinnamonDesktop {
          * @param uri the uri of a file
          * @param mime_type the mime type of the file
          * @returns thumbnail pixbuf if thumbnailing succeeded, `null` otherwise.
+         * @since 2.2
          */
         generate_thumbnail(uri: string, mime_type: string): GdkPixbuf.Pixbuf;
 
@@ -819,6 +822,7 @@ export namespace CinnamonDesktop {
          * @param uri the uri of a file
          * @param mtime the mtime of the file
          * @returns TRUE if there is a failed thumbnail for the file.
+         * @since 2.2
          */
         has_valid_failed_thumbnail(uri: string, mtime: bigint | number): boolean;
 
@@ -829,6 +833,7 @@ export namespace CinnamonDesktop {
          * @param uri the uri of a file
          * @param mtime the mtime of the file
          * @returns The absolute path of the thumbnail, or `null` if none exist.
+         * @since 2.2
          */
         lookup(uri: string, mtime: bigint | number): string;
 
@@ -840,6 +845,7 @@ export namespace CinnamonDesktop {
          * @param thumbnail the thumbnail as a pixbuf
          * @param uri the uri of a file
          * @param original_mtime the modification time of the original file
+         * @since 2.2
          */
         save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: bigint | number): void;
     }
@@ -956,6 +962,7 @@ export namespace CinnamonDesktop {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -999,6 +1006,7 @@ export namespace CinnamonDesktop {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -1609,6 +1617,7 @@ export namespace CinnamonDesktop {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1652,6 +1661,7 @@ export namespace CinnamonDesktop {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1695,6 +1705,7 @@ export namespace CinnamonDesktop {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1703,6 +1714,7 @@ export namespace CinnamonDesktop {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1711,6 +1723,7 @@ export namespace CinnamonDesktop {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): RRScreen;
 
@@ -1754,6 +1767,7 @@ export namespace CinnamonDesktop {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -1762,6 +1776,7 @@ export namespace CinnamonDesktop {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -1807,6 +1822,7 @@ export namespace CinnamonDesktop {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1850,6 +1866,7 @@ export namespace CinnamonDesktop {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -2042,6 +2059,7 @@ export namespace CinnamonDesktop {
         /**
          * @param group_id identifier for group
          * @returns the translated description for the group `group_id`.
+         * @since 3.8
          */
         description_for_group(group_id: string): string;
 
@@ -2049,18 +2067,21 @@ export namespace CinnamonDesktop {
          * @param group_id identifier for group containing the option
          * @param id option identifier
          * @returns the translated description for the option `id`.
+         * @since 3.6
          */
         description_for_option(group_id: string, id: string): string;
 
         /**
          * Returns a list of all layout identifiers we know about.
          * @returns the list of layout names. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         * @since 3.6
          */
         get_all_layouts(): string[];
 
         /**
          * Returns a list of all option group identifiers we know about.
          * @returns the list of option group ids. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         * @since 3.6
          */
         get_all_option_groups(): string[];
 
@@ -2069,6 +2090,7 @@ export namespace CinnamonDesktop {
          * `layout_id`.
          * @param layout_id a layout identifier
          * @returns the list of ISO 639 code strings. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         * @since 3.18
          */
         get_languages_for_layout(layout_id: string): string[];
 
@@ -2085,6 +2107,7 @@ export namespace CinnamonDesktop {
          * all the (out) parameters are set to `null`.
          * @param id layout's identifier about which to retrieve the info
          * @returns `true` if the layout exists or `false` otherwise.
+         * @since 3.6
          */
         get_layout_info(id: string): [boolean, string, string, string, string];
 
@@ -2093,6 +2116,7 @@ export namespace CinnamonDesktop {
          * `country_code`.
          * @param country_code an ISO 3166 code string
          * @returns the list of layout ids. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         * @since 3.8
          */
         get_layouts_for_country(country_code: string): string[];
 
@@ -2101,6 +2125,7 @@ export namespace CinnamonDesktop {
          * `language_code`.
          * @param language_code an ISO 639 code string
          * @returns the list of layout ids. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         * @since 3.8
          */
         get_layouts_for_language(language_code: string): string[];
 
@@ -2116,6 +2141,7 @@ export namespace CinnamonDesktop {
          * `group_id`.
          * @param group_id group's identifier about which to retrieve the options
          * @returns the list of option ids. The caller takes ownership of the {@link GLib.List} but not of the strings themselves, those are internally allocated and must not be modified.
+         * @since 6.6
          */
         get_options_for_group(group_id: string): string[];
     }

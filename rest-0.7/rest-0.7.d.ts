@@ -1084,6 +1084,7 @@ export namespace Rest {
          *   rest_proxy_add_soup_feature(proxy, cookie_jar);
          *   </programlisting>
          * @param feature A {@link Soup.SessionFeature}
+         * @since 0.7.92
          */
         add_soup_feature(feature: Soup.SessionFeature): void;
 
@@ -1262,6 +1263,7 @@ export namespace Rest {
         /**
          * Get the REST function that is going to be called on the proxy.
          * @returns The REST "function" for the current call, see also `rest_proxy_call_set_function()`. This string is owned by the {@link Rest.ProxyCall} and should not be freed.
+         * @since 0.7.92
          */
         get_function(): string;
 

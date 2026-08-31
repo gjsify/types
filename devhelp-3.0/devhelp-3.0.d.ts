@@ -368,6 +368,7 @@ export namespace Devhelp {
 
         /**
          * @returns the {@link Devhelp.Completion} of `book`.
+         * @since 3.28
          */
         get_completion(): Completion;
 
@@ -485,6 +486,7 @@ export namespace Devhelp {
          * `dh_book_list_builder_add_default_sub_book_lists()` is called, and
          * `dh_book_list_builder_read_books_disabled_setting()` is called with the default
          * {@link Devhelp.Settings} object as returned by `dh_settings_get_default()`.
+         * @since 3.30
          */
         static get_default(): BookList;
 
@@ -495,6 +497,7 @@ export namespace Devhelp {
          * It is a programmer error to call this function if `book` is already inserted
          * in `book_list`.
          * @param book a {@link Devhelp.Book}.
+         * @since 3.30
          * @virtual
          */
         vfunc_add_book(book: Book): void;
@@ -502,6 +505,7 @@ export namespace Devhelp {
         /**
          * Gets the list of {@link Devhelp.Book}'s part of `book_list`, in no particular order. Each
          * book ID in the list is unique (see `dh_book_get_id()`).
+         * @since 3.30
          * @virtual
          */
         vfunc_get_books(): Book[];
@@ -512,6 +516,7 @@ export namespace Devhelp {
          * It is a programmer error to call this function if `book` is not present in
          * `book_list`.
          * @param book a {@link Devhelp.Book}.
+         * @since 3.30
          * @virtual
          */
         vfunc_remove_book(book: Book): void;
@@ -523,6 +528,7 @@ export namespace Devhelp {
          * It is a programmer error to call this function if `book` is already inserted
          * in `book_list`.
          * @param book a {@link Devhelp.Book}.
+         * @since 3.30
          */
         add_book(book: Book): void;
 
@@ -530,6 +536,7 @@ export namespace Devhelp {
          * Gets the list of {@link Devhelp.Book}'s part of `book_list`, in no particular order. Each
          * book ID in the list is unique (see `dh_book_get_id()`).
          * @returns the {@link GLib.List} of {@link Devhelp.Book}'s part of `book_list`.
+         * @since 3.30
          */
         get_books(): Book[];
 
@@ -539,6 +546,7 @@ export namespace Devhelp {
          * It is a programmer error to call this function if `book` is not present in
          * `book_list`.
          * @param book a {@link Devhelp.Book}.
+         * @since 3.30
          */
         remove_book(book: Book): void;
     }
@@ -613,6 +621,7 @@ export namespace Devhelp {
          * 
          * The exact list of directories is subject to change, it is not part of the
          * API.
+         * @since 3.30
          */
         add_default_sub_book_lists(): void;
 
@@ -626,6 +635,7 @@ export namespace Devhelp {
          * sub-{@link Devhelp.BookList} added has the highest priority). The priority is used in case
          * of book ID conflicts (see `dh_book_get_id()`).
          * @param sub_book_list a {@link Devhelp.BookList}.
+         * @since 3.30
          */
         add_sub_book_list(sub_book_list: BookList): void;
 
@@ -633,6 +643,7 @@ export namespace Devhelp {
          * Creates the {@link Devhelp.BookList}. It actually creates a subclass of {@link Devhelp.BookList}, but
          * the subclass is not exposed to the public API.
          * @returns the newly created {@link Devhelp.BookList} object.
+         * @since 3.30
          */
         create_object(): BookList;
 
@@ -648,6 +659,7 @@ export namespace Devhelp {
          * call to this function is taken into account when creating the {@link Devhelp.BookList}
          * with `dh_book_list_builder_create_object()`.
          * @param settings a {@link Devhelp.Settings}, or `null`.
+         * @since 3.30
          */
         read_books_disabled_setting(settings: Settings | null): void;
     }
@@ -714,6 +726,7 @@ export namespace Devhelp {
         // Methods
         /**
          * @returns the {@link Devhelp.BookListDirectory.directory}.
+         * @since 3.30
          */
         get_directory(): Gio.File;
     }
@@ -763,6 +776,9 @@ export namespace Devhelp {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @deprecated since 3.26: the {@link Devhelp.BookManager} class is deprecated.
+         */
         populate(): void;
     }
 
@@ -898,11 +914,13 @@ export namespace Devhelp {
         // Methods
         /**
          * @returns the {@link Devhelp.Profile} of `tree`.
+         * @since 3.30
          */
         get_profile(): Profile;
 
         /**
          * @returns the currently selected {@link Devhelp.Link} in `tree`, or `null` if the selection is empty or if a language group row is selected. Unref with `dh_link_unref()` when no longer needed.
+         * @since 3.30
          */
         get_selected_link(): Link | null;
 
@@ -979,36 +997,42 @@ export namespace Devhelp {
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
          * @returns `true` if `border` has been set
+         * @since 3.16
          */
         get_border(): [boolean, Gtk.Border];
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_hadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_vadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
@@ -1017,12 +1041,14 @@ export namespace Devhelp {
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
@@ -1031,6 +1057,7 @@ export namespace Devhelp {
          * vertical scrolling should start below the minimum height or
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
@@ -1040,6 +1067,7 @@ export namespace Devhelp {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
@@ -1095,6 +1123,7 @@ export namespace Devhelp {
          * {@link Devhelp.Completion} objects.
          * @param completion_objects a {@link GLib.List} of   {@link Devhelp.Completion} objects.
          * @param prefix the string to complete.
+         * @since 3.28
          */
         static aggregate_complete(completion_objects: Completion[] | null, prefix: string): string | null;
 
@@ -1104,6 +1133,7 @@ export namespace Devhelp {
          * 
          * After adding all the strings you need to call `dh_completion_sort()`.
          * @param str a string.
+         * @since 3.28
          */
         add_string(str: string): void;
 
@@ -1119,12 +1149,14 @@ export namespace Devhelp {
          * also be valid UTF-8 (it won't return a partial multi-byte character).
          * @param prefix the string to complete.
          * @returns the completed prefix, or `null` if a longer prefix has not been found. Free with `g_free()` when no longer needed.
+         * @since 3.28
          */
         complete(prefix: string): string | null;
 
         /**
          * Sorts all the strings. It is required to call this function after adding
          * strings with `dh_completion_add_string()`.
+         * @since 3.28
          */
         sort(): void;
     }
@@ -1202,6 +1234,7 @@ export namespace Devhelp {
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         filter_new(root: Gtk.TreePath | null): Gtk.TreeModel;
 
@@ -1278,6 +1311,7 @@ export namespace Devhelp {
          * return value for this string.
          * @param iter a {@link Gtk.TreeIter}-struct
          * @returns a newly-allocated string.     Must be freed with `g_free()`.
+         * @since 2.2
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
 
@@ -1368,6 +1402,7 @@ export namespace Devhelp {
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
          * @returns `true` if `iter` has been changed to the previous node
+         * @since 3.0
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
 
@@ -1437,6 +1472,7 @@ export namespace Devhelp {
          * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
          * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
          * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
+         * @since 3.10
          */
         rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
 
@@ -1580,6 +1616,7 @@ export namespace Devhelp {
          * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
          * @param iter the {@link Gtk.TreeIter}-struct
+         * @since 3.0
          * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
@@ -1774,21 +1811,25 @@ export namespace Devhelp {
         // Methods
         /**
          * @returns the {@link Devhelp.Tab} currently shown in `notebook`.
+         * @since 3.30
          */
         get_active_tab(): Tab | null;
 
         /**
          * @returns the {@link Devhelp.WebView} of the active tab.
+         * @since 3.30
          */
         get_active_web_view(): WebView | null;
 
         /**
          * @returns a {@link GLib.List} of all   {@link Devhelp.WebView}'s contained in `notebook`.
+         * @since 3.30
          */
         get_all_web_views(): WebView[];
 
         /**
          * @returns the {@link Devhelp.Notebook.profile}.
+         * @since 3.30
          */
         get_profile(): Profile;
 
@@ -1798,6 +1839,7 @@ export namespace Devhelp {
          * The {@link Devhelp.WebView} will have the same {@link Devhelp.Profile} as `notebook`.
          * @param uri the URI to open, or `null` for a blank page.
          * @param switch_focus whether to call `gtk_notebook_set_current_page()` on the new   tab.
+         * @since 3.30
          */
         open_new_tab(uri: string | null, switch_focus: boolean): void;
     }
@@ -1849,6 +1891,7 @@ export namespace Devhelp {
          * Gets the default {@link Devhelp.Profile} object. It has the default {@link Devhelp.Settings} object as
          * returned by `dh_settings_get_default()`, and the default {@link Devhelp.BookList} object as
          * returned by `dh_book_list_get_default()`.
+         * @since 3.30
          */
         static get_default(): Profile;
 
@@ -1857,6 +1900,7 @@ export namespace Devhelp {
          * Gets the {@link Devhelp.BookList} object of `profile`. The returned object is guaranteed to
          * be the same for the lifetime of `profile`.
          * @returns the {@link Devhelp.BookList} of `profile`.
+         * @since 3.30
          */
         get_book_list(): BookList;
 
@@ -1864,6 +1908,7 @@ export namespace Devhelp {
          * Gets the {@link Devhelp.Settings} object of `profile`. The returned object is guaranteed to
          * be the same for the lifetime of `profile`.
          * @returns the {@link Devhelp.Settings} of `profile`.
+         * @since 3.30
          */
         get_settings(): Settings;
     }
@@ -1915,6 +1960,7 @@ export namespace Devhelp {
         // Methods
         /**
          * @returns the newly created {@link Devhelp.Profile} object.
+         * @since 3.30
          */
         create_object(): Profile;
 
@@ -1924,6 +1970,7 @@ export namespace Devhelp {
          * If you don't call this function, the default {@link Devhelp.BookList} object as returned
          * by `dh_book_list_get_default()` will be used.
          * @param book_list a {@link Devhelp.BookList}.
+         * @since 3.30
          */
         set_book_list(book_list: BookList): void;
 
@@ -1933,6 +1980,7 @@ export namespace Devhelp {
          * If you don't call this function, the default {@link Devhelp.Settings} object as returned
          * by `dh_settings_get_default()` will be used.
          * @param settings a {@link Devhelp.Settings}.
+         * @since 3.30
          */
         set_settings(settings: Settings): void;
     }
@@ -2044,11 +2092,13 @@ export namespace Devhelp {
         // Methods
         /**
          * @returns the {@link Devhelp.SearchBar.notebook}.
+         * @since 3.30
          */
         get_notebook(): Notebook;
 
         /**
          * Grabs the focus to the {@link Devhelp.SearchBar} search entry and selects its text.
+         * @since 3.36
          */
         grab_focus_to_search_entry(): void;
     }
@@ -2202,6 +2252,7 @@ export namespace Devhelp {
         /**
          * Gets the default {@link Devhelp.Settings} object. It has the default {@link Gio.Settings} paths (see
          * {@link Devhelp.SettingsBuilder}) and `dh_settings_bind_all()` has been called.
+         * @since 3.30
          */
         static get_default(): Settings;
 
@@ -2219,18 +2270,21 @@ export namespace Devhelp {
         // Methods
         /**
          * Binds all the {@link Devhelp.Settings} properties to their corresponding {@link Gio.Settings} keys.
+         * @since 3.30
          */
         bind_all(): void;
 
         /**
          * Binds the {@link Devhelp.Settings.use_system_fonts}, {@link Devhelp.Settings.variable_font} and
          * {@link Devhelp.Settings.fixed_font} properties to their corresponding {@link Gio.Settings} keys.
+         * @since 3.30
          */
         bind_fonts(): void;
 
         /**
          * Binds the {@link Devhelp.Settings.group_books_by_language} property to the corresponding
          * {@link Gio.Settings} key.
+         * @since 3.30
          */
         bind_group_books_by_language(): void;
 
@@ -2242,6 +2296,7 @@ export namespace Devhelp {
          * 
          * This function is useful if you call `dh_settings_set_book_enabled()` several
          * times in a row.
+         * @since 3.30
          */
         freeze_books_disabled_changed(): void;
 
@@ -2250,11 +2305,13 @@ export namespace Devhelp {
          * function instead, to take into account the {@link Devhelp.Settings.use_system_fonts}
          * property.
          * @returns the value of the {@link Devhelp.Settings.fixed_font} property.
+         * @since 3.30
          */
         get_fixed_font(): string;
 
         /**
          * @returns the value of the {@link Devhelp.Settings.group_books_by_language} property.
+         * @since 3.30
          */
         get_group_books_by_language(): boolean;
 
@@ -2262,11 +2319,13 @@ export namespace Devhelp {
          * If {@link Devhelp.Settings.use_system_fonts} is `true`, returns the system fonts. Otherwise
          * returns the values of the {@link Devhelp.Settings.variable_font} and
          * {@link Devhelp.Settings.fixed_font} properties.
+         * @since 3.30
          */
         get_selected_fonts(): [string, string];
 
         /**
          * @returns the value of the {@link Devhelp.Settings.use_system_fonts} property.
+         * @since 3.30
          */
         get_use_system_fonts(): boolean;
 
@@ -2275,6 +2334,7 @@ export namespace Devhelp {
          * function instead, to take into account the {@link Devhelp.Settings.use_system_fonts}
          * property.
          * @returns the value of the {@link Devhelp.Settings.variable_font} property.
+         * @since 3.30
          */
         get_variable_font(): string;
 
@@ -2284,6 +2344,7 @@ export namespace Devhelp {
          * `false`, otherwise `true` is returned.
          * @param book a {@link Devhelp.Book}.
          * @returns whether `book` is enabled.
+         * @since 3.30
          */
         is_book_enabled(book: Book): boolean;
 
@@ -2292,30 +2353,35 @@ export namespace Devhelp {
          * from "books-disabled".
          * @param book a {@link Devhelp.Book}.
          * @param enabled the new value.
+         * @since 3.30
          */
         set_book_enabled(book: Book, enabled: boolean): void;
 
         /**
          * Sets the {@link Devhelp.Settings.fixed_font} property.
          * @param fixed_font the new value.
+         * @since 3.30
          */
         set_fixed_font(fixed_font: string): void;
 
         /**
          * Sets the {@link Devhelp.Settings.group_books_by_language} property.
          * @param group_books_by_language the new value.
+         * @since 3.30
          */
         set_group_books_by_language(group_books_by_language: boolean): void;
 
         /**
          * Sets the {@link Devhelp.Settings.use_system_fonts} property.
          * @param use_system_fonts the new value.
+         * @since 3.30
          */
         set_use_system_fonts(use_system_fonts: boolean): void;
 
         /**
          * Sets the {@link Devhelp.Settings.variable_font} property.
          * @param variable_font the new value.
+         * @since 3.30
          */
         set_variable_font(variable_font: string): void;
 
@@ -2324,6 +2390,7 @@ export namespace Devhelp {
          * the {@link Devhelp.Settings.SignalSignatures.books_disabled_changed | Devhelp.Settings::books-disabled-changed} signal.
          * 
          * A bit like `g_object_thaw_notify()`, except that there is no freeze count.
+         * @since 3.30
          */
         thaw_books_disabled_changed(): void;
     }
@@ -2375,6 +2442,7 @@ export namespace Devhelp {
         // Methods
         /**
          * @returns the newly created {@link Devhelp.Settings} object.
+         * @since 3.30
          */
         create_object(): Settings;
 
@@ -2384,6 +2452,7 @@ export namespace Devhelp {
          * If you don't call this function, the default path for this schema will be
          * used.
          * @param contents_path the path for the "contents" schema.
+         * @since 3.30
          */
         set_contents_path(contents_path: string): void;
 
@@ -2393,6 +2462,7 @@ export namespace Devhelp {
          * If you don't call this function, the default path for this schema will be
          * used.
          * @param fonts_path the path for the "fonts" schema.
+         * @since 3.30
          */
         set_fonts_path(fonts_path: string): void;
     }
@@ -2523,6 +2593,7 @@ export namespace Devhelp {
         // Static methods
         /**
          * @param profile a {@link Devhelp.Profile}, or `null` for the default profile.
+         * @since 3.30
          */
         static new2(profile: Profile | null): Sidebar;
 
@@ -2536,6 +2607,7 @@ export namespace Devhelp {
         // Methods
         /**
          * @returns the {@link Devhelp.Profile} of `sidebar`.
+         * @since 3.30
          */
         get_profile(): Profile;
 
@@ -2544,6 +2616,7 @@ export namespace Devhelp {
          * last {@link Devhelp.Link} emitted by the {@link Devhelp.Sidebar.SignalSignatures.link_selected | Devhelp.Sidebar::link-selected} signal. See the
          * documentation of {@link Devhelp.Sidebar.SignalSignatures.link_selected | Devhelp.Sidebar::link-selected}.
          * @returns the currently selected {@link Devhelp.Link} in the visible {@link Gtk.TreeView} of `sidebar`, or `null` if the selection is empty or if a language group row is selected. Unref with `dh_link_unref()` when no longer needed.
+         * @since 3.30
          */
         get_selected_link(): Link | null;
 
@@ -2575,12 +2648,14 @@ export namespace Devhelp {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -2705,6 +2780,7 @@ export namespace Devhelp {
         // Methods
         /**
          * @returns the {@link Devhelp.Tab.web_view}.
+         * @since 3.30
          */
         get_web_view(): WebView;
 
@@ -2720,12 +2796,14 @@ export namespace Devhelp {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -2841,6 +2919,7 @@ export namespace Devhelp {
         // Methods
         /**
          * @returns the {@link Devhelp.TabLabel.tab}.
+         * @since 3.30
          */
         get_tab(): Tab | null;
 
@@ -2856,12 +2935,14 @@ export namespace Devhelp {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -3014,16 +3095,19 @@ export namespace Devhelp {
         // Methods
         /**
          * @returns whether calling `dh_web_view_reset_zoom()` will have an effect.
+         * @since 3.30
          */
         can_reset_zoom(): boolean;
 
         /**
          * @returns whether calling `dh_web_view_zoom_in()` will have an effect.
+         * @since 3.30
          */
         can_zoom_in(): boolean;
 
         /**
          * @returns whether calling `dh_web_view_zoom_out()` will have an effect.
+         * @since 3.30
          */
         can_zoom_out(): boolean;
 
@@ -3032,28 +3116,33 @@ export namespace Devhelp {
          * property is the empty string or `null`, this function returns “Empty Page”
          * (translated).
          * @returns the title of `view`, suitable for a tab label or window title.
+         * @since 3.30
          */
         get_devhelp_title(): string;
 
         /**
          * @returns the {@link Devhelp.WebView.profile}.
+         * @since 3.30
          */
         get_profile(): Profile;
 
         /**
          * Reset the text size to the normal size.
+         * @since 3.30
          */
         reset_zoom(): void;
 
         /**
          * Like `webkit_find_controller_search_next()`, but takes into account whether
          * `dh_web_view_set_search_text()` has been called.
+         * @since 3.30
          */
         search_next(): void;
 
         /**
          * Like `webkit_find_controller_search_previous()`, but takes into account whether
          * `dh_web_view_set_search_text()` has been called.
+         * @since 3.30
          */
         search_previous(): void;
 
@@ -3063,16 +3152,19 @@ export namespace Devhelp {
          * already done. If `search_text` is empty or `null`, it calls
          * `webkit_find_controller_search_finish()`.
          * @param search_text the search string, or `null`.
+         * @since 3.30
          */
         set_search_text(search_text: string | null): void;
 
         /**
          * Makes the text larger.
+         * @since 3.30
          */
         zoom_in(): void;
 
         /**
          * Makes the text smaller.
+         * @since 3.30
          */
         zoom_out(): void;
     }
@@ -3180,6 +3272,7 @@ export namespace Devhelp {
          * this function will return `true` if the `page_id` is `"DhLink"`.
          * @param page_id a page ID, i.e. the filename without its extension.
          * @returns whether `link` belongs to `page_id`.
+         * @since 3.28
          */
         belongs_to_page(page_id: string): boolean;
 
@@ -3226,6 +3319,7 @@ export namespace Devhelp {
         /**
          * @param relative_url an URL relative to the book base path. Can contain an anchor.
          * @returns whether the relative URL of `link` matches with `relative_url`. There is a special case for the index.html page, it can also match the empty string.
+         * @since 3.28
          */
         match_relative_url(relative_url: string): boolean;
 

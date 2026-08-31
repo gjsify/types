@@ -204,6 +204,7 @@ export namespace AppStreamBuilder {
         /**
          * Gets the package that backs the application.
          * @returns package
+         * @since 0.1.0
          */
         get_package(): Package;
 
@@ -211,18 +212,21 @@ export namespace AppStreamBuilder {
          * Saves to disk any resources set for the application.
          * @param save_flags {@link AppStreamBuilder.AppSaveFlags}, e.g. {@link AppStreamBuilder.AppSaveFlags.SCREENSHOTS}
          * @returns `true` for success, `false` otherwise
+         * @since 0.1.0
          */
         save_resources(save_flags: AppSaveFlags): boolean;
 
         /**
          * Sets the HiDPI mode for the application.
          * @param hidpi_enabled if HiDPI mode should be enabled
+         * @since 0.3.1
          */
         set_hidpi_enabled(hidpi_enabled: boolean): void;
 
         /**
          * Sets the package that backs the application.
          * @param pkg A {@link AppStreamBuilder.Package}
+         * @since 0.5.1
          */
         set_package(pkg: Package): void;
     }
@@ -275,6 +279,7 @@ export namespace AppStreamBuilder {
         /**
          * Adds an application to the context.
          * @param app A {@link AppStreamBuilder.App}
+         * @since 0.1.0
          */
         add_app(app: App): void;
 
@@ -287,12 +292,14 @@ export namespace AppStreamBuilder {
          * Adds a filename to the list of packages to be processed
          * @param filename package filename
          * @returns `true` for success, `false` otherwise
+         * @since 0.1.0
          */
         add_filename(filename: string): boolean;
 
         /**
          * Adds a package to the list of packages to be processed
          * @param pkg A {@link AppStreamBuilder.Package}
+         * @since 0.3.5
          */
         add_package(pkg: Package): void;
 
@@ -300,6 +307,7 @@ export namespace AppStreamBuilder {
          * Find a package from its name.
          * @param pkgname a package name
          * @returns a {@link AppStreamBuilder.Package}, or `null` for not found.
+         * @since 0.1.0
          */
         find_by_pkgname(pkgname: string): Package;
 
@@ -307,18 +315,21 @@ export namespace AppStreamBuilder {
          * This function used to find an application in the cache, and now does nothing.
          * @param filename cache-id
          * @returns always `false`
+         * @since 0.1.0
          */
         find_in_cache(filename: string): boolean;
 
         /**
          * Gets the target metadata API version.
          * @returns floating point
+         * @since 0.1.0
          */
         get_api_version(): number;
 
         /**
          * Gets the screenshot directory to use
          * @returns directory
+         * @since 0.3.6
          */
         get_cache_dir(): string;
 
@@ -326,72 +337,84 @@ export namespace AppStreamBuilder {
          * Gets one specific build flag.
          * @param flag A {@link AppStreamBuilder.ContextFlags}
          * @returns `true` if the flag was set
+         * @since 0.3.5
          */
         get_flag(flag: ContextFlags): boolean;
 
         /**
          * Gets the build flags.
          * @returns {@link AppStreamBuilder.ContextFlags}
+         * @since 0.3.5
          */
         get_flags(): ContextFlags;
 
         /**
          * Gets the minimum icon size in pixels.
          * @returns size
+         * @since 0.3.1
          */
         get_min_icon_size(): number;
 
         /**
          * Returns the packages already added to the context.
          * @returns array of packages
+         * @since 0.1.0
          */
         get_packages(): Package[];
 
         /**
          * Gets the temporary directory to use
          * @returns directory
+         * @since 0.1.0
          */
         get_temp_dir(): string;
 
         /**
          * Processes all the packages that have been added to the context.
          * @returns `true` for success, `false` otherwise
+         * @since 0.1.0
          */
         process(): boolean;
 
         /**
          * Sets the version of the metadata to write.
          * @param api_version the AppStream API version
+         * @since 0.1.0
          */
         set_api_version(api_version: number): void;
 
         /**
          * Sets the basename for the two metadata files.
          * @param basename AppStream file basename, e.g. "appstream"
+         * @since 0.1.0
          */
         set_basename(basename: string): void;
 
         /**
          * Sets the cache directory to use when building metadata.
          * @param cache_dir directory
+         * @since 0.1.0
          */
         set_cache_dir(cache_dir: string): void;
 
         /**
          * Sets flags to be used when building the metadata.
          * @param flags {@link AppStreamBuilder.ContextFlags}, e.g. {@link AppStreamBuilder.ContextFlags.NO_NETWORK}
+         * @since 0.3.5
          */
         set_flags(flags: ContextFlags): void;
 
         /**
          * Sets the icons directory to use when building metadata.
          * @param icons_dir directory
+         * @since 0.3.5
          */
         set_icons_dir(icons_dir: string): void;
 
         /**
          * Sets the log directory to use when building metadata.
          * @param log_dir directory
+         * @since 0.1.0
          */
         set_log_dir(log_dir: string): void;
 
@@ -399,12 +422,14 @@ export namespace AppStreamBuilder {
          * Sets the maximum number of threads to use when processing packages.
          * This function now has no affect as only one thread is ever used.
          * @param max_threads integer
+         * @since 0.1.0
          */
         set_max_threads(max_threads: number): void;
 
         /**
          * Sets the smallest icon size in pixels supported.
          * @param min_icon_size integer
+         * @since 0.3.1
          */
         set_min_icon_size(min_icon_size: number): void;
 
@@ -412,18 +437,21 @@ export namespace AppStreamBuilder {
          * Sets the filename location of the old metadata file.
          * This function now has no affect as no cache ID is available.
          * @param old_metadata filename, or `null`
+         * @since 0.1.0
          */
         set_old_metadata(old_metadata: string): void;
 
         /**
          * Sets the origin for the two metadata files.
          * @param origin AppStream origin, e.g. "fedora-21"
+         * @since 0.3.4
          */
         set_origin(origin: string): void;
 
         /**
          * Sets the output directory to use when building metadata.
          * @param output_dir directory
+         * @since 0.1.0
          */
         set_output_dir(output_dir: string): void;
 
@@ -435,12 +463,14 @@ export namespace AppStreamBuilder {
         /**
          * Sets the temporary directory to use when building metadata.
          * @param temp_dir directory
+         * @since 0.1.0
          */
         set_temp_dir(temp_dir: string): void;
 
         /**
          * Sets up the context ready for use.
          * @returns `true` for success, `false` otherwise
+         * @since 0.1.0
          */
         setup(): boolean;
     }
@@ -492,6 +522,7 @@ export namespace AppStreamBuilder {
         // Virtual methods
         /**
          * Closes a package, which can be re-opened if required.
+         * @since 0.3.5
          * @virtual
          */
         vfunc_close(): boolean;
@@ -499,6 +530,7 @@ export namespace AppStreamBuilder {
         /**
          * Compares one package with another.
          * @param pkg2 A {@link AppStreamBuilder.Package}
+         * @since 0.1.0
          * @virtual
          */
         vfunc_compare(pkg2: Package): number;
@@ -506,6 +538,7 @@ export namespace AppStreamBuilder {
         /**
          * Ensures data exists.
          * @param flags {@link AppStreamBuilder.PackageEnsureFlags}
+         * @since 0.3.0
          * @virtual
          */
         vfunc_ensure(flags: PackageEnsureFlags): boolean;
@@ -514,6 +547,7 @@ export namespace AppStreamBuilder {
          * Decompresses a package into a directory, optionally using a glob list.
          * @param dir directory to explode into
          * @param glob the glob list, or `null`
+         * @since 0.1.0
          * @virtual
          */
         vfunc_explode(dir: string, glob: string[]): boolean;
@@ -523,6 +557,7 @@ export namespace AppStreamBuilder {
          * As little i/o should be done at this point, and implementations
          * should rely on `asb_package_ensure()` to set data.
          * @param filename package filename
+         * @since 0.1.0
          * @virtual
          */
         vfunc_open(filename: string): boolean;
@@ -531,6 +566,7 @@ export namespace AppStreamBuilder {
         /**
          * Add a package dependancy.
          * @param dep package dep
+         * @since 0.3.5
          */
         add_dep(dep: string): void;
 
@@ -538,18 +574,21 @@ export namespace AppStreamBuilder {
          * Adds a (downstream) release to a package.
          * @param version a package version
          * @param release a package release
+         * @since 0.1.0
          */
         add_release(version: string, release: AppStreamGlib.Release): void;
 
         /**
          * Deallocates previously ensured data.
          * @param flags {@link AppStreamBuilder.PackageEnsureFlags}
+         * @since 0.3.5
          */
         clear(flags: PackageEnsureFlags): void;
 
         /**
          * Closes a package, which can be re-opened if required.
          * @returns `true` for success, `false` otherwise
+         * @since 0.3.5
          */
         close(): boolean;
 
@@ -557,6 +596,7 @@ export namespace AppStreamBuilder {
          * Compares one package with another.
          * @param pkg2 A {@link AppStreamBuilder.Package}
          * @returns +1 for `pkg1` newer, 0 for the same and -1 if `pkg2` is newer
+         * @since 0.1.0
          */
         compare(pkg2: Package): number;
 
@@ -564,6 +604,7 @@ export namespace AppStreamBuilder {
          * Ensures data exists.
          * @param flags {@link AppStreamBuilder.PackageEnsureFlags}
          * @returns `true` for success, `false` otherwise
+         * @since 0.3.0
          */
         ensure(flags: PackageEnsureFlags): boolean;
 
@@ -572,18 +613,21 @@ export namespace AppStreamBuilder {
          * @param dir directory to explode into
          * @param glob the glob list, or `null`
          * @returns `true` for success, `false` otherwise
+         * @since 0.1.0
          */
         explode(dir: string, glob: string[]): boolean;
 
         /**
          * Gets the package architecture
          * @returns utf8 string
+         * @since 0.3.0
          */
         get_arch(): string;
 
         /**
          * Gets the package basename.
          * @returns utf8 string
+         * @since 0.1.0
          */
         get_basename(): string;
 
@@ -591,72 +635,84 @@ export namespace AppStreamBuilder {
          * Gets a config attribute from a package.
          * @param key utf8 string
          * @returns utf8 string
+         * @since 0.1.0
          */
         get_config(key: string): string;
 
         /**
          * Get the package dependancy list.
          * @returns deplist
+         * @since 0.3.5
          */
         get_deps(): string[];
 
         /**
          * Gets if the package is enabled.
          * @returns enabled status
+         * @since 0.1.0
          */
         get_enabled(): boolean;
 
         /**
          * Gets the epoch of the package.
          * @returns a {@link AppStreamBuilder.PackageKind}
+         * @since 0.5.6
          */
         get_epoch(): number;
 
         /**
          * Gets the package EVR.
          * @returns utf8 string
+         * @since 0.1.0
          */
         get_evr(): string;
 
         /**
          * Gets the package filelist.
          * @returns filelist
+         * @since 0.1.0
          */
         get_filelist(): string[];
 
         /**
          * Gets the filename of the package.
          * @returns utf8 filename
+         * @since 0.1.0
          */
         get_filename(): string;
 
         /**
          * Gets the kind of the package.
          * @returns a {@link AppStreamBuilder.PackageKind}
+         * @since 0.2.5
          */
         get_kind(): PackageKind;
 
         /**
          * Gets the package license.
          * @returns utf8 string
+         * @since 0.1.0
          */
         get_license(): string;
 
         /**
          * Gets the package name
          * @returns utf8 string
+         * @since 0.1.0
          */
         get_name(): string;
 
         /**
          * Gets the package NEVR.
          * @returns utf8 string
+         * @since 0.1.0
          */
         get_nevr(): string;
 
         /**
          * Gets the package NEVRA.
          * @returns utf8 string
+         * @since 0.3.0
          */
         get_nevra(): string;
 
@@ -664,59 +720,69 @@ export namespace AppStreamBuilder {
          * Gets the release for a specific version.
          * @param version package version
          * @returns an {@link AppStreamGlib.Release}, or `null` for not found
+         * @since 0.1.0
          */
         get_release(version: string): AppStreamGlib.Release;
 
         /**
          * Gets the package release string
          * @returns utf8 string
+         * @since 0.5.6
          */
         get_release_str(): string;
 
         /**
          * Gets the releases of the package.
          * @returns the release data
+         * @since 0.1.0
          */
         get_releases(): AppStreamGlib.Release[];
 
         /**
          * Gets the package source nevra.
          * @returns utf8 string
+         * @since 0.1.0
          */
         get_source(): string;
 
         /**
          * Gets the package source name.
          * @returns utf8 string
+         * @since 0.2.4
          */
         get_source_pkgname(): string;
 
         /**
          * Gets the package homepage URL
          * @returns utf8 string
+         * @since 0.1.0
          */
         get_url(): string;
 
         /**
          * Gets the package version control system.
          * @returns utf8 string
+         * @since 0.3.4
          */
         get_vcs(): string;
 
         /**
          * Gets the package version
          * @returns utf8 string
+         * @since 0.3.5
          */
         get_version(): string;
 
         /**
          * Flushes the log queue.
          * @returns `true` for success, `false` otherwise
+         * @since 0.1.0
          */
         log_flush(): boolean;
 
         /**
          * Starts the log timer.
+         * @since 0.1.0
          */
         log_start(): void;
 
@@ -726,12 +792,14 @@ export namespace AppStreamBuilder {
          * should rely on `asb_package_ensure()` to set data.
          * @param filename package filename
          * @returns `true` for success, `false` otherwise
+         * @since 0.1.0
          */
         open(filename: string): boolean;
 
         /**
          * Sets the package architecture.
          * @param arch package architecture
+         * @since 0.1.0
          */
         set_arch(arch: string): void;
 
@@ -739,54 +807,63 @@ export namespace AppStreamBuilder {
          * Sets a config attribute on a package.
          * @param key utf8 string
          * @param value utf8 string
+         * @since 0.1.0
          */
         set_config(key: string, value: string): void;
 
         /**
          * Enables or disables the package.
          * @param enabled boolean
+         * @since 0.1.0
          */
         set_enabled(enabled: boolean): void;
 
         /**
          * Sets the package epoch
          * @param epoch epoch, or 0 for unset
+         * @since 0.1.0
          */
         set_epoch(epoch: number): void;
 
         /**
          * Sets the package filelist.
          * @param filelist package filelist
+         * @since 0.1.0
          */
         set_filelist(filelist: string): void;
 
         /**
          * Sets the package filename.
          * @param filename package filename
+         * @since 0.3.5
          */
         set_filename(filename: string): void;
 
         /**
          * Sets the package kind.
          * @param kind A {@link AppStreamBuilder.PackageKind}
+         * @since 0.2.5
          */
         set_kind(kind: PackageKind): void;
 
         /**
          * Sets the package license.
          * @param license license string
+         * @since 0.1.0
          */
         set_license(license: string): void;
 
         /**
          * Sets the package name.
          * @param name package name
+         * @since 0.1.0
          */
         set_name(name: string): void;
 
         /**
          * Sets the package release.
          * @param release package release
+         * @since 0.1.0
          */
         set_release(release: string): void;
 
@@ -794,6 +871,7 @@ export namespace AppStreamBuilder {
          * Sets the package source name, which is usually the parent of a set of
          * subpackages.
          * @param source source string, e.g. the srpm nevra
+         * @since 0.1.0
          */
         set_source(source: string): void;
 
@@ -801,24 +879,28 @@ export namespace AppStreamBuilder {
          * Sets the package source name, which is usually the parent of a set of
          * subpackages.
          * @param source_pkgname source string, e.g. the srpm name
+         * @since 0.2.4
          */
         set_source_pkgname(source_pkgname: string): void;
 
         /**
          * Sets the package URL.
          * @param url homepage URL
+         * @since 0.1.0
          */
         set_url(url: string): void;
 
         /**
          * Sets the package version control system.
          * @param vcs vcs string
+         * @since 0.3.4
          */
         set_vcs(vcs: string): void;
 
         /**
          * Sets the package version.
          * @param version package version
+         * @since 0.1.0
          */
         set_version(version: string): void;
     }
@@ -871,12 +953,14 @@ export namespace AppStreamBuilder {
         /**
          * Processes the task.
          * @returns `true` for success, `false` otherwise
+         * @since 0.1.0
          */
         process(): boolean;
 
         /**
          * Sets the package used for the task.
          * @param pkg A {@link AppStreamBuilder.Package}
+         * @since 0.1.0
          */
         set_package(pkg: Package): void;
     }

@@ -1076,6 +1076,7 @@ export namespace JavaScriptCore {
          * the meantime. Consider taking a copy of the data and using the copy instead
          * in asynchronous code.
          * @returns pointer to memory.
+         * @since 2.38
          */
         array_buffer_get_data(): Uint8Array;
 
@@ -1085,6 +1086,7 @@ export namespace JavaScriptCore {
          * Obtains the size in bytes of the memory region that holds the contents of
          * an %ArrayBuffer.
          * @returns size, in bytes.
+         * @since 2.38
          */
         array_buffer_get_size(): number;
 
@@ -1122,6 +1124,7 @@ export namespace JavaScriptCore {
         /**
          * Check whether the `value` is an %ArrayBuffer.
          * @returns whether the value is an %ArrayBuffer
+         * @since 2.38
          */
         is_array_buffer(): boolean;
 
@@ -1170,6 +1173,7 @@ export namespace JavaScriptCore {
         /**
          * Determines whether a value is a typed array.
          * @returns Whether `value` is a typed array.
+         * @since 2.38
          */
         is_typed_array(): boolean;
 
@@ -1198,6 +1202,7 @@ export namespace JavaScriptCore {
          * @param offset offset, in bytes.
          * @param length number of array elements, or `-1`.
          * @returns a {@link JavaScriptCore.Value}
+         * @since 2.38
          */
         new_typed_array_with_buffer(type: TypedArrayType, offset: bigint | number, length: bigint | number): Value;
 
@@ -1327,6 +1332,7 @@ export namespace JavaScriptCore {
          * not contain newlines. The size of the indent is clamped to 10 spaces.
          * @param indent The number of spaces to indent when nesting.
          * @returns a null-terminated JSON string with serialization of `value`
+         * @since 2.28
          */
         to_json(indent: number): string;
 
@@ -1347,6 +1353,7 @@ export namespace JavaScriptCore {
         /**
          * Obtain the %ArrayBuffer for the memory region of the typed array elements.
          * @returns A {@link JavaScriptCore.Value}
+         * @since 2.38
          */
         typed_array_get_buffer(): Value;
 
@@ -1377,30 +1384,35 @@ export namespace JavaScriptCore {
          * the same after calls to other JSC API functions. See
          * `jsc_value_array_buffer_get_data()` for details.
          * @returns pointer to memory.
+         * @since 2.38
          */
         typed_array_get_data(): [null, number];
 
         /**
          * Gets the number of elements in a typed array.
          * @returns number of elements.
+         * @since 2.38
          */
         typed_array_get_length(): number;
 
         /**
          * Gets the offset over the underlying array buffer data.
          * @returns offset, in bytes.
+         * @since 2.38
          */
         typed_array_get_offset(): number;
 
         /**
          * Gets the size of a typed array.
          * @returns size, in bytes.
+         * @since 2.38
          */
         typed_array_get_size(): number;
 
         /**
          * Gets the type of elements contained in a typed array.
          * @returns type of the elements, or {@link JavaScriptCore.TypedArrayType.NONE} if `value` is not a typed array.
+         * @since 2.38
          */
         typed_array_get_type(): TypedArrayType;
     }

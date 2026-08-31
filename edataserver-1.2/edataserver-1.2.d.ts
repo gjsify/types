@@ -3205,6 +3205,7 @@ export namespace EDataServer {
         /**
          * @param code an {@link EDataServer.ClientError} code to create
          * @param custom_msg custom message to use for the error; can be `null`
+         * @since 3.2
          */
         static error_create(code: ClientError, custom_msg: string | null): GLib.Error;
 
@@ -3213,6 +3214,7 @@ export namespace EDataServer {
         /**
          * Get localized human readable description of the given error code.
          * @param code an {@link EDataServer.ClientError} error code
+         * @since 3.2
          */
         static error_to_string(code: ClientError): string;
 
@@ -3220,6 +3222,8 @@ export namespace EDataServer {
          * Copies a {@link GLib.SList} of {@link GObject.Object}<!-- -->s to the end of `copy_to`.
          * @param copy_to Where to copy; may be `null`
          * @param objects {@link GLib.SList} of {@link GObject.Object}<!-- -->s to be copied
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_util_copy_object_slist()` instead.
          */
         static util_copy_object_slist(copy_to: GObject.Object[] | null, objects: GObject.Object[]): GObject.Object[];
 
@@ -3227,6 +3231,8 @@ export namespace EDataServer {
          * Copies the {@link GLib.SList} of strings to the end of `copy_to`.
          * @param copy_to Where to copy; may be `null`
          * @param strings {@link GLib.SList} of strings to be copied
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_util_copy_string_slist()` instead.
          */
         static util_copy_string_slist(copy_to: string[] | null, strings: string[]): string[];
 
@@ -3234,30 +3240,39 @@ export namespace EDataServer {
          * Calls `g_object_unref()` on each member of `objects` and then frees `objects`
          * itself.
          * @param objects a {@link GLib.SList} of {@link GObject.Object}<!-- -->s
+         * @since 3.2
+         * @deprecated since 3.8: Use `g_slist_free_full()` instead.
          */
         static util_free_object_slist(objects: GObject.Object[]): void;
 
         /**
          * Frees memory previously allocated by `e_client_util_strv_to_slist()`.
          * @param strings a {@link GLib.SList} of strings (gchar *)
+         * @since 3.2
+         * @deprecated since 3.8: Use `g_slist_free_full()` instead.
          */
         static util_free_string_slist(strings: string[]): void;
 
         /**
          * Parses comma-separated list of values into {@link GLib.SList}.
          * @param strings string of comma-separated values
+         * @since 3.2
          */
         static util_parse_comma_strings(strings: string): string[];
 
         /**
          * Convert a list of strings into a `null`-terminated array of strings.
          * @param strings a {@link GLib.SList} of strings (const gchar *)
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_util_slist_to_strv()` instead.
          */
         static util_slist_to_strv(strings: string[]): string[];
 
         /**
          * Convert a `null`-terminated array of strings to a list of strings.
          * @param strv a `null`-terminated array of strings (const gchar *)
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_util_strv_to_slist()` instead.
          */
         static util_strv_to_slist(strv: string): string[];
 
@@ -3277,6 +3292,8 @@ export namespace EDataServer {
          * @param known_errors_count How many items are stored in `known_errors`
          * @param known_errors_domain Error domain for `known_errors`
          * @param fail_when_none_matched Whether to fail when none of `known_errors` matches
+         * @since 3.2
+         * @deprecated since 3.8: This function is no longer used.
          */
         static util_unwrap_dbus_error(dbus_error: GLib.Error, known_errors: ClientErrorsList, known_errors_count: number, known_errors_domain: GLib.Quark, fail_when_none_matched: boolean): [boolean, GLib.Error];
 
@@ -3306,6 +3323,7 @@ export namespace EDataServer {
          * @param prop_name property name, whose value to retrieve; cannot be `null`
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          * @virtual
          */
         vfunc_get_backend_property(prop_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3313,6 +3331,7 @@ export namespace EDataServer {
         /**
          * Finishes previous call of `e_client_get_backend_property()`.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.2
          * @virtual
          */
         vfunc_get_backend_property_finish(result: Gio.AsyncResult): [boolean, string];
@@ -3321,6 +3340,7 @@ export namespace EDataServer {
          * Queries `client`'s backend for a property of name `prop_name`.
          * @param prop_name property name, whose value to retrieve; cannot be `null`
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
          * @virtual
          */
         vfunc_get_backend_property_sync(prop_name: string, cancellable: Gio.Cancellable | null): [boolean, string];
@@ -3331,6 +3351,8 @@ export namespace EDataServer {
          * @param only_if_exists this parameter is not used anymore
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_book_client_connect()` and                  `e_book_client_connect_finish()` or                  `e_cal_client_connect()` and                  `e_cal_client_connect_finish()` instead.
          * @virtual
          */
         vfunc_open(only_if_exists: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3338,6 +3360,8 @@ export namespace EDataServer {
         /**
          * Finishes previous call of `e_client_open()`.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_book_client_connect()` and                  `e_book_client_connect_finish()` or                  `e_cal_client_connect()` and                  `e_cal_client_connect_finish()` instead.
          * @virtual
          */
         vfunc_open_finish(result: Gio.AsyncResult): boolean;
@@ -3346,6 +3370,8 @@ export namespace EDataServer {
          * Opens the `client`, making it ready for queries and other operations.
          * @param only_if_exists this parameter is not used anymore
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_book_client_connect_sync()` or                  `e_cal_client_connect_sync()` instead.
          * @virtual
          */
         vfunc_open_sync(only_if_exists: boolean, cancellable: Gio.Cancellable | null): boolean;
@@ -3364,6 +3390,7 @@ export namespace EDataServer {
          * The call is finished by `e_client_refresh_finish()` from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          * @virtual
          */
         vfunc_refresh(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3371,6 +3398,7 @@ export namespace EDataServer {
         /**
          * Finishes previous call of `e_client_refresh()`.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.2
          * @virtual
          */
         vfunc_refresh_finish(result: Gio.AsyncResult): boolean;
@@ -3381,6 +3409,7 @@ export namespace EDataServer {
          * refreshing or not. Use `e_client_check_refresh_supported()` to check
          * whether the backend supports this method.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
          * @virtual
          */
         vfunc_refresh_sync(cancellable: Gio.Cancellable | null): boolean;
@@ -3391,6 +3420,8 @@ export namespace EDataServer {
          * The call is finished by `e_client_remove_finish()` from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
+         * @deprecated since 3.6: Use `e_source_remove()` instead.
          * @virtual
          */
         vfunc_remove(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3398,6 +3429,8 @@ export namespace EDataServer {
         /**
          * Finishes previous call of `e_client_remove()`.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.2
+         * @deprecated since 3.6: Use `e_source_remove_finish()` instead.
          * @virtual
          */
         vfunc_remove_finish(result: Gio.AsyncResult): boolean;
@@ -3406,6 +3439,8 @@ export namespace EDataServer {
          * Removes the backing data for this {@link EDataServer.Client}. For example, with the file
          * backend this deletes the database file. You cannot get it back!
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
+         * @deprecated since 3.6: Use `e_source_remove_sync()` instead.
          * @virtual
          */
         vfunc_remove_sync(cancellable: Gio.Cancellable | null): boolean;
@@ -3419,6 +3454,8 @@ export namespace EDataServer {
          * from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_client_get_capabilities()` instead.
          * @virtual
          */
         vfunc_retrieve_capabilities(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3428,6 +3465,8 @@ export namespace EDataServer {
          * Returned value of `capabilities` should be freed with `g_free()`,
          * when no longer needed.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_client_get_capabilities()` instead.
          * @virtual
          */
         vfunc_retrieve_capabilities_finish(result: Gio.AsyncResult): [boolean, string];
@@ -3439,6 +3478,8 @@ export namespace EDataServer {
          * `e_client_check_capability()` is using the cached value. Returned value
          * of `capabilities` should be freed with `g_free()`, when no longer needed.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_client_get_capabilities()` instead.
          * @virtual
          */
         vfunc_retrieve_capabilities_sync(cancellable: Gio.Cancellable | null): [boolean, string];
@@ -3449,6 +3490,7 @@ export namespace EDataServer {
          * 
          * If an error occurs, the function sets `error` and returns `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.16
          * @virtual
          */
         vfunc_retrieve_properties_sync(cancellable: Gio.Cancellable | null): boolean;
@@ -3461,6 +3503,8 @@ export namespace EDataServer {
          * @param prop_value property value, to set; cannot be `null`
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
+         * @deprecated since 3.8: Clients cannot set backend properties.  Any attempt                  will fail with an {@link EDataServer.ClientError.NOT_SUPPORTED} error.
          * @virtual
          */
         vfunc_set_backend_property(prop_name: string, prop_value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3468,6 +3512,8 @@ export namespace EDataServer {
         /**
          * Finishes previous call of `e_client_set_backend_property()`.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.2
+         * @deprecated since 3.8: Clients cannot set backend properties.  Any attempt                  will fail with an {@link EDataServer.ClientError.NOT_SUPPORTED} error.
          * @virtual
          */
         vfunc_set_backend_property_finish(result: Gio.AsyncResult): boolean;
@@ -3478,6 +3524,8 @@ export namespace EDataServer {
          * @param prop_name property name, whose value to change; cannot be `null`
          * @param prop_value property value, to set; cannot be `null`
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
+         * @deprecated since 3.8: Clients cannot set backend properties.  Any attempt                  will fail with an {@link EDataServer.ClientError.NOT_SUPPORTED} error.
          * @virtual
          */
         vfunc_set_backend_property_sync(prop_name: string, prop_value: string, cancellable: Gio.Cancellable | null): boolean;
@@ -3486,6 +3534,8 @@ export namespace EDataServer {
          * Unwraps D-Bus error to local error. `dbus_error` is automatically freed.
          * `dbus_erorr` and `out_error` can point to the same variable.
          * @param dbus_error a {@link GLib.Error} returned bu D-Bus
+         * @since 3.2
+         * @deprecated since 3.8: Use `g_dbus_error_strip_remote_error()` instead.
          * @virtual
          */
         vfunc_unwrap_dbus_error(dbus_error: GLib.Error): void;
@@ -3493,6 +3543,8 @@ export namespace EDataServer {
         // Methods
         /**
          * Cancels all pending operations started on `client`.
+         * @since 3.2
+         * @deprecated since 3.8: The function no longer does anything.
          */
         cancel_all(): void;
 
@@ -3501,6 +3553,7 @@ export namespace EDataServer {
          * To get all capabilities use `e_client_get_capabilities()`.
          * @param capability a capability
          * @returns {@link GLib.SList} of const strings of capabilities
+         * @since 3.2
          */
         check_capability(capability: string): boolean;
 
@@ -3508,6 +3561,7 @@ export namespace EDataServer {
          * Checks whether a client supports explicit refreshing
          * (see `e_client_refresh()`).
          * @returns TRUE if the client supports refreshing, FALSE otherwise.
+         * @since 3.2
          */
         check_refresh_supported(): boolean;
 
@@ -3515,6 +3569,7 @@ export namespace EDataServer {
          * Returns a D-Bus bus name that will be used to connect the
          * client to the backend subprocess.
          * @returns a newly-allocated string representing a D-Bus bus          name that will be used to connect the client to          the backend subprocess. The string should be          freed by the caller using `g_free()`.
+         * @since 3.16
          */
         dup_bus_name(): string;
 
@@ -3524,6 +3579,7 @@ export namespace EDataServer {
          * from the `callback`.
          * @param prop_name property name, whose value to retrieve; cannot be `null`
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
          */
         get_backend_property(prop_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -3534,6 +3590,7 @@ export namespace EDataServer {
          * @param prop_name property name, whose value to retrieve; cannot be `null`
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_backend_property(prop_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3544,6 +3601,7 @@ export namespace EDataServer {
          * @param prop_name property name, whose value to retrieve; cannot be `null`
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         get_backend_property(prop_name: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -3551,6 +3609,7 @@ export namespace EDataServer {
          * Finishes previous call of `e_client_get_backend_property()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         get_backend_property_finish(result: Gio.AsyncResult): [boolean, string];
 
@@ -3559,6 +3618,7 @@ export namespace EDataServer {
          * @param prop_name property name, whose value to retrieve; cannot be `null`
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         get_backend_property_sync(prop_name: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -3567,18 +3627,21 @@ export namespace EDataServer {
          * This list, together with inner strings, is owned by the `client`.
          * To check for individual capabilities use `e_client_check_capability()`.
          * @returns {@link GLib.SList} of const strings          of capabilities
+         * @since 3.2
          */
         get_capabilities(): string[];
 
         /**
          * Get the {@link EDataServer.Source} that this client has assigned.
          * @returns The source.
+         * @since 3.2
          */
         get_source(): Source;
 
         /**
          * Check if this `client` is connected.
          * @returns `true` if this `client` is connected, otherwise `false`.
+         * @since 3.2
          */
         is_online(): boolean;
 
@@ -3589,12 +3652,15 @@ export namespace EDataServer {
          * during the opening phase except of authenticate or cancel it.
          * Every other operation results in an {@link EDataServer.ClientError.BUSY} error.
          * @returns always `true`
+         * @since 3.2
+         * @deprecated since 3.8: Clients don't need to care if they're fully opened                  anymore.  This function always returns `true`.
          */
         is_opened(): boolean;
 
         /**
          * Check if this `client` is read-only.
          * @returns `true` if this `client` is read-only, otherwise `false`.
+         * @since 3.2
          */
         is_readonly(): boolean;
 
@@ -3603,6 +3669,8 @@ export namespace EDataServer {
          * The call is finished by `e_client_open_finish()` from the `callback`.
          * @param only_if_exists this parameter is not used anymore
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_book_client_connect()` and                  `e_book_client_connect_finish()` or                  `e_cal_client_connect()` and                  `e_cal_client_connect_finish()` instead.
          */
         open(only_if_exists: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3612,6 +3680,8 @@ export namespace EDataServer {
          * @param only_if_exists this parameter is not used anymore
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_book_client_connect()` and                  `e_book_client_connect_finish()` or                  `e_cal_client_connect()` and                  `e_cal_client_connect_finish()` instead.
          */
         open(only_if_exists: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3621,6 +3691,8 @@ export namespace EDataServer {
          * @param only_if_exists this parameter is not used anymore
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_book_client_connect()` and                  `e_book_client_connect_finish()` or                  `e_cal_client_connect()` and                  `e_cal_client_connect_finish()` instead.
          */
         open(only_if_exists: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3628,6 +3700,8 @@ export namespace EDataServer {
          * Finishes previous call of `e_client_open()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_book_client_connect()` and                  `e_book_client_connect_finish()` or                  `e_cal_client_connect()` and                  `e_cal_client_connect_finish()` instead.
          */
         open_finish(result: Gio.AsyncResult): boolean;
 
@@ -3636,6 +3710,8 @@ export namespace EDataServer {
          * @param only_if_exists this parameter is not used anymore
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_book_client_connect_sync()` or                  `e_cal_client_connect_sync()` instead.
          */
         open_sync(only_if_exists: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3646,6 +3722,7 @@ export namespace EDataServer {
          * The returned {@link GLib.MainContext} is referenced for thread-safety and must be
          * unreferenced with `g_main_context_unref()` when finished with it.
          * @returns a {@link GLib.MainContext}
+         * @since 3.8
          */
         ref_main_context(): GLib.MainContext;
 
@@ -3656,6 +3733,7 @@ export namespace EDataServer {
          * whether the backend supports this method.
          * The call is finished by `e_client_refresh_finish()` from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
          */
         refresh(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3667,6 +3745,7 @@ export namespace EDataServer {
          * The call is finished by `e_client_refresh_finish()` from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         refresh(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3678,6 +3757,7 @@ export namespace EDataServer {
          * The call is finished by `e_client_refresh_finish()` from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
          */
         refresh(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3685,6 +3765,7 @@ export namespace EDataServer {
          * Finishes previous call of `e_client_refresh()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         refresh_finish(result: Gio.AsyncResult): boolean;
 
@@ -3695,6 +3776,7 @@ export namespace EDataServer {
          * whether the backend supports this method.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
          */
         refresh_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3703,6 +3785,8 @@ export namespace EDataServer {
          * backend this deletes the database file. You cannot get it back!
          * The call is finished by `e_client_remove_finish()` from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
+         * @deprecated since 3.6: Use `e_source_remove()` instead.
          */
         remove(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3712,6 +3796,8 @@ export namespace EDataServer {
          * The call is finished by `e_client_remove_finish()` from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
+         * @deprecated since 3.6: Use `e_source_remove()` instead.
          */
         remove(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3721,6 +3807,8 @@ export namespace EDataServer {
          * The call is finished by `e_client_remove_finish()` from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
+         * @deprecated since 3.6: Use `e_source_remove()` instead.
          */
         remove(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3728,6 +3816,8 @@ export namespace EDataServer {
          * Finishes previous call of `e_client_remove()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
+         * @deprecated since 3.6: Use `e_source_remove_finish()` instead.
          */
         remove_finish(result: Gio.AsyncResult): boolean;
 
@@ -3736,6 +3826,8 @@ export namespace EDataServer {
          * backend this deletes the database file. You cannot get it back!
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
+         * @deprecated since 3.6: Use `e_source_remove_sync()` instead.
          */
         remove_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3747,6 +3839,8 @@ export namespace EDataServer {
          * The call is finished by `e_client_retrieve_capabilities_finish()`
          * from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_client_get_capabilities()` instead.
          */
         retrieve_capabilities(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -3759,6 +3853,8 @@ export namespace EDataServer {
          * from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_client_get_capabilities()` instead.
          */
         retrieve_capabilities(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3771,6 +3867,8 @@ export namespace EDataServer {
          * from the `callback`.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_client_get_capabilities()` instead.
          */
         retrieve_capabilities(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -3780,6 +3878,8 @@ export namespace EDataServer {
          * when no longer needed.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_client_get_capabilities()` instead.
          */
         retrieve_capabilities_finish(result: Gio.AsyncResult): [boolean, string];
 
@@ -3791,6 +3891,8 @@ export namespace EDataServer {
          * of `capabilities` should be freed with `g_free()`, when no longer needed.
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
+         * @deprecated since 3.8: Use `e_client_get_capabilities()` instead.
          */
         retrieve_capabilities_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -3801,6 +3903,7 @@ export namespace EDataServer {
          * When the operation is finished, `callback` will be called. You can then
          * call `e_client_retrieve_properties_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.16
          */
         retrieve_properties(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3812,6 +3915,7 @@ export namespace EDataServer {
          * call `e_client_retrieve_properties_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         retrieve_properties(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3823,6 +3927,7 @@ export namespace EDataServer {
          * call `e_client_retrieve_properties_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         retrieve_properties(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3832,6 +3937,7 @@ export namespace EDataServer {
          * If an error occurs, the function sets `error` and returns `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         retrieve_properties_finish(result: Gio.AsyncResult): boolean;
 
@@ -3842,6 +3948,7 @@ export namespace EDataServer {
          * If an error occurs, the function sets `error` and returns `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         retrieve_properties_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3852,6 +3959,8 @@ export namespace EDataServer {
          * @param prop_name property name, whose value to change; cannot be `null`
          * @param prop_value property value, to set; cannot be `null`
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
+         * @since 3.2
+         * @deprecated since 3.8: Clients cannot set backend properties.  Any attempt                  will fail with an {@link EDataServer.ClientError.NOT_SUPPORTED} error.
          */
         set_backend_property(prop_name: string, prop_value: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3863,6 +3972,8 @@ export namespace EDataServer {
          * @param prop_value property value, to set; cannot be `null`
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
+         * @deprecated since 3.8: Clients cannot set backend properties.  Any attempt                  will fail with an {@link EDataServer.ClientError.NOT_SUPPORTED} error.
          */
         set_backend_property(prop_name: string, prop_value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3874,6 +3985,8 @@ export namespace EDataServer {
          * @param prop_value property value, to set; cannot be `null`
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @param callback callback to call when a result is ready
+         * @since 3.2
+         * @deprecated since 3.8: Clients cannot set backend properties.  Any attempt                  will fail with an {@link EDataServer.ClientError.NOT_SUPPORTED} error.
          */
         set_backend_property(prop_name: string, prop_value: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3881,6 +3994,8 @@ export namespace EDataServer {
          * Finishes previous call of `e_client_set_backend_property()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
+         * @deprecated since 3.8: Clients cannot set backend properties.  Any attempt                  will fail with an {@link EDataServer.ClientError.NOT_SUPPORTED} error.
          */
         set_backend_property_finish(result: Gio.AsyncResult): boolean;
 
@@ -3891,6 +4006,8 @@ export namespace EDataServer {
          * @param prop_value property value, to set; cannot be `null`
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.2
+         * @deprecated since 3.8: Clients cannot set backend properties.  Any attempt                  will fail with an {@link EDataServer.ClientError.NOT_SUPPORTED} error.
          */
         set_backend_property_sync(prop_name: string, prop_value: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3898,6 +4015,7 @@ export namespace EDataServer {
          * Sets a D-Bus bus name that will be used to connect the client
          * to the backend subprocess.
          * @param bus_name a string representing a D-Bus bus name
+         * @since 3.16
          */
         set_bus_name(bus_name: string): void;
 
@@ -3905,6 +4023,8 @@ export namespace EDataServer {
          * Unwraps D-Bus error to local error. `dbus_error` is automatically freed.
          * `dbus_erorr` and `out_error` can point to the same variable.
          * @param dbus_error a {@link GLib.Error} returned bu D-Bus
+         * @since 3.2
+         * @deprecated since 3.8: Use `g_dbus_error_strip_remote_error()` instead.
          */
         unwrap_dbus_error(dbus_error: GLib.Error): void;
 
@@ -3916,6 +4036,7 @@ export namespace EDataServer {
          * the `callback`.
          * @param timeout_seconds a timeout for the wait, in seconds
          * @param cancellable a {@link Gio.Cancellable}; or `null`
+         * @since 3.16
          */
         wait_for_connected(timeout_seconds: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3928,6 +4049,7 @@ export namespace EDataServer {
          * @param timeout_seconds a timeout for the wait, in seconds
          * @param cancellable a {@link Gio.Cancellable}; or `null`
          * @param callback callback to call when a result is ready
+         * @since 3.16
          */
         wait_for_connected(timeout_seconds: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3940,6 +4062,7 @@ export namespace EDataServer {
          * @param timeout_seconds a timeout for the wait, in seconds
          * @param cancellable a {@link Gio.Cancellable}; or `null`
          * @param callback callback to call when a result is ready
+         * @since 3.16
          */
         wait_for_connected(timeout_seconds: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3947,6 +4070,7 @@ export namespace EDataServer {
          * Finishes previous call of `e_client_wait_for_connected()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.16
          */
         wait_for_connected_finish(result: Gio.AsyncResult): boolean;
 
@@ -3960,6 +4084,7 @@ export namespace EDataServer {
          * @param timeout_seconds a timeout for the wait, in seconds
          * @param cancellable a {@link Gio.Cancellable}; or `null`
          * @returns `true` if successful, `false` otherwise.
+         * @since 3.16
          */
         wait_for_connected_sync(timeout_seconds: number, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -4022,6 +4147,7 @@ export namespace EDataServer {
         /**
          * Returns the object that `extension` extends.
          * @returns the object being extended
+         * @since 3.4
          */
         get_extensible(): Extensible;
     }
@@ -4097,6 +4223,7 @@ export namespace EDataServer {
          * @param tasklist_id id of a task list
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasklists_delete_sync(tasklist_id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4110,6 +4237,7 @@ export namespace EDataServer {
          * @param tasklist_id id of a task list
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasklists_get_sync(tasklist_id: string, cancellable: Gio.Cancellable | null): [boolean, Json.Object];
 
@@ -4119,6 +4247,7 @@ export namespace EDataServer {
          * @param title title to set
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasklists_insert_sync(title: string, cancellable: Gio.Cancellable | null): [boolean, Json.Object];
 
@@ -4128,6 +4257,7 @@ export namespace EDataServer {
          * @param cb an {@link EDataServer.GDataObjectCallback} to call for each found task list
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasklists_list_sync(query: GDataQuery | null, cb: GDataObjectCallback, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4140,6 +4270,7 @@ export namespace EDataServer {
          * @param tasklist_properties task list properties to change
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasklists_patch_sync(tasklist_id: string, tasklist_properties: Json.Builder, cancellable: Gio.Cancellable | null): [boolean, Json.Object | null];
 
@@ -4149,6 +4280,7 @@ export namespace EDataServer {
          * @param tasklist task list object to update the task list with
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasklists_update_sync(tasklist_id: string, tasklist: Json.Builder, cancellable: Gio.Cancellable | null): [boolean, Json.Object | null];
 
@@ -4159,6 +4291,7 @@ export namespace EDataServer {
          * @param tasklist_id id of a task list
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasks_clear_sync(tasklist_id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4168,6 +4301,7 @@ export namespace EDataServer {
          * @param task_id id of a task
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasks_delete_sync(tasklist_id: string, task_id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4182,6 +4316,7 @@ export namespace EDataServer {
          * @param task_id id of a task
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasks_get_sync(tasklist_id: string, task_id: string, cancellable: Gio.Cancellable | null): [boolean, Json.Object];
 
@@ -4194,6 +4329,7 @@ export namespace EDataServer {
          * @param previous_task_id previous sibling task identifier, or `null` to create at the first position among its siblings
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasks_insert_sync(tasklist_id: string, task: Json.Builder, parent_task_id: string | null, previous_task_id: string | null, cancellable: Gio.Cancellable | null): [boolean, Json.Object];
 
@@ -4204,6 +4340,7 @@ export namespace EDataServer {
          * @param cb an {@link EDataServer.GDataObjectCallback} to call for each found task
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasks_list_sync(tasklist_id: string, query: GDataQuery | null, cb: GDataObjectCallback, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4217,6 +4354,7 @@ export namespace EDataServer {
          * @param previous_task_id previous sibling task identifier, or `null` to move at the first position among its siblings
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasks_move_sync(tasklist_id: string, task_id: string, parent_task_id: string | null, previous_task_id: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4230,6 +4368,7 @@ export namespace EDataServer {
          * @param task_properties task properties to change
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasks_patch_sync(tasklist_id: string, task_id: string, task_properties: Json.Builder, cancellable: Gio.Cancellable | null): [boolean, Json.Object | null];
 
@@ -4240,6 +4379,7 @@ export namespace EDataServer {
          * @param task task object to update the task with
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.46
          */
         tasks_update_sync(tasklist_id: string, task_id: string, task: Json.Builder, cancellable: Gio.Cancellable | null): [boolean, Json.Object | null];
     }
@@ -4308,6 +4448,7 @@ export namespace EDataServer {
          * `g_type_module_unuse()` on all the modules.  Free the returned list
          * with `g_list_free()`.
          * @param dirname pathname for a directory containing modules to load
+         * @since 3.4
          */
         static load_all_in_directory(dirname: string): Module[];
 
@@ -4322,6 +4463,7 @@ export namespace EDataServer {
          * the same as `e_module_load_all_in_directory()`.
          * @param dirname pathname for a directory containing modules to load
          * @param dirprefix prefix of `dirname`, which can be replaced by custom prefixes, or `null`
+         * @since 3.40
          */
         static load_all_in_directory_and_prefixes(dirname: string, dirprefix: string | null): Module[];
 
@@ -4330,6 +4472,7 @@ export namespace EDataServer {
          * you want to unload it (enabling on-demand loading) you must call
          * `g_type_module_unuse()` on the module.
          * @param filename filename of the module to load
+         * @since 3.16
          */
         static load_file(filename: string): Module;
 
@@ -4338,6 +4481,7 @@ export namespace EDataServer {
          * Returns the filename of the shared library for `module`.  The
          * string is owned by `module` and should not be modified or freed.
          * @returns the filename for `module`
+         * @since 3.4
          */
         get_filename(): string;
 
@@ -4441,6 +4585,7 @@ export namespace EDataServer {
          * @param redirect_uri redirect URI
          * @param cancellable a {@link Gio.Cancellable}
          * @returns an acquired cookie, or `null` on error
+         * @since 3.54
          */
         acquire_prt_sso_cookie_sync(account: Json.Object, sso_url: string, scopes: Json.Array, redirect_uri: string, cancellable: Gio.Cancellable | null): Soup.Cookie | null;
 
@@ -4457,6 +4602,7 @@ export namespace EDataServer {
          * @param redirect_uri 
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the accounts, or `null` on error
+         * @since 3.54
          */
         get_accounts_sync(redirect_uri: string, cancellable: Gio.Cancellable | null): Json.Object | null;
     }
@@ -4532,6 +4678,7 @@ export namespace EDataServer {
         /**
          * Gets the default {@link EDataServer.NetworkMonitor}. The caller should not unref the returned instance.
          * The {@link EDataServer.NetworkMonitor} implements the {@link Gio.NetworkMonitor} iterface.
+         * @since 3.22
          */
         static get_default(): Gio.NetworkMonitor;
 
@@ -4540,6 +4687,7 @@ export namespace EDataServer {
          * Get currently set GIO name for the network availability checks.
          * See `e_network_monitor_set_gio_name()` for more details.
          * @returns A newly allocated string, a GIO name   of the underlying GNetworkMonitor which is set to be used.   The returned string should be freed with `g_free()`, when   no longer needed.
+         * @since 3.22
          */
         dup_gio_name(): string;
 
@@ -4547,6 +4695,7 @@ export namespace EDataServer {
          * Get a list of available GIO names for the {@link Gio.NetworkMonitor} implementations.
          * The strings can be used in `e_network_monitor_set_gio_name()`.
          * @returns A newly allocated {@link GLib.SList},   with newly allocated strings, the GIO names. The {@link GLib.SList} should be freed   with g_slist_free_full (gio_names, g_free); when no longer needed.
+         * @since 3.22
          */
         list_gio_names(): string[];
 
@@ -4558,6 +4707,7 @@ export namespace EDataServer {
          * name is used the default {@link Gio.NetworkMonitor} implementation, as returned
          * by the `g_network_monitor_get_default()`, will be used.
          * @param gio_name a GIO name of a {@link Gio.NetworkMonitor} implementation to use, or `null`
+         * @since 3.22
          */
         set_gio_name(gio_name: string | null): void;
 
@@ -4721,6 +4871,7 @@ export namespace EDataServer {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4764,6 +4915,7 @@ export namespace EDataServer {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -4789,6 +4941,7 @@ export namespace EDataServer {
          * @param connectable a {@link Gio.SocketConnectable}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if `connectable` is reachable, `false` if not.
+         * @since 2.32
          */
         can_reach(connectable: Gio.SocketConnectable, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4868,6 +5021,7 @@ export namespace EDataServer {
          * attempt to connect to remote servers, but should gracefully fall
          * back to their "offline" behavior if the connection attempt fails.
          * @returns the network connectivity state
+         * @since 2.44
          */
         get_connectivity(): Gio.NetworkConnectivity;
 
@@ -4877,6 +5031,7 @@ export namespace EDataServer {
          * IPv6. It does not necessarily imply that the public Internet is
          * reachable. See {@link Gio.NetworkMonitor.network_available} for more details.
          * @returns whether the network is available
+         * @since 2.32
          */
         get_network_available(): boolean;
 
@@ -4884,6 +5039,7 @@ export namespace EDataServer {
          * Checks if the network is metered.
          * See {@link Gio.NetworkMonitor.network_metered} for more details.
          * @returns whether the connection is metered
+         * @since 2.46
          */
         get_network_metered(): boolean;
 
@@ -4907,6 +5063,7 @@ export namespace EDataServer {
          * want to block, you should use `g_network_monitor_can_reach_async()`.
          * @param connectable a {@link Gio.SocketConnectable}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 2.32
          * @virtual
          */
         vfunc_can_reach(connectable: Gio.SocketConnectable, cancellable: Gio.Cancellable | null): boolean;
@@ -5046,6 +5203,7 @@ export namespace EDataServer {
          * the descendant's implementation is called.
          * @param source an {@link EDataServer.Source}
          * @returns Whether the `service` can be used for the given `source`
+         * @since 3.28
          */
         can_process(source: Source): boolean;
 
@@ -5054,6 +5212,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.28
          */
         delete_token_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5063,6 +5222,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.SList} of {@link Soup.Cookie}-s to use, or `null`
+         * @since 3.54
          */
         dup_credentials_prompter_cookies_sync(source: Source, cancellable: Gio.Cancellable | null): Soup.Cookie[] | null;
 
@@ -5089,6 +5249,7 @@ export namespace EDataServer {
          * @param page_uri a web page URI
          * @param page_content a web page content
          * @returns whether could recognized successful or failed server response.    The `out_authorization_code` is populated on success too.
+         * @since 3.28
          */
         extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
 
@@ -5105,6 +5266,7 @@ export namespace EDataServer {
          * @param page_uri a web page URI
          * @param page_content a web page content
          * @returns whether could recognized failed server response.    The `out_error_message` is populated on success.
+         * @since 3.48
          */
         extract_error_message(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
 
@@ -5117,6 +5279,7 @@ export namespace EDataServer {
          * @param ref_source an {@link EDataServer.OAuth2ServiceRefSourceFunc} function to obtain an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true`, when the returned access token has been set and it's not expired,    `false` otherwise.
+         * @since 3.28
          */
         get_access_token_sync(source: Source, ref_source: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): [boolean, string, number];
 
@@ -5131,24 +5294,28 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param uri a URI of the navigation resource
          * @returns one of {@link EDataServer.OAuth2ServiceNavigationPolicy}
+         * @since 3.28
          */
         get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns an authentication URI, to be used to obtain    the authentication code
+         * @since 3.28
          */
         get_authentication_uri(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns application client ID, as provided by the server
+         * @since 3.28
          */
         get_client_id(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns application client secret, as provided by the server, or `null`
+         * @since 3.28
          */
         get_client_secret(source: Source): string | null;
 
@@ -5157,11 +5324,13 @@ export namespace EDataServer {
          * `e_oauth2_service_get_name()`, except this string should be localized,
          * because it will be used in user-visible strings.
          * @returns the display name of the `service`
+         * @since 3.28
          */
         get_display_name(): string;
 
         /**
          * @returns bit-or of {@link EDataServer.OAuth2ServiceFlags} for the `service`. The default    implementation returns {@link EDataServer.OAuth2ServiceFlags.NONE}.
+         * @since 3.28
          */
         get_flags(): number;
 
@@ -5170,6 +5339,7 @@ export namespace EDataServer {
          * by the server or the company from which it receives the OAuth2
          * token and where it refreshes it, like "Company" for login.company.com.
          * @returns the name of the `service`
+         * @since 3.28
          */
         get_name(): string;
 
@@ -5178,12 +5348,14 @@ export namespace EDataServer {
          * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
          * @param source an associated {@link EDataServer.Source}
          * @returns The redirect_uri to use, or `null` for none
+         * @since 3.28
          */
         get_redirect_uri(source: Source): string | null;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns a URI to be used to refresh the authentication token
+         * @since 3.28
          */
         get_refresh_uri(source: Source): string;
 
@@ -5205,6 +5377,7 @@ export namespace EDataServer {
          * @param protocol a protocol to search the service for, like "imap", or `null`
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
          * @returns Whether the `service` can be used for the given arguments
+         * @since 3.28
          */
         guess_can_process(protocol: string | null, hostname: string | null): boolean;
 
@@ -5220,6 +5393,7 @@ export namespace EDataServer {
          * is replaced.
          * @param source an associated {@link EDataServer.Source}
          * @param uri_query query for the URI to use
+         * @since 3.28
          */
         prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
 
@@ -5236,6 +5410,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param authorization_code authorization code, as returned from `e_oauth2_service_extract_authorization_code()`
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          */
         prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
 
@@ -5246,6 +5421,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          */
         prepare_get_token_message(source: Source, message: Soup.Message): void;
 
@@ -5262,6 +5438,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          */
         prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
 
@@ -5272,6 +5449,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          */
         prepare_refresh_token_message(source: Source, message: Soup.Message): void;
 
@@ -5284,6 +5462,7 @@ export namespace EDataServer {
          * @param ref_source an {@link EDataServer.OAuth2ServiceRefSourceFunc} function to obtain an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.28
          */
         receive_and_store_token_sync(source: Source, authorization_code: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5296,6 +5475,7 @@ export namespace EDataServer {
          * @param ref_source an {@link EDataServer.OAuth2ServiceRefSourceFunc} function to obtain an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.28
          */
         refresh_and_store_token_sync(source: Source, refresh_token: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5310,6 +5490,7 @@ export namespace EDataServer {
          * The default implementation is tried always as the first and when it fails, then
          * the descendant's implementation is called.
          * @param source an {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_can_process(source: Source): boolean;
@@ -5319,6 +5500,7 @@ export namespace EDataServer {
          * credentials. The default implementation does not provide any cookies.
          * @param source an associated {@link EDataServer.Source}
          * @param cancellable a {@link Gio.Cancellable}
+         * @since 3.54
          * @virtual
          */
         vfunc_dup_credentials_prompter_cookies_sync(source: Source, cancellable: Gio.Cancellable | null): Soup.Cookie[] | null;
@@ -5345,6 +5527,7 @@ export namespace EDataServer {
          * @param page_title a web page title
          * @param page_uri a web page URI
          * @param page_content a web page content
+         * @since 3.28
          * @virtual
          */
         vfunc_extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
@@ -5361,6 +5544,7 @@ export namespace EDataServer {
          * @param page_title a web page title
          * @param page_uri a web page URI
          * @param page_content a web page content
+         * @since 3.48
          * @virtual
          */
         vfunc_extract_error_message(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
@@ -5375,24 +5559,28 @@ export namespace EDataServer {
          * in the page).
          * @param source an associated {@link EDataServer.Source}
          * @param uri a URI of the navigation resource
+         * @since 3.28
          * @virtual
          */
         vfunc_get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy;
 
         /**
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_authentication_uri(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_client_id(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_client_secret(source: Source): string | null;
@@ -5401,11 +5589,13 @@ export namespace EDataServer {
          * Returns a human readable name of the service. This is similar to
          * `e_oauth2_service_get_name()`, except this string should be localized,
          * because it will be used in user-visible strings.
+         * @since 3.28
          * @virtual
          */
         vfunc_get_display_name(): string;
 
         /**
+         * @since 3.28
          * @virtual
          */
         vfunc_get_flags(): number;
@@ -5414,6 +5604,7 @@ export namespace EDataServer {
          * Returns a unique name of the service. It can be named for example
          * by the server or the company from which it receives the OAuth2
          * token and where it refreshes it, like "Company" for login.company.com.
+         * @since 3.28
          * @virtual
          */
         vfunc_get_name(): string;
@@ -5422,12 +5613,14 @@ export namespace EDataServer {
          * Returns a value for the "redirect_uri" keys in the authenticate and get_token
          * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_redirect_uri(source: Source): string | null;
 
         /**
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_refresh_uri(source: Source): string;
@@ -5449,6 +5642,7 @@ export namespace EDataServer {
          * the descendant's implementation is called.
          * @param protocol a protocol to search the service for, like "imap", or `null`
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
+         * @since 3.28
          * @virtual
          */
         vfunc_guess_can_process(protocol: string | null, hostname: string | null): boolean;
@@ -5465,6 +5659,7 @@ export namespace EDataServer {
          * is replaced.
          * @param source an associated {@link EDataServer.Source}
          * @param uri_query query for the URI to use
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
@@ -5482,6 +5677,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param authorization_code authorization code, as returned from `e_oauth2_service_extract_authorization_code()`
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
@@ -5493,6 +5689,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_get_token_message(source: Source, message: Soup.Message): void;
@@ -5510,6 +5707,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
@@ -5521,6 +5719,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_refresh_token_message(source: Source, message: Soup.Message): void;
@@ -5582,6 +5781,7 @@ export namespace EDataServer {
          * the descendant's implementation is called.
          * @param source an {@link EDataServer.Source}
          * @returns Whether the `service` can be used for the given `source`
+         * @since 3.28
          */
         can_process(source: Source): boolean;
 
@@ -5590,6 +5790,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.28
          */
         delete_token_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5599,6 +5800,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.SList} of {@link Soup.Cookie}-s to use, or `null`
+         * @since 3.54
          */
         dup_credentials_prompter_cookies_sync(source: Source, cancellable: Gio.Cancellable | null): Soup.Cookie[] | null;
 
@@ -5625,6 +5827,7 @@ export namespace EDataServer {
          * @param page_uri a web page URI
          * @param page_content a web page content
          * @returns whether could recognized successful or failed server response.    The `out_authorization_code` is populated on success too.
+         * @since 3.28
          */
         extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
 
@@ -5641,6 +5844,7 @@ export namespace EDataServer {
          * @param page_uri a web page URI
          * @param page_content a web page content
          * @returns whether could recognized failed server response.    The `out_error_message` is populated on success.
+         * @since 3.48
          */
         extract_error_message(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
 
@@ -5653,6 +5857,7 @@ export namespace EDataServer {
          * @param ref_source an {@link EDataServer.OAuth2ServiceRefSourceFunc} function to obtain an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true`, when the returned access token has been set and it's not expired,    `false` otherwise.
+         * @since 3.28
          */
         get_access_token_sync(source: Source, ref_source: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): [boolean, string, number];
 
@@ -5667,24 +5872,28 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param uri a URI of the navigation resource
          * @returns one of {@link EDataServer.OAuth2ServiceNavigationPolicy}
+         * @since 3.28
          */
         get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns an authentication URI, to be used to obtain    the authentication code
+         * @since 3.28
          */
         get_authentication_uri(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns application client ID, as provided by the server
+         * @since 3.28
          */
         get_client_id(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns application client secret, as provided by the server, or `null`
+         * @since 3.28
          */
         get_client_secret(source: Source): string | null;
 
@@ -5693,11 +5902,13 @@ export namespace EDataServer {
          * `e_oauth2_service_get_name()`, except this string should be localized,
          * because it will be used in user-visible strings.
          * @returns the display name of the `service`
+         * @since 3.28
          */
         get_display_name(): string;
 
         /**
          * @returns bit-or of {@link EDataServer.OAuth2ServiceFlags} for the `service`. The default    implementation returns {@link EDataServer.OAuth2ServiceFlags.NONE}.
+         * @since 3.28
          */
         get_flags(): number;
 
@@ -5706,6 +5917,7 @@ export namespace EDataServer {
          * by the server or the company from which it receives the OAuth2
          * token and where it refreshes it, like "Company" for login.company.com.
          * @returns the name of the `service`
+         * @since 3.28
          */
         get_name(): string;
 
@@ -5714,12 +5926,14 @@ export namespace EDataServer {
          * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
          * @param source an associated {@link EDataServer.Source}
          * @returns The redirect_uri to use, or `null` for none
+         * @since 3.28
          */
         get_redirect_uri(source: Source): string | null;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns a URI to be used to refresh the authentication token
+         * @since 3.28
          */
         get_refresh_uri(source: Source): string;
 
@@ -5741,6 +5955,7 @@ export namespace EDataServer {
          * @param protocol a protocol to search the service for, like "imap", or `null`
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
          * @returns Whether the `service` can be used for the given arguments
+         * @since 3.28
          */
         guess_can_process(protocol: string | null, hostname: string | null): boolean;
 
@@ -5756,6 +5971,7 @@ export namespace EDataServer {
          * is replaced.
          * @param source an associated {@link EDataServer.Source}
          * @param uri_query query for the URI to use
+         * @since 3.28
          */
         prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
 
@@ -5772,6 +5988,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param authorization_code authorization code, as returned from `e_oauth2_service_extract_authorization_code()`
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          */
         prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
 
@@ -5782,6 +5999,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          */
         prepare_get_token_message(source: Source, message: Soup.Message): void;
 
@@ -5798,6 +6016,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          */
         prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
 
@@ -5808,6 +6027,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          */
         prepare_refresh_token_message(source: Source, message: Soup.Message): void;
 
@@ -5820,6 +6040,7 @@ export namespace EDataServer {
          * @param ref_source an {@link EDataServer.OAuth2ServiceRefSourceFunc} function to obtain an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.28
          */
         receive_and_store_token_sync(source: Source, authorization_code: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5832,6 +6053,7 @@ export namespace EDataServer {
          * @param ref_source an {@link EDataServer.OAuth2ServiceRefSourceFunc} function to obtain an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.28
          */
         refresh_and_store_token_sync(source: Source, refresh_token: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5846,6 +6068,7 @@ export namespace EDataServer {
          * The default implementation is tried always as the first and when it fails, then
          * the descendant's implementation is called.
          * @param source an {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_can_process(source: Source): boolean;
@@ -5855,6 +6078,7 @@ export namespace EDataServer {
          * credentials. The default implementation does not provide any cookies.
          * @param source an associated {@link EDataServer.Source}
          * @param cancellable a {@link Gio.Cancellable}
+         * @since 3.54
          * @virtual
          */
         vfunc_dup_credentials_prompter_cookies_sync(source: Source, cancellable: Gio.Cancellable | null): Soup.Cookie[] | null;
@@ -5881,6 +6105,7 @@ export namespace EDataServer {
          * @param page_title a web page title
          * @param page_uri a web page URI
          * @param page_content a web page content
+         * @since 3.28
          * @virtual
          */
         vfunc_extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
@@ -5897,6 +6122,7 @@ export namespace EDataServer {
          * @param page_title a web page title
          * @param page_uri a web page URI
          * @param page_content a web page content
+         * @since 3.48
          * @virtual
          */
         vfunc_extract_error_message(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
@@ -5911,24 +6137,28 @@ export namespace EDataServer {
          * in the page).
          * @param source an associated {@link EDataServer.Source}
          * @param uri a URI of the navigation resource
+         * @since 3.28
          * @virtual
          */
         vfunc_get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy;
 
         /**
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_authentication_uri(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_client_id(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_client_secret(source: Source): string | null;
@@ -5937,11 +6167,13 @@ export namespace EDataServer {
          * Returns a human readable name of the service. This is similar to
          * `e_oauth2_service_get_name()`, except this string should be localized,
          * because it will be used in user-visible strings.
+         * @since 3.28
          * @virtual
          */
         vfunc_get_display_name(): string;
 
         /**
+         * @since 3.28
          * @virtual
          */
         vfunc_get_flags(): number;
@@ -5950,6 +6182,7 @@ export namespace EDataServer {
          * Returns a unique name of the service. It can be named for example
          * by the server or the company from which it receives the OAuth2
          * token and where it refreshes it, like "Company" for login.company.com.
+         * @since 3.28
          * @virtual
          */
         vfunc_get_name(): string;
@@ -5958,12 +6191,14 @@ export namespace EDataServer {
          * Returns a value for the "redirect_uri" keys in the authenticate and get_token
          * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_redirect_uri(source: Source): string | null;
 
         /**
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_refresh_uri(source: Source): string;
@@ -5985,6 +6220,7 @@ export namespace EDataServer {
          * the descendant's implementation is called.
          * @param protocol a protocol to search the service for, like "imap", or `null`
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
+         * @since 3.28
          * @virtual
          */
         vfunc_guess_can_process(protocol: string | null, hostname: string | null): boolean;
@@ -6001,6 +6237,7 @@ export namespace EDataServer {
          * is replaced.
          * @param source an associated {@link EDataServer.Source}
          * @param uri_query query for the URI to use
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
@@ -6018,6 +6255,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param authorization_code authorization code, as returned from `e_oauth2_service_extract_authorization_code()`
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
@@ -6029,6 +6267,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_get_token_message(source: Source, message: Soup.Message): void;
@@ -6046,6 +6285,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
@@ -6057,6 +6297,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_refresh_token_message(source: Source, message: Soup.Message): void;
@@ -6118,6 +6359,7 @@ export namespace EDataServer {
          * the descendant's implementation is called.
          * @param source an {@link EDataServer.Source}
          * @returns Whether the `service` can be used for the given `source`
+         * @since 3.28
          */
         can_process(source: Source): boolean;
 
@@ -6126,6 +6368,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.28
          */
         delete_token_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6135,6 +6378,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.SList} of {@link Soup.Cookie}-s to use, or `null`
+         * @since 3.54
          */
         dup_credentials_prompter_cookies_sync(source: Source, cancellable: Gio.Cancellable | null): Soup.Cookie[] | null;
 
@@ -6161,6 +6405,7 @@ export namespace EDataServer {
          * @param page_uri a web page URI
          * @param page_content a web page content
          * @returns whether could recognized successful or failed server response.    The `out_authorization_code` is populated on success too.
+         * @since 3.28
          */
         extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
 
@@ -6177,6 +6422,7 @@ export namespace EDataServer {
          * @param page_uri a web page URI
          * @param page_content a web page content
          * @returns whether could recognized failed server response.    The `out_error_message` is populated on success.
+         * @since 3.48
          */
         extract_error_message(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
 
@@ -6189,6 +6435,7 @@ export namespace EDataServer {
          * @param ref_source an {@link EDataServer.OAuth2ServiceRefSourceFunc} function to obtain an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true`, when the returned access token has been set and it's not expired,    `false` otherwise.
+         * @since 3.28
          */
         get_access_token_sync(source: Source, ref_source: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): [boolean, string, number];
 
@@ -6203,24 +6450,28 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param uri a URI of the navigation resource
          * @returns one of {@link EDataServer.OAuth2ServiceNavigationPolicy}
+         * @since 3.28
          */
         get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns an authentication URI, to be used to obtain    the authentication code
+         * @since 3.28
          */
         get_authentication_uri(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns application client ID, as provided by the server
+         * @since 3.28
          */
         get_client_id(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns application client secret, as provided by the server, or `null`
+         * @since 3.28
          */
         get_client_secret(source: Source): string | null;
 
@@ -6229,11 +6480,13 @@ export namespace EDataServer {
          * `e_oauth2_service_get_name()`, except this string should be localized,
          * because it will be used in user-visible strings.
          * @returns the display name of the `service`
+         * @since 3.28
          */
         get_display_name(): string;
 
         /**
          * @returns bit-or of {@link EDataServer.OAuth2ServiceFlags} for the `service`. The default    implementation returns {@link EDataServer.OAuth2ServiceFlags.NONE}.
+         * @since 3.28
          */
         get_flags(): number;
 
@@ -6242,6 +6495,7 @@ export namespace EDataServer {
          * by the server or the company from which it receives the OAuth2
          * token and where it refreshes it, like "Company" for login.company.com.
          * @returns the name of the `service`
+         * @since 3.28
          */
         get_name(): string;
 
@@ -6250,12 +6504,14 @@ export namespace EDataServer {
          * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
          * @param source an associated {@link EDataServer.Source}
          * @returns The redirect_uri to use, or `null` for none
+         * @since 3.28
          */
         get_redirect_uri(source: Source): string | null;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns a URI to be used to refresh the authentication token
+         * @since 3.28
          */
         get_refresh_uri(source: Source): string;
 
@@ -6277,6 +6533,7 @@ export namespace EDataServer {
          * @param protocol a protocol to search the service for, like "imap", or `null`
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
          * @returns Whether the `service` can be used for the given arguments
+         * @since 3.28
          */
         guess_can_process(protocol: string | null, hostname: string | null): boolean;
 
@@ -6292,6 +6549,7 @@ export namespace EDataServer {
          * is replaced.
          * @param source an associated {@link EDataServer.Source}
          * @param uri_query query for the URI to use
+         * @since 3.28
          */
         prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
 
@@ -6308,6 +6566,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param authorization_code authorization code, as returned from `e_oauth2_service_extract_authorization_code()`
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          */
         prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
 
@@ -6318,6 +6577,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          */
         prepare_get_token_message(source: Source, message: Soup.Message): void;
 
@@ -6334,6 +6594,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          */
         prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
 
@@ -6344,6 +6605,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          */
         prepare_refresh_token_message(source: Source, message: Soup.Message): void;
 
@@ -6356,6 +6618,7 @@ export namespace EDataServer {
          * @param ref_source an {@link EDataServer.OAuth2ServiceRefSourceFunc} function to obtain an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.28
          */
         receive_and_store_token_sync(source: Source, authorization_code: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6368,6 +6631,7 @@ export namespace EDataServer {
          * @param ref_source an {@link EDataServer.OAuth2ServiceRefSourceFunc} function to obtain an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.28
          */
         refresh_and_store_token_sync(source: Source, refresh_token: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6382,6 +6646,7 @@ export namespace EDataServer {
          * The default implementation is tried always as the first and when it fails, then
          * the descendant's implementation is called.
          * @param source an {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_can_process(source: Source): boolean;
@@ -6391,6 +6656,7 @@ export namespace EDataServer {
          * credentials. The default implementation does not provide any cookies.
          * @param source an associated {@link EDataServer.Source}
          * @param cancellable a {@link Gio.Cancellable}
+         * @since 3.54
          * @virtual
          */
         vfunc_dup_credentials_prompter_cookies_sync(source: Source, cancellable: Gio.Cancellable | null): Soup.Cookie[] | null;
@@ -6417,6 +6683,7 @@ export namespace EDataServer {
          * @param page_title a web page title
          * @param page_uri a web page URI
          * @param page_content a web page content
+         * @since 3.28
          * @virtual
          */
         vfunc_extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
@@ -6433,6 +6700,7 @@ export namespace EDataServer {
          * @param page_title a web page title
          * @param page_uri a web page URI
          * @param page_content a web page content
+         * @since 3.48
          * @virtual
          */
         vfunc_extract_error_message(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
@@ -6447,24 +6715,28 @@ export namespace EDataServer {
          * in the page).
          * @param source an associated {@link EDataServer.Source}
          * @param uri a URI of the navigation resource
+         * @since 3.28
          * @virtual
          */
         vfunc_get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy;
 
         /**
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_authentication_uri(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_client_id(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_client_secret(source: Source): string | null;
@@ -6473,11 +6745,13 @@ export namespace EDataServer {
          * Returns a human readable name of the service. This is similar to
          * `e_oauth2_service_get_name()`, except this string should be localized,
          * because it will be used in user-visible strings.
+         * @since 3.28
          * @virtual
          */
         vfunc_get_display_name(): string;
 
         /**
+         * @since 3.28
          * @virtual
          */
         vfunc_get_flags(): number;
@@ -6486,6 +6760,7 @@ export namespace EDataServer {
          * Returns a unique name of the service. It can be named for example
          * by the server or the company from which it receives the OAuth2
          * token and where it refreshes it, like "Company" for login.company.com.
+         * @since 3.28
          * @virtual
          */
         vfunc_get_name(): string;
@@ -6494,12 +6769,14 @@ export namespace EDataServer {
          * Returns a value for the "redirect_uri" keys in the authenticate and get_token
          * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_redirect_uri(source: Source): string | null;
 
         /**
          * @param source an associated {@link EDataServer.Source}
+         * @since 3.28
          * @virtual
          */
         vfunc_get_refresh_uri(source: Source): string;
@@ -6521,6 +6798,7 @@ export namespace EDataServer {
          * the descendant's implementation is called.
          * @param protocol a protocol to search the service for, like "imap", or `null`
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
+         * @since 3.28
          * @virtual
          */
         vfunc_guess_can_process(protocol: string | null, hostname: string | null): boolean;
@@ -6537,6 +6815,7 @@ export namespace EDataServer {
          * is replaced.
          * @param source an associated {@link EDataServer.Source}
          * @param uri_query query for the URI to use
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
@@ -6554,6 +6833,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param authorization_code authorization code, as returned from `e_oauth2_service_extract_authorization_code()`
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
@@ -6565,6 +6845,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_get_token_message(source: Source, message: Soup.Message): void;
@@ -6582,6 +6863,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
@@ -6593,6 +6875,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          * @virtual
          */
         vfunc_prepare_refresh_token_message(source: Source, message: Soup.Message): void;
@@ -6651,9 +6934,13 @@ export namespace EDataServer {
          * much trouble, as long as there is something else having created one
          * instance.
          * @param auth_method an authentication method, or `null`
+         * @since 3.28
          */
         static is_oauth2_alias_static(auth_method: string | null): boolean;
 
+        /**
+         * @since 3.28
+         */
         static is_supported(): boolean;
 
         // Methods
@@ -6661,6 +6948,7 @@ export namespace EDataServer {
          * Adds the `service` to the list of known OAuth2 services into `services`.
          * It also adds a reference to `service`.
          * @param service an {@link EDataServer.OAuth2Service} to add
+         * @since 3.28
          */
         add(service: OAuth2Service): void;
 
@@ -6671,6 +6959,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.OAuth2Service} is referenced for thread safety, if found.
          * @param source an {@link EDataServer.Source}
          * @returns a referenced {@link EDataServer.OAuth2Service}, which can be used    with given `source`, or `null`, when none was found.
+         * @since 3.28
          */
         find(source: Source): OAuth2Service | null;
 
@@ -6685,12 +6974,14 @@ export namespace EDataServer {
          * @param protocol a protocol to search the service for, like "imap", or `null`
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
          * @returns a referenced {@link EDataServer.OAuth2Service}, which can be used    with given constraints, or `null`, when none was found.
+         * @since 3.28
          */
         guess(protocol: string | null, hostname: string | null): OAuth2Service | null;
 
         /**
          * @param auth_method an authentication method, or `null`
          * @returns whether exists any {@link EDataServer.OAuth2Service}, with the same name as `auth_method`. See: `e_oauth2_services_is_oauth2_alias_static()`
+         * @since 3.28
          */
         is_oauth2_alias(auth_method: string | null): boolean;
 
@@ -6700,6 +6991,7 @@ export namespace EDataServer {
          * g_slist_remove_full (known_services, g_object_unref);
          * when no longer needed.
          * @returns a newly allocated {@link GLib.SList}    with all currently known {@link EDataServer.OAuth2Service} referenced instances
+         * @since 3.28
          */
         list(): OAuth2Service[];
 
@@ -6707,6 +6999,7 @@ export namespace EDataServer {
          * Removes the `service` from the list of known services in `services`.
          * The function does nothing, if the `service` had not been added.
          * @param service an {@link EDataServer.OAuth2Service} to remove
+         * @since 3.28
          */
         remove(service: OAuth2Service): void;
 
@@ -6719,6 +7012,7 @@ export namespace EDataServer {
          * objects are owned by `extensible` and should not be unreferenced.
          * @param extension_type the type of extensions to list
          * @returns a list of extension objects derived from `extension_type`
+         * @since 3.4
          */
         list_extensions(extension_type: GObject.GType): Extension[];
 
@@ -6727,6 +7021,7 @@ export namespace EDataServer {
          * target the class of `extensible`.  The lifetimes of these newly created
          * {@link EDataServer.Extension} objects are bound to `extensible` such that they are finalized
          * when `extensible` is finalized.
+         * @since 3.4
          */
         load_extensions(): void;
 
@@ -6734,6 +7029,7 @@ export namespace EDataServer {
          * Similar to `e_extensible_load_extensions()`, only loads newly discovered
          * extensions again. This can help in case a new module had been loaded
          * to the process, which provides the extensions for the `extensible`.
+         * @since 3.46
          */
         reload_extensions(): void;
     }
@@ -6793,11 +7089,13 @@ export namespace EDataServer {
          * Clears the rejection flag set when the server responds with 401 Unauthorized.
          * The time-based token expiry is preserved, so the existing token can be
          * re-sent without a redundant token refresh from the credential provider.
+         * @since 3.62
          */
         clear_rejected(): void;
 
         /**
          * @returns Whether the set token is expired. It is considered expired even   if the `e_soup_auth_bearer_set_access_token()` was called set yet.
+         * @since 3.24
          */
         is_expired(): boolean;
 
@@ -6810,6 +7108,7 @@ export namespace EDataServer {
          * will return `false` after the given number of seconds have elapsed.
          * @param access_token an OAuth 2.0 access token
          * @param expires_in_seconds expiry for `access_token`, or 0 if unknown
+         * @since 3.10
          */
         set_access_token(access_token: string, expires_in_seconds: number): void;
     }
@@ -6956,6 +7255,7 @@ export namespace EDataServer {
          * Checks whether `e_soup_session_set_force_http1()` can be used
          * to force HTTP/1 usage. This depends on the libsoup version
          * the data server had been compiled with.
+         * @since 3.48
          */
         static util_get_force_http1_supported(): boolean;
 
@@ -6964,6 +7264,7 @@ export namespace EDataServer {
          * This can be used to examine detailed error returned by the server in
          * the response body.
          * @param message a {@link Soup.Message}
+         * @since 3.46
          */
         static util_get_message_bytes(message: Soup.Message): Uint8Array | null;
 
@@ -6972,6 +7273,7 @@ export namespace EDataServer {
          * be encoded, if needed. Returns, modified URI when any change had been made to the path.
          * It doesn't touch other parts of the `uri`.
          * @param uri a {@link GLib.Uri} to normalize the path for
+         * @since 3.46
          */
         static util_normalize_uri_path(uri: GLib.Uri): GLib.Uri | null;
 
@@ -6984,6 +7286,7 @@ export namespace EDataServer {
          * a {@link EDataServer.SoupSession}, nor modify the input stream position until
          * the `message` lefts the {@link EDataServer.SoupSession}.
          * @param message a {@link Soup.Message}
+         * @since 3.46
          */
         static util_ref_message_request_body(message: Soup.Message): [Gio.InputStream | null, number];
 
@@ -6997,6 +7300,7 @@ export namespace EDataServer {
          * @param content_type optional Content-Type of the `data`, or `null` `input_stream` (transfer none): the request body data as a {@link Gio.InputStream}
          * @param input_stream 
          * @param length length of the `data`
+         * @since 3.46
          */
         static util_set_message_request_body(message: Soup.Message, content_type: string | null, input_stream: Gio.InputStream, length: bigint | number): void;
 
@@ -7011,6 +7315,7 @@ export namespace EDataServer {
          * @param content_type optional Content-Type of the `data`, or `null`
          * @param data the request body data
          * @param length length of the `data`
+         * @since 3.46
          */
         static util_set_message_request_body_from_data(message: Soup.Message, create_copy: boolean, content_type: string | null, data: null, length: bigint | number): void;
 
@@ -7020,6 +7325,7 @@ export namespace EDataServer {
          * "Unknown error" message is returned.
          * @param status_code an HTTP status code
          * @param reason_phrase preferred string to use for the message, or `null`
+         * @since 3.26
          */
         static util_status_to_string(status_code: number, reason_phrase: string | null): string;
 
@@ -7032,16 +7338,19 @@ export namespace EDataServer {
          * @param read_bytes optional bytes which had been read from the stream, or `null`
          * @param bytes_length how many bytes had been read; ignored when `read_bytes` is `null`
          * @returns Whether succeeded, aka `true`, when no error recognized    and `false` otherwise.
+         * @since 3.26
          */
         check_result(message: Soup.Message, read_bytes: null, bytes_length: bigint | number): boolean;
 
         /**
          * @returns A copy of the credentials being    previously set with `e_soup_session_set_credentials()`, or `null` when    none are set. Free the returned pointer with `e_named_parameters_free()`,    when no longer needed.
+         * @since 3.26
          */
         dup_credentials(): NamedParameters | null;
 
         /**
          * @returns Whether the last connection attempt required any credentials.    Authentications like OAuth2 do not want extra credentials to work.
+         * @since 3.28
          */
         get_authentication_requires_credentials(): boolean;
 
@@ -7050,6 +7359,7 @@ export namespace EDataServer {
          * created by the `session`. See `e_soup_session_set_force_http1()`
          * for more information about the limitations.
          * @returns whether it's forced to use HTTP/1
+         * @since 3.48
          */
         get_force_http1(): boolean;
 
@@ -7058,17 +7368,20 @@ export namespace EDataServer {
          * See `e_soup_session_set_handle_backoff_responses()` for more information about
          * the limitations.
          * @returns whether the `session` handles backoff responses
+         * @since 3.54
          */
         get_handle_backoff_responses(): boolean;
 
         /**
          * @returns Current log level, as {@link Soup.LoggerLogLevel}
+         * @since 3.26
          */
         get_log_level(): Soup.LoggerLogLevel;
 
         /**
          * Returns an {@link EDataServer.Source} associated with the `session`, if such was set in the creation time.
          * @returns Associated {@link EDataServer.Source} with the `session`, or `null`.
+         * @since 3.26
          */
         get_source(): Source | null;
 
@@ -7076,6 +7389,7 @@ export namespace EDataServer {
          * Populates `out_certificate_pem` and `out_certificate_errors` with the last values
          * returned on #G_TLS_ERROR_BAD_CERTIFICATE error.
          * @returns Whether the information was available and set to the out parameters.
+         * @since 3.26
          */
         get_ssl_error_details(): [boolean, string, Gio.TlsCertificateFlags | null];
 
@@ -7087,6 +7401,7 @@ export namespace EDataServer {
          * Also updates connection status on the associated {@link EDataServer.Source} with the `session`.
          * @param credentials credentials used for the authentication
          * @param op_error a {@link GLib.Error} of the authentication operation
+         * @since 3.46
          */
         handle_authentication_failure(credentials: NamedParameters | null, op_error: GLib.Error): [SourceAuthenticationResult, string, Gio.TlsCertificateFlags | null];
 
@@ -7099,6 +7414,7 @@ export namespace EDataServer {
          * @param method an HTTP method
          * @param uri_string a URI string to use for the request
          * @returns a new {@link Soup.Message}, or `null` on error
+         * @since 3.26
          */
         new_message(method: string, uri_string: string): Soup.Message;
 
@@ -7111,6 +7427,7 @@ export namespace EDataServer {
          * @param method an HTTP method
          * @param uri a {@link GLib.Uri} to use for the request
          * @returns a new {@link Soup.Message}, or `null` on error
+         * @since 3.46
          */
         new_message_from_uri(method: string, uri: GLib.Uri): Soup.Message;
 
@@ -7122,6 +7439,7 @@ export namespace EDataServer {
          * @param message a {@link Soup.Message} to prepare for asynchronous send
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns prepare data for `e_soup_session_send_message()`,   or `null` on error.
+         * @since 3.46
          */
         prepare_message_send_sync(message: Soup.Message, cancellable: Gio.Cancellable | null): null;
 
@@ -7136,6 +7454,7 @@ export namespace EDataServer {
          * @param io_priority the I/O priority of the request, like `G_PRIORITY_DEFAULT`
          * @param prepare_data data returned from `e_soup_session_prepare_message_send_sync()`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.46
          */
         send_message(message: Soup.Message, io_priority: number, prepare_data: null, cancellable: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream | null, string, Gio.TlsCertificateFlags | null]>;
 
@@ -7151,6 +7470,7 @@ export namespace EDataServer {
          * @param prepare_data data returned from `e_soup_session_prepare_message_send_sync()`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback the callback to invoke once the request is finished
+         * @since 3.46
          */
         send_message(message: Soup.Message, io_priority: number, prepare_data: null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7166,6 +7486,7 @@ export namespace EDataServer {
          * @param prepare_data data returned from `e_soup_session_prepare_message_send_sync()`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback the callback to invoke once the request is finished
+         * @since 3.46
          */
         send_message(message: Soup.Message, io_priority: number, prepare_data: null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Gio.InputStream | null, string, Gio.TlsCertificateFlags | null]> | void;
 
@@ -7181,6 +7502,7 @@ export namespace EDataServer {
          * was called from, otherwise it can break libsoup3.
          * @param result a {@link Gio.AsyncResult} object
          * @returns a {@link Gio.InputStream} for reading the response body, or `null` on error
+         * @since 3.46
          */
         send_message_finish(result: Gio.AsyncResult): [Gio.InputStream | null, string, Gio.TlsCertificateFlags | null];
 
@@ -7192,6 +7514,7 @@ export namespace EDataServer {
          * @param message a {@link Soup.Message} to send
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns A newly allocated {@link GLib.ByteArray},    which contains whole content from the URI pointed to by `message`.
+         * @since 3.26
          */
         send_message_simple_sync(message: Soup.Message, cancellable: Gio.Cancellable | null): Uint8Array;
 
@@ -7222,6 +7545,7 @@ export namespace EDataServer {
          * @param message a {@link Soup.Message} to send
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns A newly allocated {@link Gio.InputStream},    that can be used to read from the URI pointed to by `message`.    Free it with `g_object_unref()`, when no longer needed.
+         * @since 3.26
          */
         send_message_sync(message: Soup.Message, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
@@ -7229,6 +7553,7 @@ export namespace EDataServer {
          * Sets credentials to use for connection. Using `null` for `credentials`
          * unsets previous value.
          * @param credentials an {@link EDataServer.NamedParameters} with credentials to use, or `null`
+         * @since 3.26
          */
         set_credentials(credentials: NamedParameters | null): void;
 
@@ -7241,6 +7566,7 @@ export namespace EDataServer {
          * The property has no effect when `e_soup_session_util_get_force_http1_supported()`
          * returns `false`.
          * @param force_http1 the value to set
+         * @since 3.48
          */
         set_force_http1(force_http1: boolean): void;
 
@@ -7251,6 +7577,7 @@ export namespace EDataServer {
          * Note: This handles only the synchronous functions to send the messages. Clients
          * using the asynchronous API need to handle the backoff responses on their own.
          * @param handle_backoff_responses the value to set
+         * @since 3.54
          */
         set_handle_backoff_responses(handle_backoff_responses: boolean): void;
 
@@ -7265,6 +7592,7 @@ export namespace EDataServer {
          * 
          * Use `e_soup_session_get_log_level()` to get current log level.
          * @param logging_level logging level to setup, or `null`
+         * @since 3.26
          */
         setup_logging(logging_level: string | null): void;
     }
@@ -7480,6 +7808,7 @@ export namespace EDataServer {
          * This function is made public only to aid in account migration.
          * Applications should not need to use this.
          * @param param_name a {@link GObject.ParamSpec} name
+         * @since 3.6
          */
         static parameter_to_key(param_name: string): string;
 
@@ -7496,6 +7825,7 @@ export namespace EDataServer {
          * 
          * This function is primarily intended for use by {@link EDataServer.SourceExtension}
          * when emitting a {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal on one of its properties.
+         * @since 3.6
          * @virtual
          */
         vfunc_changed(): void;
@@ -7518,6 +7848,7 @@ export namespace EDataServer {
          * operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request            is satisfied
+         * @since 3.8
          * @virtual
          */
         vfunc_get_oauth2_access_token(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7528,6 +7859,7 @@ export namespace EDataServer {
          * Free the returned access token with `g_free()` when finished with it.
          * If an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.8
          * @virtual
          */
         vfunc_get_oauth2_access_token_finish(result: Gio.AsyncResult): [boolean, string, number];
@@ -7539,6 +7871,7 @@ export namespace EDataServer {
          * Free the returned access token with `g_free()` when finished with it.
          * If an error occurs, the function will set `error` and return `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.8
          * @virtual
          */
         vfunc_get_oauth2_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, number];
@@ -7578,6 +7911,7 @@ export namespace EDataServer {
          * @param scratch_source an {@link EDataServer.Source} describing the resource to create
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          * @virtual
          */
         vfunc_remote_create(scratch_source: Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7586,6 +7920,7 @@ export namespace EDataServer {
          * Finishes the operation started with `e_source_remote_create()`.  If
          * an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.6
          * @virtual
          */
         vfunc_remote_create_finish(result: Gio.AsyncResult): boolean;
@@ -7603,6 +7938,7 @@ export namespace EDataServer {
          * If an error occurs, the function will set `error` and return `false`.
          * @param scratch_source an {@link EDataServer.Source} describing the resource to create
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          * @virtual
          */
         vfunc_remote_create_sync(scratch_source: Source, cancellable: Gio.Cancellable | null): boolean;
@@ -7617,6 +7953,7 @@ export namespace EDataServer {
          * call `e_source_remote_delete_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          * @virtual
          */
         vfunc_remote_delete(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7625,6 +7962,7 @@ export namespace EDataServer {
          * Finishes the operation started with `e_source_remote_delete()`.  If
          * an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.6
          * @virtual
          */
         vfunc_remote_delete_finish(result: Gio.AsyncResult): boolean;
@@ -7637,6 +7975,7 @@ export namespace EDataServer {
          * 
          * If an error occurs, the function will set `error` and return `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          * @virtual
          */
         vfunc_remote_delete_sync(cancellable: Gio.Cancellable | null): boolean;
@@ -7650,6 +7989,7 @@ export namespace EDataServer {
          * call `e_source_remove_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          * @virtual
          */
         vfunc_remove(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7658,6 +7998,7 @@ export namespace EDataServer {
          * Finishes the operation started with `e_source_remove()`.  If an
          * error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.6
          * @virtual
          */
         vfunc_remove_finish(result: Gio.AsyncResult): boolean;
@@ -7669,6 +8010,7 @@ export namespace EDataServer {
          * 
          * If an error occurs, the functon will set `error` and return `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          * @virtual
          */
         vfunc_remove_sync(cancellable: Gio.Cancellable | null): boolean;
@@ -7688,6 +8030,7 @@ export namespace EDataServer {
          * call `e_source_write_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          * @virtual
          */
         vfunc_write(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7696,6 +8039,7 @@ export namespace EDataServer {
          * Finishes the operation started with `e_source_write()`.  If an
          * error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.6
          * @virtual
          */
         vfunc_write_finish(result: Gio.AsyncResult): boolean;
@@ -7707,6 +8051,7 @@ export namespace EDataServer {
          * 
          * If an error occurs, the functon will set `error` and return `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          * @virtual
          */
         vfunc_write_sync(cancellable: Gio.Cancellable | null): boolean;
@@ -7720,6 +8065,7 @@ export namespace EDataServer {
          * Call this function immediately after creating a new {@link Camel.Service} with
          * `camel_session_add_service()`.
          * @param service a {@link Camel.Service}
+         * @since 3.6
          */
         camel_configure_service(service: Camel.Service): void;
 
@@ -7729,6 +8075,7 @@ export namespace EDataServer {
          * 
          * This function is primarily intended for use by {@link EDataServer.SourceExtension}
          * when emitting a {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal on one of its properties.
+         * @since 3.6
          */
         changed(): void;
 
@@ -7737,6 +8084,7 @@ export namespace EDataServer {
          * ordering sources in a user interface.
          * @param source2 the second {@link EDataServer.Source}
          * @returns a negative value if `source1` compares before `source2`, zero if          they compare equal, or a positive value if `source1` compares          after `source2`
+         * @since 3.6
          */
         compare_by_display_name(source2: Source): number;
 
@@ -7748,6 +8096,7 @@ export namespace EDataServer {
          * When the operation is finished, `callback` will be called.  You can then
          * call `e_source_delete_password_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.12
          */
         delete_password(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -7760,6 +8109,7 @@ export namespace EDataServer {
          * call `e_source_delete_password_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.12
          */
         delete_password(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7772,6 +8122,7 @@ export namespace EDataServer {
          * call `e_source_delete_password_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.12
          */
         delete_password(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -7784,6 +8135,7 @@ export namespace EDataServer {
          * `true`.  If an error occurs, the function sets `error` and returns `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.12
          */
         delete_password_finish(result: Gio.AsyncResult): boolean;
 
@@ -7798,6 +8150,7 @@ export namespace EDataServer {
          * `true`.  If an error occurs, the function sets `error` and returns `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.12
          */
         delete_password_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -7807,6 +8160,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.Source.display_name}
+         * @since 3.6
          */
         dup_display_name(): string;
 
@@ -7816,6 +8170,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.Source.parent}
+         * @since 3.6
          */
         dup_parent(): string | null;
 
@@ -7823,6 +8178,7 @@ export namespace EDataServer {
          * Creates a label string based on `source`'s {@link EDataServer.Source.display_name} for use
          * with `SecretItem`.
          * @returns a newly-allocated secret label
+         * @since 3.12
          */
         dup_secret_label(): string;
 
@@ -7832,6 +8188,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.Source.uid}
+         * @since 3.6
          */
         dup_uid(): string;
 
@@ -7843,6 +8200,7 @@ export namespace EDataServer {
          * @param certificate_pem PEM-encoded secure connection certificate, or an empty string
          * @param certificate_errors a bit-or of {@link Gio.TlsCertificateFlags} for secure connection certificate
          * @param op_error a {@link GLib.Error} with a description of the previous credentials error, or `null`
+         * @since 3.16
          */
         emit_credentials_required(reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null): void;
 
@@ -7851,12 +8209,14 @@ export namespace EDataServer {
          * equal if their unique identifier strings are equal.
          * @param source2 the second {@link EDataServer.Source}
          * @returns `true` if `source1` and `source2` are equal
+         * @since 3.6
          */
         equal(source2: Source): boolean;
 
         /**
          * Obtain current connection status of the `source`.
          * @returns Current connection status of the `source`.
+         * @since 3.16
          */
         get_connection_status(): SourceConnectionStatus;
 
@@ -7864,6 +8224,7 @@ export namespace EDataServer {
          * Returns the display name for `source`.  Use the display name to
          * represent the {@link EDataServer.Source} in a user interface.
          * @returns the display name for `source`
+         * @since 3.6
          */
         get_display_name(): string;
 
@@ -7882,6 +8243,7 @@ export namespace EDataServer {
          *   easily check for this.
          * </para></note>
          * @returns whether `source` is enabled
+         * @since 3.6
          */
         get_enabled(): boolean;
 
@@ -7899,6 +8261,7 @@ export namespace EDataServer {
          * use this function to fetch the extension instance as needed.
          * @param extension_name an extension name
          * @returns an instance of some {@link EDataServer.SourceExtension} subclass
+         * @since 3.6
          */
         get_extension(extension_name: string): SourceExtension;
 
@@ -7912,6 +8275,7 @@ export namespace EDataServer {
          * call `e_source_get_last_credentials_required_arguments_finish()` to get
          * the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.16
          */
         get_last_credentials_required_arguments(cancellable: Gio.Cancellable | null): globalThis.Promise<[SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]>;
 
@@ -7926,6 +8290,7 @@ export namespace EDataServer {
          * the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         get_last_credentials_required_arguments(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7940,6 +8305,7 @@ export namespace EDataServer {
          * the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         get_last_credentials_required_arguments(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error]> | void;
 
@@ -7951,6 +8317,7 @@ export namespace EDataServer {
          * If an error occurs, the function sets `error` and returns `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         get_last_credentials_required_arguments_finish(result: Gio.AsyncResult): [boolean, SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error];
 
@@ -7964,6 +8331,7 @@ export namespace EDataServer {
          * values should be freed with `g_free()` when no longer needed.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         get_last_credentials_required_arguments_sync(cancellable: Gio.Cancellable | null): [boolean, SourceCredentialsReason, string, Gio.TlsCertificateFlags, GLib.Error];
 
@@ -7975,6 +8343,7 @@ export namespace EDataServer {
          * call `e_source_get_oauth2_access_token_finish()` to get the result of the
          * operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.8
          */
         get_oauth2_access_token(cancellable: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
 
@@ -7987,6 +8356,7 @@ export namespace EDataServer {
          * operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request            is satisfied
+         * @since 3.8
          */
         get_oauth2_access_token(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7999,6 +8369,7 @@ export namespace EDataServer {
          * operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request            is satisfied
+         * @since 3.8
          */
         get_oauth2_access_token(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[string, number]> | void;
 
@@ -8009,6 +8380,7 @@ export namespace EDataServer {
          * If an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.8
          */
         get_oauth2_access_token_finish(result: Gio.AsyncResult): [boolean, string, number];
 
@@ -8020,12 +8392,14 @@ export namespace EDataServer {
          * If an error occurs, the function will set `error` and return `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.8
          */
         get_oauth2_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, number];
 
         /**
          * Returns the unique identifier string of the parent {@link EDataServer.Source}.
          * @returns the UID of the parent {@link EDataServer.Source}
+         * @since 3.6
          */
         get_parent(): string | null;
 
@@ -8038,6 +8412,7 @@ export namespace EDataServer {
          * service that can handle create requests.  If `source` does not have
          * this capability, calls to `e_source_remote_create()` will fail.
          * @returns whether `source` can create remote resources
+         * @since 3.6
          */
         get_remote_creatable(): boolean;
 
@@ -8051,6 +8426,7 @@ export namespace EDataServer {
          * requests.  If `source` does not have this capability, calls to
          * `e_source_remote_delete()` will fail.
          * @returns whether `source` can delete remote resources
+         * @since 3.6
          */
         get_remote_deletable(): boolean;
 
@@ -8058,12 +8434,14 @@ export namespace EDataServer {
          * Returns whether the D-Bus service will allow `source` to be removed.
          * If `source` is not writable, calls to `e_source_remove()` will fail.
          * @returns whether `source` is removable
+         * @since 3.6
          */
         get_removable(): boolean;
 
         /**
          * Returns the unique identifier string for `source`.
          * @returns the UID for `source`
+         * @since 3.6
          */
         get_uid(): string;
 
@@ -8071,6 +8449,7 @@ export namespace EDataServer {
          * Returns whether the D-Bus service will accept changes to `source`.
          * If `source` is not writable, calls to `e_source_write()` will fail.
          * @returns whether `source` is writable
+         * @since 3.6
          */
         get_writable(): boolean;
 
@@ -8078,6 +8457,7 @@ export namespace EDataServer {
          * Checks whether `source` has an {@link EDataServer.SourceExtension} with the given name.
          * @param extension_name an extension name
          * @returns `true` if `source` has such an extension, `false` if not
+         * @since 3.6
          */
         has_extension(extension_name: string): boolean;
 
@@ -8086,6 +8466,7 @@ export namespace EDataServer {
          * easily hashing an {@link EDataServer.Source} to add to a {@link GLib.HashTable} or similar data
          * structure.
          * @returns a hash value for `source`.
+         * @since 3.6
          */
         hash(): number;
 
@@ -8098,6 +8479,7 @@ export namespace EDataServer {
          * call `e_source_invoke_authenticate_finish()` to get the result of the operation.
          * @param credentials an {@link EDataServer.NamedParameters} structure with credentials to use; can be `null`    to use those from the last call
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.16
          */
         invoke_authenticate(credentials: NamedParameters | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8111,6 +8493,7 @@ export namespace EDataServer {
          * @param credentials an {@link EDataServer.NamedParameters} structure with credentials to use; can be `null`    to use those from the last call
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         invoke_authenticate(credentials: NamedParameters | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8124,6 +8507,7 @@ export namespace EDataServer {
          * @param credentials an {@link EDataServer.NamedParameters} structure with credentials to use; can be `null`    to use those from the last call
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         invoke_authenticate(credentials: NamedParameters | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8133,6 +8517,7 @@ export namespace EDataServer {
          * If an error occurs, the function sets `error` and returns `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         invoke_authenticate_finish(result: Gio.AsyncResult): boolean;
 
@@ -8144,6 +8529,7 @@ export namespace EDataServer {
          * @param credentials an {@link EDataServer.NamedParameters} structure with credentials to use; can be `null`    to use those from the last call
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         invoke_authenticate_sync(credentials: NamedParameters | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8158,6 +8544,7 @@ export namespace EDataServer {
          * @param certificate_errors a bit-or of {@link Gio.TlsCertificateFlags} for secure connection certificate
          * @param op_error a {@link GLib.Error} with a description of the previous credentials error, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.16
          */
         invoke_credentials_required(reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8173,6 +8560,7 @@ export namespace EDataServer {
          * @param op_error a {@link GLib.Error} with a description of the previous credentials error, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         invoke_credentials_required(reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8188,6 +8576,7 @@ export namespace EDataServer {
          * @param op_error a {@link GLib.Error} with a description of the previous credentials error, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         invoke_credentials_required(reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8197,6 +8586,7 @@ export namespace EDataServer {
          * If an error occurs, the function sets `error` and returns `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         invoke_credentials_required_finish(result: Gio.AsyncResult): boolean;
 
@@ -8225,6 +8615,7 @@ export namespace EDataServer {
          * @param op_error a {@link GLib.Error} with a description of the previous credentials error, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         invoke_credentials_required_sync(reason: SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8237,6 +8628,7 @@ export namespace EDataServer {
          * When the operation is finished, `callback` will be called.  You can then
          * call `e_source_lookup_password_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.12
          */
         lookup_password(cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -8250,6 +8642,7 @@ export namespace EDataServer {
          * call `e_source_lookup_password_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.12
          */
         lookup_password(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8263,6 +8656,7 @@ export namespace EDataServer {
          * call `e_source_lookup_password_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.12
          */
         lookup_password(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -8276,6 +8670,7 @@ export namespace EDataServer {
          * and returns `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.12
          */
         lookup_password_finish(result: Gio.AsyncResult): [boolean, string];
 
@@ -8291,6 +8686,7 @@ export namespace EDataServer {
          * and returns `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.12
          */
         lookup_password_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -8307,6 +8703,7 @@ export namespace EDataServer {
          * the operation.
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          */
         mail_signature_load(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
 
@@ -8324,6 +8721,7 @@ export namespace EDataServer {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         mail_signature_load(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8341,6 +8739,7 @@ export namespace EDataServer {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         mail_signature_load(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[string, number]> | void;
 
@@ -8351,6 +8750,7 @@ export namespace EDataServer {
          * with `g_free()` when no longer needed.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         mail_signature_load_finish(result: Gio.AsyncResult): [boolean, string, number];
 
@@ -8366,6 +8766,7 @@ export namespace EDataServer {
          * executable, the email signature content is read directly from the file.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         mail_signature_load_sync(cancellable: Gio.Cancellable | null): [boolean, string, number];
 
@@ -8381,6 +8782,7 @@ export namespace EDataServer {
          * @param length the length of `contents` in bytes
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          */
         mail_signature_replace(contents: string, length: bigint | number, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8397,6 +8799,7 @@ export namespace EDataServer {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         mail_signature_replace(contents: string, length: bigint | number, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8413,6 +8816,7 @@ export namespace EDataServer {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         mail_signature_replace(contents: string, length: bigint | number, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8420,6 +8824,7 @@ export namespace EDataServer {
          * Finishes an operation started with `e_source_mail_signature_replace()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         mail_signature_replace_finish(result: Gio.AsyncResult): boolean;
 
@@ -8431,6 +8836,7 @@ export namespace EDataServer {
          * @param length the length of `contents` in bytes
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         mail_signature_replace_sync(contents: string, length: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8446,6 +8852,7 @@ export namespace EDataServer {
          * @param symlink_target executable filename to link to
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          */
         mail_signature_symlink(symlink_target: string, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8462,6 +8869,7 @@ export namespace EDataServer {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         mail_signature_symlink(symlink_target: string, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8478,6 +8886,7 @@ export namespace EDataServer {
          * @param io_priority the I/O priority of the request
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         mail_signature_symlink(symlink_target: string, io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8485,6 +8894,7 @@ export namespace EDataServer {
          * Finishes an operation started with `e_source_mail_signature_symlink()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         mail_signature_symlink_finish(result: Gio.AsyncResult): boolean;
 
@@ -8496,6 +8906,7 @@ export namespace EDataServer {
          * @param symlink_target executable filename to link to
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         mail_signature_symlink_sync(symlink_target: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8507,6 +8918,7 @@ export namespace EDataServer {
          * call `e_source_proxy_lookup_finish()` to get the result of the operation.
          * @param uri a URI representing the destination to connect to
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.12
          */
         proxy_lookup(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string[] | null>;
 
@@ -8519,6 +8931,7 @@ export namespace EDataServer {
          * @param uri a URI representing the destination to connect to
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.12
          */
         proxy_lookup(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8531,6 +8944,7 @@ export namespace EDataServer {
          * @param uri a URI representing the destination to connect to
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.12
          */
         proxy_lookup(uri: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[] | null> | void;
 
@@ -8540,6 +8954,7 @@ export namespace EDataServer {
          * Free the returned proxy URIs with `g_strfreev()` when finished with them.
          * @param result a {@link Gio.AsyncResult}
          * @returns a `null`-terminated array of proxy    URIs, or `null`
+         * @since 3.12
          */
         proxy_lookup_finish(result: Gio.AsyncResult): string[] | null;
 
@@ -8571,6 +8986,7 @@ export namespace EDataServer {
          * @param uri a URI representing the destination to connect to
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a `null`-terminated array of proxy URIs,    or `null`
+         * @since 3.12
          */
         proxy_lookup_sync(uri: string, cancellable: Gio.Cancellable | null): string[] | null;
 
@@ -8580,6 +8996,7 @@ export namespace EDataServer {
          * The returned {@link Gio.DBusObject} is referenced for thread-safety and must be
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns the {@link Gio.DBusObject} for `source`, or `null`
+         * @since 3.6
          */
         ref_dbus_object(): Gio.DBusObject | null;
 
@@ -8590,6 +9007,7 @@ export namespace EDataServer {
          * The returned {@link GLib.MainContext} is referenced for thread-safety and must be
          * unreferenced with `g_main_context_unref()` when finished with it.
          * @returns a {@link GLib.MainContext}
+         * @since 3.6
          */
         ref_main_context(): GLib.MainContext;
 
@@ -8608,6 +9026,7 @@ export namespace EDataServer {
          * @param context a {@link GLib.MainContext}, or `null` (if `null`, the default           context will be used)
          * @param callback function to call on each timeout
          * @returns a refresh timeout ID
+         * @since 3.6
          */
         refresh_add_timeout(context: GLib.MainContext | null, callback: SourceRefreshFunc): number;
 
@@ -8619,6 +9038,7 @@ export namespace EDataServer {
          * This function is called automatically when the {@link EDataServer.Source} switches from
          * disabled to enabled, but can also be useful when a network connection
          * becomes available or when waking up from hibernation or suspend.
+         * @since 3.6
          */
         refresh_force_timeout(): void;
 
@@ -8626,6 +9046,7 @@ export namespace EDataServer {
          * Removes a timeout {@link GLib.Source} added by `e_source_refresh_add_timeout()`.
          * @param refresh_timeout_id a refresh timeout ID
          * @returns `true` if the timeout was found and removed
+         * @since 3.6
          */
         refresh_remove_timeout(refresh_timeout_id: number): boolean;
 
@@ -8634,6 +9055,7 @@ export namespace EDataServer {
          * whose callback data pointer matches `user_data`.
          * @param user_data user data to match against timeout callbacks
          * @returns the number of timeouts found and removed
+         * @since 3.6
          */
         refresh_remove_timeouts_by_data(user_data: null): number;
 
@@ -8651,6 +9073,7 @@ export namespace EDataServer {
          * call `e_source_remote_create_finish()` to get the result of the operation.
          * @param scratch_source an {@link EDataServer.Source} describing the resource to create
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          */
         remote_create(scratch_source: Source, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8669,6 +9092,7 @@ export namespace EDataServer {
          * @param scratch_source an {@link EDataServer.Source} describing the resource to create
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         remote_create(scratch_source: Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8687,6 +9111,7 @@ export namespace EDataServer {
          * @param scratch_source an {@link EDataServer.Source} describing the resource to create
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         remote_create(scratch_source: Source, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8695,6 +9120,7 @@ export namespace EDataServer {
          * an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.6
          */
         remote_create_finish(result: Gio.AsyncResult): boolean;
 
@@ -8712,6 +9138,7 @@ export namespace EDataServer {
          * @param scratch_source an {@link EDataServer.Source} describing the resource to create
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.6
          */
         remote_create_sync(scratch_source: Source, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8724,6 +9151,7 @@ export namespace EDataServer {
          * When the operation is finished, `callback` will be called.  You can then
          * call `e_source_remote_delete_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          */
         remote_delete(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8737,6 +9165,7 @@ export namespace EDataServer {
          * call `e_source_remote_delete_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         remote_delete(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8750,6 +9179,7 @@ export namespace EDataServer {
          * call `e_source_remote_delete_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         remote_delete(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8758,6 +9188,7 @@ export namespace EDataServer {
          * an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.6
          */
         remote_delete_finish(result: Gio.AsyncResult): boolean;
 
@@ -8770,6 +9201,7 @@ export namespace EDataServer {
          * If an error occurs, the function will set `error` and return `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.6
          */
         remote_delete_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8781,6 +9213,7 @@ export namespace EDataServer {
          * When the operation is finished, `callback` will be called.  You can then
          * call `e_source_remove_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          */
         remove(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8793,6 +9226,7 @@ export namespace EDataServer {
          * call `e_source_remove_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         remove(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8805,6 +9239,7 @@ export namespace EDataServer {
          * call `e_source_remove_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         remove(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8813,6 +9248,7 @@ export namespace EDataServer {
          * error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` of failure
+         * @since 3.6
          */
         remove_finish(result: Gio.AsyncResult): boolean;
 
@@ -8824,12 +9260,14 @@ export namespace EDataServer {
          * If an error occurs, the functon will set `error` and return `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.6
          */
         remove_sync(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Set's current connection status of the `source`.
          * @param connection_status one of the {@link EDataServer.SourceConnectionStatus}
+         * @since 3.16
          */
         set_connection_status(connection_status: SourceConnectionStatus): void;
 
@@ -8841,6 +9279,7 @@ export namespace EDataServer {
          * The internal copy of `display_name` is automatically stripped of leading
          * and trailing whitespace.
          * @param display_name a display name
+         * @since 3.6
          */
         set_display_name(display_name: string): void;
 
@@ -8851,6 +9290,7 @@ export namespace EDataServer {
          * even if it does not provide a way to change the setting through its
          * user interface.  Disabled data sources should generally be hidden.
          * @param enabled whether to enable `source`
+         * @since 3.6
          */
         set_enabled(enabled: boolean): void;
 
@@ -8862,6 +9302,7 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param parent the UID of the parent {@link EDataServer.Source}, or `null`
+         * @since 3.6
          */
         set_parent(parent: string | null): void;
 
@@ -8879,6 +9320,7 @@ export namespace EDataServer {
          * @param password the password to store
          * @param permanently store permanently or just for the session
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.12
          */
         store_password(password: string, permanently: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8897,6 +9339,7 @@ export namespace EDataServer {
          * @param permanently store permanently or just for the session
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.12
          */
         store_password(password: string, permanently: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8915,6 +9358,7 @@ export namespace EDataServer {
          * @param permanently store permanently or just for the session
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.12
          */
         store_password(password: string, permanently: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8922,6 +9366,7 @@ export namespace EDataServer {
          * Finishes the operation started with `e_source_store_password()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.12
          */
         store_password_finish(result: Gio.AsyncResult): boolean;
 
@@ -8937,6 +9382,7 @@ export namespace EDataServer {
          * @param permanently store permanently or just for the session
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.12
          */
         store_password_sync(password: string, permanently: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8944,6 +9390,7 @@ export namespace EDataServer {
          * Outputs the current contents of `source` as a key file string.
          * Free the returned string with `g_free()`.
          * @returns a newly-allocated string
+         * @since 3.6
          */
         to_string(): [string, number];
 
@@ -8956,6 +9403,7 @@ export namespace EDataServer {
          * call `e_source_unset_last_credentials_required_arguments_finish()` to get
          * the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.18
          */
         unset_last_credentials_required_arguments(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -8969,6 +9417,7 @@ export namespace EDataServer {
          * the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.18
          */
         unset_last_credentials_required_arguments(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8982,6 +9431,7 @@ export namespace EDataServer {
          * the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.18
          */
         unset_last_credentials_required_arguments(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -8991,6 +9441,7 @@ export namespace EDataServer {
          * If an error occurs, the function sets `error` and returns `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.18
          */
         unset_last_credentials_required_arguments_finish(result: Gio.AsyncResult): boolean;
 
@@ -9000,6 +9451,7 @@ export namespace EDataServer {
          * If an error occurs, the function sets `error` and returns `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.18
          */
         unset_last_credentials_required_arguments_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9011,6 +9463,7 @@ export namespace EDataServer {
          * When the operation is finished, `callback` will be called.  You can then
          * call `e_source_write_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          */
         write(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -9023,6 +9476,7 @@ export namespace EDataServer {
          * call `e_source_write_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         write(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -9035,6 +9489,7 @@ export namespace EDataServer {
          * call `e_source_write_finish()` to get the result of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         write(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -9043,6 +9498,7 @@ export namespace EDataServer {
          * error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.6
          */
         write_finish(result: Gio.AsyncResult): boolean;
 
@@ -9054,6 +9510,7 @@ export namespace EDataServer {
          * If an error occurs, the functon will set `error` and return `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.6
          */
         write_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9098,6 +9555,7 @@ export namespace EDataServer {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9141,6 +9599,7 @@ export namespace EDataServer {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -9150,6 +9609,7 @@ export namespace EDataServer {
          * internally; `g_proxy_resolver_get_default()` will only return a proxy
          * resolver that returns `true` for this method.)
          * @returns `true` if `resolver` is supported.
+         * @since 2.26
          */
         is_supported(): boolean;
 
@@ -9172,6 +9632,7 @@ export namespace EDataServer {
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A               NULL-terminated array of proxy URIs. Must be freed               with `g_strfreev()`.
+         * @since 2.26
          */
         lookup(uri: string, cancellable: Gio.Cancellable | null): string[];
 
@@ -9180,6 +9641,7 @@ export namespace EDataServer {
          * details.
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 2.26
          */
         lookup_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
 
@@ -9189,6 +9651,7 @@ export namespace EDataServer {
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call after resolution completes
+         * @since 2.26
          */
         lookup_async(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -9198,6 +9661,7 @@ export namespace EDataServer {
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call after resolution completes
+         * @since 2.26
          */
         lookup_async(uri: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
 
@@ -9207,6 +9671,7 @@ export namespace EDataServer {
          * `g_proxy_resolver_lookup()` for more details.
          * @param result the result passed to your {@link Gio.AsyncReadyCallback}
          * @returns A               NULL-terminated array of proxy URIs. Must be freed               with `g_strfreev()`.
+         * @since 2.26
          */
         lookup_finish(result: Gio.AsyncResult): string[];
 
@@ -9214,6 +9679,7 @@ export namespace EDataServer {
          * Checks if `resolver` can be used on this system. (This is used
          * internally; `g_proxy_resolver_get_default()` will only return a proxy
          * resolver that returns `true` for this method.)
+         * @since 2.26
          * @virtual
          */
         vfunc_is_supported(): boolean;
@@ -9236,6 +9702,7 @@ export namespace EDataServer {
          * returned array of proxies.
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 2.26
          * @virtual
          */
         vfunc_lookup(uri: string, cancellable: Gio.Cancellable | null): string[];
@@ -9246,6 +9713,7 @@ export namespace EDataServer {
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call after resolution completes
+         * @since 2.26
          * @virtual
          */
         vfunc_lookup_async(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -9255,6 +9723,7 @@ export namespace EDataServer {
          * `g_proxy_resolver_lookup_async()` is complete. See
          * `g_proxy_resolver_lookup()` for more details.
          * @param result the result passed to your {@link Gio.AsyncReadyCallback}
+         * @since 2.26
          * @virtual
          */
         vfunc_lookup_finish(result: Gio.AsyncResult): string[];
@@ -9320,12 +9789,14 @@ export namespace EDataServer {
         // Methods
         /**
          * @returns the sorting order of the source, if known. Zero is the default.
+         * @since 3.40
          */
         get_order(): number;
 
         /**
          * Set the sorting order of the source.
          * @param order a sorting order
+         * @since 3.40
          */
         set_order(order: number): void;
     }
@@ -9435,6 +9906,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceAlarms.last_notified}
+         * @since 3.6
          */
         dup_last_notified(): string | null;
 
@@ -9445,6 +9917,7 @@ export namespace EDataServer {
          * This is used in addition to the GSettings key defall-reminder-enabled
          * in org.gnome.evolution-data-server.calendar.
          * @returns whether to show alarms for every event
+         * @since 3.52
          */
         get_for_every_event(): boolean;
 
@@ -9455,6 +9928,7 @@ export namespace EDataServer {
          * Alarm daemons such as evolution-alarm-notify can use this property to
          * decide which calendars to query for upcoming appointments.
          * @returns whether to show alarms for upcoming appointments
+         * @since 3.6
          */
         get_include_me(): boolean;
 
@@ -9464,6 +9938,7 @@ export namespace EDataServer {
          * the {@link EDataServer.Source} to which `extension` belongs.  If no valid timestamp
          * has been set, the function will return `null`.
          * @returns an ISO 8601 timestamp, or `null`
+         * @since 3.6
          */
         get_last_notified(): string | null;
 
@@ -9474,6 +9949,7 @@ export namespace EDataServer {
          * This is used in addition to the GSettings key defall-reminder-enabled
          * in org.gnome.evolution-data-server.calendar.
          * @param for_every_event whether to show alarms for every event
+         * @since 3.52
          */
         set_for_every_event(for_every_event: boolean): void;
 
@@ -9484,6 +9960,7 @@ export namespace EDataServer {
          * Alarm daemons such as evolution-alarm-notify can use this property to
          * decide which calendars to query for upcoming appointments.
          * @param include_me whether to show alarms for upcoming appointments
+         * @since 3.6
          */
         set_include_me(include_me: boolean): void;
 
@@ -9499,6 +9976,7 @@ export namespace EDataServer {
          * Generally, this function should only be called by an alarm daemon
          * such as evolution-alarm-notify.
          * @param last_notified an ISO 8601 timestamp, or `null`
+         * @since 3.6
          */
         set_last_notified(last_notified: string | null): void;
     }
@@ -9676,6 +10154,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceAuthentication.credential_name}
+         * @since 3.16
          */
         dup_credential_name(): string | null;
 
@@ -9685,6 +10164,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceAuthentication.host}
+         * @since 3.6
          */
         dup_host(): string | null;
 
@@ -9694,6 +10174,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceAuthentication.method}
+         * @since 3.6
          */
         dup_method(): string | null;
 
@@ -9703,6 +10184,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceAuthentication.proxy_uid}
+         * @since 3.12
          */
         dup_proxy_uid(): string;
 
@@ -9712,6 +10194,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceAuthentication.user}
+         * @since 3.6
          */
         dup_user(): string | null;
 
@@ -9721,12 +10204,14 @@ export namespace EDataServer {
          * a counterpart of the authentication method. The `null` means to use
          * the default name, which is #E_SOURCE_CREDENTIAL_PASSWORD.
          * @returns the credential name to use for authentication, or `null`
+         * @since 3.16
          */
         get_credential_name(): string | null;
 
         /**
          * Returns the host name used to authenticate to a remote account.
          * @returns the host name of a remote account
+         * @since 3.6
          */
         get_host(): string | null;
 
@@ -9734,6 +10219,7 @@ export namespace EDataServer {
          * Get if the authentication is done by an external application such as a
          * Single Sign On application (e.g. GNOME Online Accounts)
          * @returns `true` if the authentication is done by an external application, `false` otherwise
+         * @since 3.36
          */
         get_is_external(): boolean;
 
@@ -9743,12 +10229,14 @@ export namespace EDataServer {
          * they wish.  If authentication is not required for a remote account,
          * the convention is to set {@link EDataServer.SourceAuthentication.method} to "none".
          * @returns the authentication method for a remote account
+         * @since 3.6
          */
         get_method(): string | null;
 
         /**
          * Returns the port number used to authenticate to a remote account.
          * @returns the port number of a remote account
+         * @since 3.6
          */
         get_port(): number;
 
@@ -9756,6 +10244,7 @@ export namespace EDataServer {
          * Returns the {@link EDataServer.Source.uid} of the {@link EDataServer.Source} that holds network proxy
          * settings for use when connecting to a remote account.
          * @returns the proxy profile {@link EDataServer.Source.uid}
+         * @since 3.12
          */
         get_proxy_uid(): string;
 
@@ -9764,12 +10253,14 @@ export namespace EDataServer {
          * in password prompts.  This way, if the user unchecks the option it will
          * be unchecked by default in future password prompts.
          * @returns whether to offer to remember the password by default
+         * @since 3.10
          */
         get_remember_password(): boolean;
 
         /**
          * Returns the user name used to authenticate to a remote account.
          * @returns the user name of a remote account
+         * @since 3.6
          */
         get_user(): string | null;
 
@@ -9781,6 +10272,7 @@ export namespace EDataServer {
          * The returned {@link Gio.SocketConnectable} is referenced for thread-safety and must
          * be unreferenced with `g_object_unref()` when finished with it.
          * @returns a {@link Gio.SocketConnectable}, or `null`
+         * @since 3.8
          */
         ref_connectable(): Gio.SocketConnectable | null;
 
@@ -9790,6 +10282,7 @@ export namespace EDataServer {
          * the convention of setting {@link EDataServer.SourceAuthentication.method} to "none"
          * when authentication is <emphasis>not</emphasis> required.
          * @returns whether authentication is required at all
+         * @since 3.6
          */
         required(): boolean;
 
@@ -9803,6 +10296,7 @@ export namespace EDataServer {
          * of leading and trailing whitespace. If the resulting string is
          * empty, `null` is set instead.
          * @param credential_name a credential name, or `null`
+         * @since 3.16
          */
         set_credential_name(credential_name: string | null): void;
 
@@ -9813,6 +10307,7 @@ export namespace EDataServer {
          * trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param host a host name, or `null`
+         * @since 3.6
          */
         set_host(host: string | null): void;
 
@@ -9820,6 +10315,7 @@ export namespace EDataServer {
          * Set if the authentication is done by an external application such as a
          * Single Sign On application (e.g. GNOME Online Accounts)
          * @param is_external `true` if the authentication is done using an external application, `false` otherwise
+         * @since 3.36
          */
         set_is_external(is_external: boolean): void;
 
@@ -9831,12 +10327,14 @@ export namespace EDataServer {
          * convention, {@link EDataServer.SourceAuthentication.method} will be set to "none" if
          * `method` is `null` or an empty string.
          * @param method authentication method, or `null`
+         * @since 3.6
          */
         set_method(method: string | null): void;
 
         /**
          * Sets the port number used to authenticate to a remote account.
          * @param port a port number
+         * @since 3.6
          */
         set_port(port: number): void;
 
@@ -9844,6 +10342,7 @@ export namespace EDataServer {
          * Sets the {@link EDataServer.Source.uid} of the {@link EDataServer.Source} that holds network proxy settings
          * for use when connecting to a remote account.
          * @param proxy_uid the proxy profile {@link EDataServer.Source.uid}
+         * @since 3.12
          */
         set_proxy_uid(proxy_uid: string): void;
 
@@ -9852,6 +10351,7 @@ export namespace EDataServer {
          * password prompts.  This way, if the user unchecks the option it will be
          * unchecked by default in future password prompts.
          * @param remember_password whether to offer to remember the password by default
+         * @since 3.10
          */
         set_remember_password(remember_password: boolean): void;
 
@@ -9862,6 +10362,7 @@ export namespace EDataServer {
          * trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param user a user name, or `null`
+         * @since 3.6
          */
         set_user(user: string | null): void;
     }
@@ -9936,6 +10437,7 @@ export namespace EDataServer {
          * `extension` belongs should be queried when the user inputs a partial
          * contact name or email address.
          * @returns whether to use the autocomplete feature
+         * @since 3.6
          */
         get_include_me(): boolean;
 
@@ -9944,6 +10446,7 @@ export namespace EDataServer {
          * `extension` belongs should be queried when the user inputs a partial
          * contact name or email address.
          * @param include_me whether to use the autocomplete feature
+         * @since 3.6
          */
         set_include_me(include_me: boolean): void;
     }
@@ -10010,6 +10513,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceAutoconfig.revision}
+         * @since 3.24
          */
         dup_revision(): string;
 
@@ -10023,6 +10527,7 @@ export namespace EDataServer {
          * 
          * If it matches, no copying is done.
          * @returns revision of the data source
+         * @since 3.24
          */
         get_revision(): string;
 
@@ -10039,6 +10544,7 @@ export namespace EDataServer {
          * The internal copy of `revision` is automatically stripped of leading and
          * trailing whitespace.
          * @param revision a revision
+         * @since 3.24
          */
         set_revision(revision: string): void;
     }
@@ -10114,12 +10620,14 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceBackend.backend_name}
+         * @since 3.6
          */
         dup_backend_name(): string | null;
 
         /**
          * Returns the backend name for `extension`.
          * @returns the backend name for `extension`
+         * @since 3.6
          */
         get_backend_name(): string | null;
 
@@ -10130,6 +10638,7 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param backend_name a backend name, or `null`
+         * @since 3.6
          */
         set_backend_name(backend_name: string | null): void;
     }
@@ -10260,6 +10769,7 @@ export namespace EDataServer {
          * subtype without having to load all available {@link Camel.Provider} modules.
          * @param protocol a {@link Camel.Provider} protocol
          * @param settings_type a subtype of {@link Camel.Settings}
+         * @since 3.6
          */
         static generate_subtype(protocol: string, settings_type: GObject.GType): GObject.GType;
 
@@ -10271,6 +10781,7 @@ export namespace EDataServer {
          * For example, given a protocol named "imap" the function would return
          * "Imap Backend".
          * @param protocol a {@link Camel.Provider} protocol
+         * @since 3.6
          */
         static get_extension_name(protocol: string): string;
 
@@ -10281,6 +10792,7 @@ export namespace EDataServer {
          * For example, given a protocol named "imap" the function would return
          * "ESourceCamelImap".
          * @param protocol a {@link Camel.Provider} protocol
+         * @since 3.6
          */
         static get_type_name(protocol: string): string;
 
@@ -10288,6 +10800,7 @@ export namespace EDataServer {
          * Creates and registers subclasses of {@link EDataServer.SourceCamel} for each available
          * {@link Camel.Provider}.  This function should be called once during application
          * or library initialization.
+         * @since 3.6
          */
         static register_types(): void;
 
@@ -10301,6 +10814,7 @@ export namespace EDataServer {
          * This is essentially the glue that binds {@link EDataServer.Source} to {@link Camel.Service}.
          * See `e_source_camel_configure_service()`.
          * @returns a configured {@link Camel.Settings} instance
+         * @since 3.6
          */
         get_settings(): Camel.Settings;
     }
@@ -10471,6 +10985,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceCollection.calendar_url}
+         * @since 3.26
          */
         dup_calendar_url(): string | null;
 
@@ -10480,6 +10995,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceCollection.contacts_url}
+         * @since 3.26
          */
         dup_contacts_url(): string | null;
 
@@ -10489,6 +11005,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceCollection.identity}
+         * @since 3.6
          */
         dup_identity(): string | null;
 
@@ -10496,6 +11013,7 @@ export namespace EDataServer {
          * Returns whether the collection backend allows a user to rename child
          * sources. It is meant mainly for GUI. The default is `false`.
          * @returns whether the collection backend allows a user to rename child sources
+         * @since 3.36
          */
         get_allow_sources_rename(): boolean;
 
@@ -10507,12 +11025,14 @@ export namespace EDataServer {
          * automatically synchronize any calendar sources it maintains with the
          * {@link EDataServer.SourceCollection.calendar_enabled} property.
          * @returns whether calendar sources should be enabled
+         * @since 3.6
          */
         get_calendar_enabled(): boolean;
 
         /**
          * Returns the calendar top URL string, that is, where to search for calendar sources.
          * @returns the calendar top URL, or `null`
+         * @since 3.26
          */
         get_calendar_url(): string | null;
 
@@ -10524,12 +11044,14 @@ export namespace EDataServer {
          * automatically synchronize any address book sources it maintains with
          * the {@link EDataServer.SourceCollection.contacts_enabled} property.
          * @returns whether address book sources should be enabled
+         * @since 3.6
          */
         get_contacts_enabled(): boolean;
 
         /**
          * Returns the contacts top URL string, that is, where to search for contact sources.
          * @returns the contacts top URL, or `null`
+         * @since 3.26
          */
         get_contacts_url(): string | null;
 
@@ -10537,6 +11059,7 @@ export namespace EDataServer {
          * Returns the string used to uniquely identify the user account at
          * the service provider.  Often this is an email address or user name.
          * @returns the collection identity
+         * @since 3.6
          */
         get_identity(): string | null;
 
@@ -10547,6 +11070,7 @@ export namespace EDataServer {
          * automatically synchronize any mail sources it maintains with the
          * {@link EDataServer.SourceCollection.mail_enabled} property.
          * @returns whether mail sources should be enabled
+         * @since 3.6
          */
         get_mail_enabled(): boolean;
 
@@ -10554,6 +11078,7 @@ export namespace EDataServer {
          * Sets whether the collection backend allows a user to rename child
          * sources. It is meant mainly for GUI. The default is `false`.
          * @param allow_sources_rename whether mail sources should be enabled
+         * @since 3.36
          */
         set_allow_sources_rename(allow_sources_rename: boolean): void;
 
@@ -10568,6 +11093,7 @@ export namespace EDataServer {
          * the change is submitted to the registry service through `e_source_write()`,
          * but there should rarely be any need for clients to call this.
          * @param calendar_enabled whether calendar sources should be enabled
+         * @since 3.6
          */
         set_calendar_enabled(calendar_enabled: boolean): void;
 
@@ -10578,6 +11104,7 @@ export namespace EDataServer {
          * and trailing whitespace. If the resulting string is empty, `null` is set
          * instead.
          * @param calendar_url calendar top URL, or `null`
+         * @since 3.26
          */
         set_calendar_url(calendar_url: string | null): void;
 
@@ -10592,6 +11119,7 @@ export namespace EDataServer {
          * the change is submitted to the registry service through `e_source_write()`,
          * but there should rarely be any need for clients to call this.
          * @param contacts_enabled whether address book sources should be enabled
+         * @since 3.6
          */
         set_contacts_enabled(contacts_enabled: boolean): void;
 
@@ -10602,6 +11130,7 @@ export namespace EDataServer {
          * and trailing whitespace. If the resulting string is empty, `null` is set
          * instead.
          * @param contacts_url contacts top URL, or `null`
+         * @since 3.26
          */
         set_contacts_url(contacts_url: string | null): void;
 
@@ -10613,6 +11142,7 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is
          * set instead.
          * @param identity the collection identity, or `null`
+         * @since 3.6
          */
         set_identity(identity: string | null): void;
 
@@ -10627,6 +11157,7 @@ export namespace EDataServer {
          * the changes is submitted to the registry service through `e_source_write()`,
          * but there should rarely be any need for clients to call this.
          * @param mail_enabled whether mail sources should be enabled
+         * @since 3.6
          */
         set_mail_enabled(mail_enabled: boolean): void;
     }
@@ -10699,6 +11230,7 @@ export namespace EDataServer {
          * `extension` belongs should be queried for scheduling conflicts when
          * negotiating a meeting invitation.
          * @returns whether to search for scheduling conflicts
+         * @since 3.60
          */
         get_include_me(): boolean;
 
@@ -10707,6 +11239,7 @@ export namespace EDataServer {
          * belongs should be queried for scheduling conflicts when negotiating a
          * meeting invitation.
          * @param include_me whether to search for scheduling conflicts
+         * @since 3.60
          */
         set_include_me(include_me: boolean): void;
     }
@@ -10843,6 +11376,7 @@ export namespace EDataServer {
         /**
          * Returns referenced {@link EDataServer.Source} with the given `uid`, or `null`, when it could not be found.
          * @param uid an {@link EDataServer.Source} UID
+         * @since 3.16
          * @virtual
          */
         vfunc_ref_source(uid: string): Source | null;
@@ -10852,6 +11386,7 @@ export namespace EDataServer {
          * Returns whether a credentials prompt can be shown for the `source`.
          * @param source an {@link EDataServer.Source}
          * @returns `true`, when a credentials prompt can be shown for `source`, `false` otherwise.
+         * @since 3.16
          */
         can_prompt(source: Source): boolean;
 
@@ -10861,6 +11396,7 @@ export namespace EDataServer {
          * `e_source_credentials_provider_store_sync()` will fail for this `source`.
          * @param source an {@link EDataServer.Source}
          * @returns `true`, when the credentials storing for `source` is possible, `false` otherwise.
+         * @since 3.16
          */
         can_store(source: Source): boolean;
 
@@ -10872,6 +11408,7 @@ export namespace EDataServer {
          * of the operation.
          * @param source an {@link EDataServer.Source}, to lookup credentials for
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.16
          */
         ["delete"](source: Source, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -10884,6 +11421,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}, to lookup credentials for
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         ["delete"](source: Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -10896,6 +11434,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}, to lookup credentials for
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         ["delete"](source: Source, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -10905,6 +11444,7 @@ export namespace EDataServer {
          * If an error occurs, the function sets `error` and returns `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         delete_finish(result: Gio.AsyncResult): boolean;
 
@@ -10915,6 +11455,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}, to store credentials for
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         delete_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10926,6 +11467,7 @@ export namespace EDataServer {
          * of the operation.
          * @param source an {@link EDataServer.Source}, to lookup credentials for
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.16
          */
         lookup(source: Source, cancellable: Gio.Cancellable | null): globalThis.Promise<NamedParameters>;
 
@@ -10938,6 +11480,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}, to lookup credentials for
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         lookup(source: Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -10950,6 +11493,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}, to lookup credentials for
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         lookup(source: Source, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<NamedParameters> | void;
 
@@ -10959,6 +11503,7 @@ export namespace EDataServer {
          * If an error occurs, the function sets `error` and returns `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         lookup_finish(result: Gio.AsyncResult): [boolean, NamedParameters];
 
@@ -10969,6 +11514,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}, to lookup credentials for
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         lookup_sync(source: Source, cancellable: Gio.Cancellable | null): [boolean, NamedParameters];
 
@@ -10980,12 +11526,14 @@ export namespace EDataServer {
          * means the `source` holds credentials for itself.
          * @param source an {@link EDataServer.Source}
          * @returns referenced parent {@link EDataServer.Source}, which holds    credentials, or `null`. Unref the returned non-NULL {@link EDataServer.Source} with    `g_object_unref()`, when no longer needed.
+         * @since 3.16
          */
         ref_credentials_source(source: Source): Source | null;
 
         /**
          * Returns refenrenced registry associated with this `provider`.
          * @returns Reference registry associated with this `provider`. Unref it    with `g_object_unref()` when no longer needed.
+         * @since 3.16
          */
         ref_registry<T = GObject.Object>(): T;
 
@@ -10993,6 +11541,7 @@ export namespace EDataServer {
          * Returns referenced {@link EDataServer.Source} with the given `uid`, or `null`, when it could not be found.
          * @param uid an {@link EDataServer.Source} UID
          * @returns Referenced {@link EDataServer.Source} with the given `uid`, or `null`, when it    could not be found. Unref the returned {@link EDataServer.Source} with `g_object_unref()`, when no longer needed.
+         * @since 3.16
          */
         ref_source(uid: string): Source | null;
 
@@ -11001,6 +11550,7 @@ export namespace EDataServer {
          * the `provider_impl`.
          * @param provider_impl an {@link EDataServer.SourceCredentialsProviderImpl}
          * @returns `true` on success, `false` on failure, like when there is    the `provider_impl` already registered.
+         * @since 3.16
          */
         register_impl(provider_impl: SourceCredentialsProviderImpl): boolean;
 
@@ -11016,6 +11566,7 @@ export namespace EDataServer {
          * @param credentials an {@link EDataServer.NamedParameters} with credentials to store
          * @param permanently store permanently or just for the session
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.16
          */
         store(source: Source, credentials: NamedParameters, permanently: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -11032,6 +11583,7 @@ export namespace EDataServer {
          * @param permanently store permanently or just for the session
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         store(source: Source, credentials: NamedParameters, permanently: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -11048,6 +11600,7 @@ export namespace EDataServer {
          * @param permanently store permanently or just for the session
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         store(source: Source, credentials: NamedParameters, permanently: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -11057,6 +11610,7 @@ export namespace EDataServer {
          * If an error occurs, the function sets `error` and returns `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         store_finish(result: Gio.AsyncResult): boolean;
 
@@ -11071,6 +11625,7 @@ export namespace EDataServer {
          * @param permanently store permanently or just for the session
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         store_sync(source: Source, credentials: NamedParameters, permanently: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -11079,6 +11634,7 @@ export namespace EDataServer {
          * `e_source_credentials_provider_register_impl()`. Function does nothing,
          * when the `provider_impl` is not registered.
          * @param provider_impl an {@link EDataServer.SourceCredentialsProviderImpl}
+         * @since 3.16
          */
         unregister_impl(provider_impl: SourceCredentialsProviderImpl): void;
 
@@ -11091,6 +11647,7 @@ export namespace EDataServer {
          * objects are owned by `extensible` and should not be unreferenced.
          * @param extension_type the type of extensions to list
          * @returns a list of extension objects derived from `extension_type`
+         * @since 3.4
          */
         list_extensions(extension_type: GObject.GType): Extension[];
 
@@ -11099,6 +11656,7 @@ export namespace EDataServer {
          * target the class of `extensible`.  The lifetimes of these newly created
          * {@link EDataServer.Extension} objects are bound to `extensible` such that they are finalized
          * when `extensible` is finalized.
+         * @since 3.4
          */
         load_extensions(): void;
 
@@ -11106,6 +11664,7 @@ export namespace EDataServer {
          * Similar to `e_extensible_load_extensions()`, only loads newly discovered
          * extensions again. This can help in case a new module had been loaded
          * to the process, which provides the extensions for the `extensible`.
+         * @since 3.46
          */
         reload_extensions(): void;
     }
@@ -11162,18 +11721,21 @@ export namespace EDataServer {
         /**
          * Returns whether the `provider_impl` can process credentials for the `source`.
          * @param source an {@link EDataServer.Source}
+         * @since 3.16
          * @virtual
          */
         vfunc_can_process(source: Source): boolean;
 
         /**
          * Returns whether credential prompt can be done for the `provider_impl`.
+         * @since 3.16
          * @virtual
          */
         vfunc_can_prompt(): boolean;
 
         /**
          * Returns whether the `provider_impl` can store credentials.
+         * @since 3.16
          * @virtual
          */
         vfunc_can_store(): boolean;
@@ -11186,6 +11748,7 @@ export namespace EDataServer {
          * If an error occurs, the function sets `error` and returns `false`.
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.16
          * @virtual
          */
         vfunc_delete_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
@@ -11201,6 +11764,7 @@ export namespace EDataServer {
          * If an error occurs, the function sets `error` and returns `false`.
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.16
          * @virtual
          */
         vfunc_lookup_sync(source: Source, cancellable: Gio.Cancellable | null): [boolean, NamedParameters];
@@ -11215,6 +11779,7 @@ export namespace EDataServer {
          * @param credentials an {@link EDataServer.NamedParameters} containing credentials to store
          * @param permanently whether to store credentials permanently, or for the current session only
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.16
          * @virtual
          */
         vfunc_store_sync(source: Source, credentials: NamedParameters, permanently: boolean, cancellable: Gio.Cancellable | null): boolean;
@@ -11224,18 +11789,21 @@ export namespace EDataServer {
          * Returns whether the `provider_impl` can process credentials for the `source`.
          * @param source an {@link EDataServer.Source}
          * @returns Whether the `provider_impl` can process credentials for the `source`.
+         * @since 3.16
          */
         can_process(source: Source): boolean;
 
         /**
          * Returns whether credential prompt can be done for the `provider_impl`.
          * @returns Whether credential prompt can be done for the `provider_impl`.
+         * @since 3.16
          */
         can_prompt(): boolean;
 
         /**
          * Returns whether the `provider_impl` can store credentials.
          * @returns Whether the `provider_impl` can store credentials.
+         * @since 3.16
          */
         can_store(): boolean;
 
@@ -11248,12 +11816,14 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         delete_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Returns an {@link EDataServer.SourceCredentialsProvider} with which the `provider_impl` is associated.
          * @returns an {@link EDataServer.SourceCredentialsProvider}
+         * @since 3.16
          */
         get_provider(): null;
 
@@ -11269,6 +11839,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         lookup_sync(source: Source, cancellable: Gio.Cancellable | null): [boolean, NamedParameters];
 
@@ -11283,6 +11854,7 @@ export namespace EDataServer {
          * @param permanently whether to store credentials permanently, or for the current session only
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         store_sync(source: Source, credentials: NamedParameters, permanently: boolean, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -11442,18 +12014,22 @@ export namespace EDataServer {
          * Note this function is not thread-safe.  The returned {@link EDataServer.Source} could
          * be finalized by another thread while the caller is still using it.
          * @returns the {@link EDataServer.Source} instance
+         * @since 3.6
+         * @deprecated since 3.8: Use `e_source_extension_ref_source()` instead.
          */
         get_source(): Source;
 
         /**
          * Acquires a property lock, thus no other thread can change properties
          * of the `extension` until the lock is released.
+         * @since 3.18
          */
         property_lock(): void;
 
         /**
          * Releases a property lock, previously acquired with `e_source_extension_property_lock()`,
          * thus other threads can change properties of the `extension`.
+         * @since 3.18
          */
         property_unlock(): void;
 
@@ -11463,6 +12039,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.Source} is referenced for thread-safety.  Unreference
          * the {@link EDataServer.Source} with `g_object_unref()` when finished with it.
          * @returns the {@link EDataServer.Source} instance
+         * @since 3.8
          */
         ref_source(): Source;
     }
@@ -11590,6 +12167,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceGoa.account_id}
+         * @since 3.6
          */
         dup_account_id(): string | null;
 
@@ -11599,6 +12177,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceGoa.address}
+         * @since 3.24
          */
         dup_address(): string | null;
 
@@ -11608,6 +12187,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceGoa.calendar_url}
+         * @since 3.8
          */
         dup_calendar_url(): string | null;
 
@@ -11617,6 +12197,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceGoa.contacts_url}
+         * @since 3.8
          */
         dup_contacts_url(): string | null;
 
@@ -11626,6 +12207,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceGoa.name}
+         * @since 3.24
          */
         dup_name(): string | null;
 
@@ -11633,6 +12215,7 @@ export namespace EDataServer {
          * Returns the identifier string of the GNOME Online Account associated
          * with the {@link EDataServer.Source} to which `extension` belongs.
          * @returns the associated GNOME Online Account ID
+         * @since 3.6
          */
         get_account_id(): string | null;
 
@@ -11641,6 +12224,7 @@ export namespace EDataServer {
          * with the {@link EDataServer.Source} to which `extension` belongs. Can be `null` or an empty
          * string when not filled.
          * @returns the associated GNOME Online Account's Address
+         * @since 3.24
          */
         get_address(): string | null;
 
@@ -11649,6 +12233,7 @@ export namespace EDataServer {
          * with the {@link EDataServer.Source} to which `extension` belongs. Can be `null` or an empty
          * string for accounts not supporting this property.
          * @returns the associated GNOME Online Account calendar URL
+         * @since 3.8
          */
         get_calendar_url(): string | null;
 
@@ -11657,6 +12242,7 @@ export namespace EDataServer {
          * with the {@link EDataServer.Source} to which `extension` belongs. Can be `null` or an empty
          * string for accounts not supporting this property.
          * @returns the associated GNOME Online Account contacts URL
+         * @since 3.8
          */
         get_contacts_url(): string | null;
 
@@ -11665,6 +12251,7 @@ export namespace EDataServer {
          * with the {@link EDataServer.Source} to which `extension` belongs. Can be `null` or an empty
          * string when not filled.
          * @returns the associated GNOME Online Account's Name
+         * @since 3.24
          */
         get_name(): string | null;
 
@@ -11676,6 +12263,7 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param account_id the associated GNOME Online Account ID, or `null`
+         * @since 3.6
          */
         set_account_id(account_id: string | null): void;
 
@@ -11687,6 +12275,7 @@ export namespace EDataServer {
          * and trailing whitespace. If the resulting string is empty, `null` is set
          * instead.
          * @param address the associated GNOME Online Account's Address, or `null`
+         * @since 3.24
          */
         set_address(address: string | null): void;
 
@@ -11698,6 +12287,7 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param calendar_url the associated GNOME Online Account                calendar URL, or `null`
+         * @since 3.8
          */
         set_calendar_url(calendar_url: string | null): void;
 
@@ -11709,6 +12299,7 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param contacts_url the associated GNOME Online Account                contacts URL, or `null`
+         * @since 3.8
          */
         set_contacts_url(contacts_url: string | null): void;
 
@@ -11720,6 +12311,7 @@ export namespace EDataServer {
          * and trailing whitespace. If the resulting string is empty, `null` is set
          * instead.
          * @param name the associated GNOME Online Account's Name, or `null`
+         * @since 3.24
          */
         set_name(name: string | null): void;
     }
@@ -12003,6 +12595,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceLocal.email_address}
+         * @since 3.40
          */
         dup_email_address(): string;
 
@@ -12017,6 +12610,7 @@ export namespace EDataServer {
 
         /**
          * @returns the email address for `extension`
+         * @since 3.40
          */
         get_email_address(): string | null;
 
@@ -12026,6 +12620,7 @@ export namespace EDataServer {
          * opened for read-only, for example when the access to the file
          * is read-only.
          * @returns whether prefer to pen the file in writable mode
+         * @since 3.34
          */
         get_writable(): boolean;
 
@@ -12042,6 +12637,7 @@ export namespace EDataServer {
          * and trailing whitespace. If the resulting string is empty, `null` is set
          * instead.
          * @param email_address an email address, or `null`
+         * @since 3.40
          */
         set_email_address(email_address: string | null): void;
 
@@ -12050,6 +12646,7 @@ export namespace EDataServer {
          * The default is `true`. The file can be still opened for read-only,
          * for example when the access to the file is read-only.
          * @param writable value to set
+         * @since 3.34
          */
         set_writable(writable: boolean): void;
     }
@@ -12123,6 +12720,7 @@ export namespace EDataServer {
          * Returns the policy for this mail account on responding to Message
          * Disposition Notification requests when receiving mail messages.
          * @returns the {@link EDataServer.MdnResponsePolicy} for this account
+         * @since 3.6
          */
         get_response_policy(): MdnResponsePolicy;
 
@@ -12130,6 +12728,7 @@ export namespace EDataServer {
          * Sets the policy for this mail account on responding to Message
          * Disposition Notification requests when receiving mail messages.
          * @param response_policy the {@link EDataServer.MdnResponsePolicy}
+         * @since 3.6
          */
         set_response_policy(response_policy: MdnResponsePolicy): void;
     }
@@ -12281,6 +12880,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailAccount.archive_folder}
+         * @since 3.16
          */
         dup_archive_folder(): string | null;
 
@@ -12290,6 +12890,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailAccount.identity_uid}
+         * @since 3.6
          */
         dup_identity_uid(): string | null;
 
@@ -12297,6 +12898,7 @@ export namespace EDataServer {
          * Returns a string identifying the archive folder.
          * The format of the identifier string is defined by the client application.
          * @returns an identifier of the archive folder
+         * @since 3.16
          */
         get_archive_folder(): string | null;
 
@@ -12304,6 +12906,7 @@ export namespace EDataServer {
          * Returns whether the mail account is a builtin account. The builtin
          * account cannot be created by a user. The default value is `false`.
          * @returns `true`, when the account is a builtin account
+         * @since 3.46
          */
         get_builtin(): boolean;
 
@@ -12311,22 +12914,26 @@ export namespace EDataServer {
          * Returns the {@link EDataServer.Source.uid} of the {@link EDataServer.Source} that describes the mail
          * identity to be used for this account.
          * @returns the mail identity {@link EDataServer.Source.uid}
+         * @since 3.6
          */
         get_identity_uid(): string | null;
 
         /**
          * @returns an {@link EDataServer.ThreeState}, whether messages in this account    should be marked as seen automatically.
+         * @since 3.32
          */
         get_mark_seen(): ThreeState;
 
         /**
          * @returns timeout in milliseconds for marking messages    as seen in this account
+         * @since 3.32
          */
         get_mark_seen_timeout(): number;
 
         /**
          * Check whether the mail account needs to do its initial setup.
          * @returns `true`, when the account needs to run its initial setup
+         * @since 3.20
          */
         get_needs_initial_setup(): boolean;
 
@@ -12338,6 +12945,7 @@ export namespace EDataServer {
          * and trailing whitespace. If the resulting string is empty, `null` is set
          * instead.
          * @param archive_folder an identifier for the archive folder, or `null`
+         * @since 3.16
          */
         set_archive_folder(archive_folder: string | null): void;
 
@@ -12345,6 +12953,7 @@ export namespace EDataServer {
          * Sets whether the account is a builtin account. See `e_source_mail_account_get_builtin()`
          * for more information about what it means.
          * @param builtin value to set
+         * @since 3.46
          */
         set_builtin(builtin: number): void;
 
@@ -12352,6 +12961,7 @@ export namespace EDataServer {
          * Sets the {@link EDataServer.Source.uid} of the {@link EDataServer.Source} that describes the mail
          * identity to be used for this account.
          * @param identity_uid the mail identity {@link EDataServer.Source.uid}, or `null`
+         * @since 3.6
          */
         set_identity_uid(identity_uid: string | null): void;
 
@@ -12360,6 +12970,7 @@ export namespace EDataServer {
          * as seen automatically. An inconsistent state means to use
          * global option.
          * @param mark_seen an {@link EDataServer.ThreeState} as the value to set
+         * @since 3.32
          */
         set_mark_seen(mark_seen: ThreeState): void;
 
@@ -12368,12 +12979,14 @@ export namespace EDataServer {
          * as seen in this account. Whether the timeout is used
          * depends on `e_source_mail_account_get_mark_seen()`.
          * @param timeout a timeout in milliseconds
+         * @since 3.32
          */
         set_mark_seen_timeout(timeout: number): void;
 
         /**
          * Sets whether the account needs to run its initial setup.
          * @param needs_initial_setup value to set
+         * @since 3.20
          */
         set_needs_initial_setup(needs_initial_setup: boolean): void;
     }
@@ -12581,6 +13194,7 @@ export namespace EDataServer {
          * The returned string array should be freed with `g_strfreev()` when no
          * longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailComposition.bcc}
+         * @since 3.6
          */
         dup_bcc(): string[];
 
@@ -12591,6 +13205,7 @@ export namespace EDataServer {
          * The returned string array should be freed with `g_strfreev()` when no
          * longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailComposition.cc}
+         * @since 3.6
          */
         dup_cc(): string[];
 
@@ -12600,6 +13215,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailComposition.composer_mode}
+         * @since 3.62
          */
         dup_composer_mode(): string | null;
 
@@ -12609,6 +13225,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailComposition.drafts_folder}
+         * @since 3.6
          */
         dup_drafts_folder(): string | null;
 
@@ -12618,6 +13235,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailComposition.language}
+         * @since 3.32
          */
         dup_language(): string | null;
 
@@ -12627,6 +13245,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailComposition.templates_folder}
+         * @since 3.6
          */
         dup_templates_folder(): string | null;
 
@@ -12637,6 +13256,7 @@ export namespace EDataServer {
          * the form "Full Name &lt;email-address&gt;".  The returned array is
          * owned by `extension` and should not be modified or freed.
          * @returns a `null`-terminated string array of Bcc recipients
+         * @since 3.6
          */
         get_bcc(): string[];
 
@@ -12647,6 +13267,7 @@ export namespace EDataServer {
          * Name <email-address>".  The returned array is owned by `extension` and
          * should not be modified or freed.
          * @returns a `null`-terminated string array of Cc recipients
+         * @since 3.6
          */
         get_cc(): string[];
 
@@ -12654,6 +13275,7 @@ export namespace EDataServer {
          * Returns a string identifying the preferred composer mode for this account,
          * or `null` for unset.
          * @returns the composer mode nick string, or `null`
+         * @since 3.62
          */
         get_composer_mode(): string | null;
 
@@ -12661,12 +13283,14 @@ export namespace EDataServer {
          * Returns a string identifying the preferred folder for draft messages.
          * The format of the identifier string is defined by the client application.
          * @returns an identifier for the preferred drafts folder
+         * @since 3.6
          */
         get_drafts_folder(): string | null;
 
         /**
          * Returns a string identifying the preferred language, like "en_US".
          * @returns an identifier for the preferred language, or `null` for none
+         * @since 3.32
          */
         get_language(): string | null;
 
@@ -12675,6 +13299,7 @@ export namespace EDataServer {
          * using the associated account. If no preference is set,
          * the {@link EDataServer.SourceMailCompositionReplyStyle.DEFAULT} is returned.
          * @returns reply style preference
+         * @since 3.20
          */
         get_reply_style(): SourceMailCompositionReplyStyle;
 
@@ -12683,6 +13308,7 @@ export namespace EDataServer {
          * also be signed.  This is primarily intended as a workaround for certain
          * versions of Microsoft Outlook which can't handle signed iMIP messages.
          * @returns whether outgoing iMIP messages should be signed
+         * @since 3.6
          */
         get_sign_imip(): boolean;
 
@@ -12691,6 +13317,7 @@ export namespace EDataServer {
          * using the associated account. If no preference is set,
          * the {@link EDataServer.ThreeState.INCONSISTENT} is returned.
          * @returns start bottom on reply or forward preference
+         * @since 3.26
          */
         get_start_bottom(): ThreeState;
 
@@ -12698,6 +13325,7 @@ export namespace EDataServer {
          * Returns a string identifying the preferred folder for message templates.
          * The format of the identifier string is defined by the client application.
          * @returns an identifier for the preferred templates folder
+         * @since 3.6
          */
         get_templates_folder(): string | null;
 
@@ -12706,6 +13334,7 @@ export namespace EDataServer {
          * using the associated account. If no preference is set,
          * the {@link EDataServer.ThreeState.INCONSISTENT} is returned.
          * @returns top signature on reply or forward preference
+         * @since 3.26
          */
         get_top_signature(): ThreeState;
 
@@ -12714,6 +13343,7 @@ export namespace EDataServer {
          * carbon-copy (Bcc) list when composing a new mail message.  The recipient
          * strings should be of the form "Full Name &lt;email-address&gt;".
          * @param bcc a `null`-terminated string array of Bcc    recipients
+         * @since 3.6
          */
         set_bcc(bcc: string[]): void;
 
@@ -12722,6 +13352,7 @@ export namespace EDataServer {
          * copy (Cc) list when composing a new mail message.  The recipient strings
          * should be of the form "Full Name &lt;email-address&gt;".
          * @param cc a `null`-terminated string array of Cc    recipients
+         * @since 3.6
          */
         set_cc(cc: string[]): void;
 
@@ -12729,6 +13360,7 @@ export namespace EDataServer {
          * Sets the preferred composer mode for this account.
          * Use `null` to unset any previous value.
          * @param composer_mode a composer mode nick string, or `null`
+         * @since 3.62
          */
         set_composer_mode(composer_mode: string | null): void;
 
@@ -12740,6 +13372,7 @@ export namespace EDataServer {
          * leading and trailing whitespace.  If the resulting string is empty,
          * `null` is set instead.
          * @param drafts_folder an identifier for the preferred drafts                 folder, or `null`
+         * @since 3.6
          */
         set_drafts_folder(drafts_folder: string | null): void;
 
@@ -12751,6 +13384,7 @@ export namespace EDataServer {
          * leading and trailing whitespace.  If the resulting string is empty,
          * `null` is set instead.
          * @param language an identifier for the preferred language, or `null`
+         * @since 3.32
          */
         set_language(language: string | null): void;
 
@@ -12759,6 +13393,7 @@ export namespace EDataServer {
          * using the associated account. To unset the preference,
          * use the {@link EDataServer.SourceMailCompositionReplyStyle.DEFAULT}.
          * @param reply_style an {@link EDataServer.SourceMailCompositionReplyStyle}
+         * @since 3.20
          */
         set_reply_style(reply_style: SourceMailCompositionReplyStyle): void;
 
@@ -12767,6 +13402,7 @@ export namespace EDataServer {
          * also be signed.  This is primarily intended as a workaround for certain
          * versions of Microsoft Outlook which can't handle signed iMIP messages.
          * @param sign_imip whether outgoing iMIP messages should be signed
+         * @since 3.6
          */
         set_sign_imip(sign_imip: boolean): void;
 
@@ -12774,6 +13410,7 @@ export namespace EDataServer {
          * Sets whether start bottom when replying or forwarding using the associated account.
          * To unset the preference, use the {@link EDataServer.ThreeState.INCONSISTENT}.
          * @param start_bottom an {@link EDataServer.ThreeState}
+         * @since 3.26
          */
         set_start_bottom(start_bottom: ThreeState): void;
 
@@ -12785,6 +13422,7 @@ export namespace EDataServer {
          * leading and trailing whitespace.  If the resulting string is empty,
          * `null` is set instead.
          * @param templates_folder an identifier for the preferred templates                    folder, or `null`
+         * @since 3.6
          */
         set_templates_folder(templates_folder: string | null): void;
 
@@ -12792,6 +13430,7 @@ export namespace EDataServer {
          * Sets whether place signature at top when replying or forwarding using the associated account.
          * To unset the preference, use the {@link EDataServer.ThreeState.INCONSISTENT}.
          * @param top_signature an {@link EDataServer.ThreeState}
+         * @since 3.26
          */
         set_top_signature(top_signature: ThreeState): void;
     }
@@ -12920,6 +13559,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailIdentity.address}
+         * @since 3.6
          */
         dup_address(): string | null;
 
@@ -12929,6 +13569,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailIdentity.aliases}
+         * @since 3.24
          */
         dup_aliases(): string | null;
 
@@ -12938,6 +13579,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailIdentity.name}
+         * @since 3.6
          */
         dup_name(): string | null;
 
@@ -12947,6 +13589,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailIdentity.organization}
+         * @since 3.6
          */
         dup_organization(): string | null;
 
@@ -12956,6 +13599,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailIdentity.reply_to}
+         * @since 3.6
          */
         dup_reply_to(): string | null;
 
@@ -12965,6 +13609,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailIdentity.signature_uid}
+         * @since 3.6
          */
         dup_signature_uid(): string | null;
 
@@ -12972,6 +13617,7 @@ export namespace EDataServer {
          * Returns the email address for this identity from which to send messages.
          * This may be an empty string but will never be `null`.
          * @returns the sender's email address
+         * @since 3.6
          */
         get_address(): string | null;
 
@@ -12982,6 +13628,7 @@ export namespace EDataServer {
          * There can be used `camel_address_decode()` on a {@link Camel.InternetAddress}
          * to decode the list of aliases.
          * @returns the sender's email address aliases
+         * @since 3.24
          */
         get_aliases(): string | null;
 
@@ -12995,18 +13642,21 @@ export namespace EDataServer {
          * `e_source_mail_identity_get_aliases()` if you need more fine-grained
          * control on the list of aliases.
          * @returns A newly created   {@link GLib.HashTable} will all the aliases. Returns `null` if there are none set.   Use `g_hash_table_destroy()` to free the returned hash table.
+         * @since 3.24
          */
         get_aliases_as_hash_table(): { [key: string]: string } | null;
 
         /**
          * Returns the sender's name for this identity.
          * @returns the sender's name
+         * @since 3.6
          */
         get_name(): string | null;
 
         /**
          * Returns the sender's organization for this identity.
          * @returns the sender's organization
+         * @since 3.6
          */
         get_organization(): string | null;
 
@@ -13014,6 +13664,7 @@ export namespace EDataServer {
          * Returns the email address for this identity to which recipients should
          * send replies.
          * @returns the sender's reply-to address
+         * @since 3.6
          */
         get_reply_to(): string | null;
 
@@ -13024,6 +13675,7 @@ export namespace EDataServer {
          * convention is to set the {@link EDataServer.SourceMailIdentity.signature_uid} property
          * to "none".
          * @returns the sender's signature ID, or "none"
+         * @since 3.6
          */
         get_signature_uid(): string | null;
 
@@ -13034,6 +13686,7 @@ export namespace EDataServer {
          * trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param address the sender's email address, or `null`
+         * @since 3.6
          */
         set_address(address: string | null): void;
 
@@ -13045,6 +13698,7 @@ export namespace EDataServer {
          * trailing whitespace. If the resulting string is empty, `null` is set
          * instead.
          * @param aliases the sender's email address aliases, or `null`
+         * @since 3.24
          */
         set_aliases(aliases: string | null): void;
 
@@ -13054,6 +13708,7 @@ export namespace EDataServer {
          * The internal copy of `name` is automatically stripped of leading and
          * trailing whitespace.
          * @param name the sender's name, or `null`
+         * @since 3.6
          */
         set_name(name: string | null): void;
 
@@ -13064,6 +13719,7 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param organization the sender's organization, or `null`
+         * @since 3.6
          */
         set_organization(organization: string | null): void;
 
@@ -13075,6 +13731,7 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is
          * set instead.
          * @param reply_to the sender's reply-to address, or `null`
+         * @since 3.6
          */
         set_reply_to(reply_to: string | null): void;
 
@@ -13086,6 +13743,7 @@ export namespace EDataServer {
          * to "none".  In keeping with that convention, the property will be set
          * to "none" if `signature_uid` is `null` or an empty string.
          * @param signature_uid the sender's signature ID, or `null`
+         * @since 3.6
          */
         set_signature_uid(signature_uid: string | null): void;
     }
@@ -13169,6 +13827,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailSignature.mime_type},    or `null`
+         * @since 3.6
          */
         dup_mime_type(): string | null;
 
@@ -13180,6 +13839,7 @@ export namespace EDataServer {
          * 
          * `e_source_mail_signature_load()` uses this to load the signature content.
          * @returns a {@link Gio.File}
+         * @since 3.6
          */
         get_file(): Gio.File;
 
@@ -13190,6 +13850,7 @@ export namespace EDataServer {
          * `e_source_mail_signature_load()` sets this automatically if the MIME type
          * has not yet been determined.
          * @returns the MIME type of the signature content, or `null`
+         * @since 3.6
          */
         get_mime_type(): string | null;
 
@@ -13203,6 +13864,7 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is
          * set instead.
          * @param mime_type a MIME type, or `null`
+         * @since 3.6
          */
         set_mime_type(mime_type: string | null): void;
     }
@@ -13331,6 +13993,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailSubmission.sent_folder}
+         * @since 3.6
          */
         dup_sent_folder(): string | null;
 
@@ -13340,6 +14003,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceMailSubmission.transport_uid}
+         * @since 3.6
          */
         dup_transport_uid(): string | null;
 
@@ -13347,6 +14011,7 @@ export namespace EDataServer {
          * Returns whether save replies in the folder of the message
          * being replied to, instead of the Sent folder.
          * @returns whether save replies in the folder of the message being replied to
+         * @since 3.8
          */
         get_replies_to_origin_folder(): boolean;
 
@@ -13354,6 +14019,7 @@ export namespace EDataServer {
          * Returns a string identifying the preferred folder for sent messages.
          * The format of the identifier string is defined by the client application.
          * @returns an identifier for the preferred sent folder
+         * @since 3.6
          */
         get_sent_folder(): string | null;
 
@@ -13361,11 +14027,13 @@ export namespace EDataServer {
          * Returns the {@link EDataServer.Source.uid} of the {@link EDataServer.Source} that describes the mail
          * transport to be used for outgoing messages.
          * @returns the mail transport {@link EDataServer.Source.uid}
+         * @since 3.6
          */
         get_transport_uid(): string | null;
 
         /**
          * @returns whether save messages to the sent folder at all
+         * @since 3.26
          */
         get_use_sent_folder(): boolean;
 
@@ -13373,6 +14041,7 @@ export namespace EDataServer {
          * Sets whether save replies in the folder of the message
          * being replied to, instead of the Sent folder.
          * @param replies_to_origin_folder new value
+         * @since 3.8
          */
         set_replies_to_origin_folder(replies_to_origin_folder: boolean): void;
 
@@ -13384,6 +14053,7 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param sent_folder an identifier for the preferred sent folder,               or `null`
+         * @since 3.6
          */
         set_sent_folder(sent_folder: string | null): void;
 
@@ -13391,12 +14061,14 @@ export namespace EDataServer {
          * Sets the {@link EDataServer.Source.uid} of the {@link EDataServer.Source} that describes the mail
          * transport to be used for outgoing messages.
          * @param transport_uid the mail transport {@link EDataServer.Source.uid}, or `null`
+         * @since 3.6
          */
         set_transport_uid(transport_uid: string | null): void;
 
         /**
          * Sets whether save messages to the sent folder at all.
          * @param use_sent_folder the value to set
+         * @since 3.26
          */
         set_use_sent_folder(use_sent_folder: boolean): void;
     }
@@ -13569,6 +14241,7 @@ export namespace EDataServer {
          * for viewing while offline.  Backends are responsible for implementing
          * such caching.
          * @returns whether data should be cached for offline
+         * @since 3.6
          */
         get_stay_synchronized(): boolean;
 
@@ -13577,6 +14250,7 @@ export namespace EDataServer {
          * viewing while offline.  Backends are responsible for implementing
          * such caching.
          * @param stay_synchronized whether data should be cached for offline
+         * @since 3.6
          */
         set_stay_synchronized(stay_synchronized: boolean): void;
     }
@@ -13822,6 +14496,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceOpenPGP.key_id}
+         * @since 3.6
          */
         dup_key_id(): string;
 
@@ -13831,6 +14506,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceOpenPGP.signing_algorithm}
+         * @since 3.6
          */
         dup_signing_algorithm(): string;
 
@@ -13838,12 +14514,14 @@ export namespace EDataServer {
          * Returns whether to skip key validation and assume that used keys are
          * always fully trusted.
          * @returns whether used keys are always fully trusted
+         * @since 3.6
          */
         get_always_trust(): boolean;
 
         /**
          * Returns, whether should ask before sending PGP public key in messages. The default is `true`.
          * @returns whether should ask before sending PGP public key in messages
+         * @since 3.52
          */
         get_ask_send_public_key(): boolean;
 
@@ -13851,18 +14529,21 @@ export namespace EDataServer {
          * Returns whether to digitally encrypt outgoing messages by default using
          * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
          * @returns whether to encrypt outgoing messages by default
+         * @since 3.18
          */
         get_encrypt_by_default(): boolean;
 
         /**
          * Returns whether to "encrypt-to-self" when sending encrypted messages.
          * @returns whether to "encrypt-to-self"
+         * @since 3.6
          */
         get_encrypt_to_self(): boolean;
 
         /**
          * Returns the OpenPGP key ID used to sign and encrypt messages.
          * @returns the key ID used to sign and encrypt messages
+         * @since 3.6
          */
         get_key_id(): string;
 
@@ -13870,12 +14551,14 @@ export namespace EDataServer {
          * Returns, whether gpg can locate keys using Web Key Directory (WKD) lookup
          * when encrypting messages. The default is `true`.
          * @returns whether gpg can locate keys using Web Key Directory (WKD) lookup    when encrypting messages.
+         * @since 3.46
          */
         get_locate_keys(): boolean;
 
         /**
          * Returns whether to prefer inline sign/encrypt of the text/plain messages.
          * @returns whether to prefer inline sign/encrypt of the text/plain messages
+         * @since 3.20
          */
         get_prefer_inline(): boolean;
 
@@ -13883,12 +14566,14 @@ export namespace EDataServer {
          * Returns, whether should claim the encryption is preferred when sending
          * public key in messages. The default is `true`.
          * @returns whether should claim the encryption is preferred when sending    public key in messages
+         * @since 3.50
          */
         get_send_prefer_encrypt(): boolean;
 
         /**
          * Returns, whether should send PGP public key in messages. The default is `true`.
          * @returns whether should send PGP public key in messages
+         * @since 3.50
          */
         get_send_public_key(): boolean;
 
@@ -13896,6 +14581,7 @@ export namespace EDataServer {
          * Returns whether to digitally sign outgoing messages by default using
          * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
          * @returns whether to sign outgoing messages by default
+         * @since 3.6
          */
         get_sign_by_default(): boolean;
 
@@ -13903,6 +14589,7 @@ export namespace EDataServer {
          * Returns the name of the hash algorithm used to digitally sign outgoing
          * messages.
          * @returns the signing algorithm for outgoing messages
+         * @since 3.6
          */
         get_signing_algorithm(): string;
 
@@ -13910,6 +14597,7 @@ export namespace EDataServer {
          * Sets whether to skip key validation and assume that used keys are
          * always fully trusted.
          * @param always_trust whether used keys are always fully trusted
+         * @since 3.6
          */
         set_always_trust(always_trust: boolean): void;
 
@@ -13917,6 +14605,7 @@ export namespace EDataServer {
          * Sets the `ask_send_public_key` on the `extension`, which tells the client to
          * ask before user sends public key in the messages in an Autocrypt header.
          * @param ask_send_public_key value to set
+         * @since 3.52
          */
         set_ask_send_public_key(ask_send_public_key: boolean): void;
 
@@ -13924,12 +14613,14 @@ export namespace EDataServer {
          * Sets whether to digitally encrypt outgoing messages by default using
          * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
          * @param encrypt_by_default whether to encrypt outgoing messages by default
+         * @since 3.18
          */
         set_encrypt_by_default(encrypt_by_default: boolean): void;
 
         /**
          * Sets whether to "encrypt-to-self" when sending encrypted messages.
          * @param encrypt_to_self whether to "encrypt-to-self"
+         * @since 3.6
          */
         set_encrypt_to_self(encrypt_to_self: boolean): void;
 
@@ -13940,6 +14631,7 @@ export namespace EDataServer {
          * trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param key_id the key ID used to sign and encrypt messages
+         * @since 3.6
          */
         set_key_id(key_id: string): void;
 
@@ -13948,12 +14640,14 @@ export namespace EDataServer {
          * gpg to locate keys using Web Key Directory (WKD) lookup when encrypting
          * messages.
          * @param locate_keys value to set
+         * @since 3.46
          */
         set_locate_keys(locate_keys: boolean): void;
 
         /**
          * Sets whether to prefer inline sign/encrypt of the text/plain messages.
          * @param prefer_inline whether to prefer inline sign/encrypt of the text/plain messages
+         * @since 3.20
          */
         set_prefer_inline(prefer_inline: boolean): void;
 
@@ -13962,6 +14656,7 @@ export namespace EDataServer {
          * claim the user prefer encryption when also sending its public key in
          * the messages (e_source_openpgp_set_send_public_key()).
          * @param send_prefer_encrypt value to set
+         * @since 3.50
          */
         set_send_prefer_encrypt(send_prefer_encrypt: boolean): void;
 
@@ -13969,6 +14664,7 @@ export namespace EDataServer {
          * Sets the `send_public_key` on the `extension`, which tells the client to
          * include user's public key in the messages in an Autocrypt header.
          * @param send_public_key value to set
+         * @since 3.50
          */
         set_send_public_key(send_public_key: boolean): void;
 
@@ -13976,6 +14672,7 @@ export namespace EDataServer {
          * Sets whether to digitally sign outgoing messages by default using
          * OpenPGP-compliant software such as GNU Privacy Guard (GnuPG).
          * @param sign_by_default whether to sign outgoing messages by default
+         * @since 3.6
          */
         set_sign_by_default(sign_by_default: boolean): void;
 
@@ -13987,6 +14684,7 @@ export namespace EDataServer {
          * leading and trailing whitespace.  If the resulting string is empty,
          * `null` is set instead.
          * @param signing_algorithm the signing algorithm for outgoing messages
+         * @since 3.6
          */
         set_signing_algorithm(signing_algorithm: string): void;
     }
@@ -14273,6 +14971,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceProxy.autoconfig_url}
+         * @since 3.12
          */
         dup_autoconfig_url(): string;
 
@@ -14282,6 +14981,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceProxy.ftp_host}
+         * @since 3.12
          */
         dup_ftp_host(): string;
 
@@ -14291,6 +14991,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceProxy.http_auth_password}
+         * @since 3.12
          */
         dup_http_auth_password(): string;
 
@@ -14300,6 +15001,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceProxy.http_auth_user}
+         * @since 3.12
          */
         dup_http_auth_user(): string;
 
@@ -14309,6 +15011,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceProxy.http_host}
+         * @since 3.12
          */
         dup_http_host(): string;
 
@@ -14318,6 +15021,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceProxy.https_host}
+         * @since 3.12
          */
         dup_https_host(): string;
 
@@ -14328,6 +15032,7 @@ export namespace EDataServer {
          * The returned string array should be freed with `g_strfreev()` when no
          * longer needed.
          * @returns a newly-allocated copy of          {@link EDataServer.SourceProxy.ignore_hosts}
+         * @since 3.12
          */
         dup_ignore_hosts(): string[];
 
@@ -14337,6 +15042,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceProxy.socks_host}
+         * @since 3.12
          */
         dup_socks_host(): string;
 
@@ -14345,6 +15051,7 @@ export namespace EDataServer {
          * `extension`'s {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_AUTO`, this URL
          * is used to look up proxy information for all protocols.
          * @returns the autoconfiguration URL
+         * @since 3.12
          */
         get_autoconfig_url(): string;
 
@@ -14352,6 +15059,7 @@ export namespace EDataServer {
          * Returns the machine name to proxy FTP through when `extension`'s
          * {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @returns FTP proxy host name
+         * @since 3.12
          */
         get_ftp_host(): string;
 
@@ -14359,6 +15067,7 @@ export namespace EDataServer {
          * Returns the port on the machine defined by {@link EDataServer.SourceProxy.ftp_host} to proxy
          * through when `extension`'s {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @returns FTP proxy port
+         * @since 3.12
          */
         get_ftp_port(): number;
 
@@ -14366,6 +15075,7 @@ export namespace EDataServer {
          * Returns the password to pass as authentication when doing HTTP proxying
          * and {@link EDataServer.SourceProxy.http_use_auth} is `true`.
          * @returns HTTP proxy password
+         * @since 3.12
          */
         get_http_auth_password(): string;
 
@@ -14373,6 +15083,7 @@ export namespace EDataServer {
          * Returns the user name to pass as authentication when doing HTTP proxying
          * and {@link EDataServer.SourceProxy.http_use_auth} is `true`.
          * @returns HTTP proxy username
+         * @since 3.12
          */
         get_http_auth_user(): string;
 
@@ -14380,6 +15091,7 @@ export namespace EDataServer {
          * Returns the machine name to proxy HTTP through when `extension`'s
          * {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @returns HTTP proxy host name
+         * @since 3.12
          */
         get_http_host(): string;
 
@@ -14387,6 +15099,7 @@ export namespace EDataServer {
          * Returns the port on the machine defined by {@link EDataServer.SourceProxy.http_host} to proxy
          * through when `extension`'s {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @returns HTTP proxy port
+         * @since 3.12
          */
         get_http_port(): number;
 
@@ -14398,6 +15111,7 @@ export namespace EDataServer {
          * and {@link EDataServer.SourceProxy.http_auth_password}, but only applies when `extension`'s
          * {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @returns whether to authenticate HTTP proxy connections
+         * @since 3.12
          */
         get_http_use_auth(): boolean;
 
@@ -14405,6 +15119,7 @@ export namespace EDataServer {
          * Returns the machine name to proxy secure HTTP through when `extension`'s
          * {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @returns secure HTTP proxy host name
+         * @since 3.12
          */
         get_https_host(): string;
 
@@ -14412,6 +15127,7 @@ export namespace EDataServer {
          * Returns the port on the machine defined by {@link EDataServer.SourceProxy.https_host} to proxy
          * through when `extension`'s {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @returns secure HTTP proxy port
+         * @since 3.12
          */
         get_https_port(): number;
 
@@ -14425,6 +15141,7 @@ export namespace EDataServer {
          * The returned array is owned by `extension` and should not be modified or
          * freed.
          * @returns a `null`-terminated string array of hosts
+         * @since 3.12
          */
         get_ignore_hosts(): string[];
 
@@ -14434,6 +15151,7 @@ export namespace EDataServer {
          * The proxy configuration method determines the behavior of
          * `e_source_proxy_lookup()`.
          * @returns the proxy configuration method
+         * @since 3.12
          */
         get_method(): ProxyMethod;
 
@@ -14441,6 +15159,7 @@ export namespace EDataServer {
          * Returns the machine name to use as a SOCKS proxy when `extension`'s
          * {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @returns SOCKS proxy host name
+         * @since 3.12
          */
         get_socks_host(): string;
 
@@ -14448,6 +15167,7 @@ export namespace EDataServer {
          * Returns the port on the machine defined by {@link EDataServer.SourceProxy.socks_host} to proxy
          * through when `extension`'s {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @returns SOCKS proxy port
+         * @since 3.12
          */
         get_socks_port(): number;
 
@@ -14456,6 +15176,7 @@ export namespace EDataServer {
          * `extension`'s {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_AUTO`, this URL
          * is used to look up proxy information for all protocols.
          * @param autoconfig_url an autoconfiguration URL
+         * @since 3.12
          */
         set_autoconfig_url(autoconfig_url: string): void;
 
@@ -14463,6 +15184,7 @@ export namespace EDataServer {
          * Sets the machine name to proxy FTP through when `extension`'s
          * {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @param ftp_host FTP proxy host name
+         * @since 3.12
          */
         set_ftp_host(ftp_host: string): void;
 
@@ -14470,6 +15192,7 @@ export namespace EDataServer {
          * Sets the port on the machine defined by {@link EDataServer.SourceProxy.ftp_host} to proxy
          * through when `extension`'s {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @param ftp_port FTP proxy port
+         * @since 3.12
          */
         set_ftp_port(ftp_port: number): void;
 
@@ -14477,6 +15200,7 @@ export namespace EDataServer {
          * Sets the password to pass as authentication when doing HTTP proxying
          * and {@link EDataServer.SourceProxy.http_use_auth} is `true`.
          * @param http_auth_password HTTP proxy password
+         * @since 3.12
          */
         set_http_auth_password(http_auth_password: string): void;
 
@@ -14484,6 +15208,7 @@ export namespace EDataServer {
          * Sets the user name to pass as authentication when doing HTTP proxying
          * and {@link EDataServer.SourceProxy.http_use_auth} is `true`.
          * @param http_auth_user HTTP proxy username
+         * @since 3.12
          */
         set_http_auth_user(http_auth_user: string): void;
 
@@ -14491,6 +15216,7 @@ export namespace EDataServer {
          * Sets the machine name to proxy HTTP through when `extension`'s
          * {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @param http_host HTTP proxy host name
+         * @since 3.12
          */
         set_http_host(http_host: string): void;
 
@@ -14498,6 +15224,7 @@ export namespace EDataServer {
          * Sets the port on the machine defined by {@link EDataServer.SourceProxy.http_host} to proxy
          * through when `extension`'s {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @param http_port HTTP proxy port
+         * @since 3.12
          */
         set_http_port(http_port: number): void;
 
@@ -14509,6 +15236,7 @@ export namespace EDataServer {
          * and {@link EDataServer.SourceProxy.http_auth_password}, but only applies when `extension`'s
          * {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @param http_use_auth whether to authenticate HTTP proxy connections
+         * @since 3.12
          */
         set_http_use_auth(http_use_auth: boolean): void;
 
@@ -14516,6 +15244,7 @@ export namespace EDataServer {
          * Sets the machine name to proxy secure HTTP through when `extension`'s
          * {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @param https_host secure HTTP proxy host name
+         * @since 3.12
          */
         set_https_host(https_host: string): void;
 
@@ -14523,6 +15252,7 @@ export namespace EDataServer {
          * Sets the port on the machine defined by {@link EDataServer.SourceProxy.https_host} to proxy
          * through when `extension`'s {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @param https_port secure HTTP proxy port
+         * @since 3.12
          */
         set_https_port(https_port: number): void;
 
@@ -14532,6 +15262,7 @@ export namespace EDataServer {
          * initial wildcard like *.foo.com), IP host addresses (both IPv4 and IPv6)
          * and network addresses with a netmask (something like 192.168.0.0/24).
          * @param ignore_hosts a `null`-terminated string array of hosts
+         * @since 3.12
          */
         set_ignore_hosts(ignore_hosts: string): void;
 
@@ -14541,6 +15272,7 @@ export namespace EDataServer {
          * The proxy configuration method determines the behavior of
          * `e_source_proxy_lookup()`.
          * @param method the proxy configuration method
+         * @since 3.12
          */
         set_method(method: ProxyMethod): void;
 
@@ -14548,6 +15280,7 @@ export namespace EDataServer {
          * Sets the machine name to use as a SOCKS proxy when `extension`'s
          * {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @param socks_host SOCKS proxy host name
+         * @since 3.12
          */
         set_socks_host(socks_host: string): void;
 
@@ -14555,6 +15288,7 @@ export namespace EDataServer {
          * Sets the port on the machine defined by {@link EDataServer.SourceProxy.socks_host} to proxy
          * through when `extension`'s {@link EDataServer.SourceProxy.method} is `E_PROXY_METHOD_MANUAL`.
          * @param socks_port SOCKS proxy port
+         * @since 3.12
          */
         set_socks_port(socks_port: number): void;
     }
@@ -14656,6 +15390,7 @@ export namespace EDataServer {
          * The refresh interval is determined by the {@link EDataServer.SourceRefresh.interval_minutes}
          * property.
          * @returns whether periodic refresh is enabled
+         * @since 3.6
          */
         get_enabled(): boolean;
 
@@ -14667,6 +15402,7 @@ export namespace EDataServer {
          * and then decide whether refresh, or other expensive network
          * operations, can be done.
          * @returns whether can refresh content on metered network
+         * @since 3.50
          */
         get_enabled_on_metered_network(): boolean;
 
@@ -14676,6 +15412,7 @@ export namespace EDataServer {
          * Note this value is only effective when the {@link EDataServer.SourceRefresh.enabled}
          * property is `true`.
          * @returns the interval in minutes
+         * @since 3.6
          */
         get_interval_minutes(): number;
 
@@ -14685,6 +15422,7 @@ export namespace EDataServer {
          * The refresh interval is determined by the {@link EDataServer.SourceRefresh.interval_minutes}
          * property.
          * @param enabled whether to enable periodic refresh
+         * @since 3.6
          */
         set_enabled(enabled: boolean): void;
 
@@ -14694,6 +15432,7 @@ export namespace EDataServer {
          * See `e_source_refresh_get_enabled_on_metered_network()` for more information
          * about what it means.
          * @param enabled whether can refresh content on metered network
+         * @since 3.50
          */
         set_enabled_on_metered_network(enabled: boolean): void;
 
@@ -14703,6 +15442,7 @@ export namespace EDataServer {
          * Note this value is only effective when the {@link EDataServer.SourceRefresh.enabled}
          * property is `true`.
          * @param interval_minutes the interval in minutes
+         * @since 3.6
          */
         set_interval_minutes(interval_minutes: number): void;
     }
@@ -14894,12 +15634,16 @@ export namespace EDataServer {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @since 3.16
+         */
         static debug_enabled(): boolean;
 
         /**
          * Convenience function to free a {@link GLib.Node} tree of registered
          * sources created by `e_source_registry_build_display_tree()`.
          * @param display_tree a tree of sources, arranged for display
+         * @since 3.6
          */
         static free_display_tree(display_tree: GLib.Node): void;
 
@@ -14914,6 +15658,7 @@ export namespace EDataServer {
          * internally, so it is the caller's responsibility to keep one.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         static ["new"](cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<SourceRegistry> | null): void;
 
@@ -14971,6 +15716,7 @@ export namespace EDataServer {
          * whether to act on the data set described by the {@link EDataServer.Source}.
          * @param source an {@link EDataServer.Source}
          * @returns whether `source` is "effectively" enabled
+         * @since 3.8
          */
         check_enabled(source: Source): boolean;
 
@@ -14982,6 +15728,7 @@ export namespace EDataServer {
          * operation.
          * @param source an {@link EDataServer.Source} with changes to commit
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          */
         commit_source(source: Source, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -14994,6 +15741,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source} with changes to commit
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         commit_source(source: Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -15006,6 +15754,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source} with changes to commit
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         commit_source(source: Source, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -15015,6 +15764,7 @@ export namespace EDataServer {
          * If an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         commit_source_finish(result: Gio.AsyncResult): boolean;
 
@@ -15036,6 +15786,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source} with changes to commit
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         commit_source_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15049,6 +15800,7 @@ export namespace EDataServer {
          * operation.
          * @param list_of_sources a list of {@link EDataServer.Source} instances with no {@link Gio.DBusObject}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          */
         create_sources(list_of_sources: Source[], cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -15063,6 +15815,7 @@ export namespace EDataServer {
          * @param list_of_sources a list of {@link EDataServer.Source} instances with no {@link Gio.DBusObject}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         create_sources(list_of_sources: Source[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -15077,6 +15830,7 @@ export namespace EDataServer {
          * @param list_of_sources a list of {@link EDataServer.Source} instances with no {@link Gio.DBusObject}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         create_sources(list_of_sources: Source[], cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -15086,6 +15840,7 @@ export namespace EDataServer {
          * If an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         create_sources_finish(result: Gio.AsyncResult): boolean;
 
@@ -15098,6 +15853,7 @@ export namespace EDataServer {
          * @param list_of_sources a list of {@link EDataServer.Source} instances with no {@link Gio.DBusObject}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         create_sources_sync(list_of_sources: Source[], cancellable: Gio.Cancellable | null): boolean;
 
@@ -15105,6 +15861,7 @@ export namespace EDataServer {
          * Handy debugging function that uses `e_source_registry_build_display_tree()`
          * to print a tree of registered sources to standard output.
          * @param extension_name an extension name, or `null`
+         * @since 3.6
          */
         debug_dump(extension_name: string | null): void;
 
@@ -15126,6 +15883,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}
          * @param extension_name an extension name, or `null`
          * @returns a unique display name for `source`
+         * @since 3.8
          */
         dup_unique_display_name(source: Source, extension_name: string | null): string;
 
@@ -15152,11 +15910,13 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}
          * @param extension_name the extension name to find
          * @returns an {@link EDataServer.Source}, or `null` if no match was found
+         * @since 3.6
          */
         find_extension(source: Source, extension_name: string): Source | null;
 
         /**
          * @returns an instance of {@link EDataServer.OAuth2Services}, owned by `registry`
+         * @since 3.28
          */
         get_oauth2_services(): OAuth2Services;
 
@@ -15177,6 +15937,7 @@ export namespace EDataServer {
          * 
          * @param extension_name an extension name, or `null`
          * @returns a sorted list of sources
+         * @since 3.10
          */
         list_enabled(extension_name: string | null): Source[];
 
@@ -15198,6 +15959,7 @@ export namespace EDataServer {
          * 
          * @param extension_name an extension name, or `null`
          * @returns a sorted list of sources
+         * @since 3.6
          */
         list_sources(extension_name: string | null): Source[];
 
@@ -15209,6 +15971,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.Source} is referenced for thread-safety and must be
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns the built-in address book {@link EDataServer.Source}
+         * @since 3.6
          */
         ref_builtin_address_book(): Source;
 
@@ -15220,6 +15983,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.Source} is referenced for thread-safety and must be
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns the built-in calendar {@link EDataServer.Source}
+         * @since 3.6
          */
         ref_builtin_calendar(): Source;
 
@@ -15231,6 +15995,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.Source} is referenced for thread-safety and must be
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns the built-in mail account {@link EDataServer.Source}
+         * @since 3.6
          */
         ref_builtin_mail_account(): Source;
 
@@ -15242,6 +16007,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.Source} is referenced for thread-safety and must be
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns the built-in memo list {@link EDataServer.Source}
+         * @since 3.6
          */
         ref_builtin_memo_list(): Source;
 
@@ -15253,6 +16019,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.Source} is referenced for thread-safety and must be
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns the built-in proxy profile {@link EDataServer.Source}
+         * @since 3.12
          */
         ref_builtin_proxy(): Source;
 
@@ -15264,6 +16031,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.Source} is referenced for thread-safety and must be
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns the built-in task list {@link EDataServer.Source}
+         * @since 3.6
          */
         ref_builtin_task_list(): Source;
 
@@ -15275,6 +16043,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.Source} is referenced for thread-safety and must be
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns the default address book {@link EDataServer.Source}
+         * @since 3.6
          */
         ref_default_address_book(): Source;
 
@@ -15286,6 +16055,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.Source} is referenced for thread-safety and must be
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns the default calendar {@link EDataServer.Source}
+         * @since 3.6
          */
         ref_default_calendar(): Source;
 
@@ -15320,6 +16090,7 @@ export namespace EDataServer {
          * unreferenced with `g_object_unref()` when finished with it.
          * @param extension_name an extension_name
          * @returns the default {@link EDataServer.Source} based on `extension_name`
+         * @since 3.6
          */
         ref_default_for_extension_name(extension_name: string): Source | null;
 
@@ -15331,6 +16102,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.Source} is referenced for thread-safety and must be
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns the default mail account {@link EDataServer.Source}
+         * @since 3.6
          */
         ref_default_mail_account(): Source;
 
@@ -15344,6 +16116,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.Source} is referenced for thread-safety and must be
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns the default mail identity {@link EDataServer.Source},    or `null`
+         * @since 3.6
          */
         ref_default_mail_identity(): Source | null;
 
@@ -15355,6 +16128,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.Source} is referenced for thread-safety and must be
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns the default memo list {@link EDataServer.Source}
+         * @since 3.6
          */
         ref_default_memo_list(): Source;
 
@@ -15366,6 +16140,7 @@ export namespace EDataServer {
          * The returned {@link EDataServer.Source} is referenced for thread-safety and must be
          * unreferenced with `g_object_unref()` when finished with it.
          * @returns the default task list {@link EDataServer.Source}
+         * @since 3.6
          */
         ref_default_task_list(): Source;
 
@@ -15376,6 +16151,7 @@ export namespace EDataServer {
          * unreferenced with `g_object_unref()` when finished with it.
          * @param uid a unique identifier string
          * @returns an {@link EDataServer.Source}, or `null` if no match was found
+         * @since 3.6
          */
         ref_source(uid: string): Source | null;
 
@@ -15390,6 +16166,7 @@ export namespace EDataServer {
          * the operation.
          * @param source_uid UID of a collection {@link EDataServer.Source} whose backend to refresh
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.30
          */
         refresh_backend(source_uid: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -15405,6 +16182,7 @@ export namespace EDataServer {
          * @param source_uid UID of a collection {@link EDataServer.Source} whose backend to refresh
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.30
          */
         refresh_backend(source_uid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -15420,6 +16198,7 @@ export namespace EDataServer {
          * @param source_uid UID of a collection {@link EDataServer.Source} whose backend to refresh
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.30
          */
         refresh_backend(source_uid: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -15429,6 +16208,7 @@ export namespace EDataServer {
          * If an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns Whether succeeded
+         * @since 3.30
          */
         refresh_backend_finish(result: Gio.AsyncResult): boolean;
 
@@ -15442,6 +16222,7 @@ export namespace EDataServer {
          * @param source_uid UID of a collection {@link EDataServer.Source} whose backend to refresh
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded
+         * @since 3.30
          */
         refresh_backend_sync(source_uid: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15450,6 +16231,7 @@ export namespace EDataServer {
          * is `null`, the default address book is reset to the built-in address book.
          * This setting will persist across sessions until changed.
          * @param default_source an address book {@link EDataServer.Source}, or `null`
+         * @since 3.6
          */
         set_default_address_book(default_source: Source | null): void;
 
@@ -15458,6 +16240,7 @@ export namespace EDataServer {
          * is `null`, the default calendar is reset to the built-in calendar.
          * This setting will persist across sessions until changed.
          * @param default_source a calendar {@link EDataServer.Source}, or `null`
+         * @since 3.6
          */
         set_default_calendar(default_source: Source | null): void;
 
@@ -15493,6 +16276,7 @@ export namespace EDataServer {
          * For all other values of `extension_name`, the function does nothing.
          * @param extension_name an extension name
          * @param default_source an {@link EDataServer.Source}, or `null`
+         * @since 3.6
          */
         set_default_for_extension_name(extension_name: string, default_source: Source | null): void;
 
@@ -15501,6 +16285,7 @@ export namespace EDataServer {
          * is `null`, the default mail account is reset to the built-in mail account.
          * This setting will persist across sessions until changed.
          * @param default_source a mail account {@link EDataServer.Source}, or `null`
+         * @since 3.6
          */
         set_default_mail_account(default_source: Source | null): void;
 
@@ -15509,6 +16294,7 @@ export namespace EDataServer {
          * is `null`, the next request for the default mail identity will use the
          * fallbacks described in `e_source_registry_ref_default_mail_identity()`.
          * @param default_source a mail identity {@link EDataServer.Source}, or `null`
+         * @since 3.6
          */
         set_default_mail_identity(default_source: Source | null): void;
 
@@ -15517,6 +16303,7 @@ export namespace EDataServer {
          * is `null`, the default memo list is reset to the built-in memo list.
          * This setting will persist across sessions until changed.
          * @param default_source a memo list {@link EDataServer.Source}, or `null`
+         * @since 3.6
          */
         set_default_memo_list(default_source: Source | null): void;
 
@@ -15525,6 +16312,7 @@ export namespace EDataServer {
          * is `null`, the default task list is reset to the built-in task list.
          * This setting will persist across sessions until changed.
          * @param default_source a task list {@link EDataServer.Source}, or `null`
+         * @since 3.6
          */
         set_default_task_list(default_source: Source | null): void;
 
@@ -15567,6 +16355,7 @@ export namespace EDataServer {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -15610,6 +16399,7 @@ export namespace EDataServer {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -15653,6 +16443,7 @@ export namespace EDataServer {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -15661,6 +16452,7 @@ export namespace EDataServer {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -15669,6 +16461,7 @@ export namespace EDataServer {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): SourceRegistry;
 
@@ -15712,6 +16505,7 @@ export namespace EDataServer {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -15720,6 +16514,7 @@ export namespace EDataServer {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -15765,6 +16560,7 @@ export namespace EDataServer {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -15808,6 +16604,7 @@ export namespace EDataServer {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -15943,12 +16740,14 @@ export namespace EDataServer {
         // Methods
         /**
          * @returns The extension name passed to `e_source_registry_watcher_new()`.
+         * @since 3.26
          */
         get_extension_name(): string | null;
 
         /**
          * Returns the {@link EDataServer.SourceRegistry} passed to `e_source_registry_watcher_new()`.
          * @returns an {@link EDataServer.SourceRegistry}
+         * @since 3.26
          */
         get_registry(): SourceRegistry;
 
@@ -15956,6 +16755,7 @@ export namespace EDataServer {
          * Reclaims all available sources satisfying the {@link EDataServer.SourceRegistryWatcher.SignalSignatures.filter | EDataServer.SourceRegistryWatcher::filter}
          * signal. It doesn't notify about disappeared sources, it notifies only
          * on those appeared.
+         * @since 3.26
          */
         reclaim(): void;
     }
@@ -16023,6 +16823,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceResource.identity}
+         * @since 3.6
          */
         dup_identity(): string | null;
 
@@ -16030,6 +16831,7 @@ export namespace EDataServer {
          * Returns the server-assigned identity of the remote resource associated
          * with the {@link EDataServer.Source} to which `extension` belongs.
          * @returns the identity of a remote resource
+         * @since 3.6
          */
         get_identity(): string | null;
 
@@ -16041,6 +16843,7 @@ export namespace EDataServer {
          * trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param identity the identity of a remote resource
+         * @since 3.6
          */
         set_identity(identity: string | null): void;
     }
@@ -16105,6 +16908,7 @@ export namespace EDataServer {
         /**
          * Checks whether revision guards for the given {@link EDataServer.Source} are enabled.
          * @returns `true` if the revision guards are enabled.
+         * @since 3.8
          */
         get_enabled(): boolean;
 
@@ -16113,6 +16917,7 @@ export namespace EDataServer {
          * 
          * Revision guards are disabled by default.
          * @param enabled Whether to enable or disable the revision guards.
+         * @since 3.8
          */
         set_enabled(enabled: boolean): void;
     }
@@ -16273,6 +17078,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceSMIME.encryption_certificate}
+         * @since 3.6
          */
         dup_encryption_certificate(): string | null;
 
@@ -16282,6 +17088,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceSMIME.signing_algorithm}
+         * @since 3.6
          */
         dup_signing_algorithm(): string | null;
 
@@ -16291,6 +17098,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceSMIME.signing_certificate}
+         * @since 3.6
          */
         dup_signing_certificate(): string | null;
 
@@ -16298,18 +17106,21 @@ export namespace EDataServer {
          * Returns whether to encrypt outgoing messages by default using S/MIME
          * software such as Mozilla Network Security Services (NSS).
          * @returns whether to encrypt outgoing messages by default
+         * @since 3.6
          */
         get_encrypt_by_default(): boolean;
 
         /**
          * Returns whether to "encrypt-to-self" when sending encrypted messages.
          * @returns whether to "encrypt-to-self"
+         * @since 3.6
          */
         get_encrypt_to_self(): boolean;
 
         /**
          * Returns the S/MIME certificate name used to encrypt messages.
          * @returns the certificate name used to encrypt messages
+         * @since 3.6
          */
         get_encryption_certificate(): string | null;
 
@@ -16317,6 +17128,7 @@ export namespace EDataServer {
          * Returns whether to digitally sign outgoing messages by default using
          * S/MIME software such as Mozilla Network Security Services (NSS).
          * @returns whether to sign outgoing messages by default
+         * @since 3.6
          */
         get_sign_by_default(): boolean;
 
@@ -16324,12 +17136,14 @@ export namespace EDataServer {
          * Returns the name of the hash algorithm used to digitally sign outgoing
          * messages.
          * @returns the signing algorithm for outgoing messages
+         * @since 3.6
          */
         get_signing_algorithm(): string | null;
 
         /**
          * Returns the S/MIME certificate name used to sign messages.
          * @returns the certificate name used to sign messages
+         * @since 3.6
          */
         get_signing_certificate(): string | null;
 
@@ -16337,12 +17151,14 @@ export namespace EDataServer {
          * Sets whether to encrypt outgoing messages by default using S/MIME
          * software such as Mozilla Network Security Services (NSS).
          * @param encrypt_by_default whether to encrypt outgoing messages by default
+         * @since 3.6
          */
         set_encrypt_by_default(encrypt_by_default: boolean): void;
 
         /**
          * Sets whether to "encrypt-to-self" when sending encrypted messages.
          * @param encrypt_to_self whether to "encrypt-to-self"
+         * @since 3.6
          */
         set_encrypt_to_self(encrypt_to_self: boolean): void;
 
@@ -16351,6 +17167,7 @@ export namespace EDataServer {
          * 
          * If the `encryption_certificate` string is empty, `null` is set instead.
          * @param encryption_certificate the certificate name used to encrypt                          messages, or `null`
+         * @since 3.6
          */
         set_encryption_certificate(encryption_certificate: string | null): void;
 
@@ -16358,6 +17175,7 @@ export namespace EDataServer {
          * Sets whether to digitally sign outgoing messages by default using
          * S/MIME software such as Mozilla Network Security Services (NSS).
          * @param sign_by_default whether to sign outgoing messages by default
+         * @since 3.6
          */
         set_sign_by_default(sign_by_default: boolean): void;
 
@@ -16369,6 +17187,7 @@ export namespace EDataServer {
          * leading and trailing whitespace.  If the resulting string is empty,
          * `null` is set instead.
          * @param signing_algorithm the signing algorithm for outgoing                     messages, or `null`
+         * @since 3.6
          */
         set_signing_algorithm(signing_algorithm: string | null): void;
 
@@ -16377,6 +17196,7 @@ export namespace EDataServer {
          * 
          * If the `signing_certificate` string is empty, `null` is set instead.
          * @param signing_certificate the certificate name used to sign                       messages, or `null`
+         * @since 3.6
          */
         set_signing_certificate(signing_certificate: string | null): void;
     }
@@ -16453,6 +17273,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceSecurity.method}
+         * @since 3.6
          */
         dup_method(): string;
 
@@ -16462,6 +17283,7 @@ export namespace EDataServer {
          * free to set this however they wish.  If a secure connection is not
          * desired, the convention is to set {@link EDataServer.SourceSecurity.method} to "none".
          * @returns the method used to establish a secure network connection
+         * @since 3.6
          */
         get_method(): string;
 
@@ -16471,6 +17293,7 @@ export namespace EDataServer {
          * the convention of setting {@link EDataServer.SourceSecurity.method} to "none" when a
          * secure network connection is <emphasis>not</emphasis> desired.
          * @returns whether a secure network connection is desired
+         * @since 3.6
          */
         get_secure(): boolean;
 
@@ -16482,6 +17305,7 @@ export namespace EDataServer {
          * In keeping with that convention, {@link EDataServer.SourceSecurity.method} will be set
          * to "none" if `method` is `null` or an empty string.
          * @param method security method, or `null`
+         * @since 3.6
          */
         set_method(method: string | null): void;
 
@@ -16493,6 +17317,7 @@ export namespace EDataServer {
          * `true`, the function assumes the backend will use Transport Layer
          * Security and sets the {@link EDataServer.SourceSecurity.method} property to "tls".
          * @param secure whether a secure network connection is desired
+         * @since 3.6
          */
         set_secure(secure: boolean): void;
     }
@@ -16589,6 +17414,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceSelectable.color},    or `null`, when none is set
+         * @since 3.6
          */
         dup_color(): string | null;
 
@@ -16598,6 +17424,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceSelectable.groups},    or `null`, when none is set
+         * @since 3.62
          */
         dup_groups(): string | null;
 
@@ -16606,6 +17433,7 @@ export namespace EDataServer {
          * belongs.  A colored block is often displayed next to the data source's
          * display name in user interfaces.
          * @returns the color specification for the {@link EDataServer.Source},    or `null`, when none is set
+         * @since 3.6
          */
         get_color(): string | null;
 
@@ -16613,6 +17441,7 @@ export namespace EDataServer {
          * Returns the group specification for the {@link EDataServer.Source} to which `extension`
          * belongs. This is a comma-separated list of group names.
          * @returns the group specification for the {@link EDataServer.Source},    or `null`, when none is set
+         * @since 3.62
          */
         get_groups(): string | null;
 
@@ -16620,6 +17449,7 @@ export namespace EDataServer {
          * Returns the preferred sorting order for the {@link EDataServer.Source}
          * to which `extension` belongs. Default is 0.
          * @returns the preferred sorting order for the {@link EDataServer.Source}
+         * @since 3.40
          */
         get_order(): number;
 
@@ -16628,6 +17458,7 @@ export namespace EDataServer {
          * The selected state is often represented as a checkbox next to the data
          * source's display name in user interfaces.
          * @returns the selected state for the {@link EDataServer.Source}
+         * @since 3.6
          */
         get_selected(): boolean;
 
@@ -16640,6 +17471,7 @@ export namespace EDataServer {
          * trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param color a color specification, or `null`
+         * @since 3.6
          */
         set_color(color: string | null): void;
 
@@ -16649,12 +17481,14 @@ export namespace EDataServer {
          * The internal copy of `groups` is automatically stripped of leading and
          * trailing whitespace. If the resulting string is empty, `null` is set instead.
          * @param groups a comma-separated list of group names, or `null`
+         * @since 3.62
          */
         set_groups(groups: string | null): void;
 
         /**
          * Sets the sorting order for the {@link EDataServer.Source} to which `extension` belongs.
          * @param order the sorting order
+         * @since 3.40
          */
         set_order(order: number): void;
 
@@ -16663,6 +17497,7 @@ export namespace EDataServer {
          * The selected state is often represented as a checkbox next to the data
          * source's display name in user interfaces.
          * @param selected selected state
+         * @since 3.6
          */
         set_selected(selected: boolean): void;
     }
@@ -16787,6 +17622,7 @@ export namespace EDataServer {
          * Returns the numeric identifier of the Ubuntu Online Account associated
          * with the {@link EDataServer.Source} to which `extension` belongs.
          * @returns the associated Ubuntu Online Account ID
+         * @since 3.8
          */
         get_account_id(): number;
 
@@ -16794,6 +17630,7 @@ export namespace EDataServer {
          * Sets the numeric identifier of the Ubuntu Online Account associated
          * with the {@link EDataServer.Source} to which `extension` belongs.
          * @param account_id the associated Ubuntu Online Account ID
+         * @since 3.8
          */
         set_account_id(account_id: number): void;
     }
@@ -16951,12 +17788,14 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceWebDAVNotes.default_ext},    or `null`, when none is set
+         * @since 3.44
          */
         dup_default_ext(): string | null;
 
         /**
          * Returns the default file extension for new notes.
          * @returns the default file extension, or `null`, when none is set
+         * @since 3.44
          */
         get_default_ext(): string | null;
 
@@ -16967,6 +17806,7 @@ export namespace EDataServer {
          * trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param default_ext a default file extension, or `null`
+         * @since 3.44
          */
         set_default_ext(default_ext: string | null): void;
     }
@@ -17193,6 +18033,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceWebdav.color}
+         * @since 3.30
          */
         dup_color(): string | null;
 
@@ -17202,6 +18043,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns a newly-allocated copy of {@link EDataServer.SourceWebdav.display_name}
+         * @since 3.6
          */
         dup_display_name(): string | null;
 
@@ -17211,6 +18053,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns the newly-allocated copy of {@link EDataServer.SourceWebdav.email_address}
+         * @since 3.6
          */
         dup_email_address(): string | null;
 
@@ -17220,6 +18063,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns the newly-allocated copy of {@link EDataServer.SourceWebdav.resource_path}
+         * @since 3.6
          */
         dup_resource_path(): string | null;
 
@@ -17229,6 +18073,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns the newly-allocated copy of {@link EDataServer.SourceWebdav.resource_query}
+         * @since 3.6
          */
         dup_resource_query(): string | null;
 
@@ -17238,6 +18083,7 @@ export namespace EDataServer {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @returns the newly-allocated copy of {@link EDataServer.SourceWebdav.ssl_trust}
+         * @since 3.8
          */
         dup_ssl_trust(): string | null;
 
@@ -17247,6 +18093,7 @@ export namespace EDataServer {
          * extension, the {@link EDataServer.SourceSecurity} extension, and `extension` itself.
          * Free the returned {@link GLib.Uri} with `g_uri_unref()`.
          * @returns a newly-allocated {@link GLib.Uri}
+         * @since 3.46
          */
         dup_uri(): GLib.Uri;
 
@@ -17263,17 +18110,20 @@ export namespace EDataServer {
          *   </para>
          * </note>
          * @returns whether the WebDAV server is known to exhibit the bug
+         * @since 3.6
          */
         get_avoid_ifmatch(): boolean;
 
         /**
          * FIXME Document me!
+         * @since 3.6
          */
         get_calendar_auto_schedule(): boolean;
 
         /**
          * Returns the last known color of a WebDAV resource as provided by the server.
          * @returns the color of the WebDAV resource, if any set on the server
+         * @since 3.30
          */
         get_color(): string | null;
 
@@ -17282,6 +18132,7 @@ export namespace EDataServer {
          * differ from the {@link EDataServer.Source.display_name} property of the {@link EDataServer.Source} to which
          * `extension` belongs.
          * @returns the display name of the WebDAV resource
+         * @since 3.6
          */
         get_display_name(): string | null;
 
@@ -17289,22 +18140,26 @@ export namespace EDataServer {
          * Returns the user's email address which can be passed to a CalDAV server
          * if the user wishes to receive scheduling messages.
          * @returns the user's email address
+         * @since 3.6
          */
         get_email_address(): string | null;
 
         /**
          * @returns limit how many past days can be downloaded. Zero means unlimited.    The default is 0 days.
+         * @since 3.60
          */
         get_limit_download_days(): number;
 
         /**
          * @returns the sorting order of the resource, if known. The default    is (guint) -1, which means unknown/unset.
+         * @since 3.40
          */
         get_order(): number;
 
         /**
          * Returns the absolute path to a resource on a WebDAV server.
          * @returns the absolute path to a WebDAV resource
+         * @since 3.6
          */
         get_resource_path(): string | null;
 
@@ -17316,6 +18171,7 @@ export namespace EDataServer {
          * content on-the-fly.  The {@link EDataServer.SourceWebdav.resource_query} holds the input
          * values for the program.
          * @returns the query to access a WebDAV resource
+         * @since 3.6
          */
         get_resource_query(): string | null;
 
@@ -17329,16 +18185,19 @@ export namespace EDataServer {
          * it is supposed to be manipulated with `e_source_webdav_update_ssl_trust()`
          * and `e_source_webdav_verify_ssl_trust()`.
          * @returns an SSL/TLS certificate trust for the `extension`
+         * @since 3.8
          */
         get_ssl_trust(): string | null;
 
         /**
          * @returns the last SSL trust response, as {@link EDataServer.TrustPromptResponse}, if none    is set, then returns {@link EDataServer.TrustPromptResponse.UNKNOWN}
+         * @since 3.32
          */
         get_ssl_trust_response(): TrustPromptResponse;
 
         /**
          * @returns the connection timeout, in seconds. The default    is 30 seconds.
+         * @since 3.54
          */
         get_timeout(): number;
 
@@ -17355,12 +18214,14 @@ export namespace EDataServer {
          *   </para>
          * </note>
          * @param avoid_ifmatch whether the WebDAV server is known to exhibit the bug
+         * @since 3.6
          */
         set_avoid_ifmatch(avoid_ifmatch: boolean): void;
 
         /**
          * FIXME Document me!
          * @param calendar_auto_schedule whether the server supports the "calendar-auto-schedule" feature of CalDAV
+         * @since 3.6
          */
         set_calendar_auto_schedule(calendar_auto_schedule: boolean): void;
 
@@ -17371,6 +18232,7 @@ export namespace EDataServer {
          * and trailing whitespace. If the resulting string is empty, `null` is set
          * instead.
          * @param color the color of the WebDAV resource, or `null`
+         * @since 3.30
          */
         set_color(color: string | null): void;
 
@@ -17383,6 +18245,7 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param display_name the display name of the WebDAV resource,                or `null`
+         * @since 3.6
          */
         set_display_name(display_name: string | null): void;
 
@@ -17394,18 +18257,21 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param email_address the user's email address, or `null`
+         * @since 3.6
          */
         set_email_address(email_address: string | null): void;
 
         /**
          * Limit how many past days can be downloaded. Zero means unlimited.
          * @param value a value, in days
+         * @since 3.60
          */
         set_limit_download_days(value: number): void;
 
         /**
          * Set the sorting order of the resource.
          * @param order a sorting order
+         * @since 3.40
          */
         set_order(order: number): void;
 
@@ -17416,6 +18282,7 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param resource_path the absolute path to a WebDAV resource,                 or `null`
+         * @since 3.6
          */
         set_resource_path(resource_path: string | null): void;
 
@@ -17431,6 +18298,7 @@ export namespace EDataServer {
          * and trailing whitespace.  If the resulting string is empty, `null` is set
          * instead.
          * @param resource_query the query to access a WebDAV resource,                  or `null`
+         * @since 3.6
          */
         set_resource_query(resource_query: string | null): void;
 
@@ -17438,6 +18306,7 @@ export namespace EDataServer {
          * Sets the SSL/TLS certificate trust. See `e_source_webdav_get_ssl_trust()`
          * for more infomation about its content and how to use it.
          * @param ssl_trust the ssl_trust to store, or `null` to unset
+         * @since 3.8
          */
         set_ssl_trust(ssl_trust: string | null): void;
 
@@ -17447,12 +18316,14 @@ export namespace EDataServer {
          * nothing, when none SSL trust is set or when {@link EDataServer.TrustPromptResponse.UNKNOWN}
          * is used as the `response`.
          * @param response an {@link EDataServer.TrustPromptResponse} to set
+         * @since 3.32
          */
         set_ssl_trust_response(response: TrustPromptResponse): void;
 
         /**
          * Set the connection timeout, in seconds.
          * @param timeout a timeout, in seconds
+         * @since 3.54
          */
         set_timeout(timeout: number): void;
 
@@ -17462,12 +18333,14 @@ export namespace EDataServer {
          * extension, and `extension` itself.  (The "fragment" component of
          * `uri` is ignored.)
          * @param uri a {@link GLib.Uri}
+         * @since 3.46
          */
         set_uri(uri: GLib.Uri): void;
 
         /**
          * Unsets temporary trust set on this `extension`, but keeps
          * it as is for other values.
+         * @since 3.8
          */
         unset_temporary_ssl_trust(): void;
 
@@ -17478,6 +18351,7 @@ export namespace EDataServer {
          * @param host a host name to store the certificate for
          * @param cert the invalid certificate of the connection over which `host` is about        to be sent
          * @param response user's response from a trust prompt for `cert`
+         * @since 3.16
          */
         update_ssl_trust(host: string, cert: Gio.TlsCertificate, response: TrustPromptResponse): void;
 
@@ -17561,6 +18435,7 @@ export namespace EDataServer {
          * Frees `privileges` returned by `e_webdav_session_get_supported_privilege_set_sync()`.
          * The function does nothing, if `privileges` is `null`.
          * @param privileges a tree of {@link EDataServer.WebDAVPrivilege} structures
+         * @since 3.26
          */
         static util_free_privileges(privileges: GLib.Node | null): void;
 
@@ -17574,6 +18449,7 @@ export namespace EDataServer {
          * The function doesn't decode any URI-encoded characters.
          * @param href1 the first href
          * @param href2 the second href
+         * @since 3.40
          */
         static util_item_href_equal(href1: string, href2: string): boolean;
 
@@ -17582,6 +18458,7 @@ export namespace EDataServer {
          * changes `text`, it doesn't allocate new string. The function does
          * nothing when the `text` is not enclosed in double-quotes.
          * @param text text to dequote
+         * @since 3.26
          */
         static util_maybe_dequote(text: string): [string, string];
 
@@ -17593,6 +18470,7 @@ export namespace EDataServer {
          * @param xml the request itself, as an {@link EDataServer.XmlDocument}, the root element should be DAV:acl
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         acl_sync(uri: string | null, xml: XmlDocument, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17607,6 +18485,7 @@ export namespace EDataServer {
          * @param can_overwrite whether can overwrite `destination_uri`, when it exists
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         copy_sync(source_uri: string, destination_uri: string, depth: string, can_overwrite: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17628,6 +18507,7 @@ export namespace EDataServer {
          * @param etag an optional ETag of the resource, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         delete_sync(uri: string, depth: string | null, etag: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17653,6 +18533,7 @@ export namespace EDataServer {
          * @param in_headers additional {@link Soup.MessageHeaders} to be added to the request, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.50
          */
         delete_with_headers_sync(uri: string, depth: string | null, etag: string | null, in_headers: Soup.MessageHeaders | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17665,6 +18546,7 @@ export namespace EDataServer {
          * @param request_uri a {@link GLib.Uri} to which the `href` belongs, or `null`
          * @param href a possibly path-only href
          * @returns The `href` as a full URI
+         * @since 3.24
          */
         ensure_full_uri(request_uri: GLib.Uri | null, href: string): string;
 
@@ -17681,6 +18563,7 @@ export namespace EDataServer {
          * @param uri URI to issue the request for, or `null` to read from {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         get_acl_restrictions_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, number, WebDAVACEPrincipalKind, string[]];
 
@@ -17696,6 +18579,7 @@ export namespace EDataServer {
          * @param uri URI to issue the request for, or `null` to read from {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         get_acl_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, WebDAVAccessControlEntry[]];
 
@@ -17711,6 +18595,7 @@ export namespace EDataServer {
          * @param uri URI to issue the request for, or `null` to read from {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         get_current_user_privilege_set_full_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, WebDAVPrivilege[], never | null, never | null];
 
@@ -17724,6 +18609,7 @@ export namespace EDataServer {
          * @param uri URI to issue the request for, or `null` to read from {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         get_current_user_privilege_set_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, WebDAVPrivilege[]];
 
@@ -17746,6 +18632,7 @@ export namespace EDataServer {
          * @param uri URI of the resource to read
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         get_data_sync(uri: string, cancellable: Gio.Cancellable | null): [boolean, string, string, Soup.MessageHeaders | null, string, number];
 
@@ -17756,11 +18643,13 @@ export namespace EDataServer {
          * 
          * The string is valid until the next request is executed.
          * @returns a DAV error from the last request,    or `null`, when no error had been recognized.
+         * @since 3.36
          */
         get_last_dav_error_code(): string | null;
 
         /**
          * @returns whether the last recognized DAV error code contains an error    which means that user doesn't have permission for the operation. If there    is no DAV error stored, then returns `false`.
+         * @since 3.36
          */
         get_last_dav_error_is_permission(): boolean;
 
@@ -17776,6 +18665,7 @@ export namespace EDataServer {
          * @param uri URI to issue the request for, or `null` to read from {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         get_principal_collection_set_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
@@ -17790,6 +18680,7 @@ export namespace EDataServer {
          * @param uri URI to issue the request for, or `null` to read from {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         get_supported_privilege_set_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Node];
 
@@ -17808,6 +18699,7 @@ export namespace EDataServer {
          * @param uri URI of the resource to read
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         get_sync(uri: string, cancellable: Gio.Cancellable | null): [boolean, string, string, Soup.MessageHeaders | null, Gio.OutputStream];
 
@@ -17822,6 +18714,7 @@ export namespace EDataServer {
          * @param uri URI to issue the request for, or `null` to read from {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         getctag_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -17840,6 +18733,7 @@ export namespace EDataServer {
          * @param flags a bit-or of {@link EDataServer.WebDAVListFlags}, claiming what properties to read
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         list_sync(uri: string | null, depth: string, flags: number, cancellable: Gio.Cancellable | null): [boolean, WebDAVResource[]];
 
@@ -17860,6 +18754,7 @@ export namespace EDataServer {
          * @param owner optional identificator of the owner of the lock, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         lock_resource_sync(uri: string | null, lock_scope: WebDAVLockScope, lock_timeout: number, owner: string | null, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -17879,6 +18774,7 @@ export namespace EDataServer {
          * @param xml an XML describing the lock request, with DAV:lockinfo root element
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         lock_sync(uri: string | null, depth: string, lock_timeout: number, xml: XmlDocument, cancellable: Gio.Cancellable | null): [boolean, string, libxml2.Doc | null];
 
@@ -17899,6 +18795,7 @@ export namespace EDataServer {
          * @param supports a bit-or of EWebDAVResourceSupports values
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         mkcalendar_sync(uri: string, display_name: string | null, description: string | null, color: string | null, supports: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17913,6 +18810,7 @@ export namespace EDataServer {
          * @param description a human-readable description of the address book, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         mkcol_addressbook_sync(uri: string, display_name: string | null, description: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17923,6 +18821,7 @@ export namespace EDataServer {
          * @param uri URI of the collection to create
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         mkcol_sync(uri: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17934,6 +18833,7 @@ export namespace EDataServer {
          * @param can_overwrite whether can overwrite `destination_uri`, when it exists
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         move_sync(source_uri: string, destination_uri: string, can_overwrite: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17941,6 +18841,7 @@ export namespace EDataServer {
          * @param method an HTTP method
          * @param uri URI to create the request for, or `null` to read from {@link EDataServer.Source}
          * @returns A new {@link Soup.Message} for the given `uri`, or, when `null`,    for the URI stored in the associated {@link EDataServer.Source}. Free the returned structure    with `g_object_unref()`, when no longer needed.
+         * @since 3.26
          */
         new_message(method: string, uri: string | null): Soup.Message;
 
@@ -17968,6 +18869,7 @@ export namespace EDataServer {
          * @param uri URI to issue the request for, or `null` to read from {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         options_sync(uri: string | null, cancellable: Gio.Cancellable | null): [boolean, never, never];
 
@@ -17993,6 +18895,7 @@ export namespace EDataServer {
          * @param in_headers additional {@link Soup.MessageHeaders} to be added to the request, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.32
          */
         post_sync(uri: string | null, data: string, data_length: bigint | number, in_content_type: string | null, in_headers: Soup.MessageHeaders | null, cancellable: Gio.Cancellable | null): [boolean, string, Soup.MessageHeaders | null, Uint8Array | null];
 
@@ -18022,6 +18925,7 @@ export namespace EDataServer {
          * @param match_value a string value to search for
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded. Note it can report success also when no matching    principal had been found.
+         * @since 3.26
          */
         principal_property_search_sync(uri: string | null, apply_to_principal_collection_set: boolean, match_ns_uri: string | null, match_property: string, match_value: string, cancellable: Gio.Cancellable | null): [boolean, WebDAVResource[]];
 
@@ -18037,6 +18941,7 @@ export namespace EDataServer {
          * @param func an {@link EDataServer.WebDAVPropstatTraverseFunc} function to call for each DAV:propstat in the multistatus response
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         propfind_sync(uri: string | null, depth: string, xml: XmlDocument | null, func: WebDAVPropstatTraverseFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18048,6 +18953,7 @@ export namespace EDataServer {
          * @param xml an {@link EDataServer.XmlDocument} with request changes, its root element should be DAV:propertyupdate
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         proppatch_sync(uri: string | null, xml: XmlDocument, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18085,6 +18991,7 @@ export namespace EDataServer {
          * @param length how many bytes to write, or -1, when the `bytes` is NUL-terminated
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         put_data_sync(uri: string, etag: string | null, content_type: string, in_headers: Soup.MessageHeaders | null, bytes: string, length: bigint | number, cancellable: Gio.Cancellable | null): [boolean, string, string, Soup.MessageHeaders | null];
 
@@ -18127,6 +19034,7 @@ export namespace EDataServer {
          * @param stream_length length of the `stream`, or -1 if unknown
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         put_sync(uri: string, etag: string | null, content_type: string, in_headers: Soup.MessageHeaders | null, stream: Gio.InputStream, stream_length: bigint | number, cancellable: Gio.Cancellable | null): [boolean, string, string, Soup.MessageHeaders | null];
 
@@ -18140,6 +19048,7 @@ export namespace EDataServer {
          * @param lock_timeout timeout for the lock, in seconds, on 0 to infinity
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         refresh_lock_sync(uri: string | null, lock_token: string, lock_timeout: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18163,6 +19072,7 @@ export namespace EDataServer {
          * @param ignore_multistatus whether to ignore multistatus responses
          * @param prefix error message prefix, used when replacing, or `null`
          * @returns Whether any detailed error had been recognized.
+         * @since 3.26
          */
         replace_with_detailed_error(message: Soup.Message, response_data: Uint8Array | string | null, ignore_multistatus: boolean, prefix: string | null): boolean;
 
@@ -18188,6 +19098,7 @@ export namespace EDataServer {
          * @param out_content return location for response content, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         report_sync(uri: string | null, depth: string | null, xml: XmlDocument, func: WebDAVPropstatTraverseFunc | null, out_content_type: string | null, out_content: Uint8Array | string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18215,6 +19126,7 @@ export namespace EDataServer {
          * @param entries entries to write
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         set_acl_sync(uri: string | null, entries: WebDAVAccessControlEntry[], cancellable: Gio.Cancellable | null): boolean;
 
@@ -18227,6 +19139,7 @@ export namespace EDataServer {
          * @param xml_data a {@link GLib.ByteArray} containing CALDAV:mkcalendar-response response
          * @param func an {@link EDataServer.WebDAVPropstatTraverseFunc} function to call for each DAV:propstat in the response
          * @returns Whether succeeded.
+         * @since 3.26
          */
         traverse_mkcalendar_response(message: Soup.Message | null, xml_data: Uint8Array | string, func: WebDAVPropstatTraverseFunc): boolean;
 
@@ -18239,6 +19152,7 @@ export namespace EDataServer {
          * @param xml_data a {@link GLib.ByteArray} containing DAV:mkcol-response response
          * @param func an {@link EDataServer.WebDAVPropstatTraverseFunc} function to call for each DAV:propstat in the response
          * @returns Whether succeeded.
+         * @since 3.26
          */
         traverse_mkcol_response(message: Soup.Message | null, xml_data: Uint8Array | string, func: WebDAVPropstatTraverseFunc): boolean;
 
@@ -18251,6 +19165,7 @@ export namespace EDataServer {
          * @param xml_data a {@link GLib.ByteArray} containing DAV:multistatus response
          * @param func an {@link EDataServer.WebDAVPropstatTraverseFunc} function to call for each DAV:propstat in the multistatus response
          * @returns Whether succeeded.
+         * @since 3.26
          */
         traverse_multistatus_response(message: Soup.Message | null, xml_data: Uint8Array | string, func: WebDAVPropstatTraverseFunc): boolean;
 
@@ -18263,6 +19178,7 @@ export namespace EDataServer {
          * @param lock_token token of an existing lock
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         unlock_sync(uri: string | null, lock_token: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18278,6 +19194,7 @@ export namespace EDataServer {
          * @param changes a {@link GLib.SList} with request changes
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         update_properties_sync(uri: string | null, changes: WebDAVPropertyChange[], cancellable: Gio.Cancellable | null): boolean;
     }
@@ -18336,6 +19253,7 @@ export namespace EDataServer {
          * @param ns_href optional namespace href for the new attribute, or `null`
          * @param name name of the attribute
          * @param value value of the attribute
+         * @since 3.26
          */
         add_attribute(ns_href: string | null, name: string, value: string): void;
 
@@ -18347,6 +19265,7 @@ export namespace EDataServer {
          * @param ns_href optional namespace href for the new attribute, or `null`
          * @param name name of the attribute
          * @param value double value of the attribute
+         * @since 3.26
          */
         add_attribute_double(ns_href: string | null, name: string, value: number): void;
 
@@ -18358,6 +19277,7 @@ export namespace EDataServer {
          * @param ns_href optional namespace href for the new attribute, or `null`
          * @param name name of the attribute
          * @param value integer value of the attribute
+         * @since 3.26
          */
         add_attribute_int(ns_href: string | null, name: string, value: bigint | number): void;
 
@@ -18370,6 +19290,7 @@ export namespace EDataServer {
          * @param ns_href optional namespace href for the new attribute, or `null`
          * @param name name of the attribute
          * @param value time_t value of the attribute
+         * @since 3.26
          */
         add_attribute_time(ns_href: string | null, name: string, value: bigint | number): void;
 
@@ -18382,6 +19303,7 @@ export namespace EDataServer {
          * @param ns_href optional namespace href for the new attribute, or `null`
          * @param name name of the attribute
          * @param value time_t value of the attribute
+         * @since 3.32
          */
         add_attribute_time_ical(ns_href: string | null, name: string, value: bigint | number): void;
 
@@ -18392,6 +19314,7 @@ export namespace EDataServer {
          * followed by `e_xml_document_end_element()`.
          * @param ns_href optional namespace href for the new element, or `null`
          * @param name name of the new element
+         * @since 3.26
          */
         add_empty_element(ns_href: string | null, name: string): void;
 
@@ -18399,6 +19322,7 @@ export namespace EDataServer {
          * This is a pair function for `e_xml_document_start_element()` and
          * `e_xml_document_start_text_element()`, which changes current
          * element to the parent of that element.
+         * @since 3.26
          */
         end_element(): void;
 
@@ -18407,11 +19331,13 @@ export namespace EDataServer {
          * if `out_length` is also provided, then it doesn't contain this additional
          * nul character.
          * @returns Content of the `xml` as newly allocated string.    Free it with `g_free()`, when no longer needed.
+         * @since 3.26
          */
         get_content(): [string, number];
 
         /**
          * @returns Underlying #xmlDocPtr.
+         * @since 3.26
          */
         get_xmldoc(): libxml2.Doc;
 
@@ -18425,6 +19351,7 @@ export namespace EDataServer {
          * To start a text node use `e_xml_document_start_text_element()`.
          * @param ns_href optional namespace href for the new element, or `null`
          * @param name name of the new element
+         * @since 3.26
          */
         start_element(ns_href: string | null, name: string): void;
 
@@ -18438,6 +19365,7 @@ export namespace EDataServer {
          * To start a non-text node use `e_xml_document_start_element()`.
          * @param ns_href optional namespace href for the new element, or `null`
          * @param name name of the new element
+         * @since 3.26
          */
         start_text_element(ns_href: string | null, name: string): void;
 
@@ -18445,6 +19373,7 @@ export namespace EDataServer {
          * Writes `value` of length `len`, encoded to base64, as content of the current element.
          * @param value value to write as the content
          * @param len length of `value`
+         * @since 3.26
          */
         write_base64(value: string, len: number): void;
 
@@ -18452,24 +19381,28 @@ export namespace EDataServer {
          * Writes `value` of length `len` as content of the current element.
          * @param value value to write as the content
          * @param len length of `value`
+         * @since 3.26
          */
         write_buffer(value: string, len: number): void;
 
         /**
          * Writes `value` as content of the current element.
          * @param value value to write as the content
+         * @since 3.26
          */
         write_double(value: number): void;
 
         /**
          * Writes `value` as content of the current element.
          * @param value value to write as the content
+         * @since 3.26
          */
         write_int(value: bigint | number): void;
 
         /**
          * Writes `value` as content of the current element.
          * @param value value to write as the content
+         * @since 3.26
          */
         write_string(value: string): void;
 
@@ -18477,6 +19410,7 @@ export namespace EDataServer {
          * Writes `value` in ISO 8601 format as content of the current element.
          * The format is "YYYY-MM-DDTHH:MM:SSZ".
          * @param value value to write as the content
+         * @since 3.26
          */
         write_time(value: bigint | number): void;
     }
@@ -18510,6 +19444,7 @@ export namespace EDataServer {
         // Methods
         /**
          * Frees the `closure` and the resources it holds.
+         * @since 3.6
          */
         free(): void;
     }
@@ -18573,6 +19508,7 @@ export namespace EDataServer {
          * @param str_a A string to compare
          * @param str_b The string to compare with `str_a`
          * @returns `true` on success, otherwise if `false` is returned then `error` will be set.
+         * @since 3.12
          */
         collate(str_a: string | null, str_b: string | null): [boolean, number];
 
@@ -18584,6 +19520,7 @@ export namespace EDataServer {
          * This function will first ensure that `str` is valid UTF-8 encoded.
          * @param str The string to generate a collation key for
          * @returns A collation key for `str`, or    `null` on failure with `error` set.
+         * @since 3.12
          */
         generate_key(str: string): string;
 
@@ -18602,6 +19539,7 @@ export namespace EDataServer {
          * the characters 'd' or 'D'.
          * @param index An index into the alphabetic labels
          * @returns A sort key for the given index
+         * @since 3.12
          */
         generate_key_for_index(index: number): string;
 
@@ -18610,24 +19548,28 @@ export namespace EDataServer {
          * that `str` should sort under.
          * @param str A string
          * @returns The alphabetic index under which `str` would sort
+         * @since 3.12
          */
         get_index(str: string): number;
 
         /**
          * Fetches the displayable labels and index positions for the active alphabet.
          * @returns The array of displayable labels for each index in the active alphabet(s).
+         * @since 3.12
          */
         get_index_labels(): [string[], number, number, number, number];
 
         /**
          * Increases the reference count of `collator`.
          * @returns `collator`
+         * @since 3.12
          */
         ref(): Collator;
 
         /**
          * Decreases the reference count of `collator`.
          * If the reference count reaches 0 then the collator is freed
+         * @since 3.12
          */
         unref(): void;
     }
@@ -18661,6 +19603,7 @@ export namespace EDataServer {
         // Methods
         /**
          * Destroys `flag`.
+         * @since 1.12
          */
         free(): void;
     }
@@ -18699,6 +19642,7 @@ export namespace EDataServer {
          * date/time. When not set, returns -1. The optional `out_exists`
          * can be used to see whether the property is set.
          * @returns the set value, or -1
+         * @since 3.46
          */
         get_completed_max(): [number, boolean];
 
@@ -18707,6 +19651,7 @@ export namespace EDataServer {
          * date/time. When not set, returns -1. The optional `out_exists`
          * can be used to see whether the property is set.
          * @returns the set value, or -1
+         * @since 3.46
          */
         get_completed_min(): [number, boolean];
 
@@ -18715,6 +19660,7 @@ export namespace EDataServer {
          * date/time. When not set, returns -1. The optional `out_exists`
          * can be used to see whether the property is set.
          * @returns the set value, or -1
+         * @since 3.46
          */
         get_due_max(): [number, boolean];
 
@@ -18723,6 +19669,7 @@ export namespace EDataServer {
          * date/time. When not set, returns -1. The optional `out_exists`
          * can be used to see whether the property is set.
          * @returns the set value, or -1
+         * @since 3.46
          */
         get_due_min(): [number, boolean];
 
@@ -18731,6 +19678,7 @@ export namespace EDataServer {
          * When not set, returns 0. The optional `out_exists`
          * can be used to see whether the property is set.
          * @returns the set value, or 0
+         * @since 3.46
          */
         get_max_results(): [number, boolean];
 
@@ -18739,6 +19687,7 @@ export namespace EDataServer {
          * returns `false`. The optional `out_exists` can be used to see whether
          * the property is set.
          * @returns the set value, or `false`
+         * @since 3.46
          */
         get_show_completed(): [boolean, boolean];
 
@@ -18747,6 +19696,7 @@ export namespace EDataServer {
          * returns `false`. The optional `out_exists` can be used to see whether
          * the property is set.
          * @returns the set value, or `false`
+         * @since 3.46
          */
         get_show_deleted(): [boolean, boolean];
 
@@ -18755,6 +19705,7 @@ export namespace EDataServer {
          * returns `false`. The optional `out_exists` can be used to see whether
          * the property is set.
          * @returns the set value, or `false`
+         * @since 3.46
          */
         get_show_hidden(): [boolean, boolean];
 
@@ -18763,6 +19714,7 @@ export namespace EDataServer {
          * date/time. When not set, returns -1. The optional `out_exists`
          * can be used to see whether the property is set.
          * @returns the set value, or -1
+         * @since 3.46
          */
         get_updated_min(): [number, boolean];
 
@@ -18770,6 +19722,7 @@ export namespace EDataServer {
          * Increases the reference count of the `self`.
          * The added reference shuld be removed with `e_gdata_query_unref()`.
          * @returns the `self`
+         * @since 3.46
          */
         ref(): GDataQuery;
 
@@ -18779,6 +19732,7 @@ export namespace EDataServer {
          * 
          * This can be used for Task object query only.
          * @param value a value to set, as a Unix date/time
+         * @since 3.46
          */
         set_completed_max(value: bigint | number): void;
 
@@ -18788,6 +19742,7 @@ export namespace EDataServer {
          * 
          * This can be used for Task object query only.
          * @param value a value to set, as a Unix date/time
+         * @since 3.46
          */
         set_completed_min(value: bigint | number): void;
 
@@ -18797,6 +19752,7 @@ export namespace EDataServer {
          * 
          * This can be used for Task object query only.
          * @param value a value to set, as a Unix date/time
+         * @since 3.46
          */
         set_due_max(value: bigint | number): void;
 
@@ -18806,6 +19762,7 @@ export namespace EDataServer {
          * 
          * This can be used for Task object query only.
          * @param value a value to set, as a Unix date/time
+         * @since 3.46
          */
         set_due_min(value: bigint | number): void;
 
@@ -18814,6 +19771,7 @@ export namespace EDataServer {
          * 
          * This can be used for any object query.
          * @param value a value to set
+         * @since 3.46
          */
         set_max_results(value: number): void;
 
@@ -18825,6 +19783,7 @@ export namespace EDataServer {
          * 
          * This can be used for Task object query only.
          * @param value a value to set
+         * @since 3.46
          */
         set_show_completed(value: boolean): void;
 
@@ -18834,6 +19793,7 @@ export namespace EDataServer {
          * 
          * This can be used for Task object query only.
          * @param value a value to set
+         * @since 3.46
          */
         set_show_deleted(value: boolean): void;
 
@@ -18843,6 +19803,7 @@ export namespace EDataServer {
          * 
          * This can be used for Task object query only.
          * @param value a value to set
+         * @since 3.46
          */
         set_show_hidden(value: boolean): void;
 
@@ -18852,6 +19813,7 @@ export namespace EDataServer {
          * 
          * This can be used for Task object query only.
          * @param value a value to set, as a Unix date/time
+         * @since 3.46
          */
         set_updated_min(value: bigint | number): void;
 
@@ -18859,12 +19821,14 @@ export namespace EDataServer {
          * Converts the `self` into a string, which can be used as a URI query. The returned
          * string should be freed with `g_free()`, when no longer needed.
          * @returns the `self` converted into a string, or `null`,    when the `self` doesn't have set any parameter.
+         * @since 3.46
          */
         to_string(): string | null;
 
         /**
          * Decreases the reference count of the `self`. When the reference count
          * reaches 0, the `self` is freed.
+         * @since 3.46
          */
         unref(): void;
     }
@@ -18930,16 +19894,19 @@ export namespace EDataServer {
          * Makes content of the `parameters` the same as `from`.
          * Functions clears content of `parameters` if `from` is `null`.
          * @param from an {@link EDataServer.NamedParameters} to get values from, or `null`
+         * @since 3.8
          */
         assign(from: NamedParameters | null): void;
 
         /**
          * Removes all stored parameters from `parameters`.
+         * @since 3.8
          */
         clear(): void;
 
         /**
          * @returns The number of stored named parameters in `parameters`
+         * @since 3.18
          */
         count(): number;
 
@@ -18948,12 +19915,14 @@ export namespace EDataServer {
          * Note a `null` and empty parameters are also considered equal.
          * @param parameters2 the second {@link EDataServer.NamedParameters}
          * @returns whether the two parameters are equal
+         * @since 3.46
          */
         equal(parameters2: NamedParameters): boolean;
 
         /**
          * @param name name of the parameter whose existence to check
          * @returns Whether `parameters` holds a parameter named `name`
+         * @since 3.18
          */
         exists(name: string): boolean;
 
@@ -18961,6 +19930,7 @@ export namespace EDataServer {
          * Frees an instance of {@link EDataServer.NamedParameters}, previously allocated
          * with `e_named_parameters_new()`. Function does nothing, if
          * `parameters` is `null`.
+         * @since 3.8
          */
         free(): void;
 
@@ -18969,12 +19939,14 @@ export namespace EDataServer {
          * exists, then returns `null`.
          * @param name name of a parameter to get
          * @returns value of a parameter named `name`, or `null`.
+         * @since 3.8
          */
         get(name: string): string | null;
 
         /**
          * @param index an index of the parameter whose name to retrieve
          * @returns The name of the parameters at index `index`,    or `null`, of the `index` is out of bounds or other error. The returned    string should be freed with `g_free()` when done with it.
+         * @since 3.18
          */
         get_name(index: number): string | null;
 
@@ -18986,6 +19958,7 @@ export namespace EDataServer {
          * The structure is not thread safe, if the caller requires thread safety,
          * then it should provide it on its own.
          * @returns newly allocated {@link EDataServer.NamedParameters}
+         * @since 3.16
          */
         new_clone(): NamedParameters;
 
@@ -18997,6 +19970,7 @@ export namespace EDataServer {
          * contain a colon character (':'), otherwise it can be pretty much anything.
          * @param name name of a parameter to set
          * @param value value to set, or `null` to unset
+         * @since 3.8
          */
         set(name: string, value: string | null): void;
 
@@ -19009,16 +19983,19 @@ export namespace EDataServer {
          * @param value value to test
          * @param case_sensitively whether to compare case sensitively
          * @returns Whether parameter of given name has stored value of given value.
+         * @since 3.8
          */
         test(name: string, value: string, case_sensitively: boolean): boolean;
 
         /**
          * @returns Contents of `parameters` as a string
+         * @since 3.18
          */
         to_string(): string | null;
 
         /**
          * @returns Contents of `parameters` as a null-terminated strv
+         * @since 3.8
          */
         to_strv(): string[];
     }
@@ -19085,6 +20062,7 @@ export namespace EDataServer {
         // Methods
         /**
          * Frees previously created `pool`.
+         * @since 3.2
          */
         free(): void;
 
@@ -19092,12 +20070,14 @@ export namespace EDataServer {
          * Pushes an operation to be processed.  `opdata` is passed to the function
          * provided in `e_operation_pool_new()`.
          * @param opdata user data for the operation
+         * @since 3.2
          */
         push(opdata: null): void;
 
         /**
          * Releases `opid` previously reserved by `e_operation_pool_reserve_opid()`.
          * @param opid an operation ID
+         * @since 3.2
          */
         release_opid(opid: number): void;
 
@@ -19106,6 +20086,7 @@ export namespace EDataServer {
          * be released by `e_operation_pool_release_opid()` when the operation
          * is finished.
          * @returns a new operation ID
+         * @since 3.2
          */
         reserve_opid(): number;
     }
@@ -19736,6 +20717,7 @@ export namespace EDataServer {
          * Frees an {@link EDataServer.WebDAVAccessControlEntry} previously created with `e_webdav_access_control_entry_new()`
          * or `e_webdav_access_control_entry_copy()`. The function does nothing, if `ptr` is `null`.
          * @param ptr an {@link EDataServer.WebDAVAccessControlEntry}
+         * @since 3.26
          */
         static free(ptr: null): void;
 
@@ -19745,16 +20727,19 @@ export namespace EDataServer {
          * The function assumes ownership of the `privilege`, which is freed
          * together with the `ace`.
          * @param privilege an {@link EDataServer.WebDAVPrivilege}
+         * @since 3.26
          */
         append_privilege(privilege: WebDAVPrivilege): void;
 
         /**
          * @returns A new {@link EDataServer.WebDAVAccessControlEntry}    prefilled with the same values as `src`, or `null`, when `src` is `null`.    Free it with `e_webdav_access_control_entry_free()`, when no longer needed.
+         * @since 3.26
          */
         copy(): WebDAVAccessControlEntry | null;
 
         /**
          * @returns A {@link GLib.SList} of {@link EDataServer.WebDAVPrivilege}    with the list of privileges for the `ace`. The reurned {@link GLib.SList}, together with its data    is owned by the `ace`.
+         * @since 3.26
          */
         get_privileges(): WebDAVPrivilege[];
     }
@@ -19794,11 +20779,13 @@ export namespace EDataServer {
         /**
          * Copies the given EWebDAVDiscoveredSource.
          * @returns a copy of `discovered_source`
+         * @since 3.40
          */
         copy(): WebDAVDiscoveredSource;
 
         /**
          * Frees the `discovered_source`. Function does nothing, when it's `null`.
+         * @since 3.40
          */
         free(): void;
     }
@@ -19831,12 +20818,14 @@ export namespace EDataServer {
          * Frees an {@link EDataServer.WebDAVPrivilege} previously created with `e_webdav_privilege_new()`
          * or `e_webdav_privilege_copy()`. The function does nothing, if `ptr` is `null`.
          * @param ptr an {@link EDataServer.WebDAVPrivilege}
+         * @since 3.26
          */
         static free(ptr: null): void;
 
         // Methods
         /**
          * @returns A new {@link EDataServer.WebDAVPrivilege} prefilled with    the same values as `src`, or `null`, when `src` is `null`.    Free it with `e_webdav_privilege_free()`, when no longer needed.
+         * @since 3.26
          */
         copy(): WebDAVPrivilege | null;
     }
@@ -19870,12 +20859,14 @@ export namespace EDataServer {
          * `e_webdav_property_change_new_remove()` or or `e_webdav_property_change_copy()`.
          * The function does nothing, if `ptr` is `null`.
          * @param ptr an {@link EDataServer.WebDAVPropertyChange}
+         * @since 3.26
          */
         static free(ptr: null): void;
 
         // Methods
         /**
          * @returns A new {@link EDataServer.WebDAVPropertyChange} prefilled    with the same values as `src`, or `null`, when `src` is `null`.    Free it with `e_webdav_property_change_free()`, when no longer needed.
+         * @since 3.26
          */
         copy(): WebDAVPropertyChange | null;
     }
@@ -19922,12 +20913,14 @@ export namespace EDataServer {
          * Frees an {@link EDataServer.WebDAVResource} previously created with `e_webdav_resource_new()`
          * or `e_webdav_resource_copy()`. The function does nothing, if `ptr` is `null`.
          * @param ptr an {@link EDataServer.WebDAVResource}
+         * @since 3.26
          */
         static free(ptr: null): void;
 
         // Methods
         /**
          * @returns A new {@link EDataServer.WebDAVResource} prefilled with    the same values as `src`, or `null`, when `src` is `null`.    Free it with `e_webdav_resource_free()`, when no longer needed.
+         * @since 3.26
          */
         copy(): WebDAVResource | null;
     }
@@ -19993,6 +20986,7 @@ export namespace EDataServer {
          * objects are owned by `extensible` and should not be unreferenced.
          * @param extension_type the type of extensions to list
          * @returns a list of extension objects derived from `extension_type`
+         * @since 3.4
          */
         list_extensions(extension_type: GObject.GType): Extension[];
 
@@ -20001,6 +20995,7 @@ export namespace EDataServer {
          * target the class of `extensible`.  The lifetimes of these newly created
          * {@link EDataServer.Extension} objects are bound to `extensible` such that they are finalized
          * when `extensible` is finalized.
+         * @since 3.4
          */
         load_extensions(): void;
 
@@ -20008,6 +21003,7 @@ export namespace EDataServer {
          * Similar to `e_extensible_load_extensions()`, only loads newly discovered
          * extensions again. This can help in case a new module had been loaded
          * to the process, which provides the extensions for the `extensible`.
+         * @since 3.46
          */
         reload_extensions(): void;
     }
@@ -20036,6 +21032,7 @@ export namespace EDataServer {
              * The default implementation is tried always as the first and when it fails, then
              * the descendant's implementation is called.
              * @param source an {@link EDataServer.Source}
+             * @since 3.28
              * @virtual
              */
             vfunc_can_process(source: Source): boolean;
@@ -20045,6 +21042,7 @@ export namespace EDataServer {
              * credentials. The default implementation does not provide any cookies.
              * @param source an associated {@link EDataServer.Source}
              * @param cancellable a {@link Gio.Cancellable}
+             * @since 3.54
              * @virtual
              */
             vfunc_dup_credentials_prompter_cookies_sync(source: Source, cancellable: Gio.Cancellable | null): Soup.Cookie[] | null;
@@ -20071,6 +21069,7 @@ export namespace EDataServer {
              * @param page_title a web page title
              * @param page_uri a web page URI
              * @param page_content a web page content
+             * @since 3.28
              * @virtual
              */
             vfunc_extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
@@ -20087,6 +21086,7 @@ export namespace EDataServer {
              * @param page_title a web page title
              * @param page_uri a web page URI
              * @param page_content a web page content
+             * @since 3.48
              * @virtual
              */
             vfunc_extract_error_message(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
@@ -20101,24 +21101,28 @@ export namespace EDataServer {
              * in the page).
              * @param source an associated {@link EDataServer.Source}
              * @param uri a URI of the navigation resource
+             * @since 3.28
              * @virtual
              */
             vfunc_get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy;
 
             /**
              * @param source an associated {@link EDataServer.Source}
+             * @since 3.28
              * @virtual
              */
             vfunc_get_authentication_uri(source: Source): string;
 
             /**
              * @param source an associated {@link EDataServer.Source}
+             * @since 3.28
              * @virtual
              */
             vfunc_get_client_id(source: Source): string;
 
             /**
              * @param source an associated {@link EDataServer.Source}
+             * @since 3.28
              * @virtual
              */
             vfunc_get_client_secret(source: Source): string | null;
@@ -20127,11 +21131,13 @@ export namespace EDataServer {
              * Returns a human readable name of the service. This is similar to
              * `e_oauth2_service_get_name()`, except this string should be localized,
              * because it will be used in user-visible strings.
+             * @since 3.28
              * @virtual
              */
             vfunc_get_display_name(): string;
 
             /**
+             * @since 3.28
              * @virtual
              */
             vfunc_get_flags(): number;
@@ -20140,6 +21146,7 @@ export namespace EDataServer {
              * Returns a unique name of the service. It can be named for example
              * by the server or the company from which it receives the OAuth2
              * token and where it refreshes it, like "Company" for login.company.com.
+             * @since 3.28
              * @virtual
              */
             vfunc_get_name(): string;
@@ -20148,12 +21155,14 @@ export namespace EDataServer {
              * Returns a value for the "redirect_uri" keys in the authenticate and get_token
              * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
              * @param source an associated {@link EDataServer.Source}
+             * @since 3.28
              * @virtual
              */
             vfunc_get_redirect_uri(source: Source): string | null;
 
             /**
              * @param source an associated {@link EDataServer.Source}
+             * @since 3.28
              * @virtual
              */
             vfunc_get_refresh_uri(source: Source): string;
@@ -20175,6 +21184,7 @@ export namespace EDataServer {
              * the descendant's implementation is called.
              * @param protocol a protocol to search the service for, like "imap", or `null`
              * @param hostname a host name to search the service for, like "server.example.com", or `null`
+             * @since 3.28
              * @virtual
              */
             vfunc_guess_can_process(protocol: string | null, hostname: string | null): boolean;
@@ -20191,6 +21201,7 @@ export namespace EDataServer {
              * is replaced.
              * @param source an associated {@link EDataServer.Source}
              * @param uri_query query for the URI to use
+             * @since 3.28
              * @virtual
              */
             vfunc_prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
@@ -20208,6 +21219,7 @@ export namespace EDataServer {
              * @param source an associated {@link EDataServer.Source}
              * @param authorization_code authorization code, as returned from `e_oauth2_service_extract_authorization_code()`
              * @param form form parameters to be used in the POST request
+             * @since 3.28
              * @virtual
              */
             vfunc_prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
@@ -20219,6 +21231,7 @@ export namespace EDataServer {
              * The default implementation does nothing with the `message`.
              * @param source an associated {@link EDataServer.Source}
              * @param message a {@link Soup.Message}
+             * @since 3.28
              * @virtual
              */
             vfunc_prepare_get_token_message(source: Source, message: Soup.Message): void;
@@ -20236,6 +21249,7 @@ export namespace EDataServer {
              * @param source an associated {@link EDataServer.Source}
              * @param refresh_token a refresh token to be used
              * @param form form parameters to be used in the POST request
+             * @since 3.28
              * @virtual
              */
             vfunc_prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
@@ -20247,6 +21261,7 @@ export namespace EDataServer {
              * The default implementation does nothing with the `message`.
              * @param source an associated {@link EDataServer.Source}
              * @param message a {@link Soup.Message}
+             * @since 3.28
              * @virtual
              */
             vfunc_prepare_refresh_token_message(source: Source, message: Soup.Message): void;
@@ -20327,6 +21342,7 @@ export namespace EDataServer {
          * the descendant's implementation is called.
          * @param source an {@link EDataServer.Source}
          * @returns Whether the `service` can be used for the given `source`
+         * @since 3.28
          */
         can_process(source: Source): boolean;
 
@@ -20335,6 +21351,7 @@ export namespace EDataServer {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.28
          */
         delete_token_sync(source: Source, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20344,6 +21361,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.SList} of {@link Soup.Cookie}-s to use, or `null`
+         * @since 3.54
          */
         dup_credentials_prompter_cookies_sync(source: Source, cancellable: Gio.Cancellable | null): Soup.Cookie[] | null;
 
@@ -20370,6 +21388,7 @@ export namespace EDataServer {
          * @param page_uri a web page URI
          * @param page_content a web page content
          * @returns whether could recognized successful or failed server response.    The `out_authorization_code` is populated on success too.
+         * @since 3.28
          */
         extract_authorization_code(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
 
@@ -20386,6 +21405,7 @@ export namespace EDataServer {
          * @param page_uri a web page URI
          * @param page_content a web page content
          * @returns whether could recognized failed server response.    The `out_error_message` is populated on success.
+         * @since 3.48
          */
         extract_error_message(source: Source, page_title: string, page_uri: string, page_content: string | null): [boolean, string];
 
@@ -20398,6 +21418,7 @@ export namespace EDataServer {
          * @param ref_source an {@link EDataServer.OAuth2ServiceRefSourceFunc} function to obtain an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true`, when the returned access token has been set and it's not expired,    `false` otherwise.
+         * @since 3.28
          */
         get_access_token_sync(source: Source, ref_source: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): [boolean, string, number];
 
@@ -20412,24 +21433,28 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param uri a URI of the navigation resource
          * @returns one of {@link EDataServer.OAuth2ServiceNavigationPolicy}
+         * @since 3.28
          */
         get_authentication_policy(source: Source, uri: string): OAuth2ServiceNavigationPolicy;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns an authentication URI, to be used to obtain    the authentication code
+         * @since 3.28
          */
         get_authentication_uri(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns application client ID, as provided by the server
+         * @since 3.28
          */
         get_client_id(source: Source): string;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns application client secret, as provided by the server, or `null`
+         * @since 3.28
          */
         get_client_secret(source: Source): string | null;
 
@@ -20438,11 +21463,13 @@ export namespace EDataServer {
          * `e_oauth2_service_get_name()`, except this string should be localized,
          * because it will be used in user-visible strings.
          * @returns the display name of the `service`
+         * @since 3.28
          */
         get_display_name(): string;
 
         /**
          * @returns bit-or of {@link EDataServer.OAuth2ServiceFlags} for the `service`. The default    implementation returns {@link EDataServer.OAuth2ServiceFlags.NONE}.
+         * @since 3.28
          */
         get_flags(): number;
 
@@ -20451,6 +21478,7 @@ export namespace EDataServer {
          * by the server or the company from which it receives the OAuth2
          * token and where it refreshes it, like "Company" for login.company.com.
          * @returns the name of the `service`
+         * @since 3.28
          */
         get_name(): string;
 
@@ -20459,12 +21487,14 @@ export namespace EDataServer {
          * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
          * @param source an associated {@link EDataServer.Source}
          * @returns The redirect_uri to use, or `null` for none
+         * @since 3.28
          */
         get_redirect_uri(source: Source): string | null;
 
         /**
          * @param source an associated {@link EDataServer.Source}
          * @returns a URI to be used to refresh the authentication token
+         * @since 3.28
          */
         get_refresh_uri(source: Source): string;
 
@@ -20486,6 +21516,7 @@ export namespace EDataServer {
          * @param protocol a protocol to search the service for, like "imap", or `null`
          * @param hostname a host name to search the service for, like "server.example.com", or `null`
          * @returns Whether the `service` can be used for the given arguments
+         * @since 3.28
          */
         guess_can_process(protocol: string | null, hostname: string | null): boolean;
 
@@ -20501,6 +21532,7 @@ export namespace EDataServer {
          * is replaced.
          * @param source an associated {@link EDataServer.Source}
          * @param uri_query query for the URI to use
+         * @since 3.28
          */
         prepare_authentication_uri_query(source: Source, uri_query: { [key: string]: string }): void;
 
@@ -20517,6 +21549,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param authorization_code authorization code, as returned from `e_oauth2_service_extract_authorization_code()`
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          */
         prepare_get_token_form(source: Source, authorization_code: string, form: { [key: string]: string }): void;
 
@@ -20527,6 +21560,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          */
         prepare_get_token_message(source: Source, message: Soup.Message): void;
 
@@ -20543,6 +21577,7 @@ export namespace EDataServer {
          * @param source an associated {@link EDataServer.Source}
          * @param refresh_token a refresh token to be used
          * @param form form parameters to be used in the POST request
+         * @since 3.28
          */
         prepare_refresh_token_form(source: Source, refresh_token: string, form: { [key: string]: string }): void;
 
@@ -20553,6 +21588,7 @@ export namespace EDataServer {
          * The default implementation does nothing with the `message`.
          * @param source an associated {@link EDataServer.Source}
          * @param message a {@link Soup.Message}
+         * @since 3.28
          */
         prepare_refresh_token_message(source: Source, message: Soup.Message): void;
 
@@ -20565,6 +21601,7 @@ export namespace EDataServer {
          * @param ref_source an {@link EDataServer.OAuth2ServiceRefSourceFunc} function to obtain an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.28
          */
         receive_and_store_token_sync(source: Source, authorization_code: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20577,6 +21614,7 @@ export namespace EDataServer {
          * @param ref_source an {@link EDataServer.OAuth2ServiceRefSourceFunc} function to obtain an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
+         * @since 3.28
          */
         refresh_and_store_token_sync(source: Source, refresh_token: string, ref_source: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): boolean;
     }

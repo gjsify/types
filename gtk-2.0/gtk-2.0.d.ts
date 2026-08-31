@@ -624,6 +624,7 @@ export namespace Gtk {
         // Static methods
         /**
          * Registers an error quark for {@link Gtk.FileChooser} if necessary.
+         * @since 2.4
          */
         static quark(): GLib.Quark;
     }
@@ -1170,6 +1171,7 @@ export namespace Gtk {
         // Static methods
         /**
          * Registers an error quark for {@link Gtk.PrintOperation} if necessary.
+         * @since 2.10
          */
         static quark(): GLib.Quark;
     }
@@ -7075,6 +7077,7 @@ export namespace Gtk {
          * Returns the string which are displayed in the artists tab
          * of the secondary credits dialog.
          * @returns A  `null`-terminated string array containing the artists. The array is  owned by the about dialog and must not be modified.
+         * @since 2.6
          */
         get_artists(): string[];
 
@@ -7082,18 +7085,21 @@ export namespace Gtk {
          * Returns the string which are displayed in the authors tab
          * of the secondary credits dialog.
          * @returns A  `null`-terminated string array containing the authors. The array is  owned by the about dialog and must not be modified.
+         * @since 2.6
          */
         get_authors(): string[];
 
         /**
          * Returns the comments string.
          * @returns The comments. The string is owned by the about  dialog and must not be modified.
+         * @since 2.6
          */
         get_comments(): string;
 
         /**
          * Returns the copyright string.
          * @returns The copyright string. The string is owned by the about  dialog and must not be modified.
+         * @since 2.6
          */
         get_copyright(): string;
 
@@ -7101,36 +7107,43 @@ export namespace Gtk {
          * Returns the string which are displayed in the documenters
          * tab of the secondary credits dialog.
          * @returns A  `null`-terminated string array containing the documenters. The  array is owned by the about dialog and must not be modified.
+         * @since 2.6
          */
         get_documenters(): string[];
 
         /**
          * Returns the license information.
          * @returns The license information. The string is owned by the about  dialog and must not be modified.
+         * @since 2.6
          */
         get_license(): string;
 
         /**
          * Returns the pixbuf displayed as logo in the about dialog.
          * @returns the pixbuf displayed as logo. The   pixbuf is owned by the about dialog. If you want to keep a   reference to it, you have to call `g_object_ref()` on it.
+         * @since 2.6
          */
         get_logo(): GdkPixbuf.Pixbuf;
 
         /**
          * Returns the icon name displayed as logo in the about dialog.
          * @returns the icon name displayed as logo. The string is   owned by the dialog. If you want to keep a reference   to it, you have to call `g_strdup()` on it.
+         * @since 2.6
          */
         get_logo_icon_name(): string;
 
         /**
          * Returns the program name displayed in the about dialog.
          * @returns The program name. The string is owned by the about  dialog and must not be modified.
+         * @since 2.6
+         * @deprecated since 2.12: Use `gtk_about_dialog_get_program_name()` instead.
          */
         get_name(): string;
 
         /**
          * Returns the program name displayed in the about dialog.
          * @returns The program name. The string is owned by the about  dialog and must not be modified.
+         * @since 2.12
          */
         get_program_name(): string;
 
@@ -7138,24 +7151,28 @@ export namespace Gtk {
          * Returns the translator credits string which is displayed
          * in the translators tab of the secondary credits dialog.
          * @returns The translator credits string. The string is   owned by the about dialog and must not be modified.
+         * @since 2.6
          */
         get_translator_credits(): string;
 
         /**
          * Returns the version string.
          * @returns The version string. The string is owned by the about  dialog and must not be modified.
+         * @since 2.6
          */
         get_version(): string;
 
         /**
          * Returns the website URL.
          * @returns The website URL. The string is owned by the about  dialog and must not be modified.
+         * @since 2.6
          */
         get_website(): string;
 
         /**
          * Returns the label used for the website link.
          * @returns The label used for the website link. The string is     owned by the about dialog and must not be modified.
+         * @since 2.6
          */
         get_website_label(): string;
 
@@ -7163,6 +7180,7 @@ export namespace Gtk {
          * Returns whether the license text in `about` is
          * automatically wrapped.
          * @returns `true` if the license text is wrapped
+         * @since 2.8
          */
         get_wrap_license(): boolean;
 
@@ -7170,6 +7188,7 @@ export namespace Gtk {
          * Sets the strings which are displayed in the artists tab
          * of the secondary credits dialog.
          * @param artists a `null`-terminated array of strings
+         * @since 2.6
          */
         set_artists(artists: string): void;
 
@@ -7177,6 +7196,7 @@ export namespace Gtk {
          * Sets the strings which are displayed in the authors tab
          * of the secondary credits dialog.
          * @param authors a `null`-terminated array of strings
+         * @since 2.6
          */
         set_authors(authors: string): void;
 
@@ -7184,6 +7204,7 @@ export namespace Gtk {
          * Sets the comments string to display in the about dialog.
          * This should be a short string of one or two lines.
          * @param comments a comments string
+         * @since 2.6
          */
         set_comments(comments: string | null): void;
 
@@ -7191,6 +7212,7 @@ export namespace Gtk {
          * Sets the copyright string to display in the about dialog.
          * This should be a short string of one or two lines.
          * @param copyright the copyright string
+         * @since 2.6
          */
         set_copyright(copyright: string | null): void;
 
@@ -7198,6 +7220,7 @@ export namespace Gtk {
          * Sets the strings which are displayed in the documenters tab
          * of the secondary credits dialog.
          * @param documenters a `null`-terminated array of strings
+         * @since 2.6
          */
         set_documenters(documenters: string): void;
 
@@ -7206,6 +7229,7 @@ export namespace Gtk {
          * license dialog. If `license` is `null`, the license button is
          * hidden.
          * @param license the license information or `null`
+         * @since 2.6
          */
         set_license(license: string | null): void;
 
@@ -7214,6 +7238,7 @@ export namespace Gtk {
          * If it is `null`, the default window icon set with
          * `gtk_window_set_default_icon()` will be used.
          * @param logo a {@link GdkPixbuf.Pixbuf}, or `null`
+         * @since 2.6
          */
         set_logo(logo: GdkPixbuf.Pixbuf | null): void;
 
@@ -7222,6 +7247,7 @@ export namespace Gtk {
          * If it is `null`, the default window icon set with
          * `gtk_window_set_default_icon()` will be used.
          * @param icon_name an icon name, or `null`
+         * @since 2.6
          */
         set_logo_icon_name(icon_name: string | null): void;
 
@@ -7229,6 +7255,8 @@ export namespace Gtk {
          * Sets the name to display in the about dialog.
          * If this is not set, it defaults to `g_get_application_name()`.
          * @param name the program name
+         * @since 2.6
+         * @deprecated since 2.12: Use `gtk_about_dialog_set_program_name()` instead.
          */
         set_name(name: string | null): void;
 
@@ -7242,6 +7270,7 @@ export namespace Gtk {
          * Sets the name to display in the about dialog.
          * If this is not set, it defaults to `g_get_application_name()`.
          * @param name the program name
+         * @since 2.12
          */
         set_program_name(name: string): void;
 
@@ -7263,12 +7292,14 @@ export namespace Gtk {
          * since {@link Gtk.AboutDialog} will detect if "translator-credits" is untranslated
          * and hide the tab.
          * @param translator_credits the translator credits
+         * @since 2.6
          */
         set_translator_credits(translator_credits: string | null): void;
 
         /**
          * Sets the version string to display in the about dialog.
          * @param version the version string
+         * @since 2.6
          */
         set_version(version: string | null): void;
 
@@ -7278,6 +7309,7 @@ export namespace Gtk {
          * Note that that the hook functions need to be set up
          * before calling this function.
          * @param website a URL string starting with "http://"
+         * @since 2.6
          */
         set_website(website: string | null): void;
 
@@ -7285,6 +7317,7 @@ export namespace Gtk {
          * Sets the label to be used for the website link.
          * It defaults to the website URL.
          * @param website_label the label used for the website link
+         * @since 2.6
          */
         set_website_label(website_label: string): void;
 
@@ -7292,6 +7325,7 @@ export namespace Gtk {
          * Sets whether the license text in `about` is
          * automatically wrapped.
          * @param wrap_license whether to wrap the license
+         * @since 2.8
          */
         set_wrap_license(wrap_license: boolean): void;
 
@@ -7588,6 +7622,7 @@ export namespace Gtk {
          * Locks are added and removed using `gtk_accel_group_lock()` and
          * `gtk_accel_group_unlock()`.
          * @returns `true` if there are 1 or more locks on the `accel_group`, `false` otherwise.
+         * @since 2.14
          */
         get_is_locked(): boolean;
 
@@ -7595,6 +7630,7 @@ export namespace Gtk {
          * Gets a {@link Gdk.ModifierType} representing the mask for this
          * `accel_group`. For example, #GDK_CONTROL_MASK, #GDK_SHIFT_MASK, etc.
          * @returns the modifier mask for this accel group.
+         * @since 2.14
          */
         get_modifier_mask(): Gdk.ModifierType;
 
@@ -8014,6 +8050,7 @@ export namespace Gtk {
          * changes to be possible both the accelerator path and its {@link Gtk.AccelGroup}
          * have to be unlocked.
          * @param accel_path a valid accelerator path
+         * @since 2.4
          */
         static lock_path(accel_path: string): void;
 
@@ -8045,6 +8082,7 @@ export namespace Gtk {
          * Undoes the last call to `gtk_accel_map_lock_path()` on this `accel_path`.
          * Refer to `gtk_accel_map_lock_path()` for information about accelerator path locking.
          * @param accel_path a valid accelerator path
+         * @since 2.4
          */
         static unlock_path(accel_path: string): void;
     }
@@ -8131,12 +8169,14 @@ export namespace Gtk {
          * Gets the {@link Gtk.Widget} corresponding to the {@link Gtk.Accessible}. The returned widget
          * does not have a reference added, so you do not need to unref it.
          * @returns pointer to the {@link Gtk.Widget} corresponding to   the {@link Gtk.Accessible}, or `null`.
+         * @since 2.22
          */
         get_widget(): Widget;
 
         /**
          * Sets the {@link Gtk.Widget} corresponding to the {@link Gtk.Accessible}.
          * @param widget a {@link Gtk.Widget}
+         * @since 2.22
          */
         set_widget(widget: Widget): void;
     }
@@ -8493,6 +8533,7 @@ export namespace Gtk {
          * activated.
          * 
          * It can also be used to manually activate an action.
+         * @since 2.4
          * @virtual
          */
         vfunc_activate(): void;
@@ -8506,6 +8547,8 @@ export namespace Gtk {
          * If the widget is already connected to an action, it is disconnected
          * first.
          * @param proxy the proxy widget
+         * @since 2.4
+         * @deprecated since 2.16: Use `gtk_activatable_set_related_action()` instead.
          * @virtual
          */
         vfunc_connect_proxy(proxy: Widget): void;
@@ -8514,18 +8557,21 @@ export namespace Gtk {
          * If `action` provides a {@link Gtk.Menu} widget as a submenu for the menu
          * item or the toolbar item it creates, this function returns an
          * instance of that menu.
+         * @since 2.12
          * @virtual
          */
         vfunc_create_menu(): Widget;
 
         /**
          * Creates a menu item widget that proxies for the given action.
+         * @since 2.4
          * @virtual
          */
         vfunc_create_menu_item(): Widget;
 
         /**
          * Creates a toolbar item widget that proxies for the given action.
+         * @since 2.4
          * @virtual
          */
         vfunc_create_tool_item(): Widget;
@@ -8534,6 +8580,8 @@ export namespace Gtk {
          * Disconnects a proxy widget from an action.
          * Does <emphasis>not</emphasis> destroy the widget, however.
          * @param proxy the proxy widget
+         * @since 2.4
+         * @deprecated since 2.16: Use `gtk_activatable_set_related_action()` instead.
          * @virtual
          */
         vfunc_disconnect_proxy(proxy: Widget): void;
@@ -8545,6 +8593,7 @@ export namespace Gtk {
          * activated.
          * 
          * It can also be used to manually activate an action.
+         * @since 2.4
          */
         activate(): void;
 
@@ -8555,6 +8604,7 @@ export namespace Gtk {
          * {@link Gtk.Activatable} widget could result in calling `gtk_action_activate()`,
          * this is a convenience function to avoid recursing in those
          * cases (updating toggle state for instance).
+         * @since 2.16
          */
         block_activate(): void;
 
@@ -8565,6 +8615,8 @@ export namespace Gtk {
          * 
          * This function is intended for use by action implementations.
          * @param proxy a proxy widget
+         * @since 2.4
+         * @deprecated since 2.16: activatables are now responsible for activating the action directly so this doesnt apply anymore.
          */
         block_activate_from(proxy: Widget): void;
 
@@ -8577,6 +8629,7 @@ export namespace Gtk {
          * of the accelerator, the `action` counts the number of times this
          * function has been called and doesn't remove the accelerator until
          * `gtk_action_disconnect_accelerator()` has been called as many times.
+         * @since 2.4
          */
         connect_accelerator(): void;
 
@@ -8589,6 +8642,8 @@ export namespace Gtk {
          * If the widget is already connected to an action, it is disconnected
          * first.
          * @param proxy the proxy widget
+         * @since 2.4
+         * @deprecated since 2.16: Use `gtk_activatable_set_related_action()` instead.
          */
         connect_proxy(proxy: Widget): void;
 
@@ -8597,6 +8652,7 @@ export namespace Gtk {
          * create icons displayed in the proxy widgets.
          * @param icon_size the size of the icon that should be created.
          * @returns a widget that displays the icon for this action.
+         * @since 2.4
          */
         create_icon(icon_size: number): Widget;
 
@@ -8605,23 +8661,27 @@ export namespace Gtk {
          * item or the toolbar item it creates, this function returns an
          * instance of that menu.
          * @returns the menu item provided by the               action, or `null`.
+         * @since 2.12
          */
         create_menu(): Widget;
 
         /**
          * Creates a menu item widget that proxies for the given action.
          * @returns a menu item connected to the action.
+         * @since 2.4
          */
         create_menu_item(): Widget;
 
         /**
          * Creates a toolbar item widget that proxies for the given action.
          * @returns a toolbar item connected to the action.
+         * @since 2.4
          */
         create_tool_item(): Widget;
 
         /**
          * Undoes the effect of one call to `gtk_action_connect_accelerator()`.
+         * @since 2.4
          */
         disconnect_accelerator(): void;
 
@@ -8629,18 +8689,22 @@ export namespace Gtk {
          * Disconnects a proxy widget from an action.
          * Does <emphasis>not</emphasis> destroy the widget, however.
          * @param proxy the proxy widget
+         * @since 2.4
+         * @deprecated since 2.16: Use `gtk_activatable_set_related_action()` instead.
          */
         disconnect_proxy(proxy: Widget): void;
 
         /**
          * Returns the accel closure for this action.
          * @returns the accel closure for this action. The          returned closure is owned by GTK+ and must not be unreffed          or modified.
+         * @since 2.8
          */
         get_accel_closure(): GObject.Closure;
 
         /**
          * Returns the accel path for this action.
          * @returns the accel path for this action, or `null`   if none is set. The returned string is owned by GTK+   and must not be freed or modified.
+         * @since 2.6
          */
         get_accel_path(): string;
 
@@ -8649,36 +8713,42 @@ export namespace Gtk {
          * {@link Gtk.Settings.gtk_menu_images} setting and always show their image,
          * if available.
          * @returns `true` if the menu item proxies will always show their image
+         * @since 2.20
          */
         get_always_show_image(): boolean;
 
         /**
          * Gets the gicon of `action`.
          * @returns The action's {@link Gio.Icon} if one is set.
+         * @since 2.16
          */
         get_gicon(): Gio.Icon;
 
         /**
          * Gets the icon name of `action`.
          * @returns the icon name
+         * @since 2.16
          */
         get_icon_name(): string;
 
         /**
          * Checks whether `action` is important or not
          * @returns whether `action` is important
+         * @since 2.16
          */
         get_is_important(): boolean;
 
         /**
          * Gets the label text of `action`.
          * @returns the label text
+         * @since 2.16
          */
         get_label(): string;
 
         /**
          * Returns the name of the action.
          * @returns the name of the action. The string belongs to GTK+ and should not   be freed.
+         * @since 2.4
          */
         get_name(): string;
 
@@ -8686,6 +8756,7 @@ export namespace Gtk {
          * Returns the proxy widgets for an action.
          * See also `gtk_widget_get_action()`.
          * @returns a {@link GLib.SList} of proxy widgets. The list is owned by GTK+ and must not be modified.
+         * @since 2.4
          */
         get_proxies(): Widget[];
 
@@ -8694,24 +8765,28 @@ export namespace Gtk {
          * necessarily mean effective sensitivity. See `gtk_action_is_sensitive()`
          * for that.
          * @returns `true` if the action itself is sensitive.
+         * @since 2.4
          */
         get_sensitive(): boolean;
 
         /**
          * Gets the short label text of `action`.
          * @returns the short label text.
+         * @since 2.16
          */
         get_short_label(): string;
 
         /**
          * Gets the stock id of `action`.
          * @returns the stock id
+         * @since 2.16
          */
         get_stock_id(): string;
 
         /**
          * Gets the tooltip text of `action`.
          * @returns the tooltip text
+         * @since 2.16
          */
         get_tooltip(): string;
 
@@ -8720,30 +8795,35 @@ export namespace Gtk {
          * necessarily mean effective visibility. See `gtk_action_is_sensitive()`
          * for that.
          * @returns `true` if the action itself is visible.
+         * @since 2.4
          */
         get_visible(): boolean;
 
         /**
          * Checks whether `action` is visible when horizontal
          * @returns whether `action` is visible when horizontal
+         * @since 2.16
          */
         get_visible_horizontal(): boolean;
 
         /**
          * Checks whether `action` is visible when horizontal
          * @returns whether `action` is visible when horizontal
+         * @since 2.16
          */
         get_visible_vertical(): boolean;
 
         /**
          * Returns whether the action is effectively sensitive.
          * @returns `true` if the action and its associated action group are both sensitive.
+         * @since 2.4
          */
         is_sensitive(): boolean;
 
         /**
          * Returns whether the action is effectively visible.
          * @returns `true` if the action and its associated action group are both visible.
+         * @since 2.4
          */
         is_visible(): boolean;
 
@@ -8751,6 +8831,7 @@ export namespace Gtk {
          * Sets the {@link Gtk.AccelGroup} in which the accelerator for this action
          * will be installed.
          * @param accel_group a {@link Gtk.AccelGroup} or `null`
+         * @since 2.4
          */
         set_accel_group(accel_group: AccelGroup | null): void;
 
@@ -8763,6 +8844,7 @@ export namespace Gtk {
          * pass a static string, you can save some memory by interning it first with
          * `g_intern_static_string()`.
          * @param accel_path the accelerator path
+         * @since 2.4
          */
         set_accel_path(accel_path: string): void;
 
@@ -8773,18 +8855,21 @@ export namespace Gtk {
          * Use this if the menu item would be useless or hard to use
          * without their image.
          * @param always_show `true` if menuitem proxies should always show their image
+         * @since 2.20
          */
         set_always_show_image(always_show: boolean): void;
 
         /**
          * Sets the icon of `action`.
          * @param icon the {@link Gio.Icon} to set
+         * @since 2.16
          */
         set_gicon(icon: Gio.Icon): void;
 
         /**
          * Sets the icon name on `action`
          * @param icon_name the icon name to set
+         * @since 2.16
          */
         set_icon_name(icon_name: string): void;
 
@@ -8793,12 +8878,14 @@ export namespace Gtk {
          * primarily by toolbar items to decide whether to show a label
          * or not.
          * @param is_important `true` to make the action important
+         * @since 2.16
          */
         set_is_important(is_important: boolean): void;
 
         /**
          * Sets the label of `action`.
          * @param label the label text to set
+         * @since 2.16
          */
         set_label(label: string): void;
 
@@ -8808,24 +8895,28 @@ export namespace Gtk {
          * `gtk_action_is_sensitive()`
          * for that.
          * @param sensitive `true` to make the action sensitive
+         * @since 2.6
          */
         set_sensitive(sensitive: boolean): void;
 
         /**
          * Sets a shorter label text on `action`.
          * @param short_label the label text to set
+         * @since 2.16
          */
         set_short_label(short_label: string): void;
 
         /**
          * Sets the stock id on `action`
          * @param stock_id the stock id
+         * @since 2.16
          */
         set_stock_id(stock_id: string): void;
 
         /**
          * Sets the tooltip text on `action`
          * @param tooltip the tooltip text
+         * @since 2.16
          */
         set_tooltip(tooltip: string): void;
 
@@ -8835,23 +8926,27 @@ export namespace Gtk {
          * `gtk_action_is_visible()`
          * for that.
          * @param visible `true` to make the action visible
+         * @since 2.6
          */
         set_visible(visible: boolean): void;
 
         /**
          * Sets whether `action` is visible when horizontal
          * @param visible_horizontal whether the action is visible horizontally
+         * @since 2.16
          */
         set_visible_horizontal(visible_horizontal: boolean): void;
 
         /**
          * Sets whether `action` is visible when vertical
          * @param visible_vertical whether the action is visible vertically
+         * @since 2.16
          */
         set_visible_vertical(visible_vertical: boolean): void;
 
         /**
          * Reenable activation signals from the action
+         * @since 2.16
          */
         unblock_activate(): void;
 
@@ -8862,6 +8957,8 @@ export namespace Gtk {
          * 
          * This function is intended for use by action implementations.
          * @param proxy a proxy widget
+         * @since 2.4
+         * @deprecated since 2.16: activatables are now responsible for activating the action directly so this doesnt apply anymore.
          */
         unblock_activate_from(proxy: Widget): void;
 
@@ -8871,6 +8968,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -8882,6 +8980,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -8892,6 +8991,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -8902,6 +9002,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -8911,6 +9012,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -8919,6 +9021,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -8929,6 +9032,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -8937,12 +9041,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -8952,6 +9058,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -8963,6 +9070,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -8974,6 +9082,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -8985,6 +9094,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -8994,6 +9104,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -9002,6 +9113,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -9012,6 +9124,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -9023,6 +9136,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -9032,6 +9146,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -9039,6 +9154,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -9166,6 +9282,7 @@ export namespace Gtk {
         /**
          * Looks up an action in the action group by name.
          * @param action_name the name of the action
+         * @since 2.4
          * @virtual
          */
         vfunc_get_action(action_name: string): Action;
@@ -9179,6 +9296,7 @@ export namespace Gtk {
          * `gtk_action_set_accel_path()`, or use
          * <literal>gtk_action_group_add_action_with_accel (..., NULL)</literal>.
          * @param action an action
+         * @since 2.4
          */
         add_action(action: Action): void;
 
@@ -9192,6 +9310,7 @@ export namespace Gtk {
          * <literal>&lt;Actions&gt;/<replaceable>group-name</replaceable>/<replaceable>action-name</replaceable></literal>.
          * @param action the action to add
          * @param accelerator the accelerator for the action, in   the format understood by `gtk_accelerator_parse()`, or "" for no accelerator, or   `null` to use the stock accelerator
+         * @since 2.4
          */
         add_action_with_accel(action: Action, accelerator: string | null): void;
 
@@ -9205,6 +9324,7 @@ export namespace Gtk {
          * @param entries an array of action descriptions
          * @param n_entries the number of entries
          * @param user_data data to pass to the action callbacks
+         * @since 2.4
          */
         add_actions(entries: ActionEntry, n_entries: number, user_data: null): void;
 
@@ -9214,6 +9334,7 @@ export namespace Gtk {
          * @param entries an array of action descriptions
          * @param n_entries the number of entries
          * @param user_data data to pass to the action callbacks
+         * @since 2.4
          */
         add_actions_full(entries: ActionEntry, n_entries: number, user_data: null): void;
 
@@ -9224,6 +9345,7 @@ export namespace Gtk {
          * @param n_entries the number of entries
          * @param value the value of the action to activate initially, or -1 if   no action should be activated
          * @param on_change the callback to connect to the changed signal
+         * @since 2.4
          */
         add_radio_actions_full(entries: RadioActionEntry, n_entries: number, value: number, on_change: GObject.Callback): void;
 
@@ -9237,6 +9359,7 @@ export namespace Gtk {
          * @param entries an array of toggle action descriptions
          * @param n_entries the number of entries
          * @param user_data data to pass to the action callbacks
+         * @since 2.4
          */
         add_toggle_actions(entries: ToggleActionEntry, n_entries: number, user_data: null): void;
 
@@ -9246,6 +9369,7 @@ export namespace Gtk {
          * @param entries an array of toggle action descriptions
          * @param n_entries the number of entries
          * @param user_data data to pass to the action callbacks
+         * @since 2.4
          */
         add_toggle_actions_full(entries: ToggleActionEntry, n_entries: number, user_data: null): void;
 
@@ -9253,12 +9377,14 @@ export namespace Gtk {
          * Looks up an action in the action group by name.
          * @param action_name the name of the action
          * @returns the action, or `null` if no action by that name exists
+         * @since 2.4
          */
         get_action(action_name: string): Action;
 
         /**
          * Gets the name of the action group.
          * @returns the name of the action group.
+         * @since 2.4
          */
         get_name(): string;
 
@@ -9268,6 +9394,7 @@ export namespace Gtk {
          * they are sensitive (see `gtk_action_get_sensitive()`) and their group
          * is sensitive.
          * @returns `true` if the group is sensitive.
+         * @since 2.4
          */
         get_sensitive(): boolean;
 
@@ -9277,24 +9404,28 @@ export namespace Gtk {
          * they are visible (see `gtk_action_get_visible()`) and their group
          * is visible.
          * @returns `true` if the group is visible.
+         * @since 2.4
          */
         get_visible(): boolean;
 
         /**
          * Lists the actions in the action group.
          * @returns an allocated list of the action objects in the action group
+         * @since 2.4
          */
         list_actions(): Action[];
 
         /**
          * Removes an action object from the action group.
          * @param action an action
+         * @since 2.4
          */
         remove_action(action: Action): void;
 
         /**
          * Changes the sensitivity of `action_group`
          * @param sensitive new sensitivity
+         * @since 2.4
          */
         set_sensitive(sensitive: boolean): void;
 
@@ -9305,6 +9436,7 @@ export namespace Gtk {
          * If you're using `gettext()`, it is enough to set the translation domain
          * with `gtk_action_group_set_translation_domain()`.
          * @param func a {@link Gtk.TranslateFunc}
+         * @since 2.4
          */
         set_translate_func(func: TranslateFunc): void;
 
@@ -9316,12 +9448,14 @@ export namespace Gtk {
          * If you're not using `gettext()` for localization, see
          * `gtk_action_group_set_translate_func()`.
          * @param domain the translation domain to use for `g_dgettext()` calls
+         * @since 2.4
          */
         set_translation_domain(domain: string): void;
 
         /**
          * Changes the visible of `action_group`.
          * @param visible new visiblity
+         * @since 2.4
          */
         set_visible(visible: boolean): void;
 
@@ -9330,6 +9464,7 @@ export namespace Gtk {
          * is mainly intended for language bindings.
          * @param string a string
          * @returns the translation of `string`
+         * @since 2.6
          */
         translate_string(string: string): string;
 
@@ -9339,6 +9474,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -9350,6 +9486,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -9360,6 +9497,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -9370,6 +9508,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -9379,6 +9518,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -9387,6 +9527,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -9397,6 +9538,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -9405,12 +9547,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -9420,6 +9564,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -9431,6 +9576,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -9442,6 +9588,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -9453,6 +9600,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -9462,6 +9610,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -9470,6 +9619,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -9480,6 +9630,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -9491,6 +9642,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -9500,6 +9652,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -9507,6 +9660,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -9698,36 +9852,42 @@ export namespace Gtk {
          * @param step_increment the new step increment
          * @param page_increment the new page increment
          * @param page_size the new page size
+         * @since 2.14
          */
         configure(value: number, lower: number, upper: number, step_increment: number, page_increment: number, page_size: number): void;
 
         /**
          * Retrieves the minimum value of the adjustment.
          * @returns The current minimum value of the adjustment.
+         * @since 2.14
          */
         get_lower(): number;
 
         /**
          * Retrieves the page increment of the adjustment.
          * @returns The current page increment of the adjustment.
+         * @since 2.14
          */
         get_page_increment(): number;
 
         /**
          * Retrieves the page size of the adjustment.
          * @returns The current page size of the adjustment.
+         * @since 2.14
          */
         get_page_size(): number;
 
         /**
          * Retrieves the step increment of the adjustment.
          * @returns The current step increment of the adjustment.
+         * @since 2.14
          */
         get_step_increment(): number;
 
         /**
          * Retrieves the maximum value of the adjustment.
          * @returns The current maximum value of the adjustment.
+         * @since 2.14
          */
         get_upper(): number;
 
@@ -9753,6 +9913,7 @@ export namespace Gtk {
          * to change, or using `gtk_adjustment_configure()` has the same effect
          * of compressing "changed" emissions.
          * @param lower the new minimum value
+         * @since 2.14
          */
         set_lower(lower: number): void;
 
@@ -9763,6 +9924,7 @@ export namespace Gtk {
          * emissions of the "changed" signal when setting multiple adjustment
          * properties.
          * @param page_increment the new page increment
+         * @since 2.14
          */
         set_page_increment(page_increment: number): void;
 
@@ -9773,6 +9935,7 @@ export namespace Gtk {
          * emissions of the "changed" signal when setting multiple adjustment
          * properties.
          * @param page_size the new page size
+         * @since 2.14
          */
         set_page_size(page_size: number): void;
 
@@ -9783,6 +9946,7 @@ export namespace Gtk {
          * emissions of the "changed" signal when setting multiple adjustment
          * properties.
          * @param step_increment the new step increment
+         * @since 2.14
          */
         set_step_increment(step_increment: number): void;
 
@@ -9797,6 +9961,7 @@ export namespace Gtk {
          * emissions of the "changed" signal when setting multiple adjustment
          * properties.
          * @param upper the new maximum value
+         * @since 2.14
          */
         set_upper(upper: number): void;
 
@@ -10009,6 +10174,7 @@ export namespace Gtk {
         /**
          * Gets the padding on the different sides of the widget.
          * See gtk_alignment_set_padding ().
+         * @since 2.4
          */
         get_padding(): [number, number, number, number];
 
@@ -10036,6 +10202,7 @@ export namespace Gtk {
          * @param padding_bottom the padding at the bottom of the widget
          * @param padding_left the padding at the left of the widget
          * @param padding_right the padding at the right of the widget.
+         * @since 2.4
          */
         set_padding(padding_top: number, padding_bottom: number, padding_left: number, padding_right: number): void;
 
@@ -10623,6 +10790,7 @@ export namespace Gtk {
         /**
          * Adds a widget to the action area of a {@link Gtk.Assistant}.
          * @param child a {@link Gtk.Widget}
+         * @since 2.10
          */
         add_action_widget(child: Widget): void;
 
@@ -10630,6 +10798,7 @@ export namespace Gtk {
          * Appends a page to the `assistant`.
          * @param page a {@link Gtk.Widget}
          * @returns the index (starting at 0) of the inserted page
+         * @since 2.10
          */
         append_page(page: Widget): number;
 
@@ -10643,18 +10812,21 @@ export namespace Gtk {
          * or undone.  For example, showing a progress page to track
          * a long-running, unreversible operation after the user has
          * clicked apply on a confirmation page.
+         * @since 2.22
          */
         commit(): void;
 
         /**
          * Returns the page number of the current page
          * @returns The index (starting from 0) of the current page in the `assistant`, if the `assistant` has no pages, -1 will be returned
+         * @since 2.10
          */
         get_current_page(): number;
 
         /**
          * Returns the number of pages in the `assistant`
          * @returns The number of pages in the `assistant`.
+         * @since 2.10
          */
         get_n_pages(): number;
 
@@ -10662,6 +10834,7 @@ export namespace Gtk {
          * Returns the child widget contained in page number `page_num`.
          * @param page_num The index of a page in the `assistant`, or -1 to get the last page;
          * @returns The child widget, or `null`     if `page_num` is out of bounds.
+         * @since 2.10
          */
         get_nth_page(page_num: number): Widget;
 
@@ -10669,6 +10842,7 @@ export namespace Gtk {
          * Gets whether `page` is complete.
          * @param page a page of `assistant`
          * @returns `true` if `page` is complete.
+         * @since 2.10
          */
         get_page_complete(page: Widget): boolean;
 
@@ -10676,6 +10850,7 @@ export namespace Gtk {
          * Gets the header image for `page`.
          * @param page a page of `assistant`
          * @returns the header image for `page`, or `null`     if there's no header image for the page.
+         * @since 2.10
          */
         get_page_header_image(page: Widget): GdkPixbuf.Pixbuf;
 
@@ -10683,6 +10858,7 @@ export namespace Gtk {
          * Gets the header image for `page`.
          * @param page a page of `assistant`
          * @returns the side image for `page`, or `null`     if there's no side image for the page.
+         * @since 2.10
          */
         get_page_side_image(page: Widget): GdkPixbuf.Pixbuf;
 
@@ -10690,6 +10866,7 @@ export namespace Gtk {
          * Gets the title for `page`.
          * @param page a page of `assistant`
          * @returns the title for `page`.
+         * @since 2.10
          */
         get_page_title(page: Widget): string;
 
@@ -10697,6 +10874,7 @@ export namespace Gtk {
          * Gets the page type of `page`.
          * @param page a page of `assistant`
          * @returns the page type of `page`.
+         * @since 2.10
          */
         get_page_type(page: Widget): AssistantPageType;
 
@@ -10705,6 +10883,7 @@ export namespace Gtk {
          * @param page a {@link Gtk.Widget}
          * @param position the index (starting at 0) at which to insert the page,            or -1 to append the page to the `assistant`
          * @returns the index (starting from 0) of the inserted page
+         * @since 2.10
          */
         insert_page(page: Widget, position: number): number;
 
@@ -10712,12 +10891,14 @@ export namespace Gtk {
          * Prepends a page to the `assistant`.
          * @param page a {@link Gtk.Widget}
          * @returns the index (starting at 0) of the inserted page
+         * @since 2.10
          */
         prepend_page(page: Widget): number;
 
         /**
          * Removes a widget from the action area of a {@link Gtk.Assistant}.
          * @param child a {@link Gtk.Widget}
+         * @since 2.10
          */
         remove_action_widget(child: Widget): void;
 
@@ -10726,6 +10907,7 @@ export namespace Gtk {
          * in custom buttons, as the `assistant` flow can be set with
          * `gtk_assistant_set_forward_page_func()`.
          * @param page_num index of the page to switch to, starting from 0.            If negative, the last page will be used. If greater            than the number of pages in the `assistant`, nothing            will be done.
+         * @since 2.10
          */
         set_current_page(page_num: number): void;
 
@@ -10736,6 +10918,7 @@ export namespace Gtk {
          * to use the default forward function, which just goes to the next visible
          * page.
          * @param page_func the {@link Gtk.AssistantPageFunc}, or `null` to use the default one
+         * @since 2.10
          */
         set_forward_page_func(page_func: AssistantPageFunc | null): void;
 
@@ -10744,6 +10927,7 @@ export namespace Gtk {
          * `assistant` update the buttons state to be able to continue the task.
          * @param page a page of `assistant`
          * @param complete the completeness status of the page
+         * @since 2.10
          */
         set_page_complete(page: Widget, complete: boolean): void;
 
@@ -10752,6 +10936,7 @@ export namespace Gtk {
          * area of the assistant when `page` is the current page.
          * @param page a page of `assistant`
          * @param pixbuf the new header image `page`
+         * @since 2.10
          */
         set_page_header_image(page: Widget, pixbuf: GdkPixbuf.Pixbuf | null): void;
 
@@ -10760,6 +10945,7 @@ export namespace Gtk {
          * area of the assistant when `page` is the current page.
          * @param page a page of `assistant`
          * @param pixbuf the new header image `page`
+         * @since 2.10
          */
         set_page_side_image(page: Widget, pixbuf: GdkPixbuf.Pixbuf | null): void;
 
@@ -10768,6 +10954,7 @@ export namespace Gtk {
          * area of the assistant when `page` is the current page.
          * @param page a page of `assistant`
          * @param title the new title for `page`
+         * @since 2.10
          */
         set_page_title(page: Widget, title: string): void;
 
@@ -10776,6 +10963,7 @@ export namespace Gtk {
          * behavior in the `assistant`.
          * @param page a page of `assistant`
          * @param type the new type for `page`
+         * @since 2.10
          */
         set_page_type(page: Widget, type: AssistantPageType): void;
 
@@ -10789,6 +10977,7 @@ export namespace Gtk {
          * One situation where it can be necessary to call this
          * function is when changing a value on the current page
          * affects the future page flow of the assistant.
+         * @since 2.10
          */
         update_buttons_state(): void;
 
@@ -11082,6 +11271,7 @@ export namespace Gtk {
          * {@link Gtk.Box.fill} and {@link Gtk.Box.padding}, are given their default
          * values, `true`, `true`, and 0, respectively.
          * @param widget the {@link Gtk.Widget} to be added to `box`
+         * @deprecated since 2.14: Use `gtk_box_pack_end()`
          */
         pack_end_defaults(widget: Widget): void;
 
@@ -11105,6 +11295,7 @@ export namespace Gtk {
          * {@link Gtk.Box.fill} and {@link Gtk.Box.padding}, are given their default
          * values, `true`, `true`, and 0, respectively.
          * @param widget the {@link Gtk.Widget} to be added to `box`
+         * @deprecated since 2.14: Use `gtk_box_pack_start()`
          */
         pack_start_defaults(widget: Widget): void;
 
@@ -11171,12 +11362,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -11293,6 +11486,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} has for that purpose. This is mainly used when
          * implementing the {@link Gtk.Buildable} interface on a type.
          * @param type_name type name to lookup
+         * @since 2.12
          * @virtual
          */
         vfunc_get_type_from_name(type_name: string): GObject.GType;
@@ -11307,6 +11501,7 @@ export namespace Gtk {
          * domain.
          * @param filename the name of the file to parse
          * @returns A positive value on success, 0 if an error occurred
+         * @since 2.12
          */
         add_from_file(filename: string): number;
 
@@ -11319,6 +11514,7 @@ export namespace Gtk {
          * @param buffer the string to parse
          * @param length the length of `buffer` (may be -1 if `buffer` is nul-terminated)
          * @returns A positive value on success, 0 if an error occurred
+         * @since 2.12
          */
         add_from_string(buffer: string, length: bigint | number): number;
 
@@ -11339,6 +11535,7 @@ export namespace Gtk {
          * @param filename the name of the file to parse
          * @param object_ids nul-terminated array of objects to build
          * @returns A positive value on success, 0 if an error occurred
+         * @since 2.14
          */
         add_objects_from_file(filename: string, object_ids: string): number;
 
@@ -11359,6 +11556,7 @@ export namespace Gtk {
          * @param length the length of `buffer` (may be -1 if `buffer` is nul-terminated)
          * @param object_ids nul-terminated array of objects to build
          * @returns A positive value on success, 0 if an error occurred
+         * @since 2.14
          */
         add_objects_from_string(buffer: string, length: bigint | number, object_ids: string): number;
 
@@ -11378,6 +11576,7 @@ export namespace Gtk {
          * be compiled with the -Wl,--export-dynamic CFLAGS, and linked against
          * gmodule-export-2.0.
          * @param user_data a pointer to a structure sent in as user data to all signals
+         * @since 2.12
          */
         connect_signals(user_data: null): void;
 
@@ -11386,6 +11585,7 @@ export namespace Gtk {
          * version of `gtk_builder_connect_signals()`, except that it does not
          * require GModule to function correctly.
          * @param func the function used to connect the signals
+         * @since 2.12
          */
         connect_signals_full(func: BuilderConnectFunc): void;
 
@@ -11394,6 +11594,7 @@ export namespace Gtk {
          * increment the reference count of the returned object.
          * @param name name of object to get
          * @returns the object named `name` or `null` if    it could not be found in the object tree.
+         * @since 2.12
          */
         get_object<T = GObject.Object>(name: string): T;
 
@@ -11402,12 +11603,14 @@ export namespace Gtk {
          * this function does not increment the reference counts of the returned
          * objects.
          * @returns a newly-allocated {@link GLib.SList} containing all the objects   constructed by the {@link Gtk.Builder} instance. It should be freed by   `g_slist_free()`
+         * @since 2.12
          */
         get_objects(): GObject.Object[];
 
         /**
          * Gets the translation domain of `builder`.
          * @returns the translation domain. This string is owned by the builder object and must not be modified or freed.
+         * @since 2.12
          */
         get_translation_domain(): string;
 
@@ -11417,6 +11620,7 @@ export namespace Gtk {
          * implementing the {@link Gtk.Buildable} interface on a type.
          * @param type_name type name to lookup
          * @returns the {@link GObject.GType} found for `type_name` or #G_TYPE_INVALID   if no type was found
+         * @since 2.12
          */
         get_type_from_name(type_name: string): GObject.GType;
 
@@ -11424,6 +11628,7 @@ export namespace Gtk {
          * Sets the translation domain of `builder`.
          * See {@link Gtk.Builder.translation_domain}.
          * @param domain the translation domain or `null`
+         * @since 2.12
          */
         set_translation_domain(domain: string | null): void;
 
@@ -11442,6 +11647,7 @@ export namespace Gtk {
          * @param pspec the {@link GObject.ParamSpec} for the property
          * @param string the string representation of the value
          * @returns `true` on success
+         * @since 2.12
          */
         value_from_string(pspec: GObject.ParamSpec, string: string): [boolean, unknown];
 
@@ -11456,6 +11662,7 @@ export namespace Gtk {
          * @param type the {@link GObject.GType} of the value
          * @param string the string representation of the value
          * @returns `true` on success
+         * @since 2.12
          */
         value_from_string_type(type: GObject.GType, string: string): [boolean, unknown];
     }
@@ -11753,6 +11960,7 @@ export namespace Gtk {
 
         /**
          * Gets the alignment of the child in the button.
+         * @since 2.4
          */
         get_alignment(): [number, number];
 
@@ -11760,6 +11968,7 @@ export namespace Gtk {
          * Returns the button's event window if it is realized, `null` otherwise.
          * This function should be rarely needed.
          * @returns `button`'s event window.
+         * @since 2.22
          */
         get_event_window(): Gdk.Window;
 
@@ -11767,6 +11976,7 @@ export namespace Gtk {
          * Returns whether the button grabs focus when it is clicked with the mouse.
          * See `gtk_button_set_focus_on_click()`.
          * @returns `true` if the button grabs focus when it is clicked with               the mouse.
+         * @since 2.4
          */
         get_focus_on_click(): boolean;
 
@@ -11775,6 +11985,7 @@ export namespace Gtk {
          * This may have been explicitly set by `gtk_button_set_image()`
          * or constructed by `gtk_button_new_from_stock()`.
          * @returns a {@link Gtk.Widget} or `null` in case there is no image
+         * @since 2.6
          */
         get_image(): Widget;
 
@@ -11782,6 +11993,7 @@ export namespace Gtk {
          * Gets the position of the image relative to the text
          * inside the button.
          * @returns the position
+         * @since 2.10
          */
         get_image_position(): PositionType;
 
@@ -11821,6 +12033,7 @@ export namespace Gtk {
          * the child is a {@link Gtk.Misc} or a `GtkAligment`.
          * @param xalign the horizontal position of the child, 0.0 is left aligned,   1.0 is right aligned
          * @param yalign the vertical position of the child, 0.0 is top aligned,   1.0 is bottom aligned
+         * @since 2.4
          */
         set_alignment(xalign: number, yalign: number): void;
 
@@ -11830,6 +12043,7 @@ export namespace Gtk {
          * you don't want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the button grabs focus when clicked with the mouse
+         * @since 2.4
          */
         set_focus_on_click(focus_on_click: boolean): void;
 
@@ -11839,6 +12053,7 @@ export namespace Gtk {
          * image will be displayed or not, you don't have to call
          * `gtk_widget_show()` on `image` yourself.
          * @param image a widget to set as the image for the button
+         * @since 2.6
          */
         set_image(image: Widget): void;
 
@@ -11846,6 +12061,7 @@ export namespace Gtk {
          * Sets the position of the image relative to the text
          * inside the button.
          * @param position the position
+         * @since 2.10
          */
         set_image_position(position: PositionType): void;
 
@@ -11954,12 +12170,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -11968,6 +12186,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -11977,6 +12196,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -11989,6 +12209,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -11998,6 +12219,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -12007,6 +12229,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -12168,6 +12391,7 @@ export namespace Gtk {
          * Returns whether `child` should appear in a secondary group of children.
          * @param child a child of `widget`
          * @returns whether `child` should appear in a secondary group of children.
+         * @since 2.4
          */
         get_child_secondary(child: Widget): boolean;
 
@@ -12226,12 +12450,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -14196,12 +14422,14 @@ export namespace Gtk {
         /**
          * Sets display options (whether to display the heading and the month headings).
          * @param flags the display options to set.
+         * @deprecated since 2.4: Use `gtk_calendar_set_display_options()` instead
          */
         display_options(flags: CalendarDisplayOptions): void;
 
         /**
          * Does nothing. Previously locked the display of the calendar until
          * it was thawed with `gtk_calendar_thaw()`.
+         * @deprecated since 2.8
          */
         freeze(): void;
 
@@ -14214,6 +14442,7 @@ export namespace Gtk {
          * Queries the height of detail cells, in rows.
          * See {@link Gtk.Calendar.detail_width_chars}.
          * @returns The height of detail cells, in rows.
+         * @since 2.14
          */
         get_detail_height_rows(): number;
 
@@ -14221,12 +14450,14 @@ export namespace Gtk {
          * Queries the width of detail cells, in characters.
          * See {@link Gtk.Calendar.detail_width_chars}.
          * @returns The width of detail cells, in characters.
+         * @since 2.14
          */
         get_detail_width_chars(): number;
 
         /**
          * Returns the current display options of `calendar`.
          * @returns the display options.
+         * @since 2.4
          */
         get_display_options(): CalendarDisplayOptions;
 
@@ -14271,6 +14502,7 @@ export namespace Gtk {
          * {@link Gtk.Calendar.detail_width_chars} and {@link Gtk.Calendar.detail_height_rows}
          * properties.
          * @param func a function providing details for each day.
+         * @since 2.14
          */
         set_detail_func(func: CalendarDetailFunc): void;
 
@@ -14278,6 +14510,7 @@ export namespace Gtk {
          * Updates the height of detail cells.
          * See {@link Gtk.Calendar.detail_height_rows}.
          * @param rows detail height in rows.
+         * @since 2.14
          */
         set_detail_height_rows(rows: number): void;
 
@@ -14285,6 +14518,7 @@ export namespace Gtk {
          * Updates the width of detail cells.
          * See {@link Gtk.Calendar.detail_width_chars}.
          * @param chars detail width in characters.
+         * @since 2.14
          */
         set_detail_width_chars(chars: number): void;
 
@@ -14292,12 +14526,14 @@ export namespace Gtk {
          * Sets display options (whether to display the heading and the month
          * headings).
          * @param flags the display options to set
+         * @since 2.4
          */
         set_display_options(flags: CalendarDisplayOptions): void;
 
         /**
          * Does nothing. Previously defrosted a calendar; all the changes made
          * since the last `gtk_calendar_freeze()` were displayed.
+         * @deprecated since 2.8
          */
         thaw(): void;
 
@@ -14318,6 +14554,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -14329,6 +14566,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -14339,6 +14577,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -14349,6 +14588,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -14358,6 +14598,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -14366,6 +14607,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -14376,6 +14618,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -14386,6 +14629,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -14394,12 +14638,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -14409,6 +14655,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -14420,6 +14667,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -14431,6 +14679,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -14442,6 +14691,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -14451,6 +14701,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -14459,6 +14710,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -14469,6 +14721,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -14480,6 +14733,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -14489,6 +14743,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -14496,6 +14751,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -14797,6 +15053,8 @@ export namespace Gtk {
          * This function is for use only by implementations of cell renderers that
          * need to notify the client program that an editing process was canceled
          * and the changes were not committed.
+         * @since 2.4
+         * @deprecated since 2.6: Use `gtk_cell_renderer_stop_editing()` instead
          * @virtual
          */
         vfunc_editing_canceled(): void;
@@ -14874,11 +15132,14 @@ export namespace Gtk {
          * This function is for use only by implementations of cell renderers that
          * need to notify the client program that an editing process was canceled
          * and the changes were not committed.
+         * @since 2.4
+         * @deprecated since 2.6: Use `gtk_cell_renderer_stop_editing()` instead
          */
         editing_canceled(): void;
 
         /**
          * Fills in `xalign` and `yalign` with the appropriate values of `cell`.
+         * @since 2.18
          */
         get_alignment(): [number, number];
 
@@ -14889,12 +15150,14 @@ export namespace Gtk {
 
         /**
          * Fills in `xpad` and `ypad` with the appropriate values of `cell`.
+         * @since 2.18
          */
         get_padding(): [number, number];
 
         /**
          * Returns the cell renderer's sensitivity.
          * @returns `true` if the cell renderer is sensitive
+         * @since 2.18
          */
         get_sensitive(): boolean;
 
@@ -14914,6 +15177,7 @@ export namespace Gtk {
         /**
          * Returns the cell renderer's visibility.
          * @returns `true` if the cell renderer is visible
+         * @since 2.18
          */
         get_visible(): boolean;
 
@@ -14938,6 +15202,7 @@ export namespace Gtk {
          * Sets the renderer's alignment within its available space.
          * @param xalign the x alignment of the cell renderer
          * @param yalign the y alignment of the cell renderer
+         * @since 2.18
          */
         set_alignment(xalign: number, yalign: number): void;
 
@@ -14952,18 +15217,21 @@ export namespace Gtk {
          * Sets the renderer's padding.
          * @param xpad the x padding of the cell renderer
          * @param ypad the y padding of the cell renderer
+         * @since 2.18
          */
         set_padding(xpad: number, ypad: number): void;
 
         /**
          * Sets the cell renderer's sensitivity.
          * @param sensitive the sensitivity of the cell
+         * @since 2.18
          */
         set_sensitive(sensitive: boolean): void;
 
         /**
          * Sets the cell renderer's visibility.
          * @param visible the visibility of the cell
+         * @since 2.18
          */
         set_visible(visible: boolean): void;
 
@@ -14988,6 +15256,7 @@ export namespace Gtk {
          * in response to the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal of
          * {@link Gtk.CellEditable}.
          * @param canceled `true` if the editing has been canceled
+         * @since 2.6
          */
         stop_editing(canceled: boolean): void;
     }
@@ -16759,6 +17028,7 @@ export namespace Gtk {
          * Returns whether the cell renderer is activatable. See
          * `gtk_cell_renderer_toggle_set_activatable()`.
          * @returns `true` if the cell renderer is activatable.
+         * @since 2.18
          */
         get_activatable(): boolean;
 
@@ -16778,6 +17048,7 @@ export namespace Gtk {
         /**
          * Makes the cell renderer activatable.
          * @param setting the value to set.
+         * @since 2.18
          */
         set_activatable(setting: boolean): void;
 
@@ -16925,6 +17196,7 @@ export namespace Gtk {
          * displayed row. If no row is currently displayed,
          * `null` is returned.
          * @returns the currently displayed row or `null`
+         * @since 2.6
          */
         get_displayed_row(): TreePath;
 
@@ -16932,6 +17204,7 @@ export namespace Gtk {
          * Returns the model for `cell_view`. If no model is used `null` is
          * returned.
          * @returns a {@link Gtk.TreeModel} used or `null`
+         * @since 2.16
          */
         get_model(): TreeModel;
 
@@ -16940,12 +17213,14 @@ export namespace Gtk {
          * the model row pointed to by `path`.
          * @param path a {@link Gtk.TreePath}
          * @returns `true`
+         * @since 2.6
          */
         get_size_of_row(path: TreePath): [boolean, Requisition];
 
         /**
          * Sets the background color of `view`.
          * @param color the new background color
+         * @since 2.6
          */
         set_background_color(color: Gdk.Color): void;
 
@@ -16957,6 +17232,7 @@ export namespace Gtk {
          * a needed intermediate state if say, the model for
          * the {@link Gtk.CellView} becomes temporarily empty.
          * @param path a {@link Gtk.TreePath} or `null` to unset.
+         * @since 2.6
          */
         set_displayed_row(path: TreePath | null): void;
 
@@ -16965,6 +17241,7 @@ export namespace Gtk {
          * set, it will remove it before setting the new model.  If `model` is
          * `null`, then it will unset the old model.
          * @param model a {@link Gtk.TreeModel}
+         * @since 2.6
          */
         set_model(model: TreeModel | null): void;
 
@@ -16974,6 +17251,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -16985,6 +17263,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -16995,6 +17274,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -17005,6 +17285,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -17014,6 +17295,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -17022,6 +17304,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -17032,6 +17315,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -17042,6 +17326,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -17050,12 +17335,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -17065,6 +17352,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -17076,6 +17364,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -17087,6 +17376,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -17098,6 +17388,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -17107,6 +17398,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -17115,6 +17407,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -17125,6 +17418,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -17136,6 +17430,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -17145,6 +17440,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -17152,6 +17448,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -17165,12 +17462,14 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          */
         add_attribute(cell: CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -17178,12 +17477,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          */
         clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the   renderers has been newly allocated and should be freed with   `g_list_free()` when no longer needed.
+         * @since 2.12
          */
         get_cells(): CellRenderer[];
 
@@ -17195,6 +17496,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_end(cell: CellRenderer, expand: boolean): void;
 
@@ -17206,6 +17508,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_start(cell: CellRenderer, expand: boolean): void;
 
@@ -17214,6 +17517,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          */
         reorder(cell: CellRenderer, position: number): void;
 
@@ -17224,6 +17528,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          */
         set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
 
@@ -17236,6 +17541,7 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: CellRenderer, attribute: string, column: number): void;
@@ -17243,6 +17549,7 @@ export namespace Gtk {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -17251,12 +17558,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): CellRenderer[];
@@ -17269,6 +17578,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: CellRenderer, expand: boolean): void;
@@ -17281,6 +17591,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: CellRenderer, expand: boolean): void;
@@ -17290,6 +17601,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: CellRenderer, position: number): void;
@@ -17301,6 +17613,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
@@ -17622,6 +17935,7 @@ export namespace Gtk {
         /**
          * Returns whether `check_menu_item` looks like a {@link Gtk.RadioMenuItem}
          * @returns Whether `check_menu_item` looks like a {@link Gtk.RadioMenuItem}
+         * @since 2.4
          */
         get_draw_as_radio(): boolean;
 
@@ -17639,6 +17953,7 @@ export namespace Gtk {
         /**
          * Sets whether `check_menu_item` is drawn like a {@link Gtk.RadioMenuItem}
          * @param draw_as_radio whether `check_menu_item` is drawn like a {@link Gtk.RadioMenuItem}
+         * @since 2.4
          */
         set_draw_as_radio(draw_as_radio: boolean): void;
 
@@ -17738,12 +18053,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -17752,6 +18069,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -17761,6 +18079,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -17773,6 +18092,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -17782,6 +18102,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -17791,6 +18112,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -17928,6 +18250,7 @@ export namespace Gtk {
          * clipboard, you might call it "_FOO_SPECIAL_CLIPBOARD".
          * @param display the display for which the clipboard is to be retrieved or created
          * @param selection a {@link Gdk.Atom} which identifies the clipboard             to use.
+         * @since 2.2
          */
         static get_for_display(display: Gdk.Display, selection: Gdk.Atom): Clipboard;
 
@@ -17944,6 +18267,7 @@ export namespace Gtk {
         /**
          * Gets the {@link Gdk.Display} associated with `clipboard`
          * @returns the {@link Gdk.Display} associated with `clipboard`
+         * @since 2.2
          */
         get_display(): Gdk.Display;
 
@@ -17964,6 +18288,7 @@ export namespace Gtk {
          * Where the clipboard data is stored is platform dependent,
          * see gdk_display_store_clipboard () for more information.
          * @param targets array containing           information about which forms should be stored or `null`           to indicate that all forms should be stored.
+         * @since 2.6
          */
         set_can_store(targets: TargetEntry[] | null): void;
 
@@ -17973,6 +18298,7 @@ export namespace Gtk {
          * for the image, and for converting the image into the
          * requested format.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}
+         * @since 2.6
          */
         set_image(pixbuf: GdkPixbuf.Pixbuf): void;
 
@@ -17989,6 +18315,7 @@ export namespace Gtk {
         /**
          * Stores the current clipboard data somewhere so that it will stay
          * around after the application has quit.
+         * @since 2.6
          */
         store(): void;
 
@@ -18007,6 +18334,7 @@ export namespace Gtk {
          * the data to be received using the main loop, so events,
          * timeouts, etc, may be dispatched during the wait.
          * @returns a newly-allocated {@link GdkPixbuf.Pixbuf} object which must               be disposed with `g_object_unref()`, or `null` if               retrieving the selection data failed. (This               could happen for various reasons, in particular               if the clipboard was empty or if the contents of               the clipboard could not be converted into an image.)
+         * @since 2.6
          */
         wait_for_image(): GdkPixbuf.Pixbuf;
 
@@ -18017,6 +18345,7 @@ export namespace Gtk {
          * @param buffer a {@link Gtk.TextBuffer}
          * @param format return location for the format of the returned data
          * @returns a               newly-allocated binary block of data which must               be freed with `g_free()`, or `null` if retrieving               the selection data failed. (This could happen               for various reasons, in particular if the               clipboard was empty or if the contents of the               clipboard could not be converted into text form.)
+         * @since 2.10
          */
         wait_for_rich_text(buffer: TextBuffer, format: Gdk.Atom): Uint8Array;
 
@@ -18027,6 +18356,7 @@ export namespace Gtk {
          * This function waits for the data to be received using the main
          * loop, so events, timeouts, etc, may be dispatched during the wait.
          * @returns `true` if any targets are present on the clipboard,               otherwise `false`.
+         * @since 2.4
          */
         wait_for_targets(): [boolean, Gdk.Atom[]];
 
@@ -18044,6 +18374,7 @@ export namespace Gtk {
          * for the data to be received using the main loop, so events,
          * timeouts, etc, may be dispatched during the wait.
          * @returns a newly-allocated 		 `null`-terminated array of strings which must               be freed with `g_strfreev()`, or `null` if               retrieving the selection data failed. (This               could happen for various reasons, in particular               if the clipboard was empty or if the contents of               the clipboard could not be converted into URI form.)
+         * @since 2.14
          */
         wait_for_uris(): string[];
 
@@ -18058,6 +18389,7 @@ export namespace Gtk {
          * `gtk_clipboard_wait_for_image()` since it doesn't need to retrieve
          * the actual image data.
          * @returns `true` is there is an image available, `false` otherwise.
+         * @since 2.6
          */
         wait_is_image_available(): boolean;
 
@@ -18073,6 +18405,7 @@ export namespace Gtk {
          * the actual text.
          * @param buffer a {@link Gtk.TextBuffer}
          * @returns `true` is there is rich text available, `false` otherwise.
+         * @since 2.10
          */
         wait_is_rich_text_available(buffer: TextBuffer): boolean;
 
@@ -18085,6 +18418,7 @@ export namespace Gtk {
          * gtk_clipboard_wait_is_text_available () instead.
          * @param target A {@link Gdk.Atom} indicating which target to look for.
          * @returns `true` if the target is available, `false` otherwise.
+         * @since 2.6
          */
         wait_is_target_available(target: Gdk.Atom): boolean;
 
@@ -18113,6 +18447,7 @@ export namespace Gtk {
          * `gtk_clipboard_wait_for_uris()` since it doesn't need to retrieve
          * the actual URI data.
          * @returns `true` is there is an URI list available, `false` otherwise.
+         * @since 2.14
          */
         wait_is_uris_available(): boolean;
     }
@@ -18282,47 +18617,55 @@ export namespace Gtk {
         /**
          * Returns the current alpha value.
          * @returns an integer between 0 and 65535.
+         * @since 2.4
          */
         get_alpha(): number;
 
         /**
          * Sets `color` to be the current color in the {@link Gtk.ColorButton} widget.
+         * @since 2.4
          */
         get_color(): Gdk.Color;
 
         /**
          * Gets the title of the color selection dialog.
          * @returns An internal string, do not free the return value
+         * @since 2.4
          */
         get_title(): string;
 
         /**
          * Does the color selection dialog use the alpha channel?
          * @returns `true` if the color sample uses alpha channel, `false` if not.
+         * @since 2.4
          */
         get_use_alpha(): boolean;
 
         /**
          * Sets the current opacity to be `alpha`.
          * @param alpha an integer between 0 and 65535.
+         * @since 2.4
          */
         set_alpha(alpha: number): void;
 
         /**
          * Sets the current color to be `color`.
          * @param color A {@link Gdk.Color} to set the current color with.
+         * @since 2.4
          */
         set_color(color: Gdk.Color): void;
 
         /**
          * Sets the title for the color selection dialog.
          * @param title String containing new window title.
+         * @since 2.4
          */
         set_title(title: string): void;
 
         /**
          * Sets whether or not the color button should use the alpha channel.
          * @param use_alpha `true` if color button should use alpha channel, `false` if not.
+         * @since 2.4
          */
         set_use_alpha(use_alpha: boolean): void;
 
@@ -18402,12 +18745,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -18416,6 +18761,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -18425,6 +18771,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -18437,6 +18784,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -18446,6 +18794,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -18455,6 +18804,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -18666,6 +19016,7 @@ export namespace Gtk {
         /**
          * Sets `color` to be the current color in the GtkColorSelection widget.
          * @param color an array of 4 `gdouble` to fill in with the current color.
+         * @deprecated since 2.0: Use `gtk_color_selection_get_current_color()` instead.
          */
         get_color(color: number): void;
 
@@ -18713,6 +19064,7 @@ export namespace Gtk {
          * Sets the current color to be `color`.  The first time this is called, it will
          * also set the original color to be `color` too.
          * @param color an array of 4 doubles specifying the red, green, blue and opacity   to set the current color to.
+         * @deprecated since 2.0: Use `gtk_color_selection_set_current_color()` instead.
          */
         set_color(color: number): void;
 
@@ -18964,6 +19316,7 @@ export namespace Gtk {
         /**
          * Retrieves the {@link Gtk.ColorSelection} widget embedded in the dialog.
          * @returns the embedded {@link Gtk.ColorSelection}
+         * @since 2.14
          */
         get_color_selection(): Widget;
 
@@ -19651,6 +20004,8 @@ export namespace Gtk {
          * is selected. Note that you can only use this function with combo
          * boxes constructed with `gtk_combo_box_new_text()` and with
          * {@link Gtk.ComboBoxEntry}<!-- -->s.
+         * @since 2.6
+         * @deprecated since 2.24: If you used this with a {@link Gtk.ComboBox} constructed with `gtk_combo_box_new_text()` then you should now use {@link Gtk.ComboBoxText} and `gtk_combo_box_text_get_active_text()` instead. Or if you used this with a {@link Gtk.ComboBoxEntry} then you should now use {@link Gtk.ComboBox} with {@link Gtk.ComboBox.has_entry} as `true` and use gtk_entry_get_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (combobox))).
          * @virtual
          */
         vfunc_get_active_text(): string;
@@ -19661,6 +20016,8 @@ export namespace Gtk {
          * you can only use this function with combo boxes constructed with
          * `gtk_combo_box_new_text()`.
          * @param text A string
+         * @since 2.4
+         * @deprecated since 2.24: Use {@link Gtk.ComboBoxText}
          */
         append_text(text: string): void;
 
@@ -19671,6 +20028,7 @@ export namespace Gtk {
          * <literal>gtk_tree_path_get_indices (path)[0]</literal>, where
          * <literal>path</literal> is the {@link Gtk.TreePath} of the active item.
          * @returns An integer which is the index of the currently active item,     or -1 if there's no active item.
+         * @since 2.4
          */
         get_active(): number;
 
@@ -19678,6 +20036,7 @@ export namespace Gtk {
          * Sets `iter` to point to the currently active item, if any item is active.
          * Otherwise, `iter` is left unchanged.
          * @returns `true` if `iter` was set, `false` otherwise
+         * @since 2.4
          */
         get_active_iter(): [boolean, TreeIter];
 
@@ -19687,6 +20046,8 @@ export namespace Gtk {
          * boxes constructed with `gtk_combo_box_new_text()` and with
          * {@link Gtk.ComboBoxEntry}<!-- -->s.
          * @returns a newly allocated string containing the currently active text.     Must be freed with `g_free()`.
+         * @since 2.6
+         * @deprecated since 2.24: If you used this with a {@link Gtk.ComboBox} constructed with `gtk_combo_box_new_text()` then you should now use {@link Gtk.ComboBoxText} and `gtk_combo_box_text_get_active_text()` instead. Or if you used this with a {@link Gtk.ComboBoxEntry} then you should now use {@link Gtk.ComboBox} with {@link Gtk.ComboBox.has_entry} as `true` and use gtk_entry_get_text (GTK_ENTRY (gtk_bin_get_child (GTK_BIN (combobox))).
          */
         get_active_text(): string;
 
@@ -19700,12 +20061,14 @@ export namespace Gtk {
          * Returns whether the combo box sets the dropdown button
          * sensitive or not when there are no items in the model.
          * @returns {@link Gtk.SensitivityType.ON} if the dropdown button    is sensitive when the model is empty, {@link Gtk.SensitivityType.OFF}    if the button is always insensitive or    {@link Gtk.SensitivityType.AUTO} if it is only sensitive as long as    the model has one item to be selected.
+         * @since 2.14
          */
         get_button_sensitivity(): SensitivityType;
 
         /**
          * Returns the column with column span information for `combo_box`.
          * @returns the column span column.
+         * @since 2.6
          */
         get_column_span_column(): number;
 
@@ -19713,6 +20076,7 @@ export namespace Gtk {
          * Returns the column which `combo_box` is using to get the strings
          * from to display in the internal entry.
          * @returns A column in the data source model of `combo_box`.
+         * @since 2.24
          */
         get_entry_text_column(): number;
 
@@ -19720,18 +20084,21 @@ export namespace Gtk {
          * Returns whether the combo box grabs focus when it is clicked
          * with the mouse. See `gtk_combo_box_set_focus_on_click()`.
          * @returns `true` if the combo box grabs focus when it is     clicked with the mouse.
+         * @since 2.6
          */
         get_focus_on_click(): boolean;
 
         /**
          * Returns whether the combo box has an entry.
          * @returns whether there is an entry in `combo_box`.
+         * @since 2.24
          */
         get_has_entry(): boolean;
 
         /**
          * Returns the {@link Gtk.TreeModel} which is acting as data source for `combo_box`.
          * @returns A {@link Gtk.TreeModel} which was passed     during construction.
+         * @since 2.4
          */
         get_model(): TreeModel;
 
@@ -19741,12 +20108,14 @@ export namespace Gtk {
          * This function is mostly intended for use by accessibility technologies;
          * applications should have little use for it.
          * @returns the accessible object corresponding     to the combo box's popup.
+         * @since 2.6
          */
         get_popup_accessible(): Atk.Object;
 
         /**
          * Returns the column with row span information for `combo_box`.
          * @returns the row span column.
+         * @since 2.6
          */
         get_row_span_column(): number;
 
@@ -19754,6 +20123,7 @@ export namespace Gtk {
          * Gets the current title of the menu in tearoff mode. See
          * `gtk_combo_box_set_add_tearoffs()`.
          * @returns the menu's title in tearoff mode. This is an internal copy of the string which must not be freed.
+         * @since 2.10
          */
         get_title(): string;
 
@@ -19762,6 +20132,7 @@ export namespace Gtk {
          * for the popup menu. If the wrap width is larger than 1, the combo box
          * is in table mode.
          * @returns the wrap width.
+         * @since 2.6
          */
         get_wrap_width(): number;
 
@@ -19771,6 +20142,8 @@ export namespace Gtk {
          * with `gtk_combo_box_new_text()`.
          * @param position An index to insert `text`
          * @param text A string
+         * @since 2.4
+         * @deprecated since 2.24: Use {@link Gtk.ComboBoxText}
          */
         insert_text(position: number, text: string): void;
 
@@ -19779,6 +20152,7 @@ export namespace Gtk {
          * 
          * This function is mostly intended for use by accessibility technologies;
          * applications should have little use for it.
+         * @since 2.4
          */
         popdown(): void;
 
@@ -19787,6 +20161,7 @@ export namespace Gtk {
          * 
          * This function is mostly intended for use by accessibility technologies;
          * applications should have little use for it.
+         * @since 2.4
          */
         popup(): void;
 
@@ -19795,6 +20170,8 @@ export namespace Gtk {
          * you can only use this function with combo boxes constructed with
          * `gtk_combo_box_new_text()`.
          * @param text A string
+         * @since 2.4
+         * @deprecated since 2.24: Use {@link Gtk.ComboBoxText}
          */
         prepend_text(text: string): void;
 
@@ -19802,12 +20179,15 @@ export namespace Gtk {
          * Removes the string at `position` from `combo_box`. Note that you can only use
          * this function with combo boxes constructed with `gtk_combo_box_new_text()`.
          * @param position Index of the item to remove
+         * @since 2.4
+         * @deprecated since 2.24: Use {@link Gtk.ComboBoxText}
          */
         remove_text(position: number): void;
 
         /**
          * Sets the active item of `combo_box` to be the item at `index`.
          * @param index_ An index in the model passed during construction, or -1 to have no active item
+         * @since 2.4
          */
         set_active(index_: number): void;
 
@@ -19815,6 +20195,7 @@ export namespace Gtk {
          * Sets the current active item to be the one referenced by `iter`, or
          * unsets the active item if `iter` is `null`.
          * @param iter The {@link Gtk.TreeIter}, or `null`
+         * @since 2.4
          */
         set_active_iter(iter: TreeIter | null): void;
 
@@ -19822,6 +20203,7 @@ export namespace Gtk {
          * Sets whether the popup menu should have a tearoff
          * menu item.
          * @param add_tearoffs `true` to add tearoff menu items
+         * @since 2.6
          */
         set_add_tearoffs(add_tearoffs: boolean): void;
 
@@ -19830,6 +20212,7 @@ export namespace Gtk {
          * always sensitive ({@link Gtk.SensitivityType.ON}), never sensitive ({@link Gtk.SensitivityType.OFF})
          * or only if there is at least one item to display ({@link Gtk.SensitivityType.AUTO}).
          * @param sensitivity specify the sensitivity of the dropdown button
+         * @since 2.14
          */
         set_button_sensitivity(sensitivity: SensitivityType): void;
 
@@ -19838,6 +20221,7 @@ export namespace Gtk {
          * `column_span`. The column span column contains integers which indicate
          * how many columns an item should span.
          * @param column_span A column in the model passed during construction
+         * @since 2.4
          */
         set_column_span_column(column_span: number): void;
 
@@ -19849,6 +20233,7 @@ export namespace Gtk {
          * This is only relevant if `combo_box` has been created with
          * {@link Gtk.ComboBox.has_entry} as `true`.
          * @param text_column A column in `model` to get the strings from for   the internal entry
+         * @since 2.24
          */
         set_entry_text_column(text_column: number): void;
 
@@ -19858,6 +20243,7 @@ export namespace Gtk {
          * like toolbars where you don't want the keyboard focus removed from
          * the main area of the application.
          * @param focus_on_click whether the combo box grabs focus when clicked    with the mouse
+         * @since 2.6
          */
         set_focus_on_click(focus_on_click: boolean): void;
 
@@ -19869,6 +20255,7 @@ export namespace Gtk {
          * call `gtk_cell_layout_clear()` yourself if you need to set up different
          * cell renderers for the new model.
          * @param model A {@link Gtk.TreeModel}
+         * @since 2.4
          */
         set_model(model: TreeModel | null): void;
 
@@ -19877,6 +20264,7 @@ export namespace Gtk {
          * whether a row should be drawn as a separator. If the row separator
          * function is `null`, no separators are drawn. This is the default value.
          * @param func a {@link Gtk.TreeViewRowSeparatorFunc}
+         * @since 2.6
          */
         set_row_separator_func(func: TreeViewRowSeparatorFunc): void;
 
@@ -19885,12 +20273,14 @@ export namespace Gtk {
          * The row span column contains integers which indicate how many rows
          * an item should span.
          * @param row_span A column in the model passed during construction.
+         * @since 2.4
          */
         set_row_span_column(row_span: number): void;
 
         /**
          * Sets the menu's title in tearoff mode.
          * @param title a title for the menu in tearoff mode
+         * @since 2.10
          */
         set_title(title: string): void;
 
@@ -19899,6 +20289,7 @@ export namespace Gtk {
          * the preferred number of columns when you want the popup to be layed out
          * in a table.
          * @param width Preferred number of columns
+         * @since 2.4
          */
         set_wrap_width(width: number): void;
 
@@ -19968,12 +20359,14 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          */
         add_attribute(cell: CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -19981,12 +20374,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          */
         clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the   renderers has been newly allocated and should be freed with   `g_list_free()` when no longer needed.
+         * @since 2.12
          */
         get_cells(): CellRenderer[];
 
@@ -19998,6 +20393,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_end(cell: CellRenderer, expand: boolean): void;
 
@@ -20009,6 +20405,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_start(cell: CellRenderer, expand: boolean): void;
 
@@ -20017,6 +20414,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          */
         reorder(cell: CellRenderer, position: number): void;
 
@@ -20027,6 +20425,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          */
         set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
 
@@ -20039,6 +20438,7 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: CellRenderer, attribute: string, column: number): void;
@@ -20046,6 +20446,7 @@ export namespace Gtk {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -20054,12 +20455,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): CellRenderer[];
@@ -20072,6 +20475,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: CellRenderer, expand: boolean): void;
@@ -20084,6 +20488,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: CellRenderer, expand: boolean): void;
@@ -20093,6 +20498,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: CellRenderer, position: number): void;
@@ -20104,6 +20510,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
@@ -20275,6 +20682,8 @@ export namespace Gtk {
         /**
          * Returns the column which `entry_box` is using to get the strings from.
          * @returns A column in the data source model of `entry_box`.
+         * @since 2.4
+         * @deprecated since 2.24: Use `gtk_combo_box_get_entry_text_column()` instead
          */
         get_text_column(): number;
 
@@ -20282,6 +20691,8 @@ export namespace Gtk {
          * Sets the model column which `entry_box` should use to get strings from
          * to be `text_column`.
          * @param text_column A column in `model` to get the strings from.
+         * @since 2.4
+         * @deprecated since 2.24: Use `gtk_combo_box_set_entry_text_column()` instead
          */
         set_text_column(text_column: number): void;
 
@@ -20351,12 +20762,14 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          */
         add_attribute(cell: CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -20364,12 +20777,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          */
         clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the   renderers has been newly allocated and should be freed with   `g_list_free()` when no longer needed.
+         * @since 2.12
          */
         get_cells(): CellRenderer[];
 
@@ -20381,6 +20796,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_end(cell: CellRenderer, expand: boolean): void;
 
@@ -20392,6 +20808,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_start(cell: CellRenderer, expand: boolean): void;
 
@@ -20400,6 +20817,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          */
         reorder(cell: CellRenderer, position: number): void;
 
@@ -20410,6 +20828,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          */
         set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
 
@@ -20422,6 +20841,7 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: CellRenderer, attribute: string, column: number): void;
@@ -20429,6 +20849,7 @@ export namespace Gtk {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -20437,12 +20858,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): CellRenderer[];
@@ -20455,6 +20878,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: CellRenderer, expand: boolean): void;
@@ -20467,6 +20891,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: CellRenderer, expand: boolean): void;
@@ -20476,6 +20901,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: CellRenderer, position: number): void;
@@ -20487,6 +20913,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
@@ -20674,6 +21101,7 @@ export namespace Gtk {
         /**
          * Appends `string` to the list of strings stored in `combo_box`.
          * @param text A string
+         * @since 2.24
          */
         append_text(text: string): void;
 
@@ -20683,6 +21111,7 @@ export namespace Gtk {
          * function will return its contents (which will not necessarily
          * be an item from the list).
          * @returns a newly allocated string containing the currently     active text. Must be freed with `g_free()`.
+         * @since 2.24
          */
         get_active_text(): string;
 
@@ -20690,18 +21119,21 @@ export namespace Gtk {
          * Inserts `string` at `position` in the list of strings stored in `combo_box`.
          * @param position An index to insert `text`
          * @param text A string
+         * @since 2.24
          */
         insert_text(position: number, text: string): void;
 
         /**
          * Prepends `string` to the list of strings stored in `combo_box`.
          * @param text A string
+         * @since 2.24
          */
         prepend_text(text: string): void;
 
         /**
          * Removes the string at `position` from `combo_box`.
          * @param position Index of the item to remove
+         * @since 2.24
          */
         remove(position: number): void;
 
@@ -20777,12 +21209,14 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          */
         add_attribute(cell: CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -20790,12 +21224,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          */
         clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the   renderers has been newly allocated and should be freed with   `g_list_free()` when no longer needed.
+         * @since 2.12
          */
         get_cells(): CellRenderer[];
 
@@ -20807,6 +21243,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_end(cell: CellRenderer, expand: boolean): void;
 
@@ -20818,6 +21255,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_start(cell: CellRenderer, expand: boolean): void;
 
@@ -20826,6 +21264,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          */
         reorder(cell: CellRenderer, position: number): void;
 
@@ -20836,6 +21275,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          */
         set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
 
@@ -20848,6 +21288,7 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: CellRenderer, attribute: string, column: number): void;
@@ -20855,6 +21296,7 @@ export namespace Gtk {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -20863,12 +21305,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): CellRenderer[];
@@ -20881,6 +21325,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: CellRenderer, expand: boolean): void;
@@ -20893,6 +21338,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: CellRenderer, expand: boolean): void;
@@ -20902,6 +21348,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: CellRenderer, position: number): void;
@@ -20913,6 +21360,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
@@ -21278,6 +21726,7 @@ export namespace Gtk {
          * currently focused widget. That can be obtained by calling
          * `gtk_window_get_focus()`.
          * @returns The child widget which will receive the          focus inside `container` when the `conatiner` is focussed,          or `null` if none is set.
+         * @since 2.14
          */
         get_focus_child(): Widget;
 
@@ -21441,6 +21890,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -21452,6 +21902,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -21462,6 +21913,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -21472,6 +21924,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -21481,6 +21934,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -21489,6 +21943,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -21499,6 +21954,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -21509,6 +21965,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -21517,12 +21974,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -21532,6 +21991,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -21543,6 +22003,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -21554,6 +22015,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -21565,6 +22027,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -21574,6 +22037,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -21582,6 +22046,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -21592,6 +22057,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -21603,6 +22069,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -21612,6 +22079,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -21619,6 +22087,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -22100,18 +22569,21 @@ export namespace Gtk {
         /**
          * Returns the action area of `dialog`.
          * @returns the action area.
+         * @since 2.14
          */
         get_action_area(): Widget;
 
         /**
          * Returns the content area of `dialog`.
          * @returns the content area {@link Gtk.VBox}.
+         * @since 2.14
          */
         get_content_area(): Widget;
 
         /**
          * Accessor for whether the dialog has a separator.
          * @returns `true` if the dialog has a separator
+         * @deprecated since 2.22: This function will be removed in GTK+ 3
          */
         get_has_separator(): boolean;
 
@@ -22120,6 +22592,7 @@ export namespace Gtk {
          * of a dialog.
          * @param widget a widget in the action area of `dialog`
          * @returns the response id of `widget`, or {@link Gtk.ResponseType.NONE}  if `widget` doesn't have a response id set.
+         * @since 2.8
          */
         get_response_for_widget(widget: Widget): number;
 
@@ -22128,6 +22601,7 @@ export namespace Gtk {
          * of a dialog.
          * @param response_id the response ID used by the `dialog` widget
          * @returns the `widget` button that uses the given `response_id`, or `null`.
+         * @since 2.20
          */
         get_widget_for_response(response_id: number): Widget;
 
@@ -22199,6 +22673,7 @@ export namespace Gtk {
          * 
          * This function is for use by language bindings.
          * @param new_order an array of response ids of     `dialog`'s buttons
+         * @since 2.6
          */
         set_alternative_button_order_from_array(new_order: number[]): void;
 
@@ -22213,6 +22688,7 @@ export namespace Gtk {
         /**
          * Sets whether the dialog has a separator above the buttons.
          * @param setting `true` to have a separator
+         * @deprecated since 2.22: This function will be removed in GTK+ 3
          */
         set_has_separator(setting: boolean): void;
 
@@ -22347,6 +22823,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -22358,6 +22835,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -22368,6 +22846,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -22378,6 +22857,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -22387,6 +22867,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -22395,6 +22876,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -22405,6 +22887,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -22415,6 +22898,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -22423,12 +22907,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -22438,6 +22924,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -22449,6 +22936,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -22460,6 +22948,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -22471,6 +22960,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -22480,6 +22970,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -22488,6 +22979,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -22498,6 +22990,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -22509,6 +23002,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -22518,6 +23012,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -22525,6 +23020,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -23681,6 +24177,7 @@ export namespace Gtk {
         /**
          * Appends the given text to the contents of the widget.
          * @param text the text to append
+         * @deprecated since 2.0: Use `gtk_editable_insert_text()` instead.
          */
         append_text(text: string): void;
 
@@ -23693,6 +24190,7 @@ export namespace Gtk {
         /**
          * Gets the value set by `gtk_entry_set_alignment()`.
          * @returns the alignment
+         * @since 2.4
          */
         get_alignment(): number;
 
@@ -23700,12 +24198,14 @@ export namespace Gtk {
          * Get the {@link Gtk.EntryBuffer} object which holds the text for
          * this widget.
          * @returns A {@link Gtk.EntryBuffer} object.
+         * @since 2.18
          */
         get_buffer(): EntryBuffer;
 
         /**
          * Returns the auxiliary completion object currently in use by `entry`.
          * @returns The auxiliary completion object currently     in use by `entry`.
+         * @since 2.4
          */
         get_completion(): EntryCompletion;
 
@@ -23716,6 +24216,7 @@ export namespace Gtk {
          * This function is meant to be used in a {@link Gtk.Widget.SignalSignatures.drag_data_get | Gtk.Widget::drag-data-get}
          * callback.
          * @returns index of the icon which is the source of the current          DND operation, or -1.
+         * @since 2.16
          */
         get_current_icon_drag_source(): number;
 
@@ -23723,6 +24224,7 @@ export namespace Gtk {
          * Retrieves the horizontal cursor adjustment for the entry.
          * See `gtk_entry_set_cursor_hadjustment()`.
          * @returns the horizontal cursor adjustment, or `null`   if none has been set.
+         * @since 2.12
          */
         get_cursor_hadjustment(): Adjustment;
 
@@ -23736,6 +24238,7 @@ export namespace Gtk {
          * Returns whether the icon is activatable.
          * @param icon_pos Icon position
          * @returns `true` if the icon is activatable.
+         * @since 2.16
          */
         get_icon_activatable(icon_pos: EntryIconPosition): boolean;
 
@@ -23747,6 +24250,7 @@ export namespace Gtk {
          * @param x the x coordinate of the position to find
          * @param y the y coordinate of the position to find
          * @returns the index of the icon at the given position, or -1
+         * @since 2.16
          */
         get_icon_at_pos(x: number, y: number): number;
 
@@ -23756,6 +24260,7 @@ export namespace Gtk {
          * stock, pixbuf, or icon name).
          * @param icon_pos Icon position
          * @returns A {@link Gio.Icon}, or `null` if no icon is set     or if the icon is not a {@link Gio.Icon}
+         * @since 2.16
          */
         get_icon_gicon(icon_pos: EntryIconPosition): Gio.Icon;
 
@@ -23765,6 +24270,7 @@ export namespace Gtk {
          * pixbuf, stock or gicon).
          * @param icon_pos Icon position
          * @returns An icon name, or `null` if no icon is set or if the icon          wasn't set from an icon name
+         * @since 2.16
          */
         get_icon_name(icon_pos: EntryIconPosition): string;
 
@@ -23776,6 +24282,7 @@ export namespace Gtk {
          * {@link GdkPixbuf.Pixbuf}, a {@link Gio.Icon}, a stock item, or an icon name.
          * @param icon_pos Icon position
          * @returns A {@link GdkPixbuf.Pixbuf}, or `null` if no icon is     set for this position.
+         * @since 2.16
          */
         get_icon_pixbuf(icon_pos: EntryIconPosition): GdkPixbuf.Pixbuf;
 
@@ -23783,6 +24290,7 @@ export namespace Gtk {
          * Returns whether the icon appears sensitive or insensitive.
          * @param icon_pos Icon position
          * @returns `true` if the icon is sensitive.
+         * @since 2.16
          */
         get_icon_sensitive(icon_pos: EntryIconPosition): boolean;
 
@@ -23792,6 +24300,7 @@ export namespace Gtk {
          * pixbuf, icon name or gicon).
          * @param icon_pos Icon position
          * @returns A stock id, or `null` if no icon is set or if the icon          wasn't set from a stock id
+         * @since 2.16
          */
         get_icon_stock(icon_pos: EntryIconPosition): string;
 
@@ -23801,6 +24310,7 @@ export namespace Gtk {
          * the return value will be {@link Gtk.ImageType.EMPTY}.
          * @param icon_pos Icon position
          * @returns image representation being used
+         * @since 2.16
          */
         get_icon_storage_type(icon_pos: EntryIconPosition): ImageType;
 
@@ -23809,6 +24319,7 @@ export namespace Gtk {
          * position in `entry`.
          * @param icon_pos the icon position
          * @returns the tooltip text, or `null`. Free the returned string     with `g_free()` when done.
+         * @since 2.16
          */
         get_icon_tooltip_markup(icon_pos: EntryIconPosition): string;
 
@@ -23817,6 +24328,7 @@ export namespace Gtk {
          * position in `entry`.
          * @param icon_pos the icon position
          * @returns the tooltip text, or `null`. Free the returned string     with `g_free()` when done.
+         * @since 2.16
          */
         get_icon_tooltip_text(icon_pos: EntryIconPosition): string;
 
@@ -23832,6 +24344,7 @@ export namespace Gtk {
          * been replaced by `gtk_entry_get_icon_area()`.
          * @param icon_pos Icon position
          * @returns the entry's icon window at `icon_pos`.
+         * @since 2.20
          */
         get_icon_window(icon_pos: EntryIconPosition): Gdk.Window;
 
@@ -23839,6 +24352,7 @@ export namespace Gtk {
          * This function returns the entry's {@link Gtk.Entry.inner_border} property. See
          * `gtk_entry_set_inner_border()` for more information.
          * @returns the entry's {@link Gtk.Border}, or `null` if none was set.
+         * @since 2.10
          */
         get_inner_border(): Border;
 
@@ -23903,6 +24417,7 @@ export namespace Gtk {
         /**
          * Gets the value set by `gtk_entry_set_overwrite_mode()`.
          * @returns whether the text is overwritten when typing.
+         * @since 2.14
          */
         get_overwrite_mode(): boolean;
 
@@ -23910,12 +24425,14 @@ export namespace Gtk {
          * Returns the current fraction of the task that's been completed.
          * See `gtk_entry_set_progress_fraction()`.
          * @returns a fraction from 0.0 to 1.0
+         * @since 2.16
          */
         get_progress_fraction(): number;
 
         /**
          * Retrieves the pulse step set with `gtk_entry_set_progress_pulse_step()`.
          * @returns a fraction from 0.0 to 1.0
+         * @since 2.16
          */
         get_progress_pulse_step(): number;
 
@@ -23942,6 +24459,7 @@ export namespace Gtk {
          * gtk_entry_buffer_get_length (gtk_entry_get_buffer (entry));
          * </programlisting></informalexample>
          * @returns the current number of characters               in {@link Gtk.Entry}, or 0 if there are none.
+         * @since 2.14
          */
         get_text_length(): number;
 
@@ -23956,6 +24474,7 @@ export namespace Gtk {
          * Note that GTK+ 3 does not have this function anymore; it has
          * been replaced by `gtk_entry_get_text_area()`.
          * @returns the entry's text window.
+         * @since 2.20
          */
         get_text_window(): Gdk.Window;
 
@@ -23985,6 +24504,7 @@ export namespace Gtk {
          * See `gtk_text_view_reset_im_context()` for an example of use.
          * @param event the key event
          * @returns `true` if the input method handled the key event.
+         * @since 2.22
          */
         im_context_filter_keypress(event: Gdk.EventKey): boolean;
 
@@ -24001,6 +24521,7 @@ export namespace Gtk {
         /**
          * Prepends the given text to the contents of the widget.
          * @param text the text to prepend
+         * @deprecated since 2.0: Use `gtk_editable_insert_text()` instead.
          */
         prepend_text(text: string): void;
 
@@ -24011,6 +24532,7 @@ export namespace Gtk {
          * `gtk_entry_progress_pulse()` causes the block to move by a little bit
          * (the amount of movement per pulse is determined by
          * `gtk_entry_set_progress_pulse_step()`).
+         * @since 2.16
          */
         progress_pulse(): void;
 
@@ -24019,6 +24541,7 @@ export namespace Gtk {
          * 
          * This can be necessary in the case where modifying the buffer
          * would confuse on-going input method behavior.
+         * @since 2.22
          */
         reset_im_context(): void;
 
@@ -24030,6 +24553,7 @@ export namespace Gtk {
          * the text.
          * @param start the starting position
          * @param end the end position
+         * @deprecated since 2.0: Use `gtk_editable_select_region()` instead.
          */
         select_region(start: number, end: number): void;
 
@@ -24051,6 +24575,7 @@ export namespace Gtk {
          * the horizontal positioning of the contents when the displayed
          * text is shorter than the width of the entry.
          * @param xalign The horizontal alignment, from 0 (left) to 1 (right).          Reversed for RTL layouts
+         * @since 2.4
          */
         set_alignment(xalign: number): void;
 
@@ -24058,6 +24583,7 @@ export namespace Gtk {
          * Set the {@link Gtk.EntryBuffer} object which holds the text for
          * this widget.
          * @param buffer a {@link Gtk.EntryBuffer}
+         * @since 2.18
          */
         set_buffer(buffer: EntryBuffer): void;
 
@@ -24067,6 +24593,7 @@ export namespace Gtk {
          * `completion` using the {@link Gtk.EntryCompletion} API. Completion is disabled if
          * `completion` is set to `null`.
          * @param completion The {@link Gtk.EntryCompletion} or `null`
+         * @since 2.4
          */
         set_completion(completion: EntryCompletion | null): void;
 
@@ -24079,6 +24606,7 @@ export namespace Gtk {
          * The adjustment has to be in pixel units and in the same coordinate system
          * as the entry.
          * @param adjustment an adjustment which should be adjusted when the cursor              is moved, or `null`
+         * @since 2.12
          */
         set_cursor_hadjustment(adjustment: Adjustment): void;
 
@@ -24086,6 +24614,7 @@ export namespace Gtk {
          * Determines if the user can edit the text in the editable
          * widget or not.
          * @param editable `true` if the user is allowed to edit the text   in the widget
+         * @deprecated since 2.0: Use `gtk_editable_set_editable()` instead.
          */
         set_editable(editable: boolean): void;
 
@@ -24099,6 +24628,7 @@ export namespace Gtk {
          * Sets whether the icon is activatable.
          * @param icon_pos Icon position
          * @param activatable `true` if the icon should be activatable
+         * @since 2.16
          */
         set_icon_activatable(icon_pos: EntryIconPosition, activatable: boolean): void;
 
@@ -24119,6 +24649,7 @@ export namespace Gtk {
          * @param icon_pos icon position
          * @param target_list the targets (data formats) in which the data can be provided
          * @param actions a bitmask of the allowed drag actions
+         * @since 2.16
          */
         set_icon_drag_source(icon_pos: EntryIconPosition, target_list: TargetList, actions: Gdk.DragAction): void;
 
@@ -24131,6 +24662,7 @@ export namespace Gtk {
          * If `icon` is `null`, no icon will be shown in the specified position.
          * @param icon_pos The position at which to set the icon
          * @param icon The icon to set, or `null`
+         * @since 2.16
          */
         set_icon_from_gicon(icon_pos: EntryIconPosition, icon: Gio.Icon | null): void;
 
@@ -24144,6 +24676,7 @@ export namespace Gtk {
          * If `icon_name` is `null`, no icon will be shown in the specified position.
          * @param icon_pos The position at which to set the icon
          * @param icon_name An icon name, or `null`
+         * @since 2.16
          */
         set_icon_from_icon_name(icon_pos: EntryIconPosition, icon_name: string | null): void;
 
@@ -24153,6 +24686,7 @@ export namespace Gtk {
          * If `pixbuf` is `null`, no icon will be shown in the specified position.
          * @param icon_pos Icon position
          * @param pixbuf A {@link GdkPixbuf.Pixbuf}, or `null`
+         * @since 2.16
          */
         set_icon_from_pixbuf(icon_pos: EntryIconPosition, pixbuf: GdkPixbuf.Pixbuf | null): void;
 
@@ -24163,6 +24697,7 @@ export namespace Gtk {
          * If `stock_id` is `null`, no icon will be shown in the specified position.
          * @param icon_pos Icon position
          * @param stock_id The name of the stock item, or `null`
+         * @since 2.16
          */
         set_icon_from_stock(icon_pos: EntryIconPosition, stock_id: string | null): void;
 
@@ -24170,6 +24705,7 @@ export namespace Gtk {
          * Sets the sensitivity for the specified icon.
          * @param icon_pos Icon position
          * @param sensitive Specifies whether the icon should appear             sensitive or insensitive
+         * @since 2.16
          */
         set_icon_sensitive(icon_pos: EntryIconPosition, sensitive: boolean): void;
 
@@ -24184,6 +24720,7 @@ export namespace Gtk {
          * `gtk_entry_set_icon_tooltip_text()`.
          * @param icon_pos the icon position
          * @param tooltip the contents of the tooltip for the icon, or `null`
+         * @since 2.16
          */
         set_icon_tooltip_markup(icon_pos: EntryIconPosition, tooltip: string | null): void;
 
@@ -24203,6 +24740,7 @@ export namespace Gtk {
          * setting at least one non-empty tooltip on any icon achieves the same result.
          * @param icon_pos the icon position
          * @param tooltip the contents of the tooltip for the icon, or `null`
+         * @since 2.16
          */
         set_icon_tooltip_text(icon_pos: EntryIconPosition, tooltip: string | null): void;
 
@@ -24216,6 +24754,7 @@ export namespace Gtk {
          * in-place editing of some text in a canvas or list widget, where
          * pixel-exact positioning of the entry is important.
          * @param border a {@link Gtk.Border}, or `null`
+         * @since 2.10
          */
         set_inner_border(border: Border | null): void;
 
@@ -24248,12 +24787,14 @@ export namespace Gtk {
         /**
          * Sets whether the text is overwritten when typing in the {@link Gtk.Entry}.
          * @param overwrite new value
+         * @since 2.14
          */
         set_overwrite_mode(overwrite: boolean): void;
 
         /**
          * Sets the cursor position in an entry to the given value.
          * @param position the position of the cursor. The cursor is displayed    before the character with the given (base 0) index in the widget.    The value must be less than or equal to the number of characters    in the widget. A value of -1 indicates that the position should    be set after the last character in the entry. Note that this    position is in characters, not in bytes.
+         * @deprecated since 2.0: Use `gtk_editable_set_position()` instead.
          */
         set_position(position: number): void;
 
@@ -24262,6 +24803,7 @@ export namespace Gtk {
          * fraction of the bar. The fraction should be between 0.0 and 1.0,
          * inclusive.
          * @param fraction fraction of the task that's been completed
+         * @since 2.16
          */
         set_progress_fraction(fraction: number): void;
 
@@ -24269,6 +24811,7 @@ export namespace Gtk {
          * Sets the fraction of total entry width to move the progress
          * bouncing block for each call to `gtk_entry_progress_pulse()`.
          * @param fraction fraction between 0.0 and 1.0
+         * @since 2.16
          */
         set_progress_pulse_step(fraction: number): void;
 
@@ -24317,6 +24860,7 @@ export namespace Gtk {
          * Unsets the invisible char previously set with
          * `gtk_entry_set_invisible_char()`. So that the
          * default invisible char is used again.
+         * @since 2.16
          */
         unset_invisible_char(): void;
 
@@ -24344,6 +24888,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -24355,6 +24900,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -24365,6 +24911,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -24375,6 +24922,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -24384,6 +24932,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -24392,6 +24941,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -24402,6 +24952,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -24412,6 +24963,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -24420,12 +24972,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -24435,6 +24989,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -24446,6 +25001,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -24457,6 +25013,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -24468,6 +25025,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -24477,6 +25035,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -24485,6 +25044,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -24495,6 +25055,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -24506,6 +25067,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -24515,6 +25077,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -24522,6 +25085,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -24828,6 +25392,7 @@ export namespace Gtk {
          * Note that the positions are specified in characters, not bytes.
          * @param position position at which to delete text
          * @param n_chars number of characters to delete
+         * @since 2.18
          * @virtual
          */
         vfunc_delete_text(position: number, n_chars: number): number;
@@ -24841,6 +25406,7 @@ export namespace Gtk {
 
         /**
          * Retrieves the length in characters of the buffer.
+         * @since 2.18
          * @virtual
          */
         vfunc_get_length(): number;
@@ -24864,6 +25430,7 @@ export namespace Gtk {
          * @param position the position at which to insert text.
          * @param chars the text to insert into the buffer.
          * @param n_chars the length of the text in characters, or -1
+         * @since 2.18
          * @virtual
          */
         vfunc_insert_text(position: number, chars: string, n_chars: number): number;
@@ -24889,6 +25456,7 @@ export namespace Gtk {
          * @param position position at which to delete text
          * @param n_chars number of characters to delete
          * @returns The number of characters deleted.
+         * @since 2.18
          */
         delete_text(position: number, n_chars: number): number;
 
@@ -24896,6 +25464,7 @@ export namespace Gtk {
          * Used when subclassing {@link Gtk.EntryBuffer}
          * @param position position at which text was deleted
          * @param n_chars number of characters deleted
+         * @since 2.18
          */
         emit_deleted_text(position: number, n_chars: number): void;
 
@@ -24904,6 +25473,7 @@ export namespace Gtk {
          * @param position position at which text was inserted
          * @param chars text that was inserted
          * @param n_chars number of characters inserted
+         * @since 2.18
          */
         emit_inserted_text(position: number, chars: string, n_chars: number): void;
 
@@ -24911,12 +25481,14 @@ export namespace Gtk {
          * Retrieves the length in bytes of the buffer.
          * See `gtk_entry_buffer_get_length()`.
          * @returns The byte length of the buffer.
+         * @since 2.18
          */
         get_bytes(): number;
 
         /**
          * Retrieves the length in characters of the buffer.
          * @returns The number of characters in the buffer.
+         * @since 2.18
          */
         get_length(): number;
 
@@ -24924,6 +25496,7 @@ export namespace Gtk {
          * Retrieves the maximum allowed length of the text in
          * `buffer`. See `gtk_entry_buffer_set_max_length()`.
          * @returns the maximum allowed number of characters               in {@link Gtk.EntryBuffer}, or 0 if there is no maximum.
+         * @since 2.18
          */
         get_max_length(): number;
 
@@ -24933,6 +25506,7 @@ export namespace Gtk {
          * The memory pointer returned by this call will not change
          * unless this object emits a signal, or is finalized.
          * @returns a pointer to the contents of the widget as a      string. This string points to internally allocated      storage in the buffer and must not be freed, modified or      stored.
+         * @since 2.18
          */
         get_text(): string;
 
@@ -24950,6 +25524,7 @@ export namespace Gtk {
          * @param chars the text to insert into the buffer.
          * @param n_chars the length of the text in characters, or -1
          * @returns The number of characters actually inserted.
+         * @since 2.18
          */
         insert_text(position: number, chars: string, n_chars: number): number;
 
@@ -24958,6 +25533,7 @@ export namespace Gtk {
          * the current contents are longer than the given length, then they
          * will be truncated to fit.
          * @param max_length the maximum length of the entry buffer, or 0 for no maximum.   (other than the maximum length of entries.) The value passed in will   be clamped to the range 0-65536.
+         * @since 2.18
          */
         set_max_length(max_length: number): void;
 
@@ -24970,6 +25546,7 @@ export namespace Gtk {
          * Note that `n_chars` is in characters, not in bytes.
          * @param chars the new text
          * @param n_chars the number of characters in `text`, or -1
+         * @since 2.18
          */
         set_text(chars: string, n_chars: number): void;
     }
@@ -25250,12 +25827,14 @@ export namespace Gtk {
          * Requests a completion operation, or in other words a refiltering of the
          * current list with completions, using the current key. The completion list
          * view will be updated accordingly.
+         * @since 2.4
          */
         complete(): void;
 
         /**
          * Deletes the action at `index_` from `completion`'s action list.
          * @param index_ The index of the item to Delete.
+         * @since 2.4
          */
         delete_action(index_: number): void;
 
@@ -25263,12 +25842,14 @@ export namespace Gtk {
          * Get the original text entered by the user that triggered
          * the completion or `null` if there's no completion ongoing.
          * @returns the prefix for the current completion
+         * @since 2.12
          */
         get_completion_prefix(): string;
 
         /**
          * Gets the entry `completion` has been attached to.
          * @returns The entry `completion` has been attached to.
+         * @since 2.4
          */
         get_entry(): Widget;
 
@@ -25276,18 +25857,21 @@ export namespace Gtk {
          * Returns whether the common prefix of the possible completions should
          * be automatically inserted in the entry.
          * @returns `true` if inline completion is turned on
+         * @since 2.6
          */
         get_inline_completion(): boolean;
 
         /**
          * Returns `true` if inline-selection mode is turned on.
          * @returns `true` if inline-selection mode is on
+         * @since 2.12
          */
         get_inline_selection(): boolean;
 
         /**
          * Returns the minimum key length as set for `completion`.
          * @returns The currently used minimum key length.
+         * @since 2.4
          */
         get_minimum_key_length(): number;
 
@@ -25295,12 +25879,14 @@ export namespace Gtk {
          * Returns the model the {@link Gtk.EntryCompletion} is using as data source.
          * Returns `null` if the model is unset.
          * @returns A {@link Gtk.TreeModel}, or `null` if none     is currently being used.
+         * @since 2.4
          */
         get_model(): TreeModel;
 
         /**
          * Returns whether the completions should be presented in a popup window.
          * @returns `true` if popup completion is turned on
+         * @since 2.6
          */
         get_popup_completion(): boolean;
 
@@ -25308,6 +25894,7 @@ export namespace Gtk {
          * Returns whether the  completion popup window will be resized to the
          * width of the entry.
          * @returns `true` if the popup window will be resized to the width of   the entry
+         * @since 2.8
          */
         get_popup_set_width(): boolean;
 
@@ -25315,12 +25902,14 @@ export namespace Gtk {
          * Returns whether the completion popup window will appear even if there is
          * only a single match.
          * @returns `true` if the popup window will appear regardless of the    number of matches.
+         * @since 2.8
          */
         get_popup_single_match(): boolean;
 
         /**
          * Returns the column in the model of `completion` to get strings from.
          * @returns the column containing the strings
+         * @since 2.6
          */
         get_text_column(): number;
 
@@ -25329,6 +25918,7 @@ export namespace Gtk {
          * with markup `markup`.
          * @param index_ The index of the item to insert.
          * @param markup Markup of the item to insert.
+         * @since 2.4
          */
         insert_action_markup(index_: number, markup: string): void;
 
@@ -25338,11 +25928,13 @@ export namespace Gtk {
          * `gtk_entry_completion_insert_action_markup()`.
          * @param index_ The index of the item to insert.
          * @param text Text of the item to insert.
+         * @since 2.4
          */
         insert_action_text(index_: number, text: string): void;
 
         /**
          * Requests a prefix insertion.
+         * @since 2.6
          */
         insert_prefix(): void;
 
@@ -25350,6 +25942,7 @@ export namespace Gtk {
          * Sets whether the common prefix of the possible completions should
          * be automatically inserted in the entry.
          * @param inline_completion `true` to do inline completion
+         * @since 2.6
          */
         set_inline_completion(inline_completion: boolean): void;
 
@@ -25357,6 +25950,7 @@ export namespace Gtk {
          * Sets whether it is possible to cycle through the possible completions
          * inside the entry.
          * @param inline_selection `true` to do inline selection
+         * @since 2.12
          */
         set_inline_selection(inline_selection: boolean): void;
 
@@ -25365,6 +25959,7 @@ export namespace Gtk {
          * is used to determine if a row should or should not be in the completion
          * list.
          * @param func The {@link Gtk.EntryCompletionMatchFunc} to use.
+         * @since 2.4
          */
         set_match_func(func: EntryCompletionMatchFunc): void;
 
@@ -25374,6 +25969,7 @@ export namespace Gtk {
          * key takes a lot of time and will come up with meaningless results anyway
          * (ie, a too large dataset).
          * @param length The minimum length of the key in order to start completing.
+         * @since 2.4
          */
         set_minimum_key_length(length: number): void;
 
@@ -25382,12 +25978,14 @@ export namespace Gtk {
          * a model set, it will remove it before setting the new model.
          * If model is `null`, then it will unset the model.
          * @param model The {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         set_model(model: TreeModel | null): void;
 
         /**
          * Sets whether the completions should be presented in a popup window.
          * @param popup_completion `true` to do popup completion
+         * @since 2.6
          */
         set_popup_completion(popup_completion: boolean): void;
 
@@ -25395,6 +25993,7 @@ export namespace Gtk {
          * Sets whether the completion popup window will be resized to be the same
          * width as the entry.
          * @param popup_set_width `true` to make the width of the popup the same as the entry
+         * @since 2.8
          */
         set_popup_set_width(popup_set_width: boolean): void;
 
@@ -25404,6 +26003,7 @@ export namespace Gtk {
          * are using <link linkend="GtkEntryCompletion--inline-completion">inline
          * completion</link>.
          * @param popup_single_match `true` if the popup should appear even for a single   match
+         * @since 2.8
          */
         set_popup_single_match(popup_single_match: boolean): void;
 
@@ -25417,6 +26017,7 @@ export namespace Gtk {
          * column. If you need to set the text column, but don't want the cell
          * renderer, use `g_object_set()` to set the ::text_column property directly.
          * @param column The column in the model of `completion` to get strings from.
+         * @since 2.4
          */
         set_text_column(column: number): void;
 
@@ -25426,6 +26027,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -25437,6 +26039,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -25447,6 +26050,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -25457,6 +26061,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -25466,6 +26071,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -25474,6 +26080,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -25484,6 +26091,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -25494,6 +26102,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -25502,12 +26111,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -25517,6 +26128,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -25528,6 +26140,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -25539,6 +26152,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -25550,6 +26164,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -25559,6 +26174,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -25567,6 +26183,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -25577,6 +26194,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -25588,6 +26206,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -25597,6 +26216,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -25604,6 +26224,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -25617,12 +26238,14 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          */
         add_attribute(cell: CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -25630,12 +26253,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          */
         clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the   renderers has been newly allocated and should be freed with   `g_list_free()` when no longer needed.
+         * @since 2.12
          */
         get_cells(): CellRenderer[];
 
@@ -25647,6 +26272,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_end(cell: CellRenderer, expand: boolean): void;
 
@@ -25658,6 +26284,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_start(cell: CellRenderer, expand: boolean): void;
 
@@ -25666,6 +26293,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          */
         reorder(cell: CellRenderer, position: number): void;
 
@@ -25676,6 +26304,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          */
         set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
 
@@ -25688,6 +26317,7 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: CellRenderer, attribute: string, column: number): void;
@@ -25695,6 +26325,7 @@ export namespace Gtk {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -25703,12 +26334,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): CellRenderer[];
@@ -25721,6 +26354,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: CellRenderer, expand: boolean): void;
@@ -25733,6 +26367,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: CellRenderer, expand: boolean): void;
@@ -25742,6 +26377,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: CellRenderer, position: number): void;
@@ -25753,6 +26389,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
@@ -25871,6 +26508,7 @@ export namespace Gtk {
          * windows of its child. See `gtk_event_box_set_above_child()` for
          * details.
          * @returns `true` if the event box window is above the window of its child.
+         * @since 2.4
          */
         get_above_child(): boolean;
 
@@ -25878,6 +26516,7 @@ export namespace Gtk {
          * Returns whether the event box has a visible window.
          * See `gtk_event_box_set_visible_window()` for details.
          * @returns `true` if the event box window is visible
+         * @since 2.4
          */
         get_visible_window(): boolean;
 
@@ -25890,6 +26529,7 @@ export namespace Gtk {
          * 
          * The default is to keep the window below the child.
          * @param above_child `true` if the event box window is above the windows of its child
+         * @since 2.4
          */
         set_above_child(above_child: boolean): void;
 
@@ -25930,6 +26570,7 @@ export namespace Gtk {
          * descendant windows, not just at the same place on the screen.
          * </para></note>
          * @param visible_window boolean value
+         * @since 2.4
          */
         set_visible_window(visible_window: boolean): void;
 
@@ -26144,6 +26785,7 @@ export namespace Gtk {
          * 
          * See `gtk_expander_set_expanded()`.
          * @returns the current state of the expander.
+         * @since 2.4
          */
         get_expanded(): boolean;
 
@@ -26160,6 +26802,7 @@ export namespace Gtk {
          * be avoided by fetching the label text directly from the label
          * widget.
          * @returns The text of the label widget. This string is owned by the widget and must not be modified or freed.
+         * @since 2.4
          */
         get_label(): string;
 
@@ -26167,6 +26810,7 @@ export namespace Gtk {
          * Returns whether the label widget will fill all available horizontal
          * space allocated to `expander`.
          * @returns `true` if the label widget will fill all available horizontal               space
+         * @since 2.22
          */
         get_label_fill(): boolean;
 
@@ -26174,12 +26818,14 @@ export namespace Gtk {
          * Retrieves the label widget for the frame. See
          * `gtk_expander_set_label_widget()`.
          * @returns the label widget,     or `null` if there is none.
+         * @since 2.4
          */
         get_label_widget(): Widget;
 
         /**
          * Gets the value set by `gtk_expander_set_spacing()`.
          * @returns spacing between the expander and child.
+         * @since 2.4
          */
         get_spacing(): number;
 
@@ -26188,6 +26834,7 @@ export namespace Gtk {
          * the <link linkend="PangoMarkupFormat">Pango text markup
          * language</link>. See gtk_expander_set_use_markup ().
          * @returns `true` if the label's text will be parsed for markup
+         * @since 2.4
          */
         get_use_markup(): boolean;
 
@@ -26195,6 +26842,7 @@ export namespace Gtk {
          * Returns whether an embedded underline in the expander label indicates a
          * mnemonic. See `gtk_expander_set_use_underline()`.
          * @returns `true` if an embedded underline in the expander label               indicates the mnemonic accelerator keys.
+         * @since 2.4
          */
         get_use_underline(): boolean;
 
@@ -26203,6 +26851,7 @@ export namespace Gtk {
          * the child widget to be revealed, and `false` if you want the
          * child widget to be hidden.
          * @param expanded whether the child widget is revealed
+         * @since 2.4
          */
         set_expanded(expanded: boolean): void;
 
@@ -26211,6 +26860,7 @@ export namespace Gtk {
          * 
          * This will also clear any previously set labels.
          * @param label a string
+         * @since 2.4
          */
         set_label(label: string | null): void;
 
@@ -26218,6 +26868,7 @@ export namespace Gtk {
          * Sets whether the label widget should fill all available horizontal space
          * allocated to `expander`.
          * @param label_fill `true` if the label should should fill all available horizontal              space
+         * @since 2.22
          */
         set_label_fill(label_fill: boolean): void;
 
@@ -26225,6 +26876,7 @@ export namespace Gtk {
          * Set the label widget for the expander. This is the widget
          * that will appear embedded alongside the expander arrow.
          * @param label_widget the new label widget
+         * @since 2.4
          */
         set_label_widget(label_widget: Widget | null): void;
 
@@ -26232,6 +26884,7 @@ export namespace Gtk {
          * Sets the spacing field of `expander`, which is the number of pixels to
          * place between expander and the child.
          * @param spacing distance between the expander and child in pixels.
+         * @since 2.4
          */
         set_spacing(spacing: number): void;
 
@@ -26240,6 +26893,7 @@ export namespace Gtk {
          * linkend="PangoMarkupFormat">Pango's text markup
          * language</link>. See `gtk_label_set_markup()`.
          * @param use_markup `true` if the label's text should be parsed for markup
+         * @since 2.4
          */
         set_use_markup(use_markup: boolean): void;
 
@@ -26247,6 +26901,7 @@ export namespace Gtk {
          * If true, an underline in the text of the expander label indicates
          * the next character should be used for the mnemonic accelerator key.
          * @param use_underline `true` if underlines in the text indicate mnemonics
+         * @since 2.4
          */
         set_use_underline(use_underline: boolean): void;
 
@@ -26460,6 +27115,7 @@ export namespace Gtk {
          * Returns whether the button grabs focus when it is clicked with the mouse.
          * See `gtk_file_chooser_button_set_focus_on_click()`.
          * @returns `true` if the button grabs focus when it is clicked with               the mouse.
+         * @since 2.10
          */
         get_focus_on_click(): boolean;
 
@@ -26467,12 +27123,14 @@ export namespace Gtk {
          * Retrieves the title of the browse dialog used by `button`. The returned value
          * should not be modified or freed.
          * @returns a pointer to the browse dialog's title.
+         * @since 2.6
          */
         get_title(): string;
 
         /**
          * Retrieves the width in characters of the `button` widget's entry and/or label.
          * @returns an integer width (in characters) that the button will use to size itself.
+         * @since 2.6
          */
         get_width_chars(): number;
 
@@ -26482,18 +27140,21 @@ export namespace Gtk {
          * you don't want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the button grabs focus when clicked with the mouse
+         * @since 2.10
          */
         set_focus_on_click(focus_on_click: boolean): void;
 
         /**
          * Modifies the `title` of the browse dialog used by `button`.
          * @param title the new browse dialog title.
+         * @since 2.6
          */
         set_title(title: string): void;
 
         /**
          * Sets the width (in characters) that `button` will use to `n_chars`.
          * @param n_chars the new width, in characters.
+         * @since 2.6
          */
         set_width_chars(n_chars: number): void;
 
@@ -26658,6 +27319,7 @@ export namespace Gtk {
          * Note that the `chooser` takes ownership of the filter, so you have to
          * ref and sink it if you want to keep a reference.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         add_filter(filter: FileFilter): void;
 
@@ -26668,6 +27330,7 @@ export namespace Gtk {
          * "/usr/share/mydrawprogram/Clipart" folder to the volume list.
          * @param folder filename of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
+         * @since 2.4
          */
         add_shortcut_folder(folder: string): boolean;
 
@@ -26678,6 +27341,7 @@ export namespace Gtk {
          * "file:///usr/share/mydrawprogram/Clipart" folder to the volume list.
          * @param uri URI of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
+         * @since 2.4
          */
         add_shortcut_folder_uri(uri: string): boolean;
 
@@ -26685,6 +27349,7 @@ export namespace Gtk {
          * Gets the type of operation that the file chooser is performing; see
          * `gtk_file_chooser_set_action()`.
          * @returns the action that the file selector is performing
+         * @since 2.4
          */
         get_action(): FileChooserAction;
 
@@ -26692,6 +27357,7 @@ export namespace Gtk {
          * Gets whether file choser will offer to create new folders.
          * See `gtk_file_chooser_set_create_folders()`.
          * @returns `true` if the New Folder button should be displayed.
+         * @since 2.18
          */
         get_create_folders(): boolean;
 
@@ -26707,6 +27373,7 @@ export namespace Gtk {
          * currently-selected folder in that mode, use `gtk_file_chooser_get_uri()` as the
          * usual way to get the selection.
          * @returns the full path of the current folder, or `null` if the current path cannot be represented as a local filename.  Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder()` on a nonexistent folder.
+         * @since 2.4
          */
         get_current_folder(): string;
 
@@ -26714,6 +27381,7 @@ export namespace Gtk {
          * Gets the current folder of `chooser` as {@link Gio.File}.
          * See `gtk_file_chooser_get_current_folder_uri()`.
          * @returns the {@link Gio.File} for the current folder.
+         * @since 2.14
          */
         get_current_folder_file(): Gio.File;
 
@@ -26729,6 +27397,7 @@ export namespace Gtk {
          * currently-selected folder in that mode, use `gtk_file_chooser_get_uri()` as the
          * usual way to get the selection.
          * @returns the URI for the current folder.  Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder_uri()` on a nonexistent folder.
+         * @since 2.4
          */
         get_current_folder_uri(): string;
 
@@ -26736,6 +27405,7 @@ export namespace Gtk {
          * Queries whether a file chooser is set to confirm for overwriting when the user
          * types a file name that already exists.
          * @returns `true` if the file chooser will present a confirmation dialog; `false` otherwise.
+         * @since 2.8
          */
         get_do_overwrite_confirmation(): boolean;
 
@@ -26743,6 +27413,7 @@ export namespace Gtk {
          * Gets the current preview widget; see
          * `gtk_file_chooser_set_extra_widget()`.
          * @returns the current extra widget, or `null`
+         * @since 2.4
          */
         get_extra_widget(): Widget;
 
@@ -26754,6 +27425,7 @@ export namespace Gtk {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns a selected {@link Gio.File}. You own the returned file;     use `g_object_unref()` to release it.
+         * @since 2.14
          */
         get_file(): Gio.File;
 
@@ -26765,6 +27437,7 @@ export namespace Gtk {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns The currently selected filename, or `null`  if no file is selected, or the selected file can't  be represented with a local filename. Free with `g_free()`.
+         * @since 2.4
          */
         get_filename(): string;
 
@@ -26774,6 +27447,7 @@ export namespace Gtk {
          * folder cannot be represented as local filenames they will be ignored. (See
          * `gtk_file_chooser_get_uris()`)
          * @returns a {@link GLib.SList}    containing the filenames of all selected files and subfolders in    the current folder. Free the returned list with `g_slist_free()`,    and the filenames with `g_free()`.
+         * @since 2.4
          */
         get_filenames(): string[];
 
@@ -26781,12 +27455,14 @@ export namespace Gtk {
          * Lists all the selected files and subfolders in the current folder of `chooser`
          * as {@link Gio.File}. An internal function, see `gtk_file_chooser_get_uris()`.
          * @returns a {@link GLib.SList}   containing a {@link Gio.File} for each selected file and subfolder in the   current folder.  Free the returned list with `g_slist_free()`, and   the files with `g_object_unref()`.
+         * @since 2.14
          */
         get_files(): Gio.File[];
 
         /**
          * Gets the current filter; see `gtk_file_chooser_set_filter()`.
          * @returns the current filter, or `null`
+         * @since 2.4
          */
         get_filter(): FileFilter;
 
@@ -26794,6 +27470,7 @@ export namespace Gtk {
          * Gets whether only local files can be selected in the
          * file selector. See `gtk_file_chooser_set_local_only()`
          * @returns `true` if only local files can be selected.
+         * @since 2.4
          */
         get_local_only(): boolean;
 
@@ -26801,6 +27478,7 @@ export namespace Gtk {
          * Gets the {@link Gio.File} that should be previewed in a custom preview
          * Internal function, see `gtk_file_chooser_get_preview_uri()`.
          * @returns the {@link Gio.File} for the file to preview,     or `null` if no file is selected. Free with `g_object_unref()`.
+         * @since 2.14
          */
         get_preview_file(): Gio.File;
 
@@ -26808,6 +27486,7 @@ export namespace Gtk {
          * Gets the filename that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the filename to preview, or `null` if  no file is selected, or if the selected file cannot be represented  as a local filename. Free with `g_free()`
+         * @since 2.4
          */
         get_preview_filename(): string;
 
@@ -26815,6 +27494,7 @@ export namespace Gtk {
          * Gets the URI that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the URI for the file to preview, or `null` if no file is selected. Free with `g_free()`.
+         * @since 2.4
          */
         get_preview_uri(): string;
 
@@ -26822,6 +27502,7 @@ export namespace Gtk {
          * Gets the current preview widget; see
          * `gtk_file_chooser_set_preview_widget()`.
          * @returns the current preview widget, or `null`
+         * @since 2.4
          */
         get_preview_widget(): Widget;
 
@@ -26830,6 +27511,7 @@ export namespace Gtk {
          * should be shown for the current filename. See
          * `gtk_file_chooser_set_preview_widget_active()`.
          * @returns `true` if the preview widget is active for the current filename.
+         * @since 2.4
          */
         get_preview_widget_active(): boolean;
 
@@ -26837,6 +27519,7 @@ export namespace Gtk {
          * Gets whether multiple files can be selected in the file
          * selector. See `gtk_file_chooser_set_select_multiple()`.
          * @returns `true` if multiple files can be selected.
+         * @since 2.4
          */
         get_select_multiple(): boolean;
 
@@ -26844,6 +27527,7 @@ export namespace Gtk {
          * Gets whether hidden files and folders are displayed in the file selector.
          * See `gtk_file_chooser_set_show_hidden()`.
          * @returns `true` if hidden files and folders are displayed.
+         * @since 2.6
          */
         get_show_hidden(): boolean;
 
@@ -26855,6 +27539,7 @@ export namespace Gtk {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns The currently selected URI, or `null`  if no file is selected. If `gtk_file_chooser_set_local_only()` is set to `true` (the default) a local URI will be returned for any FUSE locations. Free with `g_free()`
+         * @since 2.4
          */
         get_uri(): string;
 
@@ -26862,6 +27547,7 @@ export namespace Gtk {
          * Lists all the selected files and subfolders in the current folder of
          * `chooser`. The returned names are full absolute URIs.
          * @returns a {@link GLib.SList} containing the URIs of all selected   files and subfolders in the current folder. Free the returned list   with `g_slist_free()`, and the filenames with `g_free()`.
+         * @since 2.4
          */
         get_uris(): string[];
 
@@ -26876,6 +27562,7 @@ export namespace Gtk {
          * Lists the current set of user-selectable filters; see
          * `gtk_file_chooser_add_filter()`, `gtk_file_chooser_remove_filter()`.
          * @returns a  {@link GLib.SList} containing the current set of user selectable filters. The  contents of the list are owned by GTK+, but you must free the list  itself with `g_slist_free()` when you are done with it.
+         * @since 2.4
          */
         list_filters(): FileFilter[];
 
@@ -26883,6 +27570,7 @@ export namespace Gtk {
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder_uri()`.
          * @returns A list of folder URIs, or `null` if there are no shortcut folders.  Free the returned list with `g_slist_free()`, and the URIs with `g_free()`.
+         * @since 2.4
          */
         list_shortcut_folder_uris(): string[];
 
@@ -26890,12 +27578,14 @@ export namespace Gtk {
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder()`.
          * @returns A list of folder filenames, or `null` if there are no shortcut folders.  Free the returned list with `g_slist_free()`, and the filenames with `g_free()`.
+         * @since 2.4
          */
         list_shortcut_folders(): string[];
 
         /**
          * Removes `filter` from the list of filters that the user can select between.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         remove_filter(filter: FileFilter): void;
 
@@ -26903,6 +27593,7 @@ export namespace Gtk {
          * Removes a folder from a file chooser's list of shortcut folders.
          * @param folder filename of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder()`
+         * @since 2.4
          */
         remove_shortcut_folder(folder: string): boolean;
 
@@ -26910,11 +27601,13 @@ export namespace Gtk {
          * Removes a folder URI from a file chooser's list of shortcut folders.
          * @param uri URI of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder_uri()`
+         * @since 2.4
          */
         remove_shortcut_folder_uri(uri: string): boolean;
 
         /**
          * Selects all the files in the current folder of a file chooser.
+         * @since 2.4
          */
         select_all(): void;
 
@@ -26923,6 +27616,7 @@ export namespace Gtk {
          * _gtk_file_chooser_select_uri().
          * @param file the file to select
          * @returns `true` if both the folder could be changed and the path was selected successfully, `false` otherwise.
+         * @since 2.14
          */
         select_file(file: Gio.File): boolean;
 
@@ -26932,6 +27626,7 @@ export namespace Gtk {
          * be changed to the folder containing `filename`.
          * @param filename the filename to select
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         select_filename(filename: string): boolean;
 
@@ -26941,6 +27636,7 @@ export namespace Gtk {
          * `chooser` will be changed to the folder containing `filename`.
          * @param uri the URI to select
          * @returns `true` if both the folder could be changed and the URI was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         select_uri(uri: string): boolean;
 
@@ -26951,6 +27647,7 @@ export namespace Gtk {
          * {@link Gtk.FileChooserAction.SAVE} but not if the action is
          * {@link Gtk.FileChooserAction.OPEN}.
          * @param action the action that the file selector is performing
+         * @since 2.4
          */
         set_action(action: FileChooserAction): void;
 
@@ -26959,6 +27656,7 @@ export namespace Gtk {
          * This is only relevant if the action is not set to be
          * {@link Gtk.FileChooserAction.OPEN}.
          * @param create_folders `true` if the New Folder button should be displayed
+         * @since 2.18
          */
         set_create_folders(create_folders: boolean): void;
 
@@ -26968,6 +27666,7 @@ export namespace Gtk {
          * plus user interface elements for navigating to other folders.
          * @param filename the full path of the new current folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.4
          */
         set_current_folder(filename: string): boolean;
 
@@ -26976,6 +27675,7 @@ export namespace Gtk {
          * Internal function, see `gtk_file_chooser_set_current_folder_uri()`.
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.14
          */
         set_current_folder_file(file: Gio.File): boolean;
 
@@ -26985,6 +27685,7 @@ export namespace Gtk {
          * plus user interface elements for navigating to other folders.
          * @param uri the URI for the new current folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.4
          */
         set_current_folder_uri(uri: string): boolean;
 
@@ -26999,6 +27700,7 @@ export namespace Gtk {
          * Please see the documentation for those functions for an example of using
          * `gtk_file_chooser_set_current_name()` as well.
          * @param name the filename to use, as a UTF-8 string
+         * @since 2.4
          */
         set_current_name(name: string): void;
 
@@ -27015,12 +27717,14 @@ export namespace Gtk {
          * {@link Gtk.FileChooser.SignalSignatures.confirm_overwrite | Gtk.FileChooser::confirm-overwrite} signal; please refer to its documentation
          * for the details.
          * @param do_overwrite_confirmation whether to confirm overwriting in save mode
+         * @since 2.8
          */
         set_do_overwrite_confirmation(do_overwrite_confirmation: boolean): void;
 
         /**
          * Sets an application-supplied widget to provide extra options to the user.
          * @param extra_widget widget for extra options
+         * @since 2.4
          */
         set_extra_widget(extra_widget: Widget): void;
 
@@ -27062,6 +27766,7 @@ export namespace Gtk {
          * 
          * @param file the {@link Gio.File} to set as current
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
+         * @since 2.14
          */
         set_file(file: Gio.File): boolean;
 
@@ -27103,6 +27808,7 @@ export namespace Gtk {
          * 
          * @param filename the filename to set as current
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         set_filename(filename: string): boolean;
 
@@ -27114,6 +27820,7 @@ export namespace Gtk {
          * filters is empty is useful if you want to restrict the displayed
          * set of files without letting the user change it.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         set_filter(filter: FileFilter): void;
 
@@ -27132,6 +27839,7 @@ export namespace Gtk {
          * available using the native filesystem via a userspace
          * filesystem (FUSE).
          * @param local_only `true` if only local files can be selected
+         * @since 2.4
          */
         set_local_only(local_only: boolean): void;
 
@@ -27150,6 +27858,7 @@ export namespace Gtk {
          * may display an internally generated preview of the current file or
          * it may display no preview at all.
          * @param preview_widget widget for displaying preview.
+         * @since 2.4
          */
         set_preview_widget(preview_widget: Widget): void;
 
@@ -27161,6 +27870,7 @@ export namespace Gtk {
          * or it may display no preview at all. See
          * `gtk_file_chooser_set_preview_widget()` for more details.
          * @param active whether to display the user-specified preview widget
+         * @since 2.4
          */
         set_preview_widget_active(active: boolean): void;
 
@@ -27169,12 +27879,14 @@ export namespace Gtk {
          * only relevant if the action is set to be {@link Gtk.FileChooserAction.OPEN} or
          * {@link Gtk.FileChooserAction.SELECT_FOLDER}.
          * @param select_multiple `true` if multiple files can be selected.
+         * @since 2.4
          */
         set_select_multiple(select_multiple: boolean): void;
 
         /**
          * Sets whether hidden files and folders are displayed in the file selector.
          * @param show_hidden `true` if hidden files and folders should be displayed.
+         * @since 2.6
          */
         set_show_hidden(show_hidden: boolean): void;
 
@@ -27215,6 +27927,7 @@ export namespace Gtk {
          * 
          * @param uri the URI to set as current
          * @returns `true` if both the folder could be changed and the URI was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         set_uri(uri: string): boolean;
 
@@ -27226,11 +27939,13 @@ export namespace Gtk {
          * 
          * See also: `gtk_file_chooser_set_preview_widget()`
          * @param use_label whether to display a stock label with the name of the previewed file
+         * @since 2.4
          */
         set_use_preview_label(use_label: boolean): void;
 
         /**
          * Unselects all the files in the current folder of a file chooser.
+         * @since 2.4
          */
         unselect_all(): void;
 
@@ -27238,6 +27953,7 @@ export namespace Gtk {
          * Unselects the file referred to by `file`. If the file is not in the current
          * directory, does not exist, or is otherwise not currently selected, does nothing.
          * @param file a {@link Gio.File}
+         * @since 2.14
          */
         unselect_file(file: Gio.File): void;
 
@@ -27246,6 +27962,7 @@ export namespace Gtk {
          * is not in the current directory, does not exist, or
          * is otherwise not currently selected, does nothing.
          * @param filename the filename to unselect
+         * @since 2.4
          */
         unselect_filename(filename: string): void;
 
@@ -27254,6 +27971,7 @@ export namespace Gtk {
          * is not in the current directory, does not exist, or
          * is otherwise not currently selected, does nothing.
          * @param uri the URI to unselect
+         * @since 2.4
          */
         unselect_uri(uri: string): void;
 
@@ -27599,6 +28317,7 @@ export namespace Gtk {
          * Note that the `chooser` takes ownership of the filter, so you have to
          * ref and sink it if you want to keep a reference.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         add_filter(filter: FileFilter): void;
 
@@ -27609,6 +28328,7 @@ export namespace Gtk {
          * "/usr/share/mydrawprogram/Clipart" folder to the volume list.
          * @param folder filename of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
+         * @since 2.4
          */
         add_shortcut_folder(folder: string): boolean;
 
@@ -27619,6 +28339,7 @@ export namespace Gtk {
          * "file:///usr/share/mydrawprogram/Clipart" folder to the volume list.
          * @param uri URI of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
+         * @since 2.4
          */
         add_shortcut_folder_uri(uri: string): boolean;
 
@@ -27626,6 +28347,7 @@ export namespace Gtk {
          * Gets the type of operation that the file chooser is performing; see
          * `gtk_file_chooser_set_action()`.
          * @returns the action that the file selector is performing
+         * @since 2.4
          */
         get_action(): FileChooserAction;
 
@@ -27633,6 +28355,7 @@ export namespace Gtk {
          * Gets whether file choser will offer to create new folders.
          * See `gtk_file_chooser_set_create_folders()`.
          * @returns `true` if the New Folder button should be displayed.
+         * @since 2.18
          */
         get_create_folders(): boolean;
 
@@ -27648,6 +28371,7 @@ export namespace Gtk {
          * currently-selected folder in that mode, use `gtk_file_chooser_get_uri()` as the
          * usual way to get the selection.
          * @returns the full path of the current folder, or `null` if the current path cannot be represented as a local filename.  Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder()` on a nonexistent folder.
+         * @since 2.4
          */
         get_current_folder(): string;
 
@@ -27655,6 +28379,7 @@ export namespace Gtk {
          * Gets the current folder of `chooser` as {@link Gio.File}.
          * See `gtk_file_chooser_get_current_folder_uri()`.
          * @returns the {@link Gio.File} for the current folder.
+         * @since 2.14
          */
         get_current_folder_file(): Gio.File;
 
@@ -27670,6 +28395,7 @@ export namespace Gtk {
          * currently-selected folder in that mode, use `gtk_file_chooser_get_uri()` as the
          * usual way to get the selection.
          * @returns the URI for the current folder.  Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder_uri()` on a nonexistent folder.
+         * @since 2.4
          */
         get_current_folder_uri(): string;
 
@@ -27677,6 +28403,7 @@ export namespace Gtk {
          * Queries whether a file chooser is set to confirm for overwriting when the user
          * types a file name that already exists.
          * @returns `true` if the file chooser will present a confirmation dialog; `false` otherwise.
+         * @since 2.8
          */
         get_do_overwrite_confirmation(): boolean;
 
@@ -27684,6 +28411,7 @@ export namespace Gtk {
          * Gets the current preview widget; see
          * `gtk_file_chooser_set_extra_widget()`.
          * @returns the current extra widget, or `null`
+         * @since 2.4
          */
         get_extra_widget(): Widget;
 
@@ -27695,6 +28423,7 @@ export namespace Gtk {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns a selected {@link Gio.File}. You own the returned file;     use `g_object_unref()` to release it.
+         * @since 2.14
          */
         get_file(): Gio.File;
 
@@ -27706,6 +28435,7 @@ export namespace Gtk {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns The currently selected filename, or `null`  if no file is selected, or the selected file can't  be represented with a local filename. Free with `g_free()`.
+         * @since 2.4
          */
         get_filename(): string;
 
@@ -27715,6 +28445,7 @@ export namespace Gtk {
          * folder cannot be represented as local filenames they will be ignored. (See
          * `gtk_file_chooser_get_uris()`)
          * @returns a {@link GLib.SList}    containing the filenames of all selected files and subfolders in    the current folder. Free the returned list with `g_slist_free()`,    and the filenames with `g_free()`.
+         * @since 2.4
          */
         get_filenames(): string[];
 
@@ -27722,12 +28453,14 @@ export namespace Gtk {
          * Lists all the selected files and subfolders in the current folder of `chooser`
          * as {@link Gio.File}. An internal function, see `gtk_file_chooser_get_uris()`.
          * @returns a {@link GLib.SList}   containing a {@link Gio.File} for each selected file and subfolder in the   current folder.  Free the returned list with `g_slist_free()`, and   the files with `g_object_unref()`.
+         * @since 2.14
          */
         get_files(): Gio.File[];
 
         /**
          * Gets the current filter; see `gtk_file_chooser_set_filter()`.
          * @returns the current filter, or `null`
+         * @since 2.4
          */
         get_filter(): FileFilter;
 
@@ -27735,6 +28468,7 @@ export namespace Gtk {
          * Gets whether only local files can be selected in the
          * file selector. See `gtk_file_chooser_set_local_only()`
          * @returns `true` if only local files can be selected.
+         * @since 2.4
          */
         get_local_only(): boolean;
 
@@ -27742,6 +28476,7 @@ export namespace Gtk {
          * Gets the {@link Gio.File} that should be previewed in a custom preview
          * Internal function, see `gtk_file_chooser_get_preview_uri()`.
          * @returns the {@link Gio.File} for the file to preview,     or `null` if no file is selected. Free with `g_object_unref()`.
+         * @since 2.14
          */
         get_preview_file(): Gio.File;
 
@@ -27749,6 +28484,7 @@ export namespace Gtk {
          * Gets the filename that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the filename to preview, or `null` if  no file is selected, or if the selected file cannot be represented  as a local filename. Free with `g_free()`
+         * @since 2.4
          */
         get_preview_filename(): string;
 
@@ -27756,6 +28492,7 @@ export namespace Gtk {
          * Gets the URI that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the URI for the file to preview, or `null` if no file is selected. Free with `g_free()`.
+         * @since 2.4
          */
         get_preview_uri(): string;
 
@@ -27763,6 +28500,7 @@ export namespace Gtk {
          * Gets the current preview widget; see
          * `gtk_file_chooser_set_preview_widget()`.
          * @returns the current preview widget, or `null`
+         * @since 2.4
          */
         get_preview_widget(): Widget;
 
@@ -27771,6 +28509,7 @@ export namespace Gtk {
          * should be shown for the current filename. See
          * `gtk_file_chooser_set_preview_widget_active()`.
          * @returns `true` if the preview widget is active for the current filename.
+         * @since 2.4
          */
         get_preview_widget_active(): boolean;
 
@@ -27778,6 +28517,7 @@ export namespace Gtk {
          * Gets whether multiple files can be selected in the file
          * selector. See `gtk_file_chooser_set_select_multiple()`.
          * @returns `true` if multiple files can be selected.
+         * @since 2.4
          */
         get_select_multiple(): boolean;
 
@@ -27785,6 +28525,7 @@ export namespace Gtk {
          * Gets whether hidden files and folders are displayed in the file selector.
          * See `gtk_file_chooser_set_show_hidden()`.
          * @returns `true` if hidden files and folders are displayed.
+         * @since 2.6
          */
         get_show_hidden(): boolean;
 
@@ -27796,6 +28537,7 @@ export namespace Gtk {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns The currently selected URI, or `null`  if no file is selected. If `gtk_file_chooser_set_local_only()` is set to `true` (the default) a local URI will be returned for any FUSE locations. Free with `g_free()`
+         * @since 2.4
          */
         get_uri(): string;
 
@@ -27803,6 +28545,7 @@ export namespace Gtk {
          * Lists all the selected files and subfolders in the current folder of
          * `chooser`. The returned names are full absolute URIs.
          * @returns a {@link GLib.SList} containing the URIs of all selected   files and subfolders in the current folder. Free the returned list   with `g_slist_free()`, and the filenames with `g_free()`.
+         * @since 2.4
          */
         get_uris(): string[];
 
@@ -27817,6 +28560,7 @@ export namespace Gtk {
          * Lists the current set of user-selectable filters; see
          * `gtk_file_chooser_add_filter()`, `gtk_file_chooser_remove_filter()`.
          * @returns a  {@link GLib.SList} containing the current set of user selectable filters. The  contents of the list are owned by GTK+, but you must free the list  itself with `g_slist_free()` when you are done with it.
+         * @since 2.4
          */
         list_filters(): FileFilter[];
 
@@ -27824,6 +28568,7 @@ export namespace Gtk {
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder_uri()`.
          * @returns A list of folder URIs, or `null` if there are no shortcut folders.  Free the returned list with `g_slist_free()`, and the URIs with `g_free()`.
+         * @since 2.4
          */
         list_shortcut_folder_uris(): string[];
 
@@ -27831,12 +28576,14 @@ export namespace Gtk {
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder()`.
          * @returns A list of folder filenames, or `null` if there are no shortcut folders.  Free the returned list with `g_slist_free()`, and the filenames with `g_free()`.
+         * @since 2.4
          */
         list_shortcut_folders(): string[];
 
         /**
          * Removes `filter` from the list of filters that the user can select between.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         remove_filter(filter: FileFilter): void;
 
@@ -27844,6 +28591,7 @@ export namespace Gtk {
          * Removes a folder from a file chooser's list of shortcut folders.
          * @param folder filename of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder()`
+         * @since 2.4
          */
         remove_shortcut_folder(folder: string): boolean;
 
@@ -27851,11 +28599,13 @@ export namespace Gtk {
          * Removes a folder URI from a file chooser's list of shortcut folders.
          * @param uri URI of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder_uri()`
+         * @since 2.4
          */
         remove_shortcut_folder_uri(uri: string): boolean;
 
         /**
          * Selects all the files in the current folder of a file chooser.
+         * @since 2.4
          */
         select_all(): void;
 
@@ -27864,6 +28614,7 @@ export namespace Gtk {
          * _gtk_file_chooser_select_uri().
          * @param file the file to select
          * @returns `true` if both the folder could be changed and the path was selected successfully, `false` otherwise.
+         * @since 2.14
          */
         select_file(file: Gio.File): boolean;
 
@@ -27873,6 +28624,7 @@ export namespace Gtk {
          * be changed to the folder containing `filename`.
          * @param filename the filename to select
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         select_filename(filename: string): boolean;
 
@@ -27882,6 +28634,7 @@ export namespace Gtk {
          * `chooser` will be changed to the folder containing `filename`.
          * @param uri the URI to select
          * @returns `true` if both the folder could be changed and the URI was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         select_uri(uri: string): boolean;
 
@@ -27892,6 +28645,7 @@ export namespace Gtk {
          * {@link Gtk.FileChooserAction.SAVE} but not if the action is
          * {@link Gtk.FileChooserAction.OPEN}.
          * @param action the action that the file selector is performing
+         * @since 2.4
          */
         set_action(action: FileChooserAction): void;
 
@@ -27900,6 +28654,7 @@ export namespace Gtk {
          * This is only relevant if the action is not set to be
          * {@link Gtk.FileChooserAction.OPEN}.
          * @param create_folders `true` if the New Folder button should be displayed
+         * @since 2.18
          */
         set_create_folders(create_folders: boolean): void;
 
@@ -27909,6 +28664,7 @@ export namespace Gtk {
          * plus user interface elements for navigating to other folders.
          * @param filename the full path of the new current folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.4
          */
         set_current_folder(filename: string): boolean;
 
@@ -27917,6 +28673,7 @@ export namespace Gtk {
          * Internal function, see `gtk_file_chooser_set_current_folder_uri()`.
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.14
          */
         set_current_folder_file(file: Gio.File): boolean;
 
@@ -27926,6 +28683,7 @@ export namespace Gtk {
          * plus user interface elements for navigating to other folders.
          * @param uri the URI for the new current folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.4
          */
         set_current_folder_uri(uri: string): boolean;
 
@@ -27940,6 +28698,7 @@ export namespace Gtk {
          * Please see the documentation for those functions for an example of using
          * `gtk_file_chooser_set_current_name()` as well.
          * @param name the filename to use, as a UTF-8 string
+         * @since 2.4
          */
         set_current_name(name: string): void;
 
@@ -27956,12 +28715,14 @@ export namespace Gtk {
          * {@link Gtk.FileChooser.SignalSignatures.confirm_overwrite | Gtk.FileChooser::confirm-overwrite} signal; please refer to its documentation
          * for the details.
          * @param do_overwrite_confirmation whether to confirm overwriting in save mode
+         * @since 2.8
          */
         set_do_overwrite_confirmation(do_overwrite_confirmation: boolean): void;
 
         /**
          * Sets an application-supplied widget to provide extra options to the user.
          * @param extra_widget widget for extra options
+         * @since 2.4
          */
         set_extra_widget(extra_widget: Widget): void;
 
@@ -28003,6 +28764,7 @@ export namespace Gtk {
          * 
          * @param file the {@link Gio.File} to set as current
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
+         * @since 2.14
          */
         set_file(file: Gio.File): boolean;
 
@@ -28044,6 +28806,7 @@ export namespace Gtk {
          * 
          * @param filename the filename to set as current
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         set_filename(filename: string): boolean;
 
@@ -28055,6 +28818,7 @@ export namespace Gtk {
          * filters is empty is useful if you want to restrict the displayed
          * set of files without letting the user change it.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         set_filter(filter: FileFilter): void;
 
@@ -28073,6 +28837,7 @@ export namespace Gtk {
          * available using the native filesystem via a userspace
          * filesystem (FUSE).
          * @param local_only `true` if only local files can be selected
+         * @since 2.4
          */
         set_local_only(local_only: boolean): void;
 
@@ -28091,6 +28856,7 @@ export namespace Gtk {
          * may display an internally generated preview of the current file or
          * it may display no preview at all.
          * @param preview_widget widget for displaying preview.
+         * @since 2.4
          */
         set_preview_widget(preview_widget: Widget): void;
 
@@ -28102,6 +28868,7 @@ export namespace Gtk {
          * or it may display no preview at all. See
          * `gtk_file_chooser_set_preview_widget()` for more details.
          * @param active whether to display the user-specified preview widget
+         * @since 2.4
          */
         set_preview_widget_active(active: boolean): void;
 
@@ -28110,12 +28877,14 @@ export namespace Gtk {
          * only relevant if the action is set to be {@link Gtk.FileChooserAction.OPEN} or
          * {@link Gtk.FileChooserAction.SELECT_FOLDER}.
          * @param select_multiple `true` if multiple files can be selected.
+         * @since 2.4
          */
         set_select_multiple(select_multiple: boolean): void;
 
         /**
          * Sets whether hidden files and folders are displayed in the file selector.
          * @param show_hidden `true` if hidden files and folders should be displayed.
+         * @since 2.6
          */
         set_show_hidden(show_hidden: boolean): void;
 
@@ -28156,6 +28925,7 @@ export namespace Gtk {
          * 
          * @param uri the URI to set as current
          * @returns `true` if both the folder could be changed and the URI was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         set_uri(uri: string): boolean;
 
@@ -28167,11 +28937,13 @@ export namespace Gtk {
          * 
          * See also: `gtk_file_chooser_set_preview_widget()`
          * @param use_label whether to display a stock label with the name of the previewed file
+         * @since 2.4
          */
         set_use_preview_label(use_label: boolean): void;
 
         /**
          * Unselects all the files in the current folder of a file chooser.
+         * @since 2.4
          */
         unselect_all(): void;
 
@@ -28179,6 +28951,7 @@ export namespace Gtk {
          * Unselects the file referred to by `file`. If the file is not in the current
          * directory, does not exist, or is otherwise not currently selected, does nothing.
          * @param file a {@link Gio.File}
+         * @since 2.14
          */
         unselect_file(file: Gio.File): void;
 
@@ -28187,6 +28960,7 @@ export namespace Gtk {
          * is not in the current directory, does not exist, or
          * is otherwise not currently selected, does nothing.
          * @param filename the filename to unselect
+         * @since 2.4
          */
         unselect_filename(filename: string): void;
 
@@ -28195,6 +28969,7 @@ export namespace Gtk {
          * is not in the current directory, does not exist, or
          * is otherwise not currently selected, does nothing.
          * @param uri the URI to unselect
+         * @since 2.4
          */
         unselect_uri(uri: string): void;
 
@@ -28260,6 +29035,7 @@ export namespace Gtk {
          * resources when a widget has been realized, and you should
          * free those resources when the widget is unrealized.
          * @returns the {@link Gdk.Screen} for the toplevel for this widget.
+         * @since 2.2
          */
         get_screen(): Gdk.Screen;
 
@@ -28533,6 +29309,7 @@ export namespace Gtk {
          * Note that the `chooser` takes ownership of the filter, so you have to
          * ref and sink it if you want to keep a reference.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         add_filter(filter: FileFilter): void;
 
@@ -28543,6 +29320,7 @@ export namespace Gtk {
          * "/usr/share/mydrawprogram/Clipart" folder to the volume list.
          * @param folder filename of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
+         * @since 2.4
          */
         add_shortcut_folder(folder: string): boolean;
 
@@ -28553,6 +29331,7 @@ export namespace Gtk {
          * "file:///usr/share/mydrawprogram/Clipart" folder to the volume list.
          * @param uri URI of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
+         * @since 2.4
          */
         add_shortcut_folder_uri(uri: string): boolean;
 
@@ -28560,6 +29339,7 @@ export namespace Gtk {
          * Gets the type of operation that the file chooser is performing; see
          * `gtk_file_chooser_set_action()`.
          * @returns the action that the file selector is performing
+         * @since 2.4
          */
         get_action(): FileChooserAction;
 
@@ -28567,6 +29347,7 @@ export namespace Gtk {
          * Gets whether file choser will offer to create new folders.
          * See `gtk_file_chooser_set_create_folders()`.
          * @returns `true` if the New Folder button should be displayed.
+         * @since 2.18
          */
         get_create_folders(): boolean;
 
@@ -28582,6 +29363,7 @@ export namespace Gtk {
          * currently-selected folder in that mode, use `gtk_file_chooser_get_uri()` as the
          * usual way to get the selection.
          * @returns the full path of the current folder, or `null` if the current path cannot be represented as a local filename.  Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder()` on a nonexistent folder.
+         * @since 2.4
          */
         get_current_folder(): string;
 
@@ -28589,6 +29371,7 @@ export namespace Gtk {
          * Gets the current folder of `chooser` as {@link Gio.File}.
          * See `gtk_file_chooser_get_current_folder_uri()`.
          * @returns the {@link Gio.File} for the current folder.
+         * @since 2.14
          */
         get_current_folder_file(): Gio.File;
 
@@ -28604,6 +29387,7 @@ export namespace Gtk {
          * currently-selected folder in that mode, use `gtk_file_chooser_get_uri()` as the
          * usual way to get the selection.
          * @returns the URI for the current folder.  Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder_uri()` on a nonexistent folder.
+         * @since 2.4
          */
         get_current_folder_uri(): string;
 
@@ -28611,6 +29395,7 @@ export namespace Gtk {
          * Queries whether a file chooser is set to confirm for overwriting when the user
          * types a file name that already exists.
          * @returns `true` if the file chooser will present a confirmation dialog; `false` otherwise.
+         * @since 2.8
          */
         get_do_overwrite_confirmation(): boolean;
 
@@ -28618,6 +29403,7 @@ export namespace Gtk {
          * Gets the current preview widget; see
          * `gtk_file_chooser_set_extra_widget()`.
          * @returns the current extra widget, or `null`
+         * @since 2.4
          */
         get_extra_widget(): Widget;
 
@@ -28629,6 +29415,7 @@ export namespace Gtk {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns a selected {@link Gio.File}. You own the returned file;     use `g_object_unref()` to release it.
+         * @since 2.14
          */
         get_file(): Gio.File;
 
@@ -28640,6 +29427,7 @@ export namespace Gtk {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns The currently selected filename, or `null`  if no file is selected, or the selected file can't  be represented with a local filename. Free with `g_free()`.
+         * @since 2.4
          */
         get_filename(): string;
 
@@ -28649,6 +29437,7 @@ export namespace Gtk {
          * folder cannot be represented as local filenames they will be ignored. (See
          * `gtk_file_chooser_get_uris()`)
          * @returns a {@link GLib.SList}    containing the filenames of all selected files and subfolders in    the current folder. Free the returned list with `g_slist_free()`,    and the filenames with `g_free()`.
+         * @since 2.4
          */
         get_filenames(): string[];
 
@@ -28656,12 +29445,14 @@ export namespace Gtk {
          * Lists all the selected files and subfolders in the current folder of `chooser`
          * as {@link Gio.File}. An internal function, see `gtk_file_chooser_get_uris()`.
          * @returns a {@link GLib.SList}   containing a {@link Gio.File} for each selected file and subfolder in the   current folder.  Free the returned list with `g_slist_free()`, and   the files with `g_object_unref()`.
+         * @since 2.14
          */
         get_files(): Gio.File[];
 
         /**
          * Gets the current filter; see `gtk_file_chooser_set_filter()`.
          * @returns the current filter, or `null`
+         * @since 2.4
          */
         get_filter(): FileFilter;
 
@@ -28669,6 +29460,7 @@ export namespace Gtk {
          * Gets whether only local files can be selected in the
          * file selector. See `gtk_file_chooser_set_local_only()`
          * @returns `true` if only local files can be selected.
+         * @since 2.4
          */
         get_local_only(): boolean;
 
@@ -28676,6 +29468,7 @@ export namespace Gtk {
          * Gets the {@link Gio.File} that should be previewed in a custom preview
          * Internal function, see `gtk_file_chooser_get_preview_uri()`.
          * @returns the {@link Gio.File} for the file to preview,     or `null` if no file is selected. Free with `g_object_unref()`.
+         * @since 2.14
          */
         get_preview_file(): Gio.File;
 
@@ -28683,6 +29476,7 @@ export namespace Gtk {
          * Gets the filename that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the filename to preview, or `null` if  no file is selected, or if the selected file cannot be represented  as a local filename. Free with `g_free()`
+         * @since 2.4
          */
         get_preview_filename(): string;
 
@@ -28690,6 +29484,7 @@ export namespace Gtk {
          * Gets the URI that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the URI for the file to preview, or `null` if no file is selected. Free with `g_free()`.
+         * @since 2.4
          */
         get_preview_uri(): string;
 
@@ -28697,6 +29492,7 @@ export namespace Gtk {
          * Gets the current preview widget; see
          * `gtk_file_chooser_set_preview_widget()`.
          * @returns the current preview widget, or `null`
+         * @since 2.4
          */
         get_preview_widget(): Widget;
 
@@ -28705,6 +29501,7 @@ export namespace Gtk {
          * should be shown for the current filename. See
          * `gtk_file_chooser_set_preview_widget_active()`.
          * @returns `true` if the preview widget is active for the current filename.
+         * @since 2.4
          */
         get_preview_widget_active(): boolean;
 
@@ -28712,6 +29509,7 @@ export namespace Gtk {
          * Gets whether multiple files can be selected in the file
          * selector. See `gtk_file_chooser_set_select_multiple()`.
          * @returns `true` if multiple files can be selected.
+         * @since 2.4
          */
         get_select_multiple(): boolean;
 
@@ -28719,6 +29517,7 @@ export namespace Gtk {
          * Gets whether hidden files and folders are displayed in the file selector.
          * See `gtk_file_chooser_set_show_hidden()`.
          * @returns `true` if hidden files and folders are displayed.
+         * @since 2.6
          */
         get_show_hidden(): boolean;
 
@@ -28730,6 +29529,7 @@ export namespace Gtk {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns The currently selected URI, or `null`  if no file is selected. If `gtk_file_chooser_set_local_only()` is set to `true` (the default) a local URI will be returned for any FUSE locations. Free with `g_free()`
+         * @since 2.4
          */
         get_uri(): string;
 
@@ -28737,6 +29537,7 @@ export namespace Gtk {
          * Lists all the selected files and subfolders in the current folder of
          * `chooser`. The returned names are full absolute URIs.
          * @returns a {@link GLib.SList} containing the URIs of all selected   files and subfolders in the current folder. Free the returned list   with `g_slist_free()`, and the filenames with `g_free()`.
+         * @since 2.4
          */
         get_uris(): string[];
 
@@ -28751,6 +29552,7 @@ export namespace Gtk {
          * Lists the current set of user-selectable filters; see
          * `gtk_file_chooser_add_filter()`, `gtk_file_chooser_remove_filter()`.
          * @returns a  {@link GLib.SList} containing the current set of user selectable filters. The  contents of the list are owned by GTK+, but you must free the list  itself with `g_slist_free()` when you are done with it.
+         * @since 2.4
          */
         list_filters(): FileFilter[];
 
@@ -28758,6 +29560,7 @@ export namespace Gtk {
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder_uri()`.
          * @returns A list of folder URIs, or `null` if there are no shortcut folders.  Free the returned list with `g_slist_free()`, and the URIs with `g_free()`.
+         * @since 2.4
          */
         list_shortcut_folder_uris(): string[];
 
@@ -28765,12 +29568,14 @@ export namespace Gtk {
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder()`.
          * @returns A list of folder filenames, or `null` if there are no shortcut folders.  Free the returned list with `g_slist_free()`, and the filenames with `g_free()`.
+         * @since 2.4
          */
         list_shortcut_folders(): string[];
 
         /**
          * Removes `filter` from the list of filters that the user can select between.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         remove_filter(filter: FileFilter): void;
 
@@ -28778,6 +29583,7 @@ export namespace Gtk {
          * Removes a folder from a file chooser's list of shortcut folders.
          * @param folder filename of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder()`
+         * @since 2.4
          */
         remove_shortcut_folder(folder: string): boolean;
 
@@ -28785,11 +29591,13 @@ export namespace Gtk {
          * Removes a folder URI from a file chooser's list of shortcut folders.
          * @param uri URI of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder_uri()`
+         * @since 2.4
          */
         remove_shortcut_folder_uri(uri: string): boolean;
 
         /**
          * Selects all the files in the current folder of a file chooser.
+         * @since 2.4
          */
         select_all(): void;
 
@@ -28798,6 +29606,7 @@ export namespace Gtk {
          * _gtk_file_chooser_select_uri().
          * @param file the file to select
          * @returns `true` if both the folder could be changed and the path was selected successfully, `false` otherwise.
+         * @since 2.14
          */
         select_file(file: Gio.File): boolean;
 
@@ -28807,6 +29616,7 @@ export namespace Gtk {
          * be changed to the folder containing `filename`.
          * @param filename the filename to select
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         select_filename(filename: string): boolean;
 
@@ -28816,6 +29626,7 @@ export namespace Gtk {
          * `chooser` will be changed to the folder containing `filename`.
          * @param uri the URI to select
          * @returns `true` if both the folder could be changed and the URI was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         select_uri(uri: string): boolean;
 
@@ -28826,6 +29637,7 @@ export namespace Gtk {
          * {@link Gtk.FileChooserAction.SAVE} but not if the action is
          * {@link Gtk.FileChooserAction.OPEN}.
          * @param action the action that the file selector is performing
+         * @since 2.4
          */
         set_action(action: FileChooserAction): void;
 
@@ -28834,6 +29646,7 @@ export namespace Gtk {
          * This is only relevant if the action is not set to be
          * {@link Gtk.FileChooserAction.OPEN}.
          * @param create_folders `true` if the New Folder button should be displayed
+         * @since 2.18
          */
         set_create_folders(create_folders: boolean): void;
 
@@ -28843,6 +29656,7 @@ export namespace Gtk {
          * plus user interface elements for navigating to other folders.
          * @param filename the full path of the new current folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.4
          */
         set_current_folder(filename: string): boolean;
 
@@ -28851,6 +29665,7 @@ export namespace Gtk {
          * Internal function, see `gtk_file_chooser_set_current_folder_uri()`.
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.14
          */
         set_current_folder_file(file: Gio.File): boolean;
 
@@ -28860,6 +29675,7 @@ export namespace Gtk {
          * plus user interface elements for navigating to other folders.
          * @param uri the URI for the new current folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.4
          */
         set_current_folder_uri(uri: string): boolean;
 
@@ -28874,6 +29690,7 @@ export namespace Gtk {
          * Please see the documentation for those functions for an example of using
          * `gtk_file_chooser_set_current_name()` as well.
          * @param name the filename to use, as a UTF-8 string
+         * @since 2.4
          */
         set_current_name(name: string): void;
 
@@ -28890,12 +29707,14 @@ export namespace Gtk {
          * {@link Gtk.FileChooser.SignalSignatures.confirm_overwrite | Gtk.FileChooser::confirm-overwrite} signal; please refer to its documentation
          * for the details.
          * @param do_overwrite_confirmation whether to confirm overwriting in save mode
+         * @since 2.8
          */
         set_do_overwrite_confirmation(do_overwrite_confirmation: boolean): void;
 
         /**
          * Sets an application-supplied widget to provide extra options to the user.
          * @param extra_widget widget for extra options
+         * @since 2.4
          */
         set_extra_widget(extra_widget: Widget): void;
 
@@ -28937,6 +29756,7 @@ export namespace Gtk {
          * 
          * @param file the {@link Gio.File} to set as current
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
+         * @since 2.14
          */
         set_file(file: Gio.File): boolean;
 
@@ -28978,6 +29798,7 @@ export namespace Gtk {
          * 
          * @param filename the filename to set as current
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         set_filename(filename: string): boolean;
 
@@ -28989,6 +29810,7 @@ export namespace Gtk {
          * filters is empty is useful if you want to restrict the displayed
          * set of files without letting the user change it.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         set_filter(filter: FileFilter): void;
 
@@ -29007,6 +29829,7 @@ export namespace Gtk {
          * available using the native filesystem via a userspace
          * filesystem (FUSE).
          * @param local_only `true` if only local files can be selected
+         * @since 2.4
          */
         set_local_only(local_only: boolean): void;
 
@@ -29025,6 +29848,7 @@ export namespace Gtk {
          * may display an internally generated preview of the current file or
          * it may display no preview at all.
          * @param preview_widget widget for displaying preview.
+         * @since 2.4
          */
         set_preview_widget(preview_widget: Widget): void;
 
@@ -29036,6 +29860,7 @@ export namespace Gtk {
          * or it may display no preview at all. See
          * `gtk_file_chooser_set_preview_widget()` for more details.
          * @param active whether to display the user-specified preview widget
+         * @since 2.4
          */
         set_preview_widget_active(active: boolean): void;
 
@@ -29044,12 +29869,14 @@ export namespace Gtk {
          * only relevant if the action is set to be {@link Gtk.FileChooserAction.OPEN} or
          * {@link Gtk.FileChooserAction.SELECT_FOLDER}.
          * @param select_multiple `true` if multiple files can be selected.
+         * @since 2.4
          */
         set_select_multiple(select_multiple: boolean): void;
 
         /**
          * Sets whether hidden files and folders are displayed in the file selector.
          * @param show_hidden `true` if hidden files and folders should be displayed.
+         * @since 2.6
          */
         set_show_hidden(show_hidden: boolean): void;
 
@@ -29090,6 +29917,7 @@ export namespace Gtk {
          * 
          * @param uri the URI to set as current
          * @returns `true` if both the folder could be changed and the URI was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         set_uri(uri: string): boolean;
 
@@ -29101,11 +29929,13 @@ export namespace Gtk {
          * 
          * See also: `gtk_file_chooser_set_preview_widget()`
          * @param use_label whether to display a stock label with the name of the previewed file
+         * @since 2.4
          */
         set_use_preview_label(use_label: boolean): void;
 
         /**
          * Unselects all the files in the current folder of a file chooser.
+         * @since 2.4
          */
         unselect_all(): void;
 
@@ -29113,6 +29943,7 @@ export namespace Gtk {
          * Unselects the file referred to by `file`. If the file is not in the current
          * directory, does not exist, or is otherwise not currently selected, does nothing.
          * @param file a {@link Gio.File}
+         * @since 2.14
          */
         unselect_file(file: Gio.File): void;
 
@@ -29121,6 +29952,7 @@ export namespace Gtk {
          * is not in the current directory, does not exist, or
          * is otherwise not currently selected, does nothing.
          * @param filename the filename to unselect
+         * @since 2.4
          */
         unselect_filename(filename: string): void;
 
@@ -29129,6 +29961,7 @@ export namespace Gtk {
          * is not in the current directory, does not exist, or
          * is otherwise not currently selected, does nothing.
          * @param uri the URI to unselect
+         * @since 2.4
          */
         unselect_uri(uri: string): void;
 
@@ -29240,24 +30073,28 @@ export namespace Gtk {
          * it isn't needed by the filter.
          * @param needed bitfield of flags indicating the information that the custom          filter function needs.
          * @param func callback function; if the function returns `true`, then   the file will be displayed.
+         * @since 2.4
          */
         add_custom(needed: FileFilterFlags, func: FileFilterFunc): void;
 
         /**
          * Adds a rule allowing a given mime type to `filter`.
          * @param mime_type name of a MIME type
+         * @since 2.4
          */
         add_mime_type(mime_type: string): void;
 
         /**
          * Adds a rule allowing a shell style glob to a filter.
          * @param pattern a shell style glob
+         * @since 2.4
          */
         add_pattern(pattern: string): void;
 
         /**
          * Adds a rule allowing image files in the formats supported
          * by GdkPixbuf.
+         * @since 2.6
          */
         add_pixbuf_formats(): void;
 
@@ -29271,12 +30108,14 @@ export namespace Gtk {
          * {@link Gtk.FileChooser}.
          * @param filter_info a {@link Gtk.FileFilterInfo} structure containing information  about a file.
          * @returns `true` if the file should be displayed
+         * @since 2.4
          */
         filter(filter_info: FileFilterInfo): boolean;
 
         /**
          * Gets the human-readable name for the filter. See `gtk_file_filter_set_name()`.
          * @returns The human-readable name of the filter,   or `null`. This value is owned by GTK+ and must not   be modified or freed.
+         * @since 2.4
          */
         get_name(): string;
 
@@ -29288,6 +30127,7 @@ export namespace Gtk {
          * is intended principally for use in the implementation of
          * {@link Gtk.FileChooser}.
          * @returns bitfield of flags indicating needed fields when   calling `gtk_file_filter_filter()`
+         * @since 2.4
          */
         get_needed(): FileFilterFlags;
 
@@ -29296,6 +30136,7 @@ export namespace Gtk {
          * that will be displayed in the file selector user interface if
          * there is a selectable list of filters.
          * @param name the human-readable-name for the filter, or `null`   to remove any existing name.
+         * @since 2.4
          */
         set_name(name: string | null): void;
     }
@@ -29653,6 +30494,7 @@ export namespace Gtk {
          * Gets whether the {@link Gtk.Fixed} has its own {@link Gdk.Window}.
          * See `gtk_fixed_set_has_window()`.
          * @returns `true` if `fixed` has its own window.
+         * @deprecated since 2.20: Use `gtk_widget_get_has_window()` instead.
          */
         get_has_window(): boolean;
 
@@ -29680,6 +30522,7 @@ export namespace Gtk {
          * This function was added to provide an easy migration path for
          * older applications which may expect {@link Gtk.Fixed} to have a separate window.
          * @param has_window `true` if a separate window should be created
+         * @deprecated since 2.20: Use `gtk_widget_set_has_window()` instead.
          */
         set_has_window(has_window: boolean): void;
 
@@ -29953,36 +30796,42 @@ export namespace Gtk {
          * style, size, weight) just query these properties from the
          * {@link Pango.FontDescription} object.
          * @returns an internal copy of the font name which must not be freed.
+         * @since 2.4
          */
         get_font_name(): string;
 
         /**
          * Returns whether the font size will be shown in the label.
          * @returns whether the font size will be shown in the label.
+         * @since 2.4
          */
         get_show_size(): boolean;
 
         /**
          * Returns whether the name of the font style will be shown in the label.
          * @returns whether the font style will be shown in the label.
+         * @since 2.4
          */
         get_show_style(): boolean;
 
         /**
          * Retrieves the title of the font selection dialog.
          * @returns an internal copy of the title string which must not be freed.
+         * @since 2.4
          */
         get_title(): string;
 
         /**
          * Returns whether the selected font is used in the label.
          * @returns whether the selected font is used in the label.
+         * @since 2.4
          */
         get_use_font(): boolean;
 
         /**
          * Returns whether the selected size is used in the label.
          * @returns whether the selected size is used in the label.
+         * @since 2.4
          */
         get_use_size(): boolean;
 
@@ -29990,36 +30839,42 @@ export namespace Gtk {
          * Sets or updates the currently-displayed font in font picker dialog.
          * @param fontname Name of font to display in font selection dialog
          * @returns Return value of `gtk_font_selection_dialog_set_font_name()` if the font selection dialog exists, otherwise `false`.
+         * @since 2.4
          */
         set_font_name(fontname: string): boolean;
 
         /**
          * If `show_size` is `true`, the font size will be displayed along with the name of the selected font.
          * @param show_size `true` if font size should be displayed in dialog.
+         * @since 2.4
          */
         set_show_size(show_size: boolean): void;
 
         /**
          * If `show_style` is `true`, the font style will be displayed along with name of the selected font.
          * @param show_style `true` if font style should be displayed in label.
+         * @since 2.4
          */
         set_show_style(show_style: boolean): void;
 
         /**
          * Sets the title for the font selection dialog.
          * @param title a string containing the font selection dialog title
+         * @since 2.4
          */
         set_title(title: string): void;
 
         /**
          * If `use_font` is `true`, the font name will be written using the selected font.
          * @param use_font If `true`, font name will be written using font chosen.
+         * @since 2.4
          */
         set_use_font(use_font: boolean): void;
 
         /**
          * If `use_size` is `true`, the font name will be written using the selected size.
          * @param use_size If `true`, font name will be written using the selected size.
+         * @since 2.4
          */
         set_use_size(use_size: boolean): void;
 
@@ -30099,12 +30954,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -30113,6 +30970,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -30122,6 +30980,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -30134,6 +30993,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -30143,6 +31003,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -30152,6 +31013,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -30346,6 +31208,7 @@ export namespace Gtk {
          * Gets the {@link Pango.FontFace} representing the selected font group
          * details (i.e. family, slant, weight, width, etc).
          * @returns A {@link Pango.FontFace} representing the     selected font group details. The returned object is owned by     `fontsel` and must not be modified or freed.
+         * @since 2.14
          */
         get_face(): Pango.FontFace;
 
@@ -30353,12 +31216,14 @@ export namespace Gtk {
          * This returns the {@link Gtk.TreeView} which lists all styles available for
          * the selected font. For example, 'Regular', 'Bold', etc.
          * @returns A {@link Gtk.Widget} that is part of `fontsel`
+         * @since 2.14
          */
         get_face_list(): Widget;
 
         /**
          * Gets the {@link Pango.FontFamily} representing the selected font family.
          * @returns A {@link Pango.FontFamily} representing the     selected font family. Font families are a collection of font     faces. The returned object is owned by `fontsel` and must not     be modified or freed.
+         * @since 2.14
          */
         get_family(): Pango.FontFamily;
 
@@ -30366,12 +31231,14 @@ export namespace Gtk {
          * This returns the {@link Gtk.TreeView} that lists font families, for
          * example, 'Sans', 'Serif', etc.
          * @returns A {@link Gtk.Widget} that is part of `fontsel`
+         * @since 2.14
          */
         get_family_list(): Widget;
 
         /**
          * Gets the currently-selected font.
          * @returns A {@link Gdk.Font}.
+         * @deprecated since 2.0: Use `gtk_font_selection_get_font_name()` instead.
          */
         get_font(): Gdk.Font;
 
@@ -30391,6 +31258,7 @@ export namespace Gtk {
         /**
          * This returns the {@link Gtk.Entry} used to display the font as a preview.
          * @returns A {@link Gtk.Widget} that is part of `fontsel`
+         * @since 2.14
          */
         get_preview_entry(): Widget;
 
@@ -30403,6 +31271,7 @@ export namespace Gtk {
         /**
          * The selected font size.
          * @returns A n integer representing the selected font size,     or -1 if no font size is selected.
+         * @since 2.14
          */
         get_size(): number;
 
@@ -30410,12 +31279,14 @@ export namespace Gtk {
          * This returns the {@link Gtk.Entry} used to allow the user to edit the font
          * number manually instead of selecting it from the list of font sizes.
          * @returns A {@link Gtk.Widget} that is part of `fontsel`
+         * @since 2.14
          */
         get_size_entry(): Widget;
 
         /**
          * This returns the `GtkTreeeView` used to list font sizes.
          * @returns A {@link Gtk.Widget} that is part of `fontsel`
+         * @since 2.14
          */
         get_size_list(): Widget;
 
@@ -30588,12 +31459,14 @@ export namespace Gtk {
         /**
          * Gets the 'Cancel' button.
          * @returns the {@link Gtk.Widget} used in the dialog     for the 'Cancel' button.
+         * @since 2.14
          */
         get_cancel_button(): Widget;
 
         /**
          * Gets the currently-selected font.
          * @returns the {@link Gdk.Font} from the {@link Gtk.FontSelection} for the     currently selected font in the dialog, or `null` if no font is selected
+         * @deprecated since 2.0: Use `gtk_font_selection_dialog_get_font_name()` instead.
          */
         get_font(): Gdk.Font;
 
@@ -30613,12 +31486,14 @@ export namespace Gtk {
         /**
          * Retrieves the {@link Gtk.FontSelection} widget embedded in the dialog.
          * @returns the embedded {@link Gtk.FontSelection}
+         * @since 2.22
          */
         get_font_selection(): Widget;
 
         /**
          * Gets the 'OK' button.
          * @returns the {@link Gtk.Widget} used in the dialog     for the 'OK' button.
+         * @since 2.14
          */
         get_ok_button(): Widget;
 
@@ -31146,12 +32021,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -31410,12 +32287,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -31544,12 +32423,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -31679,6 +32560,7 @@ export namespace Gtk {
          * @param h Hue
          * @param s Saturation
          * @param v Value
+         * @since 2.14
          */
         static to_rgb(h: number, s: number, v: number): [number, number, number];
 
@@ -31698,11 +32580,13 @@ export namespace Gtk {
         /**
          * Queries the current color in an HSV color selector.
          * Returned values will be in the [0.0, 1.0] range.
+         * @since 2.14
          */
         get_color(): [number, number, number];
 
         /**
          * Queries the size and ring width of an HSV color selector.
+         * @since 2.14
          */
         get_metrics(): [number, number];
 
@@ -31712,6 +32596,7 @@ export namespace Gtk {
          * adjusting the value with the mouse. This function queries whether
          * the HSV color selector is being adjusted or not.
          * @returns `true` if clients can ignore changes to the color value,     since they may be transitory, or `false` if they should consider     the color value status to be final.
+         * @since 2.14
          */
         is_adjusting(): boolean;
 
@@ -31721,6 +32606,7 @@ export namespace Gtk {
          * @param h Hue
          * @param s Saturation
          * @param v Value
+         * @since 2.14
          */
         set_color(h: number, s: number, v: number): void;
 
@@ -31728,6 +32614,7 @@ export namespace Gtk {
          * Sets the size and ring width of an HSV color selector.
          * @param size Diameter for the hue ring
          * @param ring_width Width of the hue ring
+         * @since 2.14
          */
         set_metrics(size: number, ring_width: number): void;
 
@@ -31737,6 +32624,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -31748,6 +32636,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -31758,6 +32647,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -31768,6 +32658,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -31777,6 +32668,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -31785,6 +32677,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -31795,6 +32688,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -31805,6 +32699,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -31813,12 +32708,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -31828,6 +32725,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -31839,6 +32737,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -31850,6 +32749,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -31861,6 +32761,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -31870,6 +32771,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -31878,6 +32780,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -31888,6 +32791,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -31899,6 +32803,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -31908,6 +32813,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -31915,6 +32821,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -32276,12 +33183,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -32525,6 +33434,7 @@ export namespace Gtk {
         /**
          * Whether the handlebox's child is currently detached.
          * @returns `true` if the child is currently detached, otherwise `false`
+         * @since 2.14
          */
         get_child_detached(): boolean;
 
@@ -33174,6 +34084,7 @@ export namespace Gtk {
         /**
          * Gets the id of the currently active slave of the `context`.
          * @returns the id of the currently active slave
+         * @since 2.16
          */
         get_context_id(): string;
 
@@ -33183,6 +34094,7 @@ export namespace Gtk {
          * This causes the currently active slave of `context` to be
          * replaced by the slave corresponding to the new context id.
          * @param context_id the id to use
+         * @since 2.16
          */
         set_context_id(context_id: string): void;
     }
@@ -33293,6 +34205,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -33304,6 +34217,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -33314,6 +34228,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -33324,6 +34239,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -33333,6 +34249,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -33341,6 +34258,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -33351,6 +34269,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -33361,6 +34280,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -33369,12 +34289,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -33384,6 +34306,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -33395,6 +34318,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -33406,6 +34330,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -33417,6 +34342,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -33426,6 +34352,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -33434,6 +34361,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -33444,6 +34372,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -33455,6 +34384,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -33464,6 +34394,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -33471,6 +34402,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -33547,12 +34479,14 @@ export namespace Gtk {
          * @param icon_name the name of the icon to register
          * @param size the size at which to register the icon (different        images can be registered for the same icon name        at different sizes.)
          * @param pixbuf {@link GdkPixbuf.Pixbuf} that contains the image to use          for `icon_name`.
+         * @since 2.4
          */
         static add_builtin_icon(icon_name: string, size: number, pixbuf: GdkPixbuf.Pixbuf): void;
 
         /**
          * Gets the icon theme for the default screen. See
          * `gtk_icon_theme_get_for_screen()`.
+         * @since 2.4
          */
         static get_default(): IconTheme;
 
@@ -33566,6 +34500,7 @@ export namespace Gtk {
          * and setting the screen yourself; by using this function
          * a single icon theme object will be shared between users.
          * @param screen a {@link Gdk.Screen}
+         * @since 2.4
          */
         static get_for_screen(screen: Gdk.Screen): IconTheme;
 
@@ -33580,6 +34515,7 @@ export namespace Gtk {
          * Appends a directory to the search path.
          * See `gtk_icon_theme_set_search_path()`.
          * @param path directory name to append to the icon path
+         * @since 2.4
          */
         append_search_path(path: string): void;
 
@@ -33597,6 +34533,7 @@ export namespace Gtk {
          * @param size desired icon size
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link Gtk.IconInfo} structure containing information about the icon, or `null` if the icon wasn't found. Free with `gtk_icon_info_free()`
+         * @since 2.12
          */
         choose_icon(icon_names: string[], size: number, flags: IconLookupFlags): IconInfo;
 
@@ -33605,6 +34542,7 @@ export namespace Gtk {
          * current theme (for instance, to use when presenting
          * a list of themes to the user.)
          * @returns the name of an example icon or `null`.  Free with `g_free()`.
+         * @since 2.4
          */
         get_example_icon_name(): string;
 
@@ -33615,11 +34553,13 @@ export namespace Gtk {
          * is zero-terminated.
          * @param icon_name the name of an icon
          * @returns An newly allocated array describing the sizes at which the icon is available. The array should be freed with `g_free()` when it is no longer needed.
+         * @since 2.6
          */
         get_icon_sizes(icon_name: string): number[];
 
         /**
          * Gets the current search path. See `gtk_icon_theme_set_search_path()`.
+         * @since 2.4
          */
         get_search_path(): string[] | null;
 
@@ -33628,6 +34568,7 @@ export namespace Gtk {
          * for a particular name.
          * @param icon_name the name of an icon
          * @returns `true` if `icon_theme` includes an  icon for `icon_name`.
+         * @since 2.4
          */
         has_icon(icon_name: string): boolean;
 
@@ -33635,6 +34576,7 @@ export namespace Gtk {
          * Gets the list of contexts available within the current
          * hierarchy of icon themes
          * @returns a {@link GLib.List} list holding the names of all the  contexts in the theme. You must first free each element  in the list with `g_free()`, then free the list itself  with `g_list_free()`.
+         * @since 2.12
          */
         list_contexts(): string[];
 
@@ -33646,6 +34588,7 @@ export namespace Gtk {
          * "MimeTypes".
          * @param context a string identifying a particular type of icon,           or `null` to list all icons.
          * @returns a {@link GLib.List} list  holding the names of all the icons in the theme. You must first  free each element in the list with `g_free()`, then free the list  itself with `g_list_free()`.
+         * @since 2.4
          */
         list_icons(context: string): string[];
 
@@ -33666,6 +34609,7 @@ export namespace Gtk {
          * @param size the desired icon size. The resulting icon may not be        exactly this size; see `gtk_icon_info_load_icon()`.
          * @param flags flags modifying the behavior of the icon lookup
          * @returns the rendered icon; this may be a newly  created icon or a new reference to an internal icon, so you must not modify  the icon. Use `g_object_unref()` to release your reference to the  icon. `null` if the icon isn't found.
+         * @since 2.4
          */
         load_icon(icon_name: string, size: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf;
 
@@ -33678,6 +34622,7 @@ export namespace Gtk {
          * @param size desired icon size
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link Gtk.IconInfo} structure containing     information about the icon, or `null` if the icon     wasn't found. Free with `gtk_icon_info_free()`
+         * @since 2.14
          */
         lookup_by_gicon(icon: Gio.Icon, size: number, flags: IconLookupFlags): IconInfo;
 
@@ -33691,6 +34636,7 @@ export namespace Gtk {
          * @param size desired icon size
          * @param flags flags modifying the behavior of the icon lookup
          * @returns a {@link Gtk.IconInfo} structure containing information about the icon, or `null` if the icon wasn't found. Free with `gtk_icon_info_free()`
+         * @since 2.4
          */
         lookup_icon(icon_name: string, size: number, flags: IconLookupFlags): IconInfo;
 
@@ -33698,6 +34644,7 @@ export namespace Gtk {
          * Prepends a directory to the search path.
          * See `gtk_icon_theme_set_search_path()`.
          * @param path directory name to prepend to the icon path
+         * @since 2.4
          */
         prepend_search_path(path: string): void;
 
@@ -33706,6 +34653,7 @@ export namespace Gtk {
          * currently cached information is discarded and will be reloaded
          * next time `icon_theme` is accessed.
          * @returns `true` if the icon theme has changed and needed   to be reloaded.
+         * @since 2.4
          */
         rescan_if_needed(): boolean;
 
@@ -33715,6 +34663,7 @@ export namespace Gtk {
          * on the icon theme objects returned from `gtk_icon_theme_get_default()`
          * and `gtk_icon_theme_get_for_screen()`.
          * @param theme_name name of icon theme to use instead of configured theme,   or `null` to unset a previously set custom theme
+         * @since 2.4
          */
         set_custom_theme(theme_name: string): void;
 
@@ -33723,6 +34672,7 @@ export namespace Gtk {
          * to track the user's currently configured icon theme,
          * which might be different for different screens.
          * @param screen a {@link Gdk.Screen}
+         * @since 2.4
          */
         set_screen(screen: Gdk.Screen): void;
 
@@ -33742,6 +34692,7 @@ export namespace Gtk {
          * into the default icon theme, which is called DEFAULT_THEME_NAME,
          * rather than directly on the icon path.)
          * @param path array of     directories that are searched for icon themes
+         * @since 2.4
          */
         set_search_path(path: string[]): void;
     }
@@ -34237,6 +35188,7 @@ export namespace Gtk {
         /**
          * Activates the item determined by `path`.
          * @param path The {@link Gtk.TreePath} to be activated
+         * @since 2.6
          * @virtual
          */
         vfunc_item_activated(path: TreePath): void;
@@ -34251,6 +35203,7 @@ export namespace Gtk {
         /**
          * Selects all the icons. `icon_view` must has its selection mode set
          * to #GTK_SELECTION_MULTIPLE.
+         * @since 2.6
          * @virtual
          */
         vfunc_select_all(): void;
@@ -34279,6 +35232,7 @@ export namespace Gtk {
 
         /**
          * Unselects all the icons.
+         * @since 2.6
          * @virtual
          */
         vfunc_unselect_all(): void;
@@ -34289,6 +35243,7 @@ export namespace Gtk {
          * as expected by e.g. `gtk_icon_view_get_path_at_pos()`.
          * @param wx X coordinate relative to the widget
          * @param wy Y coordinate relative to the widget
+         * @since 2.12
          */
         convert_widget_to_bin_window_coords(wx: number, wy: number): [number, number];
 
@@ -34297,6 +35252,7 @@ export namespace Gtk {
          * This image is used for a drag icon.
          * @param path a {@link Gtk.TreePath} in `icon_view`
          * @returns a newly-allocated pixmap of the drag icon.
+         * @since 2.8
          */
         create_drag_icon(path: TreePath): Gdk.Pixmap;
 
@@ -34306,6 +35262,7 @@ export namespace Gtk {
          * @param targets the table of targets that the drag will support
          * @param n_targets the number of items in `targets`
          * @param actions the bitmask of possible actions for a drag to this    widget
+         * @since 2.8
          */
         enable_model_drag_dest(targets: TargetEntry, n_targets: number, actions: Gdk.DragAction): void;
 
@@ -34316,18 +35273,21 @@ export namespace Gtk {
          * @param targets the table of targets that the drag will support
          * @param n_targets the number of items in `targets`
          * @param actions the bitmask of possible actions for a drag from this    widget
+         * @since 2.8
          */
         enable_model_drag_source(start_button_mask: Gdk.ModifierType, targets: TargetEntry, n_targets: number, actions: Gdk.DragAction): void;
 
         /**
          * Returns the value of the ::column-spacing property.
          * @returns the space between columns
+         * @since 2.6
          */
         get_column_spacing(): number;
 
         /**
          * Returns the value of the ::columns property.
          * @returns the number of columns, or -1
+         * @since 2.6
          */
         get_columns(): number;
 
@@ -34340,6 +35300,7 @@ export namespace Gtk {
          * @param path Return location for the current cursor path, or `null`
          * @param cell Return location the current focus cell, or `null`
          * @returns `true` if the cursor is set.
+         * @since 2.8
          */
         get_cursor(path: TreePath | null, cell: CellRenderer | null): boolean;
 
@@ -34350,6 +35311,7 @@ export namespace Gtk {
          * @param path Return location for the path of the item, or `null`.
          * @param pos Return location for the drop position, or `null`
          * @returns whether there is an item at the given position.
+         * @since 2.8
          */
         get_dest_item_at_pos(drag_x: number, drag_y: number, path: TreePath | null, pos: IconViewDropPosition | null): boolean;
 
@@ -34357,6 +35319,7 @@ export namespace Gtk {
          * Gets information about the item that is highlighted for feedback.
          * @param path Return location for the path of the highlighted item, or `null`.
          * @param pos Return location for the drop position, or `null`
+         * @since 2.8
          */
         get_drag_dest_item(path: TreePath | null, pos: IconViewDropPosition | null): void;
 
@@ -34372,6 +35335,7 @@ export namespace Gtk {
          * @param path Return location for the path, or `null`
          * @param cell Return location for the renderer responsible for the cell   at (`x`, `y`), or `null`
          * @returns `true` if an item exists at the specified position
+         * @since 2.8
          */
         get_item_at_pos(x: number, y: number, path: TreePath | null, cell: CellRenderer): boolean;
 
@@ -34380,6 +35344,7 @@ export namespace Gtk {
          * displayed. Column numbers start at 0.
          * @param path the {@link Gtk.TreePath} of the item
          * @returns The column in which the item is displayed
+         * @since 2.22
          */
         get_item_column(path: TreePath): number;
 
@@ -34387,12 +35352,14 @@ export namespace Gtk {
          * Returns the value of the ::item-orientation property which determines
          * whether the labels are drawn beside the icons instead of below.
          * @returns the relative position of texts and icons
+         * @since 2.22
          */
         get_item_orientation(): Orientation;
 
         /**
          * Returns the value of the ::item-padding property.
          * @returns the padding around items
+         * @since 2.18
          */
         get_item_padding(): number;
 
@@ -34401,24 +35368,28 @@ export namespace Gtk {
          * displayed. Row numbers start at 0.
          * @param path the {@link Gtk.TreePath} of the item
          * @returns The row in which the item is displayed
+         * @since 2.22
          */
         get_item_row(path: TreePath): number;
 
         /**
          * Returns the value of the ::item-width property.
          * @returns the width of a single item, or -1
+         * @since 2.6
          */
         get_item_width(): number;
 
         /**
          * Returns the value of the ::margin property.
          * @returns the space at the borders
+         * @since 2.6
          */
         get_margin(): number;
 
         /**
          * Returns the column with markup text for `icon_view`.
          * @returns the markup column, or -1 if it's unset.
+         * @since 2.6
          */
         get_markup_column(): number;
 
@@ -34426,6 +35397,7 @@ export namespace Gtk {
          * Returns the model the {@link Gtk.IconView} is based on.  Returns `null` if the
          * model is unset.
          * @returns A {@link Gtk.TreeModel}, or `null` if none is     currently being used.
+         * @since 2.6
          */
         get_model(): TreeModel;
 
@@ -34433,6 +35405,8 @@ export namespace Gtk {
          * Returns the value of the ::orientation property which determines
          * whether the labels are drawn beside the icons instead of below.
          * @returns the relative position of texts and icons
+         * @since 2.6
+         * @deprecated since 2.22: Use `gtk_icon_view_get_item_orientation()`
          */
         get_orientation(): Orientation;
 
@@ -34445,12 +35419,14 @@ export namespace Gtk {
          * @param x The x position to be identified
          * @param y The y position to be identified
          * @returns The {@link Gtk.TreePath} corresponding to the icon or `null` if no icon exists at that position.
+         * @since 2.6
          */
         get_path_at_pos(x: number, y: number): TreePath;
 
         /**
          * Returns the column with pixbufs for `icon_view`.
          * @returns the pixbuf column, or -1 if it's unset.
+         * @since 2.6
          */
         get_pixbuf_column(): number;
 
@@ -34458,12 +35434,14 @@ export namespace Gtk {
          * Retrieves whether the user can reorder the list via drag-and-drop.
          * See `gtk_icon_view_set_reorderable()`.
          * @returns `true` if the list can be reordered.
+         * @since 2.8
          */
         get_reorderable(): boolean;
 
         /**
          * Returns the value of the ::row-spacing property.
          * @returns the space between rows
+         * @since 2.6
          */
         get_row_spacing(): number;
 
@@ -34481,24 +35459,28 @@ export namespace Gtk {
          * ```
          * 
          * @returns A {@link GLib.List} containing a {@link Gtk.TreePath} for each selected row.
+         * @since 2.6
          */
         get_selected_items(): TreePath[];
 
         /**
          * Gets the selection mode of the `icon_view`.
          * @returns the current selection mode
+         * @since 2.6
          */
         get_selection_mode(): SelectionMode;
 
         /**
          * Returns the value of the ::spacing property.
          * @returns the space between cells
+         * @since 2.6
          */
         get_spacing(): number;
 
         /**
          * Returns the column with text for `icon_view`.
          * @returns the text column, or -1 if it's unset.
+         * @since 2.6
          */
         get_text_column(): number;
 
@@ -34506,6 +35488,7 @@ export namespace Gtk {
          * Returns the column of `icon_view`'s model which is being used for
          * displaying tooltips on `icon_view`'s rows.
          * @returns the index of the tooltip column that is currently being used, or -1 if this is disabled.
+         * @since 2.12
          */
         get_tooltip_column(): number;
 
@@ -34525,6 +35508,7 @@ export namespace Gtk {
          * @param y the y coordinate (relative to widget coordinates)
          * @param keyboard_tip whether this is a keyboard tooltip or not
          * @returns whether or not the given tooltip context points to a item
+         * @since 2.12
          */
         get_tooltip_context(x: number, y: number, keyboard_tip: boolean): [boolean, number, number, TreeModel | null, TreePath | null, TreeIter | null];
 
@@ -34536,12 +35520,14 @@ export namespace Gtk {
          * @param start_path Return location for start of region, or `null`
          * @param end_path Return location for end of region, or `null`
          * @returns `true`, if valid paths were placed in `start_path` and `end_path`
+         * @since 2.8
          */
         get_visible_range(start_path: TreePath | null, end_path: TreePath | null): boolean;
 
         /**
          * Activates the item determined by `path`.
          * @param path The {@link Gtk.TreePath} to be activated
+         * @since 2.6
          */
         item_activated(path: TreePath): void;
 
@@ -34550,6 +35536,7 @@ export namespace Gtk {
          * selected. If `path` does not point to a valid location, `false` is returned.
          * @param path A {@link Gtk.TreePath} to check selection on.
          * @returns `true` if `path` is selected.
+         * @since 2.6
          */
         path_is_selected(path: TreePath): boolean;
 
@@ -34572,18 +35559,21 @@ export namespace Gtk {
          * @param use_align whether to use alignment arguments, or `false`.
          * @param row_align The vertical alignment of the item specified by `path`.
          * @param col_align The horizontal alignment of the item specified by `path`.
+         * @since 2.8
          */
         scroll_to_path(path: TreePath, use_align: boolean, row_align: number, col_align: number): void;
 
         /**
          * Selects all the icons. `icon_view` must has its selection mode set
          * to #GTK_SELECTION_MULTIPLE.
+         * @since 2.6
          */
         select_all(): void;
 
         /**
          * Selects the row at `path`.
          * @param path The {@link Gtk.TreePath} to be selected.
+         * @since 2.6
          */
         select_path(path: TreePath): void;
 
@@ -34591,6 +35581,7 @@ export namespace Gtk {
          * Calls a function for each selected icon. Note that the model or
          * selection cannot be modified from within this function.
          * @param func The function to call for each selected icon.
+         * @since 2.6
          */
         selected_foreach(func: IconViewForeachFunc): void;
 
@@ -34598,6 +35589,7 @@ export namespace Gtk {
          * Sets the ::column-spacing property which specifies the space
          * which is inserted between the columns of the icon view.
          * @param column_spacing the column spacing
+         * @since 2.6
          */
         set_column_spacing(column_spacing: number): void;
 
@@ -34607,6 +35599,7 @@ export namespace Gtk {
          * -1, the number of columns will be chosen automatically
          * to fill the available area.
          * @param columns the number of columns
+         * @since 2.6
          */
         set_columns(columns: number): void;
 
@@ -34623,6 +35616,7 @@ export namespace Gtk {
          * @param path A {@link Gtk.TreePath}
          * @param cell One of the cell renderers of `icon_view`, or `null`
          * @param start_editing `true` if the specified cell should start being edited.
+         * @since 2.8
          */
         set_cursor(path: TreePath, cell: CellRenderer | null, start_editing: boolean): void;
 
@@ -34630,6 +35624,7 @@ export namespace Gtk {
          * Sets the item that is highlighted for feedback.
          * @param path The path of the item to highlight, or `null`.
          * @param pos Specifies where to drop, relative to the item
+         * @since 2.8
          */
         set_drag_dest_item(path: TreePath | null, pos: IconViewDropPosition): void;
 
@@ -34637,6 +35632,7 @@ export namespace Gtk {
          * Sets the ::item-orientation property which determines whether
          * the labels are drawn beside the icons instead of below.
          * @param orientation the relative position of texts and icons
+         * @since 2.22
          */
         set_item_orientation(orientation: Orientation): void;
 
@@ -34644,6 +35640,7 @@ export namespace Gtk {
          * Sets the {@link Gtk.IconView.item_padding} property which specifies the padding
          * around each of the icon view's items.
          * @param item_padding the item padding
+         * @since 2.18
          */
         set_item_padding(item_padding: number): void;
 
@@ -34652,6 +35649,7 @@ export namespace Gtk {
          * to use for each item. If it is set to -1, the icon view will
          * automatically determine a suitable item size.
          * @param item_width the width for each item
+         * @since 2.6
          */
         set_item_width(item_width: number): void;
 
@@ -34660,6 +35658,7 @@ export namespace Gtk {
          * which is inserted at the top, bottom, left and right
          * of the icon view.
          * @param margin the margin
+         * @since 2.6
          */
         set_margin(margin: number): void;
 
@@ -34669,6 +35668,7 @@ export namespace Gtk {
          * If the markup column is set to something, it overrides
          * the text column set by `gtk_icon_view_set_text_column()`.
          * @param column A column in the currently used model, or -1 to display no text
+         * @since 2.6
          */
         set_markup_column(column: number): void;
 
@@ -34678,6 +35678,7 @@ export namespace Gtk {
          * it before setting the new model.  If `model` is `null`, then
          * it will unset the old model.
          * @param model The model.
+         * @since 2.6
          */
         set_model(model: TreeModel | null): void;
 
@@ -34685,6 +35686,8 @@ export namespace Gtk {
          * Sets the ::orientation property which determines whether the labels
          * are drawn beside the icons instead of below.
          * @param orientation the relative position of texts and icons
+         * @since 2.6
+         * @deprecated since 2.22: Use `gtk_icon_view_set_item_orientation()`
          */
         set_orientation(orientation: Orientation): void;
 
@@ -34692,6 +35695,7 @@ export namespace Gtk {
          * Sets the column with pixbufs for `icon_view` to be `column`. The pixbuf
          * column must be of type #GDK_TYPE_PIXBUF
          * @param column A column in the currently used model, or -1 to disable
+         * @since 2.6
          */
         set_pixbuf_column(column: number): void;
 
@@ -34709,6 +35713,7 @@ export namespace Gtk {
          * reordering is allowed.  If more control is needed, you should probably
          * handle drag and drop manually.
          * @param reorderable `true`, if the list of items can be reordered.
+         * @since 2.8
          */
         set_reorderable(reorderable: boolean): void;
 
@@ -34716,12 +35721,14 @@ export namespace Gtk {
          * Sets the ::row-spacing property which specifies the space
          * which is inserted between the rows of the icon view.
          * @param row_spacing the row spacing
+         * @since 2.6
          */
         set_row_spacing(row_spacing: number): void;
 
         /**
          * Sets the selection mode of the `icon_view`.
          * @param mode The selection mode
+         * @since 2.6
          */
         set_selection_mode(mode: SelectionMode): void;
 
@@ -34730,6 +35737,7 @@ export namespace Gtk {
          * which is inserted between the cells (i.e. the icon and
          * the text) of an item.
          * @param spacing the spacing
+         * @since 2.6
          */
         set_spacing(spacing: number): void;
 
@@ -34737,6 +35745,7 @@ export namespace Gtk {
          * Sets the column with text for `icon_view` to be `column`. The text
          * column must be of type #G_TYPE_STRING.
          * @param column A column in the currently used model, or -1 to display no text
+         * @since 2.6
          */
         set_text_column(column: number): void;
 
@@ -34748,6 +35757,7 @@ export namespace Gtk {
          * @param tooltip a {@link Gtk.Tooltip}
          * @param path a {@link Gtk.TreePath}
          * @param cell a {@link Gtk.CellRenderer} or `null`
+         * @since 2.12
          */
         set_tooltip_cell(tooltip: Tooltip, path: TreePath, cell: CellRenderer | null): void;
 
@@ -34760,6 +35770,7 @@ export namespace Gtk {
          * When enabled, {@link Gtk.Widget.SignalSignatures.has_tooltip | Gtk.Widget::has-tooltip} will be set to `true` and
          * `icon_view` will connect a {@link Gtk.Widget.SignalSignatures.query_tooltip | Gtk.Widget::query-tooltip} signal handler.
          * @param column an integer, which is a valid column number for `icon_view`'s model
+         * @since 2.12
          */
         set_tooltip_column(column: number): void;
 
@@ -34769,29 +35780,34 @@ export namespace Gtk {
          * See also `gtk_tooltip_set_tip_area()`.
          * @param tooltip a {@link Gtk.Tooltip}
          * @param path a {@link Gtk.TreePath}
+         * @since 2.12
          */
         set_tooltip_item(tooltip: Tooltip, path: TreePath): void;
 
         /**
          * Unselects all the icons.
+         * @since 2.6
          */
         unselect_all(): void;
 
         /**
          * Unselects the row at `path`.
          * @param path The {@link Gtk.TreePath} to be unselected.
+         * @since 2.6
          */
         unselect_path(path: TreePath): void;
 
         /**
          * Undoes the effect of `gtk_icon_view_enable_model_drag_dest()`. Calling this
          * method sets {@link Gtk.IconView.reorderable} to `false`.
+         * @since 2.8
          */
         unset_model_drag_dest(): void;
 
         /**
          * Undoes the effect of `gtk_icon_view_enable_model_drag_source()`. Calling this
          * method sets {@link Gtk.IconView.reorderable} to `false`.
+         * @since 2.8
          */
         unset_model_drag_source(): void;
 
@@ -34804,12 +35820,14 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          */
         add_attribute(cell: CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -34817,12 +35835,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          */
         clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the   renderers has been newly allocated and should be freed with   `g_list_free()` when no longer needed.
+         * @since 2.12
          */
         get_cells(): CellRenderer[];
 
@@ -34834,6 +35854,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_end(cell: CellRenderer, expand: boolean): void;
 
@@ -34845,6 +35866,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_start(cell: CellRenderer, expand: boolean): void;
 
@@ -34853,6 +35875,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          */
         reorder(cell: CellRenderer, position: number): void;
 
@@ -34863,6 +35886,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          */
         set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
 
@@ -34875,6 +35899,7 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: CellRenderer, attribute: string, column: number): void;
@@ -34882,6 +35907,7 @@ export namespace Gtk {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -34890,12 +35916,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): CellRenderer[];
@@ -34908,6 +35936,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: CellRenderer, expand: boolean): void;
@@ -34920,6 +35949,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: CellRenderer, expand: boolean): void;
@@ -34929,6 +35959,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: CellRenderer, position: number): void;
@@ -34940,6 +35971,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
@@ -35328,6 +36360,7 @@ export namespace Gtk {
         // Methods
         /**
          * Resets the image to be empty.
+         * @since 2.8
          */
         clear(): void;
 
@@ -35335,6 +36368,7 @@ export namespace Gtk {
          * Gets the {@link Gtk.Image}.
          * @param val return location for a {@link Gdk.Image}
          * @param mask a {@link Gdk.Bitmap} that indicates which parts of the image should be transparent.
+         * @deprecated since 2.0: Use `gtk_image_get_image()` instead.
          */
         get(val: Gdk.Image, mask: Gdk.Bitmap): void;
 
@@ -35354,6 +36388,7 @@ export namespace Gtk {
          * {@link Gtk.ImageType.GICON} (see `gtk_image_get_storage_type()`).
          * The caller of this function does not own a reference to the
          * returned {@link Gio.Icon}.
+         * @since 2.14
          */
         get_gicon(): [Gio.Icon | null, number];
 
@@ -35363,6 +36398,7 @@ export namespace Gtk {
          * {@link Gtk.ImageType.ICON_NAME} (see `gtk_image_get_storage_type()`).
          * The returned string is owned by the {@link Gtk.Image} and should not
          * be freed.
+         * @since 2.6
          */
         get_icon_name(): [string, number];
 
@@ -35395,6 +36431,7 @@ export namespace Gtk {
         /**
          * Gets the pixel size used for named icons.
          * @returns the pixel size used for named icons.
+         * @since 2.6
          */
         get_pixel_size(): number;
 
@@ -35428,6 +36465,7 @@ export namespace Gtk {
          * Sets the {@link Gtk.Image}.
          * @param val a {@link Gdk.Image}
          * @param mask a {@link Gdk.Bitmap} that indicates which parts of the image should be transparent.
+         * @deprecated since 2.0: Use `gtk_image_set_from_image()` instead.
          */
         set(val: Gdk.Image, mask: Gdk.Bitmap): void;
 
@@ -35454,6 +36492,7 @@ export namespace Gtk {
          * See `gtk_image_new_from_gicon()` for details.
          * @param icon an icon
          * @param size an icon size
+         * @since 2.14
          */
         set_from_gicon(icon: Gio.Icon, size: number): void;
 
@@ -35461,6 +36500,7 @@ export namespace Gtk {
          * See `gtk_image_new_from_icon_name()` for details.
          * @param icon_name an icon name
          * @param size an icon size
+         * @since 2.6
          */
         set_from_icon_name(icon_name: string, size: number): void;
 
@@ -35503,6 +36543,7 @@ export namespace Gtk {
          * to a value != -1, it is used instead of the icon size set by
          * `gtk_image_set_from_icon_name()`.
          * @param pixel_size the new pixel size
+         * @since 2.6
          */
         set_pixel_size(pixel_size: number): void;
 
@@ -35706,6 +36747,7 @@ export namespace Gtk {
          * Returns whether the menu item will ignore the {@link Gtk.Settings.gtk_menu_images}
          * setting and always show the image, if available.
          * @returns `true` if the menu item will always show the image
+         * @since 2.16
          */
         get_always_show_image(): boolean;
 
@@ -35720,6 +36762,7 @@ export namespace Gtk {
          * Checks whether the label set in the menuitem is used as a
          * stock id to select the stock item for the item.
          * @returns `true` if the label set in the menuitem is used as a     stock id to select the stock item for the item
+         * @since 2.16
          */
         get_use_stock(): boolean;
 
@@ -35732,6 +36775,7 @@ export namespace Gtk {
          * If you want this menu item to have changeable accelerators then
          * you shouldnt need this (see `gtk_image_menu_item_new_from_stock()`).
          * @param accel_group the {@link Gtk.AccelGroup}
+         * @since 2.16
          */
         set_accel_group(accel_group: AccelGroup): void;
 
@@ -35742,6 +36786,7 @@ export namespace Gtk {
          * Use this property if the menuitem would be useless or hard to use
          * without the image.
          * @param always_show `true` if the menuitem should always show the image
+         * @since 2.16
          */
         set_always_show_image(always_show: boolean): void;
 
@@ -35757,6 +36802,7 @@ export namespace Gtk {
          * If `true`, the label set in the menuitem is used as a
          * stock id to select the stock item for the item.
          * @param use_stock `true` if the menuitem should use a stock item
+         * @since 2.16
          */
         set_use_stock(use_stock: boolean): void;
 
@@ -35836,12 +36882,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -35850,6 +36898,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -35859,6 +36908,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -35871,6 +36921,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -35880,6 +36931,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -35889,6 +36941,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -36150,6 +37203,7 @@ export namespace Gtk {
         /**
          * Emits the 'response' signal with the given `response_id`.
          * @param response_id a response ID
+         * @since 2.18
          * @virtual
          */
         vfunc_response(response_id: number): void;
@@ -36162,6 +37216,7 @@ export namespace Gtk {
          * is appended to the end of the message areas action area.
          * @param child an activatable widget
          * @param response_id response ID for `child`
+         * @since 2.18
          */
         add_action_widget(child: Widget, response_id: number): void;
 
@@ -36174,30 +37229,35 @@ export namespace Gtk {
          * @param button_text text of button, or stock ID
          * @param response_id response ID for the button
          * @returns the button widget that was added
+         * @since 2.18
          */
         add_button(button_text: string, response_id: number): Widget;
 
         /**
          * Returns the action area of `info_bar`.
          * @returns the action area
+         * @since 2.18
          */
         get_action_area(): Widget;
 
         /**
          * Returns the content area of `info_bar`.
          * @returns the content area
+         * @since 2.18
          */
         get_content_area(): Widget;
 
         /**
          * Returns the message type of the message area.
          * @returns the message type of the message area.
+         * @since 2.18
          */
         get_message_type(): MessageType;
 
         /**
          * Emits the 'response' signal with the given `response_id`.
          * @param response_id a response ID
+         * @since 2.18
          */
         response(response_id: number): void;
 
@@ -36209,6 +37269,7 @@ export namespace Gtk {
          * Note that this function currently requires `info_bar` to
          * be added to a widget hierarchy.
          * @param response_id a response ID
+         * @since 2.18
          */
         set_default_response(response_id: number): void;
 
@@ -36217,6 +37278,7 @@ export namespace Gtk {
          * GTK+ uses this type to determine what color to use
          * when drawing the message area.
          * @param message_type a {@link Gtk.MessageType}
+         * @since 2.18
          */
         set_message_type(message_type: MessageType): void;
 
@@ -36226,6 +37288,7 @@ export namespace Gtk {
          * A convenient way to sensitize/desensitize dialog buttons.
          * @param response_id a response ID
          * @param setting TRUE for sensitive
+         * @since 2.18
          */
         set_response_sensitive(response_id: number, setting: boolean): void;
 
@@ -36532,12 +37595,14 @@ export namespace Gtk {
         /**
          * Returns the {@link Gdk.Screen} object associated with `invisible`
          * @returns the associated {@link Gdk.Screen}.
+         * @since 2.2
          */
         get_screen(): Gdk.Screen;
 
         /**
          * Sets the {@link Gdk.Screen} where the {@link Gtk.Invisible} object will be displayed.
          * @param screen a {@link Gdk.Screen}.
+         * @since 2.2
          */
         set_screen(screen: Gdk.Screen): void;
 
@@ -36547,6 +37612,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -36558,6 +37624,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -36568,6 +37635,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -36578,6 +37646,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -36587,6 +37656,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -36595,6 +37665,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -36605,6 +37676,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -36615,6 +37687,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -36623,12 +37696,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -36638,6 +37713,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -36649,6 +37725,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -36660,6 +37737,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -36671,6 +37749,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -36680,6 +37759,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -36688,6 +37768,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -36698,6 +37779,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -36709,6 +37791,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -36718,6 +37801,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -36725,6 +37809,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -36857,6 +37942,7 @@ export namespace Gtk {
          * Deletes all widgets constructed from the specified path.
          * @param ifactory_path a factory path to prepend to `path`. May be `null` if `path`   starts with a factory path
          * @param path a path
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         static factories_path_delete(ifactory_path: string, path: string): void;
 
@@ -36995,6 +38081,7 @@ export namespace Gtk {
          * @param accel_group the accelerator group to install the accelerator in
          * @param keyval key value of the accelerator
          * @param modifiers modifier combination of the accelerator
+         * @deprecated since 2.4: The recommended API for this purpose are the functions `gtk_menu_item_set_accel_path()` and `gtk_widget_set_accel_path()`; don't use `gtk_item_factory_add_foreign()` in new code, since it is likely to be removed in the future.
          */
         static add_foreign(accel_widget: Widget, full_path: string, accel_group: AccelGroup, keyval: number, modifiers: Gdk.ModifierType): void;
 
@@ -37002,6 +38089,7 @@ export namespace Gtk {
          * Creates the menu items from the `entries`.
          * @param n_entries the length of `entries`
          * @param entries an array of {@link Gtk.MenuEntry}<!-- -->s
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         static create_menu_entries(n_entries: number, entries: MenuEntry): void;
 
@@ -37011,6 +38099,7 @@ export namespace Gtk {
          * path specified in `gtk_item_factory_new()` with the path specified in the
          * {@link Gtk.ItemFactoryEntry} from which the widget was created.)
          * @param widget a widget
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         static path_from_widget(widget: Widget): string;
 
@@ -37019,6 +38108,7 @@ export namespace Gtk {
          * `gtk_item_factory_popup_with_data()`. This data is available until the menu
          * is popped down again.
          * @param widget a widget
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         static popup_data_from_widget(widget: Widget): null;
 
@@ -37028,6 +38118,7 @@ export namespace Gtk {
          * @param container_type the kind of menu to create; can be    #GTK_TYPE_MENU_BAR, #GTK_TYPE_MENU or #GTK_TYPE_OPTION_MENU
          * @param path the factory path of `ifactory`, a string of the form    <literal>"&lt;name&gt;"</literal>
          * @param accel_group a {@link Gtk.AccelGroup} to which the accelerators for the    menu items will be added, or `null` to create a new one
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         construct(container_type: GObject.GType, path: string, accel_group: AccelGroup): void;
 
@@ -37036,6 +38127,7 @@ export namespace Gtk {
          * @param entry the {@link Gtk.ItemFactoryEntry} to create an item for
          * @param callback_data data passed to the callback function of `entry`
          * @param callback_type 1 if the callback function of `entry` is of type    {@link Gtk.ItemFactoryCallback1}, 2 if it is of type {@link Gtk.ItemFactoryCallback2}
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         create_item(entry: ItemFactoryEntry, callback_data: null, callback_type: number): void;
 
@@ -37044,6 +38136,7 @@ export namespace Gtk {
          * @param n_entries the length of `entries`
          * @param entries an array of {@link Gtk.ItemFactoryEntry}<!-- -->s whose `callback` members    must by of type {@link Gtk.ItemFactoryCallback1}
          * @param callback_data data passed to the callback functions of all entries
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         create_items(n_entries: number, entries: ItemFactoryEntry, callback_data: null): void;
 
@@ -37053,6 +38146,7 @@ export namespace Gtk {
          * @param entries an array of {@link Gtk.ItemFactoryEntry}<!-- -->s
          * @param callback_data data passed to the callback functions of all entries
          * @param callback_type 1 if the callback functions in `entries` are of type    {@link Gtk.ItemFactoryCallback1}, 2 if they are of type {@link Gtk.ItemFactoryCallback2}
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         create_items_ac(n_entries: number, entries: ItemFactoryEntry, callback_data: null, callback_type: number): void;
 
@@ -37061,6 +38155,7 @@ export namespace Gtk {
          * item factory.
          * @param n_entries the length of `entries`
          * @param entries an array of {@link Gtk.ItemFactoryEntry}<!-- -->s
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         delete_entries(n_entries: number, entries: ItemFactoryEntry): void;
 
@@ -37068,6 +38163,7 @@ export namespace Gtk {
          * Deletes the menu item which was created from `entry` by the given
          * item factory.
          * @param entry a {@link Gtk.ItemFactoryEntry}
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         delete_entry(entry: ItemFactoryEntry): void;
 
@@ -37075,6 +38171,7 @@ export namespace Gtk {
          * Deletes the menu item which was created for `path` by the given
          * item factory.
          * @param path a path
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         delete_item(path: string): void;
 
@@ -37096,6 +38193,7 @@ export namespace Gtk {
          * @param y the y position
          * @param mouse_button the mouse button which was pressed to initiate the popup
          * @param time_ the time at which the activation event occurred
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         popup(x: number, y: number, mouse_button: number, time_: number): void;
 
@@ -37104,6 +38202,7 @@ export namespace Gtk {
          * `gtk_item_factory_popup_with_data()`. This data is available until the menu
          * is popped down again.
          * @returns `popup_data` associated with `ifactory`
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         popup_data(): null;
 
@@ -37128,6 +38227,7 @@ export namespace Gtk {
          * @param y the y position
          * @param mouse_button the mouse button which was pressed to initiate the popup
          * @param time_ the time at which the activation event occurred
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         popup_with_data(popup_data: null, x: number, y: number, mouse_button: number, time_: number): void;
 
@@ -37135,6 +38235,7 @@ export namespace Gtk {
          * Sets a function to be used for translating the path elements before they
          * are displayed.
          * @param func the {@link Gtk.TranslateFunc} function to be used to translate path elements
+         * @deprecated since 2.4: Use {@link Gtk.UIManager} instead.
          */
         set_translate_func(func: TranslateFunc): void;
     }
@@ -37611,6 +38712,7 @@ export namespace Gtk {
          * Gets the angle of rotation for the label. See
          * `gtk_label_set_angle()`.
          * @returns the angle of rotation for the label
+         * @since 2.6
          */
         get_angle(): number;
 
@@ -37634,12 +38736,14 @@ export namespace Gtk {
          * This function is intended for use in a {@link Gtk.Label.SignalSignatures.activate_link | Gtk.Label::activate-link} handler
          * or for use in a {@link Gtk.Widget.SignalSignatures.query_tooltip | Gtk.Widget::query-tooltip} handler.
          * @returns the currently active URI. The string is owned by GTK+ and must   not be freed or modified.
+         * @since 2.18
          */
         get_current_uri(): string;
 
         /**
          * Returns the ellipsizing position of the label. See `gtk_label_set_ellipsize()`.
          * @returns {@link Pango.EllipsizeMode}
+         * @since 2.6
          */
         get_ellipsize(): Pango.EllipsizeMode;
 
@@ -37689,6 +38793,7 @@ export namespace Gtk {
         /**
          * Returns line wrap mode used by the label. See `gtk_label_set_line_wrap_mode()`.
          * @returns `true` if the lines of the label are automatically wrapped.
+         * @since 2.10
          */
         get_line_wrap_mode(): Pango.WrapMode;
 
@@ -37696,6 +38801,7 @@ export namespace Gtk {
          * Retrieves the desired maximum width of `label`, in characters. See
          * `gtk_label_set_width_chars()`.
          * @returns the maximum width of the label in characters.
+         * @since 2.6
          */
         get_max_width_chars(): number;
 
@@ -37730,6 +38836,7 @@ export namespace Gtk {
         /**
          * Returns whether the label is in single line mode.
          * @returns `true` when the label is in single line mode.
+         * @since 2.6
          */
         get_single_line_mode(): boolean;
 
@@ -37745,6 +38852,7 @@ export namespace Gtk {
          * Returns whether the label is currently keeping track
          * of clicked links.
          * @returns `true` if clicked links are remembered
+         * @since 2.18
          */
         get_track_visited_links(): boolean;
 
@@ -37767,6 +38875,7 @@ export namespace Gtk {
          * Retrieves the desired width of `label`, in characters. See
          * `gtk_label_set_width_chars()`.
          * @returns the width of the label in characters.
+         * @since 2.6
          */
         get_width_chars(): number;
 
@@ -37791,6 +38900,7 @@ export namespace Gtk {
          * setting for the label is ignored if the label is selectable,
          * wrapped, or ellipsized.
          * @param angle the angle that the baseline of the label makes with   the horizontal, in degrees, measured counterclockwise
+         * @since 2.6
          */
         set_angle(angle: number): void;
 
@@ -37812,6 +38922,7 @@ export namespace Gtk {
          * Sets the mode used to ellipsize (add an ellipsis: "...") to the text
          * if there is not enough space to render the entire string.
          * @param mode a {@link Pango.EllipsizeMode}
+         * @since 2.6
          */
         set_ellipsize(mode: Pango.EllipsizeMode): void;
 
@@ -37854,6 +38965,7 @@ export namespace Gtk {
          * the line wrapping is done. The default is {@link Pango.WrapMode.WORD} which means
          * wrap on word boundaries.
          * @param wrap_mode the line wrapping mode
+         * @since 2.10
          */
         set_line_wrap_mode(wrap_mode: Pango.WrapMode): void;
 
@@ -37891,6 +39003,7 @@ export namespace Gtk {
         /**
          * Sets the desired maximum width in characters of `label` to `n_chars`.
          * @param n_chars the new desired maximum width, in characters.
+         * @since 2.6
          */
         set_max_width_chars(n_chars: number): void;
 
@@ -37928,6 +39041,7 @@ export namespace Gtk {
         /**
          * Sets whether the label is in single line mode.
          * @param single_line_mode `true` if the label should be in single line mode
+         * @since 2.6
          */
         set_single_line_mode(single_line_mode: boolean): void;
 
@@ -37954,6 +39068,7 @@ export namespace Gtk {
          * Sets whether the label should keep track of clicked
          * links (and use a different color for them).
          * @param track_links `true` to track visited links
+         * @since 2.18
          */
         set_track_visited_links(track_links: boolean): void;
 
@@ -37975,6 +39090,7 @@ export namespace Gtk {
         /**
          * Sets the desired width in characters of `label` to `n_chars`.
          * @param n_chars the new desired width, in characters.
+         * @since 2.6
          */
         set_width_chars(n_chars: number): void;
 
@@ -38146,6 +39262,7 @@ export namespace Gtk {
         /**
          * Retrieve the bin window of the layout used for drawing operations.
          * @returns a {@link Gdk.Window}
+         * @since 2.14
          */
         get_bin_window(): Gdk.Window;
 
@@ -38376,6 +39493,7 @@ export namespace Gtk {
         /**
          * Retrieves the URI set using `gtk_link_button_set_uri()`.
          * @returns a valid URI.  The returned string is owned by the link button   and should not be modified or freed.
+         * @since 2.10
          */
         get_uri(): string;
 
@@ -38386,6 +39504,7 @@ export namespace Gtk {
          * 
          * The state may also be changed using `gtk_link_button_set_visited()`.
          * @returns `true` if the link has been visited, `false` otherwise
+         * @since 2.14
          */
         get_visited(): boolean;
 
@@ -38393,6 +39512,7 @@ export namespace Gtk {
          * Sets `uri` as the URI where the {@link Gtk.LinkButton} points. As a side-effect
          * this unsets the 'visited' state of the button.
          * @param uri a valid URI
+         * @since 2.10
          */
         set_uri(uri: string): void;
 
@@ -38400,6 +39520,7 @@ export namespace Gtk {
          * Sets the 'visited' state of the URI where the {@link Gtk.LinkButton}
          * points.  See `gtk_link_button_get_visited()` for more details.
          * @param visited the new 'visited' state
+         * @since 2.14
          */
         set_visited(visited: boolean): void;
 
@@ -38479,12 +39600,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -38493,6 +39616,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -38502,6 +39626,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -38514,6 +39639,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -38523,6 +39649,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -38532,6 +39659,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -39173,6 +40301,7 @@ export namespace Gtk {
          * @param position position to insert the new row
          * @param columns an array of column numbers
          * @param values an array of GValues
+         * @since 2.6
          */
         insert_with_valuesv(position: number, columns: number[], values: (GObject.Value | any)[]): TreeIter | null;
 
@@ -39183,6 +40312,7 @@ export namespace Gtk {
          * Checks if the given iter is a valid iter for this {@link Gtk.ListStore}.
          * @param iter A {@link Gtk.TreeIter}.
          * @returns `true` if the iter is valid, `false` if the iter is invalid.
+         * @since 2.2
          */
         iter_is_valid(iter: TreeIter): boolean;
 
@@ -39192,6 +40322,7 @@ export namespace Gtk {
          * will be moved to the start of the list.
          * @param iter A {@link Gtk.TreeIter}.
          * @param position A {@link Gtk.TreeIter} or `null`.
+         * @since 2.2
          */
         move_after(iter: TreeIter, position: TreeIter | null): void;
 
@@ -39201,6 +40332,7 @@ export namespace Gtk {
          * will be moved to the end of the list.
          * @param iter A {@link Gtk.TreeIter}.
          * @param position A {@link Gtk.TreeIter}, or `null`.
+         * @since 2.2
          */
         move_before(iter: TreeIter, position: TreeIter | null): void;
 
@@ -39224,6 +40356,7 @@ export namespace Gtk {
          * Reorders `store` to follow the order indicated by `new_order`. Note that
          * this function only works with unsorted stores.
          * @param new_order an array of integers mapping the new position of each child      to its old position before the re-ordering,      i.e. `new_order`<literal>[newpos] = oldpos</literal>.
+         * @since 2.2
          */
         reorder(new_order: number[]): void;
 
@@ -39255,6 +40388,7 @@ export namespace Gtk {
          * @param iter A valid {@link Gtk.TreeIter} for the row being modified
          * @param columns an array of column numbers
          * @param values an array of GValues
+         * @since 2.12
          */
         set_valuesv(iter: TreeIter, columns: number[], values: (GObject.Value | any)[]): void;
 
@@ -39263,6 +40397,7 @@ export namespace Gtk {
          * unsorted stores.
          * @param a A {@link Gtk.TreeIter}.
          * @param b Another {@link Gtk.TreeIter}.
+         * @since 2.2
          */
         swap(a: TreeIter, b: TreeIter): void;
 
@@ -39272,6 +40407,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -39283,6 +40419,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -39293,6 +40430,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -39303,6 +40441,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -39312,6 +40451,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -39320,6 +40460,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -39330,6 +40471,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -39340,6 +40482,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -39348,12 +40491,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -39363,6 +40508,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -39374,6 +40520,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -39385,6 +40532,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -39396,6 +40544,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -39405,6 +40554,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -39413,6 +40563,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -39423,6 +40574,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -39434,6 +40586,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -39443,6 +40596,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -39450,6 +40604,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -39569,6 +40724,7 @@ export namespace Gtk {
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         filter_new(root: TreePath | null): TreeModel;
 
@@ -39637,6 +40793,7 @@ export namespace Gtk {
          * acceptable return value for this string.
          * @param iter An {@link Gtk.TreeIter}.
          * @returns A newly-allocated string. Must be freed with `g_free()`.
+         * @since 2.2
          */
         get_string_from_iter(iter: TreeIter): string;
 
@@ -40379,6 +41536,7 @@ export namespace Gtk {
          * Returns a list of the menus which are attached to this widget.
          * This list is owned by GTK+ and must not be modified.
          * @param widget a {@link Gtk.Widget}
+         * @since 2.6
          */
         static get_for_attach_widget(widget: Widget): Widget[];
 
@@ -40396,6 +41554,7 @@ export namespace Gtk {
          * @param right_attach The column number to attach the right side of the item to.
          * @param top_attach The row number to attach the top of the item to.
          * @param bottom_attach The row number to attach the bottom of the item to.
+         * @since 2.4
          */
         attach(child: Widget, left_attach: number, right_attach: number, top_attach: number, bottom_attach: number): void;
 
@@ -40412,6 +41571,7 @@ export namespace Gtk {
         /**
          * Retrieves the accelerator path set on the menu.
          * @returns the accelerator path set on the menu.
+         * @since 2.14
          */
         get_accel_path(): string;
 
@@ -40431,6 +41591,7 @@ export namespace Gtk {
         /**
          * Retrieves the number of the monitor on which to show the menu.
          * @returns the number of the monitor on which the menu should    be popped up or -1, if no monitor has been set
+         * @since 2.14
          */
         get_monitor(): number;
 
@@ -40438,6 +41599,7 @@ export namespace Gtk {
          * Returns whether the menu reserves space for toggles and
          * icons, regardless of their actual presence.
          * @returns Whether the menu reserves toggle space
+         * @since 2.18
          */
         get_reserve_toggle_size(): boolean;
 
@@ -40508,6 +41670,7 @@ export namespace Gtk {
          * by a {@link Gtk.MenuPositionFunc}, since, for very long menus, these coordinates
          * may extend beyond the monitor boundaries or even the screen boundaries.
          * @param monitor_num the number of the monitor on which the menu should    be popped up
+         * @since 2.4
          */
         set_monitor(monitor_num: number): void;
 
@@ -40515,12 +41678,14 @@ export namespace Gtk {
          * Sets whether the menu should reserve space for drawing toggles
          * or icons, regardless of their actual presence.
          * @param reserve_toggle_size whether to reserve size for toggles
+         * @since 2.18
          */
         set_reserve_toggle_size(reserve_toggle_size: boolean): void;
 
         /**
          * Sets the {@link Gdk.Screen} on which the menu will be displayed.
          * @param screen a {@link Gdk.Screen}, or `null` if the screen should be          determined by the widget the menu is attached to.
+         * @since 2.2
          */
         set_screen(screen: Gdk.Screen | null): void;
 
@@ -40698,6 +41863,7 @@ export namespace Gtk {
          * Retrieves the current child pack direction of the menubar.
          * See `gtk_menu_bar_set_child_pack_direction()`.
          * @returns the child pack direction
+         * @since 2.8
          */
         get_child_pack_direction(): PackDirection;
 
@@ -40705,18 +41871,21 @@ export namespace Gtk {
          * Retrieves the current pack direction of the menubar.
          * See `gtk_menu_bar_set_pack_direction()`.
          * @returns the pack direction
+         * @since 2.8
          */
         get_pack_direction(): PackDirection;
 
         /**
          * Sets how widgets should be packed inside the children of a menubar.
          * @param child_pack_dir a new {@link Gtk.PackDirection}
+         * @since 2.8
          */
         set_child_pack_direction(child_pack_dir: PackDirection): void;
 
         /**
          * Sets how items should be packed inside a menubar.
          * @param pack_dir a new {@link Gtk.PackDirection}
+         * @since 2.8
          */
         set_pack_direction(pack_dir: PackDirection): void;
 
@@ -40971,6 +42140,7 @@ export namespace Gtk {
 
         /**
          * Sets `text` on the `menu_item` label
+         * @since 2.16
          * @virtual
          */
         vfunc_get_label(): string;
@@ -40978,6 +42148,7 @@ export namespace Gtk {
         /**
          * Sets `text` on the `menu_item` label
          * @param label the text you want to set
+         * @since 2.16
          * @virtual
          */
         vfunc_set_label(label: string): void;
@@ -41010,12 +42181,14 @@ export namespace Gtk {
          * 
          * See `gtk_menu_item_set_accel_path()` for details.
          * @returns the accelerator path corresponding to this menu item's              functionality, or `null` if not set
+         * @since 2.14
          */
         get_accel_path(): string;
 
         /**
          * Sets `text` on the `menu_item` label
          * @returns The text in the `menu_item` label. This is the internal   string used by the label, and must not be modified.
+         * @since 2.16
          */
         get_label(): string;
 
@@ -41037,11 +42210,13 @@ export namespace Gtk {
          * Checks if an underline in the text indicates the next character should be
          * used for the mnemonic accelerator key.
          * @returns `true` if an embedded underline in the label indicates               the mnemonic accelerator key.
+         * @since 2.16
          */
         get_use_underline(): boolean;
 
         /**
          * Removes the widget's submenu.
+         * @deprecated since 2.12: `gtk_menu_item_remove_submenu()` is deprecated and                   should not be used in newly written code. Use                   `gtk_menu_item_set_submenu()` instead.
          */
         remove_submenu(): void;
 
@@ -41073,6 +42248,7 @@ export namespace Gtk {
         /**
          * Sets `text` on the `menu_item` label
          * @param label the text you want to set
+         * @since 2.16
          */
         set_label(label: string): void;
 
@@ -41097,6 +42273,7 @@ export namespace Gtk {
          * If true, an underline in the text indicates the next character should be
          * used for the mnemonic accelerator key.
          * @param setting `true` if underlines in the text indicate mnemonics
+         * @since 2.16
          */
         set_use_underline(setting: boolean): void;
 
@@ -41186,12 +42363,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -41200,6 +42379,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -41209,6 +42389,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -41221,6 +42402,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -41230,6 +42412,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -41239,6 +42422,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -41473,6 +42657,7 @@ export namespace Gtk {
 
         /**
          * Cancels the selection within the menu shell.
+         * @since 2.4
          * @virtual
          */
         vfunc_cancel(): void;
@@ -41531,6 +42716,7 @@ export namespace Gtk {
 
         /**
          * Cancels the selection within the menu shell.
+         * @since 2.4
          */
         cancel(): void;
 
@@ -41541,6 +42727,7 @@ export namespace Gtk {
         /**
          * Returns `true` if the menu shell will take the keyboard focus on popup.
          * @returns `true` if the menu shell will take the keyboard focus on popup.
+         * @since 2.8
          */
         get_take_focus(): boolean;
 
@@ -41560,6 +42747,7 @@ export namespace Gtk {
          * don't select tearoff items unless the only item is a tearoff
          * item.
          * @param search_sensitive if `true`, search for the first selectable                    menu item, otherwise select nothing if                    the first item isn't sensitive. This                    should be `false` if the menu is being                    popped up initially.
+         * @since 2.2
          */
         select_first(search_sensitive: boolean): void;
 
@@ -41595,6 +42783,7 @@ export namespace Gtk {
          * 
          * See also `gdk_keyboard_grab()`
          * @param take_focus `true` if the menu shell should take the keyboard focus on popup.
+         * @since 2.8
          */
         set_take_focus(take_focus: boolean): void;
 
@@ -41749,6 +42938,7 @@ export namespace Gtk {
         /**
          * Gets the {@link Gtk.Menu} associated with {@link Gtk.MenuToolButton}.
          * @returns the {@link Gtk.Menu} associated     with {@link Gtk.MenuToolButton}
+         * @since 2.6
          */
         get_menu(): Widget;
 
@@ -41759,6 +42949,8 @@ export namespace Gtk {
          * @param tooltips the {@link Gtk.Tooltips} object to be used
          * @param tip_text text to be used as tooltip text for tool_item
          * @param tip_private text to be used as private tooltip text
+         * @since 2.6
+         * @deprecated since 2.12: Use `gtk_menu_tool_button_set_arrow_tooltip_text()` instead.
          */
         set_arrow_tooltip(tooltips: Tooltips, tip_text: string | null, tip_private: string | null): void;
 
@@ -41767,6 +42959,7 @@ export namespace Gtk {
          * which pops up the menu.  See `gtk_tool_item_set_tooltip()` for setting a
          * tooltip on the whole {@link Gtk.MenuToolButton}.
          * @param markup markup text to be used as tooltip text for button's arrow button
+         * @since 2.12
          */
         set_arrow_tooltip_markup(markup: string): void;
 
@@ -41775,6 +42968,7 @@ export namespace Gtk {
          * pops up the menu.  See `gtk_tool_item_set_tooltip()` for setting a tooltip
          * on the whole {@link Gtk.MenuToolButton}.
          * @param text text to be used as tooltip text for button's arrow button
+         * @since 2.12
          */
         set_arrow_tooltip_text(text: string): void;
 
@@ -41782,6 +42976,7 @@ export namespace Gtk {
          * Sets the {@link Gtk.Menu} that is popped up when the user clicks on the arrow.
          * If `menu` is NULL, the arrow button becomes insensitive.
          * @param menu the {@link Gtk.Menu} associated with {@link Gtk.MenuToolButton}
+         * @since 2.6
          */
         set_menu(menu: Widget): void;
 
@@ -42103,6 +43298,7 @@ export namespace Gtk {
         /**
          * Gets the dialog's image.
          * @returns the dialog's image
+         * @since 2.14
          */
         get_image(): Widget;
 
@@ -42114,12 +43310,14 @@ export namespace Gtk {
          * languages).  See `gtk_dialog_get_content_area()` for the corresponding
          * function in the parent {@link Gtk.Dialog}.
          * @returns A {@link Gtk.VBox} corresponding to the     "message area" in the `message_dialog`.
+         * @since 2.22
          */
         get_message_area(): Widget;
 
         /**
          * Sets the dialog's image to `image`.
          * @param image the image
+         * @since 2.10
          */
         set_image(image: Widget): void;
 
@@ -42128,6 +43326,7 @@ export namespace Gtk {
          * up with the <link linkend="PangoMarkupFormat">Pango text markup
          * language</link>.
          * @param str markup string (see <link linkend="PangoMarkupFormat">Pango markup format</link>)
+         * @since 2.4
          */
         set_markup(str: string): void;
 
@@ -42301,6 +43500,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -42312,6 +43512,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -42322,6 +43523,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -42332,6 +43534,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -42341,6 +43544,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -42349,6 +43553,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -42359,6 +43564,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -42369,6 +43575,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -42377,12 +43584,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -42392,6 +43601,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -42403,6 +43613,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -42414,6 +43625,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -42425,6 +43637,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -42434,6 +43647,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -42442,6 +43656,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -42452,6 +43667,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -42463,6 +43679,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -42472,6 +43689,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -42479,6 +43697,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -42607,6 +43826,7 @@ export namespace Gtk {
         /**
          * Gets the transient parent used by the {@link Gtk.MountOperation}
          * @returns the transient parent for windows shown by `op`
+         * @since 2.14
          */
         get_parent(): Window;
 
@@ -42614,6 +43834,7 @@ export namespace Gtk {
          * Gets the screen on which windows of the {@link Gtk.MountOperation}
          * will be shown.
          * @returns the screen on which windows of `op` are shown
+         * @since 2.14
          */
         get_screen(): Gdk.Screen;
 
@@ -42621,12 +43842,14 @@ export namespace Gtk {
          * Sets the transient parent for windows shown by the
          * {@link Gtk.MountOperation}.
          * @param parent transient parent of the window, or `null`
+         * @since 2.14
          */
         set_parent(parent: Window | null): void;
 
         /**
          * Sets the screen to show windows of the {@link Gtk.MountOperation} on.
          * @param screen a {@link Gdk.Screen}
+         * @since 2.14
          */
         set_screen(screen: Gdk.Screen): void;
     }
@@ -43062,6 +44285,7 @@ export namespace Gtk {
          * Gets one of the action widgets. See `gtk_notebook_set_action_widget()`.
          * @param pack_type pack type of the action widget to receive
          * @returns The action widget with the given `pack_type`     or `null` when this action widget has not been set
+         * @since 2.20
          */
         get_action_widget(pack_type: PackType): Widget;
 
@@ -43074,12 +44298,16 @@ export namespace Gtk {
         /**
          * Gets the current group identificator pointer for `notebook`.
          * @returns the group identificator,     or `null` if none is set.
+         * @since 2.12
+         * @deprecated since 2.24: Use `gtk_notebook_get_group_name()` instead
          */
         get_group(): null;
 
         /**
          * Gets the current group identificator for `notebook`.
          * @returns the group identificator, or -1 if none is set.
+         * @since 2.10
+         * @deprecated since 2.12: use `gtk_notebook_get_group_name()` instead.
          */
         get_group_id(): number;
 
@@ -43092,6 +44320,7 @@ export namespace Gtk {
          * 
          *  Return Value: (transfer none): the group name,
          *     or `null` if none is set.
+         * @since 2.24
          */
         get_group_name(): string;
 
@@ -43113,6 +44342,7 @@ export namespace Gtk {
         /**
          * Gets the number of pages in a notebook.
          * @returns the number of pages in the notebook.
+         * @since 2.2
          */
         get_n_pages(): number;
 
@@ -43148,12 +44378,14 @@ export namespace Gtk {
          * Returns whether the tab contents can be detached from `notebook`.
          * @param child a child {@link Gtk.Widget}
          * @returns TRUE if the tab is detachable.
+         * @since 2.10
          */
         get_tab_detachable(child: Widget): boolean;
 
         /**
          * Returns the horizontal width of a tab border.
          * @returns horizontal width of a tab border
+         * @since 2.22
          */
         get_tab_hborder(): number;
 
@@ -43185,12 +44417,14 @@ export namespace Gtk {
          * Gets whether the tab can be reordered via drag and drop or not.
          * @param child a child {@link Gtk.Widget}
          * @returns `true` if the tab is reorderable.
+         * @since 2.10
          */
         get_tab_reorderable(child: Widget): boolean;
 
         /**
          * Returns the vertical width of a tab border.
          * @returns vertical width of a tab border
+         * @since 2.22
          */
         get_tab_vborder(): number;
 
@@ -43270,6 +44504,7 @@ export namespace Gtk {
          * @param expand location to store the expand value (or NULL)
          * @param fill location to store the fill value (or NULL)
          * @param pack_type location to store the pack_type (or NULL)
+         * @deprecated since 2.20: Modify the {@link Gtk.Notebook.tab_expand} and   {@link Gtk.Notebook.tab_fill} child properties instead.
          */
         query_tab_label_packing(child: Widget, expand: boolean, fill: boolean, pack_type: PackType): void;
 
@@ -43299,6 +44534,7 @@ export namespace Gtk {
          * not included in the list returned from `gtk_container_foreach()`.
          * @param widget a {@link Gtk.Widget}
          * @param pack_type pack type of the action widget
+         * @since 2.20
          */
         set_action_widget(widget: Widget, pack_type: PackType): void;
 
@@ -43319,6 +44555,8 @@ export namespace Gtk {
          * via drag and drop. A notebook with a `null` group identificator will
          * not be able to exchange tabs with any other notebook.
          * @param group a pointer to identify the notebook group, or `null` to unset it
+         * @since 2.12
+         * @deprecated since 2.24: Use `gtk_notebook_set_group_name()` instead
          */
         set_group(group: null): void;
 
@@ -43328,6 +44566,8 @@ export namespace Gtk {
          * via drag and drop. A notebook with group identificator -1 will
          * not be able to exchange tabs with any other notebook.
          * @param group_id a group identificator, or -1 to unset it
+         * @since 2.10
+         * @deprecated since 2.12: use `gtk_notebook_set_group_name()` instead.
          */
         set_group_id(group_id: number): void;
 
@@ -43338,6 +44578,7 @@ export namespace Gtk {
          * via drag and drop. A notebook with a `null` group name will
          * not be able to exchange tabs with any other notebook.
          * @param group_name 
+         * @since 2.24
          */
         set_group_name(group_name: string): void;
 
@@ -43432,6 +44673,7 @@ export namespace Gtk {
          * you will have to set your own DnD code to do it.
          * @param child a child {@link Gtk.Widget}
          * @param detachable whether the tab is detachable or not
+         * @since 2.10
          */
         set_tab_detachable(child: Widget, detachable: boolean): void;
 
@@ -43457,6 +44699,7 @@ export namespace Gtk {
          * @param expand whether to expand the tab label or not
          * @param fill whether the tab label should fill the allocated area or not
          * @param pack_type the position of the tab label
+         * @deprecated since 2.20: Modify the {@link Gtk.Notebook.tab_expand} and   {@link Gtk.Notebook.tab_fill} child properties instead.   Modifying the packing of the tab label is a deprecated feature and   shouldn't be done anymore.
          */
         set_tab_label_packing(child: Widget, expand: boolean, fill: boolean, pack_type: PackType): void;
 
@@ -43480,6 +44723,7 @@ export namespace Gtk {
          * via drag and drop or not.
          * @param child a child {@link Gtk.Widget}
          * @param reorderable whether the tab is reorderable or not.
+         * @since 2.10
          */
         set_tab_reorderable(child: Widget, reorderable: boolean): void;
 
@@ -43824,6 +45068,7 @@ export namespace Gtk {
          * and the application should unreference it once it is no longer
          * needed.
          * @returns A {@link GdkPixbuf.Pixbuf} pointer, or `null`.
+         * @since 2.20
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
 
@@ -43832,6 +45077,7 @@ export namespace Gtk {
          * a {@link Gdk.Pixmap}.  If you need to keep this around over window
          * resizes then you should add a reference to it.
          * @returns A {@link Gdk.Pixmap} pointer to the offscreen pixmap,     or `null`.
+         * @since 2.20
          */
         get_pixmap(): Gdk.Pixmap;
 
@@ -44174,6 +45420,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -44185,6 +45432,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -44195,6 +45443,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -44205,6 +45454,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -44214,6 +45464,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -44222,6 +45473,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -44232,6 +45484,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -44242,6 +45495,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -44250,12 +45504,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -44265,6 +45521,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -44276,6 +45533,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -44287,6 +45545,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -44298,6 +45557,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -44307,6 +45567,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -44315,6 +45576,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -44325,6 +45587,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -44336,6 +45599,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -44345,6 +45609,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -44352,6 +45617,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -44625,6 +45891,7 @@ export namespace Gtk {
          * Retrieves the index of the currently selected menu item. The menu
          * items are numbered from top to bottom, starting with 0.
          * @returns index of the selected menu item, or -1 if there are no menu items
+         * @deprecated since 2.4: Use {@link Gtk.ComboBox} instead.
          */
         get_history(): number;
 
@@ -44716,12 +45983,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -44730,6 +45999,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -44739,6 +46009,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -44751,6 +46022,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -44760,6 +46032,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -44769,6 +46042,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -44870,6 +46144,7 @@ export namespace Gtk {
         /**
          * Copies a {@link Gtk.PageSetup}.
          * @returns a copy of `other`
+         * @since 2.10
          */
         copy(): PageSetup;
 
@@ -44877,6 +46152,7 @@ export namespace Gtk {
          * Gets the bottom margin in units of `unit`.
          * @param unit the unit for the return value
          * @returns the bottom margin
+         * @since 2.10
          */
         get_bottom_margin(unit: Unit): number;
 
@@ -44884,12 +46160,14 @@ export namespace Gtk {
          * Gets the left margin in units of `unit`.
          * @param unit the unit for the return value
          * @returns the left margin
+         * @since 2.10
          */
         get_left_margin(unit: Unit): number;
 
         /**
          * Gets the page orientation of the {@link Gtk.PageSetup}.
          * @returns the page orientation
+         * @since 2.10
          */
         get_orientation(): PageOrientation;
 
@@ -44901,6 +46179,7 @@ export namespace Gtk {
          * See `gtk_page_setup_get_paper_height()`.
          * @param unit the unit for the return value
          * @returns the page height.
+         * @since 2.10
          */
         get_page_height(unit: Unit): number;
 
@@ -44912,6 +46191,7 @@ export namespace Gtk {
          * See `gtk_page_setup_get_paper_width()`.
          * @param unit the unit for the return value
          * @returns the page width.
+         * @since 2.10
          */
         get_page_width(unit: Unit): number;
 
@@ -44923,12 +46203,14 @@ export namespace Gtk {
          * See `gtk_page_setup_get_page_height()`.
          * @param unit the unit for the return value
          * @returns the paper height.
+         * @since 2.10
          */
         get_paper_height(unit: Unit): number;
 
         /**
          * Gets the paper size of the {@link Gtk.PageSetup}.
          * @returns the paper size
+         * @since 2.10
          */
         get_paper_size(): PaperSize;
 
@@ -44940,6 +46222,7 @@ export namespace Gtk {
          * See `gtk_page_setup_get_page_width()`.
          * @param unit the unit for the return value
          * @returns the paper width.
+         * @since 2.10
          */
         get_paper_width(unit: Unit): number;
 
@@ -44947,6 +46230,7 @@ export namespace Gtk {
          * Gets the right margin in units of `unit`.
          * @param unit the unit for the return value
          * @returns the right margin
+         * @since 2.10
          */
         get_right_margin(unit: Unit): number;
 
@@ -44954,6 +46238,7 @@ export namespace Gtk {
          * Gets the top margin in units of `unit`.
          * @param unit the unit for the return value
          * @returns the top margin
+         * @since 2.10
          */
         get_top_margin(unit: Unit): number;
 
@@ -44962,6 +46247,7 @@ export namespace Gtk {
          * See `gtk_page_setup_to_file()`.
          * @param file_name the filename to read the page setup from
          * @returns `true` on success
+         * @since 2.14
          */
         load_file(file_name: string): boolean;
 
@@ -44971,6 +46257,7 @@ export namespace Gtk {
          * @param key_file the {@link GLib.KeyFile} to retrieve the page_setup from
          * @param group_name the name of the group in the key_file to read, or `null`              to use the default name "Page Setup"
          * @returns `true` on success
+         * @since 2.14
          */
         load_key_file(key_file: GLib.KeyFile, group_name: string | null): boolean;
 
@@ -44978,6 +46265,7 @@ export namespace Gtk {
          * Sets the bottom margin of the {@link Gtk.PageSetup}.
          * @param margin the new bottom margin in units of `unit`
          * @param unit the units for `margin`
+         * @since 2.10
          */
         set_bottom_margin(margin: number, unit: Unit): void;
 
@@ -44985,12 +46273,14 @@ export namespace Gtk {
          * Sets the left margin of the {@link Gtk.PageSetup}.
          * @param margin the new left margin in units of `unit`
          * @param unit the units for `margin`
+         * @since 2.10
          */
         set_left_margin(margin: number, unit: Unit): void;
 
         /**
          * Sets the page orientation of the {@link Gtk.PageSetup}.
          * @param orientation a {@link Gtk.PageOrientation} value
+         * @since 2.10
          */
         set_orientation(orientation: PageOrientation): void;
 
@@ -44999,6 +46289,7 @@ export namespace Gtk {
          * changing the margins. See
          * `gtk_page_setup_set_paper_size_and_default_margins()`.
          * @param size a {@link Gtk.PaperSize}
+         * @since 2.10
          */
         set_paper_size(size: PaperSize): void;
 
@@ -45006,6 +46297,7 @@ export namespace Gtk {
          * Sets the paper size of the {@link Gtk.PageSetup} and modifies
          * the margins according to the new paper size.
          * @param size a {@link Gtk.PaperSize}
+         * @since 2.10
          */
         set_paper_size_and_default_margins(size: PaperSize): void;
 
@@ -45013,6 +46305,7 @@ export namespace Gtk {
          * Sets the right margin of the {@link Gtk.PageSetup}.
          * @param margin the new right margin in units of `unit`
          * @param unit the units for `margin`
+         * @since 2.10
          */
         set_right_margin(margin: number, unit: Unit): void;
 
@@ -45020,6 +46313,7 @@ export namespace Gtk {
          * Sets the top margin of the {@link Gtk.PageSetup}.
          * @param margin the new top margin in units of `unit`
          * @param unit the units for `margin`
+         * @since 2.10
          */
         set_top_margin(margin: number, unit: Unit): void;
 
@@ -45027,6 +46321,7 @@ export namespace Gtk {
          * This function saves the information from `setup` to `file_name`.
          * @param file_name the file to save to
          * @returns `true` on success
+         * @since 2.12
          */
         to_file(file_name: string): boolean;
 
@@ -45034,6 +46329,7 @@ export namespace Gtk {
          * This function adds the page setup from `setup` to `key_file`.
          * @param key_file the {@link GLib.KeyFile} to save the page setup to
          * @param group_name the group to add the settings to in `key_file`,      or `null` to use the default name "Page Setup"
+         * @since 2.12
          */
         to_key_file(key_file: GLib.KeyFile, group_name: string): void;
     }
@@ -45320,12 +46616,14 @@ export namespace Gtk {
         /**
          * Obtains the first child of the paned widget.
          * @returns first child, or `null` if it is not set.
+         * @since 2.4
          */
         get_child1(): Widget;
 
         /**
          * Obtains the second child of the paned widget.
          * @returns second child, or `null` if it is not set.
+         * @since 2.4
          */
         get_child2(): Widget;
 
@@ -45335,6 +46633,7 @@ export namespace Gtk {
          * enables the callback to distinguish between the window
          * of the paned, a child and the handle.
          * @returns the paned's handle window.
+         * @since 2.20
          */
         get_handle_window(): Gdk.Window;
 
@@ -45376,12 +46675,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -45746,12 +47047,14 @@ export namespace Gtk {
          * This function will generally only be used by classes deriving from {@link Gtk.Plug}.
          * @param display the {@link Gdk.Display} associated with `socket_id`'s      {@link Gtk.Socket}.
          * @param socket_id the XID of the socket's window.
+         * @since 2.2
          */
         construct_for_display(display: Gdk.Display, socket_id: Gdk.NativeWindow): void;
 
         /**
          * Determines whether the plug is embedded in a socket.
          * @returns `true` if the plug is embedded in a socket
+         * @since 2.14
          */
         get_embedded(): boolean;
 
@@ -45766,6 +47069,7 @@ export namespace Gtk {
         /**
          * Retrieves the socket the plug is embedded in.
          * @returns the window of the socket, or `null`
+         * @since 2.14
          */
         get_socket_window(): Gdk.Window;
 
@@ -45971,6 +47275,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -45982,6 +47287,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -45992,6 +47298,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -46002,6 +47309,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -46011,6 +47319,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -46019,6 +47328,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -46029,6 +47339,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -46039,6 +47350,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -46047,12 +47359,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -46062,6 +47376,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -46073,6 +47388,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -46084,6 +47400,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -46095,6 +47412,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -46104,6 +47422,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -46112,6 +47431,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -46122,6 +47442,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -46133,6 +47454,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -46142,6 +47464,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -46149,6 +47472,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -46235,6 +47559,7 @@ export namespace Gtk {
          * Creates a new {@link Pango.Context} that can be used with the
          * {@link Gtk.PrintContext}.
          * @returns a new Pango context for `context`
+         * @since 2.10
          */
         create_pango_context(): Pango.Context;
 
@@ -46242,6 +47567,7 @@ export namespace Gtk {
          * Creates a new {@link Pango.Layout} that is suitable for use
          * with the {@link Gtk.PrintContext}.
          * @returns a new Pango layout for `context`
+         * @since 2.10
          */
         create_pango_layout(): Pango.Layout;
 
@@ -46249,6 +47575,7 @@ export namespace Gtk {
          * Obtains the cairo context that is associated with the
          * {@link Gtk.PrintContext}.
          * @returns the cairo context of `context`
+         * @since 2.10
          */
         get_cairo_context(): cairo.Context;
 
@@ -46256,6 +47583,7 @@ export namespace Gtk {
          * Obtains the horizontal resolution of the {@link Gtk.PrintContext},
          * in dots per inch.
          * @returns the horizontal resolution of `context`
+         * @since 2.10
          */
         get_dpi_x(): number;
 
@@ -46263,18 +47591,21 @@ export namespace Gtk {
          * Obtains the vertical resolution of the {@link Gtk.PrintContext},
          * in dots per inch.
          * @returns the vertical resolution of `context`
+         * @since 2.10
          */
         get_dpi_y(): number;
 
         /**
          * Obtains the hardware printer margins of the {@link Gtk.PrintContext}, in units.
          * @returns `true` if the hard margins were retrieved
+         * @since 2.20
          */
         get_hard_margins(): [boolean, number, number, number, number];
 
         /**
          * Obtains the height of the {@link Gtk.PrintContext}, in pixels.
          * @returns the height of `context`
+         * @since 2.10
          */
         get_height(): number;
 
@@ -46282,6 +47613,7 @@ export namespace Gtk {
          * Obtains the {@link Gtk.PageSetup} that determines the page
          * dimensions of the {@link Gtk.PrintContext}.
          * @returns the page setup of `context`
+         * @since 2.10
          */
         get_page_setup(): PageSetup;
 
@@ -46289,12 +47621,14 @@ export namespace Gtk {
          * Returns a {@link Pango.FontMap} that is suitable for use
          * with the {@link Gtk.PrintContext}.
          * @returns the font map of `context`
+         * @since 2.10
          */
         get_pango_fontmap(): Pango.FontMap;
 
         /**
          * Obtains the width of the {@link Gtk.PrintContext}, in pixels.
          * @returns the width of `context`
+         * @since 2.10
          */
         get_width(): number;
 
@@ -46308,6 +47642,7 @@ export namespace Gtk {
          * @param cr the cairo context
          * @param dpi_x the horizontal resolution to use with `cr`
          * @param dpi_y the vertical resolution to use with `cr`
+         * @since 2.10
          */
         set_cairo_context(cr: cairo.Context, dpi_x: number, dpi_y: number): void;
     }
@@ -47088,6 +48423,7 @@ export namespace Gtk {
          * {@link Gtk.PrintOperation.SignalSignatures.paginate | Gtk.PrintOperation::paginate} or {@link Gtk.PrintOperation.SignalSignatures.draw_page | Gtk.PrintOperation::draw-page}
          * signal handler to stop the currently running print
          * operation.
+         * @since 2.10
          */
         cancel(): void;
 
@@ -47099,6 +48435,7 @@ export namespace Gtk {
          * If `gtk_print_operation_set_defer_drawing()` was called before, then this function
          * has to be called by application. In another case it is called by the library
          * itself.
+         * @since 2.16
          */
         draw_page_finish(): void;
 
@@ -47106,12 +48443,14 @@ export namespace Gtk {
          * Returns the default page setup, see
          * `gtk_print_operation_set_default_page_setup()`.
          * @returns the default page setup
+         * @since 2.10
          */
         get_default_page_setup(): PageSetup;
 
         /**
          * Gets the value of {@link Gtk.PrintOperation.SignalSignatures.embed_page_setup | Gtk.PrintOperation::embed-page-setup} property.
          * @returns whether page setup selection combos are embedded
+         * @since 2.18
          */
         get_embed_page_setup(): boolean;
 
@@ -47120,12 +48459,14 @@ export namespace Gtk {
          * {@link Gtk.PrintOperationResult.ERROR}, either as returned by
          * `gtk_print_operation_run()`, or in the {@link Gtk.PrintOperation.SignalSignatures.done | Gtk.PrintOperation::done} signal
          * handler. The returned {@link GLib.Error} will contain more details on what went wrong.
+         * @since 2.10
          */
         get_error(): void;
 
         /**
          * Gets the value of {@link Gtk.PrintOperation.SignalSignatures.has_selection | Gtk.PrintOperation::has-selection} property.
          * @returns whether there is a selection
+         * @since 2.18
          */
         get_has_selection(): boolean;
 
@@ -47140,6 +48481,7 @@ export namespace Gtk {
          * print status is {@link Gtk.PrintStatus.GENERATING_DATA}.
          * This is typically used to track the progress of print operation.
          * @returns the number of pages that will be printed
+         * @since 2.18
          */
         get_n_pages_to_print(): number;
 
@@ -47150,6 +48492,7 @@ export namespace Gtk {
          * `gtk_print_operation_set_print_settings()` or
          * `gtk_print_operation_run()` have been called.
          * @returns the current print settings of `op`.
+         * @since 2.10
          */
         get_print_settings(): PrintSettings;
 
@@ -47157,6 +48500,7 @@ export namespace Gtk {
          * Returns the status of the print operation.
          * Also see `gtk_print_operation_get_status_string()`.
          * @returns the status of the print operation
+         * @since 2.10
          */
         get_status(): PrintStatus;
 
@@ -47168,12 +48512,14 @@ export namespace Gtk {
          * Use `gtk_print_operation_get_status()` to obtain a status
          * value that is suitable for programmatic use.
          * @returns a string representation of the status    of the print operation
+         * @since 2.10
          */
         get_status_string(): string;
 
         /**
          * Gets the value of {@link Gtk.PrintOperation.SignalSignatures.support_selection | Gtk.PrintOperation::support-selection} property.
          * @returns whether the application supports print of selection
+         * @since 2.18
          */
         get_support_selection(): boolean;
 
@@ -47186,6 +48532,7 @@ export namespace Gtk {
          * can be in a non-finished state even after done has been called, as
          * the operation status then tracks the print job status on the printer.
          * @returns `true`, if the print operation is finished.
+         * @since 2.10
          */
         is_finished(): boolean;
 
@@ -47250,6 +48597,7 @@ export namespace Gtk {
          * @param action the action to start
          * @param parent Transient parent of the dialog
          * @returns the result of the print operation. A return value of   {@link Gtk.PrintOperationResult.APPLY} indicates that the printing was   completed successfully. In this case, it is a good idea to obtain   the used print settings with `gtk_print_operation_get_print_settings()`   and store them for reuse with the next print operation. A value of   {@link Gtk.PrintOperationResult.IN_PROGRESS} means the operation is running   asynchronously, and will emit the {@link Gtk.PrintOperation.SignalSignatures.done | Gtk.PrintOperation::done} signal when   done.
+         * @since 2.10
          */
         run(action: PrintOperationAction, parent: Window | null): PrintOperationResult;
 
@@ -47258,6 +48606,7 @@ export namespace Gtk {
          * before the print operation is completed. Note that
          * some platforms may not allow asynchronous operation.
          * @param allow_async `true` to allow asynchronous operation
+         * @since 2.10
          */
         set_allow_async(allow_async: boolean): void;
 
@@ -47269,12 +48618,14 @@ export namespace Gtk {
          * 
          * Note that this only makes sense for pre-paginated documents.
          * @param current_page the current page, 0-based
+         * @since 2.10
          */
         set_current_page(current_page: number): void;
 
         /**
          * Sets the label for the tab holding custom widgets.
          * @param label the label to use, or `null` to use the default label
+         * @since 2.10
          */
         set_custom_tab_label(label: string | null): void;
 
@@ -47285,6 +48636,7 @@ export namespace Gtk {
          * but it can be overridden on a per-page basis by connecting
          * to the {@link Gtk.PrintOperation.SignalSignatures.request_page_setup | Gtk.PrintOperation::request-page-setup} signal.
          * @param default_page_setup a {@link Gtk.PageSetup}, or `null`
+         * @since 2.10
          */
         set_default_page_setup(default_page_setup: PageSetup | null): void;
 
@@ -47294,6 +48646,7 @@ export namespace Gtk {
          * be used for drawing page in another thread.
          * 
          * This function must be called in the callback of "draw-page" signal.
+         * @since 2.16
          */
         set_defer_drawing(): void;
 
@@ -47301,6 +48654,7 @@ export namespace Gtk {
          * Embed page size combo box and orientation combo box into page setup page.
          * Selected page setup is stored as default page setup in {@link Gtk.PrintOperation}.
          * @param embed `true` to embed page setup selection in the `GtkPrintDialog`
+         * @since 2.18
          */
         set_embed_page_setup(embed: boolean): void;
 
@@ -47314,6 +48668,7 @@ export namespace Gtk {
          * by letting the user pick the "Print to PDF" item from the list
          * of printers in the print dialog.
          * @param filename the filename for the exported file
+         * @since 2.10
          */
         set_export_filename(filename: string): void;
 
@@ -47324,6 +48679,7 @@ export namespace Gtk {
          * will draw by `gtk_print_operation_set_n_pages()` in a callback of
          * {@link Gtk.PrintOperation.SignalSignatures.begin_print | Gtk.PrintOperation::begin-print}.
          * @param has_selection `true` indicates that a selection exists
+         * @since 2.18
          */
         set_has_selection(has_selection: boolean): void;
 
@@ -47334,6 +48690,7 @@ export namespace Gtk {
          * If you don't set a job name, GTK+ picks a default one by
          * numbering successive print jobs.
          * @param job_name a string that identifies the print job
+         * @since 2.10
          */
         set_job_name(job_name: string): void;
 
@@ -47350,6 +48707,7 @@ export namespace Gtk {
          * the user chooses to print all pages, the last ::draw-page signal
          * will be for page `n_pages` - 1.
          * @param n_pages the number of pages
+         * @since 2.10
          */
         set_n_pages(n_pages: number): void;
 
@@ -47358,6 +48716,7 @@ export namespace Gtk {
          * re-establish print settings from a previous print operation,
          * see `gtk_print_operation_run()`.
          * @param print_settings {@link Gtk.PrintSettings}
+         * @since 2.10
          */
         set_print_settings(print_settings: PrintSettings | null): void;
 
@@ -47365,12 +48724,14 @@ export namespace Gtk {
          * If `show_progress` is `true`, the print operation will show a
          * progress dialog during the print operation.
          * @param show_progress `true` to show a progress dialog
+         * @since 2.10
          */
         set_show_progress(show_progress: boolean): void;
 
         /**
          * Sets whether selection is supported by {@link Gtk.PrintOperation}.
          * @param support_selection `true` to support selection
+         * @since 2.18
          */
         set_support_selection(support_selection: boolean): void;
 
@@ -47383,6 +48744,7 @@ export namespace Gtk {
          * This function is often implemented using some form of polling, so it should
          * not be enabled unless needed.
          * @param track_status `true` to track status after printing
+         * @since 2.10
          */
         set_track_print_status(track_status: boolean): void;
 
@@ -47391,6 +48753,7 @@ export namespace Gtk {
          * {@link Gtk.PrintContext} in such a way that distances are measured in
          * units of `unit`.
          * @param unit the unit to use
+         * @since 2.10
          */
         set_unit(unit: Unit): void;
 
@@ -47402,6 +48765,7 @@ export namespace Gtk {
          * sheet). Otherwise, the origin is at the top left corner of the
          * imageable area (i.e. inside the margins).
          * @param full_page `true` to set up the {@link Gtk.PrintContext} for the full page
+         * @since 2.10
          */
         set_use_full_page(full_page: boolean): void;
 
@@ -47409,6 +48773,7 @@ export namespace Gtk {
          * Ends a preview.
          * 
          * This function must be called to finish a custom print preview.
+         * @since 2.10
          */
         end_preview(): void;
 
@@ -47417,6 +48782,7 @@ export namespace Gtk {
          * have been selected for printing.
          * @param page_nr a page number
          * @returns `true` if the page has been selected for printing
+         * @since 2.10
          */
         is_selected(page_nr: number): boolean;
 
@@ -47431,6 +48797,7 @@ export namespace Gtk {
          * Note that this function requires a suitable cairo context to
          * be associated with the print context.
          * @param page_nr the page to render
+         * @since 2.10
          */
         render_page(page_nr: number): void;
 
@@ -47438,6 +48805,7 @@ export namespace Gtk {
          * Ends a preview.
          * 
          * This function must be called to finish a custom print preview.
+         * @since 2.10
          * @virtual
          */
         vfunc_end_preview(): void;
@@ -47453,6 +48821,7 @@ export namespace Gtk {
          * Returns whether the given page is included in the set of pages that
          * have been selected for printing.
          * @param page_nr a page number
+         * @since 2.10
          * @virtual
          */
         vfunc_is_selected(page_nr: number): boolean;
@@ -47474,6 +48843,7 @@ export namespace Gtk {
          * Note that this function requires a suitable cairo context to
          * be associated with the print context.
          * @param page_nr the page to render
+         * @since 2.10
          * @virtual
          */
         vfunc_render_page(page_nr: number): void;
@@ -47531,12 +48901,14 @@ export namespace Gtk {
         /**
          * Copies a {@link Gtk.PrintSettings} object.
          * @returns a newly allocated copy of `other`
+         * @since 2.10
          */
         copy(): PrintSettings;
 
         /**
          * Calls `func` for each key-value pair of `settings`.
          * @param func the function to call
+         * @since 2.10
          */
         foreach(func: PrintSettingsFunc): void;
 
@@ -47544,6 +48916,7 @@ export namespace Gtk {
          * Looks up the string value associated with `key`.
          * @param key a key
          * @returns the string value for `key`
+         * @since 2.10
          */
         get(key: string): string;
 
@@ -47555,24 +48928,28 @@ export namespace Gtk {
          * string `false`.
          * @param key a key
          * @returns `true`, if `key` maps to a true value.
+         * @since 2.10
          */
         get_bool(key: string): boolean;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_COLLATE`.
          * @returns whether to collate the printed pages
+         * @since 2.10
          */
         get_collate(): boolean;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_DEFAULT_SOURCE`.
          * @returns the default source
+         * @since 2.10
          */
         get_default_source(): string;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_DITHER`.
          * @returns the dithering that is used
+         * @since 2.10
          */
         get_dither(): string;
 
@@ -47580,6 +48957,7 @@ export namespace Gtk {
          * Returns the double value associated with `key`, or 0.
          * @param key a key
          * @returns the double value of `key`
+         * @since 2.10
          */
         get_double(key: string): number;
 
@@ -47592,18 +48970,21 @@ export namespace Gtk {
          * @param key a key
          * @param def the default value
          * @returns the floating point number associated with `key`
+         * @since 2.10
          */
         get_double_with_default(key: string, def: number): number;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_DUPLEX`.
          * @returns whether to print the output in duplex.
+         * @since 2.10
          */
         get_duplex(): PrintDuplex;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_FINISHINGS`.
          * @returns the finishings
+         * @since 2.10
          */
         get_finishings(): string;
 
@@ -47611,6 +48992,7 @@ export namespace Gtk {
          * Returns the integer value of `key`, or 0.
          * @param key a key
          * @returns the integer value of `key`
+         * @since 2.10
          */
         get_int(key: string): number;
 
@@ -47620,6 +49002,7 @@ export namespace Gtk {
          * @param key a key
          * @param def the default value
          * @returns the integer value of `key`
+         * @since 2.10
          */
         get_int_with_default(key: string, def: number): number;
 
@@ -47629,6 +49012,7 @@ export namespace Gtk {
          * @param key a key
          * @param unit the unit of the return value
          * @returns the length value of `key`, converted to `unit`
+         * @since 2.10
          */
         get_length(key: string, unit: Unit): number;
 
@@ -47638,24 +49022,28 @@ export namespace Gtk {
          * The set of media types is defined in PWG 5101.1-2002 PWG.
          * <!-- FIXME link here -->
          * @returns the media type
+         * @since 2.10
          */
         get_media_type(): string;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_N_COPIES`.
          * @returns the number of copies to print
+         * @since 2.10
          */
         get_n_copies(): number;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_NUMBER_UP`.
          * @returns the number of pages per sheet
+         * @since 2.10
          */
         get_number_up(): number;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT`.
          * @returns layout of page in number-up mode
+         * @since 2.14
          */
         get_number_up_layout(): NumberUpLayout;
 
@@ -47663,24 +49051,28 @@ export namespace Gtk {
          * Get the value of `GTK_PRINT_SETTINGS_ORIENTATION`,
          * converted to a {@link Gtk.PageOrientation}.
          * @returns the orientation
+         * @since 2.10
          */
         get_orientation(): PageOrientation;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_OUTPUT_BIN`.
          * @returns the output bin
+         * @since 2.10
          */
         get_output_bin(): string;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_PAGE_RANGES`.
          * @returns an array     of {@link Gtk.PageRange}<!-- -->s.  Use `g_free()` to free the array when     it is no longer needed.
+         * @since 2.10
          */
         get_page_ranges(): PageRange[];
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_PAGE_SET`.
          * @returns the set of pages to print
+         * @since 2.10
          */
         get_page_set(): PageSet;
 
@@ -47689,6 +49081,7 @@ export namespace Gtk {
          * converted to `unit`.
          * @param unit the unit for the return value
          * @returns the paper height, in units of `unit`
+         * @since 2.10
          */
         get_paper_height(unit: Unit): number;
 
@@ -47696,6 +49089,7 @@ export namespace Gtk {
          * Gets the value of `GTK_PRINT_SETTINGS_PAPER_FORMAT`,
          * converted to a {@link Gtk.PaperSize}.
          * @returns the paper size
+         * @since 2.10
          */
         get_paper_size(): PaperSize;
 
@@ -47704,12 +49098,14 @@ export namespace Gtk {
          * converted to `unit`.
          * @param unit the unit for the return value
          * @returns the paper width, in units of `unit`
+         * @since 2.10
          */
         get_paper_width(unit: Unit): number;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_PRINT_PAGES`.
          * @returns which pages to print
+         * @since 2.10
          */
         get_print_pages(): PrintPages;
 
@@ -47717,54 +49113,63 @@ export namespace Gtk {
          * Convenience function to obtain the value of
          * `GTK_PRINT_SETTINGS_PRINTER`.
          * @returns the printer name
+         * @since 2.10
          */
         get_printer(): string;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_PRINTER_LPI`.
          * @returns the resolution in lpi (lines per inch)
+         * @since 2.16
          */
         get_printer_lpi(): number;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_QUALITY`.
          * @returns the print quality
+         * @since 2.10
          */
         get_quality(): PrintQuality;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_RESOLUTION`.
          * @returns the resolution in dpi
+         * @since 2.10
          */
         get_resolution(): number;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_RESOLUTION_X`.
          * @returns the horizontal resolution in dpi
+         * @since 2.16
          */
         get_resolution_x(): number;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_RESOLUTION_Y`.
          * @returns the vertical resolution in dpi
+         * @since 2.16
          */
         get_resolution_y(): number;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_REVERSE`.
          * @returns whether to reverse the order of the printed pages
+         * @since 2.10
          */
         get_reverse(): boolean;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_SCALE`.
          * @returns the scale in percent
+         * @since 2.10
          */
         get_scale(): number;
 
         /**
          * Gets the value of `GTK_PRINT_SETTINGS_USE_COLOR`.
          * @returns whether to use color
+         * @since 2.10
          */
         get_use_color(): boolean;
 
@@ -47772,6 +49177,7 @@ export namespace Gtk {
          * Returns `true`, if a value is associated with `key`.
          * @param key a key
          * @returns `true`, if `key` has a value
+         * @since 2.10
          */
         has_key(key: string): boolean;
 
@@ -47781,6 +49187,7 @@ export namespace Gtk {
          * See `gtk_print_settings_to_file()`.
          * @param file_name the filename to read the settings from
          * @returns `true` on success
+         * @since 2.14
          */
         load_file(file_name: string): boolean;
 
@@ -47791,6 +49198,7 @@ export namespace Gtk {
          * @param key_file the {@link GLib.KeyFile} to retrieve the settings from
          * @param group_name the name of the group to use, or `null` to use the default     "Print Settings"
          * @returns `true` on success
+         * @since 2.14
          */
         load_key_file(key_file: GLib.KeyFile, group_name: string | null): boolean;
 
@@ -47798,6 +49206,7 @@ export namespace Gtk {
          * Associates `value` with `key`.
          * @param key a key
          * @param value a string value, or `null`
+         * @since 2.10
          */
         set(key: string, value: string | null): void;
 
@@ -47811,24 +49220,28 @@ export namespace Gtk {
          * Sets `key` to a boolean value.
          * @param key a key
          * @param value a boolean
+         * @since 2.10
          */
         set_bool(key: string, value: boolean): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_COLLATE`.
          * @param collate whether to collate the output
+         * @since 2.10
          */
         set_collate(collate: boolean): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_DEFAULT_SOURCE`.
          * @param default_source the default source
+         * @since 2.10
          */
         set_default_source(default_source: string): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_DITHER`.
          * @param dither the dithering that is used
+         * @since 2.10
          */
         set_dither(dither: string): void;
 
@@ -47836,18 +49249,21 @@ export namespace Gtk {
          * Sets `key` to a double value.
          * @param key a key
          * @param value a double value
+         * @since 2.10
          */
         set_double(key: string, value: number): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_DUPLEX`.
          * @param duplex a {@link Gtk.PrintDuplex} value
+         * @since 2.10
          */
         set_duplex(duplex: PrintDuplex): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_FINISHINGS`.
          * @param finishings the finishings
+         * @since 2.10
          */
         set_finishings(finishings: string): void;
 
@@ -47855,6 +49271,7 @@ export namespace Gtk {
          * Sets `key` to an integer value.
          * @param key a key
          * @param value an integer
+         * @since 2.10
          */
         set_int(key: string, value: number): void;
 
@@ -47863,6 +49280,7 @@ export namespace Gtk {
          * @param key a key
          * @param value a length
          * @param unit the unit of `length`
+         * @since 2.10
          */
         set_length(key: string, value: number, unit: Unit): void;
 
@@ -47872,48 +49290,56 @@ export namespace Gtk {
          * The set of media types is defined in PWG 5101.1-2002 PWG.
          * <!-- FIXME link here -->
          * @param media_type the media type
+         * @since 2.10
          */
         set_media_type(media_type: string): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_N_COPIES`.
          * @param num_copies the number of copies
+         * @since 2.10
          */
         set_n_copies(num_copies: number): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_NUMBER_UP`.
          * @param number_up the number of pages per sheet
+         * @since 2.10
          */
         set_number_up(number_up: number): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT`.
          * @param number_up_layout a {@link Gtk.NumberUpLayout} value
+         * @since 2.14
          */
         set_number_up_layout(number_up_layout: NumberUpLayout): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_ORIENTATION`.
          * @param orientation a page orientation
+         * @since 2.10
          */
         set_orientation(orientation: PageOrientation): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_OUTPUT_BIN`.
          * @param output_bin the output bin
+         * @since 2.10
          */
         set_output_bin(output_bin: string): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_PAGE_RANGES`.
          * @param page_ranges an array of {@link Gtk.PageRange}<!-- -->s
+         * @since 2.10
          */
         set_page_ranges(page_ranges: PageRange[]): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_PAGE_SET`.
          * @param page_set a {@link Gtk.PageSet} value
+         * @since 2.10
          */
         set_page_set(page_set: PageSet): void;
 
@@ -47921,6 +49347,7 @@ export namespace Gtk {
          * Sets the value of `GTK_PRINT_SETTINGS_PAPER_HEIGHT`.
          * @param height the paper height
          * @param unit the units of `height`
+         * @since 2.10
          */
         set_paper_height(height: number, unit: Unit): void;
 
@@ -47929,6 +49356,7 @@ export namespace Gtk {
          * `GTK_PRINT_SETTINGS_PAPER_WIDTH` and
          * `GTK_PRINT_SETTINGS_PAPER_HEIGHT`.
          * @param paper_size a paper size
+         * @since 2.10
          */
         set_paper_size(paper_size: PaperSize): void;
 
@@ -47936,12 +49364,14 @@ export namespace Gtk {
          * Sets the value of `GTK_PRINT_SETTINGS_PAPER_WIDTH`.
          * @param width the paper width
          * @param unit the units of `width`
+         * @since 2.10
          */
         set_paper_width(width: number, unit: Unit): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_PRINT_PAGES`.
          * @param pages a {@link Gtk.PrintPages} value
+         * @since 2.10
          */
         set_print_pages(pages: PrintPages): void;
 
@@ -47949,18 +49379,21 @@ export namespace Gtk {
          * Convenience function to set `GTK_PRINT_SETTINGS_PRINTER`
          * to `printer`.
          * @param printer the printer name
+         * @since 2.10
          */
         set_printer(printer: string): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_PRINTER_LPI`.
          * @param lpi the resolution in lpi (lines per inch)
+         * @since 2.16
          */
         set_printer_lpi(lpi: number): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_QUALITY`.
          * @param quality a {@link Gtk.PrintQuality} value
+         * @since 2.10
          */
         set_quality(quality: PrintQuality): void;
 
@@ -47969,6 +49402,7 @@ export namespace Gtk {
          * `GTK_PRINT_SETTINGS_RESOLUTION_X` and
          * `GTK_PRINT_SETTINGS_RESOLUTION_Y`.
          * @param resolution the resolution in dpi
+         * @since 2.10
          */
         set_resolution(resolution: number): void;
 
@@ -47978,24 +49412,28 @@ export namespace Gtk {
          * `GTK_PRINT_SETTINGS_RESOLUTION_Y`.
          * @param resolution_x the horizontal resolution in dpi
          * @param resolution_y the vertical resolution in dpi
+         * @since 2.16
          */
         set_resolution_xy(resolution_x: number, resolution_y: number): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_REVERSE`.
          * @param reverse whether to reverse the output
+         * @since 2.10
          */
         set_reverse(reverse: boolean): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_SCALE`.
          * @param scale the scale in percent
+         * @since 2.10
          */
         set_scale(scale: number): void;
 
         /**
          * Sets the value of `GTK_PRINT_SETTINGS_USE_COLOR`.
          * @param use_color whether to use color
+         * @since 2.10
          */
         set_use_color(use_color: boolean): void;
 
@@ -48005,6 +49443,7 @@ export namespace Gtk {
          * {@link GLib.KeyFileError}.
          * @param file_name the file to save to
          * @returns `true` on success
+         * @since 2.12
          */
         to_file(file_name: string): boolean;
 
@@ -48012,6 +49451,7 @@ export namespace Gtk {
          * This function adds the print settings from `settings` to `key_file`.
          * @param key_file the {@link GLib.KeyFile} to save the print settings to
          * @param group_name the group to add the settings to in `key_file`, or     `null` to use the default "Print Settings"
+         * @since 2.12
          */
         to_key_file(key_file: GLib.KeyFile, group_name: string): void;
 
@@ -48019,6 +49459,7 @@ export namespace Gtk {
          * Removes any value associated with `key`.
          * This has the same effect as setting the value to `null`.
          * @param key a key
+         * @since 2.10
          */
         unset(key: string): void;
     }
@@ -48249,6 +49690,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -48260,6 +49702,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -48270,6 +49713,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -48280,6 +49724,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -48289,6 +49734,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -48297,6 +49743,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -48307,6 +49754,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -48317,6 +49765,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -48325,12 +49774,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -48340,6 +49791,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -48351,6 +49803,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -48362,6 +49815,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -48373,6 +49827,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -48382,6 +49837,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -48390,6 +49846,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -48400,6 +49857,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -48411,6 +49869,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -48420,6 +49879,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -48427,6 +49887,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -48684,6 +50145,7 @@ export namespace Gtk {
          * Returns the ellipsizing position of the progressbar.
          * See `gtk_progress_bar_set_ellipsize()`.
          * @returns {@link Pango.EllipsizeMode}
+         * @since 2.6
          */
         get_ellipsize(): Pango.EllipsizeMode;
 
@@ -48747,6 +50209,7 @@ export namespace Gtk {
          * Sets the mode used to ellipsize (add an ellipsis: "...") the text
          * if there is not enough space to render the entire string.
          * @param mode a {@link Pango.EllipsizeMode}
+         * @since 2.6
          */
         set_ellipsize(mode: Pango.EllipsizeMode): void;
 
@@ -48951,6 +50414,7 @@ export namespace Gtk {
          * Obtains the value property of the currently active member of
          * the group to which `action` belongs.
          * @returns The value of the currently active group member
+         * @since 2.4
          */
         get_current_value(): number;
 
@@ -48975,6 +50439,7 @@ export namespace Gtk {
          * ```
          * 
          * @returns the list representing the radio group for this object
+         * @since 2.4
          */
         get_group(): Action[];
 
@@ -48982,6 +50447,7 @@ export namespace Gtk {
          * Sets the currently active group member to the member with value
          * property `current_value`.
          * @param current_value the new value
+         * @since 2.10
          */
         set_current_value(current_value: number): void;
     }
@@ -49273,6 +50739,7 @@ export namespace Gtk {
         /**
          * Creates a new {@link Gtk.RadioMenuItem} adding it to the same group as `group`.
          * @returns The new {@link Gtk.RadioMenuItem}
+         * @since 2.4
          */
         new_from_widget(): Widget;
 
@@ -49281,6 +50748,7 @@ export namespace Gtk {
          * The new {@link Gtk.RadioMenuItem} is added to the same group as `group`.
          * @param label the text for the label
          * @returns The new {@link Gtk.RadioMenuItem}
+         * @since 2.4
          */
         new_with_label_from_widget(label: string): Widget;
 
@@ -49292,6 +50760,7 @@ export namespace Gtk {
          * The new {@link Gtk.RadioMenuItem} is added to the same group as `group`.
          * @param label the text of the button, with an underscore in front of the         mnemonic character
          * @returns The new {@link Gtk.RadioMenuItem}
+         * @since 2.4
          */
         new_with_mnemonic_from_widget(label: string): Widget;
 
@@ -49425,6 +50894,7 @@ export namespace Gtk {
         /**
          * Creates a new {@link Gtk.RadioToolButton} adding it to the same group as `gruup`
          * @returns The new {@link Gtk.RadioToolButton}
+         * @since 2.4
          */
         new_from_widget(): ToolItem;
 
@@ -49434,6 +50904,7 @@ export namespace Gtk {
          * stock item indicated by `stock_id`.
          * @param stock_id the name of a stock item
          * @returns A new {@link Gtk.RadioToolButton}
+         * @since 2.4
          */
         new_with_stock_from_widget(stock_id: string): ToolItem;
 
@@ -49797,12 +51268,14 @@ export namespace Gtk {
         /**
          * Gets the current position of the fill level indicator.
          * @returns The current fill level
+         * @since 2.12
          */
         get_fill_level(): number;
 
         /**
          * Gets the value set by `gtk_range_set_flippable()`.
          * @returns `true` if the range is flippable
+         * @since 2.18
          */
         get_flippable(): boolean;
 
@@ -49816,6 +51289,7 @@ export namespace Gtk {
          * Gets the sensitivity policy for the stepper that points to the
          * 'lower' end of the GtkRange's adjustment.
          * @returns The lower stepper's sensitivity policy.
+         * @since 2.10
          */
         get_lower_stepper_sensitivity(): SensitivityType;
 
@@ -49824,6 +51298,7 @@ export namespace Gtk {
          * 
          * See `gtk_range_set_min_slider_size()`.
          * @returns The minimum size of the range's slider.
+         * @since 2.20
          */
         get_min_slider_size(): number;
 
@@ -49832,12 +51307,14 @@ export namespace Gtk {
          * and its steppers, in widget->window coordinates.
          * 
          * This function is useful mainly for {@link Gtk.Range} subclasses.
+         * @since 2.20
          */
         get_range_rect(): Gdk.Rectangle;
 
         /**
          * Gets whether the range is restricted to the fill level.
          * @returns `true` if `range` is restricted to the fill level.
+         * @since 2.12
          */
         get_restrict_to_fill_level(): boolean;
 
@@ -49845,12 +51322,14 @@ export namespace Gtk {
          * Gets the number of digits to round the value to when
          * it changes. See {@link Gtk.Range.SignalSignatures.change_value | Gtk.Range::change-value}.
          * @returns the number of digits to round to
+         * @since 2.24
          */
         get_round_digits(): number;
 
         /**
          * Gets whether the range displays the fill level graphically.
          * @returns `true` if `range` shows the fill level.
+         * @since 2.12
          */
         get_show_fill_level(): boolean;
 
@@ -49859,6 +51338,7 @@ export namespace Gtk {
          * in widget->window coordinates.
          * 
          * This function is useful mainly for {@link Gtk.Range} subclasses.
+         * @since 2.20
          */
         get_slider_range(): [number, number];
 
@@ -49867,12 +51347,14 @@ export namespace Gtk {
          * 
          * See `gtk_range_set_slider_size_fixed()`.
          * @returns whether the range's slider has a fixed size.
+         * @since 2.20
          */
         get_slider_size_fixed(): boolean;
 
         /**
          * Gets the update policy of `range`. See `gtk_range_set_update_policy()`.
          * @returns the current update policy
+         * @deprecated since 2.24: There is no replacement. If you require delayed   updates, you need to code it yourself.
          */
         get_update_policy(): UpdateType;
 
@@ -49880,6 +51362,7 @@ export namespace Gtk {
          * Gets the sensitivity policy for the stepper that points to the
          * 'upper' end of the GtkRange's adjustment.
          * @returns The upper stepper's sensitivity policy.
+         * @since 2.10
          */
         get_upper_stepper_sensitivity(): SensitivityType;
 
@@ -49920,6 +51403,7 @@ export namespace Gtk {
          * by `gtk_range_set_restrict_to_fill_level()` and is by default
          * enabled.
          * @param fill_level the new position of the fill level indicator
+         * @since 2.12
          */
         set_fill_level(fill_level: number): void;
 
@@ -49929,6 +51413,7 @@ export namespace Gtk {
          * 
          * See `gtk_widget_get_direction()`.
          * @param flippable `true` to make the range flippable
+         * @since 2.18
          */
         set_flippable(flippable: boolean): void;
 
@@ -49955,6 +51440,7 @@ export namespace Gtk {
          * Sets the sensitivity policy for the stepper that points to the
          * 'lower' end of the GtkRange's adjustment.
          * @param sensitivity the lower stepper's sensitivity policy.
+         * @since 2.10
          */
         set_lower_stepper_sensitivity(sensitivity: SensitivityType): void;
 
@@ -49963,6 +51449,7 @@ export namespace Gtk {
          * 
          * This function is useful mainly for {@link Gtk.Range} subclasses.
          * @param min_size The slider's minimum size
+         * @since 2.20
          */
         set_min_slider_size(min_size: boolean): void;
 
@@ -49980,6 +51467,7 @@ export namespace Gtk {
          * `gtk_range_set_fill_level()` for a general description of the fill
          * level concept.
          * @param restrict_to_fill_level Whether the fill level restricts slider movement.
+         * @since 2.12
          */
         set_restrict_to_fill_level(restrict_to_fill_level: boolean): void;
 
@@ -49987,6 +51475,7 @@ export namespace Gtk {
          * Sets the number of digits to round the value to when
          * it changes. See {@link Gtk.Range.SignalSignatures.change_value | Gtk.Range::change-value}.
          * @param round_digits the precision in digits, or -1
+         * @since 2.24
          */
         set_round_digits(round_digits: number): void;
 
@@ -49995,6 +51484,7 @@ export namespace Gtk {
          * `gtk_range_set_fill_level()` for a general description of the fill
          * level concept.
          * @param show_fill_level Whether a fill level indicator graphics is shown.
+         * @since 2.12
          */
         set_show_fill_level(show_fill_level: boolean): void;
 
@@ -50004,6 +51494,7 @@ export namespace Gtk {
          * 
          * This function is useful mainly for {@link Gtk.Range} subclasses.
          * @param size_fixed `true` to make the slider size constant
+         * @since 2.20
          */
         set_slider_size_fixed(size_fixed: boolean): void;
 
@@ -50017,6 +51508,7 @@ export namespace Gtk {
          * be updated when the user releases the button and ends the slider
          * drag operation.
          * @param policy update policy
+         * @deprecated since 2.24: There is no replacement. If you require delayed   updates, you need to code it yourself.
          */
         set_update_policy(policy: UpdateType): void;
 
@@ -50024,6 +51516,7 @@ export namespace Gtk {
          * Sets the sensitivity policy for the stepper that points to the
          * 'upper' end of the GtkRange's adjustment.
          * @param sensitivity the upper stepper's sensitivity policy.
+         * @since 2.10
          */
         set_upper_stepper_sensitivity(sensitivity: SensitivityType): void;
 
@@ -50042,6 +51535,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -50053,6 +51547,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -50063,6 +51558,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -50073,6 +51569,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -50082,6 +51579,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -50090,6 +51588,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -50100,6 +51599,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -50110,6 +51610,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -50118,12 +51619,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -50133,6 +51636,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -50144,6 +51648,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -50155,6 +51660,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -50166,6 +51672,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -50175,6 +51682,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -50183,6 +51691,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -50193,6 +51702,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -50204,6 +51714,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -50213,6 +51724,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -50220,6 +51732,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -50227,12 +51740,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -50462,6 +51977,7 @@ export namespace Gtk {
         /**
          * Returns the value set by `gtk_recent_chooser_menu_set_show_numbers()`.
          * @returns `true` if numbers should be shown.
+         * @since 2.12
          */
         get_show_numbers(): boolean;
 
@@ -50471,6 +51987,7 @@ export namespace Gtk {
          * a unique character for a mnemonic to be used inside the menu item's
          * label. Only the first ten items get a number to avoid clashes.
          * @param show_numbers `true` if the shown items should be numbered
+         * @since 2.12
          */
         set_show_numbers(show_numbers: boolean): void;
 
@@ -50652,6 +52169,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -50663,6 +52181,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -50673,6 +52192,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -50683,6 +52203,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -50692,6 +52213,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -50700,6 +52222,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -50710,6 +52233,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -50720,6 +52244,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -50728,12 +52253,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -50743,6 +52270,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -50754,6 +52282,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -50765,6 +52294,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -50776,6 +52306,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -50785,6 +52316,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -50793,6 +52325,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -50803,6 +52336,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -50814,6 +52348,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -50823,6 +52358,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -50830,6 +52366,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -50840,18 +52377,21 @@ export namespace Gtk {
          * If no previous filter objects were defined, this function will call
          * `gtk_recent_chooser_set_filter()`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         add_filter(filter: RecentFilter): void;
 
         /**
          * Gets the {@link Gtk.RecentInfo} currently selected by `chooser`.
          * @returns a {@link Gtk.RecentInfo}.  Use `gtk_recent_info_unref()` when   when you have finished using it.
+         * @since 2.10
          */
         get_current_item(): RecentInfo;
 
         /**
          * Gets the URI currently selected by `chooser`.
          * @returns a newly allocated string holding a URI.
+         * @since 2.10
          */
         get_current_uri(): string;
 
@@ -50859,6 +52399,7 @@ export namespace Gtk {
          * Gets the {@link Gtk.RecentFilter} object currently used by `chooser` to affect
          * the display of the recently used resources.
          * @returns a {@link Gtk.RecentFilter} object.
+         * @since 2.10
          */
         get_filter(): RecentFilter;
 
@@ -50868,6 +52409,7 @@ export namespace Gtk {
          * The return value of this function is affected by the "sort-type" and
          * "limit" properties of `chooser`.
          * @returns A newly allocated   list of {@link Gtk.RecentInfo} objects.  You should   use `gtk_recent_info_unref()` on every item of the list, and then free   the list itself using `g_list_free()`.
+         * @since 2.10
          */
         get_items(): RecentInfo[];
 
@@ -50875,6 +52417,7 @@ export namespace Gtk {
          * Gets the number of items returned by `gtk_recent_chooser_get_items()`
          * and `gtk_recent_chooser_get_uris()`.
          * @returns A positive integer, or -1 meaning that all items are   returned.
+         * @since 2.10
          */
         get_limit(): number;
 
@@ -50882,18 +52425,21 @@ export namespace Gtk {
          * Gets whether only local resources should be shown in the recently used
          * resources selector.  See `gtk_recent_chooser_set_local_only()`
          * @returns `true` if only local resources should be shown.
+         * @since 2.10
          */
         get_local_only(): boolean;
 
         /**
          * Gets whether `chooser` can select multiple items.
          * @returns `true` if `chooser` can select more than one item.
+         * @since 2.10
          */
         get_select_multiple(): boolean;
 
         /**
          * Retrieves whether `chooser` should show an icon near the resource.
          * @returns `true` if the icons should be displayed, `false` otherwise.
+         * @since 2.10
          */
         get_show_icons(): boolean;
 
@@ -50901,6 +52447,7 @@ export namespace Gtk {
          * Retrieves whether `chooser` should show the recently used resources that
          * were not found.
          * @returns `true` if the resources not found should be displayed, and   `false` otheriwse.
+         * @since 2.10
          */
         get_show_not_found(): boolean;
 
@@ -50908,6 +52455,7 @@ export namespace Gtk {
          * Returns whether `chooser` should display recently used resources
          * registered as private.
          * @returns `true` if the recent chooser should show private items,   `false` otherwise.
+         * @since 2.10
          */
         get_show_private(): boolean;
 
@@ -50915,12 +52463,14 @@ export namespace Gtk {
          * Gets whether `chooser` should display tooltips containing the full path
          * of a recently user resource.
          * @returns `true` if the recent chooser should show tooltips,   `false` otherwise.
+         * @since 2.10
          */
         get_show_tips(): boolean;
 
         /**
          * Gets the value set by `gtk_recent_chooser_set_sort_type()`.
          * @returns the sorting order of the `chooser`.
+         * @since 2.10
          */
         get_sort_type(): RecentSortType;
 
@@ -50932,24 +52482,28 @@ export namespace Gtk {
          * 
          * Since the returned array is `null` terminated, `length` may be `null`.
          * @returns A newly allocated, `null`-terminated array of strings. Use     `g_strfreev()` to free it.
+         * @since 2.10
          */
         get_uris(): string[];
 
         /**
          * Gets the {@link Gtk.RecentFilter} objects held by `chooser`.
          * @returns A singly linked list   of {@link Gtk.RecentFilter} objects.  You   should just free the returned list using `g_slist_free()`.
+         * @since 2.10
          */
         list_filters(): RecentFilter[];
 
         /**
          * Removes `filter` from the list of {@link Gtk.RecentFilter} objects held by `chooser`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         remove_filter(filter: RecentFilter): void;
 
         /**
          * Selects all the items inside `chooser`, if the `chooser` supports
          * multiple selection.
+         * @since 2.10
          */
         select_all(): void;
 
@@ -50957,6 +52511,7 @@ export namespace Gtk {
          * Selects `uri` inside `chooser`.
          * @param uri a URI
          * @returns `true` if `uri` was found.
+         * @since 2.10
          */
         select_uri(uri: string): boolean;
 
@@ -50964,6 +52519,7 @@ export namespace Gtk {
          * Sets `uri` as the current URI for `chooser`.
          * @param uri a URI
          * @returns `true` if the URI was found.
+         * @since 2.10
          */
         set_current_uri(uri: string): boolean;
 
@@ -50971,6 +52527,7 @@ export namespace Gtk {
          * Sets `filter` as the current {@link Gtk.RecentFilter} object used by `chooser`
          * to affect the displayed recently used resources.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         set_filter(filter: RecentFilter): void;
 
@@ -50978,6 +52535,7 @@ export namespace Gtk {
          * Sets the number of items that should be returned by
          * `gtk_recent_chooser_get_items()` and `gtk_recent_chooser_get_uris()`.
          * @param limit a positive integer, or -1 for all items
+         * @since 2.10
          */
         set_limit(limit: number): void;
 
@@ -50987,12 +52545,14 @@ export namespace Gtk {
          * `local_only` is `true` (the default) then the shown resources are guaranteed
          * to be accessible through the operating system native file system.
          * @param local_only `true` if only local files can be shown
+         * @since 2.10
          */
         set_local_only(local_only: boolean): void;
 
         /**
          * Sets whether `chooser` can select multiple items.
          * @param select_multiple `true` if `chooser` can select more than one item
+         * @since 2.10
          */
         set_select_multiple(select_multiple: boolean): void;
 
@@ -51000,6 +52560,7 @@ export namespace Gtk {
          * Sets whether `chooser` should show an icon near the resource when
          * displaying it.
          * @param show_icons whether to show an icon near the resource
+         * @since 2.10
          */
         set_show_icons(show_icons: boolean): void;
 
@@ -51007,12 +52568,14 @@ export namespace Gtk {
          * Sets whether `chooser` should display the recently used resources that
          * it didn't find.  This only applies to local resources.
          * @param show_not_found whether to show the local items we didn't find
+         * @since 2.10
          */
         set_show_not_found(show_not_found: boolean): void;
 
         /**
          * Whether to show recently used resources marked registered as private.
          * @param show_private `true` to show private items, `false` otherwise
+         * @since 2.10
          */
         set_show_private(show_private: boolean): void;
 
@@ -51020,6 +52583,7 @@ export namespace Gtk {
          * Sets whether to show a tooltips containing the full path of each
          * recently used resource in a {@link Gtk.RecentChooser} widget.
          * @param show_tips `true` if tooltips should be shown
+         * @since 2.10
          */
         set_show_tips(show_tips: boolean): void;
 
@@ -51033,6 +52597,7 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
+         * @since 2.10
          */
         set_sort_func(sort_func: RecentSortFunc): void;
 
@@ -51040,17 +52605,20 @@ export namespace Gtk {
          * Changes the sorting order of the recently used resources list displayed by
          * `chooser`.
          * @param sort_type sort order that the chooser should use
+         * @since 2.10
          */
         set_sort_type(sort_type: RecentSortType): void;
 
         /**
          * Unselects all the items inside `chooser`.
+         * @since 2.10
          */
         unselect_all(): void;
 
         /**
          * Unselects `uri` inside `chooser`.
          * @param uri a URI
+         * @since 2.10
          */
         unselect_uri(uri: string): void;
 
@@ -51060,12 +52628,14 @@ export namespace Gtk {
          * If no previous filter objects were defined, this function will call
          * `gtk_recent_chooser_set_filter()`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          * @virtual
          */
         vfunc_add_filter(filter: RecentFilter): void;
 
         /**
          * Gets the URI currently selected by `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_get_current_uri(): string;
@@ -51075,6 +52645,7 @@ export namespace Gtk {
          * 
          * The return value of this function is affected by the "sort-type" and
          * "limit" properties of `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_get_items(): RecentInfo[];
@@ -51086,6 +52657,7 @@ export namespace Gtk {
 
         /**
          * Gets the {@link Gtk.RecentFilter} objects held by `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_list_filters(): RecentFilter[];
@@ -51093,6 +52665,7 @@ export namespace Gtk {
         /**
          * Removes `filter` from the list of {@link Gtk.RecentFilter} objects held by `chooser`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          * @virtual
          */
         vfunc_remove_filter(filter: RecentFilter): void;
@@ -51100,6 +52673,7 @@ export namespace Gtk {
         /**
          * Selects all the items inside `chooser`, if the `chooser` supports
          * multiple selection.
+         * @since 2.10
          * @virtual
          */
         vfunc_select_all(): void;
@@ -51107,6 +52681,7 @@ export namespace Gtk {
         /**
          * Selects `uri` inside `chooser`.
          * @param uri a URI
+         * @since 2.10
          * @virtual
          */
         vfunc_select_uri(uri: string): boolean;
@@ -51119,6 +52694,7 @@ export namespace Gtk {
         /**
          * Sets `uri` as the current URI for `chooser`.
          * @param uri a URI
+         * @since 2.10
          * @virtual
          */
         vfunc_set_current_uri(uri: string): boolean;
@@ -51133,12 +52709,14 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
+         * @since 2.10
          * @virtual
          */
         vfunc_set_sort_func(sort_func: RecentSortFunc): void;
 
         /**
          * Unselects all the items inside `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_unselect_all(): void;
@@ -51146,6 +52724,7 @@ export namespace Gtk {
         /**
          * Unselects `uri` inside `chooser`.
          * @param uri a URI
+         * @since 2.10
          * @virtual
          */
         vfunc_unselect_uri(uri: string): void;
@@ -51439,18 +53018,21 @@ export namespace Gtk {
          * If no previous filter objects were defined, this function will call
          * `gtk_recent_chooser_set_filter()`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         add_filter(filter: RecentFilter): void;
 
         /**
          * Gets the {@link Gtk.RecentInfo} currently selected by `chooser`.
          * @returns a {@link Gtk.RecentInfo}.  Use `gtk_recent_info_unref()` when   when you have finished using it.
+         * @since 2.10
          */
         get_current_item(): RecentInfo;
 
         /**
          * Gets the URI currently selected by `chooser`.
          * @returns a newly allocated string holding a URI.
+         * @since 2.10
          */
         get_current_uri(): string;
 
@@ -51458,6 +53040,7 @@ export namespace Gtk {
          * Gets the {@link Gtk.RecentFilter} object currently used by `chooser` to affect
          * the display of the recently used resources.
          * @returns a {@link Gtk.RecentFilter} object.
+         * @since 2.10
          */
         get_filter(): RecentFilter;
 
@@ -51467,6 +53050,7 @@ export namespace Gtk {
          * The return value of this function is affected by the "sort-type" and
          * "limit" properties of `chooser`.
          * @returns A newly allocated   list of {@link Gtk.RecentInfo} objects.  You should   use `gtk_recent_info_unref()` on every item of the list, and then free   the list itself using `g_list_free()`.
+         * @since 2.10
          */
         get_items(): RecentInfo[];
 
@@ -51474,6 +53058,7 @@ export namespace Gtk {
          * Gets the number of items returned by `gtk_recent_chooser_get_items()`
          * and `gtk_recent_chooser_get_uris()`.
          * @returns A positive integer, or -1 meaning that all items are   returned.
+         * @since 2.10
          */
         get_limit(): number;
 
@@ -51481,18 +53066,21 @@ export namespace Gtk {
          * Gets whether only local resources should be shown in the recently used
          * resources selector.  See `gtk_recent_chooser_set_local_only()`
          * @returns `true` if only local resources should be shown.
+         * @since 2.10
          */
         get_local_only(): boolean;
 
         /**
          * Gets whether `chooser` can select multiple items.
          * @returns `true` if `chooser` can select more than one item.
+         * @since 2.10
          */
         get_select_multiple(): boolean;
 
         /**
          * Retrieves whether `chooser` should show an icon near the resource.
          * @returns `true` if the icons should be displayed, `false` otherwise.
+         * @since 2.10
          */
         get_show_icons(): boolean;
 
@@ -51500,6 +53088,7 @@ export namespace Gtk {
          * Retrieves whether `chooser` should show the recently used resources that
          * were not found.
          * @returns `true` if the resources not found should be displayed, and   `false` otheriwse.
+         * @since 2.10
          */
         get_show_not_found(): boolean;
 
@@ -51507,6 +53096,8 @@ export namespace Gtk {
          * Returns whether `chooser` should display recently used resources
          * prepended by a unique number.
          * @returns `true` if the recent chooser should show display numbers,   `false` otherwise.
+         * @since 2.10
+         * @deprecated since 2.12: use `gtk_recent_chooser_menu_get_show_numbers()` instead.
          */
         get_show_numbers(): boolean;
 
@@ -51514,6 +53105,7 @@ export namespace Gtk {
          * Returns whether `chooser` should display recently used resources
          * registered as private.
          * @returns `true` if the recent chooser should show private items,   `false` otherwise.
+         * @since 2.10
          */
         get_show_private(): boolean;
 
@@ -51521,12 +53113,14 @@ export namespace Gtk {
          * Gets whether `chooser` should display tooltips containing the full path
          * of a recently user resource.
          * @returns `true` if the recent chooser should show tooltips,   `false` otherwise.
+         * @since 2.10
          */
         get_show_tips(): boolean;
 
         /**
          * Gets the value set by `gtk_recent_chooser_set_sort_type()`.
          * @returns the sorting order of the `chooser`.
+         * @since 2.10
          */
         get_sort_type(): RecentSortType;
 
@@ -51538,24 +53132,28 @@ export namespace Gtk {
          * 
          * Since the returned array is `null` terminated, `length` may be `null`.
          * @returns A newly allocated, `null`-terminated array of strings. Use     `g_strfreev()` to free it.
+         * @since 2.10
          */
         get_uris(): string[];
 
         /**
          * Gets the {@link Gtk.RecentFilter} objects held by `chooser`.
          * @returns A singly linked list   of {@link Gtk.RecentFilter} objects.  You   should just free the returned list using `g_slist_free()`.
+         * @since 2.10
          */
         list_filters(): RecentFilter[];
 
         /**
          * Removes `filter` from the list of {@link Gtk.RecentFilter} objects held by `chooser`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         remove_filter(filter: RecentFilter): void;
 
         /**
          * Selects all the items inside `chooser`, if the `chooser` supports
          * multiple selection.
+         * @since 2.10
          */
         select_all(): void;
 
@@ -51563,6 +53161,7 @@ export namespace Gtk {
          * Selects `uri` inside `chooser`.
          * @param uri a URI
          * @returns `true` if `uri` was found.
+         * @since 2.10
          */
         select_uri(uri: string): boolean;
 
@@ -51570,6 +53169,7 @@ export namespace Gtk {
          * Sets `uri` as the current URI for `chooser`.
          * @param uri a URI
          * @returns `true` if the URI was found.
+         * @since 2.10
          */
         set_current_uri(uri: string): boolean;
 
@@ -51577,6 +53177,7 @@ export namespace Gtk {
          * Sets `filter` as the current {@link Gtk.RecentFilter} object used by `chooser`
          * to affect the displayed recently used resources.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         set_filter(filter: RecentFilter): void;
 
@@ -51584,6 +53185,7 @@ export namespace Gtk {
          * Sets the number of items that should be returned by
          * `gtk_recent_chooser_get_items()` and `gtk_recent_chooser_get_uris()`.
          * @param limit a positive integer, or -1 for all items
+         * @since 2.10
          */
         set_limit(limit: number): void;
 
@@ -51593,12 +53195,14 @@ export namespace Gtk {
          * `local_only` is `true` (the default) then the shown resources are guaranteed
          * to be accessible through the operating system native file system.
          * @param local_only `true` if only local files can be shown
+         * @since 2.10
          */
         set_local_only(local_only: boolean): void;
 
         /**
          * Sets whether `chooser` can select multiple items.
          * @param select_multiple `true` if `chooser` can select more than one item
+         * @since 2.10
          */
         set_select_multiple(select_multiple: boolean): void;
 
@@ -51606,6 +53210,7 @@ export namespace Gtk {
          * Sets whether `chooser` should show an icon near the resource when
          * displaying it.
          * @param show_icons whether to show an icon near the resource
+         * @since 2.10
          */
         set_show_icons(show_icons: boolean): void;
 
@@ -51613,18 +53218,22 @@ export namespace Gtk {
          * Sets whether `chooser` should display the recently used resources that
          * it didn't find.  This only applies to local resources.
          * @param show_not_found whether to show the local items we didn't find
+         * @since 2.10
          */
         set_show_not_found(show_not_found: boolean): void;
 
         /**
          * Whether to show recently used resources prepended by a unique number.
          * @param show_numbers `true` to show numbers, `false` otherwise
+         * @since 2.10
+         * @deprecated since 2.12: Use `gtk_recent_chooser_menu_set_show_numbers()` instead.
          */
         set_show_numbers(show_numbers: boolean): void;
 
         /**
          * Whether to show recently used resources marked registered as private.
          * @param show_private `true` to show private items, `false` otherwise
+         * @since 2.10
          */
         set_show_private(show_private: boolean): void;
 
@@ -51632,6 +53241,7 @@ export namespace Gtk {
          * Sets whether to show a tooltips containing the full path of each
          * recently used resource in a {@link Gtk.RecentChooser} widget.
          * @param show_tips `true` if tooltips should be shown
+         * @since 2.10
          */
         set_show_tips(show_tips: boolean): void;
 
@@ -51645,6 +53255,7 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
+         * @since 2.10
          */
         set_sort_func(sort_func: RecentSortFunc): void;
 
@@ -51652,17 +53263,20 @@ export namespace Gtk {
          * Changes the sorting order of the recently used resources list displayed by
          * `chooser`.
          * @param sort_type sort order that the chooser should use
+         * @since 2.10
          */
         set_sort_type(sort_type: RecentSortType): void;
 
         /**
          * Unselects all the items inside `chooser`.
+         * @since 2.10
          */
         unselect_all(): void;
 
         /**
          * Unselects `uri` inside `chooser`.
          * @param uri a URI
+         * @since 2.10
          */
         unselect_uri(uri: string): void;
 
@@ -51672,12 +53286,14 @@ export namespace Gtk {
          * If no previous filter objects were defined, this function will call
          * `gtk_recent_chooser_set_filter()`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          * @virtual
          */
         vfunc_add_filter(filter: RecentFilter): void;
 
         /**
          * Gets the URI currently selected by `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_get_current_uri(): string;
@@ -51687,6 +53303,7 @@ export namespace Gtk {
          * 
          * The return value of this function is affected by the "sort-type" and
          * "limit" properties of `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_get_items(): RecentInfo[];
@@ -51698,6 +53315,7 @@ export namespace Gtk {
 
         /**
          * Gets the {@link Gtk.RecentFilter} objects held by `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_list_filters(): RecentFilter[];
@@ -51705,6 +53323,7 @@ export namespace Gtk {
         /**
          * Removes `filter` from the list of {@link Gtk.RecentFilter} objects held by `chooser`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          * @virtual
          */
         vfunc_remove_filter(filter: RecentFilter): void;
@@ -51712,6 +53331,7 @@ export namespace Gtk {
         /**
          * Selects all the items inside `chooser`, if the `chooser` supports
          * multiple selection.
+         * @since 2.10
          * @virtual
          */
         vfunc_select_all(): void;
@@ -51719,6 +53339,7 @@ export namespace Gtk {
         /**
          * Selects `uri` inside `chooser`.
          * @param uri a URI
+         * @since 2.10
          * @virtual
          */
         vfunc_select_uri(uri: string): boolean;
@@ -51731,6 +53352,7 @@ export namespace Gtk {
         /**
          * Sets `uri` as the current URI for `chooser`.
          * @param uri a URI
+         * @since 2.10
          * @virtual
          */
         vfunc_set_current_uri(uri: string): boolean;
@@ -51745,12 +53367,14 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
+         * @since 2.10
          * @virtual
          */
         vfunc_set_sort_func(sort_func: RecentSortFunc): void;
 
         /**
          * Unselects all the items inside `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_unselect_all(): void;
@@ -51758,6 +53382,7 @@ export namespace Gtk {
         /**
          * Unselects `uri` inside `chooser`.
          * @param uri a URI
+         * @since 2.10
          * @virtual
          */
         vfunc_unselect_uri(uri: string): void;
@@ -51919,6 +53544,7 @@ export namespace Gtk {
         /**
          * Returns the value set by `gtk_recent_chooser_menu_set_show_numbers()`.
          * @returns `true` if numbers should be shown.
+         * @since 2.10
          */
         get_show_numbers(): boolean;
 
@@ -51928,6 +53554,7 @@ export namespace Gtk {
          * be used inside ten menu item's label.  Only the first the items
          * get a number to avoid clashes.
          * @param show_numbers whether to show numbers
+         * @since 2.10
          */
         set_show_numbers(show_numbers: boolean): void;
 
@@ -52179,12 +53806,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -52193,6 +53822,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -52202,6 +53832,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -52214,6 +53845,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -52223,6 +53855,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -52232,6 +53865,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -52252,18 +53886,21 @@ export namespace Gtk {
          * If no previous filter objects were defined, this function will call
          * `gtk_recent_chooser_set_filter()`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         add_filter(filter: RecentFilter): void;
 
         /**
          * Gets the {@link Gtk.RecentInfo} currently selected by `chooser`.
          * @returns a {@link Gtk.RecentInfo}.  Use `gtk_recent_info_unref()` when   when you have finished using it.
+         * @since 2.10
          */
         get_current_item(): RecentInfo;
 
         /**
          * Gets the URI currently selected by `chooser`.
          * @returns a newly allocated string holding a URI.
+         * @since 2.10
          */
         get_current_uri(): string;
 
@@ -52271,6 +53908,7 @@ export namespace Gtk {
          * Gets the {@link Gtk.RecentFilter} object currently used by `chooser` to affect
          * the display of the recently used resources.
          * @returns a {@link Gtk.RecentFilter} object.
+         * @since 2.10
          */
         get_filter(): RecentFilter;
 
@@ -52280,6 +53918,7 @@ export namespace Gtk {
          * The return value of this function is affected by the "sort-type" and
          * "limit" properties of `chooser`.
          * @returns A newly allocated   list of {@link Gtk.RecentInfo} objects.  You should   use `gtk_recent_info_unref()` on every item of the list, and then free   the list itself using `g_list_free()`.
+         * @since 2.10
          */
         get_items(): RecentInfo[];
 
@@ -52287,6 +53926,7 @@ export namespace Gtk {
          * Gets the number of items returned by `gtk_recent_chooser_get_items()`
          * and `gtk_recent_chooser_get_uris()`.
          * @returns A positive integer, or -1 meaning that all items are   returned.
+         * @since 2.10
          */
         get_limit(): number;
 
@@ -52294,18 +53934,21 @@ export namespace Gtk {
          * Gets whether only local resources should be shown in the recently used
          * resources selector.  See `gtk_recent_chooser_set_local_only()`
          * @returns `true` if only local resources should be shown.
+         * @since 2.10
          */
         get_local_only(): boolean;
 
         /**
          * Gets whether `chooser` can select multiple items.
          * @returns `true` if `chooser` can select more than one item.
+         * @since 2.10
          */
         get_select_multiple(): boolean;
 
         /**
          * Retrieves whether `chooser` should show an icon near the resource.
          * @returns `true` if the icons should be displayed, `false` otherwise.
+         * @since 2.10
          */
         get_show_icons(): boolean;
 
@@ -52313,6 +53956,7 @@ export namespace Gtk {
          * Retrieves whether `chooser` should show the recently used resources that
          * were not found.
          * @returns `true` if the resources not found should be displayed, and   `false` otheriwse.
+         * @since 2.10
          */
         get_show_not_found(): boolean;
 
@@ -52320,6 +53964,7 @@ export namespace Gtk {
          * Returns whether `chooser` should display recently used resources
          * registered as private.
          * @returns `true` if the recent chooser should show private items,   `false` otherwise.
+         * @since 2.10
          */
         get_show_private(): boolean;
 
@@ -52327,12 +53972,14 @@ export namespace Gtk {
          * Gets whether `chooser` should display tooltips containing the full path
          * of a recently user resource.
          * @returns `true` if the recent chooser should show tooltips,   `false` otherwise.
+         * @since 2.10
          */
         get_show_tips(): boolean;
 
         /**
          * Gets the value set by `gtk_recent_chooser_set_sort_type()`.
          * @returns the sorting order of the `chooser`.
+         * @since 2.10
          */
         get_sort_type(): RecentSortType;
 
@@ -52344,24 +53991,28 @@ export namespace Gtk {
          * 
          * Since the returned array is `null` terminated, `length` may be `null`.
          * @returns A newly allocated, `null`-terminated array of strings. Use     `g_strfreev()` to free it.
+         * @since 2.10
          */
         get_uris(): string[];
 
         /**
          * Gets the {@link Gtk.RecentFilter} objects held by `chooser`.
          * @returns A singly linked list   of {@link Gtk.RecentFilter} objects.  You   should just free the returned list using `g_slist_free()`.
+         * @since 2.10
          */
         list_filters(): RecentFilter[];
 
         /**
          * Removes `filter` from the list of {@link Gtk.RecentFilter} objects held by `chooser`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         remove_filter(filter: RecentFilter): void;
 
         /**
          * Selects all the items inside `chooser`, if the `chooser` supports
          * multiple selection.
+         * @since 2.10
          */
         select_all(): void;
 
@@ -52369,6 +54020,7 @@ export namespace Gtk {
          * Selects `uri` inside `chooser`.
          * @param uri a URI
          * @returns `true` if `uri` was found.
+         * @since 2.10
          */
         select_uri(uri: string): boolean;
 
@@ -52376,6 +54028,7 @@ export namespace Gtk {
          * Sets `uri` as the current URI for `chooser`.
          * @param uri a URI
          * @returns `true` if the URI was found.
+         * @since 2.10
          */
         set_current_uri(uri: string): boolean;
 
@@ -52383,6 +54036,7 @@ export namespace Gtk {
          * Sets `filter` as the current {@link Gtk.RecentFilter} object used by `chooser`
          * to affect the displayed recently used resources.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         set_filter(filter: RecentFilter): void;
 
@@ -52390,6 +54044,7 @@ export namespace Gtk {
          * Sets the number of items that should be returned by
          * `gtk_recent_chooser_get_items()` and `gtk_recent_chooser_get_uris()`.
          * @param limit a positive integer, or -1 for all items
+         * @since 2.10
          */
         set_limit(limit: number): void;
 
@@ -52399,12 +54054,14 @@ export namespace Gtk {
          * `local_only` is `true` (the default) then the shown resources are guaranteed
          * to be accessible through the operating system native file system.
          * @param local_only `true` if only local files can be shown
+         * @since 2.10
          */
         set_local_only(local_only: boolean): void;
 
         /**
          * Sets whether `chooser` can select multiple items.
          * @param select_multiple `true` if `chooser` can select more than one item
+         * @since 2.10
          */
         set_select_multiple(select_multiple: boolean): void;
 
@@ -52412,6 +54069,7 @@ export namespace Gtk {
          * Sets whether `chooser` should show an icon near the resource when
          * displaying it.
          * @param show_icons whether to show an icon near the resource
+         * @since 2.10
          */
         set_show_icons(show_icons: boolean): void;
 
@@ -52419,12 +54077,14 @@ export namespace Gtk {
          * Sets whether `chooser` should display the recently used resources that
          * it didn't find.  This only applies to local resources.
          * @param show_not_found whether to show the local items we didn't find
+         * @since 2.10
          */
         set_show_not_found(show_not_found: boolean): void;
 
         /**
          * Whether to show recently used resources marked registered as private.
          * @param show_private `true` to show private items, `false` otherwise
+         * @since 2.10
          */
         set_show_private(show_private: boolean): void;
 
@@ -52432,6 +54092,7 @@ export namespace Gtk {
          * Sets whether to show a tooltips containing the full path of each
          * recently used resource in a {@link Gtk.RecentChooser} widget.
          * @param show_tips `true` if tooltips should be shown
+         * @since 2.10
          */
         set_show_tips(show_tips: boolean): void;
 
@@ -52445,6 +54106,7 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
+         * @since 2.10
          */
         set_sort_func(sort_func: RecentSortFunc): void;
 
@@ -52452,17 +54114,20 @@ export namespace Gtk {
          * Changes the sorting order of the recently used resources list displayed by
          * `chooser`.
          * @param sort_type sort order that the chooser should use
+         * @since 2.10
          */
         set_sort_type(sort_type: RecentSortType): void;
 
         /**
          * Unselects all the items inside `chooser`.
+         * @since 2.10
          */
         unselect_all(): void;
 
         /**
          * Unselects `uri` inside `chooser`.
          * @param uri a URI
+         * @since 2.10
          */
         unselect_uri(uri: string): void;
 
@@ -52472,12 +54137,14 @@ export namespace Gtk {
          * If no previous filter objects were defined, this function will call
          * `gtk_recent_chooser_set_filter()`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          * @virtual
          */
         vfunc_add_filter(filter: RecentFilter): void;
 
         /**
          * Gets the URI currently selected by `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_get_current_uri(): string;
@@ -52487,6 +54154,7 @@ export namespace Gtk {
          * 
          * The return value of this function is affected by the "sort-type" and
          * "limit" properties of `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_get_items(): RecentInfo[];
@@ -52498,6 +54166,7 @@ export namespace Gtk {
 
         /**
          * Gets the {@link Gtk.RecentFilter} objects held by `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_list_filters(): RecentFilter[];
@@ -52505,6 +54174,7 @@ export namespace Gtk {
         /**
          * Removes `filter` from the list of {@link Gtk.RecentFilter} objects held by `chooser`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          * @virtual
          */
         vfunc_remove_filter(filter: RecentFilter): void;
@@ -52512,6 +54182,7 @@ export namespace Gtk {
         /**
          * Selects all the items inside `chooser`, if the `chooser` supports
          * multiple selection.
+         * @since 2.10
          * @virtual
          */
         vfunc_select_all(): void;
@@ -52519,6 +54190,7 @@ export namespace Gtk {
         /**
          * Selects `uri` inside `chooser`.
          * @param uri a URI
+         * @since 2.10
          * @virtual
          */
         vfunc_select_uri(uri: string): boolean;
@@ -52531,6 +54203,7 @@ export namespace Gtk {
         /**
          * Sets `uri` as the current URI for `chooser`.
          * @param uri a URI
+         * @since 2.10
          * @virtual
          */
         vfunc_set_current_uri(uri: string): boolean;
@@ -52545,12 +54218,14 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
+         * @since 2.10
          * @virtual
          */
         vfunc_set_sort_func(sort_func: RecentSortFunc): void;
 
         /**
          * Unselects all the items inside `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_unselect_all(): void;
@@ -52558,6 +54233,7 @@ export namespace Gtk {
         /**
          * Unselects `uri` inside `chooser`.
          * @param uri a URI
+         * @since 2.10
          * @virtual
          */
         vfunc_unselect_uri(uri: string): void;
@@ -52861,18 +54537,21 @@ export namespace Gtk {
          * If no previous filter objects were defined, this function will call
          * `gtk_recent_chooser_set_filter()`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         add_filter(filter: RecentFilter): void;
 
         /**
          * Gets the {@link Gtk.RecentInfo} currently selected by `chooser`.
          * @returns a {@link Gtk.RecentInfo}.  Use `gtk_recent_info_unref()` when   when you have finished using it.
+         * @since 2.10
          */
         get_current_item(): RecentInfo;
 
         /**
          * Gets the URI currently selected by `chooser`.
          * @returns a newly allocated string holding a URI.
+         * @since 2.10
          */
         get_current_uri(): string;
 
@@ -52880,6 +54559,7 @@ export namespace Gtk {
          * Gets the {@link Gtk.RecentFilter} object currently used by `chooser` to affect
          * the display of the recently used resources.
          * @returns a {@link Gtk.RecentFilter} object.
+         * @since 2.10
          */
         get_filter(): RecentFilter;
 
@@ -52889,6 +54569,7 @@ export namespace Gtk {
          * The return value of this function is affected by the "sort-type" and
          * "limit" properties of `chooser`.
          * @returns A newly allocated   list of {@link Gtk.RecentInfo} objects.  You should   use `gtk_recent_info_unref()` on every item of the list, and then free   the list itself using `g_list_free()`.
+         * @since 2.10
          */
         get_items(): RecentInfo[];
 
@@ -52896,6 +54577,7 @@ export namespace Gtk {
          * Gets the number of items returned by `gtk_recent_chooser_get_items()`
          * and `gtk_recent_chooser_get_uris()`.
          * @returns A positive integer, or -1 meaning that all items are   returned.
+         * @since 2.10
          */
         get_limit(): number;
 
@@ -52903,18 +54585,21 @@ export namespace Gtk {
          * Gets whether only local resources should be shown in the recently used
          * resources selector.  See `gtk_recent_chooser_set_local_only()`
          * @returns `true` if only local resources should be shown.
+         * @since 2.10
          */
         get_local_only(): boolean;
 
         /**
          * Gets whether `chooser` can select multiple items.
          * @returns `true` if `chooser` can select more than one item.
+         * @since 2.10
          */
         get_select_multiple(): boolean;
 
         /**
          * Retrieves whether `chooser` should show an icon near the resource.
          * @returns `true` if the icons should be displayed, `false` otherwise.
+         * @since 2.10
          */
         get_show_icons(): boolean;
 
@@ -52922,6 +54607,7 @@ export namespace Gtk {
          * Retrieves whether `chooser` should show the recently used resources that
          * were not found.
          * @returns `true` if the resources not found should be displayed, and   `false` otheriwse.
+         * @since 2.10
          */
         get_show_not_found(): boolean;
 
@@ -52929,6 +54615,8 @@ export namespace Gtk {
          * Returns whether `chooser` should display recently used resources
          * prepended by a unique number.
          * @returns `true` if the recent chooser should show display numbers,   `false` otherwise.
+         * @since 2.10
+         * @deprecated since 2.12: use `gtk_recent_chooser_menu_get_show_numbers()` instead.
          */
         get_show_numbers(): boolean;
 
@@ -52936,6 +54624,7 @@ export namespace Gtk {
          * Returns whether `chooser` should display recently used resources
          * registered as private.
          * @returns `true` if the recent chooser should show private items,   `false` otherwise.
+         * @since 2.10
          */
         get_show_private(): boolean;
 
@@ -52943,12 +54632,14 @@ export namespace Gtk {
          * Gets whether `chooser` should display tooltips containing the full path
          * of a recently user resource.
          * @returns `true` if the recent chooser should show tooltips,   `false` otherwise.
+         * @since 2.10
          */
         get_show_tips(): boolean;
 
         /**
          * Gets the value set by `gtk_recent_chooser_set_sort_type()`.
          * @returns the sorting order of the `chooser`.
+         * @since 2.10
          */
         get_sort_type(): RecentSortType;
 
@@ -52960,24 +54651,28 @@ export namespace Gtk {
          * 
          * Since the returned array is `null` terminated, `length` may be `null`.
          * @returns A newly allocated, `null`-terminated array of strings. Use     `g_strfreev()` to free it.
+         * @since 2.10
          */
         get_uris(): string[];
 
         /**
          * Gets the {@link Gtk.RecentFilter} objects held by `chooser`.
          * @returns A singly linked list   of {@link Gtk.RecentFilter} objects.  You   should just free the returned list using `g_slist_free()`.
+         * @since 2.10
          */
         list_filters(): RecentFilter[];
 
         /**
          * Removes `filter` from the list of {@link Gtk.RecentFilter} objects held by `chooser`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         remove_filter(filter: RecentFilter): void;
 
         /**
          * Selects all the items inside `chooser`, if the `chooser` supports
          * multiple selection.
+         * @since 2.10
          */
         select_all(): void;
 
@@ -52985,6 +54680,7 @@ export namespace Gtk {
          * Selects `uri` inside `chooser`.
          * @param uri a URI
          * @returns `true` if `uri` was found.
+         * @since 2.10
          */
         select_uri(uri: string): boolean;
 
@@ -52992,6 +54688,7 @@ export namespace Gtk {
          * Sets `uri` as the current URI for `chooser`.
          * @param uri a URI
          * @returns `true` if the URI was found.
+         * @since 2.10
          */
         set_current_uri(uri: string): boolean;
 
@@ -52999,6 +54696,7 @@ export namespace Gtk {
          * Sets `filter` as the current {@link Gtk.RecentFilter} object used by `chooser`
          * to affect the displayed recently used resources.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         set_filter(filter: RecentFilter): void;
 
@@ -53006,6 +54704,7 @@ export namespace Gtk {
          * Sets the number of items that should be returned by
          * `gtk_recent_chooser_get_items()` and `gtk_recent_chooser_get_uris()`.
          * @param limit a positive integer, or -1 for all items
+         * @since 2.10
          */
         set_limit(limit: number): void;
 
@@ -53015,12 +54714,14 @@ export namespace Gtk {
          * `local_only` is `true` (the default) then the shown resources are guaranteed
          * to be accessible through the operating system native file system.
          * @param local_only `true` if only local files can be shown
+         * @since 2.10
          */
         set_local_only(local_only: boolean): void;
 
         /**
          * Sets whether `chooser` can select multiple items.
          * @param select_multiple `true` if `chooser` can select more than one item
+         * @since 2.10
          */
         set_select_multiple(select_multiple: boolean): void;
 
@@ -53028,6 +54729,7 @@ export namespace Gtk {
          * Sets whether `chooser` should show an icon near the resource when
          * displaying it.
          * @param show_icons whether to show an icon near the resource
+         * @since 2.10
          */
         set_show_icons(show_icons: boolean): void;
 
@@ -53035,18 +54737,22 @@ export namespace Gtk {
          * Sets whether `chooser` should display the recently used resources that
          * it didn't find.  This only applies to local resources.
          * @param show_not_found whether to show the local items we didn't find
+         * @since 2.10
          */
         set_show_not_found(show_not_found: boolean): void;
 
         /**
          * Whether to show recently used resources prepended by a unique number.
          * @param show_numbers `true` to show numbers, `false` otherwise
+         * @since 2.10
+         * @deprecated since 2.12: Use `gtk_recent_chooser_menu_set_show_numbers()` instead.
          */
         set_show_numbers(show_numbers: boolean): void;
 
         /**
          * Whether to show recently used resources marked registered as private.
          * @param show_private `true` to show private items, `false` otherwise
+         * @since 2.10
          */
         set_show_private(show_private: boolean): void;
 
@@ -53054,6 +54760,7 @@ export namespace Gtk {
          * Sets whether to show a tooltips containing the full path of each
          * recently used resource in a {@link Gtk.RecentChooser} widget.
          * @param show_tips `true` if tooltips should be shown
+         * @since 2.10
          */
         set_show_tips(show_tips: boolean): void;
 
@@ -53067,6 +54774,7 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
+         * @since 2.10
          */
         set_sort_func(sort_func: RecentSortFunc): void;
 
@@ -53074,17 +54782,20 @@ export namespace Gtk {
          * Changes the sorting order of the recently used resources list displayed by
          * `chooser`.
          * @param sort_type sort order that the chooser should use
+         * @since 2.10
          */
         set_sort_type(sort_type: RecentSortType): void;
 
         /**
          * Unselects all the items inside `chooser`.
+         * @since 2.10
          */
         unselect_all(): void;
 
         /**
          * Unselects `uri` inside `chooser`.
          * @param uri a URI
+         * @since 2.10
          */
         unselect_uri(uri: string): void;
 
@@ -53094,12 +54805,14 @@ export namespace Gtk {
          * If no previous filter objects were defined, this function will call
          * `gtk_recent_chooser_set_filter()`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          * @virtual
          */
         vfunc_add_filter(filter: RecentFilter): void;
 
         /**
          * Gets the URI currently selected by `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_get_current_uri(): string;
@@ -53109,6 +54822,7 @@ export namespace Gtk {
          * 
          * The return value of this function is affected by the "sort-type" and
          * "limit" properties of `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_get_items(): RecentInfo[];
@@ -53120,6 +54834,7 @@ export namespace Gtk {
 
         /**
          * Gets the {@link Gtk.RecentFilter} objects held by `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_list_filters(): RecentFilter[];
@@ -53127,6 +54842,7 @@ export namespace Gtk {
         /**
          * Removes `filter` from the list of {@link Gtk.RecentFilter} objects held by `chooser`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          * @virtual
          */
         vfunc_remove_filter(filter: RecentFilter): void;
@@ -53134,6 +54850,7 @@ export namespace Gtk {
         /**
          * Selects all the items inside `chooser`, if the `chooser` supports
          * multiple selection.
+         * @since 2.10
          * @virtual
          */
         vfunc_select_all(): void;
@@ -53141,6 +54858,7 @@ export namespace Gtk {
         /**
          * Selects `uri` inside `chooser`.
          * @param uri a URI
+         * @since 2.10
          * @virtual
          */
         vfunc_select_uri(uri: string): boolean;
@@ -53153,6 +54871,7 @@ export namespace Gtk {
         /**
          * Sets `uri` as the current URI for `chooser`.
          * @param uri a URI
+         * @since 2.10
          * @virtual
          */
         vfunc_set_current_uri(uri: string): boolean;
@@ -53167,12 +54886,14 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
+         * @since 2.10
          * @virtual
          */
         vfunc_set_sort_func(sort_func: RecentSortFunc): void;
 
         /**
          * Unselects all the items inside `chooser`.
+         * @since 2.10
          * @virtual
          */
         vfunc_unselect_all(): void;
@@ -53180,6 +54901,7 @@ export namespace Gtk {
         /**
          * Unselects `uri` inside `chooser`.
          * @param uri a URI
+         * @since 2.10
          * @virtual
          */
         vfunc_unselect_uri(uri: string): void;
@@ -53270,6 +54992,7 @@ export namespace Gtk {
          * Adds a rule that allows resources based on their age - that is, the number
          * of days elapsed since they were last modified.
          * @param days number of days
+         * @since 2.10
          */
         add_age(days: number): void;
 
@@ -53277,6 +55000,7 @@ export namespace Gtk {
          * Adds a rule that allows resources based on the name of the application
          * that has registered them.
          * @param application an application name
+         * @since 2.10
          */
         add_application(application: string): void;
 
@@ -53288,6 +55012,7 @@ export namespace Gtk {
          * it isn't needed by the filter.
          * @param needed bitfield of flags indicating the information that the custom          filter function needs.
          * @param func callback function; if the function returns `true`, then   the file will be displayed.
+         * @since 2.10
          */
         add_custom(needed: RecentFilterFlags, func: RecentFilterFunc): void;
 
@@ -53295,12 +55020,14 @@ export namespace Gtk {
          * Adds a rule that allows resources based on the name of the group
          * to which they belong
          * @param group a group name
+         * @since 2.10
          */
         add_group(group: string): void;
 
         /**
          * Adds a rule that allows resources based on their registered MIME type.
          * @param mime_type a MIME type
+         * @since 2.10
          */
         add_mime_type(mime_type: string): void;
 
@@ -53308,12 +55035,14 @@ export namespace Gtk {
          * Adds a rule that allows resources based on a pattern matching their
          * display name.
          * @param pattern a file pattern
+         * @since 2.10
          */
         add_pattern(pattern: string): void;
 
         /**
          * Adds a rule allowing image files in the formats supported
          * by GdkPixbuf.
+         * @since 2.10
          */
         add_pixbuf_formats(): void;
 
@@ -53327,6 +55056,7 @@ export namespace Gtk {
          * {@link Gtk.RecentChooser}.
          * @param filter_info a {@link Gtk.RecentFilterInfo} structure containing information   about a recently used resource
          * @returns `true` if the file should be displayed
+         * @since 2.10
          */
         filter(filter_info: RecentFilterInfo): boolean;
 
@@ -53334,6 +55064,7 @@ export namespace Gtk {
          * Gets the human-readable name for the filter.
          * See `gtk_recent_filter_set_name()`.
          * @returns the name of the filter, or `null`.  The returned string   is owned by the filter object and should not be freed.
+         * @since 2.10
          */
         get_name(): string;
 
@@ -53345,6 +55076,7 @@ export namespace Gtk {
          * is intended principally for use in the implementation of
          * {@link Gtk.RecentChooser}.
          * @returns bitfield of flags indicating needed fields when   calling `gtk_recent_filter_filter()`
+         * @since 2.10
          */
         get_needed(): RecentFilterFlags;
 
@@ -53353,6 +55085,7 @@ export namespace Gtk {
          * that will be displayed in the recently used resources selector
          * user interface if there is a selectable list of filters.
          * @param name then human readable name of `filter`
+         * @since 2.10
          */
         set_name(name: string): void;
     }
@@ -53450,6 +55183,7 @@ export namespace Gtk {
          * Gets a unique instance of {@link Gtk.RecentManager}, that you can share
          * in your application without caring about memory management. The
          * returned instance will be freed when you application terminates.
+         * @since 2.10
          */
         static get_default(): RecentManager;
 
@@ -53483,6 +55217,7 @@ export namespace Gtk {
          * @param uri a valid URI
          * @param recent_data metadata of the resource
          * @returns `true` if the new item was successfully added to the recently used resources list, `false` otherwise.
+         * @since 2.10
          */
         add_full(uri: string, recent_data: RecentData): boolean;
 
@@ -53498,12 +55233,14 @@ export namespace Gtk {
          * define the metadata for the resource pointed by `uri`.
          * @param uri a valid URI
          * @returns `true` if the new item was successfully added   to the recently used resources list
+         * @since 2.10
          */
         add_item(uri: string): boolean;
 
         /**
          * Gets the list of recently used resources.
          * @returns a list of   newly allocated {@link Gtk.RecentInfo} objects. Use   `gtk_recent_info_unref()` on each item inside the list, and then   free the list itself using `g_list_free()`.
+         * @since 2.10
          */
         get_items(): RecentInfo[];
 
@@ -53511,6 +55248,8 @@ export namespace Gtk {
          * Gets the maximum number of items that the `gtk_recent_manager_get_items()`
          * function should return.
          * @returns the number of items to return, or -1 for every item.
+         * @since 2.10
+         * @deprecated since 2.22: The length of the list should be managed by the   view (implementing {@link Gtk.RecentChooser}), and not by the model (the   {@link Gtk.RecentManager}). See {@link Gtk.RecentChooser.limit}.
          */
         get_limit(): number;
 
@@ -53519,6 +55258,7 @@ export namespace Gtk {
          * with `uri` inside the recent manager.
          * @param uri a URI
          * @returns `true` if the resource was found, `false` otherwise.
+         * @since 2.10
          */
         has_item(uri: string): boolean;
 
@@ -53528,6 +55268,7 @@ export namespace Gtk {
          * like its MIME type, or its display name.
          * @param uri a URI
          * @returns a {@link Gtk.RecentInfo} structure containing information   about the resource pointed by `uri`, or `null` if the URI was   not registered in the recently used resources list.  Free with   `gtk_recent_info_unref()`.
+         * @since 2.10
          */
         lookup_item(uri: string): RecentInfo;
 
@@ -53539,12 +55280,14 @@ export namespace Gtk {
          * @param uri the URI of a recently used resource
          * @param new_uri the new URI of the recently used resource, or `null` to    remove the item pointed by `uri` in the list
          * @returns `true` on success.
+         * @since 2.10
          */
         move_item(uri: string, new_uri: string | null): boolean;
 
         /**
          * Purges every item from the recently used resources list.
          * @returns the number of items that have been removed from the   recently used resources list.
+         * @since 2.10
          */
         purge_items(): number;
 
@@ -53553,6 +55296,7 @@ export namespace Gtk {
          * list handled by a recent manager.
          * @param uri the URI of the item you wish to remove
          * @returns `true` if the item pointed by `uri` has been successfully   removed by the recently used resources list, and `false` otherwise.
+         * @since 2.10
          */
         remove_item(uri: string): boolean;
 
@@ -53561,6 +55305,8 @@ export namespace Gtk {
          * function should return.  If `limit` is set to -1, then return all the
          * items.
          * @param limit the maximum number of items to return, or -1.
+         * @since 2.10
+         * @deprecated since 2.22: The length of the list should be managed by the   view (implementing {@link Gtk.RecentChooser}), and not by the model (the   {@link Gtk.RecentManager}). See {@link Gtk.RecentChooser.limit}.
          */
         set_limit(limit: number): void;
 
@@ -53569,6 +55315,8 @@ export namespace Gtk {
          * track the user's currently configured recently used documents
          * storage.
          * @param screen a {@link Gdk.Screen}
+         * @since 2.10
+         * @deprecated since 2.12: This function has been deprecated and should   not be used in newly written code. Calling this function has   no effect.
          */
         set_screen(screen: Gdk.Screen): void;
     }
@@ -53766,6 +55514,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -53777,6 +55526,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -53787,6 +55537,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -53797,6 +55548,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -53806,6 +55558,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -53814,6 +55567,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -53824,6 +55578,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -53834,6 +55589,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -53842,12 +55598,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -53857,6 +55615,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -53868,6 +55627,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -53879,6 +55639,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -53890,6 +55651,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -53899,6 +55661,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -53907,6 +55670,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -53917,6 +55681,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -53928,6 +55693,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -53937,6 +55703,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -53944,6 +55711,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -53951,12 +55719,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -54160,6 +55930,7 @@ export namespace Gtk {
          * 
          * If the {@link Gtk.Scale.draw_value} property is `false`, the return
          * values are undefined.
+         * @since 2.4
          * @virtual
          */
         vfunc_get_layout_offsets(): [number, number];
@@ -54178,11 +55949,13 @@ export namespace Gtk {
          * @param value the value at which the mark is placed, must be between   the lower and upper limits of the scales' adjustment
          * @param position where to draw the mark. For a horizontal scale, #GTK_POS_TOP   is drawn above the scale, anything else below. For a vertical scale,   #GTK_POS_LEFT is drawn to the left of the scale, anything else to the   right.
          * @param markup Text to be shown at the mark, using <link linkend="PangoMarkupFormat">Pango markup</link>, or `null`
+         * @since 2.16
          */
         add_mark(value: number, position: PositionType, markup: string | null): void;
 
         /**
          * Removes any marks that have been added with `gtk_scale_add_mark()`.
+         * @since 2.16
          */
         clear_marks(): void;
 
@@ -54204,6 +55977,7 @@ export namespace Gtk {
          * object is owned by the scale so does not need to be freed by
          * the caller.
          * @returns the {@link Pango.Layout} for this scale,     or `null` if the {@link Gtk.Scale.draw_value} property is `false`.
+         * @since 2.4
          */
         get_layout(): Pango.Layout;
 
@@ -54215,6 +55989,7 @@ export namespace Gtk {
          * 
          * If the {@link Gtk.Scale.draw_value} property is `false`, the return
          * values are undefined.
+         * @since 2.4
          */
         get_layout_offsets(): [number, number];
 
@@ -54259,12 +56034,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -54485,36 +56262,43 @@ export namespace Gtk {
          * Gets the {@link Gtk.Adjustment} associated with the {@link Gtk.ScaleButton}'s scale.
          * See `gtk_range_get_adjustment()` for details.
          * @returns the adjustment associated with the scale
+         * @since 2.12
          */
         get_adjustment(): Adjustment;
 
         /**
          * Retrieves the minus button of the {@link Gtk.ScaleButton}.
          * @returns the minus button of the {@link Gtk.ScaleButton}
+         * @since 2.14
          */
         get_minus_button(): Widget;
 
         /**
          * Gets the orientation of the {@link Gtk.ScaleButton}'s popup window.
          * @returns the {@link Gtk.ScaleButton}'s orientation.
+         * @since 2.14
+         * @deprecated since 2.16: Use `gtk_orientable_get_orientation()` instead.
          */
         get_orientation(): Orientation;
 
         /**
          * Retrieves the plus button of the {@link Gtk.ScaleButton}.
          * @returns the plus button of the {@link Gtk.ScaleButton}
+         * @since 2.14
          */
         get_plus_button(): Widget;
 
         /**
          * Retrieves the popup of the {@link Gtk.ScaleButton}.
          * @returns the popup of the {@link Gtk.ScaleButton}
+         * @since 2.14
          */
         get_popup(): Widget;
 
         /**
          * Gets the current value of the scale button.
          * @returns current value of the scale button
+         * @since 2.12
          */
         get_value(): number;
 
@@ -54523,6 +56307,7 @@ export namespace Gtk {
          * for the {@link Gtk.ScaleButton}'s scale.
          * See `gtk_range_set_adjustment()` for details.
          * @param adjustment a {@link Gtk.Adjustment}
+         * @since 2.12
          */
         set_adjustment(adjustment: Adjustment): void;
 
@@ -54530,12 +56315,15 @@ export namespace Gtk {
          * Sets the icons to be used by the scale button.
          * For details, see the {@link Gtk.ScaleButton.icons} property.
          * @param icons a `null`-terminated array of icon names
+         * @since 2.12
          */
         set_icons(icons: string[]): void;
 
         /**
          * Sets the orientation of the {@link Gtk.ScaleButton}'s popup window.
          * @param orientation the new orientation
+         * @since 2.14
+         * @deprecated since 2.16: Use `gtk_orientable_set_orientation()` instead.
          */
         set_orientation(orientation: Orientation): void;
 
@@ -54545,6 +56333,7 @@ export namespace Gtk {
          * inside them. The scale button emits the {@link Gtk.ScaleButton.SignalSignatures.value_changed | Gtk.ScaleButton::value-changed}
          * signal if the value changes.
          * @param value new value of the scale button
+         * @since 2.12
          */
         set_value(value: number): void;
 
@@ -54633,12 +56422,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -54647,6 +56438,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -54656,6 +56448,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -54668,6 +56461,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -54677,6 +56471,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -54686,6 +56481,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -54827,12 +56623,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -55110,6 +56908,7 @@ export namespace Gtk {
         /**
          * Returns the horizontal scrollbar of `scrolled_window`.
          * @returns the horizontal scrollbar of the scrolled window,     or `null` if it does not have one.
+         * @since 2.8
          */
         get_hscrollbar(): Widget;
 
@@ -55143,6 +56942,7 @@ export namespace Gtk {
         /**
          * Returns the vertical scrollbar of `scrolled_window`.
          * @returns the vertical scrollbar of the scrolled window,     or `null` if it does not have one.
+         * @since 2.8
          */
         get_vscrollbar(): Widget;
 
@@ -55201,6 +57001,7 @@ export namespace Gtk {
          * 
          * See also `gtk_scrolled_window_set_placement()` and
          * `gtk_scrolled_window_get_placement()`.
+         * @since 2.10
          */
         unset_placement(): void;
 
@@ -55325,6 +57126,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -55336,6 +57138,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -55346,6 +57149,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -55356,6 +57160,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -55365,6 +57170,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -55373,6 +57179,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -55383,6 +57190,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -55393,6 +57201,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -55401,12 +57210,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -55416,6 +57227,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -55427,6 +57239,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -55438,6 +57251,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -55449,6 +57263,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -55458,6 +57273,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -55466,6 +57282,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -55476,6 +57293,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -55487,6 +57305,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -55496,6 +57315,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -55503,6 +57323,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -55510,12 +57331,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -55712,12 +57535,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -55726,6 +57551,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -55735,6 +57561,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -55747,6 +57574,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -55756,6 +57584,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -55765,6 +57594,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -55906,6 +57736,7 @@ export namespace Gtk {
          * Returns whether `item` is drawn as a line, or just blank.
          * See `gtk_separator_tool_item_set_draw()`.
          * @returns `true` if `item` is drawn as a line, or just blank.
+         * @since 2.4
          */
         get_draw(): boolean;
 
@@ -55914,6 +57745,7 @@ export namespace Gtk {
          * Setting this to `false` along with `gtk_tool_item_set_expand()` is useful
          * to create an item that forces following items to the end of the toolbar.
          * @param draw whether `item` is drawn as a vertical line
+         * @since 2.4
          */
         set_draw(draw: boolean): void;
 
@@ -55993,12 +57825,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -56007,6 +57841,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -56016,6 +57851,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -56028,6 +57864,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -56037,6 +57874,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -56046,6 +57884,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -57502,6 +59341,7 @@ export namespace Gtk {
         /**
          * Gets the {@link Gtk.Settings} object for `screen`, creating it if necessary.
          * @param screen a {@link Gdk.Screen}.
+         * @since 2.2
          */
         static get_for_screen(screen: Gdk.Screen): Settings;
 
@@ -57638,6 +59478,7 @@ export namespace Gtk {
         /**
          * Returns if invisible widgets are ignored when calculating the size.
          * @returns `true` if invisible widgets are ignored.
+         * @since 2.8
          */
         get_ignore_hidden(): boolean;
 
@@ -57650,6 +59491,7 @@ export namespace Gtk {
         /**
          * Returns the list of widgets associated with `size_group`.
          * @returns a {@link GLib.SList} of   widgets. The list is owned by GTK+ and should not be modified.
+         * @since 2.10
          */
         get_widgets(): Widget[];
 
@@ -57663,6 +59505,7 @@ export namespace Gtk {
          * Sets whether unmapped widgets should be ignored when
          * calculating the size.
          * @param ignore_hidden whether unmapped widgets should be ignored   when calculating the size
+         * @since 2.8
          */
         set_ignore_hidden(ignore_hidden: boolean): void;
 
@@ -57683,6 +59526,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -57694,6 +59538,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -57704,6 +59549,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -57714,6 +59560,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -57723,6 +59570,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -57731,6 +59579,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -57741,6 +59590,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -57751,6 +59601,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -57759,12 +59610,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -57774,6 +59627,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -57785,6 +59639,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -57796,6 +59651,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -57807,6 +59663,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -57816,6 +59673,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -57824,6 +59682,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -57834,6 +59693,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -57845,6 +59705,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -57854,6 +59715,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -57861,6 +59723,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -58093,6 +59956,7 @@ export namespace Gtk {
          * Retrieves the window of the plug. Use this to check if the plug has
          * been created inside of the socket.
          * @returns the window of the plug if available, or `null`
+         * @since 2.14
          */
         get_plug_window(): Gdk.Window;
 
@@ -58916,11 +60780,13 @@ export namespace Gtk {
         // Methods
         /**
          * Starts the animation of the spinner.
+         * @since 2.20
          */
         start(): void;
 
         /**
          * Stops the animation of the spinner.
+         * @since 2.20
          */
         stop(): void;
 
@@ -59364,6 +61230,7 @@ export namespace Gtk {
          * @param y return location for the y position
          * @param push_in whether the first menu item should be offset (pushed in) to be           aligned with the menu popup position (only useful for GtkOptionMenu).
          * @param user_data the status icon to position the menu on
+         * @since 2.10
          */
         static position_menu(menu: Menu, x: number, y: number, push_in: boolean, user_data: null): void;
 
@@ -59418,6 +61285,8 @@ export namespace Gtk {
          * Returns whether the icon is blinking, see
          * `gtk_status_icon_set_blinking()`.
          * @returns `true` if the icon is blinking
+         * @since 2.10
+         * @deprecated since 2.22: This function will be removed in GTK+ 3
          */
         get_blinking(): boolean;
 
@@ -59435,6 +61304,7 @@ export namespace Gtk {
          * is embedded in a notification area, see
          * `gtk_status_icon_is_embedded()`.
          * @returns `true` if the location information has               been filled in
+         * @since 2.10
          */
         get_geometry(): [boolean, Gdk.Screen | null, Gdk.Rectangle | null, Orientation | null];
 
@@ -59447,6 +61317,7 @@ export namespace Gtk {
          * 
          * If this function fails, `icon` is left unchanged;
          * @returns the displayed icon, or `null` if the image is empty
+         * @since 2.14
          */
         get_gicon(): Gio.Icon;
 
@@ -59454,6 +61325,7 @@ export namespace Gtk {
          * Returns the current value of the has-tooltip property.
          * See {@link Gtk.StatusIcon.has_tooltip} for more information.
          * @returns current value of has-tooltip on `status_icon`.
+         * @since 2.16
          */
         get_has_tooltip(): boolean;
 
@@ -59464,6 +61336,7 @@ export namespace Gtk {
          * The returned string is owned by the {@link Gtk.StatusIcon} and should not
          * be freed or modified.
          * @returns name of the displayed icon, or `null` if the image is empty.
+         * @since 2.10
          */
         get_icon_name(): string;
 
@@ -59474,12 +61347,14 @@ export namespace Gtk {
          * The caller of this function does not own a reference to the
          * returned pixbuf.
          * @returns the displayed pixbuf,     or `null` if the image is empty.
+         * @since 2.10
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
 
         /**
          * Returns the {@link Gdk.Screen} associated with `status_icon`.
          * @returns a {@link Gdk.Screen}.
+         * @since 2.12
          */
         get_screen(): Gdk.Screen;
 
@@ -59493,6 +61368,7 @@ export namespace Gtk {
          * Note that the returned size is only meaningful while the
          * status icon is embedded (see `gtk_status_icon_is_embedded()`).
          * @returns the size that is available for the image
+         * @since 2.10
          */
         get_size(): number;
 
@@ -59503,6 +61379,7 @@ export namespace Gtk {
          * The returned string is owned by the {@link Gtk.StatusIcon} and should not
          * be freed or modified.
          * @returns stock id of the displayed stock icon,   or `null` if the image is empty.
+         * @since 2.10
          */
         get_stock(): string;
 
@@ -59511,24 +61388,28 @@ export namespace Gtk {
          * to store image data. If the {@link Gtk.StatusIcon} has no image data,
          * the return value will be {@link Gtk.ImageType.EMPTY}.
          * @returns the image representation being used
+         * @since 2.10
          */
         get_storage_type(): ImageType;
 
         /**
          * Gets the title of this tray icon. See `gtk_status_icon_set_title()`.
          * @returns the title of the status icon
+         * @since 2.18
          */
         get_title(): string;
 
         /**
          * Gets the contents of the tooltip for `status_icon`.
          * @returns the tooltip text, or `null`. You should free the   returned string with `g_free()` when done.
+         * @since 2.16
          */
         get_tooltip_markup(): string;
 
         /**
          * Gets the contents of the tooltip for `status_icon`.
          * @returns the tooltip text, or `null`. You should free the   returned string with `g_free()` when done.
+         * @since 2.16
          */
         get_tooltip_text(): string;
 
@@ -59538,6 +61419,7 @@ export namespace Gtk {
          * the user can actually see the icon, see also
          * `gtk_status_icon_is_embedded()`.
          * @returns `true` if the status icon is visible
+         * @since 2.10
          */
         get_visible(): boolean;
 
@@ -59553,6 +61435,7 @@ export namespace Gtk {
          * more likely to be met by one of the non-X11 specific methods, such
          * as `gtk_status_icon_position_menu()`.
          * @returns An 32 bit unsigned integer identifier for the underlying X11 Window
+         * @since 2.14
          */
         get_x11_window_id(): number;
 
@@ -59560,6 +61443,7 @@ export namespace Gtk {
          * Returns whether the status icon is embedded in a notification
          * area.
          * @returns `true` if the status icon is embedded in   a notification area.
+         * @since 2.10
          */
         is_embedded(): boolean;
 
@@ -59569,6 +61453,8 @@ export namespace Gtk {
          * for some users, and thus may be turned off, in which case
          * this setting has no effect.
          * @param blinking `true` to turn blinking on, `false` to turn it off
+         * @since 2.10
+         * @deprecated since 2.22: This function will be removed in GTK+ 3
          */
         set_blinking(blinking: boolean): void;
 
@@ -59576,6 +61462,7 @@ export namespace Gtk {
          * Makes `status_icon` display the file `filename`.
          * See `gtk_status_icon_new_from_file()` for details.
          * @param filename a filename
+         * @since 2.10
          */
         set_from_file(filename: string): void;
 
@@ -59583,6 +61470,7 @@ export namespace Gtk {
          * Makes `status_icon` display the {@link Gio.Icon}.
          * See `gtk_status_icon_new_from_gicon()` for details.
          * @param icon a GIcon
+         * @since 2.14
          */
         set_from_gicon(icon: Gio.Icon): void;
 
@@ -59591,6 +61479,7 @@ export namespace Gtk {
          * current icon theme.
          * See `gtk_status_icon_new_from_icon_name()` for details.
          * @param icon_name an icon name
+         * @since 2.10
          */
         set_from_icon_name(icon_name: string): void;
 
@@ -59598,6 +61487,7 @@ export namespace Gtk {
          * Makes `status_icon` display `pixbuf`.
          * See `gtk_status_icon_new_from_pixbuf()` for details.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf} or `null`
+         * @since 2.10
          */
         set_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf | null): void;
 
@@ -59605,6 +61495,7 @@ export namespace Gtk {
          * Makes `status_icon` display the stock icon with the id `stock_id`.
          * See `gtk_status_icon_new_from_stock()` for details.
          * @param stock_id a stock icon id
+         * @since 2.10
          */
         set_from_stock(stock_id: string): void;
 
@@ -59612,6 +61503,7 @@ export namespace Gtk {
          * Sets the has-tooltip property on `status_icon` to `has_tooltip`.
          * See {@link Gtk.StatusIcon.has_tooltip} for more information.
          * @param has_tooltip whether or not `status_icon` has a tooltip
+         * @since 2.16
          */
         set_has_tooltip(has_tooltip: boolean): void;
 
@@ -59621,6 +61513,7 @@ export namespace Gtk {
          * used for sorting the icons in the tray and will not be shown to
          * the user.
          * @param name the name
+         * @since 2.20
          */
         set_name(name: string): void;
 
@@ -59629,6 +61522,7 @@ export namespace Gtk {
          * the icon is already mapped, it will be unmapped, and
          * then remapped on the new screen.
          * @param screen a {@link Gdk.Screen}
+         * @since 2.12
          */
         set_screen(screen: Gdk.Screen): void;
 
@@ -59638,12 +61532,15 @@ export namespace Gtk {
          * describing the tray icon. It may be used by tools like screen
          * readers to render the tray icon.
          * @param title the title
+         * @since 2.18
          */
         set_title(title: string): void;
 
         /**
          * Sets the tooltip of the status icon.
          * @param tooltip_text the tooltip text, or `null`
+         * @since 2.10
+         * @deprecated since 2.16: Use `gtk_status_icon_set_tooltip_text()` instead.
          */
         set_tooltip(tooltip_text: string | null): void;
 
@@ -59657,6 +61554,7 @@ export namespace Gtk {
          * See also the {@link Gtk.StatusIcon.tooltip_markup} property and
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `status_icon`, or `null`
+         * @since 2.16
          */
         set_tooltip_markup(markup: string | null): void;
 
@@ -59670,12 +61568,14 @@ export namespace Gtk {
          * See also the {@link Gtk.StatusIcon.tooltip_text} property and
          * `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `status_icon`
+         * @since 2.16
          */
         set_tooltip_text(text: string): void;
 
         /**
          * Shows or hides a status icon.
          * @param visible `true` to show the status icon, `false` to hide it
+         * @since 2.10
          */
         set_visible(visible: boolean): void;
     }
@@ -59838,6 +61738,7 @@ export namespace Gtk {
         /**
          * Retrieves the box containing the label widget.
          * @returns a {@link Gtk.Box}
+         * @since 2.20
          */
         get_message_area(): Widget;
 
@@ -59878,6 +61779,7 @@ export namespace Gtk {
          * Forces the removal of all messages from a statusbar's
          * stack with the exact `context_id`.
          * @param context_id a context identifier
+         * @since 2.22
          */
         remove_all(context_id: number): void;
 
@@ -60451,6 +62353,7 @@ export namespace Gtk {
          * @param widget_type the {@link GObject.GType} of a descendant of {@link Gtk.Widget}
          * @param property_name the name of the style property to get
          * @param value a {@link GObject.Value} where the value of the property being     queried will be stored
+         * @since 2.16
          */
         get_style_property(widget_type: GObject.GType, property_name: string, value: GObject.Value | any): void;
 
@@ -60462,6 +62365,7 @@ export namespace Gtk {
          * switch occurs.
          * @param color_name the name of the logical color to look up
          * @returns `true` if the mapping was found.
+         * @since 2.10
          */
         lookup_color(color_name: string): [boolean, Gdk.Color];
 
@@ -60507,6 +62411,7 @@ export namespace Gtk {
 
         /**
          * Decrease the reference count of `style`.
+         * @deprecated since 2.0: use `g_object_unref()` instead.
          */
         unref(): void;
     }
@@ -60730,6 +62635,7 @@ export namespace Gtk {
 
         /**
          * Returns the number of rows and columns in the table.
+         * @since 2.22
          */
         get_size(): [number, number];
 
@@ -60961,12 +62867,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -60975,6 +62883,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -60984,6 +62893,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -60996,6 +62906,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -61005,6 +62916,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -61014,6 +62926,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -61530,6 +63443,7 @@ export namespace Gtk {
          * placement.
          * @param mark the mark to add
          * @param where location to place mark
+         * @since 2.12
          */
         add_mark(mark: TextMark, where: TextIter): void;
 
@@ -61575,6 +63489,7 @@ export namespace Gtk {
          * @param interactive whether the deletion is caused by user interaction
          * @param default_editable whether the buffer is editable by default
          * @returns `true` if the buffer was modified
+         * @since 2.6
          */
         backspace(iter: TextIter, interactive: boolean, default_editable: boolean): boolean;
 
@@ -61719,6 +63634,7 @@ export namespace Gtk {
          * @param iter insertion point for the deserialized text
          * @param data data to deserialize
          * @returns `true` on success, `false` otherwise.
+         * @since 2.10
          */
         deserialize(content_buffer: TextBuffer, format: Gdk.Atom, iter: TextIter, data: Uint8Array | string): boolean;
 
@@ -61727,6 +63643,7 @@ export namespace Gtk {
          * `gtk_text_buffer_deserialize_set_can_create_tags()`
          * @param format a {@link Gdk.Atom} representing a registered rich text format
          * @returns whether deserializing this format may create tags
+         * @since 2.10
          */
         deserialize_get_can_create_tags(format: Gdk.Atom): boolean;
 
@@ -61750,6 +63667,7 @@ export namespace Gtk {
          * handle the newly created tags.
          * @param format a {@link Gdk.Atom} representing a registered rich text format
          * @param can_create_tags whether deserializing this format may create tags
+         * @since 2.10
          */
         deserialize_set_can_create_tags(format: Gdk.Atom, can_create_tags: boolean): void;
 
@@ -61781,6 +63699,7 @@ export namespace Gtk {
          * using `gtk_target_list_add_rich_text_targets()` and
          * `gtk_target_list_add_text_targets()`.
          * @returns the {@link Gtk.TargetList}
+         * @since 2.10
          */
         get_copy_target_list(): TargetList;
 
@@ -61789,6 +63708,7 @@ export namespace Gtk {
          * with `buffer` using `gtk_text_buffer_register_deserialize_format()` or
          * `gtk_text_buffer_register_deserialize_tagset()`
          * @returns an array of               {@link Gdk.Atom}<!-- -->s representing the registered formats.
+         * @since 2.10
          */
         get_deserialize_formats(): Gdk.Atom[];
 
@@ -61805,6 +63725,7 @@ export namespace Gtk {
         /**
          * Indicates whether the buffer has some text currently selected.
          * @returns `true` if the there is text selected
+         * @since 2.10
          */
         get_has_selection(): boolean;
 
@@ -61895,6 +63816,7 @@ export namespace Gtk {
          * using `gtk_target_list_add_rich_text_targets()` and
          * `gtk_target_list_add_text_targets()`.
          * @returns the {@link Gtk.TargetList}
+         * @since 2.10
          */
         get_paste_target_list(): TargetList;
 
@@ -61930,6 +63852,7 @@ export namespace Gtk {
          * with `buffer` using `gtk_text_buffer_register_serialize_format()` or
          * `gtk_text_buffer_register_serialize_tagset()`
          * @returns an array of               {@link Gdk.Atom}<!-- -->s representing the registered formats.
+         * @since 2.10
          */
         get_serialize_formats(): Gdk.Atom[];
 
@@ -62137,6 +64060,7 @@ export namespace Gtk {
          * @param mime_type the format's mime-type
          * @param _function the deserialize function to register
          * @returns the {@link Gdk.Atom} that corresponds to the               newly registered format's mime-type.
+         * @since 2.10
          */
         register_deserialize_format(mime_type: string, _function: TextBufferDeserializeFunc): Gdk.Atom;
 
@@ -62146,6 +64070,7 @@ export namespace Gtk {
          * `gtk_text_buffer_register_serialize_tagset()` for details.
          * @param tagset_name an optional tagset name, on `null`
          * @returns the {@link Gdk.Atom} that corresponds to the               newly registered format's mime-type.
+         * @since 2.10
          */
         register_deserialize_tagset(tagset_name: string | null): Gdk.Atom;
 
@@ -62155,6 +64080,7 @@ export namespace Gtk {
          * @param mime_type the format's mime-type
          * @param _function the serialize function to register
          * @returns the {@link Gdk.Atom} that corresponds to the               newly registered format's mime-type.
+         * @since 2.10
          */
         register_serialize_format(mime_type: string, _function: TextBufferSerializeFunc): Gdk.Atom;
 
@@ -62178,6 +64104,7 @@ export namespace Gtk {
          * receiving buffer to deal with with pasting of arbitrary tags.
          * @param tagset_name an optional tagset name, on `null`
          * @returns the {@link Gdk.Atom} that corresponds to the               newly registered format's mime-type.
+         * @since 2.10
          */
         register_serialize_tagset(tagset_name: string | null): Gdk.Atom;
 
@@ -62228,6 +64155,7 @@ export namespace Gtk {
          * be optimized.
          * @param ins where to put the "insert" mark
          * @param bound where to put the "selection_bound" mark
+         * @since 2.4
          */
         select_range(ins: TextIter, bound: TextIter): void;
 
@@ -62243,6 +64171,7 @@ export namespace Gtk {
          * @param start start of block of text to serialize
          * @param end end of block of test to serialize
          * @returns the serialized               data, encoded as `format`
+         * @since 2.10
          */
         serialize(content_buffer: TextBuffer, format: Gdk.Atom, start: TextIter, end: TextIter): Uint8Array;
 
@@ -62269,6 +64198,7 @@ export namespace Gtk {
          * registered using `gtk_text_buffer_register_deserialize_format()` or
          * `gtk_text_buffer_register_deserialize_tagset()`.
          * @param format a {@link Gdk.Atom} representing a registered rich text format.
+         * @since 2.10
          */
         unregister_deserialize_format(format: Gdk.Atom): void;
 
@@ -62277,6 +64207,7 @@ export namespace Gtk {
          * registered using `gtk_text_buffer_register_serialize_format()` or
          * `gtk_text_buffer_register_serialize_tagset()`
          * @param format a {@link Gdk.Atom} representing a registered rich text format.
+         * @since 2.10
          */
         unregister_serialize_format(format: Gdk.Atom): void;
     }
@@ -64002,6 +65933,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -64013,6 +65945,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -64023,6 +65956,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -64033,6 +65967,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -64042,6 +65977,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -64050,6 +65986,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -64060,6 +65997,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -64070,6 +66008,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -64078,12 +66017,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -64093,6 +66034,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -64104,6 +66046,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -64115,6 +66058,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -64126,6 +66070,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -64135,6 +66080,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -64143,6 +66089,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -64153,6 +66100,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -64164,6 +66112,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -64173,6 +66122,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -64180,6 +66130,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -64906,6 +66857,7 @@ export namespace Gtk {
          * Returns whether pressing the Tab key inserts a tab characters.
          * `gtk_text_view_set_accepts_tab()`.
          * @returns `true` if pressing the Tab key inserts a tab character,   `false` if pressing the Tab key moves the keyboard focus.
+         * @since 2.4
          */
         get_accepts_tab(): boolean;
 
@@ -64954,6 +66906,7 @@ export namespace Gtk {
         /**
          * Gets the horizontal-scrolling {@link Gtk.Adjustment}.
          * @returns pointer to the horizontal {@link Gtk.Adjustment}
+         * @since 2.22
          */
         get_hadjustment(): Adjustment;
 
@@ -64989,6 +66942,7 @@ export namespace Gtk {
          * characters.
          * @param x x position, in buffer coordinates
          * @param y y position, in buffer coordinates
+         * @since 2.6
          */
         get_iter_at_position(x: number, y: number): [TextIter, number];
 
@@ -65036,6 +66990,7 @@ export namespace Gtk {
         /**
          * Returns whether the {@link Gtk.TextView} is in overwrite mode or not.
          * @returns whether `text_view` is in overwrite mode or not.
+         * @since 2.4
          */
         get_overwrite(): boolean;
 
@@ -65076,6 +67031,7 @@ export namespace Gtk {
         /**
          * Gets the vertical-scrolling {@link Gtk.Adjustment}.
          * @returns pointer to the vertical {@link Gtk.Adjustment}
+         * @since 2.22
          */
         get_vadjustment(): Adjustment;
 
@@ -65151,6 +67107,7 @@ export namespace Gtk {
          * 
          * @param event the key event
          * @returns `true` if the input method handled the key event.
+         * @since 2.22
          */
         im_context_filter_keypress(event: Gdk.EventKey): boolean;
 
@@ -65200,6 +67157,7 @@ export namespace Gtk {
          * 
          * This can be necessary in the case where modifying the buffer
          * would confuse on-going input method behavior.
+         * @since 2.22
          */
         reset_im_context(): void;
 
@@ -65256,6 +67214,7 @@ export namespace Gtk {
          * is `false` the keyboard focus is moved to the next widget in the focus
          * chain.
          * @param accepts_tab `true` if pressing the Tab key should insert a tab    character, `false`, if pressing the Tab key should move the    keyboard focus.
+         * @since 2.4
          */
         set_accepts_tab(accepts_tab: boolean): void;
 
@@ -65322,6 +67281,7 @@ export namespace Gtk {
         /**
          * Changes the {@link Gtk.TextView} overwrite mode.
          * @param overwrite `true` to turn on overwrite mode, `false` to turn it off
+         * @since 2.4
          */
         set_overwrite(overwrite: boolean): void;
 
@@ -65780,6 +67740,7 @@ export namespace Gtk {
         // Virtual methods
         /**
          * Emits the "toggled" signal on the toggle action.
+         * @since 2.4
          * @virtual
          */
         vfunc_toggled(): void;
@@ -65788,29 +67749,34 @@ export namespace Gtk {
         /**
          * Returns the checked state of the toggle action.
          * @returns the checked state of the toggle action
+         * @since 2.4
          */
         get_active(): boolean;
 
         /**
          * Returns whether the action should have proxies like a radio action.
          * @returns whether the action should have proxies like a radio action.
+         * @since 2.4
          */
         get_draw_as_radio(): boolean;
 
         /**
          * Sets the checked state on the toggle action.
          * @param is_active whether the action should be checked or not
+         * @since 2.4
          */
         set_active(is_active: boolean): void;
 
         /**
          * Sets whether the action should have proxies like a radio action.
          * @param draw_as_radio whether the action should have proxies like a radio    action
+         * @since 2.4
          */
         set_draw_as_radio(draw_as_radio: boolean): void;
 
         /**
          * Emits the "toggled" signal on the toggle action.
+         * @since 2.4
          */
         toggled(): void;
 
@@ -65820,6 +67786,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -65831,6 +67798,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -65841,6 +67809,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -65851,6 +67820,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -65860,6 +67830,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -65868,6 +67839,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -65878,6 +67850,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -65888,6 +67861,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -65896,12 +67870,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -65911,6 +67887,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -65922,6 +67899,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -65933,6 +67911,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -65944,6 +67923,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -65953,6 +67933,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -65961,6 +67942,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -65971,6 +67953,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -65982,6 +67965,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -65991,6 +67975,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -65998,6 +67983,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -66261,12 +68247,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -66275,6 +68263,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -66284,6 +68273,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -66296,6 +68286,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -66305,6 +68296,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -66314,6 +68306,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -66475,6 +68468,7 @@ export namespace Gtk {
          * Queries a {@link Gtk.ToggleToolButton} and returns its current state.
          * Returns `true` if the toggle button is pressed in and `false` if it is raised.
          * @returns `true` if the toggle tool button is pressed in, `false` if not
+         * @since 2.4
          */
         get_active(): boolean;
 
@@ -66483,6 +68477,7 @@ export namespace Gtk {
          * want the GtkToggleButton to be 'pressed in', and `false` to raise it.
          * This action causes the toggled signal to be emitted.
          * @param is_active whether `button` should be active
+         * @since 2.4
          */
         set_active(is_active: boolean): void;
 
@@ -66703,6 +68698,7 @@ export namespace Gtk {
          * Returns the name of the themed icon for the tool button,
          * see `gtk_tool_button_set_icon_name()`.
          * @returns the icon name or `null` if the tool button has no themed icon
+         * @since 2.8
          */
         get_icon_name(): string;
 
@@ -66710,6 +68706,7 @@ export namespace Gtk {
          * Return the widget used as icon widget on `button`.
          * See `gtk_tool_button_set_icon_widget()`.
          * @returns The widget used as icon     on `button`, or `null`.
+         * @since 2.4
          */
         get_icon_widget(): Widget;
 
@@ -66718,6 +68715,7 @@ export namespace Gtk {
          * doesn't have a label. or uses a the label from a stock item. The returned
          * string is owned by GTK+, and must not be modified or freed.
          * @returns The label, or `null`
+         * @since 2.4
          */
         get_label(): string;
 
@@ -66725,6 +68723,7 @@ export namespace Gtk {
          * Returns the widget used as label on `button`.
          * See `gtk_tool_button_set_label_widget()`.
          * @returns The widget used as label     on `button`, or `null`.
+         * @since 2.4
          */
         get_label_widget(): Widget;
 
@@ -66732,6 +68731,7 @@ export namespace Gtk {
          * Returns the name of the stock item. See `gtk_tool_button_set_stock_id()`.
          * The returned string is owned by GTK+ and must not be freed or modifed.
          * @returns the name of the stock item for `button`.
+         * @since 2.4
          */
         get_stock_id(): string;
 
@@ -66739,6 +68739,7 @@ export namespace Gtk {
          * Returns whether underscores in the label property are used as mnemonics
          * on menu items on the overflow menu. See `gtk_tool_button_set_use_underline()`.
          * @returns `true` if underscores in the label property are used as mnemonics on menu items on the overflow menu.
+         * @since 2.4
          */
         get_use_underline(): boolean;
 
@@ -66749,6 +68750,7 @@ export namespace Gtk {
          * overridden by non-`null` "label", "icon_widget" and "stock_id"
          * properties.
          * @param icon_name the name of the themed icon
+         * @since 2.8
          */
         set_icon_name(icon_name: string | null): void;
 
@@ -66757,6 +68759,7 @@ export namespace Gtk {
          * `null` the icon is determined by the "stock_id" property. If the
          * "stock_id" property is also `null`, `button` will not have an icon.
          * @param icon_widget the widget used as icon, or `null`
+         * @since 2.4
          */
         set_icon_widget(icon_widget: Widget | null): void;
 
@@ -66767,6 +68770,7 @@ export namespace Gtk {
          * is determined by the "stock_id" property. If the "stock_id" property is also
          * `null`, `button` will not have a label.
          * @param label a string that will be used as label, or `null`.
+         * @since 2.4
          */
         set_label(label: string | null): void;
 
@@ -66777,6 +68781,7 @@ export namespace Gtk {
          * determined by the "stock_id" property is used as label. If
          * "stock_id" is also `null`, `button` does not have a label.
          * @param label_widget the widget used as label, or `null`
+         * @since 2.4
          */
         set_label_widget(label_widget: Widget | null): void;
 
@@ -66785,6 +68790,7 @@ export namespace Gtk {
          * The stock_id property only has an effect if not
          * overridden by non-`null` "label" and "icon_widget" properties.
          * @param stock_id a name of a stock item, or `null`
+         * @since 2.4
          */
         set_stock_id(stock_id: string | null): void;
 
@@ -66798,6 +68804,7 @@ export namespace Gtk {
          * Labels shown on tool buttons never have mnemonics on them; this property
          * only affects the menu item on the overflow menu.
          * @param use_underline whether the button label has the form "_Open"
+         * @since 2.4
          */
         set_use_underline(use_underline: boolean): void;
 
@@ -66877,12 +68884,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -66891,6 +68900,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -66900,6 +68910,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -66912,6 +68923,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -66921,6 +68933,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -66930,6 +68943,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -67180,6 +69194,7 @@ export namespace Gtk {
          * Emits the signal {@link Gtk.ToolItem.SignalSignatures.toolbar_reconfigured | Gtk.ToolItem::toolbar_reconfigured} on `tool_item`.
          * {@link Gtk.Toolbar} and other {@link Gtk.ToolShell} implementations use this function
          * to notify children, when some aspect of their configuration changes.
+         * @since 2.14
          * @virtual
          */
         vfunc_toolbar_reconfigured(): void;
@@ -67190,6 +69205,7 @@ export namespace Gtk {
          * {@link Gtk.ToolItem} should call this function to find out how text should
          * be ellipsized.
          * @returns a {@link Pango.EllipsizeMode} indicating how text in `tool_item` should be ellipsized.
+         * @since 2.20
          */
         get_ellipsize_mode(): Pango.EllipsizeMode;
 
@@ -67197,6 +69213,7 @@ export namespace Gtk {
          * Returns whether `tool_item` is allocated extra space.
          * See `gtk_tool_item_set_expand()`.
          * @returns `true` if `tool_item` is allocated extra space.
+         * @since 2.4
          */
         get_expand(): boolean;
 
@@ -67204,6 +69221,7 @@ export namespace Gtk {
          * Returns whether `tool_item` is the same size as other homogeneous
          * items. See `gtk_tool_item_set_homogeneous()`.
          * @returns `true` if the item is the same size as other homogeneous items.
+         * @since 2.4
          */
         get_homogeneous(): boolean;
 
@@ -67212,6 +69230,7 @@ export namespace Gtk {
          * {@link Gtk.ToolItem} should call this function to find out what size icons
          * they should use.
          * @returns a {@link Gtk.IconSize} indicating the icon size used for `tool_item`
+         * @since 2.4
          */
         get_icon_size(): number;
 
@@ -67219,6 +69238,7 @@ export namespace Gtk {
          * Returns whether `tool_item` is considered important. See
          * `gtk_tool_item_set_is_important()`
          * @returns `true` if `tool_item` is considered important.
+         * @since 2.4
          */
         get_is_important(): boolean;
 
@@ -67227,6 +69247,7 @@ export namespace Gtk {
          * {@link Gtk.ToolItem} should call this function to find out what size icons
          * they should use.
          * @returns a {@link Gtk.Orientation} indicating the orientation used for `tool_item`
+         * @since 2.4
          */
         get_orientation(): Orientation;
 
@@ -67240,6 +69261,7 @@ export namespace Gtk {
          * will not inadvertently change a menu item that they did not create.
          * @param menu_item_id a string used to identify the menu item
          * @returns The {@link Gtk.MenuItem} passed to     `gtk_tool_item_set_proxy_menu_item()`, if the `menu_item_id`<!-- -->s     match.
+         * @since 2.4
          */
         get_proxy_menu_item(menu_item_id: string): Widget;
 
@@ -67249,6 +69271,7 @@ export namespace Gtk {
          * of the {@link Gtk.ToolItem.SignalSignatures.toolbar_reconfigured | Gtk.ToolItem::toolbar_reconfigured} signal to find out the
          * relief style of buttons.
          * @returns a {@link Gtk.ReliefStyle} indicating the relief style used for `tool_item`.
+         * @since 2.4
          */
         get_relief_style(): ReliefStyle;
 
@@ -67257,6 +69280,7 @@ export namespace Gtk {
          * {@link Gtk.ToolItem} should call this function to find out how text should
          * be aligned.
          * @returns a `gfloat` indicating the horizontal text alignment used for `tool_item`
+         * @since 2.20
          */
         get_text_alignment(): number;
 
@@ -67265,6 +69289,7 @@ export namespace Gtk {
          * {@link Gtk.ToolItem} should call this function to find out how text should
          * be orientated.
          * @returns a {@link Gtk.Orientation} indicating the text orientation used for `tool_item`
+         * @since 2.20
          */
         get_text_orientation(): Orientation;
 
@@ -67273,6 +69298,7 @@ export namespace Gtk {
          * Custom subclasses of {@link Gtk.ToolItem} should call this function
          * and use the size group for labels.
          * @returns a {@link Gtk.SizeGroup}
+         * @since 2.20
          */
         get_text_size_group(): SizeGroup;
 
@@ -67297,6 +69323,7 @@ export namespace Gtk {
          * </listitem>
          * </itemizedlist>
          * @returns A {@link Gtk.ToolbarStyle} indicating the toolbar style used for `tool_item`.
+         * @since 2.4
          */
         get_toolbar_style(): ToolbarStyle;
 
@@ -67304,6 +69331,7 @@ export namespace Gtk {
          * Returns whether `tool_item` has a drag window. See
          * `gtk_tool_item_set_use_drag_window()`.
          * @returns `true` if `tool_item` uses a drag window.
+         * @since 2.4
          */
         get_use_drag_window(): boolean;
 
@@ -67311,6 +69339,7 @@ export namespace Gtk {
          * Returns whether the `tool_item` is visible on toolbars that are
          * docked horizontally.
          * @returns `true` if `tool_item` is visible on toolbars that are docked horizontally.
+         * @since 2.4
          */
         get_visible_horizontal(): boolean;
 
@@ -67318,6 +69347,7 @@ export namespace Gtk {
          * Returns whether `tool_item` is visible when the toolbar is docked vertically.
          * See `gtk_tool_item_set_visible_vertical()`.
          * @returns Whether `tool_item` is visible when the toolbar is docked vertically
+         * @since 2.4
          */
         get_visible_vertical(): boolean;
 
@@ -67329,6 +69359,7 @@ export namespace Gtk {
          * 
          * The function must be called when the tool item changes what it
          * will do in response to the {@link Gtk.ToolItem.SignalSignatures.create_menu_proxy | Gtk.ToolItem::create-menu-proxy} signal.
+         * @since 2.6
          */
         rebuild_menu(): void;
 
@@ -67337,6 +69368,7 @@ export namespace Gtk {
          * `gtk_tool_item_set_proxy_menu_item()`, ie. the {@link Gtk.MenuItem}
          * that is going to appear in the overflow menu.
          * @returns The {@link Gtk.MenuItem} that is going to appear in the overflow menu for `tool_item`.
+         * @since 2.4
          */
         retrieve_proxy_menu_item(): Widget;
 
@@ -67346,6 +69378,7 @@ export namespace Gtk {
          * effect is that the item gets bigger when the toolbar gets bigger
          * and smaller when the toolbar gets smaller.
          * @param expand Whether `tool_item` is allocated extra space
+         * @since 2.4
          */
         set_expand(expand: boolean): void;
 
@@ -67354,6 +69387,7 @@ export namespace Gtk {
          * homogeneous items. The effect is that all homogeneous items will have
          * the same width as the widest of the items.
          * @param homogeneous whether `tool_item` is the same size as other homogeneous items
+         * @since 2.4
          */
         set_homogeneous(homogeneous: boolean): void;
 
@@ -67364,6 +69398,7 @@ export namespace Gtk {
          * only tool buttons with the "is_important" property set have labels, an
          * effect known as "priority text"
          * @param is_important whether the tool item should be considered important
+         * @since 2.4
          */
         set_is_important(is_important: boolean): void;
 
@@ -67375,6 +69410,7 @@ export namespace Gtk {
          * See also {@link Gtk.ToolItem.SignalSignatures.create_menu_proxy | Gtk.ToolItem::create-menu-proxy}.
          * @param menu_item_id a string used to identify `menu_item`
          * @param menu_item a {@link Gtk.MenuItem} to be used in the overflow menu
+         * @since 2.4
          */
         set_proxy_menu_item(menu_item_id: string, menu_item: Widget): void;
 
@@ -67385,6 +69421,8 @@ export namespace Gtk {
          * @param tooltips The {@link Gtk.Tooltips} object to be used
          * @param tip_text text to be used as tooltip text for `tool_item`
          * @param tip_private text to be used as private tooltip text
+         * @since 2.4
+         * @deprecated since 2.12: Use `gtk_tool_item_set_tooltip_text()` instead.
          */
         set_tooltip(tooltips: Tooltips, tip_text: string | null, tip_private: string | null): void;
 
@@ -67392,6 +69430,7 @@ export namespace Gtk {
          * Sets the markup text to be displayed as tooltip on the item.
          * See `gtk_widget_set_tooltip_markup()`.
          * @param markup markup text to be used as tooltip for `tool_item`
+         * @since 2.12
          */
         set_tooltip_markup(markup: string): void;
 
@@ -67405,6 +69444,7 @@ export namespace Gtk {
          * Sets the text to be displayed as tooltip on the item.
          * See `gtk_widget_set_tooltip_text()`.
          * @param text text to be used as tooltip for `tool_item`
+         * @since 2.12
          */
         set_tooltip_text(text: string): void;
 
@@ -67414,12 +69454,14 @@ export namespace Gtk {
          * When `tool_item` has a drag window it will intercept all events,
          * even those that would otherwise be sent to a child of `tool_item`.
          * @param use_drag_window Whether `tool_item` has a drag window.
+         * @since 2.4
          */
         set_use_drag_window(use_drag_window: boolean): void;
 
         /**
          * Sets whether `tool_item` is visible when the toolbar is docked horizontally.
          * @param visible_horizontal Whether `tool_item` is visible when in horizontal mode
+         * @since 2.4
          */
         set_visible_horizontal(visible_horizontal: boolean): void;
 
@@ -67429,6 +69471,7 @@ export namespace Gtk {
          * useful on a vertically docked toolbar. If `visible_vertical` is `false`
          * `tool_item` will not appear on toolbars that are docked vertically.
          * @param visible_vertical whether `tool_item` is visible when the toolbar is in vertical mode
+         * @since 2.4
          */
         set_visible_vertical(visible_vertical: boolean): void;
 
@@ -67436,6 +69479,7 @@ export namespace Gtk {
          * Emits the signal {@link Gtk.ToolItem.SignalSignatures.toolbar_reconfigured | Gtk.ToolItem::toolbar_reconfigured} on `tool_item`.
          * {@link Gtk.Toolbar} and other {@link Gtk.ToolShell} implementations use this function
          * to notify children, when some aspect of their configuration changes.
+         * @since 2.14
          */
         toolbar_reconfigured(): void;
 
@@ -67515,12 +69559,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -67529,6 +69575,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -67538,6 +69585,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -67550,6 +69598,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -67559,6 +69608,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
 
@@ -67568,6 +69618,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          * @virtual
          */
         vfunc_sync_action_properties(action: Action | null): void;
@@ -67744,6 +69795,7 @@ export namespace Gtk {
         /**
          * Gets whether `group` is collapsed or expanded.
          * @returns `true` if `group` is collapsed, `false` if it is expanded
+         * @since 2.20
          */
         get_collapsed(): boolean;
 
@@ -67752,18 +69804,21 @@ export namespace Gtk {
          * @param x the x position
          * @param y the y position
          * @returns the {@link Gtk.ToolItem} at position (x, y)
+         * @since 2.20
          */
         get_drop_item(x: number, y: number): ToolItem;
 
         /**
          * Gets the ellipsization mode of `group`.
          * @returns the {@link Pango.EllipsizeMode} of `group`
+         * @since 2.20
          */
         get_ellipsize(): Pango.EllipsizeMode;
 
         /**
          * Gets the relief mode of the header button of `group`.
          * @returns the {@link Gtk.ReliefStyle}
+         * @since 2.20
          */
         get_header_relief(): ReliefStyle;
 
@@ -67771,12 +69826,14 @@ export namespace Gtk {
          * Gets the position of `item` in `group` as index.
          * @param item a {@link Gtk.ToolItem}
          * @returns the index of `item` in `group` or -1 if `item` is no child of `group`
+         * @since 2.20
          */
         get_item_position(item: ToolItem): number;
 
         /**
          * Gets the label of `group`.
          * @returns the label of `group`. The label is an internal string of `group`     and must not be modified. Note that `null` is returned if a custom     label has been set with `gtk_tool_item_group_set_label_widget()`
+         * @since 2.20
          */
         get_label(): string;
 
@@ -67784,12 +69841,14 @@ export namespace Gtk {
          * Gets the label widget of `group`.
          * See `gtk_tool_item_group_set_label_widget()`.
          * @returns the label widget of `group`
+         * @since 2.20
          */
         get_label_widget(): Widget;
 
         /**
          * Gets the number of tool items in `group`.
          * @returns the number of tool items in `group`
+         * @since 2.20
          */
         get_n_items(): number;
 
@@ -67797,6 +69856,7 @@ export namespace Gtk {
          * Gets the tool item at `index` in group.
          * @param index the index
          * @returns the {@link Gtk.ToolItem} at index
+         * @since 2.20
          */
         get_nth_item(index: number): ToolItem;
 
@@ -67804,18 +69864,21 @@ export namespace Gtk {
          * Inserts `item` at `position` in the list of children of `group`.
          * @param item the {@link Gtk.ToolItem} to insert into `group`
          * @param position the position of `item` in `group`, starting with 0.     The position -1 means end of list.
+         * @since 2.20
          */
         insert(item: ToolItem, position: number): void;
 
         /**
          * Sets whether the `group` should be collapsed or expanded.
          * @param collapsed whether the `group` should be collapsed or expanded
+         * @since 2.20
          */
         set_collapsed(collapsed: boolean): void;
 
         /**
          * Sets the ellipsization mode which should be used by labels in `group`.
          * @param ellipsize the {@link Pango.EllipsizeMode} labels in `group` should use
+         * @since 2.20
          */
         set_ellipsize(ellipsize: Pango.EllipsizeMode): void;
 
@@ -67823,6 +69886,7 @@ export namespace Gtk {
          * Set the button relief of the group header.
          * See `gtk_button_set_relief()` for details.
          * @param style the {@link Gtk.ReliefStyle}
+         * @since 2.20
          */
         set_header_relief(style: ReliefStyle): void;
 
@@ -67830,6 +69894,7 @@ export namespace Gtk {
          * Sets the position of `item` in the list of children of `group`.
          * @param item the {@link Gtk.ToolItem} to move to a new position, should     be a child of `group`.
          * @param position the new position of `item` in `group`, starting with 0.     The position -1 means end of list.
+         * @since 2.20
          */
         set_item_position(item: ToolItem, position: number): void;
 
@@ -67837,6 +69902,7 @@ export namespace Gtk {
          * Sets the label of the tool item group. The label is displayed in the header
          * of the group.
          * @param label the new human-readable label of of the group
+         * @since 2.20
          */
         set_label(label: string): void;
 
@@ -67845,6 +69911,7 @@ export namespace Gtk {
          * The label widget is displayed in the header of the group, in place
          * of the usual label.
          * @param label_widget the widget to be displayed in place of the usual label
+         * @since 2.20
          */
         set_label_widget(label_widget: Widget): void;
 
@@ -67853,6 +69920,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_ellipsize_mode()`
          * instead.
          * @returns the current ellipsize mode of `shell`
+         * @since 2.20
          */
         get_ellipsize_mode(): Pango.EllipsizeMode;
 
@@ -67860,6 +69928,7 @@ export namespace Gtk {
          * Retrieves the icon size for the tool shell. Tool items must not call this
          * function directly, but rely on `gtk_tool_item_get_icon_size()` instead.
          * @returns the current size for icons of `shell`
+         * @since 2.14
          */
         get_icon_size(): number;
 
@@ -67868,6 +69937,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_orientation()`
          * instead.
          * @returns the current orientation of `shell`
+         * @since 2.14
          */
         get_orientation(): Orientation;
 
@@ -67875,6 +69945,7 @@ export namespace Gtk {
          * Returns the relief style of buttons on `shell`. Tool items must not call this
          * function directly, but rely on `gtk_tool_item_get_relief_style()` instead.
          * @returns The relief style of buttons on `shell`.
+         * @since 2.14
          */
         get_relief_style(): ReliefStyle;
 
@@ -67883,6 +69954,7 @@ export namespace Gtk {
          * not call this function directly, but rely on `gtk_tool_item_get_style()`
          * instead.
          * @returns the current style of `shell`
+         * @since 2.14
          */
         get_style(): ToolbarStyle;
 
@@ -67897,6 +69969,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_text_alignment()`
          * instead.
          * @returns the current text alignment of `shell`
+         * @since 2.20
          */
         get_text_alignment(): number;
 
@@ -67905,6 +69978,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_text_orientation()`
          * instead.
          * @returns the current text orientation of `shell`
+         * @since 2.20
          */
         get_text_orientation(): Orientation;
 
@@ -67913,6 +69987,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_text_size_group()`
          * instead.
          * @returns the current text size group of `shell`
+         * @since 2.20
          */
         get_text_size_group(): SizeGroup;
 
@@ -67923,6 +69998,7 @@ export namespace Gtk {
          * 
          * Tool items must not call this function directly, but rely on
          * `gtk_tool_item_rebuild_menu()` instead.
+         * @since 2.14
          */
         rebuild_menu(): void;
 
@@ -67930,6 +70006,7 @@ export namespace Gtk {
          * Retrieves the current ellipsize mode for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_ellipsize_mode()`
          * instead.
+         * @since 2.20
          * @virtual
          */
         vfunc_get_ellipsize_mode(): Pango.EllipsizeMode;
@@ -67944,6 +70021,7 @@ export namespace Gtk {
          * Retrieves the current orientation for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_orientation()`
          * instead.
+         * @since 2.14
          * @virtual
          */
         vfunc_get_orientation(): Orientation;
@@ -67951,6 +70029,7 @@ export namespace Gtk {
         /**
          * Returns the relief style of buttons on `shell`. Tool items must not call this
          * function directly, but rely on `gtk_tool_item_get_relief_style()` instead.
+         * @since 2.14
          * @virtual
          */
         vfunc_get_relief_style(): ReliefStyle;
@@ -67959,6 +70038,7 @@ export namespace Gtk {
          * Retrieves whether the tool shell has text, icons, or both. Tool items must
          * not call this function directly, but rely on `gtk_tool_item_get_style()`
          * instead.
+         * @since 2.14
          * @virtual
          */
         vfunc_get_style(): ToolbarStyle;
@@ -67967,6 +70047,7 @@ export namespace Gtk {
          * Retrieves the current text alignment for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_text_alignment()`
          * instead.
+         * @since 2.20
          * @virtual
          */
         vfunc_get_text_alignment(): number;
@@ -67975,6 +70056,7 @@ export namespace Gtk {
          * Retrieves the current text orientation for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_text_orientation()`
          * instead.
+         * @since 2.20
          * @virtual
          */
         vfunc_get_text_orientation(): Orientation;
@@ -67983,6 +70065,7 @@ export namespace Gtk {
          * Retrieves the current text size group for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_text_size_group()`
          * instead.
+         * @since 2.20
          * @virtual
          */
         vfunc_get_text_size_group(): SizeGroup;
@@ -67994,6 +70077,7 @@ export namespace Gtk {
          * 
          * Tool items must not call this function directly, but rely on
          * `gtk_tool_item_rebuild_menu()` instead.
+         * @since 2.14
          * @virtual
          */
         vfunc_rebuild_menu(): void;
@@ -68278,11 +70362,13 @@ export namespace Gtk {
         // Static methods
         /**
          * Get the target entry for a dragged {@link Gtk.ToolItemGroup}.
+         * @since 2.20
          */
         static get_drag_target_group(): TargetEntry;
 
         /**
          * Gets the target entry for a dragged {@link Gtk.ToolItem}.
+         * @since 2.20
          */
         static get_drag_target_item(): TargetEntry;
 
@@ -68295,6 +70381,7 @@ export namespace Gtk {
          * @param flags the flags that specify what actions GTK+ should take for drops     on that widget
          * @param targets the `GtkToolPaletteDragTarget`<!-- -->s which the widget     should support
          * @param actions the {@link Gdk.DragAction}<!-- -->s which the widget should suppport
+         * @since 2.20
          */
         add_drag_dest(widget: Widget, flags: DestDefaults, targets: ToolPaletteDragTargets, actions: Gdk.DragAction): void;
 
@@ -68303,6 +70390,7 @@ export namespace Gtk {
          * This could be a {@link Gtk.ToolItem} or a {@link Gtk.ToolItemGroup}.
          * @param selection a {@link Gtk.SelectionData}
          * @returns the dragged item in selection
+         * @since 2.20
          */
         get_drag_item(selection: SelectionData): Widget;
 
@@ -68311,6 +70399,7 @@ export namespace Gtk {
          * @param x the x position
          * @param y the y position
          * @returns the {@link Gtk.ToolItemGroup} at position or `null`     if there is no such group
+         * @since 2.20
          */
         get_drop_group(x: number, y: number): ToolItemGroup;
 
@@ -68320,6 +70409,7 @@ export namespace Gtk {
          * @param x the x position
          * @param y the y position
          * @returns the {@link Gtk.ToolItem} at position or `null` if there is no such item
+         * @since 2.20
          */
         get_drop_item(x: number, y: number): ToolItem;
 
@@ -68328,6 +70418,7 @@ export namespace Gtk {
          * See `gtk_tool_palette_set_exclusive()`.
          * @param group a {@link Gtk.ToolItemGroup} which is a child of palette
          * @returns `true` if `group` is exclusive
+         * @since 2.20
          */
         get_exclusive(group: ToolItemGroup): boolean;
 
@@ -68336,6 +70427,7 @@ export namespace Gtk {
          * See `gtk_tool_palette_set_expand()`.
          * @param group a {@link Gtk.ToolItemGroup} which is a child of palette
          * @returns `true` if group should be given extra space, `false` otherwise
+         * @since 2.20
          */
         get_expand(group: ToolItemGroup): boolean;
 
@@ -68344,12 +70436,14 @@ export namespace Gtk {
          * See `gtk_tool_palette_set_group_position()`.
          * @param group a {@link Gtk.ToolItemGroup}
          * @returns the index of group or -1 if `group` is not a child of `palette`
+         * @since 2.20
          */
         get_group_position(group: ToolItemGroup): number;
 
         /**
          * Gets the horizontal adjustment of the tool palette.
          * @returns the horizontal adjustment of `palette`
+         * @since 2.20
          */
         get_hadjustment(): Adjustment;
 
@@ -68357,12 +70451,14 @@ export namespace Gtk {
          * Gets the size of icons in the tool palette.
          * See `gtk_tool_palette_set_icon_size()`.
          * @returns the {@link Gtk.IconSize} of icons in the tool palette
+         * @since 2.20
          */
         get_icon_size(): number;
 
         /**
          * Gets the style (icons, text or both) of items in the tool palette.
          * @returns the {@link Gtk.ToolbarStyle} of items in the tool palette.
+         * @since 2.20
          */
         get_style(): ToolbarStyle;
 
@@ -68375,6 +70471,7 @@ export namespace Gtk {
         /**
          * Gets the vertical adjustment of the tool palette.
          * @returns the vertical adjustment of `palette`
+         * @since 2.20
          */
         get_vadjustment(): Adjustment;
 
@@ -68384,6 +70481,7 @@ export namespace Gtk {
          * on button 1 and button 3 press with copy and move actions.
          * See `gtk_drag_source_set()`.
          * @param targets the `GtkToolPaletteDragTarget`<!-- -->s     which the widget should support
+         * @since 2.20
          */
         set_drag_source(targets: ToolPaletteDragTargets): void;
 
@@ -68392,6 +70490,7 @@ export namespace Gtk {
          * If an exclusive group is expanded all other groups are collapsed.
          * @param group a {@link Gtk.ToolItemGroup} which is a child of palette
          * @param exclusive whether the group should be exclusive or not
+         * @since 2.20
          */
         set_exclusive(group: ToolItemGroup, exclusive: boolean): void;
 
@@ -68399,6 +70498,7 @@ export namespace Gtk {
          * Sets whether the group should be given extra space.
          * @param group a {@link Gtk.ToolItemGroup} which is a child of palette
          * @param expand whether the group should be given extra space
+         * @since 2.20
          */
         set_expand(group: ToolItemGroup, expand: boolean): void;
 
@@ -68408,18 +70508,21 @@ export namespace Gtk {
          * -1 it will become the last child.
          * @param group a {@link Gtk.ToolItemGroup} which is a child of palette
          * @param position a new index for group
+         * @since 2.20
          */
         set_group_position(group: ToolItemGroup, position: number): void;
 
         /**
          * Sets the size of icons in the tool palette.
          * @param icon_size the {@link Gtk.IconSize} that icons in the tool     palette shall have
+         * @since 2.20
          */
         set_icon_size(icon_size: number): void;
 
         /**
          * Sets the style (text, icons or both) of items in the tool palette.
          * @param style the {@link Gtk.ToolbarStyle} that items in the tool palette shall have
+         * @since 2.20
          */
         set_style(style: ToolbarStyle): void;
 
@@ -68432,12 +70535,14 @@ export namespace Gtk {
         /**
          * Unsets the tool palette icon size set with `gtk_tool_palette_set_icon_size()`,
          * so that user preferences will be used to determine the icon size.
+         * @since 2.20
          */
         unset_icon_size(): void;
 
         /**
          * Unsets a toolbar style set with `gtk_tool_palette_set_style()`,
          * so that user preferences will be used to determine the toolbar style.
+         * @since 2.20
          */
         unset_style(): void;
 
@@ -68453,12 +70558,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -68731,6 +70838,7 @@ export namespace Gtk {
         // Methods
         /**
          * Adds a new space to the end of the toolbar.
+         * @deprecated since 2.4: Use `gtk_toolbar_insert()` instead.
          */
         append_space(): void;
 
@@ -68739,6 +70847,7 @@ export namespace Gtk {
          * @param widget a {@link Gtk.Widget} to add to the toolbar.
          * @param tooltip_text the element's tooltip.
          * @param tooltip_private_text used for context-sensitive help about this toolbar element.
+         * @deprecated since 2.4: Use `gtk_toolbar_insert()` instead.
          */
         append_widget(widget: Widget, tooltip_text: string | null, tooltip_private_text: string | null): void;
 
@@ -68752,6 +70861,7 @@ export namespace Gtk {
          * @param x x coordinate of a point on the toolbar
          * @param y y coordinate of a point on the toolbar
          * @returns The position corresponding to the point (`x`, `y`) on the toolbar.
+         * @since 2.4
          */
         get_drop_index(x: number, y: number): number;
 
@@ -68766,12 +70876,14 @@ export namespace Gtk {
          * It is an error if `item` is not a child of the toolbar.
          * @param item a {@link Gtk.ToolItem} that is a child of `toolbar`
          * @returns the position of item on the toolbar.
+         * @since 2.4
          */
         get_item_index(item: ToolItem): number;
 
         /**
          * Returns the number of items on the toolbar.
          * @returns the number of items on the toolbar
+         * @since 2.4
          */
         get_n_items(): number;
 
@@ -68780,6 +70892,7 @@ export namespace Gtk {
          * toolbar does not contain an `n`<!-- -->'th item.
          * @param n A position on the toolbar
          * @returns The `n`<!-- -->'th {@link Gtk.ToolItem} on `toolbar`,     or `null` if there isn't an `n`<!-- -->'th item.
+         * @since 2.4
          */
         get_nth_item(n: number): ToolItem;
 
@@ -68787,6 +70900,7 @@ export namespace Gtk {
          * Retrieves the current orientation of the toolbar. See
          * `gtk_toolbar_set_orientation()`.
          * @returns the orientation
+         * @deprecated since 2.16: Use `gtk_orientable_get_orientation()` instead.
          */
         get_orientation(): Orientation;
 
@@ -68794,6 +70908,7 @@ export namespace Gtk {
          * Returns the relief style of buttons on `toolbar`. See
          * `gtk_button_set_relief()`.
          * @returns The relief style of buttons on `toolbar`.
+         * @since 2.4
          */
         get_relief_style(): ReliefStyle;
 
@@ -68801,6 +70916,7 @@ export namespace Gtk {
          * Returns whether the toolbar has an overflow menu.
          * See `gtk_toolbar_set_show_arrow()`.
          * @returns `true` if the toolbar has an overflow menu.
+         * @since 2.4
          */
         get_show_arrow(): boolean;
 
@@ -68821,6 +70937,7 @@ export namespace Gtk {
          * Retrieves whether tooltips are enabled. See
          * `gtk_toolbar_set_tooltips()`.
          * @returns `true` if tooltips are enabled
+         * @deprecated since 2.14: The toolkit-wide {@link Gtk.Settings.gtk_enable_tooltips} property is now used instead.
          */
         get_tooltips(): boolean;
 
@@ -68830,12 +70947,14 @@ export namespace Gtk {
          * negative, the item is appended to the end of the toolbar.
          * @param item a {@link Gtk.ToolItem}
          * @param pos the position of the new item
+         * @since 2.4
          */
         insert(item: ToolItem, pos: number): void;
 
         /**
          * Inserts a new space in the toolbar at the specified position.
          * @param position the number of widgets after which a space should be inserted.
+         * @deprecated since 2.4: Use `gtk_toolbar_insert()` instead.
          */
         insert_space(position: number): void;
 
@@ -68845,11 +70964,13 @@ export namespace Gtk {
          * @param tooltip_text the element's tooltip.
          * @param tooltip_private_text used for context-sensitive help about this toolbar element.
          * @param position the number of widgets to insert this widget after.
+         * @deprecated since 2.4: Use `gtk_toolbar_insert()` instead.
          */
         insert_widget(widget: Widget, tooltip_text: string | null, tooltip_private_text: string | null, position: number): void;
 
         /**
          * Adds a new space to the beginning of the toolbar.
+         * @deprecated since 2.4: Use `gtk_toolbar_insert()` instead.
          */
         prepend_space(): void;
 
@@ -68858,12 +70979,14 @@ export namespace Gtk {
          * @param widget a {@link Gtk.Widget} to add to the toolbar.
          * @param tooltip_text the element's tooltip.
          * @param tooltip_private_text used for context-sensitive help about this toolbar element.
+         * @deprecated since 2.4: Use `gtk_toolbar_insert()` instead.
          */
         prepend_widget(widget: Widget, tooltip_text: string | null, tooltip_private_text: string | null): void;
 
         /**
          * Removes a space from the specified position.
          * @param position the index of the space to remove.
+         * @deprecated since 2.4: Use `gtk_toolbar_insert()` instead.
          */
         remove_space(position: number): void;
 
@@ -68879,6 +71002,7 @@ export namespace Gtk {
          * toolbar.
          * @param tool_item a {@link Gtk.ToolItem}, or `null` to turn of highlighting
          * @param index_ a position on `toolbar`
+         * @since 2.4
          */
         set_drop_highlight_item(tool_item: ToolItem | null, index_: number): void;
 
@@ -68898,6 +71022,7 @@ export namespace Gtk {
         /**
          * Sets whether a toolbar should appear horizontally or vertically.
          * @param orientation a new {@link Gtk.Orientation}.
+         * @deprecated since 2.16: Use `gtk_orientable_set_orientation()` instead.
          */
         set_orientation(orientation: Orientation): void;
 
@@ -68909,6 +71034,7 @@ export namespace Gtk {
          * which can be opened by an added arrow button. If `false`, `toolbar` will
          * request enough size to fit all of its child items without any overflow.
          * @param show_arrow Whether to show an overflow menu
+         * @since 2.4
          */
         set_show_arrow(show_arrow: boolean): void;
 
@@ -68927,6 +71053,7 @@ export namespace Gtk {
         /**
          * Sets if the tooltips of a toolbar should be active or not.
          * @param enable set to `false` to disable the tooltips, or `true` to enable them.
+         * @deprecated since 2.14: The toolkit-wide {@link Gtk.Settings.gtk_enable_tooltips} property is now used instead.
          */
         set_tooltips(enable: boolean): void;
 
@@ -68947,6 +71074,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_ellipsize_mode()`
          * instead.
          * @returns the current ellipsize mode of `shell`
+         * @since 2.20
          */
         get_ellipsize_mode(): Pango.EllipsizeMode;
 
@@ -68955,6 +71083,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_text_alignment()`
          * instead.
          * @returns the current text alignment of `shell`
+         * @since 2.20
          */
         get_text_alignment(): number;
 
@@ -68963,6 +71092,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_text_orientation()`
          * instead.
          * @returns the current text orientation of `shell`
+         * @since 2.20
          */
         get_text_orientation(): Orientation;
 
@@ -68971,6 +71101,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_text_size_group()`
          * instead.
          * @returns the current text size group of `shell`
+         * @since 2.20
          */
         get_text_size_group(): SizeGroup;
 
@@ -68981,6 +71112,7 @@ export namespace Gtk {
          * 
          * Tool items must not call this function directly, but rely on
          * `gtk_tool_item_rebuild_menu()` instead.
+         * @since 2.14
          */
         rebuild_menu(): void;
 
@@ -68988,6 +71120,7 @@ export namespace Gtk {
          * Retrieves the current ellipsize mode for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_ellipsize_mode()`
          * instead.
+         * @since 2.20
          * @virtual
          */
         vfunc_get_ellipsize_mode(): Pango.EllipsizeMode;
@@ -69002,6 +71135,7 @@ export namespace Gtk {
          * Retrieves the current orientation for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_orientation()`
          * instead.
+         * @since 2.14
          * @virtual
          */
         vfunc_get_orientation(): Orientation;
@@ -69009,6 +71143,7 @@ export namespace Gtk {
         /**
          * Returns the relief style of buttons on `shell`. Tool items must not call this
          * function directly, but rely on `gtk_tool_item_get_relief_style()` instead.
+         * @since 2.14
          * @virtual
          */
         vfunc_get_relief_style(): ReliefStyle;
@@ -69017,6 +71152,7 @@ export namespace Gtk {
          * Retrieves whether the tool shell has text, icons, or both. Tool items must
          * not call this function directly, but rely on `gtk_tool_item_get_style()`
          * instead.
+         * @since 2.14
          * @virtual
          */
         vfunc_get_style(): ToolbarStyle;
@@ -69025,6 +71161,7 @@ export namespace Gtk {
          * Retrieves the current text alignment for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_text_alignment()`
          * instead.
+         * @since 2.20
          * @virtual
          */
         vfunc_get_text_alignment(): number;
@@ -69033,6 +71170,7 @@ export namespace Gtk {
          * Retrieves the current text orientation for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_text_orientation()`
          * instead.
+         * @since 2.20
          * @virtual
          */
         vfunc_get_text_orientation(): Orientation;
@@ -69041,6 +71179,7 @@ export namespace Gtk {
          * Retrieves the current text size group for the tool shell. Tool items must not
          * call this function directly, but rely on `gtk_tool_item_get_text_size_group()`
          * instead.
+         * @since 2.20
          * @virtual
          */
         vfunc_get_text_size_group(): SizeGroup;
@@ -69052,6 +71191,7 @@ export namespace Gtk {
          * 
          * Tool items must not call this function directly, but rely on
          * `gtk_tool_item_rebuild_menu()` instead.
+         * @since 2.14
          * @virtual
          */
         vfunc_rebuild_menu(): void;
@@ -69158,6 +71298,7 @@ export namespace Gtk {
          * useful to call when, for example, the state of the widget changed by a
          * key press.
          * @param display a {@link Gdk.Display}
+         * @since 2.12
          */
         static trigger_tooltip_query(display: Gdk.Display): void;
 
@@ -69170,6 +71311,7 @@ export namespace Gtk {
          * the tooltip, which can be configured using `gtk_tooltip_set_markup()`
          * and `gtk_tooltip_set_icon()`.
          * @param custom_widget a {@link Gtk.Widget}, or `null` to unset the old custom widget.
+         * @since 2.12
          */
         set_custom(custom_widget: Widget | null): void;
 
@@ -69177,6 +71319,7 @@ export namespace Gtk {
          * Sets the icon of the tooltip (which is in front of the text) to be
          * `pixbuf`.  If `pixbuf` is `null`, the image will be hidden.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}, or `null`
+         * @since 2.12
          */
         set_icon(pixbuf: GdkPixbuf.Pixbuf | null): void;
 
@@ -69186,6 +71329,7 @@ export namespace Gtk {
          * by `size`. If `gicon` is `null`, the image will be hidden.
          * @param gicon a {@link Gio.Icon} representing the icon, or `null`
          * @param size a stock icon size
+         * @since 2.20
          */
         set_icon_from_gicon(gicon: Gio.Icon | null, size: number): void;
 
@@ -69195,6 +71339,7 @@ export namespace Gtk {
          * by `size`.  If `icon_name` is `null`, the image will be hidden.
          * @param icon_name an icon name, or `null`
          * @param size a stock icon size
+         * @since 2.14
          */
         set_icon_from_icon_name(icon_name: string | null, size: number): void;
 
@@ -69204,6 +71349,7 @@ export namespace Gtk {
          * by `size`.  If `stock_id` is `null`, the image will be hidden.
          * @param stock_id a stock id, or `null`
          * @param size a stock icon size
+         * @since 2.12
          */
         set_icon_from_stock(stock_id: string | null, size: number): void;
 
@@ -69213,6 +71359,7 @@ export namespace Gtk {
          * linkend="PangoMarkupFormat">Pango text markup language</link>.
          * If `markup` is `null`, the label will be hidden.
          * @param markup a markup string (see <link linkend="PangoMarkupFormat">Pango markup format</link>) or `null`
+         * @since 2.12
          */
         set_markup(markup: string | null): void;
 
@@ -69220,6 +71367,7 @@ export namespace Gtk {
          * Sets the text of the tooltip to be `text`. If `text` is `null`, the label
          * will be hidden. See also `gtk_tooltip_set_markup()`.
          * @param text a text string or `null`
+         * @since 2.12
          */
         set_text(text: string | null): void;
 
@@ -69233,6 +71381,7 @@ export namespace Gtk {
          * functions for this: `gtk_tree_view_set_tooltip_row()` and
          * `gtk_tree_view_set_tooltip_cell()`.
          * @param rect a {@link Gdk.Rectangle}
+         * @since 2.12
          */
         set_tip_area(rect: Gdk.Rectangle): void;
     }
@@ -69293,6 +71442,8 @@ export namespace Gtk {
          * @param tip_window a {@link Gtk.Window}
          * @param tooltips the return location for the tooltips which are displayed    in `tip_window`, or `null`
          * @param current_widget the return location for the widget whose tooltips    are displayed, or `null`
+         * @since 2.4
+         * @deprecated since 2.12
          */
         static get_info_from_tip_window(tip_window: Window, tooltips: Tooltips, current_widget: Widget): boolean;
 
@@ -69313,6 +71464,7 @@ export namespace Gtk {
          * @param widget the {@link Gtk.Widget} you wish to associate the tip with.
          * @param tip_text a string containing the tip itself.
          * @param tip_private a string of any further information that may be useful if the user gets stuck.
+         * @deprecated since 2.12
          */
         set_tip(widget: Widget, tip_text: string | null, tip_private: string | null): void;
     }
@@ -69396,6 +71548,7 @@ export namespace Gtk {
          * being filtered is static (and doesn't change often) and there has been
          * a lot of unreffed access to nodes. As a side effect of this function,
          * all unreffed iters will be invalid.
+         * @since 2.4
          */
         clear_cache(): void;
 
@@ -69405,6 +71558,7 @@ export namespace Gtk {
          * returned.
          * @param child_iter A valid {@link Gtk.TreeIter} pointing to a row on the child model.
          * @returns `true`, if `filter_iter` was set, i.e. if `child_iter` is a valid iterator pointing to a visible row in child model.
+         * @since 2.4
          */
         convert_child_iter_to_iter(child_iter: TreeIter): [boolean, TreeIter];
 
@@ -69416,12 +71570,14 @@ export namespace Gtk {
          * is returned.
          * @param child_path A {@link Gtk.TreePath} to convert.
          * @returns A newly allocated {@link Gtk.TreePath}, or `null`.
+         * @since 2.4
          */
         convert_child_path_to_path(child_path: TreePath): TreePath;
 
         /**
          * Sets `child_iter` to point to the row pointed to by `filter_iter`.
          * @param filter_iter A valid {@link Gtk.TreeIter} pointing to a row on `filter`.
+         * @since 2.4
          */
         convert_iter_to_child_iter(filter_iter: TreeIter): TreeIter;
 
@@ -69432,18 +71588,21 @@ export namespace Gtk {
          * does not point to a location in the child model, `null` is returned.
          * @param filter_path A {@link Gtk.TreePath} to convert.
          * @returns A newly allocated {@link Gtk.TreePath}, or `null`.
+         * @since 2.4
          */
         convert_path_to_child_path(filter_path: TreePath): TreePath;
 
         /**
          * Returns a pointer to the child model of `filter`.
          * @returns A pointer to a {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         get_model(): TreeModel;
 
         /**
          * Emits ::row_changed for each row in the child model, which causes
          * the filter to re-evaluate whether a row is visible or not.
+         * @since 2.4
          */
         refilter(): void;
 
@@ -69457,6 +71616,7 @@ export namespace Gtk {
          * modify function.
          * @param types The {@link GObject.GType}<!-- -->s of the columns.
          * @param func A {@link Gtk.TreeModelFilterModifyFunc}
+         * @since 2.4
          */
         set_modify_func(types: GObject.GType[], func: TreeModelFilterModifyFunc): void;
 
@@ -69466,6 +71626,7 @@ export namespace Gtk {
          * `G_TYPE_BOOLEAN`, where `true` means that a row is visible, and `false`
          * if not.
          * @param column A `gint` which is the column containing the visible information.
+         * @since 2.4
          */
         set_visible_column(column: number): void;
 
@@ -69502,6 +71663,7 @@ export namespace Gtk {
          * }
          * </programlisting></informalexample>
          * @param func A {@link Gtk.TreeModelFilterVisibleFunc}, the visible function.
+         * @since 2.4
          */
         set_visible_func(func: TreeModelFilterVisibleFunc): void;
 
@@ -69570,6 +71732,7 @@ export namespace Gtk {
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         filter_new(root: TreePath | null): TreeModel;
 
@@ -69638,6 +71801,7 @@ export namespace Gtk {
          * acceptable return value for this string.
          * @param iter An {@link Gtk.TreeIter}.
          * @returns A newly-allocated string. Must be freed with `g_free()`.
+         * @since 2.2
          */
         get_string_from_iter(iter: TreeIter): string;
 
@@ -70073,6 +72237,7 @@ export namespace Gtk {
          * Checks if the given iter is a valid iter for this {@link Gtk.TreeModelSort}.
          * @param iter A {@link Gtk.TreeIter}.
          * @returns `true` if the iter is valid, `false` if the iter is invalid.
+         * @since 2.2
          */
         iter_is_valid(iter: TreeIter): boolean;
 
@@ -70149,6 +72314,7 @@ export namespace Gtk {
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         filter_new(root: TreePath | null): TreeModel;
 
@@ -70217,6 +72383,7 @@ export namespace Gtk {
          * acceptable return value for this string.
          * @param iter An {@link Gtk.TreeIter}.
          * @returns A newly-allocated string. Must be freed with `g_free()`.
+         * @since 2.2
          */
         get_string_from_iter(iter: TreeIter): string;
 
@@ -70735,6 +72902,7 @@ export namespace Gtk {
         /**
          * Returns the number of rows that have been selected in `tree`.
          * @returns The number of rows selected.
+         * @since 2.2
          */
         count_selected_rows(): number;
 
@@ -70769,6 +72937,7 @@ export namespace Gtk {
          * ```
          * 
          * @returns A {@link GLib.List} containing a {@link Gtk.TreePath} for each selected row.
+         * @since 2.2
          */
         get_selected_rows(): [TreePath[], TreeModel | null];
 
@@ -70866,6 +73035,7 @@ export namespace Gtk {
          * inclusive.
          * @param start_path The initial node of the range.
          * @param end_path The initial node of the range.
+         * @since 2.2
          */
         unselect_range(start_path: TreePath, end_path: TreePath): void;
     }
@@ -71009,6 +73179,7 @@ export namespace Gtk {
          * @param position position to insert the new row
          * @param columns an array of column numbers
          * @param values an array of GValues
+         * @since 2.10
          */
         insert_with_valuesv(parent: TreeIter | null, position: number, columns: number[], values: (GObject.Value | any)[]): TreeIter | null;
 
@@ -71036,6 +73207,7 @@ export namespace Gtk {
          * Checks if the given iter is a valid iter for this {@link Gtk.TreeStore}.
          * @param iter A {@link Gtk.TreeIter}.
          * @returns `true` if the iter is valid, `false` if the iter is invalid.
+         * @since 2.2
          */
         iter_is_valid(iter: TreeIter): boolean;
 
@@ -71046,6 +73218,7 @@ export namespace Gtk {
          * to the start of the level.
          * @param iter A {@link Gtk.TreeIter}.
          * @param position A {@link Gtk.TreeIter}.
+         * @since 2.2
          */
         move_after(iter: TreeIter, position: TreeIter | null): void;
 
@@ -71056,6 +73229,7 @@ export namespace Gtk {
          * moved to the end of the level.
          * @param iter A {@link Gtk.TreeIter}.
          * @param position A {@link Gtk.TreeIter} or `null`.
+         * @since 2.2
          */
         move_before(iter: TreeIter, position: TreeIter | null): void;
 
@@ -71084,6 +73258,7 @@ export namespace Gtk {
          * unsorted stores.
          * @param parent A {@link Gtk.TreeIter}.
          * @param new_order an array of integers mapping the new position of each child      to its old position before the re-ordering,      i.e. `new_order`<literal>[newpos] = oldpos</literal>.
+         * @since 2.2
          */
         reorder(parent: TreeIter, new_order: number[]): void;
 
@@ -71114,6 +73289,7 @@ export namespace Gtk {
          * @param iter A valid {@link Gtk.TreeIter} for the row being modified
          * @param columns an array of column numbers
          * @param values an array of GValues
+         * @since 2.12
          */
         set_valuesv(iter: TreeIter, columns: number[], values: (GObject.Value | any)[]): void;
 
@@ -71122,6 +73298,7 @@ export namespace Gtk {
          * only works with unsorted stores.
          * @param a A {@link Gtk.TreeIter}.
          * @param b Another {@link Gtk.TreeIter}.
+         * @since 2.2
          */
         swap(a: TreeIter, b: TreeIter): void;
 
@@ -71131,6 +73308,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -71142,6 +73320,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -71152,6 +73331,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -71162,6 +73342,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -71171,6 +73352,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -71179,6 +73361,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -71189,6 +73372,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -71199,6 +73383,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -71207,12 +73392,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -71222,6 +73409,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -71233,6 +73421,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -71244,6 +73433,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -71255,6 +73445,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -71264,6 +73455,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -71272,6 +73464,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -71282,6 +73475,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -71293,6 +73487,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -71302,6 +73497,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -71309,6 +73505,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -71428,6 +73625,7 @@ export namespace Gtk {
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         filter_new(root: TreePath | null): TreeModel;
 
@@ -71496,6 +73694,7 @@ export namespace Gtk {
          * acceptable return value for this string.
          * @param iter An {@link Gtk.TreeIter}.
          * @returns A newly-allocated string. Must be freed with `g_free()`.
+         * @since 2.2
          */
         get_string_from_iter(iter: TreeIter): string;
 
@@ -72566,6 +74765,7 @@ export namespace Gtk {
          * tree (the full scrollable area of the tree).
          * @param bx X coordinate relative to bin_window
          * @param by Y coordinate relative to bin_window
+         * @since 2.12
          */
         convert_bin_window_to_tree_coords(bx: number, by: number): [number, number];
 
@@ -72574,6 +74774,7 @@ export namespace Gtk {
          * to widget relative coordinates.
          * @param bx bin_window X coordinate
          * @param by bin_window Y coordinate
+         * @since 2.12
          */
         convert_bin_window_to_widget_coords(bx: number, by: number): [number, number];
 
@@ -72582,6 +74783,7 @@ export namespace Gtk {
          * to bin_window coordinates.
          * @param tx tree X coordinate
          * @param ty tree Y coordinate
+         * @since 2.12
          */
         convert_tree_to_bin_window_coords(tx: number, ty: number): [number, number];
 
@@ -72590,6 +74792,7 @@ export namespace Gtk {
          * to widget coordinates.
          * @param tx X coordinate relative to the tree
          * @param ty Y coordinate relative to the tree
+         * @since 2.12
          */
         convert_tree_to_widget_coords(tx: number, ty: number): [number, number];
 
@@ -72598,6 +74801,7 @@ export namespace Gtk {
          * (see `gtk_tree_view_get_bin_window()`).
          * @param wx X coordinate relative to the widget
          * @param wy Y coordinate relative to the widget
+         * @since 2.12
          */
         convert_widget_to_bin_window_coords(wx: number, wy: number): [number, number];
 
@@ -72606,6 +74810,7 @@ export namespace Gtk {
          * tree (the full scrollable area of the tree).
          * @param wx X coordinate relative to the widget
          * @param wy Y coordinate relative to the widget
+         * @since 2.12
          */
         convert_widget_to_tree_coords(wx: number, wy: number): [number, number];
 
@@ -72651,6 +74856,7 @@ export namespace Gtk {
          * Expands the row at `path`. This will also expand all parent rows of
          * `path` as necessary.
          * @param path path to a row.
+         * @since 2.2
          */
         expand_to_path(path: TreePath): void;
 
@@ -72742,6 +74948,7 @@ export namespace Gtk {
         /**
          * Returns whether or not tree lines are drawn in `tree_view`.
          * @returns `true` if tree lines are drawn in `tree_view`, `false` otherwise.
+         * @since 2.10
          */
         get_enable_tree_lines(): boolean;
 
@@ -72755,12 +74962,14 @@ export namespace Gtk {
         /**
          * Returns whether fixed height mode is turned on for `tree_view`.
          * @returns `true` if `tree_view` is in fixed height mode
+         * @since 2.6
          */
         get_fixed_height_mode(): boolean;
 
         /**
          * Returns which grid lines are enabled in `tree_view`.
          * @returns a {@link Gtk.TreeViewGridLines} value indicating which grid lines are enabled.
+         * @since 2.10
          */
         get_grid_lines(): TreeViewGridLines;
 
@@ -72773,6 +74982,7 @@ export namespace Gtk {
         /**
          * Returns whether all header columns are clickable.
          * @returns `true` if all header columns are clickable, otherwise `false`
+         * @since 2.10
          */
         get_headers_clickable(): boolean;
 
@@ -72785,12 +74995,14 @@ export namespace Gtk {
         /**
          * Returns whether hover expansion mode is turned on for `tree_view`.
          * @returns `true` if `tree_view` is in hover expansion mode
+         * @since 2.6
          */
         get_hover_expand(): boolean;
 
         /**
          * Returns whether hover selection mode is turned on for `tree_view`.
          * @returns `true` if `tree_view` is in hover selection mode
+         * @since 2.6
          */
         get_hover_selection(): boolean;
 
@@ -72798,6 +75010,7 @@ export namespace Gtk {
          * Returns the amount, in pixels, of extra indentation for child levels
          * in `tree_view`.
          * @returns the amount of extra indentation for child levels in `tree_view`.  A return value of 0 means that this feature is disabled.
+         * @since 2.12
          */
         get_level_indentation(): number;
 
@@ -72844,6 +75057,7 @@ export namespace Gtk {
          * selection mode is #GTK_SELECTION_MULTIPLE, rubber banding will allow the
          * user to select multiple rows by dragging the mouse.
          * @returns `true` if rubber banding in `tree_view` is enabled.
+         * @since 2.10
          */
         get_rubber_banding(): boolean;
 
@@ -72864,6 +75078,7 @@ export namespace Gtk {
          * entry for `tree_view`.  In case the built-in entry is being used, `null`
          * will be returned.
          * @returns the entry currently in use as search entry.
+         * @since 2.10
          */
         get_search_entry(): Entry;
 
@@ -72876,6 +75091,7 @@ export namespace Gtk {
         /**
          * Returns whether or not expanders are drawn in `tree_view`.
          * @returns `true` if expanders are drawn in `tree_view`, `false` otherwise.
+         * @since 2.12
          */
         get_show_expanders(): boolean;
 
@@ -72883,6 +75099,7 @@ export namespace Gtk {
          * Returns the column of `tree_view`'s model which is being used for
          * displaying tooltips on `tree_view`'s rows.
          * @returns the index of the tooltip column that is currently being used, or -1 if this is disabled.
+         * @since 2.12
          */
         get_tooltip_column(): number;
 
@@ -72902,6 +75119,7 @@ export namespace Gtk {
          * @param y the y coordinate (relative to widget coordinates)
          * @param keyboard_tip whether this is a keyboard tooltip or not
          * @returns whether or not the given tooltip context points to a row.
+         * @since 2.12
          */
         get_tooltip_context(x: number, y: number, keyboard_tip: boolean): [boolean, number, number, TreeModel | null, TreePath | null, TreeIter | null];
 
@@ -72917,6 +75135,7 @@ export namespace Gtk {
          * 
          * The paths should be freed with `gtk_tree_path_free()` after use.
          * @returns `true`, if valid paths were placed in `start_path` and `end_path`.
+         * @since 2.8
          */
         get_visible_range(): [boolean, TreePath | null, TreePath | null];
 
@@ -72959,6 +75178,7 @@ export namespace Gtk {
          * Returns whether a rubber banding operation is currently being done
          * in `tree_view`.
          * @returns `true` if a rubber banding operation is currently being done in `tree_view`.
+         * @since 2.12
          */
         is_rubber_banding_active(): boolean;
 
@@ -73086,6 +75306,7 @@ export namespace Gtk {
          * @param focus_column A {@link Gtk.TreeViewColumn}, or `null`
          * @param focus_cell A {@link Gtk.CellRenderer}, or `null`
          * @param start_editing `true` if the specified cell should start being edited.
+         * @since 2.2
          */
         set_cursor_on_cell(path: TreePath, focus_column: TreeViewColumn | null, focus_cell: CellRenderer | null, start_editing: boolean): void;
 
@@ -73118,6 +75339,7 @@ export namespace Gtk {
          * Sets whether to draw lines interconnecting the expanders in `tree_view`.
          * This does not have any visible effects for lists.
          * @param enabled `true` to enable tree line drawing, `false` otherwise.
+         * @since 2.10
          */
         set_enable_tree_lines(enabled: boolean): void;
 
@@ -73139,12 +75361,14 @@ export namespace Gtk {
          * Only enable this option if all rows are the same height and all
          * columns are of type {@link Gtk.TreeViewColumnSizing.FIXED}.
          * @param enable `true` to enable fixed height mode
+         * @since 2.6
          */
         set_fixed_height_mode(enable: boolean): void;
 
         /**
          * Sets which grid lines to draw in `tree_view`.
          * @param grid_lines a {@link Gtk.TreeViewGridLines} value indicating which grid lines to enable.
+         * @since 2.10
          */
         set_grid_lines(grid_lines: TreeViewGridLines): void;
 
@@ -73171,6 +75395,7 @@ export namespace Gtk {
          * Hover expansion makes rows expand or collapse if the pointer
          * moves over them.
          * @param expand `true` to enable hover selection mode
+         * @since 2.6
          */
         set_hover_expand(expand: boolean): void;
 
@@ -73180,6 +75405,7 @@ export namespace Gtk {
          * Currently, this works only for the selection modes
          * {@link Gtk.SelectionMode.SINGLE} and {@link Gtk.SelectionMode.BROWSE}.
          * @param hover `true` to enable hover selection mode
+         * @since 2.6
          */
         set_hover_selection(hover: boolean): void;
 
@@ -73190,6 +75416,7 @@ export namespace Gtk {
          * indentation will be used.
          * This does not have any visible effects for lists.
          * @param indentation the amount, in pixels, of extra indentation in `tree_view`.
+         * @since 2.12
          */
         set_level_indentation(indentation: number): void;
 
@@ -73224,6 +75451,7 @@ export namespace Gtk {
          * whether a row should be drawn as a separator. If the row separator
          * function is `null`, no separators are drawn. This is the default value.
          * @param func a {@link Gtk.TreeViewRowSeparatorFunc}
+         * @since 2.6
          */
         set_row_separator_func(func: TreeViewRowSeparatorFunc): void;
 
@@ -73232,6 +75460,7 @@ export namespace Gtk {
          * is #GTK_SELECTION_MULTIPLE, rubber banding will allow the user to select
          * multiple rows by dragging the mouse.
          * @param enable `true` to enable rubber banding
+         * @since 2.10
          */
         set_rubber_banding(enable: boolean): void;
 
@@ -73273,6 +75502,7 @@ export namespace Gtk {
          * `entry` will make the interactive search code use the built-in popup
          * entry again.
          * @param entry the entry the interactive search code of `tree_view` should use or `null`
+         * @since 2.10
          */
         set_search_entry(entry: Entry | null): void;
 
@@ -73287,6 +75517,7 @@ export namespace Gtk {
         /**
          * Sets the function to use when positioning the search dialog.
          * @param func the function to use to position the search dialog, or `null`    to use the default search position function
+         * @since 2.10
          */
         set_search_position_func(func: TreeViewSearchPositionFunc | null): void;
 
@@ -73299,6 +75530,7 @@ export namespace Gtk {
          * `gtk_tree_view_set_level_indentation()`.
          * This does not have any visible effects for lists.
          * @param enabled `true` to enable expander drawing, `false` otherwise.
+         * @since 2.12
          */
         set_show_expanders(enabled: boolean): void;
 
@@ -73318,6 +75550,7 @@ export namespace Gtk {
          * @param path a {@link Gtk.TreePath} or `null`
          * @param column a {@link Gtk.TreeViewColumn} or `null`
          * @param cell a {@link Gtk.CellRenderer} or `null`
+         * @since 2.12
          */
         set_tooltip_cell(tooltip: Tooltip, path: TreePath | null, column: TreeViewColumn | null, cell: CellRenderer | null): void;
 
@@ -73333,6 +75566,7 @@ export namespace Gtk {
          * Note that the signal handler sets the text with `gtk_tooltip_set_markup()`,
          * so &amp;, &lt;, etc have to be escaped in the text.
          * @param column an integer, which is a valid column number for `tree_view`'s model
+         * @since 2.12
          */
         set_tooltip_column(column: number): void;
 
@@ -73342,6 +75576,7 @@ export namespace Gtk {
          * See also `gtk_tooltip_set_tip_area()`.
          * @param tooltip a {@link Gtk.Tooltip}
          * @param path a {@link Gtk.TreePath}
+         * @since 2.12
          */
         set_tooltip_row(tooltip: Tooltip, path: TreePath): void;
 
@@ -73358,6 +75593,7 @@ export namespace Gtk {
          * @param ty tree Y coordinate
          * @param wx return location for X coordinate relative to bin_window
          * @param wy return location for Y coordinate relative to bin_window
+         * @deprecated since 2.12: Due to historial reasons the name of this function is incorrect.  For converting bin_window coordinates to coordinates relative to bin_window, please see `gtk_tree_view_convert_bin_window_to_widget_coords()`.
          */
         tree_to_widget_coords(tx: number, ty: number, wx: number, wy: number): void;
 
@@ -73382,6 +75618,7 @@ export namespace Gtk {
          * @param wy Y coordinate relative to bin_window
          * @param tx return location for tree X coordinate
          * @param ty return location for tree Y coordinate
+         * @deprecated since 2.12: Due to historial reasons the name of this function is incorrect.  For converting coordinates relative to the widget to bin_window coordinates, please see `gtk_tree_view_convert_widget_to_bin_window_coords()`.
          */
         widget_to_tree_coords(wx: number, wy: number, tx: number, ty: number): void;
 
@@ -73776,6 +76013,7 @@ export namespace Gtk {
          * Sets the current keyboard focus to be at `cell`, if the column contains
          * 2 or more editable and activatable cells.
          * @param cell A {@link Gtk.CellRenderer}
+         * @since 2.2
          */
         focus_cell(cell: CellRenderer): void;
 
@@ -73795,6 +76033,7 @@ export namespace Gtk {
         /**
          * Return `true` if the column expands to take any available space.
          * @returns `true`, if the column expands
+         * @since 2.4
          */
         get_expand(): boolean;
 
@@ -73874,6 +76113,7 @@ export namespace Gtk {
          * If `column` is currently not inserted in any tree view, `null` is
          * returned.
          * @returns The tree view wherein `column` has     been inserted if any, `null` otherwise.
+         * @since 2.12
          */
         get_tree_view(): Widget;
 
@@ -73917,6 +76157,7 @@ export namespace Gtk {
         /**
          * Flags the column, and the cell renderers added to this column, to have
          * their sizes renegotiated.
+         * @since 2.8
          */
         queue_resize(): void;
 
@@ -73958,6 +76199,7 @@ export namespace Gtk {
          * option set, then the last column gets all extra space.  By default, every
          * column is created with this `false`.
          * @param expand `true` if the column should take available extra space, `false` if not
+         * @since 2.4
          */
         set_expand(expand: boolean): void;
 
@@ -74074,6 +76316,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -74085,6 +76328,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -74095,6 +76339,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -74105,6 +76350,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -74114,6 +76360,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -74122,6 +76369,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -74132,6 +76380,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -74142,6 +76391,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -74150,12 +76400,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -74165,6 +76417,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -74176,6 +76429,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -74187,6 +76441,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -74198,6 +76453,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -74207,6 +76463,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -74215,6 +76472,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -74225,6 +76483,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -74236,6 +76495,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -74245,6 +76505,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -74252,6 +76513,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -74259,6 +76521,7 @@ export namespace Gtk {
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the   renderers has been newly allocated and should be freed with   `g_list_free()` when no longer needed.
+         * @since 2.12
          */
         get_cells(): CellRenderer[];
 
@@ -74267,6 +76530,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          */
         reorder(cell: CellRenderer, position: number): void;
 
@@ -74279,6 +76543,7 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          * @virtual
          */
         vfunc_add_attribute(cell: CellRenderer, attribute: string, column: number): void;
@@ -74286,6 +76551,7 @@ export namespace Gtk {
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear(): void;
@@ -74294,12 +76560,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          * @virtual
          */
         vfunc_clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_cells(): CellRenderer[];
@@ -74312,6 +76580,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_end(cell: CellRenderer, expand: boolean): void;
@@ -74324,6 +76593,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          * @virtual
          */
         vfunc_pack_start(cell: CellRenderer, expand: boolean): void;
@@ -74333,6 +76603,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          * @virtual
          */
         vfunc_reorder(cell: CellRenderer, position: number): void;
@@ -74344,6 +76615,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          * @virtual
          */
         vfunc_set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
@@ -74554,6 +76826,7 @@ export namespace Gtk {
          * Looks up an action by following a path. See `gtk_ui_manager_get_widget()`
          * for more information about paths.
          * @param path a path
+         * @since 2.4
          * @virtual
          */
         vfunc_get_action(path: string): Action;
@@ -74573,6 +76846,7 @@ export namespace Gtk {
          * function to some container or explicitly ref them, they will survive the
          * destruction of the ui manager.
          * @param path a path
+         * @since 2.4
          * @virtual
          */
         vfunc_get_widget(path: string): Widget;
@@ -74606,6 +76880,7 @@ export namespace Gtk {
          * @param action the name of the action to be proxied, or `null` to add a separator
          * @param type the type of UI element to add.
          * @param top if `true`, the UI element is added before its siblings, otherwise it   is added after its siblings.
+         * @since 2.4
          */
         add_ui(merge_id: number, path: string, name: string, action: string | null, type: UIManagerItemType, top: boolean): void;
 
@@ -74614,6 +76889,7 @@ export namespace Gtk {
          * merges it with the current contents of `self`.
          * @param filename the name of the file to parse
          * @returns The merge id for the merged UI. The merge id can be used   to unmerge the UI with `gtk_ui_manager_remove_ui()`. If an error occurred,   the return value is 0.
+         * @since 2.4
          */
         add_ui_from_file(filename: string): number;
 
@@ -74624,6 +76900,7 @@ export namespace Gtk {
          * @param buffer the string to parse
          * @param length the length of `buffer` (may be -1 if `buffer` is nul-terminated)
          * @returns The merge id for the merged UI. The merge id can be used   to unmerge the UI with `gtk_ui_manager_remove_ui()`. If an error occurred,   the return value is 0.
+         * @since 2.4
          */
         add_ui_from_string(buffer: string, length: bigint | number): number;
 
@@ -74645,12 +76922,14 @@ export namespace Gtk {
          * gtk_widget_show (window);
          * ```
          * 
+         * @since 2.4
          */
         ensure_update(): void;
 
         /**
          * Returns the {@link Gtk.AccelGroup} associated with `self`.
          * @returns the {@link Gtk.AccelGroup}.
+         * @since 2.4
          */
         get_accel_group(): AccelGroup;
 
@@ -74659,12 +76938,14 @@ export namespace Gtk {
          * for more information about paths.
          * @param path a path
          * @returns the action whose proxy widget is found by following the path,     or `null` if no widget was found.
+         * @since 2.4
          */
         get_action(path: string): Action;
 
         /**
          * Returns the list of action groups associated with `self`.
          * @returns a {@link GLib.List} of   action groups. The list is owned by GTK+   and should not be modified.
+         * @since 2.4
          */
         get_action_groups(): ActionGroup[];
 
@@ -74672,6 +76953,7 @@ export namespace Gtk {
          * Returns whether menus generated by this {@link Gtk.UIManager}
          * will have tearoff menu items.
          * @returns whether tearoff menu items are added
+         * @since 2.4
          */
         get_add_tearoffs(): boolean;
 
@@ -74679,12 +76961,14 @@ export namespace Gtk {
          * Obtains a list of all toplevel widgets of the requested types.
          * @param types specifies the types of toplevel widgets to include. Allowed   types are #GTK_UI_MANAGER_MENUBAR, #GTK_UI_MANAGER_TOOLBAR and   #GTK_UI_MANAGER_POPUP.
          * @returns a newly-allocated {@link GLib.SList} of all toplevel widgets of the requested types.  Free the returned list with `g_slist_free()`.
+         * @since 2.4
          */
         get_toplevels(types: UIManagerItemType): Widget[];
 
         /**
          * Creates a <link linkend="XML-UI">UI definition</link> of the merged UI.
          * @returns A newly allocated string containing an XML representation of the merged UI.
+         * @since 2.4
          */
         get_ui(): string;
 
@@ -74704,6 +76988,7 @@ export namespace Gtk {
          * destruction of the ui manager.
          * @param path a path
          * @returns the widget found by following the path, or `null` if no widget   was found.
+         * @since 2.4
          */
         get_widget(path: string): Widget;
 
@@ -74713,6 +76998,7 @@ export namespace Gtk {
          * name in later groups.
          * @param action_group the action group to be inserted
          * @param pos the position at which the group will be inserted.
+         * @since 2.4
          */
         insert_action_group(action_group: ActionGroup, pos: number): void;
 
@@ -74720,6 +77006,7 @@ export namespace Gtk {
          * Returns an unused merge id, suitable for use with
          * `gtk_ui_manager_add_ui()`.
          * @returns an unused merge id.
+         * @since 2.4
          */
         new_merge_id(): number;
 
@@ -74727,12 +77014,14 @@ export namespace Gtk {
          * Removes an action group from the list of action groups associated
          * with `self`.
          * @param action_group the action group to be removed
+         * @since 2.4
          */
         remove_action_group(action_group: ActionGroup): void;
 
         /**
          * Unmerges the part of `self`<!-- -->s content identified by `merge_id`.
          * @param merge_id a merge id as returned by `gtk_ui_manager_add_ui_from_string()`
+         * @since 2.4
          */
         remove_ui(merge_id: number): void;
 
@@ -74743,6 +77032,7 @@ export namespace Gtk {
          * Note that this only affects regular menus. Generated popup
          * menus never have tearoff menu items.
          * @param add_tearoffs whether tearoff menu items are added
+         * @since 2.4
          */
         set_add_tearoffs(add_tearoffs: boolean): void;
 
@@ -74752,6 +77042,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -74763,6 +77054,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -74773,6 +77065,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -74783,6 +77076,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -74792,6 +77086,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -74800,6 +77095,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -74810,6 +77106,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -74820,6 +77117,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -74828,12 +77126,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -74843,6 +77143,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -74854,6 +77155,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -74865,6 +77167,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -74876,6 +77179,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -74885,6 +77189,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -74893,6 +77198,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -74903,6 +77209,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -74914,6 +77221,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -74923,6 +77231,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -74930,6 +77239,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -75031,12 +77341,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -75156,18 +77468,21 @@ export namespace Gtk {
         // Static methods
         /**
          * Retrieves the current layout used to arrange buttons in button box widgets.
+         * @deprecated since 2.0: Use `gtk_button_box_get_layout()` instead.
          */
         static get_layout_default(): ButtonBoxStyle;
 
         /**
          * Retrieves the current default spacing for vertical button boxes. This is the number of pixels
          * to be placed between the buttons when they are arranged.
+         * @deprecated since 2.0: Use `gtk_box_get_spacing()` instead.
          */
         static get_spacing_default(): number;
 
         /**
          * Sets a new layout mode that will be used by all button boxes.
          * @param layout a new {@link Gtk.ButtonBoxStyle}.
+         * @deprecated since 2.0: Use `gtk_button_box_set_layout()` instead.
          */
         static set_layout_default(layout: ButtonBoxStyle): void;
 
@@ -75175,6 +77490,7 @@ export namespace Gtk {
          * Changes the default spacing that is placed between widgets in an
          * vertical button box.
          * @param spacing an integer value.
+         * @deprecated since 2.0: Use `gtk_box_set_spacing()` instead.
          */
         static set_spacing_default(spacing: number): void;
 
@@ -75309,12 +77625,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -75456,12 +77774,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -75836,12 +78156,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -76018,6 +78340,7 @@ export namespace Gtk {
         /**
          * Gets the bin window of the {@link Gtk.Viewport}.
          * @returns a {@link Gdk.Window}
+         * @since 2.20
          */
         get_bin_window(): Gdk.Window;
 
@@ -76043,6 +78366,7 @@ export namespace Gtk {
         /**
          * Gets the view window of the {@link Gtk.Viewport}.
          * @returns a {@link Gdk.Window}
+         * @since 2.22
          */
         get_view_window(): Gdk.Window;
 
@@ -76200,12 +78524,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
 
@@ -77791,6 +80117,7 @@ export namespace Gtk {
          * that the widget must be sensitive, and the widget and all
          * its ancestors mapped.
          * @param signal_id the ID of a signal installed on `widget`
+         * @since 2.4
          * @virtual
          */
         vfunc_can_activate_accel(signal_id: number): boolean;
@@ -78008,6 +80335,7 @@ export namespace Gtk {
 
         /**
          * Recursively hides a widget and any child widgets.
+         * @deprecated since 2.24: Use `gtk_widget_hide()` instead.
          * @virtual
          */
         vfunc_hide_all(): void;
@@ -78322,6 +80650,7 @@ export namespace Gtk {
          * its internal state at this point as well, by using a connection
          * to the {@link Gtk.Widget.SignalSignatures.destroy | Gtk.Widget::destroy} signal or a weak notifier.
          * @param label a {@link Gtk.Widget} that acts as a mnemonic label for `widget`
+         * @since 2.4
          */
         add_mnemonic_label(label: Widget): void;
 
@@ -78335,6 +80664,7 @@ export namespace Gtk {
          * its ancestors mapped.
          * @param signal_id the ID of a signal installed on `widget`
          * @returns `true` if the accelerator can be activated.
+         * @since 2.4
          */
         can_activate_accel(signal_id: number): boolean;
 
@@ -78467,6 +80797,7 @@ export namespace Gtk {
          * Note that the effect of `gdk_window_beep()` can be configured in many
          * ways, depending on the windowing backend and the desktop environment
          * or window manager that is used.
+         * @since 2.12
          */
         error_bell(): void;
 
@@ -78512,6 +80843,7 @@ export namespace Gtk {
 
         /**
          * Retrieves the widget's allocation.
+         * @since 2.18
          */
         get_allocation(): Allocation;
 
@@ -78536,6 +80868,7 @@ export namespace Gtk {
          * 
          * See `gtk_widget_set_app_paintable()`
          * @returns `true` if the widget is app paintable
+         * @since 2.18
          */
         get_app_paintable(): boolean;
 
@@ -78543,6 +80876,7 @@ export namespace Gtk {
          * Determines whether `widget` can be a default widget. See
          * `gtk_widget_set_can_default()`.
          * @returns `true` if `widget` can be a default widget, `false` otherwise
+         * @since 2.18
          */
         get_can_default(): boolean;
 
@@ -78550,6 +80884,7 @@ export namespace Gtk {
          * Determines whether `widget` can own the input focus. See
          * `gtk_widget_set_can_focus()`.
          * @returns `true` if `widget` can own the input focus, `false` otherwise
+         * @since 2.18
          */
         get_can_focus(): boolean;
 
@@ -78594,6 +80929,7 @@ export namespace Gtk {
          * window.
          * @param selection a {@link Gdk.Atom} which identifies the clipboard             to use. `GDK_SELECTION_CLIPBOARD` gives the             default clipboard. Another common value             is `GDK_SELECTION_PRIMARY`, which gives             the primary X selection.
          * @returns the appropriate clipboard object. If no             clipboard already exists, a new one will             be created. Once a clipboard object has             been created, it is persistent for all time.
+         * @since 2.2
          */
         get_clipboard(selection: Gdk.Atom): Clipboard;
 
@@ -78626,6 +80962,7 @@ export namespace Gtk {
          * resources when a widget has been realized, and you should
          * free those resources when the widget is unrealized.
          * @returns the {@link Gdk.Display} for the toplevel for this widget.
+         * @since 2.2
          */
         get_display(): Gdk.Display;
 
@@ -78634,6 +80971,7 @@ export namespace Gtk {
          * 
          * See `gtk_widget_set_double_buffered()`
          * @returns `true` if the widget is double buffered
+         * @since 2.18
          */
         get_double_buffered(): boolean;
 
@@ -78656,6 +80994,7 @@ export namespace Gtk {
          * Returns the current value of the has-tooltip property.  See
          * GtkWidget:has-tooltip for more information.
          * @returns current value of has-tooltip on `widget`.
+         * @since 2.12
          */
         get_has_tooltip(): boolean;
 
@@ -78663,12 +81002,14 @@ export namespace Gtk {
          * Determines whether `widget` has a {@link Gdk.Window} of its own. See
          * `gtk_widget_set_has_window()`.
          * @returns `true` if `widget` has a window, `false` otherwise
+         * @since 2.18
          */
         get_has_window(): boolean;
 
         /**
          * Whether the widget is mapped.
          * @returns `true` if the widget is mapped, `false` otherwise.
+         * @since 2.20
          */
         get_mapped(): boolean;
 
@@ -78701,6 +81042,7 @@ export namespace Gtk {
          * which determines whether calls to `gtk_widget_show_all()` and
          * `gtk_widget_hide_all()` will affect this widget.
          * @returns the current value of the "no-show-all" property.
+         * @since 2.4
          */
         get_no_show_all(): boolean;
 
@@ -78744,6 +81086,7 @@ export namespace Gtk {
         /**
          * Determines whether `widget` is realized.
          * @returns `true` if `widget` is realized, `false` otherwise
+         * @since 2.20
          */
         get_realized(): boolean;
 
@@ -78754,6 +81097,7 @@ export namespace Gtk {
          * 
          * See `gtk_widget_set_receives_default()`.
          * @returns `true` if `widget` acts as default widget when focussed,               `false` otherwise
+         * @since 2.18
          */
         get_receives_default(): boolean;
 
@@ -78766,6 +81110,7 @@ export namespace Gtk {
          * `gtk_widget_queue_resize()` instead of `gtk_widget_queue_draw()`).
          * 
          * Normally, `gtk_widget_size_request()` should be used.
+         * @since 2.20
          */
         get_requisition(): Requisition;
 
@@ -78779,6 +81124,7 @@ export namespace Gtk {
          * create display specific resources when a widget has been realized,
          * and you should free those resources when the widget is unrealized.
          * @returns the {@link Gdk.Window} root window for the toplevel for this widget.
+         * @since 2.2
          */
         get_root_window(): Gdk.Window;
 
@@ -78792,6 +81138,7 @@ export namespace Gtk {
          * resources when a widget has been realized, and you should
          * free those resources when the widget is unrealized.
          * @returns the {@link Gdk.Screen} for the toplevel for this widget.
+         * @since 2.2
          */
         get_screen(): Gdk.Screen;
 
@@ -78802,6 +81149,7 @@ export namespace Gtk {
          * The effective sensitivity of a widget is however determined by both its
          * own and its parent widget's sensitivity. See `gtk_widget_is_sensitive()`.
          * @returns `true` if the widget is sensitive
+         * @since 2.18
          */
         get_sensitive(): boolean;
 
@@ -78830,6 +81178,7 @@ export namespace Gtk {
         /**
          * Returns the widget's state. See `gtk_widget_set_state()`.
          * @returns the state of `widget`.
+         * @since 2.18
          */
         get_state(): StateType;
 
@@ -78842,12 +81191,14 @@ export namespace Gtk {
         /**
          * Gets the contents of the tooltip for `widget`.
          * @returns the tooltip text, or `null`. You should free the   returned string with `g_free()` when done.
+         * @since 2.12
          */
         get_tooltip_markup(): string;
 
         /**
          * Gets the contents of the tooltip for `widget`.
          * @returns the tooltip text, or `null`. You should free the   returned string with `g_free()` when done.
+         * @since 2.12
          */
         get_tooltip_text(): string;
 
@@ -78856,6 +81207,7 @@ export namespace Gtk {
          * GtkWindow created by default, or the custom tooltip window set
          * using `gtk_widget_set_tooltip_window()`.
          * @returns The {@link Gtk.Window} of the current tooltip.
+         * @since 2.12
          */
         get_tooltip_window(): Window;
 
@@ -78897,6 +81249,7 @@ export namespace Gtk {
          * 
          * See `gtk_widget_set_visible()`.
          * @returns `true` if the widget is visible
+         * @since 2.18
          */
         get_visible(): boolean;
 
@@ -78909,6 +81262,7 @@ export namespace Gtk {
         /**
          * Returns the widget's window if it is realized, `null` otherwise
          * @returns `widget`'s window.
+         * @since 2.14
          */
         get_window(): Gdk.Window;
 
@@ -78942,12 +81296,14 @@ export namespace Gtk {
          * 
          * See also `gtk_grab_add()`.
          * @returns `true` if the widget is in the grab_widgets stack
+         * @since 2.18
          */
         has_grab(): boolean;
 
         /**
          * Determines if the widget style has been looked up through the rc mechanism.
          * @returns `true` if the widget has been looked up through the rc   mechanism, `false` otherwise.
+         * @since 2.20
          */
         has_rc_style(): boolean;
 
@@ -78957,6 +81313,7 @@ export namespace Gtk {
          * screen, and all widgets added into a hierarchy with a toplevel
          * window at the top.
          * @returns `true` if there is a {@link Gdk.Screen} associcated   with the widget.
+         * @since 2.2
          */
         has_screen(): boolean;
 
@@ -78968,6 +81325,7 @@ export namespace Gtk {
 
         /**
          * Recursively hides a widget and any child widgets.
+         * @deprecated since 2.24: Use `gtk_widget_hide()` instead.
          */
         hide_all(): void;
 
@@ -78990,6 +81348,7 @@ export namespace Gtk {
          * @param shape_mask shape to be added, or `null` to remove an existing shape
          * @param offset_x X position of shape mask with respect to `window`
          * @param offset_y Y position of shape mask with respect to `window`
+         * @since 2.10
          */
         input_shape_combine_mask(shape_mask: Gdk.Bitmap | null, offset_x: number, offset_y: number): void;
 
@@ -79021,6 +81380,7 @@ export namespace Gtk {
          * in the future if used on a widget that has a composited
          * window in its hierarchy (as set by `gdk_window_set_composited()`).
          * @returns `true` if the widget can rely on its alpha channel being drawn correctly.
+         * @since 2.10
          */
         is_composited(): boolean;
 
@@ -79028,6 +81388,7 @@ export namespace Gtk {
          * Determines whether `widget` can be drawn to. A widget can be drawn
          * to if it is mapped and visible.
          * @returns `true` if `widget` is drawable, `false` otherwise
+         * @since 2.18
          */
         is_drawable(): boolean;
 
@@ -79035,6 +81396,7 @@ export namespace Gtk {
          * Returns the widget's effective sensitivity, which means
          * it is sensitive itself and also its parent widget is sensntive
          * @returns `true` if the widget is effectively sensitive
+         * @since 2.18
          */
         is_sensitive(): boolean;
 
@@ -79043,6 +81405,7 @@ export namespace Gtk {
          * {@link Gtk.Window} and {@link Gtk.Invisible} are toplevel widgets. Toplevel
          * widgets have no parent widget.
          * @returns `true` if `widget` is a toplevel, `false` otherwise
+         * @since 2.18
          */
         is_toplevel(): boolean;
 
@@ -79080,6 +81443,7 @@ export namespace Gtk {
          * that require entering license keys.
          * @param direction direction of focus movement
          * @returns `true` if stopping keyboard navigation is fine, `false`               if the emitting widget should try to handle the keyboard               navigation attempt in its parent container(s).
+         * @since 2.12
          */
         keynav_failed(direction: DirectionType): boolean;
 
@@ -79106,6 +81470,7 @@ export namespace Gtk {
          * (GFunc)g_object_ref, NULL)</literal> first, and then unref all the
          * widgets afterwards.
          * @returns the list of  mnemonic labels; free this list  with `g_list_free()` when you are done with it.
+         * @since 2.4
          */
         list_mnemonic_labels(): Widget[];
 
@@ -79169,6 +81534,7 @@ export namespace Gtk {
          * See also `gtk_widget_modify_style()`.
          * @param primary the color to use for primary cursor (does not need to be           allocated), or `null` to undo the effect of previous calls to           of `gtk_widget_modify_cursor()`.
          * @param secondary the color to use for secondary cursor (does not need to be             allocated), or `null` to undo the effect of previous calls to             of `gtk_widget_modify_cursor()`.
+         * @since 2.12
          */
         modify_cursor(primary: Gdk.Color, secondary: Gdk.Color): void;
 
@@ -79239,6 +81605,7 @@ export namespace Gtk {
 
         /**
          * This function does the same as `gtk_widget_queue_draw()`.
+         * @deprecated since 2.2: Use `gtk_widget_queue_draw()` instead.
          */
         queue_clear(): void;
 
@@ -79254,6 +81621,7 @@ export namespace Gtk {
          * @param y y coordinate of upper-left corner of rectangle to redraw
          * @param width width of region to draw
          * @param height height of region to draw
+         * @deprecated since 2.2: Use `gtk_widget_queue_draw_area()` instead.
          */
         queue_clear_area(x: number, y: number, width: number, height: number): void;
 
@@ -79303,6 +81671,7 @@ export namespace Gtk {
         /**
          * This function works like `gtk_widget_queue_resize()`,
          * except that the widget is not invalidated.
+         * @since 2.4
          */
         queue_resize_no_redraw(): void;
 
@@ -79344,6 +81713,7 @@ export namespace Gtk {
          * must have previously been added to the list with
          * `gtk_widget_add_mnemonic_label()`.
          * @param label a {@link Gtk.Widget} that was previously set as a mnemnic label for         `widget` with `gtk_widget_add_mnemonic_label()`.
+         * @since 2.4
          */
         remove_mnemonic_label(label: Widget): void;
 
@@ -79384,6 +81754,7 @@ export namespace Gtk {
 
         /**
          * Recursively resets the shape on this widget and its descendants.
+         * @deprecated This function is being removed in GTK+ 3.0. Don't use it.
          */
         reset_shapes(): void;
 
@@ -79431,6 +81802,7 @@ export namespace Gtk {
          * 
          * @param event a {@link Gdk.Event} of type GDK_FOCUS_CHANGE
          * @returns the return value from the event signal emission: `true`   if the event was handled, and `false` otherwise
+         * @since 2.22
          */
         send_focus_change(event: Gdk.Event): boolean;
 
@@ -79465,6 +81837,7 @@ export namespace Gtk {
          * Sets the widget's allocation.  This should not be used
          * directly, but from within a widget's size_allocate method.
          * @param allocation a pointer to a {@link Gtk.Allocation} to copy from
+         * @since 2.18
          */
         set_allocation(allocation: Allocation): void;
 
@@ -79498,6 +81871,7 @@ export namespace Gtk {
          * `gtk_widget_grab_default()` for details about the meaning of
          * "default".
          * @param can_default whether or not `widget` can be a default widget.
+         * @since 2.18
          */
         set_can_default(can_default: boolean): void;
 
@@ -79506,6 +81880,7 @@ export namespace Gtk {
          * `gtk_widget_grab_focus()` for actually setting the input focus on a
          * widget.
          * @param can_focus whether or not `widget` can own the input focus.
+         * @since 2.18
          */
         set_can_focus(can_focus: boolean): void;
 
@@ -79613,6 +81988,7 @@ export namespace Gtk {
          * Sets the has-tooltip property on `widget` to `has_tooltip`.  See
          * GtkWidget:has-tooltip for more information.
          * @param has_tooltip whether or not `widget` has a tooltip.
+         * @since 2.12
          */
         set_has_tooltip(has_tooltip: boolean): void;
 
@@ -79628,6 +82004,7 @@ export namespace Gtk {
          * This function should only be called by widget implementations,
          * and they should call it in their `init()` function.
          * @param has_window whether or not `widget` has a window.
+         * @since 2.18
          */
         set_has_window(has_window: boolean): void;
 
@@ -79637,6 +82014,7 @@ export namespace Gtk {
          * This function should only ever be called in a derived widget's
          * "map" or "unmap" implementation.
          * @param mapped `true` to mark the widget as mapped
+         * @since 2.20
          */
         set_mapped(mapped: boolean): void;
 
@@ -79660,6 +82038,7 @@ export namespace Gtk {
          * This is mostly for use in constructing widget hierarchies with externally
          * controlled visibility, see {@link Gtk.UIManager}.
          * @param no_show_all the new value for the "no-show-all" property
+         * @since 2.4
          */
         set_no_show_all(no_show_all: boolean): void;
 
@@ -79686,6 +82065,7 @@ export namespace Gtk {
          * This function should only ever be called in a derived widget's
          * "realize" or "unrealize" implementation.
          * @param realized `true` to mark the widget as realized
+         * @since 2.20
          */
         set_realized(realized: boolean): void;
 
@@ -79697,6 +82077,7 @@ export namespace Gtk {
          * See `gtk_widget_grab_default()` for details about the meaning of
          * "default".
          * @param receives_default whether or not `widget` can be a default widget.
+         * @since 2.18
          */
         set_receives_default(receives_default: boolean): void;
 
@@ -79802,6 +82183,7 @@ export namespace Gtk {
          * See also the GtkWidget:tooltip-markup property and
          * `gtk_tooltip_set_markup()`.
          * @param markup the contents of the tooltip for `widget`, or `null`
+         * @since 2.12
          */
         set_tooltip_markup(markup: string | null): void;
 
@@ -79812,6 +82194,7 @@ export namespace Gtk {
          * 
          * See also the GtkWidget:tooltip-text property and `gtk_tooltip_set_text()`.
          * @param text the contents of the tooltip for `widget`
+         * @since 2.12
          */
         set_tooltip_text(text: string): void;
 
@@ -79825,6 +82208,7 @@ export namespace Gtk {
          * If the custom window should have the default theming it needs to
          * have the name "gtk-tooltip", see `gtk_widget_set_name()`.
          * @param custom_window a {@link Gtk.Window}, or `null`
+         * @since 2.12
          */
         set_tooltip_window(custom_window: Window | null): void;
 
@@ -79869,6 +82253,7 @@ export namespace Gtk {
          * correct.
          * @param width minimum width, or -1 to unset
          * @param height minimum height, or -1 to unset
+         * @deprecated since 2.2: Use `gtk_widget_set_size_request()` instead.
          */
         set_usize(width: number, height: number): void;
 
@@ -79881,6 +82266,7 @@ export namespace Gtk {
          * but is nicer to use when the visibility of the widget depends on
          * some condition.
          * @param visible whether the widget should be shown or not
+         * @since 2.18
          */
         set_visible(visible: boolean): void;
 
@@ -79895,6 +82281,7 @@ export namespace Gtk {
          * by calling `gtk_widget_set_has_window()`. This is usually done in the
          * widget's `init()` function.
          * @param window a {@link Gdk.Window}
+         * @since 2.18
          */
         set_window(window: Gdk.Window): void;
 
@@ -79976,6 +82363,7 @@ export namespace Gtk {
          * implementation which does not chain up to its parent class'
          * "realize" implementation, because one of the parent classes
          * (finally {@link Gtk.Widget}) would attach the style itself.
+         * @since 2.20
          */
         style_attach(): void;
 
@@ -80009,6 +82397,7 @@ export namespace Gtk {
          * Triggers a tooltip query on the display where the toplevel of `widget`
          * is located. See `gtk_tooltip_trigger_tooltip_query()` for more
          * information.
+         * @since 2.12
          */
         trigger_tooltip_query(): void;
 
@@ -80034,6 +82423,7 @@ export namespace Gtk {
 
         /**
          * Inverse of `gtk_widget_ref()`. Equivalent to `g_object_unref()`.
+         * @deprecated since 2.12: Use `g_object_unref()` instead.
          */
         unref(): void;
 
@@ -80043,6 +82433,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -80054,6 +82445,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -80064,6 +82456,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -80074,6 +82467,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -80083,6 +82477,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -80091,6 +82486,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -80101,6 +82497,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -80109,6 +82506,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
@@ -80118,6 +82516,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -80129,6 +82528,7 @@ export namespace Gtk {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -80140,6 +82540,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -80151,6 +82552,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -80160,6 +82562,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -80168,6 +82571,7 @@ export namespace Gtk {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -80178,6 +82582,7 @@ export namespace Gtk {
          * {@link Gtk.Builder} sets the name based on the the
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -80189,6 +82594,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Builder): void;
@@ -80198,6 +82604,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -80205,6 +82612,7 @@ export namespace Gtk {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -80812,6 +83220,7 @@ export namespace Gtk {
          * string is owned by GTK+ and should not be modified. It
          * is only valid until the next call to
          * `gtk_window_set_default_icon_name()`.
+         * @since 2.16
          */
         static get_default_icon_name(): string;
 
@@ -80836,6 +83245,7 @@ export namespace Gtk {
          * temporarily, show your splash screen, then re-enable it so that
          * showing the main window would automatically result in notification.
          * @param setting `true` to automatically do startup notification
+         * @since 2.2
          */
         static set_auto_startup_notification(setting: boolean): void;
 
@@ -80843,6 +83253,7 @@ export namespace Gtk {
          * Sets an icon to be used as fallback for windows that haven't
          * had `gtk_window_set_icon()` called on them from a pixbuf.
          * @param icon the icon
+         * @since 2.4
          */
         static set_default_icon(icon: GdkPixbuf.Pixbuf): void;
 
@@ -80851,6 +83262,7 @@ export namespace Gtk {
          * had `gtk_window_set_icon_list()` called on them from a file
          * on disk. Warns on failure if `err` is `null`.
          * @param filename location of icon file
+         * @since 2.2
          */
         static set_default_icon_from_file(filename: string): boolean;
 
@@ -80870,6 +83282,7 @@ export namespace Gtk {
          * had `gtk_window_set_icon_list()` called on them from a named
          * themed icon, see `gtk_window_set_icon_name()`.
          * @param name the name of the themed icon
+         * @since 2.6
          */
         static set_default_icon_name(name: string): void;
 
@@ -80935,6 +83348,7 @@ export namespace Gtk {
          * overriding the standard key handling for a toplevel window.
          * @param event a {@link Gdk.EventKey}
          * @returns `true` if a mnemonic or accelerator was found and activated.
+         * @since 2.4
          */
         activate_key(event: Gdk.EventKey): boolean;
 
@@ -81010,12 +83424,14 @@ export namespace Gtk {
          * 
          * You can track the fullscreen state via the "window-state-event" signal
          * on {@link Gtk.Widget}.
+         * @since 2.2
          */
         fullscreen(): void;
 
         /**
          * Gets the value set by `gtk_window_set_accept_focus()`.
          * @returns `true` if window should receive the input focus
+         * @since 2.4
          */
         get_accept_focus(): boolean;
 
@@ -81040,6 +83456,7 @@ export namespace Gtk {
          * Returns the default widget for `window`. See `gtk_window_set_default()`
          * for more details.
          * @returns the default widget, or `null` if there is none.
+         * @since 2.14
          */
         get_default_widget(): Widget;
 
@@ -81047,6 +83464,7 @@ export namespace Gtk {
          * Returns whether the window has been set to have a close button
          * via `gtk_window_set_deletable()`.
          * @returns `true` if the window has been set to have a close button
+         * @since 2.10
          */
         get_deletable(): boolean;
 
@@ -81070,6 +83488,7 @@ export namespace Gtk {
         /**
          * Gets the value set by `gtk_window_set_focus_on_map()`.
          * @returns `true` if window should receive the input focus when mapped.
+         * @since 2.6
          */
         get_focus_on_map(): boolean;
 
@@ -81084,6 +83503,7 @@ export namespace Gtk {
          * 
          * Retrieves the dimensions of the frame window for this toplevel.
          * See `gtk_window_set_has_frame()`, `gtk_window_set_frame_dimensions()`.
+         * @deprecated since 2.24: This function will be removed in GTK+ 3
          */
         get_frame_dimensions(): [number, number, number, number];
 
@@ -81098,6 +83518,7 @@ export namespace Gtk {
          * `window` is `null` or if `window` does not have an explicit
          * window group.
          * @returns the {@link Gtk.WindowGroup} for a window or the default group
+         * @since 2.10
          */
         get_group(): WindowGroup;
 
@@ -81105,6 +83526,7 @@ export namespace Gtk {
          * Accessor for whether the window has a frame window exterior to
          * `window`->window. Gets the value set by gtk_window_set_has_frame ().
          * @returns `true` if a frame has been added to the window   via `gtk_window_set_has_frame()`.
+         * @deprecated since 2.24: This function will be removed in GTK+ 3
          */
         get_has_frame(): boolean;
 
@@ -81128,6 +83550,7 @@ export namespace Gtk {
          * Returns the name of the themed icon for the window,
          * see `gtk_window_set_icon_name()`.
          * @returns the icon name or `null` if the window has no themed icon
+         * @since 2.6
          */
         get_icon_name(): string;
 
@@ -81150,6 +83573,7 @@ export namespace Gtk {
          * Fetches the requested opacity for this window. See
          * `gtk_window_set_opacity()`.
          * @returns the requested opacity for this window.
+         * @since 2.12
          */
         get_opacity(): number;
 
@@ -81209,6 +83633,7 @@ export namespace Gtk {
         /**
          * Returns the {@link Gdk.Screen} associated with `window`.
          * @returns a {@link Gdk.Screen}.
+         * @since 2.2
          */
         get_screen(): Gdk.Screen;
 
@@ -81263,12 +83688,14 @@ export namespace Gtk {
         /**
          * Gets the value set by `gtk_window_set_skip_pager_hint()`.
          * @returns `true` if window shouldn't be in pager
+         * @since 2.2
          */
         get_skip_pager_hint(): boolean;
 
         /**
          * Gets the value set by `gtk_window_set_skip_taskbar_hint()`
          * @returns `true` if window shouldn't be in taskbar
+         * @since 2.2
          */
         get_skip_taskbar_hint(): boolean;
 
@@ -81294,12 +83721,14 @@ export namespace Gtk {
         /**
          * Gets the value set by `gtk_window_set_urgency_hint()`
          * @returns `true` if window is urgent
+         * @since 2.8
          */
         get_urgency_hint(): boolean;
 
         /**
          * Gets the type of the window. See {@link Gtk.WindowType}.
          * @returns the type of the window
+         * @since 2.20
          */
         get_window_type(): WindowType;
 
@@ -81498,6 +83927,7 @@ export namespace Gtk {
          * If you need to present a window without a timestamp, use
          * `gtk_window_present()`. See `gtk_window_present()` for details.
          * @param timestamp the timestamp of the user interaction (typically a   button or key press event) which triggered this call
+         * @since 2.8
          */
         present_with_time(timestamp: number): void;
 
@@ -81510,6 +83940,7 @@ export namespace Gtk {
          * overriding the standard key handling for a toplevel window.
          * @param event a {@link Gdk.EventKey}
          * @returns `true` if a widget in the focus chain handled the event.
+         * @since 2.4
          */
         propagate_key_event(event: Gdk.EventKey): boolean;
 
@@ -81559,6 +83990,7 @@ export namespace Gtk {
          * Windows may set a hint asking the desktop environment not to receive
          * the input focus. This function sets this hint.
          * @param setting `true` to let this window receive input focus
+         * @since 2.4
          */
         set_accept_focus(setting: boolean): void;
 
@@ -81636,6 +84068,7 @@ export namespace Gtk {
          * On Windows, this function always works, since there's no window manager
          * policy involved.
          * @param setting `true` to decorate the window as deletable
+         * @since 2.10
          */
         set_deletable(setting: boolean): void;
 
@@ -81663,6 +84096,7 @@ export namespace Gtk {
          * the input focus when the window is mapped.  This function sets this
          * hint.
          * @param setting `true` to let this window receive input focus on map
+         * @since 2.6
          */
         set_focus_on_map(setting: boolean): void;
 
@@ -81678,6 +84112,7 @@ export namespace Gtk {
          * @param top The height of the top border
          * @param right The width of the right border
          * @param bottom The height of the bottom border
+         * @deprecated since 2.24: This function will be removed in GTK+ 3
          */
         set_frame_dimensions(left: number, top: number, right: number, bottom: number): void;
 
@@ -81718,6 +84153,7 @@ export namespace Gtk {
          * windows, but it could conceivably be used by X-programs that
          * want to do their own window decorations.
          * @param setting a boolean
+         * @deprecated since 2.24: This function will be removed in GTK+ 3
          */
         set_has_frame(setting: boolean): void;
 
@@ -81752,6 +84188,7 @@ export namespace Gtk {
          * with a pixbuf created by loading the image from `filename`.
          * @param filename location of icon file
          * @returns `true` if setting the icon succeeded.
+         * @since 2.2
          */
         set_icon_from_file(filename: string): boolean;
 
@@ -81762,6 +84199,7 @@ export namespace Gtk {
          * Note that this has nothing to do with the WM_ICON_NAME
          * property which is mentioned in the ICCCM.
          * @param name the name of the themed icon
+         * @since 2.6
          */
         set_icon_name(name: string | null): void;
 
@@ -81787,6 +84225,7 @@ export namespace Gtk {
          * for user preferences and should not be used by applications e.g. for
          * drawing attention to their dialogs.
          * @param setting whether to keep `window` above other windows
+         * @since 2.4
          */
         set_keep_above(setting: boolean): void;
 
@@ -81812,6 +84251,7 @@ export namespace Gtk {
          * for user preferences and should not be used by applications e.g. for
          * drawing attention to their dialogs.
          * @param setting whether to keep `window` below other windows
+         * @since 2.4
          */
         set_keep_below(setting: boolean): void;
 
@@ -81824,6 +84264,7 @@ export namespace Gtk {
         /**
          * Sets the {@link Gtk.Window.mnemonics_visible} property.
          * @param setting the new value
+         * @since 2.20
          */
         set_mnemonics_visible(setting: boolean): void;
 
@@ -81849,6 +84290,7 @@ export namespace Gtk {
          * Note that setting a window's opacity after the window has been
          * shown causes it to flicker once on Windows.
          * @param opacity desired opacity, between 0 and 1
+         * @since 2.12
          */
         set_opacity(opacity: number): void;
 
@@ -81896,6 +84338,7 @@ export namespace Gtk {
          * the window is already mapped, it will be unmapped, and
          * then remapped on the new screen.
          * @param screen a {@link Gdk.Screen}.
+         * @since 2.2
          */
         set_screen(screen: Gdk.Screen): void;
 
@@ -81906,6 +84349,7 @@ export namespace Gtk {
          * switcher that displays a thumbnail representation of the windows
          * on the screen.)
          * @param setting `true` to keep this window from appearing in the pager
+         * @since 2.2
          */
         set_skip_pager_hint(setting: boolean): void;
 
@@ -81913,6 +84357,7 @@ export namespace Gtk {
          * Windows may set a hint asking the desktop environment not to display
          * the window in the task bar. This function sets this hint.
          * @param setting `true` to keep this window from appearing in the task bar
+         * @since 2.2
          */
         set_skip_taskbar_hint(setting: boolean): void;
 
@@ -81928,6 +84373,7 @@ export namespace Gtk {
          * 
          * This function is only useful on X11, not with other GTK+ targets.
          * @param startup_id a string with startup-notification identifier
+         * @since 2.12
          */
         set_startup_id(startup_id: string): void;
 
@@ -81978,6 +84424,7 @@ export namespace Gtk {
          * Windows may set a hint asking the desktop environment to draw
          * the users attention to the window. This function sets this hint.
          * @param setting `true` to mark this window as urgent
+         * @since 2.8
          */
         set_urgency_hint(setting: boolean): void;
 
@@ -82022,6 +84469,7 @@ export namespace Gtk {
          * 
          * You can track the fullscreen state via the "window-state-event" signal
          * on {@link Gtk.Widget}.
+         * @since 2.2
          */
         unfullscreen(): void;
 
@@ -82143,6 +84591,7 @@ export namespace Gtk {
         /**
          * Returns a list of the `GtkWindows` that belong to `window_group`.
          * @returns A newly-allocated list of   windows inside the group.
+         * @since 2.14
          */
         list_windows(): Widget[];
 
@@ -82361,6 +84810,7 @@ export namespace Gtk {
          * @param binding_set binding set to clear an entry of
          * @param keyval key value of binding to clear
          * @param modifiers key modifier of binding to clear
+         * @deprecated since 2.12: Use `gtk_binding_entry_remove()` instead.
          */
         static clear(binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType): void;
 
@@ -82380,6 +84830,7 @@ export namespace Gtk {
          * @param binding_set a {@link Gtk.BindingSet} to skip an entry of
          * @param keyval key value of binding to skip
          * @param modifiers key modifier of binding to skip
+         * @since 2.12
          */
         static skip(binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType): void;
     }
@@ -83284,11 +85735,13 @@ export namespace Gtk {
         /**
          * Make a copy of a {@link Gtk.IconInfo}.
          * @returns the new GtkIconInfo
+         * @since 2.4
          */
         copy(): IconInfo;
 
         /**
          * Free a {@link Gtk.IconInfo} and associated information
+         * @since 2.4
          */
         free(): void;
 
@@ -83297,6 +85750,7 @@ export namespace Gtk {
          * is a location in the icon that can be used as anchor points for attaching
          * emblems or overlays to the icon.
          * @returns `true` if there are any attach points for the icon.
+         * @since 2.4
          */
         get_attach_points(): [boolean, Gdk.Point[] | null];
 
@@ -83310,6 +85764,7 @@ export namespace Gtk {
          * the same base size as the larger icons to which
          * they are attached.
          * @returns the base size, or 0, if no base  size is known for the icon.
+         * @since 2.4
          */
         get_base_size(): number;
 
@@ -83319,6 +85774,7 @@ export namespace Gtk {
          * {@link Gtk.IconLookupFlags.USE_BUILTIN} to
          * `gtk_icon_theme_lookup_icon()`.
          * @returns the built-in image pixbuf, or `null`. No  extra reference is added to the returned pixbuf, so if  you want to keep it around, you must use `g_object_ref()`.  The returned image must not be modified.
+         * @since 2.4
          */
         get_builtin_pixbuf(): GdkPixbuf.Pixbuf;
 
@@ -83327,6 +85783,7 @@ export namespace Gtk {
          * string to be used in place of the icon name in a user
          * visible context like a list of icons.
          * @returns the display name for the icon or `null`, if  the icon doesn't have a specified display name. This value  is owned `icon_info` and must not be modified or free.
+         * @since 2.4
          */
         get_display_name(): string;
 
@@ -83337,6 +85794,7 @@ export namespace Gtk {
          * See `gtk_icon_info_set_raw_coordinates()` for further
          * information about the coordinate system.
          * @returns `true` if the icon has an embedded rectangle
+         * @since 2.4
          */
         get_embedded_rect(): [boolean, Gdk.Rectangle];
 
@@ -83347,6 +85805,7 @@ export namespace Gtk {
          * no filename if a builtin icon is returned; in this
          * case, you should use `gtk_icon_info_get_builtin_pixbuf()`.
          * @returns the filename for the icon, or `null`  if `gtk_icon_info_get_builtin_pixbuf()` should  be used instead. The return value is owned by  GTK+ and should not be modified or freed.
+         * @since 2.4
          */
         get_filename(): string;
 
@@ -83363,6 +85822,7 @@ export namespace Gtk {
          * the {@link Gtk.IconInfo}. If this flag has been specified, the pixbuf
          * returned by this function will be scaled to the exact size.
          * @returns the rendered icon; this may be a newly     created icon or a new reference to an internal icon, so you must     not modify the icon. Use `g_object_unref()` to release your reference     to the icon.
+         * @since 2.4
          */
         load_icon(): GdkPixbuf.Pixbuf;
 
@@ -83382,6 +85842,7 @@ export namespace Gtk {
          * This function is provided primarily to allow compatibility wrappers
          * for older API's, and is not expected to be useful for applications.
          * @param raw_coordinates whether the coordinates of embedded rectangles   and attached points should be returned in their original   (unscaled) form.
+         * @since 2.4
          */
         set_raw_coordinates(raw_coordinates: boolean): void;
     }
@@ -84100,12 +86561,14 @@ export namespace Gtk {
         /**
          * Returns the name of the default paper size, which
          * depends on the current locale.
+         * @since 2.10
          */
         static get_default(): string;
 
         /**
          * Creates a list of known paper sizes.
          * @param include_custom whether to include custom paper sizes     as defined in the page setup dialog
+         * @since 2.12
          */
         static get_paper_sizes(include_custom: boolean): PaperSize[];
 
@@ -84113,11 +86576,13 @@ export namespace Gtk {
         /**
          * Copies an existing {@link Gtk.PaperSize}.
          * @returns a copy of `other`
+         * @since 2.10
          */
         copy(): PaperSize;
 
         /**
          * Free the given {@link Gtk.PaperSize} object.
+         * @since 2.10
          */
         free(): void;
 
@@ -84125,6 +86590,7 @@ export namespace Gtk {
          * Gets the default bottom margin for the {@link Gtk.PaperSize}.
          * @param unit the unit for the return value
          * @returns the default bottom margin
+         * @since 2.10
          */
         get_default_bottom_margin(unit: Unit): number;
 
@@ -84132,6 +86598,7 @@ export namespace Gtk {
          * Gets the default left margin for the {@link Gtk.PaperSize}.
          * @param unit the unit for the return value
          * @returns the default left margin
+         * @since 2.10
          */
         get_default_left_margin(unit: Unit): number;
 
@@ -84139,6 +86606,7 @@ export namespace Gtk {
          * Gets the default right margin for the {@link Gtk.PaperSize}.
          * @param unit the unit for the return value
          * @returns the default right margin
+         * @since 2.10
          */
         get_default_right_margin(unit: Unit): number;
 
@@ -84146,12 +86614,14 @@ export namespace Gtk {
          * Gets the default top margin for the {@link Gtk.PaperSize}.
          * @param unit the unit for the return value
          * @returns the default top margin
+         * @since 2.10
          */
         get_default_top_margin(unit: Unit): number;
 
         /**
          * Gets the human-readable name of the {@link Gtk.PaperSize}.
          * @returns the human-readable name of `size`
+         * @since 2.10
          */
         get_display_name(): string;
 
@@ -84160,12 +86630,14 @@ export namespace Gtk {
          * units of `unit`.
          * @param unit the unit for the return value
          * @returns the paper height
+         * @since 2.10
          */
         get_height(unit: Unit): number;
 
         /**
          * Gets the name of the {@link Gtk.PaperSize}.
          * @returns the name of `size`
+         * @since 2.10
          */
         get_name(): string;
 
@@ -84173,6 +86645,7 @@ export namespace Gtk {
          * Gets the PPD name of the {@link Gtk.PaperSize}, which
          * may be `null`.
          * @returns the PPD name of `size`
+         * @since 2.10
          */
         get_ppd_name(): string;
 
@@ -84181,6 +86654,7 @@ export namespace Gtk {
          * units of `unit`.
          * @param unit the unit for the return value
          * @returns the paper width
+         * @since 2.10
          */
         get_width(unit: Unit): number;
 
@@ -84194,6 +86668,7 @@ export namespace Gtk {
          * Compares two {@link Gtk.PaperSize} objects.
          * @param size2 another {@link Gtk.PaperSize} object
          * @returns `true`, if `size1` and `size2` represent the same paper size
+         * @since 2.10
          */
         is_equal(size2: PaperSize): boolean;
 
@@ -84202,6 +86677,7 @@ export namespace Gtk {
          * @param width the new width in units of `unit`
          * @param height the new height in units of `unit`
          * @param unit the unit for `width` and `height`
+         * @since 2.10
          */
         set_size(width: number, height: number, unit: Unit): void;
 
@@ -84209,6 +86685,7 @@ export namespace Gtk {
          * This function adds the paper size from `size` to `key_file`.
          * @param key_file the {@link GLib.KeyFile} to save the paper size to
          * @param group_name the group to add the settings to in `key_file`
+         * @since 2.12
          */
         to_key_file(key_file: GLib.KeyFile, group_name: string): void;
     }
@@ -84578,6 +87055,7 @@ export namespace Gtk {
          * Checks whether the resource pointed by `info` still exists.  At
          * the moment this check is done only on resources pointing to local files.
          * @returns `true` if the resource exists
+         * @since 2.10
          */
         exists(): boolean;
 
@@ -84585,6 +87063,7 @@ export namespace Gtk {
          * Gets the timestamp (seconds from system's Epoch) when the resource
          * was added to the recently used resources list.
          * @returns the number of seconds elapsed from system's Epoch when   the resource was added to the list, or -1 on failure.
+         * @since 2.10
          */
         get_added(): number;
 
@@ -84592,6 +87071,7 @@ export namespace Gtk {
          * Gets the number of days elapsed since the last update of the resource
          * pointed by `info`.
          * @returns a positive integer containing the number of days elapsed   since the time this resource was last modified.
+         * @since 2.10
          */
         get_age(): number;
 
@@ -84603,18 +87083,21 @@ export namespace Gtk {
          * storage specification, they will be expanded.
          * @param app_name the name of the application that has registered this item
          * @returns `true` if an application with `app_name` has registered this   resource inside the recently used list, or `false` otherwise. The   `app_exec` string is owned by the {@link Gtk.RecentInfo} and should not be   modified or freed
+         * @since 2.10
          */
         get_application_info(app_name: string): [boolean, string, number, number];
 
         /**
          * Retrieves the list of applications that have registered this resource.
          * @returns a newly allocated `null`-terminated array of strings.     Use `g_strfreev()` to free it.
+         * @since 2.10
          */
         get_applications(): string[];
 
         /**
          * Gets the (short) description of the resource.
          * @returns the description of the resource.  The returned string   is owned by the recent manager, and should not be freed.
+         * @since 2.10
          */
         get_description(): string;
 
@@ -84622,6 +87105,7 @@ export namespace Gtk {
          * Gets the name of the resource.  If none has been defined, the basename
          * of the resource is obtained.
          * @returns the display name of the resource.  The returned string   is owned by the recent manager, and should not be freed.
+         * @since 2.10
          */
         get_display_name(): string;
 
@@ -84630,6 +87114,7 @@ export namespace Gtk {
          * array of returned group names will be `null` terminated, so length might
          * optionally be `null`.
          * @returns a newly allocated `null` terminated array of strings.     Use `g_strfreev()` to free it.
+         * @since 2.10
          */
         get_groups(): string[];
 
@@ -84637,12 +87122,14 @@ export namespace Gtk {
          * Retrieves the icon of size `size` associated to the resource MIME type.
          * @param size the size of the icon in pixels
          * @returns a {@link GdkPixbuf.Pixbuf} containing the icon,     or `null`. Use `g_object_unref()` when finished using the icon.
+         * @since 2.10
          */
         get_icon(size: number): GdkPixbuf.Pixbuf;
 
         /**
          * Gets the MIME type of the resource.
          * @returns the MIME type of the resource.  The returned string   is owned by the recent manager, and should not be freed.
+         * @since 2.10
          */
         get_mime_type(): string;
 
@@ -84650,6 +87137,7 @@ export namespace Gtk {
          * Gets the timestamp (seconds from system's Epoch) when the resource
          * was last modified.
          * @returns the number of seconds elapsed from system's Epoch when   the resource was last modified, or -1 on failure.
+         * @since 2.10
          */
         get_modified(): number;
 
@@ -84658,6 +87146,7 @@ export namespace Gtk {
          * list that have this flag set to `true` should only be displayed by the
          * applications that have registered them.
          * @returns `true` if the private flag was found, `false` otherwise.
+         * @since 2.10
          */
         get_private_hint(): boolean;
 
@@ -84666,12 +87155,14 @@ export namespace Gtk {
          * menu or list.  For example, calling this function on an item that refers to
          * "file:///foo/bar.txt" will yield "bar.txt".
          * @returns A newly-allocated string in UTF-8 encoding; free it with   `g_free()`.
+         * @since 2.10
          */
         get_short_name(): string;
 
         /**
          * Gets the URI of the resource.
          * @returns the URI of the resource.  The returned string is   owned by the recent manager, and should not be freed.
+         * @since 2.10
          */
         get_uri(): string;
 
@@ -84680,6 +87171,7 @@ export namespace Gtk {
          * is local, it returns a local path; if the resource is not local,
          * it returns the UTF-8 encoded content of `gtk_recent_info_get_uri()`.
          * @returns a newly allocated UTF-8 string containing the   resource's URI or `null`. Use `g_free()` when done using it.
+         * @since 2.10
          */
         get_uri_display(): string;
 
@@ -84687,6 +87179,7 @@ export namespace Gtk {
          * Gets the timestamp (seconds from system's Epoch) when the resource
          * was last visited.
          * @returns the number of seconds elapsed from system's Epoch when   the resource was last visited, or -1 on failure.
+         * @since 2.10
          */
         get_visited(): number;
 
@@ -84694,6 +87187,7 @@ export namespace Gtk {
          * Checks whether an application registered this resource using `app_name`.
          * @param app_name a string containing an application name
          * @returns `true` if an application with name `app_name` was found,   `false` otherwise.
+         * @since 2.10
          */
         has_application(app_name: string): boolean;
 
@@ -84702,6 +87196,7 @@ export namespace Gtk {
          * recently used item `info`.
          * @param group_name name of a group
          * @returns `true` if the group was found.
+         * @since 2.10
          */
         has_group(group_name: string): boolean;
 
@@ -84709,6 +87204,7 @@ export namespace Gtk {
          * Checks whether the resource is local or not by looking at the
          * scheme of its URI.
          * @returns `true` if the resource is local.
+         * @since 2.10
          */
         is_local(): boolean;
 
@@ -84716,6 +87212,7 @@ export namespace Gtk {
          * Gets the name of the last application that have registered the
          * recently used resource represented by `info`.
          * @returns an application name.  Use `g_free()` to free it.
+         * @since 2.10
          */
         last_application(): string;
 
@@ -84724,18 +87221,21 @@ export namespace Gtk {
          * resource.
          * @param info_b a {@link Gtk.RecentInfo}
          * @returns `true` if both {@link Gtk.RecentInfo} structures point to se same   resource, `false` otherwise.
+         * @since 2.10
          */
         match(info_b: RecentInfo): boolean;
 
         /**
          * Increases the reference count of `recent_info` by one.
          * @returns the recent info object with its reference count increased   by one.
+         * @since 2.10
          */
         ref(): RecentInfo;
 
         /**
          * Decreases the reference count of `info` by one.  If the reference
          * count reaches zero, `info` is deallocated, and the memory freed.
+         * @since 2.10
          */
         unref(): void;
     }
@@ -84881,48 +87381,56 @@ export namespace Gtk {
         /**
          * Retrieves the raw data of the selection.
          * @returns the raw data of the selection.
+         * @since 2.14
          */
         get_data(): number;
 
         /**
          * Retrieves the data type of the selection.
          * @returns the data type of the selection.
+         * @since 2.14
          */
         get_data_type(): Gdk.Atom;
 
         /**
          * Retrieves the display of the selection.
          * @returns the display of the selection.
+         * @since 2.14
          */
         get_display(): Gdk.Display;
 
         /**
          * Retrieves the format of the selection.
          * @returns the format of the selection.
+         * @since 2.14
          */
         get_format(): number;
 
         /**
          * Retrieves the length of the raw data of the selection.
          * @returns the length of the data of the selection.
+         * @since 2.14
          */
         get_length(): number;
 
         /**
          * Gets the contents of the selection data as a {@link GdkPixbuf.Pixbuf}.
          * @returns if the selection data contained a recognized   image type and it could be converted to a {@link GdkPixbuf.Pixbuf}, a   newly allocated pixbuf is returned, otherwise `null`.   If the result is non-`null` it must be freed with `g_object_unref()`.
+         * @since 2.6
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
 
         /**
          * Retrieves the selection {@link Gdk.Atom} of the selection data.
          * @returns the selection {@link Gdk.Atom} of the selection data.
+         * @since 2.16
          */
         get_selection(): Gdk.Atom;
 
         /**
          * Retrieves the target of the selection.
          * @returns the target of the selection.
+         * @since 2.14
          */
         get_target(): Gdk.Atom;
 
@@ -84944,6 +87452,7 @@ export namespace Gtk {
         /**
          * Gets the contents of the selection data as array of URIs.
          * @returns if   the selection data contains a list of   URIs, a newly allocated `null`-terminated string array   containing the URIs, otherwise `null`. If the result is   non-`null` it must be freed with `g_strfreev()`.
+         * @since 2.6
          */
         get_uris(): string[];
 
@@ -84963,6 +87472,7 @@ export namespace Gtk {
          * `selection_data`->target.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}
          * @returns `true` if the selection was successfully set,   otherwise `false`.
+         * @since 2.6
          */
         set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): boolean;
 
@@ -84982,6 +87492,7 @@ export namespace Gtk {
          * `selection_data`->target.
          * @param uris a `null`-terminated array of     strings holding URIs
          * @returns `true` if the selection was successfully set,   otherwise `false`.
+         * @since 2.6
          */
         set_uris(uris: string[]): boolean;
 
@@ -84991,6 +87502,7 @@ export namespace Gtk {
          * provide a {@link GdkPixbuf.Pixbuf}.
          * @param writable whether to accept only targets for which GTK+ knows   how to convert a pixbuf into the format
          * @returns `true` if `selection_data` holds a list of targets,   and a suitable target for images is included, otherwise `false`.
+         * @since 2.6
          */
         targets_include_image(writable: boolean): boolean;
 
@@ -85000,6 +87512,7 @@ export namespace Gtk {
          * provide rich text.
          * @param buffer a {@link Gtk.TextBuffer}
          * @returns `true` if `selection_data` holds a list of targets,               and a suitable target for rich text is included,               otherwise `false`.
+         * @since 2.10
          */
         targets_include_rich_text(buffer: TextBuffer): boolean;
 
@@ -85016,6 +87529,7 @@ export namespace Gtk {
          * determines if any of the targets in `targets` can be used to
          * provide a list or URIs.
          * @returns `true` if `selection_data` holds a list of targets,   and a suitable target for URI lists is included, otherwise `false`.
+         * @since 2.10
          */
         targets_include_uri(): boolean;
     }
@@ -85286,6 +87800,7 @@ export namespace Gtk {
          * the target list. All targets are added with the same `info`.
          * @param info an ID that will be passed back to the application
          * @param writable whether to add only targets for which GTK+ knows   how to convert a pixbuf into the format
+         * @since 2.6
          */
         add_image_targets(info: number, writable: boolean): void;
 
@@ -85297,6 +87812,7 @@ export namespace Gtk {
          * @param info an ID that will be passed back to the application
          * @param deserializable if `true`, then deserializable rich text formats                  will be added, serializable formats otherwise.
          * @param buffer a {@link Gtk.TextBuffer}.
+         * @since 2.10
          */
         add_rich_text_targets(info: number, deserializable: boolean, buffer: TextBuffer): void;
 
@@ -85310,6 +87826,7 @@ export namespace Gtk {
          * Appends the text targets supported by `GtkSelection` to
          * the target list. All targets are added with the same `info`.
          * @param info an ID that will be passed back to the application
+         * @since 2.6
          */
         add_text_targets(info: number): void;
 
@@ -85317,6 +87834,7 @@ export namespace Gtk {
          * Appends the URI targets supported by `GtkSelection` to
          * the target list. All targets are added with the same `info`.
          * @param info an ID that will be passed back to the application
+         * @since 2.6
          */
         add_uri_targets(info: number): void;
 
@@ -85654,6 +88172,7 @@ export namespace Gtk {
          * Moves `iter` forward to the previous visible cursor position. See
          * `gtk_text_iter_backward_cursor_position()` for details.
          * @returns `true` if we moved and the new position is dereferenceable
+         * @since 2.4
          */
         backward_visible_cursor_position(): boolean;
 
@@ -85662,6 +88181,7 @@ export namespace Gtk {
          * `gtk_text_iter_backward_cursor_position()` for details.
          * @param count number of positions to move
          * @returns `true` if we moved and the new position is dereferenceable
+         * @since 2.4
          */
         backward_visible_cursor_positions(count: number): boolean;
 
@@ -85674,6 +88194,7 @@ export namespace Gtk {
          * in a loop calling this function, the line number may not change on
          * every iteration, if your first iteration is on line 0.)
          * @returns whether `iter` moved
+         * @since 2.8
          */
         backward_visible_line(): boolean;
 
@@ -85687,6 +88208,7 @@ export namespace Gtk {
          * moves forward by 0 - `count` lines.
          * @param count number of lines to move backward
          * @returns whether `iter` moved and is dereferenceable
+         * @since 2.8
          */
         backward_visible_lines(count: number): boolean;
 
@@ -85697,6 +88219,7 @@ export namespace Gtk {
          * language (if not, the correct fix would be to the Pango word break
          * algorithms).
          * @returns `true` if `iter` moved and is not the end iterator
+         * @since 2.4
          */
         backward_visible_word_start(): boolean;
 
@@ -85704,6 +88227,7 @@ export namespace Gtk {
          * Calls `gtk_text_iter_backward_visible_word_start()` up to `count` times.
          * @param count number of times to move
          * @returns `true` if `iter` moved and is not the end iterator
+         * @since 2.4
          */
         backward_visible_word_starts(count: number): boolean;
 
@@ -85997,6 +88521,7 @@ export namespace Gtk {
          * Moves `iter` forward to the next visible cursor position. See
          * `gtk_text_iter_forward_cursor_position()` for details.
          * @returns `true` if we moved and the new position is dereferenceable
+         * @since 2.4
          */
         forward_visible_cursor_position(): boolean;
 
@@ -86005,6 +88530,7 @@ export namespace Gtk {
          * `gtk_text_iter_forward_cursor_position()` for details.
          * @param count number of positions to move
          * @returns `true` if we moved and the new position is dereferenceable
+         * @since 2.4
          */
         forward_visible_cursor_positions(count: number): boolean;
 
@@ -86014,6 +88540,7 @@ export namespace Gtk {
          * the end of the buffer and is now not dereferenceable, or if `iter` was
          * already at the end of the buffer.
          * @returns whether `iter` can be dereferenced
+         * @since 2.8
          */
         forward_visible_line(): boolean;
 
@@ -86027,6 +88554,7 @@ export namespace Gtk {
          * moves backward by 0 - `count` lines.
          * @param count number of lines to move forward
          * @returns whether `iter` moved and is dereferenceable
+         * @since 2.8
          */
         forward_visible_lines(count: number): boolean;
 
@@ -86037,6 +88565,7 @@ export namespace Gtk {
          * language (if not, the correct fix would be to the Pango word break
          * algorithms).
          * @returns `true` if `iter` moved and is not the end iterator
+         * @since 2.4
          */
         forward_visible_word_end(): boolean;
 
@@ -86044,6 +88573,7 @@ export namespace Gtk {
          * Calls `gtk_text_iter_forward_visible_word_end()` up to `count` times.
          * @param count number of times to move
          * @returns `true` if `iter` moved and is not the end iterator
+         * @since 2.4
          */
         forward_visible_word_ends(count: number): boolean;
 
@@ -86860,6 +89390,7 @@ export namespace Gtk {
          * It also returns the number of elements in the array.
          * The array should not be freed.
          * @returns The current indices, or `null`.
+         * @since 2.22
          */
         get_indices_with_depth(): number[];
 
@@ -86955,6 +89486,7 @@ export namespace Gtk {
         /**
          * Copies a {@link Gtk.TreeRowReference}.
          * @returns a copy of `reference`.
+         * @since 2.2
          */
         copy(): TreeRowReference;
 
@@ -86966,6 +89498,7 @@ export namespace Gtk {
         /**
          * Returns the model that the row reference is monitoring.
          * @returns the model
+         * @since 2.8
          */
         get_model(): TreeModel;
 
@@ -87203,6 +89736,7 @@ export namespace Gtk {
              * or unset and by the implementing class when
              * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
              * @param action the related {@link Gtk.Action} or `null`
+             * @since 2.16
              * @virtual
              */
             vfunc_sync_action_properties(action: Action | null): void;
@@ -87547,12 +90081,14 @@ export namespace Gtk {
          * copy of the {@link Gtk.Action} property, since this function uses
          * `gtk_activatable_get_action()` to retrieve the previous action</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         do_set_related_action(action: Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
          */
         get_related_action(): Action;
 
@@ -87561,6 +90097,7 @@ export namespace Gtk {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
          */
         get_use_action_appearance(): boolean;
 
@@ -87570,6 +90107,7 @@ export namespace Gtk {
          * <note><para>{@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * property and call `gtk_activatable_do_set_related_action()` when it changes.</para></note>
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
          */
         set_related_action(action: Action): void;
 
@@ -87582,6 +90120,7 @@ export namespace Gtk {
          * `gtk_activatable_sync_action_properties()` to update `activatable`
          * if needed.</para></note>
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -87591,6 +90130,7 @@ export namespace Gtk {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.SignalSignatures.use_action_appearance | Gtk.Activatable::use-action-appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
          */
         sync_action_properties(action: Action | null): void;
     }
@@ -87614,6 +90154,7 @@ export namespace Gtk {
              * @param builder a {@link Gtk.Builder}
              * @param child child to add
              * @param type kind of child or `null`
+             * @since 2.12
              * @virtual
              */
             vfunc_add_child(builder: Builder, child: GObject.Object, type: string | null): void;
@@ -87625,6 +90166,7 @@ export namespace Gtk {
              * specified in the UI definition.
              * @param builder {@link Gtk.Builder} used to construct this object
              * @param name name of child to construct
+             * @since 2.12
              * @virtual
              */
             vfunc_construct_child<T = GObject.Object>(builder: Builder, name: string): T;
@@ -87636,6 +90178,7 @@ export namespace Gtk {
              * @param child child object or `null` for non-child tags
              * @param tagname the name of the tag
              * @param data user data created in custom_tag_start
+             * @since 2.12
              * @virtual
              */
             vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -87647,6 +90190,7 @@ export namespace Gtk {
              * @param child child object or `null` for non-child tags
              * @param tagname name of tag
              * @param data user data that will be passed in to parser functions
+             * @since 2.12
              * @virtual
              */
             vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -87656,6 +90200,7 @@ export namespace Gtk {
              * @param builder a {@link Gtk.Builder} used to construct this object
              * @param child child object or `null` for non-child tags
              * @param tagname name of tag
+             * @since 2.12
              * @virtual
              */
             vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -87664,6 +90209,7 @@ export namespace Gtk {
              * Get the internal child called `childname` of the `buildable` object.
              * @param builder a {@link Gtk.Builder}
              * @param childname name of child
+             * @since 2.12
              * @virtual
              */
             vfunc_get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
@@ -87674,6 +90220,7 @@ export namespace Gtk {
              * {@link Gtk.Builder} sets the name based on the the
              * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
              * used to construct the `buildable`.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_name(): string;
@@ -87685,6 +90232,7 @@ export namespace Gtk {
              * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
              * is called on a builder.
              * @param builder a {@link Gtk.Builder}
+             * @since 2.12
              * @virtual
              */
             vfunc_parser_finished(builder: Builder): void;
@@ -87694,6 +90242,7 @@ export namespace Gtk {
              * @param builder a {@link Gtk.Builder}
              * @param name name of property
              * @param value value of property
+             * @since 2.12
              * @virtual
              */
             vfunc_set_buildable_property(builder: Builder, name: string, value: unknown): void;
@@ -87701,6 +90250,7 @@ export namespace Gtk {
             /**
              * Sets the name of the `buildable` object.
              * @param name name to set
+             * @since 2.12
              * @virtual
              */
             vfunc_set_name(name: string): void;
@@ -87738,6 +90288,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Builder, child: GObject.Object, type: string | null): void;
 
@@ -87749,6 +90300,7 @@ export namespace Gtk {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Builder, name: string): T;
 
@@ -87759,6 +90311,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -87769,6 +90322,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -87778,6 +90332,7 @@ export namespace Gtk {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -87786,6 +90341,7 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Builder, childname: string): T;
 
@@ -87796,6 +90352,7 @@ export namespace Gtk {
          * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -87806,6 +90363,7 @@ export namespace Gtk {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Builder): void;
 
@@ -87814,12 +90372,14 @@ export namespace Gtk {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
     }
@@ -87935,6 +90495,7 @@ export namespace Gtk {
              * @param cell A {@link Gtk.CellRenderer}.
              * @param attribute An attribute on the renderer.
              * @param column The column position on the model to get the attribute from.
+             * @since 2.4
              * @virtual
              */
             vfunc_add_attribute(cell: CellRenderer, attribute: string, column: number): void;
@@ -87942,6 +90503,7 @@ export namespace Gtk {
             /**
              * Unsets all the mappings on all renderers on `cell_layout` and
              * removes all renderers from `cell_layout`.
+             * @since 2.4
              * @virtual
              */
             vfunc_clear(): void;
@@ -87950,12 +90512,14 @@ export namespace Gtk {
              * Clears all existing attributes previously set with
              * `gtk_cell_layout_set_attributes()`.
              * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+             * @since 2.4
              * @virtual
              */
             vfunc_clear_attributes(cell: CellRenderer): void;
 
             /**
              * Returns the cell renderers which have been added to `cell_layout`.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_cells(): CellRenderer[];
@@ -87968,6 +90532,7 @@ export namespace Gtk {
              * Note that reusing the same cell renderer is not supported.
              * @param cell A {@link Gtk.CellRenderer}.
              * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+             * @since 2.4
              * @virtual
              */
             vfunc_pack_end(cell: CellRenderer, expand: boolean): void;
@@ -87980,6 +90545,7 @@ export namespace Gtk {
              * Note that reusing the same cell renderer is not supported.
              * @param cell A {@link Gtk.CellRenderer}.
              * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+             * @since 2.4
              * @virtual
              */
             vfunc_pack_start(cell: CellRenderer, expand: boolean): void;
@@ -87989,6 +90555,7 @@ export namespace Gtk {
              * into `cell_layout` for this to function properly.
              * @param cell A {@link Gtk.CellRenderer} to reorder.
              * @param position New position to insert `cell` at.
+             * @since 2.4
              * @virtual
              */
             vfunc_reorder(cell: CellRenderer, position: number): void;
@@ -88000,6 +90567,7 @@ export namespace Gtk {
              * as appropriate. `func` may be `null` to remove and older one.
              * @param cell A {@link Gtk.CellRenderer}.
              * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+             * @since 2.4
              * @virtual
              */
             vfunc_set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
@@ -88029,12 +90597,14 @@ export namespace Gtk {
          * @param cell A {@link Gtk.CellRenderer}.
          * @param attribute An attribute on the renderer.
          * @param column The column position on the model to get the attribute from.
+         * @since 2.4
          */
         add_attribute(cell: CellRenderer, attribute: string, column: number): void;
 
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @since 2.4
          */
         clear(): void;
 
@@ -88042,12 +90612,14 @@ export namespace Gtk {
          * Clears all existing attributes previously set with
          * `gtk_cell_layout_set_attributes()`.
          * @param cell A {@link Gtk.CellRenderer} to clear the attribute mapping on.
+         * @since 2.4
          */
         clear_attributes(cell: CellRenderer): void;
 
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
          * @returns a list of cell renderers. The list, but not the   renderers has been newly allocated and should be freed with   `g_list_free()` when no longer needed.
+         * @since 2.12
          */
         get_cells(): CellRenderer[];
 
@@ -88059,6 +90631,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_end(cell: CellRenderer, expand: boolean): void;
 
@@ -88070,6 +90643,7 @@ export namespace Gtk {
          * Note that reusing the same cell renderer is not supported.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`.
+         * @since 2.4
          */
         pack_start(cell: CellRenderer, expand: boolean): void;
 
@@ -88078,6 +90652,7 @@ export namespace Gtk {
          * into `cell_layout` for this to function properly.
          * @param cell A {@link Gtk.CellRenderer} to reorder.
          * @param position New position to insert `cell` at.
+         * @since 2.4
          */
         reorder(cell: CellRenderer, position: number): void;
 
@@ -88088,6 +90663,7 @@ export namespace Gtk {
          * as appropriate. `func` may be `null` to remove and older one.
          * @param cell A {@link Gtk.CellRenderer}.
          * @param func The {@link Gtk.CellLayoutDataFunc} to use.
+         * @since 2.4
          */
         set_cell_data_func(cell: CellRenderer, func: CellLayoutDataFunc): void;
     }
@@ -89004,6 +91580,7 @@ export namespace Gtk {
          * Note that the `chooser` takes ownership of the filter, so you have to
          * ref and sink it if you want to keep a reference.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         add_filter(filter: FileFilter): void;
 
@@ -89014,6 +91591,7 @@ export namespace Gtk {
          * "/usr/share/mydrawprogram/Clipart" folder to the volume list.
          * @param folder filename of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
+         * @since 2.4
          */
         add_shortcut_folder(folder: string): boolean;
 
@@ -89024,6 +91602,7 @@ export namespace Gtk {
          * "file:///usr/share/mydrawprogram/Clipart" folder to the volume list.
          * @param uri URI of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
+         * @since 2.4
          */
         add_shortcut_folder_uri(uri: string): boolean;
 
@@ -89031,6 +91610,7 @@ export namespace Gtk {
          * Gets the type of operation that the file chooser is performing; see
          * `gtk_file_chooser_set_action()`.
          * @returns the action that the file selector is performing
+         * @since 2.4
          */
         get_action(): FileChooserAction;
 
@@ -89038,6 +91618,7 @@ export namespace Gtk {
          * Gets whether file choser will offer to create new folders.
          * See `gtk_file_chooser_set_create_folders()`.
          * @returns `true` if the New Folder button should be displayed.
+         * @since 2.18
          */
         get_create_folders(): boolean;
 
@@ -89053,6 +91634,7 @@ export namespace Gtk {
          * currently-selected folder in that mode, use `gtk_file_chooser_get_uri()` as the
          * usual way to get the selection.
          * @returns the full path of the current folder, or `null` if the current path cannot be represented as a local filename.  Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder()` on a nonexistent folder.
+         * @since 2.4
          */
         get_current_folder(): string;
 
@@ -89060,6 +91642,7 @@ export namespace Gtk {
          * Gets the current folder of `chooser` as {@link Gio.File}.
          * See `gtk_file_chooser_get_current_folder_uri()`.
          * @returns the {@link Gio.File} for the current folder.
+         * @since 2.14
          */
         get_current_folder_file(): Gio.File;
 
@@ -89075,6 +91658,7 @@ export namespace Gtk {
          * currently-selected folder in that mode, use `gtk_file_chooser_get_uri()` as the
          * usual way to get the selection.
          * @returns the URI for the current folder.  Free with `g_free()`.  This function will also return `null` if the file chooser was unable to load the last folder that was requested from it; for example, as would be for calling `gtk_file_chooser_set_current_folder_uri()` on a nonexistent folder.
+         * @since 2.4
          */
         get_current_folder_uri(): string;
 
@@ -89082,6 +91666,7 @@ export namespace Gtk {
          * Queries whether a file chooser is set to confirm for overwriting when the user
          * types a file name that already exists.
          * @returns `true` if the file chooser will present a confirmation dialog; `false` otherwise.
+         * @since 2.8
          */
         get_do_overwrite_confirmation(): boolean;
 
@@ -89089,6 +91674,7 @@ export namespace Gtk {
          * Gets the current preview widget; see
          * `gtk_file_chooser_set_extra_widget()`.
          * @returns the current extra widget, or `null`
+         * @since 2.4
          */
         get_extra_widget(): Widget;
 
@@ -89100,6 +91686,7 @@ export namespace Gtk {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns a selected {@link Gio.File}. You own the returned file;     use `g_object_unref()` to release it.
+         * @since 2.14
          */
         get_file(): Gio.File;
 
@@ -89111,6 +91698,7 @@ export namespace Gtk {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns The currently selected filename, or `null`  if no file is selected, or the selected file can't  be represented with a local filename. Free with `g_free()`.
+         * @since 2.4
          */
         get_filename(): string;
 
@@ -89120,6 +91708,7 @@ export namespace Gtk {
          * folder cannot be represented as local filenames they will be ignored. (See
          * `gtk_file_chooser_get_uris()`)
          * @returns a {@link GLib.SList}    containing the filenames of all selected files and subfolders in    the current folder. Free the returned list with `g_slist_free()`,    and the filenames with `g_free()`.
+         * @since 2.4
          */
         get_filenames(): string[];
 
@@ -89127,12 +91716,14 @@ export namespace Gtk {
          * Lists all the selected files and subfolders in the current folder of `chooser`
          * as {@link Gio.File}. An internal function, see `gtk_file_chooser_get_uris()`.
          * @returns a {@link GLib.SList}   containing a {@link Gio.File} for each selected file and subfolder in the   current folder.  Free the returned list with `g_slist_free()`, and   the files with `g_object_unref()`.
+         * @since 2.14
          */
         get_files(): Gio.File[];
 
         /**
          * Gets the current filter; see `gtk_file_chooser_set_filter()`.
          * @returns the current filter, or `null`
+         * @since 2.4
          */
         get_filter(): FileFilter;
 
@@ -89140,6 +91731,7 @@ export namespace Gtk {
          * Gets whether only local files can be selected in the
          * file selector. See `gtk_file_chooser_set_local_only()`
          * @returns `true` if only local files can be selected.
+         * @since 2.4
          */
         get_local_only(): boolean;
 
@@ -89147,6 +91739,7 @@ export namespace Gtk {
          * Gets the {@link Gio.File} that should be previewed in a custom preview
          * Internal function, see `gtk_file_chooser_get_preview_uri()`.
          * @returns the {@link Gio.File} for the file to preview,     or `null` if no file is selected. Free with `g_object_unref()`.
+         * @since 2.14
          */
         get_preview_file(): Gio.File;
 
@@ -89154,6 +91747,7 @@ export namespace Gtk {
          * Gets the filename that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the filename to preview, or `null` if  no file is selected, or if the selected file cannot be represented  as a local filename. Free with `g_free()`
+         * @since 2.4
          */
         get_preview_filename(): string;
 
@@ -89161,6 +91755,7 @@ export namespace Gtk {
          * Gets the URI that should be previewed in a custom preview
          * widget. See `gtk_file_chooser_set_preview_widget()`.
          * @returns the URI for the file to preview, or `null` if no file is selected. Free with `g_free()`.
+         * @since 2.4
          */
         get_preview_uri(): string;
 
@@ -89168,6 +91763,7 @@ export namespace Gtk {
          * Gets the current preview widget; see
          * `gtk_file_chooser_set_preview_widget()`.
          * @returns the current preview widget, or `null`
+         * @since 2.4
          */
         get_preview_widget(): Widget;
 
@@ -89176,6 +91772,7 @@ export namespace Gtk {
          * should be shown for the current filename. See
          * `gtk_file_chooser_set_preview_widget_active()`.
          * @returns `true` if the preview widget is active for the current filename.
+         * @since 2.4
          */
         get_preview_widget_active(): boolean;
 
@@ -89183,6 +91780,7 @@ export namespace Gtk {
          * Gets whether multiple files can be selected in the file
          * selector. See `gtk_file_chooser_set_select_multiple()`.
          * @returns `true` if multiple files can be selected.
+         * @since 2.4
          */
         get_select_multiple(): boolean;
 
@@ -89190,6 +91788,7 @@ export namespace Gtk {
          * Gets whether hidden files and folders are displayed in the file selector.
          * See `gtk_file_chooser_set_show_hidden()`.
          * @returns `true` if hidden files and folders are displayed.
+         * @since 2.6
          */
         get_show_hidden(): boolean;
 
@@ -89201,6 +91800,7 @@ export namespace Gtk {
          * If the file chooser is in folder mode, this function returns the selected
          * folder.
          * @returns The currently selected URI, or `null`  if no file is selected. If `gtk_file_chooser_set_local_only()` is set to `true` (the default) a local URI will be returned for any FUSE locations. Free with `g_free()`
+         * @since 2.4
          */
         get_uri(): string;
 
@@ -89208,6 +91808,7 @@ export namespace Gtk {
          * Lists all the selected files and subfolders in the current folder of
          * `chooser`. The returned names are full absolute URIs.
          * @returns a {@link GLib.SList} containing the URIs of all selected   files and subfolders in the current folder. Free the returned list   with `g_slist_free()`, and the filenames with `g_free()`.
+         * @since 2.4
          */
         get_uris(): string[];
 
@@ -89222,6 +91823,7 @@ export namespace Gtk {
          * Lists the current set of user-selectable filters; see
          * `gtk_file_chooser_add_filter()`, `gtk_file_chooser_remove_filter()`.
          * @returns a  {@link GLib.SList} containing the current set of user selectable filters. The  contents of the list are owned by GTK+, but you must free the list  itself with `g_slist_free()` when you are done with it.
+         * @since 2.4
          */
         list_filters(): FileFilter[];
 
@@ -89229,6 +91831,7 @@ export namespace Gtk {
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder_uri()`.
          * @returns A list of folder URIs, or `null` if there are no shortcut folders.  Free the returned list with `g_slist_free()`, and the URIs with `g_free()`.
+         * @since 2.4
          */
         list_shortcut_folder_uris(): string[];
 
@@ -89236,12 +91839,14 @@ export namespace Gtk {
          * Queries the list of shortcut folders in the file chooser, as set by
          * `gtk_file_chooser_add_shortcut_folder()`.
          * @returns A list of folder filenames, or `null` if there are no shortcut folders.  Free the returned list with `g_slist_free()`, and the filenames with `g_free()`.
+         * @since 2.4
          */
         list_shortcut_folders(): string[];
 
         /**
          * Removes `filter` from the list of filters that the user can select between.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         remove_filter(filter: FileFilter): void;
 
@@ -89249,6 +91854,7 @@ export namespace Gtk {
          * Removes a folder from a file chooser's list of shortcut folders.
          * @param folder filename of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder()`
+         * @since 2.4
          */
         remove_shortcut_folder(folder: string): boolean;
 
@@ -89256,11 +91862,13 @@ export namespace Gtk {
          * Removes a folder URI from a file chooser's list of shortcut folders.
          * @param uri URI of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder_uri()`
+         * @since 2.4
          */
         remove_shortcut_folder_uri(uri: string): boolean;
 
         /**
          * Selects all the files in the current folder of a file chooser.
+         * @since 2.4
          */
         select_all(): void;
 
@@ -89269,6 +91877,7 @@ export namespace Gtk {
          * _gtk_file_chooser_select_uri().
          * @param file the file to select
          * @returns `true` if both the folder could be changed and the path was selected successfully, `false` otherwise.
+         * @since 2.14
          */
         select_file(file: Gio.File): boolean;
 
@@ -89278,6 +91887,7 @@ export namespace Gtk {
          * be changed to the folder containing `filename`.
          * @param filename the filename to select
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         select_filename(filename: string): boolean;
 
@@ -89287,6 +91897,7 @@ export namespace Gtk {
          * `chooser` will be changed to the folder containing `filename`.
          * @param uri the URI to select
          * @returns `true` if both the folder could be changed and the URI was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         select_uri(uri: string): boolean;
 
@@ -89297,6 +91908,7 @@ export namespace Gtk {
          * {@link Gtk.FileChooserAction.SAVE} but not if the action is
          * {@link Gtk.FileChooserAction.OPEN}.
          * @param action the action that the file selector is performing
+         * @since 2.4
          */
         set_action(action: FileChooserAction): void;
 
@@ -89305,6 +91917,7 @@ export namespace Gtk {
          * This is only relevant if the action is not set to be
          * {@link Gtk.FileChooserAction.OPEN}.
          * @param create_folders `true` if the New Folder button should be displayed
+         * @since 2.18
          */
         set_create_folders(create_folders: boolean): void;
 
@@ -89314,6 +91927,7 @@ export namespace Gtk {
          * plus user interface elements for navigating to other folders.
          * @param filename the full path of the new current folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.4
          */
         set_current_folder(filename: string): boolean;
 
@@ -89322,6 +91936,7 @@ export namespace Gtk {
          * Internal function, see `gtk_file_chooser_set_current_folder_uri()`.
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.14
          */
         set_current_folder_file(file: Gio.File): boolean;
 
@@ -89331,6 +91946,7 @@ export namespace Gtk {
          * plus user interface elements for navigating to other folders.
          * @param uri the URI for the new current folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
+         * @since 2.4
          */
         set_current_folder_uri(uri: string): boolean;
 
@@ -89345,6 +91961,7 @@ export namespace Gtk {
          * Please see the documentation for those functions for an example of using
          * `gtk_file_chooser_set_current_name()` as well.
          * @param name the filename to use, as a UTF-8 string
+         * @since 2.4
          */
         set_current_name(name: string): void;
 
@@ -89361,12 +91978,14 @@ export namespace Gtk {
          * {@link Gtk.FileChooser.SignalSignatures.confirm_overwrite | Gtk.FileChooser::confirm-overwrite} signal; please refer to its documentation
          * for the details.
          * @param do_overwrite_confirmation whether to confirm overwriting in save mode
+         * @since 2.8
          */
         set_do_overwrite_confirmation(do_overwrite_confirmation: boolean): void;
 
         /**
          * Sets an application-supplied widget to provide extra options to the user.
          * @param extra_widget widget for extra options
+         * @since 2.4
          */
         set_extra_widget(extra_widget: Widget): void;
 
@@ -89408,6 +92027,7 @@ export namespace Gtk {
          * 
          * @param file the {@link Gio.File} to set as current
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
+         * @since 2.14
          */
         set_file(file: Gio.File): boolean;
 
@@ -89449,6 +92069,7 @@ export namespace Gtk {
          * 
          * @param filename the filename to set as current
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         set_filename(filename: string): boolean;
 
@@ -89460,6 +92081,7 @@ export namespace Gtk {
          * filters is empty is useful if you want to restrict the displayed
          * set of files without letting the user change it.
          * @param filter a {@link Gtk.FileFilter}
+         * @since 2.4
          */
         set_filter(filter: FileFilter): void;
 
@@ -89478,6 +92100,7 @@ export namespace Gtk {
          * available using the native filesystem via a userspace
          * filesystem (FUSE).
          * @param local_only `true` if only local files can be selected
+         * @since 2.4
          */
         set_local_only(local_only: boolean): void;
 
@@ -89496,6 +92119,7 @@ export namespace Gtk {
          * may display an internally generated preview of the current file or
          * it may display no preview at all.
          * @param preview_widget widget for displaying preview.
+         * @since 2.4
          */
         set_preview_widget(preview_widget: Widget): void;
 
@@ -89507,6 +92131,7 @@ export namespace Gtk {
          * or it may display no preview at all. See
          * `gtk_file_chooser_set_preview_widget()` for more details.
          * @param active whether to display the user-specified preview widget
+         * @since 2.4
          */
         set_preview_widget_active(active: boolean): void;
 
@@ -89515,12 +92140,14 @@ export namespace Gtk {
          * only relevant if the action is set to be {@link Gtk.FileChooserAction.OPEN} or
          * {@link Gtk.FileChooserAction.SELECT_FOLDER}.
          * @param select_multiple `true` if multiple files can be selected.
+         * @since 2.4
          */
         set_select_multiple(select_multiple: boolean): void;
 
         /**
          * Sets whether hidden files and folders are displayed in the file selector.
          * @param show_hidden `true` if hidden files and folders should be displayed.
+         * @since 2.6
          */
         set_show_hidden(show_hidden: boolean): void;
 
@@ -89561,6 +92188,7 @@ export namespace Gtk {
          * 
          * @param uri the URI to set as current
          * @returns `true` if both the folder could be changed and the URI was selected successfully, `false` otherwise.
+         * @since 2.4
          */
         set_uri(uri: string): boolean;
 
@@ -89572,11 +92200,13 @@ export namespace Gtk {
          * 
          * See also: `gtk_file_chooser_set_preview_widget()`
          * @param use_label whether to display a stock label with the name of the previewed file
+         * @since 2.4
          */
         set_use_preview_label(use_label: boolean): void;
 
         /**
          * Unselects all the files in the current folder of a file chooser.
+         * @since 2.4
          */
         unselect_all(): void;
 
@@ -89584,6 +92214,7 @@ export namespace Gtk {
          * Unselects the file referred to by `file`. If the file is not in the current
          * directory, does not exist, or is otherwise not currently selected, does nothing.
          * @param file a {@link Gio.File}
+         * @since 2.14
          */
         unselect_file(file: Gio.File): void;
 
@@ -89592,6 +92223,7 @@ export namespace Gtk {
          * is not in the current directory, does not exist, or
          * is otherwise not currently selected, does nothing.
          * @param filename the filename to unselect
+         * @since 2.4
          */
         unselect_filename(filename: string): void;
 
@@ -89600,6 +92232,7 @@ export namespace Gtk {
          * is not in the current directory, does not exist, or
          * is otherwise not currently selected, does nothing.
          * @param uri the URI to unselect
+         * @since 2.4
          */
         unselect_uri(uri: string): void;
     }
@@ -89639,12 +92272,14 @@ export namespace Gtk {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable's new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Orientation): void;
     }
@@ -89666,6 +92301,7 @@ export namespace Gtk {
              * Ends a preview.
              * 
              * This function must be called to finish a custom print preview.
+             * @since 2.10
              * @virtual
              */
             vfunc_end_preview(): void;
@@ -89681,6 +92317,7 @@ export namespace Gtk {
              * Returns whether the given page is included in the set of pages that
              * have been selected for printing.
              * @param page_nr a page number
+             * @since 2.10
              * @virtual
              */
             vfunc_is_selected(page_nr: number): boolean;
@@ -89702,6 +92339,7 @@ export namespace Gtk {
              * Note that this function requires a suitable cairo context to
              * be associated with the print context.
              * @param page_nr the page to render
+             * @since 2.10
              * @virtual
              */
             vfunc_render_page(page_nr: number): void;
@@ -89726,6 +92364,7 @@ export namespace Gtk {
          * Ends a preview.
          * 
          * This function must be called to finish a custom print preview.
+         * @since 2.10
          */
         end_preview(): void;
 
@@ -89734,6 +92373,7 @@ export namespace Gtk {
          * have been selected for printing.
          * @param page_nr a page number
          * @returns `true` if the page has been selected for printing
+         * @since 2.10
          */
         is_selected(page_nr: number): boolean;
 
@@ -89748,6 +92388,7 @@ export namespace Gtk {
          * Note that this function requires a suitable cairo context to
          * be associated with the print context.
          * @param page_nr the page to render
+         * @since 2.10
          */
         render_page(page_nr: number): void;
     }
@@ -89771,12 +92412,14 @@ export namespace Gtk {
              * If no previous filter objects were defined, this function will call
              * `gtk_recent_chooser_set_filter()`.
              * @param filter a {@link Gtk.RecentFilter}
+             * @since 2.10
              * @virtual
              */
             vfunc_add_filter(filter: RecentFilter): void;
 
             /**
              * Gets the URI currently selected by `chooser`.
+             * @since 2.10
              * @virtual
              */
             vfunc_get_current_uri(): string;
@@ -89786,6 +92429,7 @@ export namespace Gtk {
              * 
              * The return value of this function is affected by the "sort-type" and
              * "limit" properties of `chooser`.
+             * @since 2.10
              * @virtual
              */
             vfunc_get_items(): RecentInfo[];
@@ -89797,6 +92441,7 @@ export namespace Gtk {
 
             /**
              * Gets the {@link Gtk.RecentFilter} objects held by `chooser`.
+             * @since 2.10
              * @virtual
              */
             vfunc_list_filters(): RecentFilter[];
@@ -89804,6 +92449,7 @@ export namespace Gtk {
             /**
              * Removes `filter` from the list of {@link Gtk.RecentFilter} objects held by `chooser`.
              * @param filter a {@link Gtk.RecentFilter}
+             * @since 2.10
              * @virtual
              */
             vfunc_remove_filter(filter: RecentFilter): void;
@@ -89811,6 +92457,7 @@ export namespace Gtk {
             /**
              * Selects all the items inside `chooser`, if the `chooser` supports
              * multiple selection.
+             * @since 2.10
              * @virtual
              */
             vfunc_select_all(): void;
@@ -89818,6 +92465,7 @@ export namespace Gtk {
             /**
              * Selects `uri` inside `chooser`.
              * @param uri a URI
+             * @since 2.10
              * @virtual
              */
             vfunc_select_uri(uri: string): boolean;
@@ -89830,6 +92478,7 @@ export namespace Gtk {
             /**
              * Sets `uri` as the current URI for `chooser`.
              * @param uri a URI
+             * @since 2.10
              * @virtual
              */
             vfunc_set_current_uri(uri: string): boolean;
@@ -89844,12 +92493,14 @@ export namespace Gtk {
              * item comes before the second, zero if the two items are equal and
              * a negative integer if the first item comes after the second.
              * @param sort_func the comparison function
+             * @since 2.10
              * @virtual
              */
             vfunc_set_sort_func(sort_func: RecentSortFunc): void;
 
             /**
              * Unselects all the items inside `chooser`.
+             * @since 2.10
              * @virtual
              */
             vfunc_unselect_all(): void;
@@ -89857,6 +92508,7 @@ export namespace Gtk {
             /**
              * Unselects `uri` inside `chooser`.
              * @param uri a URI
+             * @since 2.10
              * @virtual
              */
             vfunc_unselect_uri(uri: string): void;
@@ -90057,18 +92709,21 @@ export namespace Gtk {
          * If no previous filter objects were defined, this function will call
          * `gtk_recent_chooser_set_filter()`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         add_filter(filter: RecentFilter): void;
 
         /**
          * Gets the {@link Gtk.RecentInfo} currently selected by `chooser`.
          * @returns a {@link Gtk.RecentInfo}.  Use `gtk_recent_info_unref()` when   when you have finished using it.
+         * @since 2.10
          */
         get_current_item(): RecentInfo;
 
         /**
          * Gets the URI currently selected by `chooser`.
          * @returns a newly allocated string holding a URI.
+         * @since 2.10
          */
         get_current_uri(): string;
 
@@ -90076,6 +92731,7 @@ export namespace Gtk {
          * Gets the {@link Gtk.RecentFilter} object currently used by `chooser` to affect
          * the display of the recently used resources.
          * @returns a {@link Gtk.RecentFilter} object.
+         * @since 2.10
          */
         get_filter(): RecentFilter;
 
@@ -90085,6 +92741,7 @@ export namespace Gtk {
          * The return value of this function is affected by the "sort-type" and
          * "limit" properties of `chooser`.
          * @returns A newly allocated   list of {@link Gtk.RecentInfo} objects.  You should   use `gtk_recent_info_unref()` on every item of the list, and then free   the list itself using `g_list_free()`.
+         * @since 2.10
          */
         get_items(): RecentInfo[];
 
@@ -90092,6 +92749,7 @@ export namespace Gtk {
          * Gets the number of items returned by `gtk_recent_chooser_get_items()`
          * and `gtk_recent_chooser_get_uris()`.
          * @returns A positive integer, or -1 meaning that all items are   returned.
+         * @since 2.10
          */
         get_limit(): number;
 
@@ -90099,18 +92757,21 @@ export namespace Gtk {
          * Gets whether only local resources should be shown in the recently used
          * resources selector.  See `gtk_recent_chooser_set_local_only()`
          * @returns `true` if only local resources should be shown.
+         * @since 2.10
          */
         get_local_only(): boolean;
 
         /**
          * Gets whether `chooser` can select multiple items.
          * @returns `true` if `chooser` can select more than one item.
+         * @since 2.10
          */
         get_select_multiple(): boolean;
 
         /**
          * Retrieves whether `chooser` should show an icon near the resource.
          * @returns `true` if the icons should be displayed, `false` otherwise.
+         * @since 2.10
          */
         get_show_icons(): boolean;
 
@@ -90118,6 +92779,7 @@ export namespace Gtk {
          * Retrieves whether `chooser` should show the recently used resources that
          * were not found.
          * @returns `true` if the resources not found should be displayed, and   `false` otheriwse.
+         * @since 2.10
          */
         get_show_not_found(): boolean;
 
@@ -90125,6 +92787,8 @@ export namespace Gtk {
          * Returns whether `chooser` should display recently used resources
          * prepended by a unique number.
          * @returns `true` if the recent chooser should show display numbers,   `false` otherwise.
+         * @since 2.10
+         * @deprecated since 2.12: use `gtk_recent_chooser_menu_get_show_numbers()` instead.
          */
         get_show_numbers(): boolean;
 
@@ -90132,6 +92796,7 @@ export namespace Gtk {
          * Returns whether `chooser` should display recently used resources
          * registered as private.
          * @returns `true` if the recent chooser should show private items,   `false` otherwise.
+         * @since 2.10
          */
         get_show_private(): boolean;
 
@@ -90139,12 +92804,14 @@ export namespace Gtk {
          * Gets whether `chooser` should display tooltips containing the full path
          * of a recently user resource.
          * @returns `true` if the recent chooser should show tooltips,   `false` otherwise.
+         * @since 2.10
          */
         get_show_tips(): boolean;
 
         /**
          * Gets the value set by `gtk_recent_chooser_set_sort_type()`.
          * @returns the sorting order of the `chooser`.
+         * @since 2.10
          */
         get_sort_type(): RecentSortType;
 
@@ -90156,24 +92823,28 @@ export namespace Gtk {
          * 
          * Since the returned array is `null` terminated, `length` may be `null`.
          * @returns A newly allocated, `null`-terminated array of strings. Use     `g_strfreev()` to free it.
+         * @since 2.10
          */
         get_uris(): string[];
 
         /**
          * Gets the {@link Gtk.RecentFilter} objects held by `chooser`.
          * @returns A singly linked list   of {@link Gtk.RecentFilter} objects.  You   should just free the returned list using `g_slist_free()`.
+         * @since 2.10
          */
         list_filters(): RecentFilter[];
 
         /**
          * Removes `filter` from the list of {@link Gtk.RecentFilter} objects held by `chooser`.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         remove_filter(filter: RecentFilter): void;
 
         /**
          * Selects all the items inside `chooser`, if the `chooser` supports
          * multiple selection.
+         * @since 2.10
          */
         select_all(): void;
 
@@ -90181,6 +92852,7 @@ export namespace Gtk {
          * Selects `uri` inside `chooser`.
          * @param uri a URI
          * @returns `true` if `uri` was found.
+         * @since 2.10
          */
         select_uri(uri: string): boolean;
 
@@ -90188,6 +92860,7 @@ export namespace Gtk {
          * Sets `uri` as the current URI for `chooser`.
          * @param uri a URI
          * @returns `true` if the URI was found.
+         * @since 2.10
          */
         set_current_uri(uri: string): boolean;
 
@@ -90195,6 +92868,7 @@ export namespace Gtk {
          * Sets `filter` as the current {@link Gtk.RecentFilter} object used by `chooser`
          * to affect the displayed recently used resources.
          * @param filter a {@link Gtk.RecentFilter}
+         * @since 2.10
          */
         set_filter(filter: RecentFilter): void;
 
@@ -90202,6 +92876,7 @@ export namespace Gtk {
          * Sets the number of items that should be returned by
          * `gtk_recent_chooser_get_items()` and `gtk_recent_chooser_get_uris()`.
          * @param limit a positive integer, or -1 for all items
+         * @since 2.10
          */
         set_limit(limit: number): void;
 
@@ -90211,12 +92886,14 @@ export namespace Gtk {
          * `local_only` is `true` (the default) then the shown resources are guaranteed
          * to be accessible through the operating system native file system.
          * @param local_only `true` if only local files can be shown
+         * @since 2.10
          */
         set_local_only(local_only: boolean): void;
 
         /**
          * Sets whether `chooser` can select multiple items.
          * @param select_multiple `true` if `chooser` can select more than one item
+         * @since 2.10
          */
         set_select_multiple(select_multiple: boolean): void;
 
@@ -90224,6 +92901,7 @@ export namespace Gtk {
          * Sets whether `chooser` should show an icon near the resource when
          * displaying it.
          * @param show_icons whether to show an icon near the resource
+         * @since 2.10
          */
         set_show_icons(show_icons: boolean): void;
 
@@ -90231,18 +92909,22 @@ export namespace Gtk {
          * Sets whether `chooser` should display the recently used resources that
          * it didn't find.  This only applies to local resources.
          * @param show_not_found whether to show the local items we didn't find
+         * @since 2.10
          */
         set_show_not_found(show_not_found: boolean): void;
 
         /**
          * Whether to show recently used resources prepended by a unique number.
          * @param show_numbers `true` to show numbers, `false` otherwise
+         * @since 2.10
+         * @deprecated since 2.12: Use `gtk_recent_chooser_menu_set_show_numbers()` instead.
          */
         set_show_numbers(show_numbers: boolean): void;
 
         /**
          * Whether to show recently used resources marked registered as private.
          * @param show_private `true` to show private items, `false` otherwise
+         * @since 2.10
          */
         set_show_private(show_private: boolean): void;
 
@@ -90250,6 +92932,7 @@ export namespace Gtk {
          * Sets whether to show a tooltips containing the full path of each
          * recently used resource in a {@link Gtk.RecentChooser} widget.
          * @param show_tips `true` if tooltips should be shown
+         * @since 2.10
          */
         set_show_tips(show_tips: boolean): void;
 
@@ -90263,6 +92946,7 @@ export namespace Gtk {
          * item comes before the second, zero if the two items are equal and
          * a negative integer if the first item comes after the second.
          * @param sort_func the comparison function
+         * @since 2.10
          */
         set_sort_func(sort_func: RecentSortFunc): void;
 
@@ -90270,17 +92954,20 @@ export namespace Gtk {
          * Changes the sorting order of the recently used resources list displayed by
          * `chooser`.
          * @param sort_type sort order that the chooser should use
+         * @since 2.10
          */
         set_sort_type(sort_type: RecentSortType): void;
 
         /**
          * Unselects all the items inside `chooser`.
+         * @since 2.10
          */
         unselect_all(): void;
 
         /**
          * Unselects `uri` inside `chooser`.
          * @param uri a URI
+         * @since 2.10
          */
         unselect_uri(uri: string): void;
     }
@@ -90302,6 +92989,7 @@ export namespace Gtk {
              * Retrieves the current ellipsize mode for the tool shell. Tool items must not
              * call this function directly, but rely on `gtk_tool_item_get_ellipsize_mode()`
              * instead.
+             * @since 2.20
              * @virtual
              */
             vfunc_get_ellipsize_mode(): Pango.EllipsizeMode;
@@ -90316,6 +93004,7 @@ export namespace Gtk {
              * Retrieves the current orientation for the tool shell. Tool items must not
              * call this function directly, but rely on `gtk_tool_item_get_orientation()`
              * instead.
+             * @since 2.14
              * @virtual
              */
             vfunc_get_orientation(): Orientation;
@@ -90323,6 +93012,7 @@ export namespace Gtk {
             /**
              * Returns the relief style of buttons on `shell`. Tool items must not call this
              * function directly, but rely on `gtk_tool_item_get_relief_style()` instead.
+             * @since 2.14
              * @virtual
              */
             vfunc_get_relief_style(): ReliefStyle;
@@ -90331,6 +93021,7 @@ export namespace Gtk {
              * Retrieves whether the tool shell has text, icons, or both. Tool items must
              * not call this function directly, but rely on `gtk_tool_item_get_style()`
              * instead.
+             * @since 2.14
              * @virtual
              */
             vfunc_get_style(): ToolbarStyle;
@@ -90339,6 +93030,7 @@ export namespace Gtk {
              * Retrieves the current text alignment for the tool shell. Tool items must not
              * call this function directly, but rely on `gtk_tool_item_get_text_alignment()`
              * instead.
+             * @since 2.20
              * @virtual
              */
             vfunc_get_text_alignment(): number;
@@ -90347,6 +93039,7 @@ export namespace Gtk {
              * Retrieves the current text orientation for the tool shell. Tool items must not
              * call this function directly, but rely on `gtk_tool_item_get_text_orientation()`
              * instead.
+             * @since 2.20
              * @virtual
              */
             vfunc_get_text_orientation(): Orientation;
@@ -90355,6 +93048,7 @@ export namespace Gtk {
              * Retrieves the current text size group for the tool shell. Tool items must not
              * call this function directly, but rely on `gtk_tool_item_get_text_size_group()`
              * instead.
+             * @since 2.20
              * @virtual
              */
             vfunc_get_text_size_group(): SizeGroup;
@@ -90366,6 +93060,7 @@ export namespace Gtk {
              * 
              * Tool items must not call this function directly, but rely on
              * `gtk_tool_item_rebuild_menu()` instead.
+             * @since 2.14
              * @virtual
              */
             vfunc_rebuild_menu(): void;
@@ -90393,6 +93088,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_ellipsize_mode()`
          * instead.
          * @returns the current ellipsize mode of `shell`
+         * @since 2.20
          */
         get_ellipsize_mode(): Pango.EllipsizeMode;
 
@@ -90400,6 +93096,7 @@ export namespace Gtk {
          * Retrieves the icon size for the tool shell. Tool items must not call this
          * function directly, but rely on `gtk_tool_item_get_icon_size()` instead.
          * @returns the current size for icons of `shell`
+         * @since 2.14
          */
         get_icon_size(): number;
 
@@ -90408,6 +93105,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_orientation()`
          * instead.
          * @returns the current orientation of `shell`
+         * @since 2.14
          */
         get_orientation(): Orientation;
 
@@ -90415,6 +93113,7 @@ export namespace Gtk {
          * Returns the relief style of buttons on `shell`. Tool items must not call this
          * function directly, but rely on `gtk_tool_item_get_relief_style()` instead.
          * @returns The relief style of buttons on `shell`.
+         * @since 2.14
          */
         get_relief_style(): ReliefStyle;
 
@@ -90423,6 +93122,7 @@ export namespace Gtk {
          * not call this function directly, but rely on `gtk_tool_item_get_style()`
          * instead.
          * @returns the current style of `shell`
+         * @since 2.14
          */
         get_style(): ToolbarStyle;
 
@@ -90437,6 +93137,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_text_alignment()`
          * instead.
          * @returns the current text alignment of `shell`
+         * @since 2.20
          */
         get_text_alignment(): number;
 
@@ -90445,6 +93146,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_text_orientation()`
          * instead.
          * @returns the current text orientation of `shell`
+         * @since 2.20
          */
         get_text_orientation(): Orientation;
 
@@ -90453,6 +93155,7 @@ export namespace Gtk {
          * call this function directly, but rely on `gtk_tool_item_get_text_size_group()`
          * instead.
          * @returns the current text size group of `shell`
+         * @since 2.20
          */
         get_text_size_group(): SizeGroup;
 
@@ -90463,6 +93166,7 @@ export namespace Gtk {
          * 
          * Tool items must not call this function directly, but rely on
          * `gtk_tool_item_rebuild_menu()` instead.
+         * @since 2.14
          */
         rebuild_menu(): void;
     }
@@ -90849,6 +93553,7 @@ export namespace Gtk {
          * and `root` as the virtual root.
          * @param root A {@link Gtk.TreePath} or `null`.
          * @returns A new {@link Gtk.TreeModel}.
+         * @since 2.4
          */
         filter_new(root: TreePath | null): TreeModel;
 
@@ -90917,6 +93622,7 @@ export namespace Gtk {
          * acceptable return value for this string.
          * @param iter An {@link Gtk.TreeIter}.
          * @returns A newly-allocated string. Must be freed with `g_free()`.
+         * @since 2.2
          */
         get_string_from_iter(iter: TreeIter): string;
 

@@ -113,17 +113,20 @@ export namespace Parquet {
         // Methods
         /**
          * @returns The number of row groups.
+         * @since 0.11.0
          */
         get_n_row_groups(): number;
 
         /**
          * @returns A got {@link Arrow.Schema}.
+         * @since 0.12.0
          */
         get_schema(): Arrow.Schema | null;
 
         /**
          * @param i The index of the column to be read.   If an index is negative, the index is counted backward from the   end of the columns. `-1` means the last column.
          * @returns A read {@link Arrow.ChunkedArray}.
+         * @since 0.15.0
          */
         read_column_data(i: number): Arrow.ChunkedArray | null;
 
@@ -131,11 +134,13 @@ export namespace Parquet {
          * @param row_group_index A row group index to be read.
          * @param column_indices Column indices to be read. `null` means that all columns are read.   If an index is negative, the index is counted backward from the   end of the columns. `-1` means the last column.
          * @returns A read {@link Arrow.Table}.
+         * @since 1.0.0
          */
         read_row_group(row_group_index: number, column_indices: number[] | null): Arrow.Table | null;
 
         /**
          * @returns A read {@link Arrow.Table}.
+         * @since 0.11.0
          */
         read_table(): Arrow.Table | null;
 
@@ -210,6 +215,7 @@ export namespace Parquet {
         // Methods
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @since 0.11.0
          */
         close(): boolean;
 
@@ -217,6 +223,7 @@ export namespace Parquet {
          * @param table A table to be written.
          * @param chunk_size The max number of rows in a row group.
          * @returns `true` on success, `false` if there was an error.
+         * @since 0.11.0
          */
         write_table(table: Arrow.Table, chunk_size: bigint | number): boolean;
     }
@@ -268,69 +275,82 @@ export namespace Parquet {
         // Methods
         /**
          * @param path The column path as dot string.
+         * @since 0.17.0
          */
         disable_dictionary(path: string | null): void;
 
         /**
          * @param path The column path as dot string.
+         * @since 0.17.0
          */
         enable_dictionary(path: string | null): void;
 
         /**
          * @returns The batch size.
+         * @since 0.17.0
          */
         get_batch_size(): number;
 
         /**
          * @param path The path as dot string.
          * @returns The compression type of {@link Parquet.WriterProperties}.
+         * @since 0.17.0
          */
         get_compression_path(path: string): Arrow.CompressionType;
 
         /**
          * @returns The data page size.
+         * @since 0.17.0
          */
         get_data_page_size(): number;
 
         /**
          * @returns The dictionary page size limit.
+         * @since 0.17.0
          */
         get_dictionary_page_size_limit(): number;
 
         /**
          * @returns The max row group length.
+         * @since 0.17.0
          */
         get_max_row_group_length(): number;
 
         /**
          * @param path The path as dot string.
          * @returns `true` on dictionary enabled, `false` on dictionary disabled.
+         * @since 0.17.0
          */
         is_dictionary_enabled(path: string): boolean;
 
         /**
          * @param batch_size The batch size.
+         * @since 0.17.0
          */
         set_batch_size(batch_size: bigint | number): void;
 
         /**
          * @param compression_type A {@link Arrow.CompressionType}.
          * @param path The column path as dot string.
+         * @since 0.17.0
          */
         set_compression(compression_type: Arrow.CompressionType, path: string | null): void;
 
         /**
          * @param data_page_size The data page size.
+         * @since 0.17.0
          */
         set_data_page_size(data_page_size: bigint | number): void;
 
         /**
          * @param limit The dictionary page size limit.
+         * @since 0.17.0
          */
         set_dictionary_page_size_limit(limit: bigint | number): void;
 
         /**
          * @param length The max row group length.
+         * @since 0.17.0
          */
         set_max_row_group_length(length: bigint | number): void;
     }

@@ -2734,6 +2734,7 @@ export namespace St {
 
         /**
          * Gets the value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_value_and_text()` instead.
          */
         get_current_value(): unknown;
 
@@ -2743,11 +2744,13 @@ export namespace St {
          * mean that it is limited only by the floating point precision of the
          * platform.
          * @returns the minimum increment by which the value of this object may be changed. zero if undefined.
+         * @since 2.12
          */
         get_increment(): number;
 
         /**
          * Gets the maximum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          */
         get_maximum_value(): unknown;
 
@@ -2755,17 +2758,21 @@ export namespace St {
          * Gets the minimum increment by which the value of this object may be changed.  If zero,
          * the minimum increment is undefined, which may mean that it is limited only by the
          * floating point precision of the platform.
+         * @since 1.12
+         * @deprecated Since 2.12. Use `atk_value_get_increment()` instead.
          */
         get_minimum_increment(): unknown;
 
         /**
          * Gets the minimum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          */
         get_minimum_value(): unknown;
 
         /**
          * Gets the range of this object.
          * @returns a newly allocated {@link Atk.Range} that represents the minimum, maximum and descriptor (if available) of `obj`. NULL if that range is not defined.
+         * @since 2.12
          */
         get_range(): Atk.Range | null;
 
@@ -2773,6 +2780,7 @@ export namespace St {
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
          * introduction for examples of subranges and when to expose them.
          * @returns an {@link GLib.SList} of {@link Atk.Range} which each of the subranges defined for this object. Free the returns list with `g_slist_free()`.
+         * @since 2.12
          */
         get_sub_ranges(): Atk.Range[];
 
@@ -2780,6 +2788,7 @@ export namespace St {
          * Gets the current value and the human readable text alternative of
          * `obj`. `text` is a newly created string, that must be freed by the
          * caller. Can be NULL if no descriptor is available.
+         * @since 2.12
          */
         get_value_and_text(): [number, string];
 
@@ -2787,6 +2796,7 @@ export namespace St {
          * Sets the value of this object.
          * @param value a {@link GObject.Value} which is the desired new accessible value.
          * @returns `true` if new value is successfully set, `false` otherwise.
+         * @deprecated Since 2.12. Use `atk_value_set_value()` instead.
          */
         set_current_value(value: GObject.Value | any): boolean;
 
@@ -2806,11 +2816,13 @@ export namespace St {
          * required anymore to return if the value was properly assigned or
          * not.
          * @param new_value a double which is the desired new accessible value.
+         * @since 2.12
          */
         set_value(new_value: number): void;
 
         /**
          * Gets the value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_value_and_text()` instead.
          * @virtual
          */
         vfunc_get_current_value(): GObject.Value | any;
@@ -2820,12 +2832,14 @@ export namespace St {
          * changed.  If zero, the minimum increment is undefined, which may
          * mean that it is limited only by the floating point precision of the
          * platform.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_increment(): number;
 
         /**
          * Gets the maximum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          * @virtual
          */
         vfunc_get_maximum_value(): GObject.Value | any;
@@ -2834,18 +2848,22 @@ export namespace St {
          * Gets the minimum increment by which the value of this object may be changed.  If zero,
          * the minimum increment is undefined, which may mean that it is limited only by the
          * floating point precision of the platform.
+         * @since 1.12
+         * @deprecated Since 2.12. Use `atk_value_get_increment()` instead.
          * @virtual
          */
         vfunc_get_minimum_increment(): GObject.Value | any;
 
         /**
          * Gets the minimum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          * @virtual
          */
         vfunc_get_minimum_value(): GObject.Value | any;
 
         /**
          * Gets the range of this object.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_range(): Atk.Range | null;
@@ -2853,6 +2871,7 @@ export namespace St {
         /**
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
          * introduction for examples of subranges and when to expose them.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_sub_ranges(): Atk.Range[];
@@ -2861,6 +2880,7 @@ export namespace St {
          * Gets the current value and the human readable text alternative of
          * `obj`. `text` is a newly created string, that must be freed by the
          * caller. Can be NULL if no descriptor is available.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_value_and_text(): [number, string];
@@ -2868,6 +2888,7 @@ export namespace St {
         /**
          * Sets the value of this object.
          * @param value a {@link GObject.Value} which is the desired new accessible value.
+         * @deprecated Since 2.12. Use `atk_value_set_value()` instead.
          * @virtual
          */
         vfunc_set_current_value(value: unknown): boolean;
@@ -2888,6 +2909,7 @@ export namespace St {
          * required anymore to return if the value was properly assigned or
          * not.
          * @param new_value a double which is the desired new accessible value.
+         * @since 2.12
          * @virtual
          */
         vfunc_set_value(new_value: number): void;
@@ -3999,6 +4021,7 @@ export namespace St {
          * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
          * @returns a {@link GLib.Variant}, or `null` when serialization fails. The {@link GLib.Variant} will not be floating.
+         * @since 2.38
          */
         serialize(): GLib.Variant | null;
 
@@ -4020,6 +4043,7 @@ export namespace St {
          * - If `icon` is a {@link Gio.ThemedIcon} with exactly one name and no fallbacks,
          *   the encoding is simply the name (such as `network-server`).
          * @returns An allocated NUL-terminated UTF8 string or `null` if `icon` can't be serialized. Use `g_free()` to free.
+         * @since 2.20
          */
         to_string(): string | null;
 
@@ -4042,6 +4066,7 @@ export namespace St {
          * As serialization will avoid using raw icon data when possible, it only
          * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
+         * @since 2.38
          * @virtual
          */
         vfunc_serialize(): GLib.Variant | null;
@@ -4049,6 +4074,7 @@ export namespace St {
         /**
          * Serializes the `icon` into string tokens.
          * This is can be invoked when `g_icon_new_for_string()` is called.
+         * @since 2.20
          * @virtual
          */
         vfunc_to_tokens(): [boolean, string[], number];
@@ -7478,6 +7504,7 @@ export namespace St {
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
          * @returns An alpha value from 0 to 1.0, inclusive.
+         * @since 1.12
          */
         get_alpha(): number;
 
@@ -7510,6 +7537,7 @@ export namespace St {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_position(coord_type: Atk.CoordType): [number, number];
 
@@ -7518,6 +7546,7 @@ export namespace St {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_size(): [number, number];
 
@@ -7542,6 +7571,7 @@ export namespace St {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          */
         remove_focus_handler(handler_id: number): void;
 
@@ -7553,6 +7583,7 @@ export namespace St {
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to(type: Atk.ScrollType): boolean;
 
@@ -7563,6 +7594,7 @@ export namespace St {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
 
@@ -7620,6 +7652,7 @@ export namespace St {
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
+         * @since 1.12
          * @virtual
          */
         vfunc_get_alpha(): number;
@@ -7654,6 +7687,7 @@ export namespace St {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_position(coord_type: Atk.CoordType): [number, number];
@@ -7663,6 +7697,7 @@ export namespace St {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_size(): [number, number];
@@ -7688,6 +7723,7 @@ export namespace St {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
@@ -7699,6 +7735,7 @@ export namespace St {
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to(type: Atk.ScrollType): boolean;
@@ -7709,6 +7746,7 @@ export namespace St {
          * @param coords specify whether coordinates are relative to the screen or to the parent object.
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;

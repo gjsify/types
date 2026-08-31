@@ -1897,6 +1897,7 @@ export namespace GData {
         /**
          * Returns a list of the categories in this category list.
          * @returns a {@link GLib.List} of `GDataCategorys`
+         * @since 0.7.0
          */
         get_categories(): Category[];
     }
@@ -2049,23 +2050,27 @@ export namespace GData {
         /**
          * Gets the {@link GData.AccessRule.edited} property. If the property is unset, <code class="literal">-1</code> will be returned.
          * @returns the UNIX timestamp for the time the access rule was last edited, or <code class="literal">-1</code>
+         * @since 0.7.0
          */
         get_edited(): number;
 
         /**
          * Gets the {@link GData.AccessRule.key} property.
          * @returns the access rule's authorisation key, or `null`
+         * @since 0.16.0
          */
         get_key(): string;
 
         /**
          * Gets the {@link GData.AccessRule.role} property.
          * @returns the access rule's role, or `null`
+         * @since 0.3.0
          */
         get_role(): string;
 
         /**
          * Gets the {@link GData.AccessRule.scope_type} and {@link GData.AccessRule.scope_value} properties.
+         * @since 0.3.0
          */
         get_scope(): [string, string];
 
@@ -2074,6 +2079,7 @@ export namespace GData {
          * 
          * Set `role` to `null` to unset the property in the access rule.
          * @param role a new role, or `null`
+         * @since 0.3.0
          */
         set_role(role: string): void;
 
@@ -2088,6 +2094,7 @@ export namespace GData {
          * documentation</ulink> for more information.
          * @param type a new scope type
          * @param value a new scope value, or `null`
+         * @since 0.3.0
          */
         set_scope(type: string, value: string | null): void;
     }
@@ -2196,18 +2203,21 @@ export namespace GData {
         /**
          * Gets the {@link GData.Author.email_address} property. If the e-mail address is non-`null`, it will be non-empty.
          * @returns the author's e-mail address, or `null`
+         * @since 0.4.0
          */
         get_email_address(): string;
 
         /**
          * Gets the {@link GData.Author.name} property. The name will always be a non-`null`, non-empty string.
          * @returns the author's name
+         * @since 0.4.0
          */
         get_name(): string;
 
         /**
          * Gets the {@link GData.Author.uri} property. If the URI is non-`null`, it will be non-empty.
          * @returns the author's URI, or `null`
+         * @since 0.4.0
          */
         get_uri(): string;
 
@@ -2216,12 +2226,14 @@ export namespace GData {
          * 
          * Set `email_address` to `null` to unset the property in the author.
          * @param email_address the new e-mail address for the author, or `null`
+         * @since 0.4.0
          */
         set_email_address(email_address: string | null): void;
 
         /**
          * Sets the {@link GData.Author.name} property to `name`. `name` must be non-`null` and non-empty.
          * @param name the new name for the author
+         * @since 0.4.0
          */
         set_name(name: string): void;
 
@@ -2230,6 +2242,7 @@ export namespace GData {
          * 
          * Set `uri` to `null` to unset the property in the author.
          * @param uri the new URI for the author, or `null`
+         * @since 0.4.0
          */
         set_uri(uri: string | null): void;
 
@@ -2243,6 +2256,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -2336,12 +2350,14 @@ export namespace GData {
         /**
          * Returns a URI detailing the scope of the authorization domain. See {@link GData.AuthorizationDomain.scope} for more details.
          * @returns URI detailing the scope of the authorization domain
+         * @since 0.9.0
          */
         get_scope(): string;
 
         /**
          * Returns the name of the service containing the authorization domain. See {@link GData.AuthorizationDomain.service_name} for more details.
          * @returns name of the service containing the authorization domain
+         * @since 0.9.0
          */
         get_service_name(): string;
     }
@@ -2459,6 +2475,7 @@ export namespace GData {
          * @param entry the {@link GData.Entry} to delete
          * @param callback a {@link GData.BatchOperationCallback} to call when the deletion is finished, or `null`
          * @returns operation ID for the added deletion, or <code class="literal">0</code>
+         * @since 0.7.0
          */
         add_deletion(entry: Entry, callback: BatchOperationCallback): number;
 
@@ -2471,6 +2488,7 @@ export namespace GData {
          * @param entry the {@link GData.Entry} to insert
          * @param callback a {@link GData.BatchOperationCallback} to call when the insertion is finished, or `null`
          * @returns operation ID for the added insertion, or <code class="literal">0</code>
+         * @since 0.7.0
          */
         add_insertion(entry: Entry, callback: BatchOperationCallback): number;
 
@@ -2490,6 +2508,7 @@ export namespace GData {
          * @param entry_type the type of the entry which will be returned
          * @param callback a {@link GData.BatchOperationCallback} to call when the query is finished, or `null`
          * @returns operation ID for the added query, or <code class="literal">0</code>
+         * @since 0.7.0
          */
         add_query(id: string, entry_type: GObject.GType, callback: BatchOperationCallback): number;
 
@@ -2505,24 +2524,28 @@ export namespace GData {
          * @param entry the {@link GData.Entry} to update
          * @param callback a {@link GData.BatchOperationCallback} to call when the update is finished, or `null`
          * @returns operation ID for the added update, or <code class="literal">0</code>
+         * @since 0.7.0
          */
         add_update(entry: Entry, callback: BatchOperationCallback): number;
 
         /**
          * Gets the {@link GData.BatchOperation.authorization_domain} property.
          * @returns the {@link GData.AuthorizationDomain} used to authorize the batch operation, or `null`
+         * @since 0.9.0
          */
         get_authorization_domain(): AuthorizationDomain | null;
 
         /**
          * Gets the {@link GData.BatchOperation.feed_uri} property.
          * @returns the batch operation's feed URI
+         * @since 0.7.0
          */
         get_feed_uri(): string;
 
         /**
          * Gets the {@link GData.BatchOperation.service} property.
          * @returns the batch operation's attached service
+         * @since 0.7.0
          */
         get_service(): Service;
 
@@ -2541,6 +2564,7 @@ export namespace GData {
          * after network activity has finished, `gdata_batch_operation_run()` will continue and finish as normal.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         run(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2554,6 +2578,7 @@ export namespace GData {
          * When the entire batch operation is finished, `callback` will be called. You can then call `gdata_batch_operation_run_finish()` to get the results of
          * the batch operation.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.7.0
          */
         run_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2568,6 +2593,7 @@ export namespace GData {
          * the batch operation.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the batch operation is finished, or `null`
+         * @since 0.7.0
          */
         run_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2582,6 +2608,7 @@ export namespace GData {
          * the batch operation.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the batch operation is finished, or `null`
+         * @since 0.7.0
          */
         run_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2591,6 +2618,7 @@ export namespace GData {
          * Return values are as for `gdata_batch_operation_run()`.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         run_finish(async_result: Gio.AsyncResult): boolean;
     }
@@ -2828,12 +2856,14 @@ export namespace GData {
         /**
          * Sets the {@link GData.CalendarCalendar.is_hidden} property to `is_hidden`.
          * @param is_hidden `true` to hide the calendar, `false` otherwise
+         * @since 0.2.0
          */
         set_is_hidden(is_hidden: boolean): void;
 
         /**
          * Sets the {@link GData.CalendarCalendar.is_selected} property to `is_selected`.
          * @param is_selected `true` to select the calendar, `false` otherwise
+         * @since 0.2.0
          */
         set_is_selected(is_selected: boolean): void;
 
@@ -2860,6 +2890,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @returns a {@link GData.Feed} of access control rules, or `null`; unref with `g_object_unref()`
+         * @since 0.3.0
          */
         get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -2876,6 +2907,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.9.1
          */
         get_rules_async(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2893,6 +2925,7 @@ export namespace GData {
          * @param service a {@link GData.Service}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
+         * @since 0.3.0
          * @virtual
          */
         vfunc_get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
@@ -3203,6 +3236,7 @@ export namespace GData {
          * and a specific time is added, the server will return an error when the {@link GData.CalendarEvent} is
          * inserted using `gdata_service_insert_entry()`.
          * @param when a {@link GData.GDWhen} to add
+         * @since 0.2.0
          */
         add_time(when: GDWhen): void;
 
@@ -3246,18 +3280,21 @@ export namespace GData {
          * 
          * If both `event_id` and `event_uri` are `null`, this function is a no-op. Otherwise, they should both be
          * freed with `g_free()`.
+         * @since 0.3.0
          */
         get_original_event_details(): [string, string];
 
         /**
          * Gets a list of the people attending the event.
          * @returns a {@link GLib.List} of `GDataGDWhos`, or `null`
+         * @since 0.2.0
          */
         get_people(): GDWho[];
 
         /**
          * Gets a list of the locations associated with the event.
          * @returns a {@link GLib.List} of `GDataGDWheres`, or `null`
+         * @since 0.2.0
          */
         get_places(): GDWhere[];
 
@@ -3268,12 +3305,14 @@ export namespace GData {
          * If there are no time periods, or more than one time period, associated with the event, `false` will
          * be returned, and the parameters will remain unmodified.
          * @returns `true` if there is only one time period associated with the event, `false` otherwise
+         * @since 0.2.0
          */
         get_primary_time(): [boolean, number, number, GDWhen];
 
         /**
          * Gets the {@link GData.CalendarEvent.recurrence} property.
          * @returns the event recurrence patterns, or `null`
+         * @since 0.3.0
          */
         get_recurrence(): string;
 
@@ -3286,12 +3325,14 @@ export namespace GData {
         /**
          * Gets the {@link GData.CalendarEvent.status} property.
          * @returns the event status, or `null`
+         * @since 0.2.0
          */
         get_status(): string;
 
         /**
          * Gets a list of the time periods associated with the event.
          * @returns a {@link GLib.List} of `GDataGDWhens`, or `null`
+         * @since 0.2.0
          */
         get_times(): GDWhen[];
 
@@ -3317,6 +3358,7 @@ export namespace GData {
          * Determines whether the event is an exception to a recurring event. If it is, details of the original event
          * can be retrieved using `gdata_calendar_event_get_original_event_details()`.
          * @returns `true` if the event is an exception, `false` otherwise
+         * @since 0.3.0
          */
         is_exception(): boolean;
 
@@ -3352,6 +3394,7 @@ export namespace GData {
          * Note: `gdata_calendar_event_add_time()` and `gdata_calendar_event_set_recurrence()` are mutually
          * exclusive. See the documentation for `gdata_calendar_event_add_time()` for details.
          * @param recurrence a new event recurrence, or `null`
+         * @since 0.3.0
          */
         set_recurrence(recurrence: string | null): void;
 
@@ -3366,6 +3409,7 @@ export namespace GData {
          * 
          * Set `status` to `null` to unset the property in the event.
          * @param status a new event status, or `null`
+         * @since 0.2.0
          */
         set_status(status: string | null): void;
 
@@ -3689,6 +3733,7 @@ export namespace GData {
         /**
          * Gets the {@link GData.CalendarQuery.max_attendees} property. If the property is unset, <code class="literal">0</code> will be returned.
          * @returns the maximum number of attendees, or <code class="literal">0</code>
+         * @since 0.9.1
          */
         get_max_attendees(): number;
 
@@ -3719,6 +3764,7 @@ export namespace GData {
         /**
          * Gets the {@link GData.CalendarQuery.timezone} property.
          * @returns the timezone property, or `null` if it is unset
+         * @since 0.2.0
          */
         get_timezone(): string;
 
@@ -3733,6 +3779,7 @@ export namespace GData {
          * 
          * Set `max_attendees` to <code class="literal">0</code> to unset the property in the query URI.
          * @param max_attendees a new maximum attendee count, or <code class="literal">0</code>
+         * @since 0.9.1
          */
         set_max_attendees(max_attendees: number): void;
 
@@ -3747,6 +3794,7 @@ export namespace GData {
         /**
          * Sets the {@link GData.CalendarQuery.show_deleted} property of the {@link GData.CalendarQuery}.
          * @param show_deleted `true` to show deleted events, `false` otherwise
+         * @since 0.9.1
          */
         set_show_deleted(show_deleted: boolean): void;
 
@@ -3779,6 +3827,7 @@ export namespace GData {
          * 
          * Set `timezone` to `null` to unset the property in the query URI.
          * @param _timezone a new timezone string, or `null`
+         * @since 0.2.0
          */
         set_timezone(_timezone: string | null): void;
     }
@@ -3840,6 +3889,7 @@ export namespace GData {
          * does not support natively, then this domain may be needed to authorize the requests.
          * 
          * The domain never changes, and is interned so that pointer comparison can be used to differentiate it from other authorization domains.
+         * @since 0.9.0
          */
         static get_primary_authorization_domain(): AuthorizationDomain;
 
@@ -3853,6 +3903,7 @@ export namespace GData {
          * @param event the {@link GData.CalendarEvent} to insert
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.CalendarEvent}, or `null`; unref with `g_object_unref()`
+         * @since 0.17.2
          */
         insert_calendar_event(calendar: CalendarCalendar, event: CalendarEvent, cancellable: Gio.Cancellable | null): CalendarEvent;
 
@@ -3872,6 +3923,7 @@ export namespace GData {
          * @param event the {@link GData.CalendarEvent} to insert
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when insertion is finished
+         * @since 0.17.2
          */
         insert_calendar_event_async(calendar: CalendarCalendar, event: CalendarEvent, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3899,6 +3951,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
+         * @since 0.9.1
          */
         query_all_calendars_async(query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3927,6 +3980,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.9.1
          */
         query_events_async(calendar: CalendarCalendar, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3954,6 +4008,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
+         * @since 0.9.1
          */
         query_own_calendars_async(query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3965,6 +4020,7 @@ export namespace GData {
          * @param domain the {@link GData.AuthorizationDomain} to authorize the operation, or `null`
          * @param feed_uri the URI to send the batch operation request to
          * @returns a new {@link GData.BatchOperation}; unref with `g_object_unref()`
+         * @since 0.9.0
          */
         create_operation(domain: AuthorizationDomain | null, feed_uri: string): BatchOperation;
     }
@@ -4064,18 +4120,21 @@ export namespace GData {
         /**
          * Gets the {@link GData.Category.label} property.
          * @returns the category's label, or `null`
+         * @since 0.4.0
          */
         get_label(): string;
 
         /**
          * Gets the {@link GData.Category.scheme} property. If the scheme is non-`null`, it will be non-empty.
          * @returns the category's scheme, or `null`
+         * @since 0.4.0
          */
         get_scheme(): string;
 
         /**
          * Gets the {@link GData.Category.term} property. The term will always be a non-`null`, non-empty string.
          * @returns the category's term
+         * @since 0.4.0
          */
         get_term(): string;
 
@@ -4084,6 +4143,7 @@ export namespace GData {
          * 
          * Set `label` to `null` to unset the property in the category.
          * @param label the new label for the category, or `null`
+         * @since 0.4.0
          */
         set_label(label: string | null): void;
 
@@ -4092,12 +4152,14 @@ export namespace GData {
          * 
          * Set `scheme` to `null` to unset the property in the category.
          * @param scheme the new scheme for the category, or `null`
+         * @since 0.4.0
          */
         set_scheme(scheme: string | null): void;
 
         /**
          * Sets the {@link GData.Category.term} property to `term`. `term` must be non-`null` and non-empty.
          * @param term the new term for the category
+         * @since 0.4.0
          */
         set_term(term: string): void;
 
@@ -4111,6 +4173,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -4343,6 +4406,7 @@ export namespace GData {
          * @param export_format the format in which the document should be exported
          * @param cancellable a {@link Gio.Cancellable} for the entire download stream, or `null`
          * @returns a {@link GData.DownloadStream} to download the document with, or `null`; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         download(service: DocumentsService, export_format: string, cancellable: Gio.Cancellable | null): DownloadStream;
 
@@ -4357,6 +4421,7 @@ export namespace GData {
          * If the `export_format` is not recognised or not supported for this document, `null` is returned.
          * @param export_format the format in which the document should be exported when downloaded
          * @returns the download URI, or `null`; free with `g_free()`
+         * @since 0.7.0
          */
         get_download_uri(export_format: string): string | null;
 
@@ -4398,6 +4463,7 @@ export namespace GData {
          * </programlisting>
          * </example>
          * @returns the URI of the document's thumbnail, or `null`
+         * @since 0.13.1
          */
         get_thumbnail_uri(): string | null;
 
@@ -4416,6 +4482,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @returns a {@link GData.Feed} of access control rules, or `null`; unref with `g_object_unref()`
+         * @since 0.3.0
          */
         get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -4432,6 +4499,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.9.1
          */
         get_rules_async(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4449,6 +4517,7 @@ export namespace GData {
          * @param service a {@link GData.Service}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
+         * @since 0.3.0
          * @virtual
          */
         vfunc_get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
@@ -4592,6 +4661,7 @@ export namespace GData {
         /**
          * Returns the human-readable name of this shared drive.
          * @returns the drives's human-readable name, or `null` if not set
+         * @since 0.18.0
          */
         get_name(): string | null;
     }
@@ -4923,30 +4993,35 @@ export namespace GData {
          * The changes made by this function will be local only and you need to explicitly update `self` by calling `gdata_service_update_entry()`.
          * @param property a {@link GData.DocumentsProperty}
          * @returns `true` if the `property` doesn't exist in the "properties" list, or that {@link GData.DocumentsProperty.value}  of `property` has been set to `null` by a call to `gdata_documents_entry_remove_documents_property()`. `false` if `property` exists in "properties" list, or in the case that `self` or `property` aren't of proper types.
+         * @since 0.17.11
          */
         add_documents_property(property: DocumentsProperty): boolean;
 
         /**
          * Gets a list of the `GDataDocumentsPropertys` for this entry.
          * @returns a {@link GLib.List} of pointers to `GDataDocumentsPropertys`
+         * @since 0.17.11
          */
         get_document_properties(): DocumentsProperty[];
 
         /**
          * Gets the {@link GData.DocumentsEntry.file_size} property.
          * @returns the size of the document in bytes
+         * @since 0.17.7
          */
         get_file_size(): number;
 
         /**
          * Gets the {@link GData.DocumentsEntry.last_modified_by} property.
          * @returns the author who last modified the document
+         * @since 0.4.0
          */
         get_last_modified_by(): Author;
 
         /**
          * Gets the {@link GData.DocumentsEntry.last_viewed} property. If the property is unset, <code class="literal">-1</code> will be returned.
          * @returns the UNIX timestamp for the time the document was last viewed, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         get_last_viewed(): number;
 
@@ -4959,24 +5034,28 @@ export namespace GData {
          * Note: the path is based on the entry/document IDs of the folders ({@link GData.Entry.id}) and document ({@link GData.DocumentsEntry.document_id}),
          * and not the entries' human-readable names ({@link GData.Entry.title}).
          * @returns the folder hierarchy path containing the document, or `null`; free with `g_free()`
+         * @since 0.4.0
          */
         get_path(): string;
 
         /**
          * Gets the {@link GData.DocumentsEntry.quota_used} property.
          * @returns the number of quota bytes used by the document
+         * @since 0.13.0
          */
         get_quota_used(): number;
 
         /**
          * Gets the {@link GData.DocumentsEntry.resource_id} property.
          * @returns the document's resource ID
+         * @since 0.11.0
          */
         get_resource_id(): string;
 
         /**
          * Gets the {@link GData.DocumentsEntry.shared_with_me_date} property. If the property is unset, `-1` will be returned.
          * @returns the UNIX timestamp for the time at which this file was shared with the user, or `-1`
+         * @since 0.18.0
          */
         get_shared_with_me_date(): number;
 
@@ -4988,12 +5067,14 @@ export namespace GData {
          * The changes made by this function will be local only and you need to explicitly update `self` by calling `gdata_service_update_entry()`.
          * @param property a {@link GData.DocumentsProperty}
          * @returns `true` if `property` has been successfully removed from "properties" list on `self`, `false` otherwise.
+         * @since 0.17.11
          */
         remove_documents_property(property: DocumentsProperty): boolean;
 
         /**
          * Sets the {@link GData.DocumentsEntry.writers_can_invite} property to `writers_can_invite`.
          * @param writers_can_invite `true` if writers can invite other people to edit the document, `false` otherwise
+         * @since 0.4.0
          */
         set_writers_can_invite(writers_can_invite: boolean): void;
 
@@ -5012,6 +5093,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @returns a {@link GData.Feed} of access control rules, or `null`; unref with `g_object_unref()`
+         * @since 0.3.0
          */
         get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -5028,6 +5110,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.9.1
          */
         get_rules_async(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5045,6 +5128,7 @@ export namespace GData {
          * @param service a {@link GData.Service}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
+         * @since 0.3.0
          * @virtual
          */
         vfunc_get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
@@ -5192,6 +5276,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @returns a {@link GData.Feed} of access control rules, or `null`; unref with `g_object_unref()`
+         * @since 0.3.0
          */
         get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -5208,6 +5293,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.9.1
          */
         get_rules_async(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5225,6 +5311,7 @@ export namespace GData {
          * @param service a {@link GData.Service}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
+         * @since 0.3.0
          * @virtual
          */
         vfunc_get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
@@ -5320,12 +5407,14 @@ export namespace GData {
         /**
          * Gets the {@link GData.DocumentsMetadata.quota_total} property.
          * @returns the number of quota bytes available in total. Returns -1 if               there is no quota limit.
+         * @since 0.17.9
          */
         get_quota_total(): number;
 
         /**
          * Gets the {@link GData.DocumentsMetadata.quota_used} property.
          * @returns the number of quota bytes used by the documents service
+         * @since 0.17.9
          */
         get_quota_used(): number;
     }
@@ -5571,12 +5660,14 @@ export namespace GData {
         /**
          * Returns the ETag of the property.
          * @returns the property's ETag. The ETag will never be empty; it's either `null` or a valid ETag.
+         * @since 0.17.11
          */
         get_etag(): string;
 
         /**
          * Returns the key of the property. This will never be `null` or an empty string ("").
          * @returns the property's key
+         * @since 0.17.11
          */
         get_key(): string;
 
@@ -5585,12 +5676,14 @@ export namespace GData {
          * 
          * In the case that this value is `null`, the Property Resource corresponding to `self` will be deleted from the properties array on a file's metadata, whereas in the case that it's empty string (""), it will be set as it is.
          * @returns the property's value. This can be `null` or empty.
+         * @since 0.17.11
          */
         get_value(): string | null;
 
         /**
          * Returns the visibility status of the property.
          * @returns `GDATA_DOCUMENTS_PROPERTY_VISIBILITY_PUBLIC` if the {@link GData.DocumentsProperty} is publicly visible to other apps, `GDATA_DOCUMENTS_PROPERTY_VISIBILITY_PRIVATE` if the {@link GData.DocumentsProperty} is restricted to the application which created it.
+         * @since 0.17.11
          */
         get_visibility(): string;
 
@@ -5599,6 +5692,7 @@ export namespace GData {
          * 
          * In the case that `value` is `null`, the Property Resource corresponding to `self` will be deleted from the properties array on a file's metadata, whereas in the case that it's empty string (""), it will be set as it is.
          * @param value the new value of the property
+         * @since 0.17.11
          */
         set_value(value: string | null): void;
 
@@ -5607,6 +5701,7 @@ export namespace GData {
          * public properties and `GDATA_DOCUMENTS_PROPERTY_VISIBILITY_PRIVATE` for
          * private properties (default).
          * @param visibility the new visibility status of the property
+         * @since 0.17.11
          */
         set_visibility(visibility: string): void;
 
@@ -5620,6 +5715,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -5783,42 +5879,49 @@ export namespace GData {
         /**
          * Add `email_address` as a {@link GData.GDEmailAddress} to the list of collaborators whose edited documents will be queried.
          * @param email_address the e-mail address of the collaborator to add
+         * @since 0.4.0
          */
         add_collaborator(email_address: string): void;
 
         /**
          * Add `email_address` as a {@link GData.GDEmailAddress} to the list of readers, the documents readable by whom will be queried.
          * @param email_address the e-mail address of the reader to add
+         * @since 0.4.0
          */
         add_reader(email_address: string): void;
 
         /**
          * Gets a list of {@link GData.GDEmailAddress}<!-- -->es of the document collaborators whose documents will be queried.
          * @returns a list of {@link GData.GDEmailAddress}<!-- -->es of the collaborators concerned by the query, or `null`
+         * @since 0.4.0
          */
         get_collaborator_addresses(): GDEmailAddress[];
 
         /**
          * Gets the {@link GData.DocumentsQuery.exact_title} property.
          * @returns `true` if the query matches the exact title of documents with {@link GData.DocumentsQuery.title}, `false` otherwise
+         * @since 0.4.0
          */
         get_exact_title(): boolean;
 
         /**
          * Gets the {@link GData.DocumentsQuery.folder_id} property.
          * @returns the ID of the folder to be queried, or `null`
+         * @since 0.4.0
          */
         get_folder_id(): string;
 
         /**
          * Gets a list of {@link GData.GDEmailAddress}<!-- -->es of the document readers whose documents will be queried.
          * @returns a list of {@link GData.GDEmailAddress}<!-- -->es of the readers concerned by the query, or `null`
+         * @since 0.4.0
          */
         get_reader_addresses(): GDEmailAddress[];
 
         /**
          * Gets the {@link GData.DocumentsQuery.title} property.
          * @returns the title (or title fragment) being queried for, or `null`
+         * @since 0.4.0
          */
         get_title(): string;
 
@@ -5827,18 +5930,21 @@ export namespace GData {
          * 
          * Set `folder_id` to `null` to unset the property in the query URI.
          * @param folder_id the ID of the folder to be queried, or `null`
+         * @since 0.4.0
          */
         set_folder_id(folder_id: string | null): void;
 
         /**
          * Sets the {@link GData.DocumentsQuery.show_deleted} property to `show_deleted`.
          * @param show_deleted `true` if the request should return deleted entries, `false` otherwise
+         * @since 0.4.0
          */
         set_show_deleted(show_deleted: boolean): void;
 
         /**
          * Sets the {@link GData.DocumentsQuery.show_folders} property to show_folders.
          * @param show_folders `true` if the request should return folders, `false` otherwise
+         * @since 0.4.0
          */
         set_show_folders(show_folders: boolean): void;
 
@@ -5848,6 +5954,7 @@ export namespace GData {
          * Set `title` to `null` to unset the property in the query URI.
          * @param title the title (or title fragment) to query for, or `null`
          * @param exact_title `true` if the query should match the exact `title`, `false` otherwise
+         * @since 0.4.0
          */
         set_title(title: string | null, exact_title: boolean): void;
     }
@@ -5910,6 +6017,7 @@ export namespace GData {
          * does not support natively, then this domain may be needed to authorize the requests.
          * 
          * The domain never changes, and is interned so that pointer comparison can be used to differentiate it from other authorization domains.
+         * @since 0.9.0
          */
         static get_primary_authorization_domain(): AuthorizationDomain;
 
@@ -5920,6 +6028,7 @@ export namespace GData {
          * requests to download or upload spreadsheet documents.
          * 
          * The domain never changes, and is interned so that pointer comparison can be used to differentiate it from other authorization domains.
+         * @since 0.9.0
          */
         static get_spreadsheet_authorization_domain(): AuthorizationDomain;
 
@@ -5928,6 +6037,7 @@ export namespace GData {
          * 
          * If `folder` is `null`, the URI will be the one to upload documents to the "root" folder.
          * @param folder the {@link GData.DocumentsFolder} into which to upload the document, or `null`
+         * @since 0.5.0
          */
         static get_upload_uri(folder: DocumentsFolder | null): string;
 
@@ -5943,6 +6053,7 @@ export namespace GData {
          * @param folder the {@link GData.DocumentsFolder} to copy `entry` into
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.DocumentsEntry}, or `null`; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         add_entry_to_folder(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null): DocumentsEntry;
 
@@ -5957,6 +6068,7 @@ export namespace GData {
          * @param entry the {@link GData.DocumentsEntry} to add to `folder`
          * @param folder the {@link GData.DocumentsFolder} to add `entry` to
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.8.0
          */
         add_entry_to_folder_async(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null): globalThis.Promise<DocumentsEntry>;
 
@@ -5972,6 +6084,7 @@ export namespace GData {
          * @param folder the {@link GData.DocumentsFolder} to add `entry` to
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished, or `null`
+         * @since 0.8.0
          */
         add_entry_to_folder_async(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5987,6 +6100,7 @@ export namespace GData {
          * @param folder the {@link GData.DocumentsFolder} to add `entry` to
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished, or `null`
+         * @since 0.8.0
          */
         add_entry_to_folder_async(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DocumentsEntry> | void;
 
@@ -5994,6 +6108,7 @@ export namespace GData {
          * Finish an asynchronous operation to add a {@link GData.DocumentsEntry} to a folder started with `gdata_documents_service_add_entry_to_folder_async()`.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns an updated {@link GData.DocumentsEntry}, or `null`; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         add_entry_to_folder_finish(async_result: Gio.AsyncResult): DocumentsEntry;
 
@@ -6004,6 +6119,7 @@ export namespace GData {
          * @param document the {@link GData.DocumentsDocument} to copy
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the duplicate {@link GData.DocumentsDocument}, or `null`; unref with `g_object_unref()`
+         * @since 0.13.1
          */
         copy_document(document: DocumentsDocument, cancellable: Gio.Cancellable | null): DocumentsDocument;
 
@@ -6017,6 +6133,7 @@ export namespace GData {
          * of the operation.
          * @param document the {@link GData.DocumentsDocument} to copy
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.13.1
          */
         copy_document_async(document: DocumentsDocument, cancellable: Gio.Cancellable | null): globalThis.Promise<DocumentsDocument>;
 
@@ -6031,6 +6148,7 @@ export namespace GData {
          * @param document the {@link GData.DocumentsDocument} to copy
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished, or `null`
+         * @since 0.13.1
          */
         copy_document_async(document: DocumentsDocument, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6045,6 +6163,7 @@ export namespace GData {
          * @param document the {@link GData.DocumentsDocument} to copy
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished, or `null`
+         * @since 0.13.1
          */
         copy_document_async(document: DocumentsDocument, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DocumentsDocument> | void;
 
@@ -6052,6 +6171,7 @@ export namespace GData {
          * Finish an asynchronous operation to copy a {@link GData.DocumentsDocument} started with `gdata_documents_service_copy_document_async()`.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns the duplicate {@link GData.DocumentsDocument}, or `null`; unref with `g_object_unref()`
+         * @since 0.13.1
          */
         copy_document_finish(async_result: Gio.AsyncResult): DocumentsDocument;
 
@@ -6068,6 +6188,7 @@ export namespace GData {
          * could not be mapped to a document type with which to interpret the response from the server.
          * @param upload_stream the {@link GData.UploadStream} from the operation
          * @returns the new or updated {@link GData.DocumentsDocument}, or `null`; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         finish_upload(upload_stream: UploadStream): DocumentsDocument;
 
@@ -6076,6 +6197,7 @@ export namespace GData {
          * service itself, like how large the user quota is.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the service's metadata object; unref with `g_object_unref()`
+         * @since 0.17.9
          */
         get_metadata(cancellable: Gio.Cancellable | null): DocumentsMetadata;
 
@@ -6088,6 +6210,7 @@ export namespace GData {
          * When the operation is finished, `callback` will be called. You can then call `gdata_documents_service_get_metadata_finish()` to get the results
          * of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.17.9
          */
         get_metadata_async(cancellable: Gio.Cancellable | null): globalThis.Promise<DocumentsMetadata>;
 
@@ -6101,6 +6224,7 @@ export namespace GData {
          * of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished, or `null`
+         * @since 0.17.9
          */
         get_metadata_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6114,6 +6238,7 @@ export namespace GData {
          * of the operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished, or `null`
+         * @since 0.17.9
          */
         get_metadata_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DocumentsMetadata> | void;
 
@@ -6121,6 +6246,7 @@ export namespace GData {
          * Finish an asynchronous operation to get a {@link GData.DocumentsMetadata} started with `gdata_documents_service_get_metadata_async()`.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns the service's metadata object; unref with `g_object_unref()`
+         * @since 0.17.9
          */
         get_metadata_finish(async_result: Gio.AsyncResult): DocumentsMetadata;
 
@@ -6133,6 +6259,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.DocumentsFeed} of query results; unref with `g_object_unref()`
+         * @since 0.4.0
          */
         query_documents(query: DocumentsQuery | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): DocumentsFeed;
 
@@ -6146,6 +6273,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
+         * @since 0.9.1
          */
         query_documents_async(query: DocumentsQuery | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6157,6 +6285,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.DocumentsFeed} of query results; unref with `g_object_unref()`
+         * @since 0.18.0
          */
         query_drives(query: DocumentsDriveQuery | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): DocumentsFeed;
 
@@ -6170,6 +6299,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
+         * @since 0.18.0
          */
         query_drives_async(query: DocumentsDriveQuery | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6182,6 +6312,7 @@ export namespace GData {
          * @param folder the {@link GData.DocumentsFolder} from which we should remove `entry`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.DocumentsEntry}, or `null`; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         remove_entry_from_folder(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null): DocumentsEntry;
 
@@ -6196,6 +6327,7 @@ export namespace GData {
          * @param entry the {@link GData.DocumentsEntry} to remove from `folder`
          * @param folder the {@link GData.DocumentsFolder} to remove `entry` from
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.8.0
          */
         remove_entry_from_folder_async(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null): globalThis.Promise<DocumentsEntry>;
 
@@ -6211,6 +6343,7 @@ export namespace GData {
          * @param folder the {@link GData.DocumentsFolder} to remove `entry` from
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished, or `null`
+         * @since 0.8.0
          */
         remove_entry_from_folder_async(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6226,6 +6359,7 @@ export namespace GData {
          * @param folder the {@link GData.DocumentsFolder} to remove `entry` from
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished, or `null`
+         * @since 0.8.0
          */
         remove_entry_from_folder_async(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DocumentsEntry> | void;
 
@@ -6234,6 +6368,7 @@ export namespace GData {
          * `gdata_documents_service_remove_entry_from_folder_async()`.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns an updated {@link GData.DocumentsEntry}, or `null`; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         remove_entry_from_folder_finish(async_result: Gio.AsyncResult): DocumentsEntry;
 
@@ -6261,6 +6396,7 @@ export namespace GData {
          * @param content_type the content type of the uploaded data
          * @param cancellable a {@link Gio.Cancellable} for the entire upload stream, or `null`
          * @returns a {@link GData.UploadStream} to write the document data to; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         update_document(document: DocumentsDocument, slug: string, content_type: string, cancellable: Gio.Cancellable | null): UploadStream;
 
@@ -6289,6 +6425,7 @@ export namespace GData {
          * @param content_length the size (in bytes) of the file being uploaded
          * @param cancellable a {@link Gio.Cancellable} for the entire upload stream, or `null`
          * @returns a {@link GData.UploadStream} to write the document data to; unref with `g_object_unref()`
+         * @since 0.13.0
          */
         update_document_resumable(document: DocumentsDocument, slug: string, content_type: string, content_length: bigint | number, cancellable: Gio.Cancellable | null): UploadStream;
 
@@ -6318,6 +6455,7 @@ export namespace GData {
          * @param folder the folder to which the document should be uploaded, or `null`
          * @param cancellable a {@link Gio.Cancellable} for the entire upload stream, or `null`
          * @returns a {@link GData.UploadStream} to write the document data to, or `null`; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         upload_document(document: DocumentsDocument | null, slug: string, content_type: string, folder: DocumentsFolder | null, cancellable: Gio.Cancellable | null): UploadStream;
 
@@ -6355,6 +6493,7 @@ export namespace GData {
          * @param query a query specifying parameters for the upload, or `null`
          * @param cancellable a {@link Gio.Cancellable} for the entire upload stream, or `null`
          * @returns a {@link GData.UploadStream} to write the document data to, or `null`; unref with `g_object_unref()`
+         * @since 0.13.0
          */
         upload_document_resumable(document: DocumentsDocument | null, slug: string, content_type: string, content_length: bigint | number, query: DocumentsUploadQuery | null, cancellable: Gio.Cancellable | null): UploadStream;
 
@@ -6366,6 +6505,7 @@ export namespace GData {
          * @param domain the {@link GData.AuthorizationDomain} to authorize the operation, or `null`
          * @param feed_uri the URI to send the batch operation request to
          * @returns a new {@link GData.BatchOperation}; unref with `g_object_unref()`
+         * @since 0.9.0
          */
         create_operation(domain: AuthorizationDomain | null, feed_uri: string): BatchOperation;
     }
@@ -6450,6 +6590,7 @@ export namespace GData {
          * @param export_format the format in which the spreadsheet should be exported when downloaded
          * @param gid the <code class="literal">0</code>-based sheet ID to download, or <code class="literal">-1</code>
          * @returns the download URI; free with `g_free()`
+         * @since 0.5.0
          */
         get_download_uri(export_format: string, gid: number): string;
 
@@ -6612,30 +6753,35 @@ export namespace GData {
          * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`uploading_a_new_document_or_file_with_both_metadata_and_content`">
          * online documentation</ulink>.
          * @returns a complete upload URI; free with `g_free()`
+         * @since 0.13.0
          */
         build_uri(): string;
 
         /**
          * Gets {@link GData.DocumentsUploadQuery.convert}.
          * @returns `true` to convert documents to common formats, `false` to upload them unmodified
+         * @since 0.13.0
          */
         get_convert(): boolean;
 
         /**
          * Gets {@link GData.DocumentsUploadQuery.folder}.
          * @returns the folder to upload into, or `null`
+         * @since 0.13.0
          */
         get_folder(): DocumentsFolder | null;
 
         /**
          * Sets {@link GData.DocumentsUploadQuery.convert} to `convert`.
          * @param convert `true` to convert documents to common formats, `false` to upload them unmodified
+         * @since 0.13.0
          */
         set_convert(convert: boolean): void;
 
         /**
          * Sets {@link GData.DocumentsUploadQuery.folder} to `folder`.
          * @param folder a new folder to upload into, or `null`
+         * @since 0.13.0
          */
         set_folder(folder: DocumentsFolder | null): void;
     }
@@ -6816,12 +6962,14 @@ export namespace GData {
          * Gets the authorization domain used to authorize the download, as passed to `gdata_download_stream_new()`. It may be `null` if authorization is not
          * needed for the download.
          * @returns the {@link GData.AuthorizationDomain} used to authorize the download, or `null`
+         * @since 0.9.0
          */
         get_authorization_domain(): AuthorizationDomain | null;
 
         /**
          * Gets the {@link Gio.Cancellable} for the entire download operation, {@link GData.DownloadStream.cancellable}.
          * @returns the {@link Gio.Cancellable} for the entire download operation
+         * @since 0.8.0
          */
         get_cancellable(): Gio.Cancellable;
 
@@ -6829,6 +6977,7 @@ export namespace GData {
          * Gets the length (in bytes) of the file being downloaded. If the <literal>Content-Length</literal> header has not yet
          * been received from the server, <code class="literal">-1</code> will be returned.
          * @returns the content length of the file being downloaded, or <code class="literal">-1</code>
+         * @since 0.5.0
          */
         get_content_length(): number;
 
@@ -6836,18 +6985,21 @@ export namespace GData {
          * Gets the content type of the file being downloaded. If the <literal>Content-Type</literal> header has not yet
          * been received, `null` will be returned.
          * @returns the content type of the file being downloaded, or `null`
+         * @since 0.5.0
          */
         get_content_type(): string;
 
         /**
          * Gets the URI of the file being downloaded, as passed to `gdata_download_stream_new()`.
          * @returns the URI of the file being downloaded
+         * @since 0.5.0
          */
         get_download_uri(): string;
 
         /**
          * Gets the service used to authorize the download, as passed to `gdata_download_stream_new()`.
          * @returns the {@link GData.Service} used to authorize the download
+         * @since 0.5.0
          */
         get_service(): Service;
 
@@ -7188,12 +7340,14 @@ export namespace GData {
         /**
          * Gets a list of the `GDataAuthors` for this entry.
          * @returns a {@link GLib.List} of `GDataAuthors`
+         * @since 0.7.0
          */
         get_authors(): Author[];
 
         /**
          * Gets a list of the `GDataCategorys` containing this entry.
          * @returns a {@link GLib.List} of `GDataCategorys`
+         * @since 0.2.0
          */
         get_categories(): Category[];
 
@@ -7208,6 +7362,7 @@ export namespace GData {
          * Returns a URI pointing to the content of this entry. If the content in this entry is stored directly, `null` will be returned; the content will be
          * returned by `gdata_entry_get_content()`.
          * @returns a URI pointing to the entry's content, or `null`
+         * @since 0.7.0
          */
         get_content_uri(): string;
 
@@ -7217,6 +7372,7 @@ export namespace GData {
          * 
          * The ETag will never be empty; it's either `null` or a valid ETag.
          * @returns the entry's ETag, or `null`
+         * @since 0.2.0
          */
         get_etag(): string | null;
 
@@ -7237,12 +7393,14 @@ export namespace GData {
         /**
          * Returns the rights pertaining to the entry, or `null` if not set.
          * @returns the entry's rights information
+         * @since 0.5.0
          */
         get_rights(): string;
 
         /**
          * Returns the summary of the entry.
          * @returns the entry's summary, or `null`
+         * @since 0.4.0
          */
         get_summary(): string;
 
@@ -7265,6 +7423,7 @@ export namespace GData {
          * In the rare event of requiring a list of links with the same `rel` value, use `gdata_entry_look_up_links()`.
          * @param rel the value of the <structfield>rel</structfield> attribute of the desired link
          * @returns a {@link GData.Link}, or `null` if one was not found
+         * @since 0.1.1
          */
         look_up_link(rel: string): Link;
 
@@ -7275,6 +7434,7 @@ export namespace GData {
          * If you will only use the first link found, consider calling `gdata_entry_look_up_link()` instead.
          * @param rel the value of the <structfield>rel</structfield> attribute of the desired links
          * @returns a {@link GLib.List} of `GDataLinks`, or `null` if none were found; free the list with `g_list_free()`
+         * @since 0.4.0
          */
         look_up_links(rel: string): Link[];
 
@@ -7283,6 +7443,7 @@ export namespace GData {
          * while it was in the list).
          * @param _link a {@link GData.Link} to remove
          * @returns `true` if `_link` was found in the {@link GData.Entry} and removed, `false` if it was not found
+         * @since 0.10.0
          */
         remove_link(_link: Link): boolean;
 
@@ -7295,18 +7456,21 @@ export namespace GData {
         /**
          * Sets the URI pointing to the entry's content to `content`. This unsets {@link GData.Entry.content}.
          * @param content_uri the new URI pointing to the content for the entry, or `null`
+         * @since 0.7.0
          */
         set_content_uri(content_uri: string | null): void;
 
         /**
          * Sets the rights for this entry.
          * @param rights the new rights, or `null`
+         * @since 0.5.0
          */
         set_rights(rights: string | null): void;
 
         /**
          * Sets the summary of the entry.
          * @param summary the new entry summary, or `null`
+         * @since 0.4.0
          */
         set_summary(summary: string | null): void;
 
@@ -7602,6 +7766,7 @@ export namespace GData {
         /**
          * Returns the feed's unique ETag for this version.
          * @returns the feed's ETag
+         * @since 0.2.0
          */
         get_etag(): string;
 
@@ -7614,6 +7779,7 @@ export namespace GData {
         /**
          * Returns the icon URI of the feed.
          * @returns the feed's icon URI, or `null`
+         * @since 0.6.0
          */
         get_icon(): string;
 
@@ -7648,12 +7814,14 @@ export namespace GData {
          * example, if it uses page number or offset based paging instead). Most more
          * recent services use token based paging.
          * @returns the next page token
+         * @since 0.17.7
          */
         get_next_page_token(): string | null;
 
         /**
          * Returns the rights pertaining to the entire feed, or `null` if not set.
          * @returns the feed's rights information
+         * @since 0.7.0
          */
         get_rights(): string;
 
@@ -7692,6 +7860,7 @@ export namespace GData {
          * Returns the entry in the feed with the given `id`, if found.
          * @param id the entry's ID
          * @returns the {@link GData.Entry}, or `null`
+         * @since 0.2.0
          */
         look_up_entry(id: string): Entry;
 
@@ -7699,6 +7868,7 @@ export namespace GData {
          * Looks up a link by {@link GData.Link.relation_type} value from the list of links in the feed.
          * @param rel the value of the {@link GData.Link.relation_type} property of the desired link
          * @returns a {@link GData.Link}, or `null` if one was not found
+         * @since 0.1.1
          */
         look_up_link(rel: string): Link;
     }
@@ -7835,24 +8005,28 @@ export namespace GData {
         /**
          * Gets the {@link GData.GContactCalendar.label} property.
          * @returns a free-form label for the calendar, or `null`
+         * @since 0.7.0
          */
         get_label(): string;
 
         /**
          * Gets the {@link GData.GContactCalendar.relation_type} property.
          * @returns the type of the relation, or `null`
+         * @since 0.7.0
          */
         get_relation_type(): string;
 
         /**
          * Gets the {@link GData.GContactCalendar.uri} property.
          * @returns the calendar's URI
+         * @since 0.7.0
          */
         get_uri(): string;
 
         /**
          * Sets the {@link GData.GContactCalendar.is_primary} property to `is_primary`.
          * @param is_primary `true` if this is the contact's primary calendar, `false` otherwise
+         * @since 0.7.0
          */
         set_is_primary(is_primary: boolean): void;
 
@@ -7862,6 +8036,7 @@ export namespace GData {
          * If `label` is `null`, the label will be unset. When the {@link GData.GContactCalendar} is used in a query, however,
          * exactly one of {@link GData.GContactCalendar.relation_type} and {@link GData.GContactCalendar.label} must be `null`.
          * @param label the new free-form label for the calendar, or `null`
+         * @since 0.7.0
          */
         set_label(label: string | null): void;
 
@@ -7872,12 +8047,14 @@ export namespace GData {
          * If `relation_type` is `null`, the relation type will be unset. When the {@link GData.GContactCalendar} is used in a query, however,
          * exactly one of {@link GData.GContactCalendar.relation_type} and {@link GData.GContactCalendar.label} must be `null`.
          * @param relation_type the new type for the calendar, or `null`
+         * @since 0.7.0
          */
         set_relation_type(relation_type: string | null): void;
 
         /**
          * Sets the {@link GData.GContactCalendar.uri} property to `uri`.
          * @param uri the new URI for the calendar
+         * @since 0.7.0
          */
         set_uri(uri: string): void;
 
@@ -7891,6 +8068,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -8007,24 +8185,28 @@ export namespace GData {
         // Methods
         /**
          * Gets the {@link GData.GContactEvent.date} property.
+         * @since 0.7.0
          */
         get_date(): GLib.Date;
 
         /**
          * Gets the {@link GData.GContactEvent.label} property.
          * @returns the event's label, or `null`
+         * @since 0.7.0
          */
         get_label(): string;
 
         /**
          * Gets the {@link GData.GContactEvent.relation_type} property.
          * @returns the event's relation type, or `null`
+         * @since 0.7.0
          */
         get_relation_type(): string;
 
         /**
          * Sets the {@link GData.GContactEvent.date} property to `date`.
          * @param date the new date for the event
+         * @since 0.7.0
          */
         set_date(date: GLib.Date): void;
 
@@ -8034,6 +8216,7 @@ export namespace GData {
          * If `label` is `null`, the label will be unset. When the {@link GData.GContactEvent} is used in a query, however,
          * exactly one of {@link GData.GContactEvent.relation_type} and {@link GData.GContactEvent.label} must be `null`.
          * @param label the new label for the event, or `null`
+         * @since 0.7.0
          */
         set_label(label: string | null): void;
 
@@ -8044,6 +8227,7 @@ export namespace GData {
          * If `relation_type` is `null`, the relation type will be unset. When the {@link GData.GContactEvent} is used in a query, however,
          * exactly one of {@link GData.GContactEvent.relation_type} and {@link GData.GContactEvent.label} must be `null`.
          * @param relation_type the new relation type for the event, or `null`
+         * @since 0.7.0
          */
         set_relation_type(relation_type: string | null): void;
     }
@@ -8155,18 +8339,21 @@ export namespace GData {
         /**
          * Gets the {@link GData.GContactExternalID.label} property.
          * @returns a free-form label for the external ID, or `null`
+         * @since 0.7.0
          */
         get_label(): string;
 
         /**
          * Gets the {@link GData.GContactExternalID.relation_type} property.
          * @returns the type of the relation, or `null`
+         * @since 0.7.0
          */
         get_relation_type(): string;
 
         /**
          * Gets the {@link GData.GContactExternalID.value} property.
          * @returns the external ID's value
+         * @since 0.7.0
          */
         get_value(): string;
 
@@ -8176,6 +8363,7 @@ export namespace GData {
          * If `label` is `null`, the label will be unset. When the {@link GData.GContactExternalID} is used in a query, however,
          * exactly one of {@link GData.GContactExternalID.relation_type} and {@link GData.GContactExternalID.label} must be `null`.
          * @param label the new free-form label for the external ID, or `null`
+         * @since 0.7.0
          */
         set_label(label: string | null): void;
 
@@ -8186,12 +8374,14 @@ export namespace GData {
          * If `relation_type` is `null`, the relation type will be unset. When the {@link GData.GContactExternalID} is used in a query, however,
          * exactly one of {@link GData.GContactExternalID.relation_type} and {@link GData.GContactExternalID.label} must be `null`.
          * @param relation_type the new type for the external ID, or `null`
+         * @since 0.7.0
          */
         set_relation_type(relation_type: string | null): void;
 
         /**
          * Sets the {@link GData.GContactExternalID.value} property to `value`.
          * @param value the new value for the external ID
+         * @since 0.7.0
          */
         set_value(value: string): void;
 
@@ -8205,6 +8395,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -8307,18 +8498,21 @@ export namespace GData {
         /**
          * Gets the {@link GData.GContactJot.content} property.
          * @returns the jot's content
+         * @since 0.7.0
          */
         get_content(): string;
 
         /**
          * Gets the {@link GData.GContactJot.relation_type} property.
          * @returns the jot's relation type
+         * @since 0.7.0
          */
         get_relation_type(): string;
 
         /**
          * Sets the {@link GData.GContactJot.content} property to `content`.
          * @param content the new content
+         * @since 0.7.0
          */
         set_content(content: string): void;
 
@@ -8326,6 +8520,7 @@ export namespace GData {
          * Sets the {@link GData.GContactJot.relation_type} property to `relation_type`
          * such as `GDATA_GCONTACT_JOT_HOME` or `GDATA_GCONTACT_JOT_OTHER`.
          * @param relation_type the new relation type for the jot, or `null`
+         * @since 0.7.0
          */
         set_relation_type(relation_type: string): void;
     }
@@ -8410,12 +8605,14 @@ export namespace GData {
         /**
          * Gets the {@link GData.GContactLanguage.code} property.
          * @returns the language's code, or `null`
+         * @since 0.7.0
          */
         get_code(): string;
 
         /**
          * Gets the {@link GData.GContactLanguage.label} property.
          * @returns a free-form label for the language, or `null`
+         * @since 0.7.0
          */
         get_label(): string;
 
@@ -8425,6 +8622,7 @@ export namespace GData {
          * If `code` is `null`, the code will be unset. When the {@link GData.GContactLanguage} is used in a query, however,
          * exactly one of {@link GData.GContactLanguage.code} and {@link GData.GContactLanguage.label} must be `null`.
          * @param code the new code for the language, or `null`
+         * @since 0.7.0
          */
         set_code(code: string | null): void;
 
@@ -8434,6 +8632,7 @@ export namespace GData {
          * If `label` is `null`, the label will be unset. When the {@link GData.GContactLanguage} is used in a query, however,
          * exactly one of {@link GData.GContactLanguage.code} and {@link GData.GContactLanguage.label} must be `null`.
          * @param label the new free-form label for the language, or `null`
+         * @since 0.7.0
          */
         set_label(label: string | null): void;
 
@@ -8447,6 +8646,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -8564,18 +8764,21 @@ export namespace GData {
         /**
          * Gets the {@link GData.GContactRelation.label} property.
          * @returns a free-form label for the type of the relation, or `null`
+         * @since 0.7.0
          */
         get_label(): string;
 
         /**
          * Gets the {@link GData.GContactRelation.name} property.
          * @returns the relation's name
+         * @since 0.7.0
          */
         get_name(): string;
 
         /**
          * Gets the {@link GData.GContactRelation.relation_type} property.
          * @returns the type of the relation, or `null`
+         * @since 0.7.0
          */
         get_relation_type(): string;
 
@@ -8585,12 +8788,14 @@ export namespace GData {
          * If `label` is `null`, the label will be unset. When the {@link GData.GContactRelation} is used in a query, however,
          * exactly one of {@link GData.GContactRelation.relation_type} and {@link GData.GContactRelation.label} must be `null`.
          * @param label the new free-form type for the relation, or `null`
+         * @since 0.7.0
          */
         set_label(label: string | null): void;
 
         /**
          * Sets the {@link GData.GContactRelation.name} property to `name`.
          * @param name the new name for the relation
+         * @since 0.7.0
          */
         set_name(name: string | null): void;
 
@@ -8601,6 +8806,7 @@ export namespace GData {
          * If `relation_type` is `null`, the relation type will be unset. When the {@link GData.GContactRelation} is used in a query, however,
          * exactly one of {@link GData.GContactRelation.relation_type} and {@link GData.GContactRelation.label} must be `null`.
          * @param relation_type the new type for the relation, or `null`
+         * @since 0.7.0
          */
         set_relation_type(relation_type: string | null): void;
     }
@@ -8738,24 +8944,28 @@ export namespace GData {
         /**
          * Gets the {@link GData.GContactWebsite.label} property.
          * @returns the website's label, or `null`
+         * @since 0.7.0
          */
         get_label(): string;
 
         /**
          * Gets the {@link GData.GContactWebsite.relation_type} property.
          * @returns the website's relation type
+         * @since 0.7.0
          */
         get_relation_type(): string;
 
         /**
          * Gets the {@link GData.GContactWebsite.uri} property.
          * @returns the URI of the website
+         * @since 0.7.0
          */
         get_uri(): string;
 
         /**
          * Sets the {@link GData.GContactWebsite.is_primary} property to `is_primary`.
          * @param is_primary `true` if this is the primary website, `false` otherwise
+         * @since 0.7.0
          */
         set_is_primary(is_primary: boolean): void;
 
@@ -8765,6 +8975,7 @@ export namespace GData {
          * If `label` is `null`, the label will be unset. When the {@link GData.GContactWebsite} is used in a query, however,
          * exactly one of {@link GData.GContactWebsite.relation_type} and {@link GData.GContactWebsite.label} must be `null`.
          * @param label the new label for the website, or `null`
+         * @since 0.7.0
          */
         set_label(label: string | null): void;
 
@@ -8775,12 +8986,14 @@ export namespace GData {
          * If `relation_type` is `null`, the relation type will be unset. When the {@link GData.GContactWebsite} is used in a query, however,
          * exactly one of {@link GData.GContactWebsite.relation_type} and {@link GData.GContactWebsite.label} must be `null`.
          * @param relation_type the new relation type for the website
+         * @since 0.7.0
          */
         set_relation_type(relation_type: string): void;
 
         /**
          * Sets the {@link GData.GContactWebsite.uri} property to `uri`.
          * @param uri the new website URI
+         * @since 0.7.0
          */
         set_uri(uri: string): void;
 
@@ -8794,6 +9007,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -8959,30 +9173,35 @@ export namespace GData {
         /**
          * Gets the {@link GData.GDEmailAddress.address} property.
          * @returns the e-mail address itself, or `null`
+         * @since 0.4.0
          */
         get_address(): string;
 
         /**
          * Gets the {@link GData.GDEmailAddress.display_name} property.
          * @returns a display name for the e-mail address, or `null`
+         * @since 0.6.0
          */
         get_display_name(): string;
 
         /**
          * Gets the {@link GData.GDEmailAddress.label} property.
          * @returns the e-mail address' label, or `null`
+         * @since 0.4.0
          */
         get_label(): string;
 
         /**
          * Gets the {@link GData.GDEmailAddress.relation_type} property.
          * @returns the e-mail address' relation type, or `null`
+         * @since 0.4.0
          */
         get_relation_type(): string;
 
         /**
          * Sets the {@link GData.GDEmailAddress.address} property to `address`.
          * @param address the new e-mail address
+         * @since 0.4.0
          */
         set_address(address: string): void;
 
@@ -8991,12 +9210,14 @@ export namespace GData {
          * 
          * Set `display_name` to `null` to unset the property in the e-mail address.
          * @param display_name the new display name, or `null`
+         * @since 0.6.0
          */
         set_display_name(display_name: string | null): void;
 
         /**
          * Sets the {@link GData.GDEmailAddress.is_primary} property to `is_primary`.
          * @param is_primary `true` if this is the primary e-mail address, `false` otherwise
+         * @since 0.4.0
          */
         set_is_primary(is_primary: boolean): void;
 
@@ -9005,6 +9226,7 @@ export namespace GData {
          * 
          * Set `label` to `null` to unset the property in the e-mail address.
          * @param label the new label for the e-mail address, or `null`
+         * @since 0.4.0
          */
         set_label(label: string | null): void;
 
@@ -9013,6 +9235,7 @@ export namespace GData {
          * 
          * Set `relation_type` to `null` to unset the property in the e-mail address.
          * @param relation_type the new relation type for the email_address, or `null`
+         * @since 0.4.0
          */
         set_relation_type(relation_type: string | null): void;
 
@@ -9026,6 +9249,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -9179,36 +9403,42 @@ export namespace GData {
         /**
          * Gets the {@link GData.GDIMAddress.address} property.
          * @returns the IM address itself, or `null`
+         * @since 0.4.0
          */
         get_address(): string;
 
         /**
          * Gets the {@link GData.GDIMAddress.label} property.
          * @returns the IM address' label, or `null`
+         * @since 0.4.0
          */
         get_label(): string;
 
         /**
          * Gets the {@link GData.GDIMAddress.protocol} property.
          * @returns the IM address' protocol, or `null`
+         * @since 0.4.0
          */
         get_protocol(): string;
 
         /**
          * Gets the {@link GData.GDIMAddress.relation_type} property.
          * @returns the IM address' relation type, or `null`
+         * @since 0.4.0
          */
         get_relation_type(): string;
 
         /**
          * Sets the {@link GData.GDIMAddress.address} property to `address`.
          * @param address the new IM address
+         * @since 0.4.0
          */
         set_address(address: string): void;
 
         /**
          * Sets the {@link GData.GDIMAddress.is_primary} property to `is_primary`.
          * @param is_primary `true` if this is the primary IM address, `false` otherwise
+         * @since 0.4.0
          */
         set_is_primary(is_primary: boolean): void;
 
@@ -9217,12 +9447,14 @@ export namespace GData {
          * 
          * Set `label` to `null` to unset the property in the IM address.
          * @param label the new label for the IM address, or `null`
+         * @since 0.4.0
          */
         set_label(label: string | null): void;
 
         /**
          * Sets the {@link GData.GDIMAddress.protocol} property to `protocol`.
          * @param protocol the new IM protocol, or `null`
+         * @since 0.4.0
          */
         set_protocol(protocol: string | null): void;
 
@@ -9231,6 +9463,7 @@ export namespace GData {
          * 
          * Set `relation_type` to `null` to unset the property in the IM address.
          * @param relation_type the new relation type for the im_address, or `null`
+         * @since 0.4.0
          */
         set_relation_type(relation_type: string | null): void;
 
@@ -9244,6 +9477,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -9436,72 +9670,84 @@ export namespace GData {
         /**
          * Gets the {@link GData.GDName.additional_name} property.
          * @returns the person's additional name, or `null`
+         * @since 0.5.0
          */
         get_additional_name(): string;
 
         /**
          * Gets the {@link GData.GDName.family_name} property.
          * @returns the person's family name, or `null`
+         * @since 0.5.0
          */
         get_family_name(): string;
 
         /**
          * Gets the {@link GData.GDName.full_name} property.
          * @returns the person's full name, or `null`
+         * @since 0.5.0
          */
         get_full_name(): string;
 
         /**
          * Gets the {@link GData.GDName.given_name} property.
          * @returns the person's given name, or `null`
+         * @since 0.5.0
          */
         get_given_name(): string;
 
         /**
          * Gets the {@link GData.GDName.prefix} property.
          * @returns the person's name prefix, or `null`
+         * @since 0.5.0
          */
         get_prefix(): string;
 
         /**
          * Gets the {@link GData.GDName.suffix} property.
          * @returns the person's name suffix, or `null`
+         * @since 0.5.0
          */
         get_suffix(): string;
 
         /**
          * Sets the {@link GData.GDName.additional_name} property to `additional_name`.
          * @param additional_name the new additional name, or `null`
+         * @since 0.5.0
          */
         set_additional_name(additional_name: string | null): void;
 
         /**
          * Sets the {@link GData.GDName.family_name} property to `family_name`.
          * @param family_name the new family name, or `null`
+         * @since 0.5.0
          */
         set_family_name(family_name: string | null): void;
 
         /**
          * Sets the {@link GData.GDName.full_name} property to `full_name`.
          * @param full_name the new full name, or `null`
+         * @since 0.5.0
          */
         set_full_name(full_name: string | null): void;
 
         /**
          * Sets the {@link GData.GDName.given_name} property to `given_name`.
          * @param given_name the new given name, or `null`
+         * @since 0.5.0
          */
         set_given_name(given_name: string | null): void;
 
         /**
          * Sets the {@link GData.GDName.prefix} property to `prefix`.
          * @param prefix the new prefix, or `null`
+         * @since 0.5.0
          */
         set_prefix(prefix: string | null): void;
 
         /**
          * Sets the {@link GData.GDName.suffix} property to `suffix`.
          * @param suffix the new suffix, or `null`
+         * @since 0.5.0
          */
         set_suffix(suffix: string | null): void;
 
@@ -9515,6 +9761,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -9732,48 +9979,56 @@ export namespace GData {
         /**
          * Gets the {@link GData.GDOrganization.department} property.
          * @returns the department in which the person works in this organization, or `null`
+         * @since 0.5.0
          */
         get_department(): string;
 
         /**
          * Gets the {@link GData.GDOrganization.job_description} property.
          * @returns the job description of the person in the organization, or `null`
+         * @since 0.5.0
          */
         get_job_description(): string;
 
         /**
          * Gets the {@link GData.GDOrganization.label} property.
          * @returns the organization's label, or `null`
+         * @since 0.4.0
          */
         get_label(): string;
 
         /**
          * Gets the {@link GData.GDOrganization.location} property.
          * @returns the organization's location, or `null`
+         * @since 0.6.0
          */
         get_location(): GDWhere;
 
         /**
          * Gets the {@link GData.GDOrganization.name} property.
          * @returns the organization's name, or `null`
+         * @since 0.4.0
          */
         get_name(): string;
 
         /**
          * Gets the {@link GData.GDOrganization.relation_type} property.
          * @returns the organization's relation type, or `null`
+         * @since 0.4.0
          */
         get_relation_type(): string;
 
         /**
          * Gets the {@link GData.GDOrganization.symbol} property.
          * @returns the organization's stock symbol, or `null`
+         * @since 0.5.0
          */
         get_symbol(): string;
 
         /**
          * Gets the {@link GData.GDOrganization.title} property.
          * @returns the organization's title, or `null`
+         * @since 0.4.0
          */
         get_title(): string;
 
@@ -9782,12 +10037,14 @@ export namespace GData {
          * 
          * Set `department` to `null` to unset the property in the organization.
          * @param department the new department for the person working in the organization, or `null`
+         * @since 0.5.0
          */
         set_department(department: string | null): void;
 
         /**
          * Sets the {@link GData.GDOrganization.is_primary} property to `is_primary`.
          * @param is_primary `true` if this is the primary organization, `false` otherwise
+         * @since 0.4.0
          */
         set_is_primary(is_primary: boolean): void;
 
@@ -9796,6 +10053,7 @@ export namespace GData {
          * 
          * Set `job_description` to `null` to unset the property in the organization.
          * @param job_description the new job description for the person in the organization, or `null`
+         * @since 0.5.0
          */
         set_job_description(job_description: string | null): void;
 
@@ -9804,6 +10062,7 @@ export namespace GData {
          * 
          * Set `label` to `null` to unset the property in the organization.
          * @param label the new label for the organization, or `null`
+         * @since 0.4.0
          */
         set_label(label: string | null): void;
 
@@ -9812,6 +10071,7 @@ export namespace GData {
          * 
          * Set `location` to `null` to unset the property in the organization.
          * @param location the new location for the organization, or `null`
+         * @since 0.6.0
          */
         set_location(location: GDWhere | null): void;
 
@@ -9820,6 +10080,7 @@ export namespace GData {
          * 
          * Set `name` to `null` to unset the property in the organization.
          * @param name the new name for the organization, or `null`
+         * @since 0.4.0
          */
         set_name(name: string | null): void;
 
@@ -9828,6 +10089,7 @@ export namespace GData {
          * 
          * Set `relation_type` to `null` to unset the property in the organization.
          * @param relation_type the new relation type for the organization, or `null`
+         * @since 0.4.0
          */
         set_relation_type(relation_type: string | null): void;
 
@@ -9836,6 +10098,7 @@ export namespace GData {
          * 
          * Set `symbol` to `null` to unset the property in the organization.
          * @param symbol the new stock symbol for the organization, or `null`
+         * @since 0.5.0
          */
         set_symbol(symbol: string | null): void;
 
@@ -9844,6 +10107,7 @@ export namespace GData {
          * 
          * Set `title` to `null` to unset the property in the organization.
          * @param title the new title for the organization, or `null`
+         * @since 0.4.0
          */
         set_title(title: string | null): void;
 
@@ -9857,6 +10121,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -10010,30 +10275,35 @@ export namespace GData {
         /**
          * Gets the {@link GData.GDPhoneNumber.label} property.
          * @returns the phone number's label, or `null`
+         * @since 0.4.0
          */
         get_label(): string;
 
         /**
          * Gets the {@link GData.GDPhoneNumber.number} property.
          * @returns the phone number itself
+         * @since 0.4.0
          */
         get_number(): string;
 
         /**
          * Gets the {@link GData.GDPhoneNumber.relation_type} property.
          * @returns the phone number's relation type, or `null`
+         * @since 0.4.0
          */
         get_relation_type(): string;
 
         /**
          * Gets the {@link GData.GDPhoneNumber.uri} property.
          * @returns the phone number's URI, or `null`
+         * @since 0.4.0
          */
         get_uri(): string;
 
         /**
          * Sets the {@link GData.GDPhoneNumber.is_primary} property to `is_primary`.
          * @param is_primary `true` if this is the primary phone number, `false` otherwise
+         * @since 0.4.0
          */
         set_is_primary(is_primary: boolean): void;
 
@@ -10042,12 +10312,14 @@ export namespace GData {
          * 
          * Set `label` to `null` to unset the property in the phone number.
          * @param label the new label for the phone number, or `null`
+         * @since 0.4.0
          */
         set_label(label: string | null): void;
 
         /**
          * Sets the {@link GData.GDPhoneNumber.number} property to `number`.
          * @param number the new phone number
+         * @since 0.4.0
          */
         set_number(number: string): void;
 
@@ -10056,6 +10328,7 @@ export namespace GData {
          * 
          * Set `relation_type` to `null` to unset the property in the phone number.
          * @param relation_type the new relation type for the phone number, or `null`
+         * @since 0.4.0
          */
         set_relation_type(relation_type: string | null): void;
 
@@ -10064,6 +10337,7 @@ export namespace GData {
          * 
          * Set `uri` to `null` to unset the property in the phone number.
          * @param uri the new URI for the phone number, or `null`
+         * @since 0.4.0
          */
         set_uri(uri: string | null): void;
 
@@ -10077,6 +10351,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -10443,102 +10718,119 @@ export namespace GData {
         /**
          * Gets the {@link GData.GDPostalAddress.address} property.
          * @returns the postal address itself, or `null`
+         * @since 0.4.0
          */
         get_address(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.agent} property.
          * @returns the postal address' agent, or `null`
+         * @since 0.5.0
          */
         get_agent(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.city} property.
          * @returns the postal address' city, or `null`
+         * @since 0.5.0
          */
         get_city(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.country} property.
          * @returns the postal address' country, or `null`
+         * @since 0.5.0
          */
         get_country(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.country_code} property.
          * @returns the postal address' ISO 3166-1 alpha-2 country code, or `null`
+         * @since 0.5.0
          */
         get_country_code(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.house_name} property.
          * @returns the postal address' house name, or `null`
+         * @since 0.5.0
          */
         get_house_name(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.label} property.
          * @returns the postal address' label, or `null`
+         * @since 0.4.0
          */
         get_label(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.mail_class} property.
          * @returns the postal address' mail class, or `null`
+         * @since 0.5.0
          */
         get_mail_class(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.neighborhood} property.
          * @returns the postal address' neighborhood, or `null`
+         * @since 0.5.0
          */
         get_neighborhood(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.po_box} property.
          * @returns the postal address' P.O. box, or `null`
+         * @since 0.5.0
          */
         get_po_box(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.postcode} property.
          * @returns the postal address' postcode, or `null`
+         * @since 0.5.0
          */
         get_postcode(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.region} property.
          * @returns the postal address' region, or `null`
+         * @since 0.5.0
          */
         get_region(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.relation_type} property.
          * @returns the postal address' relation type, or `null`
+         * @since 0.4.0
          */
         get_relation_type(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.street} property.
          * @returns the postal address' street, or `null`
+         * @since 0.5.0
          */
         get_street(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.subregion} property.
          * @returns the postal address' subregion, or `null`
+         * @since 0.5.0
          */
         get_subregion(): string;
 
         /**
          * Gets the {@link GData.GDPostalAddress.usage} property.
          * @returns the postal address' usage, or `null`
+         * @since 0.5.0
          */
         get_usage(): string;
 
         /**
          * Sets the {@link GData.GDPostalAddress.address} property to `address`.
          * @param address the new postal address, or `null`
+         * @since 0.4.0
          */
         set_address(address: string | null): void;
 
@@ -10547,6 +10839,7 @@ export namespace GData {
          * 
          * Set `agent` to `null` to unset the property in the postal address.
          * @param agent the new agent for the postal address, or `null`
+         * @since 0.5.0
          */
         set_agent(agent: string | null): void;
 
@@ -10555,6 +10848,7 @@ export namespace GData {
          * 
          * Set `city` to `null` to unset the property in the postal address.
          * @param city the new city for the postal address, or `null`
+         * @since 0.5.0
          */
         set_city(city: string | null): void;
 
@@ -10565,6 +10859,7 @@ export namespace GData {
          * also be provided.
          * @param country the new country for the postal address, or `null`
          * @param country_code the new country code for the postal address, or `null`
+         * @since 0.5.0
          */
         set_country(country: string | null, country_code: string | null): void;
 
@@ -10573,12 +10868,14 @@ export namespace GData {
          * 
          * Set `house_name` to `null` to unset the property in the postal address.
          * @param house_name the new house name for the postal address, or `null`
+         * @since 0.5.0
          */
         set_house_name(house_name: string | null): void;
 
         /**
          * Sets the {@link GData.GDPostalAddress.is_primary} property to `is_primary`.
          * @param is_primary `true` if this is the primary postal address, `false` otherwise
+         * @since 0.4.0
          */
         set_is_primary(is_primary: boolean): void;
 
@@ -10587,6 +10884,7 @@ export namespace GData {
          * 
          * Set `label` to `null` to unset the property in the postal address.
          * @param label the new label for the postal address, or `null`
+         * @since 0.4.0
          */
         set_label(label: string | null): void;
 
@@ -10595,6 +10893,7 @@ export namespace GData {
          * 
          * Set `mail_class` to `null` to unset the property in the postal address.
          * @param mail_class the new mail class for the postal address, or `null`
+         * @since 0.5.0
          */
         set_mail_class(mail_class: string | null): void;
 
@@ -10603,6 +10902,7 @@ export namespace GData {
          * 
          * Set `neighborhood` to `null` to unset the property in the postal address.
          * @param neighborhood the new neighborhood for the postal address, or `null`
+         * @since 0.5.0
          */
         set_neighborhood(neighborhood: string | null): void;
 
@@ -10611,6 +10911,7 @@ export namespace GData {
          * 
          * Set `po_box` to `null` to unset the property in the postal address.
          * @param po_box the new P.O. box for the postal address, or `null`
+         * @since 0.5.0
          */
         set_po_box(po_box: string | null): void;
 
@@ -10619,6 +10920,7 @@ export namespace GData {
          * 
          * Set `postcode` to `null` to unset the property in the postal address.
          * @param postcode the new postcode for the postal address, or `null`
+         * @since 0.5.0
          */
         set_postcode(postcode: string | null): void;
 
@@ -10627,6 +10929,7 @@ export namespace GData {
          * 
          * Set `region` to `null` to unset the property in the postal address.
          * @param region the new region for the postal address, or `null`
+         * @since 0.5.0
          */
         set_region(region: string | null): void;
 
@@ -10635,6 +10938,7 @@ export namespace GData {
          * 
          * Set `relation_type` to `null` to unset the property in the postal address.
          * @param relation_type the new relation type for the postal_address, or `null`
+         * @since 0.4.0
          */
         set_relation_type(relation_type: string | null): void;
 
@@ -10643,6 +10947,7 @@ export namespace GData {
          * 
          * Set `street` to `null` to unset the property in the postal address.
          * @param street the new street for the postal address, or `null`
+         * @since 0.5.0
          */
         set_street(street: string | null): void;
 
@@ -10651,6 +10956,7 @@ export namespace GData {
          * 
          * Set `subregion` to `null` to unset the property in the postal address.
          * @param subregion the new subregion for the postal address, or `null`
+         * @since 0.5.0
          */
         set_subregion(subregion: string | null): void;
 
@@ -10659,6 +10965,7 @@ export namespace GData {
          * 
          * Set `usage` to `null` to unset the property in the postal address.
          * @param usage the new usage for the postal address, or `null`
+         * @since 0.5.0
          */
         set_usage(usage: string | null): void;
 
@@ -10672,6 +10979,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -10824,18 +11132,21 @@ export namespace GData {
         /**
          * Gets the {@link GData.GDReminder.absolute_time} property. If the property is unset, <code class="literal">-1</code> will be returned.
          * @returns the UNIX timestamp of the absolute time for the reminder, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         get_absolute_time(): number;
 
         /**
          * Gets the {@link GData.GDReminder.method} property.
          * @returns the method, or `null`
+         * @since 0.4.0
          */
         get_method(): string;
 
         /**
          * Gets the {@link GData.GDReminder.relative_time} property.
          * @returns the relative time, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         get_relative_time(): number;
 
@@ -10844,6 +11155,7 @@ export namespace GData {
          * 
          * Set `absolute_time` to <code class="literal">-1</code> to unset the property.
          * @param absolute_time the new absolute time, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         set_absolute_time(absolute_time: bigint | number): void;
 
@@ -10852,6 +11164,7 @@ export namespace GData {
          * 
          * Set `method` to `null` to unset the property.
          * @param method the new method, or `null`
+         * @since 0.4.0
          */
         set_method(method: string | null): void;
 
@@ -10860,6 +11173,7 @@ export namespace GData {
          * 
          * Set `relative_time` to <code class="literal">-1</code> to unset the property.
          * @param relative_time the new relative time, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         set_relative_time(relative_time: number): void;
 
@@ -10873,6 +11187,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -11041,6 +11356,7 @@ export namespace GData {
          * 
          * Duplicate reminders will not be added to the list.
          * @param reminder a {@link GData.GDReminder} to add
+         * @since 0.7.0
          */
         add_reminder(reminder: GDReminder): void;
 
@@ -11049,24 +11365,28 @@ export namespace GData {
          * 
          * If the end time is unset, <code class="literal">-1</code> will be returned.
          * @returns the UNIX timestamp for the end time of the event, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         get_end_time(): number;
 
         /**
          * Returns a list of the `GDataGDReminders` which are associated with this {@link GData.GDWhen}.
          * @returns a {@link GLib.List} of `GDataGDReminders`, or `null`
+         * @since 0.4.0
          */
         get_reminders(): GDReminder[];
 
         /**
          * Gets the {@link GData.GDWhen.start_time} property.
          * @returns the UNIX timestamp for the start time of the event
+         * @since 0.4.0
          */
         get_start_time(): number;
 
         /**
          * Gets the {@link GData.GDWhen.value_string} property.
          * @returns the value string, or `null`
+         * @since 0.4.0
          */
         get_value_string(): string;
 
@@ -11075,18 +11395,21 @@ export namespace GData {
          * 
          * Set `end_time` to <code class="literal">-1</code> to unset the property.
          * @param end_time the new end time, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         set_end_time(end_time: bigint | number): void;
 
         /**
          * Sets the {@link GData.GDWhen.is_date} property to `is_date`.
          * @param is_date `true` if {@link GData.GDWhen.start_time} and {@link GData.GDWhen.end_time} should be dates rather than times, `false` otherwise
+         * @since 0.4.0
          */
         set_is_date(is_date: boolean): void;
 
         /**
          * Sets the {@link GData.GDWhen.start_time} property to `start_time`.
          * @param start_time the new start time
+         * @since 0.4.0
          */
         set_start_time(start_time: bigint | number): void;
 
@@ -11095,6 +11418,7 @@ export namespace GData {
          * 
          * Set `value_string` to `null` to unset the property.
          * @param value_string the new value string, or `null`
+         * @since 0.4.0
          */
         set_value_string(value_string: string | null): void;
 
@@ -11108,6 +11432,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -11237,18 +11562,21 @@ export namespace GData {
         /**
          * Gets the {@link GData.GDWhere.label} property.
          * @returns the label, or `null`
+         * @since 0.4.0
          */
         get_label(): string;
 
         /**
          * Gets the {@link GData.GDWhere.relation_type} property.
          * @returns the relation type, or `null`
+         * @since 0.4.0
          */
         get_relation_type(): string;
 
         /**
          * Gets the {@link GData.GDWhere.value_string} property.
          * @returns the value string, or `null`
+         * @since 0.4.0
          */
         get_value_string(): string;
 
@@ -11257,6 +11585,7 @@ export namespace GData {
          * 
          * Set `label` to `null` to unset the property.
          * @param label the new label, or `null`
+         * @since 0.4.0
          */
         set_label(label: string | null): void;
 
@@ -11265,6 +11594,7 @@ export namespace GData {
          * 
          * Set `relation_type` to `null` to unset the property.
          * @param relation_type the new relation type, or `null`
+         * @since 0.4.0
          */
         set_relation_type(relation_type: string | null): void;
 
@@ -11273,6 +11603,7 @@ export namespace GData {
          * 
          * Set `value_string` to `null` to unset the property.
          * @param value_string the new value string, or `null`
+         * @since 0.4.0
          */
         set_value_string(value_string: string | null): void;
 
@@ -11286,6 +11617,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -11427,18 +11759,21 @@ export namespace GData {
         /**
          * Gets the {@link GData.GDWho.email_address} property.
          * @returns the e-mail address, or `null`
+         * @since 0.4.0
          */
         get_email_address(): string;
 
         /**
          * Gets the {@link GData.GDWho.relation_type} property.
          * @returns the relation type, or `null`
+         * @since 0.4.0
          */
         get_relation_type(): string;
 
         /**
          * Gets the {@link GData.GDWho.value_string} property.
          * @returns the value string, or `null`
+         * @since 0.4.0
          */
         get_value_string(): string;
 
@@ -11447,6 +11782,7 @@ export namespace GData {
          * 
          * Set `email_address` to `null` to unset the property.
          * @param email_address the new e-mail address, or `null`
+         * @since 0.4.0
          */
         set_email_address(email_address: string | null): void;
 
@@ -11455,6 +11791,7 @@ export namespace GData {
          * 
          * Set `relation_type` to `null` to unset the property.
          * @param relation_type the new relation type, or `null`
+         * @since 0.4.0
          */
         set_relation_type(relation_type: string | null): void;
 
@@ -11463,6 +11800,7 @@ export namespace GData {
          * 
          * Set `value_string` to `null` to unset the property.
          * @param value_string the new value string, or `null`
+         * @since 0.4.0
          */
         set_value_string(value_string: string | null): void;
 
@@ -11476,6 +11814,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -11579,18 +11918,21 @@ export namespace GData {
         /**
          * Gets the {@link GData.Generator.name} property. The name will be `null` or non-empty.
          * @returns the generator's name
+         * @since 0.4.0
          */
         get_name(): string | null;
 
         /**
          * Gets the {@link GData.Generator.uri} property. The URI will be `null` or non-empty.
          * @returns the generator's URI, or `null`
+         * @since 0.4.0
          */
         get_uri(): string | null;
 
         /**
          * Gets the {@link GData.Generator.version} property.
          * @returns the generator's version, or `null`
+         * @since 0.4.0
          */
         get_version(): string;
 
@@ -11604,6 +11946,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -11684,6 +12027,7 @@ export namespace GData {
         /**
          * The GOA account providing authentication. This is the same as {@link GData.GoaAuthorizer.goa_object}.
          * @returns the GOA account providing authentication
+         * @since 0.13.1
          */
         get_goa_object(): Goa.Object;
 
@@ -11708,6 +12052,7 @@ export namespace GData {
          * This method is thread safe.
          * @param domain the {@link GData.AuthorizationDomain} to check against
          * @returns `true` if the {@link GData.Authorizer} has been authorized to access `domain`, `false` otherwise
+         * @since 0.9.0
          */
         is_authorized_for_domain(domain: AuthorizationDomain): boolean;
 
@@ -11724,6 +12069,7 @@ export namespace GData {
          * This method is thread safe.
          * @param domain the {@link GData.AuthorizationDomain} the query falls under, or `null`
          * @param message the query to process
+         * @since 0.9.0
          */
         process_request(domain: AuthorizationDomain | null, message: Soup.Message): void;
 
@@ -11747,6 +12093,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if an authorization refresh was attempted and was successful, `false` if a refresh wasn't attempted or was unsuccessful
+         * @since 0.9.0
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11763,6 +12110,7 @@ export namespace GData {
          * 
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.9.0
          */
         refresh_authorization_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -11780,6 +12128,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the authorization refresh operation is finished, or `null`
+         * @since 0.9.0
          */
         refresh_authorization_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -11797,6 +12146,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the authorization refresh operation is finished, or `null`
+         * @since 0.9.0
          */
         refresh_authorization_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -11806,6 +12156,7 @@ export namespace GData {
          * This method is thread safe.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns `true` if an authorization refresh was attempted and was successful, `false` if a refresh wasn't attempted or was unsuccessful
+         * @since 0.9.0
          */
         refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
 
@@ -11829,6 +12180,7 @@ export namespace GData {
          * 
          * This method is thread safe.
          * @param domain the {@link GData.AuthorizationDomain} to check against
+         * @since 0.9.0
          * @virtual
          */
         vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean;
@@ -11846,6 +12198,7 @@ export namespace GData {
          * This method is thread safe.
          * @param domain the {@link GData.AuthorizationDomain} the query falls under, or `null`
          * @param message the query to process
+         * @since 0.9.0
          * @virtual
          */
         vfunc_process_request(domain: AuthorizationDomain | null, message: Soup.Message): void;
@@ -11869,6 +12222,7 @@ export namespace GData {
          * 
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.9.0
          * @virtual
          */
         vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
@@ -11887,6 +12241,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the authorization refresh operation is finished, or `null`
+         * @since 0.9.0
          * @virtual
          */
         vfunc_refresh_authorization_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -11896,6 +12251,7 @@ export namespace GData {
          * 
          * This method is thread safe.
          * @param async_result a {@link Gio.AsyncResult}
+         * @since 0.9.0
          * @virtual
          */
         vfunc_refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
@@ -12058,6 +12414,7 @@ export namespace GData {
         /**
          * Gets the {@link GData.Link.content_type} property. If the content type is non-`null`, it will be non-empty.
          * @returns the link's content type, or `null`
+         * @since 0.4.0
          */
         get_content_type(): string | null;
 
@@ -12070,24 +12427,28 @@ export namespace GData {
         /**
          * Gets the {@link GData.Link.language} property. If the language is non-`null`, it will be non-empty.
          * @returns the link's language, or `null`
+         * @since 0.4.0
          */
         get_language(): string | null;
 
         /**
          * Gets the {@link GData.Link.length} property.
          * @returns the link's length, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         get_length(): number;
 
         /**
          * Gets the {@link GData.Link.relation_type} property. If the relation type is non-`null`, it will be non-empty.
          * @returns the link's relation type
+         * @since 0.4.0
          */
         get_relation_type(): string | null;
 
         /**
          * Gets the {@link GData.Link.title} property.
          * @returns the link's title, or `null`
+         * @since 0.4.0
          */
         get_title(): string;
 
@@ -12099,6 +12460,7 @@ export namespace GData {
          * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rel_attribute">
          * Atom specification</ulink>.
          * @returns the link's URI
+         * @since 0.4.0
          */
         get_uri(): string;
 
@@ -12107,6 +12469,7 @@ export namespace GData {
          * 
          * Set `content_type` to `null` to unset the property in the link.
          * @param content_type the new content type for the link, or `null`
+         * @since 0.4.0
          */
         set_content_type(content_type: string | null): void;
 
@@ -12115,6 +12478,7 @@ export namespace GData {
          * 
          * Set `language` to `null` to unset the property in the link.
          * @param language the new language for the link, or `null`
+         * @since 0.4.0
          */
         set_language(language: string | null): void;
 
@@ -12123,6 +12487,7 @@ export namespace GData {
          * 
          * Set `length` to <code class="literal">-1</code> to unset the property in the link.
          * @param length the new length for the link, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         set_length(length: number): void;
 
@@ -12132,6 +12497,7 @@ export namespace GData {
          * 
          * Set `relation_type` to `null` to unset the property in the link.
          * @param relation_type the new relation type for the link, or `null`
+         * @since 0.4.0
          */
         set_relation_type(relation_type: string | null): void;
 
@@ -12140,12 +12506,14 @@ export namespace GData {
          * 
          * Set `title` to `null` to unset the property in the link.
          * @param title the new title for the link, or `null`
+         * @since 0.4.0
          */
         set_title(title: string | null): void;
 
         /**
          * Sets the {@link GData.Link.uri} property to `uri`. `uri` must be non-`null` and non-empty.
          * @param uri the new URI for the link
+         * @since 0.4.0
          */
         set_uri(uri: string): void;
 
@@ -12159,6 +12527,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -12258,24 +12627,28 @@ export namespace GData {
         /**
          * Gets the {@link GData.MediaCategory.category} property.
          * @returns the actual category
+         * @since 0.4.0
          */
         get_category(): string;
 
         /**
          * Gets the {@link GData.MediaCategory.label} property.
          * @returns the category's label, or `null`
+         * @since 0.4.0
          */
         get_label(): string;
 
         /**
          * Gets the {@link GData.MediaCategory.scheme} property.
          * @returns the category's scheme, or `null`
+         * @since 0.4.0
          */
         get_scheme(): string;
 
         /**
          * Sets the {@link GData.MediaCategory.category} property to `category`.
          * @param category the new category
+         * @since 0.4.0
          */
         set_category(category: string): void;
 
@@ -12284,6 +12657,7 @@ export namespace GData {
          * 
          * Set `label` to `null` to unset the property.
          * @param label the category's new label, or `null`
+         * @since 0.4.0
          */
         set_label(label: string | null): void;
 
@@ -12292,6 +12666,7 @@ export namespace GData {
          * 
          * Set `scheme` to `null` to unset the property.
          * @param scheme the category's new scheme, or `null`
+         * @since 0.4.0
          */
         set_scheme(scheme: string | null): void;
     }
@@ -12488,54 +12863,63 @@ export namespace GData {
          * @param service the {@link GData.Service}
          * @param cancellable a {@link Gio.Cancellable} for the entire download stream, or `null`
          * @returns a {@link GData.DownloadStream} to download the content with, or `null`; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         download(service: Service, cancellable: Gio.Cancellable | null): DownloadStream;
 
         /**
          * Gets the {@link GData.MediaContent.content_type} property.
          * @returns the content's content (MIME) type, or `null`
+         * @since 0.4.0
          */
         get_content_type(): string;
 
         /**
          * Gets the {@link GData.MediaContent.duration} property.
          * @returns the content's duration in seconds, or <code class="literal">0</code>
+         * @since 0.4.0
          */
         get_duration(): number;
 
         /**
          * Gets the {@link GData.MediaContent.expression} property.
          * @returns the content's expression, or {@link GData.MediaExpression.FULL}
+         * @since 0.4.0
          */
         get_expression(): MediaExpression;
 
         /**
          * Gets the {@link GData.MediaContent.filesize} property.
          * @returns the number of bytes in the content, or <code class="literal">0</code>
+         * @since 0.4.0
          */
         get_filesize(): number;
 
         /**
          * Gets the {@link GData.MediaContent.height} property.
          * @returns the content's height in pixels, or <code class="literal">0</code>
+         * @since 0.4.0
          */
         get_height(): number;
 
         /**
          * Gets the {@link GData.MediaContent.medium} property.
          * @returns the type of the content, or {@link GData.MediaMedium.UNKNOWN}
+         * @since 0.4.0
          */
         get_medium(): MediaMedium;
 
         /**
          * Gets the {@link GData.MediaContent.uri} property.
          * @returns the content's URI
+         * @since 0.4.0
          */
         get_uri(): string;
 
         /**
          * Gets the {@link GData.MediaContent.width} property.
          * @returns the content's width in pixels, or <code class="literal">0</code>
+         * @since 0.4.0
          */
         get_width(): number;
     }
@@ -12627,18 +13011,21 @@ export namespace GData {
         /**
          * Gets the {@link GData.MediaCredit.credit} property.
          * @returns the name of the credited entity
+         * @since 0.4.0
          */
         get_credit(): string;
 
         /**
          * Gets the {@link GData.MediaCredit.role} property.
          * @returns the credited entity's role, or `null`
+         * @since 0.4.0
          */
         get_role(): string;
 
         /**
          * Gets the {@link GData.MediaCredit.scheme} property.
          * @returns the credit's role scheme, or `null`
+         * @since 0.4.0
          */
         get_scheme(): string;
     }
@@ -12752,30 +13139,35 @@ export namespace GData {
          * @param service the {@link GData.Service}
          * @param cancellable a {@link Gio.Cancellable} for the entire download stream, or `null`
          * @returns a {@link GData.DownloadStream} to download the thumbnail with, or `null`; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         download(service: Service, cancellable: Gio.Cancellable | null): DownloadStream;
 
         /**
          * Gets the {@link GData.MediaThumbnail.height} property.
          * @returns the thumbnail's height in pixels, or <code class="literal">0</code>
+         * @since 0.4.0
          */
         get_height(): number;
 
         /**
          * Gets the {@link GData.MediaThumbnail.time} property.
          * @returns the thumbnail's time offset in the media, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         get_time(): number;
 
         /**
          * Gets the {@link GData.MediaThumbnail.uri} property.
          * @returns the thumbnail's URI
+         * @since 0.4.0
          */
         get_uri(): string;
 
         /**
          * Gets the {@link GData.MediaThumbnail.width} property.
          * @returns the thumbnail's width in pixels, or <code class="literal">0</code>
+         * @since 0.4.0
          */
         get_width(): number;
     }
@@ -13073,6 +13465,7 @@ export namespace GData {
          * @param login_hint optional e-mail address or sub identifier for the user
          * @param include_granted_scopes `true` to enable incremental authorisation
          * @returns the authentication URI to open in a web browser; free with `g_free()`
+         * @since 0.17.0
          */
         build_authentication_uri(login_hint: string | null, include_granted_scopes: boolean): string;
 
@@ -13081,6 +13474,7 @@ export namespace GData {
          * as set by client code previously on the {@link GData.OAuth2Authorizer}, or as
          * returned by the most recent authentication operation.
          * @returns the authorizer's refresh token
+         * @since 0.17.2
          */
         dup_refresh_token(): string;
 
@@ -13088,6 +13482,7 @@ export namespace GData {
          * Returns the authorizer's client ID, {@link GData.OAuth2Authorizer.client_id}, as
          * specified on constructing the {@link GData.OAuth2Authorizer}.
          * @returns the authorizer's client ID
+         * @since 0.17.0
          */
         get_client_id(): string;
 
@@ -13095,6 +13490,7 @@ export namespace GData {
          * Returns the authorizer's client secret, {@link GData.OAuth2Authorizer.client_secret},
          * as specified on constructing the {@link GData.OAuth2Authorizer}.
          * @returns the authorizer's client secret
+         * @since 0.17.0
          */
         get_client_secret(): string;
 
@@ -13102,12 +13498,14 @@ export namespace GData {
          * Returns the locale currently being used for network requests, or `null` if the
          * locale is the default.
          * @returns the current locale
+         * @since 0.17.0
          */
         get_locale(): string | null;
 
         /**
          * Gets the {@link Gio.ProxyResolver} on the {@link GData.OAuth2Authorizer}'s {@link Soup.Session}.
          * @returns a {@link Gio.ProxyResolver}, or `null`
+         * @since 0.17.0
          */
         get_proxy_resolver(): Gio.ProxyResolver | null;
 
@@ -13115,6 +13513,7 @@ export namespace GData {
          * Returns the authorizer’s redirect URI, {@link GData.OAuth2Authorizer.redirect_uri},
          * as specified on constructing the {@link GData.OAuth2Authorizer}.
          * @returns the authorizer’s redirect URI
+         * @since 0.17.0
          */
         get_redirect_uri(): string;
 
@@ -13122,6 +13521,7 @@ export namespace GData {
          * Gets the {@link GData.OAuth2Authorizer.timeout} property; the network timeout, in
          * seconds.
          * @returns the timeout, or <code class="literal">0</code>
+         * @since 0.17.0
          */
         get_timeout(): number;
 
@@ -13139,6 +13539,7 @@ export namespace GData {
          * @param authorization_code code returned from the authentication page
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.17.0
          */
         request_authorization(authorization_code: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13146,6 +13547,7 @@ export namespace GData {
          * Asynchronous version of `gdata_oauth2_authorizer_request_authorization()`.
          * @param authorization_code code returned from the authentication page
          * @param cancellable an optional {@link Gio.Cancellable}, or `null`
+         * @since 0.17.0
          */
         request_authorization_async(authorization_code: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -13154,6 +13556,7 @@ export namespace GData {
          * @param authorization_code code returned from the authentication page
          * @param cancellable an optional {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authorization is finished
+         * @since 0.17.0
          */
         request_authorization_async(authorization_code: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -13162,6 +13565,7 @@ export namespace GData {
          * @param authorization_code code returned from the authentication page
          * @param cancellable an optional {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authorization is finished
+         * @since 0.17.0
          */
         request_authorization_async(authorization_code: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -13170,6 +13574,7 @@ export namespace GData {
          * `gdata_oauth2_authorizer_request_authorization_async()`.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns `true` if authorization was successful, `false` otherwise
+         * @since 0.17.0
          */
         request_authorization_finish(async_result: Gio.AsyncResult): boolean;
 
@@ -13183,6 +13588,7 @@ export namespace GData {
          * unexpectedly. The only supported use of this method is after creation of the
          * authorizer, but before any network requests are made.
          * @param locale the new locale in UNIX locale format, or `null` for the default locale
+         * @since 0.17.0
          */
         set_locale(locale: string | null): void;
 
@@ -13190,6 +13596,7 @@ export namespace GData {
          * Sets the {@link Gio.ProxyResolver} on the {@link Soup.Session} used internally by the given
          * {@link GData.OAuth2Authorizer}.
          * @param proxy_resolver a {@link Gio.ProxyResolver}, or `null`
+         * @since 0.17.0
          */
         set_proxy_resolver(proxy_resolver: Gio.ProxyResolver | null): void;
 
@@ -13198,6 +13605,7 @@ export namespace GData {
          * This is used to periodically refresh the access token. Set it to `null` to
          * clear the current authentication from the authorizer.
          * @param refresh_token the new refresh token, or `null` to clear   authorization
+         * @since 0.17.2
          */
         set_refresh_token(refresh_token: string | null): void;
 
@@ -13208,6 +13616,7 @@ export namespace GData {
          * If `timeout` is <code class="literal">0</code>, network operations will never
          * time out.
          * @param timeout the timeout, or <code class="literal">0</code>
+         * @since 0.17.0
          */
         set_timeout(timeout: number): void;
 
@@ -13232,6 +13641,7 @@ export namespace GData {
          * This method is thread safe.
          * @param domain the {@link GData.AuthorizationDomain} to check against
          * @returns `true` if the {@link GData.Authorizer} has been authorized to access `domain`, `false` otherwise
+         * @since 0.9.0
          */
         is_authorized_for_domain(domain: AuthorizationDomain): boolean;
 
@@ -13248,6 +13658,7 @@ export namespace GData {
          * This method is thread safe.
          * @param domain the {@link GData.AuthorizationDomain} the query falls under, or `null`
          * @param message the query to process
+         * @since 0.9.0
          */
         process_request(domain: AuthorizationDomain | null, message: Soup.Message): void;
 
@@ -13271,6 +13682,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if an authorization refresh was attempted and was successful, `false` if a refresh wasn't attempted or was unsuccessful
+         * @since 0.9.0
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
@@ -13287,6 +13699,7 @@ export namespace GData {
          * 
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.9.0
          */
         refresh_authorization_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -13304,6 +13717,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the authorization refresh operation is finished, or `null`
+         * @since 0.9.0
          */
         refresh_authorization_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -13321,6 +13735,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the authorization refresh operation is finished, or `null`
+         * @since 0.9.0
          */
         refresh_authorization_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -13330,6 +13745,7 @@ export namespace GData {
          * This method is thread safe.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns `true` if an authorization refresh was attempted and was successful, `false` if a refresh wasn't attempted or was unsuccessful
+         * @since 0.9.0
          */
         refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
 
@@ -13353,6 +13769,7 @@ export namespace GData {
          * 
          * This method is thread safe.
          * @param domain the {@link GData.AuthorizationDomain} to check against
+         * @since 0.9.0
          * @virtual
          */
         vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean;
@@ -13370,6 +13787,7 @@ export namespace GData {
          * This method is thread safe.
          * @param domain the {@link GData.AuthorizationDomain} the query falls under, or `null`
          * @param message the query to process
+         * @since 0.9.0
          * @virtual
          */
         vfunc_process_request(domain: AuthorizationDomain | null, message: Soup.Message): void;
@@ -13393,6 +13811,7 @@ export namespace GData {
          * 
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.9.0
          * @virtual
          */
         vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
@@ -13411,6 +13830,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the authorization refresh operation is finished, or `null`
+         * @since 0.9.0
          * @virtual
          */
         vfunc_refresh_authorization_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -13420,6 +13840,7 @@ export namespace GData {
          * 
          * This method is thread safe.
          * @param async_result a {@link Gio.AsyncResult}
+         * @since 0.9.0
          * @virtual
          */
         vfunc_refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
@@ -13556,6 +13977,7 @@ export namespace GData {
         /**
          * Returns the content type upon which the {@link GData.Parsable} is built. For example, `application/atom+xml` or `application/json`.
          * @returns the parsable's content type
+         * @since 0.17.7
          */
         get_content_type(): string;
 
@@ -13563,6 +13985,7 @@ export namespace GData {
          * Builds a JSON representation of the {@link GData.Parsable} in its current state, such that it could be inserted on the server. The JSON
          * is valid for stand-alone use.
          * @returns the object's JSON; free with `g_free()`
+         * @since 0.15.0
          */
         get_json(): string;
 
@@ -13570,6 +13993,7 @@ export namespace GData {
          * Builds an XML representation of the {@link GData.Parsable} in its current state, such that it could be inserted on the server. The XML is guaranteed
          * to have all its namespaces declared properly in a self-contained fashion, and is valid for stand-alone use.
          * @returns the object's XML; free with `g_free()`
+         * @since 0.4.0
          */
         get_xml(): string;
     }
@@ -13905,18 +14329,21 @@ export namespace GData {
          * Gets the {@link GData.PicasaWebAlbum.bytes_used} property. It will return <code class="literal">-1</code> if the current authenticated
          * user is not the owner of the album.
          * @returns the number of bytes used by the album and its contents, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         get_bytes_used(): number;
 
         /**
          * Gets the {@link GData.PicasaWebAlbum.comment_count} property.
          * @returns the number of comments on the album
+         * @since 0.4.0
          */
         get_comment_count(): number;
 
         /**
          * Returns a list of media content, such as the cover image for the album.
          * @returns a {@link GLib.List} of {@link GData.MediaContent} items
+         * @since 0.4.0
          */
         get_contents(): MediaContent[];
 
@@ -13924,18 +14351,21 @@ export namespace GData {
          * Gets the {@link GData.PicasaWebAlbum.latitude} and {@link GData.PicasaWebAlbum.longitude} properties,
          * setting the out parameters to them. If either latitude or longitude is `null`, that parameter will not be set.
          * If the coordinates are unset, `latitude` and `longitude` will be set to `G_MAXDOUBLE`.
+         * @since 0.5.0
          */
         get_coordinates(): [number, number];
 
         /**
          * Gets the {@link GData.PicasaWebAlbum.edited} property. If the property is unset, <code class="literal">-1</code> will be returned.
          * @returns the UNIX timestamp for the time the album was last edited, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         get_edited(): number;
 
         /**
          * Gets the {@link GData.PicasaWebAlbum.album_id} property.
          * @returns the album's ID
+         * @since 0.7.0
          */
         get_id(): string;
 
@@ -13948,36 +14378,42 @@ export namespace GData {
         /**
          * Gets the {@link GData.PicasaWebAlbum.location} property.
          * @returns the album's location, or `null`
+         * @since 0.4.0
          */
         get_location(): string;
 
         /**
          * Gets the {@link GData.PicasaWebAlbum.nickname} property.
          * @returns the album owner's nickname
+         * @since 0.4.0
          */
         get_nickname(): string;
 
         /**
          * Gets the {@link GData.PicasaWebAlbum.num_photos} property.
          * @returns the number of photos currently in the album
+         * @since 0.4.0
          */
         get_num_photos(): number;
 
         /**
          * Gets the {@link GData.PicasaWebAlbum.num_photos_remaining} property.
          * @returns the number of photos that can still be uploaded to the album
+         * @since 0.4.0
          */
         get_num_photos_remaining(): number;
 
         /**
          * Gets the {@link GData.PicasaWebAlbum.tags} property.
          * @returns a `null`-terminated array of tags associated with all the photos in the album, or `null`
+         * @since 0.4.0
          */
         get_tags(): string[];
 
         /**
          * Returns a list of thumbnails, often at different sizes, for this album.
          * @returns a {@link GLib.List} of `GDataMediaThumbnails`, or `null`
+         * @since 0.4.0
          */
         get_thumbnails(): MediaThumbnail[];
 
@@ -13986,18 +14422,21 @@ export namespace GData {
          * day it was uploaded. It's a UNIX timestamp in milliseconds (not seconds) since the epoch. If the property is unset, <code class="literal">-1</code>
          * will be returned.
          * @returns the UNIX timestamp for the timestamp property in milliseconds, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         get_timestamp(): number;
 
         /**
          * Gets the {@link GData.PicasaWebAlbum.user} property.
          * @returns the album owner's username
+         * @since 0.4.0
          */
         get_user(): string;
 
         /**
          * Gets the {@link GData.PicasaWebAlbum.visibility} property.
          * @returns the album's visibility level
+         * @since 0.4.0
          */
         get_visibility(): PicasaWebVisibility;
 
@@ -14006,12 +14445,14 @@ export namespace GData {
          * `latitude` and `longitude` respectively.
          * @param latitude the album's new latitude coordinate, or `G_MAXDOUBLE`
          * @param longitude the album's new longitude coordinate, or `G_MAXDOUBLE`
+         * @since 0.5.0
          */
         set_coordinates(latitude: number, longitude: number): void;
 
         /**
          * Sets the {@link GData.PicasaWebAlbum.is_commenting_enabled} property to `is_commenting_enabled`.
          * @param is_commenting_enabled `true` if commenting should be enabled for the album, `false` otherwise
+         * @since 0.4.0
          */
         set_is_commenting_enabled(is_commenting_enabled: boolean): void;
 
@@ -14020,6 +14461,7 @@ export namespace GData {
          * 
          * Set `location` to `null` to unset the property.
          * @param location the new album location, or `null`
+         * @since 0.4.0
          */
         set_location(location: string | null): void;
 
@@ -14028,6 +14470,7 @@ export namespace GData {
          * 
          * Set `tags` to `null` to unset the album's tag list.
          * @param tags the new `null`-terminated array of tags, or `null`
+         * @since 0.4.0
          */
         set_tags(tags: string[] | null): void;
 
@@ -14036,12 +14479,14 @@ export namespace GData {
          * 
          * Set `timestamp` to <code class="literal">-1</code> to unset the property.
          * @param timestamp a UNIX timestamp, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         set_timestamp(timestamp: bigint | number): void;
 
         /**
          * Sets the {@link GData.PicasaWebAlbum.visibility} property to `visibility`.
          * @param visibility the new album visibility level
+         * @since 0.4.0
          */
         set_visibility(visibility: PicasaWebVisibility): void;
     }
@@ -14666,30 +15111,35 @@ export namespace GData {
         /**
          * Gets the {@link GData.PicasaWebFile.album_id} property. This is in the same form as returned by `gdata_picasaweb_album_get_id()`.
          * @returns the ID of the album containing the {@link GData.PicasaWebFile}
+         * @since 0.4.0
          */
         get_album_id(): string;
 
         /**
          * Gets the {@link GData.PicasaWebFile.caption} property.
          * @returns the file's descriptive caption, or `null`
+         * @since 0.4.0
          */
         get_caption(): string;
 
         /**
          * Gets the {@link GData.PicasaWebFile.checksum} property.
          * @returns the checksum assigned to this file, or `null`
+         * @since 0.4.0
          */
         get_checksum(): string;
 
         /**
          * Gets the {@link GData.PicasaWebFile.comment_count} property.
          * @returns the number of comments on the file
+         * @since 0.4.0
          */
         get_comment_count(): number;
 
         /**
          * Returns a list of media content, e.g. the actual photo or video.
          * @returns a {@link GLib.List} of {@link GData.MediaContent} items
+         * @since 0.4.0
          */
         get_contents(): MediaContent[];
 
@@ -14697,60 +15147,70 @@ export namespace GData {
          * Gets the {@link GData.PicasaWebFile.latitude} and {@link GData.PicasaWebFile.longitude} properties, setting the out parameters to them.
          * If either latitude or longitude is `null`, that parameter will not be set. If the coordinates are unset,
          * `latitude` and `longitude` will be set to `G_MAXDOUBLE`.
+         * @since 0.5.0
          */
         get_coordinates(): [number, number];
 
         /**
          * Gets the {@link GData.PicasaWebFile.credit} property.
          * @returns the nickname of the user credited with this file
+         * @since 0.4.0
          */
         get_credit(): string;
 
         /**
          * Gets the {@link GData.PicasaWebFile.distance} property.
          * @returns the distance recorded in the photo's EXIF, or <code class="literal">-1</code> if unknown
+         * @since 0.5.0
          */
         get_distance(): number;
 
         /**
          * Gets the {@link GData.PicasaWebFile.edited} property. If the property is unset, <code class="literal">-1</code> will be returned.
          * @returns the UNIX timestamp for the time the file was last edited, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         get_edited(): number;
 
         /**
          * Gets the {@link GData.PicasaWebFile.exposure} property.
          * @returns the exposure value, or <code class="literal">0</code> if unknown
+         * @since 0.5.0
          */
         get_exposure(): number;
 
         /**
          * Gets the {@link GData.PicasaWebFile.flash} property.
          * @returns `true` if flash was used, `false` otherwise
+         * @since 0.5.0
          */
         get_flash(): boolean;
 
         /**
          * Gets the {@link GData.PicasaWebFile.focal_length} property.
          * @returns the focal-length value, or <code class="literal">-1</code> if unknown
+         * @since 0.5.0
          */
         get_focal_length(): number;
 
         /**
          * Gets the {@link GData.PicasaWebFile.fstop} property.
          * @returns the F-stop value, or <code class="literal">0</code> if unknown
+         * @since 0.5.0
          */
         get_fstop(): number;
 
         /**
          * Gets the {@link GData.PicasaWebFile.height} property.
          * @returns the height of the image or video, in pixels
+         * @since 0.4.0
          */
         get_height(): number;
 
         /**
          * Gets the {@link GData.PicasaWebFile.file_id} property.
          * @returns the file's ID
+         * @since 0.7.0
          */
         get_id(): string;
 
@@ -14763,42 +15223,49 @@ export namespace GData {
         /**
          * Gets the {@link GData.PicasaWebFile.image_unique_id} property.
          * @returns the photo's unique EXIF identifier, or `null`
+         * @since 0.5.0
          */
         get_image_unique_id(): string;
 
         /**
          * Gets the {@link GData.PicasaWebFile.iso} property.
          * @returns the ISO speed, or <code class="literal">-1</code> if unknown
+         * @since 0.5.0
          */
         get_iso(): number;
 
         /**
          * Gets the {@link GData.PicasaWebFile.make} property.
          * @returns the name of the manufacturer of the camera, or `null` if unknown
+         * @since 0.5.0
          */
         get_make(): string;
 
         /**
          * Gets the {@link GData.PicasaWebFile.model} property.
          * @returns the model name of the camera, or `null` if unknown
+         * @since 0.5.0
          */
         get_model(): string;
 
         /**
          * Gets the {@link GData.PicasaWebFile.rotation} property.
          * @returns the image's rotation, in degrees
+         * @since 0.4.0
          */
         get_rotation(): number;
 
         /**
          * Gets the {@link GData.PicasaWebFile.size} property.
          * @returns the size of the file, in bytes
+         * @since 0.4.0
          */
         get_size(): number;
 
         /**
          * Gets the {@link GData.PicasaWebFile.tags} property.
          * @returns a `null`-terminated array of tags associated with the file, or `null`
+         * @since 0.4.0
          */
         get_tags(): string[];
 
@@ -14809,6 +15276,7 @@ export namespace GData {
          * not be larger than the actual image, so thumbnails may be smaller
          * than the widths listed above.
          * @returns a {@link GLib.List} of `GDataMediaThumbnails`, or `null`
+         * @since 0.4.0
          */
         get_thumbnails(): MediaThumbnail[];
 
@@ -14816,30 +15284,35 @@ export namespace GData {
          * Gets the {@link GData.PicasaWebFile.timestamp} property. It's a UNIX timestamp in milliseconds (not seconds) since the epoch. If the property is unset,
          * <code class="literal">-1</code> will be returned.
          * @returns the UNIX timestamp for the timestamp property in milliseconds, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         get_timestamp(): number;
 
         /**
          * Gets the {@link GData.PicasaWebFile.version} property.
          * @returns the file's version number, or `null`
+         * @since 0.4.0
          */
         get_version(): string;
 
         /**
          * Gets the {@link GData.PicasaWebFile.video_status} property.
          * @returns the status of this video ("pending", "ready", "final" or "failed"), or `null`
+         * @since 0.4.0
          */
         get_video_status(): string;
 
         /**
          * Gets the {@link GData.PicasaWebFile.width} property.
          * @returns the width of the image or video, in pixels
+         * @since 0.4.0
          */
         get_width(): number;
 
         /**
          * Sets the {@link GData.PicasaWebFile.album_id} property, effectively moving the file to the album.
          * @param album_id the ID of the new album for this file
+         * @since 0.4.0
          */
         set_album_id(album_id: string): void;
 
@@ -14848,6 +15321,7 @@ export namespace GData {
          * 
          * Set `caption` to `null` to unset the file's caption.
          * @param caption the file's new caption, or `null`
+         * @since 0.4.0
          */
         set_caption(caption: string | null): void;
 
@@ -14856,6 +15330,7 @@ export namespace GData {
          * 
          * Set `checksum` to `null` to unset the property.
          * @param checksum the new checksum for this file, or `null`
+         * @since 0.4.0
          */
         set_checksum(checksum: string | null): void;
 
@@ -14864,12 +15339,14 @@ export namespace GData {
          * `latitude` and `longitude` respectively.
          * @param latitude the file's new latitude coordinate, or `G_MAXDOUBLE`
          * @param longitude the file's new longitude coordinate, or `G_MAXDOUBLE`
+         * @since 0.5.0
          */
         set_coordinates(latitude: number, longitude: number): void;
 
         /**
          * Sets the {@link GData.PicasaWebFile.is_commenting_enabled} property to `is_commenting_enabled`.
          * @param is_commenting_enabled `true` if commenting should be enabled for the file, `false` otherwise
+         * @since 0.4.0
          */
         set_is_commenting_enabled(is_commenting_enabled: boolean): void;
 
@@ -14879,6 +15356,7 @@ export namespace GData {
          * The rotation is absolute, rather than cumulative, through successive calls to `gdata_picasaweb_file_set_rotation()`,
          * so calling it with 90° then 20° will result in a final rotation of 20°.
          * @param rotation the new rotation for the image, in degrees
+         * @since 0.4.0
          */
         set_rotation(rotation: number): void;
 
@@ -14887,6 +15365,7 @@ export namespace GData {
          * 
          * Set `tags` to `null` to unset the property.
          * @param tags a new `null`-terminated array of tags, or `null`
+         * @since 0.4.0
          */
         set_tags(tags: string[] | null): void;
 
@@ -14894,6 +15373,7 @@ export namespace GData {
          * Sets the {@link GData.PicasaWebFile.timestamp} property from `timestamp`. This should be a UNIX timestamp in milliseconds (not seconds) since the epoch. If
          * `timestamp` is <code class="literal">-1</code>, the property will be unset.
          * @param timestamp a UNIX timestamp, or <code class="literal">-1</code>
+         * @since 0.4.0
          */
         set_timestamp(timestamp: bigint | number): void;
 
@@ -14906,6 +15386,7 @@ export namespace GData {
          * @param comment_ a comment to be deleted
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if the comment was successfully deleted, `false` otherwise
+         * @since 0.10.0
          */
         delete_comment(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14920,6 +15401,7 @@ export namespace GData {
          * @param service a {@link GData.Service} with which the comment will be deleted
          * @param comment_ a comment to be deleted
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.10.0
          */
         delete_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -14935,6 +15417,7 @@ export namespace GData {
          * @param comment_ a comment to be deleted
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished
+         * @since 0.10.0
          */
         delete_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -14950,6 +15433,7 @@ export namespace GData {
          * @param comment_ a comment to be deleted
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished
+         * @since 0.10.0
          */
         delete_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -14957,6 +15441,7 @@ export namespace GData {
          * Finishes an asynchronous comment deletion operation started with `gdata_commentable_delete_comment_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the comment was successfully deleted, `false` otherwise
+         * @since 0.10.0
          */
         delete_comment_finish(result: Gio.AsyncResult): boolean;
 
@@ -14968,6 +15453,7 @@ export namespace GData {
          * @param comment_ a new comment to be added to the {@link GData.Commentable}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the added {@link GData.Comment}, or `null`; unref with `g_object_unref()`
+         * @since 0.10.0
          */
         insert_comment(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): Comment | null;
 
@@ -14982,6 +15468,7 @@ export namespace GData {
          * @param service a {@link GData.Service} with which the comment will be added
          * @param comment_ a new comment to be added to the {@link GData.Commentable}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.10.0
          */
         insert_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): globalThis.Promise<Comment | null>;
 
@@ -14997,6 +15484,7 @@ export namespace GData {
          * @param comment_ a new comment to be added to the {@link GData.Commentable}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished
+         * @since 0.10.0
          */
         insert_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -15012,6 +15500,7 @@ export namespace GData {
          * @param comment_ a new comment to be added to the {@link GData.Commentable}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished
+         * @since 0.10.0
          */
         insert_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Comment | null> | void;
 
@@ -15019,6 +15508,7 @@ export namespace GData {
          * Finishes an asynchronous comment insertion operation started with `gdata_commentable_insert_comment_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns the added {@link GData.Comment}, or `null`; unref with `g_object_unref()`
+         * @since 0.10.0
          */
         insert_comment_finish(result: Gio.AsyncResult): Comment | null;
 
@@ -15033,6 +15523,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
          * @returns a {@link GData.Feed} of `GDataComments`, or `null`; unref with `g_object_unref()`
+         * @since 0.10.0
          */
         query_comments(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed | null;
 
@@ -15048,6 +15539,7 @@ export namespace GData {
          * @param query a {@link GData.Query} with query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
+         * @since 0.10.0
          */
         query_comments_async(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): globalThis.Promise<Feed | null>;
 
@@ -15064,6 +15556,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.10.0
          */
         query_comments_async(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -15080,6 +15573,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.10.0
          */
         query_comments_async(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Feed | null> | void;
 
@@ -15087,6 +15581,7 @@ export namespace GData {
          * Finishes an asynchronous comment query operation started with `gdata_commentable_query_comments_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GData.Feed} of `GDataComments`, or `null`; unref with `g_object_unref()`
+         * @since 0.10.0
          */
         query_comments_finish(result: Gio.AsyncResult): Feed | null;
 
@@ -15255,36 +15750,42 @@ export namespace GData {
         // Methods
         /**
          * Gets the latitudes and longitudes of a bounding box, inside which all the results must lie.
+         * @since 0.4.0
          */
         get_bounding_box(): [number, number, number, number];
 
         /**
          * Gets the {@link GData.PicasaWebQuery.image_size} property.
          * @returns the currently set desired image size for retrieval, or `null`
+         * @since 0.4.0
          */
         get_image_size(): string;
 
         /**
          * Gets the {@link GData.PicasaWebQuery.location} property.
          * @returns a location which returned objects must be near, or `null`
+         * @since 0.4.0
          */
         get_location(): string;
 
         /**
          * Gets the {@link GData.PicasaWebQuery.tag} property.
          * @returns a tag which retrieved objects must have, or `null`
+         * @since 0.4.0
          */
         get_tag(): string;
 
         /**
          * Gets the {@link GData.PicasaWebQuery.thumbnail_size} property.
          * @returns a comma-separated list of thumbnail sizes to retrieve, or `null`
+         * @since 0.4.0
          */
         get_thumbnail_size(): string;
 
         /**
          * Gets the {@link GData.PicasaWebQuery.visibility} property.
          * @returns the visibility of the objects to retrieve, or <code class="literal">0</code> to retrieve all objects
+         * @since 0.4.0
          */
         get_visibility(): PicasaWebVisibility;
 
@@ -15296,6 +15797,7 @@ export namespace GData {
          * @param east longitude of the right of the box
          * @param south latitude of the bottom of the box
          * @param west longitude of the left of the box
+         * @since 0.4.0
          */
         set_bounding_box(north: number, east: number, south: number, west: number): void;
 
@@ -15306,6 +15808,7 @@ export namespace GData {
          * 
          * Set `image_size` to `null` to unset the property.
          * @param image_size the desired size of the image to be retrieved, or `null`
+         * @since 0.4.0
          */
         set_image_size(image_size: string | null): void;
 
@@ -15314,6 +15817,7 @@ export namespace GData {
          * 
          * Set `location` to `null` to unset the property.
          * @param location a location which returned objects must be near, or `null`
+         * @since 0.4.0
          */
         set_location(location: string | null): void;
 
@@ -15322,6 +15826,7 @@ export namespace GData {
          * 
          * Set `tag` to `null` to unset the property.
          * @param tag a tag which retrieved objects must have, or `null`
+         * @since 0.4.0
          */
         set_tag(tag: string | null): void;
 
@@ -15330,12 +15835,14 @@ export namespace GData {
          * 
          * Set `thumbnail_size` to `null` to unset the property.
          * @param thumbnail_size a comma-separated list of thumbnail sizes to retrieve, or `null`
+         * @since 0.4.0
          */
         set_thumbnail_size(thumbnail_size: string | null): void;
 
         /**
          * Sets the {@link GData.PicasaWebQuery.visibility} property to `visibility`.
          * @param visibility the visibility of the objects to retrieve, or <code class="literal">0</code> to retrieve all objects
+         * @since 0.4.0
          */
         set_visibility(visibility: PicasaWebVisibility): void;
     }
@@ -15398,6 +15905,7 @@ export namespace GData {
          * does not support natively, then this domain may be needed to authorize the requests.
          * 
          * The domain never changes, and is interned so that pointer comparison can be used to differentiate it from other authorization domains.
+         * @since 0.9.0
          */
         static get_primary_authorization_domain(): AuthorizationDomain;
 
@@ -15410,6 +15918,7 @@ export namespace GData {
          * indicates that the operation was successful, but an error is encountered in parsing the result sent by the server.
          * @param upload_stream the {@link GData.UploadStream} from the operation
          * @returns the new {@link GData.PicasaWebFile}, or `null`; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         finish_file_upload(upload_stream: UploadStream): PicasaWebFile;
 
@@ -15418,6 +15927,7 @@ export namespace GData {
          * @param username the username of the user whose information you wish to retrieve, or `null` for the currently authenticated user.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a {@link GData.PicasaWebUser}; unref with `g_object_unref()`
+         * @since 0.6.0
          */
         get_user(username: string | null, cancellable: Gio.Cancellable | null): PicasaWebUser;
 
@@ -15430,6 +15940,7 @@ export namespace GData {
          * operation.
          * @param username the username of the user whose information you wish to retrieve, or `null` for the currently authenticated user
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.9.1
          */
         get_user_async(username: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<PicasaWebUser>;
 
@@ -15443,6 +15954,7 @@ export namespace GData {
          * @param username the username of the user whose information you wish to retrieve, or `null` for the currently authenticated user
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.9.1
          */
         get_user_async(username: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -15456,6 +15968,7 @@ export namespace GData {
          * @param username the username of the user whose information you wish to retrieve, or `null` for the currently authenticated user
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.9.1
          */
         get_user_async(username: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<PicasaWebUser> | void;
 
@@ -15463,6 +15976,7 @@ export namespace GData {
          * Finishes an asynchronous user retrieval operation started with `gdata_picasaweb_service_get_user_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GData.PicasaWebUser}; unref with `g_object_unref()`
+         * @since 0.9.1
          */
         get_user_finish(result: Gio.AsyncResult): PicasaWebUser;
 
@@ -15472,6 +15986,7 @@ export namespace GData {
          * @param album a {@link GData.PicasaWebAlbum} to create on the server
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the inserted {@link GData.PicasaWebAlbum}; unref with `g_object_unref()`
+         * @since 0.6.0
          */
         insert_album(album: PicasaWebAlbum, cancellable: Gio.Cancellable | null): PicasaWebAlbum;
 
@@ -15487,6 +16002,7 @@ export namespace GData {
          * @param album a {@link GData.PicasaWebAlbum} to create on the server
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when insertion is finished
+         * @since 0.8.0
          */
         insert_album_async(album: PicasaWebAlbum, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -15503,6 +16019,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results; unref with `g_object_unref()`
+         * @since 0.4.0
          */
         query_all_albums(query: Query | null, username: string | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -15518,6 +16035,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
+         * @since 0.9.1
          */
         query_all_albums_async(query: Query | null, username: string | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -15531,6 +16049,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results; unref with `g_object_unref()`
+         * @since 0.4.0
          */
         query_files(album: PicasaWebAlbum | null, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -15546,6 +16065,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.9.1
          */
         query_files_async(album: PicasaWebAlbum | null, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -15574,6 +16094,7 @@ export namespace GData {
          * @param content_type the content type of the uploaded data
          * @param cancellable a {@link Gio.Cancellable} for the entire upload stream, or `null`
          * @returns a {@link GData.UploadStream} to write the file data to, or `null`; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         upload_file(album: PicasaWebAlbum | null, file_entry: PicasaWebFile, slug: string, content_type: string, cancellable: Gio.Cancellable | null): UploadStream;
     }
@@ -15760,12 +16281,14 @@ export namespace GData {
          * this information is not available when accessing feeds which we
          * haven't authenticated, and <code class="literal">0</code> is returned.
          * @returns the maximum number of photos an album for this account can hold, or <code class="literal">-1</code>
+         * @since 0.6.0
          */
         get_max_photos_per_album(): number;
 
         /**
          * Gets the {@link GData.PicasaWebUser.nickname} property.
          * @returns the nickname of the feed's user's nickname, or `null`
+         * @since 0.6.0
          */
         get_nickname(): string;
 
@@ -15774,6 +16297,7 @@ export namespace GData {
          * this information is not available when accessing feeds which we
          * haven't authenticated, and <code class="literal">0</code> is returned.
          * @returns the current number of bytes in use by this feed's account, or <code class="literal">-1</code>
+         * @since 0.6.0
          */
         get_quota_current(): number;
 
@@ -15782,18 +16306,21 @@ export namespace GData {
          * this information is not available when accessing feeds which we
          * haven't authenticated, and <code class="literal">0</code> is returned.
          * @returns the maximum capacity in bytes for this feed's account, or <code class="literal">-1</code>
+         * @since 0.6.0
          */
         get_quota_limit(): number;
 
         /**
          * Gets the {@link GData.PicasaWebUser.thumbnail_uri} property.
          * @returns the URI for the thumbnail of the account, or `null`
+         * @since 0.6.0
          */
         get_thumbnail_uri(): string;
 
         /**
          * Gets the {@link GData.PicasaWebUser.user} property.
          * @returns the feed's user, or `null`
+         * @since 0.6.0
          */
         get_user(): string;
     }
@@ -16082,6 +16609,7 @@ export namespace GData {
         /**
          * Gets the {@link GData.Query.etag} property.
          * @returns the ETag property, or `null` if it is unset
+         * @since 0.2.0
          */
         get_etag(): string;
 
@@ -16178,12 +16706,14 @@ export namespace GData {
          * 
          * Set `etag` to `null` to not check against the server-side ETag.
          * @param etag the new ETag, or `null`
+         * @since 0.2.0
          */
         set_etag(etag: string | null): void;
 
         /**
          * Sets the {@link GData.Query.is_strict} property of the {@link GData.Query} to the new strict value, `is_strict`.
          * @param is_strict the new strict value
+         * @since 0.2.0
          */
         set_is_strict(is_strict: boolean): void;
 
@@ -16366,6 +16896,7 @@ export namespace GData {
          * Note that in addition to this method, {@link GData.Service} subclasses may expose some or all of their authorization domains individually by means of
          * individual accessor functions.
          * @param service_type the {@link GObject.GType} of the {@link GData.Service} subclass to retrieve the authorization domains for
+         * @since 0.9.0
          */
         static get_authorization_domains(service_type: GObject.GType): AuthorizationDomain[];
 
@@ -16405,6 +16936,7 @@ export namespace GData {
          * @param entry the {@link GData.Entry} to delete
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.9.0
          */
         delete_entry(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null): boolean;
 
@@ -16419,6 +16951,7 @@ export namespace GData {
          * @param domain the {@link GData.AuthorizationDomain} the deletion falls under, or `null`
          * @param entry the {@link GData.Entry} to delete
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.9.0
          */
         delete_entry_async(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -16434,6 +16967,7 @@ export namespace GData {
          * @param entry the {@link GData.Entry} to delete
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when deletion is finished, or `null`
+         * @since 0.9.0
          */
         delete_entry_async(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -16449,6 +16983,7 @@ export namespace GData {
          * @param entry the {@link GData.Entry} to delete
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when deletion is finished, or `null`
+         * @since 0.9.0
          */
         delete_entry_async(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -16456,30 +16991,35 @@ export namespace GData {
          * Finishes an asynchronous entry deletion operation started with `gdata_service_delete_entry_async()`.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` otherwise
+         * @since 0.3.0
          */
         delete_entry_finish(async_result: Gio.AsyncResult): boolean;
 
         /**
          * Gets the {@link GData.Authorizer} object currently in use by the service. See the documentation for {@link GData.Service.authorizer} for more details.
          * @returns the authorizer object for this service, or `null`
+         * @since 0.9.0
          */
         get_authorizer(): Authorizer;
 
         /**
          * Returns the locale currently being used for network requests, or `null` if the locale is the default.
          * @returns the current locale
+         * @since 0.7.0
          */
         get_locale(): string;
 
         /**
          * Gets the {@link Gio.ProxyResolver} on the {@link GData.Service}'s {@link Soup.Session}.
          * @returns a {@link Gio.ProxyResolver}, or `null`
+         * @since 0.15.0
          */
         get_proxy_resolver(): Gio.ProxyResolver | null;
 
         /**
          * Gets the {@link GData.Service.timeout} property; the network timeout, in seconds.
          * @returns the timeout, or <code class="literal">0</code>
+         * @since 0.7.0
          */
         get_timeout(): number;
 
@@ -16506,6 +17046,7 @@ export namespace GData {
          * @param entry the {@link GData.Entry} to insert
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.Entry}, or `null`; unref with `g_object_unref()`
+         * @since 0.9.0
          */
         insert_entry(domain: AuthorizationDomain | null, upload_uri: string, entry: Entry, cancellable: Gio.Cancellable | null): Entry;
 
@@ -16521,6 +17062,7 @@ export namespace GData {
          * @param upload_uri the URI to which the upload should be sent
          * @param entry the {@link GData.Entry} to insert
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.9.0
          */
         insert_entry_async(domain: AuthorizationDomain | null, upload_uri: string, entry: Entry, cancellable: Gio.Cancellable | null): globalThis.Promise<Entry>;
 
@@ -16537,6 +17079,7 @@ export namespace GData {
          * @param entry the {@link GData.Entry} to insert
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when insertion is finished, or `null`
+         * @since 0.9.0
          */
         insert_entry_async(domain: AuthorizationDomain | null, upload_uri: string, entry: Entry, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -16553,6 +17096,7 @@ export namespace GData {
          * @param entry the {@link GData.Entry} to insert
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when insertion is finished, or `null`
+         * @since 0.9.0
          */
         insert_entry_async(domain: AuthorizationDomain | null, upload_uri: string, entry: Entry, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Entry> | void;
 
@@ -16560,6 +17104,7 @@ export namespace GData {
          * Finishes an asynchronous entry insertion operation started with `gdata_service_insert_entry_async()`.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns an updated {@link GData.Entry}, or `null`; unref with `g_object_unref()`
+         * @since 0.3.0
          */
         insert_entry_finish(async_result: Gio.AsyncResult): Entry;
 
@@ -16570,6 +17115,7 @@ export namespace GData {
          * This is basically a convenience method for checking that the service's {@link GData.Authorizer} is authorized for all the service's
          * `GDataAuthorizationDomains`.
          * @returns `true` if the service is authorized for all its domains, `false` otherwise
+         * @since 0.9.0
          */
         is_authorized(): boolean;
 
@@ -16600,6 +17146,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results, or `null`; unref with `g_object_unref()`
+         * @since 0.9.0
          */
         query(domain: AuthorizationDomain | null, feed_uri: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -16617,6 +17164,7 @@ export namespace GData {
          * @param entry_type a {@link GObject.GType} for the `GDataEntrys` to build from the XML
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
+         * @since 0.9.1
          */
         query_async(domain: AuthorizationDomain | null, feed_uri: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): globalThis.Promise<Feed>;
 
@@ -16635,6 +17183,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.9.1
          */
         query_async(domain: AuthorizationDomain | null, feed_uri: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -16653,6 +17202,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.9.1
          */
         query_async(domain: AuthorizationDomain | null, feed_uri: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Feed> | void;
 
@@ -16678,6 +17228,7 @@ export namespace GData {
          * @param entry_type a {@link GObject.GType} for the {@link GData.Entry} to build from the XML
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a {@link GData.Entry}, or `null`; unref with `g_object_unref()`
+         * @since 0.9.0
          */
         query_single_entry(domain: AuthorizationDomain | null, entry_id: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null): Entry;
 
@@ -16695,6 +17246,7 @@ export namespace GData {
          * @param query a {@link GData.Query} with the query parameters, or `null`
          * @param entry_type a {@link GObject.GType} for the {@link GData.Entry} to build from the XML
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.9.0
          */
         query_single_entry_async(domain: AuthorizationDomain | null, entry_id: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null): globalThis.Promise<Entry>;
 
@@ -16713,6 +17265,7 @@ export namespace GData {
          * @param entry_type a {@link GObject.GType} for the {@link GData.Entry} to build from the XML
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.9.0
          */
         query_single_entry_async(domain: AuthorizationDomain | null, entry_id: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -16731,6 +17284,7 @@ export namespace GData {
          * @param entry_type a {@link GObject.GType} for the {@link GData.Entry} to build from the XML
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.9.0
          */
         query_single_entry_async(domain: AuthorizationDomain | null, entry_id: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Entry> | void;
 
@@ -16738,6 +17292,7 @@ export namespace GData {
          * Finishes an asynchronous query operation for a single entry, as started with `gdata_service_query_single_entry_async()`.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns a {@link GData.Entry}, or `null`; unref with `g_object_unref()`
+         * @since 0.7.0
          */
         query_single_entry_finish(async_result: Gio.AsyncResult): Entry;
 
@@ -16745,6 +17300,7 @@ export namespace GData {
          * Sets {@link GData.Service.authorizer} to `authorizer`. This may be `null` if the service will only make requests in future which don't require authorization.
          * See the documentation for {@link GData.Service.authorizer} for more information.
          * @param authorizer a new authorizer object for the service, or `null`
+         * @since 0.9.0
          */
         set_authorizer(authorizer: Authorizer): void;
 
@@ -16754,12 +17310,14 @@ export namespace GData {
          * Note that while it's possible to change the locale after sending network requests, it is unsupported, as the server-side software may behave
          * unexpectedly. The only supported use of this function is after creation of a service, but before any network requests are made.
          * @param locale the new locale in Unix locale format, or `null` for the default locale
+         * @since 0.7.0
          */
         set_locale(locale: string | null): void;
 
         /**
          * Sets the {@link Gio.ProxyResolver} on the {@link Soup.Session} used internally by the given {@link GData.Service}.
          * @param proxy_resolver a {@link Gio.ProxyResolver}, or `null`
+         * @since 0.15.0
          */
         set_proxy_resolver(proxy_resolver: Gio.ProxyResolver | null): void;
 
@@ -16770,6 +17328,7 @@ export namespace GData {
          * 
          * Note that if a {@link GData.Authorizer} is being used with this {@link GData.Service}, the authorizer might also need its timeout setting.
          * @param timeout the timeout, or <code class="literal">0</code>
+         * @since 0.7.0
          */
         set_timeout(timeout: number): void;
 
@@ -16792,6 +17351,7 @@ export namespace GData {
          * @param entry the {@link GData.Entry} to update
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.Entry}, or `null`; unref with `g_object_unref()`
+         * @since 0.9.0
          */
         update_entry(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null): Entry;
 
@@ -16806,6 +17366,7 @@ export namespace GData {
          * @param domain the {@link GData.AuthorizationDomain} the update operation falls under, or `null`
          * @param entry the {@link GData.Entry} to update
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.9.0
          */
         update_entry_async(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null): globalThis.Promise<Entry>;
 
@@ -16821,6 +17382,7 @@ export namespace GData {
          * @param entry the {@link GData.Entry} to update
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the update is finished, or `null`
+         * @since 0.9.0
          */
         update_entry_async(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -16836,6 +17398,7 @@ export namespace GData {
          * @param entry the {@link GData.Entry} to update
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the update is finished, or `null`
+         * @since 0.9.0
          */
         update_entry_async(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Entry> | void;
 
@@ -16843,6 +17406,7 @@ export namespace GData {
          * Finishes an asynchronous entry update operation started with `gdata_service_update_entry_async()`.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns an updated {@link GData.Entry}, or `null`; unref with `g_object_unref()`
+         * @since 0.3.0
          */
         update_entry_finish(async_result: Gio.AsyncResult): Entry;
     }
@@ -17052,42 +17616,49 @@ export namespace GData {
         /**
          * Gets the {@link GData.TasksQuery.completed_max} property. If the property is unset, <code class="literal">-1</code> will be returned.
          * @returns the UNIX timestamp for the completed-max property, or <code class="literal">-1</code>
+         * @since 0.15.0
          */
         get_completed_max(): number;
 
         /**
          * Gets the {@link GData.TasksQuery.completed_min} property. If the property is unset, <code class="literal">-1</code> will be returned.
          * @returns the UNIX timestamp for the completed-min property, or <code class="literal">-1</code>
+         * @since 0.15.0
          */
         get_completed_min(): number;
 
         /**
          * Gets the {@link GData.TasksQuery.due_max} property. If the property is unset, <code class="literal">-1</code> will be returned.
          * @returns the UNIX timestamp for the due-max property, or <code class="literal">-1</code>
+         * @since 0.15.0
          */
         get_due_max(): number;
 
         /**
          * Gets the {@link GData.TasksQuery.due_min} property. If the property is unset, <code class="literal">-1</code> will be returned.
          * @returns the UNIX timestamp for the due-min property, or <code class="literal">-1</code>
+         * @since 0.15.0
          */
         get_due_min(): number;
 
         /**
          * Gets the {@link GData.TasksQuery.show_completed} property.
          * @returns the show-completed property
+         * @since 0.15.0
          */
         get_show_completed(): boolean;
 
         /**
          * Gets the {@link GData.TasksQuery.show_deleted} property.
          * @returns the show-deleted property
+         * @since 0.15.0
          */
         get_show_deleted(): boolean;
 
         /**
          * Gets the {@link GData.TasksQuery.show_hidden} property.
          * @returns the show-hidden property
+         * @since 0.15.0
          */
         get_show_hidden(): boolean;
 
@@ -17097,6 +17668,7 @@ export namespace GData {
          * 
          * Set `completed_max` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param completed_max upper bound for a task's completion date by UNIX timestamp, or  <code class="literal">-1</code>
+         * @since 0.15.0
          */
         set_completed_max(completed_max: bigint | number): void;
 
@@ -17106,6 +17678,7 @@ export namespace GData {
          * 
          * Set `completed_min` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param completed_min lower bound for a task's completion date by UNIX timestamp, or  <code class="literal">-1</code>
+         * @since 0.15.0
          */
         set_completed_min(completed_min: bigint | number): void;
 
@@ -17115,6 +17688,7 @@ export namespace GData {
          * 
          * Set `due_max` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param due_max upper bound for a task's due date by UNIX timestamp, or  <code class="literal">-1</code>
+         * @since 0.15.0
          */
         set_due_max(due_max: bigint | number): void;
 
@@ -17124,24 +17698,28 @@ export namespace GData {
          * 
          * Set `due_min` to <code class="literal">-1</code> to unset the property in the query URI.
          * @param due_min lower bound for a task's due date by UNIX timestamp, or  <code class="literal">-1</code>
+         * @since 0.15.0
          */
         set_due_min(due_min: bigint | number): void;
 
         /**
          * Sets the {@link GData.TasksQuery.show_completed} property of the {@link GData.TasksQuery}.
          * @param show_completed `true` to show completed tasks, `false` otherwise
+         * @since 0.15.0
          */
         set_show_completed(show_completed: boolean): void;
 
         /**
          * Sets the {@link GData.TasksQuery.show_deleted} property of the {@link GData.TasksQuery}.
          * @param show_deleted `true` to show deleted tasks, `false` otherwise
+         * @since 0.15.0
          */
         set_show_deleted(show_deleted: boolean): void;
 
         /**
          * Sets the {@link GData.TasksQuery.show_hidden} property of the {@link GData.TasksQuery}.
          * @param show_hidden `true` to show hidden tasks, `false` otherwise
+         * @since 0.15.0
          */
         set_show_hidden(show_hidden: boolean): void;
     }
@@ -17204,6 +17782,7 @@ export namespace GData {
          * does not support natively, then this domain may be needed to authorize the requests.
          * 
          * The domain never changes, and is interned so that pointer comparison can be used to differentiate it from other authorization domains.
+         * @since 0.15.0
          */
         static get_primary_authorization_domain(): AuthorizationDomain;
 
@@ -17215,6 +17794,7 @@ export namespace GData {
          * @param task the {@link GData.TasksTask} to delete
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.15.0
          */
         delete_task(task: TasksTask, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17230,6 +17810,7 @@ export namespace GData {
          * @param task {@link GData.TasksTask} to delete
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when insertion is finished
+         * @since 0.15.0
          */
         delete_task_async(task: TasksTask, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -17240,6 +17821,7 @@ export namespace GData {
          * @param tasklist the {@link GData.TasksTasklist} to delete
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.15.0
          */
         delete_tasklist(tasklist: TasksTasklist, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17255,6 +17837,7 @@ export namespace GData {
          * @param tasklist {@link GData.TasksTasklist} to delete
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when insertion is finished
+         * @since 0.15.0
          */
         delete_tasklist_async(tasklist: TasksTasklist, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -17266,6 +17849,7 @@ export namespace GData {
          * @param tasklist {@link GData.TasksTasklist} to insert into
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.TasksTask}, or `null`; unref with `g_object_unref()`
+         * @since 0.15.0
          */
         insert_task(task: TasksTask, tasklist: TasksTasklist, cancellable: Gio.Cancellable | null): TasksTask;
 
@@ -17282,6 +17866,7 @@ export namespace GData {
          * @param tasklist {@link GData.TasksTasklist} to insert into
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when insertion is finished
+         * @since 0.15.0
          */
         insert_task_async(task: TasksTask, tasklist: TasksTasklist, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -17292,6 +17877,7 @@ export namespace GData {
          * @param tasklist {@link GData.TasksTasklist} to insert
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.TasksTasklist}, or `null`; unref with `g_object_unref()`
+         * @since 0.15.0
          */
         insert_tasklist(tasklist: TasksTasklist, cancellable: Gio.Cancellable | null): TasksTasklist;
 
@@ -17307,6 +17893,7 @@ export namespace GData {
          * @param tasklist {@link GData.TasksTasklist} to insert
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when insertion is finished
+         * @since 0.15.0
          */
         insert_tasklist_async(tasklist: TasksTasklist, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -17319,6 +17906,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results; unref with `g_object_unref()`
+         * @since 0.15.0
          */
         query_all_tasklists(query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -17333,6 +17921,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
+         * @since 0.15.0
          */
         query_all_tasklists_async(query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -17345,6 +17934,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results; unref with `g_object_unref()`
+         * @since 0.15.0
          */
         query_tasks(tasklist: TasksTasklist, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -17361,6 +17951,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.15.0
          */
         query_tasks_async(tasklist: TasksTasklist, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -17371,6 +17962,7 @@ export namespace GData {
          * @param task the {@link GData.TasksTask} to update
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.TasksTask}, or `null`; unref with `g_object_unref()`
+         * @since 0.15.0
          */
         update_task(task: TasksTask, cancellable: Gio.Cancellable | null): TasksTask;
 
@@ -17386,6 +17978,7 @@ export namespace GData {
          * @param task {@link GData.TasksTask} to update
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when insertion is finished
+         * @since 0.15.0
          */
         update_task_async(task: TasksTask, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -17396,6 +17989,7 @@ export namespace GData {
          * @param tasklist the {@link GData.TasksTasklist} to update
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.TasksTasklist}, or `null`; unref with `g_object_unref()`
+         * @since 0.15.0
          */
         update_tasklist(tasklist: TasksTasklist, cancellable: Gio.Cancellable | null): TasksTasklist;
 
@@ -17411,6 +18005,7 @@ export namespace GData {
          * @param tasklist {@link GData.TasksTasklist} to update
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when insertion is finished
+         * @since 0.15.0
          */
         update_tasklist_async(tasklist: TasksTasklist, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     }
@@ -17597,36 +18192,42 @@ export namespace GData {
         /**
          * Gets the {@link GData.TasksTask.completed} property. If the property is unset, <code class="literal">-1</code> will be returned.
          * @returns the completed property, or <code class="literal">-1</code>
+         * @since 0.15.0
          */
         get_completed(): number;
 
         /**
          * Gets the {@link GData.TasksTask.due} property. If the property is unset, <code class="literal">-1</code> will be returned.
          * @returns the due property, or <code class="literal">-1</code>
+         * @since 0.15.0
          */
         get_due(): number;
 
         /**
          * Gets the {@link GData.TasksTask.notes} property.
          * @returns notes of the task, or `null`
+         * @since 0.15.0
          */
         get_notes(): string | null;
 
         /**
          * Gets the {@link GData.TasksTask.parent} property.
          * @returns the parent of the task, or `null`
+         * @since 0.15.0
          */
         get_parent(): string | null;
 
         /**
          * Gets the {@link GData.TasksTask.position} property.
          * @returns the position of the task, or `null`
+         * @since 0.15.0
          */
         get_position(): string | null;
 
         /**
          * Gets the {@link GData.TasksTask.status} property.
          * @returns the status of the task, or `null`
+         * @since 0.15.0
          */
         get_status(): string | null;
 
@@ -17635,6 +18236,7 @@ export namespace GData {
          * 
          * Set `completed` to <code class="literal">-1</code> to unset the property in the completion time of the task
          * @param completed completion time of the task, or <code class="literal">-1</code>
+         * @since 0.15.0
          */
         set_completed(completed: bigint | number): void;
 
@@ -17643,12 +18245,14 @@ export namespace GData {
          * 
          * Set `due` to <code class="literal">-1</code> to unset the property in the due time of the task
          * @param due due time of the task, or <code class="literal">-1</code>
+         * @since 0.15.0
          */
         set_due(due: bigint | number): void;
 
         /**
          * Sets the {@link GData.TasksTask.is_deleted} property to `deleted`.
          * @param deleted `true` if task is deleted, `false` otherwise
+         * @since 0.15.0
          */
         set_is_deleted(deleted: boolean): void;
 
@@ -17657,18 +18261,21 @@ export namespace GData {
          * 
          * Set `notes` to `null` to unset the property in the task.
          * @param notes a new notes of the task, or `null`
+         * @since 0.15.0
          */
         set_notes(notes: string | null): void;
 
         /**
          * Sets the {@link GData.TasksTask.parent} property.
          * @param parent parent of the task
+         * @since 0.17.10
          */
         set_parent(parent: string | null): void;
 
         /**
          * Sets the {@link GData.TasksTask.position} property.
          * @param position position of the task in the list
+         * @since 0.17.10
          */
         set_position(position: string): void;
 
@@ -17677,6 +18284,7 @@ export namespace GData {
          * 
          * Set `status` to `null` to unset the property in the task.
          * @param status a new status of the task, or `null`
+         * @since 0.15.0
          */
         set_status(status: string | null): void;
     }
@@ -17933,12 +18541,14 @@ export namespace GData {
          * Gets the authorization domain used to authorize the upload, as passed to `gdata_upload_stream_new()`. It may be `null` if authorization is not
          * needed for the upload.
          * @returns the {@link GData.AuthorizationDomain} used to authorize the upload, or `null`
+         * @since 0.9.0
          */
         get_authorization_domain(): AuthorizationDomain | null;
 
         /**
          * Gets the {@link Gio.Cancellable} for the entire upload operation, {@link GData.UploadStream.cancellable}.
          * @returns the {@link Gio.Cancellable} for the entire upload operation
+         * @since 0.8.0
          */
         get_cancellable(): Gio.Cancellable;
 
@@ -17946,24 +18556,28 @@ export namespace GData {
          * Gets the size (in bytes) of the file being uploaded. This will be <code class="literal">-1</code> for a non-resumable upload, and zero or greater
          * for a resumable upload.
          * @returns the size of the file being uploaded
+         * @since 0.13.0
          */
         get_content_length(): number;
 
         /**
          * Gets the content type of the file being uploaded.
          * @returns the content type of the file being uploaded
+         * @since 0.5.0
          */
         get_content_type(): string;
 
         /**
          * Gets the entry being used to upload metadata, if one was passed to `gdata_upload_stream_new()`.
          * @returns the entry used for metadata, or `null`
+         * @since 0.5.0
          */
         get_entry(): Entry;
 
         /**
          * Gets the HTTP request method being used to upload the file, as passed to `gdata_upload_stream_new()`.
          * @returns the HTTP request method in use
+         * @since 0.7.0
          */
         get_method(): string;
 
@@ -17981,24 +18595,28 @@ export namespace GData {
          * <code class="literal">-1</code>. The only reliable way to determine if the stream has been fully closed in this situation is to check the results
          * of `gdata_upload_stream_get_response()`, rather than `g_output_stream_is_closed()`.
          * @returns the server's response to the upload, or `null`
+         * @since 0.5.0
          */
         get_response(): [string, number];
 
         /**
          * Gets the service used to authorize the upload, as passed to `gdata_upload_stream_new()`.
          * @returns the {@link GData.Service} used to authorize the upload
+         * @since 0.5.0
          */
         get_service(): Service;
 
         /**
          * Gets the slug (filename) of the file being uploaded.
          * @returns the slug of the file being uploaded
+         * @since 0.5.0
          */
         get_slug(): string;
 
         /**
          * Gets the URI the file is being uploaded to, as passed to `gdata_upload_stream_new()`.
          * @returns the URI which the file is being uploaded to
+         * @since 0.5.0
          */
         get_upload_uri(): string;
     }
@@ -18098,6 +18716,7 @@ export namespace GData {
          * <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#Region_specific_feeds">available online</ulink>.
          * @param region a two-letter region ID
          * @returns whether the category is browsable in `region`
+         * @since 0.7.0
          */
         is_browsable(region: string): boolean;
 
@@ -18111,6 +18730,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
 
@@ -18211,6 +18831,7 @@ export namespace GData {
         /**
          * Gets the {@link GData.YouTubeComment.parent_comment_uri} property.
          * @returns the parent comment URI, or `null`
+         * @since 0.10.0
          */
         get_parent_comment_uri(): string;
 
@@ -18223,6 +18844,7 @@ export namespace GData {
          * See the <ulink type="http" url="http://code.google.com/apis/youtube/2.0/developers_guide_protocol_comments.html#Retrieve_comments">online
          * documentation</ulink> for more information.
          * @param parent_comment_uri a new parent comment URI, or `null`
+         * @since 0.10.0
          */
         set_parent_comment_uri(parent_comment_uri: string): void;
     }
@@ -18519,42 +19141,49 @@ export namespace GData {
         /**
          * Gets the {@link GData.YouTubeQuery.age} property.
          * @returns the age property
+         * @since 0.3.0
          */
         get_age(): YouTubeAge;
 
         /**
          * Gets the {@link GData.YouTubeQuery.license} property.
          * @returns the license property, or `null` if it is unset
+         * @since 0.11.0
          */
         get_license(): string;
 
         /**
          * Gets the location-based properties of the {@link GData.YouTubeQuery}<!-- -->: {@link GData.YouTubeQuery.latitude}, {@link GData.YouTubeQuery.longitude},
          * {@link GData.YouTubeQuery.location_radius} and {@link GData.YouTubeQuery.has_location}.
+         * @since 1.0.0
          */
         get_location(): [number, number, number];
 
         /**
          * Gets the {@link GData.YouTubeQuery.order_by} property.
          * @returns the order by property, or `null` if it is unset
+         * @since 0.3.0
          */
         get_order_by(): string;
 
         /**
          * Gets the {@link GData.YouTubeQuery.restriction} property.
          * @returns the restriction property, or `null` if it is unset
+         * @since 0.3.0
          */
         get_restriction(): string;
 
         /**
          * Gets the {@link GData.YouTubeQuery.safe_search} property.
          * @returns the safe search property
+         * @since 0.3.0
          */
         get_safe_search(): YouTubeSafeSearch;
 
         /**
          * Sets the {@link GData.YouTubeQuery.age} property of the {@link GData.YouTubeQuery} to `age`.
          * @param age the new age
+         * @since 0.3.0
          */
         set_age(age: YouTubeAge): void;
 
@@ -18563,6 +19192,7 @@ export namespace GData {
          * 
          * Set `license` to `null` to unset the property in the query URI.
          * @param license a new license value, or `null`
+         * @since 0.11.0
          */
         set_license(license: string | null): void;
 
@@ -18572,6 +19202,7 @@ export namespace GData {
          * @param latitude the new latitude, or `G_MAXDOUBLE`
          * @param longitude the new longitude, or `G_MAXDOUBLE`
          * @param radius the new location radius, or <code class="literal">0</code>
+         * @since 1.0.0
          */
         set_location(latitude: number, longitude: number, radius: number): void;
 
@@ -18580,6 +19211,7 @@ export namespace GData {
          * 
          * Set `order_by` to `null` to unset the property in the query URI.
          * @param order_by a new order by string, or `null`
+         * @since 0.3.0
          */
         set_order_by(order_by: string | null): void;
 
@@ -18588,12 +19220,14 @@ export namespace GData {
          * 
          * Set `restriction` to `null` to unset the property in the query URI.
          * @param restriction a new restriction string, or `null`
+         * @since 0.3.0
          */
         set_restriction(restriction: string | null): void;
 
         /**
          * Sets the {@link GData.YouTubeQuery.safe_search} property of the {@link GData.YouTubeQuery} to `safe_search`.
          * @param safe_search a new safe search level
+         * @since 0.3.0
          */
         set_safe_search(safe_search: YouTubeSafeSearch): void;
     }
@@ -18684,6 +19318,7 @@ export namespace GData {
          * does not support natively, then this domain may be needed to authorize the requests.
          * 
          * The domain never changes, and is interned so that pointer comparison can be used to differentiate it from other authorization domains.
+         * @since 0.9.0
          */
         static get_primary_authorization_domain(): AuthorizationDomain;
 
@@ -18696,6 +19331,7 @@ export namespace GData {
          * indicates that the operation was successful, but an error is encountered in parsing the result sent by the server.
          * @param upload_stream the {@link GData.UploadStream} from the operation
          * @returns the new {@link GData.YouTubeVideo}, or `null`; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         finish_video_upload(upload_stream: UploadStream): YouTubeVideo;
 
@@ -18706,6 +19342,7 @@ export namespace GData {
          * The category labels ({@link GData.Category.label}) are localised based on the value of {@link GData.Service.locale}.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a {@link GData.APPCategories}, or `null`; unref with `g_object_unref()`
+         * @since 0.7.0
          */
         get_categories(cancellable: Gio.Cancellable | null): APPCategories;
 
@@ -18718,6 +19355,7 @@ export namespace GData {
          * When the operation is finished, `callback` will be called. You can then call `gdata_youtube_service_get_categories_finish()` to get the results of the
          * operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.7.0
          */
         get_categories_async(cancellable: Gio.Cancellable | null): globalThis.Promise<APPCategories>;
 
@@ -18731,6 +19369,7 @@ export namespace GData {
          * operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is finished
+         * @since 0.7.0
          */
         get_categories_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -18744,6 +19383,7 @@ export namespace GData {
          * operation.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is finished
+         * @since 0.7.0
          */
         get_categories_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<APPCategories> | void;
 
@@ -18751,6 +19391,7 @@ export namespace GData {
          * Finishes an asynchronous request for a list of categories on YouTube, as started with `gdata_youtube_service_get_categories_async()`.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns a {@link GData.APPCategories}, or `null`; unref with `g_object_unref()`
+         * @since 0.7.0
          */
         get_categories_finish(async_result: Gio.AsyncResult): APPCategories;
 
@@ -18785,6 +19426,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
+         * @since 0.9.1
          */
         query_related_async(video: YouTubeVideo, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -18818,6 +19460,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
+         * @since 0.9.1
          */
         query_standard_feed_async(feed_type: YouTubeStandardFeedType, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -18845,6 +19488,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when authentication is finished
+         * @since 0.9.1
          */
         query_videos_async(query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -18868,6 +19512,7 @@ export namespace GData {
          * @param content_type the content type of the uploaded data
          * @param cancellable a {@link Gio.Cancellable} for the entire upload stream, or `null`
          * @returns a {@link GData.UploadStream} to write the video data to, or `null`; unref with `g_object_unref()`
+         * @since 0.8.0
          */
         upload_video(video: YouTubeVideo, slug: string, content_type: string, cancellable: Gio.Cancellable | null): UploadStream;
 
@@ -18879,6 +19524,7 @@ export namespace GData {
          * @param domain the {@link GData.AuthorizationDomain} to authorize the operation, or `null`
          * @param feed_uri the URI to send the batch operation request to
          * @returns a new {@link GData.BatchOperation}; unref with `g_object_unref()`
+         * @since 0.9.0
          */
         create_operation(domain: AuthorizationDomain | null, feed_uri: string): BatchOperation;
     }
@@ -19012,24 +19658,28 @@ export namespace GData {
         /**
          * Gets the {@link GData.YouTubeState.help_uri} property.
          * @returns the help URI, or `null`
+         * @since 0.4.0
          */
         get_help_uri(): string;
 
         /**
          * Gets the {@link GData.YouTubeState.message} property.
          * @returns the status message, or `null`
+         * @since 0.4.0
          */
         get_message(): string;
 
         /**
          * Gets the {@link GData.YouTubeState.name} property.
          * @returns the status name
+         * @since 0.4.0
          */
         get_name(): string;
 
         /**
          * Gets the {@link GData.YouTubeState.reason_code} property.
          * @returns the status reason code, or `null`
+         * @since 0.4.0
          */
         get_reason_code(): string;
     }
@@ -19427,6 +20077,7 @@ export namespace GData {
          * g_free (video_id);
          * </programlisting></informalexample>
          * @param video_uri a YouTube video player URI
+         * @since 0.4.0
          */
         static get_video_id_from_uri(video_uri: string): string;
 
@@ -19436,12 +20087,14 @@ export namespace GData {
          * doesn't have a permission set on the video, {@link GData.YouTubePermission.DENIED} is returned.
          * @param action the action whose permission should be returned
          * @returns the permission associated with `action`, or {@link GData.YouTubePermission.DENIED}
+         * @since 0.7.0
          */
         get_access_control(action: string): YouTubePermission;
 
         /**
          * Gets the {@link GData.YouTubeVideo.aspect_ratio} property.
          * @returns the aspect ratio property, or `null`
+         * @since 0.4.0
          */
         get_aspect_ratio(): string;
 
@@ -19454,6 +20107,7 @@ export namespace GData {
         /**
          * Gets the {@link GData.YouTubeVideo.latitude} and {@link GData.YouTubeVideo.longitude} properties, setting the out parameters to them. If either latitude or
          * longitude is `null`, that parameter will not be set. If the coordinates are unset, `latitude` and `longitude` will be set to `G_MAXDOUBLE`.
+         * @since 0.8.0
          */
         get_coordinates(): [number, number];
 
@@ -19498,6 +20152,7 @@ export namespace GData {
          * rating types.
          * @param rating_type the type of rating to retrieve
          * @returns the rating of the video for the given `rating_type`, or `null` if the video isn't rated with that type (or the type is unknown)
+         * @since 0.10.0
          */
         get_media_rating(rating_type: string): string;
 
@@ -19519,6 +20174,7 @@ export namespace GData {
         /**
          * Gets the {@link GData.YouTubeVideo.recorded} property. If the property is unset, <code class="literal">-1</code> will be returned.
          * @returns the UNIX timestamp for the time the video was recorded, or <code class="literal">-1</code>
+         * @since 0.3.0
          */
         get_recorded(): number;
 
@@ -19554,6 +20210,7 @@ export namespace GData {
          * The return value from this function is purely informational, and no obligation is assumed.
          * @param country an ISO 3166 two-letter country code to check
          * @returns `true` if the video is restricted in `country`, `false` otherwise
+         * @since 0.4.0
          */
         is_restricted_in_country(country: string): boolean;
 
@@ -19564,6 +20221,7 @@ export namespace GData {
          * Note that only `GDATA_YOUTUBE_ACTION_RATE` and `GDATA_YOUTUBE_ACTION_COMMENT` actions can have the {@link GData.YouTubePermission.MODERATED} permission.
          * @param action the action whose permission is being set
          * @param permission the permission to give to the action
+         * @since 0.7.0
          */
         set_access_control(action: string, permission: YouTubePermission): void;
 
@@ -19571,6 +20229,7 @@ export namespace GData {
          * Sets the {@link GData.YouTubeVideo.aspect_ratio} property to specify the video's aspect ratio.
          * If `aspect_ratio` is `null`, the property will be unset.
          * @param aspect_ratio the aspect ratio property, or `null`
+         * @since 0.4.0
          */
         set_aspect_ratio(aspect_ratio: string | null): void;
 
@@ -19587,6 +20246,7 @@ export namespace GData {
          * Sets the {@link GData.YouTubeVideo.latitude} and {@link GData.YouTubeVideo.longitude} properties to `latitude` and `longitude` respectively.
          * @param latitude the video's new latitude coordinate, or `G_MAXDOUBLE`
          * @param longitude the video's new longitude coordinate, or `G_MAXDOUBLE`
+         * @since 0.8.0
          */
         set_coordinates(latitude: number, longitude: number): void;
 
@@ -19626,6 +20286,7 @@ export namespace GData {
          * 
          * Set `recorded` to <code class="literal">-1</code> to unset the video's recorded time.
          * @param recorded the video's new recorded time, or <code class="literal">-1</code>
+         * @since 0.3.0
          */
         set_recorded(recorded: bigint | number): void;
 
@@ -19638,6 +20299,7 @@ export namespace GData {
          * @param comment_ a comment to be deleted
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if the comment was successfully deleted, `false` otherwise
+         * @since 0.10.0
          */
         delete_comment(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): boolean;
 
@@ -19652,6 +20314,7 @@ export namespace GData {
          * @param service a {@link GData.Service} with which the comment will be deleted
          * @param comment_ a comment to be deleted
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.10.0
          */
         delete_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -19667,6 +20330,7 @@ export namespace GData {
          * @param comment_ a comment to be deleted
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished
+         * @since 0.10.0
          */
         delete_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -19682,6 +20346,7 @@ export namespace GData {
          * @param comment_ a comment to be deleted
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished
+         * @since 0.10.0
          */
         delete_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -19689,6 +20354,7 @@ export namespace GData {
          * Finishes an asynchronous comment deletion operation started with `gdata_commentable_delete_comment_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the comment was successfully deleted, `false` otherwise
+         * @since 0.10.0
          */
         delete_comment_finish(result: Gio.AsyncResult): boolean;
 
@@ -19700,6 +20366,7 @@ export namespace GData {
          * @param comment_ a new comment to be added to the {@link GData.Commentable}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the added {@link GData.Comment}, or `null`; unref with `g_object_unref()`
+         * @since 0.10.0
          */
         insert_comment(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): Comment | null;
 
@@ -19714,6 +20381,7 @@ export namespace GData {
          * @param service a {@link GData.Service} with which the comment will be added
          * @param comment_ a new comment to be added to the {@link GData.Commentable}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.10.0
          */
         insert_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): globalThis.Promise<Comment | null>;
 
@@ -19729,6 +20397,7 @@ export namespace GData {
          * @param comment_ a new comment to be added to the {@link GData.Commentable}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished
+         * @since 0.10.0
          */
         insert_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -19744,6 +20413,7 @@ export namespace GData {
          * @param comment_ a new comment to be added to the {@link GData.Commentable}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished
+         * @since 0.10.0
          */
         insert_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Comment | null> | void;
 
@@ -19751,6 +20421,7 @@ export namespace GData {
          * Finishes an asynchronous comment insertion operation started with `gdata_commentable_insert_comment_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns the added {@link GData.Comment}, or `null`; unref with `g_object_unref()`
+         * @since 0.10.0
          */
         insert_comment_finish(result: Gio.AsyncResult): Comment | null;
 
@@ -19765,6 +20436,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
          * @returns a {@link GData.Feed} of `GDataComments`, or `null`; unref with `g_object_unref()`
+         * @since 0.10.0
          */
         query_comments(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed | null;
 
@@ -19780,6 +20452,7 @@ export namespace GData {
          * @param query a {@link GData.Query} with query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
+         * @since 0.10.0
          */
         query_comments_async(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): globalThis.Promise<Feed | null>;
 
@@ -19796,6 +20469,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.10.0
          */
         query_comments_async(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -19812,6 +20486,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.10.0
          */
         query_comments_async(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Feed | null> | void;
 
@@ -19819,6 +20494,7 @@ export namespace GData {
          * Finishes an asynchronous comment query operation started with `gdata_commentable_query_comments_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GData.Feed} of `GDataComments`, or `null`; unref with `g_object_unref()`
+         * @since 0.10.0
          */
         query_comments_finish(result: Gio.AsyncResult): Feed | null;
 
@@ -20044,6 +20720,7 @@ export namespace GData {
          * <replaceable>bb</replaceable></literal>, where <replaceable>rr</replaceable> is a two-digit hexadecimal red intensity value,
          * <replaceable>gg</replaceable> is green and <replaceable>bb</replaceable> is blue. The hash is always present.
          * @returns the color string; free with `g_free()`
+         * @since 0.3.0
          */
         to_hexadecimal(): string;
     }
@@ -20909,6 +21586,7 @@ export namespace GData {
              * @param service a {@link GData.Service}
              * @param cancellable optional {@link Gio.Cancellable} object, or `null`
              * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
+             * @since 0.3.0
              * @virtual
              */
             vfunc_get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
@@ -20946,6 +21624,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @returns a {@link GData.Feed} of access control rules, or `null`; unref with `g_object_unref()`
+         * @since 0.3.0
          */
         get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -20962,6 +21641,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.9.1
          */
         get_rules_async(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     }
@@ -20999,6 +21679,7 @@ export namespace GData {
              * 
              * This method is thread safe.
              * @param domain the {@link GData.AuthorizationDomain} to check against
+             * @since 0.9.0
              * @virtual
              */
             vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean;
@@ -21016,6 +21697,7 @@ export namespace GData {
              * This method is thread safe.
              * @param domain the {@link GData.AuthorizationDomain} the query falls under, or `null`
              * @param message the query to process
+             * @since 0.9.0
              * @virtual
              */
             vfunc_process_request(domain: AuthorizationDomain | null, message: Soup.Message): void;
@@ -21039,6 +21721,7 @@ export namespace GData {
              * 
              * This method is thread safe.
              * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+             * @since 0.9.0
              * @virtual
              */
             vfunc_refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
@@ -21057,6 +21740,7 @@ export namespace GData {
              * This method is thread safe.
              * @param cancellable optional {@link Gio.Cancellable} object, or `null`
              * @param callback a {@link Gio.AsyncReadyCallback} to call when the authorization refresh operation is finished, or `null`
+             * @since 0.9.0
              * @virtual
              */
             vfunc_refresh_authorization_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -21066,6 +21750,7 @@ export namespace GData {
              * 
              * This method is thread safe.
              * @param async_result a {@link Gio.AsyncResult}
+             * @since 0.9.0
              * @virtual
              */
             vfunc_refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
@@ -21109,6 +21794,7 @@ export namespace GData {
          * This method is thread safe.
          * @param domain the {@link GData.AuthorizationDomain} to check against
          * @returns `true` if the {@link GData.Authorizer} has been authorized to access `domain`, `false` otherwise
+         * @since 0.9.0
          */
         is_authorized_for_domain(domain: AuthorizationDomain): boolean;
 
@@ -21125,6 +21811,7 @@ export namespace GData {
          * This method is thread safe.
          * @param domain the {@link GData.AuthorizationDomain} the query falls under, or `null`
          * @param message the query to process
+         * @since 0.9.0
          */
         process_request(domain: AuthorizationDomain | null, message: Soup.Message): void;
 
@@ -21148,6 +21835,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if an authorization refresh was attempted and was successful, `false` if a refresh wasn't attempted or was unsuccessful
+         * @since 0.9.0
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
@@ -21164,6 +21852,7 @@ export namespace GData {
          * 
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.9.0
          */
         refresh_authorization_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -21181,6 +21870,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the authorization refresh operation is finished, or `null`
+         * @since 0.9.0
          */
         refresh_authorization_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -21198,6 +21888,7 @@ export namespace GData {
          * This method is thread safe.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the authorization refresh operation is finished, or `null`
+         * @since 0.9.0
          */
         refresh_authorization_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -21207,6 +21898,7 @@ export namespace GData {
          * This method is thread safe.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns `true` if an authorization refresh was attempted and was successful, `false` if a refresh wasn't attempted or was unsuccessful
+         * @since 0.9.0
          */
         refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
     }
@@ -21242,6 +21934,7 @@ export namespace GData {
          * @param domain the {@link GData.AuthorizationDomain} to authorize the operation, or `null`
          * @param feed_uri the URI to send the batch operation request to
          * @returns a new {@link GData.BatchOperation}; unref with `g_object_unref()`
+         * @since 0.9.0
          */
         create_operation(domain: AuthorizationDomain | null, feed_uri: string): BatchOperation;
     }
@@ -21303,6 +21996,7 @@ export namespace GData {
          * @param comment_ a comment to be deleted
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if the comment was successfully deleted, `false` otherwise
+         * @since 0.10.0
          */
         delete_comment(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21317,6 +22011,7 @@ export namespace GData {
          * @param service a {@link GData.Service} with which the comment will be deleted
          * @param comment_ a comment to be deleted
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.10.0
          */
         delete_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -21332,6 +22027,7 @@ export namespace GData {
          * @param comment_ a comment to be deleted
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished
+         * @since 0.10.0
          */
         delete_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -21347,6 +22043,7 @@ export namespace GData {
          * @param comment_ a comment to be deleted
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished
+         * @since 0.10.0
          */
         delete_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -21354,6 +22051,7 @@ export namespace GData {
          * Finishes an asynchronous comment deletion operation started with `gdata_commentable_delete_comment_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the comment was successfully deleted, `false` otherwise
+         * @since 0.10.0
          */
         delete_comment_finish(result: Gio.AsyncResult): boolean;
 
@@ -21365,6 +22063,7 @@ export namespace GData {
          * @param comment_ a new comment to be added to the {@link GData.Commentable}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the added {@link GData.Comment}, or `null`; unref with `g_object_unref()`
+         * @since 0.10.0
          */
         insert_comment(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): Comment | null;
 
@@ -21379,6 +22078,7 @@ export namespace GData {
          * @param service a {@link GData.Service} with which the comment will be added
          * @param comment_ a new comment to be added to the {@link GData.Commentable}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 0.10.0
          */
         insert_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): globalThis.Promise<Comment | null>;
 
@@ -21394,6 +22094,7 @@ export namespace GData {
          * @param comment_ a new comment to be added to the {@link GData.Commentable}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished
+         * @since 0.10.0
          */
         insert_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -21409,6 +22110,7 @@ export namespace GData {
          * @param comment_ a new comment to be added to the {@link GData.Commentable}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished
+         * @since 0.10.0
          */
         insert_comment_async(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Comment | null> | void;
 
@@ -21416,6 +22118,7 @@ export namespace GData {
          * Finishes an asynchronous comment insertion operation started with `gdata_commentable_insert_comment_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns the added {@link GData.Comment}, or `null`; unref with `g_object_unref()`
+         * @since 0.10.0
          */
         insert_comment_finish(result: Gio.AsyncResult): Comment | null;
 
@@ -21430,6 +22133,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
          * @returns a {@link GData.Feed} of `GDataComments`, or `null`; unref with `g_object_unref()`
+         * @since 0.10.0
          */
         query_comments(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed | null;
 
@@ -21445,6 +22149,7 @@ export namespace GData {
          * @param query a {@link GData.Query} with query parameters, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
+         * @since 0.10.0
          */
         query_comments_async(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): globalThis.Promise<Feed | null>;
 
@@ -21461,6 +22166,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.10.0
          */
         query_comments_async(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -21477,6 +22183,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the query is finished
+         * @since 0.10.0
          */
         query_comments_async(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Feed | null> | void;
 
@@ -21484,6 +22191,7 @@ export namespace GData {
          * Finishes an asynchronous comment query operation started with `gdata_commentable_query_comments_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GData.Feed} of `GDataComments`, or `null`; unref with `g_object_unref()`
+         * @since 0.10.0
          */
         query_comments_finish(result: Gio.AsyncResult): Feed | null;
     }
@@ -21535,6 +22243,7 @@ export namespace GData {
          * The `other` object must be of the same type as `self`, or of a type derived from `self`'s type.
          * @param other another {@link GData.Comparable} of the same type, or `null`
          * @returns `true` on success, `false` otherwise
+         * @since 0.7.0
          */
         compare(other: Comparable | null): number;
     }

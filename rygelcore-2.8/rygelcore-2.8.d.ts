@@ -507,6 +507,7 @@ export namespace RygelCore {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -550,6 +551,7 @@ export namespace RygelCore {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -658,6 +660,7 @@ export namespace RygelCore {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -701,6 +704,7 @@ export namespace RygelCore {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -806,6 +810,9 @@ export namespace RygelCore {
 
         static cleanup(): void;
 
+        /**
+         * @deprecated since 0.19.2
+         */
         get_interface(): string;
 
         get_interfaces(): string[];
@@ -882,6 +889,7 @@ export namespace RygelCore {
         get_bool(section: string, key: string): boolean;
 
         /**
+         * @deprecated since 0.19.2
          * @virtual
          */
         vfunc_get_interface(): string;
@@ -1758,6 +1766,9 @@ export namespace RygelCore {
 
         get_config_file(): string;
 
+        /**
+         * @deprecated since 0.19.2
+         */
         get_interface(): string;
 
         get_interfaces(): string[];
@@ -1834,6 +1845,7 @@ export namespace RygelCore {
         get_bool(section: string, key: string): boolean;
 
         /**
+         * @deprecated since 0.19.2
          * @virtual
          */
         vfunc_get_interface(): string;
@@ -1995,6 +2007,9 @@ export namespace RygelCore {
         // Static methods
         static get_default(): EnvironmentConfig;
 
+        /**
+         * @deprecated since 0.19.2
+         */
         get_interface(): string;
 
         get_interfaces(): string[];
@@ -2071,6 +2086,7 @@ export namespace RygelCore {
         get_bool(section: string, key: string): boolean;
 
         /**
+         * @deprecated since 0.19.2
          * @virtual
          */
         vfunc_get_interface(): string;
@@ -2239,6 +2255,9 @@ export namespace RygelCore {
         // Static methods
         static get_default(): UserConfig;
 
+        /**
+         * @deprecated since 0.19.2
+         */
         get_interface(): string;
 
         get_interfaces(): string[];
@@ -2315,6 +2334,7 @@ export namespace RygelCore {
         get_bool(section: string, key: string): boolean;
 
         /**
+         * @deprecated since 0.19.2
          * @virtual
          */
         vfunc_get_interface(): string;
@@ -3284,6 +3304,7 @@ export namespace RygelCore {
 
             // Virtual methods
             /**
+             * @deprecated since 0.19.2
              * @virtual
              */
             vfunc_get_interface(): string;
@@ -3413,6 +3434,9 @@ export namespace RygelCore {
     interface Configuration extends GObject.Object, Configuration.Interface {
 
         // Methods
+        /**
+         * @deprecated since 0.19.2
+         */
         get_interface(): string;
 
         get_interfaces(): string[];

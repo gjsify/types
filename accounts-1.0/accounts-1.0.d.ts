@@ -336,6 +336,7 @@ export namespace Accounts {
          * @param key the name of the setting to retrieve.
          * @param value an initialized {@link GObject.Value} to receive the setting's value.
          * @returns one of {@link Accounts.SettingSource}: {@link Accounts.SettingSource.NONE} if the setting is not present, {@link Accounts.SettingSource.ACCOUNT} if the setting comes from the account configuration, or {@link Accounts.SettingSource.PROFILE} if the value comes as predefined in the profile.
+         * @deprecated since 1.4: Use `ag_account_get_variant()` instead.
          */
         get_value(key: string, value: GObject.Value | any): [SettingSource, unknown];
 
@@ -343,6 +344,7 @@ export namespace Accounts {
          * Gets the value of the configuration setting `key`.
          * @param key the name of the setting to retrieve.
          * @returns a {@link GLib.Variant} holding the setting value, or `null`. The returned {@link GLib.Variant} is owned by the account, and no guarantees are made about its lifetime. If the client wishes to keep it, it should call `g_variant_ref()` on it.
+         * @since 1.4
          */
         get_variant(key: string): [GLib.Variant, SettingSource | null];
 
@@ -400,6 +402,7 @@ export namespace Accounts {
          * If `value` is `null`, then the setting is unset.
          * @param key the name of the setting to change.
          * @param value a {@link GObject.Value} holding the new setting's value.
+         * @deprecated since 1.4: Use `ag_account_set_variant()` instead.
          */
         set_value(key: string, value: GObject.Value | any | null): void;
 
@@ -410,6 +413,7 @@ export namespace Accounts {
          * If `value` is `null`, then the setting is unset.
          * @param key the name of the setting to change.
          * @param value a {@link GLib.Variant} holding the new setting's value.
+         * @since 1.4
          */
         set_variant(key: string, value: GLib.Variant | null): void;
 
@@ -434,6 +438,7 @@ export namespace Accounts {
          * Commit the changed account settings to the account database, and invoke
          * `callback` when the operation has been completed.
          * @param callback function to be called when the settings have been written.
+         * @deprecated since 1.4: Use `ag_account_store_async()` instead.
          */
         store(callback: AccountStoreCb): void;
 
@@ -441,6 +446,7 @@ export namespace Accounts {
          * Commit the changed account settings to the account database, and invoke
          * `callback` when the operation has been completed.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 1.4
          */
         store_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -449,6 +455,7 @@ export namespace Accounts {
          * `callback` when the operation has been completed.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback function to be called when the settings have been written.
+         * @since 1.4
          */
         store_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -457,6 +464,7 @@ export namespace Accounts {
          * `callback` when the operation has been completed.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback function to be called when the settings have been written.
+         * @since 1.4
          */
         store_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -471,6 +479,7 @@ export namespace Accounts {
          * Finishes the store operation started by `ag_account_store_async()`.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `ag_account_store_async()`.
          * @returns `true` on success, `false` otherwise.
+         * @since 1.4
          */
         store_finish(res: Gio.AsyncResult): boolean;
 
@@ -559,6 +568,7 @@ export namespace Accounts {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -602,6 +612,7 @@ export namespace Accounts {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -706,6 +717,7 @@ export namespace Accounts {
          * Iterates over the account keys. `iter` must be an iterator previously
          * initialized with `ag_account_service_settings_iter_init()`.
          * @param iter an initialized {@link Accounts.AccountSettingIter} structure.
+         * @deprecated since 1.4: Use `ag_account_settings_iter_get_next()` instead.
          */
         static settings_iter_next(iter: AccountSettingIter): [boolean, string, unknown];
 
@@ -762,6 +774,7 @@ export namespace Accounts {
          * @param key the name of the setting to retrieve.
          * @param value an initialized {@link GObject.Value} to receive the setting's value.
          * @returns one of <type>{@link Accounts.SettingSource}</type>: {@link Accounts.SettingSource.NONE} if the setting is not present, {@link Accounts.SettingSource.ACCOUNT} if the setting comes from the account configuration, or {@link Accounts.SettingSource.PROFILE} if the value comes as predefined in the profile.
+         * @deprecated since 1.4: Use `ag_account_service_get_variant()` instead.
          */
         get_value(key: string, value: GObject.Value | any): [SettingSource, unknown];
 
@@ -769,6 +782,7 @@ export namespace Accounts {
          * Gets the value of the configuration setting `key`.
          * @param key the name of the setting to retrieve.
          * @returns a {@link GLib.Variant} holding the setting value, or `null`. The returned {@link GLib.Variant} is owned by the account, and no guarantees are made about its lifetime. If the client wishes to keep it, it should call `g_variant_ref()` on it.
+         * @since 1.4
          */
         get_variant(key: string): [GLib.Variant, SettingSource | null];
 
@@ -777,6 +791,7 @@ export namespace Accounts {
          * If `value` is `null`, then the setting is unset.
          * @param key the name of the setting to change.
          * @param value a {@link GObject.Value} holding the new setting's value.
+         * @deprecated since 1.4: Use `ag_account_service_set_variant()` instead.
          */
         set_value(key: string, value: GObject.Value | any | null): void;
 
@@ -787,6 +802,7 @@ export namespace Accounts {
          * If `value` is `null`, then the setting is unset.
          * @param key the name of the setting to change.
          * @param value a {@link GLib.Variant} holding the new setting's value.
+         * @since 1.4
          */
         set_variant(key: string, value: GLib.Variant | null): void;
 
@@ -1220,6 +1236,7 @@ export namespace Accounts {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1263,6 +1280,7 @@ export namespace Accounts {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -1315,6 +1333,7 @@ export namespace Accounts {
          * Iterates over the account keys. `iter` must be an iterator previously
          * initialized with `ag_account_settings_iter_init()`.
          * @returns `true` if `key` and `value` have been set, `false` if we there are no more account settings to iterate over.
+         * @since 1.4
          */
         get_next(): [boolean, string, GLib.Variant];
 
@@ -1322,6 +1341,7 @@ export namespace Accounts {
          * Iterates over the account keys. `iter` must be an iterator previously
          * initialized with `ag_account_settings_iter_init()`.
          * @returns `true` if `key` and `value` have been set, `false` if we there are no more account settings to iterate over.
+         * @deprecated since 1.4: Use `ag_account_settings_iter_get_next()` instead.
          */
         next(): [boolean, string, unknown];
     }
@@ -1403,6 +1423,7 @@ export namespace Accounts {
         /**
          * Gets the ID of the credentials associated with this account.
          * @returns the credentials ID.
+         * @since 1.1
          */
         get_credentials_id(): number;
 
@@ -1410,6 +1431,7 @@ export namespace Accounts {
          * Gets the authentication parameters.
          * @param extra_parameters a {@link GLib.Variant} containing client-specific authentication parameters to be added to the returned dictionary.
          * @returns a floating {@link GLib.Variant} of type `G_VARIANT_TYPE_VARDICT` containing all the authentication parameters.
+         * @since 1.4
          */
         get_login_parameters(extra_parameters: GLib.Variant | null): GLib.Variant;
 
@@ -1428,6 +1450,7 @@ export namespace Accounts {
         /**
          * Gets the authentication parameters.
          * @returns a {@link GLib.HashTable} containing all the authentication parameters.
+         * @deprecated since 1.4: use `ag_auth_data_get_login_parameters()` instead.
          */
         get_parameters(): { [key: string]: GObject.Value };
 
@@ -1436,6 +1459,7 @@ export namespace Accounts {
          * some parameters were already present, the parameters passed with this method
          * take precedence.
          * @param parameters a {@link GLib.HashTable} containing the authentication parameters to be added.
+         * @deprecated since 1.4: use `ag_auth_data_get_login_parameters()` instead.
          */
         insert_parameters(parameters: { [key: string]: GObject.Value }): void;
 
@@ -1484,6 +1508,7 @@ export namespace Accounts {
         /**
          * Get the description of the {@link Accounts.Provider}.
          * @returns the description of `provider`, or `null` upon failure.
+         * @since 1.2
          */
         get_description(): string;
 
@@ -1497,6 +1522,7 @@ export namespace Accounts {
          * Get a regular expression matching all domains where this provider's accounts
          * can be used.
          * @returns a regular expression matching the domain names.
+         * @since 1.1
          */
         get_domains_regex(): string;
 
@@ -1533,6 +1559,7 @@ export namespace Accounts {
          * Some platforms might find it useful to store plugin names in the provider
          * XML files, especially when the same plugin can work for different providers.
          * @returns the plugin name for `provider`, or `null` if a plugin name is not defined.
+         * @since 1.5
          */
         get_plugin_name(): string;
 
@@ -1542,12 +1569,14 @@ export namespace Accounts {
          * multiple accounts when this flag is set: the flag is only informative, and
          * its implementation is left to the client.
          * @returns `false` if multiple accounts can be created from this provider, `true` otherwise.
+         * @since 1.14
          */
         get_single_account(): boolean;
 
         /**
          * Get list of tags specified for the {@link Accounts.Provider}.
          * @returns {@link GLib.List} of tags for `provider`. The list must be freed with `g_list_free()`. Entries are owned by the {@link Accounts.Provider} type and must not be free'd.
+         * @since 1.25
          */
         get_tags(): string[];
 
@@ -1558,6 +1587,7 @@ export namespace Accounts {
          * domains, this function will return `false`.
          * @param domain a domain name.
          * @returns `true` if the given domain is supported, `false` otherwise.
+         * @since 1.2
          */
         match_domain(domain: string): boolean;
 
@@ -1592,6 +1622,7 @@ export namespace Accounts {
         /**
          * Gets the description of the {@link Accounts.Service}.
          * @returns the description of `service`, or `null` upon failure.
+         * @since 1.2
          */
         get_description(): string;
 
@@ -1687,6 +1718,7 @@ export namespace Accounts {
         /**
          * Get the description of the {@link Accounts.ServiceType}.
          * @returns the description of `service_type`, or `null` upon failure.
+         * @since 1.2
          */
         get_description(): string;
 

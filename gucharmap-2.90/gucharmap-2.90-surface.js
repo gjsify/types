@@ -24,6 +24,12 @@ export const DECLS = {
     GucharmapChartable: ['GucharmapChartable', 'GtkDrawingArea', 'GtkWidget', 'GtkBuildable', 'GtkScrollable'],
 };
 
+// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
+// and descend from `GObject.Object`. A renderer places them like a container; a check
+// asking "is this a widget" must not count them. Derived from the accessor pair, never
+// from a list — the count is in the provenance line above.
+export const CHILD_HOLDERS = [];
+
 export const ENUM_NICKS = {
     GucharmapCharmapPageType: ['chartable', 'details'],
     GucharmapUnicodeVersion: ['unassigned', '1-1', '2-0', '2-1', '3-0', '3-1', '3-2', '4-0', '4-1', '5-0', '5-1', '5-2', '6-0', '6-1', '6-2', '6-3', '7-0', '8-0', '9-0', '10-0', '11-0', '12-0', '12-1', '13-0', '14-0', '15-0', '15-1', '16-0', '17-0', 'latest'],

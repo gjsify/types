@@ -6834,6 +6834,7 @@ export namespace Mbim {
          * @param file a {@link Gio.File}.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the initialization is finished.
+         * @since 1.0
          */
         static ["new"](file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Device> | null): void;
 
@@ -6859,6 +6860,7 @@ export namespace Mbim {
          * @param base_ifname the interface which the new link will be created on.
          * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @since 1.26
          */
         add_link(session_id: number, base_ifname: string, ifname_prefix: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string>;
 
@@ -6884,6 +6886,7 @@ export namespace Mbim {
          * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.26
          */
         add_link(session_id: number, base_ifname: string, ifname_prefix: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6909,6 +6912,7 @@ export namespace Mbim {
          * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.26
          */
         add_link(session_id: number, base_ifname: string, ifname_prefix: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
 
@@ -6917,12 +6921,14 @@ export namespace Mbim {
          * @param res a {@link Gio.AsyncResult}.
          * @param session_id the session ID for the link created.
          * @returns The name of the net interface created, `null` if `error` is set.
+         * @since 1.26
          */
         add_link_finish(res: Gio.AsyncResult, session_id: number): string;
 
         /**
          * Checks whether link management is supported by the kernel.
          * @returns `true` if link management is supported, or `false` if `error` is set.
+         * @since 1.26
          */
         check_link_supported(): boolean;
 
@@ -6932,6 +6938,7 @@ export namespace Mbim {
          * @param ms_mbimex_version_major major version number of the MS MBIMEx support.
          * @param ms_mbimex_version_minor minor version number of the MS MBIMEx support.
          * @returns `true` if the version of the device instance is the same as or newer than the passed-in version.
+         * @since 1.28
          */
         check_ms_mbimex_version(ms_mbimex_version_major: number, ms_mbimex_version_minor: number): boolean;
 
@@ -6942,6 +6949,7 @@ export namespace Mbim {
          * `mbim_device_close_finish()` to get the result of the operation.
          * @param timeout maximum time, in seconds, to wait for the device to be closed.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
+         * @since 1.0
          */
         close(timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -6953,6 +6961,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be closed.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.0
          */
         close(timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6964,6 +6973,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be closed.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.0
          */
         close(timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -6971,12 +6981,14 @@ export namespace Mbim {
          * Finishes an asynchronous close operation started with `mbim_device_close()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful, `false` if `error` is set.
+         * @since 1.0
          */
         close_finish(res: Gio.AsyncResult): boolean;
 
         /**
          * Forces the {@link Mbim.Device} to be closed.
          * @returns `true` if `self` if no error happens, otherwise `false` and `error` is set.
+         * @since 1.0
          */
         close_force(): boolean;
 
@@ -6988,6 +7000,7 @@ export namespace Mbim {
          * @param message the message to send.
          * @param timeout maximum time, in seconds, to wait for the response.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @since 1.0
          */
         command(message: Message, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Message>;
 
@@ -7000,6 +7013,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the response.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.0
          */
         command(message: Message, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7012,6 +7026,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the response.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.0
          */
         command(message: Message, timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Message> | void;
 
@@ -7022,6 +7037,7 @@ export namespace Mbim {
          * partial fragment). There is no need to call `mbim_message_validate()` again.
          * @param res a {@link Gio.AsyncResult}.
          * @returns a {@link Mbim.Message} response, or `NULL` if `error` is set. The returned value should be freed with `mbim_message_unref()`.
+         * @since 1.0
          */
         command_finish(res: Gio.AsyncResult): Message;
 
@@ -7040,6 +7056,7 @@ export namespace Mbim {
          * </para></note>
          * @param base_ifname the interface where all links are available.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @since 1.26
          */
         delete_all_links(base_ifname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -7059,6 +7076,7 @@ export namespace Mbim {
          * @param base_ifname the interface where all links are available.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.26
          */
         delete_all_links(base_ifname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7078,6 +7096,7 @@ export namespace Mbim {
          * @param base_ifname the interface where all links are available.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.26
          */
         delete_all_links(base_ifname: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -7085,6 +7104,7 @@ export namespace Mbim {
          * Finishes an operation started with `mbim_device_delete_all_links()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful, `false` if `error` is set.
+         * @since 1.26
          */
         delete_all_links_finish(res: Gio.AsyncResult): boolean;
 
@@ -7099,6 +7119,7 @@ export namespace Mbim {
          * `mbim_device_delete_link_finish()` to get the result of the operation.
          * @param ifname the name of the link to remove.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @since 1.26
          */
         delete_link(ifname: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -7114,6 +7135,7 @@ export namespace Mbim {
          * @param ifname the name of the link to remove.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.26
          */
         delete_link(ifname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7129,6 +7151,7 @@ export namespace Mbim {
          * @param ifname the name of the link to remove.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.26
          */
         delete_link(ifname: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -7136,12 +7159,14 @@ export namespace Mbim {
          * Finishes an operation started with `mbim_device_delete_link()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful, `false` if `error` is set.
+         * @since 1.26
          */
         delete_link_finish(res: Gio.AsyncResult): boolean;
 
         /**
          * Gets the number of consecutive transaction timeouts in the device.
          * @returns a `guint`.
+         * @since 1.28
          */
         get_consecutive_timeouts(): number;
 
@@ -7154,6 +7179,7 @@ export namespace Mbim {
          * {@link Mbim.DeviceOpenFlags.MS_MBIMEX_V3} flag).
          * @param out_ms_mbimex_version_minor output location for the minor version number of  the MS MBIMEx support, or `null` if not needed.
          * @returns the major version number of the MS MBIMEx support.
+         * @since 1.28
          */
         get_ms_mbimex_version(out_ms_mbimex_version_minor: number): number;
 
@@ -7161,18 +7187,21 @@ export namespace Mbim {
          * Acquire the next transaction ID of this {@link Mbim.Device}.
          * The internal transaction ID gets incremented.
          * @returns the next transaction ID.
+         * @since 1.0
          */
         get_next_transaction_id(): number;
 
         /**
          * Get the system path of the underlying MBIM device.
          * @returns the system path of the device.
+         * @since 1.0
          */
         get_path(): string;
 
         /**
          * Get the system path of the underlying MBIM device in UTF-8.
          * @returns UTF-8 encoded system path of the device.
+         * @since 1.0
          */
         get_path_display(): string;
 
@@ -7180,12 +7209,14 @@ export namespace Mbim {
          * Acquire the transaction ID of this {@link Mbim.Device} without
          * incrementing the internal transaction ID.
          * @returns the current transaction ID.
+         * @since 1.24.4
          */
         get_transaction_id(): number;
 
         /**
          * Checks whether the {@link Mbim.Device} is open for I/O.
          * @returns `true` if `self` is open, `false` otherwise.
+         * @since 1.0
          */
         is_open(): boolean;
 
@@ -7194,6 +7225,7 @@ export namespace Mbim {
          * created with `mbim_device_add_link()` in `base_ifname`.
          * @param base_ifname the base interface.
          * @returns `true` if successful, `false` if `error` is set.
+         * @since 1.26
          */
         list_links(base_ifname: string): [boolean, string[]];
 
@@ -7204,6 +7236,7 @@ export namespace Mbim {
          * `mbim_device_open_finish()` to get the result of the operation.
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
+         * @since 1.0
          */
         open(timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -7215,6 +7248,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.0
          */
         open(timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7226,6 +7260,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.0
          */
         open(timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -7233,6 +7268,7 @@ export namespace Mbim {
          * Finishes an asynchronous open operation started with `mbim_device_open()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful, `false` if `error` is set.
+         * @since 1.0
          */
         open_finish(res: Gio.AsyncResult): boolean;
 
@@ -7247,6 +7283,7 @@ export namespace Mbim {
          * @param flags a set of {@link Mbim.DeviceOpenFlags}.
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
+         * @since 1.10
          */
         open_full(flags: DeviceOpenFlags, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -7262,6 +7299,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.10
          */
         open_full(flags: DeviceOpenFlags, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7277,6 +7315,7 @@ export namespace Mbim {
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 1.10
          */
         open_full(flags: DeviceOpenFlags, timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -7284,6 +7323,7 @@ export namespace Mbim {
          * Finishes an asynchronous open operation started with `mbim_device_open_full()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful, `false` if `error` is set.
+         * @since 1.10
          */
         open_full_finish(res: Gio.AsyncResult): boolean;
 
@@ -7302,6 +7342,7 @@ export namespace Mbim {
          * @param ms_mbimex_version_major major version number of the MS MBIMEx support.
          * @param ms_mbimex_version_minor minor version number of the MS MBIMEx support.
          * @returns `true` if successful, `false` if `error` is set.
+         * @since 1.28
          */
         set_ms_mbimex_version(ms_mbimex_version_major: number, ms_mbimex_version_minor: number): boolean;
 
@@ -7344,6 +7385,7 @@ export namespace Mbim {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -7387,6 +7429,7 @@ export namespace Mbim {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7430,6 +7473,7 @@ export namespace Mbim {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -7438,6 +7482,7 @@ export namespace Mbim {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7446,6 +7491,7 @@ export namespace Mbim {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Device;
 
@@ -7489,6 +7535,7 @@ export namespace Mbim {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7497,6 +7544,7 @@ export namespace Mbim {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -7622,6 +7670,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.AtdsProvider} structs.
          * @param array a `NULL` terminated array of {@link Mbim.AtdsProvider} structs.
+         * @since 1.16
          */
         static array_free(array: AtdsProviderArray): void;
     }
@@ -7672,6 +7721,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.CellInfoCdma} structs.
          * @param array a `NULL` terminated array of {@link Mbim.CellInfoCdma} structs.
+         * @since 1.28
          */
         static array_free(array: CellInfoCdmaArray): void;
     }
@@ -7713,6 +7763,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringGsm} structs.
          * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringGsm} structs.
+         * @since 1.28
          */
         static array_free(array: CellInfoNeighboringGsmArray): void;
     }
@@ -7757,6 +7808,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringLte} structs.
          * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringLte} structs.
+         * @since 1.28
          */
         static array_free(array: CellInfoNeighboringLteArray): void;
     }
@@ -7804,6 +7856,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringNr} structs.
          * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringNr} structs.
+         * @since 1.28
          */
         static array_free(array: CellInfoNeighboringNrArray): void;
     }
@@ -7851,6 +7904,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringTdscdma} structs.
          * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringTdscdma} structs.
+         * @since 1.28
          */
         static array_free(array: CellInfoNeighboringTdscdmaArray): void;
     }
@@ -7898,6 +7952,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringUmts} structs.
          * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringUmts} structs.
+         * @since 1.28
          */
         static array_free(array: CellInfoNeighboringUmtsArray): void;
     }
@@ -7941,6 +7996,7 @@ export namespace Mbim {
         // Methods
         /**
          * Frees the memory allocated for the {@link Mbim.CellInfoServingGsm}.
+         * @since 1.28
          */
         free(): void;
     }
@@ -7987,6 +8043,7 @@ export namespace Mbim {
         // Methods
         /**
          * Frees the memory allocated for the {@link Mbim.CellInfoServingLte}.
+         * @since 1.28
          */
         free(): void;
     }
@@ -8023,6 +8080,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.CellInfoServingNr} structs.
          * @param array a `NULL` terminated array of {@link Mbim.CellInfoServingNr} structs.
+         * @since 1.28
          */
         static array_free(array: CellInfoServingNrArray): void;
     }
@@ -8069,6 +8127,7 @@ export namespace Mbim {
         // Methods
         /**
          * Frees the memory allocated for the {@link Mbim.CellInfoServingTdscdma}.
+         * @since 1.28
          */
         free(): void;
     }
@@ -8124,6 +8183,7 @@ export namespace Mbim {
         // Methods
         /**
          * Frees the memory allocated for the {@link Mbim.CellInfoServingUmts}.
+         * @since 1.28
          */
         free(): void;
     }
@@ -8210,6 +8270,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.DeviceServiceElement} structs.
          * @param array a `NULL` terminated array of {@link Mbim.DeviceServiceElement} structs.
+         * @since 1.0
          */
         static array_free(array: DeviceServiceElementArray): void;
     }
@@ -8242,6 +8303,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.EventEntry} structs.
          * @param array a `NULL` terminated array of {@link Mbim.EventEntry} structs.
+         * @since 1.4
          */
         static array_free(array: EventEntryArray): void;
     }
@@ -8290,6 +8352,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.IPv4Element} structs.
          * @param array a `NULL` terminated array of {@link Mbim.IPv4Element} structs.
+         * @since 1.0
          */
         static array_free(array: IPv4ElementArray): void;
     }
@@ -8338,6 +8401,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.IPv6Element} structs.
          * @param array a `NULL` terminated array of {@link Mbim.IPv6Element} structs.
+         * @since 1.0
          */
         static array_free(array: IPv6ElementArray): void;
     }
@@ -8372,6 +8436,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.IntelRfimFrequencyValue} structs.
          * @param array a `NULL` terminated array of {@link Mbim.IntelRfimFrequencyValue} structs.
+         * @since 1.28
          */
         static array_free(array: IntelRfimFrequencyValueArray): void;
     }
@@ -8419,6 +8484,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.LteAttachConfiguration} structs.
          * @param array a `NULL` terminated array of {@link Mbim.LteAttachConfiguration} structs.
+         * @since 1.18
          */
         static array_free(array: LteAttachConfigurationArray): void;
     }
@@ -8715,60 +8781,70 @@ export namespace Mbim {
         /**
          * Parses and returns parameters of the 'Location' response command in the 'ATDS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.16
          */
         atds_location_response_parse(): [boolean, number, number, number];
 
         /**
          * Parses and returns parameters of the 'Operators' response command in the 'ATDS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.16
          */
         atds_operators_response_parse(): [boolean, number, AtdsProvider[] | null];
 
         /**
          * Parses and returns parameters of the 'RAT' response command in the 'ATDS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.16
          */
         atds_rat_response_parse(): [boolean, AtdsRatMode | null];
 
         /**
          * Parses and returns parameters of the 'Register State' response command in the 'ATDS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.16
          */
         atds_register_state_response_parse(): [boolean, NwError | null, RegisterState | null, RegisterMode | null, DataClass | null, CellularClass | null, string, string, string, RegistrationFlag | null];
 
         /**
          * Parses and returns parameters of the 'Signal' response command in the 'ATDS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.16
          */
         atds_signal_response_parse(): [boolean, number, number, number, number, number, number, number];
 
         /**
          * Parses and returns parameters of the 'Aka' response command in the 'Auth' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         auth_aka_response_parse(): [boolean, Uint8Array | null, number, Uint8Array | null, Uint8Array | null, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'Akap' response command in the 'Auth' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         auth_akap_response_parse(): [boolean, Uint8Array | null, number, Uint8Array | null, Uint8Array | null, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'Sim' response command in the 'Auth' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         auth_sim_response_parse(): [boolean, number, number, number, number, number, number, number];
 
         /**
          * Gets the result of the 'Close' operation in the {@link Mbim.MessageType.CLOSE_DONE} message.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         close_done_get_result(): boolean;
 
         /**
          * Get status code from the {@link Mbim.MessageType.CLOSE_DONE} message.
          * @returns a {@link Mbim.StatusError}.
+         * @since 1.0
          */
         close_done_get_status_code(): StatusError;
 
@@ -8776,102 +8852,119 @@ export namespace Mbim {
          * Appends the contents of `buffer` to `self`.
          * @param buffer raw buffer to append to the message.
          * @param buffer_size length of the data in `buffer`.
+         * @since 1.0
          */
         command_append(buffer: number, buffer_size: number): void;
 
         /**
          * Get the command id of a {@link Mbim.MessageType.COMMAND_DONE} message.
          * @returns a CID.
+         * @since 1.0
          */
         command_done_get_cid(): number;
 
         /**
          * Gets the information buffer of the {@link Mbim.MessageType.COMMAND_DONE} message.
          * @returns The raw data buffer, or `NULL` if empty.
+         * @since 1.0
          */
         command_done_get_raw_information_buffer(): [number, number];
 
         /**
          * Gets the result of the 'Command' operation in the {@link Mbim.MessageType.COMMAND_DONE} message.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         command_done_get_result(): boolean;
 
         /**
          * Get the service of a {@link Mbim.MessageType.COMMAND_DONE} message.
          * @returns a {@link Mbim.Service}.
+         * @since 1.0
          */
         command_done_get_service(): Service;
 
         /**
          * Get the service UUID of a {@link Mbim.MessageType.COMMAND_DONE} message.
          * @returns a {@link Mbim.Uuid}.
+         * @since 1.0
          */
         command_done_get_service_id(): Uuid;
 
         /**
          * Get status code from the {@link Mbim.MessageType.COMMAND_DONE} message.
          * @returns a {@link Mbim.StatusError}.
+         * @since 1.0
          */
         command_done_get_status_code(): StatusError;
 
         /**
          * Get the command id of a {@link Mbim.MessageType.COMMAND} message.
          * @returns a CID.
+         * @since 1.0
          */
         command_get_cid(): number;
 
         /**
          * Get the command type of a {@link Mbim.MessageType.COMMAND} message.
          * @returns a {@link Mbim.MessageCommandType}.
+         * @since 1.0
          */
         command_get_command_type(): MessageCommandType;
 
         /**
          * Gets the information buffer of the {@link Mbim.MessageType.COMMAND} message.
          * @returns The raw data buffer, or `NULL` if empty.
+         * @since 1.0
          */
         command_get_raw_information_buffer(): [number, number];
 
         /**
          * Get the service of a {@link Mbim.MessageType.COMMAND} message.
          * @returns a {@link Mbim.Service}.
+         * @since 1.0
          */
         command_get_service(): Service;
 
         /**
          * Get the service UUID of a {@link Mbim.MessageType.COMMAND} message.
          * @returns a {@link Mbim.Uuid}.
+         * @since 1.0
          */
         command_get_service_id(): Uuid;
 
         /**
          * Parses and returns parameters of the 'AT Command' response command in the 'Compal' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.32
          */
         compal_at_command_response_parse(): [boolean, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'Connect' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         connect_notification_parse(): [boolean, number, ActivationState | null, VoiceCallState | null, ContextIpType | null, Uuid | null, number];
 
         /**
          * Parses and returns parameters of the 'Connect' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         connect_response_parse(): [boolean, number, ActivationState | null, VoiceCallState | null, ContextIpType | null, Uuid | null, number];
 
         /**
          * Parses and returns parameters of the 'Device Caps' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         device_caps_response_parse(): [boolean, DeviceType | null, CellularClass | null, VoiceClass | null, SimClass | null, DataClass | null, SmsCaps | null, CtrlCaps | null, number, string, string, string, string];
 
         /**
          * Parses and returns parameters of the 'Device Service Subscribe List' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.8
          */
         device_service_subscribe_list_response_parse(): [boolean, number, EventEntry[] | null];
 
@@ -8880,36 +8973,43 @@ export namespace Mbim {
          * @param events_count return location for a `guint32`, or `null` if the 'EventsCount' field is not needed.
          * @param events return location for a newly allocated array of `MbimEventEntrys`, or `null` if the 'Events' field is not needed. Free the returned value with `mbim_event_entry_array_free()`.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
+         * @deprecated since 1.8: Use `mbim_message_device_service_subscribe_list_response_parse()` instead.
          */
         device_service_subscriber_list_response_parse(events_count: number, events: EventEntry): boolean;
 
         /**
          * Parses and returns parameters of the 'Device Services' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         device_services_response_parse(): [boolean, number, number, DeviceServiceElement[] | null];
 
         /**
          * Parses and returns parameters of the 'Connect' response command in the 'DSS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         dss_connect_response_parse(): boolean;
 
         /**
          * Create a {@link Mbim.Message} with the same contents as `self`.
          * @returns a newly created {@link Mbim.Message}, which should be freed with `mbim_message_unref()`.
+         * @since 1.0
          */
         dup(): Message;
 
         /**
          * Parses and returns parameters of the 'Emergency Mode' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.8
          */
         emergency_mode_notification_parse(): [boolean, EmergencyModeState | null];
 
         /**
          * Parses and returns parameters of the 'Emergency Mode' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         emergency_mode_response_parse(): [boolean, EmergencyModeState | null];
 
@@ -8917,6 +9017,7 @@ export namespace Mbim {
          * Get the error in a {@link Mbim.MessageType.HOST_ERROR} or
          * {@link Mbim.MessageType.FUNCTION_ERROR} message.
          * @returns a newly allocated {@link GLib.Error}, which should be freed with `g_error_free()`.
+         * @since 1.0
          */
         error_get_error(): GLib.Error;
 
@@ -8924,24 +9025,28 @@ export namespace Mbim {
          * Get the error code in a {@link Mbim.MessageType.HOST_ERROR} or
          * {@link Mbim.MessageType.FUNCTION_ERROR} message.
          * @returns a {@link Mbim.ProtocolError}.
+         * @since 1.0
          */
         error_get_error_status_code(): ProtocolError;
 
         /**
          * Parses and returns parameters of the 'AT Command' response command in the 'Fibocom' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.32
          */
         fibocom_at_command_response_parse(): [boolean, Uint8Array | null];
 
         /**
          * Gets the whole message length.
          * @returns the length of the message.
+         * @since 1.0
          */
         get_message_length(): number;
 
         /**
          * Gets the message type.
          * @returns a {@link Mbim.MessageType}.
+         * @since 1.0
          */
         get_message_type(): MessageType;
 
@@ -8954,6 +9059,7 @@ export namespace Mbim {
          * @param line_prefix prefix string to use in each new generated line.
          * @param headers_only `true` if only basic headers should be printed.
          * @returns a newly allocated string, which should be freed with `g_free()`.
+         * @since 1.0
          */
         get_printable(line_prefix: string, headers_only: boolean): string;
 
@@ -8978,474 +9084,555 @@ export namespace Mbim {
          * @param line_prefix prefix string to use in each new generated line.
          * @param headers_only `true` if only basic headers should be printed.
          * @returns a newly allocated string which should be freed with `g_free()`, or `NULL` if `error` is set.
+         * @since 1.28
          */
         get_printable_full(mbimex_version_major: number, mbimex_version_minor: number, line_prefix: string, headers_only: boolean): string;
 
         /**
          * Gets the whole raw data buffer of the {@link Mbim.Message}.
          * @returns The raw data buffer, or `NULL` if `error` is set.
+         * @since 1.0
          */
         get_raw(): [number, number];
 
         /**
          * Gets the transaction ID of the message.
          * @returns the transaction ID.
+         * @since 1.0
          */
         get_transaction_id(): number;
 
         /**
          * Parses and returns parameters of the 'Carrier Lock' notification command in the 'Google' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.30
          */
         google_carrier_lock_notification_parse(): [boolean, CarrierLockStatus | null, CarrierLockModemState | null, CarrierLockCause | null];
 
         /**
          * Parses and returns parameters of the 'Carrier Lock' response command in the 'Google' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.30
          */
         google_carrier_lock_response_parse(): [boolean, CarrierLockStatus | null, CarrierLockModemState | null, CarrierLockCause | null];
 
         /**
          * Parses and returns parameters of the 'Home Provider' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.2
          */
         home_provider_response_parse(): [boolean, Provider | null];
 
         /**
          * Get the command id of a {@link Mbim.MessageType.INDICATE_STATUS} message.
          * @returns a CID.
+         * @since 1.0
          */
         indicate_status_get_cid(): number;
 
         /**
          * Gets the information buffer of the {@link Mbim.MessageType.INDICATE_STATUS} message.
          * @returns The raw data buffer, or `NULL` if empty.
+         * @since 1.0
          */
         indicate_status_get_raw_information_buffer(): [number, number];
 
         /**
          * Get the service of a {@link Mbim.MessageType.INDICATE_STATUS} message.
          * @returns a {@link Mbim.Service}.
+         * @since 1.0
          */
         indicate_status_get_service(): Service;
 
         /**
          * Get the service UUID of a {@link Mbim.MessageType.INDICATE_STATUS} message.
          * @returns a {@link Mbim.Uuid}.
+         * @since 1.0
          */
         indicate_status_get_service_id(): Uuid;
 
         /**
          * Parses and returns parameters of the 'FCC Lock' response command in the 'Intel Mutual Authentication' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.30
          */
         intel_mutual_authentication_fcc_lock_response_parse(): [boolean, boolean, number];
 
         /**
          * Parses and returns parameters of the 'RFIM' notification command in the 'Intel Thermal RF' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         intel_thermal_rf_rfim_notification_parse(): [boolean, number, IntelRfimFrequencyValue[] | null];
 
         /**
          * Parses and returns parameters of the 'RFIM' response command in the 'Intel Thermal RF' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         intel_thermal_rf_rfim_response_parse(): [boolean, number, IntelRfimFrequencyValue[] | null];
 
         /**
          * Parses and returns parameters of the 'Trace Config' response command in the 'Intel Tools' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.30
          */
         intel_tools_trace_config_response_parse(): [boolean, TraceCommand | null, number];
 
         /**
          * Parses and returns parameters of the 'IP Configuration' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         ip_configuration_notification_parse(): [boolean, number, IPConfigurationAvailableFlag | null, IPConfigurationAvailableFlag | null, number, IPv4Element[] | null, number, IPv6Element[] | null, IPv4 | null, IPv6 | null, number, IPv4[] | null, number, IPv6[] | null, number, number];
 
         /**
          * Parses and returns parameters of the 'IP Configuration' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         ip_configuration_response_parse(): [boolean, number, IPConfigurationAvailableFlag | null, IPConfigurationAvailableFlag | null, number, IPv4Element[] | null, number, IPv6Element[] | null, IPv4 | null, IPv6 | null, number, IPv4[] | null, number, IPv6[] | null, number, number];
 
         /**
          * Parses and returns parameters of the 'IP Packet Filters' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         ip_packet_filters_response_parse(): [boolean, number, number, PacketFilter[] | null];
 
         /**
          * Parses and returns parameters of the 'Base Stations Info' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_base_stations_info_response_parse(): [boolean, DataClass | null, CellInfoServingGsm | null, CellInfoServingUmts | null, CellInfoServingTdscdma | null, CellInfoServingLte | null, number, CellInfoNeighboringGsm[] | null, number, CellInfoNeighboringUmts[] | null, number, CellInfoNeighboringTdscdma[] | null, number, CellInfoNeighboringLte[] | null, number, CellInfoCdma[] | null];
 
         /**
          * Parses and returns parameters of the 'Device Caps' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_basic_connect_extensions_device_caps_response_parse(): [boolean, DeviceType | null, CellularClass | null, VoiceClass | null, SimClass | null, DataClass | null, SmsCaps | null, CtrlCaps | null, number, string, string, string, string, number];
 
         /**
          * Parses and returns parameters of the 'Device Reset' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.30
          */
         ms_basic_connect_extensions_device_reset_response_parse(): boolean;
 
         /**
          * Parses and returns parameters of the 'Device Slot Mappings' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_basic_connect_extensions_device_slot_mappings_response_parse(): [boolean, number, Slot[] | null];
 
         /**
          * Parses and returns parameters of the 'Location Info Status' notification command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_location_info_status_notification_parse(): [boolean, number, number, number];
 
         /**
          * Parses and returns parameters of the 'Location Info Status' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_location_info_status_response_parse(): [boolean, number, number, number];
 
         /**
          * Parses and returns parameters of the 'Lte Attach Configuration' notification command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.18
          */
         ms_basic_connect_extensions_lte_attach_configuration_notification_parse(): [boolean, number, LteAttachConfiguration[] | null];
 
         /**
          * Parses and returns parameters of the 'Lte Attach Configuration' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.18
          */
         ms_basic_connect_extensions_lte_attach_configuration_response_parse(): [boolean, number, LteAttachConfiguration[] | null];
 
         /**
          * Parses and returns parameters of the 'Lte Attach Info' notification command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_basic_connect_extensions_lte_attach_info_notification_parse(): [boolean, LteAttachState | null, ContextIpType | null, string, string, string, Compression | null, AuthProtocol | null];
 
         /**
          * Parses and returns parameters of the 'Lte Attach Info' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_basic_connect_extensions_lte_attach_info_response_parse(): [boolean, LteAttachState | null, ContextIpType | null, string, string, string, Compression | null, AuthProtocol | null];
 
         /**
          * Parses and returns parameters of the 'Lte Attach Status' notification command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.18
+         * @deprecated since 1.26: Use `mbim_message_ms_basic_connect_extensions_lte_attach_info_notification_parse()` instead.
          */
         ms_basic_connect_extensions_lte_attach_status_notification_parse(): [boolean, DeprecatedLteAttachStatus | null];
 
         /**
          * Parses and returns parameters of the 'Lte Attach Status' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.18
+         * @deprecated since 1.26: Use `mbim_message_ms_basic_connect_extensions_lte_attach_info_response_parse()` instead.
          */
         ms_basic_connect_extensions_lte_attach_status_response_parse(): [boolean, DeprecatedLteAttachStatus | null];
 
         /**
          * Parses and returns parameters of the 'PCO' notification command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.18
          */
         ms_basic_connect_extensions_pco_notification_parse(): [boolean, PcoValue | null];
 
         /**
          * Parses and returns parameters of the 'PCO' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.18
          */
         ms_basic_connect_extensions_pco_response_parse(): [boolean, PcoValue | null];
 
         /**
          * Parses and returns parameters of the 'Provisioned Contexts' notification command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_provisioned_contexts_notification_parse(): [boolean, number, ProvisionedContextElementV2[] | null];
 
         /**
          * Parses and returns parameters of the 'Provisioned Contexts' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_provisioned_contexts_response_parse(): [boolean, number, ProvisionedContextElementV2[] | null];
 
         /**
          * Parses and returns parameters of the 'Slot Info Status' notification command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_basic_connect_extensions_slot_info_status_notification_parse(): [boolean, number, UiccSlotState | null];
 
         /**
          * Parses and returns parameters of the 'Slot Info Status' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_basic_connect_extensions_slot_info_status_response_parse(): [boolean, number, UiccSlotState | null];
 
         /**
          * Parses and returns parameters of the 'Sys Caps' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_basic_connect_extensions_sys_caps_response_parse(): [boolean, number, number, number, number];
 
         /**
          * Parses and returns parameters of the 'Version' response command in the 'Ms Basic Connect Extensions V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_v2_version_response_parse(): [boolean, number, number];
 
         /**
          * Parses and returns parameters of the 'Base Stations Info' response command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_v3_base_stations_info_response_parse(): [boolean, DataClassV3 | null, DataSubclass | null, CellInfoServingGsm | null, CellInfoServingUmts | null, CellInfoServingTdscdma | null, CellInfoServingLte | null, number, CellInfoNeighboringGsm[] | null, number, CellInfoNeighboringUmts[] | null, number, CellInfoNeighboringTdscdma[] | null, number, CellInfoNeighboringLte[] | null, number, CellInfoCdma[] | null, number, CellInfoServingNr[] | null, number, CellInfoNeighboringNr[] | null];
 
         /**
          * Parses and returns parameters of the 'Device Caps' response command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_v3_device_caps_response_parse(): [boolean, DeviceType | null, CellularClass | null, VoiceClass | null, SimClass | null, DataClassV3 | null, SmsCaps | null, CtrlCaps | null, DataSubclass | null, number, number, number, number, number, number, number, string, string, string, string];
 
         /**
          * Parses and returns parameters of the 'Lte Attach Info' notification command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_v3_lte_attach_info_notification_parse(): [boolean, LteAttachState | null, NwError | null, ContextIpType | null, string, string, string, Compression | null, AuthProtocol | null];
 
         /**
          * Parses and returns parameters of the 'Lte Attach Info' response command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_v3_lte_attach_info_response_parse(): [boolean, LteAttachState | null, NwError | null, ContextIpType | null, string, string, string, Compression | null, AuthProtocol | null];
 
         /**
          * Parses and returns parameters of the 'Modem Configuration' notification command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_v3_modem_configuration_notification_parse(): [boolean, ModemConfigurationStatus | null, string, Tlv[] | null];
 
         /**
          * Parses and returns parameters of the 'Modem Configuration' response command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_v3_modem_configuration_response_parse(): [boolean, ModemConfigurationStatus | null, string, Tlv[] | null];
 
         /**
          * Parses and returns parameters of the 'Registration Parameters' response command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_v3_registration_parameters_response_parse(): [boolean, MicoMode | null, DrxCycle | null, LadnInfo | null, DefaultPduActivationHint | null, boolean, Tlv[] | null];
 
         /**
          * Parses and returns parameters of the 'Wake Reason' response command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_extensions_v3_wake_reason_response_parse(): [boolean, WakeType | null, number, Tlv | null];
 
         /**
          * Parses and returns parameters of the 'Packet Service' notification command in the 'Ms Basic Connect V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_v2_packet_service_notification_parse(): [boolean, number, PacketServiceState | null, DataClass | null, number, number, FrequencyRange | null];
 
         /**
          * Parses and returns parameters of the 'Packet Service' response command in the 'Ms Basic Connect V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_v2_packet_service_response_parse(): [boolean, number, PacketServiceState | null, DataClass | null, number, number, FrequencyRange | null];
 
         /**
          * Parses and returns parameters of the 'Register State' notification command in the 'Ms Basic Connect V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_v2_register_state_notification_parse(): [boolean, NwError | null, RegisterState | null, RegisterMode | null, DataClass | null, CellularClass | null, string, string, string, RegistrationFlag | null, DataClass | null];
 
         /**
          * Parses and returns parameters of the 'Register State' response command in the 'Ms Basic Connect V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_v2_register_state_response_parse(): [boolean, NwError | null, RegisterState | null, RegisterMode | null, DataClass | null, CellularClass | null, string, string, string, RegistrationFlag | null, DataClass | null];
 
         /**
          * Parses and returns parameters of the 'Signal State' notification command in the 'Ms Basic Connect V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_v2_signal_state_notification_parse(): [boolean, number, number, number, number, number, number, RsrpSnrInfo[] | null];
 
         /**
          * Parses and returns parameters of the 'Signal State' response command in the 'Ms Basic Connect V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_v2_signal_state_response_parse(): [boolean, number, number, number, number, number, number, RsrpSnrInfo[] | null];
 
         /**
          * Parses and returns parameters of the 'Connect' notification command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_v3_connect_notification_parse(): [boolean, number, ActivationState | null, VoiceCallState | null, ContextIpType | null, Uuid | null, number, AccessMediaType | null, string, Tlv[] | null];
 
         /**
          * Parses and returns parameters of the 'Connect' response command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_v3_connect_response_parse(): [boolean, number, ActivationState | null, VoiceCallState | null, ContextIpType | null, Uuid | null, number, AccessMediaType | null, string, Tlv[] | null];
 
         /**
          * Parses and returns parameters of the 'IP Packet Filters' response command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_v3_ip_packet_filters_response_parse(): [boolean, number, number, PacketFilterV3[] | null];
 
         /**
          * Parses and returns parameters of the 'Packet Service' notification command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_v3_packet_service_notification_parse(): [boolean, number, PacketServiceState | null, DataClassV3 | null, number, number, FrequencyRange | null, DataSubclass | null, Tai | null];
 
         /**
          * Parses and returns parameters of the 'Packet Service' response command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_v3_packet_service_response_parse(): [boolean, number, PacketServiceState | null, DataClassV3 | null, number, number, FrequencyRange | null, DataSubclass | null, Tai | null];
 
         /**
          * Parses and returns parameters of the 'Subscriber Ready Status' notification command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_v3_subscriber_ready_status_notification_parse(): [boolean, SubscriberReadyState | null, SubscriberReadyStatusFlag | null, string, string, ReadyInfoFlag | null, number, string[] | null];
 
         /**
          * Parses and returns parameters of the 'Subscriber Ready Status' response command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_basic_connect_v3_subscriber_ready_status_response_parse(): [boolean, SubscriberReadyState | null, SubscriberReadyStatusFlag | null, string, string, ReadyInfoFlag | null, number, string[] | null];
 
         /**
          * Parses and returns parameters of the 'Get' response command in the 'MS Firmware ID' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.8
          */
         ms_firmware_id_get_response_parse(): [boolean, Uuid | null];
 
         /**
          * Parses and returns parameters of the 'Config' response command in the 'MS SAR' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_sar_config_response_parse(): [boolean, SarControlMode | null, SarBackoffState | null, SarWifiHardwareState | null, number, SarConfigState[] | null];
 
         /**
          * Parses and returns parameters of the 'Transmission status' notification command in the 'MS SAR' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_sar_transmission_status_notification_parse(): [boolean, TransmissionNotificationStatus | null, TransmissionState | null, number];
 
         /**
          * Parses and returns parameters of the 'Transmission status' response command in the 'MS SAR' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_sar_transmission_status_response_parse(): [boolean, TransmissionNotificationStatus | null, TransmissionState | null, number];
 
         /**
          * Parses and returns parameters of the 'APDU' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_uicc_low_level_access_apdu_response_parse(): [boolean, number, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'Application List' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_uicc_low_level_access_application_list_response_parse(): [boolean, number, number, number, number, UiccApplication[] | null];
 
         /**
          * Parses and returns parameters of the 'ATR' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_uicc_low_level_access_atr_response_parse(): [boolean, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'Close Channel' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_uicc_low_level_access_close_channel_response_parse(): [boolean, number];
 
         /**
          * Parses and returns parameters of the 'File Status' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_uicc_low_level_access_file_status_response_parse(): [boolean, number, number, number, UiccFileAccessibility | null, UiccFileType | null, UiccFileStructure | null, number, number, PinType | null, PinType | null, PinType | null, PinType | null];
 
         /**
          * Parses and returns parameters of the 'Open Channel' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_uicc_low_level_access_open_channel_response_parse(): [boolean, number, number, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'Read Binary' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_uicc_low_level_access_read_binary_response_parse(): [boolean, number, number, number, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'Read Record' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_uicc_low_level_access_read_record_response_parse(): [boolean, number, number, number, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'Reset' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_uicc_low_level_access_reset_response_parse(): [boolean, UiccPassThroughStatus | null];
 
         /**
          * Parses and returns parameters of the 'Terminal Capability' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         ms_uicc_low_level_access_terminal_capability_response_parse(): [boolean, number, TerminalCapabilityInfo[] | null];
 
         /**
          * Parses and returns parameters of the 'NITZ' notification command in the 'MS Voice Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_voice_extensions_nitz_notification_parse(): [boolean, number, number, number, number, number, number, number, number, DataClass | null];
 
         /**
          * Parses and returns parameters of the 'NITZ' response command in the 'MS Voice Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         ms_voice_extensions_nitz_response_parse(): [boolean, number, number, number, number, number, number, number, number, DataClass | null];
 
         /**
          * Parses and returns parameters of the 'Multicarrier Providers' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.8
          */
         multicarrier_providers_notification_parse(): [boolean, number, Provider[] | null];
 
         /**
          * Parses and returns parameters of the 'Multicarrier Providers' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         multicarrier_providers_response_parse(): [boolean, number, Provider[] | null];
 
         /**
          * Parses and returns parameters of the 'Network Idle Hint' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         network_idle_hint_response_parse(): [boolean, NetworkIdleHintState | null];
 
         /**
          * Gets the result of the 'Open' operation in the {@link Mbim.MessageType.OPEN_DONE} message.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.0
          */
         open_done_get_result(): boolean;
 
         /**
          * Get status code from the {@link Mbim.MessageType.OPEN_DONE} message.
          * @returns a {@link Mbim.StatusError}.
+         * @since 1.0
          */
         open_done_get_status_code(): StatusError;
 
@@ -9453,186 +9640,217 @@ export namespace Mbim {
          * Get the maximum control transfer set to be used in the {@link Mbim.Message} of type
          * {@link Mbim.MessageType.OPEN}.
          * @returns the maximum control transfer.
+         * @since 1.0
          */
         open_get_max_control_transfer(): number;
 
         /**
          * Parses and returns parameters of the 'Packet Service' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         packet_service_notification_parse(): [boolean, number, PacketServiceState | null, DataClass | null, number, number];
 
         /**
          * Parses and returns parameters of the 'Packet Service' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         packet_service_response_parse(): [boolean, number, PacketServiceState | null, DataClass | null, number, number];
 
         /**
          * Parses and returns parameters of the 'Packet Statistics' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         packet_statistics_response_parse(): [boolean, number, number, number, number, number, number, number, number];
 
         /**
          * Parses and returns parameters of the 'Configuration' notification command in the 'Phonebook' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         phonebook_configuration_notification_parse(): [boolean, PhonebookState | null, number, number, number, number];
 
         /**
          * Parses and returns parameters of the 'Configuration' response command in the 'Phonebook' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         phonebook_configuration_response_parse(): [boolean, PhonebookState | null, number, number, number, number];
 
         /**
          * Parses and returns parameters of the 'Delete' response command in the 'Phonebook' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         phonebook_delete_response_parse(): boolean;
 
         /**
          * Parses and returns parameters of the 'Read' response command in the 'Phonebook' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         phonebook_read_response_parse(): [boolean, number, PhonebookEntry[] | null];
 
         /**
          * Parses and returns parameters of the 'Write' response command in the 'Phonebook' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         phonebook_write_response_parse(): boolean;
 
         /**
          * Parses and returns parameters of the 'Pin List' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         pin_list_response_parse(): [boolean, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null];
 
         /**
          * Parses and returns parameters of the 'Pin' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         pin_response_parse(): [boolean, PinType | null, PinState | null, number];
 
         /**
          * Parses and returns parameters of the 'Preferred Providers' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.8
          */
         preferred_providers_notification_parse(): [boolean, number, Provider[] | null];
 
         /**
          * Parses and returns parameters of the 'Preferred Providers' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.2
          */
         preferred_providers_response_parse(): [boolean, number, Provider[] | null];
 
         /**
          * Parses and returns parameters of the 'Provisioned Contexts' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         provisioned_contexts_notification_parse(): [boolean, number, ProvisionedContextElement[] | null];
 
         /**
          * Parses and returns parameters of the 'Provisioned Contexts' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         provisioned_contexts_response_parse(): [boolean, number, ProvisionedContextElement[] | null];
 
         /**
          * Parses and returns parameters of the 'Configuration' response command in the 'Proxy Control' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.10
          */
         proxy_control_configuration_response_parse(): boolean;
 
         /**
          * Parses and returns parameters of the 'Version' notification command in the 'Proxy Control' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         proxy_control_version_notification_parse(): [boolean, number, number];
 
         /**
          * Parses and returns parameters of the 'Command' response command in the 'QDU' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.32
          */
         qdu_command_response_parse(): [boolean, QuectelCommandResponseStatus | null, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'File Open' response command in the 'QDU' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         qdu_file_open_response_parse(): [boolean, number, number];
 
         /**
          * Parses and returns parameters of the 'File Write' response command in the 'QDU' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         qdu_file_write_response_parse(): boolean;
 
         /**
          * Parses and returns parameters of the 'Quectel Read Version' response command in the 'QDU' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         qdu_quectel_read_version_response_parse(): [boolean, number, string];
 
         /**
          * Parses and returns parameters of the 'Quectel Reboot' response command in the 'QDU' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.28
          */
         qdu_quectel_reboot_response_parse(): boolean;
 
         /**
          * Parses and returns parameters of the 'Update Session' response command in the 'QDU' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26
          */
         qdu_update_session_response_parse(): [boolean, QduSessionType | null, QduSessionStatus | null, QduSessionType | null, QduSessionResult | null, number, number];
 
         /**
          * Parses and returns parameters of the 'msg' notification command in the 'QMI' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.18
          */
         qmi_msg_notification_parse(): [boolean, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'msg' response command in the 'QMI' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.14
          */
         qmi_msg_response_parse(): [boolean, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'Radio State' response command in the 'Quectel' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.26.2
          */
         quectel_radio_state_response_parse(): [boolean, QuectelRadioSwitchState | null];
 
         /**
          * Parses and returns parameters of the 'Radio State' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         radio_state_notification_parse(): [boolean, RadioSwitchState | null, RadioSwitchState | null];
 
         /**
          * Parses and returns parameters of the 'Radio State' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         radio_state_response_parse(): [boolean, RadioSwitchState | null, RadioSwitchState | null];
 
         /**
          * Atomically increments the reference count of `self` by one.
          * @returns the new reference to `self`.
+         * @since 1.0
          */
         ref(): Message;
 
         /**
          * Parses and returns parameters of the 'Register State' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         register_state_notification_parse(): [boolean, NwError | null, RegisterState | null, RegisterMode | null, DataClass | null, CellularClass | null, string, string, string, RegistrationFlag | null];
 
         /**
          * Parses and returns parameters of the 'Register State' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         register_state_response_parse(): [boolean, NwError | null, RegisterState | null, RegisterMode | null, DataClass | null, CellularClass | null, string, string, string, RegistrationFlag | null];
 
@@ -9642,126 +9860,147 @@ export namespace Mbim {
          * specified `expected` type.
          * @param expected expected {@link Mbim.MessageType} if there isn't any error in the operation.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
+         * @since 1.12
          */
         response_get_result(expected: MessageType): boolean;
 
         /**
          * Parses and returns parameters of the 'Service Activation' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.2
          */
         service_activation_response_parse(): [boolean, NwError | null, Uint8Array | null];
 
         /**
          * Sets the transaction ID of the message.
          * @param transaction_id the transaction id.
+         * @since 1.0
          */
         set_transaction_id(transaction_id: number): void;
 
         /**
          * Parses and returns parameters of the 'Signal State' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         signal_state_notification_parse(): [boolean, number, number, number, number, number];
 
         /**
          * Parses and returns parameters of the 'Signal State' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         signal_state_response_parse(): [boolean, number, number, number, number, number];
 
         /**
          * Parses and returns parameters of the 'Configuration' response command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         sms_configuration_response_parse(): [boolean, SmsStorageState | null, SmsFormat | null, number, number, string];
 
         /**
          * Parses and returns parameters of the 'Delete' response command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         sms_delete_response_parse(): boolean;
 
         /**
          * Parses and returns parameters of the 'Message Store Status' notification command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         sms_message_store_status_notification_parse(): [boolean, SmsStatusFlag | null, number];
 
         /**
          * Parses and returns parameters of the 'Message Store Status' response command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         sms_message_store_status_response_parse(): [boolean, SmsStatusFlag | null, number];
 
         /**
          * Parses and returns parameters of the 'Read' notification command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         sms_read_notification_parse(): [boolean, SmsFormat | null, number, SmsPduReadRecord[] | null, SmsCdmaReadRecord[] | null];
 
         /**
          * Parses and returns parameters of the 'Read' response command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         sms_read_response_parse(): [boolean, SmsFormat | null, number, SmsPduReadRecord[] | null, SmsCdmaReadRecord[] | null];
 
         /**
          * Parses and returns parameters of the 'Send' response command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         sms_send_response_parse(): [boolean, number];
 
         /**
          * Parses and returns parameters of the 'Envelope' response command in the 'STK' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         stk_envelope_response_parse(): [boolean, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'Pac' notification command in the 'STK' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         stk_pac_notification_parse(): [boolean, StkPacType | null, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'Pac' response command in the 'STK' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         stk_pac_response_parse(): [boolean, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the 'Terminal Response' response command in the 'STK' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         stk_terminal_response_response_parse(): [boolean, Uint8Array | null, number];
 
         /**
          * Parses and returns parameters of the 'Subscriber Ready Status' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.8
          */
         subscriber_ready_status_notification_parse(): [boolean, SubscriberReadyState | null, string, string, ReadyInfoFlag | null, number, string[] | null];
 
         /**
          * Parses and returns parameters of the 'Subscriber Ready Status' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.0
          */
         subscriber_ready_status_response_parse(): [boolean, SubscriberReadyState | null, string, string, ReadyInfoFlag | null, number, string[] | null];
 
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
+         * @since 1.0
          */
         unref(): void;
 
         /**
          * Parses and returns parameters of the '' notification command in the 'USSD' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         ussd_notification_parse(): [boolean, UssdResponse | null, UssdSessionState | null, number, Uint8Array | null];
 
         /**
          * Parses and returns parameters of the '' response command in the 'USSD' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.4
          */
         ussd_response_parse(): [boolean, UssdResponse | null, UssdSessionState | null, number, Uint8Array | null];
 
@@ -9778,12 +10017,14 @@ export namespace Mbim {
          * message type are available, that is done by the methods retrieving those
          * specific contents.
          * @returns `true` if the message is valid, `false` if `error` is set.
+         * @since 1.28
          */
         validate(): boolean;
 
         /**
          * Parses and returns parameters of the 'Visible Providers' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         * @since 1.2
          */
         visible_providers_response_parse(): [boolean, number, Provider[] | null];
     }
@@ -9816,6 +10057,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.PacketFilter} structs.
          * @param array a `NULL` terminated array of {@link Mbim.PacketFilter} structs.
+         * @since 1.4
          */
         static array_free(array: PacketFilterArray): void;
     }
@@ -9851,6 +10093,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.PacketFilterV3} structs.
          * @param array a `NULL` terminated array of {@link Mbim.PacketFilterV3} structs.
+         * @since 1.28
          */
         static array_free(array: PacketFilterV3Array): void;
     }
@@ -9885,6 +10128,7 @@ export namespace Mbim {
         // Methods
         /**
          * Frees the memory allocated for the {@link Mbim.PcoValue}.
+         * @since 1.18
          */
         free(): void;
     }
@@ -9917,6 +10161,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.PhonebookEntry} structs.
          * @param array a `NULL` terminated array of {@link Mbim.PhonebookEntry} structs.
+         * @since 1.4
          */
         static array_free(array: PhonebookEntryArray): void;
     }
@@ -9951,6 +10196,7 @@ export namespace Mbim {
         // Methods
         /**
          * Frees the memory allocated for the {@link Mbim.PinDesc}.
+         * @since 1.0
          */
         free(): void;
     }
@@ -9992,12 +10238,14 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.Provider} structs.
          * @param array a `NULL` terminated array of {@link Mbim.Provider} structs.
+         * @since 1.2
          */
         static array_free(array: ProviderArray): void;
 
         // Methods
         /**
          * Frees the memory allocated for the {@link Mbim.Provider}.
+         * @since 1.2
          */
         free(): void;
     }
@@ -10042,6 +10290,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.ProvisionedContextElement} structs.
          * @param array a `NULL` terminated array of {@link Mbim.ProvisionedContextElement} structs.
+         * @since 1.0
          */
         static array_free(array: ProvisionedContextElementArray): void;
     }
@@ -10101,6 +10350,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.ProvisionedContextElementV2} structs.
          * @param array a `NULL` terminated array of {@link Mbim.ProvisionedContextElementV2} structs.
+         * @since 1.28
          */
         static array_free(array: ProvisionedContextElementV2Array): void;
     }
@@ -10152,6 +10402,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.RsrpSnrInfo} structs.
          * @param array a `NULL` terminated array of {@link Mbim.RsrpSnrInfo} structs.
+         * @since 1.28
          */
         static array_free(array: RsrpSnrInfoArray): void;
     }
@@ -10181,6 +10432,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.SarConfigState} structs.
          * @param array a `NULL` terminated array of {@link Mbim.SarConfigState} structs.
+         * @since 1.26
          */
         static array_free(array: SarConfigStateArray): void;
     }
@@ -10207,6 +10459,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.Slot} structs.
          * @param array a `NULL` terminated array of {@link Mbim.Slot} structs.
+         * @since 1.26
          */
         static array_free(array: SlotArray): void;
     }
@@ -10257,6 +10510,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.SmsCdmaReadRecord} structs.
          * @param array a `NULL` terminated array of {@link Mbim.SmsCdmaReadRecord} structs.
+         * @since 1.4
          */
         static array_free(array: SmsCdmaReadRecordArray): void;
     }
@@ -10297,6 +10551,7 @@ export namespace Mbim {
         // Methods
         /**
          * Frees the memory allocated for the {@link Mbim.SmsCdmaSendRecord}.
+         * @since 1.4
          */
         free(): void;
     }
@@ -10332,6 +10587,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.SmsPduReadRecord} structs.
          * @param array a `NULL` terminated array of {@link Mbim.SmsPduReadRecord} structs.
+         * @since 1.4
          */
         static array_free(array: SmsPduReadRecordArray): void;
     }
@@ -10360,6 +10616,7 @@ export namespace Mbim {
         // Methods
         /**
          * Frees the memory allocated for the {@link Mbim.SmsPduSendRecord}.
+         * @since 1.4
          */
         free(): void;
     }
@@ -10391,6 +10648,7 @@ export namespace Mbim {
         // Methods
         /**
          * Frees the memory allocated for the {@link Mbim.Tai}.
+         * @since 1.28
          */
         free(): void;
     }
@@ -10420,6 +10678,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.TerminalCapabilityInfo} structs.
          * @param array a `NULL` terminated array of {@link Mbim.TerminalCapabilityInfo} structs.
+         * @since 1.26
          */
         static array_free(array: TerminalCapabilityInfoArray): void;
     }
@@ -10444,24 +10703,28 @@ export namespace Mbim {
         /**
          * Create a {@link Mbim.Tlv} with the same contents as `self`.
          * @returns a newly created {@link Mbim.Tlv}, which should be freed with `mbim_tlv_unref()`.
+         * @since 1.28
          */
         dup(): Tlv;
 
         /**
          * Gets the whole raw data buffer of the {@link Mbim.Tlv}.
          * @returns The raw data buffer, or `NULL` if `error` is set.
+         * @since 1.28
          */
         get_raw(): [number, number];
 
         /**
          * Gets the TLV raw data.
          * @returns The raw data buffer, or `NULL` if empty.
+         * @since 1.28
          */
         get_tlv_data(): [number, number];
 
         /**
          * Gets the message type.
          * @returns a {@link Mbim.TlvType}.
+         * @since 1.28
          */
         get_tlv_type(): TlvType;
 
@@ -10471,24 +10734,28 @@ export namespace Mbim {
          * The method may return a successful return even with on empty arrays (i.e.
          * with `array_size` set to 0 and `array` set to `null`).
          * @returns `true` if on success, `false` if `error` is set.
+         * @since 1.28
          */
         guint16_array_get(): [boolean, number, number];
 
         /**
          * Atomically increments the reference count of `self` by one.
          * @returns the new reference to `self`.
+         * @since 1.28
          */
         ref(): Tlv;
 
         /**
          * Get a string with the contents in the {@link Mbim.Tlv}.
          * @returns a newly created string, which should be freed with `g_free()`, or `null` if `error` is set.
+         * @since 1.28
          */
         string_get(): string;
 
         /**
          * Atomically decrements the reference count of `self` by one.
          * If the reference count drops to 0, `self` is completely disposed.
+         * @since 1.28
          */
         unref(): void;
 
@@ -10498,12 +10765,14 @@ export namespace Mbim {
          * The method may return a successful return even with on empty payload (i.e.
          * with `payload_size` set to 0 and `payload` set to `null`).
          * @returns `true` if on success, `false` if `error` is set.
+         * @since 1.28
          */
         wake_command_get(): [boolean, Uuid | null, number, number, number];
 
         /**
          * Get the contents of a wake packet TLV.
          * @returns `true` if on success, `false` if `error` is set.
+         * @since 1.28
          */
         wake_packet_get(): [boolean, number, number, number, number];
     }
@@ -10548,6 +10817,7 @@ export namespace Mbim {
         /**
          * Frees the memory allocated for the array of {@link Mbim.UiccApplication} structs.
          * @param array a `NULL` terminated array of {@link Mbim.UiccApplication} structs.
+         * @since 1.28
          */
         static array_free(array: UiccApplicationArray): void;
     }
@@ -10586,6 +10856,7 @@ export namespace Mbim {
         /**
          * Get the UUID corresponding to `context_type`.
          * @param context_type a {@link Mbim.ContextType}.
+         * @since 1.0
          */
         static from_context_type(context_type: ContextType): Uuid;
 
@@ -10596,6 +10867,7 @@ export namespace Mbim {
          *  a289cc33-bcbb-8b4f-b6b0-133ec2aae6df
          * @param str a MBIM UUID.
          * @param uuid pointer to the target {@link Mbim.Uuid}.
+         * @since 1.8
          */
         static from_printable(str: string, uuid: Uuid): boolean;
 
@@ -10605,6 +10877,7 @@ export namespace Mbim {
          * The `service` needs to be either a generic one (including #MBIM_SERVICE_INVALID)
          * or a custom registered one.
          * @param service a {@link Mbim.Service}.
+         * @since 1.0
          */
         static from_service(service: Service): Uuid;
 
@@ -10613,24 +10886,28 @@ export namespace Mbim {
          * Compare two %MbimUuid values.
          * @param b a {@link Mbim.Uuid}.
          * @returns `true` if `a` and `b` are equal, `false` otherwise.
+         * @since 1.0
          */
         cmp(b: Uuid): boolean;
 
         /**
          * Get a string with the UUID.
          * @returns a newly allocated string, which should be freed with `g_free()`.
+         * @since 1.0
          */
         get_printable(): string;
 
         /**
          * Get the context type corresponding to `uuid`.
          * @returns a {@link Mbim.ContextType}.
+         * @since 1.0
          */
         to_context_type(): ContextType;
 
         /**
          * Get the service corresponding to `uuid`.
          * @returns a {@link Mbim.Service}.
+         * @since 1.0
          */
         to_service(): Service;
     }

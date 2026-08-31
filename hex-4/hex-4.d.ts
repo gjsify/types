@@ -271,6 +271,7 @@ export namespace Hex {
          * @param find_data a {@link Hex.DocumentFindData} structure
          * @param pos offset position of the {@link Hex.Document} data to compare with the   string contained in the `find_data` structure
          * @returns 0 if the comparison is an exact match; otherwise, a non-zero   value is returned.
+         * @since 4.2
          */
         compare_data_full(find_data: DocumentFindData, pos: bigint | number): number;
 
@@ -356,6 +357,7 @@ export namespace Hex {
          * {@link Hex.Document.find_backward_full_async}.
          * @param find_data a {@link Hex.DocumentFindData} structure
          * @returns `true` if the search string contained in `find_data` was found by   the requested operation; `false` otherwise.
+         * @since 4.2
          */
         find_backward_full(find_data: DocumentFindData): boolean;
 
@@ -363,6 +365,7 @@ export namespace Hex {
          * Non-blocking version of {@link Hex.Document.find_backward_full}.
          * @param find_data a {@link Hex.DocumentFindData} structure
          * @param cancellable a {@link Gio.Cancellable}
+         * @since 4.2
          */
         find_backward_full_async(find_data: DocumentFindData, cancellable: Gio.Cancellable | null): globalThis.Promise<DocumentFindData>;
 
@@ -371,6 +374,7 @@ export namespace Hex {
          * @param find_data a {@link Hex.DocumentFindData} structure
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
+         * @since 4.2
          */
         find_backward_full_async(find_data: DocumentFindData, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -379,6 +383,7 @@ export namespace Hex {
          * @param find_data a {@link Hex.DocumentFindData} structure
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
+         * @since 4.2
          */
         find_backward_full_async(find_data: DocumentFindData, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DocumentFindData> | void;
 
@@ -451,6 +456,7 @@ export namespace Hex {
          * {@link Hex.Document.find_forward_async}.
          * @param find_data a {@link Hex.DocumentFindData} structure
          * @returns `true` if the search string contained in `find_data` was found by   the requested operation; `false` otherwise.
+         * @since 4.2
          */
         find_forward_full(find_data: DocumentFindData): boolean;
 
@@ -458,6 +464,7 @@ export namespace Hex {
          * Non-blocking version of {@link Hex.Document.find_forward_full}.
          * @param find_data a {@link Hex.DocumentFindData} structure
          * @param cancellable a {@link Gio.Cancellable}
+         * @since 4.2
          */
         find_forward_full_async(find_data: DocumentFindData, cancellable: Gio.Cancellable | null): globalThis.Promise<DocumentFindData>;
 
@@ -466,6 +473,7 @@ export namespace Hex {
          * @param find_data a {@link Hex.DocumentFindData} structure
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
+         * @since 4.2
          */
         find_forward_full_async(find_data: DocumentFindData, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -474,6 +482,7 @@ export namespace Hex {
          * @param find_data a {@link Hex.DocumentFindData} structure
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback function to be called when the operation is   complete
+         * @since 4.2
          */
         find_forward_full_async(find_data: DocumentFindData, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<DocumentFindData> | void;
 
@@ -563,6 +572,7 @@ export namespace Hex {
          * Set the {@link Hex.Buffer} connected with the {@link Hex.Document}.
          * @param buf {@link Hex.Buffer}
          * @returns `true` if the operation was successful; `false` otherwise.
+         * @since 4.2
          */
         set_buffer(buf: Buffer): boolean;
 
@@ -939,6 +949,7 @@ export namespace Hex {
          * @param end The start offset of the mark
          * @param color A custom color to set for the mark, or `NULL` to use the   default
          * @returns A pointer to a {@link Hex.WidgetMark} object, owned by the {@link Hex.Widget}.
+         * @since 4.8
          */
         add_mark(start: bigint | number, end: bigint | number, color: Gdk.RGBA | null): WidgetMark;
 
@@ -966,6 +977,7 @@ export namespace Hex {
         /**
          * Delete a {@link Hex.WidgetMark} from a {@link Hex.Widget}.
          * @param mark The {@link Hex.WidgetMark} to delete
+         * @since 4.8
          */
         delete_mark(mark: WidgetMark): void;
 
@@ -1001,6 +1013,7 @@ export namespace Hex {
         /**
          * Retrieve whether ASCII control characters are shown in the ASCII display.
          * @returns `TRUE` if control characters are displayed; `FALSE` otherwise
+         * @since 4.10
          */
         get_display_control_characters(): boolean;
 
@@ -1013,6 +1026,7 @@ export namespace Hex {
         /**
          * Retrieve whether zeroes (`00`) are faded in the hex display.
          * @returns `TRUE` if zeroes are faded; `FALSE` otherwise
+         * @since 4.8
          */
         get_fade_zeroes(): boolean;
 
@@ -1037,6 +1051,7 @@ export namespace Hex {
         /**
          * Jump the cursor in the {@link Hex.Widget} specified to the mark in question.
          * @param mark The mark to jump to
+         * @since 4.8
          */
         goto_mark(mark: WidgetMark): void;
 
@@ -1054,6 +1069,7 @@ export namespace Hex {
          * @param search search   string to auto-highlight
          * @param flags {@link Hex.SearchFlags} to specify match type
          * @returns a newly created {@link Hex.WidgetAutoHighlight}   structure, owned by the {@link Hex.Widget}
+         * @since 4.2
          */
         insert_autohighlight_full(search: Uint8Array | string, flags: SearchFlags): WidgetAutoHighlight;
 
@@ -1093,12 +1109,14 @@ export namespace Hex {
         /**
          * Set whether ASCII control characters are shown in the ASCII display.
          * @param display Whether ASCII control characters should be displayed
+         * @since 4.10
          */
         set_display_control_characters(display: boolean): void;
 
         /**
          * Set whether zeroes (`00`) are faded in the hex display.
          * @param fade Whether zeroes (`00` in the hex display) should be faded
+         * @since 4.8
          */
         set_fade_zeroes(fade: boolean): void;
 
@@ -1125,6 +1143,7 @@ export namespace Hex {
          * Set a custom color for a {@link Hex.WidgetMark} object.
          * @param mark The {@link Hex.WidgetMark} for which the custom color will be set
          * @param color The custom color to be set for the mark
+         * @since 4.8
          */
         set_mark_custom_color(mark: WidgetMark, color: Gdk.RGBA): void;
 
@@ -1144,12 +1163,14 @@ export namespace Hex {
         /**
          * Set whether the ASCII column of the widget should be shown.
          * @param show `true` if the ASCII column should be shown, `false` if it should   be hidden
+         * @since 4.2
          */
         show_ascii_column(show: boolean): void;
 
         /**
          * Set whether the hex column of the widget should be shown.
          * @param show `true` if the hex column should be shown, `false` if it should   be hidden
+         * @since 4.2
          */
         show_hex_column(show: boolean): void;
 
@@ -1161,6 +1182,7 @@ export namespace Hex {
 
         /**
          * Set the current selection to zero. The resulting action will be undoable.
+         * @since 4.4
          */
         zero_selection(): void;
 
@@ -1196,6 +1218,7 @@ export namespace Hex {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -1208,6 +1231,7 @@ export namespace Hex {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -1216,6 +1240,7 @@ export namespace Hex {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -1228,6 +1253,7 @@ export namespace Hex {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -1238,18 +1264,21 @@ export namespace Hex {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -1261,6 +1290,7 @@ export namespace Hex {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -1294,6 +1324,7 @@ export namespace Hex {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -1303,6 +1334,7 @@ export namespace Hex {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -1313,6 +1345,7 @@ export namespace Hex {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -1360,6 +1393,7 @@ export namespace Hex {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -1368,12 +1402,14 @@ export namespace Hex {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -1384,18 +1420,21 @@ export namespace Hex {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -1407,6 +1446,7 @@ export namespace Hex {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -1596,24 +1636,28 @@ export namespace Hex {
         /**
          * Obtains the custom color associated with a {@link Hex.WidgetMark} object, if
          * any.
+         * @since 4.8
          */
         get_custom_color(): Gdk.RGBA;
 
         /**
          * Obtains the end offset of a {@link Hex.WidgetMark}.
          * @returns The end offset of the mark
+         * @since 4.8
          */
         get_end_offset(): number;
 
         /**
          * Returns whether the {@link Hex.WidgetMark} has a custom color associated with it.
          * @returns `TRUE` if the {@link Hex.WidgetMark} has a custom color associated with   it; `FALSE` otherwise.
+         * @since 4.8
          */
         get_have_custom_color(): boolean;
 
         /**
          * Obtains the start offset of a {@link Hex.WidgetMark}.
          * @returns The start offset of the mark
+         * @since 4.8
          */
         get_start_offset(): number;
     }
@@ -1706,6 +1750,7 @@ export namespace Hex {
          * Copy a {@link Hex.DocumentFindData} structure. This function is likely
          * only useful for language bindings.
          * @returns a newly allocated {@link Hex.DocumentFindData} structure. Can be freed with   `g_free ()`.
+         * @since 4.2
          */
         copy(): DocumentFindData;
     }

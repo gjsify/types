@@ -620,6 +620,7 @@ export namespace gSignon {
          * @param session_data a dictionary of parameters.
          * @param mechanism the authentication mechanism to be used.
          * @param cb a callback which will be called with the result.
+         * @deprecated since 1.8: Use `signon_auth_session_process_async()` instead.
          */
         process(session_data: { [key: string]: GObject.Value }, mechanism: string, cb: AuthSessionProcessCb): void;
 
@@ -640,6 +641,7 @@ export namespace gSignon {
          * @param session_data a dictionary of parameters.
          * @param mechanism the authentication mechanism to be used.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 1.8
          */
         process_async(session_data: GLib.Variant, mechanism: string, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
 
@@ -661,6 +663,7 @@ export namespace gSignon {
          * @param mechanism the authentication mechanism to be used.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a callback which will be called when the authentication reply is available.
+         * @since 1.8
          */
         process_async(session_data: GLib.Variant, mechanism: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -682,6 +685,7 @@ export namespace gSignon {
          * @param mechanism the authentication mechanism to be used.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a callback which will be called when the authentication reply is available.
+         * @since 1.8
          */
         process_async(session_data: GLib.Variant, mechanism: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant> | void;
 
@@ -689,6 +693,7 @@ export namespace gSignon {
          * Collect the result of the `signon_auth_session_process_async()` operation.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `signon_auth_session_process_async()`.
          * @returns a {@link GLib.Variant} of type `G_VARIANT_TYPE_VARDICT` containing the authentication reply. As with `signon_auth_session_process_async()`, specific parameters contained in the {@link GLib.Variant} can be found from plugins' documentation: `GSignondPlugin::response-final` for the final response, and `GSignondPlugin::response` for the intermediate responses. See, for example, `GSignondPasswordPlugin` and `GSignondDigestPlugin`.
+         * @since 1.8
          */
         process_finish(res: Gio.AsyncResult): GLib.Variant;
 

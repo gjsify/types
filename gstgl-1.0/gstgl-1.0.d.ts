@@ -1673,11 +1673,13 @@ export namespace GstGL {
         // Methods
         /**
          * @returns Whether an OpenGL context could be retrieved or created successfully
+         * @since 1.16
          */
         find_gl_context(): boolean;
 
         /**
          * @returns the {@link GstGL.GLContext} found by `filter`
+         * @since 1.18
          */
         get_gl_context(): GLContext | null;
     }
@@ -1817,12 +1819,14 @@ export namespace GstGL {
         // Virtual methods
         /**
          * called in the GL thread to setup the element GL state.
+         * @since 1.24
          * @virtual
          */
         vfunc_gl_start(): boolean;
 
         /**
          * called in the GL thread to setup the element GL state.
+         * @since 1.24
          * @virtual
          */
         vfunc_gl_stop(): void;
@@ -1830,6 +1834,7 @@ export namespace GstGL {
         // Methods
         /**
          * @returns the {@link GstGL.GLContext} found by `mix`
+         * @since 1.24
          */
         get_gl_context(): GLContext | null;
     }
@@ -1994,6 +1999,7 @@ export namespace GstGL {
         // Methods
         /**
          * @returns the configured {@link GstGL.GLContext}.
+         * @since 1.28
          */
         get_gl_context(): GLContext | null;
     }
@@ -2115,6 +2121,7 @@ export namespace GstGL {
          * `gst_buffer_pool_set_config()` will cause this function to return a new
          * {@link GstGL.GLAllocationParams} which may or may not contain the same information.
          * @returns a copy of the {@link GstGL.GLAllocationParams} being used by the `pool`
+         * @since 1.20
          */
         get_gl_allocation_params(): GLAllocationParams | null;
     }
@@ -2182,11 +2189,13 @@ export namespace GstGL {
          * @param direction a {@link Gst.PadDirection}
          * @param caps the {@link Gst.Caps} of `direction`
          * @param other the {@link Gst.Caps} to fixate
+         * @since 1.8
          */
         static fixate_caps(context: GLContext, direction: Gst.PadDirection, caps: Gst.Caps, other: Gst.Caps): Gst.Caps;
 
         /**
          * @param context a {@link GstGL.GLContext}
+         * @since 1.24
          */
         static swizzle_shader_string(context: GLContext): string;
 
@@ -2196,6 +2205,7 @@ export namespace GstGL {
          * @param direction a {@link Gst.PadDirection}
          * @param caps the {@link Gst.Caps} to transform
          * @param filter a set of filter {@link Gst.Caps}
+         * @since 1.6
          */
         static transform_caps(context: GLContext, direction: Gst.PadDirection, caps: Gst.Caps, filter: Gst.Caps): Gst.Caps;
 
@@ -2208,6 +2218,7 @@ export namespace GstGL {
          * 1st, and the V component in the 2nd.  offset, ycoeff, ucoeff, and vcoeff are the
          * specific coefficients and offset used for the conversion.
          * @param context a {@link GstGL.GLContext}
+         * @since 1.24
          */
         static yuv_to_rgb_shader_string(context: GLContext): string;
 
@@ -2216,6 +2227,7 @@ export namespace GstGL {
          * Provides an implementation of {@link GstBase.BaseTransformClass}.decide_allocation()
          * @param query a completed ALLOCATION {@link Gst.Query}
          * @returns whether the allocation parameters were successfully chosen
+         * @since 1.8
          */
         decide_allocation(query: Gst.Query): boolean;
 
@@ -2224,6 +2236,7 @@ export namespace GstGL {
          * {@link Gst.Caps} passed to `gst_gl_color_convert_set_caps()`
          * @param inbuf the {@link GstGL.GLMemory} filled {@link Gst.Buffer} to convert
          * @returns a converted {@link Gst.Buffer} or `null`
+         * @since 1.4
          */
         perform(inbuf: Gst.Buffer): Gst.Buffer | null;
 
@@ -2231,6 +2244,7 @@ export namespace GstGL {
          * Initializes `convert` with the information required for conversion.
          * @param in_caps input {@link Gst.Caps}
          * @param out_caps output {@link Gst.Caps}
+         * @since 1.6
          */
         set_caps(in_caps: Gst.Caps, out_caps: Gst.Caps): boolean;
     }
@@ -2311,11 +2325,13 @@ export namespace GstGL {
          * See also: `gst_gl_context_get_proc_address()`
          * @param gl_api a {@link GstGL.GLAPI}
          * @param name then function to get the address of
+         * @since 1.4
          */
         static default_get_proc_address(gl_api: GLAPI, name: string): null;
 
         /**
          * See also `gst_gl_context_activate()`.
+         * @since 1.6
          */
         static get_current(): GLContext | null;
 
@@ -2323,11 +2339,13 @@ export namespace GstGL {
          * If an error occurs, `major` and `minor` are not modified and {@link GstGL.GLAPI.NONE} is
          * returned.
          * @param platform the {@link GstGL.GLPlatform} to retrieve the API for
+         * @since 1.6
          */
         static get_current_gl_api(platform: GLPlatform): [GLAPI, number, number];
 
         /**
          * @param context_type a {@link GstGL.GLPlatform} specifying the type of context to retrieve
+         * @since 1.6
          */
         static get_current_gl_context(context_type: GLPlatform): bigint | number | null;
 
@@ -2339,6 +2357,7 @@ export namespace GstGL {
          * @param context_type a {@link GstGL.GLPlatform}
          * @param gl_api a {@link GstGL.GLAPI}
          * @param name the name of the function to retrieve
+         * @since 1.6
          */
         static get_proc_address_with_platform(context_type: GLPlatform, gl_api: GLAPI, name: string): null;
 
@@ -2349,6 +2368,7 @@ export namespace GstGL {
          * In OpenGL terms, calls eglMakeCurrent or similar with this context and the
          * currently set window.  See `gst_gl_context_set_window()` for details.
          * @param activate `true` to activate, `false` to deactivate
+         * @since 1.4
          * @virtual
          */
         vfunc_activate(activate: boolean): boolean;
@@ -2360,6 +2380,7 @@ export namespace GstGL {
          * possible to determine their existence and so will fail if that is not the
          * case.
          * @param feature a platform specific feature
+         * @since 1.4
          * @virtual
          */
         vfunc_check_feature(feature: string): boolean;
@@ -2390,6 +2411,7 @@ export namespace GstGL {
          * 
          * Not all implementations currently support retrieving the config and will
          * return `null` when not supported.
+         * @since 1.20
          * @virtual
          */
         vfunc_get_config(): Gst.Structure | null;
@@ -2399,18 +2421,21 @@ export namespace GstGL {
          * 
          * The currently available API may be limited by the {@link GstGL.GLDisplay} in use and/or
          * the {@link GstGL.GLWindow} chosen.
+         * @since 1.4
          * @virtual
          */
         vfunc_get_gl_api(): GLAPI;
 
         /**
          * Gets the backing OpenGL context used by `context`.
+         * @since 1.4
          * @virtual
          */
         vfunc_get_gl_context(): bigint | number;
 
         /**
          * Gets the OpenGL platform that used by `context`.
+         * @since 1.4
          * @virtual
          */
         vfunc_get_gl_platform(): GLPlatform;
@@ -2436,6 +2461,7 @@ export namespace GstGL {
          * 
          * Note that the actual config used may be differ from the requested values.
          * @param gl_config a configuration structure for             configuring the OpenGL context
+         * @since 1.20
          * @virtual
          */
         vfunc_request_config(gl_config: Gst.Structure | null): boolean;
@@ -2455,6 +2481,7 @@ export namespace GstGL {
          * currently set window.  See `gst_gl_context_set_window()` for details.
          * @param activate `true` to activate, `false` to deactivate
          * @returns Whether the activation succeeded
+         * @since 1.4
          */
         activate(activate: boolean): boolean;
 
@@ -2462,6 +2489,7 @@ export namespace GstGL {
          * Note: This will always fail for two wrapped {@link GstGL.GLContext}'s
          * @param other_context another {@link GstGL.GLContext}
          * @returns whether `context` and `other_context` are able to share OpenGL      resources.
+         * @since 1.6
          */
         can_share(other_context: GLContext): boolean;
 
@@ -2473,6 +2501,7 @@ export namespace GstGL {
          * case.
          * @param feature a platform specific feature
          * @returns Whether `feature` is supported by `context`
+         * @since 1.4
          */
         check_feature(feature: string): boolean;
 
@@ -2480,6 +2509,7 @@ export namespace GstGL {
          * Must be called with `context` current.
          * @param fbo_target the GL value of the framebuffer target, GL_FRAMEBUFFER,              GL_READ_FRAMEBUFFER, GL_DRAW_FRAMEBUFFER
          * @returns whether whether the current framebuffer is complete
+         * @since 1.10
          */
         check_framebuffer_status(fbo_target: number): boolean;
 
@@ -2488,11 +2518,13 @@ export namespace GstGL {
          * @param maj major version required
          * @param min minor version required
          * @returns whether OpenGL context implements the required api and specified version.
+         * @since 1.4
          */
         check_gl_version(api: GLAPI, maj: number, min: number): boolean;
 
         /**
          * Unbind the current framebuffer
+         * @since 1.10
          */
         clear_framebuffer(): void;
 
@@ -2525,6 +2557,7 @@ export namespace GstGL {
          * Should only be called once.
          * @param other_context a {@link GstGL.GLContext} to share OpenGL objects with
          * @returns whether the context could successfully be created
+         * @since 1.4
          */
         create(other_context: GLContext | null): boolean;
 
@@ -2533,6 +2566,7 @@ export namespace GstGL {
          * 
          * Should only be called after `gst_gl_context_create()` has been successfully
          * called for this context.
+         * @since 1.6
          */
         destroy(): void;
 
@@ -2540,6 +2574,7 @@ export namespace GstGL {
          * Fills `context`'s info (version, extensions, vtable, etc) from the GL
          * context in the current thread.  Typically used with wrapped contexts to
          * allow wrapped contexts to be used as regular {@link GstGL.GLContext}'s.
+         * @since 1.6
          */
         fill_info(): boolean;
 
@@ -2550,11 +2585,13 @@ export namespace GstGL {
          * Not all implementations currently support retrieving the config and will
          * return `null` when not supported.
          * @returns the configuration chosen for this OpenGL context.
+         * @since 1.20
          */
         get_config(): Gst.Structure | null;
 
         /**
          * @returns the {@link GstGL.GLDisplay} associated with this `context`
+         * @since 1.4
          */
         get_display(): GLDisplay;
 
@@ -2564,18 +2601,21 @@ export namespace GstGL {
          * The currently available API may be limited by the {@link GstGL.GLDisplay} in use and/or
          * the {@link GstGL.GLWindow} chosen.
          * @returns the available OpenGL api
+         * @since 1.4
          */
         get_gl_api(): GLAPI;
 
         /**
          * Gets the backing OpenGL context used by `context`.
          * @returns The platform specific backing OpenGL context
+         * @since 1.4
          */
         get_gl_context(): number;
 
         /**
          * Gets the OpenGL platform that used by `context`.
          * @returns The platform specific backing OpenGL context
+         * @since 1.4
          */
         get_gl_platform(): GLPlatform;
 
@@ -2589,6 +2629,7 @@ export namespace GstGL {
          * Returns the OpenGL version implemented by `context`.  See
          * `gst_gl_context_get_gl_api()` for retrieving the OpenGL api implemented by
          * `context`.
+         * @since 1.4
          */
         get_gl_version(): [number, number];
 
@@ -2616,21 +2657,25 @@ export namespace GstGL {
          * 
          * @param name an opengl function name
          * @returns a function pointer or `null`
+         * @since 1.4
          */
         get_proc_address(name: string): null;
 
         /**
          * @returns The {@link GLib.Thread}, `context` is current in or NULL
+         * @since 1.6
          */
         get_thread(): GLib.Thread | null;
 
         /**
          * @returns the currently set window
+         * @since 1.4
          */
         get_window(): GLWindow | null;
 
         /**
          * @returns Whether the {@link GstGL.GLContext} has been shared with another {@link GstGL.GLContext}
+         * @since 1.8
          */
         is_shared(): boolean;
 
@@ -2649,12 +2694,14 @@ export namespace GstGL {
          * Note that the actual config used may be differ from the requested values.
          * @param gl_config a configuration structure for             configuring the OpenGL context
          * @returns whether `gl_config` could be successfully set on `context`
+         * @since 1.20
          */
         request_config(gl_config: Gst.Structure | null): boolean;
 
         /**
          * Will internally set `context` as shared with `share`
          * @param share another {@link GstGL.GLContext}
+         * @since 1.8
          */
         set_shared_with(share: GLContext): void;
 
@@ -2664,6 +2711,7 @@ export namespace GstGL {
          * already running.
          * @param window a {@link GstGL.GLWindow}
          * @returns Whether the window was successfully updated
+         * @since 1.4
          */
         set_window(window: GLWindow): boolean;
 
@@ -2678,6 +2726,7 @@ export namespace GstGL {
          * @param version a {@link GstGL.GLSLVersion}
          * @param profile a {@link GstGL.GLSLProfile}
          * @returns whether `context` supports the 'precision' specifier in GLSL shaders
+         * @since 1.16
          */
         supports_precision(version: GLSLVersion, profile: GLSLProfile): boolean;
 
@@ -2685,6 +2734,7 @@ export namespace GstGL {
          * @param version a {@link GstGL.GLSLVersion}
          * @param profile a {@link GstGL.GLSLProfile}
          * @returns whether `context` supports the 'precision highp' specifier in GLSL shaders
+         * @since 1.16
          */
         supports_precision_highp(version: GLSLVersion, profile: GLSLProfile): boolean;
 
@@ -2699,6 +2749,7 @@ export namespace GstGL {
          * 
          * MT-safe
          * @param func a {@link GstGL.GLContextThreadFunc}
+         * @since 1.4
          */
         thread_add(func: GLContextThreadFunc): void;
     }
@@ -2787,6 +2838,7 @@ export namespace GstGL {
         vfunc_create_window(): GLWindow | null;
 
         /**
+         * @since 1.4
          * @virtual
          */
         vfunc_get_handle(): bigint | number;
@@ -2795,6 +2847,7 @@ export namespace GstGL {
         /**
          * @param context a {@link GstGL.GLContext}
          * @returns whether `context` was successfully added. `false` may be returned if there already exists another context for `context`'s active thread. Must be called with the object lock held.
+         * @since 1.6
          */
         add_context(context: GLContext): boolean;
 
@@ -2802,6 +2855,7 @@ export namespace GstGL {
          * It requires the display's object lock to be held.
          * @param other_context other {@link GstGL.GLContext} to share resources with.
          * @returns whether a new context could be created.
+         * @since 1.6
          */
         create_context(other_context: GLContext | null): [boolean, GLContext];
 
@@ -2816,6 +2870,7 @@ export namespace GstGL {
          * @param other_context other {@link GstGL.GLContext} to share resources with.
          * @param context the resulting {@link GstGL.GLContext}
          * @returns wether `context` contains a valid context.
+         * @since 1.24
          */
         ensure_context(other_context: GLContext | null, context: GLContext | null): [boolean, GLContext | null];
 
@@ -2835,6 +2890,8 @@ export namespace GstGL {
          * @param data some data to pass to `compare_func`
          * @param compare_func a comparison function to run
          * @returns The first {@link GstGL.GLWindow} that causes a match          from `compare_func`
+         * @since 1.12
+         * @deprecated since 1.18: Use `gst_gl_display_retrieve_window()` instead.
          */
         find_window(data: null, compare_func: GLib.CompareFunc): GLWindow | null;
 
@@ -2849,28 +2906,33 @@ export namespace GstGL {
         /**
          * @param thread a {@link GLib.Thread}
          * @returns the {@link GstGL.GLContext} current on `thread` or `null` Must be called with the object lock held.
+         * @since 1.6
          */
         get_gl_context_for_thread(thread: GLib.Thread): GLContext | null;
 
         /**
          * @returns the native handle for the display
+         * @since 1.4
          */
         get_handle(): number;
 
         /**
          * @returns the {@link GstGL.GLDisplayType} of `display`
+         * @since 1.4
          */
         get_handle_type(): GLDisplayType;
 
         /**
          * Must be called with the object lock held.
          * @param context the {@link GstGL.GLContext} to remove
+         * @since 1.18
          */
         remove_context(context: GLContext): void;
 
         /**
          * @param window a {@link GstGL.GLWindow} to remove
          * @returns if `window` could be removed from `display`
+         * @since 1.12
          */
         remove_window(window: GLWindow): boolean;
 
@@ -2881,6 +2943,7 @@ export namespace GstGL {
          * @param data some data to pass to `compare_func`
          * @param compare_func a comparison function to run
          * @returns The first {@link GstGL.GLWindow} that causes a match          from `compare_func`
+         * @since 1.18
          */
         retrieve_window(data: null, compare_func: GLib.CompareFunc): GLWindow | null;
     }
@@ -2963,6 +3026,7 @@ export namespace GstGL {
          * Calls filter_texture vfunc with correctly mapped `GstGLMemorys`
          * @param input an input buffer
          * @param output an output buffer
+         * @since 1.4
          * @virtual
          */
         vfunc_filter_texture(input: GLMemory, output: GLMemory): boolean;
@@ -2997,6 +3061,7 @@ export namespace GstGL {
          * modifies is the necessary vertex/index buffers and, if necessary, a
          * Vertex Array Object for drawing a fullscreen quad.  Framebuffer state,
          * any shaders, viewport state, etc must be setup by the caller.
+         * @since 1.10
          */
         draw_fullscreen_quad(): void;
 
@@ -3005,6 +3070,7 @@ export namespace GstGL {
          * @param input an input buffer
          * @param output an output buffer
          * @returns whether the transformation succeeded
+         * @since 1.4
          */
         filter_texture(input: Gst.Buffer, output: Gst.Buffer): boolean;
 
@@ -3014,6 +3080,7 @@ export namespace GstGL {
          * @param output the output texture
          * @param func the function to transform `input` into `output`. called with `data`
          * @returns the return value of `func`
+         * @since 1.10
          */
         render_to_target(input: GLMemory, output: GLMemory, func: GLFilterRenderFunc): boolean;
 
@@ -3024,6 +3091,7 @@ export namespace GstGL {
          * @param input the input texture
          * @param output the output texture
          * @param shader the shader to use.
+         * @since 1.4
          */
         render_to_target_with_shader(input: GLMemory, output: GLMemory, shader: GLShader): void;
     }
@@ -3096,6 +3164,7 @@ export namespace GstGL {
          * with.
          * @param attachment_point the OpenGL attachment point to bind `mem` to
          * @param mem the memory object to bind to `attachment_point`
+         * @since 1.10
          */
         attach(attachment_point: number, mem: GLBaseMemory): void;
 
@@ -3104,6 +3173,7 @@ export namespace GstGL {
          * 
          * Must be called with the same OpenGL context current that `fb` was created
          * with.
+         * @since 1.10
          */
         bind(): void;
 
@@ -3120,17 +3190,20 @@ export namespace GstGL {
          * @param mem the {@link GstGL.GLMemory} to draw to
          * @param func the function to run
          * @returns the result of executing `func`
+         * @since 1.10
          */
         draw_to_texture(mem: GLMemory, func: GLFramebufferFunc): boolean;
 
         /**
          * Retrieve the effective dimensions from the current attachments attached to
          * `fb`.
+         * @since 1.10
          */
         get_effective_dimensions(): [number, number];
 
         /**
          * @returns the OpenGL id for `fb`
+         * @since 1.10
          */
         get_id(): number;
     }
@@ -3184,6 +3257,7 @@ export namespace GstGL {
         // Static methods
         /**
          * @param context a {@link GstGL.GLContext}
+         * @since 1.8
          */
         static get_default(context: GLContext): GLMemoryAllocator;
     }
@@ -3297,6 +3371,7 @@ export namespace GstGL {
          * Perform operations on the input buffers to produce an
          * output buffer.
          * @param outbuf 
+         * @since 1.24
          * @virtual
          */
         vfunc_process_buffers(outbuf: Gst.Buffer): boolean;
@@ -3306,6 +3381,7 @@ export namespace GstGL {
          * Intended for use within implementations of
          * {@link GstGL.GLMixerClass.SignalSignatures.process_buffers | GstGL.GLMixerClass::process_buffers}().
          * @param out_tex 
+         * @since 1.24
          * @virtual
          */
         vfunc_process_textures(out_tex: GLMemory): boolean;
@@ -3313,6 +3389,7 @@ export namespace GstGL {
         // Methods
         /**
          * @returns (nullable): The {@link GstGL.GLFramebuffer} in use by this `mix`
+         * @since 1.24
          */
         get_framebuffer(): GLFramebuffer;
 
@@ -3322,6 +3399,7 @@ export namespace GstGL {
          * {@link GstGL.GLMixerClass.SignalSignatures.process_buffers | GstGL.GLMixerClass::process_buffers}().
          * @param outbuf output `GstBuffer`
          * @returns whether processing of textures succeeded
+         * @since 1.24
          */
         process_textures(outbuf: Gst.Buffer): boolean;
     }
@@ -3568,26 +3646,31 @@ export namespace GstGL {
         // Methods
         /**
          * @returns whether the compilation succeeded
+         * @since 1.8
          */
         compile(): boolean;
 
         /**
          * @returns The GL handle for this shader stage
+         * @since 1.8
          */
         get_handle(): number;
 
         /**
          * @returns The GLSL profile for the current shader stage
+         * @since 1.8
          */
         get_profile(): GLSLProfile;
 
         /**
          * @returns The GL shader type for this shader stage
+         * @since 1.8
          */
         get_shader_type(): number;
 
         /**
          * @returns The GLSL version for the current shader stage
+         * @since 1.8
          */
         get_version(): GLSLVersion;
 
@@ -3596,6 +3679,7 @@ export namespace GstGL {
          * @param version a {@link GstGL.GLSLVersion}
          * @param profile a {@link GstGL.GLSLProfile}
          * @param str a GLSL shader string
+         * @since 1.8
          */
         set_strings(version: GLSLVersion, profile: GLSLProfile, str: string[]): boolean;
     }
@@ -3667,6 +3751,7 @@ export namespace GstGL {
          * @param context a {@link GstGL.GLContext}
          * @param version a {@link GstGL.GLSLVersion}
          * @param profile a {@link GstGL.GLSLProfile}
+         * @since 1.16
          */
         static string_fragment_external_oes_get_default(context: GLContext, version: GLSLVersion, profile: GLSLProfile): string;
 
@@ -3674,6 +3759,7 @@ export namespace GstGL {
          * @param context a {@link GstGL.GLContext}
          * @param version a {@link GstGL.GLSLVersion}
          * @param profile a {@link GstGL.GLSLProfile}
+         * @since 1.16
          */
         static string_fragment_get_default(context: GLContext, version: GLSLVersion, profile: GLSLProfile): string;
 
@@ -3688,6 +3774,7 @@ export namespace GstGL {
          * @param context a {@link GstGL.GLContext}
          * @param version a {@link GstGL.GLSLVersion}
          * @param profile a {@link GstGL.GLSLProfile}
+         * @since 1.16
          */
         static string_get_highest_precision(context: GLContext, version: GLSLVersion, profile: GLSLProfile): string;
 
@@ -3699,6 +3786,7 @@ export namespace GstGL {
          * Note: must be called in the GL thread
          * @param stage a {@link GstGL.GLSLStage} to attach
          * @returns whether `stage` could be attached to `shader`
+         * @since 1.8
          */
         attach(stage: GLSLStage): boolean;
 
@@ -3709,6 +3797,7 @@ export namespace GstGL {
          * Note: must be called in the GL thread
          * @param stage a {@link GstGL.GLSLStage} to attach
          * @returns whether `stage` could be attached to `shader`
+         * @since 1.8
          */
         attach_unlocked(stage: GLSLStage): boolean;
 
@@ -3734,6 +3823,7 @@ export namespace GstGL {
          * Note: must be called in the GL thread
          * @param stage a {@link GstGL.GLSLStage} to attach
          * @returns whether `stage` could be compiled and attached to `shader`
+         * @since 1.8
          */
         compile_attach_stage(stage: GLSLStage): boolean;
 
@@ -3743,6 +3833,7 @@ export namespace GstGL {
          * 
          * Note: must be called in the GL thread
          * @param stage a {@link GstGL.GLSLStage} to attach
+         * @since 1.8
          */
         detach(stage: GLSLStage): void;
 
@@ -3752,6 +3843,7 @@ export namespace GstGL {
          * 
          * Note: must be called in the GL thread
          * @param stage a {@link GstGL.GLSLStage} to attach
+         * @since 1.8
          */
         detach_unlocked(stage: GLSLStage): void;
 
@@ -3763,12 +3855,14 @@ export namespace GstGL {
 
         /**
          * @returns the GL program handle for this shader
+         * @since 1.8
          */
         get_program_handle(): number;
 
         /**
          * Note: must be called in the GL thread
          * @returns whether `shader` has been successfully linked
+         * @since 1.8
          */
         is_linked(): boolean;
 
@@ -3777,6 +3871,7 @@ export namespace GstGL {
          * 
          * Note: must be called in the GL thread
          * @returns whether `shader` could be linked together.
+         * @since 1.8
          */
         link(): boolean;
 
@@ -3784,6 +3879,7 @@ export namespace GstGL {
          * Releases the shader and stages.
          * 
          * Note: must be called in the GL thread
+         * @since 1.8
          */
         release(): void;
 
@@ -3791,6 +3887,7 @@ export namespace GstGL {
          * Releases the shader and stages.
          * 
          * Note: must be called in the GL thread
+         * @since 1.8
          */
         release_unlocked(): void;
 
@@ -4070,6 +4167,7 @@ export namespace GstGL {
          * @param caps a {@link Gst.Caps} as the reference
          * @param othercaps a {@link Gst.Caps} to fixate
          * @returns the fixated caps
+         * @since 1.24
          */
         fixate_caps(direction: Gst.PadDirection, caps: Gst.Caps, othercaps: Gst.Caps): Gst.Caps;
 
@@ -4263,12 +4361,14 @@ export namespace GstGL {
          * @param caps the {@link Gst.Caps} of `direction`
          * @param othercaps the {@link Gst.Caps} to fixate
          * @returns the fixated {@link Gst.Caps}
+         * @since 1.6
          */
         fixate_caps(direction: Gst.PadDirection, caps: Gst.Caps, othercaps: Gst.Caps): Gst.Caps;
 
         /**
          * Retrieve the processed output buffer placing the output in `outbuf_ptr`.
          * @returns a {@link Gst.FlowReturn}
+         * @since 1.6
          */
         get_output(): [Gst.FlowReturn, Gst.Buffer];
 
@@ -4277,12 +4377,14 @@ export namespace GstGL {
          * {@link Gst.Caps} passed to `gst_gl_view_convert_set_caps()`
          * @param inbuf the {@link GstGL.GLMemory} filled {@link Gst.Buffer} to convert
          * @returns a converted {@link Gst.Buffer} or `null`
+         * @since 1.6
          */
         perform(inbuf: Gst.Buffer): Gst.Buffer | null;
 
         /**
          * Reset `viewconvert` to the default state.  Further operation will require
          * setting the caps with `gst_gl_view_convert_set_caps()`.
+         * @since 1.6
          */
         reset(): void;
 
@@ -4290,12 +4392,14 @@ export namespace GstGL {
          * Initializes `viewconvert` with the information required for conversion.
          * @param in_caps input {@link Gst.Caps}
          * @param out_caps output {@link Gst.Caps}
+         * @since 1.6
          */
         set_caps(in_caps: Gst.Caps, out_caps: Gst.Caps): boolean;
 
         /**
          * Set `context` on `viewconvert`
          * @param context the {@link GstGL.GLContext} to set
+         * @since 1.6
          */
         set_context(context: GLContext): void;
 
@@ -4304,6 +4408,7 @@ export namespace GstGL {
          * @param is_discont true if we have a discontinuity
          * @param input a {@link Gst.Buffer}
          * @returns a {@link Gst.FlowReturn}
+         * @since 1.6
          */
         submit_input_buffer(is_discont: boolean, input: Gst.Buffer): Gst.FlowReturn;
 
@@ -4313,6 +4418,7 @@ export namespace GstGL {
          * @param caps the {@link Gst.Caps} to transform
          * @param filter a set of filter {@link Gst.Caps}
          * @returns the converted {@link Gst.Caps}
+         * @since 1.6
          */
         transform_caps(direction: Gst.PadDirection, caps: Gst.Caps, filter: Gst.Caps): Gst.Caps;
     }
@@ -4406,18 +4512,21 @@ export namespace GstGL {
 
         /**
          * Checks if `window` controls the GL viewport.
+         * @since 1.16
          * @virtual
          */
         vfunc_controls_viewport(): boolean;
 
         /**
          * Redraw the window contents.  Implementations should invoke the draw callback.
+         * @since 1.4
          * @virtual
          */
         vfunc_draw(): void;
 
         /**
          * Gets the current windowing system display connection
+         * @since 1.4
          * @virtual
          */
         vfunc_get_display(): bigint | number;
@@ -4426,6 +4535,7 @@ export namespace GstGL {
          * Gets the current window handle that this {@link GstGL.GLWindow} is
          *                     rendering into.  This may return a different value to
          *                     what is passed into `set_window_handle`
+         * @since 1.4
          * @virtual
          */
         vfunc_get_window_handle(): bigint | number;
@@ -4443,6 +4553,7 @@ export namespace GstGL {
 
         /**
          * Query whether `window` has output surface or not
+         * @since 1.18
          * @virtual
          */
         vfunc_has_output_surface(): boolean;
@@ -4461,12 +4572,14 @@ export namespace GstGL {
 
         /**
          * Quit the runloop's execution.
+         * @since 1.4
          * @virtual
          */
         vfunc_quit(): void;
 
         /**
          * Start the execution of the runloop.
+         * @since 1.4
          * @virtual
          */
         vfunc_run(): void;
@@ -4475,6 +4588,7 @@ export namespace GstGL {
          * Invoke `callback` with data on the window thread.  `callback` is guaranteed to
          * have executed when this function returns.
          * @param callback function to invoke
+         * @since 1.4
          * @virtual
          */
         vfunc_send_message(callback: GLWindowCB): void;
@@ -4483,6 +4597,7 @@ export namespace GstGL {
          * Invoke `callback` with `data` on the window thread.  The callback may not
          * have been executed when this function returns.
          * @param callback function to invoke
+         * @since 1.4
          * @virtual
          */
         vfunc_send_message_async(callback: GLWindowCB): void;
@@ -4492,6 +4607,7 @@ export namespace GstGL {
          * to ignore this information.
          * @param width new preferred width
          * @param height new preferred height
+         * @since 1.6
          * @virtual
          */
         vfunc_set_preferred_size(width: number, height: number): void;
@@ -4511,12 +4627,14 @@ export namespace GstGL {
          * Sets the window that this `window` should render into.  Some implementations
          * require this to be called with a valid handle before drawing can commence.
          * @param handle handle to the window
+         * @since 1.4
          * @virtual
          */
         vfunc_set_window_handle(handle: number): void;
 
         /**
          * Present the window to the screen.
+         * @since 1.6
          * @virtual
          */
         vfunc_show(): void;
@@ -4525,33 +4643,42 @@ export namespace GstGL {
         /**
          * Checks if `window` controls the GL viewport.
          * @returns `true` if `window` controls the GL viewport, otherwise `false`
+         * @since 1.16
          */
         controls_viewport(): boolean;
 
         /**
          * Redraw the window contents.  Implementations should invoke the draw callback.
+         * @since 1.4
          */
         draw(): void;
 
         /**
          * @returns the {@link GstGL.GLContext} associated with this `window`
+         * @since 1.4
          */
         get_context(): GLContext;
 
         /**
          * @returns the windowing system display handle for this `window`
+         * @since 1.4
          */
         get_display(): number;
 
         /**
          * @returns whether an visible output surface has been requested
+         * @since 1.28
          */
         get_request_output_surface(): boolean;
 
+        /**
+         * @since 1.6
+         */
         get_surface_dimensions(): [number, number];
 
         /**
          * @returns the window handle we are currently rendering into
+         * @since 1.4
          */
         get_window_handle(): number;
 
@@ -4568,6 +4695,7 @@ export namespace GstGL {
         /**
          * Query whether `window` has output surface or not
          * @returns `true` if `window` has useable output surface
+         * @since 1.18
          */
         has_output_surface(): boolean;
 
@@ -4578,6 +4706,7 @@ export namespace GstGL {
 
         /**
          * Quit the runloop's execution.
+         * @since 1.4
          */
         quit(): void;
 
@@ -4590,6 +4719,7 @@ export namespace GstGL {
 
         /**
          * Start the execution of the runloop.
+         * @since 1.4
          */
         run(): void;
 
@@ -4603,6 +4733,7 @@ export namespace GstGL {
          * Invoke `callback` with data on the window thread.  `callback` is guaranteed to
          * have executed when this function returns.
          * @param callback function to invoke
+         * @since 1.4
          */
         send_message(callback: GLWindowCB): void;
 
@@ -4610,6 +4741,7 @@ export namespace GstGL {
          * Invoke `callback` with `data` on the window thread.  The callback may not
          * have been executed when this function returns.
          * @param callback function to invoke
+         * @since 1.4
          */
         send_message_async(callback: GLWindowCB): void;
 
@@ -4628,18 +4760,21 @@ export namespace GstGL {
          * @param posy y position of the mouse cursor
          * @param delta_x the x offset of the scroll event
          * @param delta_y the y offset of the scroll event
+         * @since 1.18
          */
         send_scroll_event(posx: number, posy: number, delta_x: number, delta_y: number): void;
 
         /**
          * Sets the callback called when the window is about to close.
          * @param callback function to invoke
+         * @since 1.4
          */
         set_close_callback(callback: GLWindowCB): void;
 
         /**
          * Sets the draw callback called every time `gst_gl_window_draw()` is called
          * @param callback function to invoke
+         * @since 1.4
          */
         set_draw_callback(callback: GLWindowCB): void;
 
@@ -4648,6 +4783,7 @@ export namespace GstGL {
          * to ignore this information.
          * @param width new preferred width
          * @param height new preferred height
+         * @since 1.6
          */
         set_preferred_size(width: number, height: number): void;
 
@@ -4665,12 +4801,14 @@ export namespace GstGL {
         /**
          * Configure whether a visible output surface is requested.
          * @param output_surface whether to request an output surface.
+         * @since 1.28
          */
         set_request_output_surface(output_surface: boolean): void;
 
         /**
          * Sets the resize callback called every time a resize of the window occurs.
          * @param callback function to invoke
+         * @since 1.4
          */
         set_resize_callback(callback: GLWindowResizeCB): void;
 
@@ -4678,11 +4816,13 @@ export namespace GstGL {
          * Sets the window that this `window` should render into.  Some implementations
          * require this to be called with a valid handle before drawing can commence.
          * @param handle handle to the window
+         * @since 1.4
          */
         set_window_handle(handle: bigint | number): void;
 
         /**
          * Present the window to the screen.
+         * @since 1.6
          */
         show(): void;
     }
@@ -4714,6 +4854,7 @@ export namespace GstGL {
         // Methods
         /**
          * @returns a copy of the {@link GstGL.GLAllocationParams} specified by          `src`
+         * @since 1.8
          */
         copy(): GLAllocationParams;
 
@@ -4721,17 +4862,20 @@ export namespace GstGL {
          * Copies the dynamically allocated data from `src` to `dest`.  Direct subclasses
          * should call this function in their own overridden copy function.
          * @param dest the destination {@link GstGL.GLAllocationParams}
+         * @since 1.8
          */
         copy_data(dest: GLAllocationParams): void;
 
         /**
          * Frees the {@link GstGL.GLAllocationParams} and all associated data.
+         * @since 1.8
          */
         free(): void;
 
         /**
          * Frees the dynamically allocated data in `params`.  Direct subclasses
          * should call this function in their own overridden free function.
+         * @since 1.8
          */
         free_data(): void;
     }
@@ -4748,6 +4892,7 @@ export namespace GstGL {
         // Methods
         /**
          * Frees `ad`
+         * @since 1.8
          */
         free(): void;
 
@@ -4756,12 +4901,14 @@ export namespace GstGL {
          * `gst_gl_async_debug_output_log_msg()` will not output any messages but
          * subsequent calls to `gst_gl_async_debug_store_log_msg()` will overwrite previous
          * messages.
+         * @since 1.8
          */
         freeze(): void;
 
         /**
          * Initialize `ad`.  Intended for use with {@link GstGL.GLAsyncDebug}'s that are embedded
          * in other structs.
+         * @since 1.8
          */
         init(): void;
 
@@ -4772,6 +4919,7 @@ export namespace GstGL {
 
         /**
          * unfreeze the debug output.  See `gst_gl_async_debug_freeze()` for what freezing means
+         * @since 1.8
          */
         thaw(): void;
 
@@ -4821,12 +4969,14 @@ export namespace GstGL {
         /**
          * @param allocator a {@link GstGL.GLBaseMemoryAllocator}
          * @param params the {@link GstGL.GLAllocationParams} to allocate the memory with
+         * @since 1.8
          */
         static alloc(allocator: GLBaseMemoryAllocator, params: GLAllocationParams): GLBaseMemory | null;
 
         /**
          * Initializes the GL Base Memory allocator. It is safe to call this function
          * multiple times.  This must be called before any other GstGLBaseMemory operation.
+         * @since 1.8
          */
         static init_once(): void;
 
@@ -4847,6 +4997,7 @@ export namespace GstGL {
          * @param params the `GstAllocationParams` to initialize with
          * @param size the number of bytes to be allocated
          * @param user_data user data to call `notify` with
+         * @since 1.8
          */
         init(allocator: Gst.Allocator, parent: Gst.Memory | null, context: GLContext, params: Gst.AllocationParams | null, size: bigint | number, user_data: null): void;
 
@@ -4855,6 +5006,7 @@ export namespace GstGL {
          * @param offset the offset to start at
          * @param size the number of bytes to copy
          * @returns whether the copy succeeded.
+         * @since 1.8
          */
         memcpy(dest: GLBaseMemory, offset: bigint | number, size: bigint | number): boolean;
     }
@@ -4917,6 +5069,7 @@ export namespace GstGL {
         /**
          * Initializes the GL Buffer allocator. It is safe to call this function
          * multiple times.  This must be called before any other {@link GstGL.GLBuffer} operation.
+         * @since 1.8
          */
         static init_once(): void;
     }
@@ -5069,6 +5222,7 @@ export namespace GstGL {
         /**
          * Initializes the GL Base Texture allocator. It is safe to call this function
          * multiple times.  This must be called before any other GstGLMemory operation.
+         * @since 1.4
          */
         static init_once(): void;
 
@@ -5082,6 +5236,7 @@ export namespace GstGL {
          * @param width width of `tex_id`
          * @param height height of `tex_id`
          * @returns Whether the copy succeeded
+         * @since 1.8
          */
         copy_into(tex_id: number, target: GLTextureTarget, tex_format: GLFormat, width: number, height: number): boolean;
 
@@ -5094,31 +5249,37 @@ export namespace GstGL {
          * @param out_width the destination width
          * @param out_height the destination height
          * @returns whether the copy succeeded.
+         * @since 1.8
          */
         copy_teximage(tex_id: number, out_target: GLTextureTarget, out_tex_format: GLFormat, out_width: number, out_height: number): boolean;
 
         /**
          * @returns the {@link GstGL.GLFormat} of `gl_mem`
+         * @since 1.12
          */
         get_texture_format(): GLFormat;
 
         /**
          * @returns the texture height of `gl_mem`
+         * @since 1.8
          */
         get_texture_height(): number;
 
         /**
          * @returns the OpenGL texture handle of `gl_mem`
+         * @since 1.8
          */
         get_texture_id(): number;
 
         /**
          * @returns the {@link GstGL.GLTextureTarget} of `gl_mem`
+         * @since 1.8
          */
         get_texture_target(): GLTextureTarget;
 
         /**
          * @returns the texture width of `gl_mem`
+         * @since 1.8
          */
         get_texture_width(): number;
 
@@ -5135,6 +5296,7 @@ export namespace GstGL {
          * @param plane the plane number (starting from 0) for this {@link GstGL.GLMemory}
          * @param valign optional {@link GstVideo.VideoAlignment} parameters
          * @param user_data user data to call `notify` with
+         * @since 1.8
          */
         init(allocator: Gst.Allocator, parent: Gst.Memory | null, context: GLContext, target: GLTextureTarget, tex_format: GLFormat, params: Gst.AllocationParams | null, info: GstVideo.VideoInfo, plane: number, valign: GstVideo.VideoAlignment | null, user_data: null): void;
 
@@ -5146,6 +5308,7 @@ export namespace GstGL {
          * details.
          * @param write_pointer the data pointer to pass to glReadPixels
          * @returns whether theread operation succeeded
+         * @since 1.8
          */
         read_pixels(write_pointer: null): boolean;
 
@@ -5154,6 +5317,7 @@ export namespace GstGL {
          * 
          * See `gst_gl_memory_read_pixels()` for what `read_pointer` signifies.
          * @param read_pointer the data pointer to pass to glTexSubImage
+         * @since 1.8
          */
         texsubimage(read_pointer: null): void;
     }
@@ -5200,16 +5364,19 @@ export namespace GstGL {
          * @param stride stride of the backing texture data
          * @param respecify whether to copy the data or copy per texel
          * @returns Whether the copy succeeded
+         * @since 1.8
          */
         copy_into_texture(tex_id: number, target: GLTextureTarget, tex_format: GLFormat, width: number, height: number, stride: number, respecify: boolean): boolean;
 
         /**
          * Transfer the texture data from the texture into the PBO if necessary.
+         * @since 1.8
          */
         download_transfer(): void;
 
         /**
          * Transfer the texture data from the PBO into the texture if necessary.
+         * @since 1.8
          */
         upload_transfer(): void;
     }
@@ -5266,37 +5433,44 @@ export namespace GstGL {
         // Methods
         /**
          * Record the result of a counter
+         * @since 1.10
          */
         counter(): void;
 
         /**
          * End counting the query
+         * @since 1.10
          */
         end(): void;
 
         /**
          * Frees a {@link GstGL.GLQuery}
+         * @since 1.10
          */
         free(): void;
 
         /**
          * @param context a {@link GstGL.GLContext}
          * @param query_type the {@link GstGL.GLQueryType}
+         * @since 1.10
          */
         init(context: GLContext, query_type: GLQueryType): void;
 
         /**
          * @returns the result of the query
+         * @since 1.10
          */
         result(): number;
 
         /**
          * Start counting the query
+         * @since 1.10
          */
         start(): void;
 
         /**
          * Free any dynamically allocated resources
+         * @since 1.10
          */
         unset(): void;
     }
@@ -5329,27 +5503,32 @@ export namespace GstGL {
         /**
          * Initializes the GL Base Texture allocator. It is safe to call this function
          * multiple times.  This must be called before any other GstGLRenderbuffer operation.
+         * @since 1.10
          */
         static init_once(): void;
 
         // Methods
         /**
          * @returns the {@link GstGL.GLFormat} of `gl_mem`
+         * @since 1.12
          */
         get_format(): GLFormat;
 
         /**
          * @returns the configured height of `gl_mem`
+         * @since 1.10
          */
         get_height(): number;
 
         /**
          * @returns the OpenGL renderbuffer handle of `gl_mem`
+         * @since 1.10
          */
         get_id(): number;
 
         /**
          * @returns the configured width of `gl_mem`
+         * @since 1.10
          */
         get_width(): number;
     }
@@ -5429,6 +5608,7 @@ export namespace GstGL {
         /**
          * Set a sync point to possibly wait on at a later time.
          * @param context a {@link GstGL.GLContext}
+         * @since 1.6
          */
         set_sync_point(context: GLContext): void;
 
@@ -5436,6 +5616,7 @@ export namespace GstGL {
          * Insert a wait into `context`'s command stream ensuring all previous OpenGL
          * commands before `sync_meta` have completed.
          * @param context a {@link GstGL.GLContext}
+         * @since 1.6
          */
         wait(context: GLContext): void;
 
@@ -5444,6 +5625,7 @@ export namespace GstGL {
          * What that means, is that all GL operations changing CPU-visible data before
          * the sync point are now visible.
          * @param context a {@link GstGL.GLContext}
+         * @since 1.8
          */
         wait_cpu(context: GLContext): void;
     }
@@ -5493,12 +5675,14 @@ export namespace GstGL {
          * Copy and set any dynamically allocated resources in `dest_vid`.  Intended
          * for subclass usage only to chain up at the end of a subclass copy function.
          * @param dest_vid destination {@link GstGL.GLVideoAllocationParams} to copy into
+         * @since 1.8
          */
         copy_data(dest_vid: GLVideoAllocationParams): void;
 
         /**
          * Unset and free any dynamically allocated resources.  Intended for subclass
          * usage only to chain up at the end of a subclass free function.
+         * @since 1.8
          */
         free_data(): void;
     }

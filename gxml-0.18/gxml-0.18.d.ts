@@ -19116,6 +19116,7 @@ export namespace GXml {
         /**
          * @param f 
          * @param cancellable 
+         * @deprecated since 0.8.1
          */
         save_to(f: Gio.File, cancellable: Gio.Cancellable): boolean;
 

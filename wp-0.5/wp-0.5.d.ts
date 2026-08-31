@@ -1392,6 +1392,7 @@ export namespace Wp {
          * When connection succeeds, the WpCore "connected" signal is emitted.
          * @param fd the connected socket to use, the socket will be closed automatically on disconnect or error
          * @returns TRUE if the core is effectively connected or FALSE if connection failed
+         * @since 0.5.6
          */
         connect_fd(fd: number): boolean;
 
@@ -1434,6 +1435,7 @@ export namespace Wp {
         /**
          * Gets the bound id of the client object that is created as a result of this core being connected to the PipeWire daemon.
          * @returns the bound id of this client
+         * @since 0.4.16
          */
         get_own_bound_id(): number;
 
@@ -1494,6 +1496,7 @@ export namespace Wp {
         /**
          * Gets the virtual machine type of the core.
          * @returns a comma separated string with all the virtual machine types that this core matches, or NULL if the core is not running in a virtual machine.
+         * @since 0.4.11
          */
         get_vm_type(): string | null;
 
@@ -1643,6 +1646,7 @@ export namespace Wp {
          * @param cancellable a GCancellable to cancel the operation
          * @param closure a closure to invoke when the operation is done
          * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
+         * @since 0.4.6
          */
         sync_closure(cancellable: Gio.Cancellable | null, closure: GObject.Closure): boolean;
 
@@ -2036,12 +2040,14 @@ export namespace Wp {
          * Returns an iterator to iterate over the registered hooks for a particular event type.
          * @param event_type the event type
          * @returns a new iterator
+         * @since 0.5.13
          */
         new_hooks_for_event_type_iterator(event_type: string): Iterator;
 
         /**
          * Returns an iterator to iterate over all the registered hooks.
          * @returns a new iterator
+         * @deprecated Use wp_event_dispatcher_new_hooks_for_event_type_iterator instead.
          */
         new_hooks_iterator(): Iterator;
 
@@ -2160,6 +2166,7 @@ export namespace Wp {
 
         /**
          * Gets all the matching event types for this hook if any.
+         * @since 0.5.13
          * @virtual
          */
         vfunc_get_matching_event_types(): string[] | null;
@@ -2191,6 +2198,7 @@ export namespace Wp {
         /**
          * Gets all the matching event types for this hook if any.
          * @returns the matching event types for this hook if any.
+         * @since 0.5.13
          */
         get_matching_event_types(): string[] | null;
 
@@ -2583,6 +2591,7 @@ export namespace Wp {
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
          * @returns `TRUE` if `res` has the indicated `source_tag`, `FALSE` if   not.
+         * @since 2.34
          */
         is_tagged(source_tag: null): boolean;
 
@@ -2598,6 +2607,7 @@ export namespace Wp {
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
          * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
+         * @since 2.34
          */
         legacy_propagate_error(): boolean;
 
@@ -2617,6 +2627,7 @@ export namespace Wp {
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
+         * @since 2.34
          * @virtual
          */
         vfunc_is_tagged(source_tag: null): boolean;
@@ -2946,6 +2957,7 @@ export namespace Wp {
          * @param name the name of the module to load
          * @param _arguments arguments to be passed to the module
          * @param properties additional properties to be provided to the module
+         * @since 0.4.2
          */
         static load(core: Core, name: string, _arguments: string | null, properties: Properties | null): ImplModule | null;
     }
@@ -3391,6 +3403,7 @@ export namespace Wp {
         /**
          * Gets the current state of the link.
          * @returns the current state of the link
+         * @since 0.4.11
          */
         get_state(): [LinkState, string];
 
@@ -4293,6 +4306,7 @@ export namespace Wp {
          * 
          * This is usually used to stop any pending activation if an error happened.
          * @param msg the message used in the transition error
+         * @since 0.4.6
          */
         abort_activation(msg: string): void;
 
@@ -4374,6 +4388,7 @@ export namespace Wp {
          * Checks if the given features are active on this object.
          * @param features the features to check
          * @returns TRUE if all the given features are active on this object
+         * @since 0.5.0
          */
         test_active_features(features: ObjectFeatures): boolean;
 
@@ -4381,6 +4396,7 @@ export namespace Wp {
          * Checks if the given features are supported on this object.
          * @param features the features to check
          * @returns TRUE if all the given features are supported on this object
+         * @since 0.5.0
          */
         test_supported_features(features: ObjectFeatures): boolean;
 
@@ -5714,6 +5730,7 @@ export namespace Wp {
         /**
          * Iterates through all the objects managed by this device.
          * @returns a WpIterator that iterates over all the objects managed by this device
+         * @since 0.4.11
          */
         new_managed_object_iterator(): Iterator;
 
@@ -5923,6 +5940,7 @@ export namespace Wp {
          * This function is useful to avoid saving the state too often. When called consecutively, it will save the state only once. Every time it is called, it will cancel the previous timer and start a new one, resulting in timing out only after the last call.
          * @param core the core, used to add the timeout callback to the main loop
          * @param props the properties to save. This object will be referenced and kept alive until the timeout elapses, but not deep copied.
+         * @since 0.5.0
          */
         save_after_timeout(core: Core, props: Properties): void;
     }
@@ -6118,6 +6136,7 @@ export namespace Wp {
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
          * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
+         * @since 2.34
          */
         legacy_propagate_error(): boolean;
 
@@ -6137,6 +6156,7 @@ export namespace Wp {
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
+         * @since 2.34
          * @virtual
          */
         vfunc_is_tagged(source_tag: null): boolean;
@@ -6452,35 +6472,41 @@ export namespace Wp {
         /**
          * Gets the key from a metadata item.
          * @returns the metadata key of the `item`
+         * @since 0.5.0
          */
         get_key(): string;
 
         /**
          * Gets the subject from a metadata item.
          * @returns the metadata subject of the `item`
+         * @since 0.5.0
          */
         get_subject(): number;
 
         /**
          * Gets the value from a metadata item.
          * @returns the metadata value of the `item`
+         * @since 0.5.0
          */
         get_value(): string;
 
         /**
          * Gets the value type from a metadata item.
          * @returns the metadata value type of the `item`
+         * @since 0.5.0
          */
         get_value_type(): string;
 
         /**
          * Increases the reference count of a metadata item object.
          * @returns `self` with an additional reference count on it
+         * @since 0.5.0
          */
         ref(): MetadataItem;
 
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         * @since 0.5.0
          */
         unref(): void;
     }
@@ -6550,6 +6576,7 @@ export namespace Wp {
          * @param type the constraint type
          * @param subject the subject that the constraint applies to
          * @returns the defined constraint values for this object interest.
+         * @since 0.5.13
          */
         find_defined_constraint_values(type: ConstraintType, subject: string): GLib.Variant[] | null;
 
@@ -6762,6 +6789,7 @@ export namespace Wp {
         /**
          * Gets the number of properties contained in this object.
          * @returns the number of properties contained in this object
+         * @since 0.4.10
          */
         get_count(): number;
 
@@ -6876,23 +6904,27 @@ export namespace Wp {
         /**
          * Gets the key from a properties item.
          * @returns the property key of the `item`
+         * @since 0.4.2
          */
         get_key(): string;
 
         /**
          * Gets the value from a properties item.
          * @returns the property value of the `item`
+         * @since 0.4.2
          */
         get_value(): string;
 
         /**
          * Increases the reference count of a properties item object.
          * @returns `self` with an additional reference count on it
+         * @since 0.4.2
          */
         ref(): PropertiesItem;
 
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         * @since 0.4.2
          */
         unref(): void;
     }
@@ -7199,6 +7231,7 @@ export namespace Wp {
         /**
          * Returns a newly allocated json string with length matching the size.
          * @returns the json string with length matching the size
+         * @since 0.4.11
          */
         to_string(): string;
 
@@ -8483,6 +8516,7 @@ export namespace Wp {
 
             /**
              * Gets the ports state.
+             * @since 0.4.10
              * @virtual
              */
             vfunc_get_ports_state(): SiAdapterPortsState;
@@ -8532,6 +8566,7 @@ export namespace Wp {
         /**
          * Gets the ports state.
          * @returns The state of the ports
+         * @since 0.4.10
          */
         get_ports_state(): SiAdapterPortsState;
 

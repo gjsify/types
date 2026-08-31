@@ -588,6 +588,7 @@ export namespace Gdl {
          * It does not search only in the children of this particular dock widget.
          * @param name An item name
          * @returns A {@link Gdl.DockPlaceholder} object or `null`
+         * @deprecated since 3.6: This function is always returning `null`.
          */
         get_placeholder_by_name(name: string): DockPlaceholder;
 
@@ -613,6 +614,7 @@ export namespace Gdl {
          * Sets whether or not a floating dock window should be prevented from
          * appearing in the system taskbar.
          * @param skip `true` if floating docks should be prevented from appearing in the taskbar
+         * @since 3.6
          */
         set_skip_taskbar(skip: boolean): void;
 
@@ -625,11 +627,13 @@ export namespace Gdl {
         /**
          * Show a preview window used to materialize the dock target.
          * @param rect The position and the size of the preview window
+         * @deprecated since 3.6: Use gdl_dock_show_preview instead.
          */
         xor_rect(rect: Gdk.Rectangle): void;
 
         /**
          * Hide the preview window used to materialize the dock target.
+         * @deprecated since 3.6: Use gdl_dock_hide_preview instead.
          */
         xor_rect_hide(): void;
     }
@@ -757,6 +761,7 @@ export namespace Gdl {
         /**
          * Retrieves the orientation of the `dockbar`.
          * @returns the orientation of the `docbar`
+         * @deprecated since 3.6: Use `gtk_orientable_get_orientation()` instead.
          */
         get_orientation(): Gtk.Orientation;
 
@@ -775,6 +780,7 @@ export namespace Gdl {
         /**
          * Set the orientation of the `dockbar`.
          * @param orientation the new orientation
+         * @deprecated since 3.6: Use `gtk_orientable_set_orientation()` instead.
          */
         set_orientation(orientation: Gtk.Orientation): void;
 
@@ -1086,6 +1092,7 @@ export namespace Gdl {
         /**
          * Retrieves the behavior of the item.
          * @returns the behavior of the item.
+         * @since 3.6
          */
         get_behavior_flags(): DockItemBehavior;
 
@@ -1094,12 +1101,14 @@ export namespace Gdl {
          * no child widget. The returned widget does not have a reference
          * added, so you do not need to unref it.
          * @returns pointer to child of the {@link Gdl.DockItem}
+         * @since 3.6
          */
         get_child(): Gtk.Widget;
 
         /**
          * Gets the size and the position of the drag window in pixels.
          * @param rect A pointer to a {@link Gdk.Rectangle} that will receive the drag position
+         * @since 3.6
          */
         get_drag_area(rect: Gdk.Rectangle): void;
 
@@ -1112,6 +1121,7 @@ export namespace Gdl {
         /**
          * Retrieves the orientation of the object.
          * @returns the orientation of the object.
+         * @since 3.6
          */
         get_orientation(): Gtk.Orientation;
 
@@ -1148,12 +1158,14 @@ export namespace Gdl {
          * Checks whether a given {@link Gdl.DockItem} is closed. It can be only hidden or
          * detached.
          * @returns `true` if the dock item is closed.
+         * @since 3.6
          */
         is_closed(): boolean;
 
         /**
          * Checks whether a given {@link Gdl.DockItem} is iconified.
          * @returns `true` if the dock item is iconified.
+         * @since 3.6
          */
         is_iconified(): boolean;
 
@@ -1161,6 +1173,7 @@ export namespace Gdl {
          * Checks whether a given {@link Gdl.DockItem} is a placeholder created by the
          * {@link Gdl.DockLayout} object and does not contain a child.
          * @returns `true` if the dock item is a placeholder
+         * @since 3.6
          */
         is_placeholder(): boolean;
 
@@ -1186,6 +1199,7 @@ export namespace Gdl {
          * Checks whether a given {@link Gdl.DockItem} or its child widget has focus.
          * This check is performed recursively on child widgets.
          * @returns `true` if the dock item or its child widget has focus; `false` otherwise.
+         * @since 3.3.2
          */
         or_child_has_focus(): boolean;
 
@@ -1199,6 +1213,7 @@ export namespace Gdl {
          * This function sets the behavior of the dock item.
          * @param behavior Behavior flags to turn on
          * @param clear Whether to clear state before turning on `flags`
+         * @since 3.6
          */
         set_behavior_flags(behavior: DockItemBehavior, clear: boolean): void;
 
@@ -1210,6 +1225,7 @@ export namespace Gdl {
          * If a child is already present, it will be replaced. If `widget` is `null` the
          * child will be removed.
          * @param child a {@link Gtk.Widget}
+         * @since 3.6
          */
         set_child(child: Gtk.Widget | null): void;
 
@@ -1262,6 +1278,7 @@ export namespace Gdl {
         /**
          * This function sets the behavior of the dock item.
          * @param behavior Behavior flags to turn off
+         * @since 3.6
          */
         unset_behavior_flags(behavior: DockItemBehavior): void;
     }
@@ -1359,6 +1376,7 @@ export namespace Gdl {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -1370,6 +1388,7 @@ export namespace Gdl {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -1380,6 +1399,7 @@ export namespace Gdl {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -1390,6 +1410,7 @@ export namespace Gdl {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -1399,6 +1420,7 @@ export namespace Gdl {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -1407,6 +1429,7 @@ export namespace Gdl {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -1417,6 +1440,7 @@ export namespace Gdl {
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -1427,6 +1451,7 @@ export namespace Gdl {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -1435,12 +1460,14 @@ export namespace Gdl {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -1450,6 +1477,7 @@ export namespace Gdl {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -1461,6 +1489,7 @@ export namespace Gdl {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -1472,6 +1501,7 @@ export namespace Gdl {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -1483,6 +1513,7 @@ export namespace Gdl {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -1492,6 +1523,7 @@ export namespace Gdl {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -1500,6 +1532,7 @@ export namespace Gdl {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -1510,6 +1543,7 @@ export namespace Gdl {
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -1521,6 +1555,7 @@ export namespace Gdl {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -1530,6 +1565,7 @@ export namespace Gdl {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -1537,6 +1573,7 @@ export namespace Gdl {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -1654,6 +1691,7 @@ export namespace Gdl {
         /**
          * Change the cursor when a drag operation is started.
          * @param in_drag `true` if a drag operation is started
+         * @since 3.6
          */
         set_cursor(in_drag: boolean): void;
 
@@ -1761,6 +1799,7 @@ export namespace Gdl {
         /**
          * Retrieves the master of the object.
          * @returns a {@link Gdl.DockMaster} object
+         * @since 3.6
          */
         get_master<T = GObject.Object>(): T;
 
@@ -1975,6 +2014,7 @@ export namespace Gdl {
         /**
          * Return an unique translated dock name.
          * @returns a new translated name. The string has to be freed with `g_free()`.
+         * @since 3.6
          */
         get_dock_name(): string;
 
@@ -2437,6 +2477,7 @@ export namespace Gdl {
         /**
          * Retrieves the controller of the object.
          * @returns a {@link Gdl.DockObject} object
+         * @since 3.6
          */
         get_controller(): DockObject;
 
@@ -2444,18 +2485,21 @@ export namespace Gdl {
          * Retrieves the long name of the object. This name is an human readable string
          * which can be displayed in the user interface.
          * @returns the name of the object.
+         * @since 3.6
          */
         get_long_name(): string;
 
         /**
          * Retrieves the master of the object.
          * @returns a {@link Gdl.DockMaster} object
+         * @since 3.6
          */
         get_master<T = GObject.Object>(): T;
 
         /**
          * Retrieves the name of the object. This name is used to identify the object.
          * @returns the name of the object.
+         * @since 3.6
          */
         get_name(): string;
 
@@ -2468,12 +2512,14 @@ export namespace Gdl {
         /**
          * Retrieves a pixbuf used as the dock object icon.
          * @returns icon for dock object
+         * @since 3.6
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
 
         /**
          * Retrieves the a stock id used as the object icon.
          * @returns A stock id corresponding to the object icon.
+         * @since 3.6
          */
         get_stock_id(): string;
 
@@ -2487,6 +2533,7 @@ export namespace Gdl {
          * Determine if an object is managed by the dock master, such object is
          * destroyed automatically when it is not needed anymore.
          * @returns `true` if the object is managed automatically by the dock master.
+         * @since 3.6
          */
         is_automatic(): boolean;
 
@@ -2500,6 +2547,7 @@ export namespace Gdl {
          * Checks whether a given {@link Gdl.DockObject} is closed. It can be only hidden and
          * still in the widget hierarchy or detached.
          * @returns `true` if the dock object is closed.
+         * @since 3.6
          */
         is_closed(): boolean;
 
@@ -2513,12 +2561,14 @@ export namespace Gdl {
          * Determine if an object is frozen and is not removed immediately from the
          * widget hierarchy when it is reduced.
          * @returns `true` if the object is frozen.
+         * @since 3.6
          */
         is_frozen(): boolean;
 
         /**
          * Emits the {@link Gdl.DockMaster.SignalSignatures.layout_changed | Gdl.DockMaster::layout-changed} signal on the master of the object
          * if existing.
+         * @since 3.6
          */
         layout_changed_notify(): void;
 
@@ -2549,6 +2599,7 @@ export namespace Gdl {
          * Set the long name of the object. This name is an human readable string
          * which can be displayed in the user interface.
          * @param name a name for the object
+         * @since 3.6
          */
         set_long_name(name: string): void;
 
@@ -2556,24 +2607,28 @@ export namespace Gdl {
          * A {@link Gdl.DockObject} is managed by default by the dock master, use this function
          * to make it a manual object if you want to manage the destruction of the
          * object.
+         * @since 3.6
          */
         set_manual(): void;
 
         /**
          * Set the name of the object used to identify it.
          * @param name a name for the object
+         * @since 3.6
          */
         set_name(name: string): void;
 
         /**
          * Set a icon for a dock object using a {@link GdkPixbuf.Pixbuf}.
          * @param icon a icon or `null`
+         * @since 3.6
          */
         set_pixbuf(icon: GdkPixbuf.Pixbuf | null): void;
 
         /**
          * Set an icon for the dock object using a stock id.
          * @param stock_id a stock id
+         * @since 3.6
          */
         set_stock_id(stock_id: string): void;
 
@@ -2903,6 +2958,7 @@ export namespace Gdl {
         /**
          * Move the placeholder to the position of `object`.
          * @param object A new {@link Gdl.DockObject}
+         * @deprecated since 3.6
          */
         attach(object: DockObject): void;
     }
@@ -3026,6 +3082,7 @@ export namespace Gdl {
         // Methods
         /**
          * Set the widget in "activated" state.
+         * @deprecated since 3.6
          */
         activate(): void;
 
@@ -3037,6 +3094,7 @@ export namespace Gdl {
 
         /**
          * Set the widget in "deactivated" state.
+         * @deprecated since 3.6
          */
         deactivate(): void;
     }

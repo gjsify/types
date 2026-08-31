@@ -831,11 +831,13 @@ export namespace EvinceDocument {
 
         /**
          * Gets the area of `annot`.
+         * @since 3.18
          */
         get_area(): Rectangle;
 
         /**
          * Get the color of `annot`.
+         * @deprecated since 3.6: Use `ev_annotation_get_rgba()` instead.
          */
         get_color(): Gdk.Color;
 
@@ -876,6 +878,7 @@ export namespace EvinceDocument {
 
         /**
          * Gets the color of `annot`.
+         * @since 3.6
          */
         get_rgba(): Gdk.RGBA;
 
@@ -883,6 +886,7 @@ export namespace EvinceDocument {
          * Set the area of the annotation to `area`.
          * @param area a {@link EvinceDocument.Rectangle}
          * @returns `true` if the area has been changed, `false` otherwise
+         * @since 3.18
          */
         set_area(area: Rectangle): boolean;
 
@@ -892,6 +896,7 @@ export namespace EvinceDocument {
          * notify::color signal on `annot`.
          * @param color a {@link Gdk.Color}
          * @returns `true`  when the color has been changed, `false` otherwise.
+         * @deprecated since 3.6: Use `ev_annotation_set_rgba()` instead.
          */
         set_color(color: Gdk.Color): boolean;
 
@@ -922,6 +927,7 @@ export namespace EvinceDocument {
          * For the time-format used, see `ev_document_misc_format_date()`.
          * @param utime a {@link GLib.Time}
          * @returns `true` if the last modified date has been updated, `false` otherwise.
+         * @deprecated since 3.42: use ev_annotation_set_modified_from_time_t instead as GTime is                   deprecated because it is not year-2038 safe
          */
         set_modified_from_time(utime: GLib.Time): boolean;
 
@@ -948,6 +954,7 @@ export namespace EvinceDocument {
          * Set the color of the annotation to `rgba`.
          * @param rgba a {@link Gdk.RGBA}
          * @returns `true` if the color has been changed, `false` otherwise
+         * @since 3.6
          */
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
@@ -1727,6 +1734,7 @@ export namespace EvinceDocument {
          * @param mime_type the mime type
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 42.0
          */
         static factory_get_document_for_fd(fd: number, mime_type: string, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): Document;
 
@@ -1739,6 +1747,7 @@ export namespace EvinceDocument {
          * @param file a {@link Gio.File}
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 3.6
          */
         static factory_get_document_for_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): Document;
 
@@ -1756,6 +1765,7 @@ export namespace EvinceDocument {
          * @param mime_type a mime type hint
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 3.6
          */
         static factory_get_document_for_stream(stream: Gio.InputStream, mime_type: string | null, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): Document;
 
@@ -1778,6 +1788,7 @@ export namespace EvinceDocument {
 
         /**
          * @param utime a {@link GLib.Time}
+         * @deprecated since 3.38: use ev_document_misc_format_datetime instead as GTime is                   deprecated because it is not year-2038 safe.
          */
         static misc_format_date(utime: GLib.Time): string;
 
@@ -1785,6 +1796,7 @@ export namespace EvinceDocument {
          * Determine the preferred date and time representation for the current locale
          * for `dt`.
          * @param dt a {@link GLib.DateTime}
+         * @since 3.38
          */
         static misc_format_datetime(dt: GLib.DateTime): string;
 
@@ -1810,6 +1822,7 @@ export namespace EvinceDocument {
 
         /**
          * @param screen a {@link Gdk.Screen}
+         * @deprecated since 3.36: This uses a deprecated GDK API. Use `ev_document_misc_get_widget_dpi()` instead, which uses GDK's per-monitor information.
          */
         static misc_get_screen_dpi(screen: Gdk.Screen): number;
 
@@ -1845,6 +1858,7 @@ export namespace EvinceDocument {
          * @param border a {@link Gtk.Border}
          * @param highlight whether to highlight the text
          * @param inverted_colors whether to invert colors
+         * @deprecated since 3.10.
          */
         static misc_paint_one_page(cr: cairo.Context, widget: Gtk.Widget, area: Gdk.Rectangle, border: Gtk.Border, highlight: boolean, inverted_colors: boolean): void;
 
@@ -1858,6 +1872,7 @@ export namespace EvinceDocument {
          * @param width the desired width
          * @param height the desired height
          * @param inverted_colors whether to invert colors
+         * @since 3.8
          */
         static misc_render_loading_thumbnail(widget: Gtk.Widget, width: number, height: number, inverted_colors: boolean): GdkPixbuf.Pixbuf;
 
@@ -1866,6 +1881,7 @@ export namespace EvinceDocument {
          * @param width the desired width
          * @param height the desired height
          * @param inverted_colors whether to invert colors
+         * @since 3.14
          */
         static misc_render_loading_thumbnail_surface(widget: Gtk.Widget, width: number, height: number, inverted_colors: boolean): cairo.Surface;
 
@@ -1874,12 +1890,14 @@ export namespace EvinceDocument {
          * @param source_surface a {@link cairo.Surface}
          * @param width the desired width
          * @param height the desired height
+         * @since 3.14
          */
         static misc_render_thumbnail_surface_with_frame(widget: Gtk.Widget, source_surface: cairo.Surface, width: number, height: number): cairo.Surface;
 
         /**
          * @param widget a {@link Gtk.Widget} to use for style information
          * @param source_pixbuf a {@link GdkPixbuf.Pixbuf}
+         * @since 3.8
          */
         static misc_render_thumbnail_with_frame(widget: Gtk.Widget, source_pixbuf: GdkPixbuf.Pixbuf): GdkPixbuf.Pixbuf;
 
@@ -1940,6 +1958,7 @@ export namespace EvinceDocument {
 
         /**
          * @param rc an {@link EvinceDocument.RenderContext}
+         * @since 3.14
          * @virtual
          */
         vfunc_get_thumbnail_surface(rc: RenderContext): cairo.Surface;
@@ -1971,6 +1990,7 @@ export namespace EvinceDocument {
          * @param fd a file descriptor
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 42.0
          * @virtual
          */
         vfunc_load_fd(fd: number, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
@@ -1981,6 +2001,7 @@ export namespace EvinceDocument {
          * @param file a {@link Gio.File}
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 3.6
          * @virtual
          */
         vfunc_load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
@@ -1991,6 +2012,7 @@ export namespace EvinceDocument {
          * @param stream a {@link Gio.InputStream}
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 3.6
          * @virtual
          */
         vfunc_load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
@@ -2049,6 +2071,7 @@ export namespace EvinceDocument {
 
         /**
          * @returns `true` iff the document has been modified. You can monitor changes to the modification state by connecting to the notify::modified signal on `document`.
+         * @since 3.28
          */
         get_modified(): boolean;
 
@@ -2081,6 +2104,7 @@ export namespace EvinceDocument {
         /**
          * @param rc an {@link EvinceDocument.RenderContext}
          * @returns a {@link cairo.Surface}
+         * @since 3.14
          */
         get_thumbnail_surface(rc: RenderContext): cairo.Surface;
 
@@ -2122,6 +2146,7 @@ export namespace EvinceDocument {
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
+         * @since 42.0
          */
         load_fd(fd: number, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2147,6 +2172,7 @@ export namespace EvinceDocument {
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
+         * @since 3.6
          */
         load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2157,6 +2183,7 @@ export namespace EvinceDocument {
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
+         * @since 3.6
          */
         load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2175,6 +2202,7 @@ export namespace EvinceDocument {
         /**
          * Set the `document` modification state as `modified`.
          * @param modified a boolean value to set the document as modified or not.
+         * @since 3.28
          */
         set_modified(modified: boolean): void;
 
@@ -2832,6 +2860,7 @@ export namespace EvinceDocument {
          * Checks whether `a` and `b` are equal.
          * @param b a {@link EvinceDocument.LinkAction}
          * @returns `true` iff `a` and `b` are equal
+         * @since 3.8
          */
         equal(b: LinkAction): boolean;
 
@@ -3029,6 +3058,7 @@ export namespace EvinceDocument {
          * Checks whether `a` and `b` are equal.
          * @param b a {@link EvinceDocument.LinkDest}
          * @returns `true` iff `a` and `b` are equal
+         * @since 3.8
          */
         equal(b: LinkDest): boolean;
 
@@ -3901,6 +3931,7 @@ export namespace EvinceDocument {
          * @param x X coordinate
          * @param y Y coordinate
          * @returns the {@link EvinceDocument.Mapping} in the list at coordinates (x, y)
+         * @since 3.12
          */
         get(x: number, y: number): Mapping;
 
@@ -3930,6 +3961,7 @@ export namespace EvinceDocument {
 
         /**
          * @param mapping {@link EvinceDocument.Mapping} to remove
+         * @since 3.14
          */
         remove(mapping: Mapping): void;
 
@@ -5134,6 +5166,7 @@ export namespace EvinceDocument {
             /**
              * FIXME
              * @param page a {@link EvinceDocument.Page}
+             * @since 3.10
              * @virtual
              */
             vfunc_get_text_attrs(page: Page): Pango.AttrList;
@@ -5177,6 +5210,7 @@ export namespace EvinceDocument {
          * FIXME
          * @param page a {@link EvinceDocument.Page}
          * @returns a newly created {@link Pango.AttrList}
+         * @since 3.10
          */
         get_text_attrs(page: Page): Pango.AttrList;
 

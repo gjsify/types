@@ -1346,6 +1346,7 @@ export namespace Gegl {
 
         /**
          * Clean up resources used by sampling framework of buffer.
+         * @deprecated since 0.4.2: This function has no effect. It is not necessary to call it after using `gegl_buffer_sample()` or `gegl_buffer_sample_at_level()`.
          */
         sample_cleanup(): void;
 
@@ -4708,6 +4709,7 @@ export namespace Gegl {
          * For safety, this function will check that the swap file is in the swap
          * directory before deletion but it won't perform any other check.
          * @param path the path where the gegl tile backend has swapped.
+         * @deprecated since 0.4.14: This function is not compatible with a dynamically- changing swap path. Use `gegl_buffer_swap_remove_file()` instead.
          */
         static unlink_swap(path: string): void;
 

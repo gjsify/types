@@ -2777,6 +2777,7 @@ export namespace Cogl {
          * Parses an image file enough to extract the width and height
          * of the bitmap.
          * @param filename the file to check
+         * @since 1.0
          */
         static get_size_from_file(filename: string): [Bool, number, number];
     }
@@ -2815,6 +2816,7 @@ export namespace Cogl {
          * Calculates `x` to the `y` power.
          * @param x base
          * @param y {@link Cogl.Fixed} exponent
+         * @since 1.0
          */
         static pow(x: number, y: Fixed): number;
 
@@ -2825,6 +2827,7 @@ export namespace Cogl {
          * This function is around 11 times faster on x86, and around 22 times faster
          * on fpu-less arm than libc pow(2, x).
          * @returns the power of 2 to the passed value
+         * @since 1.0
          */
         pow2(): number;
     }
@@ -2865,6 +2868,7 @@ export namespace Cogl {
         /**
          * Increments the reference count on the `offscreen` framebuffer.
          * @param offscreen A pointer to a {@link Cogl.Offscreen} framebuffer
+         * @deprecated since 1.2: `cogl_object_ref()` should be used in new code.
          */
         static ref(offscreen: null): null;
 
@@ -2872,6 +2876,7 @@ export namespace Cogl {
          * Decreases the reference count for the `offscreen` buffer and frees it when
          * the count reaches 0.
          * @param offscreen A pointer to a {@link Cogl.Offscreen} framebuffer
+         * @deprecated since 1.2: `cogl_object_unref()` should be used in new code.
          */
         static unref(offscreen: null): void;
     }
@@ -2900,6 +2905,7 @@ export namespace Cogl {
          * parameter, when using {@link Cogl.Color}<!-- -->s as keys in a {@link GLib.HashTable}.
          * @param v1 a {@link Cogl.Color}
          * @param v2 a {@link Cogl.Color}
+         * @since 1.0
          */
         static equal(v1: null, v2: null): Bool;
 
@@ -2909,6 +2915,7 @@ export namespace Cogl {
          * @param hue hue value, in the 0 .. 360 range
          * @param saturation saturation value, in the 0 .. 1 range
          * @param luminance luminance value, in the 0 .. 1 range
+         * @since 1.16
          */
         static init_from_hsl(hue: number, saturation: number, luminance: number): Color;
 
@@ -2916,11 +2923,13 @@ export namespace Cogl {
         /**
          * Creates a copy of `color`
          * @returns a newly-allocated {@link Cogl.Color}. Use `cogl_color_free()`   to free the allocate resources
+         * @since 1.0
          */
         copy(): Color;
 
         /**
          * Frees the resources allocated by `cogl_color_new()` and `cogl_color_copy()`
+         * @since 1.0
          */
         free(): void;
 
@@ -2928,6 +2937,7 @@ export namespace Cogl {
          * Retrieves the alpha channel of `color` as a fixed point
          * value between 0 and 1.0.
          * @returns the alpha channel of the passed color
+         * @since 1.0
          */
         get_alpha(): number;
 
@@ -2935,6 +2945,7 @@ export namespace Cogl {
          * Retrieves the alpha channel of `color` as a byte value
          * between 0 and 255
          * @returns the alpha channel of the passed color
+         * @since 1.0
          */
         get_alpha_byte(): number;
 
@@ -2942,6 +2953,7 @@ export namespace Cogl {
          * Retrieves the alpha channel of `color` as a floating point
          * value between 0.0 and 1.0
          * @returns the alpha channel of the passed color
+         * @since 1.0
          */
         get_alpha_float(): number;
 
@@ -2949,6 +2961,7 @@ export namespace Cogl {
          * Retrieves the blue channel of `color` as a fixed point
          * value between 0 and 1.0.
          * @returns the blue channel of the passed color
+         * @since 1.0
          */
         get_blue(): number;
 
@@ -2956,6 +2969,7 @@ export namespace Cogl {
          * Retrieves the blue channel of `color` as a byte value
          * between 0 and 255
          * @returns the blue channel of the passed color
+         * @since 1.0
          */
         get_blue_byte(): number;
 
@@ -2963,6 +2977,7 @@ export namespace Cogl {
          * Retrieves the blue channel of `color` as a floating point
          * value between 0.0 and 1.0
          * @returns the blue channel of the passed color
+         * @since 1.0
          */
         get_blue_float(): number;
 
@@ -2970,6 +2985,7 @@ export namespace Cogl {
          * Retrieves the green channel of `color` as a fixed point
          * value between 0 and 1.0.
          * @returns the green channel of the passed color
+         * @since 1.0
          */
         get_green(): number;
 
@@ -2977,6 +2993,7 @@ export namespace Cogl {
          * Retrieves the green channel of `color` as a byte value
          * between 0 and 255
          * @returns the green channel of the passed color
+         * @since 1.0
          */
         get_green_byte(): number;
 
@@ -2984,6 +3001,7 @@ export namespace Cogl {
          * Retrieves the green channel of `color` as a floating point
          * value between 0.0 and 1.0
          * @returns the green channel of the passed color
+         * @since 1.0
          */
         get_green_float(): number;
 
@@ -2991,6 +3009,7 @@ export namespace Cogl {
          * Retrieves the red channel of `color` as a fixed point
          * value between 0 and 1.0.
          * @returns the red channel of the passed color
+         * @since 1.0
          */
         get_red(): number;
 
@@ -2998,6 +3017,7 @@ export namespace Cogl {
          * Retrieves the red channel of `color` as a byte value
          * between 0 and 255
          * @returns the red channel of the passed color
+         * @since 1.0
          */
         get_red_byte(): number;
 
@@ -3005,6 +3025,7 @@ export namespace Cogl {
          * Retrieves the red channel of `color` as a floating point
          * value between 0.0 and 1.0
          * @returns the red channel of the passed color
+         * @since 1.0
          */
         get_red_float(): number;
 
@@ -3014,12 +3035,14 @@ export namespace Cogl {
          * @param green value of the green channel, between 0 and 1.0
          * @param blue value of the blue channel, between 0 and 1.0
          * @param alpha value of the alpha channel, between 0 and 1.0
+         * @since 1.4
          */
         init_from_4f(red: number, green: number, blue: number, alpha: number): void;
 
         /**
          * Sets the values of the passed channels into a {@link Cogl.Color}
          * @param color_array a pointer to an array of 4 float color components
+         * @since 1.4
          */
         init_from_4fv(color_array: number): void;
 
@@ -3029,6 +3052,7 @@ export namespace Cogl {
          * @param green value of the green channel, between 0 and 255
          * @param blue value of the blue channel, between 0 and 255
          * @param alpha value of the alpha channel, between 0 and 255
+         * @since 1.4
          */
         init_from_4ub(red: number, green: number, blue: number, alpha: number): void;
 
@@ -3036,42 +3060,49 @@ export namespace Cogl {
          * Converts a non-premultiplied color to a pre-multiplied color. For
          * example, semi-transparent red is (1.0, 0, 0, 0.5) when non-premultiplied
          * and (0.5, 0, 0, 0.5) when premultiplied.
+         * @since 1.0
          */
         premultiply(): void;
 
         /**
          * Sets the alpha channel of `color` to `alpha`.
          * @param alpha a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_alpha(alpha: number): void;
 
         /**
          * Sets the alpha channel of `color` to `alpha`.
          * @param alpha a byte value between 0 and 255
+         * @since 1.4
          */
         set_alpha_byte(alpha: number): void;
 
         /**
          * Sets the alpha channel of `color` to `alpha`.
          * @param alpha a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_alpha_float(alpha: number): void;
 
         /**
          * Sets the blue channel of `color` to `blue`.
          * @param blue a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_blue(blue: number): void;
 
         /**
          * Sets the blue channel of `color` to `blue`.
          * @param blue a byte value between 0 and 255
+         * @since 1.4
          */
         set_blue_byte(blue: number): void;
 
         /**
          * Sets the blue channel of `color` to `blue`.
          * @param blue a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_blue_float(blue: number): void;
 
@@ -3081,6 +3112,8 @@ export namespace Cogl {
          * @param green value of the green channel, between 0 and %1.0
          * @param blue value of the blue channel, between 0 and %1.0
          * @param alpha value of the alpha channel, between 0 and %1.0
+         * @since 1.0
+         * @deprecated since 1.4: Use cogl_color_init_from_4f instead.
          */
         set_from_4f(red: number, green: number, blue: number, alpha: number): void;
 
@@ -3090,42 +3123,50 @@ export namespace Cogl {
          * @param green value of the green channel, between 0 and 255
          * @param blue value of the blue channel, between 0 and 255
          * @param alpha value of the alpha channel, between 0 and 255
+         * @since 1.0
+         * @deprecated since 1.4: Use cogl_color_init_from_4ub instead.
          */
         set_from_4ub(red: number, green: number, blue: number, alpha: number): void;
 
         /**
          * Sets the green channel of `color` to `green`.
          * @param green a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_green(green: number): void;
 
         /**
          * Sets the green channel of `color` to `green`.
          * @param green a byte value between 0 and 255
+         * @since 1.4
          */
         set_green_byte(green: number): void;
 
         /**
          * Sets the green channel of `color` to `green`.
          * @param green a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_green_float(green: number): void;
 
         /**
          * Sets the red channel of `color` to `red`.
          * @param red a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_red(red: number): void;
 
         /**
          * Sets the red channel of `color` to `red`.
          * @param red a byte value between 0 and 255
+         * @since 1.4
          */
         set_red_byte(red: number): void;
 
         /**
          * Sets the red channel of `color` to `red`.
          * @param red a float value between 0.0f and 1.0f
+         * @since 1.4
          */
         set_red_float(red: number): void;
 
@@ -3134,6 +3175,7 @@ export namespace Cogl {
          * 
          * The `hue` value is in the 0 .. 360 range. The `luminance` and
          * `saturation` values are in the 0 .. 1 range.
+         * @since 1.16
          */
         to_hsl(): [number, number, number];
 
@@ -3141,6 +3183,7 @@ export namespace Cogl {
          * Converts a pre-multiplied color to a non-premultiplied color. For
          * example, semi-transparent red is (0.5, 0, 0, 0.5) when premultiplied
          * and (1.0, 0, 0, 0.5) when non-premultiplied.
+         * @since 1.4
          */
         unpremultiply(): void;
     }
@@ -3164,12 +3207,16 @@ export namespace Cogl {
         /**
          * Increment the reference count for a {@link Cogl.Material}.
          * @param material a {@link Cogl.Material} object.
+         * @since 1.0
+         * @deprecated since 1.2: Use `cogl_object_ref()` instead
          */
         static ref(material: Handle): Handle;
 
         /**
          * Decrement the reference count for a {@link Cogl.Material}.
          * @param material a {@link Cogl.Material} object.
+         * @since 1.0
+         * @deprecated since 1.2: Use `cogl_object_unref()` instead
          */
         static unref(material: Handle): void;
 
@@ -3184,29 +3231,39 @@ export namespace Cogl {
          * keep track of a materials ancestry which we may use to help minimize GPU
          * state changes.
          * @returns a pointer to the newly allocated {@link Cogl.Material}
+         * @since 1.2
+         * @deprecated since 1.16: Use `cogl_pipeline_copy()` instead
          */
         copy(): Material;
 
         /**
          * Retrieves the current ambient color for `material`
          * @param ambient The location to store the ambient color
+         * @since 1.0
+         * @deprecated since 1.16: Use the `CoglSnippet` shader api for lighting
          */
         get_ambient(ambient: Color): void;
 
         /**
          * Retrieves the current material color.
+         * @since 1.0
+         * @deprecated since 1.16: Use `cogl_pipeline_get_color()` instead
          */
         get_color(): Color;
 
         /**
          * Retrieves the current diffuse color for `material`
          * @param diffuse The location to store the diffuse color
+         * @since 1.0
+         * @deprecated since 1.16: Use the `CoglSnippet` shader api for lighting
          */
         get_diffuse(diffuse: Color): void;
 
         /**
          * Retrieves the materials current emission color.
          * @param emission The location to store the emission color
+         * @since 1.0
+         * @deprecated since 1.16: Use the `CoglSnippet` shader api for lighting
          */
         get_emission(emission: Color): void;
 
@@ -3215,6 +3272,8 @@ export namespace Cogl {
          * texture layer.
          * @param layer_index the layer number to check.
          * @returns whether the texture coordinates will be replaced with point sprite coordinates.
+         * @since 1.4
+         * @deprecated since 1.16: Use `cogl_pipeline_get_layer_point_sprite_coords_enabled()`                  instead
          */
         get_layer_point_sprite_coords_enabled(layer_index: number): Bool;
 
@@ -3223,6 +3282,8 @@ export namespace Cogl {
          * layer.
          * @param layer_index the layer number to change.
          * @returns the wrap mode for the 'p' coordinate of texture lookups on this layer.
+         * @since 1.6
+         * @deprecated since 1.16: Use `cogl_pipeline_get_layer_wrap_mode_p()` instead
          */
         get_layer_wrap_mode_p(layer_index: number): MaterialWrapMode;
 
@@ -3231,6 +3292,8 @@ export namespace Cogl {
          * layer.
          * @param layer_index the layer number to change.
          * @returns the wrap mode for the 's' coordinate of texture lookups on this layer.
+         * @since 1.6
+         * @deprecated since 1.16: Use `cogl_pipeline_get_layer_wrap_mode_s()` instead
          */
         get_layer_wrap_mode_s(layer_index: number): MaterialWrapMode;
 
@@ -3239,6 +3302,8 @@ export namespace Cogl {
          * layer.
          * @param layer_index the layer number to change.
          * @returns the wrap mode for the 't' coordinate of texture lookups on this layer.
+         * @since 1.6
+         * @deprecated since 1.16: Use `cogl_pipeline_get_layer_wrap_mode_t()` instead
          */
         get_layer_wrap_mode_t(layer_index: number): MaterialWrapMode;
 
@@ -3261,6 +3326,8 @@ export namespace Cogl {
         /**
          * Retrieves the number of layers defined for the given `material`
          * @returns the number of layers
+         * @since 1.0
+         * @deprecated since 1.16: Use `cogl_pipeline_get_n_layers()` instead
          */
         get_n_layers(): number;
 
@@ -3268,18 +3335,24 @@ export namespace Cogl {
          * Get the size of points drawn when {@link Cogl.VerticesMode.POINTS} is
          * used with the vertex buffer API.
          * @returns the point size of the material.
+         * @since 1.4
+         * @deprecated since 1.16: Use `cogl_pipeline_get_point_size()` instead
          */
         get_point_size(): number;
 
         /**
          * Retrieves the materials current emission color.
          * @returns The materials current shininess value
+         * @since 1.0
+         * @deprecated since 1.16: Use the `CoglSnippet` shader api for lighting
          */
         get_shininess(): number;
 
         /**
          * Retrieves the materials current specular color.
          * @param specular The location to store the specular color
+         * @since 1.0
+         * @deprecated since 1.16: Use the `CoglSnippet` shader api for lighting
          */
         get_specular(specular: Color): void;
 
@@ -3287,12 +3360,15 @@ export namespace Cogl {
          * Queries what user program has been associated with the given
          * `material` using `cogl_material_set_user_program()`.
          * @returns The current user program   or `COGL_INVALID_HANDLE`.
+         * @since 1.4
+         * @deprecated since 1.16: Use `CoglSnippet` api instead instead
          */
         get_user_program(): Handle;
 
         /**
          * This function removes a layer from your material
          * @param layer_index Specifies the layer you want to remove
+         * @deprecated since 1.16: Use `cogl_pipeline_remove_layer()` instead
          */
         remove_layer(layer_index: number): void;
 
@@ -3306,6 +3382,8 @@ export namespace Cogl {
          * The default is {@link Cogl.MaterialAlphaFunc.ALWAYS}
          * @param alpha_func A `CoglMaterialAlphaFunc` constant
          * @param alpha_reference A reference point that the chosen alpha function uses   to compare incoming fragments to.
+         * @since 1.0
+         * @deprecated since 1.16: Use `cogl_pipeline_set_alpha_test_function()` instead
          */
         set_alpha_test_function(alpha_func: MaterialAlphaFunc, alpha_reference: number): void;
 
@@ -3319,6 +3397,8 @@ export namespace Cogl {
          * 
          * The default value is (0.2, 0.2, 0.2, 1.0)
          * @param ambient The components of the desired ambient color
+         * @since 1.0
+         * @deprecated since 1.16: Use the `CoglSnippet` shader api for lighting
          */
         set_ambient(ambient: Color): void;
 
@@ -3330,6 +3410,8 @@ export namespace Cogl {
          * 
          * The default diffuse color is (0.8, 0.8, 0.8, 1.0)
          * @param color The components of the desired ambient and diffuse colors
+         * @since 1.0
+         * @deprecated since 1.16: Use the `CoglSnippet` shader api for lighting
          */
         set_ambient_and_diffuse(color: Color): void;
 
@@ -3404,6 +3486,8 @@ export namespace Cogl {
          * is in premultiplied form.
          * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>   describing the desired blend function.
          * @returns `true` if the blend string was successfully parsed, and the   described blending is supported by the underlying driver/hardware. If   there was an error, `false` is returned and `error` is set accordingly (if   present).
+         * @since 1.0
+         * @deprecated since 1.16: Use `cogl_pipeline_set_blend()` instead
          */
         set_blend(blend_string: string): Bool;
 
@@ -3411,6 +3495,8 @@ export namespace Cogl {
          * When blending is setup to reference a CONSTANT blend factor then
          * blending will depend on the constant set with this function.
          * @param constant_color The constant color you want
+         * @since 1.0
+         * @deprecated since 1.16: Use `cogl_pipeline_set_blend_constant()` instead
          */
         set_blend_constant(constant_color: Color): void;
 
@@ -3424,6 +3510,8 @@ export namespace Cogl {
          * 
          * The default value is (1.0, 1.0, 1.0, 1.0)
          * @param color The components of the color
+         * @since 1.0
+         * @deprecated since 1.16: Use `cogl_pipeline_set_color()` instead
          */
         set_color(color: Color): void;
 
@@ -3435,6 +3523,8 @@ export namespace Cogl {
          * @param green The green component
          * @param blue The blue component
          * @param alpha The alpha component
+         * @since 1.0
+         * @deprecated since 1.16: Use `cogl_pipeline_set_color4f()` instead
          */
         set_color4f(red: number, green: number, blue: number, alpha: number): void;
 
@@ -3446,6 +3536,8 @@ export namespace Cogl {
          * @param green The green component
          * @param blue The blue component
          * @param alpha The alpha component
+         * @since 1.0
+         * @deprecated since 1.16: Use `cogl_pipeline_set_color4ub()` instead
          */
         set_color4ub(red: number, green: number, blue: number, alpha: number): void;
 
@@ -3456,6 +3548,8 @@ export namespace Cogl {
          * 
          * The default value is (0.8, 0.8, 0.8, 1.0)
          * @param diffuse The components of the desired diffuse color
+         * @since 1.0
+         * @deprecated since 1.16: Use the `CoglSnippet` shader api for lighting
          */
         set_diffuse(diffuse: Color): void;
 
@@ -3466,6 +3560,8 @@ export namespace Cogl {
          * 
          * The default value is (0.0, 0.0, 0.0, 1.0)
          * @param emission The components of the desired emissive color
+         * @since 1.0
+         * @deprecated since 1.16: Use the `CoglSnippet` shader api for lighting
          */
         set_emission(emission: Color): void;
 
@@ -3482,6 +3578,8 @@ export namespace Cogl {
          * as purely GLSL based layers.</note>
          * @param layer_index the index of the layer
          * @param texture a {@link Cogl.Handle} for the layer object
+         * @since 1.0
+         * @deprecated since 1.16: Use `cogl_pipeline_set_layer()` instead
          */
         set_layer(layer_index: number, texture: Handle): void;
 
@@ -3564,6 +3662,8 @@ export namespace Cogl {
          * @param layer_index Specifies the layer you want define a combine function for
          * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>    describing the desired texture combine function.
          * @returns `true` if the blend string was successfully parsed, and the   described texture combining is supported by the underlying driver and   or hardware. On failure, `false` is returned and `error` is set
+         * @since 1.0
+         * @deprecated since 1.16: Use `cogl_pipeline_set_layer_combine()` instead
          */
         set_layer_combine(layer_index: number, blend_string: string): Bool;
 
@@ -3572,6 +3672,8 @@ export namespace Cogl {
          * description then you can use this function to define its value.
          * @param layer_index Specifies the layer you want to specify a constant used               for texture combining
          * @param constant The constant color you want
+         * @since 1.0
+         * @deprecated since 1.16: Use `cogl_pipeline_set_layer_combine_constant()` instead
          */
         set_layer_combine_constant(layer_index: number, constant: Color): void;
 
@@ -3581,6 +3683,7 @@ export namespace Cogl {
          * @param layer_index the layer number to change.
          * @param min_filter the filter used when scaling a texture down.
          * @param mag_filter the filter used when magnifying a texture.
+         * @deprecated since 1.16: Use `cogl_pipeline_set_layer_filters()` instead
          */
         set_layer_filters(layer_index: number, min_filter: MaterialFilter, mag_filter: MaterialFilter): void;
 
@@ -3589,6 +3692,7 @@ export namespace Cogl {
          * and rotate a single layer of a material used to fill your geometry.
          * @param layer_index the index for the layer inside `material`
          * @param matrix the transformation matrix for the layer
+         * @deprecated since 1.16: Use `cogl_pipeline_set_layer_matrix()` instead
          */
         set_layer_matrix(layer_index: number, matrix: Matrix): void;
 
@@ -3606,6 +3710,8 @@ export namespace Cogl {
          * @param layer_index the layer number to change.
          * @param enable whether to enable point sprite coord generation.
          * @returns `true` if the function succeeds, `false` otherwise.
+         * @since 1.4
+         * @deprecated since 1.16: Use `cogl_pipeline_set_layer_point_sprite_coords_enabled()`                  instead
          */
         set_layer_point_sprite_coords_enabled(layer_index: number, enable: Bool): Bool;
 
@@ -3617,6 +3723,8 @@ export namespace Cogl {
          * `cogl_material_set_layer_wrap_mode_p()` separately.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
+         * @since 1.4
+         * @deprecated since 1.16: Use `cogl_pipeline_set_layer_wrap_mode()` instead
          */
         set_layer_wrap_mode(layer_index: number, mode: MaterialWrapMode): void;
 
@@ -3625,6 +3733,8 @@ export namespace Cogl {
          * this layer. 'p' is the third coordinate.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
+         * @since 1.4
+         * @deprecated since 1.16: Use `cogl_pipeline_set_layer_wrap_mode_p()` instead
          */
         set_layer_wrap_mode_p(layer_index: number, mode: MaterialWrapMode): void;
 
@@ -3632,6 +3742,8 @@ export namespace Cogl {
          * Sets the wrap mode for the 's' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
+         * @since 1.4
+         * @deprecated since 1.16: Use `cogl_pipeline_set_layer_wrap_mode_s()` instead
          */
         set_layer_wrap_mode_s(layer_index: number, mode: MaterialWrapMode): void;
 
@@ -3639,6 +3751,8 @@ export namespace Cogl {
          * Sets the wrap mode for the 't' coordinate of texture lookups on this layer.
          * @param layer_index the layer number to change.
          * @param mode the new wrap mode
+         * @since 1.4
+         * @deprecated since 1.16: Use `cogl_pipeline_set_layer_wrap_mode_t()` instead
          */
         set_layer_wrap_mode_t(layer_index: number, mode: MaterialWrapMode): void;
 
@@ -3651,6 +3765,8 @@ export namespace Cogl {
          * screen space so it will be the same regardless of any
          * transformations. The default point size is 1.0.
          * @param point_size the new point size.
+         * @since 1.4
+         * @deprecated since 1.16: Use `cogl_pipeline_set_point_size()` instead
          */
         set_point_size(point_size: number): void;
 
@@ -3662,6 +3778,8 @@ export namespace Cogl {
          * 
          * The default value is 0.0
          * @param shininess The desired shininess; must be >= 0.0
+         * @since 1.0
+         * @deprecated since 1.16: Use the `CoglSnippet` shader api for lighting
          */
         set_shininess(shininess: number): void;
 
@@ -3672,6 +3790,8 @@ export namespace Cogl {
          * 
          * The default value is (0.0, 0.0, 0.0, 1.0)
          * @param specular The components of the desired specular color
+         * @since 1.0
+         * @deprecated since 1.16: Use the `CoglSnippet` shader api for lighting
          */
         set_specular(specular: Color): void;
 
@@ -3717,6 +3837,8 @@ export namespace Cogl {
          * {@link Cogl.FeatureFlags.SHADERS_GLSL} or {@link Cogl.FeatureFlags.SHADERS_ARBFP} before
          * using the cogl_program or cogl_shader API.
          * @param program A {@link Cogl.Handle} to a linked CoglProgram
+         * @since 1.4
+         * @deprecated since 1.16: Use `CoglSnippet` api instead instead
          */
         set_user_program(program: Handle): void;
     }
@@ -3732,12 +3854,14 @@ export namespace Cogl {
         /**
          * Queries the currently set downscaling filter for a material later
          * @returns the current downscaling filter
+         * @deprecated since 1.16: No replacement
          */
         get_mag_filter(): MaterialFilter;
 
         /**
          * Queries the currently set downscaling filter for a material layer
          * @returns the current downscaling filter
+         * @deprecated since 1.16: No replacement
          */
         get_min_filter(): MaterialFilter;
 
@@ -3750,6 +3874,7 @@ export namespace Cogl {
          * should call `cogl_material_layer_get_type()` first in order check it is of
          * type {@link Cogl.MaterialLayerType.TEXTURE} before calling this function.</note>
          * @returns a {@link Cogl.Handle} for the texture inside the layer
+         * @deprecated since 1.16: No replacement
          */
         get_texture(): Handle;
 
@@ -3761,6 +3886,7 @@ export namespace Cogl {
          * based layers in the future, you should write code that checks the type
          * first.
          * @returns the type of the layer
+         * @deprecated since 1.16: No replacement
          */
         get_type(): MaterialLayerType;
 
@@ -3768,18 +3894,24 @@ export namespace Cogl {
          * Gets the wrap mode for the 'p' coordinate of texture lookups on
          * this layer. 'p' is the third coordinate.
          * @returns the wrap mode value for the p coordinate.
+         * @since 1.4
+         * @deprecated since 1.16: Use `cogl_pipeline_layer_get_wrap_mode_p()` instead
          */
         get_wrap_mode_p(): MaterialWrapMode;
 
         /**
          * Gets the wrap mode for the 's' coordinate of texture lookups on this layer.
          * @returns the wrap mode value for the s coordinate.
+         * @since 1.4
+         * @deprecated since 1.16: Use `cogl_pipeline_layer_get_wrap_mode_s()` instead
          */
         get_wrap_mode_s(): MaterialWrapMode;
 
         /**
          * Gets the wrap mode for the 't' coordinate of texture lookups on this layer.
          * @returns the wrap mode value for the t coordinate.
+         * @since 1.4
+         * @deprecated since 1.16: Use `cogl_pipeline_layer_get_wrap_mode_t()` instead
          */
         get_wrap_mode_t(): MaterialWrapMode;
     }
@@ -3858,6 +3990,7 @@ export namespace Cogl {
          * inverse matrix these are not considered in the comparison.
          * @param v1 A 4x4 transformation matrix
          * @param v2 A 4x4 transformation matrix
+         * @since 1.4
          */
         static equal(v1: null, v2: null): Bool;
 
@@ -3866,12 +3999,14 @@ export namespace Cogl {
          * Allocates a new {@link Cogl.Matrix} on the heap and initializes it with
          * the same values as `matrix`.
          * @returns A newly allocated {@link Cogl.Matrix} which should be freed using `cogl_matrix_free()`
+         * @since 1.6
          */
         copy(): Matrix;
 
         /**
          * Frees a {@link Cogl.Matrix} that was previously allocated via a call to
          * `cogl_matrix_copy()`.
+         * @since 1.6
          */
         free(): void;
 
@@ -3902,6 +4037,7 @@ export namespace Cogl {
          * {@link Cogl.Matrix} so that subsequent requests for the inverse transform may
          * avoid costly inversion calculations.</note>
          * @returns `true` if the inverse was successfully calculated or `false`   for degenerate transformations that can't be inverted (in this case the   `inverse` matrix will simply be initialized with the identity matrix)
+         * @since 1.2
          */
         get_inverse(): [Bool, Matrix];
 
@@ -3939,12 +4075,14 @@ export namespace Cogl {
          * @param tx x coordinate of the translation vector
          * @param ty y coordinate of the translation vector
          * @param tz z coordinate of the translation vector
+         * @since 2.0
          */
         init_translation(tx: number, ty: number, tz: number): void;
 
         /**
          * Determines if the given matrix is an identity matrix.
          * @returns `true` if `matrix` is an identity matrix else `false`
+         * @since 1.8
          */
         is_identity(): Bool;
 
@@ -3984,6 +4122,7 @@ export namespace Cogl {
          * @param world_up_x The X component of the world's up direction vector
          * @param world_up_y The Y component of the world's up direction vector
          * @param world_up_z The Z component of the world's up direction vector
+         * @since 1.8
          */
         look_at(eye_position_x: number, eye_position_y: number, eye_position_z: number, object_x: number, object_y: number, object_z: number, world_up_x: number, world_up_y: number, world_up_z: number): void;
 
@@ -4006,6 +4145,7 @@ export namespace Cogl {
          * @param top The coordinate for the top clipping plane
          * @param near The <emphasis>distance</emphasis> to the near clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
          * @param far The <emphasis>distance</emphasis> to the far clipping   plane (will be <emphasis>negative</emphasis> if the plane is   behind the viewer)
+         * @deprecated since 1.10: Use `cogl_matrix_orthographic()`
          */
         ortho(left: number, right: number, bottom: number, top: number, near: number, far: number): void;
 
@@ -4064,6 +4204,7 @@ export namespace Cogl {
         /**
          * Replaces `matrix` with its transpose. Ie, every element (i,j) in the
          * new matrix is taken from element (j,i) in the old matrix.
+         * @since 1.10
          */
         transpose(): void;
     }
@@ -4195,6 +4336,7 @@ export namespace Cogl {
          * is {@link Cogl.TextureComponents.RGBA}. The other constructors which take
          * a %CoglBitmap or a data pointer default to the same components as
          * the pixel format of the data.
+         * @since 1.18
          */
         get_components(): TextureComponents;
 
@@ -4247,6 +4389,7 @@ export namespace Cogl {
          * 
          * By default the pre-multipled state is `TRUE`.
          * @returns `true` if red, green and blue components are               internally stored pre-multiplied by the alpha               value or `false` if not.
+         * @since 1.18
          */
         get_premultiplied(): Bool;
 
@@ -4284,6 +4427,7 @@ export namespace Cogl {
          * an image format as long as {@link Cogl.TextureComponents.RG} isn't used
          * as the texture's components.
          * @param components 
+         * @since 1.18
          */
         set_components(components: TextureComponents): void;
 
@@ -4310,6 +4454,7 @@ export namespace Cogl {
          * 
          * By default the `premultipled` state is `TRUE`.
          * @param premultiplied Whether any internally stored red, green or blue                 components are pre-multiplied by an alpha                 component.
+         * @since 1.18
          */
         set_premultiplied(premultiplied: Bool): void;
 

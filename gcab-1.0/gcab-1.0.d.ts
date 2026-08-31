@@ -202,6 +202,7 @@ export namespace GCab {
          * compiled in at build time. Once this function has been called only specific compression kinds
          * will be used in functions like `gcab_cabinet_load()`.
          * @param compression a {@link GCab.Compression} kind, e.g. {@link GCab.Compression.MSZIP}
+         * @since 1.6
          */
         add_allowed_compression(compression: Compression): void;
 
@@ -246,12 +247,14 @@ export namespace GCab {
          * Lookup the cabinet authenticode signature if any.
          * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          * @returns the array containing the PKCS#7 signed data or `null` on error.
+         * @since 0.5
          */
         get_signature(cancellable: Gio.Cancellable | null): Uint8Array;
 
         /**
          * Get the size of the compressed cabinet file.
          * @returns size in bytes
+         * @since 1.0
          */
         get_size(): number;
 
@@ -355,6 +358,7 @@ export namespace GCab {
         /**
          * Get the file attributes.
          * @returns the cabinet file attributes
+         * @since 0.6
          */
         get_attributes(): number;
 
@@ -362,6 +366,7 @@ export namespace GCab {
          * Get the {@link Gio.File} associated with `file`. This will only be non-`null` if the
          * {@link GCab.File} has been created using `gcab_file_new_with_bytes()`.
          * @returns the associated {@link GLib.Bytes} or `null`
+         * @since 1.0
          */
         get_bytes(): GLib.Bytes;
 
@@ -369,12 +374,14 @@ export namespace GCab {
          * Get the file date, in `result`.
          * @param result a {@link GLib.TimeVal} to return date
          * @returns `true` if `tv` was set
+         * @since 0.6
          */
         get_date(result: GLib.TimeVal): boolean;
 
         /**
          * Gets the file date and returns it as a {@link GLib.DateTime}..
          * @returns file date, or NULL if unknown.
+         * @since 1.4
          */
         get_date_time(): GLib.DateTime;
 
@@ -404,12 +411,14 @@ export namespace GCab {
         /**
          * Get the file size.
          * @returns the cabinet file size
+         * @since 0.6
          */
         get_size(): number;
 
         /**
          * Set the file attributes.
          * @param attr the attributes, e.g. {@link GCab.FileAttribute.RDONLY}
+         * @since 1.0
          */
         set_attributes(attr: number): void;
 
@@ -418,18 +427,21 @@ export namespace GCab {
          * This is most usefule when the {@link GCab.File} has been created using
          * `gcab_file_new_with_bytes()` and the data needs to be modified.
          * @param bytes a {@link GLib.Bytes}
+         * @since 1.5
          */
         set_bytes(bytes: GLib.Bytes | Uint8Array): void;
 
         /**
          * Sets the file modification date, instead of the value provided by the GFile.
          * @param tv a {@link GLib.TimeVal}
+         * @since 1.0
          */
         set_date(tv: GLib.TimeVal): void;
 
         /**
          * Sets the file modification date (instead of the date provided by the GFile)
          * @param dt a {@link GLib.DateTime}
+         * @since 1.4
          */
         set_date_time(dt: GLib.DateTime): void;
 
@@ -523,6 +535,7 @@ export namespace GCab {
         /**
          * Returns the compression used in this folder.
          * @returns a {@link GCab.Compression}, e.g. {@link GCab.Compression.MSZIP}
+         * @since 1.0
          */
         get_comptype(): number;
 

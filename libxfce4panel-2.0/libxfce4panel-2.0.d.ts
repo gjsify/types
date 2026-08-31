@@ -382,6 +382,7 @@ export namespace Libxfce4panel {
          * Whether the button is blinking. If the blink timeout is finished
          * and the button is still highlighted, this functions returns `true`.
          * @returns `true` when `button` is blinking.
+         * @since 4.8
          */
         get_blinking(): boolean;
 
@@ -394,6 +395,7 @@ export namespace Libxfce4panel {
         /**
          * Make the button blink.
          * @param blinking `true` when the button should start blinking, `false` to             stop the blinking.
+         * @since 4.8
          */
         set_blinking(blinking: boolean): void;
 
@@ -419,6 +421,7 @@ export namespace Libxfce4panel {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -428,6 +431,7 @@ export namespace Libxfce4panel {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -553,6 +557,8 @@ export namespace Libxfce4panel {
         // Methods
         /**
          * Resets the image to be empty.
+         * @since 4.8
+         * @deprecated since 4.18.1: Use `gtk_image_clear()` instead.
          */
         clear(): void;
 
@@ -560,18 +566,24 @@ export namespace Libxfce4panel {
          * The size of the image, set by `xfce_panel_image_set_size()` or -1
          * if no size is forced and the image is scaled to the allocation size.
          * @returns icon size in pixels of the image or -1.
+         * @since 4.8
+         * @deprecated since 4.18.1: Use `gtk_image_get_pixel_size()` or get the size from the {@link Gtk.Image} storage type instead.
          */
         get_size(): number;
 
         /**
          * See `xfce_panel_image_new_from_pixbuf()` for details.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}, or `null`.
+         * @since 4.8
+         * @deprecated since 4.18.1: Use `gtk_image_set_from_pixbuf()`.
          */
         set_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf | null): void;
 
         /**
          * See `xfce_panel_image_new_from_source()` for details.
          * @param source source of the image. This can be an absolute path or           an icon-name or `null`.
+         * @since 4.8
+         * @deprecated since 4.18.1: Use `xfce_panel_set_image_from_source()` instead.
          */
         set_from_source(source: string | null): void;
 
@@ -580,6 +592,8 @@ export namespace Libxfce4panel {
          * size, see introduction for more details. You can set a `size` of
          * -1 to turn this off.
          * @param size a new size in pixels.
+         * @since 4.8
+         * @deprecated since 4.18.1: Use `gtk_image_set_pixel_size()` or set the size from the {@link Gtk.Image} storage type instead.
          */
         set_size(size: number): void;
 
@@ -589,6 +603,7 @@ export namespace Libxfce4panel {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -600,6 +615,7 @@ export namespace Libxfce4panel {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -610,6 +626,7 @@ export namespace Libxfce4panel {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -620,6 +637,7 @@ export namespace Libxfce4panel {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -629,6 +647,7 @@ export namespace Libxfce4panel {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -637,6 +656,7 @@ export namespace Libxfce4panel {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -647,6 +667,7 @@ export namespace Libxfce4panel {
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -657,6 +678,7 @@ export namespace Libxfce4panel {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -665,12 +687,14 @@ export namespace Libxfce4panel {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -680,6 +704,7 @@ export namespace Libxfce4panel {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -691,6 +716,7 @@ export namespace Libxfce4panel {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -702,6 +728,7 @@ export namespace Libxfce4panel {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -713,6 +740,7 @@ export namespace Libxfce4panel {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -722,6 +750,7 @@ export namespace Libxfce4panel {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -730,6 +759,7 @@ export namespace Libxfce4panel {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -740,6 +770,7 @@ export namespace Libxfce4panel {
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -751,6 +782,7 @@ export namespace Libxfce4panel {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -760,6 +792,7 @@ export namespace Libxfce4panel {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -767,6 +800,7 @@ export namespace Libxfce4panel {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -1223,6 +1257,7 @@ export namespace Libxfce4panel {
          * @param menu a {@link Gtk.Menu}.
          * @param push_in keep inside the screen (see {@link Gtk.MenuPositionFunc})
          * @param panel_plugin an {@link Libxfce4panel.PanelPlugin}.
+         * @deprecated since 4.17.2: Use `xfce_panel_plugin_popup_menu()` instead.
          */
         static position_menu(menu: Gtk.Menu, push_in: boolean, panel_plugin: null): [number, number];
 
@@ -1371,6 +1406,7 @@ export namespace Libxfce4panel {
          * 
          * see the code of the launcher plugin how to use this.
          * @returns the argument vector. The vector is owned by the plugin and          should not be freed.
+         * @since 4.8
          */
         get_arguments(): string[];
 
@@ -1378,6 +1414,7 @@ export namespace Libxfce4panel {
          * This returns the translated comment of the plugin set in
          * the .desktop file of the plugin.
          * @returns the (translated) comment of the plugin.
+         * @since 4.8
          */
         get_comment(): string;
 
@@ -1398,6 +1435,7 @@ export namespace Libxfce4panel {
         /**
          * Returns either the icon size defined in the panel's settings or
          * a preferred icon size.
+         * @since 4.14
          */
         get_icon_size(): number;
 
@@ -1412,12 +1450,14 @@ export namespace Libxfce4panel {
          * before you write any values or query the kiosk mode using the
          * api in libxfce4util.
          * @returns `true` if the user is not allowed to modify the plugin,          `false` is customization is allowed.
+         * @since 4.8
          */
         get_locked(): boolean;
 
         /**
          * The mode of the panel in which the plugin is embedded.
          * @returns the current {@link Libxfce4panel.PanelPluginMode} of the panel.
+         * @since 4.10
          */
         get_mode(): PanelPluginMode;
 
@@ -1430,6 +1470,7 @@ export namespace Libxfce4panel {
         /**
          * The number of rows of the panel in which the plugin is embedded.
          * @returns the current number of rows of the panel.
+         * @since 4.10
          */
         get_nrows(): number;
 
@@ -1457,6 +1498,7 @@ export namespace Libxfce4panel {
          * is effective with plugins that do not have expand set, but can accept
          * a smaller size when needed.
          * @returns `true` when the plugin can shrink,          `false` otherwise.
+         * @since 4.10
          */
         get_shrink(): boolean;
 
@@ -1470,6 +1512,7 @@ export namespace Libxfce4panel {
          * Whether the plugin is small enough to fit in a single row of
          * a multi-row panel. E.g. if it is a button-like applet.
          * @returns `true` when the plugin is small,          `false` otherwise.
+         * @since 4.10
          */
         get_small(): boolean;
 
@@ -1533,6 +1576,7 @@ export namespace Libxfce4panel {
          * @param menu a {@link Gtk.Menu}.
          * @param widget the {@link Gtk.Widget} to align `menu` with or `null`                  to pop up `menu` at pointer.
          * @param trigger_event the {@link Gdk.Event} that initiated this request or                  `null` if it's the current event.
+         * @since 4.17.2
          */
         popup_menu(menu: Gtk.Menu, widget: Gtk.Widget | null, trigger_event: Gdk.Event | null): void;
 
@@ -1555,6 +1599,7 @@ export namespace Libxfce4panel {
          * See also: `xfce_panel_plugin_popup_menu()` and `xfce_panel_plugin_position_widget()`.
          * @param window a {@link Gtk.Window}.
          * @param widget the {@link Gtk.Widget} to align `window` with or `null` to use `plugin` as `widget`.
+         * @since 4.19.0
          */
         popup_window(window: Gtk.Window, widget: Gtk.Widget | null): void;
 
@@ -1598,6 +1643,7 @@ export namespace Libxfce4panel {
          * menu item or button to remove theirselfs from the panel, but only
          * in case the there are problems with the plugin in the panel. Always
          * try to inform the user why this occured.
+         * @since 4.8
          */
         remove(): void;
 
@@ -1636,6 +1682,7 @@ export namespace Libxfce4panel {
          * Connect a dialog to a plugin. When the `plugin` is closed, it will
          * destroy the `window`.
          * @param window a {@link Gtk.Window}.
+         * @since 4.8
          */
         take_window(window: Gtk.Window): void;
 

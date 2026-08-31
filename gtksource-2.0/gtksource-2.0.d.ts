@@ -486,6 +486,7 @@ export namespace GtkSource {
          * @param iter an iterator.
          * @param category category to search for, or `null`
          * @returns whether `iter` was moved.
+         * @since 2.2
          */
         backward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): boolean;
 
@@ -518,6 +519,7 @@ export namespace GtkSource {
          * @param category a string defining the mark category.
          * @param where location to place the mark.
          * @returns a new {@link GtkSource.Mark}, owned by the buffer.
+         * @since 2.2
          */
         create_source_mark(name: string | null, category: string, where: Gtk.TextIter): Mark;
 
@@ -551,6 +553,7 @@ export namespace GtkSource {
          * @param iter an iterator.
          * @param category category to search for, or `null`
          * @returns whether `iter` was moved.
+         * @since 2.2
          */
         forward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): boolean;
 
@@ -608,6 +611,7 @@ export namespace GtkSource {
          * @param iter a {@link Gtk.TextIter}.
          * @param context_class the context class.
          * @returns whether we found a context class toggle before `iter`
+         * @since 2.10
          */
         iter_backward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): boolean;
 
@@ -620,6 +624,7 @@ export namespace GtkSource {
          * @param iter a {@link Gtk.TextIter}.
          * @param context_class the context class.
          * @returns whether we found a context class toggle after `iter`
+         * @since 2.10
          */
         iter_forward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): boolean;
 
@@ -627,6 +632,7 @@ export namespace GtkSource {
          * Check if the class `context_klass` is set on `iter`.
          * @param iter a {@link Gtk.TextIter}.
          * @param context_class class to search for.
+         * @since 2.10
          */
         iter_has_context_class(iter: Gtk.TextIter, context_class: string): boolean;
 
@@ -642,6 +648,7 @@ export namespace GtkSource {
          * @param start a {@link Gtk.TextIter}.
          * @param end a {@link Gtk.TextIter}.
          * @param category category to search for, or `null`.
+         * @since 2.2
          */
         remove_source_marks(start: Gtk.TextIter, end: Gtk.TextIter, category: string | null): void;
 
@@ -1745,18 +1752,21 @@ export namespace GtkSource {
          * Inserts `renderer` into `gutter` at `position`.
          * @param renderer a {@link Gtk.CellRenderer}.
          * @param position the renderers position.
+         * @since 2.8
          */
         insert(renderer: Gtk.CellRenderer, position: number): void;
 
         /**
          * Invalidates the drawable area of the gutter. You can use this to force a
          * redraw of the gutter if something has changed and needs to be redrawn.
+         * @since 2.8
          */
         queue_draw(): void;
 
         /**
          * Removes `renderer` from `gutter`.
          * @param renderer a {@link Gtk.CellRenderer}.
+         * @since 2.8
          */
         remove(renderer: Gtk.CellRenderer): void;
 
@@ -1764,6 +1774,7 @@ export namespace GtkSource {
          * Reorders `renderer` in `gutter` to new `position`.
          * @param renderer a {@link Gtk.CellRenderer}.
          * @param position the new renderer position.
+         * @since 2.8
          */
         reorder(renderer: Gtk.CellRenderer, position: number): void;
 
@@ -1772,6 +1783,7 @@ export namespace GtkSource {
          * used to setup the cell renderer properties for rendering the current cell.
          * @param renderer a {@link Gtk.CellRenderer}.
          * @param func the {@link GtkSource.GutterDataFunc} to use.
+         * @since 2.8
          */
         set_cell_data_func(renderer: Gtk.CellRenderer, func: GutterDataFunc | null): void;
 
@@ -1781,6 +1793,7 @@ export namespace GtkSource {
          * of the cell.
          * @param renderer a {@link Gtk.CellRenderer}.
          * @param func the {@link GtkSource.GutterSizeFunc} to use.
+         * @since 2.8
          */
         set_cell_size_func(renderer: Gtk.CellRenderer, func: GutterSizeFunc | null): void;
     }
@@ -2035,6 +2048,7 @@ export namespace GtkSource {
          * @param filename a filename in Glib filename encoding, or `null`.
          * @param content_type a content type (as in GIO API), or `null`.
          * @returns a {@link GtkSource.Language}, or `null` if there is no suitable language for given `filename` and/or `content_type`. Return value is owned by `lm` and should not be freed.
+         * @since 2.4
          */
         guess_language(filename: string | null, content_type: string | null): Language;
 
@@ -2122,6 +2136,7 @@ export namespace GtkSource {
         /**
          * Returns the mark category.
          * @returns the category of the {@link GtkSource.Mark}.
+         * @since 2.2
          */
         get_category(): string;
     }
@@ -2547,6 +2562,7 @@ export namespace GtkSource {
          * Returns the name of the font used to print the text body. The returned string
          * must be freed with `g_free()`.
          * @returns a new string containing the name of the font used to print the text body.
+         * @since 2.2
          */
         get_body_font_name(): string;
 
@@ -2554,6 +2570,7 @@ export namespace GtkSource {
          * Gets the bottom margin in units of `unit`.
          * @param unit the unit for the return value.
          * @returns the bottom margin.
+         * @since 2.2
          */
         get_bottom_margin(unit: Gtk.Unit): number;
 
@@ -2562,6 +2579,7 @@ export namespace GtkSource {
          * object reference is owned by the compositor object and
          * should not be unreferenced.
          * @returns the {@link GtkSource.Buffer} associated with the compositor.
+         * @since 2.2
          */
         get_buffer(): Buffer;
 
@@ -2569,6 +2587,7 @@ export namespace GtkSource {
          * Returns the name of the font used to print the page footer.
          * The returned string must be freed with `g_free()`.
          * @returns a new string containing the name of the font used to print the page footer.
+         * @since 2.2
          */
         get_footer_font_name(): string;
 
@@ -2576,6 +2595,7 @@ export namespace GtkSource {
          * Returns the name of the font used to print the page header.
          * The returned string must be freed with `g_free()`.
          * @returns a new string containing the name of the font used to print the page header.
+         * @since 2.2
          */
         get_header_font_name(): string;
 
@@ -2584,6 +2604,7 @@ export namespace GtkSource {
          * buffer rules.  Note that highlighting will happen
          * only if the buffer to print has highlighting activated.
          * @returns `true` if the printed output will be highlighted.
+         * @since 2.2
          */
         get_highlight_syntax(): boolean;
 
@@ -2591,6 +2612,7 @@ export namespace GtkSource {
          * Gets the left margin in units of `unit`.
          * @param unit the unit for the return value.
          * @returns the left margin
+         * @since 2.2
          */
         get_left_margin(unit: Gtk.Unit): number;
 
@@ -2598,6 +2620,7 @@ export namespace GtkSource {
          * Returns the name of the font used to print line numbers on the left margin.
          * The returned string must be freed with `g_free()`.
          * @returns a new string containing the name of the font used to print line numbers on the left margin.
+         * @since 2.2
          */
         get_line_numbers_font_name(): string;
 
@@ -2605,12 +2628,14 @@ export namespace GtkSource {
          * Returns the number of pages in the document or <code>-1</code> if the
          * document has not been completely paginated.
          * @returns the number of pages in the document or <code>-1</code> if the document has not been completely paginated.
+         * @since 2.2
          */
         get_n_pages(): number;
 
         /**
          * Returns the current fraction of the document pagination that has been completed.
          * @returns a fraction from 0.0 to 1.0 inclusive.
+         * @since 2.2
          */
         get_pagination_progress(): number;
 
@@ -2620,6 +2645,7 @@ export namespace GtkSource {
          * <emphasis>and</emphasis> some format strings have been specified
          * with `gtk_source_print_compositor_set_footer_format()`.
          * @returns `true` if the footer is set to be printed.
+         * @since 2.2
          */
         get_print_footer(): boolean;
 
@@ -2629,6 +2655,7 @@ export namespace GtkSource {
          * <emphasis>and</emphasis> some format strings have been specified
          * with `gtk_source_print_compositor_set_header_format()`.
          * @returns `true` if the header is set to be printed.
+         * @since 2.2
          */
         get_print_header(): boolean;
 
@@ -2637,6 +2664,7 @@ export namespace GtkSource {
          * value is 0, no line numbers will be printed.  The default value is
          * 1 (i.e. numbers printed in all lines).
          * @returns the interval of printed line numbers.
+         * @since 2.2
          */
         get_print_line_numbers(): number;
 
@@ -2644,12 +2672,14 @@ export namespace GtkSource {
          * Gets the right margin in units of `unit`.
          * @param unit the unit for the return value.
          * @returns the right margin.
+         * @since 2.2
          */
         get_right_margin(unit: Gtk.Unit): number;
 
         /**
          * Returns the width of tabulation in characters for printed text.
          * @returns width of tab.
+         * @since 2.2
          */
         get_tab_width(): number;
 
@@ -2657,12 +2687,14 @@ export namespace GtkSource {
          * Gets the top margin in units of `unit`.
          * @param unit the unit for the return value.
          * @returns the top margin.
+         * @since 2.2
          */
         get_top_margin(unit: Gtk.Unit): number;
 
         /**
          * Gets the line wrapping mode for the printed text.
          * @returns the line wrap mode.
+         * @since 2.2
          */
         get_wrap_mode(): Gtk.WrapMode;
 
@@ -2729,6 +2761,7 @@ export namespace GtkSource {
          * </programlisting></informalexample>
          * @param context the {@link Gtk.PrintContext} whose parameters (e.g. paper size, print margins, etc.) are used by the the `compositor` to paginate the document.
          * @returns `true` if the document has been completely paginated, `false` otherwise.
+         * @since 2.2
          */
         paginate(context: Gtk.PrintContext): boolean;
 
@@ -2743,6 +2776,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the default font for the body text.
+         * @since 2.2
          */
         set_body_font_name(font_name: string): void;
 
@@ -2750,6 +2784,7 @@ export namespace GtkSource {
          * Sets the bottom margin used by `compositor`.
          * @param margin the new bottom margin in units of `unit`.
          * @param unit the units for `margin`.
+         * @since 2.2
          */
         set_bottom_margin(margin: number, unit: Gtk.Unit): void;
 
@@ -2766,6 +2801,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for the footer text, or `null`.
+         * @since 2.2
          */
         set_footer_font_name(font_name: string | null): void;
 
@@ -2792,6 +2828,7 @@ export namespace GtkSource {
          * @param left a format string to print on the left of the footer.
          * @param center a format string to print on the center of the footer.
          * @param right a format string to print on the right of the footer.
+         * @since 2.2
          */
         set_footer_format(separator: boolean, left: string | null, center: string | null, right: string | null): void;
 
@@ -2808,6 +2845,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for header text, or `null`.
+         * @since 2.2
          */
         set_header_font_name(font_name: string | null): void;
 
@@ -2834,6 +2872,7 @@ export namespace GtkSource {
          * @param left a format string to print on the left of the header.
          * @param center a format string to print on the center of the header.
          * @param right a format string to print on the right of the header.
+         * @since 2.2
          */
         set_header_format(separator: boolean, left: string | null, center: string | null, right: string | null): void;
 
@@ -2844,6 +2883,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param highlight whether syntax should be highlighted.
+         * @since 2.2
          */
         set_highlight_syntax(highlight: boolean): void;
 
@@ -2851,6 +2891,7 @@ export namespace GtkSource {
          * Sets the left margin used by `compositor`.
          * @param margin the new left margin in units of `unit`.
          * @param unit the units for `margin`.
+         * @since 2.2
          */
         set_left_margin(margin: number, unit: Gtk.Unit): void;
 
@@ -2867,6 +2908,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for line numbers, or `null`.
+         * @since 2.2
          */
         set_line_numbers_font_name(font_name: string | null): void;
 
@@ -2882,6 +2924,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param print `true` if you want the footer to be printed.
+         * @since 2.2
          */
         set_print_footer(print: boolean): void;
 
@@ -2897,6 +2940,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param print `true` if you want the header to be printed.
+         * @since 2.2
          */
         set_print_header(print: boolean): void;
 
@@ -2910,6 +2954,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param interval interval for printed line numbers.
+         * @since 2.2
          */
         set_print_line_numbers(interval: number): void;
 
@@ -2917,6 +2962,7 @@ export namespace GtkSource {
          * Sets the right margin used by `compositor`.
          * @param margin the new right margin in units of `unit`.
          * @param unit the units for `margin`.
+         * @since 2.2
          */
         set_right_margin(margin: number, unit: Gtk.Unit): void;
 
@@ -2926,6 +2972,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param width width of tab in characters.
+         * @since 2.2
          */
         set_tab_width(width: number): void;
 
@@ -2933,6 +2980,7 @@ export namespace GtkSource {
          * Sets the top margin used by `compositor`.
          * @param margin the new top margin in units of `unit`
          * @param unit the units for `margin`
+         * @since 2.2
          */
         set_top_margin(margin: number, unit: Gtk.Unit): void;
 
@@ -2942,6 +2990,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param wrap_mode a {@link Gtk.WrapMode}.
+         * @since 2.2
          */
         set_wrap_mode(wrap_mode: Gtk.WrapMode): void;
     }
@@ -3247,26 +3296,31 @@ export namespace GtkSource {
         // Methods
         /**
          * @returns a `null`-terminated array containing the `scheme` authors or `null` if no author is specified by the style scheme.
+         * @since 2.0
          */
         get_authors(): string[];
 
         /**
          * @returns `scheme` description (if defined), or `null`.
+         * @since 2.0
          */
         get_description(): string;
 
         /**
          * @returns `scheme` file name if the scheme was created parsing a style scheme file or `null` in the other cases.
+         * @since 2.0
          */
         get_filename(): string;
 
         /**
          * @returns `scheme` id.
+         * @since 2.0
          */
         get_id(): string;
 
         /**
          * @returns `scheme` name.
+         * @since 2.0
          */
         get_name(): string;
     }
@@ -3777,6 +3831,7 @@ export namespace GtkSource {
          * GTK_TEXT_WINDOW_LEFT.
          * @param window_type the gutter window type.
          * @returns the {@link GtkSource.Gutter}.
+         * @since 2.8
          */
         get_gutter(window_type: Gtk.TextWindowType): Gutter;
 
@@ -3790,6 +3845,7 @@ export namespace GtkSource {
          * Returns whether when the tab key is pressed the current selection
          * should get indented instead of replaced with the \t character.
          * @returns `true` if the selection is indented when tab is pressed.
+         * @since 1.8
          */
         get_indent_on_tab(): boolean;
 
@@ -3812,6 +3868,7 @@ export namespace GtkSource {
          * @param category a mark category.
          * @param dest destination {@link Gdk.Color} structure to fill in.
          * @returns `true` if background color for `category` was set and `dest` is set to a valid color, or `false` otherwise.
+         * @since 2.4
          */
         get_mark_category_background(category: string, dest: Gdk.Color): boolean;
 
@@ -3819,6 +3876,7 @@ export namespace GtkSource {
          * Gets the priority which is associated with the given `category`.
          * @param category a mark category.
          * @returns the priority or if `category` exists but no priority was set, it defaults to 0.
+         * @since 2.2
          */
         get_mark_category_priority(category: string): number;
 
@@ -3831,6 +3889,7 @@ export namespace GtkSource {
         /**
          * Returns whether line marks are displayed beside the text.
          * @returns `true` if the line marks are displayed.
+         * @since 2.2
          */
         get_show_line_marks(): boolean;
 
@@ -3891,6 +3950,7 @@ export namespace GtkSource {
          * selected text is indented of one level instead of being replaced with
          * the \t characters. Shift+Tab unindents the selection.
          * @param enable whether to indent a block when tab is pressed.
+         * @since 1.8
          */
         set_indent_on_tab(enable: boolean): void;
 
@@ -3914,6 +3974,7 @@ export namespace GtkSource {
          * If `color` is `null`, the background color is unset.
          * @param category a mark category.
          * @param color background color or `null` to unset it.
+         * @since 2.4
          */
         set_mark_category_background(category: string, color: Gdk.Color | null): void;
 
@@ -3922,6 +3983,7 @@ export namespace GtkSource {
          * If `name` is `null`, the icon is unset.
          * @param category a mark category.
          * @param name the themed icon name, or `null`.
+         * @since 2.8
          */
         set_mark_category_icon_from_icon_name(category: string, name: string | null): void;
 
@@ -3930,6 +3992,7 @@ export namespace GtkSource {
          * If `pixbuf` is `null`, the icon is unset.
          * @param category a mark category.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}, or `null`.
+         * @since 2.8
          */
         set_mark_category_icon_from_pixbuf(category: string, pixbuf: GdkPixbuf.Pixbuf | null): void;
 
@@ -3938,6 +4001,7 @@ export namespace GtkSource {
          * If `stock_id` is `null`, the icon is unset.
          * @param category a mark category.
          * @param stock_id the stock id, or `null`.
+         * @since 2.8
          */
         set_mark_category_icon_from_stock(category: string, stock_id: string | null): void;
 
@@ -3946,6 +4010,8 @@ export namespace GtkSource {
          * If `pixbuf` is `null`, the pixbuf is unset.
          * @param category a mark category.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}, or `null`.
+         * @since 2.2
+         * @deprecated Use `gtk_source_view_set_mark_category_icon_from_pixbuf` instead.
          */
         set_mark_category_pixbuf(category: string, pixbuf: GdkPixbuf.Pixbuf | null): void;
 
@@ -3955,6 +4021,7 @@ export namespace GtkSource {
          * higher priorities will be drawn on top.
          * @param category a mark category.
          * @param priority the priority for the category
+         * @since 2.2
          */
         set_mark_category_priority(category: string, priority: number): void;
 
@@ -3987,6 +4054,7 @@ export namespace GtkSource {
          * ]]></programlisting></informalexample>
          * @param category a mark category.
          * @param func a {@link GtkSource.ViewMarkTooltipFunc} or `null`.
+         * @since 2.8
          */
         set_mark_category_tooltip_func(category: string, func: ViewMarkTooltipFunc | null): void;
 
@@ -3994,6 +4062,7 @@ export namespace GtkSource {
          * See `gtk_source_view_set_mark_category_tooltip_func()` for more information.
          * @param category a mark category.
          * @param markup_func a {@link GtkSource.ViewMarkTooltipFunc} or `null`.
+         * @since 2.8
          */
         set_mark_category_tooltip_markup_func(category: string, markup_func: ViewMarkTooltipFunc | null): void;
 
@@ -4006,6 +4075,7 @@ export namespace GtkSource {
         /**
          * If `true` line marks will be displayed beside the text.
          * @param show whether line marks should be displayed.
+         * @since 2.2
          */
         set_show_line_marks(show: boolean): void;
 
@@ -4599,36 +4669,42 @@ export namespace GtkSource {
              * Begin a not undoable action on the buffer. All changes between this call
              * and the call to `gtk_source_undo_manager_end_not_undoable_action` cannot
              * be undone. This function should be re-entrant.
+             * @since 2.10
              * @virtual
              */
             vfunc_begin_not_undoable_action(): void;
 
             /**
              * Get whether there are redo operations available.
+             * @since 2.10
              * @virtual
              */
             vfunc_can_redo(): boolean;
 
             /**
              * Emits the {@link GtkSource.UndoManager.SignalSignatures.can_redo_changed | GtkSource.UndoManager::can-redo-changed} signal.
+             * @since 2.10
              * @virtual
              */
             vfunc_can_redo_changed(): void;
 
             /**
              * Get whether there are undo operations available.
+             * @since 2.10
              * @virtual
              */
             vfunc_can_undo(): boolean;
 
             /**
              * Emits the {@link GtkSource.UndoManager.SignalSignatures.can_undo_changed | GtkSource.UndoManager::can-undo-changed} signal.
+             * @since 2.10
              * @virtual
              */
             vfunc_can_undo_changed(): void;
 
             /**
              * Ends a not undoable action on the buffer.
+             * @since 2.10
              * @virtual
              */
             vfunc_end_not_undoable_action(): void;
@@ -4637,6 +4713,7 @@ export namespace GtkSource {
              * Perform a single redo. Calling this function when there are no redo operations
              * available is an error. Use `gtk_source_undo_manager_can_redo` to find out
              * if there are redo operations available.
+             * @since 2.10
              * @virtual
              */
             vfunc_redo(): void;
@@ -4645,6 +4722,7 @@ export namespace GtkSource {
              * Perform a single undo. Calling this function when there are no undo operations
              * available is an error. Use `gtk_source_undo_manager_can_undo` to find out
              * if there are undo operations available.
+             * @since 2.10
              * @virtual
              */
             vfunc_undo(): void;
@@ -4669,33 +4747,39 @@ export namespace GtkSource {
          * Begin a not undoable action on the buffer. All changes between this call
          * and the call to `gtk_source_undo_manager_end_not_undoable_action` cannot
          * be undone. This function should be re-entrant.
+         * @since 2.10
          */
         begin_not_undoable_action(): void;
 
         /**
          * Get whether there are redo operations available.
          * @returns `true` if there are redo operations available, `false` otherwise
+         * @since 2.10
          */
         can_redo(): boolean;
 
         /**
          * Emits the {@link GtkSource.UndoManager.SignalSignatures.can_redo_changed | GtkSource.UndoManager::can-redo-changed} signal.
+         * @since 2.10
          */
         can_redo_changed(): void;
 
         /**
          * Get whether there are undo operations available.
          * @returns `true` if there are undo operations available, `false` otherwise
+         * @since 2.10
          */
         can_undo(): boolean;
 
         /**
          * Emits the {@link GtkSource.UndoManager.SignalSignatures.can_undo_changed | GtkSource.UndoManager::can-undo-changed} signal.
+         * @since 2.10
          */
         can_undo_changed(): void;
 
         /**
          * Ends a not undoable action on the buffer.
+         * @since 2.10
          */
         end_not_undoable_action(): void;
 
@@ -4703,6 +4787,7 @@ export namespace GtkSource {
          * Perform a single redo. Calling this function when there are no redo operations
          * available is an error. Use `gtk_source_undo_manager_can_redo` to find out
          * if there are redo operations available.
+         * @since 2.10
          */
         redo(): void;
 
@@ -4710,6 +4795,7 @@ export namespace GtkSource {
          * Perform a single undo. Calling this function when there are no undo operations
          * available is an error. Use `gtk_source_undo_manager_can_undo` to find out
          * if there are undo operations available.
+         * @since 2.10
          */
         undo(): void;
     }

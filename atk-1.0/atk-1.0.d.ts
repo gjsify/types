@@ -2175,6 +2175,8 @@ export namespace Atk {
 
         /**
          * Determines whether this AtkHyperlink is selected
+         * @since 1.4
+         * @deprecated since 1.8: Please use ATK_STATE_FOCUSABLE for all links, and ATK_STATE_FOCUSED for focused links.
          * @virtual
          */
         vfunc_is_selected_link(): boolean;
@@ -2250,6 +2252,8 @@ export namespace Atk {
         /**
          * Determines whether this AtkHyperlink is selected
          * @returns True if the AtkHyperlink is selected, False otherwise
+         * @since 1.4
+         * @deprecated since 1.8: Please use ATK_STATE_FOCUSABLE for all links, and ATK_STATE_FOCUSED for focused links.
          */
         is_selected_link(): boolean;
 
@@ -2481,6 +2485,8 @@ export namespace Atk {
         // Static methods
         /**
          * Obtain the singleton instance of AtkMisc for this application.
+         * @since 1.13
+         * @deprecated Since 2.12.
          */
         static get_instance(): Misc;
 
@@ -2490,6 +2496,8 @@ export namespace Atk {
          * if one exists.
          * (This method is implemented by the toolkit ATK implementation layer;
          *  for instance, for GTK+, GAIL implements this via GDK_THREADS_ENTER).
+         * @since 1.13
+         * @deprecated Since 2.12.
          * @virtual
          */
         vfunc_threads_enter(): void;
@@ -2504,6 +2512,8 @@ export namespace Atk {
          * be bracketed by atk_misc_threads_leave/atk_misc_threads_enter calls.
          * (This method is implemented by the toolkit ATK implementation layer;
          *  for instance, for GTK+, GAIL implements this via GDK_THREADS_LEAVE).
+         * @since 1.13
+         * @deprecated Since 2.12.
          * @virtual
          */
         vfunc_threads_leave(): void;
@@ -2514,6 +2524,8 @@ export namespace Atk {
          * if one exists.
          * (This method is implemented by the toolkit ATK implementation layer;
          *  for instance, for GTK+, GAIL implements this via GDK_THREADS_ENTER).
+         * @since 1.13
+         * @deprecated Since 2.12.
          */
         threads_enter(): void;
 
@@ -2527,6 +2539,8 @@ export namespace Atk {
          * be bracketed by atk_misc_threads_leave/atk_misc_threads_enter calls.
          * (This method is implemented by the toolkit ATK implementation layer;
          *  for instance, for GTK+, GAIL implements this via GDK_THREADS_LEAVE).
+         * @since 1.13
+         * @deprecated Since 2.12.
          */
         threads_leave(): void;
     }
@@ -2826,6 +2840,7 @@ export namespace Atk {
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
          * @returns An alpha value from 0 to 1.0, inclusive.
+         * @since 1.12
          */
         get_alpha(): number;
 
@@ -2858,6 +2873,7 @@ export namespace Atk {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_position(coord_type: CoordType): [number, number];
 
@@ -2872,6 +2888,7 @@ export namespace Atk {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_size(): [number, number];
 
@@ -2896,6 +2913,7 @@ export namespace Atk {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          */
         remove_focus_handler(handler_id: number): void;
 
@@ -2907,6 +2925,7 @@ export namespace Atk {
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to(type: ScrollType): boolean;
 
@@ -2917,6 +2936,7 @@ export namespace Atk {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to_point(coords: CoordType, x: number, y: number): boolean;
 
@@ -2974,6 +2994,7 @@ export namespace Atk {
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
+         * @since 1.12
          * @virtual
          */
         vfunc_get_alpha(): number;
@@ -3008,6 +3029,7 @@ export namespace Atk {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_position(coord_type: CoordType): [number, number];
@@ -3024,6 +3046,7 @@ export namespace Atk {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_size(): [number, number];
@@ -3049,6 +3072,7 @@ export namespace Atk {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
@@ -3060,6 +3084,7 @@ export namespace Atk {
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to(type: ScrollType): boolean;
@@ -3070,6 +3095,7 @@ export namespace Atk {
          * @param coords specify whether coordinates are relative to the screen or to the parent object.
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to_point(coords: CoordType, x: number, y: number): boolean;
@@ -3109,6 +3135,7 @@ export namespace Atk {
          * Retrieves the value of the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
          * @returns a string value associated with the named    attribute for this document, or `null` if a value for    `attribute_name` has not been specified for this document.
+         * @since 1.12
          */
         get_attribute_value(attribute_name: string): string | null;
 
@@ -3116,12 +3143,14 @@ export namespace Atk {
          * Gets an AtkAttributeSet which describes document-wide
          *          attributes as name-value pairs.
          * @returns An AtkAttributeSet containing the explicitly          set name-value-pair attributes associated with this document          as a whole.
+         * @since 1.12
          */
         get_attributes(): AttributeSet;
 
         /**
          * Retrieves the current page number inside `document`.
          * @returns the current page number inside `document`, or -1 if   not implemented, not know by the implementor, or irrelevant.
+         * @since 2.12
          */
         get_current_page_number(): number;
 
@@ -3130,12 +3159,14 @@ export namespace Atk {
          * up to the caller to check atk_document_get_type to determine
          * how to cast this pointer.
          * @returns a %gpointer that points to an instance of the DOM.
+         * @deprecated Since 2.12. `document` is already a representation of the document. Use it directly, or one of its children, as an instance of the DOM.
          */
         get_document(): null;
 
         /**
          * Gets a string indicating the document type.
          * @returns a string indicating the document type
+         * @deprecated Since 2.12. Please use `atk_document_get_attributes()` to ask for the document type if it applies.
          */
         get_document_type(): string;
 
@@ -3146,18 +3177,21 @@ export namespace Atk {
          *          a different locale, see atk_text_get_attributes and
          *          atk_image_get_image_locale.
          * @returns a UTF-8 string indicating the POSIX-style LC_MESSAGES          locale of the document content as a whole, or NULL if          the document content does not specify a locale.
+         * @deprecated since 2.7.90: Please use `atk_object_get_object_locale()` instead.
          */
         get_locale(): string;
 
         /**
          * Retrieves the total number of pages inside `document`.
          * @returns total page count of `document`, or -1 if not implemented,   not know by the implementor or irrelevant.
+         * @since 2.12
          */
         get_page_count(): number;
 
         /**
          * Returns an array of AtkTextSelections within this document.
          * @returns a GArray of AtkTextSelection structures representing the selection.
+         * @since 2.52
          */
         get_text_selections(): TextSelection[];
 
@@ -3166,6 +3200,7 @@ export namespace Atk {
          * @param attribute_name a character string representing the name of the attribute   whose value is being set.
          * @param attribute_value a string value to be associated with `attribute_name`.
          * @returns `true` if `attribute_value` is successfully associated   with `attribute_name` for this `document`, and `false` if if the   document does not allow the attribute to be modified
+         * @since 1.12
          */
         set_attribute_value(attribute_name: string, attribute_value: string): boolean;
 
@@ -3177,11 +3212,13 @@ export namespace Atk {
          * FALSE will be returned.
          * @param selections a GArray of AtkTextSelections              to be selected.
          * @returns TRUE if the selection was made successfully; FALSE otherwise.
+         * @since 2.52
          */
         set_text_selections(selections: TextSelection[]): boolean;
 
         /**
          * Retrieves the current page number inside `document`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_current_page_number(): number;
@@ -3190,6 +3227,7 @@ export namespace Atk {
          * Gets a %gpointer that points to an instance of the DOM.  It is
          * up to the caller to check atk_document_get_type to determine
          * how to cast this pointer.
+         * @deprecated Since 2.12. `document` is already a representation of the document. Use it directly, or one of its children, as an instance of the DOM.
          * @virtual
          */
         vfunc_get_document(): null;
@@ -3197,6 +3235,7 @@ export namespace Atk {
         /**
          * Retrieves the value of the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
+         * @since 1.12
          * @virtual
          */
         vfunc_get_document_attribute_value(attribute_name: string): string | null;
@@ -3204,6 +3243,7 @@ export namespace Atk {
         /**
          * Gets an AtkAttributeSet which describes document-wide
          *          attributes as name-value pairs.
+         * @since 1.12
          * @virtual
          */
         vfunc_get_document_attributes(): AttributeSet;
@@ -3214,24 +3254,28 @@ export namespace Atk {
          *          text substrings or images within this document may have
          *          a different locale, see atk_text_get_attributes and
          *          atk_image_get_image_locale.
+         * @deprecated since 2.7.90: Please use `atk_object_get_object_locale()` instead.
          * @virtual
          */
         vfunc_get_document_locale(): string;
 
         /**
          * Gets a string indicating the document type.
+         * @deprecated Since 2.12. Please use `atk_document_get_attributes()` to ask for the document type if it applies.
          * @virtual
          */
         vfunc_get_document_type(): string;
 
         /**
          * Retrieves the total number of pages inside `document`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_page_count(): number;
 
         /**
          * Returns an array of AtkTextSelections within this document.
+         * @since 2.52
          * @virtual
          */
         vfunc_get_text_selections(): TextSelection[];
@@ -3240,6 +3284,7 @@ export namespace Atk {
          * Sets the value for the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being set.
          * @param attribute_value a string value to be associated with `attribute_name`.
+         * @since 1.12
          * @virtual
          */
         vfunc_set_document_attribute(attribute_name: string, attribute_value: string): boolean;
@@ -3251,6 +3296,7 @@ export namespace Atk {
          * the given selection ranges must be descendants of this document. Otherwise
          * FALSE will be returned.
          * @param selections a GArray of AtkTextSelections              to be selected.
+         * @since 2.52
          * @virtual
          */
         vfunc_set_text_selections(selections: TextSelection[]): boolean;
@@ -3430,6 +3476,7 @@ export namespace Atk {
         /**
          * Retrieves the locale identifier associated to the {@link Atk.Image}.
          * @returns a string corresponding to the POSIX   `LC_MESSAGES` locale used by the image description, or   `null` if the image does not specify a locale.
+         * @since 1.12
          */
         get_image_locale(): string | null;
 
@@ -3468,6 +3515,7 @@ export namespace Atk {
 
         /**
          * Retrieves the locale identifier associated to the {@link Atk.Image}.
+         * @since 1.12
          * @virtual
          */
         vfunc_get_image_locale(): string | null;
@@ -3654,6 +3702,7 @@ export namespace Atk {
          * Gets a `gint` representing the column at the specified `index_`.
          * @param index_ a `gint` representing an index in `table`
          * @returns a gint representing the column at the specified index, or -1 if the table does not implement this method.
+         * @deprecated Since 2.12.
          */
         get_column_at_index(index_: number): number;
 
@@ -3686,6 +3735,7 @@ export namespace Atk {
          * @param row a `gint` representing a row in `table`
          * @param column a `gint` representing a column in `table`
          * @returns a `gint` representing the index at specified position. The value -1 is returned if the object at row,column is not a child of table or table does not implement this interface.
+         * @deprecated Since 2.12. Use `atk_table_ref_at()` in order to get the accessible that represents the cell at (`row`, `column`)
          */
         get_index_at(row: number, column: number): number;
 
@@ -3705,6 +3755,7 @@ export namespace Atk {
          * Gets a `gint` representing the row at the specified `index_`.
          * @param index_ a `gint` representing an index in `table`
          * @returns a gint representing the row at the specified index, or -1 if the table does not implement this method.
+         * @deprecated since 2.12.
          */
         get_row_at_index(index_: number): number;
 
@@ -3883,6 +3934,7 @@ export namespace Atk {
         /**
          * Gets a `gint` representing the column at the specified `index_`.
          * @param index_ a `gint` representing an index in `table`
+         * @deprecated Since 2.12.
          * @virtual
          */
         vfunc_get_column_at_index(index_: number): number;
@@ -3915,6 +3967,7 @@ export namespace Atk {
          * `column`.
          * @param row a `gint` representing a row in `table`
          * @param column a `gint` representing a column in `table`
+         * @deprecated Since 2.12. Use `atk_table_ref_at()` in order to get the accessible that represents the cell at (`row`, `column`)
          * @virtual
          */
         vfunc_get_index_at(row: number, column: number): number;
@@ -3934,6 +3987,7 @@ export namespace Atk {
         /**
          * Gets a `gint` representing the row at the specified `index_`.
          * @param index_ a `gint` representing an index in `table`
+         * @deprecated since 2.12.
          * @virtual
          */
         vfunc_get_row_at_index(index_: number): number;
@@ -4104,12 +4158,14 @@ export namespace Atk {
         /**
          * Returns the column headers as an array of cell accessibles.
          * @returns a GPtrArray of AtkObjects representing the column header cells.
+         * @since 2.12
          */
         get_column_header_cells(): Object[];
 
         /**
          * Returns the number of columns occupied by this cell accessible.
          * @returns a gint representing the number of columns occupied by this cell, or 0 if the cell does not implement this method.
+         * @since 2.12
          */
         get_column_span(): number;
 
@@ -4120,35 +4176,41 @@ export namespace Atk {
          * will implement this function by calling get_row_span and get_column_span
          * on the object.
          * @returns TRUE if successful; FALSE otherwise.
+         * @since 2.12
          */
         get_row_column_span(): [boolean, number, number, number, number];
 
         /**
          * Returns the row headers as an array of cell accessibles.
          * @returns a GPtrArray of AtkObjects representing the row header cells.
+         * @since 2.12
          */
         get_row_header_cells(): Object[];
 
         /**
          * Returns the number of rows occupied by this cell accessible.
          * @returns a gint representing the number of rows occupied by this cell, or 0 if the cell does not implement this method.
+         * @since 2.12
          */
         get_row_span(): number;
 
         /**
          * Returns a reference to the accessible of the containing table.
          * @returns the atk object for the containing table.
+         * @since 2.12
          */
         get_table(): Object;
 
         /**
          * Returns the column headers as an array of cell accessibles.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_column_header_cells(): Object[];
 
         /**
          * Returns the number of columns occupied by this cell accessible.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_column_span(): number;
@@ -4159,24 +4221,28 @@ export namespace Atk {
          * Note: If the object does not implement this function, then, by default, atk
          * will implement this function by calling get_row_span and get_column_span
          * on the object.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_row_column_span(): [boolean, number, number, number, number];
 
         /**
          * Returns the row headers as an array of cell accessibles.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_row_header_cells(): Object[];
 
         /**
          * Returns the number of rows occupied by this cell accessible.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_row_span(): number;
 
         /**
          * Returns a reference to the accessible of the containing table.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_table(): Object;
@@ -4188,6 +4254,7 @@ export namespace Atk {
          * @param x_clip_type Specify the horizontal clip type.
          * @param y_clip_type Specify the vertical clip type.
          * @returns Array of AtkTextRange. The last          element of the array returned by this function will be NULL.
+         * @since 1.3
          */
         get_bounded_ranges(rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType): TextRange[];
 
@@ -4255,6 +4322,7 @@ export namespace Atk {
          * @param start_offset The offset of the first text character for which boundary        information is required.
          * @param end_offset The offset of the text character after the last character        for which boundary information is required.
          * @param coord_type Specify whether coordinates are relative to the screen or widget window.
+         * @since 1.3
          */
         get_range_extents(start_offset: number, end_offset: number, coord_type: CoordType): TextRectangle;
 
@@ -4312,6 +4380,7 @@ export namespace Atk {
          * @param offset position
          * @param granularity An {@link Atk.TextGranularity}
          * @returns a newly allocated string containing the text at          the `offset` bounded by the specified `granularity`. Use `g_free()`          to free the returned string.  Returns `null` if the offset is invalid          or no implementation is available.
+         * @since 2.10
          */
         get_string_at_offset(offset: number, granularity: TextGranularity): [string | null, number, number];
 
@@ -4328,6 +4397,7 @@ export namespace Atk {
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
          * @returns a newly allocated string containing the text after `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
+         * @deprecated since 2.9.3: Please use `atk_text_get_string_at_offset()` instead.
          */
         get_text_after_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
 
@@ -4359,6 +4429,7 @@ export namespace Atk {
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
          * @returns a newly allocated string containing the text at `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
+         * @deprecated This method is deprecated since ATK version 2.9.4. Please use `atk_text_get_string_at_offset()` instead.
          */
         get_text_at_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
 
@@ -4367,6 +4438,7 @@ export namespace Atk {
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
          * @returns a newly allocated string containing the text before `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
+         * @deprecated since 2.9.3: Please use `atk_text_get_string_at_offset()` instead.
          */
         get_text_before_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
 
@@ -4376,6 +4448,7 @@ export namespace Atk {
          * @param end_offset end offset in the `text`, or -1 for the end of the text.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.32
          */
         scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean;
 
@@ -4388,6 +4461,7 @@ export namespace Atk {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.32
          */
         scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean;
 
@@ -4429,6 +4503,7 @@ export namespace Atk {
          * @param coord_type Specify whether coordinates are relative to the screen or widget window.
          * @param x_clip_type Specify the horizontal clip type.
          * @param y_clip_type Specify the vertical clip type.
+         * @since 1.3
          * @virtual
          */
         vfunc_get_bounded_ranges(rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType): TextRange[];
@@ -4498,6 +4573,7 @@ export namespace Atk {
          * @param start_offset The offset of the first text character for which boundary        information is required.
          * @param end_offset The offset of the text character after the last character        for which boundary information is required.
          * @param coord_type Specify whether coordinates are relative to the screen or widget window.
+         * @since 1.3
          * @virtual
          */
         vfunc_get_range_extents(start_offset: number, end_offset: number, coord_type: CoordType): TextRectangle;
@@ -4555,6 +4631,7 @@ export namespace Atk {
          * of the following paragraph after the offset.
          * @param offset position
          * @param granularity An {@link Atk.TextGranularity}
+         * @since 2.10
          * @virtual
          */
         vfunc_get_string_at_offset(offset: number, granularity: TextGranularity): [string | null, number, number];
@@ -4571,6 +4648,7 @@ export namespace Atk {
          * Gets the specified text.
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
+         * @deprecated since 2.9.3: Please use `atk_text_get_string_at_offset()` instead.
          * @virtual
          */
         vfunc_get_text_after_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
@@ -4602,6 +4680,7 @@ export namespace Atk {
          * start after the offset.
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
+         * @deprecated This method is deprecated since ATK version 2.9.4. Please use `atk_text_get_string_at_offset()` instead.
          * @virtual
          */
         vfunc_get_text_at_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
@@ -4610,6 +4689,7 @@ export namespace Atk {
          * Gets the specified text.
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
+         * @deprecated since 2.9.3: Please use `atk_text_get_string_at_offset()` instead.
          * @virtual
          */
         vfunc_get_text_before_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
@@ -4619,6 +4699,7 @@ export namespace Atk {
          * @param start_offset start offset in the `text`
          * @param end_offset end offset in the `text`, or -1 for the end of the text.
          * @param type specify where the object should be made visible.
+         * @since 2.32
          * @virtual
          */
         vfunc_scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean;
@@ -4631,6 +4712,7 @@ export namespace Atk {
          * @param coords specify whether coordinates are relative to the screen or to the parent object.
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
+         * @since 2.32
          * @virtual
          */
         vfunc_scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean;
@@ -4695,6 +4777,7 @@ export namespace Atk {
 
         /**
          * Gets the value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_value_and_text()` instead.
          */
         get_current_value(): unknown;
 
@@ -4704,11 +4787,13 @@ export namespace Atk {
          * mean that it is limited only by the floating point precision of the
          * platform.
          * @returns the minimum increment by which the value of this object may be changed. zero if undefined.
+         * @since 2.12
          */
         get_increment(): number;
 
         /**
          * Gets the maximum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          */
         get_maximum_value(): unknown;
 
@@ -4716,17 +4801,21 @@ export namespace Atk {
          * Gets the minimum increment by which the value of this object may be changed.  If zero,
          * the minimum increment is undefined, which may mean that it is limited only by the
          * floating point precision of the platform.
+         * @since 1.12
+         * @deprecated Since 2.12. Use `atk_value_get_increment()` instead.
          */
         get_minimum_increment(): unknown;
 
         /**
          * Gets the minimum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          */
         get_minimum_value(): unknown;
 
         /**
          * Gets the range of this object.
          * @returns a newly allocated {@link Atk.Range} that represents the minimum, maximum and descriptor (if available) of `obj`. NULL if that range is not defined.
+         * @since 2.12
          */
         get_range(): Range | null;
 
@@ -4734,6 +4823,7 @@ export namespace Atk {
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
          * introduction for examples of subranges and when to expose them.
          * @returns an {@link GLib.SList} of {@link Atk.Range} which each of the subranges defined for this object. Free the returns list with `g_slist_free()`.
+         * @since 2.12
          */
         get_sub_ranges(): Range[];
 
@@ -4741,6 +4831,7 @@ export namespace Atk {
          * Gets the current value and the human readable text alternative of
          * `obj`. `text` is a newly created string, that must be freed by the
          * caller. Can be NULL if no descriptor is available.
+         * @since 2.12
          */
         get_value_and_text(): [number, string];
 
@@ -4748,6 +4839,7 @@ export namespace Atk {
          * Sets the value of this object.
          * @param value a {@link GObject.Value} which is the desired new accessible value.
          * @returns `true` if new value is successfully set, `false` otherwise.
+         * @deprecated Since 2.12. Use `atk_value_set_value()` instead.
          */
         set_current_value(value: GObject.Value | any): boolean;
 
@@ -4767,11 +4859,13 @@ export namespace Atk {
          * required anymore to return if the value was properly assigned or
          * not.
          * @param new_value a double which is the desired new accessible value.
+         * @since 2.12
          */
         set_value(new_value: number): void;
 
         /**
          * Gets the value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_value_and_text()` instead.
          * @virtual
          */
         vfunc_get_current_value(): GObject.Value | any;
@@ -4781,12 +4875,14 @@ export namespace Atk {
          * changed.  If zero, the minimum increment is undefined, which may
          * mean that it is limited only by the floating point precision of the
          * platform.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_increment(): number;
 
         /**
          * Gets the maximum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          * @virtual
          */
         vfunc_get_maximum_value(): GObject.Value | any;
@@ -4795,18 +4891,22 @@ export namespace Atk {
          * Gets the minimum increment by which the value of this object may be changed.  If zero,
          * the minimum increment is undefined, which may mean that it is limited only by the
          * floating point precision of the platform.
+         * @since 1.12
+         * @deprecated Since 2.12. Use `atk_value_get_increment()` instead.
          * @virtual
          */
         vfunc_get_minimum_increment(): GObject.Value | any;
 
         /**
          * Gets the minimum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          * @virtual
          */
         vfunc_get_minimum_value(): GObject.Value | any;
 
         /**
          * Gets the range of this object.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_range(): Range | null;
@@ -4814,6 +4914,7 @@ export namespace Atk {
         /**
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
          * introduction for examples of subranges and when to expose them.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_sub_ranges(): Range[];
@@ -4822,6 +4923,7 @@ export namespace Atk {
          * Gets the current value and the human readable text alternative of
          * `obj`. `text` is a newly created string, that must be freed by the
          * caller. Can be NULL if no descriptor is available.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_value_and_text(): [number, string];
@@ -4829,6 +4931,7 @@ export namespace Atk {
         /**
          * Sets the value of this object.
          * @param value a {@link GObject.Value} which is the desired new accessible value.
+         * @deprecated Since 2.12. Use `atk_value_set_value()` instead.
          * @virtual
          */
         vfunc_set_current_value(value: unknown): boolean;
@@ -4849,6 +4952,7 @@ export namespace Atk {
          * required anymore to return if the value was properly assigned or
          * not.
          * @param new_value a double which is the desired new accessible value.
+         * @since 2.12
          * @virtual
          */
         vfunc_set_value(new_value: number): void;
@@ -6159,6 +6263,7 @@ export namespace Atk {
          * name-value pairs. As such these attributes may be considered weakly-typed properties or annotations,
          * as distinct from strongly-typed object data available via other get/set methods.
          * Not all objects have explicit "name-value pair" {@link Atk.AttributeSet} properties.
+         * @since 1.12
          * @virtual
          */
         vfunc_get_attributes(): AttributeSet;
@@ -6178,6 +6283,7 @@ export namespace Atk {
 
         /**
          * Gets the layer of the accessible.
+         * @deprecated Use atk_component_get_layer instead.
          * @virtual
          */
         vfunc_get_layer(): Layer;
@@ -6185,6 +6291,7 @@ export namespace Atk {
         /**
          * Gets the zorder of the accessible. The value G_MININT will be returned
          * if the layer of the accessible is not ATK_LAYER_MDI.
+         * @deprecated Use atk_component_get_mdi_zorder instead.
          * @virtual
          */
         vfunc_get_mdi_zorder(): number;
@@ -6203,6 +6310,7 @@ export namespace Atk {
         /**
          * Gets a UTF-8 string indicating the POSIX-style LC_MESSAGES locale
          * of `accessible`.
+         * @since 2.8
          * @virtual
          */
         vfunc_get_object_locale(): string;
@@ -6258,6 +6366,7 @@ export namespace Atk {
         /**
          * Removes a property change handler.
          * @param handler_id a guint which identifies the handler to be removed.
+         * @deprecated since 2.12: See `atk_object_connect_property_change_handler()`
          * @virtual
          */
         vfunc_remove_property_change_handler(handler_id: number): void;
@@ -6320,6 +6429,7 @@ export namespace Atk {
         /**
          * Gets the accessible id of the accessible.
          * @returns a character string representing the accessible id of the object, or NULL if no such string was set.
+         * @since 2.34
          */
         get_accessible_id(): string;
 
@@ -6329,6 +6439,7 @@ export namespace Atk {
          * as distinct from strongly-typed object data available via other get/set methods.
          * Not all objects have explicit "name-value pair" {@link Atk.AttributeSet} properties.
          * @returns an {@link Atk.AttributeSet} consisting of all explicit properties/annotations applied to the object, or an empty set if the object has no name-value pair attributes assigned to it. This #atkattributeset should be freed by a call to `atk_attribute_set_free()`.
+         * @since 1.12
          */
         get_attributes(): AttributeSet;
 
@@ -6341,6 +6452,7 @@ export namespace Atk {
         /**
          * Gets the help text associated with the accessible.
          * @returns a character string representing the help text or the object, or NULL if no such string was set.
+         * @since 2.52
          */
         get_help_text(): string;
 
@@ -6354,6 +6466,7 @@ export namespace Atk {
         /**
          * Gets the layer of the accessible.
          * @returns an {@link Atk.Layer} which is the layer of the accessible
+         * @deprecated Use atk_component_get_layer instead.
          */
         get_layer(): Layer;
 
@@ -6361,6 +6474,7 @@ export namespace Atk {
          * Gets the zorder of the accessible. The value G_MININT will be returned
          * if the layer of the accessible is not ATK_LAYER_MDI.
          * @returns a gint which is the zorder of the accessible, i.e. the depth at which the component is shown in relation to other components in the same container.
+         * @deprecated Use atk_component_get_mdi_zorder instead.
          */
         get_mdi_zorder(): number;
 
@@ -6380,6 +6494,7 @@ export namespace Atk {
          * Gets a UTF-8 string indicating the POSIX-style LC_MESSAGES locale
          * of `accessible`.
          * @returns a UTF-8 string indicating the POSIX-style LC_MESSAGES          locale of `accessible`.
+         * @since 2.8
          */
         get_object_locale(): string;
 
@@ -6458,6 +6573,7 @@ export namespace Atk {
         /**
          * Removes a property change handler.
          * @param handler_id a guint which identifies the handler to be removed.
+         * @deprecated since 2.12: See `atk_object_connect_property_change_handler()`
          */
         remove_property_change_handler(handler_id: number): void;
 
@@ -6476,6 +6592,7 @@ export namespace Atk {
          * instance to identify a given well-known accessible object for tailored screen
          * reading, or for automatic regression testing.
          * @param id a character string to be set as the accessible id
+         * @since 2.34
          */
         set_accessible_id(id: string): void;
 
@@ -6495,6 +6612,7 @@ export namespace Atk {
          * This is reserved for the initial value. If you want to set the name to
          * an empty value, you can use "".
          * @param help_text a character string to be set as the accessible's help text
+         * @since 2.52
          */
         set_help_text(help_text: string): void;
 
@@ -6688,6 +6806,7 @@ export namespace Atk {
          * loaded) and pass the value to the process implementing the
          * {@link Atk.Socket}, so it could embed the plug.
          * @returns the unique ID for the plug
+         * @since 1.30
          */
         get_id(): string;
 
@@ -6702,6 +6821,7 @@ export namespace Atk {
          * accessible object for the toplevel widget, an AtkPlug object, and make the
          * former the child of the latter by calling `atk_plug_set_child()`.
          * @param child an {@link Atk.Object} to be set as accessible child of `plug`.
+         * @since 2.35.0
          */
         set_child(child: Object): void;
 
@@ -6723,6 +6843,7 @@ export namespace Atk {
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
          * @returns An alpha value from 0 to 1.0, inclusive.
+         * @since 1.12
          */
         get_alpha(): number;
 
@@ -6755,6 +6876,7 @@ export namespace Atk {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_position(coord_type: CoordType): [number, number];
 
@@ -6763,6 +6885,7 @@ export namespace Atk {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_size(): [number, number];
 
@@ -6787,6 +6910,7 @@ export namespace Atk {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          */
         remove_focus_handler(handler_id: number): void;
 
@@ -6798,6 +6922,7 @@ export namespace Atk {
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to(type: ScrollType): boolean;
 
@@ -6808,6 +6933,7 @@ export namespace Atk {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to_point(coords: CoordType, x: number, y: number): boolean;
 
@@ -6865,6 +6991,7 @@ export namespace Atk {
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
+         * @since 1.12
          * @virtual
          */
         vfunc_get_alpha(): number;
@@ -6899,6 +7026,7 @@ export namespace Atk {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_position(coord_type: CoordType): [number, number];
@@ -6908,6 +7036,7 @@ export namespace Atk {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_size(): [number, number];
@@ -6933,6 +7062,7 @@ export namespace Atk {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
@@ -6944,6 +7074,7 @@ export namespace Atk {
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to(type: ScrollType): boolean;
@@ -6954,6 +7085,7 @@ export namespace Atk {
          * @param coords specify whether coordinates are relative to the screen or to the parent object.
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to_point(coords: CoordType, x: number, y: number): boolean;
@@ -7152,6 +7284,7 @@ export namespace Atk {
          * Adds the specified AtkObject to the target for the relation, if it is
          * not already present.  See also `atk_object_add_relationship()`.
          * @param target an {@link Atk.Object}
+         * @since 1.9
          */
         add_target(target: Object): void;
 
@@ -7251,6 +7384,7 @@ export namespace Atk {
          * is added to the relation.
          * @param relationship an {@link Atk.RelationType}
          * @param target an {@link Atk.Object}
+         * @since 1.9
          */
         add_relation_by_type(relationship: RelationType, target: Object): void;
 
@@ -7402,6 +7536,7 @@ export namespace Atk {
          * to pass the plug id on to the process implementing the {@link Atk.Socket}
          * as needed.
          * @param plug_id the ID of an {@link Atk.Plug}
+         * @since 1.30
          * @virtual
          */
         vfunc_embed(plug_id: string): void;
@@ -7419,12 +7554,14 @@ export namespace Atk {
          * to pass the plug id on to the process implementing the {@link Atk.Socket}
          * as needed.
          * @param plug_id the ID of an {@link Atk.Plug}
+         * @since 1.30
          */
         embed(plug_id: string): void;
 
         /**
          * Determines whether or not the socket has an embedded plug.
          * @returns TRUE if a plug is embedded in the socket
+         * @since 1.30
          */
         is_occupied(): boolean;
 
@@ -7446,6 +7583,7 @@ export namespace Atk {
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
          * @returns An alpha value from 0 to 1.0, inclusive.
+         * @since 1.12
          */
         get_alpha(): number;
 
@@ -7478,6 +7616,7 @@ export namespace Atk {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_position(coord_type: CoordType): [number, number];
 
@@ -7486,6 +7625,7 @@ export namespace Atk {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_size(): [number, number];
 
@@ -7510,6 +7650,7 @@ export namespace Atk {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          */
         remove_focus_handler(handler_id: number): void;
 
@@ -7521,6 +7662,7 @@ export namespace Atk {
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to(type: ScrollType): boolean;
 
@@ -7531,6 +7673,7 @@ export namespace Atk {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to_point(coords: CoordType, x: number, y: number): boolean;
 
@@ -7588,6 +7731,7 @@ export namespace Atk {
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
+         * @since 1.12
          * @virtual
          */
         vfunc_get_alpha(): number;
@@ -7622,6 +7766,7 @@ export namespace Atk {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_position(coord_type: CoordType): [number, number];
@@ -7631,6 +7776,7 @@ export namespace Atk {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_size(): [number, number];
@@ -7656,6 +7802,7 @@ export namespace Atk {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
@@ -7667,6 +7814,7 @@ export namespace Atk {
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to(type: ScrollType): boolean;
@@ -7677,6 +7825,7 @@ export namespace Atk {
          * @param coords specify whether coordinates are relative to the screen or to the parent object.
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to_point(coords: CoordType, x: number, y: number): boolean;
@@ -8102,29 +8251,34 @@ export namespace Atk {
         /**
          * Returns a new {@link Atk.Range} that is a exact copy of `src`
          * @returns a new {@link Atk.Range} copy of `src`
+         * @since 2.12
          */
         copy(): Range;
 
         /**
          * Free `range`
+         * @since 2.12
          */
         free(): void;
 
         /**
          * Returns the human readable description of `range`
          * @returns the human-readable description of `range`
+         * @since 2.12
          */
         get_description(): string;
 
         /**
          * Returns the lower limit of `range`
          * @returns the lower limit of `range`
+         * @since 2.12
          */
         get_lower_limit(): number;
 
         /**
          * Returns the upper limit of `range`
          * @returns the upper limit of `range`
+         * @since 2.12
          */
         get_upper_limit(): number;
     }
@@ -8567,6 +8721,7 @@ export namespace Atk {
              * Returns the alpha value (i.e. the opacity) for this
              * `component`, on a scale from 0 (fully transparent) to 1.0
              * (fully opaque).
+             * @since 1.12
              * @virtual
              */
             vfunc_get_alpha(): number;
@@ -8601,6 +8756,7 @@ export namespace Atk {
              * If the position can not be obtained (e.g. a non-embedded plug or missing
              * support), x and y are set to -1.
              * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+             * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
              * @virtual
              */
             vfunc_get_position(coord_type: CoordType): [number, number];
@@ -8610,6 +8766,7 @@ export namespace Atk {
              * 
              * If the size can not be obtained (e.g. a non-embedded plug or missing
              * support), width and height are set to -1.
+             * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
              * @virtual
              */
             vfunc_get_size(): [number, number];
@@ -8635,6 +8792,7 @@ export namespace Atk {
              * functions to be executed when this object receives focus events
              * (in or out).
              * @param handler_id the handler id of the focus handler to be removed from `component`
+             * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
              * @virtual
              */
             vfunc_remove_focus_handler(handler_id: number): void;
@@ -8646,6 +8804,7 @@ export namespace Atk {
              * `component` in its parent, this only makes the parents scroll so that the
              * object shows up on the screen, given its current position within the parents.
              * @param type specify where the object should be made visible.
+             * @since 2.30
              * @virtual
              */
             vfunc_scroll_to(type: ScrollType): boolean;
@@ -8656,6 +8815,7 @@ export namespace Atk {
              * @param coords specify whether coordinates are relative to the screen or to the parent object.
              * @param x x-position where to scroll to
              * @param y y-position where to scroll to
+             * @since 2.30
              * @virtual
              */
             vfunc_scroll_to_point(coords: CoordType, x: number, y: number): boolean;
@@ -8739,6 +8899,7 @@ export namespace Atk {
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
          * @returns An alpha value from 0 to 1.0, inclusive.
+         * @since 1.12
          */
         get_alpha(): number;
 
@@ -8771,6 +8932,7 @@ export namespace Atk {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_position(coord_type: CoordType): [number, number];
 
@@ -8779,6 +8941,7 @@ export namespace Atk {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_size(): [number, number];
 
@@ -8803,6 +8966,7 @@ export namespace Atk {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          */
         remove_focus_handler(handler_id: number): void;
 
@@ -8814,6 +8978,7 @@ export namespace Atk {
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to(type: ScrollType): boolean;
 
@@ -8824,6 +8989,7 @@ export namespace Atk {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to_point(coords: CoordType, x: number, y: number): boolean;
 
@@ -8874,6 +9040,7 @@ export namespace Atk {
             // Virtual methods
             /**
              * Retrieves the current page number inside `document`.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_current_page_number(): number;
@@ -8882,6 +9049,7 @@ export namespace Atk {
              * Gets a %gpointer that points to an instance of the DOM.  It is
              * up to the caller to check atk_document_get_type to determine
              * how to cast this pointer.
+             * @deprecated Since 2.12. `document` is already a representation of the document. Use it directly, or one of its children, as an instance of the DOM.
              * @virtual
              */
             vfunc_get_document(): null;
@@ -8889,6 +9057,7 @@ export namespace Atk {
             /**
              * Retrieves the value of the given `attribute_name` inside `document`.
              * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
+             * @since 1.12
              * @virtual
              */
             vfunc_get_document_attribute_value(attribute_name: string): string | null;
@@ -8896,6 +9065,7 @@ export namespace Atk {
             /**
              * Gets an AtkAttributeSet which describes document-wide
              *          attributes as name-value pairs.
+             * @since 1.12
              * @virtual
              */
             vfunc_get_document_attributes(): AttributeSet;
@@ -8906,24 +9076,28 @@ export namespace Atk {
              *          text substrings or images within this document may have
              *          a different locale, see atk_text_get_attributes and
              *          atk_image_get_image_locale.
+             * @deprecated since 2.7.90: Please use `atk_object_get_object_locale()` instead.
              * @virtual
              */
             vfunc_get_document_locale(): string;
 
             /**
              * Gets a string indicating the document type.
+             * @deprecated Since 2.12. Please use `atk_document_get_attributes()` to ask for the document type if it applies.
              * @virtual
              */
             vfunc_get_document_type(): string;
 
             /**
              * Retrieves the total number of pages inside `document`.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_page_count(): number;
 
             /**
              * Returns an array of AtkTextSelections within this document.
+             * @since 2.52
              * @virtual
              */
             vfunc_get_text_selections(): TextSelection[];
@@ -8932,6 +9106,7 @@ export namespace Atk {
              * Sets the value for the given `attribute_name` inside `document`.
              * @param attribute_name a character string representing the name of the attribute   whose value is being set.
              * @param attribute_value a string value to be associated with `attribute_name`.
+             * @since 1.12
              * @virtual
              */
             vfunc_set_document_attribute(attribute_name: string, attribute_value: string): boolean;
@@ -8943,6 +9118,7 @@ export namespace Atk {
              * the given selection ranges must be descendants of this document. Otherwise
              * FALSE will be returned.
              * @param selections a GArray of AtkTextSelections              to be selected.
+             * @since 2.52
              * @virtual
              */
             vfunc_set_text_selections(selections: TextSelection[]): boolean;
@@ -8977,6 +9153,7 @@ export namespace Atk {
          * Retrieves the value of the given `attribute_name` inside `document`.
          * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
          * @returns a string value associated with the named    attribute for this document, or `null` if a value for    `attribute_name` has not been specified for this document.
+         * @since 1.12
          */
         get_attribute_value(attribute_name: string): string | null;
 
@@ -8984,12 +9161,14 @@ export namespace Atk {
          * Gets an AtkAttributeSet which describes document-wide
          *          attributes as name-value pairs.
          * @returns An AtkAttributeSet containing the explicitly          set name-value-pair attributes associated with this document          as a whole.
+         * @since 1.12
          */
         get_attributes(): AttributeSet;
 
         /**
          * Retrieves the current page number inside `document`.
          * @returns the current page number inside `document`, or -1 if   not implemented, not know by the implementor, or irrelevant.
+         * @since 2.12
          */
         get_current_page_number(): number;
 
@@ -8998,12 +9177,14 @@ export namespace Atk {
          * up to the caller to check atk_document_get_type to determine
          * how to cast this pointer.
          * @returns a %gpointer that points to an instance of the DOM.
+         * @deprecated Since 2.12. `document` is already a representation of the document. Use it directly, or one of its children, as an instance of the DOM.
          */
         get_document(): null;
 
         /**
          * Gets a string indicating the document type.
          * @returns a string indicating the document type
+         * @deprecated Since 2.12. Please use `atk_document_get_attributes()` to ask for the document type if it applies.
          */
         get_document_type(): string;
 
@@ -9014,18 +9195,21 @@ export namespace Atk {
          *          a different locale, see atk_text_get_attributes and
          *          atk_image_get_image_locale.
          * @returns a UTF-8 string indicating the POSIX-style LC_MESSAGES          locale of the document content as a whole, or NULL if          the document content does not specify a locale.
+         * @deprecated since 2.7.90: Please use `atk_object_get_object_locale()` instead.
          */
         get_locale(): string;
 
         /**
          * Retrieves the total number of pages inside `document`.
          * @returns total page count of `document`, or -1 if not implemented,   not know by the implementor or irrelevant.
+         * @since 2.12
          */
         get_page_count(): number;
 
         /**
          * Returns an array of AtkTextSelections within this document.
          * @returns a GArray of AtkTextSelection structures representing the selection.
+         * @since 2.52
          */
         get_text_selections(): TextSelection[];
 
@@ -9034,6 +9218,7 @@ export namespace Atk {
          * @param attribute_name a character string representing the name of the attribute   whose value is being set.
          * @param attribute_value a string value to be associated with `attribute_name`.
          * @returns `true` if `attribute_value` is successfully associated   with `attribute_name` for this `document`, and `false` if if the   document does not allow the attribute to be modified
+         * @since 1.12
          */
         set_attribute_value(attribute_name: string, attribute_value: string): boolean;
 
@@ -9045,6 +9230,7 @@ export namespace Atk {
          * FALSE will be returned.
          * @param selections a GArray of AtkTextSelections              to be selected.
          * @returns TRUE if the selection was made successfully; FALSE otherwise.
+         * @since 2.52
          */
         set_text_selections(selections: TextSelection[]): boolean;
     }
@@ -9221,6 +9407,7 @@ export namespace Atk {
             // Virtual methods
             /**
              * Gets the hyperlink associated with this object.
+             * @since 1.12
              * @virtual
              */
             vfunc_get_hyperlink(): Hyperlink;
@@ -9249,6 +9436,7 @@ export namespace Atk {
         /**
          * Gets the hyperlink associated with this object.
          * @returns an AtkHyperlink object which points to this implementing AtkObject.
+         * @since 1.12
          */
         get_hyperlink(): Hyperlink;
     }
@@ -9364,6 +9552,7 @@ export namespace Atk {
 
             /**
              * Retrieves the locale identifier associated to the {@link Atk.Image}.
+             * @since 1.12
              * @virtual
              */
             vfunc_get_image_locale(): string | null;
@@ -9438,6 +9627,7 @@ export namespace Atk {
         /**
          * Retrieves the locale identifier associated to the {@link Atk.Image}.
          * @returns a string corresponding to the POSIX   `LC_MESSAGES` locale used by the image description, or   `null` if the image does not specify a locale.
+         * @since 1.12
          */
         get_image_locale(): string | null;
 
@@ -9708,6 +9898,7 @@ export namespace Atk {
              * Note that it is possible for get_uri to return NULL but for
              * get_stream to work nonetheless, since not all GIOChannels connect to URIs.
              * @param mime_type a gchar* representing the mime type, or NULL to request a URI for the default mime type.
+             * @since 1.12
              * @virtual
              */
             vfunc_get_uri(mime_type: string): string | null;
@@ -9778,6 +9969,7 @@ export namespace Atk {
          * get_stream to work nonetheless, since not all GIOChannels connect to URIs.
          * @param mime_type a gchar* representing the mime type, or NULL to request a URI for the default mime type.
          * @returns Returns a string representing a URI, or `null` if no corresponding URI can be constructed.
+         * @since 1.12
          */
         get_uri(mime_type: string): string | null;
     }
@@ -9837,6 +10029,7 @@ export namespace Atk {
             /**
              * Gets a `gint` representing the column at the specified `index_`.
              * @param index_ a `gint` representing an index in `table`
+             * @deprecated Since 2.12.
              * @virtual
              */
             vfunc_get_column_at_index(index_: number): number;
@@ -9869,6 +10062,7 @@ export namespace Atk {
              * `column`.
              * @param row a `gint` representing a row in `table`
              * @param column a `gint` representing a column in `table`
+             * @deprecated Since 2.12. Use `atk_table_ref_at()` in order to get the accessible that represents the cell at (`row`, `column`)
              * @virtual
              */
             vfunc_get_index_at(row: number, column: number): number;
@@ -9888,6 +10082,7 @@ export namespace Atk {
             /**
              * Gets a `gint` representing the row at the specified `index_`.
              * @param index_ a `gint` representing an index in `table`
+             * @deprecated since 2.12.
              * @virtual
              */
             vfunc_get_row_at_index(index_: number): number;
@@ -10125,6 +10320,7 @@ export namespace Atk {
          * Gets a `gint` representing the column at the specified `index_`.
          * @param index_ a `gint` representing an index in `table`
          * @returns a gint representing the column at the specified index, or -1 if the table does not implement this method.
+         * @deprecated Since 2.12.
          */
         get_column_at_index(index_: number): number;
 
@@ -10157,6 +10353,7 @@ export namespace Atk {
          * @param row a `gint` representing a row in `table`
          * @param column a `gint` representing a column in `table`
          * @returns a `gint` representing the index at specified position. The value -1 is returned if the object at row,column is not a child of table or table does not implement this interface.
+         * @deprecated Since 2.12. Use `atk_table_ref_at()` in order to get the accessible that represents the cell at (`row`, `column`)
          */
         get_index_at(row: number, column: number): number;
 
@@ -10176,6 +10373,7 @@ export namespace Atk {
          * Gets a `gint` representing the row at the specified `index_`.
          * @param index_ a `gint` representing an index in `table`
          * @returns a gint representing the row at the specified index, or -1 if the table does not implement this method.
+         * @deprecated since 2.12.
          */
         get_row_at_index(index_: number): number;
 
@@ -10328,18 +10526,21 @@ export namespace Atk {
             // Virtual methods
             /**
              * Returns the column headers as an array of cell accessibles.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_column_header_cells(): Object[];
 
             /**
              * Returns the number of columns occupied by this cell accessible.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_column_span(): number;
 
             /**
              * Retrieves the tabular position of this cell.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_position(): [boolean, number, number];
@@ -10350,24 +10551,28 @@ export namespace Atk {
              * Note: If the object does not implement this function, then, by default, atk
              * will implement this function by calling get_row_span and get_column_span
              * on the object.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_row_column_span(): [boolean, number, number, number, number];
 
             /**
              * Returns the row headers as an array of cell accessibles.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_row_header_cells(): Object[];
 
             /**
              * Returns the number of rows occupied by this cell accessible.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_row_span(): number;
 
             /**
              * Returns a reference to the accessible of the containing table.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_table(): Object;
@@ -10398,18 +10603,21 @@ export namespace Atk {
         /**
          * Returns the column headers as an array of cell accessibles.
          * @returns a GPtrArray of AtkObjects representing the column header cells.
+         * @since 2.12
          */
         get_column_header_cells(): Object[];
 
         /**
          * Returns the number of columns occupied by this cell accessible.
          * @returns a gint representing the number of columns occupied by this cell, or 0 if the cell does not implement this method.
+         * @since 2.12
          */
         get_column_span(): number;
 
         /**
          * Retrieves the tabular position of this cell.
          * @returns TRUE if successful; FALSE otherwise.
+         * @since 2.12
          */
         get_position(): [boolean, number, number];
 
@@ -10420,24 +10628,28 @@ export namespace Atk {
          * will implement this function by calling get_row_span and get_column_span
          * on the object.
          * @returns TRUE if successful; FALSE otherwise.
+         * @since 2.12
          */
         get_row_column_span(): [boolean, number, number, number, number];
 
         /**
          * Returns the row headers as an array of cell accessibles.
          * @returns a GPtrArray of AtkObjects representing the row header cells.
+         * @since 2.12
          */
         get_row_header_cells(): Object[];
 
         /**
          * Returns the number of rows occupied by this cell accessible.
          * @returns a gint representing the number of rows occupied by this cell, or 0 if the cell does not implement this method.
+         * @since 2.12
          */
         get_row_span(): number;
 
         /**
          * Returns a reference to the accessible of the containing table.
          * @returns the atk object for the containing table.
+         * @since 2.12
          */
         get_table(): Object;
     }
@@ -10469,6 +10681,7 @@ export namespace Atk {
              * @param coord_type Specify whether coordinates are relative to the screen or widget window.
              * @param x_clip_type Specify the horizontal clip type.
              * @param y_clip_type Specify the vertical clip type.
+             * @since 1.3
              * @virtual
              */
             vfunc_get_bounded_ranges(rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType): TextRange[];
@@ -10538,6 +10751,7 @@ export namespace Atk {
              * @param start_offset The offset of the first text character for which boundary        information is required.
              * @param end_offset The offset of the text character after the last character        for which boundary information is required.
              * @param coord_type Specify whether coordinates are relative to the screen or widget window.
+             * @since 1.3
              * @virtual
              */
             vfunc_get_range_extents(start_offset: number, end_offset: number, coord_type: CoordType): TextRectangle;
@@ -10595,6 +10809,7 @@ export namespace Atk {
              * of the following paragraph after the offset.
              * @param offset position
              * @param granularity An {@link Atk.TextGranularity}
+             * @since 2.10
              * @virtual
              */
             vfunc_get_string_at_offset(offset: number, granularity: TextGranularity): [string | null, number, number];
@@ -10611,6 +10826,7 @@ export namespace Atk {
              * Gets the specified text.
              * @param offset position
              * @param boundary_type An {@link Atk.TextBoundary}
+             * @deprecated since 2.9.3: Please use `atk_text_get_string_at_offset()` instead.
              * @virtual
              */
             vfunc_get_text_after_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
@@ -10642,6 +10858,7 @@ export namespace Atk {
              * start after the offset.
              * @param offset position
              * @param boundary_type An {@link Atk.TextBoundary}
+             * @deprecated This method is deprecated since ATK version 2.9.4. Please use `atk_text_get_string_at_offset()` instead.
              * @virtual
              */
             vfunc_get_text_at_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
@@ -10650,6 +10867,7 @@ export namespace Atk {
              * Gets the specified text.
              * @param offset position
              * @param boundary_type An {@link Atk.TextBoundary}
+             * @deprecated since 2.9.3: Please use `atk_text_get_string_at_offset()` instead.
              * @virtual
              */
             vfunc_get_text_before_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
@@ -10666,6 +10884,7 @@ export namespace Atk {
              * @param start_offset start offset in the `text`
              * @param end_offset end offset in the `text`, or -1 for the end of the text.
              * @param type specify where the object should be made visible.
+             * @since 2.32
              * @virtual
              */
             vfunc_scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean;
@@ -10678,6 +10897,7 @@ export namespace Atk {
              * @param coords specify whether coordinates are relative to the screen or to the parent object.
              * @param x x-position where to scroll to
              * @param y y-position where to scroll to
+             * @since 2.32
              * @virtual
              */
             vfunc_scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean;
@@ -10799,6 +11019,7 @@ export namespace Atk {
          * @param x_clip_type Specify the horizontal clip type.
          * @param y_clip_type Specify the vertical clip type.
          * @returns Array of AtkTextRange. The last          element of the array returned by this function will be NULL.
+         * @since 1.3
          */
         get_bounded_ranges(rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType): TextRange[];
 
@@ -10866,6 +11087,7 @@ export namespace Atk {
          * @param start_offset The offset of the first text character for which boundary        information is required.
          * @param end_offset The offset of the text character after the last character        for which boundary information is required.
          * @param coord_type Specify whether coordinates are relative to the screen or widget window.
+         * @since 1.3
          */
         get_range_extents(start_offset: number, end_offset: number, coord_type: CoordType): TextRectangle;
 
@@ -10923,6 +11145,7 @@ export namespace Atk {
          * @param offset position
          * @param granularity An {@link Atk.TextGranularity}
          * @returns a newly allocated string containing the text at          the `offset` bounded by the specified `granularity`. Use `g_free()`          to free the returned string.  Returns `null` if the offset is invalid          or no implementation is available.
+         * @since 2.10
          */
         get_string_at_offset(offset: number, granularity: TextGranularity): [string | null, number, number];
 
@@ -10939,6 +11162,7 @@ export namespace Atk {
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
          * @returns a newly allocated string containing the text after `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
+         * @deprecated since 2.9.3: Please use `atk_text_get_string_at_offset()` instead.
          */
         get_text_after_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
 
@@ -10970,6 +11194,7 @@ export namespace Atk {
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
          * @returns a newly allocated string containing the text at `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
+         * @deprecated This method is deprecated since ATK version 2.9.4. Please use `atk_text_get_string_at_offset()` instead.
          */
         get_text_at_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
 
@@ -10978,6 +11203,7 @@ export namespace Atk {
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
          * @returns a newly allocated string containing the text before `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
+         * @deprecated since 2.9.3: Please use `atk_text_get_string_at_offset()` instead.
          */
         get_text_before_offset(offset: number, boundary_type: TextBoundary): [string, number, number];
 
@@ -10994,6 +11220,7 @@ export namespace Atk {
          * @param end_offset end offset in the `text`, or -1 for the end of the text.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.32
          */
         scroll_substring_to(start_offset: number, end_offset: number, type: ScrollType): boolean;
 
@@ -11006,6 +11233,7 @@ export namespace Atk {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.32
          */
         scroll_substring_to_point(start_offset: number, end_offset: number, coords: CoordType, x: number, y: number): boolean;
 
@@ -11057,6 +11285,7 @@ export namespace Atk {
             // Virtual methods
             /**
              * Gets the value of this object.
+             * @deprecated Since 2.12. Use `atk_value_get_value_and_text()` instead.
              * @virtual
              */
             vfunc_get_current_value(): GObject.Value | any;
@@ -11066,12 +11295,14 @@ export namespace Atk {
              * changed.  If zero, the minimum increment is undefined, which may
              * mean that it is limited only by the floating point precision of the
              * platform.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_increment(): number;
 
             /**
              * Gets the maximum value of this object.
+             * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
              * @virtual
              */
             vfunc_get_maximum_value(): GObject.Value | any;
@@ -11080,18 +11311,22 @@ export namespace Atk {
              * Gets the minimum increment by which the value of this object may be changed.  If zero,
              * the minimum increment is undefined, which may mean that it is limited only by the
              * floating point precision of the platform.
+             * @since 1.12
+             * @deprecated Since 2.12. Use `atk_value_get_increment()` instead.
              * @virtual
              */
             vfunc_get_minimum_increment(): GObject.Value | any;
 
             /**
              * Gets the minimum value of this object.
+             * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
              * @virtual
              */
             vfunc_get_minimum_value(): GObject.Value | any;
 
             /**
              * Gets the range of this object.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_range(): Range | null;
@@ -11099,6 +11334,7 @@ export namespace Atk {
             /**
              * Gets the list of subranges defined for this object. See {@link Atk.Value}
              * introduction for examples of subranges and when to expose them.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_sub_ranges(): Range[];
@@ -11107,6 +11343,7 @@ export namespace Atk {
              * Gets the current value and the human readable text alternative of
              * `obj`. `text` is a newly created string, that must be freed by the
              * caller. Can be NULL if no descriptor is available.
+             * @since 2.12
              * @virtual
              */
             vfunc_get_value_and_text(): [number, string];
@@ -11114,6 +11351,7 @@ export namespace Atk {
             /**
              * Sets the value of this object.
              * @param value a {@link GObject.Value} which is the desired new accessible value.
+             * @deprecated Since 2.12. Use `atk_value_set_value()` instead.
              * @virtual
              */
             vfunc_set_current_value(value: unknown): boolean;
@@ -11134,6 +11372,7 @@ export namespace Atk {
              * required anymore to return if the value was properly assigned or
              * not.
              * @param new_value a double which is the desired new accessible value.
+             * @since 2.12
              * @virtual
              */
             vfunc_set_value(new_value: number): void;
@@ -11298,6 +11537,7 @@ export namespace Atk {
         // Methods
         /**
          * Gets the value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_value_and_text()` instead.
          */
         get_current_value(): unknown;
 
@@ -11307,11 +11547,13 @@ export namespace Atk {
          * mean that it is limited only by the floating point precision of the
          * platform.
          * @returns the minimum increment by which the value of this object may be changed. zero if undefined.
+         * @since 2.12
          */
         get_increment(): number;
 
         /**
          * Gets the maximum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          */
         get_maximum_value(): unknown;
 
@@ -11319,17 +11561,21 @@ export namespace Atk {
          * Gets the minimum increment by which the value of this object may be changed.  If zero,
          * the minimum increment is undefined, which may mean that it is limited only by the
          * floating point precision of the platform.
+         * @since 1.12
+         * @deprecated Since 2.12. Use `atk_value_get_increment()` instead.
          */
         get_minimum_increment(): unknown;
 
         /**
          * Gets the minimum value of this object.
+         * @deprecated Since 2.12. Use `atk_value_get_range()` instead.
          */
         get_minimum_value(): unknown;
 
         /**
          * Gets the range of this object.
          * @returns a newly allocated {@link Atk.Range} that represents the minimum, maximum and descriptor (if available) of `obj`. NULL if that range is not defined.
+         * @since 2.12
          */
         get_range(): Range | null;
 
@@ -11337,6 +11583,7 @@ export namespace Atk {
          * Gets the list of subranges defined for this object. See {@link Atk.Value}
          * introduction for examples of subranges and when to expose them.
          * @returns an {@link GLib.SList} of {@link Atk.Range} which each of the subranges defined for this object. Free the returns list with `g_slist_free()`.
+         * @since 2.12
          */
         get_sub_ranges(): Range[];
 
@@ -11344,6 +11591,7 @@ export namespace Atk {
          * Gets the current value and the human readable text alternative of
          * `obj`. `text` is a newly created string, that must be freed by the
          * caller. Can be NULL if no descriptor is available.
+         * @since 2.12
          */
         get_value_and_text(): [number, string];
 
@@ -11351,6 +11599,7 @@ export namespace Atk {
          * Sets the value of this object.
          * @param value a {@link GObject.Value} which is the desired new accessible value.
          * @returns `true` if new value is successfully set, `false` otherwise.
+         * @deprecated Since 2.12. Use `atk_value_set_value()` instead.
          */
         set_current_value(value: GObject.Value | any): boolean;
 
@@ -11370,6 +11619,7 @@ export namespace Atk {
          * required anymore to return if the value was properly assigned or
          * not.
          * @param new_value a double which is the desired new accessible value.
+         * @since 2.12
          */
         set_value(new_value: number): void;
     }

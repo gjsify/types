@@ -202,6 +202,23 @@ export interface Widgets {
 /** Every GType this namespace can create. A consumer derives its own tag map. */
 export type WidgetGType = keyof Widgets;
 
+// ---------------------------------------------------------------------------
+// Child holders — the same shape, for objects that CARRY a widget without being one.
+//
+// `GtkListItem`, `GtkListHeader`, `GtkColumnViewCell` and `AdwToggle` descend from
+// `GObject.Object` and hold a widget through `set_child`/`get_child`. A renderer places
+// them exactly like a container, so they belong in the vocabulary; a check asking "is
+// this a widget" must still be able to say no. Hence a sibling table rather than four
+// more rows in `Widgets`: concatenate them when you mean both.
+// ---------------------------------------------------------------------------
+
+export interface ChildHolders {
+
+}
+
+/** Every GType this namespace holds a child in without it being a widget. */
+export type ChildHolderGType = keyof ChildHolders;
+
 /** The writable, optional, GObject-keyed property surface of one GType. */
 export type PropsOf<G extends WidgetGType> = Widgets[G]['props'];
 
@@ -236,6 +253,9 @@ export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
 /** Widget GType -> every declaration its members come from, self first. */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
+
+/** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
+export const CHILD_HOLDERS: readonly string[];
 
 /** Enum GType -> the nicks this surface offers. */
 export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;

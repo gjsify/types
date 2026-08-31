@@ -219,17 +219,20 @@ export namespace NMA {
         /**
          * Draws the QR code onto the given context.
          * @param cr cairo context
+         * @since 1.8.22
          */
         draw(cr: cairo.Context): void;
 
         /**
          * @returns the side of a QR code square.
+         * @since 1.8.22
          */
         get_size(): number;
 
         /**
          * Regenerates the QR code for a different text.
          * @param text new bar code text
+         * @since 1.8.22
          */
         set_text(text: string): void;
     }
@@ -342,12 +345,14 @@ export namespace NMA {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -522,18 +527,21 @@ export namespace NMA {
          * It is expected that the NMACertChooser is a GtkGrid with two columns
          * with the labels in the first one.
          * @param group a size group
+         * @since 1.8.0
          */
         add_to_size_group(group: Gtk.SizeGroup): void;
 
         /**
          * Gets the real certificate location from the chooser button along with the scheme.
          * @returns the certificate path
+         * @since 1.8.0
          */
         get_cert(): [string | null, NM.Setting8021xCKScheme];
 
         /**
          * Obtains the password or a PIN that was be required to access the certificate.
          * @returns the certificate PIN or password
+         * @since 1.8.0
          */
         get_cert_password(): string;
 
@@ -543,24 +551,28 @@ export namespace NMA {
          * `nma_utils_menu_to_secret_flags()` for the certificate password
          * entry.
          * @returns secret flags corresponding to the certificate password
+         * @since 1.8.0
          */
         get_cert_password_flags(): NM.SettingSecretFlags;
 
         /**
          * Gets the real certificate URI from the chooser button along with the scheme.
          * @returns the certificate URI
+         * @since 1.8.0
          */
         get_cert_uri(): string | null;
 
         /**
          * Gets the real key location from the chooser button along with the scheme.
          * @returns the key path
+         * @since 1.8.0
          */
         get_key(): [string | null, NM.Setting8021xCKScheme];
 
         /**
          * Obtains the password or a PIN that was be required to access the key.
          * @returns the key PIN or password
+         * @since 1.8.0
          */
         get_key_password(): string;
 
@@ -570,12 +582,14 @@ export namespace NMA {
          * `nma_utils_menu_to_secret_flags()` for the key password
          * entry.
          * @returns secret flags corresponding to the key password
+         * @since 1.8.0
          */
         get_key_password_flags(): NM.SettingSecretFlags;
 
         /**
          * Gets the real key URI from the chooser button along with the scheme.
          * @returns the key URI
+         * @since 1.8.0
          */
         get_key_uri(): string | null;
 
@@ -583,18 +597,21 @@ export namespace NMA {
          * Sets the certificate location for the chooser button.
          * @param value the path or URI of a certificate
          * @param scheme the scheme of the certificate path
+         * @since 1.8.0
          */
         set_cert(value: string, scheme: NM.Setting8021xCKScheme): void;
 
         /**
          * Sets the password or a PIN that might be required to access the certificate.
          * @param password the certificate PIN or password
+         * @since 1.8.0
          */
         set_cert_password(password: string): void;
 
         /**
          * Sets the certificate URI for the chooser button.
          * @param uri the path or URI of a certificate
+         * @since 1.8.0
          */
         set_cert_uri(uri: string): void;
 
@@ -602,18 +619,21 @@ export namespace NMA {
          * Sets the key location for the chooser button.
          * @param value the path or URI of a key
          * @param scheme the scheme of the key path
+         * @since 1.8.0
          */
         set_key(value: string, scheme: NM.Setting8021xCKScheme): void;
 
         /**
          * Sets the password or a PIN that might be required to access the key.
          * @param password the key PIN or password
+         * @since 1.8.0
          */
         set_key_password(password: string): void;
 
         /**
          * Sets the key URI for the chooser button.
          * @param uri the URI of a key
+         * @since 1.8.0
          */
         set_key_uri(uri: string): void;
 
@@ -625,6 +645,7 @@ export namespace NMA {
          * @param password_flags_name name of the secret flags (like psk-flags), or NULL
          * @param with_not_required whether to include "Not required" menu item
          * @param ask_mode `true` if the entry is shown in ASK mode
+         * @since 1.8.0
          */
         setup_cert_password_storage(initial_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string, with_not_required: boolean, ask_mode: boolean): void;
 
@@ -636,6 +657,7 @@ export namespace NMA {
          * @param password_flags_name name of the secret flags (like psk-flags), or NULL
          * @param with_not_required whether to include "Not required" menu item
          * @param ask_mode `true` if the entry is shown in ASK mode
+         * @since 1.8.0
          */
         setup_key_password_storage(initial_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string, with_not_required: boolean, ask_mode: boolean): void;
 
@@ -645,6 +667,7 @@ export namespace NMA {
          * @param secret_flags secret flags to set
          * @param setting {@link NM.Setting} containing the password, or NULL
          * @param password_flags_name name of the secret flags (like psk-flags), or NULL
+         * @since 1.8.0
          */
         update_cert_password_storage(secret_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string): void;
 
@@ -654,6 +677,7 @@ export namespace NMA {
          * @param secret_flags secret flags to set
          * @param setting {@link NM.Setting} containing the password, or NULL
          * @param password_flags_name name of the secret flags (like psk-flags), or NULL
+         * @since 1.8.0
          */
         update_key_password_storage(secret_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string): void;
 
@@ -662,6 +686,7 @@ export namespace NMA {
          * validation by subscribing to the "*-changed" signals and returning an
          * error themselves.
          * @returns `true` if validation passes, `false` otherwise
+         * @since 1.8.0
          */
         validate(): boolean;
 
@@ -677,12 +702,14 @@ export namespace NMA {
         /**
          * Retrieves the orientation of the `orientable`.
          * @returns the orientation of the `orientable`.
+         * @since 2.16
          */
         get_orientation(): Gtk.Orientation;
 
         /**
          * Sets the orientation of the `orientable`.
          * @param orientation the orientable’s new orientation.
+         * @since 2.16
          */
         set_orientation(orientation: Gtk.Orientation): void;
     }
@@ -843,6 +870,7 @@ export namespace NMA {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -886,6 +914,7 @@ export namespace NMA {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -929,6 +958,7 @@ export namespace NMA {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -937,6 +967,7 @@ export namespace NMA {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -945,6 +976,7 @@ export namespace NMA {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): MobileProvidersDatabase;
 
@@ -988,6 +1020,7 @@ export namespace NMA {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -996,6 +1029,7 @@ export namespace NMA {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -1041,6 +1075,7 @@ export namespace NMA {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1084,6 +1119,7 @@ export namespace NMA {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;

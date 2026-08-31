@@ -369,12 +369,14 @@ export namespace FoundryGtk {
         /**
          * Gets the graph entry displayed by `self`.
          * @returns a {@link Foundry.VcsGraphEntry}
+         * @since 1.2
          */
         dup_entry(): Foundry.VcsGraphEntry | null;
 
         /**
          * Sets the graph entry displayed by `self`.
          * @param entry a {@link Foundry.VcsGraphEntry}
+         * @since 1.2
          */
         set_entry(entry: Foundry.VcsGraphEntry | null): void;
 
@@ -384,6 +386,7 @@ export namespace FoundryGtk {
          * If `colors` is `null`, the default lane colors are used. When `colors` is not
          * `null`, the colors are copied and `n_colors` must be greater than zero.
          * @param colors the lane colors
+         * @since 1.2
          */
         set_lane_colors(colors: Gdk.RGBA[] | null): void;
 
@@ -419,6 +422,7 @@ export namespace FoundryGtk {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -431,6 +435,7 @@ export namespace FoundryGtk {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -439,6 +444,7 @@ export namespace FoundryGtk {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -451,6 +457,7 @@ export namespace FoundryGtk {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -461,18 +468,21 @@ export namespace FoundryGtk {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -484,6 +494,7 @@ export namespace FoundryGtk {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -517,6 +528,7 @@ export namespace FoundryGtk {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -526,6 +538,7 @@ export namespace FoundryGtk {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -536,6 +549,7 @@ export namespace FoundryGtk {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -583,6 +597,7 @@ export namespace FoundryGtk {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -591,12 +606,14 @@ export namespace FoundryGtk {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -607,18 +624,21 @@ export namespace FoundryGtk {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -630,6 +650,7 @@ export namespace FoundryGtk {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -852,6 +873,7 @@ export namespace FoundryGtk {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -864,6 +886,7 @@ export namespace FoundryGtk {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -872,6 +895,7 @@ export namespace FoundryGtk {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -884,6 +908,7 @@ export namespace FoundryGtk {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -894,18 +919,21 @@ export namespace FoundryGtk {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -917,6 +945,7 @@ export namespace FoundryGtk {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -950,6 +979,7 @@ export namespace FoundryGtk {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -959,6 +989,7 @@ export namespace FoundryGtk {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -969,6 +1000,7 @@ export namespace FoundryGtk {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -1016,6 +1048,7 @@ export namespace FoundryGtk {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -1024,12 +1057,14 @@ export namespace FoundryGtk {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -1040,18 +1075,21 @@ export namespace FoundryGtk {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -1063,6 +1101,7 @@ export namespace FoundryGtk {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -1240,6 +1279,7 @@ export namespace FoundryGtk {
         /**
          * @param resource 
          * @returns the merge id
+         * @since 1.4
          */
         add_resource(resource: string): number;
 
@@ -1250,17 +1290,20 @@ export namespace FoundryGtk {
          * If no match is found, `null` is returned.
          * @param id the identifier of the menu item
          * @returns a {@link Gio.Menu} if successful; otherwise   `null` and `position` is unset.
+         * @since 1.4
          */
         find_item_by_id(id: string): [Gio.Menu | null, number];
 
         /**
          * @param menu_id 
          * @returns A {@link Gio.Menu}.
+         * @since 1.4
          */
         get_menu_by_id(menu_id: string): Gio.Menu;
 
         /**
          * Gets the known menu ids as a string array.
+         * @since 1.4
          */
         get_menu_ids(): string[];
 
@@ -1269,6 +1312,7 @@ export namespace FoundryGtk {
          * @param menu_id the identifier of the menu
          * @param menu_model the menu model to merge
          * @returns the merge-id which can be used with `foundry_menu_manager_remove()`
+         * @since 1.4
          */
         merge(menu_id: string, menu_model: Gio.MenuModel): number;
 
@@ -1277,6 +1321,7 @@ export namespace FoundryGtk {
          * menu merge. Use the value returned from `foundry_menu_manager_merge()` as
          * the `merge_id`.
          * @param merge_id A previously registered merge id
+         * @since 1.4
          */
         remove(merge_id: number): void;
 
@@ -1290,6 +1335,7 @@ export namespace FoundryGtk {
          * @param position the index of the item in the menu
          * @param attribute the attribute to change
          * @param value the new value for the attribute
+         * @since 1.4
          */
         set_attribute_string(menu: Gio.Menu, position: number, attribute: string, value: string): void;
     }
@@ -1440,6 +1486,7 @@ export namespace FoundryGtk {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -1450,6 +1497,7 @@ export namespace FoundryGtk {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -1468,6 +1516,7 @@ export namespace FoundryGtk {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -1495,6 +1544,7 @@ export namespace FoundryGtk {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -1507,6 +1557,7 @@ export namespace FoundryGtk {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -1520,6 +1571,7 @@ export namespace FoundryGtk {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -1530,6 +1582,7 @@ export namespace FoundryGtk {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -1616,6 +1669,7 @@ export namespace FoundryGtk {
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
          * @returns the {@link GObject.GType} of the items contained in `list`.
+         * @since 2.44
          */
         get_item_type(): GObject.GType;
 
@@ -1626,6 +1680,7 @@ export namespace FoundryGtk {
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
          * @returns the number of items in `list`.
+         * @since 2.44
          */
         get_n_items(): number;
 
@@ -1644,6 +1699,7 @@ export namespace FoundryGtk {
          * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
          * @returns the object at `position`.
+         * @since 2.44
          */
         get_item(position: number): A | null;
 
@@ -1671,6 +1727,7 @@ export namespace FoundryGtk {
          * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
+         * @since 2.44
          */
         items_changed(position: number, removed: number, added: number): void;
 
@@ -1683,6 +1740,7 @@ export namespace FoundryGtk {
          * 
          * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item(position: number): A | null;
@@ -1696,6 +1754,7 @@ export namespace FoundryGtk {
          * 
          * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
@@ -1706,6 +1765,7 @@ export namespace FoundryGtk {
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
          * `position` until `g_list_model_get_item()` returns `null`.
+         * @since 2.44
          * @virtual
          */
         vfunc_get_n_items(): number;
@@ -1894,6 +1954,7 @@ export namespace FoundryGtk {
          * for the current language.
          * @param begin start of the text range to comment
          * @param end end of the text range to comment
+         * @since 1.1
          */
         comment(begin: Gtk.TextIter, end: Gtk.TextIter): void;
 
@@ -1932,6 +1993,7 @@ export namespace FoundryGtk {
          * Removes comment markers from the specified text range.
          * @param begin start of the text range to uncomment
          * @param end end of the text range to uncomment
+         * @since 1.1
          */
         uncomment(begin: Gtk.TextIter, end: Gtk.TextIter): void;
 
@@ -1942,6 +2004,7 @@ export namespace FoundryGtk {
          * @param flags non-zero flags to dispatch
          * @param commit_notify 
          * @returns a non-zero commit handler id if supported; otherwise zero.
+         * @since 1.1
          */
         add_commit_notify(flags: Foundry.TextBufferNotifyFlags, commit_notify: Foundry.TextBufferCommitNotify): number;
 
@@ -2003,6 +2066,7 @@ export namespace FoundryGtk {
         /**
          * Remove a commit notify handler.
          * @param commit_notify_handler the previously registered non-zero commit handler
+         * @since 1.1
          */
         remove_commit_notify(commit_notify_handler: number): void;
 
@@ -2019,6 +2083,7 @@ export namespace FoundryGtk {
          * If the implementation does not support this, zero is returned.
          * @param flags non-zero flags to dispatch
          * @param commit_notify 
+         * @since 1.1
          * @virtual
          */
         vfunc_add_commit_notify(flags: Foundry.TextBufferNotifyFlags, commit_notify: Foundry.TextBufferCommitNotify): number;
@@ -2059,6 +2124,7 @@ export namespace FoundryGtk {
         /**
          * Remove a commit notify handler.
          * @param commit_notify_handler the previously registered non-zero commit handler
+         * @since 1.1
          * @virtual
          */
         vfunc_remove_commit_notify(commit_notify_handler: number): void;
@@ -2388,6 +2454,7 @@ export namespace FoundryGtk {
          * @param use_align 
          * @param xalign 
          * @param yalign 
+         * @since 1.1
          */
         jump_to_iter(iter: Gtk.TextIter, within_margin: number, use_align: boolean, xalign: number, yalign: number): void;
 
@@ -2697,6 +2764,7 @@ export namespace FoundryGtk {
          * does not interrupts the user's current screen reader output.
          * @param message the string to announce
          * @param priority the priority of the announcement
+         * @since 4.14
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority): void;
 
@@ -2709,6 +2777,7 @@ export namespace FoundryGtk {
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
          * @returns the accessible identifier
+         * @since 4.22
          */
         get_accessible_id(): string | null;
 
@@ -2717,6 +2786,7 @@ export namespace FoundryGtk {
          * 
          * This function returns `NULL` for top level widgets.
          * @returns the accessible parent
+         * @since 4.10
          */
         get_accessible_parent(): Gtk.Accessible | null;
 
@@ -2729,6 +2799,7 @@ export namespace FoundryGtk {
         /**
          * Retrieves the implementation for the given accessible object.
          * @returns the accessible implementation object
+         * @since 4.10
          */
         get_at_context(): Gtk.ATContext;
 
@@ -2739,18 +2810,21 @@ export namespace FoundryGtk {
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
+         * @since 4.10
          */
         get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
          * @returns the first accessible child
+         * @since 4.10
          */
         get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
          * @returns the next accessible sibling
+         * @since 4.10
          */
         get_next_accessible_sibling(): Gtk.Accessible | null;
 
@@ -2762,6 +2836,7 @@ export namespace FoundryGtk {
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
+         * @since 4.10
          */
         get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
 
@@ -2795,6 +2870,7 @@ export namespace FoundryGtk {
          * object is the container widget.
          * @param parent the parent accessible object
          * @param next_sibling the sibling accessible object
+         * @since 4.10
          */
         set_accessible_parent(parent: Gtk.Accessible | null, next_sibling: Gtk.Accessible | null): void;
 
@@ -2804,6 +2880,7 @@ export namespace FoundryGtk {
          * That might be useful when a new child of a custom accessible
          * is created, and it needs to be linked to a previous child.
          * @param new_sibling the new next accessible sibling to set
+         * @since 4.10
          */
         update_next_accessible_sibling(new_sibling: Gtk.Accessible | null): void;
 
@@ -2814,6 +2891,7 @@ export namespace FoundryGtk {
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
+         * @since 4.18
          */
         update_platform_state(state: Gtk.AccessiblePlatformState): void;
 
@@ -2861,6 +2939,7 @@ export namespace FoundryGtk {
          * 
          * It is left to the accessible implementation to define the scope
          * and uniqueness of the identifier.
+         * @since 4.22
          * @virtual
          */
         vfunc_get_accessible_id(): string | null;
@@ -2869,12 +2948,14 @@ export namespace FoundryGtk {
          * Retrieves the accessible parent for an accessible object.
          * 
          * This function returns `NULL` for top level widgets.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
 
         /**
          * Retrieves the implementation for the given accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
@@ -2885,18 +2966,21 @@ export namespace FoundryGtk {
          * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
 
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @since 4.10
          * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
 
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @since 4.10
          * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
@@ -2908,6 +2992,7 @@ export namespace FoundryGtk {
          * implementations, e.g. to get platform state from an ignored
          * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @since 4.10
          * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
@@ -2918,6 +3003,7 @@ export namespace FoundryGtk {
          * Implementations of the {@link Gtk.AccessibleText} interface should call this
          * function every time the caret has moved, in order to notify assistive
          * technologies.
+         * @since 4.14
          */
         update_caret_position(): void;
 
@@ -2934,6 +3020,7 @@ export namespace FoundryGtk {
          * @param change the type of change in the contents
          * @param start the starting offset of the change, in characters
          * @param end the end offset of the change, in characters
+         * @since 4.14
          */
         update_contents(change: Gtk.AccessibleTextContentChange, start: number, end: number): void;
 
@@ -2943,6 +3030,7 @@ export namespace FoundryGtk {
          * Implementations of the {@link Gtk.AccessibleText} interface should call this
          * function every time the selection has moved, in order to notify assistive
          * technologies.
+         * @since 4.14
          */
         update_selection_bound(): void;
 
@@ -2965,12 +3053,14 @@ export namespace FoundryGtk {
          * greater than or equal to one, `ranges` will be set to a newly
          * allocated array of [struct#Gtk.AccessibleTextRange].
          * @param offset the offset, in characters
+         * @since 4.14
          * @virtual
          */
         vfunc_get_attributes(offset: number): [boolean, Gtk.AccessibleTextRange[] | null, string[] | null, string[] | null];
 
         /**
          * Retrieves the position of the caret inside the accessible object.
+         * @since 4.14
          * @virtual
          */
         vfunc_get_caret_position(): number;
@@ -2983,6 +3073,7 @@ export namespace FoundryGtk {
          * of the accessible object.
          * @param start the beginning of the range, in characters
          * @param end the end of the range, in characters
+         * @since 4.14
          * @virtual
          */
         vfunc_get_contents(start: number, end: number): GLib.Bytes | Uint8Array;
@@ -2994,6 +3085,7 @@ export namespace FoundryGtk {
          * The `start` and `end` values contain the boundaries of the text.
          * @param offset the offset, in characters
          * @param granularity the granularity of the query
+         * @since 4.14
          * @virtual
          */
         vfunc_get_contents_at(offset: number, granularity: Gtk.AccessibleTextGranularity): [GLib.Bytes | Uint8Array, number, number];
@@ -3011,6 +3103,7 @@ export namespace FoundryGtk {
          * 
          * GTK provides support for various text attribute names and values, but
          * implementations of this interface are free to add their own attributes.
+         * @since 4.14
          * @virtual
          */
         vfunc_get_default_attributes(): [string[] | null, string[] | null];
@@ -3020,6 +3113,7 @@ export namespace FoundryGtk {
          * @param start the start offset, in characters
          * @param end the end offset, in characters, `extents` (out caller-allocates): return location for the extents
          * @param extents 
+         * @since 4.16
          * @virtual
          */
         vfunc_get_extents(start: number, end: number, extents: Graphene.Rect): boolean;
@@ -3027,6 +3121,7 @@ export namespace FoundryGtk {
         /**
          * Gets the text offset at a given point.
          * @param point a point in widget coordinates of `self`
+         * @since 4.16
          * @virtual
          */
         vfunc_get_offset(point: Graphene.Point): [boolean, number];
@@ -3037,6 +3132,7 @@ export namespace FoundryGtk {
          * If this function returns true, `n_ranges` will be set to a value
          * greater than or equal to one, and `ranges` will be set to a newly
          * allocated array of [struct#Gtk.AccessibleTextRange].
+         * @since 4.14
          * @virtual
          */
         vfunc_get_selection(): [boolean, Gtk.AccessibleTextRange[] | null];
@@ -3044,6 +3140,7 @@ export namespace FoundryGtk {
         /**
          * Sets the caret position.
          * @param offset the text offset in characters
+         * @since 4.22
          * @virtual
          */
         vfunc_set_caret_position(offset: number): boolean;
@@ -3052,6 +3149,7 @@ export namespace FoundryGtk {
          * Sets the caret position.
          * @param i the selection to set
          * @param range the range to set the selection to
+         * @since 4.22
          * @virtual
          */
         vfunc_set_selection(i: number, range: Gtk.AccessibleTextRange): boolean;

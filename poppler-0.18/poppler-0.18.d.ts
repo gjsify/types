@@ -2196,6 +2196,7 @@ export namespace Poppler {
          * width even if the border is not actually drawn.
          * @param width a valid pointer to a double
          * @returns true and sets `border_width` to the actual border width if a border is defined, otherwise returns false and sets `border_width` to 0.
+         * @since 24.12.0
          */
         get_border_width(width: number): boolean;
 
@@ -2235,12 +2236,14 @@ export namespace Poppler {
         /**
          * Returns the page index to which `poppler_annot` is associated, or -1 if unknown
          * @returns page index or -1
+         * @since 0.14
          */
         get_page_index(): number;
 
         /**
          * Retrieves the rectangle representing the page coordinates where the
          * annotation `poppler_annot` is placed.
+         * @since 0.26
          */
         get_rectangle(): Rectangle;
 
@@ -2250,12 +2253,14 @@ export namespace Poppler {
          * this should generally only be used to disable the border, although the
          * API might be completed in the future.
          * @param width the new border width
+         * @since 24.12.0
          */
         set_border_width(width: number): void;
 
         /**
          * Sets the color of `poppler_annot`.
          * @param poppler_color a {@link Poppler.Color}, or `null`
+         * @since 0.16
          */
         set_color(poppler_color: Color | null): void;
 
@@ -2263,6 +2268,7 @@ export namespace Poppler {
          * Sets the contents of `poppler_annot` to the given value,
          * replacing the current contents.
          * @param contents a text string containing the new contents
+         * @since 0.12
          */
         set_contents(contents: string): void;
 
@@ -2270,6 +2276,7 @@ export namespace Poppler {
          * Sets the flag field specifying various characteristics of the
          * `poppler_annot`.
          * @param flags a {@link Poppler.AnnotFlag}
+         * @since 0.22
          */
         set_flags(flags: AnnotFlag): void;
 
@@ -2277,6 +2284,7 @@ export namespace Poppler {
          * Move the annotation to the rectangle representing the page coordinates
          * where the annotation `poppler_annot` should be placed.
          * @param poppler_rect a {@link Poppler.Rectangle} with the new annotation's coordinates
+         * @since 0.26
          */
         set_rectangle(poppler_rect: Rectangle): void;
     }
@@ -2332,12 +2340,14 @@ export namespace Poppler {
         /**
          * Retrieves the interior color of `poppler_annot`.
          * @returns a new allocated {@link Poppler.Color} with the color values of               `poppler_annot`, or `null`. It must be freed with `g_free()` when done.
+         * @since 0.26
          */
         get_interior_color(): Color;
 
         /**
          * Sets the interior color of `poppler_annot`.
          * @param poppler_color a {@link Poppler.Color}, or `null`
+         * @since 0.26
          */
         set_interior_color(poppler_color: Color | null): void;
     }
@@ -2392,12 +2402,14 @@ export namespace Poppler {
          * Creates a {@link Poppler.Attachment} for the file of the file attachment annotation `annot`.
          * The {@link Poppler.Attachment} must be unrefed with g_object_unref by the caller.
          * @returns `PopplerAttachment`
+         * @since 0.14
          */
         get_attachment(): Attachment;
 
         /**
          * Retrieves the name of `poppler_annot`.
          * @returns a new allocated string with the name of `poppler_annot`. It must               be freed with `g_free()` when done.
+         * @since 0.14
          */
         get_name(): string;
     }
@@ -2460,12 +2472,14 @@ export namespace Poppler {
         /**
          * Gets the font color.
          * @returns a copy of the font's {@link Poppler.Color}.
+         * @since 24.12.0
          */
         get_font_color(): Color;
 
         /**
          * Gets the font description (i.e. font family name, style, weight, stretch and size).
          * @returns a copy of the annotation font description, or NULL if there is no font description set.
+         * @since 24.12.0
          */
         get_font_desc(): FontDescription | null;
 
@@ -2478,12 +2492,14 @@ export namespace Poppler {
         /**
          * Sets the font color.
          * @param color a {@link Poppler.Color}
+         * @since 24.12.0
          */
         set_font_color(color: Color): void;
 
         /**
          * Sets the font description (i.e. font family name, style, weight, stretch and size).
          * @param font_desc a {@link Poppler.FontDescription}
+         * @since 24.12.0
          */
         set_font_desc(font_desc: FontDescription): void;
     }
@@ -2536,12 +2552,14 @@ export namespace Poppler {
         // Methods
         /**
          * Returns whether the annotation is drawn below the page content or not.
+         * @since 25.10.0
          */
         get_draw_below(): boolean;
 
         /**
          * Each element of the return value is a path.
          * @returns a GSList of PopplerPath
+         * @since 25.06.0
          */
         get_ink_list(): Path[];
 
@@ -2549,6 +2567,7 @@ export namespace Poppler {
          * This is typically used for highlight annotations. Technically, this implies that the
          * annotation is drawn using a multiply blend mode.
          * @param draw_below whether the annotation should be drawn below the document content
+         * @since 25.10.0
          */
         set_draw_below(draw_below: boolean): void;
 
@@ -2562,6 +2581,7 @@ export namespace Poppler {
          * afterwards with `poppler_annot_set_rectangle` should not be done
          * to preserve scaling and positioning.
          * @param ink_list a list of {@link Poppler.Path}
+         * @since 25.06.0
          */
         set_ink_list(ink_list: Path[]): void;
     }
@@ -2618,6 +2638,7 @@ export namespace Poppler {
          * Set the coordinate points where the `poppler_annot` starts and ends.
          * @param start a {@link Poppler.Point} of the starting vertice
          * @param end a {@link Poppler.Point} of the ending vertice
+         * @since 0.26
          */
         set_vertices(start: Point, end: Point): void;
     }
@@ -2701,6 +2722,7 @@ export namespace Poppler {
         /**
          * Retrieves the rectangle of the popup window related to `poppler_annot`.
          * @returns `true` if {@link Poppler.Rectangle} was correctly filled, `false` otherwise
+         * @since 0.12
          */
         get_popup_rectangle(): [boolean, Rectangle];
 
@@ -2719,12 +2741,14 @@ export namespace Poppler {
         /**
          * Return `true` if the markup annotation has a popup window associated
          * @returns `true`, if `poppler_annot` has popup, `false` otherwise
+         * @since 0.12
          */
         has_popup(): boolean;
 
         /**
          * Sets the label text of `poppler_annot`, replacing the current one
          * @param label a text string containing the new label, or `null`
+         * @since 0.16
          */
         set_label(label: string | null): void;
 
@@ -2733,6 +2757,7 @@ export namespace Poppler {
          * all visible elements of `poppler_annot` in its closed state,
          * but not to the pop-up window that appears when it's openened
          * @param opacity a constant opacity value, between 0 (transparent) and 1 (opaque)
+         * @since 0.16
          */
         set_opacity(opacity: number): void;
 
@@ -2740,12 +2765,14 @@ export namespace Poppler {
          * Associates a new popup window for editing contents of `poppler_annot`.
          * Popup window shall be displayed by viewers at `popup_rect` on the page.
          * @param popup_rect a {@link Poppler.Rectangle}
+         * @since 0.16
          */
         set_popup(popup_rect: Rectangle): void;
 
         /**
          * Sets the state of the popup window related to `poppler_annot`.
          * @param is_open whether popup window should initially be displayed open
+         * @since 0.16
          */
         set_popup_is_open(is_open: boolean): void;
 
@@ -2755,6 +2782,7 @@ export namespace Poppler {
          * popup associated, use `poppler_annot_markup_set_popup()` to associate
          * a popup window to a {@link Poppler.AnnotMarkup}.
          * @param poppler_rect a {@link Poppler.Rectangle} to set
+         * @since 0.33
          */
         set_popup_rectangle(poppler_rect: Rectangle): void;
     }
@@ -2808,12 +2836,14 @@ export namespace Poppler {
         /**
          * Retrieves the movie object (PopplerMovie) stored in the `poppler_annot`.
          * @returns the movie object stored in the `poppler_annot`. The returned               object is owned by {@link Poppler.AnnotMovie} and should not be freed
+         * @since 0.14
          */
         get_movie(): Movie;
 
         /**
          * Retrieves the movie title of `poppler_annot`.
          * @returns the title text of `poppler_annot`.
+         * @since 0.14
          */
         get_title(): string;
     }
@@ -2867,6 +2897,7 @@ export namespace Poppler {
         /**
          * Retrieves the action ({@link Poppler.Action}) that shall be performed when `poppler_annot` is activated
          * @returns the action to perform. The returned               object is owned by `poppler_annot` and should not be freed
+         * @since 0.14
          */
         get_action(): Action;
     }
@@ -2922,12 +2953,14 @@ export namespace Poppler {
         /**
          * Retrieves the interior color of `poppler_annot`.
          * @returns a new allocated {@link Poppler.Color} with the color values of               `poppler_annot`, or `null`. It must be freed with `g_free()` when done.
+         * @since 0.26
          */
         get_interior_color(): Color;
 
         /**
          * Sets the interior color of `poppler_annot`.
          * @param poppler_color a {@link Poppler.Color}, or `null`
+         * @since 0.26
          */
         set_interior_color(poppler_color: Color | null): void;
     }
@@ -2982,6 +3015,7 @@ export namespace Poppler {
         // Methods
         /**
          * @returns the corresponding {@link Poppler.AnnotStampIcon} of the icon
+         * @since 22.07.0
          */
         get_icon(): AnnotStampIcon;
 
@@ -2989,12 +3023,14 @@ export namespace Poppler {
          * Sets the custom image of `poppler_annot` to be `image`
          * @param image an image cairo surface
          * @returns `true` on success, `false` otherwise.
+         * @since 22.07.0
          */
         set_custom_image(image: cairo.Surface): boolean;
 
         /**
          * Sets the icon of `poppler_annot` to be one of the predefined values in {@link Poppler.AnnotStampIcon}
          * @param icon the {@link Poppler.AnnotStampIcon} type of the icon
+         * @since 22.07.0
          */
         set_icon(icon: AnnotStampIcon): void;
     }
@@ -3124,12 +3160,14 @@ export namespace Poppler {
          *  </varlistentry>
          * </variablelist>
          * @param icon the name of an icon
+         * @since 0.16
          */
         set_icon(icon: string): void;
 
         /**
          * Sets whether `poppler_annot` should initially be displayed open
          * @param is_open whether annotation should initially be displayed open
+         * @since 0.16
          */
         set_is_open(is_open: boolean): void;
     }
@@ -3193,12 +3231,14 @@ export namespace Poppler {
          * location on `page` to a {@link Poppler.AnnotTextMarkup}.  This array must be freed
          * when done.
          * @returns A {@link GLib.Array} of {@link Poppler.Quadrilateral}
+         * @since 0.26
          */
         get_quadrilaterals(): Quadrilateral[];
 
         /**
          * Set the regions (Quadrilaterals) to apply the text markup in `poppler_annot`.
          * @param quadrilaterals A {@link GLib.Array} of   {@link Poppler.Quadrilateral}<!-- -->s
+         * @since 0.26
          */
         set_quadrilaterals(quadrilaterals: Quadrilateral[]): void;
     }
@@ -3260,31 +3300,37 @@ export namespace Poppler {
         // Methods
         /**
          * @returns The attachment's checksum.
+         * @since 20.09.0
          */
         get_checksum(): GLib.String;
 
         /**
          * @returns The attachment's creation date and time as a {@link GLib.DateTime}, or `null` if the creation date and time is not available.
+         * @since 20.09.0
          */
         get_ctime(): GLib.DateTime | null;
 
         /**
          * @returns The attachment's descriptive text.
+         * @since 20.09.0
          */
         get_description(): string;
 
         /**
          * @returns The attachment's modification date and time as a {@link GLib.DateTime}, or `null` if the modification date and time is not available.
+         * @since 20.09.0
          */
         get_mtime(): GLib.DateTime | null;
 
         /**
          * @returns The attachment's name.
+         * @since 20.09.0
          */
         get_name(): string;
 
         /**
          * @returns The attachment's size.
+         * @since 20.09.0
          */
         get_size(): number;
 
@@ -3316,6 +3362,7 @@ export namespace Poppler {
          * again, nor close it.
          * @param fd a valid file descriptor open for writing
          * @returns `true`, if the file successfully saved
+         * @since 21.12.0
          */
         save_to_fd(fd: number): boolean;
     }
@@ -3748,6 +3795,7 @@ export namespace Poppler {
          * The tree value is the {@link Poppler.Dest} which contains a named destination.
          * The return value must be freed with `g_tree_destroy()`.
          * @returns the {@link GLib.Tree}, or `null`
+         * @since 0.78
          */
         create_dests_tree(): GLib.Tree | null;
 
@@ -3777,18 +3825,21 @@ export namespace Poppler {
         /**
          * Returns the author of the document
          * @returns a new allocated string containing the author               of `document`, or `null`
+         * @since 0.16
          */
         get_author(): string;
 
         /**
          * Returns the date the document was created as seconds since the Epoch
          * @returns the date the document was created, or -1
+         * @since 0.16
          */
         get_creation_date(): number;
 
         /**
          * Returns the date the document was created as a {@link GLib.DateTime}
          * @returns the date the document was created, or `null`
+         * @since 20.09.0
          */
         get_creation_date_time(): GLib.DateTime | null;
 
@@ -3797,6 +3848,7 @@ export namespace Poppler {
          * from another format, the creator is the name of the product
          * that created the original document from which it was converted.
          * @returns a new allocated string containing the creator               of `document`, or `null`
+         * @since 0.16
          */
         get_creator(): string;
 
@@ -3818,30 +3870,35 @@ export namespace Poppler {
          * Note that returned strings are not null-terminated, they have a fixed
          * size of 32 bytes.
          * @returns `true` if the `document` contains an id, `false` otherwise
+         * @since 0.16
          */
         get_id(): [boolean, string, string];
 
         /**
          * Returns the keywords associated to the document
          * @returns a new allocated string containing keywords associated               to `document`, or `null`
+         * @since 0.16
          */
         get_keywords(): string;
 
         /**
          * Returns the XML metadata string of the document
          * @returns a new allocated string containing the XML               metadata, or `null`
+         * @since 0.16
          */
         get_metadata(): string;
 
         /**
          * Returns the date the document was most recently modified as seconds since the Epoch
          * @returns the date the document was most recently modified, or -1
+         * @since 0.16
          */
         get_modification_date(): number;
 
         /**
          * Returns the date the document was most recently modified as a {@link GLib.DateTime}
          * @returns the date the document was modified, or `null`
+         * @since 20.09.0
          */
         get_modification_date_time(): GLib.DateTime | null;
 
@@ -3849,6 +3906,7 @@ export namespace Poppler {
          * Returns the number of attachments in a loaded document.
          * See also `poppler_document_get_attachments()`
          * @returns Number of attachments
+         * @since 0.18
          */
         get_n_attachments(): number;
 
@@ -3863,6 +3921,7 @@ export namespace Poppler {
          * PDF digital signatures ensure that the content hash not been altered since last edit and
          * that it was produced by someone the user can trust
          * @returns The number of signatures found in the document
+         * @since 21.12.0
          */
         get_n_signatures(): number;
 
@@ -3888,6 +3947,7 @@ export namespace Poppler {
         /**
          * Returns the page layout that should be used when the document is opened
          * @returns a {@link Poppler.PageLayout} that should be used when the document is opened
+         * @since 0.16
          */
         get_page_layout(): PageLayout;
 
@@ -3895,12 +3955,14 @@ export namespace Poppler {
          * Returns a {@link Poppler.PageMode} representing how the document should
          * be initially displayed when opened.
          * @returns a {@link Poppler.PageMode} that should be used when document is opened
+         * @since 0.16
          */
         get_page_mode(): PageMode;
 
         /**
          * Returns the conformance level of the `document` as {@link Poppler.PDFConformance}.
          * @returns the document's subtype conformance level
+         * @since 0.70
          */
         get_pdf_conformance(): PDFConformance;
 
@@ -3908,36 +3970,42 @@ export namespace Poppler {
          * Returns the part of the conforming standard that the `document` adheres to
          * as a {@link Poppler.PDFSubtype}.
          * @returns the document's subtype part
+         * @since 0.70
          */
         get_pdf_part(): PDFPart;
 
         /**
          * Returns the subtype of `document` as a {@link Poppler.PDFSubtype}.
          * @returns the document's subtype
+         * @since 0.70
          */
         get_pdf_subtype(): PDFSubtype;
 
         /**
          * Returns the PDF subtype version of `document` as a string.
          * @returns a newly allocated string containing the PDF subtype version of `document`, or `null`
+         * @since 0.70
          */
         get_pdf_subtype_string(): string | null;
 
         /**
          * Updates values referenced by `major_version` & `minor_version` with the
          * major and minor PDF versions of `document`.
+         * @since 0.16
          */
         get_pdf_version(): [number, number];
 
         /**
          * Returns the PDF version of `document` as a string (e.g. PDF-1.6)
          * @returns a new allocated string containing the PDF version               of `document`, or `null`
+         * @since 0.16
          */
         get_pdf_version_string(): string;
 
         /**
          * Returns the flags specifying which operations are permitted when the document is opened.
          * @returns a set of flags from  {@link Poppler.Permissions} enumeration
+         * @since 0.16
          */
         get_permissions(): Permissions;
 
@@ -3946,6 +4014,7 @@ export namespace Poppler {
          * Value POPPLER_PRINT_DUPLEX_NONE means that the document does not specify this
          * preference.
          * @returns a {@link Poppler.PrintDuplex} that should be used when document is printed
+         * @since 0.80
          */
         get_print_duplex(): PrintDuplex;
 
@@ -3955,6 +4024,7 @@ export namespace Poppler {
          * is greater than 1 since value 1 usually means that
          * the document does not specify it.
          * @returns Number of copies
+         * @since 0.80
          */
         get_print_n_copies(): number;
 
@@ -3964,12 +4034,14 @@ export namespace Poppler {
          * `null` pointer means that the document does not specify page ranges
          * for printing.
          * @returns an array          of {@link Poppler.PageRange}<!-- -->s or `null`. Free the array when          it is no longer needed.
+         * @since 0.80
          */
         get_print_page_ranges(): PageRange[];
 
         /**
          * Returns the print scaling value suggested by author of the document.
          * @returns a {@link Poppler.PrintScaling} that should be used when document is printed
+         * @since 0.73
          */
         get_print_scaling(): PrintScaling;
 
@@ -3978,24 +4050,28 @@ export namespace Poppler {
          * from another format, the producer is the name of the product
          * that converted it to PDF
          * @returns a new allocated string containing the producer               of `document`, or `null`
+         * @since 0.16
          */
         get_producer(): string;
 
         /**
          * Returns a {@link GLib.List} containing all signature {@link Poppler.FormField}<!-- -->s in the document.
          * @returns a list of all signature form fields.
+         * @since 22.02.0
          */
         get_signature_fields(): FormField[];
 
         /**
          * Returns the subject of the document
          * @returns a new allocated string containing the subject               of `document`, or `null`
+         * @since 0.16
          */
         get_subject(): string;
 
         /**
          * Returns the document's title
          * @returns a new allocated string containing the title               of `document`, or `null`
+         * @since 0.16
          */
         get_title(): string;
 
@@ -4007,6 +4083,7 @@ export namespace Poppler {
 
         /**
          * Returns whether `document` has any javascript in it.
+         * @since 0.90
          */
         has_javascript(): boolean;
 
@@ -4014,6 +4091,7 @@ export namespace Poppler {
          * Returns whether `document` is linearized or not. Linearization of PDF
          * enables efficient incremental access of the PDF file in a network environment.
          * @returns `true` if `document` is linearized, `false` otherwise
+         * @since 0.16
          */
         is_linearized(): boolean;
 
@@ -4024,6 +4102,7 @@ export namespace Poppler {
          * if fields is empty.
          * @param fields list of fields to reset
          * @param exclude_fields whether to reset all fields except those in `fields`
+         * @since 0.90
          */
         reset_form(fields: string[] | null, exclude_fields: boolean): void;
 
@@ -4063,6 +4142,7 @@ export namespace Poppler {
          * @param fd a valid file descriptor open for writing
          * @param include_changes whether to include user changes (e.g. form fills)
          * @returns `true`, if the document was successfully saved
+         * @since 21.12.0
          */
         save_to_fd(fd: number, include_changes: boolean): boolean;
 
@@ -4070,6 +4150,7 @@ export namespace Poppler {
          * Sets the document's author. If `author` is `null`, Author
          * entry is removed from the document's Info dictionary.
          * @param author A new author
+         * @since 0.46
          */
         set_author(author: string): void;
 
@@ -4077,6 +4158,7 @@ export namespace Poppler {
          * Sets the document's creation date. If `creation_date` is -1, CreationDate
          * entry is removed from the document's Info dictionary.
          * @param creation_date A new creation date
+         * @since 0.46
          */
         set_creation_date(creation_date: bigint | number): void;
 
@@ -4084,6 +4166,7 @@ export namespace Poppler {
          * Sets the document's creation date. If `creation_datetime` is `null`,
          * CreationDate entry is removed from the document's Info dictionary.
          * @param creation_datetime A new creation {@link GLib.DateTime}
+         * @since 20.09.0
          */
         set_creation_date_time(creation_datetime: GLib.DateTime | null): void;
 
@@ -4091,6 +4174,7 @@ export namespace Poppler {
          * Sets the document's creator. If `creator` is `null`, Creator
          * entry is removed from the document's Info dictionary.
          * @param creator A new creator
+         * @since 0.46
          */
         set_creator(creator: string): void;
 
@@ -4098,6 +4182,7 @@ export namespace Poppler {
          * Sets the document's keywords. If `keywords` is `null`,
          * Keywords entry is removed from the document's Info dictionary.
          * @param keywords New keywords
+         * @since 0.46
          */
         set_keywords(keywords: string): void;
 
@@ -4105,6 +4190,7 @@ export namespace Poppler {
          * Sets the document's modification date. If `modification_date` is -1, ModDate
          * entry is removed from the document's Info dictionary.
          * @param modification_date A new modification date
+         * @since 0.46
          */
         set_modification_date(modification_date: bigint | number): void;
 
@@ -4112,6 +4198,7 @@ export namespace Poppler {
          * Sets the document's modification date. If `modification_datetime` is `null`,
          * ModDate entry is removed from the document's Info dictionary.
          * @param modification_datetime A new modification {@link GLib.DateTime}
+         * @since 20.09.0
          */
         set_modification_date_time(modification_datetime: GLib.DateTime | null): void;
 
@@ -4119,6 +4206,7 @@ export namespace Poppler {
          * Sets the document's producer. If `producer` is `null`,
          * Producer entry is removed from the document's Info dictionary.
          * @param producer A new producer
+         * @since 0.46
          */
         set_producer(producer: string): void;
 
@@ -4126,6 +4214,7 @@ export namespace Poppler {
          * Sets the document's subject. If `subject` is `null`, Subject
          * entry is removed from the document's Info dictionary.
          * @param subject A new subject
+         * @since 0.46
          */
         set_subject(subject: string): void;
 
@@ -4133,6 +4222,7 @@ export namespace Poppler {
          * Sets the document's title. If `title` is `null`, Title entry
          * is removed from the document's Info dictionary.
          * @param title A new title
+         * @since 0.46
          */
         set_title(title: string): void;
 
@@ -4140,6 +4230,7 @@ export namespace Poppler {
          * Sign #document using `signing_data`.
          * @param signing_data a {@link Poppler.SigningData}
          * @param cancellable a {@link Gio.Cancellable}
+         * @since 23.07.0
          */
         sign(signing_data: SigningData, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -4148,6 +4239,7 @@ export namespace Poppler {
          * @param signing_data a {@link Poppler.SigningData}
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 23.07.0
          */
         sign(signing_data: SigningData, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4156,6 +4248,7 @@ export namespace Poppler {
          * @param signing_data a {@link Poppler.SigningData}
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 23.07.0
          */
         sign(signing_data: SigningData, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -4163,6 +4256,7 @@ export namespace Poppler {
          * Finish poppler_sign_document and get return status or error.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on successful signing a document, otherwise `false` and error is set.
+         * @since 23.07.0
          */
         sign_finish(result: Gio.AsyncResult): boolean;
     }
@@ -4390,6 +4484,7 @@ export namespace Poppler {
          * Retrieves the action ({@link Poppler.Action}) that shall be
          * performed when `field` is activated, or `null`
          * @returns the action to perform. The returned               object is owned by `field` and should not be freed
+         * @since 0.18
          */
         get_action(): Action;
 
@@ -4398,6 +4493,7 @@ export namespace Poppler {
          * an additional action is triggered on `field`, or `null`.
          * @param type the type of additional action
          * @returns the action to perform. The returned               object is owned by `field` and should not be freed.
+         * @since 0.72
          */
         get_additional_action(type: AdditionalActionType): Action;
 
@@ -4406,6 +4502,7 @@ export namespace Poppler {
          * used by pdf producers/readers to show it as a tooltip when `field` area
          * is hovered by a pointing device (eg. mouse).
          * @returns a new allocated string. It must be freed with `g_free()` when done.
+         * @since 0.88
          */
         get_alternate_ui_name(): string;
 
@@ -4434,6 +4531,7 @@ export namespace Poppler {
          * Gets the mapping name of `field` that is used when
          * exporting interactive form field data from the document
          * @returns a new allocated string. It must be freed with `g_free()` when done.
+         * @since 0.16
          */
         get_mapping_name(): string;
 
@@ -4441,12 +4539,14 @@ export namespace Poppler {
          * Gets the fully qualified name of `field`. It's constructed by concatenating
          * the partial field names of the field and all of its ancestors.
          * @returns a new allocated string. It must be freed with `g_free()` when done.
+         * @since 0.16
          */
         get_name(): string;
 
         /**
          * Gets the partial name of `field`.
          * @returns a new allocated string. It must be freed with `g_free()` when done.
+         * @since 0.16
          */
         get_partial_name(): string;
 
@@ -4460,6 +4560,7 @@ export namespace Poppler {
          * Asynchronously validates the cryptographic signature contained in `signature_field`.
          * @param flags {@link Poppler.SignatureValidationFlags} flags influencing process of validation of the field signature
          * @param cancellable optional {@link Gio.Cancellable} object
+         * @since 21.12.0
          */
         signature_validate_async(flags: SignatureValidationFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<SignatureInfo>;
 
@@ -4468,6 +4569,7 @@ export namespace Poppler {
          * @param flags {@link Poppler.SignatureValidationFlags} flags influencing process of validation of the field signature
          * @param cancellable optional {@link Gio.Cancellable} object
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the signature is validated
+         * @since 21.12.0
          */
         signature_validate_async(flags: SignatureValidationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4476,6 +4578,7 @@ export namespace Poppler {
          * @param flags {@link Poppler.SignatureValidationFlags} flags influencing process of validation of the field signature
          * @param cancellable optional {@link Gio.Cancellable} object
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the signature is validated
+         * @since 21.12.0
          */
         signature_validate_async(flags: SignatureValidationFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<SignatureInfo> | void;
 
@@ -4484,6 +4587,7 @@ export namespace Poppler {
          * See `poppler_form_field_signature_validate_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Poppler.SignatureInfo} structure containing signature metadata and validation status                                Free the returned structure with `poppler_signature_info_free()`.
+         * @since 21.12.0
          */
         signature_validate_finish(result: Gio.AsyncResult): SignatureInfo;
 
@@ -4492,6 +4596,7 @@ export namespace Poppler {
          * @param flags {@link Poppler.SignatureValidationFlags} flags influencing process of validation of the field signature
          * @param cancellable optional {@link Gio.Cancellable} object
          * @returns a {@link Poppler.SignatureInfo} structure containing signature metadata and validation status                                Free the returned structure with `poppler_signature_info_free()`.
+         * @since 21.12.0
          */
         signature_validate_sync(flags: SignatureValidationFlags, cancellable: Gio.Cancellable | null): SignatureInfo;
 
@@ -4589,6 +4694,7 @@ export namespace Poppler {
         /**
          * Returns the numeric ID the radio button group associated with `layer`.
          * @returns the ID of the radio button group associated with `layer`, or 0 if the layer is not associated to any radio button group
+         * @since 0.12
          */
         get_radio_button_group_id(): number;
 
@@ -4596,6 +4702,7 @@ export namespace Poppler {
          * Returns the name of the layer suitable for
          * presentation as a title in a viewer's GUI
          * @returns a string containing the title of the layer
+         * @since 0.12
          */
         get_title(): string;
 
@@ -4603,23 +4710,27 @@ export namespace Poppler {
          * Hides `layer`. If `layer` is the parent of other nested layers,
          * such layers will be also hidden and will be blocked until `layer`
          * is shown again
+         * @since 0.12
          */
         hide(): void;
 
         /**
          * Returns whether `layer` is parent of other nested layers.
          * @returns `true` if `layer` is a parent layer
+         * @since 0.12
          */
         is_parent(): boolean;
 
         /**
          * Returns whether `layer` is visible
          * @returns `true` if `layer` is visible
+         * @since 0.12
          */
         is_visible(): boolean;
 
         /**
          * Shows `layer`
+         * @since 0.12
          */
         show(): void;
     }
@@ -4670,6 +4781,7 @@ export namespace Poppler {
         /**
          * Returns the auto-play parameter.
          * @returns `true` if media should auto-play, `false` otherwise
+         * @since 20.04.0
          */
         get_auto_play(): boolean;
 
@@ -4677,24 +4789,28 @@ export namespace Poppler {
          * Returns the media clip filename, in case of non-embedded media. filename might be
          * a local relative or absolute path or a URI
          * @returns a filename, return value is owned by {@link Poppler.Media} and should not be freed
+         * @since 0.14
          */
         get_filename(): string;
 
         /**
          * Returns the media clip mime-type
          * @returns the mime-type, return value is owned by {@link Poppler.Media} and should not be freed
+         * @since 0.14
          */
         get_mime_type(): string;
 
         /**
          * Returns the repeat count parameter.
          * @returns Repeat count parameter (float)
+         * @since 20.04.0
          */
         get_repeat_count(): number;
 
         /**
          * Returns the show controls parameter.
          * @returns `true` if media should show controls, `false` otherwise
+         * @since 20.04.0
          */
         get_show_controls(): boolean;
 
@@ -4704,6 +4820,7 @@ export namespace Poppler {
          * If the result is `false`, the media clip filename can be retrieved with
          * `poppler_media_get_filename()` function.
          * @returns `true` if media clip is embedded, `false` otherwise
+         * @since 0.14
          */
         is_embedded(): boolean;
 
@@ -4714,6 +4831,7 @@ export namespace Poppler {
          * and whatever the save function generates.
          * @param filename name of file to save
          * @returns `true`, if the file successfully saved
+         * @since 0.14
          */
         save(filename: string): boolean;
 
@@ -4725,6 +4843,7 @@ export namespace Poppler {
          * whatever the save function generates.
          * @param save_func a function that is called to save each block of data that the save routine generates.
          * @returns `true`, if the save successfully completed
+         * @since 0.14
          */
         save_to_callback(save_func: MediaSaveFunc): boolean;
 
@@ -4737,6 +4856,7 @@ export namespace Poppler {
          * again, nor close it.
          * @param fd a valid file descriptor open for writing
          * @returns `true`, if the file successfully saved
+         * @since 21.12.0
          */
         save_to_fd(fd: number): boolean;
     }
@@ -4793,48 +4913,56 @@ export namespace Poppler {
          * -1x-1 will be returned.
          * @param width width of the movie's bounding box
          * @param height height of the movie's bounding box
+         * @since 0.89
          */
         get_aspect(width: number, height: number): void;
 
         /**
          * Returns the duration of the movie playback
          * @returns the duration of the movie playback (in ns)
+         * @since 0.80
          */
         get_duration(): number;
 
         /**
          * Returns the local filename identifying a self-describing movie file
          * @returns a local filename, return value is owned by {@link Poppler.Movie} and               should not be freed
+         * @since 0.14
          */
         get_filename(): string;
 
         /**
          * Returns the play mode of `poppler_movie`.
          * @returns a {@link Poppler.MoviePlayMode}.
+         * @since 0.54
          */
         get_play_mode(): MoviePlayMode;
 
         /**
          * Returns the relative speed of the movie
          * @returns the relative speed of the movie (1 means no change)
+         * @since 0.80
          */
         get_rate(): number;
 
         /**
          * Returns the rotation angle
          * @returns the number of degrees the movie should be rotated (positive, multiples of 90: 0, 90, 180, 270)
+         * @since 0.80
          */
         get_rotation_angle(): number;
 
         /**
          * Returns the start position of the movie playback
          * @returns the start position of the movie playback (in ns)
+         * @since 0.80
          */
         get_start(): number;
 
         /**
          * Returns the playback audio volume
          * @returns volume setting for the movie (0.0 - 1.0)
+         * @since 0.80
          */
         get_volume(): number;
 
@@ -4842,6 +4970,7 @@ export namespace Poppler {
          * Returns whether the user must wait for the movie to be finished before
          * the PDF viewer accepts any interactive action
          * @returns `true` if yes, `false` otherwise
+         * @since 0.80
          */
         is_synchronous(): boolean;
 
@@ -4850,12 +4979,14 @@ export namespace Poppler {
          * shall be displayed. The poster image must be retrieved
          * from the movie file.
          * @returns `true` if move needs a poster image, `false` otherwise
+         * @since 0.14
          */
         need_poster(): boolean;
 
         /**
          * Returns whether to display a movie controller bar while playing the movie
          * @returns `true` if controller bar should be displayed, `false` otherwise
+         * @since 0.14
          */
         show_controls(): boolean;
     }
@@ -5022,12 +5153,14 @@ export namespace Poppler {
          * Frees a list of {@link Poppler.TextAttributes}<!-- -->s allocated by
          * `poppler_page_get_text_attributes()`.
          * @param list A list of   {@link Poppler.TextAttributes}<!-- -->s
+         * @since 0.18
          */
         static free_text_attributes(list: TextAttributes[]): void;
 
         /**
          * Frees `region`
          * @param region a {@link GLib.List} of   {@link Poppler.Rectangle}
+         * @deprecated since 0.16: Use only to free deprecated regions created by `poppler_page_get_selection_region()`. Regions created by `poppler_page_get_selected_region()` should be freed with `cairo_region_destroy()` instead.
          */
         static selection_region_free(region: Rectangle[]): void;
 
@@ -5035,6 +5168,7 @@ export namespace Poppler {
         /**
          * Adds annotation `annot` to `page`.
          * @param annot a {@link Poppler.Annot} to add
+         * @since 0.16
          */
         add_annot(annot: Annot): void;
 
@@ -5069,6 +5203,7 @@ export namespace Poppler {
          * @param text the text to search for (UTF-8 encoded)
          * @param options find options
          * @returns a newly allocated list of newly allocated {@link Poppler.Rectangle}. Free with `g_list_free_full()` using `poppler_rectangle_free()`.
+         * @since 0.22
          */
         find_text_with_options(text: string, options: FindFlags): Rectangle[];
 
@@ -5129,6 +5264,7 @@ export namespace Poppler {
          * Returns the label of `page`. Note that page labels
          * and page indices might not coincide.
          * @returns a new allocated string containing the label of `page`,               or `null` if `page` doesn't have a label
+         * @since 0.16
          */
         get_label(): string;
 
@@ -5148,6 +5284,7 @@ export namespace Poppler {
          * @param style a {@link Poppler.SelectionStyle}
          * @param selection start and end point of selection as a rectangle
          * @returns a cairo_region_t
+         * @since 0.16
          */
         get_selected_region(scale: number, style: SelectionStyle, selection: Rectangle): cairo.Region;
 
@@ -5156,6 +5293,7 @@ export namespace Poppler {
          * @param style a {@link Poppler.SelectionStyle}
          * @param selection the {@link Poppler.Rectangle} including the text
          * @returns a pointer to the contents of the `selection` as a string
+         * @since 0.16
          */
         get_selected_text(style: SelectionStyle, selection: Rectangle): string;
 
@@ -5168,6 +5306,7 @@ export namespace Poppler {
          * @param style a {@link Poppler.SelectionStyle}
          * @param selection start and end point of selection as a rectangle
          * @returns a {@link GLib.List} of {@link Poppler.Rectangle}
+         * @deprecated since 0.16: Use `poppler_page_get_selected_region()` instead.
          */
         get_selection_region(scale: number, style: SelectionStyle, selection: Rectangle): Rectangle[];
 
@@ -5179,6 +5318,7 @@ export namespace Poppler {
         /**
          * Retrieves the text of `page`.
          * @returns a pointer to the text of the `page`               as a string
+         * @since 0.16
          */
         get_text(): string;
 
@@ -5192,6 +5332,7 @@ export namespace Poppler {
          * 
          * See also `poppler_page_get_text_attributes_for_area()`
          * @returns A {@link GLib.List} of {@link Poppler.TextAttributes}
+         * @since 0.18
          */
         get_text_attributes(): TextAttributes[];
 
@@ -5204,6 +5345,7 @@ export namespace Poppler {
          * to which text attributes apply.
          * @param area a {@link Poppler.Rectangle}
          * @returns A {@link GLib.List} of {@link Poppler.TextAttributes}
+         * @since 0.26
          */
         get_text_attributes_for_area(area: Rectangle): TextAttributes[];
 
@@ -5211,6 +5353,7 @@ export namespace Poppler {
          * Retrieves the text of `page` contained in `area`.
          * @param area a {@link Poppler.Rectangle}
          * @returns a pointer to the text as a string
+         * @since 0.26
          */
         get_text_for_area(area: Rectangle): string;
 
@@ -5223,6 +5366,7 @@ export namespace Poppler {
          * 
          * See also `poppler_page_get_text_layout_for_area()`.
          * @returns `true` if the page contains text, `false` otherwise
+         * @since 0.16
          */
         get_text_layout(): [boolean, Rectangle[]];
 
@@ -5234,6 +5378,7 @@ export namespace Poppler {
          * `poppler_page_get_text_for_area()`
          * @param area a {@link Poppler.Rectangle}
          * @returns `true` if the page contains text, `false` otherwise
+         * @since 0.26
          */
         get_text_layout_for_area(area: Rectangle): [boolean, Rectangle[]];
 
@@ -5263,6 +5408,7 @@ export namespace Poppler {
         /**
          * Removes annotation `annot` from `page`
          * @param annot a {@link Poppler.Annot} to remove
+         * @since 0.22
          */
         remove_annot(annot: Annot): void;
 
@@ -5320,6 +5466,8 @@ export namespace Poppler {
          * differences between rendering to the screen and rendering to a printer.
          * @param cairo cairo context to render to
          * @param options print options
+         * @since 0.16
+         * @deprecated since 25.02: Use `poppler_page_render_full()` instead.
          */
         render_for_printing_with_options(cairo: cairo.Context, options: PrintFlags): void;
 
@@ -5334,6 +5482,7 @@ export namespace Poppler {
          * @param cairo cairo context to render to
          * @param printing cairo context to render to
          * @param flags flags which allow to select which annotations to render
+         * @since 25.02
          */
         render_full(cairo: cairo.Context, printing: boolean, flags: RenderAnnotsFlags): void;
 
@@ -5376,6 +5525,7 @@ export namespace Poppler {
          * @param style a {@link Poppler.SelectionStyle}
          * @param background_color color to use for the selection background
          * @param background_opacity opacity to use for the selection background
+         * @since 25.08
          */
         render_transparent_selection(cairo: cairo.Context, selection: Rectangle, old_selection: Rectangle, style: SelectionStyle, background_color: Color, background_opacity: number): void;
     }
@@ -5431,6 +5581,7 @@ export namespace Poppler {
          * #POPPLER_STRUCTURE_ELEMENT_SPAN may have an associated expanded
          * text form, which can be retrieved using this function.
          * @returns Text of the expanded abbreviation if the    element text is an abbreviation or acrony, `null` if not.
+         * @since 0.26
          */
         get_abbreviation(): string;
 
@@ -5444,6 +5595,7 @@ export namespace Poppler {
          * Note that for elements containing proper text, the function
          * `poppler_structure_element_get_text()` must be used instead.
          * @returns The actual text for the element, or `null`    if not defined.
+         * @since 0.26
          */
         get_actual_text(): string;
 
@@ -5455,6 +5607,7 @@ export namespace Poppler {
          * Note that for elements containing proper text, the function
          * `poppler_structure_element_get_text()` must be used instead.
          * @returns The alternate text representation for the    element, or `null` if not defined.
+         * @since 0.26
          */
         get_alt_text(): string;
 
@@ -5462,6 +5615,7 @@ export namespace Poppler {
          * Obtains the background color of the element. If this attribute is
          * not specified, the element shall be treated as if it were transparent.
          * @returns `true` if a color is defined for the element,    `false` otherwise.
+         * @since 0.26
          */
         get_background_color(): [boolean, Color];
 
@@ -5469,12 +5623,14 @@ export namespace Poppler {
          * Obtains how much the text contained in the inline-level structure element should be shifted,
          * measuring from the baseline of the glyphs.
          * @returns A numeric value.
+         * @since 0.26
          */
         get_baseline_shift(): number;
 
         /**
          * Obtains the block-alignment mode of the block-level structure element.
          * @returns A {@link Poppler.StructureBlockAlign} value.
+         * @since 0.26
          */
         get_block_align(): StructureBlockAlign;
 
@@ -5486,6 +5642,7 @@ export namespace Poppler {
          * be the current text fill color in effect at the start of its associated
          * content.
          * @returns `true` if a color is defined for the element,    `false` otherwise.
+         * @since 0.26
          */
         get_border_color(): [boolean, Color[]];
 
@@ -5493,6 +5650,7 @@ export namespace Poppler {
          * Obtains the border style of a structure element. The result values
          * are in before-after-start-end ordering. For example, using Western
          * left-to-right writing, that is top-bottom-left-right.
+         * @since 0.26
          */
         get_border_style(): StructureBorderStyle[];
 
@@ -5502,12 +5660,14 @@ export namespace Poppler {
          * left-to-right writing, that is top-bottom-left-right).
          * A value of 0 indicates that the border shall not be drawn.
          * @returns `true` if the border thickness attribute is defined for    the element, `false` otherwise.
+         * @since 0.26
          */
         get_border_thickness(): [boolean, number[]];
 
         /**
          * Obtains the size of the bounding box of a block-level structure element.
          * @returns `true` if a bounding box is defined for the element,    `false` otherwise.
+         * @since 0.26
          */
         get_bounding_box(): [boolean, Rectangle];
 
@@ -5516,6 +5676,7 @@ export namespace Poppler {
          * If this attribute is not specified, the color for this element shall
          * be the current text fill color in effect at the start of its associated content.
          * @returns `true` if a color is defined for the element,    `false` otherwise.
+         * @since 0.26
          */
         get_color(): [boolean, Color];
 
@@ -5523,6 +5684,7 @@ export namespace Poppler {
          * Obtains the number of columns used to lay out the content contained
          * in the grouping element.
          * @returns Number of columns.
+         * @since 0.26
          */
         get_column_count(): number;
 
@@ -5540,6 +5702,7 @@ export namespace Poppler {
          * The array with the results is allocated by the function. When it is
          * not needed anymore, be sure to call `g_free()` on it.
          * @returns Array containing the values for the column gaps, or `null` if the    array is empty or the attribute is not defined.
+         * @since 0.26
          */
         get_column_gaps(): number[];
 
@@ -5549,12 +5712,14 @@ export namespace Poppler {
          * The array with the results is allocated by the function. When it is
          * not needed anymore, be sure to call `g_free()` on it.
          * @returns Array containing widths of the columns, or `null` if the attribute    is not defined.
+         * @since 0.26
          */
         get_column_widths(): number[];
 
         /**
          * Obtains the amount of indentation at the end of the block-level structure element.
          * @returns A numeric value.
+         * @since 0.26
          */
         get_end_indent(): number;
 
@@ -5568,6 +5733,7 @@ export namespace Poppler {
          * The returned string is allocated by the function. When it is
          * not needed anymore, be sure to call `g_free()` on it.
          * @returns A string, or `null` if the attribute    is not defined.
+         * @since 0.26
          */
         get_form_description(): string;
 
@@ -5576,6 +5742,7 @@ export namespace Poppler {
          * a form field. This hints how the control for the element is intended
          * to be rendered.
          * @returns A {@link Poppler.StructureFormRole} value.
+         * @since 0.26
          */
         get_form_role(): StructureFormRole;
 
@@ -5583,6 +5750,7 @@ export namespace Poppler {
          * For a structure element that is a form field, obtains in which state
          * the associated control is expected to be rendered.
          * @returns A {@link Poppler.StructureFormState} value.
+         * @since 0.26
          */
         get_form_state(): StructureFormState;
 
@@ -5590,6 +5758,7 @@ export namespace Poppler {
          * Obtains the glyph orientation for the text contained in a
          * inline-level structure element.
          * @returns A {@link Poppler.StructureGlyphOrientation} value.
+         * @since 0.26
          */
         get_glyph_orientation(): StructureGlyphOrientation;
 
@@ -5597,23 +5766,27 @@ export namespace Poppler {
          * Obtains the height of the block-level structure element. Note that for elements which do
          * not specify a height, it has to be calculated, and in this case -1 is returned.
          * @returns A positive value if a width is defined, or -1    if the height is to be calculated automatically.
+         * @since 0.26
          */
         get_height(): number;
 
         /**
          * Obtains the identifier of an element.
          * @returns The identifier of the element (if    defined), or `null`.
+         * @since 0.26
          */
         get_id(): string;
 
         /**
          * Obtains the inline-alignment mode of the block-level structure element.
          * @returns A {@link Poppler.StructureInlineAlign} value.
+         * @since 0.26
          */
         get_inline_align(): StructureInlineAlign;
 
         /**
          * @returns A {@link Poppler.StructureElementKind} value.
+         * @since 0.26
          */
         get_kind(): StructureElementKind;
 
@@ -5622,6 +5795,7 @@ export namespace Poppler {
          * in two-letter ISO format, e.g. <code>en_ES</code>, or `null` if not
          * defined.
          * @returns language and country code, or `null`.
+         * @since 0.26
          */
         get_language(): string;
 
@@ -5630,12 +5804,14 @@ export namespace Poppler {
          * Note that for elements which do not specify a line height, it has to be calculated,
          * and in this case -1 is returned.
          * @returns A positive value if a line height is defined, or -1    if the height is to be calculated automatically.
+         * @since 0.26
          */
         get_line_height(): number;
 
         /**
          * Obtains the list numbering style for list items.
          * @returns A {@link Poppler.StructureListNumbering} value.
+         * @since 0.26
          */
         get_list_numbering(): StructureListNumbering;
 
@@ -5643,18 +5819,21 @@ export namespace Poppler {
          * Obtains the padding of an element (space around it). The result
          * values are in before-after-start-end ordering. For example using
          * Western left-to-right writing, that is top-bottom-left-right.
+         * @since 0.26
          */
         get_padding(): number[];
 
         /**
          * Obtains the page number in which the element is contained.
          * @returns Number of the page that contains the element, of    <code>-1</code> if not defined.
+         * @since 0.26
          */
         get_page(): number;
 
         /**
          * Obtains the placement type of the structure element.
          * @returns A {@link Poppler.StructurePlacement} value.
+         * @since 0.26
          */
         get_placement(): StructurePlacement;
 
@@ -5662,6 +5841,7 @@ export namespace Poppler {
          * Obtains the alignment for the ruby text contained in a
          * inline-level structure element.
          * @returns A {@link Poppler.StructureRubyAlign} value.
+         * @since 0.26
          */
         get_ruby_align(): StructureRubyAlign;
 
@@ -5669,24 +5849,28 @@ export namespace Poppler {
          * Obtains the position for the ruby text contained in a
          * inline-level structure element.
          * @returns A {@link Poppler.StructureRubyPosition} value.
+         * @since 0.26
          */
         get_ruby_position(): StructureRubyPosition;
 
         /**
          * Obtains the amount of empty space after the block-level structure element.
          * @returns A positive value.
+         * @since 0.26
          */
         get_space_after(): number;
 
         /**
          * Obtains the amount of empty space before the block-level structure element.
          * @returns A positive value.
+         * @since 0.26
          */
         get_space_before(): number;
 
         /**
          * Obtains the amount of indentation at the beginning of the block-level structure element.
          * @returns A numeric value.
+         * @since 0.26
          */
         get_start_indent(): number;
 
@@ -5694,12 +5878,14 @@ export namespace Poppler {
          * Obtains the table cell border style of a block-level structure element. The result values
          * are in before-after-start-end ordering. For example, using Western
          * left-to-right writing, that is top-bottom-left-right.
+         * @since 0.26
          */
         get_table_border_style(): StructureBorderStyle[];
 
         /**
          * Obtains the number of columns the table element spans to.
          * @returns A positive, non-zero value.
+         * @since 0.26
          */
         get_table_column_span(): number;
 
@@ -5711,6 +5897,7 @@ export namespace Poppler {
          * of items in the returned array can be obtained with `g_strv_length()`.
          * The returned value must be freed using `g_strfreev()`.
          * @returns Zero-terminated array of strings with the table header names,    or `null` if the attribute is not defined.
+         * @since 0.26
          */
         get_table_headers(): string[];
 
@@ -5719,18 +5906,21 @@ export namespace Poppler {
          * surrounding border of a block-level structure element. The result
          * values are in before-after-start-end ordering (for the typical
          * Western left-to-right writing, that is top-bottom-left-right).
+         * @since 0.26
          */
         get_table_padding(): number[];
 
         /**
          * Obtains the number of rows the table element spans to.
          * @returns A positive, non-zero value.
+         * @since 0.26
          */
         get_table_row_span(): number;
 
         /**
          * Obtains the scope of a table structure element.
          * @returns A {@link Poppler.StructureTableScope} value.
+         * @since 0.26
          */
         get_table_scope(): StructureTableScope;
 
@@ -5745,6 +5935,7 @@ export namespace Poppler {
          * The returned string is allocated by the function. When it is
          * not needed anymore, be sure to call `g_free()` on it.
          * @returns A string, or `null` if the attribute    is not defined.
+         * @since 0.26
          */
         get_table_summary(): string;
 
@@ -5753,6 +5944,7 @@ export namespace Poppler {
          * elements in the subtree (including the element itself).
          * @param flags A {@link Poppler.StructureGetTextFlags} value, or    {@link Poppler.StructureGetTextFlags.NONE} to disable all the flags.
          * @returns A string.
+         * @since 0.26
          */
         get_text(flags: StructureGetTextFlags): string;
 
@@ -5760,6 +5952,7 @@ export namespace Poppler {
          * Obtains the text alignment mode of the text contained into a
          * block-level structure element.
          * @returns A {@link Poppler.StructureTextAlign} value.
+         * @since 0.26
          */
         get_text_align(): StructureTextAlign;
 
@@ -5769,6 +5962,7 @@ export namespace Poppler {
          * If this attribute is not specified, the color for this element shall be the current fill
          * color in effect at the start of its associated content.
          * @returns `true` if a color is defined for the element,    `false` otherwise.
+         * @since 0.26
          */
         get_text_decoration_color(): [boolean, Color];
 
@@ -5778,6 +5972,7 @@ export namespace Poppler {
          * If this attribute is not specified, it shall be derived from the current
          * stroke thickness in effect at the start of the element’s associated content.
          * @returns Thickness of the text decoration, or NAN if not defined.
+         * @since 0.26
          */
         get_text_decoration_thickness(): number;
 
@@ -5785,12 +5980,14 @@ export namespace Poppler {
          * Obtains the text decoration type of the text contained in the
          * inline-level structure element.
          * @returns A {@link Poppler.StructureTextDecoration} value.
+         * @since 0.26
          */
         get_text_decoration_type(): StructureTextDecoration;
 
         /**
          * Obtains the amount of indentation of the text contained in the block-level structure element.
          * @returns A numeric value.
+         * @since 0.26
          */
         get_text_indent(): number;
 
@@ -5810,12 +6007,14 @@ export namespace Poppler {
          * g_free (text_spans);
          * </programlisting></informalexample>
          * @returns An array of {@link Poppler.TextSpan} elements.
+         * @since 0.26
          */
         get_text_spans(): TextSpan[];
 
         /**
          * Obtains the title of an element.
          * @returns The title of the element, or `null`.
+         * @since 0.26
          */
         get_title(): string;
 
@@ -5823,6 +6022,7 @@ export namespace Poppler {
          * Obtains the width of the block-level structure element. Note that for elements which do
          * not specify a width, it has to be calculated, and in this case -1 is returned.
          * @returns A positive value if a width is defined, or -1    if the width is to be calculated automatically.
+         * @since 0.26
          */
         get_width(): number;
 
@@ -5830,30 +6030,35 @@ export namespace Poppler {
          * Obtains the writing mode (writing direction) of the content associated
          * with a structure element.
          * @returns A {@link Poppler.StructureWritingMode} value.
+         * @since 0.26
          */
         get_writing_mode(): StructureWritingMode;
 
         /**
          * Checks whether an element is a block element.
          * @returns `true` if  the element is a block element, or `false` otherwise.
+         * @since 0.26
          */
         is_block(): boolean;
 
         /**
          * Checks whether an element is actual document content.
          * @returns `true` if the element is content, or `false` otherwise.
+         * @since 0.26
          */
         is_content(): boolean;
 
         /**
          * Checks whether an element is a grouping element.
          * @returns `true` if the element is a grouping element, `false`    otherwise.
+         * @since 0.26
          */
         is_grouping(): boolean;
 
         /**
          * Checks whether an element is an inline element.
          * @returns `true` if the element is an inline element, or `false` otherwise.
+         * @since 0.26
          */
         is_inline(): boolean;
     }
@@ -6175,65 +6380,76 @@ export namespace Poppler {
         /**
          * Copies `certificate_info`, creating an identical {@link Poppler.CertificateInfo}.
          * @returns a new {@link Poppler.CertificateInfo} structure identical to `certificate_info`
+         * @since 23.07.0
          */
         copy(): CertificateInfo;
 
         /**
          * Frees `certificate_info`
+         * @since 23.07.0
          */
         free(): void;
 
         /**
          * Get certificate expiration time
          * @returns certificate expiration time
+         * @since 23.08.0
          */
         get_expiration_time(): GLib.DateTime;
 
         /**
          * Get certificate nick name
          * @returns certificate nick name
+         * @since 23.07.0
          */
         get_id(): string;
 
         /**
          * Get certificate issuance time
          * @returns certificate issuance time
+         * @since 23.08.0
          */
         get_issuance_time(): GLib.DateTime;
 
         /**
          * Get certificate issuer common name
          * @returns certificate issuer common name
+         * @since 23.08.0
          */
         get_issuer_common_name(): string;
 
         /**
          * Get certificate issuer email
          * @returns certificate issuer email
+         * @since 23.08.0
          */
         get_issuer_email(): string;
 
         /**
          * Get certificate issuer organization
          * @returns certificate issuer organization
+         * @since 23.08.0
          */
         get_issuer_organization(): string;
 
         /**
          * Get certificate subject common name
          * @returns certificate subject common name
+         * @since 23.07.0
          */
         get_subject_common_name(): string;
 
         /**
          * Get certificate subject email
          * @returns certificate subject email
+         * @since 23.08.0
          */
         get_subject_email(): string;
 
         /**
          * Get certificate subject organization
          * @returns certificate subject organization
+         * @since 23.08.0
          */
         get_subject_organization(): string;
     }
@@ -6399,6 +6615,7 @@ export namespace Poppler {
         /**
          * Returns the encoding of the font associated with `iter`
          * @returns the font encoding
+         * @since 0.20
          */
         get_encoding(): string;
 
@@ -6431,6 +6648,7 @@ export namespace Poppler {
          * The name of the substitute font of the font associated with `iter` or `null` if
          * the font is embedded
          * @returns the name of the substitute font or `null` if font is embedded
+         * @since 0.20
          */
         get_substitute_name(): string;
 
@@ -6611,6 +6829,7 @@ export namespace Poppler {
 
         /**
          * Frees `iter`.
+         * @since 0.12
          */
         free(): void;
 
@@ -6618,12 +6837,14 @@ export namespace Poppler {
          * Returns a newly created child of `parent`, or `null` if the iter has no child.
          * See `poppler_layers_iter_new()` for more information on this function.
          * @returns a new {@link Poppler.LayersIter}, or `null`
+         * @since 0.12
          */
         get_child(): LayersIter;
 
         /**
          * Returns the {@link Poppler.Layer} associated with `iter`.
          * @returns a new {@link Poppler.Layer}, or `null` if there isn't any layer associated with `iter`
+         * @since 0.12
          */
         get_layer(): Layer;
 
@@ -6631,6 +6852,7 @@ export namespace Poppler {
          * Returns the title associated with `iter`.  It must be freed with
          * `g_free()`.
          * @returns a new string containing the `iter`'s title or `null` if `iter` doesn't have a title. The returned string should be freed with `g_free()` when no longer needed.
+         * @since 0.12
          */
         get_title(): string;
 
@@ -6638,6 +6860,7 @@ export namespace Poppler {
          * Sets `iter` to point to the next action at the current level, if valid.  See
          * `poppler_layers_iter_new()` for more information.
          * @returns `true`, if `iter` was set to the next action
+         * @since 0.12
          */
         next(): boolean;
     }
@@ -6772,17 +6995,20 @@ export namespace Poppler {
         /**
          * Creates a copy of `path`.
          * @returns a new allocated copy of `path`
+         * @since 25.06.0
          */
         copy(): Path;
 
         /**
          * Frees the given {@link Poppler.Path}.
+         * @since 25.06.0
          */
         free(): void;
 
         /**
          * Returns the array of points of `path`.
          * @returns all the points of `path`
+         * @since 25.06.0
          */
         get_points(): Point[];
     }
@@ -6816,11 +7042,13 @@ export namespace Poppler {
          * Creates a copy of `point`. The copy must be freed with `poppler_point_free()`
          * after use.
          * @returns a new allocated copy of `point`
+         * @since 0.26
          */
         copy(): Point;
 
         /**
          * Frees the memory used by `point`
+         * @since 0.26
          */
         free(): void;
     }
@@ -6862,11 +7090,13 @@ export namespace Poppler {
         /**
          * Creates a copy of `quad`. The copy must be freed with `poppler_quadrilateral_free()` after use.
          * @returns a new allocated copy of `quad`
+         * @since 0.26
          */
         copy(): Quadrilateral;
 
         /**
          * Frees the memory used by `quad`
+         * @since 0.26
          */
         free(): void;
     }
@@ -6925,6 +7155,7 @@ export namespace Poppler {
          * returned in the list from `poppler_page_find_text()` or
          * `poppler_page_find_text_with_options()`.
          * @returns whether a hyphen was ignored at the end of the line corresponding to `rectangle`.
+         * @since 21.05.0
          */
         find_get_ignored_hyphen(): boolean;
 
@@ -6939,6 +7170,7 @@ export namespace Poppler {
          * returned in the list from `poppler_page_find_text()` or
          * `poppler_page_find_text_with_options()`.
          * @returns whether there are more rectangles belonging to the same match
+         * @since 21.05.0
          */
         find_get_match_continued(): boolean;
 
@@ -6968,23 +7200,27 @@ export namespace Poppler {
         /**
          * Copies `siginfo`, creating an identical {@link Poppler.SignatureInfo}.
          * @returns a new {@link Poppler.SignatureInfo} structure identical to `siginfo`
+         * @since 21.12.0
          */
         copy(): SignatureInfo;
 
         /**
          * Frees `siginfo`
+         * @since 21.12.0
          */
         free(): void;
 
         /**
          * Returns PopplerCertificateInfo for given PopplerSignatureInfo.
          * @returns certificate info of the signature
+         * @since 23.08.0
          */
         get_certificate_info(): CertificateInfo;
 
         /**
          * Returns status of the certificate for given PopplerSignatureInfo.
          * @returns certificate status of the signature
+         * @since 21.12.0
          */
         get_certificate_status(): CertificateStatus;
 
@@ -6995,18 +7231,21 @@ export namespace Poppler {
          * Do not modify returned value since it is internal to
          * PopplerSignatureInfo.
          * @returns GDateTime
+         * @since 21.12.0
          */
         get_local_signing_time(): GLib.DateTime;
 
         /**
          * Returns status of the signature for given PopplerSignatureInfo.
          * @returns signature status of the signature
+         * @since 21.12.0
          */
         get_signature_status(): SignatureStatus;
 
         /**
          * Returns name of signer for given PopplerSignatureInfo.
          * @returns A string.
+         * @since 21.12.0
          */
         get_signer_name(): string;
     }
@@ -7028,239 +7267,279 @@ export namespace Poppler {
         /**
          * Copies `signing_data`, creating an identical {@link Poppler.SigningData}.
          * @returns a new {@link Poppler.SigningData} structure identical to `signing_data`
+         * @since 23.07.0
          */
         copy(): SigningData;
 
         /**
          * Frees `signing_data`
+         * @since 23.07.0
          */
         free(): void;
 
         /**
          * Get signature background color.
          * @returns a {@link Poppler.Color}
+         * @since 23.07.0
          */
         get_background_color(): Color;
 
         /**
          * Get signature border color.
          * @returns a {@link Poppler.Color}
+         * @since 23.07.0
          */
         get_border_color(): Color;
 
         /**
          * Get signature border width.
          * @returns border width
+         * @since 23.07.0
          */
         get_border_width(): number;
 
         /**
          * Get certification information.
          * @returns a {@link Poppler.CertificateInfo}
+         * @since 23.07.0
          */
         get_certificate_info(): CertificateInfo;
 
         /**
          * Get destination file name.
          * @returns destination filename
+         * @since 23.07.0
          */
         get_destination_filename(): string;
 
         /**
          * Get document owner password.
          * @returns document owner password (for encrypted files)
+         * @since 23.07.0
          */
         get_document_owner_password(): string;
 
         /**
          * Get document user password.
          * @returns document user password (for encrypted files)
+         * @since 23.07.0
          */
         get_document_user_password(): string;
 
         /**
          * Get field partial name.
          * @returns field partial name
+         * @since 23.07.0
          */
         get_field_partial_name(): string;
 
         /**
          * Get signature font color.
          * @returns a {@link Poppler.Color}
+         * @since 23.07.0
          */
         get_font_color(): Color;
 
         /**
          * Get signature font size.
          * @returns font size
+         * @since 23.07.0
          */
         get_font_size(): number;
 
         /**
          * Get image path.
          * @returns image path
+         * @since 23.07.0
          */
         get_image_path(): string;
 
         /**
          * Get signature left font size.
          * @returns left font size
+         * @since 23.07.0
          */
         get_left_font_size(): number;
 
         /**
          * Get location.
          * @returns location
+         * @since 23.07.0
          */
         get_location(): string;
 
         /**
          * Get page.
          * @returns page number
+         * @since 23.07.0
          */
         get_page(): number;
 
         /**
          * Get signing key password.
          * @returns password
+         * @since 23.07.0
          */
         get_password(): string;
 
         /**
          * Get reason.
          * @returns reason
+         * @since 23.07.0
          */
         get_reason(): string;
 
         /**
          * Get signature rectangle.
          * @returns a {@link Poppler.Rectangle}
+         * @since 23.07.0
          */
         get_signature_rectangle(): Rectangle;
 
         /**
          * Get signature text.
          * @returns signature text
+         * @since 23.07.0
          */
         get_signature_text(): string;
 
         /**
          * Get signature text left.
          * @returns signature text left
+         * @since 23.07.0
          */
         get_signature_text_left(): string;
 
         /**
          * Set signature background color.
          * @param background_color a {@link Poppler.Color} to be used for signature background
+         * @since 23.07.0
          */
         set_background_color(background_color: Color): void;
 
         /**
          * Set signature border color.
          * @param border_color a {@link Poppler.Color} to be used for signature border
+         * @since 23.07.0
          */
         set_border_color(border_color: Color): void;
 
         /**
          * Set signature border width.
          * @param border_width border width
+         * @since 23.07.0
          */
         set_border_width(border_width: number): void;
 
         /**
          * Set certification information.
          * @param certificate_info a {@link Poppler.CertificateInfo}
+         * @since 23.07.0
          */
         set_certificate_info(certificate_info: CertificateInfo): void;
 
         /**
          * Set destination file name.
          * @param filename destination filename
+         * @since 23.07.0
          */
         set_destination_filename(filename: string): void;
 
         /**
          * Set document owner password (for encrypted files).
          * @param document_owner_password document owner password
+         * @since 23.07.0
          */
         set_document_owner_password(document_owner_password: string): void;
 
         /**
          * Set document user password (for encrypted files).
          * @param document_user_password document user password
+         * @since 23.07.0
          */
         set_document_user_password(document_user_password: string): void;
 
         /**
          * Set field partial name (existing field id or a new one) where signature is placed.
          * @param field_partial_name a field partial name
+         * @since 23.07.0
          */
         set_field_partial_name(field_partial_name: string): void;
 
         /**
          * Set signature font color.
          * @param font_color a {@link Poppler.Color} to be used as signature font color
+         * @since 23.07.0
          */
         set_font_color(font_color: Color): void;
 
         /**
          * Set signature font size (>0).
          * @param font_size signature font size
+         * @since 23.07.0
          */
         set_font_size(font_size: number): void;
 
         /**
          * Set signature background (watermark) image path.
          * @param image_path signature image path
+         * @since 23.07.0
          */
         set_image_path(image_path: string): void;
 
         /**
          * Set signature left font size (> 0).
          * @param font_size signature font size
+         * @since 23.07.0
          */
         set_left_font_size(font_size: number): void;
 
         /**
          * Set signature location (e.g. "At my desk").
          * @param location a location
+         * @since 23.07.0
          */
         set_location(location: string): void;
 
         /**
          * Set page (>=0).
          * @param page a page number
+         * @since 23.07.0
          */
         set_page(page: number): void;
 
         /**
          * Set password for the signing key.
          * @param password a password
+         * @since 23.07.0
          */
         set_password(password: string): void;
 
         /**
          * Set reason for signature (e.g. I'm approver).
          * @param reason a reason
+         * @since 23.07.0
          */
         set_reason(reason: string): void;
 
         /**
          * Set signature rectangle.
          * @param signature_rect a {@link Poppler.Rectangle} where signature should be shown
+         * @since 23.07.0
          */
         set_signature_rectangle(signature_rect: Rectangle): void;
 
         /**
          * Set signature text.
          * @param signature_text text to show as main signature
+         * @since 23.07.0
          */
         set_signature_text(signature_text: string): void;
 
         /**
          * Set small signature text on the left hand.
          * @param signature_text_left text to show as small left signature
+         * @since 23.07.0
          */
         set_signature_text_left(signature_text_left: string): void;
     }
@@ -7283,11 +7562,13 @@ export namespace Poppler {
          * Creates a new {@link Poppler.StructureElementIter} as a copy of `iter`. The
          * returned value must be freed with `poppler_structure_element_iter_free()`.
          * @returns a new {@link Poppler.StructureElementIter}
+         * @since 0.26
          */
         copy(): StructureElementIter;
 
         /**
          * Frees `iter`.
+         * @since 0.26
          */
         free(): void;
 
@@ -7296,12 +7577,14 @@ export namespace Poppler {
          * {@link Poppler.StructureElement} associated with `iter`. The returned value must
          * be freed with `poppler_structure_element_iter_free()`.
          * @returns a new {@link Poppler.StructureElementIter}
+         * @since 0.26
          */
         get_child(): StructureElementIter;
 
         /**
          * Returns the {@link Poppler.StructureElementIter} associated with `iter`.
          * @returns a new {@link Poppler.StructureElementIter}
+         * @since 0.26
          */
         get_element(): StructureElement;
 
@@ -7310,6 +7593,7 @@ export namespace Poppler {
          * of the tree, if valid. See `poppler_structure_element_iter_new()` for more
          * information.
          * @returns `true`, if `iter` was set to the next structure element
+         * @since 0.26
          */
         next(): boolean;
     }
@@ -7353,11 +7637,13 @@ export namespace Poppler {
         /**
          * Creates a copy of `text_attrs`
          * @returns a new allocated copy of `text_attrs`
+         * @since 0.18
          */
         copy(): TextAttributes;
 
         /**
          * Frees the given {@link Poppler.TextAttributes}
+         * @since 0.18
          */
         free(): void;
     }
@@ -7374,46 +7660,54 @@ export namespace Poppler {
         /**
          * Makes a copy of a text span.
          * @returns A new {@link Poppler.TextSpan}
+         * @since 0.26
          */
         copy(): TextSpan;
 
         /**
          * Frees a text span.
+         * @since 0.26
          */
         free(): void;
 
         /**
          * Obtains the color in which the text is to be rendered.
+         * @since 0.26
          */
         get_color(): Color;
 
         /**
          * Obtains the name of the font in which the span is to be rendered.
          * @returns A string containing the font name, or   `null` if a font is not defined.
+         * @since 0.26
          */
         get_font_name(): string;
 
         /**
          * Obtains the text contained in the span.
          * @returns A string.
+         * @since 0.26
          */
         get_text(): string;
 
         /**
          * Check whether a text span is meant to be rendered using a bold font.
          * @returns Whether the span uses bold font.
+         * @since 0.26
          */
         is_bold_font(): boolean;
 
         /**
          * Check wether a text span is meant to be rendered using a fixed-width font.
          * @returns Whether the span uses a fixed-width font.
+         * @since 0.26
          */
         is_fixed_width_font(): boolean;
 
         /**
          * Check whether a text span is meant to be rendered using a serif font.
          * @returns Whether the span uses a serif font.
+         * @since 0.26
          */
         is_serif_font(): boolean;
     }

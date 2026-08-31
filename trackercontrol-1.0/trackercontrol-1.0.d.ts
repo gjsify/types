@@ -148,6 +148,9 @@ export namespace TrackerControl {
         emit(signal: string, ...args: any[]): void;
 
         // Static methods
+        /**
+         * @since 0.8
+         */
         static error_quark(): GLib.Quark;
 
         // Virtual methods
@@ -189,6 +192,7 @@ export namespace TrackerControl {
          * miners are miners which may or may not be running in a process at
          * the current time.
          * @returns a {@link GLib.SList} which must be freed with `g_slist_free()` and all contained data with `g_free()`. Otherwise `null` is returned if there are no miners.
+         * @since 0.8
          */
         get_available(): string[] | null;
 
@@ -196,6 +200,7 @@ export namespace TrackerControl {
          * Returns the description for the given `miner`.
          * @param miner miner reference
          * @returns A string which should not be freed or `null` if none is specified.
+         * @since 0.8
          */
         get_description(miner: string): string;
 
@@ -203,6 +208,7 @@ export namespace TrackerControl {
          * Returns a translated display name for `miner`.
          * @param miner miner reference
          * @returns A string which should not be freed or `null`.
+         * @since 0.8
          */
         get_display_name(miner: string): string;
 
@@ -210,6 +216,7 @@ export namespace TrackerControl {
          * Returns a list of references for all active miners. Active miners
          * are miners which are running within a process.
          * @returns a {@link GLib.SList} which must be freed with `g_slist_free()` and all contained data with `g_free()`. Otherwise `null` is returned if there are no miners.
+         * @since 0.8
          */
         get_running(): string[] | null;
 
@@ -219,6 +226,7 @@ export namespace TrackerControl {
          * and less than zero if it is not applicable.
          * @param miner miner reference
          * @returns `true` if the status could be retrieved successfully, otherwise `false`
+         * @since 0.12
          */
         get_status(miner: string): [boolean, string, number, number];
 
@@ -230,6 +238,8 @@ export namespace TrackerControl {
          * @param miner miner reference
          * @param urls the subjects to ignore the next updates of
          * @returns `true` on success, otherwise `false`.
+         * @since 0.8
+         * @deprecated since 0.12
          */
         ignore_next_update(miner: string, urls: string): boolean;
 
@@ -239,6 +249,7 @@ export namespace TrackerControl {
          * On failure `error` will be set.
          * @param file a URL valid in GIO of a file to give to the miner for processing
          * @returns `true` on success, otherwise `false`.
+         * @since 0.10
          */
         index_file(file: Gio.File): boolean;
 
@@ -248,6 +259,7 @@ export namespace TrackerControl {
          * to get the result.
          * @param file a URL valid in GIO of a file to give to the miner for processing
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.16
          */
         index_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -258,6 +270,7 @@ export namespace TrackerControl {
          * @param file a URL valid in GIO of a file to give to the miner for processing
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 0.16
          */
         index_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -268,6 +281,7 @@ export namespace TrackerControl {
          * @param file a URL valid in GIO of a file to give to the miner for processing
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 0.16
          */
         index_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -277,6 +291,7 @@ export namespace TrackerControl {
          * On failure `error` will be set.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, otherwise `false`.
+         * @since 0.16
          */
         index_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -291,6 +306,7 @@ export namespace TrackerControl {
          * @param file a URL valid in GIO of a file to give to the miner for processing
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, otherwise `false`.
+         * @since 1.10
          */
         index_file_for_process(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -306,6 +322,7 @@ export namespace TrackerControl {
          * get the result of the operation.
          * @param file a URL valid in GIO of a file to give to the miner for processing
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.10
          */
         index_file_for_process_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -322,6 +339,7 @@ export namespace TrackerControl {
          * @param file a URL valid in GIO of a file to give to the miner for processing
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 1.10
          */
         index_file_for_process_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -338,6 +356,7 @@ export namespace TrackerControl {
          * @param file a URL valid in GIO of a file to give to the miner for processing
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 1.10
          */
         index_file_for_process_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -347,6 +366,7 @@ export namespace TrackerControl {
          * On failure `error` will be set.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, otherwise `false`.
+         * @since 1.10
          */
         index_file_for_process_finish(result: Gio.AsyncResult): boolean;
 
@@ -354,6 +374,7 @@ export namespace TrackerControl {
          * Returns the miner's current activity.
          * @param miner miner reference
          * @returns `true` if the `miner` is active, otherwise `false`.
+         * @since 0.8
          */
         is_active(miner: string): boolean;
 
@@ -365,6 +386,7 @@ export namespace TrackerControl {
          * application/pause reason pairs have the same index.
          * @param miner miner reference
          * @returns `true` if `miner` is paused, otherwise `false`.
+         * @since 0.8
          */
         is_paused(miner: string): [boolean, string[] | null, string[] | null];
 
@@ -375,6 +397,7 @@ export namespace TrackerControl {
          * @param miner miner reference
          * @param reason reason to pause
          * @returns `true` if the miner was paused successfully, otherwise `false`.
+         * @since 0.8
          */
         pause(miner: string, reason: string): [boolean, number];
 
@@ -391,6 +414,7 @@ export namespace TrackerControl {
          * @param miner miner reference
          * @param reason reason to pause
          * @returns `true` if the miner was paused successfully, otherwise `false`.
+         * @since 0.10.15
          */
         pause_for_process(miner: string, reason: string): [boolean, number];
 
@@ -401,6 +425,7 @@ export namespace TrackerControl {
          * On failure `error` will be set.
          * @param mimetypes an array of mimetypes (E.G. "text/plain"). All items with a mimetype in that list will be reindexed.
          * @returns `true` on success, otherwise `false`.
+         * @since 0.10
          */
         reindex_by_mimetype(mimetypes: string[]): boolean;
 
@@ -410,6 +435,7 @@ export namespace TrackerControl {
          * @param miner miner reference
          * @param cookie pause cookie
          * @returns `true` if the miner was successfully resumed, otherwise `false`.
+         * @since 0.8
          */
         resume(miner: string, cookie: number): boolean;
 
@@ -454,6 +480,7 @@ export namespace TrackerControl {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -497,6 +524,7 @@ export namespace TrackerControl {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;

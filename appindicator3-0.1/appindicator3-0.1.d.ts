@@ -586,6 +586,7 @@ export namespace AppIndicator3 {
          * Gets the title of the application indicator.  See the function
          * `app_indicator_set_title()` for information on the title.
          * @returns The current title.
+         * @since 0.5
          */
         get_title(): string;
 
@@ -593,6 +594,7 @@ export namespace AppIndicator3 {
          * Wrapper for `app_indicator_set_attention_icon_full()` with a NULL
          * description.
          * @param icon_name The name of the attention icon to set for this indicator
+         * @deprecated Use `app_indicator_set_attention_icon_full()` instead.
          */
         set_attention_icon(icon_name: string): void;
 
@@ -607,6 +609,7 @@ export namespace AppIndicator3 {
          * Wrapper function for `app_indicator_set_icon_full()` with a NULL
          * description.
          * @param icon_name The icon name to set.
+         * @deprecated Use `app_indicator_set_icon_full()`
          */
         set_icon(icon_name: string): void;
 
@@ -687,6 +690,7 @@ export namespace AppIndicator3 {
          * 
          * Setting `title` to `null` removes the title.
          * @param title Title of the app indicator
+         * @since 0.5
          */
         set_title(title: string | null): void;
     }

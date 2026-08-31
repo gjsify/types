@@ -982,12 +982,14 @@ export namespace SpiceClientGLib {
         /**
          * Convert a channel-type property value to a string.
          * @param str a string representation of the channel-type property
+         * @since 0.21
          */
         static string_to_type(str: string): number;
 
         /**
          * Convert a channel-type property value to a string.
          * @param type a channel-type property value
+         * @since 0.7
          */
         static type_to_string(type: number): string;
 
@@ -1052,6 +1054,7 @@ export namespace SpiceClientGLib {
 
         /**
          * Disconnect and unref the `channel`.
+         * @deprecated since 0.27: this function has been deprecated because it is misleading, the object is not actually destroyed. Instead, it is recommended to call explicitely `spice_channel_disconnect()` and `g_object_unref()`.
          */
         destroy(): void;
 
@@ -1077,6 +1080,7 @@ export namespace SpiceClientGLib {
          * then call `spice_channel_flush_finish()` to get the result of the
          * operation.
          * @param cancellable optional GCancellable object, `null` to ignore
+         * @since 0.15
          */
         flush_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1089,6 +1093,7 @@ export namespace SpiceClientGLib {
          * operation.
          * @param cancellable optional GCancellable object, `null` to ignore
          * @param callback callback to call when the request is satisfied
+         * @since 0.15
          */
         flush_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1101,6 +1106,7 @@ export namespace SpiceClientGLib {
          * operation.
          * @param cancellable optional GCancellable object, `null` to ignore
          * @param callback callback to call when the request is satisfied
+         * @since 0.15
          */
         flush_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1108,6 +1114,7 @@ export namespace SpiceClientGLib {
          * Finishes flushing a channel.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if flush operation succeeded, `false` otherwise.
+         * @since 0.15
          */
         flush_finish(result: Gio.AsyncResult): boolean;
 
@@ -1115,6 +1122,7 @@ export namespace SpiceClientGLib {
          * Retrieves the {@link GLib.Error} currently set on channel, if the {@link SpiceClientGLib.Channel}
          * is in error state and can provide additional error details.
          * @returns the pointer to the error, or `null`
+         * @since 0.24
          */
         get_error(): GLib.Error;
 
@@ -1131,6 +1139,7 @@ export namespace SpiceClientGLib {
         /**
          * Enable specific channel-kind capability.
          * @param cap a capability
+         * @deprecated since 0.13: this function has been removed
          */
         set_capability(cap: number): void;
 
@@ -1441,6 +1450,8 @@ export namespace SpiceClientGLib {
          * Tells the spice server to change the preferred image compression
          * for the `channel`.
          * @param compression a `SpiceImageCompression`
+         * @since 0.31
+         * @deprecated since 0.35: use `spice_display_channel_change_preferred_compression()` instead.
          */
         display_change_preferred_compression(compression: number): void;
 
@@ -1449,6 +1460,8 @@ export namespace SpiceClientGLib {
          * streaming in `channel`. Application can set only one preferred video codec per
          * display channel.
          * @param codec_type a `SpiceVideoCodecType`
+         * @since 0.34
+         * @deprecated since 0.35: use `spice_display_channel_change_preferred_video_codec_type()` instead.
          */
         display_change_preferred_video_codec_type(codec_type: number): void;
 
@@ -1456,6 +1469,7 @@ export namespace SpiceClientGLib {
          * Tells the spice server to change the preferred image compression
          * for the `channel`.
          * @param compression a `SpiceImageCompression`
+         * @since 0.35
          */
         display_channel_change_preferred_compression(compression: number): void;
 
@@ -1464,6 +1478,8 @@ export namespace SpiceClientGLib {
          * streaming in `channel`. Application can set only one preferred video codec per
          * display channel.
          * @param codec_type a `SpiceVideoCodecType`
+         * @since 0.35
+         * @deprecated since 0.38: use `spice_display_channel_change_preferred_video_codec_types()` instead.
          */
         display_channel_change_preferred_video_codec_type(codec_type: number): void;
 
@@ -1472,6 +1488,7 @@ export namespace SpiceClientGLib {
          * use for streaming in `channel`.
          * @param codecs an array of `ncodecs` `SpiceVideoCodecType` types
          * @returns `true` if the preferred codec list was successfully changed, and `false` otherwise.
+         * @since 0.38
          */
         display_channel_change_preferred_video_codec_types(codecs: number[]): boolean;
 
@@ -1480,6 +1497,7 @@ export namespace SpiceClientGLib {
          * @param surface_id a surface id
          * @param primary a {@link SpiceClientGLib.DisplayPrimary}
          * @returns `true` if the primary surface was found and its details collected in `primary`.
+         * @since 0.35
          */
         display_channel_get_primary(surface_id: number, primary: DisplayPrimary): boolean;
 
@@ -1488,18 +1506,22 @@ export namespace SpiceClientGLib {
          * @param surface_id a surface id
          * @param primary a {@link SpiceClientGLib.DisplayPrimary}
          * @returns `true` if the primary surface was found and its details collected in `primary`.
+         * @deprecated since 0.35: use `spice_display_channel_get_primary()` instead.
          */
         display_get_primary(surface_id: number, primary: DisplayPrimary): boolean;
 
         /**
          * Retrieves the GL scanout if available
          * @returns the current GL scanout, or `null` if none or not valid
+         * @since 0.35
+         * @deprecated since 0.43: use `spice_display_channel_get_gl_scanout2()` instead.
          */
         get_gl_scanout(): GlScanout;
 
         /**
          * Retrieves the GL scanout with multi plane info if available
          * @returns the current GL scanout, or `null` if none or not valid
+         * @since 0.43
          */
         get_gl_scanout2(): GlScanout2;
 
@@ -1508,6 +1530,7 @@ export namespace SpiceClientGLib {
          * draw the current display with the current GL scanout, and must
          * release the GL resource with a call to `spice_display_gl_draw_done()`
          * (failing to do so for each gl-draw may result in a frozen display).
+         * @since 0.35
          */
         gl_draw_done(): void;
     }
@@ -1716,6 +1739,7 @@ export namespace SpiceClientGLib {
          * Press a mouse button.
          * @param button a SPICE_MOUSE_BUTTON
          * @param button_state SPICE_MOUSE_BUTTON_MASK flags
+         * @since 0.35
          */
         button_press(button: number, button_state: number): void;
 
@@ -1723,24 +1747,28 @@ export namespace SpiceClientGLib {
          * Release a button.
          * @param button a SPICE_MOUSE_BUTTON
          * @param button_state SPICE_MOUSE_BUTTON_MASK flags
+         * @since 0.35
          */
         button_release(button: number, button_state: number): void;
 
         /**
          * Press a key.
          * @param scancode a PC XT (set 1) key scancode.  For scancodes with an \%0xe0            prefix, drop the prefix and OR the scancode with \%0x100.
+         * @since 0.35
          */
         key_press(scancode: number): void;
 
         /**
          * Press and release a key event atomically (in the same message).
          * @param scancode a PC XT (set 1) key scancode.  For scancodes with an \%0xe0            prefix, drop the prefix and OR the scancode with \%0x100.
+         * @since 0.35
          */
         key_press_and_release(scancode: number): void;
 
         /**
          * Release a key.
          * @param scancode a PC XT (set 1) key scancode.  For scancodes with an \%0xe0            prefix, drop the prefix and OR the scancode with \%0x100.
+         * @since 0.35
          */
         key_release(scancode: number): void;
 
@@ -1749,6 +1777,7 @@ export namespace SpiceClientGLib {
          * @param dx delta X mouse coordinates
          * @param dy delta Y mouse coordinates
          * @param button_state SPICE_MOUSE_BUTTON_MASK flags
+         * @since 0.35
          */
         motion(dx: number, dy: number, button_state: number): void;
 
@@ -1758,12 +1787,14 @@ export namespace SpiceClientGLib {
          * @param y Y mouse coordinates
          * @param display display channel id
          * @param button_state SPICE_MOUSE_BUTTON_MASK flags
+         * @since 0.35
          */
         position(x: number, y: number, display: number, button_state: number): void;
 
         /**
          * Set the keyboard locks on the guest (Caps, Num, Scroll..)
          * @param locks {@link SpiceClientGLib.InputsLock} modifiers flags
+         * @since 0.35
          */
         set_key_locks(locks: number): void;
     }
@@ -2088,6 +2119,7 @@ export namespace SpiceClientGLib {
          * Test capability of a remote agent.
          * @param cap an agent capability identifier
          * @returns `true` if `cap` (channel kind capability) is available.
+         * @since 0.35
          */
         agent_test_capability(cap: number): boolean;
 
@@ -2095,6 +2127,7 @@ export namespace SpiceClientGLib {
          * Grab the guest clipboard, with #VD_AGENT_CLIPBOARD `types`.
          * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
          * @param types an array of #VD_AGENT_CLIPBOARD types available in the clipboard
+         * @since 0.35
          */
         clipboard_selection_grab(selection: number, types: number[]): void;
 
@@ -2103,6 +2136,7 @@ export namespace SpiceClientGLib {
          * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
          * @param type a #VD_AGENT_CLIPBOARD type
          * @param data clipboard data
+         * @since 0.35
          */
         clipboard_selection_notify(selection: number, type: number, data: Uint8Array | string): void;
 
@@ -2110,6 +2144,7 @@ export namespace SpiceClientGLib {
          * Release the clipboard (for example, when the client loses the
          * clipboard grab): Inform the guest no clipboard data is available.
          * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
+         * @since 0.35
          */
         clipboard_selection_release(selection: number): void;
 
@@ -2118,6 +2153,7 @@ export namespace SpiceClientGLib {
          * through the {@link SpiceClientGLib.MainChannel.SignalSignatures.main_clipboard_selection | SpiceClientGLib.MainChannel::main-clipboard-selection} signal.
          * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
          * @param type a #VD_AGENT_CLIPBOARD type
+         * @since 0.35
          */
         clipboard_selection_request(selection: number, type: number): void;
 
@@ -2149,6 +2185,7 @@ export namespace SpiceClientGLib {
          * @param flags set of {@link Gio.FileCopyFlags}
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param progress_callback function to callback with     progress information, or `null` if progress information is not needed
+         * @since 0.35
          */
         file_copy_async(sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>;
 
@@ -2181,6 +2218,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param progress_callback function to callback with     progress information, or `null` if progress information is not needed
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 0.35
          */
         file_copy_async(sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2213,6 +2251,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @param progress_callback function to callback with     progress information, or `null` if progress information is not needed
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 0.35
          */
         file_copy_async(sources: Gio.File[], flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2229,6 +2268,7 @@ export namespace SpiceClientGLib {
          * change the mouse mode, but spice-gtk will try to request it
          * when possible.
          * @param mode a SPICE_MOUSE_MODE
+         * @since 0.35
          */
         request_mouse_mode(mode: number): void;
 
@@ -2236,6 +2276,7 @@ export namespace SpiceClientGLib {
          * Send monitors configuration previously set with
          * `spice_main_set_display()` and `spice_main_set_display_enabled()`
          * @returns `true` on success.
+         * @since 0.35
          */
         send_monitor_config(): boolean;
 
@@ -2252,6 +2293,7 @@ export namespace SpiceClientGLib {
          * @param width display width
          * @param height display height
          * @param update if `true`, update guest resolution after 1sec.
+         * @since 0.35
          */
         update_display(id: number, x: number, y: number, width: number, height: number, update: boolean): void;
 
@@ -2267,6 +2309,7 @@ export namespace SpiceClientGLib {
          * @param id display ID (if -1: set all displays)
          * @param enabled wether display `id` is enabled
          * @param update if `true`, update guest display state after 1sec.
+         * @since 0.35
          */
         update_display_enabled(id: number, enabled: boolean, update: boolean): void;
 
@@ -2281,6 +2324,7 @@ export namespace SpiceClientGLib {
          * @param width_mm physical display width in millimeters
          * @param height_mm physical display height in millimeters
          * @param update if `true`, update guest resolution after 1sec.
+         * @since 0.39
          */
         update_display_mm(id: number, width_mm: number, height_mm: number, update: boolean): void;
     }
@@ -2526,6 +2570,7 @@ export namespace SpiceClientGLib {
          * SPICE_PORT_EVENT_OPENED are managed by the channel connection
          * state.
          * @param event a SPICE_PORT_EVENT value
+         * @since 0.35
          */
         event(event: number): void;
 
@@ -2536,6 +2581,7 @@ export namespace SpiceClientGLib {
          * the operation.
          * @param buffer the buffer containing the data to write
          * @param cancellable optional GCancellable object, NULL to ignore
+         * @since 0.35
          */
         write_async(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
@@ -2547,6 +2593,7 @@ export namespace SpiceClientGLib {
          * @param buffer the buffer containing the data to write
          * @param cancellable optional GCancellable object, NULL to ignore
          * @param callback callback to call when the request is satisfied
+         * @since 0.35
          */
         write_async(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2558,6 +2605,7 @@ export namespace SpiceClientGLib {
          * @param buffer the buffer containing the data to write
          * @param cancellable optional GCancellable object, NULL to ignore
          * @param callback callback to call when the request is satisfied
+         * @since 0.35
          */
         write_async(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
@@ -2565,6 +2613,7 @@ export namespace SpiceClientGLib {
          * Finishes a port write operation.
          * @param result a {@link Gio.AsyncResult}
          * @returns a `gssize` containing the number of bytes written to the stream.
+         * @since 0.35
          */
         write_finish(result: Gio.AsyncResult): number;
     }
@@ -2643,6 +2692,7 @@ export namespace SpiceClientGLib {
          * Associate a QMP port helper to the given port channel.  If there is
          * already a helper associated with the channel, it is simply returned.
          * @param channel the QMP port channel
+         * @since 0.36
          */
         static get(channel: PortChannel): QmpPort;
 
@@ -2650,6 +2700,7 @@ export namespace SpiceClientGLib {
         /**
          * Query the run status of all VCPUs.
          * @param cancellable A {@link Gio.Cancellable}
+         * @since 0.36
          */
         query_status_async(cancellable: Gio.Cancellable | null): globalThis.Promise<QmpStatus>;
 
@@ -2657,6 +2708,7 @@ export namespace SpiceClientGLib {
          * Query the run status of all VCPUs.
          * @param cancellable A {@link Gio.Cancellable}
          * @param callback The async callback.
+         * @since 0.36
          */
         query_status_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2664,6 +2716,7 @@ export namespace SpiceClientGLib {
          * Query the run status of all VCPUs.
          * @param cancellable A {@link Gio.Cancellable}
          * @param callback The async callback.
+         * @since 0.36
          */
         query_status_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<QmpStatus> | void;
 
@@ -2671,6 +2724,7 @@ export namespace SpiceClientGLib {
          * Finish the asynchronous status query.
          * @param result The async {@link Gio.AsyncResult} result
          * @returns The {@link SpiceClientGLib.QmpStatus} result or `null`, in which case `error` will be set.
+         * @since 0.36
          */
         query_status_finish(result: Gio.AsyncResult): QmpStatus;
 
@@ -2678,6 +2732,7 @@ export namespace SpiceClientGLib {
          * Request the VM to perform an action.
          * @param action a VM action
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.36
          */
         vm_action_async(action: QmpPortVmAction, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2686,6 +2741,7 @@ export namespace SpiceClientGLib {
          * @param action a VM action
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call when the action is complete
+         * @since 0.36
          */
         vm_action_async(action: QmpPortVmAction, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2694,12 +2750,14 @@ export namespace SpiceClientGLib {
          * @param action a VM action
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call when the action is complete
+         * @since 0.36
          */
         vm_action_async(action: QmpPortVmAction, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
         /**
          * Finishes asynchronous VM action and returns the result.
          * @param result The async {@link Gio.AsyncResult} result
+         * @since 0.36
          */
         vm_action_finish(result: Gio.AsyncResult): boolean;
     }
@@ -2815,6 +2873,7 @@ export namespace SpiceClientGLib {
          * @param data PCM data
          * @param bytes size of `data`
          * @param time stream timestamp
+         * @since 0.35
          */
         send_data(data: null, bytes: bigint | number, time: number): void;
     }
@@ -3465,6 +3524,7 @@ export namespace SpiceClientGLib {
         /**
          * Gets the `session` proxy uri.
          * @returns the session proxy {@link SpiceClientGLib.URI} or `null`.
+         * @since 0.24
          */
         get_proxy_uri(): URI;
 
@@ -3488,6 +3548,7 @@ export namespace SpiceClientGLib {
          * handle migration steps. In order to avoid other interactions with
          * the client, channels should check this value.
          * @returns `true` if the session is a copy created during migration
+         * @since 0.27
          */
         is_for_migration(): boolean;
 
@@ -3672,6 +3733,7 @@ export namespace SpiceClientGLib {
          * Gets the list of smartcard readers that are currently available, they
          * can be either software (emulated) readers, or hardware ones.
          * @returns a newly allocated list of SpiceSmartcardReader instances, or NULL if none were found. When no longer needed, the list must be freed after unreferencing its elements with `g_boxed_free()`
+         * @since 0.20
          */
         get_readers(): SmartcardReader[];
 
@@ -3682,6 +3744,7 @@ export namespace SpiceClientGLib {
          * reader is supported, that's why there is no parameter to indicate which
          * reader to insert the card in.
          * @returns TRUE if smartcard insertion was successfully simulated, FALSE if this failed, or if software smartcard support isn't enabled.
+         * @since 0.7
          */
         insert_card(): boolean;
 
@@ -3690,6 +3753,7 @@ export namespace SpiceClientGLib {
          * one software smartcard reader is supported, that's why there is no
          * parameter to indicate which reader to insert the card in.
          * @returns TRUE if smartcard removal was successfully simulated, FALSE if this failed, or if software smartcard support isn't enabled.
+         * @since 0.7
          */
         remove_card(): boolean;
     }
@@ -4071,6 +4135,7 @@ export namespace SpiceClientGLib {
          * Allocates a SpiceUsbDevice instance for the specified file descriptor.
          * @param file_descriptor an open file descriptor for the USB device.
          * @returns an allocated SpiceUsbDevice instance or `null` in case of failure.
+         * @since 0.40
          */
         allocate_device_for_file_descriptor(file_descriptor: number): UsbDevice | null;
 
@@ -4137,6 +4202,7 @@ export namespace SpiceClientGLib {
          * to get the result of the operation.
          * @param device a connected {@link SpiceClientGLib.UsbDevice} to disconnect.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 0.32
          */
         disconnect_device_async(device: UsbDevice, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -4147,6 +4213,7 @@ export namespace SpiceClientGLib {
          * @param device a connected {@link SpiceClientGLib.UsbDevice} to disconnect.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 0.32
          */
         disconnect_device_async(device: UsbDevice, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4157,6 +4224,7 @@ export namespace SpiceClientGLib {
          * @param device a connected {@link SpiceClientGLib.UsbDevice} to disconnect.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @since 0.32
          */
         disconnect_device_async(device: UsbDevice, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -4177,6 +4245,7 @@ export namespace SpiceClientGLib {
          * Finds devices associated with the `manager` complying with the `filter`
          * @param filter filter string for selecting which devices to return,      see {@link SpiceClientGLib.UsbDeviceManager.auto_connect_filter} for the filter      string format
          * @returns a %GPtrArray array of %SpiceUsbDevice
+         * @since 0.20
          */
         get_devices_with_filter(filter: string | null): UsbDevice[];
 
@@ -4197,6 +4266,7 @@ export namespace SpiceClientGLib {
         /**
          * Checks whether a device is being redirected
          * @returns `true` if device redirection negotiation flow is in progress
+         * @since 0.32
          */
         is_redirecting(): boolean;
 
@@ -4241,6 +4311,7 @@ export namespace SpiceClientGLib {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4284,6 +4355,7 @@ export namespace SpiceClientGLib {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -4583,6 +4655,7 @@ export namespace SpiceClientGLib {
         // Methods
         /**
          * Frees the `scanout`.
+         * @since 0.31
          */
         free(): void;
     }
@@ -4719,11 +4792,13 @@ export namespace SpiceClientGLib {
         /**
          * References a `status`.
          * @returns The same `status`
+         * @since 0.36
          */
         ref(): QmpStatus;
 
         /**
          * Removes a reference from the given `status`.
+         * @since 0.36
          */
         unref(): void;
     }
@@ -4855,6 +4930,7 @@ export namespace SpiceClientGLib {
         /**
          * Finds the %libusb_device associated with the `device`.
          * @returns the %libusb_device associated to %SpiceUsbDevice.
+         * @since 0.27
          */
         get_libusb_device(): null;
     }

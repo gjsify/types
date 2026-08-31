@@ -551,6 +551,7 @@ export namespace Xfconf {
          * or `xfconf_channel_reset_property()` will fail.
          * @param property A property name.
          * @returns `true` if the property is locked, `false` otherwise.
+         * @since 4.5.91
          */
         is_property_locked(property: string): boolean;
 
@@ -571,6 +572,7 @@ export namespace Xfconf {
          * `true` must be passed for `recursive` in this case.
          * @param property_base A property tree root or property name.
          * @param recursive Whether to reset properties recursively.
+         * @since 4.5.91
          */
         reset_property(property_base: string, recursive: boolean): void;
 

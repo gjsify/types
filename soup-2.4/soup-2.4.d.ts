@@ -3263,6 +3263,7 @@ export namespace Soup {
          * rather than by IP address.
          * @param addr2 another {@link Soup.Address} with a resolved   IP address
          * @returns whether or not `addr1` and `addr2` have the same IP address.
+         * @since 2.26
          */
         equal_by_ip(addr2: Address): boolean;
 
@@ -3290,6 +3291,7 @@ export namespace Soup {
          * rather than by name.
          * @param addr2 another {@link Soup.Address} with a resolved   name
          * @returns whether or not `addr1` and `addr2` have the same name
+         * @since 2.26
          */
         equal_by_name(addr2: Address): boolean;
 
@@ -3297,6 +3299,7 @@ export namespace Soup {
          * Creates a new {@link Gio.SocketAddress} corresponding to `addr` (which is assumed
          * to only have one socket address associated with it).
          * @returns a new {@link Gio.SocketAddress}
+         * @since 2.32
          */
         get_gsockaddr(): Gio.SocketAddress;
 
@@ -3345,6 +3348,7 @@ export namespace Soup {
          * A hash function (for {@link GLib.HashTable}) that corresponds to
          * `soup_address_equal_by_ip()`, qv
          * @returns the IP-based hash value for `addr`.
+         * @since 2.26
          */
         hash_by_ip(): number;
 
@@ -3352,6 +3356,7 @@ export namespace Soup {
          * A hash function (for {@link GLib.HashTable}) that corresponds to
          * `soup_address_equal_by_name()`, qv
          * @returns the named-based hash value for `addr`.
+         * @since 2.26
          */
         hash_by_name(): number;
 
@@ -3404,6 +3409,7 @@ export namespace Soup {
         /**
          * Creates a {@link Gio.SocketAddressEnumerator} for `connectable`.
          * @returns a new {@link Gio.SocketAddressEnumerator}.
+         * @since 2.22
          */
         enumerate(): Gio.SocketAddressEnumerator;
 
@@ -3416,6 +3422,7 @@ export namespace Soup {
          * `g_socket_connectable_proxy_enumerate()`, this will fall back to
          * calling `g_socket_connectable_enumerate()`.
          * @returns a new {@link Gio.SocketAddressEnumerator}.
+         * @since 2.26
          */
         proxy_enumerate(): Gio.SocketAddressEnumerator;
 
@@ -3428,11 +3435,13 @@ export namespace Soup {
          * If the {@link Gio.SocketConnectable} implementation does not support string formatting,
          * the implementation’s type name will be returned as a fallback.
          * @returns the formatted string
+         * @since 2.48
          */
         to_string(): string;
 
         /**
          * Creates a {@link Gio.SocketAddressEnumerator} for `connectable`.
+         * @since 2.22
          * @virtual
          */
         vfunc_enumerate(): Gio.SocketAddressEnumerator;
@@ -3445,6 +3454,7 @@ export namespace Soup {
          * If `connectable` does not implement
          * `g_socket_connectable_proxy_enumerate()`, this will fall back to
          * calling `g_socket_connectable_enumerate()`.
+         * @since 2.26
          * @virtual
          */
         vfunc_proxy_enumerate(): Gio.SocketAddressEnumerator;
@@ -3457,6 +3467,7 @@ export namespace Soup {
          * 
          * If the {@link Gio.SocketConnectable} implementation does not support string formatting,
          * the implementation’s type name will be returned as a fallback.
+         * @since 2.48
          * @virtual
          */
         vfunc_to_string(): string;
@@ -3587,6 +3598,7 @@ export namespace Soup {
         /**
          * Tests if `auth` is able to authenticate by providing credentials to the
          * `soup_auth_authenticate()`.
+         * @since 2.54
          * @virtual
          */
         vfunc_can_authenticate(): boolean;
@@ -3622,6 +3634,7 @@ export namespace Soup {
          * some auth types (eg, NTLM), the auth may be sendable (eg, as an
          * authentication request) even before it is authenticated.
          * @param msg a {@link Soup.Message}
+         * @since 2.42
          * @virtual
          */
         vfunc_is_ready(msg: Message): boolean;
@@ -3649,6 +3662,7 @@ export namespace Soup {
          * Tests if `auth` is able to authenticate by providing credentials to the
          * `soup_auth_authenticate()`.
          * @returns `true` if `auth` is able to accept credentials.
+         * @since 2.54
          */
         can_authenticate(): boolean;
 
@@ -3721,6 +3735,7 @@ export namespace Soup {
          * authentication request) even before it is authenticated.
          * @param msg a {@link Soup.Message}
          * @returns `true` if `auth` is ready to make a request with.
+         * @since 2.42
          */
         is_ready(msg: Message): boolean;
 
@@ -4389,6 +4404,7 @@ export namespace Soup {
         // Methods
         /**
          * Clear all credentials cached by `manager`
+         * @since 2.58
          */
         clear_cached_credentials(): void;
 
@@ -4404,6 +4420,7 @@ export namespace Soup {
          * from the server. (Eg, Basic or NTLM, but not Digest.)
          * @param uri the {@link Soup.URI} under which `auth` is to be used
          * @param auth the {@link Soup.Auth} to use
+         * @since 2.42
          */
         use_auth(uri: URI, auth: Auth): void;
 
@@ -4414,6 +4431,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -4432,6 +4450,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -4440,6 +4459,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -4449,6 +4469,7 @@ export namespace Soup {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -4471,6 +4492,7 @@ export namespace Soup {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -4479,6 +4501,7 @@ export namespace Soup {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -4612,6 +4635,7 @@ export namespace Soup {
          * `false`, `SOUP_TYPE_AUTH_NEGOTIATE` will still be defined and can
          * still be added to a {@link Soup.Session}, but libsoup will never attempt to
          * actually use this auth type.
+         * @since 2.54
          */
         static supported(): boolean;
     }
@@ -4703,6 +4727,7 @@ export namespace Soup {
         // Methods
         /**
          * Will remove all entries in the `cache` plus all the cache files.
+         * @since 2.34
          */
         clear(): void;
 
@@ -4713,6 +4738,7 @@ export namespace Soup {
          * 
          * You must call this before exiting if you want your cache data to
          * persist between sessions.
+         * @since 2.34.
          */
         dump(): void;
 
@@ -4723,23 +4749,27 @@ export namespace Soup {
          * 
          * Contrast with `soup_cache_dump()`, which writes out the cache index
          * file.
+         * @since 2.34
          */
         flush(): void;
 
         /**
          * Gets the maximum size of the cache.
          * @returns the maximum size of the cache, in bytes.
+         * @since 2.34
          */
         get_max_size(): number;
 
         /**
          * Loads the contents of `cache`'s index into memory.
+         * @since 2.34
          */
         load(): void;
 
         /**
          * Sets the maximum size of the cache.
          * @param max_size the maximum size of the cache, in bytes
+         * @since 2.34
          */
         set_max_size(max_size: number): void;
 
@@ -4750,6 +4780,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -4768,6 +4799,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -4776,6 +4808,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -4785,6 +4818,7 @@ export namespace Soup {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -4807,6 +4841,7 @@ export namespace Soup {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -4815,6 +4850,7 @@ export namespace Soup {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -4894,6 +4930,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -4912,6 +4949,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -4920,6 +4958,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -4929,6 +4968,7 @@ export namespace Soup {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -4951,6 +4991,7 @@ export namespace Soup {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -4959,6 +5000,7 @@ export namespace Soup {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -5037,6 +5079,7 @@ export namespace Soup {
         /**
          * Gets the number of bytes `sniffer` needs in order to properly sniff
          * a buffer.
+         * @since 2.28
          * @virtual
          */
         vfunc_get_buffer_size(): bigint | number;
@@ -5047,6 +5090,7 @@ export namespace Soup {
          * headers.
          * @param msg the message to sniff
          * @param buffer a buffer containing the start of `msg`'s response body
+         * @since 2.28
          * @virtual
          */
         vfunc_sniff(msg: Message, buffer: Buffer): [string, { [key: string]: string } | null];
@@ -5056,6 +5100,7 @@ export namespace Soup {
          * Gets the number of bytes `sniffer` needs in order to properly sniff
          * a buffer.
          * @returns the number of bytes to sniff
+         * @since 2.28
          */
         get_buffer_size(): number;
 
@@ -5066,6 +5111,7 @@ export namespace Soup {
          * @param msg the message to sniff
          * @param buffer a buffer containing the start of `msg`'s response body
          * @returns the sniffed Content-Type of `buffer`; this will never be `null`,   but may be "application/octet-stream".
+         * @since 2.28
          */
         sniff(msg: Message, buffer: Buffer): [string, { [key: string]: string } | null];
 
@@ -5076,6 +5122,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -5094,6 +5141,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -5102,6 +5150,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -5111,6 +5160,7 @@ export namespace Soup {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -5133,6 +5183,7 @@ export namespace Soup {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -5141,6 +5192,7 @@ export namespace Soup {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -5274,6 +5326,7 @@ export namespace Soup {
 
         /**
          * Gets whether `jar` stores cookies persistenly.
+         * @since 2.40
          * @virtual
          */
         vfunc_is_persistent(): boolean;
@@ -5282,6 +5335,8 @@ export namespace Soup {
          * This function exists for backward compatibility, but does not do
          * anything any more; cookie jars are saved automatically when they
          * are changed.
+         * @since 2.24
+         * @deprecated This is a no-op.
          * @virtual
          */
         vfunc_save(): void;
@@ -5294,6 +5349,7 @@ export namespace Soup {
          * 
          * `cookie` will be 'stolen' by the jar, so don't free it afterwards.
          * @param cookie a {@link Soup.Cookie}
+         * @since 2.26
          */
         add_cookie(cookie: Cookie): void;
 
@@ -5312,6 +5368,7 @@ export namespace Soup {
          * @param cookie a {@link Soup.Cookie}
          * @param uri the URI setting the cookie
          * @param first_party the URI for the main document
+         * @since 2.68
          */
         add_cookie_full(cookie: Cookie, uri: URI | null, first_party: URI | null): void;
 
@@ -5329,6 +5386,7 @@ export namespace Soup {
          * `soup_cookie_jar_add_cookie_full()`.
          * @param first_party the URI for the main document
          * @param cookie a {@link Soup.Cookie}
+         * @since 2.40
          */
         add_cookie_with_first_party(first_party: URI, cookie: Cookie): void;
 
@@ -5337,18 +5395,21 @@ export namespace Soup {
          * The cookies in the list are a copy of the original, so
          * you have to free them when you are done with them.
          * @returns a {@link GLib.SList} with all the cookies in the `jar`.
+         * @since 2.26
          */
         all_cookies(): Cookie[];
 
         /**
          * Deletes `cookie` from `jar`, emitting the 'changed' signal.
          * @param cookie a {@link Soup.Cookie}
+         * @since 2.26
          */
         delete_cookie(cookie: Cookie): void;
 
         /**
          * Gets `jar`'s {@link Soup.CookieJarAcceptPolicy}
          * @returns the {@link Soup.CookieJarAcceptPolicy} set in the `jar`
+         * @since 2.30
          */
         get_accept_policy(): CookieJarAcceptPolicy;
 
@@ -5366,6 +5427,7 @@ export namespace Soup {
          * @param uri a {@link Soup.URI}
          * @param for_http whether or not the return value is being passed directly to an HTTP operation
          * @returns a {@link GLib.SList} with the cookies in the `jar` that would be sent with a request to `uri`.
+         * @since 2.40
          */
         get_cookie_list(uri: URI, for_http: boolean): Cookie[];
 
@@ -5381,6 +5443,7 @@ export namespace Soup {
          * @param is_safe_method if the HTTP method is safe, as defined by RFC 7231, ignored when `for_http` is `false`
          * @param is_top_level_navigation whether or not the HTTP request is part of top level navigation
          * @returns a {@link GLib.SList} with the cookies in the `jar` that would be sent with a request to `uri`.
+         * @since 2.70
          */
         get_cookie_list_with_same_site_info(uri: URI, top_level: URI | null, site_for_cookies: URI | null, for_http: boolean, is_safe_method: boolean, is_top_level_navigation: boolean): Cookie[];
 
@@ -5398,12 +5461,14 @@ export namespace Soup {
          * @param uri a {@link Soup.URI}
          * @param for_http whether or not the return value is being passed directly to an HTTP operation
          * @returns the cookies, in string form, or `null` if there are no cookies for `uri`.
+         * @since 2.24
          */
         get_cookies(uri: URI, for_http: boolean): string | null;
 
         /**
          * Gets whether `jar` stores cookies persistenly.
          * @returns `true` if `jar` storage is persistent or `false` otherwise.
+         * @since 2.40
          */
         is_persistent(): boolean;
 
@@ -5411,12 +5476,15 @@ export namespace Soup {
          * This function exists for backward compatibility, but does not do
          * anything any more; cookie jars are saved automatically when they
          * are changed.
+         * @since 2.24
+         * @deprecated This is a no-op.
          */
         save(): void;
 
         /**
          * Sets `policy` as the cookie acceptance policy for `jar`.
          * @param policy a {@link Soup.CookieJarAcceptPolicy}
+         * @since 2.30
          */
         set_accept_policy(policy: CookieJarAcceptPolicy): void;
 
@@ -5432,6 +5500,7 @@ export namespace Soup {
          * party or not.
          * @param uri the URI setting the cookie
          * @param cookie the stringified cookie to set
+         * @since 2.24
          */
         set_cookie(uri: URI, cookie: string): void;
 
@@ -5443,6 +5512,7 @@ export namespace Soup {
          * @param uri the URI setting the cookie
          * @param first_party the URI for the main document
          * @param cookie the stringified cookie to set
+         * @since 2.30
          */
         set_cookie_with_first_party(uri: URI, first_party: URI, cookie: string): void;
 
@@ -5453,6 +5523,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -5471,6 +5542,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -5479,6 +5551,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -5488,6 +5561,7 @@ export namespace Soup {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -5510,6 +5584,7 @@ export namespace Soup {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -5518,6 +5593,7 @@ export namespace Soup {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -5615,6 +5691,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -5633,6 +5710,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -5641,6 +5719,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -5650,6 +5729,7 @@ export namespace Soup {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -5672,6 +5752,7 @@ export namespace Soup {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -5680,6 +5761,7 @@ export namespace Soup {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -5777,6 +5859,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -5795,6 +5878,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -5803,6 +5887,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -5812,6 +5897,7 @@ export namespace Soup {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -5834,6 +5920,7 @@ export namespace Soup {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -5842,6 +5929,7 @@ export namespace Soup {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -5952,6 +6040,7 @@ export namespace Soup {
         /**
          * Gets whether `hsts_enforcer` has a currently valid policy for `domain`.
          * @param domain a domain.
+         * @since 2.68
          * @virtual
          */
         vfunc_has_valid_policy(domain: string): boolean;
@@ -5964,6 +6053,7 @@ export namespace Soup {
 
         /**
          * Gets whether `hsts_enforcer` stores policies persistenly.
+         * @since 2.68
          * @virtual
          */
         vfunc_is_persistent(): boolean;
@@ -5973,6 +6063,7 @@ export namespace Soup {
          * Gets a list of domains for which there are policies in `enforcer`.
          * @param session_policies whether to include session policies
          * @returns a newly allocated list of domains. Use `g_list_free_full()` and `g_free()` to free the list.
+         * @since 2.68
          */
         get_domains(session_policies: boolean): string[];
 
@@ -5980,6 +6071,7 @@ export namespace Soup {
          * Gets a list with the policies in `enforcer`.
          * @param session_policies whether to include session policies
          * @returns a newly allocated list of policies. Use `g_list_free_full()` and `soup_hsts_policy_free()` to free the list.
+         * @since 2.68
          */
         get_policies(session_policies: boolean): HSTSPolicy[];
 
@@ -5987,12 +6079,14 @@ export namespace Soup {
          * Gets whether `hsts_enforcer` has a currently valid policy for `domain`.
          * @param domain a domain.
          * @returns `true` if access to `domain` should happen over HTTPS, false otherwise.
+         * @since 2.68
          */
         has_valid_policy(domain: string): boolean;
 
         /**
          * Gets whether `hsts_enforcer` stores policies persistenly.
          * @returns `true` if `hsts_enforcer` storage is persistent or `false` otherwise.
+         * @since 2.68
          */
         is_persistent(): boolean;
 
@@ -6005,6 +6099,7 @@ export namespace Soup {
          * will not expire and will be enforced during the lifetime of
          * `hsts_enforcer`'s {@link Soup.Session}.
          * @param policy the policy of the HSTS host
+         * @since 2.68
          */
         set_policy(policy: HSTSPolicy): void;
 
@@ -6014,6 +6109,7 @@ export namespace Soup {
          * and doesn't expire.
          * @param domain policy domain or hostname
          * @param include_subdomains `true` if the policy applies on sub domains
+         * @since 2.68
          */
         set_session_policy(domain: string, include_subdomains: boolean): void;
 
@@ -6024,6 +6120,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -6042,6 +6139,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -6050,6 +6148,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -6059,6 +6158,7 @@ export namespace Soup {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -6081,6 +6181,7 @@ export namespace Soup {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -6089,6 +6190,7 @@ export namespace Soup {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -6185,6 +6287,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -6203,6 +6306,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -6211,6 +6315,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -6220,6 +6325,7 @@ export namespace Soup {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -6242,6 +6348,7 @@ export namespace Soup {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -6250,6 +6357,7 @@ export namespace Soup {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -6369,12 +6477,14 @@ export namespace Soup {
          * removed when you call `soup_logger_detach()`, or when the session is
          * destroyed.)
          * @param session a {@link Soup.Session}
+         * @deprecated Use `soup_session_add_feature()` instead.
          */
         attach(session: Session): void;
 
         /**
          * Stops `logger` from watching `session`.
          * @param session a {@link Soup.Session}
+         * @deprecated Use `soup_session_remove_feature()` instead.
          */
         detach(session: Session): void;
 
@@ -6412,6 +6522,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -6420,6 +6531,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -6428,6 +6540,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -6437,6 +6550,7 @@ export namespace Soup {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -6459,6 +6573,7 @@ export namespace Soup {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -6467,6 +6582,7 @@ export namespace Soup {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -7102,6 +7218,7 @@ export namespace Soup {
          * you cannot call this on a message that is being requeued after a
          * redirect or authentication.
          * @param feature_type the {@link GObject.GType} of a {@link Soup.SessionFeature}
+         * @since 2.28
          */
         disable_feature(feature_type: GObject.GType): void;
 
@@ -7112,12 +7229,14 @@ export namespace Soup {
          * URI on a message, this will be unresolved, although the message's
          * session will resolve it before sending the message.
          * @returns the address `msg`'s URI points to
+         * @since 2.26
          */
         get_address(): Address;
 
         /**
          * Gets `msg`'s first-party {@link Soup.URI}
          * @returns the `msg`'s first party {@link Soup.URI}
+         * @since 2.30
          */
         get_first_party(): URI;
 
@@ -7144,21 +7263,27 @@ export namespace Soup {
          * <note><para>This is only meaningful with messages processed by a {@link Soup.Session} and is
          * not useful for messages received by a {@link Soup.Server}</para></note>
          * @returns `true` if `msg` used/attempted https, `false` if not
+         * @since 2.34
          */
         get_https_status(): [boolean, Gio.TlsCertificate, Gio.TlsCertificateFlags];
 
+        /**
+         * @since 2.70
+         */
         get_is_top_level_navigation(): boolean;
 
         /**
          * Retrieves the {@link Soup.MessagePriority}. If not set this value defaults
          * to #SOUP_MESSAGE_PRIORITY_NORMAL.
          * @returns the priority of the message.
+         * @since 2.44
          */
         get_priority(): MessagePriority;
 
         /**
          * Gets `msg`'s site for cookies {@link Soup.URI}
          * @returns the `msg`'s site for cookies {@link Soup.URI}
+         * @since 2.70
          */
         get_site_for_cookies(): URI;
 
@@ -7166,6 +7291,7 @@ export namespace Soup {
          * If `msg` is associated with a {@link Soup.Request}, this returns that
          * request. Otherwise it returns `null`.
          * @returns `msg`'s associated {@link Soup.Request}
+         * @since 2.42
          */
         get_soup_request(): Request;
 
@@ -7192,6 +7318,7 @@ export namespace Soup {
          * See `soup_message_disable_feature()`.
          * @param feature_type the {@link GObject.GType} of a {@link Soup.SessionFeature}
          * @returns `true` if feature is disabled, or `false` otherwise.
+         * @since 2.72
          */
         is_feature_disabled(feature_type: GObject.GType): boolean;
 
@@ -7235,6 +7362,7 @@ export namespace Soup {
          * `soup_buffer_new_with_owner()` case) to ensure that the data remains
          * valid.
          * @param allocator the chunk allocator callback
+         * @deprecated {@link Soup.Request} provides a much simpler API that lets you read the response directly into your own buffers without needing to mess with callbacks, pausing/unpausing, etc.
          */
         set_chunk_allocator(allocator: ChunkAllocator): void;
 
@@ -7243,6 +7371,7 @@ export namespace Soup {
          * details of when and how this is used refer to the documentation for
          * {@link Soup.CookieJarAcceptPolicy}.
          * @param first_party the {@link Soup.URI} for the `msg`'s first party
+         * @since 2.30
          */
         set_first_party(first_party: URI): void;
 
@@ -7264,6 +7393,7 @@ export namespace Soup {
          * See the [same-site spec](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00)
          * for more information.
          * @param is_top_level_navigation if `true` indicate the current request is a top-level navigation
+         * @since 2.70
          */
         set_is_top_level_navigation(is_top_level_navigation: boolean): void;
 
@@ -7281,6 +7411,7 @@ export namespace Soup {
          * the synchronous/blocking case, priority ends up being determined
          * semi-randomly by thread scheduling.
          * @param priority the {@link Soup.MessagePriority}
+         * @since 2.44
          */
         set_priority(priority: MessagePriority): void;
 
@@ -7295,6 +7426,7 @@ export namespace Soup {
          * <emphasis>and query</emphasis> of `msg`'s URI.
          * @param status_code a 3xx status code
          * @param redirect_uri the URI to redirect `msg` to
+         * @since 2.38
          */
         set_redirect(status_code: number, redirect_uri: string): void;
 
@@ -7326,6 +7458,7 @@ export namespace Soup {
          * See the [same-site spec](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00)
          * for more information.
          * @param site_for_cookies the {@link Soup.URI} for the `msg`'s site for cookies
+         * @since 2.70
          */
         set_site_for_cookies(site_for_cookies: URI | null): void;
 
@@ -7435,6 +7568,7 @@ export namespace Soup {
          * Note that if a part had no headers at all an empty {@link Soup.MessageHeaders}
          * will be returned.
          * @returns a {@link Soup.MessageHeaders} containing the headers for the part currently being processed or `null` if the headers failed to parse.
+         * @since 2.40
          */
         get_headers(): MessageHeaders | null;
 
@@ -7452,6 +7586,7 @@ export namespace Soup {
          * to obtain the next part.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Gio.InputStream}, or `null` if there are no more parts
+         * @since 2.40
          */
         next_part(cancellable: Gio.Cancellable | null): Gio.InputStream | null;
 
@@ -7461,6 +7596,7 @@ export namespace Soup {
          * workflow.
          * @param io_priority the I/O priority for the request.
          * @param cancellable a {@link Gio.Cancellable}.
+         * @since 2.40
          */
         next_part_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream | null>;
 
@@ -7471,6 +7607,7 @@ export namespace Soup {
          * @param io_priority the I/O priority for the request.
          * @param cancellable a {@link Gio.Cancellable}.
          * @param callback callback to call when request is satisfied.
+         * @since 2.40
          */
         next_part_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -7481,6 +7618,7 @@ export namespace Soup {
          * @param io_priority the I/O priority for the request.
          * @param cancellable a {@link Gio.Cancellable}.
          * @param callback callback to call when request is satisfied.
+         * @since 2.40
          */
         next_part_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream | null> | void;
 
@@ -7488,6 +7626,7 @@ export namespace Soup {
          * Finishes an asynchronous request for the next part.
          * @param result a {@link Gio.AsyncResult}.
          * @returns a newly created {@link Gio.InputStream} for reading the next part or `null` if there are no more parts.
+         * @since 2.40
          */
         next_part_finish(result: Gio.AsyncResult): Gio.InputStream | null;
 
@@ -7500,6 +7639,7 @@ export namespace Soup {
          * For any given stream, the value returned by this method is constant;
          * a stream cannot switch from pollable to non-pollable or vice versa.
          * @returns `true` if `stream` is pollable, `false` if not.
+         * @since 2.28
          */
         can_poll(): boolean;
 
@@ -7517,6 +7657,7 @@ export namespace Soup {
          * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a new {@link GLib.Source}
+         * @since 2.28
          */
         create_source(cancellable: Gio.Cancellable | null): GLib.Source;
 
@@ -7533,6 +7674,7 @@ export namespace Soup {
          * The behaviour of this method is undefined if
          * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
          * @returns `true` if `stream` is readable, `false` if not. If an error   has occurred on `stream`, this will result in   `g_pollable_input_stream_is_readable()` returning `true`, and the   next attempt to read will return the error.
+         * @since 2.28
          */
         is_readable(): boolean;
 
@@ -7564,6 +7706,7 @@ export namespace Soup {
          * 
          * For any given stream, the value returned by this method is constant;
          * a stream cannot switch from pollable to non-pollable or vice versa.
+         * @since 2.28
          * @virtual
          */
         vfunc_can_poll(): boolean;
@@ -7581,6 +7724,7 @@ export namespace Soup {
          * The behaviour of this method is undefined if
          * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 2.28
          * @virtual
          */
         vfunc_create_source(cancellable: Gio.Cancellable | null): GLib.Source;
@@ -7597,6 +7741,7 @@ export namespace Soup {
          * 
          * The behaviour of this method is undefined if
          * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
+         * @since 2.28
          * @virtual
          */
         vfunc_is_readable(): boolean;
@@ -7686,6 +7831,8 @@ export namespace Soup {
          * @param async_context the {@link GLib.MainContext} to invoke `callback` in
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to invoke with the proxy address
+         * @since 2.26.3
+         * @deprecated {@link Soup.ProxyURIResolver} is deprecated in favor of {@link Gio.ProxyResolver}
          */
         get_proxy_uri_async(uri: URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: ProxyURIResolverCallback): void;
 
@@ -7696,6 +7843,8 @@ export namespace Soup {
          * @param uri the {@link Soup.URI} you want a proxy for
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns {@link Soup.Status.OK} if successful, or a transport-level error.
+         * @since 2.26.3
+         * @deprecated {@link Soup.ProxyURIResolver} is deprecated in favor of {@link Gio.ProxyResolver}
          */
         get_proxy_uri_sync(uri: URI, cancellable: Gio.Cancellable | null): [number, URI];
 
@@ -7706,6 +7855,8 @@ export namespace Soup {
          * @param async_context the {@link GLib.MainContext} to invoke `callback` in
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to invoke with the proxy address
+         * @since 2.26.3
+         * @deprecated {@link Soup.ProxyURIResolver} is deprecated in favor of {@link Gio.ProxyResolver}
          * @virtual
          */
         vfunc_get_proxy_uri_async(uri: URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: ProxyURIResolverCallback): void;
@@ -7716,6 +7867,8 @@ export namespace Soup {
          * proxy, else it will be set to `null`.
          * @param uri the {@link Soup.URI} you want a proxy for
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 2.26.3
+         * @deprecated {@link Soup.ProxyURIResolver} is deprecated in favor of {@link Gio.ProxyResolver}
          * @virtual
          */
         vfunc_get_proxy_uri_sync(uri: URI, cancellable: Gio.Cancellable | null): [number, URI];
@@ -7727,6 +7880,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -7745,6 +7899,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -7753,6 +7908,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -7762,6 +7918,7 @@ export namespace Soup {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -7784,6 +7941,7 @@ export namespace Soup {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -7792,6 +7950,7 @@ export namespace Soup {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -7898,6 +8057,7 @@ export namespace Soup {
          * Gets the length of the data represented by `request`. For most
          * request types, this will not be known until after you call
          * `soup_request_send()` or `soup_request_send_finish()`.
+         * @since 2.42
          * @virtual
          */
         vfunc_get_content_length(): bigint | number;
@@ -7909,6 +8069,7 @@ export namespace Soup {
          * 
          * As in the HTTP Content-Type header, this may include parameters
          * after the MIME type.
+         * @since 2.42
          * @virtual
          */
         vfunc_get_content_type(): string | null;
@@ -7920,6 +8081,7 @@ export namespace Soup {
          * Note that you cannot use this method with `SoupRequests` attached to
          * a {@link Soup.SessionAsync}.
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 2.42
          * @virtual
          */
         vfunc_send(cancellable: Gio.Cancellable | null): Gio.InputStream;
@@ -7932,6 +8094,7 @@ export namespace Soup {
          * a {@link Soup.SessionSync}.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 2.42
          * @virtual
          */
         vfunc_send_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -7939,6 +8102,7 @@ export namespace Soup {
         /**
          * Gets the result of a `soup_request_send_async()`.
          * @param result the {@link Gio.AsyncResult}
+         * @since 2.42
          * @virtual
          */
         vfunc_send_finish(result: Gio.AsyncResult): Gio.InputStream;
@@ -7949,6 +8113,7 @@ export namespace Soup {
          * request types, this will not be known until after you call
          * `soup_request_send()` or `soup_request_send_finish()`.
          * @returns the length of the data represented by `request`,   or -1 if not known.
+         * @since 2.42
          */
         get_content_length(): number;
 
@@ -7960,18 +8125,21 @@ export namespace Soup {
          * As in the HTTP Content-Type header, this may include parameters
          * after the MIME type.
          * @returns the type of the data represented by   `request`, or `null` if not known.
+         * @since 2.42
          */
         get_content_type(): string | null;
 
         /**
          * Gets `request`'s {@link Soup.Session}
          * @returns `request`'s {@link Soup.Session}
+         * @since 2.42
          */
         get_session(): Session;
 
         /**
          * Gets `request`'s URI
          * @returns `request`'s URI
+         * @since 2.42
          */
         get_uri(): URI;
 
@@ -7983,6 +8151,7 @@ export namespace Soup {
          * a {@link Soup.SessionAsync}.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link Gio.InputStream} that can be used to   read from the URI pointed to by `request`.
+         * @since 2.42
          */
         send(cancellable: Gio.Cancellable | null): Gio.InputStream;
 
@@ -7993,6 +8162,7 @@ export namespace Soup {
          * Note that you cannot use this method with `SoupRequests` attached to
          * a {@link Soup.SessionSync}.
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 2.42
          */
         send_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
 
@@ -8004,6 +8174,7 @@ export namespace Soup {
          * a {@link Soup.SessionSync}.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 2.42
          */
         send_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -8015,6 +8186,7 @@ export namespace Soup {
          * a {@link Soup.SessionSync}.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}
+         * @since 2.42
          */
         send_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream> | void;
 
@@ -8022,6 +8194,7 @@ export namespace Soup {
          * Gets the result of a `soup_request_send_async()`.
          * @param result the {@link Gio.AsyncResult}
          * @returns a {@link Gio.InputStream} that can be used to   read from the URI pointed to by `request`.
+         * @since 2.42
          */
         send_finish(result: Gio.AsyncResult): Gio.InputStream;
 
@@ -8066,6 +8239,7 @@ export namespace Soup {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8109,6 +8283,7 @@ export namespace Soup {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -8200,6 +8375,7 @@ export namespace Soup {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8243,6 +8419,7 @@ export namespace Soup {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -8297,6 +8474,7 @@ export namespace Soup {
         /**
          * Gets a {@link Gio.File} corresponding to `file`'s URI
          * @returns a {@link Gio.File} corresponding to `file`
+         * @since 2.40
          */
         get_file(): Gio.File;
 
@@ -8341,6 +8519,7 @@ export namespace Soup {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8384,6 +8563,7 @@ export namespace Soup {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -8438,6 +8618,7 @@ export namespace Soup {
         /**
          * Gets a new reference to the {@link Soup.Message} associated to this SoupRequest
          * @returns a new reference to the {@link Soup.Message}
+         * @since 2.40
          */
         get_message(): Message;
 
@@ -8482,6 +8663,7 @@ export namespace Soup {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8525,6 +8707,7 @@ export namespace Soup {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -8592,6 +8775,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -8610,6 +8794,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -8618,6 +8803,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -8627,6 +8813,7 @@ export namespace Soup {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -8649,6 +8836,7 @@ export namespace Soup {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -8657,6 +8845,7 @@ export namespace Soup {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -9099,6 +9288,7 @@ export namespace Soup {
          * @param local_addr the local {@link Gio.SocketAddress} associated with the `stream`
          * @param remote_addr the remote {@link Gio.SocketAddress} associated with the `stream`
          * @returns `true` on success, `false` if the stream could not be accepted or any other error occurred (in which case `error` will be set).
+         * @since 2.50
          */
         accept_iostream(stream: Gio.IOStream, local_addr: Gio.SocketAddress | null, remote_addr: Gio.SocketAddress | null): boolean;
 
@@ -9148,6 +9338,7 @@ export namespace Soup {
          * run as well.
          * @param path the toplevel path for the handler
          * @param callback callback to invoke for requests under `path`
+         * @since 2.50
          */
         add_early_handler(path: string | null, callback: ServerCallback): void;
 
@@ -9242,6 +9433,7 @@ export namespace Soup {
          * This does not add a ref to the context, so you will need to ref it
          * yourself if you want it to outlive its server.
          * @returns `server`'s {@link GLib.MainContext}, which may be `null`
+         * @deprecated If you are using `soup_server_listen()`, etc, then the server listens on the thread-default {@link GLib.MainContext}, and this property is ignored.
          */
         get_async_context(): GLib.MainContext | null;
 
@@ -9251,6 +9443,7 @@ export namespace Soup {
          * You should treat this socket as read-only; writing to it or
          * modifiying it may cause `server` to malfunction.
          * @returns the listening socket.
+         * @deprecated If you are using `soup_server_listen()`, etc, then use `soup_server_get_listeners()` to get a list of all listening sockets, but note that that function returns `GSockets`, not `SoupSockets`.
          */
         get_listener(): Socket;
 
@@ -9270,6 +9463,7 @@ export namespace Soup {
          * Gets the TCP port that `server` is listening on, if you are using
          * the old API.
          * @returns the port `server` is listening on.
+         * @deprecated If you are using `soup_server_listen()`, etc, then use `soup_server_get_uris()` to get a list of all listening addresses.
          */
         get_port(): number;
 
@@ -9283,6 +9477,7 @@ export namespace Soup {
          * <literal>::</literal>, rather than actually returning separate URIs
          * for each interface on the system.
          * @returns a list of `SoupURIs`, which you must free when you are done with it.
+         * @since 2.48
          */
         get_uris(): URI[];
 
@@ -9327,6 +9522,7 @@ export namespace Soup {
          * @param address the address of the interface to listen on
          * @param options listening options for this server
          * @returns `true` on success, `false` if `address` could not be bound or any other error occurred (in which case `error` will be set).
+         * @since 2.48
          */
         listen(address: Gio.SocketAddress, options: ServerListenOptions): boolean;
 
@@ -9344,6 +9540,7 @@ export namespace Soup {
          * @param port the port to listen on, or 0
          * @param options listening options for this server
          * @returns `true` on success, `false` if `port` could not be bound or any other error occurred (in which case `error` will be set).
+         * @since 2.48
          */
         listen_all(port: number, options: ServerListenOptions): boolean;
 
@@ -9358,6 +9555,7 @@ export namespace Soup {
          * @param fd the file descriptor of a listening socket
          * @param options listening options for this server
          * @returns `true` on success, `false` if an error occurred (in which case `error` will be set).
+         * @since 2.48
          */
         listen_fd(fd: number, options: ServerListenOptions): boolean;
 
@@ -9375,6 +9573,7 @@ export namespace Soup {
          * @param port the port to listen on, or 0
          * @param options listening options for this server
          * @returns `true` on success, `false` if `port` could not be bound or any other error occurred (in which case `error` will be set).
+         * @since 2.48
          */
         listen_local(port: number, options: ServerListenOptions): boolean;
 
@@ -9386,6 +9585,7 @@ export namespace Soup {
          * @param socket a listening {@link Gio.Socket}
          * @param options listening options for this server
          * @returns `true` on success, `false` if an error occurred (in which case `error` will be set).
+         * @since 2.48
          */
         listen_socket(socket: Gio.Socket, options: ServerListenOptions): boolean;
 
@@ -9412,6 +9612,7 @@ export namespace Soup {
          * 
          * `server` is still in a working state after this call; you can start
          * and stop a server as many times as you want.
+         * @deprecated When using `soup_server_listen()`, etc, the server will always listen for connections, and will process them whenever the thread-default {@link GLib.MainContext} is running.
          */
         quit(): void;
 
@@ -9433,6 +9634,7 @@ export namespace Soup {
          * `soup_server_run_async()`, this creates a {@link GLib.MainLoop} and runs it, and
          * it will not return until someone calls `soup_server_quit()` to stop
          * the server.
+         * @deprecated When using `soup_server_listen()`, etc, the server will always listen for connections, and will process them whenever the thread-default {@link GLib.MainContext} is running.
          */
         run(): void;
 
@@ -9445,6 +9647,7 @@ export namespace Soup {
          * In the simple case where you did not set the server's
          * `SOUP_SERVER_ASYNC_CONTEXT` property, this means the server will run
          * whenever the glib main loop is running.
+         * @deprecated When using `soup_server_listen()`, etc, the server will always listen for connections, and will process them whenever the thread-default {@link GLib.MainContext} is running.
          */
         run_async(): void;
 
@@ -9458,6 +9661,7 @@ export namespace Soup {
          * @param ssl_cert_file path to a file containing a PEM-encoded SSL/TLS   certificate.
          * @param ssl_key_file path to a file containing a PEM-encoded private key.
          * @returns success or failure.
+         * @since 2.48
          */
         set_ssl_cert_file(ssl_cert_file: string, ssl_key_file: string): boolean;
 
@@ -10479,6 +10683,7 @@ export namespace Soup {
          * @param uri a {@link Soup.URI} to connect to
          * @param cancellable a {@link Gio.Cancellable}
          * @param progress_callback a {@link Soup.SessionConnectProgressCallback} which will be called for every network event that occurs during the connection.
+         * @since 2.62
          */
         connect_async(uri: URI, cancellable: Gio.Cancellable | null, progress_callback: SessionConnectProgressCallback | null): globalThis.Promise<Gio.IOStream>;
 
@@ -10491,6 +10696,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}
          * @param progress_callback a {@link Soup.SessionConnectProgressCallback} which will be called for every network event that occurs during the connection.
          * @param callback the callback to invoke when the operation finishes
+         * @since 2.62
          */
         connect_async(uri: URI, cancellable: Gio.Cancellable | null, progress_callback: SessionConnectProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -10503,6 +10709,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}
          * @param progress_callback a {@link Soup.SessionConnectProgressCallback} which will be called for every network event that occurs during the connection.
          * @param callback the callback to invoke when the operation finishes
+         * @since 2.62
          */
         connect_async(uri: URI, cancellable: Gio.Cancellable | null, progress_callback: SessionConnectProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.IOStream> | void;
 
@@ -10510,6 +10717,7 @@ export namespace Soup {
          * Gets the {@link Gio.IOStream} created for the connection to communicate with the server.
          * @param result the {@link Gio.AsyncResult} passed to your callback
          * @returns a new {@link Gio.IOStream}, or `null` on error.
+         * @since 2.62
          */
         connect_finish(result: Gio.AsyncResult): Gio.IOStream;
 
@@ -10530,6 +10738,7 @@ export namespace Soup {
          * use `soup_session_get_features()`.
          * @param feature_type the {@link GObject.GType} of the feature to get
          * @returns a {@link Soup.SessionFeature}, or `null`. The feature is owned by `session`.
+         * @since 2.26
          */
         get_feature(feature_type: GObject.GType): SessionFeature | null;
 
@@ -10544,6 +10753,7 @@ export namespace Soup {
          * @param feature_type the {@link GObject.GType} of the feature to get
          * @param msg a {@link Soup.Message}
          * @returns a {@link Soup.SessionFeature}, or `null`. The feature is owned by `session`.
+         * @since 2.28
          */
         get_feature_for_message(feature_type: GObject.GType, msg: Message): SessionFeature | null;
 
@@ -10553,6 +10763,7 @@ export namespace Soup {
          * for `feature_type`.)
          * @param feature_type the {@link GObject.GType} of the class of features to get
          * @returns a list of features. You must free the list, but not its contents
+         * @since 2.26
          */
         get_features(feature_type: GObject.GType): SessionFeature[];
 
@@ -10563,6 +10774,7 @@ export namespace Soup {
          * {@link Soup.Request}).
          * @param feature_type the {@link GObject.GType} of the class of features to check for
          * @returns `true` or `false`
+         * @since 2.42
          */
         has_feature(feature_type: GObject.GType): boolean;
 
@@ -10588,6 +10800,7 @@ export namespace Soup {
          * @param hostname a hostname to be resolved
          * @param cancellable a {@link Gio.Cancellable} object, or `null`
          * @param callback callback to call with the     result, or `null`
+         * @since 2.38
          */
         prefetch_dns(hostname: string, cancellable: Gio.Cancellable | null, callback: AddressCallback | null): void;
 
@@ -10597,6 +10810,8 @@ export namespace Soup {
          * proxy address, etc.) in order to work more quickly once the URI is
          * actually requested.
          * @param uri a {@link Soup.URI} which may be required
+         * @since 2.30
+         * @deprecated since 2.38: use `soup_session_prefetch_dns()` instead
          */
         prepare_for_uri(uri: URI): void;
 
@@ -10641,12 +10856,14 @@ export namespace Soup {
          * cause it to fail with {@link Soup.Status.TOO_MANY_REDIRECTS}.
          * @param msg a {@link Soup.Message} that has received a 3xx response
          * @returns `true` if a redirection was applied, `false` if not (eg, because there was no Location header, or it could not be parsed).
+         * @since 2.38
          */
         redirect_message(msg: Message): boolean;
 
         /**
          * Removes `feature`'s functionality from `session`.
          * @param feature a feature that has previously been added to `session`
+         * @since 2.24
          */
         remove_feature(feature: SessionFeature): void;
 
@@ -10654,6 +10871,7 @@ export namespace Soup {
          * Creates a {@link Soup.Request} for retrieving `uri_string`.
          * @param uri_string a URI, in string form
          * @returns a new {@link Soup.Request}, or   `null` on error.
+         * @since 2.42
          */
         request(uri_string: string): Request;
 
@@ -10664,6 +10882,7 @@ export namespace Soup {
          * @param method an HTTP method
          * @param uri_string a URI, in string form
          * @returns a new {@link Soup.RequestHTTP}, or   `null` on error.
+         * @since 2.42
          */
         request_http(method: string, uri_string: string): RequestHTTP;
 
@@ -10674,6 +10893,7 @@ export namespace Soup {
          * @param method an HTTP method
          * @param uri a {@link Soup.URI} representing the URI to retrieve
          * @returns a new {@link Soup.RequestHTTP}, or   `null` on error.
+         * @since 2.42
          */
         request_http_uri(method: string, uri: URI): RequestHTTP;
 
@@ -10681,6 +10901,7 @@ export namespace Soup {
          * Creates a {@link Soup.Request} for retrieving `uri`.
          * @param uri a {@link Soup.URI} representing the URI to retrieve
          * @returns a new {@link Soup.Request}, or   `null` on error.
+         * @since 2.42
          */
         request_uri(uri: URI): Request;
 
@@ -10720,6 +10941,7 @@ export namespace Soup {
          * @param msg a {@link Soup.Message}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Gio.InputStream} for reading the   response body, or `null` on error.
+         * @since 2.42
          */
         send(msg: Message, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
@@ -10742,6 +10964,7 @@ export namespace Soup {
          * {@link Soup.Session.use_thread_context} property.)
          * @param msg a {@link Soup.Message}
          * @param cancellable a {@link Gio.Cancellable}
+         * @since 2.42
          */
         send_async(msg: Message, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>;
 
@@ -10765,6 +10988,7 @@ export namespace Soup {
          * @param msg a {@link Soup.Message}
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke
+         * @since 2.42
          */
         send_async(msg: Message, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -10788,6 +11012,7 @@ export namespace Soup {
          * @param msg a {@link Soup.Message}
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke
+         * @since 2.42
          */
         send_async(msg: Message, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Gio.InputStream> | void;
 
@@ -10797,6 +11022,7 @@ export namespace Soup {
          * response body.
          * @param result the {@link Gio.AsyncResult} passed to your callback
          * @returns a {@link Gio.InputStream} for reading the   response body, or `null` on error.
+         * @since 2.42
          */
         send_finish(result: Gio.AsyncResult): Gio.InputStream;
 
@@ -10833,6 +11059,7 @@ export namespace Soup {
          * holding any other reference to it.
          * @param msg the message whose connection is to be stolen
          * @returns the {@link Gio.IOStream} formerly associated   with `msg` (or `null` if `msg` was no longer associated with a   connection). No guarantees are made about what kind of {@link Gio.IOStream}   is returned.
+         * @since 2.50
          */
         steal_connection(msg: Message): Gio.IOStream;
 
@@ -10873,6 +11100,7 @@ export namespace Soup {
          * @param origin origin of the connection
          * @param protocols a   `null`-terminated array of protocols supported
          * @param cancellable a {@link Gio.Cancellable}
+         * @since 2.50
          */
         websocket_connect_async(msg: Message, origin: string | null, protocols: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<WebsocketConnection>;
 
@@ -10900,6 +11128,7 @@ export namespace Soup {
          * @param protocols a   `null`-terminated array of protocols supported
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke
+         * @since 2.50
          */
         websocket_connect_async(msg: Message, origin: string | null, protocols: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -10927,6 +11156,7 @@ export namespace Soup {
          * @param protocols a   `null`-terminated array of protocols supported
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback the callback to invoke
+         * @since 2.50
          */
         websocket_connect_async(msg: Message, origin: string | null, protocols: string[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<WebsocketConnection> | void;
 
@@ -10937,6 +11167,7 @@ export namespace Soup {
          * with the server.
          * @param result the {@link Gio.AsyncResult} passed to your callback
          * @returns a new {@link Soup.WebsocketConnection}, or   `null` on error.
+         * @since 2.50
          */
         websocket_connect_finish(result: Gio.AsyncResult): WebsocketConnection;
 
@@ -10946,6 +11177,7 @@ export namespace Soup {
          * flag, and the number of times it has already been redirected).
          * @param msg a {@link Soup.Message} that has response headers
          * @returns whether `msg` would be redirected
+         * @since 2.38
          */
         would_redirect(msg: Message): boolean;
     }
@@ -11651,6 +11883,7 @@ export namespace Soup {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11694,6 +11927,7 @@ export namespace Soup {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -11988,6 +12222,7 @@ export namespace Soup {
          * Note that the `data` must be UTF-8 valid.
          * @param code close code
          * @param data close data
+         * @since 2.50
          */
         close(code: number, data: string | null): void;
 
@@ -11999,6 +12234,7 @@ export namespace Soup {
          * {@link Soup.WebsocketCloseCode} enumeration, but may also be an application
          * defined close code.
          * @returns the close code or zero.
+         * @since 2.50
          */
         get_close_code(): number;
 
@@ -12009,54 +12245,63 @@ export namespace Soup {
          * {@link Soup.WebsocketState.CLOSED} state. The data may be freed once
          * the main loop is run, so copy it if you need to keep it around.
          * @returns the close data or `null`
+         * @since 2.50
          */
         get_close_data(): string;
 
         /**
          * Get the connection type (client/server) of the connection.
          * @returns the connection type
+         * @since 2.50
          */
         get_connection_type(): WebsocketConnectionType;
 
         /**
          * Get the extensions chosen via negotiation with the peer.
          * @returns a {@link GLib.List} of {@link Soup.WebsocketExtension} objects
+         * @since 2.68
          */
         get_extensions(): WebsocketExtension[];
 
         /**
          * Get the I/O stream the WebSocket is communicating over.
          * @returns the WebSocket's I/O stream.
+         * @since 2.50
          */
         get_io_stream(): Gio.IOStream;
 
         /**
          * Gets the keepalive interval in seconds or 0 if disabled.
          * @returns the keepalive interval.
+         * @since 2.58
          */
         get_keepalive_interval(): number;
 
         /**
          * Gets the maximum payload size allowed for incoming packets.
          * @returns the maximum payload size.
+         * @since 2.56
          */
         get_max_incoming_payload_size(): number;
 
         /**
          * Get the origin of the WebSocket.
          * @returns the origin, or `null`
+         * @since 2.50
          */
         get_origin(): string | null;
 
         /**
          * Get the protocol chosen via negotiation with the peer.
          * @returns the chosen protocol, or `null`
+         * @since 2.50
          */
         get_protocol(): string | null;
 
         /**
          * Get the current state of the WebSocket.
          * @returns the state
+         * @since 2.50
          */
         get_state(): WebsocketState;
 
@@ -12066,6 +12311,7 @@ export namespace Soup {
          * For servers this represents the address of the WebSocket, and
          * for clients it is the address connected to.
          * @returns the URI
+         * @since 2.50
          */
         get_uri(): URI;
 
@@ -12075,6 +12321,7 @@ export namespace Soup {
          * The message is queued to be sent and will be sent when the main loop
          * is run.
          * @param data the message contents
+         * @since 2.50
          */
         send_binary(data: Uint8Array | string | null): void;
 
@@ -12086,6 +12333,7 @@ export namespace Soup {
          * is run.
          * @param type the type of message contents
          * @param message the message data as {@link GLib.Bytes}
+         * @since 2.68
          */
         send_message(type: WebsocketDataType, message: GLib.Bytes | Uint8Array): void;
 
@@ -12097,6 +12345,7 @@ export namespace Soup {
          * The message is queued to be sent and will be sent when the main loop
          * is run.
          * @param text the message contents
+         * @since 2.50
          */
         send_text(text: string): void;
 
@@ -12104,6 +12353,7 @@ export namespace Soup {
          * Sets the interval in seconds on when to send a ping message which will serve
          * as a keepalive message. If set to 0 the keepalive message is disabled.
          * @param interval the interval to send a ping message or 0 to disable it
+         * @since 2.58
          */
         set_keepalive_interval(interval: number): void;
 
@@ -12111,6 +12361,7 @@ export namespace Soup {
          * Sets the maximum payload size allowed for incoming packets. It
          * does not limit the outgoing packet size.
          * @param max_incoming_payload_size the maximum payload size
+         * @since 2.56
          */
         set_max_incoming_payload_size(max_incoming_payload_size: bigint | number): void;
     }
@@ -12169,6 +12420,7 @@ export namespace Soup {
         /**
          * Get the parameters strings to be included in the request header. If the extension
          * doesn't include any parameter in the request, this function returns `null`.
+         * @since 2.68
          * @virtual
          */
         vfunc_get_request_params(): string | null;
@@ -12176,6 +12428,7 @@ export namespace Soup {
         /**
          * Get the parameters strings to be included in the response header. If the extension
          * doesn't include any parameter in the response, this function returns `null`.
+         * @since 2.68
          * @virtual
          */
         vfunc_get_response_params(): string | null;
@@ -12188,6 +12441,7 @@ export namespace Soup {
          * Extensions using reserved bits of the header will reset them in `header`.
          * @param header the message header
          * @param payload the payload data
+         * @since 2.68
          * @virtual
          */
         vfunc_process_incoming_message(header: number, payload: GLib.Bytes): [GLib.Bytes | Uint8Array, number];
@@ -12200,6 +12454,7 @@ export namespace Soup {
          * Extensions using reserved bits of the header will change them in `header`.
          * @param header the message header
          * @param payload the payload data
+         * @since 2.68
          * @virtual
          */
         vfunc_process_outgoing_message(header: number, payload: GLib.Bytes): [GLib.Bytes | Uint8Array, number];
@@ -12217,6 +12472,7 @@ export namespace Soup {
          * Get the parameters strings to be included in the request header. If the extension
          * doesn't include any parameter in the request, this function returns `null`.
          * @returns a new allocated string with the parameters
+         * @since 2.68
          */
         get_request_params(): string | null;
 
@@ -12224,6 +12480,7 @@ export namespace Soup {
          * Get the parameters strings to be included in the response header. If the extension
          * doesn't include any parameter in the response, this function returns `null`.
          * @returns a new allocated string with the parameters
+         * @since 2.68
          */
         get_response_params(): string | null;
 
@@ -12236,6 +12493,7 @@ export namespace Soup {
          * @param header the message header
          * @param payload the payload data
          * @returns the message payload data, or `null` in case of error
+         * @since 2.68
          */
         process_incoming_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
 
@@ -12248,6 +12506,7 @@ export namespace Soup {
          * @param header the message header
          * @param payload the payload data
          * @returns the message payload data, or `null` in case of error
+         * @since 2.68
          */
         process_outgoing_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
     }
@@ -12344,6 +12603,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -12362,6 +12622,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -12370,6 +12631,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -12379,6 +12641,7 @@ export namespace Soup {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -12401,6 +12664,7 @@ export namespace Soup {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -12409,6 +12673,7 @@ export namespace Soup {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -12525,6 +12790,7 @@ export namespace Soup {
          * {@link GLib.Bytes} will hold a reference on `buffer` to ensure that it is not
          * freed while the {@link GLib.Bytes} is still valid.
          * @returns a new {@link GLib.Bytes} which has the same content as the {@link Soup.Buffer}.
+         * @since 2.40
          */
         get_as_bytes(): GLib.Bytes;
 
@@ -12532,6 +12798,7 @@ export namespace Soup {
          * This function exists for use by language bindings, because it's not
          * currently possible to get the right effect by annotating the fields
          * of {@link Soup.Buffer}.
+         * @since 2.32
          */
         get_data(): Uint8Array;
 
@@ -12590,6 +12857,7 @@ export namespace Soup {
          * Retrieves the {@link Soup.Address} associated with the remote end
          * of a connection.
          * @returns the {@link Soup.Address} associated with the remote end of a connection, it may be `null` if you used `soup_server_accept_iostream()`.
+         * @deprecated Use `soup_client_context_get_remote_address()`, which returns a {@link Gio.SocketAddress}.
          */
         get_address(): Address | null;
 
@@ -12619,6 +12887,7 @@ export namespace Soup {
          * not get fooled when the allocator reuses the memory address of a
          * previously-destroyed socket to represent a new socket.
          * @returns the {@link Gio.Socket} that `client` is associated with, `null` if you used `soup_server_accept_iostream()`.
+         * @since 2.48
          */
         get_gsocket(): Gio.Socket | null;
 
@@ -12633,6 +12902,7 @@ export namespace Soup {
          * Retrieves the {@link Gio.SocketAddress} associated with the local end
          * of a connection.
          * @returns the {@link Gio.SocketAddress} associated with the local end of a connection, it may be `null` if you used `soup_server_accept_iostream()`.
+         * @since 2.48
          */
         get_local_address(): Gio.SocketAddress | null;
 
@@ -12640,6 +12910,7 @@ export namespace Soup {
          * Retrieves the {@link Gio.SocketAddress} associated with the remote end
          * of a connection.
          * @returns the {@link Gio.SocketAddress} associated with the remote end of a connection, it may be `null` if you used `soup_server_accept_iostream()`.
+         * @since 2.48
          */
         get_remote_address(): Gio.SocketAddress | null;
 
@@ -12654,6 +12925,7 @@ export namespace Soup {
          * not get fooled when the allocator reuses the memory address of a
          * previously-destroyed socket to represent a new socket.
          * @returns the {@link Soup.Socket} that `client` is associated with.
+         * @deprecated use `soup_client_context_get_gsocket()`, which returns a {@link Gio.Socket}.
          */
         get_socket(): Socket;
 
@@ -12670,6 +12942,7 @@ export namespace Soup {
          * Note that when calling this function from C, `client` will most
          * likely be freed as a side effect.
          * @returns the {@link Gio.IOStream} formerly associated   with `client` (or `null` if `client` was no longer associated with a   connection). No guarantees are made about what kind of {@link Gio.IOStream}   is returned.
+         * @since 2.50
          */
         steal_connection(): Gio.IOStream;
     }
@@ -12777,6 +13050,7 @@ export namespace Soup {
          * of the cookie.
          * @param header a cookie string (eg, the value of a Set-Cookie header)
          * @param origin origin of the cookie, or `null`
+         * @since 2.24
          */
         static parse(header: string, origin: URI): Cookie | null;
 
@@ -12789,12 +13063,14 @@ export namespace Soup {
          * But don't rely on that; it may change in the future.)
          * @param uri a {@link Soup.URI}
          * @returns `true` if `cookie` should be sent to `uri`, `false` if not
+         * @since 2.24
          */
         applies_to_uri(uri: URI): boolean;
 
         /**
          * Copies `cookie`.
          * @returns a copy of `cookie`
+         * @since 2.24
          */
         copy(): Cookie;
 
@@ -12804,6 +13080,7 @@ export namespace Soup {
          * `cookie` should be accepted when receiving a response from `host`.
          * @param host a URI
          * @returns `true` if the domains match, `false` otherwise
+         * @since 2.30
          */
         domain_matches(host: string): boolean;
 
@@ -12814,64 +13091,75 @@ export namespace Soup {
          * match. This may change in the future.
          * @param cookie2 a {@link Soup.Cookie}
          * @returns whether the cookies are equal.
+         * @since 2.24
          */
         equal(cookie2: Cookie): boolean;
 
         /**
          * Frees `cookie`
+         * @since 2.24
          */
         free(): void;
 
         /**
          * Gets `cookie`'s domain
          * @returns `cookie`'s domain
+         * @since 2.32
          */
         get_domain(): string;
 
         /**
          * Gets `cookie`'s expiration time.
          * @returns `cookie`'s expiration time, which is owned by `cookie` and should not be modified or freed.
+         * @since 2.32
          */
         get_expires(): Date | null;
 
         /**
          * Gets `cookie`'s HttpOnly attribute
          * @returns `cookie`'s HttpOnly attribute
+         * @since 2.32
          */
         get_http_only(): boolean;
 
         /**
          * Gets `cookie`'s name
          * @returns `cookie`'s name
+         * @since 2.32
          */
         get_name(): string;
 
         /**
          * Gets `cookie`'s path
          * @returns `cookie`'s path
+         * @since 2.32
          */
         get_path(): string;
 
         /**
          * @returns a {@link Soup.SameSitePolicy}
+         * @since 2.70
          */
         get_same_site_policy(): SameSitePolicy;
 
         /**
          * Gets `cookie`'s secure attribute
          * @returns `cookie`'s secure attribute
+         * @since 2.32
          */
         get_secure(): boolean;
 
         /**
          * Gets `cookie`'s value
          * @returns `cookie`'s value
+         * @since 2.32
          */
         get_value(): string;
 
         /**
          * Sets `cookie`'s domain to `domain`
          * @param domain the new domain
+         * @since 2.24
          */
         set_domain(domain: string): void;
 
@@ -12882,6 +13170,7 @@ export namespace Soup {
          * 
          * (This sets the same property as `soup_cookie_set_max_age()`.)
          * @param expires the new expiration time, or `null`
+         * @since 2.24
          */
         set_expires(expires: Date): void;
 
@@ -12890,6 +13179,7 @@ export namespace Soup {
          * will be marked as "http only", meaning it should not be exposed to
          * web page scripts or other untrusted code.
          * @param http_only the new value for the HttpOnly attribute
+         * @since 2.24
          */
         set_http_only(http_only: boolean): void;
 
@@ -12905,18 +13195,21 @@ export namespace Soup {
          * 
          * (This sets the same property as `soup_cookie_set_expires()`.)
          * @param max_age the new max age
+         * @since 2.24
          */
         set_max_age(max_age: number): void;
 
         /**
          * Sets `cookie`'s name to `name`
          * @param name the new name
+         * @since 2.24
          */
         set_name(name: string): void;
 
         /**
          * Sets `cookie`'s path to `path`
          * @param path the new path
+         * @since 2.24
          */
         set_path(path: string): void;
 
@@ -12924,6 +13217,7 @@ export namespace Soup {
          * When used in conjunction with `soup_cookie_jar_get_cookie_list_with_same_site_info()` this
          * sets the policy of when this cookie should be exposed.
          * @param policy a {@link Soup.SameSitePolicy}
+         * @since 2.70
          */
         set_same_site_policy(policy: SameSitePolicy): void;
 
@@ -12932,12 +13226,14 @@ export namespace Soup {
          * only be transmitted from the client to the server over secure
          * (https) connections.
          * @param secure the new value for the secure attribute
+         * @since 2.24
          */
         set_secure(secure: boolean): void;
 
         /**
          * Sets `cookie`'s value to `value`
          * @param value the new value
+         * @since 2.24
          */
         set_value(value: string): void;
 
@@ -12945,6 +13241,7 @@ export namespace Soup {
          * Serializes `cookie` in the format used by the Cookie header (ie, for
          * returning a cookie from a {@link Soup.Session} to a server).
          * @returns the header
+         * @since 2.24
          */
         to_cookie_header(): string;
 
@@ -12952,6 +13249,7 @@ export namespace Soup {
          * Serializes `cookie` in the format used by the Set-Cookie header
          * (ie, for sending a cookie from a {@link Soup.Server} to a client).
          * @returns the header
+         * @since 2.24
          */
         to_set_cookie_header(): string;
     }
@@ -13026,65 +13324,76 @@ export namespace Soup {
         // Methods
         /**
          * Copies `date`.
+         * @since 2.24
          */
         copy(): Date;
 
         /**
          * Frees `date`.
+         * @since 2.24
          */
         free(): void;
 
         /**
          * Gets `date`'s day.
          * @returns `date`'s day
+         * @since 2.32
          */
         get_day(): number;
 
         /**
          * Gets `date`'s hour.
          * @returns `date`'s hour
+         * @since 2.32
          */
         get_hour(): number;
 
         /**
          * Gets `date`'s minute.
          * @returns `date`'s minute
+         * @since 2.32
          */
         get_minute(): number;
 
         /**
          * Gets `date`'s month.
          * @returns `date`'s month
+         * @since 2.32
          */
         get_month(): number;
 
         /**
          * Gets `date`'s offset from UTC.
          * @returns `date`'s offset from UTC. If `soup_date_get_utc()` returns `false` but `soup_date_get_offset()` returns 0, that means the date is a "floating" time with no associated offset information.
+         * @since 2.32
          */
         get_offset(): number;
 
         /**
          * Gets `date`'s second.
          * @returns `date`'s second
+         * @since 2.32
          */
         get_second(): number;
 
         /**
          * Gets `date`'s UTC flag
          * @returns `true` if `date` is UTC.
+         * @since 2.32
          */
         get_utc(): number;
 
         /**
          * Gets `date`'s year.
          * @returns `date`'s year
+         * @since 2.32
          */
         get_year(): number;
 
         /**
          * Determines if `date` is in the past.
          * @returns `true` if `date` is in the past
+         * @since 2.24
          */
         is_past(): boolean;
 
@@ -13108,6 +13417,8 @@ export namespace Soup {
 
         /**
          * Converts `date` to a {@link GLib.TimeVal}.
+         * @since 2.24
+         * @deprecated Do not use {@link GLib.TimeVal}, as it's not Y2038-safe.
          */
         to_timeval(): GLib.TimeVal;
     }
@@ -13186,6 +13497,7 @@ export namespace Soup {
         /**
          * Copies `policy`.
          * @returns a copy of `policy`
+         * @since 2.68
          */
         copy(): HSTSPolicy;
 
@@ -13193,23 +13505,27 @@ export namespace Soup {
          * Tests if `policy1` and `policy2` are equal.
          * @param policy2 a {@link Soup.HSTSPolicy}
          * @returns whether the policies are equal.
+         * @since 2.68
          */
         equal(policy2: HSTSPolicy): boolean;
 
         /**
          * Frees `policy`.
+         * @since 2.68
          */
         free(): void;
 
         /**
          * Gets `policy`'s domain.
          * @returns `policy`'s domain.
+         * @since 2.68
          */
         get_domain(): string;
 
         /**
          * Gets whether `policy` include its subdomains.
          * @returns `true` if `policy` includes subdomains, `false` otherwise.
+         * @since 2.68
          */
         includes_subdomains(): boolean;
 
@@ -13217,6 +13533,7 @@ export namespace Soup {
          * Gets whether `policy` is expired. Permanent policies never
          * expire.
          * @returns `true` if `policy` is expired, `false` otherwise.
+         * @since 2.68
          */
         is_expired(): boolean;
 
@@ -13224,6 +13541,7 @@ export namespace Soup {
          * Gets whether `policy` is a non-permanent, non-expirable session policy.
          * see `soup_hsts_policy_new_session_policy()` for details.
          * @returns `true` if `policy` is permanent, `false` otherwise
+         * @since 2.68
          */
         is_session_policy(): boolean;
     }
@@ -13284,6 +13602,7 @@ export namespace Soup {
          * with {@link Soup.MemoryUse.TAKE} as second argument; it exists mainly for
          * convenience and simplifying language bindings.
          * @param data data to append
+         * @since 2.32
          */
         append(data: Uint8Array | string): void;
 
@@ -13311,6 +13630,7 @@ export namespace Soup {
          * Gets the accumulate flag on `body`; see
          * `soup_message_body_set_accumulate()` for details.
          * @returns the accumulate flag for `body`.
+         * @since 2.24
          */
         get_accumulate(): boolean;
 
@@ -13344,6 +13664,7 @@ export namespace Soup {
          * This is a low-level method which you should not normally need to
          * use.
          * @param chunk a {@link Soup.Buffer} received from the network
+         * @since 2.24
          */
         got_chunk(chunk: Buffer): void;
 
@@ -13377,6 +13698,7 @@ export namespace Soup {
          * be discarded, and you will be responsible for recreating the
          * request body after the {@link Soup.Message.SignalSignatures.restarted | Soup.Message::restarted} signal is emitted.
          * @param accumulate whether or not to accumulate body chunks in `body`
+         * @since 2.24
          */
         set_accumulate(accumulate: boolean): void;
 
@@ -13395,6 +13717,7 @@ export namespace Soup {
          * there are further restrictions on its proper use which are not
          * documented here.
          * @param chunk a {@link Soup.Buffer} returned from `soup_message_body_get_chunk()`
+         * @since 2.24
          */
         wrote_chunk(chunk: Buffer): void;
     }
@@ -13433,6 +13756,7 @@ export namespace Soup {
 
         /**
          * Removes all the headers listed in the Connection header.
+         * @since 2.36
          */
         clean_connection_headers(): void;
 
@@ -13466,6 +13790,7 @@ export namespace Soup {
         /**
          * Frees the array of ranges returned from `soup_message_headers_get_ranges()`.
          * @param ranges an array of {@link Soup.Range}
+         * @since 2.26
          */
         free_ranges(ranges: Range): void;
 
@@ -13481,6 +13806,7 @@ export namespace Soup {
          * explicitly state which behavior they are expecting.
          * @param name header name
          * @returns as with `soup_message_headers_get_list()`.
+         * @deprecated Use `soup_message_headers_get_one()` or `soup_message_headers_get_list()` instead.
          */
         get(name: string): string | null;
 
@@ -13502,6 +13828,7 @@ export namespace Soup {
          * this is handled automatically by {@link Soup.Multipart} and the associated
          * form methods.
          * @returns `true` if `hdrs` contains a "Content-Disposition" header, `false` if not (in which case *`disposition` and *`params` will be unchanged).
+         * @since 2.26
          */
         get_content_disposition(): [boolean, string, { [key: string]: string }];
 
@@ -13518,6 +13845,7 @@ export namespace Soup {
          * `end`, and `total_length`. If the total length field in the header
          * was specified as "*", then `total_length` will be set to -1.
          * @returns `true` if `hdrs` contained a "Content-Range" header containing a byte range which could be parsed, `false` otherwise.
+         * @since 2.26
          */
         get_content_range(): [boolean, number, number, number];
 
@@ -13526,6 +13854,7 @@ export namespace Soup {
          * its value in *`content_type` and *`params`. `params` can be `null` if you
          * are only interested in the content type itself.
          * @returns a string with the value of the "Content-Type" header or `null` if `hdrs` does not contain that header or it cannot be parsed (in which case *`params` will be unchanged).
+         * @since 2.26
          */
         get_content_type(): [string | null, { [key: string]: string } | null];
 
@@ -13549,6 +13878,7 @@ export namespace Soup {
         /**
          * Gets the type of headers.
          * @returns the header's type.
+         * @since 2.50
          */
         get_headers_type(): MessageHeadersType;
 
@@ -13567,6 +13897,7 @@ export namespace Soup {
          * same thing.
          * @param name header name
          * @returns the header's value or `null` if not found.
+         * @since 2.28
          */
         get_list(name: string): string | null;
 
@@ -13582,6 +13913,7 @@ export namespace Soup {
          * implementations.)
          * @param name header name
          * @returns the header's value or `null` if not found.
+         * @since 2.28
          */
         get_one(name: string): string | null;
 
@@ -13617,6 +13949,7 @@ export namespace Soup {
          * </para></note>
          * @param total_length the total_length of the response body
          * @returns `true` if `hdrs` contained a syntactically-valid "Range" header, `false` otherwise (in which case `range` and `length` will not be set).
+         * @since 2.26
          */
         get_ranges(total_length: bigint | number): [boolean, Range[]];
 
@@ -13629,6 +13962,7 @@ export namespace Soup {
          * @param name header name
          * @param token token to look for
          * @returns `true` if the header is present and contains `token`,   `false` otherwise.
+         * @since 2.50
          */
         header_contains(name: string, token: string): boolean;
 
@@ -13638,6 +13972,7 @@ export namespace Soup {
          * @param name header name
          * @param value expected value
          * @returns `true` if the header is present and its value is   `value`, `false` otherwise.
+         * @since 2.50
          */
         header_equals(name: string, value: string): boolean;
 
@@ -13667,6 +14002,7 @@ export namespace Soup {
          * of how Content-Disposition is used in HTTP.
          * @param disposition the disposition-type
          * @param params additional parameters, or `null`
+         * @since 2.26
          */
         set_content_disposition(disposition: string, params: { [key: string]: string } | null): void;
 
@@ -13699,6 +14035,7 @@ export namespace Soup {
          * @param start the start of the range
          * @param end the end of the range
          * @param total_length the total length of the resource, or -1 if unknown
+         * @since 2.26
          */
         set_content_range(start: bigint | number, end: bigint | number, total_length: bigint | number): void;
 
@@ -13707,6 +14044,7 @@ export namespace Soup {
          * optionally with additional parameters specified in `params`.
          * @param content_type the MIME type
          * @param params additional parameters, or `null`
+         * @since 2.26
          */
         set_content_type(content_type: string, params: { [key: string]: string } | null): void;
 
@@ -13741,6 +14079,7 @@ export namespace Soup {
          * `soup_message_headers_set_ranges()`.
          * @param start the start of the range to request
          * @param end the end of the range to request
+         * @since 2.26
          */
         set_range(start: bigint | number, end: bigint | number): void;
 
@@ -13750,6 +14089,7 @@ export namespace Soup {
          * `soup_message_headers_set_range()`.)
          * @param ranges an array of {@link Soup.Range}
          * @param length the length of `range`
+         * @since 2.26
          */
         set_ranges(ranges: Range, length: number): void;
     }
@@ -13841,6 +14181,7 @@ export namespace Soup {
          * @param filename the name of the file, or `null` if not known
          * @param content_type the MIME type of the file, or `null` if not known
          * @param body the file data
+         * @since 2.26
          */
         append_form_file(control_name: string, filename: string, content_type: string, body: Buffer): void;
 
@@ -13851,6 +14192,7 @@ export namespace Soup {
          * details.
          * @param control_name the name of the control associated with `data`
          * @param data the body data
+         * @since 2.26
          */
         append_form_string(control_name: string, data: string): void;
 
@@ -13861,17 +14203,20 @@ export namespace Soup {
          * else.)
          * @param headers the MIME part headers
          * @param body the MIME part body
+         * @since 2.26
          */
         append_part(headers: MessageHeaders, body: Buffer): void;
 
         /**
          * Frees `multipart`
+         * @since 2.26
          */
         free(): void;
 
         /**
          * Gets the number of body parts in `multipart`
          * @returns the number of body parts in `multipart`
+         * @since 2.26
          */
         get_length(): number;
 
@@ -13879,6 +14224,7 @@ export namespace Soup {
          * Gets the indicated body part from `multipart`.
          * @param part the part number to get (counting from 0)
          * @returns `true` on success, `false` if `part` is out of range (in which case `headers` and `body` won't be set)
+         * @since 2.26
          */
         get_part(part: number): [boolean, MessageHeaders, Buffer];
 
@@ -13886,6 +14232,7 @@ export namespace Soup {
          * Serializes `multipart` to `dest_headers` and `dest_body`.
          * @param dest_headers the headers of the HTTP message to serialize `multipart` to
          * @param dest_body the body of the HTTP message to serialize `multipart` to
+         * @since 2.26
          */
         to_message(dest_headers: MessageHeaders, dest_body: MessageBody): void;
     }
@@ -14181,6 +14528,7 @@ export namespace Soup {
         /**
          * Makes a copy of `uri`, considering only the protocol, host, and port
          * @returns the new {@link Soup.URI}
+         * @since 2.28
          */
         copy_host(): URI;
 
@@ -14199,48 +14547,56 @@ export namespace Soup {
         /**
          * Gets `uri`'s fragment.
          * @returns `uri`'s fragment.
+         * @since 2.32
          */
         get_fragment(): string;
 
         /**
          * Gets `uri`'s host.
          * @returns `uri`'s host.
+         * @since 2.32
          */
         get_host(): string;
 
         /**
          * Gets `uri`'s password.
          * @returns `uri`'s password.
+         * @since 2.32
          */
         get_password(): string;
 
         /**
          * Gets `uri`'s path.
          * @returns `uri`'s path.
+         * @since 2.32
          */
         get_path(): string;
 
         /**
          * Gets `uri`'s port.
          * @returns `uri`'s port.
+         * @since 2.32
          */
         get_port(): number;
 
         /**
          * Gets `uri`'s query.
          * @returns `uri`'s query.
+         * @since 2.32
          */
         get_query(): string;
 
         /**
          * Gets `uri`'s scheme.
          * @returns `uri`'s scheme.
+         * @since 2.32
          */
         get_scheme(): string;
 
         /**
          * Gets `uri`'s user.
          * @returns `uri`'s user.
+         * @since 2.32
          */
         get_user(): string;
 
@@ -14248,12 +14604,14 @@ export namespace Soup {
          * Compares `v1` and `v2`, considering only the scheme, host, and port.
          * @param v2 a {@link Soup.URI} with a non-`null` `host` member
          * @returns whether or not the URIs are equal in scheme, host, and port.
+         * @since 2.28
          */
         host_equal(v2: URI): boolean;
 
         /**
          * Hashes `key`, considering only the scheme, host, and port.
          * @returns a hash
+         * @since 2.28
          */
         host_hash(): number;
 
@@ -14385,6 +14743,7 @@ export namespace Soup {
         // Methods
         /**
          * Free a {@link Soup.XMLRPCParams} returned by `soup_xmlrpc_parse_request()`.
+         * @since 2.52
          */
         free(): void;
 
@@ -14411,6 +14770,7 @@ export namespace Soup {
          *  - Dictionaries must have string keys, otherwise an error is returned.
          * @param signature A valid {@link GLib.Variant} type string, or `null`
          * @returns a new (non-floating) {@link GLib.Variant}, or `null`
+         * @since 2.52
          */
         parse(signature: string | null): GLib.Variant;
     }
@@ -14495,6 +14855,7 @@ export namespace Soup {
              * @param async_context 
              * @param cancellable 
              * @param callback 
+             * @deprecated since 2.28: Use SoupProxyURIResolver.get_proxy_uri_async instead
              * @virtual
              */
             vfunc_get_proxy_async(msg: Message, async_context: GLib.MainContext, cancellable: Gio.Cancellable | null, callback: ProxyResolverCallback): void;
@@ -14502,6 +14863,7 @@ export namespace Soup {
             /**
              * @param msg 
              * @param cancellable 
+             * @deprecated since 2.28: Use SoupProxyURIResolver.get_proxy_uri_sync() instead
              * @virtual
              */
             vfunc_get_proxy_sync(msg: Message, cancellable: Gio.Cancellable | null): [number, Address];
@@ -14527,12 +14889,14 @@ export namespace Soup {
          * @param async_context 
          * @param cancellable 
          * @param callback 
+         * @deprecated since 2.28: Use SoupProxyURIResolver.get_proxy_uri_async instead
          */
         get_proxy_async(msg: Message, async_context: GLib.MainContext, cancellable: Gio.Cancellable | null, callback: ProxyResolverCallback): void;
 
         /**
          * @param msg 
          * @param cancellable 
+         * @deprecated since 2.28: Use SoupProxyURIResolver.get_proxy_uri_sync() instead
          */
         get_proxy_sync(msg: Message, cancellable: Gio.Cancellable | null): [number, Address];
     }
@@ -14557,6 +14921,8 @@ export namespace Soup {
              * @param async_context the {@link GLib.MainContext} to invoke `callback` in
              * @param cancellable a {@link Gio.Cancellable}, or `null`
              * @param callback callback to invoke with the proxy address
+             * @since 2.26.3
+             * @deprecated {@link Soup.ProxyURIResolver} is deprecated in favor of {@link Gio.ProxyResolver}
              * @virtual
              */
             vfunc_get_proxy_uri_async(uri: URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: ProxyURIResolverCallback): void;
@@ -14567,6 +14933,8 @@ export namespace Soup {
              * proxy, else it will be set to `null`.
              * @param uri the {@link Soup.URI} you want a proxy for
              * @param cancellable a {@link Gio.Cancellable}, or `null`
+             * @since 2.26.3
+             * @deprecated {@link Soup.ProxyURIResolver} is deprecated in favor of {@link Gio.ProxyResolver}
              * @virtual
              */
             vfunc_get_proxy_uri_sync(uri: URI, cancellable: Gio.Cancellable | null): [number, URI];
@@ -14594,6 +14962,8 @@ export namespace Soup {
          * @param async_context the {@link GLib.MainContext} to invoke `callback` in
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to invoke with the proxy address
+         * @since 2.26.3
+         * @deprecated {@link Soup.ProxyURIResolver} is deprecated in favor of {@link Gio.ProxyResolver}
          */
         get_proxy_uri_async(uri: URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: ProxyURIResolverCallback): void;
 
@@ -14604,6 +14974,8 @@ export namespace Soup {
          * @param uri the {@link Soup.URI} you want a proxy for
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns {@link Soup.Status.OK} if successful, or a transport-level error.
+         * @since 2.26.3
+         * @deprecated {@link Soup.ProxyURIResolver} is deprecated in favor of {@link Gio.ProxyResolver}
          */
         get_proxy_uri_sync(uri: URI, cancellable: Gio.Cancellable | null): [number, URI];
     }
@@ -14627,6 +14999,7 @@ export namespace Soup {
              * different types. Eg, the authentication manager can be extended
              * with subtypes of {@link Soup.Auth}.
              * @param type the {@link GObject.GType} of a "sub-feature"
+             * @since 2.34
              * @virtual
              */
             vfunc_add_feature(type: GObject.GType): boolean;
@@ -14649,6 +15022,7 @@ export namespace Soup {
              * Tests if `feature` has a "sub-feature" of type `type`. See
              * `soup_session_feature_add_feature()`.
              * @param type the {@link GObject.GType} of a "sub-feature"
+             * @since 2.34
              * @virtual
              */
             vfunc_has_feature(type: GObject.GType): boolean;
@@ -14657,6 +15031,7 @@ export namespace Soup {
              * Removes the "sub-feature" of type `type` from the base feature
              * `feature`. See `soup_session_feature_add_feature()`.
              * @param type the {@link GObject.GType} of a "sub-feature"
+             * @since 2.34
              * @virtual
              */
             vfunc_remove_feature(type: GObject.GType): boolean;
@@ -14712,6 +15087,7 @@ export namespace Soup {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -14730,6 +15106,7 @@ export namespace Soup {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -14738,6 +15115,7 @@ export namespace Soup {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
     }

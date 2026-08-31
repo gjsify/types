@@ -553,6 +553,7 @@ export namespace Modulemd {
          * Add a build-time dependency for this module.
          * @param module_name The name of the module to depend on.
          * @param stream_name The name of the module stream to depend on.
+         * @since 2.11
          */
         add_buildtime_requirement(module_name: string, stream_name: string): void;
 
@@ -560,49 +561,58 @@ export namespace Modulemd {
          * Add a build-time dependency for this module.
          * @param module_name The name of the module to depend on.
          * @param stream_name The name of the module stream to depend on.
+         * @since 2.11
          */
         add_runtime_requirement(module_name: string, stream_name: string): void;
 
         /**
          * Remove all build-time dependencies for this module.
+         * @since 2.11
          */
         clear_buildtime_requirements(): void;
 
         /**
          * Remove all run-time dependencies for this module.
+         * @since 2.11
          */
         clear_runtime_requirements(): void;
 
         /**
          * @param self_2 A pointer to a {@link Modulemd.BuildConfig} object.
          * @returns Less than zero if `self_1` sorts less than `self_2`, zero for equal, greater than zero if `self_1` is greater than `self_2`.
+         * @since 2.11
          */
         compare(self_2: BuildConfig): number;
 
         /**
          * @returns A deep copy of `self`
+         * @since 2.11
          */
         copy(): BuildConfig;
 
         /**
          * @param self_2 A pointer to a {@link Modulemd.BuildConfig} object.
          * @returns TRUE, if `self_1` and `self_2` are pointers to {@link Modulemd.BuildConfig} objects containing equivalent data. FALSE, otherwise.
+         * @since 2.11
          */
         equals(self_2: BuildConfig): boolean;
 
         /**
          * @returns The build options for this module's components.
+         * @since 2.11
          */
         get_buildopts(): Buildopts;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of module names that this module depends on at build-time.
+         * @since 2.11
          */
         get_buildtime_modules_as_strv(): string[];
 
         /**
          * @param module_name The name of the module this module depends on.
          * @returns The name of the stream matching this module name in the build-time dependencies.
+         * @since 2.11
          */
         get_buildtime_requirement_stream(module_name: string): string;
 
@@ -613,41 +623,48 @@ export namespace Modulemd {
          * be sure that it is in the correct format, call
          * `modulemd_build_config_validate()` first.
          * @returns The string representing the context that this build configuration produces.
+         * @since 2.11
          */
         get_context(): string;
 
         /**
          * Get the platform that this build configuration applies to.
          * @returns The string representing the platform that this build configuration applies to.
+         * @since 2.11
          */
         get_platform(): string;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of module names that this module depends on at run-time.
+         * @since 2.11
          */
         get_runtime_modules_as_strv(): string[];
 
         /**
          * @param module_name The name of the module this module depends on.
          * @returns The name of the stream matching this module name in the run-time dependencies.
+         * @since 2.11
          */
         get_runtime_requirement_stream(module_name: string): string;
 
         /**
          * Remove a build-time dependency for this module.
          * @param module_name The name of the module to be removed.
+         * @since 2.11
          */
         remove_buildtime_requirement(module_name: string): void;
 
         /**
          * Remove a run-time dependency for this module.
          * @param module_name The name of the module to be removed.
+         * @since 2.11
          */
         remove_runtime_requirement(module_name: string): void;
 
         /**
          * Set build options for this module's components.
          * @param buildopts A {@link Modulemd.Buildopts} object describing build options that apply globally to components in this module.
+         * @since 2.11
          */
         set_buildopts(buildopts: Buildopts): void;
 
@@ -658,12 +675,14 @@ export namespace Modulemd {
          * `context`. This validation will be performed as part of the
          * `modulemd_build_config_validate()` routine where it can be reported cleanly.
          * @param context A string of up to ten alphanumeric characters.
+         * @since 2.11
          */
         set_context(context: string): void;
 
         /**
          * Set the platform that this build configuration applies to.
          * @param platform A string of up to ten alphanumeric characters.
+         * @since 2.11
          */
         set_platform(platform: string): void;
 
@@ -671,6 +690,7 @@ export namespace Modulemd {
          * Determine if this {@link Modulemd.BuildConfig} is valid according to the YAML
          * specification.
          * @returns TRUE if validation passes. Returns FALSE and sets `error` appropriately on validation failure.
+         * @since 2.11
          */
         validate(): boolean;
     }
@@ -743,27 +763,32 @@ export namespace Modulemd {
          * called any number of times to indicate support on additional architectures.
          * Use `modulemd_buildopts_clear_arches()` to return to "all architectures".
          * @param arch An architecture for which to build this module.
+         * @since 2.9
          */
         add_arch(arch: string): void;
 
         /**
          * @param rpm An RPM name to add to the whitelist.
+         * @since 2.0
          */
         add_rpm_to_whitelist(rpm: string): void;
 
         /**
          * Indicate that this module should be built for all architectures.
+         * @since 2.9
          */
         clear_arches(): void;
 
         /**
          * Remove all RPMs from the whitelist.
+         * @since 2.5
          */
         clear_rpm_whitelist(): void;
 
         /**
          * Create a copy of this {@link Modulemd.Buildopts} object.
          * @returns A newly-allocated {@link Modulemd.Buildopts} object that is a copy of `self`.
+         * @since 2.0
          */
         copy(): Buildopts;
 
@@ -771,36 +796,43 @@ export namespace Modulemd {
          * Check for equality for two {@link Modulemd.Buildopts} objects.
          * @param self_2 A {@link Modulemd.Buildopts} object.
          * @returns TRUE if both objects are equal, FALSE otherwise.
+         * @since 2.2
          */
         equals(self_2: Buildopts): boolean;
 
         /**
          * @returns A {@link GObject.Strv} list of architectures for which this module should be built. If empty, this module should be built for all architectures.
+         * @since 2.9
          */
         get_arches(): string[];
 
         /**
          * @returns A string containing RPM build macros in the form that they would appear in an RPM macros file on-disk.
+         * @since 2.0
          */
         get_rpm_macros(): string;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of all RPMs in the whitelist.
+         * @since 2.0
          */
         get_rpm_whitelist(): string[];
 
         /**
          * @param arch An architecture to remove from the list of architectures for which to build this module.
+         * @since 2.9
          */
         remove_arch(arch: string): void;
 
         /**
          * @param rpm An RPM name to remove from the whitelist.
+         * @since 2.0
          */
         remove_rpm_from_whitelist(rpm: string): void;
 
         /**
          * @param rpm_macros A string containing RPM build macros in the form that they would appear in an RPM macros file on-disk.
+         * @since 2.0
          */
         set_rpm_macros(rpm_macros: string): void;
     }
@@ -885,23 +917,27 @@ export namespace Modulemd {
         // Virtual methods
         /**
          * @param key An optional new key for the copied component which is used as the lookup key when this component is attached to a {@link Modulemd.ModuleStream}.
+         * @since 2.0
          * @virtual
          */
         vfunc_copy(key: string | null): Component;
 
         /**
          * @param self_2 A {@link Modulemd.Component} object.
+         * @since 2.3
          * @virtual
          */
         vfunc_equals(self_2: Component): boolean;
 
         /**
+         * @since 2.0
          * @virtual
          */
         vfunc_get_name(): string;
 
         /**
          * @param name The name of this component. Note that this is different from the key used to save this component to a {@link Modulemd.ModuleStream}. If this value is set, it adds a "name:" attribute to this component. This is used in bootstrapping cases where the key is a different name used to differentiate multiple ordered builds of the same component name. This function is currently only implemented for {@link Modulemd.ComponentRpm} and has no effect on other {@link Modulemd.Component} types.
+         * @since 2.2
          * @virtual
          */
         vfunc_set_name(name: string | null): void;
@@ -910,6 +946,7 @@ export namespace Modulemd {
          * Verifies that all stored values are internally consistent and that the
          * component is sufficiently-complete for emitting. This function is called
          * implicitly before attempting to emit the contents.
+         * @since 2.2
          * @virtual
          */
         vfunc_validate(): boolean;
@@ -918,73 +955,87 @@ export namespace Modulemd {
         /**
          * Add a build dependency of this component.
          * @param key A key representing another component in the {@link Modulemd.ModuleStream} components map.
+         * @since 2.2
          */
         add_buildafter(key: string): void;
 
         /**
          * Remove all buildafter entries for this component.
+         * @since 2.5
          */
         clear_buildafter(): void;
 
         /**
          * @param key An optional new key for the copied component which is used as the lookup key when this component is attached to a {@link Modulemd.ModuleStream}.
          * @returns A newly-allocated copy of `self`.
+         * @since 2.0
          */
         copy(key: string | null): Component;
 
         /**
          * @param self_2 A {@link Modulemd.Component} object.
          * @returns TRUE, if both the objects are equal. FALSE, otherwise.
+         * @since 2.3
          */
         equals(self_2: Component): boolean;
 
         /**
          * @returns The set of component keys that this component depends upon.
+         * @since 2.2
          */
         get_buildafter(): string[];
 
         /**
          * @returns TRUE if this component is used only for building this module.
+         * @since 2.2
          */
         get_buildonly(): boolean;
 
         /**
          * @returns The value of the buildorder.
+         * @since 2.0
          */
         get_buildorder(): number;
 
         /**
          * @returns The name of the key used to attach this component to a {@link Modulemd.ModuleStream}.
+         * @since 2.2
          */
         get_key(): string;
 
         /**
          * @returns The name of the component. Note that this may be different from the key used to save this component to a {@link Modulemd.ModuleStream}. If you specifically need the key, use `modulemd_component_get_key()` instead.
+         * @since 2.0
          */
         get_name(): string;
 
         /**
          * @returns The rationale.
+         * @since 2.0
          */
         get_rationale(): string;
 
         /**
          * @param buildonly Whether this component is used only for building this module. If set to TRUE, the build system should add any artifacts produced by this component to the data.filters section of the output modulemd.
+         * @since 2.2
          */
         set_buildonly(buildonly: boolean): void;
 
         /**
          * @param buildorder The order this component should be built relative to others.
+         * @since 2.0
          */
         set_buildorder(buildorder: bigint | number): void;
 
         /**
          * @param name The name of this component. Note that this is different from the key used to save this component to a {@link Modulemd.ModuleStream}. If this value is set, it adds a "name:" attribute to this component. This is used in bootstrapping cases where the key is a different name used to differentiate multiple ordered builds of the same component name. This function is currently only implemented for {@link Modulemd.ComponentRpm} and has no effect on other {@link Modulemd.Component} types.
+         * @since 2.2
          */
         set_name(name: string | null): void;
 
         /**
          * @param rationale The reason that this component is part of the stream.
+         * @since 2.0
          */
         set_rationale(rationale: string | null): void;
 
@@ -993,6 +1044,7 @@ export namespace Modulemd {
          * component is sufficiently-complete for emitting. This function is called
          * implicitly before attempting to emit the contents.
          * @returns TRUE if the {@link Modulemd.Component} passed validation. FALSE and sets `error` appropriately if validation fails.
+         * @since 2.2
          */
         validate(): boolean;
     }
@@ -1067,21 +1119,25 @@ export namespace Modulemd {
         // Methods
         /**
          * @returns The commit ID in the SCM repository.
+         * @since 2.0
          */
         get_ref(): string;
 
         /**
          * @returns The URI of the SCM repository.
+         * @since 2.0
          */
         get_repository(): string;
 
         /**
          * @param ref The commit ID in the SCM repository.
+         * @since 2.0
          */
         set_ref(ref: string | null): void;
 
         /**
          * @param repository The URI of the SCM repository.
+         * @since 2.0
          */
         set_repository(repository: string | null): void;
     }
@@ -1190,6 +1246,7 @@ export namespace Modulemd {
          * any number of times. Use `modulemd_component_rpm_clear_multilib_arches()` to
          * return to "no architectures".
          * @param arch An architecture on which this package should be multilib.
+         * @since 2.0
          */
         add_multilib_arch(arch: string): void;
 
@@ -1199,86 +1256,105 @@ export namespace Modulemd {
          * architectures. Use `modulemd_component_rpm_clear_arches()` to return to "all
          * architectures".
          * @param arch An architecture on which this package should be available.
+         * @since 2.0
          */
         add_restricted_arch(arch: string): void;
 
         /**
          * Indicate that this RPM component is available on all arches.
+         * @since 2.9
          */
         clear_arches(): void;
 
         /**
          * Indicate that this RPM component is multilib on no architectures.
+         * @since 2.9
          */
         clear_multilib_arches(): void;
 
         /**
          * @returns A {@link GObject.Strv} list of architectures on which this RPM should be available.
+         * @since 2.0
          */
         get_arches(): string[];
 
         /**
          * @returns The {@link Modulemd.ComponentRpm.buildroot} flag.
+         * @since 2.7
          */
         get_buildroot(): boolean;
 
         /**
          * @returns The lookaside cache URL.
+         * @since 2.0
          */
         get_cache(): string;
 
         /**
          * @returns A {@link GObject.Strv} list of architectures on which multilib should be available.
+         * @since 2.0
          */
         get_multilib_arches(): string[];
 
         /**
          * @returns The commit ID in the SCM repository.
+         * @since 2.0
          */
         get_ref(): string;
 
         /**
          * @returns The URI of the SCM repository.
+         * @since 2.0
          */
         get_repository(): string;
 
         /**
          * @returns The {@link Modulemd.ComponentRpm.srpm_buildroot} flag.
+         * @since 2.7
          */
         get_srpm_buildroot(): boolean;
 
         /**
          * Indicate that this RPM component is available on all arches.
+         * @since 2.0
+         * @deprecated since 2.9: Use `modulemd_component_rpm_clear_arches()` instead.
          */
         reset_arches(): void;
 
         /**
          * Indicate that this RPM component is multilib on no architectures.
+         * @since 2.0
+         * @deprecated since 2.9: Use `modulemd_component_rpm_clear_multilib_arches()` instead.
          */
         reset_multilib_arches(): void;
 
         /**
          * @param buildroot The {@link Modulemd.ComponentRpm.buildroot} flag to set for `self`.
+         * @since 2.7
          */
         set_buildroot(buildroot: boolean): void;
 
         /**
          * @param cache The lookaside cache URL.
+         * @since 2.0
          */
         set_cache(cache: string | null): void;
 
         /**
          * @param ref The commit ID in the SCM repository.
+         * @since 2.0
          */
         set_ref(ref: string | null): void;
 
         /**
          * @param repository The URI of the SCM repository.
+         * @since 2.0
          */
         set_repository(repository: string | null): void;
 
         /**
          * @param srpm_buildroot The {@link Modulemd.ComponentRpm.srpm_buildroot} flag to set for `self`.
+         * @since 2.7
          */
         set_srpm_buildroot(srpm_buildroot: boolean): void;
     }
@@ -1355,22 +1431,26 @@ export namespace Modulemd {
 
         // Virtual methods
         /**
+         * @since 2.0
          * @virtual
          */
         vfunc_copy(): Defaults;
 
         /**
          * @param self_2 A {@link Modulemd.Defaults} object
+         * @since 2.2
          * @virtual
          */
         vfunc_equals(self_2: Defaults): boolean;
 
         /**
+         * @since 2.0
          * @virtual
          */
         vfunc_get_mdversion(): bigint | number;
 
         /**
+         * @since 2.0
          * @virtual
          */
         vfunc_validate(): boolean;
@@ -1378,43 +1458,51 @@ export namespace Modulemd {
         // Methods
         /**
          * @returns A newly-allocated copy of `self`.
+         * @since 2.0
          */
         copy(): Defaults;
 
         /**
          * @param self_2 A {@link Modulemd.Defaults} object
          * @returns TRUE if both `self_1` and `self_2` contain equal values, FALSE if they differed.
+         * @since 2.2
          */
         equals(self_2: Defaults): boolean;
 
         /**
          * @returns The metadata version of this defaults object.
+         * @since 2.0
          */
         get_mdversion(): number;
 
         /**
          * @returns The last modified time represented as a 64-bit integer (such as 201807011200)
+         * @since 2.0
          */
         get_modified(): number;
 
         /**
          * @returns The name of the module to which these defaults apply.
+         * @since 2.0
          */
         get_module_name(): string;
 
         /**
          * @param modified The last modified time represented as a 64-bit integer (such as 201807011200)
+         * @since 2.0
          */
         set_modified(modified: bigint | number): void;
 
         /**
          * @param mdversion The version to upgrade to.
          * @returns A newly-allocated copy of `self` upgraded to the requested defaults version. NULL if the upgrade cannot be performed and sets `error` appropriately. This function does not modify `self`.
+         * @since 2.0
          */
         upgrade(mdversion: bigint | number): Defaults;
 
         /**
          * @returns TRUE if validation passed, FALSE and sets `error` appropriately if validation failed.
+         * @since 2.0
          */
         validate(): boolean;
     }
@@ -1477,6 +1565,7 @@ export namespace Modulemd {
          * @param stream_name The name of the module stream to which to add this default profile.
          * @param profile_name The name of the default profile to add.
          * @param intent The name of the system intent to add profile defaults to. If NULL, this sets the generic fallback profiles for the stream. System intents are deprecated and calls with this non-NULL argument will become void in the future.
+         * @since 2.0
          */
         add_default_profile_for_stream(stream_name: string, profile_name: string, intent: string | null): void;
 
@@ -1484,18 +1573,21 @@ export namespace Modulemd {
          * @param stream_name The name of the string to retrieve the default profiles for.
          * @param intent The name of the system intent for which to retrieve the profile defaults for this stream. System intents are deprecated and this argument will be ignored in the future.
          * @returns A sorted {@link GObject.Strv} list of unique profiles to be installed by default for this stream. NULL, if this stream_name is not present in the defaults.
+         * @since 2.0
          */
         get_default_profiles_for_stream(stream_name: string, intent: string | null): string[];
 
         /**
          * @param intent The name of the system intent whose default stream will be retrieved. If left NULL or the specified intent has no different default, it will return the generic default stream for this module. System intents are deprecated and this argument will be ignored in the future.
          * @returns The name of the default stream for this module.
+         * @since 2.0
          */
         get_default_stream(intent: string | null): string;
 
         /**
          * @param intent The name of the system intent whose stream profiles will be retrieved. If left NULL or the specified intent has no separate defaults for this module, it will return the generic stream profiles. System intents are deprecated and this argument will be ignored in the future.
          * @returns A sorted {@link GObject.Strv} list of unique stream names for which default profiles have been assigned.
+         * @since 2.0
          */
         get_streams_with_default_profiles(intent: string | null): string[];
 
@@ -1504,6 +1596,7 @@ export namespace Modulemd {
          * in the output document.
          * @param stream_name The name of the module stream from which to remove default profiles.
          * @param intent The name of the system intent from which to remove the profile defaults for this stream. System intents are deprecated and calls with this non-NULL arugment will become void in the future.
+         * @since 2.0
          */
         remove_default_profiles_for_stream(stream_name: string, intent: string | null): void;
 
@@ -1511,6 +1604,7 @@ export namespace Modulemd {
          * Set the default stream for this module.
          * @param default_stream The name of the default stream for this module. If NULL, it will remove the default stream.
          * @param intent If non-NULL, this indicates the system intent to apply this default stream. If NULL, it will be added as common defaults. System intents are deprecated and calls with this non-NULL argument will become void in the future.
+         * @since 2.0
          */
         set_default_stream(default_stream: string | null, intent: string | null): void;
 
@@ -1519,6 +1613,7 @@ export namespace Modulemd {
          * a file, it will appear as `stream_name: []`.
          * @param stream_name The name of the module stream for which to empty default profiles.
          * @param intent The name of the system intent from which to clear the profile defaults for this stream. System intents are deprecated and calls with this non-NULL argument will become void in the future.
+         * @since 2.0
          */
         set_empty_default_profiles_for_stream(stream_name: string, intent: string | null): void;
     }
@@ -1575,6 +1670,7 @@ export namespace Modulemd {
          * will be added (with deduplication).
          * @param module_name The name of the module to depend on.
          * @param module_stream The name of the module stream to depend on.
+         * @since 2.0
          */
         add_buildtime_stream(module_name: string, module_stream: string): void;
 
@@ -1585,22 +1681,26 @@ export namespace Modulemd {
          * streams will be added (with deduplication).
          * @param module_name The name of the module to depend on.
          * @param module_stream The name of the module stream to depend on.
+         * @since 2.0
          */
         add_runtime_stream(module_name: string, module_stream: string): void;
 
         /**
          * Remove all buildtime dependencies from this {@link Modulemd.Dependencies} object.
+         * @since 2.5
          */
         clear_buildtime_dependencies(): void;
 
         /**
          * Remove all runtime dependencies from this {@link Modulemd.Dependencies} object.
+         * @since 2.5
          */
         clear_runtime_dependencies(): void;
 
         /**
          * Create a copy of this {@link Modulemd.Dependencies} object.
          * @returns The copied {@link Modulemd.Dependencies} object.
+         * @since 2.0
          */
         copy(): Dependencies;
 
@@ -1608,40 +1708,47 @@ export namespace Modulemd {
          * Check if `self_1` and `self_2` are equal objects.
          * @param self_2 A {@link Modulemd.Dependencies} object.
          * @returns TRUE, if the're equal. FALSE, otherwise.
+         * @since 2.2
          */
         equals(self_2: Dependencies): boolean;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of module names of build-time dependencies.
+         * @since 2.0
          */
         get_buildtime_modules(): string[];
 
         /**
          * @param module The name of the module.
          * @returns An ordered {@link GObject.Strv} list of module streams associated with the specified module that are required at build-time.
+         * @since 2.0
          */
         get_buildtime_streams(module: string): string[] | null;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of module names of run-time dependencies.
+         * @since 2.0
          */
         get_runtime_modules(): string[];
 
         /**
          * @param module The name of the module.
          * @returns An ordered {@link GObject.Strv} list of module streams associated with the specified module that are required at run-time.
+         * @since 2.0
          */
         get_runtime_streams(module: string): string[] | null;
 
         /**
          * Adds a module and inserts an empty list for it as buildtime dependency.
          * @param module_name The name of the module to add dependencies on.
+         * @since 2.0
          */
         set_empty_buildtime_dependencies_for_module(module_name: string): void;
 
         /**
          * Adds a module and inserts an empty list for it as runtime dependency.
          * @param module_name The name of the module to add dependencies on.
+         * @since 2.0
          */
         set_empty_runtime_dependencies_for_module(module_name: string): void;
     }
@@ -1712,26 +1819,31 @@ export namespace Modulemd {
          * {@link Modulemd.Module} and removes any XMD sections that are present. This is
          * generally done to trim down the metadata to only the portions that are
          * useful to the package manager.
+         * @since 2.14
          */
         clear_xmds(): void;
 
         /**
          * @returns A deep copy of this {@link Modulemd.Module} object.
+         * @since 2.0
          */
         copy(): Module;
 
         /**
          * @returns A list of all available stream objects associated with this module. There may be multiple streams with the same name and different version and context. The order of items in this list is not guaranteed.
+         * @since 2.0
          */
         get_all_streams(): ModuleStream[];
 
         /**
          * @returns The defaults of this module or NULL if none.
+         * @since 2.0
          */
         get_defaults(): Defaults;
 
         /**
          * @returns The module name.
+         * @since 2.0
          */
         get_module_name(): string;
 
@@ -1739,11 +1851,13 @@ export namespace Modulemd {
          * @param stream The stream to look up obsoletes for.
          * @param context The stream context to look up obsoletes for.
          * @returns The newest active obsoletes attached to this module with specified stream and context (when eol_date is not set or it already occurred the obsoletes is active). If no context is passed it matches obsoletes without context.
+         * @since 2.10
          */
         get_newest_active_obsoletes(stream: string, context: string | null): Obsoletes;
 
         /**
          * @returns A list of all obsoletes attached to this module. These are pointers to the internal memory objects and must not be modified or freed.
+         * @since 2.10
          */
         get_obsoletes(): Obsoletes[];
 
@@ -1752,6 +1866,8 @@ export namespace Modulemd {
          * @param version The version of the stream to retrieve.
          * @param context The context of the stream to retrieve.
          * @returns The requested stream object or NULL if no match was found.
+         * @since 2.0
+         * @deprecated since 2.2: Use modulemd_module_get_stream_by_NSVCA() instead.
          */
         get_stream_by_NSVC(stream_name: string, version: bigint | number, context: string): ModuleStream;
 
@@ -1761,23 +1877,27 @@ export namespace Modulemd {
          * @param context The context of the stream to retrieve. If NULL, the context is not included in the search.
          * @param arch The processor architecture of the stream to retrieve. If NULL, the architecture is not included in the search.
          * @returns The requested stream object. NULL and sets `error` appropriately if the provided information is not sufficient to return exactly one {@link Modulemd.ModuleStream} result.
+         * @since 2.2
          */
         get_stream_by_NSVCA(stream_name: string, version: bigint | number, context: string | null, arch: string | null): ModuleStream;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of stream names in this module.
+         * @since 2.6
          */
         get_stream_names(): string[];
 
         /**
          * @param stream_name The name of the stream to retrieve.
          * @returns A list of all available stream objects associated with a particular stream name, sorted highest to lowest by the version. The same version may have more than one associated context.
+         * @since 2.0
          */
         get_streams_by_stream_name(stream_name: string): ModuleStream[];
 
         /**
          * @param stream The stream to look up translations for.
          * @returns The set of translations attached to streams.
+         * @since 2.8
          */
         get_translation(stream: string): Translation;
 
@@ -1788,6 +1908,7 @@ export namespace Modulemd {
          * @param version The version of the stream to remove. If set to zero, matches all versions.
          * @param context The context of the stream to remove. If NULL, matches all stream contexts.
          * @param arch The processor architecture of the stream to remove. If NULL, matches all architectures.
+         * @since 2.3
          */
         remove_streams_by_NSVCA(stream_name: string, version: bigint | number, context: string | null, arch: string | null): void;
 
@@ -1797,6 +1918,7 @@ export namespace Modulemd {
          * @param context The context of the stream to retrieve. If NULL, the context is not included in the search.
          * @param arch The processor architecture of the stream to retrieve. If NULL, the architecture is not included in the search.
          * @returns The list of stream objects matching the requested parameters. This function cannot fail, but it may return a zero-length list if no matches were found. The returned streams will be in a predictable order, sorted first by stream name, then by version (highest to lowest), then by context and finally by architecture.
+         * @since 2.5
          */
         search_streams(stream_name: string, version: bigint | number, context: string | null, arch: string | null): ModuleStream[];
 
@@ -1808,17 +1930,20 @@ export namespace Modulemd {
          * @param context The context of the stream to retrieve. If NULL, will search all contexts.
          * @param arch The processor architecture of the stream to retrieve. If NULL, the architecture is not included in the search.
          * @returns The list of stream objects matching all of the requested parameters. This function cannot fail, but it may return a zero-length list if no matches were found. The returned streams will be in a predictable order, sorted first by module name, then stream name, then by version (highest first), then by context and finally by architecture.
+         * @since 2.9
          */
         search_streams_by_glob(stream_name: string | null, version: string | null, context: string | null, arch: string | null): ModuleStream[];
 
         /**
          * @param nsvca_pattern A [glob](https://www.mankier.com/3/glob) pattern to match against the NSVCA strings of the {@link Modulemd.ModuleStream} objects in this module. If NULL, this will match all NSVCAs.
          * @returns An array of {@link Modulemd.ModuleStream} objects whose NSVCA string matches the provided pattern. This function cannot fail, but may return an array of zero entries if the pattern did not match any streams. The returned streams will be in a predictable order, sorted first by module name, then stream name, then by version (highest first), then by context and finally by architecture.
+         * @since 2.9
          */
         search_streams_by_nsvca_glob(nsvca_pattern: string | null): ModuleStream[];
 
         /**
          * @returns TRUE if validation passed, FALSE and sets `error` if failed.
+         * @since 2.0
          */
         validate(): boolean;
     }
@@ -1871,6 +1996,7 @@ export namespace Modulemd {
         /**
          * @param defaults The {@link Modulemd.Defaults} object to add to the index.
          * @returns TRUE if the {@link Modulemd.Defaults} was added successfully. If the defaults already existed in the index, it will be replaced by the new one. On failure, returns FALSE and sets `error` appropriately.
+         * @since 2.0
          */
         add_defaults(defaults: Defaults): boolean;
 
@@ -1882,18 +2008,21 @@ export namespace Modulemd {
          * the function will return `error` set appropriately.
          * @param stream The {@link Modulemd.ModuleStream} to add to the index. The stream added must have a module name and stream name set on it or it will be rejected.
          * @returns TRUE if the {@link Modulemd.ModuleStream} was added successfully. If the stream already existed in the index, it will be replaced by the new one. On failure, returns FALSE and sets `error` appropriately.
+         * @since 2.0
          */
         add_module_stream(stream: ModuleStream): boolean;
 
         /**
          * @param obsoletes The {@link Modulemd.Obsoletes} object to add to the index.
          * @returns TRUE if the {@link Modulemd.Obsoletes} was added successfully. If the obsoletes already existed in the index, it will be replaced by the new one. On failure, returns FALSE and sets `error` appropriately.
+         * @since 2.10
          */
         add_obsoletes(obsoletes: Obsoletes): boolean;
 
         /**
          * @param translation The {@link Modulemd.Translation} object to add to the index.
          * @returns TRUE if the {@link Modulemd.Translation} was added successfully. If the translation already existed in the index, it will be replaced by the new one. On failure, returns FALSE and sets `error` appropriately.
+         * @since 2.0
          */
         add_translation(translation: Translation): boolean;
 
@@ -1902,11 +2031,13 @@ export namespace Modulemd {
          * {@link Modulemd.ModuleIndex} and removes any XMD sections that are present. This is
          * generally done to trim down the metadata to only the portions that are
          * useful to the package manager.
+         * @since 2.14
          */
         clear_xmds(): void;
 
         /**
          * @returns A YAML representation of the index as a string. In the event of an error, sets `error` appropriately and returns NULL.
+         * @since 2.0
          */
         dump_to_string(): string;
 
@@ -1916,27 +2047,32 @@ export namespace Modulemd {
          * This function cannot fail, but may return an empty (non-NULL) {@link GLib.HashTable}.
          * @param intent The name of the system intent whose default stream will be retrieved. If left NULL or the specified intent has no separate default, it will return the generic default stream for this module. System intents are deprecated and this argument will be ignored in the future.
          * @returns A {@link GLib.HashTable} with the module name as the key and the default stream as the value for all modules with a default stream in the index. Modules without a default stream will not appear in this table.
+         * @since 2.5
          */
         get_default_streams(intent: string | null): { [key: string]: string };
 
         /**
          * @returns The metadata version of {@link Modulemd.Defaults} in use for this index.
+         * @since 2.0
          */
         get_defaults_mdversion(): DefaultsVersionEnum;
 
         /**
          * @param module_name The module name to look up in the index.
          * @returns The {@link Modulemd.Module} object matching the provided module name or NULL if the key was not present in the index.
+         * @since 2.0
          */
         get_module(module_name: string): Module;
 
         /**
          * @returns An ordered list of string keys in this index.
+         * @since 2.0
          */
         get_module_names(): string[];
 
         /**
          * @returns The metadata version of {@link Modulemd.ModuleStream} in use for this index.
+         * @since 2.0
          */
         get_stream_mdversion(): ModuleStreamVersionEnum;
 
@@ -1945,6 +2081,7 @@ export namespace Modulemd {
          * translations from a {@link Modulemd.ModuleIndex}.
          * @param module_name The name of the module to remove from the index.
          * @returns TRUE if the module name was present in the index. FALSE if it was not.
+         * @since 2.2
          */
         remove_module(module_name: string): boolean;
 
@@ -1953,6 +2090,7 @@ export namespace Modulemd {
          * [fnmatch(3)](https://www.mankier.com/3/fnmatch).
          * @param nevra_pattern A [glob](https://www.mankier.com/3/glob) pattern to match against the NEVRA strings of the rpm artifacts in the {@link Modulemd.ModuleStream} objects in this module.
          * @returns The list of stream objects containing an RPM that matches the `nevra_pattern`. This function cannot fail, but it may return a zero-length list if no matches were found. The returned streams will be in a predictable order, sorted first by module name, then stream name, then by version (highest first), then by context and finally by architecture.
+         * @since 2.9
          */
         search_rpms(nevra_pattern: string): ModuleStream[];
 
@@ -1965,12 +2103,14 @@ export namespace Modulemd {
          * @param context The context of the stream to retrieve. If NULL, will search all contexts.
          * @param arch The processor architecture of the stream to retrieve. If NULL, the architecture is not included in the search.
          * @returns The list of stream objects matching all of the requested parameters. This function cannot fail, but it may return a zero-length list if no matches were found. The returned streams will be in a predictable order, sorted first by module name, then stream name, then by version (highest first), then by context and finally by architecture.
+         * @since 2.9
          */
         search_streams(module_name: string | null, stream_name: string | null, version: string | null, context: string | null, arch: string | null): ModuleStream[];
 
         /**
          * @param nsvca_pattern A [glob](https://www.mankier.com/3/glob) pattern to match against the NSVCA strings of the {@link Modulemd.ModuleStream} objects in this module. If NULL, this will match all NSVCAs.
          * @returns The list of stream objects matching all of the requested parameters. This function cannot fail, but it may return a zero-length list if no matches were found. The returned streams will be in a predictable order, sorted first by module name, then stream name, then by version (highest first), then by context and finally by architecture.
+         * @since 2.9
          */
         search_streams_by_nsvca_glob(nsvca_pattern: string | null): ModuleStream[];
 
@@ -1989,6 +2129,7 @@ export namespace Modulemd {
          * @param strict Whether the parser should return failure if it encounters an unknown mapping key or a conflict in module default streams.
          * @param overrides_path If non-`null`, the path to a directory containing defaults documents that should override those in `path`.
          * @returns `true` if all ".yaml" files in the directory were imported successfully (this includes if no ".yaml" files were present). `false` if one or more files could not be read successfully and sets `error` appropriately.
+         * @since 2.8
          */
         update_from_defaults_directory(path: string, strict: boolean, overrides_path: string | null): boolean;
 
@@ -1996,6 +2137,7 @@ export namespace Modulemd {
          * @param yaml_file A name of a YAML file containing the module metadata and other related information such as default streams.
          * @param strict Whether the parser should return failure if it encounters an unknown mapping key or if it should ignore it.
          * @returns `true` if the update was successful. Returns `false` and sets `failures` appropriately if any of the YAML subdocuments were invalid or sets `error` if there was a fatal parse error.
+         * @since 2.0
          */
         update_from_file(yaml_file: string, strict: boolean): [boolean, SubdocumentInfo[]];
 
@@ -2003,6 +2145,7 @@ export namespace Modulemd {
          * @param yaml_string A YAML string containing the module metadata and other related information such as default streams.
          * @param strict Whether the parser should return failure if it encounters an unknown mapping key or if it should ignore it.
          * @returns `true` if the update was successful. Returns `false` and sets `failures` appropriately if any of the YAML subdocuments were invalid or sets `error` if there was a fatal parse error.
+         * @since 2.0
          */
         update_from_string(yaml_string: string, strict: boolean): [boolean, SubdocumentInfo[]];
 
@@ -2014,6 +2157,7 @@ export namespace Modulemd {
          * index, an error will be reported and the index will be left in an undefined
          * state.
          * @param mdversion The {@link Modulemd.Defaults} metadata version to upgrade to.
+         * @since 2.0
          */
         upgrade_defaults(mdversion: DefaultsVersionEnum): boolean;
 
@@ -2021,6 +2165,7 @@ export namespace Modulemd {
          * Upgrades all {@link Modulemd.ModuleStream} objects in this index to `mdversion` if
          * they are not already at that version.
          * @param mdversion The {@link Modulemd.ModuleStream} metadata version to upgrade to.
+         * @since 2.0
          */
         upgrade_streams(mdversion: ModuleStreamVersionEnum): boolean;
     }
@@ -2079,6 +2224,7 @@ export namespace Modulemd {
          * `modulemd_module_index_merger_resolve()` to perform the merge.
          * @param index A {@link Modulemd.ModuleIndex}, usually constructed by reading the module metadata from a repository with `modulemd_module_index_update_from_file()`, `modulemd_module_index_update_from_string()`, or `modulemd_module_index_update_from_stream()`. This function take a reference on `index`, so the caller must not modify it while the {@link Modulemd.ModuleIndexMerger} is in use.
          * @param priority The priority of the repository that the entries in `index` came from. This is used to determine when `index` should override rather then merge. In most cases, this will be zero. See the Description section for the {@link Modulemd.ModuleIndexMerger} class for details on the merge logic. Acceptable values are in the range of 0-1000.
+         * @since 2.0
          */
         associate_index(index: ModuleIndex, priority: number): void;
 
@@ -2095,6 +2241,7 @@ export namespace Modulemd {
          * `modulemd_module_index_merger_resolve_ext()` with
          * `strict_default_streams=FALSE`.
          * @returns A newly-allocated {@link Modulemd.ModuleIndex} object containing the merged results. If this function encounters an unresolvable merge conflict, it will return NULL and set `error` appropriately.
+         * @since 2.0
          */
         resolve(): ModuleIndex;
 
@@ -2108,6 +2255,7 @@ export namespace Modulemd {
          * that point is `g_object_unref()`.
          * @param strict_default_streams If TRUE, merging two {@link Modulemd.Defaults} with conflicting default streams will raise an error. If FALSE, the module will have its default stream blocked.
          * @returns A newly-allocated {@link Modulemd.ModuleIndex} object containing the merged results. If this function encounters an unresolvable merge conflict, it will return NULL and set `error` appropriately.
+         * @since 2.6
          */
         resolve_ext(strict_default_streams: boolean): ModuleIndex;
     }
@@ -2235,6 +2383,8 @@ export namespace Modulemd {
          * @param strict Whether the parser should return failure if it encounters an unknown mapping key or if it should ignore it.
          * @param module_name An optional module name to override the document on disk. Mostly useful in cases where the name is being auto-detected from git.
          * @param module_stream An optional module stream name to override the document on disk. Mostly useful in cases where the name is being auto-detected from git.
+         * @since 2.0
+         * @deprecated since 2.11: Use `modulemd_read_packager_file()` instead.
          */
         static read_file(path: string, strict: boolean, module_name: string | null, module_stream: string | null): ModuleStream;
 
@@ -2251,6 +2401,8 @@ export namespace Modulemd {
          * @param strict Whether the parser should return failure if it encounters an unknown mapping key or if it should ignore it.
          * @param module_name An optional module name to override the document on disk. Mostly useful in cases where the name is being auto-detected from git.
          * @param module_stream An optional module stream name to override the document on disk. Mostly useful in cases where the name is being auto-detected from git.
+         * @since 2.0
+         * @deprecated since 2.11: Use `modulemd_read_packager_string()` instead.
          */
         static read_string(yaml_string: string, strict: boolean, module_name: string | null, module_stream: string | null): ModuleStream;
 
@@ -2258,6 +2410,7 @@ export namespace Modulemd {
         /**
          * @param module_name A module name.
          * @param stream_name The stream of the module.
+         * @since 2.1
          * @virtual
          */
         vfunc_build_depends_on_stream(module_name: string, stream_name: string): boolean;
@@ -2267,6 +2420,7 @@ export namespace Modulemd {
          * the process.
          * @param module_name An optional new name for the module of the copied stream.
          * @param module_stream An optional new name for the copied stream.
+         * @since 2.0
          * @virtual
          */
         vfunc_copy(module_name: string | null, module_stream: string | null): ModuleStream;
@@ -2274,6 +2428,7 @@ export namespace Modulemd {
         /**
          * @param module_name A module name.
          * @param stream_name The stream of the module.
+         * @since 2.1
          * @virtual
          */
         vfunc_depends_on_stream(module_name: string, stream_name: string): boolean;
@@ -2281,11 +2436,13 @@ export namespace Modulemd {
         /**
          * Checks if `self_1` and `self_2` are identical objects.
          * @param self_2 A {@link Modulemd.ModuleStream} object.
+         * @since 2.3
          * @virtual
          */
         vfunc_equals(self_2: ModuleStream): boolean;
 
         /**
+         * @since 2.0
          * @virtual
          */
         vfunc_get_mdversion(): bigint | number;
@@ -2294,6 +2451,7 @@ export namespace Modulemd {
          * Verifies that all stored values are internally consistent and that the
          * module is sufficiently-complete for emitting. This function is called
          * implicitly before attempting to emit the contents.
+         * @since 2.0
          * @virtual
          */
         vfunc_validate(): boolean;
@@ -2303,6 +2461,7 @@ export namespace Modulemd {
          * @param module_name A module name.
          * @param stream_name The stream of the module.
          * @returns TRUE if any of the {@link Modulemd.Dependencies} objects associated with this module applies to the provided module name and stream in the build-time dependencies.
+         * @since 2.1
          */
         build_depends_on_stream(module_name: string, stream_name: string): boolean;
 
@@ -2312,6 +2471,7 @@ export namespace Modulemd {
          * @param module_name An optional new name for the module of the copied stream.
          * @param module_stream An optional new name for the copied stream.
          * @returns A newly-allocated {@link Modulemd.ModuleStream} object that is a complete copy of `self`, optionally with a new stream name.
+         * @since 2.0
          */
         copy(module_name: string | null, module_stream: string | null): ModuleStream;
 
@@ -2319,6 +2479,7 @@ export namespace Modulemd {
          * @param module_name A module name.
          * @param stream_name The stream of the module.
          * @returns TRUE if any of the {@link Modulemd.Dependencies} objects associated with this module applies to the provided module name and stream in the runtime dependencies.
+         * @since 2.1
          */
         depends_on_stream(module_name: string, stream_name: string): boolean;
 
@@ -2326,31 +2487,37 @@ export namespace Modulemd {
          * Checks if `self_1` and `self_2` are identical objects.
          * @param self_2 A {@link Modulemd.ModuleStream} object.
          * @returns TRUE, If both objects are equal. FALSE, otherwise.
+         * @since 2.3
          */
         equals(self_2: ModuleStream): boolean;
 
         /**
          * @returns The NSVCA of this module stream. The returned format is described [here](https://docs.fedoraproject.org/en-US/modularity/architecture/consuming/naming-policy/#_forms). NULL if module name or stream stream is unknown.
+         * @since 2.2
          */
         get_NSVCA(): string;
 
         /**
          * @returns Module architecture object. Indicates to which processor architecture this {@link Modulemd.ModuleStream} applies.
+         * @since 2.2
          */
         get_arch(): string;
 
         /**
          * @returns Module context flag. The context flag serves to distinguish module builds with the same name, stream and version and plays an important role in automatic module stream name expansion.
+         * @since 2.0
          */
         get_context(): string;
 
         /**
          * @returns The metadata version of this {@link Modulemd.ModuleStream}.
+         * @since 2.0
          */
         get_mdversion(): number;
 
         /**
          * @returns The name of the module.
+         * @since 2.0
          */
         get_module_name(): string;
 
@@ -2361,11 +2528,13 @@ export namespace Modulemd {
          * architecture of the module stream and as such is not guaranteed to be unique
          * within a repository.
          * @returns The NSVC (name:stream:version[:context]) of this module stream. NULL if module name or stream stream is unknown.
+         * @since 2.0
          */
         get_nsvc(): string;
 
         /**
          * @returns The name of this stream.
+         * @since 2.0
          */
         get_stream_name(): string;
 
@@ -2376,16 +2545,19 @@ export namespace Modulemd {
 
         /**
          * @param arch Module architecture. Indicates to which processor architecture this {@link Modulemd.ModuleStream} applies.
+         * @since 2.2
          */
         set_arch(arch: string | null): void;
 
         /**
          * @param context Module context flag. The context flag serves to distinguish module builds with the same name, stream and version and plays an important role in automatic module stream name expansion.
+         * @since 2.0
          */
         set_context(context: string | null): void;
 
         /**
          * @param version The version of this {@link Modulemd.ModuleStream}.
+         * @since 2.0
          */
         set_version(version: bigint | number): void;
 
@@ -2393,6 +2565,8 @@ export namespace Modulemd {
          * Return an upgraded copy of this object. Does not modify the original.
          * @param mdversion The metadata version to upgrade to. If zero, upgrades to the highest-supported version.
          * @returns A newly-allocated {@link Modulemd.ModuleStream} copy of this object upgraded to the requested version. Returns NULL and sets `error` appropriately if the upgrade could not be completed automatically.
+         * @since 2.0
+         * @deprecated since 2.10: Use `modulemd_module_stream_upgrade_ext()` instead.
          */
         upgrade(mdversion: bigint | number): ModuleStream;
 
@@ -2400,6 +2574,7 @@ export namespace Modulemd {
          * Does not modify the original {@link Modulemd.ModuleStream} object, `from`.
          * @param mdversion The metadata version to upgrade to. If zero, upgrades to the highest-supported version.
          * @returns A newly-allocated {@link Modulemd.Module} containing a copy of this object upgraded to the requested version, possibly with multiple streams. Returns NULL and sets `error` appropriately if the upgrade could not be completed automatically.
+         * @since 2.10
          */
         upgrade_ext(mdversion: bigint | number): Module;
 
@@ -2408,6 +2583,7 @@ export namespace Modulemd {
          * module is sufficiently-complete for emitting. This function is called
          * implicitly before attempting to emit the contents.
          * @returns TRUE if the {@link Modulemd.ModuleStream} passed validation. FALSE and sets `error` appropriately if validation fails.
+         * @since 2.0
          */
         validate(): boolean;
     }
@@ -2509,43 +2685,51 @@ export namespace Modulemd {
          * Add a build-time dependency for this module.
          * @param module_name The name of the module to depend on.
          * @param module_stream The name of the module stream to depend on.
+         * @since 2.0
          */
         add_buildtime_requirement(module_name: string, module_stream: string): void;
 
         /**
          * Add a component definition to the module.
          * @param component A {@link Modulemd.Component} to be added to this module stream.
+         * @since 2.0
          */
         add_component(component: Component): void;
 
         /**
          * @param license A license under which one or more of the components of this module stream are distributed.
+         * @since 2.0
          */
         add_content_license(license: string): void;
 
         /**
          * @param license A license under which this module stream is distributed.
+         * @since 2.0
          */
         add_module_license(license: string): void;
 
         /**
          * Adds a profile definition to this module stream.
          * @param profile A {@link Modulemd.Profile} for this module stream.
+         * @since 2.0
          */
         add_profile(profile: Profile): void;
 
         /**
          * @param rpm The name of a binary RPM present in this module that is considered stable public API.
+         * @since 2.0
          */
         add_rpm_api(rpm: string): void;
 
         /**
          * @param nevr The NEVR of a binary RPM present in this module stream.
+         * @since 2.0
          */
         add_rpm_artifact(nevr: string): void;
 
         /**
          * @param rpm The name of a binary RPM to filter out of this module stream.
+         * @since 2.0
          */
         add_rpm_filter(rpm: string): void;
 
@@ -2553,109 +2737,130 @@ export namespace Modulemd {
          * Add a runtime dependency for this module.
          * @param module_name The name of the module to depend on.
          * @param module_stream The name of the module stream to depend on.
+         * @since 2.0
          */
         add_runtime_requirement(module_name: string, module_stream: string): void;
 
         /**
          * Adds a servicelevel definition to this module stream.
          * @param servicelevel A {@link Modulemd.ServiceLevel} for this module stream.
+         * @since 2.0
          */
         add_servicelevel(servicelevel: ServiceLevel): void;
 
         /**
          * Remove all buildtime dependencies for this module.
+         * @since 2.5
          */
         clear_buildtime_requirements(): void;
 
         /**
          * Remove all content licenses.
+         * @since 2.5
          */
         clear_content_licenses(): void;
 
         /**
          * Remove all module components from this module stream.
+         * @since 2.5
          */
         clear_module_components(): void;
 
         /**
          * Remove all module licenses.
+         * @since 2.5
          */
         clear_module_licenses(): void;
 
         /**
          * Remove all profiles from this module stream.
+         * @since 2.0
          */
         clear_profiles(): void;
 
         /**
          * Remove all RPMs from the list of stable public API.
+         * @since 2.5
          */
         clear_rpm_api(): void;
 
         /**
          * Remove all RPM NEVRs from the list of artifacts.
+         * @since 2.5
          */
         clear_rpm_artifacts(): void;
 
         /**
          * Remove all RPM components from this module stream.
+         * @since 2.5
          */
         clear_rpm_components(): void;
 
         /**
          * Remove all RPMs from the filter list.
+         * @since 2.5
          */
         clear_rpm_filters(): void;
 
         /**
          * Remove all runtime dependencies for this module.
+         * @since 2.5
          */
         clear_runtime_requirements(): void;
 
         /**
          * Remove all servicelevels from this module stream.
+         * @since 2.0
          */
         clear_servicelevels(): void;
 
         /**
          * @returns The module artifact architecture.
+         * @since 2.0
          */
         get_arch(): string;
 
         /**
          * @returns The build options for this module's components.
+         * @since 2.0
          */
         get_buildopts(): Buildopts;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of module names that this module depends on at build-time.
+         * @since 2.0
          */
         get_buildtime_modules(): string[];
 
         /**
          * @param module_name The name of the module this module depends on.
          * @returns The name of the stream matching this module name in the build-time dependencies.
+         * @since 2.0
          */
         get_buildtime_requirement_stream(module_name: string): string;
 
         /**
          * @returns The module community website address.
+         * @since 2.0
          */
         get_community(): string;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of licenses under which one or more components of this module stream are released.
+         * @since 2.0
          */
         get_content_licenses(): string[];
 
         /**
          * @param locale The name of the locale to use when translating the string. If NULL, it will determine the locale with a system call to `setlocale(LC_MESSAGES, NULL)` and return that. If the caller wants the untranslated string, they should pass `"C"` for the locale.
          * @returns The module description, translated to the requested locale if available. Translation information is managed by the {@link Modulemd.Translation} and {@link Modulemd.TranslationEntry} objects.
+         * @since 2.0
          */
         get_description(locale: string | null): string;
 
         /**
          * @returns The module documentation website address.
+         * @since 2.0
          */
         get_documentation(): string;
 
@@ -2663,64 +2868,77 @@ export namespace Modulemd {
          * Compatibility function with early iterations of modulemd v1. This function
          * is a wrapper for `modulemd_module_stream_v1_get_servicelevel("rawhide")`.
          * @returns The end-of-life date for the "rawhide" service level.
+         * @since 2.0
+         * @deprecated since 2.0: Use `modulemd_module_stream_v1_get_servicelevel()` instead.
          */
         get_eol(): GLib.Date;
 
         /**
          * @param component_name The name of the component to retrieve.
          * @returns The module component matching `component_name` if it exists, else NULL.
+         * @since 2.0
          */
         get_module_component(component_name: string): ComponentModule;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of module component names included in this stream.
+         * @since 2.0
          */
         get_module_component_names(): string[];
 
         /**
          * @returns An ordered {@link GObject.Strv} list of licenses under which this module stream is released.
+         * @since 2.0
          */
         get_module_licenses(): string[];
 
         /**
          * @param profile_name The name of a profile to retrieve.
          * @returns The requested profile definition if present in the module stream. NULL otherwise.
+         * @since 2.0
          */
         get_profile(profile_name: string): Profile;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of profile names associated with this module stream.
+         * @since 2.0
          */
         get_profile_names(): string[];
 
         /**
          * @returns An ordered {@link GObject.Strv} list of binary RPM names that forms the public API of this module stream.
+         * @since 2.0
          */
         get_rpm_api(): string[];
 
         /**
          * @returns An ordered {@link GObject.Strv} list of RPM NEVRs are included in this module stream.
+         * @since 2.0
          */
         get_rpm_artifacts(): string[];
 
         /**
          * @param component_name The name of the component to retrieve.
          * @returns The RPM component matching `component_name` if it exists, else NULL.
+         * @since 2.0
          */
         get_rpm_component(component_name: string): ComponentRpm;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of RPM component names included in this stream.
+         * @since 2.0
          */
         get_rpm_component_names(): string[];
 
         /**
          * @returns An ordered {@link GObject.Strv} list of binary RPM names that are filtered out of this module stream.
+         * @since 2.0
          */
         get_rpm_filters(): string[];
 
         /**
          * @returns An ordered {@link GObject.Strv} list of module names that this module depends on at runtime.
+         * @since 2.0
          */
         get_runtime_modules(): string[];
 
@@ -2732,22 +2950,26 @@ export namespace Modulemd {
         /**
          * @param servicelevel_name The name of a servicelevel to retrieve.
          * @returns The requested servicelevel definition if present in the module stream. NULL otherwise.
+         * @since 2.0
          */
         get_servicelevel(servicelevel_name: string): ServiceLevel;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of servicelevel names associated with this module stream.
+         * @since 2.0
          */
         get_servicelevel_names(): string[];
 
         /**
          * @param locale The name of the locale to use when translating the string. If NULL, it will determine the locale with a system call to `setlocale(LC_MESSAGES, NULL)` and return that. If the caller wants the untranslated string, they should pass `"C"` for the locale.
          * @returns The module summary, translated to the requested locale if available. Translation information is managed by the {@link Modulemd.Translation} and {@link Modulemd.TranslationEntry} objects.
+         * @since 2.0
          */
         get_summary(locale: string | null): string;
 
         /**
          * @returns The module bug tracker website address.
+         * @since 2.0
          */
         get_tracker(): string;
 
@@ -2759,55 +2981,65 @@ export namespace Modulemd {
         /**
          * Remove a build-time dependency for this module.
          * @param module_name The name of the module to be removed.
+         * @since 2.0
          */
         remove_buildtime_requirement(module_name: string): void;
 
         /**
          * @param license A license to remove from the list. Has no effect if the license is not present.
+         * @since 2.0
          */
         remove_content_license(license: string): void;
 
         /**
          * Remove a component from this module stream.
          * @param component_name The name of the component to remove from the module stream.
+         * @since 2.0
          */
         remove_module_component(component_name: string): void;
 
         /**
          * @param license A license to remove from the list. Has no effect if the license is not present.
+         * @since 2.0
          */
         remove_module_license(license: string): void;
 
         /**
          * @param rpm A binary RPM name to remove from the list of stable public API.
+         * @since 2.0
          */
         remove_rpm_api(rpm: string): void;
 
         /**
          * @param nevr An RPM NEVR to remove from the list of artifacts.
+         * @since 2.0
          */
         remove_rpm_artifact(nevr: string): void;
 
         /**
          * Remove a component from this module stream.
          * @param component_name The name of the component to remove from the module stream.
+         * @since 2.0
          */
         remove_rpm_component(component_name: string): void;
 
         /**
          * @param rpm A binary RPM name to remove from the filter list.
+         * @since 2.0
          */
         remove_rpm_filter(rpm: string): void;
 
         /**
          * Remove a runtime dependency for this module.
          * @param module_name The name of the module to be removed.
+         * @since 2.0
          */
         remove_runtime_requirement(module_name: string): void;
 
         /**
          * Set the module artifact architecture.
          * @param arch The module artifact architecture.
+         * @since 2.0
          */
         set_arch(arch: string): void;
 
@@ -2820,24 +3052,28 @@ export namespace Modulemd {
         /**
          * Set build options for this module's components.
          * @param buildopts A {@link Modulemd.Buildopts} object describing build options that apply globally to components in this module.
+         * @since 2.0
          */
         set_buildopts(buildopts: Buildopts): void;
 
         /**
          * Set the module community website address.
          * @param community The upstream community website for this module.
+         * @since 2.0
          */
         set_community(community: string): void;
 
         /**
          * Set the module description.
          * @param description The untranslated description of this module.
+         * @since 2.0
          */
         set_description(description: string | null): void;
 
         /**
          * Set the module documentation website address.
          * @param documentation The upstream documentation website for this module.
+         * @since 2.0
          */
         set_documentation(documentation: string): void;
 
@@ -2845,18 +3081,22 @@ export namespace Modulemd {
          * Comptibility function with early iterations of modulemd v1. This function is
          * a wrapper for `modulemd_module_stream_v1_add_servicelevel("rawhide", eol)`.
          * @param eol The end-of-life date for the "rawhide" service level.
+         * @since 2.0
+         * @deprecated since 2.0: Use `modulemd_module_stream_v1_add_servicelevel()` instead.
          */
         set_eol(eol: GLib.Date): void;
 
         /**
          * Set the module summary.
          * @param summary The untranslated summary of this module.
+         * @since 2.0
          */
         set_summary(summary: string | null): void;
 
         /**
          * Set the module bug tracker website address.
          * @param tracker The upstream bug tracker website for this module.
+         * @since 2.0
          */
         set_tracker(tracker: string): void;
 
@@ -2868,6 +3108,7 @@ export namespace Modulemd {
          * This function assumes ownership of the XMD {@link GLib.Variant} and thus should not be
          * freed by the caller.
          * @param xmd A {@link GLib.Variant} representing arbitrary YAML.
+         * @since 2.0
          */
         set_xmd(xmd: GLib.Variant): void;
     }
@@ -2983,17 +3224,20 @@ export namespace Modulemd {
         /**
          * Add a component definition to the module.
          * @param component A {@link Modulemd.Component} to be added to this module stream.
+         * @since 2.0
          */
         add_component(component: Component): void;
 
         /**
          * @param license A license under which one or more of the components of this module stream are distributed.
+         * @since 2.0
          */
         add_content_license(license: string): void;
 
         /**
          * Add a binary package name to a list of demodularized packages.
          * @param rpm A name of a binary RPM package to become non-modular.
+         * @since 2.13
          */
         add_demodularized_rpm(rpm: string): void;
 
@@ -3001,53 +3245,63 @@ export namespace Modulemd {
          * Add a {@link Modulemd.Dependencies} object to the list of dependencies for this
          * module stream.
          * @param deps A {@link Modulemd.Dependencies} object to add to the list for this module stream.
+         * @since 2.0
          */
         add_dependencies(deps: Dependencies): void;
 
         /**
          * @param license A license under which this module stream is distributed.
+         * @since 2.0
          */
         add_module_license(license: string): void;
 
         /**
          * Adds a profile definition to this module stream.
          * @param profile A {@link Modulemd.Profile} for this module stream.
+         * @since 2.0
          */
         add_profile(profile: Profile): void;
 
         /**
          * @param rpm The name of a binary RPM present in this module that is considered stable public API.
+         * @since 2.0
          */
         add_rpm_api(rpm: string): void;
 
         /**
          * @param nevr The NEVR of a binary RPM present in this module stream.
+         * @since 2.0
          */
         add_rpm_artifact(nevr: string): void;
 
         /**
          * @param rpm The name of a binary RPM to filter out of this module stream.
+         * @since 2.0
          */
         add_rpm_filter(rpm: string): void;
 
         /**
          * Adds a servicelevel definition to this module stream.
          * @param servicelevel A {@link Modulemd.ServiceLevel} for this module stream.
+         * @since 2.0
          */
         add_servicelevel(servicelevel: ServiceLevel): void;
 
         /**
          * Remove all content licenses.
+         * @since 2.5
          */
         clear_content_licenses(): void;
 
         /**
          * Remove all RPM packages from a demodularized list of the object.
+         * @since 2.13
          */
         clear_demodularized_rpms(): void;
 
         /**
          * Empties the list of dependencies for this {@link Modulemd.ModuleStream}.
+         * @since 2.4
          */
         clear_dependencies(): void;
 
@@ -3058,21 +3312,25 @@ export namespace Modulemd {
 
         /**
          * Remove all module licenses.
+         * @since 2.5
          */
         clear_module_licenses(): void;
 
         /**
          * Remove all profiles from this module stream.
+         * @since 2.0
          */
         clear_profiles(): void;
 
         /**
          * Remove all RPMs from the list of stable public API.
+         * @since 2.5
          */
         clear_rpm_api(): void;
 
         /**
          * Remove all NPM NEVRs from the list of artifacts.
+         * @since 2.5
          */
         clear_rpm_artifacts(): void;
 
@@ -3083,41 +3341,49 @@ export namespace Modulemd {
 
         /**
          * Remove all RPMs from the filter list.
+         * @since 2.5
          */
         clear_rpm_filters(): void;
 
         /**
          * Remove all servicelevels from this module stream.
+         * @since 2.0
          */
         clear_servicelevels(): void;
 
         /**
          * Removes all XMD data from this {@link Modulemd.ModuleStreamV2}
+         * @since 2.14
          */
         clear_xmd(): void;
 
         /**
          * @returns The module artifact architecture.
+         * @since 2.0
          */
         get_arch(): string;
 
         /**
          * @returns The build options for this module's components.
+         * @since 2.0
          */
         get_buildopts(): Buildopts;
 
         /**
          * @returns The module community website address.
+         * @since 2.0
          */
         get_community(): string;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of licenses under which one or more components of this module stream are released.
+         * @since 2.0
          */
         get_content_licenses(): string[];
 
         /**
          * @returns An ordered {@link GObject.Strv} list of binary RPM package names that became non-modular.
+         * @since 2.13
          */
         get_demodularized_rpms(): string[];
 
@@ -3130,48 +3396,57 @@ export namespace Modulemd {
         /**
          * @param locale The name of the locale to use when translating the string. If NULL, it will determine the locale with a system call to `setlocale(LC_MESSAGES, NULL)` and return that. If the caller wants the untranslated string, they should pass `"C"` for the locale.
          * @returns The module description, translated to the requested locale if available. Translation information is managed by the {@link Modulemd.Translation} and {@link Modulemd.TranslationEntry} objects.
+         * @since 2.0
          */
         get_description(locale: string | null): string;
 
         /**
          * @returns The module documentation website address.
+         * @since 2.0
          */
         get_documentation(): string;
 
         /**
          * @param component_name The name of the component to retrieve.
          * @returns The module component matching `component_name` if it exists, else NULL.
+         * @since 2.0
          */
         get_module_component(component_name: string): ComponentModule;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of module component names included in this stream.
+         * @since 2.0
          */
         get_module_component_names(): string[];
 
         /**
          * @returns An ordered {@link GObject.Strv} list of licenses under which this module stream is released.
+         * @since 2.0
          */
         get_module_licenses(): string[];
 
         /**
          * @returns The {@link Modulemd.Obsoletes} information associated with this object. If the associated obsoletes has reset attribute set, this function doesn't return it. From outside obsoletes with reset looks like there is no obsoletes set for this stream. Every obsoletes (even with reset) can be accessed from the streams module.
+         * @since 2.10
          */
         get_obsoletes_resolved(): Obsoletes;
 
         /**
          * @param profile_name The name of a profile to retrieve.
          * @returns The requested profile definition if present in the module stream. NULL otherwise.
+         * @since 2.0
          */
         get_profile(profile_name: string): Profile;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of profile names associated with this module stream.
+         * @since 2.0
          */
         get_profile_names(): string[];
 
         /**
          * @returns An ordered {@link GObject.Strv} list of binary RPM names that form the public API of this module stream.
+         * @since 2.0
          */
         get_rpm_api(): string[];
 
@@ -3179,49 +3454,58 @@ export namespace Modulemd {
          * @param digest A string representing the digest algorithm used to generate the `checksum`.
          * @param checksum An RPM artifact checksum.
          * @returns The {@link Modulemd.RpmMapEntry} object associated with the provided `checksum` generated by the provided `digest`.
+         * @since 2.2
          */
         get_rpm_artifact_map_entry(digest: string, checksum: string): RpmMapEntry;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of RPM NEVRs that are included in this module stream.
+         * @since 2.0
          */
         get_rpm_artifacts(): string[];
 
         /**
          * @param component_name The name of the component to retrieve.
          * @returns The RPM component matching `component_name` if it exists, else NULL.
+         * @since 2.0
          */
         get_rpm_component(component_name: string): ComponentRpm;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of RPM component names included in this stream.
+         * @since 2.0
          */
         get_rpm_component_names(): string[];
 
         /**
          * @returns An ordered {@link GObject.Strv} list of binary RPM names that are filtered out of this module stream.
+         * @since 2.0
          */
         get_rpm_filters(): string[];
 
         /**
          * @param servicelevel_name The name of a servicelevel to retrieve.
          * @returns The requested servicelevel definition if present in the module stream. NULL otherwise.
+         * @since 2.0
          */
         get_servicelevel(servicelevel_name: string): ServiceLevel;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of servicelevel names associated with this module stream.
+         * @since 2.0
          */
         get_servicelevel_names(): string[];
 
         /**
          * @param locale The name of the locale to use when translating the string. If NULL, it will determine the locale with a system call to `setlocale(LC_MESSAGES, NULL)` and return that. If the caller wants the untranslated string, they should pass `"C"` for the locale.
          * @returns The module summary, translated to the requested locale if available. Translation information is managed by the {@link Modulemd.Translation} and {@link Modulemd.TranslationEntry} objects.
+         * @since 2.0
          */
         get_summary(locale: string | null): string;
 
         /**
          * @returns The module bug tracker website address.
+         * @since 2.0
          */
         get_tracker(): string;
 
@@ -3232,17 +3516,20 @@ export namespace Modulemd {
 
         /**
          * @returns Whether the `context` attribute should be treated as static.
+         * @since 2.11
          */
         is_static_context(): boolean;
 
         /**
          * @param license A license to remove from the list. Has no effect if the license is not present.
+         * @since 2.0
          */
         remove_content_license(license: string): void;
 
         /**
          * Remove a binary package name from a list of demodularized packages.
          * @param rpm A binary RPM name to remove from a demodularized list.
+         * @since 2.13
          */
         remove_demodularized_rpm(rpm: string): void;
 
@@ -3250,38 +3537,45 @@ export namespace Modulemd {
          * Removes all entries matching `deps` from the array of {@link Modulemd.Dependencies}
          * objects.
          * @param deps A {@link Modulemd.Dependencies} object to remove from the list for this module stream.
+         * @since 2.4
          */
         remove_dependencies(deps: Dependencies): void;
 
         /**
          * Remove a component from this module stream.
          * @param component_name The name of the component to remove from the module stream.
+         * @since 2.0
          */
         remove_module_component(component_name: string): void;
 
         /**
          * @param license A license to remove from the list. Has no effect if the license is not present.
+         * @since 2.0
          */
         remove_module_license(license: string): void;
 
         /**
          * @param rpm A binary RPM name to remove from the list of stable public API.
+         * @since 2.0
          */
         remove_rpm_api(rpm: string): void;
 
         /**
          * @param nevr An RPM NEVR to remove from the list of artifacts.
+         * @since 2.0
          */
         remove_rpm_artifact(nevr: string): void;
 
         /**
          * Remove a component from this module stream.
          * @param component_name The name of the component to remove from the module stream.
+         * @since 2.0
          */
         remove_rpm_component(component_name: string): void;
 
         /**
          * @param rpm A binary RPM name to remove from the filter list.
+         * @since 2.0
          */
         remove_rpm_filter(rpm: string): void;
 
@@ -3294,6 +3588,7 @@ export namespace Modulemd {
         /**
          * Set the module artifact architecture.
          * @param arch The module artifact architecture.
+         * @since 2.0
          */
         set_arch(arch: string): void;
 
@@ -3306,24 +3601,28 @@ export namespace Modulemd {
         /**
          * Set build options for this module's components.
          * @param buildopts A {@link Modulemd.Buildopts} object describing build options that apply globally to components in this module.
+         * @since 2.0
          */
         set_buildopts(buildopts: Buildopts): void;
 
         /**
          * Set the module community website address.
          * @param community The upstream community website for this module.
+         * @since 2.0
          */
         set_community(community: string): void;
 
         /**
          * Set the module description.
          * @param description The untranslated description of this module.
+         * @since 2.0
          */
         set_description(description: string | null): void;
 
         /**
          * Set the module documentation website address.
          * @param documentation The upstream documentation website for this module.
+         * @since 2.0
          */
         set_documentation(documentation: string): void;
 
@@ -3331,24 +3630,28 @@ export namespace Modulemd {
          * @param entry The RPM map entry to save to the stream.
          * @param digest A string representing the digest algorithm used to generate the `checksum`.
          * @param checksum An RPM artifact checksum.
+         * @since 2.2
          */
         set_rpm_artifact_map_entry(entry: RpmMapEntry, digest: string, checksum: string): void;
 
         /**
          * Marks this {@link Modulemd.ModuleStreamV2} to indicate to dependency solvers that
          * they must treat the `context` attribute as informative.
+         * @since 2.11
          */
         set_static_context(): void;
 
         /**
          * Set the module summary.
          * @param summary The untranslated summary of this module.
+         * @since 2.0
          */
         set_summary(summary: string | null): void;
 
         /**
          * Set the module bug tracker website address.
          * @param tracker The upstream bug tracker website for this module.
+         * @since 2.0
          */
         set_tracker(tracker: string): void;
 
@@ -3360,12 +3663,14 @@ export namespace Modulemd {
          * This function assumes ownership of the XMD {@link GLib.Variant} and thus should not be
          * freed by the caller.
          * @param xmd A {@link GLib.Variant} representing arbitrary YAML.
+         * @since 2.0
          */
         set_xmd(xmd: GLib.Variant): void;
 
         /**
          * Marks this {@link Modulemd.ModuleStreamV2} to indicate to dependency solvers that
          * they must ignore the `context` attribute as a uniqueness element.
+         * @since 2.11
          */
         unset_static_context(): void;
     }
@@ -3550,61 +3855,73 @@ export namespace Modulemd {
         /**
          * Create a copy of this {@link Modulemd.Obsoletes} object.
          * @returns The copied {@link Modulemd.Obsoletes} object.
+         * @since 2.10
          */
         copy(): Obsoletes;
 
         /**
          * @returns A date represented as a 64-bit integer (such as 201807011200).
+         * @since 2.10
          */
         get_eol_date(): number;
 
         /**
          * @returns The message associated with this {@link Modulemd.Obsoletes} object
+         * @since 2.10
          */
         get_message(): string;
 
         /**
          * @returns The last modified time of this {@link Modulemd.Obsoletes} object represented as a 64-bit integer (such as 201807011200).
+         * @since 2.10
          */
         get_modified(): number;
 
         /**
          * @returns The context name to which this {@link Modulemd.Obsoletes} object applies.
+         * @since 2.10
          */
         get_module_context(): string;
 
         /**
          * @returns The module name of obsoleting stream.
+         * @since 2.10
          */
         get_obsoleted_by_module_name(): string;
 
         /**
          * @returns The module stream of obsoleting stream.
+         * @since 2.10
          */
         get_obsoleted_by_module_stream(): string;
 
         /**
          * @returns Whether this {@link Modulemd.Obsoletes} object cancels/resets all previously specified obsoletes.
+         * @since 2.10
          */
         get_reset(): boolean;
 
         /**
          * @returns If this {@link Modulemd.Obsoletes} object has eol_date set and the date has not occurred yet it returns false otherwise it returns true. (When eol_date is not set or it already occurred the obsoletes is active.)
+         * @since 2.10
          */
         is_active(): boolean;
 
         /**
          * @param eol_date The end-of-life date for this stream. If set to zero, the stream is EOLed immediately.
+         * @since 2.10
          */
         set_eol_date(eol_date: bigint | number): void;
 
         /**
          * @param modified The last modified time represented as a 64-bit integer (such as 201807011200).
+         * @since 2.10
          */
         set_modified(modified: bigint | number): void;
 
         /**
          * @param module_context The name of the module context to which this obsoletes applies.
+         * @since 2.10
          */
         set_module_context(module_context: string | null): void;
 
@@ -3613,6 +3930,7 @@ export namespace Modulemd {
          * the other is invalid.
          * @param obsoleted_by_module_name The module name of obsoleting stream.
          * @param obsoleted_by_module_stream The module stream of obsoleting stream.
+         * @since 2.10
          */
         set_obsoleted_by(obsoleted_by_module_name: string, obsoleted_by_module_stream: string): void;
 
@@ -3620,6 +3938,7 @@ export namespace Modulemd {
          * Sets the reset attribute on {@link Modulemd.Obsoletes} object. With this boolean attribute set the
          * obsoletes resets (cancels out) all previously specified obsoletes.
          * @param reset Whether to reset/cancel all previously specified obsoletes.
+         * @since 2.10
          */
         set_reset(reset: boolean): void;
 
@@ -3628,6 +3947,7 @@ export namespace Modulemd {
          * or dumping to YAML. It will be run implicitly prior to emitting YAML. This
          * is not a complete linter, merely a sanity check that the values are not
          * impossible.
+         * @since 2.10
          */
         validate(): boolean;
     }
@@ -3679,231 +3999,275 @@ export namespace Modulemd {
         // Methods
         /**
          * @param buildconfig A {@link Modulemd.BuildConfig} to include.
+         * @since 2.11
          */
         add_build_config(buildconfig: BuildConfig): void;
 
         /**
          * Add a component definition to the module.
          * @param component A {@link Modulemd.Component} to be added to this module stream.
+         * @since 2.11
          */
         add_component(component: Component): void;
 
         /**
          * Add a binary package name to a list of demodularized packages.
          * @param rpm A name of a binary RPM package to become non-modular.
+         * @since 2.13
          */
         add_demodularized_rpm(rpm: string): void;
 
         /**
          * @param license A license under which this module stream is distributed.
+         * @since 2.11
          */
         add_module_license(license: string): void;
 
         /**
          * Adds a {@link Modulemd.Profile} to this {@link Modulemd.PackagerV3} object.
          * @param profile The new {@link Modulemd.Profile} to add.
+         * @since 2.11
          */
         add_profile(profile: Profile): void;
 
         /**
          * @param rpm The name of a binary RPM present in this module that is considered stable public API.
+         * @since 2.11
          */
         add_rpm_api(rpm: string): void;
 
         /**
          * @param rpm The name of a binary RPM to filter out of this module stream.
+         * @since 2.11
          */
         add_rpm_filter(rpm: string): void;
 
         /**
          * Remove all added {@link Modulemd.BuildConfig} objects from `self`
+         * @since 2.11
          */
         clear_build_configs(): void;
 
         /**
          * Remove all RPM packages from a demodularized list of the object.
+         * @since 2.13
          */
         clear_demodularized_rpms(): void;
 
         /**
          * Remove all module components from this module stream.
+         * @since 2.11
          */
         clear_module_components(): void;
 
         /**
          * Remove all module licenses from `self`
+         * @since 2.11
          */
         clear_module_licenses(): void;
 
         /**
          * Removes all {@link Modulemd.Profile} objects from this {@link Modulemd.PackagerV3} object.
+         * @since 2.11
          */
         clear_profiles(): void;
 
         /**
          * Remove all RPMs from the list of stable public API.
+         * @since 2.11
          */
         clear_rpm_api(): void;
 
         /**
          * Remove all RPM components from this module stream.
+         * @since 2.11
          */
         clear_rpm_components(): void;
 
         /**
          * Remove all RPMs from the filter list.
+         * @since 2.11
          */
         clear_rpm_filters(): void;
 
         /**
          * @returns A newly-allocated {@link Modulemd.ModuleIndex} object containing a set of one or more {@link Modulemd.ModuleStreamV2} objects and possibly a {@link Modulemd.Defaults} object corresponding to the {@link Modulemd.PackagerV3} object `self`. NULL if there was an error doing the mapping and sets `error` appropriately. One of the errors is missing a module name or a stream name if a default profile is present.
+         * @since 2.11
          */
         convert_to_index(): ModuleIndex;
 
         /**
          * @returns A newly-allocated deep-copy of this {@link Modulemd.PackagerV3} object. This object must be freed with `g_object_unref()`.
+         * @since 2.11
          */
         copy(): PackagerV3;
 
         /**
          * @param context The context of the {@link Modulemd.BuildConfig} to retrieve from `self`.
          * @returns A {@link Modulemd.BuildConfig} with the provided `context` or NULL if it was not present.
+         * @since 2.11
          */
         get_build_config(context: string): BuildConfig;
 
         /**
          * @returns A list of contexts associated with the build configurations.
+         * @since 2.11
          */
         get_build_config_contexts_as_strv(): string[];
 
         /**
          * @returns The module community website address.
+         * @since 2.11
          */
         get_community(): string;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of binary RPM package names that became non-modular.
+         * @since 2.13
          */
         get_demodularized_rpms(): string[];
 
         /**
          * @returns The long description of the module.
+         * @since 2.11
          */
         get_description(): string;
 
         /**
          * @returns The module documentation website address.
+         * @since 2.11
          */
         get_documentation(): string;
 
         /**
          * @returns The metadata version of this {@link Modulemd.PackagerV3}.
+         * @since 2.11
          */
         get_mdversion(): number;
 
         /**
          * @param component_name The name of the component to retrieve.
          * @returns The module component matching `component_name` if it exists, else NULL.
+         * @since 2.11
          */
         get_module_component(component_name: string): ComponentModule;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of module component names included in this stream.
+         * @since 2.11
          */
         get_module_component_names(): string[];
 
         /**
          * @returns A {@link GObject.Strv} of module licenses associated with this module stream.
+         * @since 2.11
          */
         get_module_licenses_as_strv(): string[];
 
         /**
          * @returns The module name.
+         * @since 2.11
          */
         get_module_name(): string;
 
         /**
          * @param profile_name The name of a profile to retrieve.
          * @returns The requested profile definition if present in the {@link Modulemd.PackagerV3} object. NULL otherwise.
+         * @since 2.11
          */
         get_profile(profile_name: string): Profile;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of profile names associated with this {@link Modulemd.PackagerV3} object.
+         * @since 2.11
          */
         get_profile_names_as_strv(): string[];
 
         /**
          * @returns An ordered {@link GObject.Strv} list of binary RPM names that form the public API of this module stream.
+         * @since 2.11
          */
         get_rpm_api_as_strv(): string[];
 
         /**
          * @param component_name The name of the component to retrieve.
          * @returns The RPM component matching `component_name` if it exists, else NULL.
+         * @since 2.11
          */
         get_rpm_component(component_name: string): ComponentRpm;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of RPM component names included in this stream.
+         * @since 2.11
          */
         get_rpm_component_names(): string[];
 
         /**
          * @returns An ordered {@link GObject.Strv} list of binary RPM names that are filtered out of this module stream.
+         * @since 2.11
          */
         get_rpm_filters_as_strv(): string[];
 
         /**
          * @returns The module stream name.
+         * @since 2.11
          */
         get_stream_name(): string;
 
         /**
          * @returns The short description of the module.
+         * @since 2.11
          */
         get_summary(): string;
 
         /**
          * @returns The module bug tracker website address.
+         * @since 2.11
          */
         get_tracker(): string;
 
         /**
          * @returns The extensible metadata block as a {@link GLib.Variant}.
+         * @since 2.11
          */
         get_xmd(): GLib.Variant;
 
         /**
          * Remove a binary package name from a list of demodularized packages.
          * @param rpm A binary RPM package name to remove from a demodularized list.
+         * @since 2.13
          */
         remove_demodularized_rpm(rpm: string): void;
 
         /**
          * Remove a component from this module stream.
          * @param component_name The name of the component to remove from the module stream.
+         * @since 2.11
          */
         remove_module_component(component_name: string): void;
 
         /**
          * @param license A license to remove from the list. Has no effect if the license is not present.
+         * @since 2.11
          */
         remove_module_license(license: string): void;
 
         /**
          * @param rpm A binary RPM name to remove from the list of stable public API.
+         * @since 2.11
          */
         remove_rpm_api(rpm: string): void;
 
         /**
          * Remove a component from this module stream.
          * @param component_name The name of the component to remove from the module stream.
+         * @since 2.11
          */
         remove_rpm_component(component_name: string): void;
 
         /**
          * @param rpm A binary RPM name to remove from the filter list.
+         * @since 2.11
          */
         remove_rpm_filter(rpm: string): void;
 
@@ -3911,6 +4275,7 @@ export namespace Modulemd {
          * Any existing demodularized binary RPM package names associated with module
          * stream `self` are removed and replaced by `set`.
          * @param set A {@link GLib.HashTable} set of names of binary RPM packages to demodularize.
+         * @since 2.13
          */
         replace_demodularized_rpms(set: never): void;
 
@@ -3918,6 +4283,7 @@ export namespace Modulemd {
          * Any existing API RPMs associated with module stream `self` are removed and
          * replaced by `set`.
          * @param set A {@link GLib.HashTable} set of binary RPMs present in this module stream that is considered stable public API.
+         * @since 2.11
          */
         replace_rpm_api(set: never): void;
 
@@ -3925,48 +4291,56 @@ export namespace Modulemd {
          * Any existing filtered binary RPM names associated with module stream `self`
          * are removed and replaced by `set`.
          * @param set A {@link GLib.HashTable} set of names of binary RPMs to filter out of this module stream.
+         * @since 2.11
          */
         replace_rpm_filters(set: never): void;
 
         /**
          * Set the module community website address.
          * @param community The upstream community website for this module.
+         * @since 2.11
          */
         set_community(community: string): void;
 
         /**
          * Sets the module's long description.
          * @param description A complete description of the module.
+         * @since 2.11
          */
         set_description(description: string | null): void;
 
         /**
          * Set the module documentation website address.
          * @param documentation The upstream documentation website for this module.
+         * @since 2.11
          */
         set_documentation(documentation: string): void;
 
         /**
          * Sets the module name that this {@link Modulemd.PackagerV3} object references.
          * @param module_name The name of the module.
+         * @since 2.11
          */
         set_module_name(module_name: string): void;
 
         /**
          * Sets the stream name that this {@link Modulemd.PackagerV3} object references.
          * @param stream_name The name of the module.
+         * @since 2.11
          */
         set_stream_name(stream_name: string): void;
 
         /**
          * Sets the module's short description.
          * @param summary A short description of the module.
+         * @since 2.11
          */
         set_summary(summary: string | null): void;
 
         /**
          * Set the module bug tracker website address.
          * @param tracker The upstream bug tracker website for this module.
+         * @since 2.11
          */
         set_tracker(tracker: string): void;
 
@@ -3978,6 +4352,7 @@ export namespace Modulemd {
          * This function assumes ownership of the XMD {@link GLib.Variant} and thus should not be
          * freed by the caller.
          * @param xmd A {@link GLib.Variant} representing arbitrary YAML.
+         * @since 2.11
          */
         set_xmd(xmd: GLib.Variant): void;
     }
@@ -4040,60 +4415,71 @@ export namespace Modulemd {
         // Methods
         /**
          * @param rpm The name of a binary RPM that should be installed when this profile is selected for installation.
+         * @since 2.0
          */
         add_rpm(rpm: string): void;
 
         /**
          * Remove all RPMs from this profile.
+         * @since 2.5
          */
         clear_rpms(): void;
 
         /**
          * Create a copy of this {@link Modulemd.Profile} object.
          * @returns The copied {@link Modulemd.Profile} object.
+         * @since 2.0
          */
         copy(): Profile;
 
         /**
          * @param self_2 A {@link Modulemd.Profile} object.
          * @returns TRUE, if all elements of `self_1` and `self_2` are equal. FALSE, otherwise.
+         * @since 2.2
          */
         equals(self_2: Profile): boolean;
 
         /**
          * @param locale The name of the locale to use when translating the string. If NULL, it will determine the locale with a system call to `setlocale(LC_MESSAGES, NULL)` and return that. If the caller wants the untranslated string, they should pass `"C"` for the locale.
          * @returns The description of this profile translated into the language specified by the locale if it is available, otherwise it returns the C.UTF-8 original. Translation information is managed by the {@link Modulemd.Translation} and {@link Modulemd.TranslationEntry} objects.
+         * @since 2.0
          */
         get_description(locale: string | null): string;
 
         /**
          * @returns The name of this profile.
+         * @since 2.0
          */
         get_name(): string;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of binary RPMS that would be installed when this profile is selected for installation.
+         * @since 2.0
          */
         get_rpms(): string[];
 
         /**
          * @returns TRUE if this profile is a default for the associated stream. FALSE otherwise.
+         * @since 2.10
          */
         is_default(): boolean;
 
         /**
          * @param rpm The name of a binary RPM to remove from this profile.
+         * @since 2.0
          */
         remove_rpm(rpm: string): void;
 
         /**
          * Calling this function indicates that this profile should be considered one
          * of the default profiles for the associated stream.
+         * @since 2.10
          */
         set_default(): void;
 
         /**
          * @param description The untranslated description of this profile.
+         * @since 2.0
          */
         set_description(description: string | null): void;
 
@@ -4102,6 +4488,7 @@ export namespace Modulemd {
          * one of the default profiles for this stream. This is the normal state of
          * a {@link Modulemd.Profile} and thus this function is usually unnecessary. It has no
          * effect if `self` is already non-default.
+         * @since 2.10
          */
         unset_default(): void;
     }
@@ -4204,70 +4591,86 @@ export namespace Modulemd {
         // Methods
         /**
          * @returns A deep copy of this {@link Modulemd.RpmMapEntry} object.
+         * @since 2.2
          */
         copy(): RpmMapEntry;
 
         /**
          * @param other Another {@link Modulemd.RpmMapEntry} object.
          * @returns TRUE if the two entries contain equivalent data. FALSE if they differ.
+         * @since 2.2
          */
         equals(other: RpmMapEntry): boolean;
 
         /**
          * @returns The package architecture of this RPM.
+         * @since 2.2
          */
         get_arch(): string;
 
         /**
          * @returns The package epoch of this RPM.
+         * @since 2.2
          */
         get_epoch(): number;
 
         /**
          * @returns The package name of this RPM.
+         * @since 2.2
          */
         get_name(): string;
 
         /**
          * @returns A newly-allocated string containing the complete N-E:V-R.A constructed from the component parts. NULL if any field is missing.
+         * @since 2.2
          */
         get_nevra(): string;
 
         /**
          * @returns The package release of this RPM.
+         * @since 2.2
          */
         get_release(): string;
 
         /**
          * @returns The package version of this RPM.
+         * @since 2.2
          */
         get_version(): string;
 
         /**
          * @param arch The package architecture of this RPM.
+         * @since 2.2
          */
         set_arch(arch: string): void;
 
         /**
          * @param epoch The package epoch of this RPM.
+         * @since 2.2
          */
         set_epoch(epoch: bigint | number): void;
 
         /**
          * @param name The package name of this RPM.
+         * @since 2.2
          */
         set_name(name: string): void;
 
         /**
          * @param release The package release string of this RPM.
+         * @since 2.2
          */
         set_release(release: string): void;
 
         /**
          * @param version The package version of this RPM.
+         * @since 2.2
          */
         set_version(version: string): void;
 
+        /**
+         * @since 2.2
+         */
         validate(): boolean;
     }
 
@@ -4330,33 +4733,39 @@ export namespace Modulemd {
         /**
          * Create a copy of this {@link Modulemd.ServiceLevel} object.
          * @returns The copied {@link Modulemd.ServiceLevel} object.
+         * @since 2.0
          */
         copy(): ServiceLevel;
 
         /**
          * @param self_2 A {@link Modulemd.ServiceLevel} object.
          * @returns TRUE if both the dates are either NULL or valid, FALSE otherwise.
+         * @since 2.2
          */
         equals(self_2: ServiceLevel): boolean;
 
         /**
          * @returns The end date of the service level as a {@link GLib.Date}.
+         * @since 2.0
          */
         get_eol(): GLib.Date;
 
         /**
          * @returns The end date of the service level as a string of the form "YYYY-MM-DD" or NULL if the date is unset or invalid.
+         * @since 2.0
          */
         get_eol_as_string(): string | null;
 
         /**
          * Get the name of this service level.
          * @returns The name of this service level. This is a pointer to the internal memory location and must not be freed.
+         * @since 2.0
          */
         get_name(): string;
 
         /**
          * Remove the EOL from this Service Level.
+         * @since 2.0
          */
         remove_eol(): void;
 
@@ -4364,6 +4773,7 @@ export namespace Modulemd {
          * Sets the end date of the service level. If the {@link GLib.Date} passed in is invalid
          * or NULL, the EOL will be unset.
          * @param date The date this service level ends.
+         * @since 2.0
          */
         set_eol(date: GLib.Date | null): void;
 
@@ -4371,6 +4781,7 @@ export namespace Modulemd {
          * @param year The year this service level ends.
          * @param month The month this service level ends.
          * @param day The day of the month this service level ends.
+         * @since 2.0
          */
         set_eol_ymd(year: GLib.DateYear, month: GLib.DateMonth, day: GLib.DateDay): void;
     }
@@ -4420,11 +4831,13 @@ export namespace Modulemd {
         // Methods
         /**
          * @returns A {@link GLib.Error} containing an error code and message about why this subdocument failed parsing.
+         * @since 2.0
          */
         get_gerror(): GLib.Error;
 
         /**
          * @returns The associated YAML subdocument.
+         * @since 2.0
          */
         get_yaml(): string;
     }
@@ -4526,27 +4939,32 @@ export namespace Modulemd {
         /**
          * Create a copy of this {@link Modulemd.Translation} object.
          * @returns The copied {@link Modulemd.Translation} object.
+         * @since 2.0
          */
         copy(): Translation;
 
         /**
          * @returns An ordered {@link GObject.Strv} list of locales known to this {@link Modulemd.Translation}.
+         * @since 2.0
          */
         get_locales(): string[];
 
         /**
          * @param locale The locale of the translation to retrieve.
          * @returns The translation entry for the requested locale, or NULL if the locale was unknown.
+         * @since 2.0
          */
         get_translation_entry(locale: string): TranslationEntry;
 
         /**
          * @param modified The last modified time represented as a 64-bit integer (such as 201807011200).
+         * @since 2.0
          */
         set_modified(modified: bigint | number): void;
 
         /**
          * @param translation_entry A set of translations of this module stream for a particular locale.
+         * @since 2.0
          */
         set_translation_entry(translation_entry: TranslationEntry): void;
 
@@ -4555,6 +4973,7 @@ export namespace Modulemd {
          * or dumping to YAML. It will be run implicitly prior to emitting YAML. This
          * is not a complete linter, merely a sanity check that the values are not
          * impossible.
+         * @since 2.0
          */
         validate(): boolean;
     }
@@ -4634,18 +5053,21 @@ export namespace Modulemd {
         /**
          * Create a copy of this {@link Modulemd.TranslationEntry} object.
          * @returns The copied {@link Modulemd.TranslationEntry} object.
+         * @since 2.0
          */
         copy(): TranslationEntry;
 
         /**
          * Get the description of this translation entry.
          * @returns The description of this module stream translated into the language specified by locale.
+         * @since 2.0
          */
         get_description(): string;
 
         /**
          * Get the locale of this translation entry.
          * @returns The locale of this translation entry. This is a pointer to the internal memory location and must not be freed.
+         * @since 2.0
          */
         get_locale(): string;
 
@@ -4657,17 +5079,20 @@ export namespace Modulemd {
         /**
          * Get a list of profiles that have descriptions.
          * @returns An ordered {@link GObject.Strv} list of profiles for which descriptions have been translated for this locale.
+         * @since 2.0
          */
         get_profiles(): string[];
 
         /**
          * Get the summary of this translation entry.
          * @returns The summary of this module stream translated into the language specified by locale.
+         * @since 2.0
          */
         get_summary(): string;
 
         /**
          * @param description The description of this module stream translated into the language specified by locale.
+         * @since 2.0
          */
         set_description(description: string | null): void;
 
@@ -4675,11 +5100,13 @@ export namespace Modulemd {
          * Adds a profile name translation.
          * @param profile_name The name of the profile.
          * @param profile_description The translated description of the profile.
+         * @since 2.0
          */
         set_profile_description(profile_name: string, profile_description: string | null): void;
 
         /**
          * @param summary The summary of this module translated appropriately for this locale.
+         * @since 2.0
          */
         set_summary(summary: string | null): void;
     }

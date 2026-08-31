@@ -285,6 +285,7 @@ export namespace MediaArt {
          * @param artist The artist name `file` or `null`
          * @param title The title for `file` or `null`
          * @returns `true` if `file` could be processed or `false` if `error` is set.
+         * @since 0.5.0
          */
         buffer(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: Uint8Array | string | null, mime: string, artist: string | null, title: string | null): boolean;
 
@@ -322,6 +323,7 @@ export namespace MediaArt {
          * @param artist The artist name `file` or `null`
          * @param title The title for `file` or `null`
          * @returns `true` if `file` could be processed or `false` if `error` is set.
+         * @since 0.3.0
          */
         file(type: Type, flags: ProcessFlags, file: Gio.File, artist: string | null, title: string | null): boolean;
 
@@ -335,6 +337,7 @@ export namespace MediaArt {
          * @param artist The artist name `uri` or `null`
          * @param title The title for `uri` or `null`
          * @returns `true` if `uri` could be processed or `false` if `error` is set.
+         * @since 0.5.0
          */
         uri(type: Type, flags: ProcessFlags, uri: string, artist: string | null, title: string | null): boolean;
 
@@ -379,6 +382,7 @@ export namespace MediaArt {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -422,6 +426,7 @@ export namespace MediaArt {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;

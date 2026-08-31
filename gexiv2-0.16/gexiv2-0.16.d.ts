@@ -356,6 +356,7 @@ export namespace GExiv2 {
          * 
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag An Exiv2 tag
+         * @since 0.16.0
          */
         static get_tag_description(tag: string): string | null;
 
@@ -375,12 +376,14 @@ export namespace GExiv2 {
          * 
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag An Exiv2 tag
+         * @since 0.16.0
          */
         static get_tag_type(tag: string): string | null;
 
         /**
          * Look up the URI for the namespace for `tag`
          * @param tag Full tag name (e.g. "Xmp.dc.subject") or XMP namespace identifier (e.g. "dc")
+         * @since 0.16.0
          */
         static get_xmp_namespace_for_tag(tag: string): string;
 
@@ -412,6 +415,7 @@ export namespace GExiv2 {
          * Register an additional XMP namespace.
          * @param name XMP URI name (should end in /)
          * @param prefix XMP namespace prefix
+         * @since 0.16.0
          */
         static register_xmp_namespace(name: string, prefix: string): boolean;
 
@@ -420,6 +424,8 @@ export namespace GExiv2 {
          * 
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag An Exiv2 tag
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.get_tag_description} instead.
          */
         static try_get_tag_description(tag: string): string | null;
 
@@ -428,6 +434,8 @@ export namespace GExiv2 {
          * 
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag An Exiv2 tag
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.get_tag_label} instead.
          */
         static try_get_tag_label(tag: string): string | null;
 
@@ -439,12 +447,16 @@ export namespace GExiv2 {
          * 
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag An Exiv2 tag
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.get_tag_type} instead.
          */
         static try_get_tag_type(tag: string): string | null;
 
         /**
          * Look up the URI for the namespace for `tag`
          * @param tag Full tag name (e.g. "Xmp.dc.subject") or XMP namespace identifier (e.g. "dc")
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.try_get_xmp_namespace_for_tag} instead.
          */
         static try_get_xmp_namespace_for_tag(tag: string): string;
 
@@ -452,12 +464,16 @@ export namespace GExiv2 {
          * Register an additional XMP namespace.
          * @param name XMP URI name (should end in /)
          * @param prefix XMP namespace prefix
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.register_xmp_namespace} instead.
          */
         static try_register_xmp_namespace(name: string, prefix: string): boolean;
 
         /**
          * Unregister all XMP namespaces that have been previously registered with
          * {@link Metadata.try_register_xmp_namespace}.
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.register_xmp_namespace} instead
          */
         static try_unregister_all_xmp_namespaces(): void;
 
@@ -465,12 +481,15 @@ export namespace GExiv2 {
          * Unregister a namespace previously registered with
          * {@link Metadata.try_register_xmp_namespace}.
          * @param name XMP URI name (should end in /)
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.try_unregister_xmp_namespace} instead.
          */
         static try_unregister_xmp_namespace(name: string): boolean;
 
         /**
          * Unregister all XMP namespaces that have been previously registered with
          * {@link Metadata.try_register_xmp_namespace}.
+         * @since 0.16.0
          */
         static unregister_all_xmp_namespaces(): void;
 
@@ -478,6 +497,7 @@ export namespace GExiv2 {
          * Unregister a namespace previously registered with
          * {@link Metadata.try_register_xmp_namespace}.
          * @param name XMP URI name (should end in /)
+         * @since 0.16.0
          */
         static unregister_xmp_namespace(name: string): boolean;
 
@@ -489,6 +509,7 @@ export namespace GExiv2 {
          * if `bytes` is `null`, a copy of the internal image with updated metadata will be returned.
          * @param bytes An image buffer to update the metadata on, nor `null`
          * @returns A newly allocated GBytes object containing the image with new metadata
+         * @since 0.16.0
          */
         as_bytes(bytes: GLib.Bytes | Uint8Array | null): GLib.Bytes;
 
@@ -519,6 +540,7 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag Exiv2 tag
          * @returns `true` if the tag was present.
+         * @since 0.16.0
          */
         clear_tag(tag: string): boolean;
 
@@ -529,6 +551,7 @@ export namespace GExiv2 {
 
         /**
          * Removes all GPS metadata from the loaded image
+         * @since 0.16.0
          */
         delete_gps_info(): void;
 
@@ -557,6 +580,7 @@ export namespace GExiv2 {
          * @param xmp_format_flags One of {@link GExiv2.XmpFormatFlags}
          * @param padding The padding before the closing `<?xpacket>` tag
          * @returns Encode the XMP packet and return as a `null`-terminated string.
+         * @since 0.16.0
          */
         generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): string | null;
 
@@ -583,6 +607,7 @@ export namespace GExiv2 {
          * For fine-grained control, it's recommended to use Exiv2 tags directly rather than this method,
          * which is more useful for quick or casual use.
          * @returns The photo's comment field.
+         * @since 0.16.0
          */
         get_comment(): string | null;
 
@@ -590,6 +615,7 @@ export namespace GExiv2 {
          * Returns a binary blob of the contained EXIF data, if the image contains any.
          * @param byte_order Whether to export the data in little or big endian format
          * @returns The content of the EXIF data or `null` on error
+         * @since 0.12.2
          */
         get_exif_data(byte_order: ByteOrder): GLib.Bytes | null;
 
@@ -598,6 +624,7 @@ export namespace GExiv2 {
          * `den` the denominator of the fraction on successful return.
          * @param tag The tag you want the rational value for
          * @returns Boolean success value
+         * @since 0.16.0
          */
         get_exif_tag_rational(tag: string): [boolean, number, number];
 
@@ -617,6 +644,7 @@ export namespace GExiv2 {
          * Returns the exposure time in seconds (shutter speed, *not* date-time of exposure) as a
          * rational.  See <https://en.wikipedia.org/wiki/Shutter_speed> for more information.
          * @returns Boolean success value
+         * @since 0.16.0
          */
         get_exposure_time(): [boolean, number, number];
 
@@ -625,12 +653,14 @@ export namespace GExiv2 {
          * If Exif.Photo.FNumber does not exist, it will fall back to calculating the FNumber from
          * Exif.Photo.ApertureValue (if available)
          * @returns The exposure Fnumber as a gdouble, or -1.0 if tag is not present or invalid.
+         * @since 0.16.0
          */
         get_fnumber(): number;
 
         /**
          * See <https://en.wikipedia.org/wiki/Flange_focal_distance> for more information.
          * @returns The focal length as a gdouble, or -1.0 if tag is not present or invalid.
+         * @since 0.16.0
          */
         get_focal_length(): number;
 
@@ -638,6 +668,7 @@ export namespace GExiv2 {
          * Convenience function to query the altitude stored in the GPS tags of the
          * image
          * @returns The altitude value, or -inf on error, or nan if no altitude value.
+         * @since 0.16.0
          */
         get_gps_altitude(): number;
 
@@ -647,18 +678,21 @@ export namespace GExiv2 {
          * and {@link GExiv2.Metadata.get_gps_altitude} for possible values of the out
          * parameters.
          * @returns Boolean success value. Indicates if any of the queries failed.
+         * @since 0.16.0
          */
         get_gps_info(): [boolean, number, number, number];
 
         /**
          * Query the latitude stored in the GPS tags of `self`
          * @returns The latitude or -inf on error, nan if no altitude value is found.
+         * @since 0.16.0
          */
         get_gps_latitude(): number;
 
         /**
          * Query the longitude stored in the GPS tags of `self`
          * @returns The longitude value, or -inf on error, or nan if no altitude value.
+         * @since 0.16.0
          */
         get_gps_longitude(): number;
 
@@ -671,6 +705,7 @@ export namespace GExiv2 {
         /**
          * See <https://en.wikipedia.org/wiki/Iso_speed> for more information.
          * @returns The ISO speed rating as a gint, or 0 if tag is not present or invalid.
+         * @since 0.16.0
          */
         get_iso_speed(): number;
 
@@ -679,6 +714,7 @@ export namespace GExiv2 {
          * might differ from the height of image that is available through
          * {@link Metadata.get_pixel_height}
          * @returns Height of images in pixels as stored in the metadata
+         * @since 0.16.0
          */
         get_metadata_pixel_height(): number;
 
@@ -687,6 +723,7 @@ export namespace GExiv2 {
          * might differ from the width of image that is available through
          * {@link Metadata.get_pixel_width}
          * @returns Width of images in pixels as stored in the metadata
+         * @since 0.16.0
          */
         get_metadata_pixel_width(): number;
 
@@ -699,6 +736,7 @@ export namespace GExiv2 {
         /**
          * The EXIF Orientation field
          * @returns A {@link GExiv2.Orientation} value representing the EXIF orientation value.
+         * @since 0.16.0
          */
         get_orientation(): Orientation;
 
@@ -721,6 +759,7 @@ export namespace GExiv2 {
          * Get a preview image from the metadata.
          * @param props A {@link GExiv2.PreviewProperties} instance
          * @returns A {@link GExiv2.PreviewImage} instance for the particular {@link GExiv2.PreviewProperties}.
+         * @since 0.16.0
          */
         get_preview_image(props: PreviewProperties): PreviewImage;
 
@@ -760,6 +799,7 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag Exiv2 tag name
          * @returns The tag's interpreted value as a string
+         * @since 0.16.0
          */
         get_tag_interpreted_string(tag: string): string | null;
 
@@ -767,6 +807,7 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag Exiv2 tag name
          * @returns The tag's value as a glong
+         * @since 0.16.0
          */
         get_tag_long(tag: string): number;
 
@@ -778,6 +819,7 @@ export namespace GExiv2 {
          * control if and how the error is outputted.
          * @param tag Exiv2 tag name
          * @returns The multiple string values of the tag.  Returns `null` if parameters are `null` or `tag` does not begin with recognised type of metadata ("Exif.", "Xmp." or "Iptc.").  For a well formed `tag`, returns array[0] = `null` if `tag` is undefined or is not set in the current metadata.
+         * @since 0.16.0
          */
         get_tag_multiple(tag: string): string[] | null;
 
@@ -788,6 +830,7 @@ export namespace GExiv2 {
          * by 4x INFORMATION SEPARATOR FOUR (ASCII 0x1c)
          * @param tag Exiv2 tag name
          * @returns The tag's raw value as a byte array
+         * @since 0.16.0
          */
         get_tag_raw(tag: string): GLib.Bytes | null;
 
@@ -801,12 +844,14 @@ export namespace GExiv2 {
          * control if and how the error is outputted.
          * @param tag Exiv2 tag name
          * @returns The tag's value as a string
+         * @since 0.16.0
          */
         get_tag_string(tag: string): string | null;
 
         /**
          * Get the currently encoded XMP packet (after having called {@link GExiv2.Metadata.try_get_xmp_packet})
          * @returns The currently-encoded XMP packet (see {@link Metadata.generate_xmp_packet}).
+         * @since 0.16.0
          */
         get_xmp_packet(): string | null;
 
@@ -836,6 +881,7 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag Exiv2 tag
          * @returns `true` if the tag is present.
+         * @since 0.16.0
          */
         has_tag(tag: string): boolean;
 
@@ -874,6 +920,7 @@ export namespace GExiv2 {
          * Saves the metadata to the specified using an XMP sidecar file.
          * @param path Path to the file you want to save to.
          * @returns Boolean success indicator.
+         * @since 0.10.6
          */
         save_external(path: string): boolean;
 
@@ -889,6 +936,7 @@ export namespace GExiv2 {
          * This is a composite setter that will set a number of fields to the supplied value.  See
          * {@link Metadata.get_comment} for more information.
          * @param comment Comment string to set. Must not be `null`
+         * @since 0.16.0
          */
         set_comment(comment: string): void;
 
@@ -899,12 +947,14 @@ export namespace GExiv2 {
          * @param nom Rational numerator
          * @param den Rational denominator
          * @returns Boolean success value
+         * @since 0.16.0
          */
         set_exif_tag_rational(tag: string, nom: number, den: number): boolean;
 
         /**
          * Sets or replaces the EXIF thumbnail with the data in `buffer`.
          * @param buffer A buffer containing thumbnail data
+         * @since 0.16.0
          */
         set_exif_thumbnail_from_buffer(buffer: Uint8Array | string): void;
 
@@ -923,24 +973,28 @@ export namespace GExiv2 {
          * @param latitude Latitude value to set or replace current value
          * @param altitude Altitude value to set or replace current value
          * @returns Boolean success value.
+         * @since 0.16.0
          */
         set_gps_info(longitude: number, latitude: number, altitude: number): boolean;
 
         /**
          * Update the image's metadata with `height`
          * @param height The width of the image as it should be put into the metadata.
+         * @since 0.16.0
          */
         set_metadata_pixel_height(height: number): void;
 
         /**
          * Composite setter to update the image's metadata with `width`
          * @param width The width of the image as it should be put into the metadata
+         * @since 0.16.0
          */
         set_metadata_pixel_width(width: number): void;
 
         /**
          * The orientation must be valid and cannot be {@link GExiv2.Orientation.UNSPECIFIED}.
          * @param orientation The new {@link GExiv2.Orientation} for the image.
+         * @since 0.16.0
          */
         set_orientation(orientation: Orientation): void;
 
@@ -949,6 +1003,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @param value The value to set or replace the existing value
          * @returns TRUE on success
+         * @since 0.16.0
          */
         set_tag_long(tag: string, value: bigint | number): boolean;
 
@@ -976,6 +1031,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @param value The value to set or replace the existing value
          * @returns TRUE on success
+         * @since 0.16.0
          */
         set_tag_string(tag: string, value: string): boolean;
 
@@ -984,6 +1040,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @param type The GExiv2StructureType specifying the type of structure
          * @returns TRUE on success
+         * @since 0.16.0
          */
         set_xmp_tag_struct(tag: string, type: StructureType): boolean;
 
@@ -997,6 +1054,7 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag An Exiv2 tag
          * @returns Whether `tag` is capable of storing multiple values or not. If `tag` is undefined (i.e. not built-in and not added to `self`), then `error` is set and `false` is returned.
+         * @since 0.16.0
          */
         tag_supports_multiple_values(tag: string): boolean;
 
@@ -1006,16 +1064,22 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag Exiv2 tag
          * @returns TRUE if the tag was present.
+         * @since 0.14.0
+         * @deprecated since 0.14.0: Use {@link Metadata.clear_tag} instead.
          */
         try_clear_tag(tag: string): boolean;
 
         /**
          * Removes all GPS metadata from the loaded image
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.delete_gps_info} instead.
          */
         try_delete_gps_info(): void;
 
         /**
          * Removes the EXIF thumbnail from the loaded image.
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.erase_exif_thumbnail} instead.
          */
         try_erase_exif_thumbnail(): void;
 
@@ -1024,6 +1088,8 @@ export namespace GExiv2 {
          * @param xmp_format_flags One of {@link GExiv2.XmpFormatFlags}
          * @param padding The padding before the closing `<?xpacket>` tag
          * @returns Encode the XMP packet and return as a `null`-terminated string.
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.try_generate_xmp_packet} instead.
          */
         try_generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): string | null;
 
@@ -1050,6 +1116,8 @@ export namespace GExiv2 {
          * For fine-grained control, it's recommended to use Exiv2 tags directly rather than this method,
          * which is more useful for quick or casual use.
          * @returns The photo's comment field.
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.get_comment} instead.
          */
         try_get_comment(): string | null;
 
@@ -1058,6 +1126,8 @@ export namespace GExiv2 {
          * `den` the denominator of the fraction on successful return.
          * @param tag The tag you want the rational value for
          * @returns Boolean success value
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.get_exif_tag_rational} instead.
          */
         try_get_exif_tag_rational(tag: string): [boolean, number, number];
 
@@ -1065,6 +1135,8 @@ export namespace GExiv2 {
          * Returns the exposure time in seconds (shutter speed, *not* date-time of exposure) as a
          * rational.  See <https://en.wikipedia.org/wiki/Shutter_speed> for more information.
          * @returns Boolean success value
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.get_exposure_time} instead.
          */
         try_get_exposure_time(): [boolean, number, number];
 
@@ -1073,12 +1145,16 @@ export namespace GExiv2 {
          * If Exif.Photo.FNumber does not exist, it will fall back to calculating the FNumber from
          * Exif.Photo.ApertureValue (if available);
          * @returns The exposure Fnumber as a gdouble, or -1.0 if tag is not present or invalid.
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.get_fnumber} instead.
          */
         try_get_fnumber(): number;
 
         /**
          * See <https://en.wikipedia.org/wiki/Flange_focal_distance> for more information.
          * @returns The focal length as a gdouble, or -1.0 if tag is not present or invalid.
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.get_focal_length} instead.
          */
         try_get_focal_length(): number;
 
@@ -1086,30 +1162,40 @@ export namespace GExiv2 {
          * Convenience function to query the altitude stored in the GPS tags of the
          * image
          * @returns Boolean success value
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.get_gps_latitude} instead.
          */
         try_get_gps_altitude(): [boolean, number];
 
         /**
          * Convenience function to query all available GPS information at once.
          * @returns Boolean success value.
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.get_gps_info} instead.
          */
         try_get_gps_info(): [boolean, number, number, number];
 
         /**
          * Query the latitude stored in the GPS tags of `self`
          * @returns Boolean success value
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.get_gps_altitude} instead.
          */
         try_get_gps_latitude(): [boolean, number];
 
         /**
          * Query the longitude stored in the GPS tags of `self`
          * @returns Boolean success value
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.get_gps_longitude} instead.
          */
         try_get_gps_longitude(): [boolean, number];
 
         /**
          * See <https://en.wikipedia.org/wiki/Iso_speed> for more information.
          * @returns The ISO speed rating as a gint, or 0 if tag is not present or invalid.
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.get_iso_speed} instead.
          */
         try_get_iso_speed(): number;
 
@@ -1118,6 +1204,8 @@ export namespace GExiv2 {
          * might differ from the height of image that is available through
          * {@link Metadata.get_pixel_height}
          * @returns Height of images in pixels as stored in the metadata
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.get_metadata_pixel_height} instead.
          */
         try_get_metadata_pixel_height(): number;
 
@@ -1126,12 +1214,16 @@ export namespace GExiv2 {
          * might differ from the width of image that is available through
          * {@link Metadata.get_pixel_width}
          * @returns Width of images in pixels as stored in the metadata
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.get_metadata_pixel_width} instead.
          */
         try_get_metadata_pixel_width(): number;
 
         /**
          * The EXIF Orientation field
          * @returns A {@link GExiv2.Orientation} value representing the EXIF orientation value.
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.get_orientation} instead.
          */
         try_get_orientation(): Orientation;
 
@@ -1139,6 +1231,8 @@ export namespace GExiv2 {
          * Get a preview image from the metadata.
          * @param props A {@link GExiv2.PreviewProperties} instance
          * @returns A {@link GExiv2.PreviewImage} instance for the particular {@link GExiv2.PreviewProperties}.
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.get_preview_image} instead.
          */
         try_get_preview_image(props: PreviewProperties): PreviewImage;
 
@@ -1151,6 +1245,8 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag Exiv2 tag name
          * @returns The tag's interpreted value as a string
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.get_tag_interpreted_string} instead.
          */
         try_get_tag_interpreted_string(tag: string): string | null;
 
@@ -1158,6 +1254,8 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag Exiv2 tag name
          * @returns The tag's value as a glong
+         * @since 0.12.2
+         * @deprecated since 0.12.2: Use {@link Metadata.get_tag_long} instead.
          */
         try_get_tag_long(tag: string): number;
 
@@ -1165,6 +1263,8 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag Exiv2 tag name
          * @returns The multiple string values of `tag`.  Returns `null` if parameters are `null` or `tag` does not begin with recognised type of metadata ("Exif.", "Xmp." or "Iptc.").  For a well formed `tag`, returns array[0] = `null` if `tag` is undefined or is not set in the current metadata.
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.get_tag_multiple} instead.
          */
         try_get_tag_multiple(tag: string): string[] | null;
 
@@ -1175,6 +1275,8 @@ export namespace GExiv2 {
          * by 4x INFORMATION SEPARATOR FOUR (ASCII 0x1c)
          * @param tag Exiv2 tag name
          * @returns The tag's raw value as a byte array
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.get_tag_raw} instead.
          */
         try_get_tag_raw(tag: string): GLib.Bytes | null;
 
@@ -1186,12 +1288,16 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag Exiv2 tag name
          * @returns The tag's value as a string
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.get_tag_string} instead.
          */
         try_get_tag_string(tag: string): string | null;
 
         /**
          * Get the currently encoded XMP packet (after having called {@link GExiv2.Metadata.try_generate_xmp_packet})
          * @returns `null` if no packet was generated previously, the XMP packet contents otherwise
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.try_get_xmp_packet} instead.
          */
         try_get_xmp_packet(): string | null;
 
@@ -1199,6 +1305,8 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag Exiv2 tag
          * @returns TRUE if the tag is present.
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.has_tag} instead.
          */
         try_has_tag(tag: string): boolean;
 
@@ -1206,6 +1314,8 @@ export namespace GExiv2 {
          * This is a composite setter that will set a number of fields to the supplied value.  See
          * {@link Metadata.get_comment} for more information.
          * @param comment Comment string to set. Must not be `null`
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.set_comment} instead.
          */
         try_set_comment(comment: string): void;
 
@@ -1216,12 +1326,16 @@ export namespace GExiv2 {
          * @param nom Rational numerator
          * @param den Rational denominator
          * @returns Boolean success value
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.set_exif_tag_rational} instead.
          */
         try_set_exif_tag_rational(tag: string, nom: number, den: number): boolean;
 
         /**
          * Sets or replaces the EXIF thumbnail with the data in `buffer`.
          * @param buffer A buffer containing thumbnail data
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.set_exif_thumbnail_from_buffer} instead.
          */
         try_set_exif_thumbnail_from_buffer(buffer: Uint8Array | string): void;
 
@@ -1233,24 +1347,32 @@ export namespace GExiv2 {
          * @param latitude Latitude value to set or replace current value
          * @param altitude Altitude value to set or replace current value
          * @returns Boolean success value.
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.set_gps_info} instead.
          */
         try_set_gps_info(longitude: number, latitude: number, altitude: number): boolean;
 
         /**
          * Update the image's metadata with `height`
          * @param height The width of the image as it should be put into the metadata.
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.set_metadata_pixel_height} instead.
          */
         try_set_metadata_pixel_height(height: number): void;
 
         /**
          * Composite setter to update the image's metadata with `width`
          * @param width The width of the image as it should be put into the metadata
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.set_metadata_pixel_width} instead.
          */
         try_set_metadata_pixel_width(width: number): void;
 
         /**
          * The orientation must be valid and cannot be [enum@GExiv2.Orientation.UNSPECIFIED.
          * @param orientation The new {@link GExiv2.Orientation} for the image.
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link Metadata.set_orientation} instead.
          */
         try_set_orientation(orientation: Orientation): void;
 
@@ -1259,6 +1381,8 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @param value The value to set or replace the existing value
          * @returns TRUE on success
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.set_tag_long} instead.
          */
         try_set_tag_long(tag: string, value: bigint | number): boolean;
 
@@ -1271,6 +1395,8 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @param values An array of values to set or replace the existing value(s)
          * @returns Boolean success value
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.set_tag_multiple} instead.
          */
         try_set_tag_multiple(tag: string, values: string[]): boolean;
 
@@ -1284,6 +1410,8 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @param value The value to set or replace the existing value
          * @returns TRUE on success
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.set_tag_string} instead.
          */
         try_set_tag_string(tag: string, value: string): boolean;
 
@@ -1292,6 +1420,8 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @param type The GExiv2StructureType specifying the type of structure
          * @returns TRUE on success
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.set_xmp_tag_struct} instead.
          */
         try_set_xmp_tag_struct(tag: string, type: StructureType): boolean;
 
@@ -1305,6 +1435,8 @@ export namespace GExiv2 {
          * The Exiv2 Tag Reference can be found at <http://exiv2.org/metadata.html>
          * @param tag An Exiv2 tag
          * @returns Whether `tag` is capable of storing multiple values or not. If `tag` is undefined (i.e. not built-in and not added to `self`), then `error` is set and `false` is returned.
+         * @since 0.14.0
+         * @deprecated since 0.16.0.: Use {@link GExiv2.Metadata.tag_supports_multiple_values} instead.
          */
         try_tag_supports_multiple_values(tag: string): boolean;
 
@@ -1314,6 +1446,8 @@ export namespace GExiv2 {
          * @param latitude Latitude value to set or replace current value
          * @param altitude Altitude value to set or replace current value
          * @returns Boolean success value.
+         * @since 0.12.2
+         * @deprecated since 0.16.0: Use {@link Metadata.update_gps_info} instead.
          */
         try_update_gps_info(longitude: number, latitude: number, altitude: number): boolean;
 
@@ -1323,6 +1457,7 @@ export namespace GExiv2 {
          * @param latitude Latitude value to set or replace current value
          * @param altitude Altitude value to set or replace current value
          * @returns Boolean success value.
+         * @since 0.16.0
          */
         update_gps_info(longitude: number, latitude: number, altitude: number): boolean;
     }
@@ -1429,6 +1564,8 @@ export namespace GExiv2 {
          * Write the preview image to a file in `path`
          * @param path The file path to write the preview image to.
          * @returns The number of bytes written to the file.
+         * @since 0.14.0
+         * @deprecated since 0.16.0: Use {@link GExiv2.PreviewImage.write_file} instead.
          */
         try_write_file(path: string): number;
 
@@ -1436,6 +1573,7 @@ export namespace GExiv2 {
          * Write the preview image to a file in `path`
          * @param path The file path to write the preview image to.
          * @returns The number of bytes written to the file.
+         * @since 0.16.0
          */
         write_file(path: string): number;
     }

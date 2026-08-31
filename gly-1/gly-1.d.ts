@@ -280,6 +280,7 @@ export namespace Gly {
         /**
          * Image data arranged according to {@link Frame.get_memory_format}
          * @returns Image data
+         * @since 1.0
          */
         get_buf_bytes(): GLib.Bytes;
 
@@ -288,30 +289,35 @@ export namespace Gly {
          * 
          * If the value is zero, the image is not animated.
          * @returns Duration in microseconds.
+         * @since 1.0
          */
         get_delay(): number;
 
         /**
          * Height for image data in pixels
          * @returns Height in pixels
+         * @since 1.0
          */
         get_height(): number;
 
         /**
          * Format of the image data in {@link Gly.Frame.get_buf_bytes}
          * @returns Format of image data
+         * @since 1.0
          */
         get_memory_format(): MemoryFormat;
 
         /**
          * Width of a row for image data in bytes
          * @returns Row stride in bytes
+         * @since 1.0
          */
         get_stride(): number;
 
         /**
          * Width for image data in pixels
          * @returns Width in pixels
+         * @since 1.0
          */
         get_width(): number;
     }
@@ -364,12 +370,14 @@ export namespace Gly {
         /**
          * See {@link Image.get_width}
          * @returns height
+         * @since 1.0
          */
         get_height(): number;
 
         /**
          * Returns detected MIME type of the file
          * @returns MIME type
+         * @since 1.0
          */
         get_mime_type(): string;
 
@@ -380,6 +388,7 @@ export namespace Gly {
          * an early rendering estimates. For everything else, the specific frame
          * information should be used. See {@link Frame.get_width}.
          * @returns Width
+         * @since 1.0
          */
         get_width(): number;
 
@@ -389,12 +398,14 @@ export namespace Gly {
          * For single still images, this can only be called once.
          * For animated images, this function will loop to the first frame, when the last frame is reached.
          * @returns a new {@link Frame} on success, or `NULL` with `error` filled in
+         * @since 1.0
          */
         next_frame(): Frame;
 
         /**
          * Asynchronous version of {@link Image.next_frame}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
+         * @since 1.0
          */
         next_frame_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Frame>;
 
@@ -402,6 +413,7 @@ export namespace Gly {
          * Asynchronous version of {@link Image.next_frame}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
+         * @since 1.0
          */
         next_frame_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -409,6 +421,7 @@ export namespace Gly {
          * Asynchronous version of {@link Image.next_frame}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
+         * @since 1.0
          */
         next_frame_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Frame> | void;
 
@@ -416,6 +429,7 @@ export namespace Gly {
          * Finishes the {@link Image.next_frame_async} call.
          * @param result a {@link Gio.AsyncResult}
          * @returns Loaded frame.
+         * @since 1.0
          */
         next_frame_finish(result: Gio.AsyncResult): Frame;
     }
@@ -521,12 +535,14 @@ export namespace Gly {
         /**
          * Synchronously loads an image and returns an {@link Image} when successful.
          * @returns a new {@link Image} on success, or `NULL` with `error` filled in
+         * @since 1.0
          */
         load(): Image;
 
         /**
          * Asynchronous version of {@link Loader.load}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
+         * @since 1.0
          */
         load_async(cancellable: Gio.Cancellable | null): globalThis.Promise<Image>;
 
@@ -534,6 +550,7 @@ export namespace Gly {
          * Asynchronous version of {@link Loader.load}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
+         * @since 1.0
          */
         load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -541,6 +558,7 @@ export namespace Gly {
          * Asynchronous version of {@link Loader.load}.
          * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
+         * @since 1.0
          */
         load_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Image> | void;
 
@@ -548,12 +566,14 @@ export namespace Gly {
          * Finishes the {@link Image.next_frame_async} call.
          * @param result A {@link Gio.AsyncResult}
          * @returns Loaded frame.
+         * @since 1.0
          */
         load_finish(result: Gio.AsyncResult): Image;
 
         /**
          * Selects which sandbox mechanism should be used. The default without calling this function is {@link SandboxSelector}`.AUTO`.
          * @param sandbox_selector Method by which the sandbox mechanism is selected
+         * @since 1.0
          */
         set_sandbox_selector(sandbox_selector: SandboxSelector): void;
     }

@@ -322,6 +322,7 @@ export namespace Jsonrpc {
          * @param params A {@link GLib.Variant} of parameters or `null`
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @returns `true` on success; otherwise `false` and `error` is set.
+         * @since 3.26
          */
         call(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -336,6 +337,7 @@ export namespace Jsonrpc {
          * @param method The name of the method to call
          * @param params A {@link GLib.Variant} of parameters or `null`
          * @param cancellable A {@link Gio.Cancellable} or `null`
+         * @since 3.26
          */
         call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>;
 
@@ -351,6 +353,7 @@ export namespace Jsonrpc {
          * @param params A {@link GLib.Variant} of parameters or `null`
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback a callback to executed upon completion
+         * @since 3.26
          */
         call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -366,6 +369,7 @@ export namespace Jsonrpc {
          * @param params A {@link GLib.Variant} of parameters or `null`
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback a callback to executed upon completion
+         * @since 3.26
          */
         call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant | null> | void;
 
@@ -373,6 +377,7 @@ export namespace Jsonrpc {
          * Completes an asynchronous call to {@link Client.call_async}.
          * @param result A {@link Gio.AsyncResult} provided to the callback in {@link Client.call_async}
          * @returns `true` if successful and `return_value` is set, otherwise `false` and `error` is set.
+         * @since 3.26
          */
         call_finish(result: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -393,6 +398,7 @@ export namespace Jsonrpc {
          * @param params A {@link GLib.Variant} of parameters or `null`
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback Callback to executed upon completion
+         * @since 3.30
          */
         call_with_id_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): GLib.Variant | null;
 
@@ -407,6 +413,7 @@ export namespace Jsonrpc {
          * Failure to call this method results in a leak of {@link Jsonrpc.Client}.
          * @param cancellable 
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @since 3.26
          */
         close(cancellable: Gio.Cancellable | null): boolean;
 
@@ -416,6 +423,7 @@ export namespace Jsonrpc {
          * Currently this operation is implemented synchronously, but in the future may
          * be converted to using asynchronous operations.
          * @param cancellable 
+         * @since 3.26
          */
         close_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -426,6 +434,7 @@ export namespace Jsonrpc {
          * be converted to using asynchronous operations.
          * @param cancellable 
          * @param callback 
+         * @since 3.26
          */
         close_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -436,6 +445,7 @@ export namespace Jsonrpc {
          * be converted to using asynchronous operations.
          * @param cancellable 
          * @param callback 
+         * @since 3.26
          */
         close_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -443,6 +453,7 @@ export namespace Jsonrpc {
          * Completes an asynchronous request of {@link Client.close_async}.
          * @param result 
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @since 3.26
          */
         close_finish(result: Gio.AsyncResult): boolean;
 
@@ -451,6 +462,7 @@ export namespace Jsonrpc {
          * 
          * Indicates if {@link GLib.Variant} is being used to communicate with the peer.
          * @returns `true` if {@link GLib.Variant} is being used; otherwise `false`.
+         * @since 3.26
          */
         get_use_gvariant(): boolean;
 
@@ -461,6 +473,7 @@ export namespace Jsonrpc {
          * @param id The id of the message to reply
          * @param result The return value or `null`
          * @param cancellable A {@link Gio.Cancellable}, or `null`
+         * @since 3.26
          */
         reply(id: GLib.Variant, result: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -497,6 +510,7 @@ export namespace Jsonrpc {
          * @param code The error code
          * @param message An optional error message
          * @param cancellable A {@link Gio.Cancellable}, or `null`
+         * @since 3.28
          */
         reply_error_async(id: GLib.Variant, code: number, message: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -511,6 +525,7 @@ export namespace Jsonrpc {
          * @param message An optional error message
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @param callback A {@link Gio.AsyncReadyCallback} or `null`
+         * @since 3.28
          */
         reply_error_async(id: GLib.Variant, code: number, message: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -525,6 +540,7 @@ export namespace Jsonrpc {
          * @param message An optional error message
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @param callback A {@link Gio.AsyncReadyCallback} or `null`
+         * @since 3.28
          */
         reply_error_async(id: GLib.Variant, code: number, message: string | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -537,6 +553,7 @@ export namespace Jsonrpc {
          * Completes an asynchronous request to {@link Client.reply_async}.
          * @param result A {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @since 3.26
          */
         reply_finish(result: Gio.AsyncResult): boolean;
 
@@ -550,6 +567,7 @@ export namespace Jsonrpc {
          * @param params A {@link GLib.Variant} of parameters or `null`
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @returns `true` on success; otherwise `false` and `error` is set.
+         * @since 3.26
          */
         send_notification(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -566,6 +584,7 @@ export namespace Jsonrpc {
          * @param method The name of the method to call
          * @param params A {@link GLib.Variant} of parameters or `null`
          * @param cancellable A {@link Gio.Cancellable} or `null`
+         * @since 3.26
          */
         send_notification_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -583,6 +602,7 @@ export namespace Jsonrpc {
          * @param params A {@link GLib.Variant} of parameters or `null`
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback 
+         * @since 3.26
          */
         send_notification_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -600,6 +620,7 @@ export namespace Jsonrpc {
          * @param params A {@link GLib.Variant} of parameters or `null`
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @param callback 
+         * @since 3.26
          */
         send_notification_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -611,6 +632,7 @@ export namespace Jsonrpc {
          * the notification.
          * @param result 
          * @returns `true` if the bytes have been flushed to the {@link Gio.IOStream}; otherwise   `false` and `error` is set.
+         * @since 3.26
          */
         send_notification_finish(result: Gio.AsyncResult): boolean;
 
@@ -622,12 +644,14 @@ export namespace Jsonrpc {
          * expensive parsing overhead and memory allocations. However, it requires
          * that the peer also supports {@link GLib.Variant} encoding.
          * @param use_gvariant If {@link GLib.Variant} should be used
+         * @since 3.26
          */
         set_use_gvariant(use_gvariant: boolean): void;
 
         /**
          * This function requests that client start processing incoming
          * messages from the peer.
+         * @since 3.26
          */
         start_listening(): void;
     }
@@ -793,6 +817,7 @@ export namespace Jsonrpc {
          * is no guarantee the peer received it.
          * @param message a {@link GLib.Variant}
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 3.26
          */
         write_message(message: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -803,6 +828,7 @@ export namespace Jsonrpc {
          * been buffered, and there is no guarantee the peer received it.
          * @param message a {@link GLib.Variant}
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 3.26
          */
         write_message_async(message: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -814,6 +840,7 @@ export namespace Jsonrpc {
          * @param message a {@link GLib.Variant}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} or `null`
+         * @since 3.26
          */
         write_message_async(message: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -825,6 +852,7 @@ export namespace Jsonrpc {
          * @param message a {@link GLib.Variant}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} or `null`
+         * @since 3.26
          */
         write_message_async(message: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -1065,6 +1093,7 @@ export namespace Jsonrpc {
          * by wrapping it in a {@link Jsonrpc.Client} and starting the message accept
          * loop.
          * @param io_stream A {@link Gio.IOStream}
+         * @since 3.26
          */
         accept_io_stream(io_stream: Gio.IOStream): void;
 
@@ -1073,18 +1102,21 @@ export namespace Jsonrpc {
          * @param method A method to handle
          * @param handler A handler to   execute when an incoming method matches `methods`
          * @returns A handler id that can be used to remove the handler with   {@link Server.remove_handler}.
+         * @since 3.26
          */
         add_handler(method: string, handler: ServerHandler): number;
 
         /**
          * Calls `foreach_func` for every client connected.
          * @param foreach_func A callback for each client
+         * @since 3.28
          */
         foreach(foreach_func: GLib.Func): void;
 
         /**
          * Removes a handler that was previously registered with {@link Server.add_handler}.
          * @param handler_id A handler returned from {@link Server.add_handler}
+         * @since 3.26
          */
         remove_handler(handler_id: number): void;
     }

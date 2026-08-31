@@ -128,6 +128,7 @@ export namespace SoupGNOME {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -146,6 +147,7 @@ export namespace SoupGNOME {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -154,6 +156,7 @@ export namespace SoupGNOME {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -163,6 +166,7 @@ export namespace SoupGNOME {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -185,6 +189,7 @@ export namespace SoupGNOME {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -193,6 +198,7 @@ export namespace SoupGNOME {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;
@@ -274,6 +280,8 @@ export namespace SoupGNOME {
          * @param async_context the {@link GLib.MainContext} to invoke `callback` in
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to invoke with the proxy address
+         * @since 2.26.3
+         * @deprecated {@link Soup.ProxyURIResolver} is deprecated in favor of {@link Gio.ProxyResolver}
          */
         get_proxy_uri_async(uri: Soup.URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: Soup.ProxyURIResolverCallback): void;
 
@@ -284,6 +292,8 @@ export namespace SoupGNOME {
          * @param uri the {@link Soup.URI} you want a proxy for
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns {@link Soup.Status.OK} if successful, or a transport-level error.
+         * @since 2.26.3
+         * @deprecated {@link Soup.ProxyURIResolver} is deprecated in favor of {@link Gio.ProxyResolver}
          */
         get_proxy_uri_sync(uri: Soup.URI, cancellable: Gio.Cancellable | null): [number, Soup.URI];
 
@@ -294,6 +304,8 @@ export namespace SoupGNOME {
          * @param async_context the {@link GLib.MainContext} to invoke `callback` in
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to invoke with the proxy address
+         * @since 2.26.3
+         * @deprecated {@link Soup.ProxyURIResolver} is deprecated in favor of {@link Gio.ProxyResolver}
          * @virtual
          */
         vfunc_get_proxy_uri_async(uri: Soup.URI, async_context: GLib.MainContext | null, cancellable: Gio.Cancellable | null, callback: Soup.ProxyURIResolverCallback): void;
@@ -304,6 +316,8 @@ export namespace SoupGNOME {
          * proxy, else it will be set to `null`.
          * @param uri the {@link Soup.URI} you want a proxy for
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 2.26.3
+         * @deprecated {@link Soup.ProxyURIResolver} is deprecated in favor of {@link Gio.ProxyResolver}
          * @virtual
          */
         vfunc_get_proxy_uri_sync(uri: Soup.URI, cancellable: Gio.Cancellable | null): [number, Soup.URI];
@@ -315,6 +329,7 @@ export namespace SoupGNOME {
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` accepted `type` as a subfeature.
+         * @since 2.34
          */
         add_feature(type: GObject.GType): boolean;
 
@@ -333,6 +348,7 @@ export namespace SoupGNOME {
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `feature` has a subfeature of type `type`
+         * @since 2.34
          */
         has_feature(type: GObject.GType): boolean;
 
@@ -341,6 +357,7 @@ export namespace SoupGNOME {
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
          * @returns `true` if `type` was removed from `feature`
+         * @since 2.34
          */
         remove_feature(type: GObject.GType): boolean;
 
@@ -350,6 +367,7 @@ export namespace SoupGNOME {
          * different types. Eg, the authentication manager can be extended
          * with subtypes of {@link Soup.Auth}.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_add_feature(type: GObject.GType): boolean;
@@ -372,6 +390,7 @@ export namespace SoupGNOME {
          * Tests if `feature` has a "sub-feature" of type `type`. See
          * `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_has_feature(type: GObject.GType): boolean;
@@ -380,6 +399,7 @@ export namespace SoupGNOME {
          * Removes the "sub-feature" of type `type` from the base feature
          * `feature`. See `soup_session_feature_add_feature()`.
          * @param type the {@link GObject.GType} of a "sub-feature"
+         * @since 2.34
          * @virtual
          */
         vfunc_remove_feature(type: GObject.GType): boolean;

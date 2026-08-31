@@ -507,6 +507,7 @@ export namespace GIRepository {
          * Obtain the index of the user data argument. This is only valid
          * for arguments which are callbacks.
          * @returns `TRUE` if the argument has a user data argument
+         * @since 2.80
          */
         get_closure_index(): [boolean, number];
 
@@ -514,6 +515,7 @@ export namespace GIRepository {
          * Obtains the index of the {@link GLib.DestroyNotify} argument. This is only
          * valid for arguments which are callbacks.
          * @returns `TRUE` if the argument has a {@link GLib.DestroyNotify} argument
+         * @since 2.80
          */
         get_destroy_index(): [boolean, number];
 
@@ -521,6 +523,7 @@ export namespace GIRepository {
          * Obtain the direction of the argument. Check {@link GIRepository.Direction}
          * for possible direction values.
          * @returns The direction
+         * @since 2.80
          */
         get_direction(): Direction;
 
@@ -528,6 +531,7 @@ export namespace GIRepository {
          * Obtain the ownership transfer for this argument.
          * {@link GIRepository.Transfer} contains a list of possible values.
          * @returns The transfer
+         * @since 2.80
          */
         get_ownership_transfer(): Transfer;
 
@@ -539,12 +543,14 @@ export namespace GIRepository {
          * 
          * {@link GIRepository.ScopeType} contains a list of possible values.
          * @returns The scope type
+         * @since 2.80
          */
         get_scope(): ScopeType;
 
         /**
          * Obtain the type information for `info`.
          * @returns The {@link GIRepository.TypeInfo} holding the type   information for `info`, free it with {@link GIRepository.BaseInfo.unref}   when done
+         * @since 2.80
          */
         get_type_info(): TypeInfo;
 
@@ -556,6 +562,7 @@ export namespace GIRepository {
          * is that the callee allocates; if this is `TRUE`, then the caller must
          * allocate.
          * @returns `TRUE` if caller is required to have allocated the argument
+         * @since 2.80
          */
         is_caller_allocates(): boolean;
 
@@ -565,6 +572,7 @@ export namespace GIRepository {
          * For ‘out’ arguments this means that you can pass `NULL` in order to ignore
          * the result.
          * @returns `TRUE` if it is an optional argument
+         * @since 2.80
          */
         is_optional(): boolean;
 
@@ -572,12 +580,14 @@ export namespace GIRepository {
          * Obtain if the argument is a return value. It can either be a
          * parameter or a return value.
          * @returns `TRUE` if it is a return value
+         * @since 2.80
          */
         is_return_value(): boolean;
 
         /**
          * Obtain if an argument is only useful in C.
          * @returns `TRUE` if argument is only useful in C.
+         * @since 2.80
          */
         is_skip(): boolean;
 
@@ -590,6 +600,7 @@ export namespace GIRepository {
          * 
          * Once you are done with `type`, it must be cleared using
          * {@link GIRepository.BaseInfo.clear}.
+         * @since 2.80
          */
         load_type_info(): TypeInfo;
 
@@ -601,6 +612,7 @@ export namespace GIRepository {
          * 
          * See also {@link GIRepository.ArgInfo.is_optional}.
          * @returns `TRUE` if the value may be `NULL`
+         * @since 2.80
          */
         may_be_null(): boolean;
     }
@@ -673,6 +685,7 @@ export namespace GIRepository {
          * 
          * This must only be called on stack-allocated {@link GIRepository.BaseInfo}s.
          * Use {@link GIRepository.BaseInfo.unref} for heap-allocated ones.
+         * @since 2.80
          */
         clear(): void;
 
@@ -684,6 +697,7 @@ export namespace GIRepository {
          * TypeLib; use this function instead to do {@link GIRepository.BaseInfo} comparisons.
          * @param info2 a {@link GIRepository.BaseInfo}
          * @returns `TRUE` if and only if `info1` equals `info2`.
+         * @since 2.80
          */
         equal(info2: BaseInfo): boolean;
 
@@ -691,6 +705,7 @@ export namespace GIRepository {
          * Retrieve an arbitrary attribute associated with this node.
          * @param name a freeform string naming an attribute
          * @returns The value of the attribute, or `NULL` if no such   attribute exists
+         * @since 2.80
          */
         get_attribute(name: string): string | null;
 
@@ -701,6 +716,7 @@ export namespace GIRepository {
          * {@link GIRepository.FunctionInfo} is an {@link GIRepository.ObjectInfo} or
          * {@link GIRepository.InterfaceInfo}.
          * @returns the container
+         * @since 2.80
          */
         get_container(): BaseInfo;
 
@@ -711,18 +727,21 @@ export namespace GIRepository {
          * `info`. For instance for {@link GIRepository.FunctionInfo} it is the name of
          * the function.
          * @returns the name of `info` or `NULL` if it lacks a name.
+         * @since 2.80
          */
         get_name(): string | null;
 
         /**
          * Obtain the namespace of `info`.
          * @returns the namespace
+         * @since 2.80
          */
         get_namespace(): string;
 
         /**
          * Obtain the typelib this `info` belongs to
          * @returns the typelib
+         * @since 2.80
          */
         get_typelib(): Typelib;
 
@@ -730,6 +749,7 @@ export namespace GIRepository {
          * Obtain whether the `info` is represents a metadata which is
          * deprecated.
          * @returns `TRUE` if deprecated
+         * @since 2.80
          */
         is_deprecated(): boolean;
 
@@ -760,12 +780,14 @@ export namespace GIRepository {
          * ```
          * @param iterator a {@link GIRepository.AttributeIter} structure, must be   initialized; see below
          * @returns `TRUE` if there are more attributes
+         * @since 2.80
          */
         iterate_attributes(iterator: AttributeIter): [boolean, AttributeIter, string, string];
 
         /**
          * Increases the reference count of `info`.
          * @returns the same `info`.
+         * @since 2.80
          */
         ref(): BaseInfo;
 
@@ -775,6 +797,7 @@ export namespace GIRepository {
          * 
          * This must not be called on stack-allocated {@link GIRepository.BaseInfo}s —
          * use {@link GIRepository.BaseInfo.clear} for that.
+         * @since 2.80
          */
         unref(): void;
     }
@@ -822,6 +845,7 @@ export namespace GIRepository {
         /**
          * Whether the callable can throw a {@link GLib.Error}
          * @returns `TRUE` if this {@link GIRepository.CallableInfo} can throw a {@link GLib.Error}
+         * @since 2.80
          */
         can_throw_gerror(): boolean;
 
@@ -829,12 +853,14 @@ export namespace GIRepository {
          * Obtain information about a particular argument of this callable.
          * @param n the argument index to fetch
          * @returns the {@link GIRepository.ArgInfo}. Free it with   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_arg(n: number): ArgInfo;
 
         /**
          * Gets the callable info for the callable's asynchronous version
          * @returns a {@link GIRepository.CallableInfo} for the   async function or `NULL` if not defined.
+         * @since 2.84
          */
         get_async_function(): CallableInfo | null;
 
@@ -843,12 +869,14 @@ export namespace GIRepository {
          * 
          * {@link GIRepository.Transfer} contains a list of possible transfer values.
          * @returns the transfer mode for the return value of the callable
+         * @since 2.80
          */
         get_caller_owns(): Transfer;
 
         /**
          * Gets the info for an async function's corresponding finish function
          * @returns a {@link GIRepository.CallableInfo} for the   finish function or `NULL` if not defined.
+         * @since 2.84
          */
         get_finish_function(): CallableInfo | null;
 
@@ -857,12 +885,14 @@ export namespace GIRepository {
          * 
          * {@link GIRepository.Transfer} contains a list of possible transfer values.
          * @returns the transfer mode of the instance argument
+         * @since 2.80
          */
         get_instance_ownership_transfer(): Transfer;
 
         /**
          * Obtain the number of arguments (both ‘in’ and ‘out’) for this callable.
          * @returns The number of arguments this callable expects.
+         * @since 2.80
          */
         get_n_args(): number;
 
@@ -870,6 +900,7 @@ export namespace GIRepository {
          * Retrieve an arbitrary attribute associated with the return value.
          * @param name a freeform string naming an attribute
          * @returns The value of the attribute, or `NULL` if no such   attribute exists
+         * @since 2.80
          */
         get_return_attribute(name: string): string | null;
 
@@ -879,12 +910,14 @@ export namespace GIRepository {
          * If the callable doesn’t return anything, a {@link GIRepository.TypeInfo} of
          * type {@link GIRepository.TypeTag.VOID} will be returned.
          * @returns the {@link GIRepository.TypeInfo}. Free the struct   by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_return_type(): TypeInfo;
 
         /**
          * Gets the callable info for the callable's synchronous version
          * @returns a {@link GIRepository.CallableInfo} for the   sync function or `NULL` if not defined.
+         * @since 2.84
          */
         get_sync_function(): CallableInfo | null;
 
@@ -898,6 +931,7 @@ export namespace GIRepository {
          * @param in_args array of ‘in’ arguments
          * @param out_args array of ‘out’ arguments allocated by   the caller, to be populated with outputted values
          * @returns `TRUE` if the callable was executed successfully and didn’t throw   a {@link GLib.Error}; `FALSE` if `error` is set
+         * @since 2.80
          */
         invoke(_function: null, in_args: Argument[], out_args: Argument[]): [boolean, Argument];
 
@@ -905,6 +939,7 @@ export namespace GIRepository {
          * Gets whether a callable is ‘async’. Async callables have a
          * {@link Gio.AsyncReadyCallback} parameter and user data.
          * @returns true if the callable is async
+         * @since 2.84
          */
         is_async(): boolean;
 
@@ -923,6 +958,7 @@ export namespace GIRepository {
          * in the raw C method. For methods, there is one more C argument than is
          * exposed by introspection: the `self` or `this` object.
          * @returns `TRUE` if `info` is a method, `FALSE` otherwise
+         * @since 2.80
          */
         is_method(): boolean;
 
@@ -939,6 +975,7 @@ export namespace GIRepository {
          * to use a similar API.
          * @param iterator a {@link GIRepository.AttributeIter} structure, must be   initialized; see below
          * @returns `TRUE` if there are more attributes
+         * @since 2.80
          */
         iterate_return_attributes(iterator: AttributeIter): [boolean, AttributeIter, string, string];
 
@@ -952,6 +989,7 @@ export namespace GIRepository {
          * Once you are done with `arg`, it must be cleared using
          * {@link GIRepository.BaseInfo.clear}.
          * @param n the argument index to fetch
+         * @since 2.80
          */
         load_arg(n: number): ArgInfo;
 
@@ -964,18 +1002,21 @@ export namespace GIRepository {
          * 
          * Once you are done with `type`, it must be cleared using
          * {@link GIRepository.BaseInfo.clear}.
+         * @since 2.80
          */
         load_return_type(): TypeInfo;
 
         /**
          * See if a callable could return `NULL`.
          * @returns `TRUE` if callable could return `NULL`
+         * @since 2.80
          */
         may_return_null(): boolean;
 
         /**
          * See if a callable’s return value is only useful in C.
          * @returns `TRUE` if return value is only useful in C.
+         * @since 2.80
          */
         skip_return(): boolean;
     }
@@ -1049,6 +1090,7 @@ export namespace GIRepository {
         /**
          * Obtain the type of the constant as a {@link GIRepository.TypeInfo}.
          * @returns The {@link GIRepository.TypeInfo}. Free the struct   by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_type_info(): TypeInfo;
     }
@@ -1094,6 +1136,7 @@ export namespace GIRepository {
          * Obtain the string form of the quark for the error domain associated with
          * this enum, if any.
          * @returns the string form of the error domain   associated with this enum, or `NULL`.
+         * @since 2.80
          */
         get_error_domain(): string | null;
 
@@ -1101,18 +1144,21 @@ export namespace GIRepository {
          * Obtain an enum type method at index `n`.
          * @param n index of method to get
          * @returns the {@link GIRepository.FunctionInfo}. Free the   struct by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_method(n: number): FunctionInfo;
 
         /**
          * Obtain the number of methods that this enum type has.
          * @returns number of methods
+         * @since 2.80
          */
         get_n_methods(): number;
 
         /**
          * Obtain the number of values this enumeration contains.
          * @returns the number of enumeration values
+         * @since 2.80
          */
         get_n_values(): number;
 
@@ -1124,6 +1170,7 @@ export namespace GIRepository {
          * computed correctly, but the signed or unsigned nature of the type
          * may not match the sign of the type used by the C compiler.
          * @returns the storage type for the enumeration
+         * @since 2.80
          */
         get_storage_type(): TypeTag;
 
@@ -1131,6 +1178,7 @@ export namespace GIRepository {
          * Obtain a value for this enumeration.
          * @param n index of value to fetch
          * @returns the enumeration value, free the struct with   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_value(n: number): ValueInfo;
     }
@@ -1181,6 +1229,7 @@ export namespace GIRepository {
          * Obtain the flags for this {@link GIRepository.FieldInfo}. See
          * {@link GIRepository.FieldInfoFlags} for possible flag values.
          * @returns the flags
+         * @since 2.80
          */
         get_flags(): FieldInfoFlags;
 
@@ -1188,6 +1237,7 @@ export namespace GIRepository {
          * Obtain the offset of the field member, in bytes. This is relative
          * to the beginning of the struct or union.
          * @returns the field offset, in bytes
+         * @since 2.80
          */
         get_offset(): number;
 
@@ -1195,12 +1245,14 @@ export namespace GIRepository {
          * Obtain the size of the field member, in bits. This is how
          * much space you need to allocate to store the field.
          * @returns the field size, in bits
+         * @since 2.80
          */
         get_size(): number;
 
         /**
          * Obtain the type of a field as a {@link GIRepository.TypeInfo}.
          * @returns the {@link GIRepository.TypeInfo}. Free the struct   by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_type_info(): TypeInfo;
     }
@@ -1283,6 +1335,7 @@ export namespace GIRepository {
         /**
          * Obtain the {@link GIRepository.FunctionInfoFlags} for the `info`.
          * @returns the flags
+         * @since 2.80
          */
         get_flags(): FunctionInfoFlags;
 
@@ -1293,6 +1346,7 @@ export namespace GIRepository {
          * `GI_FUNCTION_IS_SETTER` have a property set. For other cases,
          * `NULL` will be returned.
          * @returns The property or `NULL` if not set. Free   it with {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_property(): PropertyInfo | null;
 
@@ -1302,6 +1356,7 @@ export namespace GIRepository {
          * The symbol is the name of the exported function, suitable to be used as an
          * argument to {@link GModule.Module.symbol}.
          * @returns the symbol
+         * @since 2.80
          */
         get_symbol(): string;
 
@@ -1311,6 +1366,7 @@ export namespace GIRepository {
          * Only {@link GIRepository.FunctionInfo}s with the flag `GI_FUNCTION_WRAPS_VFUNC` have
          * a virtual function set. For other cases, `NULL` will be returned.
          * @returns The virtual function or `NULL` if not   set. Free it by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_vfunc(): VFuncInfo | null;
     }
@@ -1355,6 +1411,7 @@ export namespace GIRepository {
          * `NULL` will be returned if there’s no method available with that name.
          * @param name name of method to obtain
          * @returns The {@link GIRepository.FunctionInfo} or   `NULL` if none found. Free the struct by calling   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         find_method(name: string): FunctionInfo | null;
 
@@ -1364,6 +1421,7 @@ export namespace GIRepository {
          * `NULL` will be returned if there’s no signal available with that name.
          * @param name name of signal to find
          * @returns The {@link GIRepository.SignalInfo} or   `NULL` if none found. Free the struct by calling   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         find_signal(name: string): SignalInfo | null;
 
@@ -1374,6 +1432,7 @@ export namespace GIRepository {
          * more information on virtuals.
          * @param name The name of a virtual function to find.
          * @returns The {@link GIRepository.VFuncInfo}, or   `NULL` if none found. Free it with {@link GIRepository.BaseInfo.unref}   when done.
+         * @since 2.80
          */
         find_vfunc(name: string): VFuncInfo | null;
 
@@ -1381,12 +1440,14 @@ export namespace GIRepository {
          * Obtain an interface type constant at index `n`.
          * @param n index of constant to get
          * @returns The {@link GIRepository.ConstantInfo}. Free the   struct by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_constant(n: number): ConstantInfo;
 
         /**
          * Returns the layout C structure associated with this `GInterface`.
          * @returns The {@link GIRepository.StructInfo} or   `NULL` if unknown. Free it with {@link GIRepository.BaseInfo.unref} when   done.
+         * @since 2.80
          */
         get_iface_struct(): StructInfo | null;
 
@@ -1394,18 +1455,21 @@ export namespace GIRepository {
          * Obtain an interface type method at index `n`.
          * @param n index of method to get
          * @returns The {@link GIRepository.FunctionInfo}. Free the   struct by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_method(n: number): FunctionInfo;
 
         /**
          * Obtain the number of constants that this interface type has.
          * @returns number of constants
+         * @since 2.80
          */
         get_n_constants(): number;
 
         /**
          * Obtain the number of methods that this interface type has.
          * @returns number of methods
+         * @since 2.80
          */
         get_n_methods(): number;
 
@@ -1415,24 +1479,28 @@ export namespace GIRepository {
          * A prerequisite is another interface that needs to be implemented for
          * interface, similar to a base class for {@link GObject.Object}s.
          * @returns number of prerequisites
+         * @since 2.80
          */
         get_n_prerequisites(): number;
 
         /**
          * Obtain the number of properties that this interface type has.
          * @returns number of properties
+         * @since 2.80
          */
         get_n_properties(): number;
 
         /**
          * Obtain the number of signals that this interface type has.
          * @returns number of signals
+         * @since 2.80
          */
         get_n_signals(): number;
 
         /**
          * Obtain the number of virtual functions that this interface type has.
          * @returns number of virtual functions
+         * @since 2.80
          */
         get_n_vfuncs(): number;
 
@@ -1440,6 +1508,7 @@ export namespace GIRepository {
          * Obtain an interface type’s prerequisite at index `n`.
          * @param n index of prerequisite to get
          * @returns The prerequisite as a {@link GIRepository.BaseInfo}.   Free the struct by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_prerequisite(n: number): BaseInfo;
 
@@ -1447,6 +1516,7 @@ export namespace GIRepository {
          * Obtain an interface type property at index `n`.
          * @param n index of property to get
          * @returns The {@link GIRepository.PropertyInfo}. Free the   struct by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_property(n: number): PropertyInfo;
 
@@ -1454,6 +1524,7 @@ export namespace GIRepository {
          * Obtain an interface type signal at index `n`.
          * @param n index of signal to get
          * @returns The {@link GIRepository.SignalInfo}. Free the   struct by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_signal(n: number): SignalInfo;
 
@@ -1461,6 +1532,7 @@ export namespace GIRepository {
          * Obtain an interface type virtual function at index `n`.
          * @param n index of virtual function to get
          * @returns the {@link GIRepository.VFuncInfo}. Free the struct   by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_vfunc(n: number): VFuncInfo;
     }
@@ -1511,6 +1583,7 @@ export namespace GIRepository {
          * `NULL` will be returned if there’s no method available with that name.
          * @param name name of method to obtain
          * @returns The {@link GIRepository.FunctionInfo},   or `NULL` if no method could be found. Free the struct by calling   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         find_method(name: string): FunctionInfo | null;
 
@@ -1524,6 +1597,7 @@ export namespace GIRepository {
          * to chain up if that’s desired.
          * @param name name of method to obtain
          * @returns The {@link GIRepository.FunctionInfo},   or `NULL` if none was found. Free the struct by calling   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         find_method_using_interfaces(name: string): [FunctionInfo | null, BaseInfo | null];
 
@@ -1533,6 +1607,7 @@ export namespace GIRepository {
          * `NULL` will be returned if there’s no signal available with that name.
          * @param name name of signal
          * @returns The {@link GIRepository.SignalInfo},   or `NULL` if no signal could be found. Free the struct by calling   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         find_signal(name: string): SignalInfo | null;
 
@@ -1548,6 +1623,7 @@ export namespace GIRepository {
          * more information on invoking virtuals.
          * @param name the name of a virtual function to find.
          * @returns The {@link GIRepository.VFuncInfo}, or   `NULL` if none is found. Free it with {@link GIRepository.BaseInfo.unref}   when done.
+         * @since 2.80
          */
         find_vfunc(name: string): VFuncInfo | null;
 
@@ -1566,6 +1642,7 @@ export namespace GIRepository {
          * to chain up if that’s desired.
          * @param name name of vfunc to obtain
          * @returns The {@link GIRepository.VFuncInfo},   or `NULL` if none was found. Free the struct by calling   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         find_vfunc_using_interfaces(name: string): [VFuncInfo | null, BaseInfo | null];
 
@@ -1573,6 +1650,7 @@ export namespace GIRepository {
          * Obtain if the object type is an abstract type, i.e. if it cannot be
          * instantiated.
          * @returns `TRUE` if the object type is abstract
+         * @since 2.80
          */
         get_abstract(): boolean;
 
@@ -1580,6 +1658,7 @@ export namespace GIRepository {
          * Every {@link GObject.Object} has two structures; an instance structure and a
          * class structure.  This function returns the metadata for the class structure.
          * @returns The {@link GIRepository.StructInfo} or   `NULL` if it’s unknown. Free with {@link GIRepository.BaseInfo.unref} when   done.
+         * @since 2.80
          */
         get_class_struct(): StructInfo | null;
 
@@ -1587,6 +1666,7 @@ export namespace GIRepository {
          * Obtain an object type constant at index `n`.
          * @param n index of constant to get
          * @returns The {@link GIRepository.ConstantInfo}. Free the   struct by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_constant(n: number): ConstantInfo;
 
@@ -1594,6 +1674,7 @@ export namespace GIRepository {
          * Obtain an object type field at index `n`.
          * @param n index of field to get
          * @returns The {@link GIRepository.FieldInfo}. Free the struct   by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_field(n: number): FieldInfo;
 
@@ -1601,6 +1682,7 @@ export namespace GIRepository {
          * Checks whether the object type is a final type, i.e. if it cannot
          * be derived.
          * @returns `TRUE` if the object type is final
+         * @since 2.80
          */
         get_final(): boolean;
 
@@ -1610,6 +1692,7 @@ export namespace GIRepository {
          * 
          * This is mostly for supporting `GstMiniObject`.
          * @returns `TRUE` if the object type is a fundamental type
+         * @since 2.80
          */
         get_fundamental(): boolean;
 
@@ -1621,6 +1704,7 @@ export namespace GIRepository {
          * is {@link GIRepository.ObjectInfoGetValueFunction}. To fetch the function
          * pointer see {@link GIRepository.ObjectInfo.get_get_value_function_pointer}.
          * @returns the symbol, or `NULL` if the object type has no   get-value function
+         * @since 2.80
          */
         get_get_value_function_name(): string | null;
 
@@ -1628,6 +1712,7 @@ export namespace GIRepository {
          * Obtain an object type interface at index `n`.
          * @param n index of interface to get
          * @returns The {@link GIRepository.InterfaceInfo}. Free the   struct by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_interface(n: number): InterfaceInfo;
 
@@ -1635,54 +1720,63 @@ export namespace GIRepository {
          * Obtain an object type method at index `n`.
          * @param n index of method to get
          * @returns The {@link GIRepository.FunctionInfo}. Free the   struct by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_method(n: number): FunctionInfo;
 
         /**
          * Obtain the number of constants that this object type has.
          * @returns number of constants
+         * @since 2.80
          */
         get_n_constants(): number;
 
         /**
          * Obtain the number of fields that this object type has.
          * @returns number of fields
+         * @since 2.80
          */
         get_n_fields(): number;
 
         /**
          * Obtain the number of interfaces that this object type has.
          * @returns number of interfaces
+         * @since 2.80
          */
         get_n_interfaces(): number;
 
         /**
          * Obtain the number of methods that this object type has.
          * @returns number of methods
+         * @since 2.80
          */
         get_n_methods(): number;
 
         /**
          * Obtain the number of properties that this object type has.
          * @returns number of properties
+         * @since 2.80
          */
         get_n_properties(): number;
 
         /**
          * Obtain the number of signals that this object type has.
          * @returns number of signals
+         * @since 2.80
          */
         get_n_signals(): number;
 
         /**
          * Obtain the number of virtual functions that this object type has.
          * @returns number of virtual functions
+         * @since 2.80
          */
         get_n_vfuncs(): number;
 
         /**
          * Obtain the parent of the object type.
          * @returns The {@link GIRepository.ObjectInfo}. Free the struct by   calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_parent(): ObjectInfo | null;
 
@@ -1690,6 +1784,7 @@ export namespace GIRepository {
          * Obtain an object type property at index `n`.
          * @param n index of property to get
          * @returns The {@link GIRepository.PropertyInfo}. Free the   struct by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_property(n: number): PropertyInfo;
 
@@ -1702,6 +1797,7 @@ export namespace GIRepository {
          * function pointer see
          * {@link GIRepository.ObjectInfo.get_ref_function_pointer}.
          * @returns the symbol, or `NULL` if the object type has no ref   function
+         * @since 2.80
          */
         get_ref_function_name(): string | null;
 
@@ -1713,6 +1809,7 @@ export namespace GIRepository {
          * is {@link GIRepository.ObjectInfoSetValueFunction}. To fetch the function
          * pointer see {@link GIRepository.ObjectInfo.get_set_value_function_pointer}.
          * @returns the symbol, or `NULL` if the object type has no   set-value function
+         * @since 2.80
          */
         get_set_value_function_name(): string | null;
 
@@ -1720,6 +1817,7 @@ export namespace GIRepository {
          * Obtain an object type signal at index `n`.
          * @param n index of signal to get
          * @returns The {@link GIRepository.SignalInfo}. Free the   struct by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_signal(n: number): SignalInfo;
 
@@ -1727,6 +1825,7 @@ export namespace GIRepository {
          * Obtain the name of the function which, when called, will return the
          * {@link GObject.Type} for this object type.
          * @returns the type init function name
+         * @since 2.80
          */
         get_type_init_function_name(): string;
 
@@ -1739,6 +1838,7 @@ export namespace GIRepository {
         /**
          * Obtain the name of the object’s class/type.
          * @returns name of the object’s type
+         * @since 2.80
          */
         get_type_name(): string;
 
@@ -1756,6 +1856,7 @@ export namespace GIRepository {
          * {@link GIRepository.ObjectInfoUnrefFunction}. To fetch the function pointer
          * see {@link GIRepository.ObjectInfo.get_unref_function_pointer}.
          * @returns the symbol, or `NULL` if the object type has no unref   function
+         * @since 2.80
          */
         get_unref_function_name(): string | null;
 
@@ -1763,6 +1864,7 @@ export namespace GIRepository {
          * Obtain an object type virtual function at index `n`.
          * @param n index of virtual function to get
          * @returns The {@link GIRepository.VFuncInfo}. Free the struct   by calling {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_vfunc(n: number): VFuncInfo;
     }
@@ -1807,6 +1909,7 @@ export namespace GIRepository {
          * See {@link GObject.ParamFlags} for more information about possible flag
          * values.
          * @returns the flags
+         * @since 2.80
          */
         get_flags(): GObject.ParamFlags;
 
@@ -1815,6 +1918,7 @@ export namespace GIRepository {
          * 
          * The setter is only available for `G_PARAM_READABLE` properties.
          * @returns The function info, or `NULL` if not set.   Free it with {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_getter(): FunctionInfo | null;
 
@@ -1823,6 +1927,7 @@ export namespace GIRepository {
          * 
          * See {@link GIRepository.Transfer} for more information about transfer values.
          * @returns the transfer
+         * @since 2.80
          */
         get_ownership_transfer(): Transfer;
 
@@ -1832,12 +1937,14 @@ export namespace GIRepository {
          * The setter is only available for `G_PARAM_WRITABLE` properties that
          * are also not `G_PARAM_CONSTRUCT_ONLY`.
          * @returns The function info, or `NULL` if not set.   Free it with {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_setter(): FunctionInfo | null;
 
         /**
          * Obtain the type information for the property `info`.
          * @returns The {@link GIRepository.TypeInfo}. Free it with   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_type_info(): TypeInfo;
     }
@@ -1898,6 +2005,7 @@ export namespace GIRepository {
          * which provides the `type_init` function for `info` cannot be called, then
          * `G_TYPE_NONE` is returned.
          * @returns the {@link GObject.Type}, or `G_TYPE_NONE` if unknown
+         * @since 2.80
          */
         get_g_type(): GObject.GType;
 
@@ -1909,6 +2017,7 @@ export namespace GIRepository {
          * called by language bindings or applications — use
          * {@link GIRepository.RegisteredTypeInfo.get_g_type} directly instead.
          * @returns the symbol name of the type init function, suitable for   passing into {@link GModule.Module.symbol}, or `NULL` if unknown
+         * @since 2.80
          */
         get_type_init_function_name(): string | null;
 
@@ -1918,6 +2027,7 @@ export namespace GIRepository {
          * This type can be passed to {@link GObject.type_name} to get a
          * {@link GObject.Type}.
          * @returns the type name, or `NULL` if unknown
+         * @since 2.80
          */
         get_type_name(): string | null;
 
@@ -1939,6 +2049,7 @@ export namespace GIRepository {
          * associated with a class or interface, which return true from
          * {@link GIRepository.StructInfo.is_gtype_struct}.
          * @returns true if `info` is a boxed type
+         * @since 2.80
          */
         is_boxed(): boolean;
     }
@@ -2043,6 +2154,7 @@ export namespace GIRepository {
          * This function will overwrite the contents of the output file.
          * @param input_filename Input filename (for example `input.txt`)
          * @param output_filename Output filename (for example `output.xml`)
+         * @since 2.80
          */
         static dump(input_filename: string, output_filename: string): boolean;
 
@@ -2054,6 +2166,7 @@ export namespace GIRepository {
          * could affect the bindings. For example, a Python application using a
          * GObject-based library through {@link GIRepository.Repository} to load plugins also written in
          * Python.
+         * @since 2.86
          */
         static dup_default(): Repository;
 
@@ -2064,6 +2177,7 @@ export namespace GIRepository {
          * 
          * It’s used by the dumper and for programs that want to provide introspection
          * information
+         * @since 2.80
          */
         static get_option_group(): GLib.OptionGroup;
 
@@ -2076,6 +2190,7 @@ export namespace GIRepository {
          * counted in `n_versions_out`.
          * @param namespace_ GI namespace, e.g. `Gtk`
          * @returns the array of versions.
+         * @since 2.80
          */
         enumerate_versions(namespace_: string): string[];
 
@@ -2088,6 +2203,7 @@ export namespace GIRepository {
          * ensure the namespace has already been loaded.
          * @param domain a {@link GLib.Error} domain
          * @returns {@link GIRepository.EnumInfo}   representing metadata about `domain`’s enum type, or `NULL` if none found
+         * @since 2.80
          */
         find_by_error_domain(domain: GLib.Quark): EnumInfo | null;
 
@@ -2101,6 +2217,7 @@ export namespace GIRepository {
          * reliably when you know the {@link GObject.Type} is from a loaded namespace.
          * @param gtype {@link GObject.Type} to search for
          * @returns {@link GIRepository.BaseInfo}   representing metadata about `type`, or `NULL` if none found
+         * @since 2.80
          */
         find_by_gtype(gtype: GObject.GType): BaseInfo | null;
 
@@ -2113,6 +2230,7 @@ export namespace GIRepository {
          * @param namespace_ Namespace which will be searched
          * @param name Entry name to find
          * @returns {@link GIRepository.BaseInfo}   representing metadata about `name`, or `NULL` if none found
+         * @since 2.80
          */
         find_by_name(namespace_: string, name: string): BaseInfo | null;
 
@@ -2128,6 +2246,7 @@ export namespace GIRepository {
          * function.
          * @param namespace_ Namespace to inspect
          * @returns C namespace prefix, or `NULL` if none associated
+         * @since 2.80
          */
         get_c_prefix(namespace_: string): string | null;
 
@@ -2148,6 +2267,7 @@ export namespace GIRepository {
          * counted in `n_dependencies_out`.
          * @param namespace_ Namespace of interest
          * @returns String array of   all versioned dependencies
+         * @since 2.80
          */
         get_dependencies(namespace_: string): string[];
 
@@ -2166,6 +2286,7 @@ export namespace GIRepository {
          * counted in `n_dependencies_out`.
          * @param namespace_ Namespace of interest
          * @returns String array of   immediate versioned dependencies
+         * @since 2.80
          */
         get_immediate_dependencies(namespace_: string): string[];
 
@@ -2179,6 +2300,7 @@ export namespace GIRepository {
          * @param namespace_ Namespace to inspect
          * @param idx 0-based offset into namespace metadata for entry
          * @returns {@link GIRepository.BaseInfo}   containing metadata
+         * @since 2.80
          */
         get_info(namespace_: string, idx: number): BaseInfo;
 
@@ -2192,6 +2314,7 @@ export namespace GIRepository {
          * The list is guaranteed to be `NULL` terminated. The `NULL` terminator is not
          * counted in `n_paths_out`.
          * @returns list of search paths, most   important first
+         * @since 2.80
          */
         get_library_path(): string[];
 
@@ -2201,6 +2324,7 @@ export namespace GIRepository {
          * The list is guaranteed to be `NULL` terminated. The `NULL` terminator is not
          * counted in `n_namespaces_out`.
          * @returns list of namespaces
+         * @since 2.80
          */
         get_loaded_namespaces(): string[];
 
@@ -2211,6 +2335,7 @@ export namespace GIRepository {
          * The namespace must have already been loaded before calling this function.
          * @param namespace_ Namespace to inspect
          * @returns number of metadata entries
+         * @since 2.80
          */
         get_n_infos(namespace_: string): number;
 
@@ -2229,6 +2354,7 @@ export namespace GIRepository {
          * `GLocalFile`, which is a {@link GObject.Type} we see at runtime, but
          * not statically.
          * @param gtype a {@link GObject.Type} whose fundamental type is `G_TYPE_OBJECT`
+         * @since 2.80
          */
         get_object_gtype_interfaces(gtype: GObject.GType): InterfaceInfo[];
 
@@ -2242,6 +2368,7 @@ export namespace GIRepository {
          * The list is guaranteed to be `NULL` terminated. The `NULL` terminator is not
          * counted in `n_paths_out`.
          * @returns list of search paths, most   important first
+         * @since 2.80
          */
         get_search_path(): string[];
 
@@ -2263,6 +2390,7 @@ export namespace GIRepository {
          * counted in `out_n_elements`.
          * @param namespace_ Namespace to inspect
          * @returns Array of   paths to shared libraries, or `NULL` if none are associated
+         * @since 2.80
          */
         get_shared_libraries(namespace_: string): string[] | null;
 
@@ -2274,6 +2402,7 @@ export namespace GIRepository {
          * return the special string `<builtin>`.
          * @param namespace_ GI namespace to use, e.g. `Gtk`
          * @returns Filesystem path (or `<builtin>`) if   successful, `NULL` if namespace is not loaded
+         * @since 2.80
          */
         get_typelib_path(namespace_: string): string | null;
 
@@ -2286,6 +2415,7 @@ export namespace GIRepository {
          * function.
          * @param namespace_ Namespace to inspect
          * @returns Loaded version
+         * @since 2.80
          */
         get_version(namespace_: string): string;
 
@@ -2301,6 +2431,7 @@ export namespace GIRepository {
          * @param namespace_ Namespace of interest
          * @param version Required version, may be `NULL` for latest
          * @returns `TRUE` if namespace-version is loaded, `FALSE` otherwise
+         * @since 2.80
          */
         is_registered(namespace_: string, version: string | null): boolean;
 
@@ -2309,6 +2440,7 @@ export namespace GIRepository {
          * @param typelib the typelib to load
          * @param flags flags affecting the loading operation
          * @returns namespace of the loaded typelib
+         * @since 2.80
          */
         load_typelib(typelib: Typelib, flags: RepositoryLoadFlags): string;
 
@@ -2328,6 +2460,7 @@ export namespace GIRepository {
          * path (i.e. `LD_LIBRARY_PATH` and `DT_RPATH` in ELF systems).
          * See the documentation of your dynamic linker for full details.
          * @param directory a single directory to scan for shared libraries
+         * @since 2.80
          */
         prepend_library_path(directory: string): void;
 
@@ -2336,6 +2469,7 @@ export namespace GIRepository {
          * 
          * See also: `gi_repository_get_search_path()`.
          * @param directory directory name to prepend to the typelib   search path
+         * @since 2.80
          */
         prepend_search_path(directory: string): void;
 
@@ -2350,6 +2484,7 @@ export namespace GIRepository {
          * @param version Version of namespace, may be `NULL` for latest
          * @param flags Set of {@link GIRepository.RepositoryLoadFlags}, may be 0
          * @returns a pointer to the {@link GIRepository.Typelib} if   successful, `NULL` otherwise
+         * @since 2.80
          */
         require(namespace_: string, version: string | null, flags: RepositoryLoadFlags): Typelib;
 
@@ -2365,6 +2500,7 @@ export namespace GIRepository {
          * @param version Version of namespace, may be `NULL` for latest
          * @param flags Set of {@link GIRepository.RepositoryLoadFlags}, may be 0
          * @returns a pointer to the {@link GIRepository.Typelib} if   successful, `NULL` otherwise
+         * @since 2.80
          */
         require_private(typelib_dir: string, namespace_: string, version: string | null, flags: RepositoryLoadFlags): Typelib;
     }
@@ -2412,6 +2548,7 @@ export namespace GIRepository {
          * The class closure is a virtual function on the type that the signal belongs
          * to. If the signal lacks a closure, `NULL` will be returned.
          * @returns the class closure, or `NULL` if none is   set
+         * @since 2.80
          */
         get_class_closure(): VFuncInfo | null;
 
@@ -2421,6 +2558,7 @@ export namespace GIRepository {
          * See {@link GObject.SignalFlags} for more information about possible flag
          * values.
          * @returns the flags
+         * @since 2.80
          */
         get_flags(): GObject.SignalFlags;
 
@@ -2428,6 +2566,7 @@ export namespace GIRepository {
          * Obtain if the returning `TRUE` in the signal handler will stop the emission
          * of the signal.
          * @returns `TRUE` if returning `TRUE` stops the signal emission
+         * @since 2.80
          */
         true_stops_emit(): boolean;
     }
@@ -2469,6 +2608,7 @@ export namespace GIRepository {
          * Obtain the type information for field named `name`.
          * @param name a field name
          * @returns The {@link GIRepository.FieldInfo}, or   `NULL` if not found. Free it with {@link GIRepository.BaseInfo.unref} when   done.
+         * @since 2.80
          */
         find_field(name: string): FieldInfo | null;
 
@@ -2476,18 +2616,21 @@ export namespace GIRepository {
          * Obtain the type information for method named `name`.
          * @param name a method name
          * @returns The {@link GIRepository.FunctionInfo},   or `NULL` if none was found. Free it with   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         find_method(name: string): FunctionInfo | null;
 
         /**
          * Obtain the required alignment of the structure.
          * @returns required alignment, in bytes
+         * @since 2.80
          */
         get_alignment(): number;
 
         /**
          * Retrieves the name of the copy function for `info`, if any is set.
          * @returns the name of the copy function, or `NULL`   if the structure has no copy function
+         * @since 2.80
          */
         get_copy_function_name(): string | null;
 
@@ -2495,12 +2638,14 @@ export namespace GIRepository {
          * Obtain the type information for field with specified index.
          * @param n a field index
          * @returns The {@link GIRepository.FieldInfo}. Free it with   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_field(n: number): FieldInfo;
 
         /**
          * Retrieves the name of the free function for `info`, if any is set.
          * @returns the name of the free function, or `NULL`   if the structure has no free function
+         * @since 2.80
          */
         get_free_function_name(): string | null;
 
@@ -2508,24 +2653,28 @@ export namespace GIRepository {
          * Obtain the type information for method with specified index.
          * @param n a method index
          * @returns The {@link GIRepository.FunctionInfo}. Free it with   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_method(n: number): FunctionInfo;
 
         /**
          * Obtain the number of fields this structure has.
          * @returns number of fields
+         * @since 2.80
          */
         get_n_fields(): number;
 
         /**
          * Obtain the number of methods this structure has.
          * @returns number of methods
+         * @since 2.80
          */
         get_n_methods(): number;
 
         /**
          * Obtain the total size of the structure.
          * @returns size of the structure, in bytes
+         * @since 2.80
          */
         get_size(): number;
 
@@ -2533,6 +2682,7 @@ export namespace GIRepository {
          * Gets whether the structure is foreign, i.e. if it’s expected to be overridden
          * by a native language binding instead of relying of introspected bindings.
          * @returns `TRUE` if the structure is foreign
+         * @since 2.80
          */
         is_foreign(): boolean;
 
@@ -2543,6 +2693,7 @@ export namespace GIRepository {
          * This function is mainly useful to hide this kind of structure from generated
          * public APIs.
          * @returns `TRUE` if this is a class struct, `FALSE` otherwise
+         * @since 2.80
          */
         is_gtype_struct(): boolean;
     }
@@ -2609,6 +2760,7 @@ export namespace GIRepository {
          * This function fills in the appropriate field of `arg` with the value extracted
          * from `hash_pointer`, depending on the storage type of `info`.
          * @param hash_pointer a pointer, such as a {@link GLib.HashTable} data pointer
+         * @since 2.80
          */
         argument_from_hash_pointer(hash_pointer: null): Argument;
 
@@ -2618,6 +2770,7 @@ export namespace GIRepository {
          * The type tag must be a `GI_TYPE_TAG_ARRAY` with a fixed size, or `FALSE` will
          * be returned.
          * @returns `TRUE` if the type is an array and has a fixed size
+         * @since 2.80
          */
         get_array_fixed_size(): [boolean, number];
 
@@ -2627,6 +2780,7 @@ export namespace GIRepository {
          * The type tag must be a `GI_TYPE_TAG_ARRAY` with a length argument, or `FALSE`
          * will be returned.
          * @returns `TRUE` if the type is an array and has a length argument
+         * @since 2.80
          */
         get_array_length_index(): [boolean, number];
 
@@ -2638,6 +2792,7 @@ export namespace GIRepository {
          * It is an error to call this on an `info` which is not an array type. Use
          * {@link GIRepository.TypeInfo.get_tag} to check.
          * @returns the array type
+         * @since 2.80
          */
         get_array_type(): ArrayType;
 
@@ -2652,6 +2807,7 @@ export namespace GIRepository {
          * {@link GIRepository.IS_OBJECT_INFO}, or raw {@link GObject.Type}s with
          * {@link GObject.TYPE_FROM_INSTANCE}.
          * @returns The {@link GIRepository.BaseInfo}, or   `NULL`. Free it with `gi_base_info_unref()` when done.
+         * @since 2.80
          */
         get_interface(): BaseInfo | null;
 
@@ -2659,6 +2815,7 @@ export namespace GIRepository {
          * Obtain the parameter type `n`, or `NULL` if the type is not an array.
          * @param n index of the parameter
          * @returns the param type info, or `NULL` if the   type is not an array
+         * @since 2.80
          */
         get_param_type(n: number): TypeInfo | null;
 
@@ -2668,6 +2825,7 @@ export namespace GIRepository {
          * 
          * See {@link GIRepository.TypeTag} for a list of type tags.
          * @returns the type tag
+         * @since 2.80
          */
         get_storage_type(): TypeTag;
 
@@ -2676,6 +2834,7 @@ export namespace GIRepository {
          * 
          * See {@link GIRepository.TypeTag} for a list of type tags.
          * @returns the type tag
+         * @since 2.80
          */
         get_tag(): TypeTag;
 
@@ -2697,6 +2856,7 @@ export namespace GIRepository {
          * depending on the storage type of `info`.
          * @param arg a {@link GIRepository.Argument} with the value to stuff into a pointer
          * @returns A stuffed pointer, that can be stored in a {@link GLib.HashTable},   for example
+         * @since 2.80
          */
         hash_pointer_from_argument(arg: Argument): null;
 
@@ -2708,6 +2868,7 @@ export namespace GIRepository {
          * (i.e. only if the type of the C function’s formal parameter is a pointer to a
          * pointer).
          * @returns `TRUE` if it is a pointer
+         * @since 2.80
          */
         is_pointer(): boolean;
 
@@ -2716,6 +2877,7 @@ export namespace GIRepository {
          * 
          * The type tag must be a `GI_TYPE_TAG_ARRAY` or `FALSE` will be returned.
          * @returns `TRUE` if zero terminated
+         * @since 2.80
          */
         is_zero_terminated(): boolean;
     }
@@ -2759,18 +2921,21 @@ export namespace GIRepository {
          * Obtain the type information for the method named `name`.
          * @param name a method name
          * @returns The {@link GIRepository.FunctionInfo}, or   `NULL` if none was found. Free it with {@link GIRepository.BaseInfo.unref}   when done.
+         * @since 2.80
          */
         find_method(name: string): FunctionInfo | null;
 
         /**
          * Obtain the required alignment of the union.
          * @returns required alignment, in bytes
+         * @since 2.80
          */
         get_alignment(): number;
 
         /**
          * Retrieves the name of the copy function for `info`, if any is set.
          * @returns the name of the copy function, or `NULL`   if none is set
+         * @since 2.80
          */
         get_copy_function_name(): string | null;
 
@@ -2782,6 +2947,7 @@ export namespace GIRepository {
          * If the union is not discriminated, `NULL` is returned.
          * @param n a union field index
          * @returns The {@link GIRepository.ConstantInfo}, or   `NULL` if the union is not discriminated. Free it with   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_discriminator(n: bigint | number): ConstantInfo | null;
 
@@ -2790,12 +2956,14 @@ export namespace GIRepository {
          * 
          * The union must be discriminated, or `FALSE` will be returned.
          * @returns `TRUE` if the union is discriminated
+         * @since 2.80
          */
         get_discriminator_offset(): [boolean, number];
 
         /**
          * Obtain the type information of the union discriminator.
          * @returns the {@link GIRepository.TypeInfo}, or   `NULL` if the union is not discriminated. Free it with   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_discriminator_type(): TypeInfo | null;
 
@@ -2803,12 +2971,14 @@ export namespace GIRepository {
          * Obtain the type information for the field with the specified index.
          * @param n a field index
          * @returns the {@link GIRepository.FieldInfo}, free it with   {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_field(n: number): FieldInfo;
 
         /**
          * Retrieves the name of the free function for `info`, if any is set.
          * @returns the name of the free function, or `NULL`   if none is set
+         * @since 2.80
          */
         get_free_function_name(): string | null;
 
@@ -2816,30 +2986,35 @@ export namespace GIRepository {
          * Obtain the type information for the method with the specified index.
          * @param n a method index
          * @returns the {@link GIRepository.FunctionInfo}, free it   with {@link GIRepository.BaseInfo.unref} when done.
+         * @since 2.80
          */
         get_method(n: number): FunctionInfo;
 
         /**
          * Obtain the number of fields this union has.
          * @returns number of fields
+         * @since 2.80
          */
         get_n_fields(): number;
 
         /**
          * Obtain the number of methods this union has.
          * @returns number of methods
+         * @since 2.80
          */
         get_n_methods(): number;
 
         /**
          * Obtain the total size of the union.
          * @returns size of the union, in bytes
+         * @since 2.80
          */
         get_size(): number;
 
         /**
          * Return `TRUE` if this union contains a discriminator field.
          * @returns `TRUE` if this is a discriminated union, `FALSE` otherwise
+         * @since 2.80
          */
         is_discriminated(): boolean;
     }
@@ -2914,6 +3089,7 @@ export namespace GIRepository {
          * `implementor_gtype`.
          * @param implementor_gtype {@link GObject.Type} implementing this virtual function
          * @returns address to a function
+         * @since 2.80
          */
         get_address(implementor_gtype: GObject.GType): null;
 
@@ -2923,6 +3099,7 @@ export namespace GIRepository {
          * See {@link GIRepository.VFuncInfoFlags} for more information about possible
          * flag values.
          * @returns the flags
+         * @since 2.80
          */
         get_flags(): VFuncInfoFlags;
 
@@ -2932,6 +3109,7 @@ export namespace GIRepository {
          * 
          * Not all virtuals will have invokers.
          * @returns The {@link GIRepository.FunctionInfo} or   `NULL` if none is set. Free it with {@link GIRepository.BaseInfo.unref}   when done.
+         * @since 2.80
          */
         get_invoker(): FunctionInfo | null;
 
@@ -2940,6 +3118,7 @@ export namespace GIRepository {
          * 
          * The value `0xFFFF` indicates that the struct offset is unknown.
          * @returns the struct offset or `0xFFFF` if it’s unknown
+         * @since 2.80
          */
         get_offset(): number;
 
@@ -2949,6 +3128,7 @@ export namespace GIRepository {
          * The signal comes from the object or interface to which
          * this virtual function belongs.
          * @returns the signal, or `NULL` if none is set
+         * @since 2.80
          */
         get_signal(): SignalInfo | null;
     }
@@ -2990,6 +3170,7 @@ export namespace GIRepository {
         /**
          * Obtain the enumeration value of the {@link GIRepository.ValueInfo}.
          * @returns the enumeration value. This will always be representable   as a 32-bit signed or unsigned value. The use of `int64_t` as the   return type is to allow both.
+         * @since 2.80
          */
         get_value(): number;
     }
@@ -3045,12 +3226,14 @@ export namespace GIRepository {
         /**
          * Get the name of the namespace represented by `typelib`.
          * @returns name of the namespace represented by `typelib`
+         * @since 2.80
          */
         get_namespace(): string;
 
         /**
          * Increment the reference count of a {@link GIRepository.Typelib}.
          * @returns the same `typelib` pointer
+         * @since 2.80
          */
         ref(): Typelib;
 
@@ -3058,6 +3241,7 @@ export namespace GIRepository {
          * Loads a symbol from a {@link GIRepository.Typelib}.
          * @param symbol_name name of symbol to be loaded
          * @returns `TRUE` on success
+         * @since 2.80
          */
         symbol(symbol_name: string): [boolean, null];
 
@@ -3065,6 +3249,7 @@ export namespace GIRepository {
          * Decrement the reference count of a {@link GIRepository.Typelib}.
          * 
          * Once the reference count reaches zero, the typelib is freed.
+         * @since 2.80
          */
         unref(): void;
     }

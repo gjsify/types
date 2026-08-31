@@ -386,6 +386,7 @@ export namespace Cally {
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
          * @returns An alpha value from 0 to 1.0, inclusive.
+         * @since 1.12
          */
         get_alpha(): number;
 
@@ -418,6 +419,7 @@ export namespace Cally {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_position(coord_type: Atk.CoordType): [number, number];
 
@@ -426,6 +428,7 @@ export namespace Cally {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_size(): [number, number];
 
@@ -450,6 +453,7 @@ export namespace Cally {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          */
         remove_focus_handler(handler_id: number): void;
 
@@ -461,6 +465,7 @@ export namespace Cally {
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to(type: Atk.ScrollType): boolean;
 
@@ -471,6 +476,7 @@ export namespace Cally {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
 
@@ -528,6 +534,7 @@ export namespace Cally {
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
+         * @since 1.12
          * @virtual
          */
         vfunc_get_alpha(): number;
@@ -562,6 +569,7 @@ export namespace Cally {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_position(coord_type: Atk.CoordType): [number, number];
@@ -571,6 +579,7 @@ export namespace Cally {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_size(): [number, number];
@@ -596,6 +605,7 @@ export namespace Cally {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
@@ -607,6 +617,7 @@ export namespace Cally {
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to(type: Atk.ScrollType): boolean;
@@ -617,6 +628,7 @@ export namespace Cally {
          * @param coords specify whether coordinates are relative to the screen or to the parent object.
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
@@ -948,6 +960,7 @@ export namespace Cally {
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
          * @returns An alpha value from 0 to 1.0, inclusive.
+         * @since 1.12
          */
         get_alpha(): number;
 
@@ -980,6 +993,7 @@ export namespace Cally {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_position(coord_type: Atk.CoordType): [number, number];
 
@@ -988,6 +1002,7 @@ export namespace Cally {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_size(): [number, number];
 
@@ -1012,6 +1027,7 @@ export namespace Cally {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          */
         remove_focus_handler(handler_id: number): void;
 
@@ -1023,6 +1039,7 @@ export namespace Cally {
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to(type: Atk.ScrollType): boolean;
 
@@ -1033,6 +1050,7 @@ export namespace Cally {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
 
@@ -1090,6 +1108,7 @@ export namespace Cally {
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
+         * @since 1.12
          * @virtual
          */
         vfunc_get_alpha(): number;
@@ -1124,6 +1143,7 @@ export namespace Cally {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_position(coord_type: Atk.CoordType): [number, number];
@@ -1133,6 +1153,7 @@ export namespace Cally {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_size(): [number, number];
@@ -1158,6 +1179,7 @@ export namespace Cally {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
@@ -1169,6 +1191,7 @@ export namespace Cally {
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to(type: Atk.ScrollType): boolean;
@@ -1179,6 +1202,7 @@ export namespace Cally {
          * @param coords specify whether coordinates are relative to the screen or to the parent object.
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
@@ -1586,6 +1610,7 @@ export namespace Cally {
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
          * @returns An alpha value from 0 to 1.0, inclusive.
+         * @since 1.12
          */
         get_alpha(): number;
 
@@ -1618,6 +1643,7 @@ export namespace Cally {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_position(coord_type: Atk.CoordType): [number, number];
 
@@ -1626,6 +1652,7 @@ export namespace Cally {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_size(): [number, number];
 
@@ -1650,6 +1677,7 @@ export namespace Cally {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          */
         remove_focus_handler(handler_id: number): void;
 
@@ -1661,6 +1689,7 @@ export namespace Cally {
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to(type: Atk.ScrollType): boolean;
 
@@ -1671,6 +1700,7 @@ export namespace Cally {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
 
@@ -1728,6 +1758,7 @@ export namespace Cally {
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
+         * @since 1.12
          * @virtual
          */
         vfunc_get_alpha(): number;
@@ -1762,6 +1793,7 @@ export namespace Cally {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_position(coord_type: Atk.CoordType): [number, number];
@@ -1771,6 +1803,7 @@ export namespace Cally {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_size(): [number, number];
@@ -1796,6 +1829,7 @@ export namespace Cally {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
@@ -1807,6 +1841,7 @@ export namespace Cally {
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to(type: Atk.ScrollType): boolean;
@@ -1817,6 +1852,7 @@ export namespace Cally {
          * @param coords specify whether coordinates are relative to the screen or to the parent object.
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
@@ -2146,6 +2182,7 @@ export namespace Cally {
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
          * @returns An alpha value from 0 to 1.0, inclusive.
+         * @since 1.12
          */
         get_alpha(): number;
 
@@ -2178,6 +2215,7 @@ export namespace Cally {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_position(coord_type: Atk.CoordType): [number, number];
 
@@ -2186,6 +2224,7 @@ export namespace Cally {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          */
         get_size(): [number, number];
 
@@ -2210,6 +2249,7 @@ export namespace Cally {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          */
         remove_focus_handler(handler_id: number): void;
 
@@ -2221,6 +2261,7 @@ export namespace Cally {
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to(type: Atk.ScrollType): boolean;
 
@@ -2231,6 +2272,7 @@ export namespace Cally {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.30
          */
         scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
 
@@ -2288,6 +2330,7 @@ export namespace Cally {
          * Returns the alpha value (i.e. the opacity) for this
          * `component`, on a scale from 0 (fully transparent) to 1.0
          * (fully opaque).
+         * @since 1.12
          * @virtual
          */
         vfunc_get_alpha(): number;
@@ -2322,6 +2365,7 @@ export namespace Cally {
          * If the position can not be obtained (e.g. a non-embedded plug or missing
          * support), x and y are set to -1.
          * @param coord_type specifies whether the coordinates are relative to the screen or to the components top level window
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_position(coord_type: Atk.CoordType): [number, number];
@@ -2331,6 +2375,7 @@ export namespace Cally {
          * 
          * If the size can not be obtained (e.g. a non-embedded plug or missing
          * support), width and height are set to -1.
+         * @deprecated Since 2.12. Use `atk_component_get_extents()` instead.
          * @virtual
          */
         vfunc_get_size(): [number, number];
@@ -2356,6 +2401,7 @@ export namespace Cally {
          * functions to be executed when this object receives focus events
          * (in or out).
          * @param handler_id the handler id of the focus handler to be removed from `component`
+         * @deprecated since 2.9.4: If you need to track when an object gains or lose the focus, use the {@link Atk.Object.SignalSignatures.state_change | Atk.Object::state-change} "focused" notification instead.
          * @virtual
          */
         vfunc_remove_focus_handler(handler_id: number): void;
@@ -2367,6 +2413,7 @@ export namespace Cally {
          * `component` in its parent, this only makes the parents scroll so that the
          * object shows up on the screen, given its current position within the parents.
          * @param type specify where the object should be made visible.
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to(type: Atk.ScrollType): boolean;
@@ -2377,6 +2424,7 @@ export namespace Cally {
          * @param coords specify whether coordinates are relative to the screen or to the parent object.
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
+         * @since 2.30
          * @virtual
          */
         vfunc_scroll_to_point(coords: Atk.CoordType, x: number, y: number): boolean;
@@ -2543,6 +2591,7 @@ export namespace Cally {
          * @param x_clip_type Specify the horizontal clip type.
          * @param y_clip_type Specify the vertical clip type.
          * @returns Array of AtkTextRange. The last          element of the array returned by this function will be NULL.
+         * @since 1.3
          */
         get_bounded_ranges(rect: Atk.TextRectangle, coord_type: Atk.CoordType, x_clip_type: Atk.TextClipType, y_clip_type: Atk.TextClipType): Atk.TextRange[];
 
@@ -2610,6 +2659,7 @@ export namespace Cally {
          * @param start_offset The offset of the first text character for which boundary        information is required.
          * @param end_offset The offset of the text character after the last character        for which boundary information is required.
          * @param coord_type Specify whether coordinates are relative to the screen or widget window.
+         * @since 1.3
          */
         get_range_extents(start_offset: number, end_offset: number, coord_type: Atk.CoordType): Atk.TextRectangle;
 
@@ -2667,6 +2717,7 @@ export namespace Cally {
          * @param offset position
          * @param granularity An {@link Atk.TextGranularity}
          * @returns a newly allocated string containing the text at          the `offset` bounded by the specified `granularity`. Use `g_free()`          to free the returned string.  Returns `null` if the offset is invalid          or no implementation is available.
+         * @since 2.10
          */
         get_string_at_offset(offset: number, granularity: Atk.TextGranularity): [string | null, number, number];
 
@@ -2683,6 +2734,7 @@ export namespace Cally {
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
          * @returns a newly allocated string containing the text after `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
+         * @deprecated since 2.9.3: Please use `atk_text_get_string_at_offset()` instead.
          */
         get_text_after_offset(offset: number, boundary_type: Atk.TextBoundary): [string, number, number];
 
@@ -2714,6 +2766,7 @@ export namespace Cally {
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
          * @returns a newly allocated string containing the text at `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
+         * @deprecated This method is deprecated since ATK version 2.9.4. Please use `atk_text_get_string_at_offset()` instead.
          */
         get_text_at_offset(offset: number, boundary_type: Atk.TextBoundary): [string, number, number];
 
@@ -2722,6 +2775,7 @@ export namespace Cally {
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
          * @returns a newly allocated string containing the text before `offset` bounded          by the specified `boundary_type`. Use `g_free()` to free the returned          string.
+         * @deprecated since 2.9.3: Please use `atk_text_get_string_at_offset()` instead.
          */
         get_text_before_offset(offset: number, boundary_type: Atk.TextBoundary): [string, number, number];
 
@@ -2738,6 +2792,7 @@ export namespace Cally {
          * @param end_offset end offset in the `text`, or -1 for the end of the text.
          * @param type specify where the object should be made visible.
          * @returns whether scrolling was successful.
+         * @since 2.32
          */
         scroll_substring_to(start_offset: number, end_offset: number, type: Atk.ScrollType): boolean;
 
@@ -2750,6 +2805,7 @@ export namespace Cally {
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
          * @returns whether scrolling was successful.
+         * @since 2.32
          */
         scroll_substring_to_point(start_offset: number, end_offset: number, coords: Atk.CoordType, x: number, y: number): boolean;
 
@@ -2799,6 +2855,7 @@ export namespace Cally {
          * @param coord_type Specify whether coordinates are relative to the screen or widget window.
          * @param x_clip_type Specify the horizontal clip type.
          * @param y_clip_type Specify the vertical clip type.
+         * @since 1.3
          * @virtual
          */
         vfunc_get_bounded_ranges(rect: Atk.TextRectangle, coord_type: Atk.CoordType, x_clip_type: Atk.TextClipType, y_clip_type: Atk.TextClipType): Atk.TextRange[];
@@ -2868,6 +2925,7 @@ export namespace Cally {
          * @param start_offset The offset of the first text character for which boundary        information is required.
          * @param end_offset The offset of the text character after the last character        for which boundary information is required.
          * @param coord_type Specify whether coordinates are relative to the screen or widget window.
+         * @since 1.3
          * @virtual
          */
         vfunc_get_range_extents(start_offset: number, end_offset: number, coord_type: Atk.CoordType): Atk.TextRectangle;
@@ -2925,6 +2983,7 @@ export namespace Cally {
          * of the following paragraph after the offset.
          * @param offset position
          * @param granularity An {@link Atk.TextGranularity}
+         * @since 2.10
          * @virtual
          */
         vfunc_get_string_at_offset(offset: number, granularity: Atk.TextGranularity): [string | null, number, number];
@@ -2941,6 +3000,7 @@ export namespace Cally {
          * Gets the specified text.
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
+         * @deprecated since 2.9.3: Please use `atk_text_get_string_at_offset()` instead.
          * @virtual
          */
         vfunc_get_text_after_offset(offset: number, boundary_type: Atk.TextBoundary): [string, number, number];
@@ -2972,6 +3032,7 @@ export namespace Cally {
          * start after the offset.
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
+         * @deprecated This method is deprecated since ATK version 2.9.4. Please use `atk_text_get_string_at_offset()` instead.
          * @virtual
          */
         vfunc_get_text_at_offset(offset: number, boundary_type: Atk.TextBoundary): [string, number, number];
@@ -2980,6 +3041,7 @@ export namespace Cally {
          * Gets the specified text.
          * @param offset position
          * @param boundary_type An {@link Atk.TextBoundary}
+         * @deprecated since 2.9.3: Please use `atk_text_get_string_at_offset()` instead.
          * @virtual
          */
         vfunc_get_text_before_offset(offset: number, boundary_type: Atk.TextBoundary): [string, number, number];
@@ -2996,6 +3058,7 @@ export namespace Cally {
          * @param start_offset start offset in the `text`
          * @param end_offset end offset in the `text`, or -1 for the end of the text.
          * @param type specify where the object should be made visible.
+         * @since 2.32
          * @virtual
          */
         vfunc_scroll_substring_to(start_offset: number, end_offset: number, type: Atk.ScrollType): boolean;
@@ -3008,6 +3071,7 @@ export namespace Cally {
          * @param coords specify whether coordinates are relative to the screen or to the parent object.
          * @param x x-position where to scroll to
          * @param y y-position where to scroll to
+         * @since 2.32
          * @virtual
          */
         vfunc_scroll_substring_to_point(start_offset: number, end_offset: number, coords: Atk.CoordType, x: number, y: number): boolean;

@@ -9238,6 +9238,7 @@ export namespace NM {
         /**
          * Gets the bandwidth advertised by the access point in MHz.
          * @returns the advertised bandwidth (MHz)
+         * @since 1.46
          */
         get_bandwidth(): number;
 
@@ -9264,6 +9265,7 @@ export namespace NM {
          * access point was found in scan results.  A value of -1 means the access
          * point has not been found in a scan.
          * @returns the last seen time in seconds
+         * @since 1.2
          */
         get_last_seen(): number;
 
@@ -9570,6 +9572,7 @@ export namespace NM {
          * Gets the controller {@link NM.Device} of the connection. This replaces the
          * deprecated `nm_active_connection_get_master()` method.
          * @returns the controller {@link NM.Device} of the {@link NM.ActiveConnection}.
+         * @since 1.44
          */
         get_controller(): Device;
 
@@ -9628,6 +9631,7 @@ export namespace NM {
         /**
          * Gets the controller {@link NM.Device} of the connection.
          * @returns the controller {@link NM.Device} of the {@link NM.ActiveConnection}.
+         * @deprecated since 1.44: Use `nm_active_connection_get_controller()` instead.
          */
         get_master(): Device;
 
@@ -9652,12 +9656,14 @@ export namespace NM {
         /**
          * Gets the active connection's state flags.
          * @returns the state flags
+         * @since 1.10
          */
         get_state_flags(): ActivationStateFlags;
 
         /**
          * Gets the reason for active connection's state.
          * @returns the reason
+         * @since 1.8
          */
         get_state_reason(): ActiveConnectionStateReason;
 
@@ -9767,18 +9773,21 @@ export namespace NM {
          * Use `nm_utils_get_timestamp_msec()` to obtain current time value suitable for
          * comparing to this value.
          * @returns the timestamp of checkpoint creation.
+         * @since 1.12
          */
         get_created(): number;
 
         /**
          * The devices that are part of this checkpoint.
          * @returns the devices list.
+         * @since 1.12
          */
         get_devices(): Device[];
 
         /**
          * Gets the timeout in seconds for automatic rollback.
          * @returns the rollback timeout.
+         * @since 1.12
          */
         get_rollback_timeout(): number;
     }
@@ -10532,6 +10541,7 @@ export namespace NM {
 
         /**
          * @param result a {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `nm_client_wait_shutdown()`
+         * @since 1.42
          */
         static wait_shutdown_finish(result: Gio.AsyncResult): boolean;
 
@@ -10644,6 +10654,7 @@ export namespace NM {
          * @param specific_object the object path of a connection-type-specific   object this activation should use. This parameter is currently ignored for   wired and mobile broadband connections, and the value of `null` should be used   (i.e., no specific object).  For Wi-Fi or WiMAX connections, pass the object   path of a {@link NM.AccessPoint} or {@link NM.WimaxNsp} owned by `device`, which you can   get using `nm_object_get_path()`, and which will be used to complete the   details of the newly added connection.
          * @param options a {@link GLib.Variant} containing a dictionary with options, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.16
          */
         add_and_activate_connection2(partial: Connection | null, device: Device | null, specific_object: string | null, options: GLib.Variant, cancellable: Gio.Cancellable | null): globalThis.Promise<[ActiveConnection, GLib.Variant | null]>;
 
@@ -10675,6 +10686,7 @@ export namespace NM {
          * @param options a {@link GLib.Variant} containing a dictionary with options, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the activation has started
+         * @since 1.16
          */
         add_and_activate_connection2(partial: Connection | null, device: Device | null, specific_object: string | null, options: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -10706,6 +10718,7 @@ export namespace NM {
          * @param options a {@link GLib.Variant} containing a dictionary with options, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the activation has started
+         * @since 1.16
          */
         add_and_activate_connection2(partial: Connection | null, device: Device | null, specific_object: string | null, options: GLib.Variant, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[ActiveConnection, GLib.Variant | null]> | void;
 
@@ -10716,6 +10729,7 @@ export namespace NM {
          * {@link NM.ActiveConnection} to find the path of the created {@link NM.Connection}.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns the new {@link NM.ActiveConnection} on success, `null` on   failure, in which case `error` will be set.
+         * @since 1.16
          */
         add_and_activate_connection2_finish(result: Gio.AsyncResult): [ActiveConnection, GLib.Variant | null];
 
@@ -10792,6 +10806,7 @@ export namespace NM {
          * @param args the "a{sv}" {@link GLib.Variant} with extra argument or `null`   for no extra arguments.
          * @param ignore_out_result this function wraps AddConnection2(), which has an   additional result "a{sv}" output parameter. By setting this to `true`,   you signal that you are not interested in that output parameter.   This allows the function to fall back to AddConnection() and AddConnectionUnsaved(),   which is interesting if you run against an older server version that does   not yet provide AddConnection2(). By setting this to `false`, the function   under the hood always calls AddConnection2().
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.20
          */
         add_connection2(settings: GLib.Variant, flags: SettingsAddConnection2Flags, args: GLib.Variant | null, ignore_out_result: boolean, cancellable: Gio.Cancellable | null): globalThis.Promise<[RemoteConnection, GLib.Variant | null]>;
 
@@ -10803,6 +10818,7 @@ export namespace NM {
          * @param ignore_out_result this function wraps AddConnection2(), which has an   additional result "a{sv}" output parameter. By setting this to `true`,   you signal that you are not interested in that output parameter.   This allows the function to fall back to AddConnection() and AddConnectionUnsaved(),   which is interesting if you run against an older server version that does   not yet provide AddConnection2(). By setting this to `false`, the function   under the hood always calls AddConnection2().
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
+         * @since 1.20
          */
         add_connection2(settings: GLib.Variant, flags: SettingsAddConnection2Flags, args: GLib.Variant | null, ignore_out_result: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -10814,12 +10830,14 @@ export namespace NM {
          * @param ignore_out_result this function wraps AddConnection2(), which has an   additional result "a{sv}" output parameter. By setting this to `true`,   you signal that you are not interested in that output parameter.   This allows the function to fall back to AddConnection() and AddConnectionUnsaved(),   which is interesting if you run against an older server version that does   not yet provide AddConnection2(). By setting this to `false`, the function   under the hood always calls AddConnection2().
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
+         * @since 1.20
          */
         add_connection2(settings: GLib.Variant, flags: SettingsAddConnection2Flags, args: GLib.Variant | null, ignore_out_result: boolean, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[RemoteConnection, GLib.Variant | null]> | void;
 
         /**
          * @param result the {@link Gio.AsyncResult}
          * @returns on success, a pointer to the added   {@link NM.RemoteConnection}.
+         * @since 1.20
          */
         add_connection2_finish(result: Gio.AsyncResult): [RemoteConnection, GLib.Variant | null];
 
@@ -10904,6 +10922,7 @@ export namespace NM {
          * if you do not want to block.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the (new) current connectivity state
+         * @deprecated since 1.22: Use `nm_client_check_connectivity_async()` or GDBusConnection.
          */
         check_connectivity(cancellable: Gio.Cancellable | null): ConnectivityState;
 
@@ -10950,6 +10969,7 @@ export namespace NM {
          * @param checkpoint_path a D-Bus path to a checkpoint
          * @param add_timeout the timeout in seconds counting from now.   Set to zero, to disable the timeout.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.12
          */
         checkpoint_adjust_rollback_timeout(checkpoint_path: string, add_timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -10960,6 +10980,7 @@ export namespace NM {
          * @param add_timeout the timeout in seconds counting from now.   Set to zero, to disable the timeout.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
+         * @since 1.12
          */
         checkpoint_adjust_rollback_timeout(checkpoint_path: string, add_timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -10970,6 +10991,7 @@ export namespace NM {
          * @param add_timeout the timeout in seconds counting from now.   Set to zero, to disable the timeout.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
+         * @since 1.12
          */
         checkpoint_adjust_rollback_timeout(checkpoint_path: string, add_timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -10977,6 +10999,7 @@ export namespace NM {
          * Gets the result of a call to `nm_client_checkpoint_adjust_rollback_timeout()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns `true` on success or `false` on failure.
+         * @since 1.12
          */
         checkpoint_adjust_rollback_timeout_finish(result: Gio.AsyncResult): boolean;
 
@@ -10989,6 +11012,7 @@ export namespace NM {
          * @param rollback_timeout the rollback timeout in seconds
          * @param flags creation flags
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.12
          */
         checkpoint_create(devices: Device[], rollback_timeout: number, flags: CheckpointCreateFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<Checkpoint>;
 
@@ -11002,6 +11026,7 @@ export namespace NM {
          * @param flags creation flags
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
+         * @since 1.12
          */
         checkpoint_create(devices: Device[], rollback_timeout: number, flags: CheckpointCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -11015,6 +11040,7 @@ export namespace NM {
          * @param flags creation flags
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
+         * @since 1.12
          */
         checkpoint_create(devices: Device[], rollback_timeout: number, flags: CheckpointCreateFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Checkpoint> | void;
 
@@ -11022,6 +11048,7 @@ export namespace NM {
          * Gets the result of a call to `nm_client_checkpoint_create()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns the new {@link NM.Checkpoint} on success, `null` on   failure, in which case `error` will be set.
+         * @since 1.12
          */
         checkpoint_create_finish(result: Gio.AsyncResult): Checkpoint;
 
@@ -11029,6 +11056,7 @@ export namespace NM {
          * Destroys an existing checkpoint without performing a rollback.
          * @param checkpoint_path the D-Bus path for the checkpoint
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.12
          */
         checkpoint_destroy(checkpoint_path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -11037,6 +11065,7 @@ export namespace NM {
          * @param checkpoint_path the D-Bus path for the checkpoint
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
+         * @since 1.12
          */
         checkpoint_destroy(checkpoint_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -11045,6 +11074,7 @@ export namespace NM {
          * @param checkpoint_path the D-Bus path for the checkpoint
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
+         * @since 1.12
          */
         checkpoint_destroy(checkpoint_path: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -11052,6 +11082,7 @@ export namespace NM {
          * Gets the result of a call to `nm_client_checkpoint_destroy()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns `true` on success or `false` on failure, in which case   `error` will be set.
+         * @since 1.12
          */
         checkpoint_destroy_finish(result: Gio.AsyncResult): boolean;
 
@@ -11059,6 +11090,7 @@ export namespace NM {
          * Performs the rollback of a checkpoint before the timeout is reached.
          * @param checkpoint_path the D-Bus path to the checkpoint
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.12
          */
         checkpoint_rollback(checkpoint_path: string, cancellable: Gio.Cancellable | null): globalThis.Promise<{ [key: string]: number }>;
 
@@ -11067,6 +11099,7 @@ export namespace NM {
          * @param checkpoint_path the D-Bus path to the checkpoint
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
+         * @since 1.12
          */
         checkpoint_rollback(checkpoint_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -11075,6 +11108,7 @@ export namespace NM {
          * @param checkpoint_path the D-Bus path to the checkpoint
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
+         * @since 1.12
          */
         checkpoint_rollback(checkpoint_path: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<{ [key: string]: number }> | void;
 
@@ -11082,6 +11116,7 @@ export namespace NM {
          * Gets the result of a call to `nm_client_checkpoint_rollback()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns an hash table of   devices and results. Devices are represented by their original   D-Bus path; each result is a {@link NM.RollbackResult}.
+         * @since 1.12
          */
         checkpoint_rollback_finish(result: Gio.AsyncResult): { [key: string]: number };
 
@@ -11090,12 +11125,14 @@ export namespace NM {
          * requires that the URI of a connectivity service has been set in the
          * configuration file.
          * @returns `true` if connectivity checking is available.
+         * @since 1.10
          */
         connectivity_check_get_available(): boolean;
 
         /**
          * Determine whether connectivity checking is enabled.
          * @returns `true` if connectivity checking is enabled.
+         * @since 1.10
          */
         connectivity_check_get_enabled(): boolean;
 
@@ -11103,6 +11140,7 @@ export namespace NM {
          * Get the URI that will be queried to determine if there is internet
          * connectivity.
          * @returns the connectivity URI in use
+         * @since 1.20
          */
         connectivity_check_get_uri(): string;
 
@@ -11111,6 +11149,8 @@ export namespace NM {
          * connectivity checking URI has not been configured, this will not
          * have any effect.
          * @param enabled `true` to enable connectivity checking
+         * @since 1.10
+         * @deprecated since 1.22: Use the async command `nm_client_dbus_set_property()` on `NM_DBUS_PATH`, `NM_DBUS_INTERFACE` to set "ConnectivityCheckEnabled" property to a "(b)" value.
          */
         connectivity_check_set_enabled(enabled: boolean): void;
 
@@ -11130,6 +11170,7 @@ export namespace NM {
          * @param reply_type the expected type of the reply (which will be a     tuple), or `null`
          * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or `G_MAXINT` for no timeout
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 1.24
          */
         dbus_call(object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant | null, reply_type: GLib.VariantType | null, timeout_msec: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
 
@@ -11150,6 +11191,7 @@ export namespace NM {
          * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or `G_MAXINT` for no timeout
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request     is satisfied or `null` if you don't care about the result of the     method invocation
+         * @since 1.24
          */
         dbus_call(object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant | null, reply_type: GLib.VariantType | null, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -11170,6 +11212,7 @@ export namespace NM {
          * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or `G_MAXINT` for no timeout
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request     is satisfied or `null` if you don't care about the result of the     method invocation
+         * @since 1.24
          */
         dbus_call(object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant | null, reply_type: GLib.VariantType | null, timeout_msec: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant> | void;
 
@@ -11177,6 +11220,7 @@ export namespace NM {
          * Gets the result of a call to `nm_client_dbus_call()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns the result {@link GLib.Variant} or `null` on error.
+         * @since 1.24
          */
         dbus_call_finish(result: Gio.AsyncResult): GLib.Variant;
 
@@ -11189,6 +11233,7 @@ export namespace NM {
          * @param value a {@link GLib.Variant} with the value to set.
          * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or `G_MAXINT` for no timeout
          * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @since 1.24
          */
         dbus_set_property(object_path: string, interface_name: string, property_name: string, value: GLib.Variant, timeout_msec: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -11202,6 +11247,7 @@ export namespace NM {
          * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or `G_MAXINT` for no timeout
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request     is satisfied or `null` if you don't care about the result of the     method invocation
+         * @since 1.24
          */
         dbus_set_property(object_path: string, interface_name: string, property_name: string, value: GLib.Variant, timeout_msec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -11215,6 +11261,7 @@ export namespace NM {
          * @param timeout_msec the timeout in milliseconds, -1 to use the default     timeout or `G_MAXINT` for no timeout
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request     is satisfied or `null` if you don't care about the result of the     method invocation
+         * @since 1.24
          */
         dbus_set_property(object_path: string, interface_name: string, property_name: string, value: GLib.Variant, timeout_msec: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -11222,6 +11269,7 @@ export namespace NM {
          * Gets the result of a call to `nm_client_dbus_set_property()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns `true` on success or `false` on failure.
+         * @since 1.24
          */
         dbus_set_property_finish(result: Gio.AsyncResult): boolean;
 
@@ -11230,6 +11278,7 @@ export namespace NM {
          * @param active the {@link NM.ActiveConnection} to deactivate
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns success or failure
+         * @deprecated since 1.22: Use `nm_client_deactivate_connection_async()` or GDBusConnection.
          */
         deactivate_connection(active: ActiveConnection, cancellable: Gio.Cancellable | null): boolean;
 
@@ -11288,17 +11337,20 @@ export namespace NM {
          * what kind of device each member of the returned array is, and then you may
          * use device-specific methods such as `nm_device_ethernet_get_hw_address()`.
          * @returns a {@link GLib.PtrArray} containing all the `NMDevices`.  The returned array is owned by the {@link NM.Client} object and should not be modified.
+         * @since 1.2
          */
         get_all_devices(): Device[];
 
         /**
          * @returns the   list of capabilities reported by the server or `null`   if the capabilities are unknown.   The numeric values correspond to {@link NM.Capability} enum.   The array is terminated by a numeric zero sentinel   at position `length`.
+         * @since 1.24
          */
         get_capabilities(): number[];
 
         /**
          * Gets all the active checkpoints.
          * @returns a {@link GLib.PtrArray} containing all the {@link NM.Checkpoint}.  The returned array is owned by the {@link NM.Client} object and should not be modified.
+         * @since 1.12
          */
         get_checkpoints(): Checkpoint[];
 
@@ -11339,6 +11391,7 @@ export namespace NM {
 
         /**
          * @returns a GObject that stays alive as long as there are pending   D-Bus operations. NMClient will schedule asynchronous D-Bus requests which will complete on the GMainContext associated with the instance. When destroying the NMClient instance, those requests are cancelled right away, however their pending requests are still outstanding and queued in the GMainContext. These outstanding callbacks keep the GMainContext alive. In order to fully release all resources, the user must keep iterating the main context until all these callbacks are handled. Of course, at this point no more actual callbacks will be invoked for the user, those are all cancelled internally. This just leaves one problem: how long does the user need to keep the GMainContext running to ensure everything is cleaned up? The answer is this GObject. Subscribe a weak reference to the returned object and keep iterating the main context until the object got unreferenced. Note that after the NMClient instance gets destroyed, all outstanding operations will be cancelled right away. That means, the user needs to iterate the {@link GLib.MainContext} a bit longer, but it is guaranteed that the cleanup happens soon after. The way of using the context-busy-watch, is by registering a weak pointer to see when it gets destroyed. That means, user code should not take additional references on this object to not keep it alive longer. If you plan to exit the program after releasing the NMClient instance you may not need to worry about these "leaks". Also, if you anyway plan to continue iterating the {@link GLib.MainContext} afterwards, then you don't need to care when exactly NMClient is gone completely.
+         * @since 1.22
          */
         get_context_busy_watcher<T = GObject.Object>(): T;
 
@@ -11347,11 +11400,13 @@ export namespace NM {
          * constructing the instance (as "dbus-connection" property), or it will be
          * automatically initialized during async/sync init.
          * @returns the D-Bus connection of the client, or `null` if none is set.
+         * @since 1.22
          */
         get_dbus_connection(): Gio.DBusConnection;
 
         /**
          * @returns the current name owner of the D-Bus service of NetworkManager.
+         * @since 1.22
          */
         get_dbus_name_owner(): string;
 
@@ -11381,29 +11436,34 @@ export namespace NM {
         /**
          * Gets the current DNS configuration
          * @returns a {@link GLib.PtrArray} containing {@link NM.DnsEntry} elements or `null` in case the value is not available.  The returned array is owned by the {@link NM.Client} object and should not be modified.
+         * @since 1.6
          */
         get_dns_configuration(): DnsEntry[];
 
         /**
          * Gets the current DNS processing mode.
          * @returns the DNS processing mode, or `null` in case the   value is not available.
+         * @since 1.6
          */
         get_dns_mode(): string;
 
         /**
          * Gets the current DNS resolv.conf manager.
          * @returns the resolv.conf manager or `null` in case the   value is not available.
+         * @since 1.6
          */
         get_dns_rc_manager(): string;
 
         /**
          * @returns the {@link NM.ClientInstanceFlags} flags.
+         * @since 1.24
          */
         get_instance_flags(): ClientInstanceFlags;
 
         /**
          * Gets NetworkManager current logging level and domains.
          * @returns `true` on success, `false` otherwise
+         * @deprecated since 1.22: Use the async command `nm_client_dbus_call()` on `NM_DBUS_PATH`, `NM_DBUS_INTERFACE` to call "GetLogging" with no arguments to get "(ss)" for level and domains.
          */
         get_logging(): [boolean, string, string];
 
@@ -11418,11 +11478,13 @@ export namespace NM {
          * clean up, the user must continue iterating the context as long as
          * the `nm_client_get_context_busy_watcher()` object is alive.
          * @returns the {@link GLib.MainContext} of the client.
+         * @since 1.22
          */
         get_main_context(): GLib.MainContext;
 
         /**
          * @returns whether the default route is metered.
+         * @since 1.22
          */
         get_metered(): Metered;
 
@@ -11435,6 +11497,7 @@ export namespace NM {
         /**
          * @param dbus_path the D-Bus path of the object to look up
          * @returns the {@link NM.Object} instance that is   cached under `dbus_path`, or `null` if no such object exists.
+         * @since 1.24
          */
         get_object_by_path(dbus_path: string): Object;
 
@@ -11448,6 +11511,7 @@ export namespace NM {
 
         /**
          * @returns the state of the cached permissions. {@link NM.Ternary.DEFAULT}   means that no permissions result was yet received. All permissions   are unknown. {@link NM.Ternary.TRUE} means that the permissions got received   and are cached. %{@link NM.Ternary.FALSE} means that permissions are cached,   but they are invalided as "CheckPermissions" signal was received   in the meantime.
+         * @since 1.24
          */
         get_permissions_state(): Ternary;
 
@@ -11470,6 +11534,7 @@ export namespace NM {
         /**
          * Get radio flags.
          * @returns the {@link NM.RadioFlags}.
+         * @since 1.38
          */
         get_radio_flags(): RadioFlags;
 
@@ -11498,6 +11563,7 @@ export namespace NM {
          * The following elements are a bitfield of %NMVersionInfoCapability
          * that indicate that the daemon supports a certain capability.
          * @returns the   list of capabilities reported by the server or `null`   if the capabilities are unknown.
+         * @since 1.42
          */
         get_version_info(): number[];
 
@@ -11516,6 +11582,7 @@ export namespace NM {
          * @param filenames `null`-terminated array of filenames to load
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success. Warning: before libnm 1.22, the boolean return value was inconsistent.   That is made worse, because when running against certain server versions   before 1.20, the server would return wrong values for success/failure.   This means, if you use this function in libnm before 1.22, you are advised   to ignore the boolean return value and only look at `failures` and `error`.   With libnm >= 1.22, the boolean return value corresponds to whether `error` was   set. Note that even in the success case, you might have individual `failures`.   With 1.22, the return value is consistent with `nm_client_load_connections_finish()`.
+         * @deprecated since 1.22: Use `nm_client_load_connections_async()` or GDBusConnection.
          */
         load_connections(filenames: string[], cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -11572,6 +11639,7 @@ export namespace NM {
          * all controlled interfaces are available for activation.
          * @param enabled `true` to set networking enabled, `false` to set networking disabled
          * @returns `true` on success, `false` otherwise
+         * @deprecated since 1.22: Use the async command `nm_client_dbus_call()` on `NM_DBUS_PATH`, `NM_DBUS_INTERFACE` to call "Enable" with "(b)" arguments and no return value.
          */
         networking_set_enabled(enabled: boolean): boolean;
 
@@ -11583,6 +11651,7 @@ export namespace NM {
          * PolicyKit and contrary to signals it is synchronous.
          * @param flags flags indicating what to reload.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.22
          */
         reload(flags: ManagerReloadFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -11595,6 +11664,7 @@ export namespace NM {
          * @param flags flags indicating what to reload.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
+         * @since 1.22
          */
         reload(flags: ManagerReloadFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -11607,6 +11677,7 @@ export namespace NM {
          * @param flags flags indicating what to reload.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the add operation completes
+         * @since 1.22
          */
         reload(flags: ManagerReloadFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -11616,6 +11687,7 @@ export namespace NM {
          * the in-memory state matches the on-disk state.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on failure
+         * @deprecated since 1.22: Use `nm_client_reload_connections_async()` or GDBusConnection.
          */
         reload_connections(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11656,6 +11728,7 @@ export namespace NM {
          * Gets the result of a call to `nm_client_reload()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns `true` on success or `false` on failure.
+         * @since 1.22
          */
         reload_finish(result: Gio.AsyncResult): boolean;
 
@@ -11665,6 +11738,7 @@ export namespace NM {
          * @param hostname the new persistent hostname to set, or `null` to   clear any existing persistent hostname
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if the request was successful, `false` if it failed
+         * @deprecated since 1.22: Use `nm_client_save_hostname_async()` or GDBusConnection.
          */
         save_hostname(hostname: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -11706,6 +11780,7 @@ export namespace NM {
          * @param level logging level to set (`null` or an empty string for no change)
          * @param domains logging domains to set. The string should be a list of log   domains separated by ",". (`null` or an empty string for no change)
          * @returns `true` on success, `false` otherwise
+         * @deprecated since 1.22: Use the async command `nm_client_dbus_call()` on `NM_DBUS_PATH`, `NM_DBUS_INTERFACE` to call "SetLogging" with "(ss)" arguments for level and domains.
          */
         set_logging(level: string | null, domains: string | null): boolean;
 
@@ -11760,24 +11835,28 @@ export namespace NM {
          * @param integrate_maincontext whether to hook the client's maincontext   in the current thread default. Otherwise, you must ensure   that the client's maincontext gets iterated so that it can complete.   By integrating the maincontext in the current thread default, you   may instead only iterate the latter.
          * @param cancellable the {@link Gio.Cancellable} to abort the shutdown.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request   is satisfied or `null` if you don't care about the result of the   method invocation.
+         * @since 1.42
          */
         wait_shutdown(integrate_maincontext: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
         /**
          * Determines whether WiMAX is enabled.
          * @returns `true` if WiMAX is enabled
+         * @deprecated since 1.22: This function always returns FALSE because WiMax is no longer supported.
          */
         wimax_get_enabled(): boolean;
 
         /**
          * Determines whether the WiMAX hardware is enabled.
          * @returns `true` if the WiMAX hardware is enabled
+         * @deprecated since 1.22: This function always returns FALSE because WiMax is no longer supported.
          */
         wimax_hardware_get_enabled(): boolean;
 
         /**
          * Enables or disables WiMAX devices.
          * @param enabled `true` to enable WiMAX
+         * @deprecated since 1.22: This function does nothing because WiMax is no longer supported.
          */
         wimax_set_enabled(enabled: boolean): void;
 
@@ -11796,6 +11875,7 @@ export namespace NM {
         /**
          * Enables or disables wireless devices.
          * @param enabled `true` to enable wireless
+         * @deprecated since 1.22: Use the async command `nm_client_dbus_set_property()` on `NM_DBUS_PATH`, `NM_DBUS_INTERFACE` to set "WirelessEnabled" property to a "(b)" value.
          */
         wireless_set_enabled(enabled: boolean): void;
 
@@ -11814,6 +11894,7 @@ export namespace NM {
         /**
          * Enables or disables WWAN devices.
          * @param enabled `true` to enable WWAN
+         * @deprecated since 1.22: Use the async command `nm_client_dbus_set_property()` on `NM_DBUS_PATH`, `NM_DBUS_INTERFACE` to set "WwanEnabled" property to a "(b)" value.
          */
         wwan_set_enabled(enabled: boolean): void;
 
@@ -11856,6 +11937,7 @@ export namespace NM {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -11899,6 +11981,7 @@ export namespace NM {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -11942,6 +12025,7 @@ export namespace NM {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -11950,6 +12034,7 @@ export namespace NM {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -11958,6 +12043,7 @@ export namespace NM {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): Client;
 
@@ -12001,6 +12087,7 @@ export namespace NM {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -12009,6 +12096,7 @@ export namespace NM {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -12054,6 +12142,7 @@ export namespace NM {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -12097,6 +12186,7 @@ export namespace NM {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -12667,6 +12757,7 @@ export namespace NM {
          * Deletes the software device. Hardware devices can't be deleted.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
+         * @deprecated since 1.22: Use `nm_device_delete_async()` or GDBusConnection.
          */
         ["delete"](cancellable: Gio.Cancellable | null): boolean;
 
@@ -12706,6 +12797,7 @@ export namespace NM {
          * request.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
+         * @deprecated since 1.22: Use `nm_device_disconnect_async()` or GDBusConnection.
          */
         disconnect(cancellable: Gio.Cancellable | null): boolean;
 
@@ -12773,6 +12865,8 @@ export namespace NM {
          * @param flags the flags argument. See {@link NM.DeviceReapplyFlags}.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a %NMConnection with the currently applied settings   or `null` on error. The connection is as received from D-Bus and might not validate according to `nm_connection_verify()`.
+         * @since 1.2
+         * @deprecated since 1.22: Use `nm_device_get_applied_connection_async()` or GDBusConnection.
          */
         get_applied_connection(flags: number, cancellable: Gio.Cancellable | null): [Connection, number];
 
@@ -12780,6 +12874,7 @@ export namespace NM {
          * Asynchronously begins and gets the currently applied connection.
          * @param flags the flags argument. See {@link NM.DeviceReapplyFlags}.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.2
          */
         get_applied_connection_async(flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<[Connection, number]>;
 
@@ -12788,6 +12883,7 @@ export namespace NM {
          * @param flags the flags argument. See {@link NM.DeviceReapplyFlags}.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the reapply operation completes
+         * @since 1.2
          */
         get_applied_connection_async(flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -12796,6 +12892,7 @@ export namespace NM {
          * @param flags the flags argument. See {@link NM.DeviceReapplyFlags}.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the reapply operation completes
+         * @since 1.2
          */
         get_applied_connection_async(flags: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Connection, number]> | void;
 
@@ -12803,6 +12900,7 @@ export namespace NM {
          * Gets the result of a call to `nm_device_get_applied_connection_async()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns a currently applied %NMConnection or `null` in case   of error. The connection is as received from D-Bus and might not validate according to `nm_connection_verify()`.
+         * @since 1.2
          */
         get_applied_connection_finish(result: Gio.AsyncResult): [Connection, number];
 
@@ -12831,6 +12929,7 @@ export namespace NM {
          * for IPv6 or `AF_UNSPEC` for any.
          * @param addr_family network address family
          * @returns the current connectivity state
+         * @since 1.16
          */
         get_connectivity(addr_family: number): ConnectivityState;
 
@@ -12904,6 +13003,7 @@ export namespace NM {
         /**
          * Gets the interface flags of the device.
          * @returns the flags
+         * @since 1.22
          */
         get_interface_flags(): DeviceInterfaceFlags;
 
@@ -12935,6 +13035,7 @@ export namespace NM {
         /**
          * Gets the list of neighbors discovered through LLDP.
          * @returns the {@link GLib.PtrArray} containing {@link NM.LldpNeighbor}<!-- -->s. This is the internal copy used by the device and must not be modified. The library never modifies the returned array and thus it is safe for callers to reference and keep using it.
+         * @since 1.2
          */
         get_lldp_neighbors(): LldpNeighbor[];
 
@@ -12947,6 +13048,7 @@ export namespace NM {
         /**
          * Gets the metered setting of a {@link NM.Device}.
          * @returns the metered setting.
+         * @since 1.2
          */
         get_metered(): Metered;
 
@@ -12959,12 +13061,14 @@ export namespace NM {
         /**
          * Indicates that the NetworkManager plugin for the device is not installed.
          * @returns `true` if the device plugin not installed.
+         * @since 1.2
          */
         get_nm_plugin_missing(): boolean;
 
         /**
          * Gets the path of the {@link NM.Device} as exposed by the udev property ID_PATH.
          * @returns the path of the device. The string is backslash escaped (C escaping) for invalid characters. The escaping can be reverted with `g_strcompress()`, however the result may not be valid UTF-8.
+         * @since 1.26
          */
         get_path(): string;
 
@@ -12980,6 +13084,7 @@ export namespace NM {
         /**
          * Gets the devices currently set as port of `device`.
          * @returns the {@link GLib.PtrArray} containing `NMDevices` that are ports of `device`. This is the internal copy used by the device and must not be modified.
+         * @since 1.34
          */
         get_ports(): Device[];
 
@@ -13029,6 +13134,7 @@ export namespace NM {
 
         /**
          * @returns `true` if the device exists, or `false` if it is a placeholder device that could be automatically created by NetworkManager if one of its {@link NM.Device.available_connections} was activated.
+         * @since 1.2
          */
         is_real(): boolean;
 
@@ -13046,6 +13152,8 @@ export namespace NM {
          * @param flags always set this to zero
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
+         * @since 1.2
+         * @deprecated since 1.22: Use `nm_device_reapply_async()` or GDBusConnection.
          */
         reapply(connection: Connection | null, version_id: bigint | number, flags: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13056,6 +13164,7 @@ export namespace NM {
          * @param version_id zero or the expected version id of the applied   connection. If specified and the version id mismatches, the call   fails without modification. This allows one to catch concurrent   accesses.
          * @param flags always set this to zero
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.2
          */
         reapply_async(connection: Connection | null, version_id: bigint | number, flags: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -13067,6 +13176,7 @@ export namespace NM {
          * @param flags always set this to zero
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the reapply operation completes
+         * @since 1.2
          */
         reapply_async(connection: Connection | null, version_id: bigint | number, flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -13078,6 +13188,7 @@ export namespace NM {
          * @param flags always set this to zero
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the reapply operation completes
+         * @since 1.2
          */
         reapply_async(connection: Connection | null, version_id: bigint | number, flags: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -13085,18 +13196,22 @@ export namespace NM {
          * Gets the result of a call to `nm_device_reapply_async()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns `true` on success, `false` on error, in which case `error` will be set.
+         * @since 1.2
          */
         reapply_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * Enables or disables automatic activation of the {@link NM.Device}.
          * @param autoconnect `true` to enable autoconnecting
+         * @deprecated since 1.22: Use the async command `nm_client_dbus_set_property()` on `nm_object_get_path()`, `NM_DBUS_INTERFACE_DEVICE` to set "Autoconnect" property to a "(b)" value. This function is deprecated because it calls a synchronous D-Bus method and modifies the content of the NMClient cache client side.
          */
         set_autoconnect(autoconnect: boolean): void;
 
         /**
          * Enables or disables management of  {@link NM.Device} by NetworkManager.
          * @param managed `true` to make the device managed by NetworkManager.
+         * @since 1.2
+         * @deprecated since 1.22: Use `nm_device_set_managed_async()` instead. This function is deprecated because it calls a synchronous D-Bus method and modifies the content of the NMClient cache client side. Also, it does not emit a property changed signal.
          */
         set_managed(managed: boolean): void;
 
@@ -13107,6 +13222,7 @@ export namespace NM {
          * @param managed the managed state
          * @param flags the flags argument. See {@link NM.DeviceManagedFlags}.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.58
          */
         set_managed_async(managed: DeviceManaged, flags: DeviceManagedFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -13118,6 +13234,7 @@ export namespace NM {
          * @param flags the flags argument. See {@link NM.DeviceManagedFlags}.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the set_managed operation completes
+         * @since 1.58
          */
         set_managed_async(managed: DeviceManaged, flags: DeviceManagedFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -13129,6 +13246,7 @@ export namespace NM {
          * @param flags the flags argument. See {@link NM.DeviceManagedFlags}.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the set_managed operation completes
+         * @since 1.58
          */
         set_managed_async(managed: DeviceManaged, flags: DeviceManagedFlags, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -13136,6 +13254,7 @@ export namespace NM {
          * Gets the result of a call to `nm_device_set_managed_async()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns `true` on success, `false` on error, in which case `error` will be set.
+         * @since 1.58
          */
         set_managed_finish(result: Gio.AsyncResult): boolean;
     }
@@ -13232,6 +13351,7 @@ export namespace NM {
         // Methods
         /**
          * @returns the device's parent device
+         * @since 1.42
          */
         get_parent(): Device;
     }
@@ -13438,6 +13558,7 @@ export namespace NM {
         /**
          * Gets the devices currently attached as port to `device`.
          * @returns the {@link GLib.PtrArray} containing `NMDevices` that are slaves of `device`. This is the internal copy used by the device, and must not be modified.
+         * @deprecated since 1.34: Use `nm_device_get_ports()` instead.
          */
         get_slaves(): Device[];
     }
@@ -13548,6 +13669,7 @@ export namespace NM {
         /**
          * Gets the devices currently attached as port to `device`.
          * @returns the {@link GLib.PtrArray} containing `NMDevices` that are ports of `device`. This is the internal copy used by the device, and must not be modified.
+         * @deprecated since 1.34: Use `nm_device_get_ports()` instead.
          */
         get_slaves(): Device[];
     }
@@ -13905,6 +14027,7 @@ export namespace NM {
         /**
          * Return the list of s390 subchannels if the device supports them.
          * @returns array of strings, each specifying   one subchannel the s390 device uses to communicate to the host.
+         * @since 1.2
          */
         get_s390_subchannels(): string[];
 
@@ -14168,31 +14291,37 @@ export namespace NM {
         // Methods
         /**
          * @returns the Don't Fragment (DF) bit to set in outgoing packets
+         * @since 1.58
          */
         get_df(): number;
 
         /**
          * @returns the UDP destination port
+         * @since 1.58
          */
         get_dst_port(): number;
 
         /**
          * @returns the device's GENEVE ID.
+         * @since 1.58
          */
         get_id(): number;
 
         /**
          * @returns the IP address of the remote tunnel endpoint
+         * @since 1.58
          */
         get_remote(): string;
 
         /**
          * @returns the TOS value to use in outgoing packets
+         * @since 1.58
          */
         get_tos(): number;
 
         /**
          * @returns the time-to-live value to use in outgoing packets
+         * @since 1.58
          */
         get_ttl(): number;
     }
@@ -14346,26 +14475,31 @@ export namespace NM {
         // Methods
         /**
          * @returns the last byte of the supervision address
+         * @since 1.46
          */
         get_multicast_spec(): number;
 
         /**
          * @returns the device's port1 device
+         * @since 1.46
          */
         get_port1(): Device;
 
         /**
          * @returns the device's port2 device
+         * @since 1.46
          */
         get_port2(): Device;
 
         /**
          * @returns whether PRP protocol is used or not
+         * @since 1.46
          */
         get_prp(): boolean;
 
         /**
          * @returns the supervision MAC adddress
+         * @since 1.46
          */
         get_supervision_address(): string;
     }
@@ -14636,66 +14770,79 @@ export namespace NM {
         // Methods
         /**
          * @returns the maximum permitted encapsulation level
+         * @since 1.2
          */
         get_encapsulation_limit(): number;
 
         /**
          * @returns the tunnel flags
+         * @since 1.12
          */
         get_flags(): IPTunnelFlags;
 
         /**
          * @returns the flow label assigned to tunnel packets
+         * @since 1.2
          */
         get_flow_label(): number;
 
         /**
          * @returns the fwmark assigned to tunnel packets. This property applies only to VTI tunnels.
+         * @since 1.46
          */
         get_fwmark(): number;
 
         /**
          * @returns the key used for incoming packets
+         * @since 1.2
          */
         get_input_key(): string;
 
         /**
          * @returns the local endpoint of the tunnel
+         * @since 1.2
          */
         get_local(): string;
 
         /**
          * @returns the tunneling mode
+         * @since 1.2
          */
         get_mode(): IPTunnelMode;
 
         /**
          * @returns the key used for outgoing packets
+         * @since 1.2
          */
         get_output_key(): string;
 
         /**
          * @returns the device's parent device
+         * @since 1.2
          */
         get_parent(): Device;
 
         /**
          * @returns whether path MTU discovery is enabled
+         * @since 1.2
          */
         get_path_mtu_discovery(): boolean;
 
         /**
          * @returns the remote endpoint of the tunnel
+         * @since 1.2
          */
         get_remote(): string;
 
         /**
          * @returns type of service (IPv4) or traffic class (IPv6) assigned to tunneled packets.
+         * @since 1.2
          */
         get_tos(): number;
 
         /**
          * @returns the TTL assigned to tunneled packets
+         * @since 1.2
          */
         get_ttl(): number;
     }
@@ -14919,23 +15066,27 @@ export namespace NM {
         /**
          * Gets the IPVLAN mode of the device.
          * @returns the IPVLAN mode. This is the internal string used by the device, and must not be modified.
+         * @since 1.52
          */
         get_mode(): string;
 
         /**
          * @returns the device's parent device
+         * @since 1.52
          */
         get_parent(): Device;
 
         /**
          * Gets the private flag of the device.
          * @returns the private flag of the device.
+         * @since 1.52
          */
         get_private(): boolean;
 
         /**
          * Gets the VEPA flag of the device.
          * @returns the VEPA flag of the device.
+         * @since 1.52
          */
         get_vepa(): boolean;
     }
@@ -15284,6 +15435,7 @@ export namespace NM {
         /**
          * Gets the set of cryptographic algorithms in use
          * @returns the set of cryptographic algorithms in use
+         * @since 1.6
          */
         get_cipher_suite(): number;
 
@@ -15291,12 +15443,14 @@ export namespace NM {
          * Gets the value of the Association Number (0..3) for the Security
          * Association in use.
          * @returns the current Security Association
+         * @since 1.6
          */
         get_encoding_sa(): number;
 
         /**
          * Gets whether encryption of transmitted frames is enabled
          * @returns whether encryption is enabled
+         * @since 1.6
          */
         get_encrypt(): boolean;
 
@@ -15304,12 +15458,14 @@ export namespace NM {
          * Gets whether the ES (End station) bit is enabled in SecTAG for
          * transmitted frames
          * @returns whether the ES (End station) bit is enabled
+         * @since 1.6
          */
         get_es(): boolean;
 
         /**
          * Gets the length of ICV (Integrity Check Value)
          * @returns the length of ICV
+         * @since 1.6
          */
         get_icv_length(): number;
 
@@ -15317,23 +15473,27 @@ export namespace NM {
          * Gets whether the SCI is always included in SecTAG for transmitted
          * frames
          * @returns whether the SCI is always included
+         * @since 1.6
          */
         get_include_sci(): boolean;
 
         /**
          * @returns the device's parent device
+         * @since 1.42
          */
         get_parent(): Device;
 
         /**
          * Gets whether protection of transmitted frames is enabled
          * @returns whether protection is enabled
+         * @since 1.6
          */
         get_protect(): boolean;
 
         /**
          * Gets whether replay protection is enabled
          * @returns whether replay protection is enabled
+         * @since 1.6
          */
         get_replay_protect(): boolean;
 
@@ -15341,12 +15501,14 @@ export namespace NM {
          * Gets whether the SCB (Single Copy Broadcast) bit is enabled in
          * SecTAG for transmitted frames
          * @returns whether the SCB (Single Copy Broadcast) bit is enabled
+         * @since 1.6
          */
         get_scb(): boolean;
 
         /**
          * Gets the Secure Channel Identifier in use
          * @returns the SCI
+         * @since 1.6
          */
         get_sci(): number;
 
@@ -15354,12 +15516,14 @@ export namespace NM {
          * Gets the validation mode for incoming packets (strict, check,
          * disabled)
          * @returns the validation mode
+         * @since 1.6
          */
         get_validation(): string;
 
         /**
          * Gets the size of the replay window
          * @returns size of the replay window
+         * @since 1.6
          */
         get_window(): number;
     }
@@ -15496,23 +15660,27 @@ export namespace NM {
         /**
          * Gets the MACVLAN mode of the device.
          * @returns the MACVLAN mode. This is the internal string used by the device, and must not be modified.
+         * @since 1.2
          */
         get_mode(): string;
 
         /**
          * Gets the no-promiscuous flag of the device.
          * @returns the no-promiscuous flag of the device.
+         * @since 1.2
          */
         get_no_promisc(): boolean;
 
         /**
          * @returns the device's parent device
+         * @since 1.2
          */
         get_parent(): Device;
 
         /**
          * Gets the device type (MACVLAN or MACVTAP).
          * @returns `true` if the device is a MACVTAP, `false` if it is a MACVLAN.
+         * @since 1.2
          */
         get_tap(): boolean;
     }
@@ -15685,6 +15853,7 @@ export namespace NM {
         /**
          * The access point name the modem is connected to.
          * @returns the APN name or `null` if disconnected
+         * @since 1.20
          */
         get_apn(): string;
 
@@ -15701,6 +15870,7 @@ export namespace NM {
          * uniquely identify the a device. Can be used to match a connection to a
          * particular device.
          * @returns a device-id string
+         * @since 1.20
          */
         get_device_id(): string;
 
@@ -15715,6 +15885,7 @@ export namespace NM {
         /**
          * The MCC and MNC (concatenated) of the network the modem is connected to.
          * @returns the operator code or `null` if disconnected or not a 3GPP modem.
+         * @since 1.20
          */
         get_operator_code(): string;
     }
@@ -15930,6 +16101,8 @@ export namespace NM {
         /**
          * Gets the ports currently attached as port to `device`.
          * @returns the {@link GLib.PtrArray} containing `NMDevices` that are ports of `device`. This is the internal copy used by the device, and must not be modified.
+         * @since 1.14
+         * @deprecated since 1.34: Use `nm_device_get_ports()` instead.
          */
         get_slaves(): Device[];
     }
@@ -16106,6 +16279,8 @@ export namespace NM {
         /**
          * Gets the interfaces currently attached as port to `device`.
          * @returns the {@link GLib.PtrArray} containing `NMDevices` that are ports of `device`. This is the internal copy used by the device, and must not be modified.
+         * @since 1.14
+         * @deprecated since 1.34: Use `nm_device_get_ports()` instead.
          */
         get_slaves(): Device[];
     }
@@ -16305,12 +16480,14 @@ export namespace NM {
         /**
          * Gets the current JSON configuration of the {@link NM.DeviceTeam}
          * @returns the current configuration. This is the internal string used by the device, and must not be modified.
+         * @since 1.4
          */
         get_config(): string;
 
         /**
          * Gets the devices currently attach as port to `device`.
          * @returns the {@link GLib.PtrArray} containing `NMDevices` that are ports of `device`. This is the internal copy used by the device, and must not be modified.
+         * @deprecated since 1.34: Use `nm_device_get_ports()` instead.
          */
         get_slaves(): Device[];
     }
@@ -16494,36 +16671,42 @@ export namespace NM {
         /**
          * Gets the tunnel group.
          * @returns the gid of the tunnel group, or -1 if it has no owner.
+         * @since 1.2
          */
         get_group(): number;
 
         /**
          * Returns the TUN/TAP mode for the device.
          * @returns 'tun' or 'tap'
+         * @since 1.2
          */
         get_mode(): string;
 
         /**
          * Returns whether the {@link NM.DeviceTun} has the IFF_MULTI_QUEUE flag.
          * @returns `true` if the device doesn't have the flag, `false` otherwise
+         * @since 1.2
          */
         get_multi_queue(): boolean;
 
         /**
          * Returns whether the {@link NM.DeviceTun} has the IFF_NO_PI flag.
          * @returns `true` if the device has the flag, `false` otherwise
+         * @since 1.2
          */
         get_no_pi(): boolean;
 
         /**
          * Gets the tunnel owner.
          * @returns the uid of the tunnel owner, or -1 if it has no owner.
+         * @since 1.2
          */
         get_owner(): number;
 
         /**
          * Returns whether the {@link NM.DeviceTun} has the IFF_VNET_HDR flag.
          * @returns `true` if the device has the flag, `false` otherwise
+         * @since 1.2
          */
         get_vnet_hdr(): boolean;
     }
@@ -16624,6 +16807,7 @@ export namespace NM {
         // Methods
         /**
          * @returns the device's peer device
+         * @since 1.42
          */
         get_peer(): Device;
     }
@@ -16852,6 +17036,7 @@ export namespace NM {
         // Methods
         /**
          * @returns the device's VRF routing table.
+         * @since 1.24
          */
         get_table(): number;
     }
@@ -17146,87 +17331,104 @@ export namespace NM {
         // Methods
         /**
          * @returns the lifetime in seconds of FDB entries learnt by the kernel
+         * @since 1.2
          */
         get_ageing(): number;
 
         /**
          * Whether the device has carrier.
          * @returns `true` if the device has carrier. This property is not implemented yet, and the function always returns FALSE.
+         * @since 1.42
          */
         get_carrier(): boolean;
 
         /**
          * @returns the UDP destination port
+         * @since 1.2
          */
         get_dst_port(): number;
 
         /**
          * @returns The unicast destination IP address or the multicast IP address joined
+         * @since 1.2
          */
         get_group(): string;
 
         /**
          * @returns the device's VXLAN ID.
+         * @since 1.2
          */
         get_id(): number;
 
         /**
          * @returns whether netlink LL ADDR miss notifications are generated
+         * @since 1.2
          */
         get_l2miss(): boolean;
 
         /**
          * @returns whether netlink IP ADDR miss notifications are generated
+         * @since 1.2
          */
         get_l3miss(): boolean;
 
         /**
          * @returns whether address learning is enabled
+         * @since 1.2
          */
         get_learning(): boolean;
 
         /**
          * @returns the maximum number of entries that can be added to the forwarding table
+         * @since 1.2
          */
         get_limit(): number;
 
         /**
          * @returns the source IP address to use in outgoing packets
+         * @since 1.2
          */
         get_local(): string;
 
         /**
          * @returns the device's parent device
+         * @since 1.2
          */
         get_parent(): Device;
 
         /**
          * @returns whether ARP proxy is turned on
+         * @since 1.2
          */
         get_proxy(): boolean;
 
         /**
          * @returns whether route short circuit is turned on
+         * @since 1.42
          */
         get_rsc(): boolean;
 
         /**
          * @returns the maximum UDP source port
+         * @since 1.2
          */
         get_src_port_max(): number;
 
         /**
          * @returns the minimum UDP source port
+         * @since 1.2
          */
         get_src_port_min(): number;
 
         /**
          * @returns the TOS value to use in outgoing packets
+         * @since 1.2
          */
         get_tos(): number;
 
         /**
          * @returns the time-to-live value to use in outgoing packets
+         * @since 1.2
          */
         get_ttl(): number;
     }
@@ -17472,6 +17674,7 @@ export namespace NM {
          * Use `nm_utils_get_timestamp_msec()` to obtain current time value suitable for
          * comparing to this value.
          * @returns the last scan time in milliseconds (in clock_gettime(CLOCK_BOOTTIME) scale).
+         * @since 1.12
          */
         get_last_scan(): number;
 
@@ -17493,6 +17696,7 @@ export namespace NM {
          * after that for the scan to complete.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
+         * @deprecated since 1.22: Use `nm_device_wifi_request_scan_async()` or GDBusConnection.
          */
         request_scan(cancellable: Gio.Cancellable | null): boolean;
 
@@ -17541,6 +17745,8 @@ export namespace NM {
          * @param options dictionary with options for RequestScan(), or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
+         * @since 1.2
+         * @deprecated since 1.22: Use `nm_device_wifi_request_scan_options_async()` or GDBusConnection.
          */
         request_scan_options(options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17557,6 +17763,7 @@ export namespace NM {
          * @param options dictionary with options for RequestScan(), or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the scan has been requested
+         * @since 1.2
          */
         request_scan_options_async(options: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
     }
@@ -17669,12 +17876,14 @@ export namespace NM {
          * Gets a {@link NM.WifiP2PPeer} by path.
          * @param path the object path of the peer
          * @returns the peer or `null` if none is found.
+         * @since 1.42
          */
         get_peer_by_path(path: string): WifiP2PPeer;
 
         /**
          * Gets all the found peers of the {@link NM.DeviceWifiP2P}.
          * @returns a {@link GLib.PtrArray} containing all the          found `NMWifiP2PPeers`. The returned array is owned by the client and should not be modified.
+         * @since 1.16
          */
         get_peers(): WifiP2PPeer[];
 
@@ -17687,6 +17896,7 @@ export namespace NM {
          * using `nm_device_p2p_wifi_stop_find()`.
          * @param options optional options passed to StartFind.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.16
          */
         start_find(options: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -17700,6 +17910,7 @@ export namespace NM {
          * @param options optional options passed to StartFind.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
+         * @since 1.16
          */
         start_find(options: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -17713,6 +17924,7 @@ export namespace NM {
          * @param options optional options passed to StartFind.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
+         * @since 1.16
          */
         start_find(options: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -17720,12 +17932,14 @@ export namespace NM {
          * Finish an operation started by `nm_device_wifi_p2p_start_find()`.
          * @param result the {@link Gio.AsyncResult}
          * @returns `true` if the call was successful
+         * @since 1.16
          */
         start_find_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * Request NM to stop any ongoing find operation for Wi-Fi P2P peers on `device`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.16
          */
         stop_find(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -17733,6 +17947,7 @@ export namespace NM {
          * Request NM to stop any ongoing find operation for Wi-Fi P2P peers on `device`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
+         * @since 1.16
          */
         stop_find(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -17740,6 +17955,7 @@ export namespace NM {
          * Request NM to stop any ongoing find operation for Wi-Fi P2P peers on `device`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
+         * @since 1.16
          */
         stop_find(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -17747,6 +17963,7 @@ export namespace NM {
          * Finish an operation started by `nm_device_wifi_p2p_stop_find()`.
          * @param result the {@link Gio.AsyncResult}
          * @returns `true` if the call was successful
+         * @since 1.16
          */
         stop_find_finish(result: Gio.AsyncResult): boolean;
     }
@@ -17974,12 +18191,14 @@ export namespace NM {
         /**
          * Gets the active {@link NM.WimaxNsp}.
          * @returns the access point or `null` if none is active
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_active_nsp(): WimaxNsp;
 
         /**
          * Gets the ID of the serving Base Station when the device is connected.
          * @returns the ID of the serving Base Station, or `null`
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_bsid(): string;
 
@@ -17988,6 +18207,7 @@ export namespace NM {
          * to communicate with the network when connected.  Has no meaning when the
          * device is not connected.
          * @returns the center frequency in KHz, or 0
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_center_frequency(): number;
 
@@ -17996,12 +18216,14 @@ export namespace NM {
          * link in dB.  CINR is a more accurate measure of radio link quality.  Has no
          * meaning when the device is not connected.
          * @returns the CINR in dB, or 0
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_cinr(): number;
 
         /**
          * Gets the hardware (MAC) address of the {@link NM.DeviceWimax}
          * @returns the hardware address. This is the internal string used by the          device, and must not be modified.
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_hw_address(): string;
 
@@ -18009,12 +18231,14 @@ export namespace NM {
          * Gets a {@link NM.WimaxNsp} by path.
          * @param path the object path of the NSP
          * @returns the access point or `null` if none is found.
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_nsp_by_path(path: string): WimaxNsp;
 
         /**
          * Gets all the scanned NSPs of the {@link NM.DeviceWimax}.
          * @returns a {@link GLib.PtrArray} containing          all the scanned `NMWimaxNsps`. The returned array is owned by the client and should not be modified.
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_nsps(): WimaxNsp[];
 
@@ -18024,6 +18248,7 @@ export namespace NM {
          * indicate the overall quality of the radio link.  Has no meaning when the
          * device is not connected.
          * @returns the RSSI in dBm, or 0
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_rssi(): number;
 
@@ -18032,6 +18257,7 @@ export namespace NM {
          * 0.5 dBm.  i.e. a TxPower of -11 represents an actual device TX power of
          * -5.5 dBm.  Has no meaning when the device is not connected.
          * @returns the TX power in dBm, or 0
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_tx_power(): number;
     }
@@ -18172,18 +18398,21 @@ export namespace NM {
          * It can be used to set routing policy for outgoing encrypted packets.
          * See: ip-rule(8)
          * @returns 0 if fwmark not in use, 32-bit fwmark value otherwise
+         * @since 1.14
          */
         get_fwmark(): number;
 
         /**
          * Gets the local UDP port this interface listens on
          * @returns UDP listen port
+         * @since 1.14
          */
         get_listen_port(): number;
 
         /**
          * Gets the public key for this interface
          * @returns the {@link GLib.Bytes} containing the 32-byte public key
+         * @since 1.14
          */
         get_public_key(): GLib.Bytes;
     }
@@ -18524,12 +18753,14 @@ export namespace NM {
         /**
          * Gets the CLAT IP address.
          * @returns the CLAT IP address.
+         * @since 1.58
          */
         get_clat_address(): string;
 
         /**
          * Gets the NAT64 prefix used by CLAT.
          * @returns the NAT64 prefix.
+         * @since 1.58
          */
         get_clat_pref64(): string;
 
@@ -18655,6 +18886,7 @@ export namespace NM {
          * this returns `null`. So it can be used to check whether the
          * object is still alive.
          * @returns the {@link NM.Client} cache in which the object can be found, or `null` if the object is no longer cached.
+         * @since 1.24
          */
         get_client(): Client;
 
@@ -18788,6 +19020,7 @@ export namespace NM {
          * @param save_to_disk whether to persist the changes to disk
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
+         * @deprecated since 1.22: Use `nm_remote_connection_commit_changes_async()` or GDBusConnection.
          */
         commit_changes(save_to_disk: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18834,6 +19067,7 @@ export namespace NM {
          * Deletes the connection.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
+         * @deprecated since 1.22: Use `nm_remote_connection_delete_async()` or GDBusConnection.
          */
         ["delete"](cancellable: Gio.Cancellable | null): boolean;
 
@@ -18866,11 +19100,13 @@ export namespace NM {
 
         /**
          * @returns file that stores the connection in case the connection is file-backed.
+         * @since 1.12
          */
         get_filename(): string;
 
         /**
          * @returns the flags of the connection of type {@link NM.SettingsConnectionFlags}.
+         * @since 1.12
          */
         get_flags(): SettingsConnectionFlags;
 
@@ -18920,6 +19156,7 @@ export namespace NM {
 
         /**
          * @returns the version-id of the profile. This ID is incremented   whenever the profile is modified.
+         * @since 1.44
          */
         get_version_id(): number;
 
@@ -18941,6 +19178,7 @@ export namespace NM {
          * been written to disk, or if the connection has never been saved.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on error, in which case `error` will be set.
+         * @deprecated since 1.22: Use `nm_remote_connection_save_async()` or GDBusConnection.
          */
         save(cancellable: Gio.Cancellable | null): boolean;
 
@@ -18980,6 +19218,7 @@ export namespace NM {
          * @param flags update-flags
          * @param args optional arguments.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 1.12
          */
         update2(settings: GLib.Variant | null, flags: SettingsUpdate2Flags, args: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant>;
 
@@ -18990,6 +19229,7 @@ export namespace NM {
          * @param args optional arguments.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the commit operation completes
+         * @since 1.12
          */
         update2(settings: GLib.Variant | null, flags: SettingsUpdate2Flags, args: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -19000,6 +19240,7 @@ export namespace NM {
          * @param args optional arguments.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to be called when the commit operation completes
+         * @since 1.12
          */
         update2(settings: GLib.Variant | null, flags: SettingsUpdate2Flags, args: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Variant> | void;
 
@@ -19007,6 +19248,7 @@ export namespace NM {
          * Gets the result of a call to `nm_remote_connection_commit_changes_async()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns on success, a {@link GLib.Variant} of type "a{sv}" with the result. On failure,   `null`.
+         * @since 1.12
          */
         update2_finish(result: Gio.AsyncResult): GLib.Variant;
 
@@ -19163,6 +19405,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingDummy} the connection might contain.
          * @returns an {@link NM.SettingDummy} if the connection contains one, otherwise `null`
+         * @since 1.8
          */
         get_setting_dummy(): SettingDummy;
 
@@ -19175,6 +19418,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingGeneve} the connection might contain.
          * @returns an {@link NM.SettingGeneve} if the connection contains one, otherwise NULL
+         * @since 1.58
          */
         get_setting_geneve(): SettingGeneve;
 
@@ -19213,18 +19457,21 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingIPTunnel} the connection might contain.
          * @returns an {@link NM.SettingIPTunnel} if the connection contains one, otherwise `null`
+         * @since 1.2
          */
         get_setting_ip_tunnel(): SettingIPTunnel;
 
         /**
          * A shortcut to return any {@link NM.SettingMacsec} the connection might contain.
          * @returns an {@link NM.SettingMacsec} if the connection contains one, otherwise `null`
+         * @since 1.6
          */
         get_setting_macsec(): SettingMacsec;
 
         /**
          * A shortcut to return any {@link NM.SettingMacvlan} the connection might contain.
          * @returns an {@link NM.SettingMacvlan} if the connection contains one, otherwise `null`
+         * @since 1.2
          */
         get_setting_macvlan(): SettingMacvlan;
 
@@ -19237,24 +19484,28 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingOvsBridge} the connection might contain.
          * @returns an {@link NM.SettingOvsBridge} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_ovs_bridge(): SettingOvsBridge;
 
         /**
          * A shortcut to return any {@link NM.SettingOvsInterface} the connection might contain.
          * @returns an {@link NM.SettingOvsInterface} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_ovs_interface(): SettingOvsInterface;
 
         /**
          * A shortcut to return any {@link NM.SettingOvsPatch} the connection might contain.
          * @returns an {@link NM.SettingOvsPatch} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_ovs_patch(): SettingOvsPatch;
 
         /**
          * A shortcut to return any {@link NM.SettingOvsPort} the connection might contain.
          * @returns an {@link NM.SettingOvsPort} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_ovs_port(): SettingOvsPort;
 
@@ -19273,6 +19524,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingProxy} the connection might contain.
          * @returns an {@link NM.SettingProxy} if the connection contains one, otherwise `null`
+         * @since 1.6
          */
         get_setting_proxy(): SettingProxy;
 
@@ -19285,6 +19537,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingTCConfig} the connection might contain.
          * @returns an {@link NM.SettingTCConfig} if the connection contains one, otherwise `null`
+         * @since 1.12
          */
         get_setting_tc_config(): SettingTCConfig;
 
@@ -19303,6 +19556,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingTun} the connection might contain.
          * @returns an {@link NM.SettingTun} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_tun(): SettingTun;
 
@@ -19321,6 +19575,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingVxlan} the connection might contain.
          * @returns an {@link NM.SettingVxlan} if the connection contains one, otherwise `null`
+         * @since 1.2
          */
         get_setting_vxlan(): SettingVxlan;
 
@@ -19353,6 +19608,7 @@ export namespace NM {
          * 
          * The returned array is `null`-terminated.
          * @returns a   `null`-terminated array containing every setting of `connection`.   If the connection has no settings, `null` is returned.
+         * @since 1.10
          */
         get_settings(): Setting[] | null;
 
@@ -19480,6 +19736,7 @@ export namespace NM {
         /**
          * Verifies the secrets in the connection.
          * @returns `true` if the secrets are valid, `false` if they are not
+         * @since 1.2
          */
         verify_secrets(): boolean;
 
@@ -19719,6 +19976,7 @@ export namespace NM {
          * You may call this function any time and repeatedly. However, after destroying
          * the instance, it is a bug to still use the instance for other purposes. The
          * instance becomes defunct and cannot re-register.
+         * @since 1.24
          */
         destroy(): void;
 
@@ -19729,6 +19987,7 @@ export namespace NM {
          * Unlike most other functions, you may already call this function before
          * initialization completes.
          * @param enable whether to enable or disable the listener.
+         * @since 1.24
          */
         enable(enable: boolean): void;
 
@@ -19743,21 +20002,25 @@ export namespace NM {
          * allows you to know how long you must iterate the context to know
          * that all remains are cleaned up.
          * @returns a {@link GObject.Object} that you may register a weak pointer   to know that the {@link GLib.MainContext} is still kept busy by `self`.
+         * @since 1.24
          */
         get_context_busy_watcher<T = GObject.Object>(): T;
 
         /**
          * @returns the {@link Gio.DBusConnection} used by the secret agent.   You may either set this as construct property `NM_SECRET_AGENT_OLD_DBUS_CONNECTION`,   or it will automatically set during initialization.
+         * @since 1.24
          */
         get_dbus_connection(): Gio.DBusConnection;
 
         /**
          * @returns the current D-Bus name owner. While this property   is set while registering, it really only makes sense when   the `nm_secret_agent_old_get_registered()` indicates that   registration is successful.
+         * @since 1.24
          */
         get_dbus_name_owner(): string;
 
         /**
          * @returns the {@link GLib.MainContext} instance associate with the   instance. This is the `g_main_context_get_thread_default()` at the time   when creating the instance.
+         * @since 1.24
          */
         get_main_context(): GLib.MainContext;
 
@@ -19794,6 +20057,7 @@ export namespace NM {
          * secrets for connections on behalf of its user.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if registration was successful, `false` on error. Since 1.24, this can no longer fail unless the `cancellable` gets cancelled. Contrary to `nm_secret_agent_old_register_async()`, this also does not wait for the registration to succeed. You cannot synchronously (without iterating the caller's GMainContext) wait for registration. Since 1.24, registration is idempotent. It has the same effect as setting `NM_SECRET_AGENT_OLD_AUTO_REGISTER` to `true` or `nm_secret_agent_old_enable()`.
+         * @deprecated since 1.24: Use `nm_secret_agent_old_enable()` or `nm_secret_agent_old_register_async()`.
          */
         register(cancellable: Gio.Cancellable | null): boolean;
 
@@ -19877,6 +20141,7 @@ export namespace NM {
          * store secrets on behalf of this user.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if unregistration was successful, `false` on error Since 1.24, registration cannot fail and is idempotent. It has the same effect as setting `NM_SECRET_AGENT_OLD_AUTO_REGISTER` to `false` or `nm_secret_agent_old_enable()`.
+         * @deprecated since 1.24: Use `nm_secret_agent_old_enable()`.
          */
         unregister(cancellable: Gio.Cancellable | null): boolean;
 
@@ -19889,6 +20154,7 @@ export namespace NM {
          * the same effect as setting `NM_SECRET_AGENT_OLD_AUTO_REGISTER` to `false`
          * or `nm_secret_agent_old_enable()`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @deprecated since 1.24: Use `nm_secret_agent_old_enable()`.
          */
         unregister_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -19902,6 +20168,7 @@ export namespace NM {
          * or `nm_secret_agent_old_enable()`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call when the agent is unregistered
+         * @deprecated since 1.24: Use `nm_secret_agent_old_enable()`.
          */
         unregister_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -19915,6 +20182,7 @@ export namespace NM {
          * or `nm_secret_agent_old_enable()`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call when the agent is unregistered
+         * @deprecated since 1.24: Use `nm_secret_agent_old_enable()`.
          */
         unregister_async(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -19922,6 +20190,7 @@ export namespace NM {
          * Gets the result of a call to `nm_secret_agent_old_unregister_async()`.
          * @param result the result passed to the {@link Gio.AsyncReadyCallback}
          * @returns `true` if unregistration was successful, `false` on error. Since 1.24, registration cannot fail and is idempotent. It has the same effect as setting `NM_SECRET_AGENT_OLD_AUTO_REGISTER` to `false` or `nm_secret_agent_old_enable()`.
+         * @deprecated since 1.24: Use `nm_secret_agent_old_enable()`.
          */
         unregister_finish(result: Gio.AsyncResult): boolean;
 
@@ -19964,6 +20233,7 @@ export namespace NM {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -20007,6 +20277,7 @@ export namespace NM {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -20050,6 +20321,7 @@ export namespace NM {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -20058,6 +20330,7 @@ export namespace NM {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -20066,6 +20339,7 @@ export namespace NM {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): SecretAgentOld;
 
@@ -20109,6 +20383,7 @@ export namespace NM {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -20117,6 +20392,7 @@ export namespace NM {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -20162,6 +20438,7 @@ export namespace NM {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -20205,6 +20482,7 @@ export namespace NM {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -20278,6 +20556,7 @@ export namespace NM {
          * setting the GObject property.
          * @param setting_type the GType of the NMSetting instance
          * @param property_name the name of the property
+         * @since 1.46
          */
         static get_enum_property_type(setting_type: GObject.GType, property_name: string): GObject.GType;
 
@@ -20350,30 +20629,35 @@ export namespace NM {
 
         /**
          * @param predicate the predicate for which names   should be clear.   If the predicate returns `true` for an option name, the option   gets removed. If `null`, all options will be removed.
+         * @since 1.26
          */
         option_clear_by_name(predicate: UtilsPredicateStr | null): void;
 
         /**
          * @param opt_name the option name to request.
          * @returns the {@link GLib.Variant} or `null` if the option   is not set.
+         * @since 1.26
          */
         option_get(opt_name: string): GLib.Variant;
 
         /**
          * Gives the name of all set options.
          * @returns A `null` terminated array of key names. If no names are present, this returns   `null`. The returned array and the names are owned by %NMSetting and might be invalidated   by the next operation.
+         * @since 1.26
          */
         option_get_all_names(): string[] | null;
 
         /**
          * @param opt_name the option to get
          * @returns `true` if `opt_name` is set to a boolean variant.
+         * @since 1.26
          */
         option_get_boolean(opt_name: string): [boolean, boolean];
 
         /**
          * @param opt_name the option to get
          * @returns `true` if `opt_name` is set to a uint32 variant.
+         * @since 1.26
          */
         option_get_uint32(opt_name: string): [boolean, number];
 
@@ -20387,6 +20671,7 @@ export namespace NM {
          * Currently, only {@link NM.SettingEthtool} supports it.
          * @param opt_name the option name to set
          * @param variant the variant to set.
+         * @since 1.26
          */
         option_set(opt_name: string, variant: GLib.Variant | null): void;
 
@@ -20394,6 +20679,7 @@ export namespace NM {
          * Like `nm_setting_option_set()` to set a boolean GVariant.
          * @param opt_name 
          * @param value the value to set.
+         * @since 1.26
          */
         option_set_boolean(opt_name: string, value: boolean): void;
 
@@ -20401,6 +20687,7 @@ export namespace NM {
          * Like `nm_setting_option_set()` to set a uint32 GVariant.
          * @param opt_name 
          * @param value the value to set.
+         * @since 1.26
          */
         option_set_uint32(opt_name: string, value: number): void;
 
@@ -20440,6 +20727,7 @@ export namespace NM {
          * in some cases connection failure is not desired just for the secrets.
          * @param connection the {@link NM.Connection} that `setting` came from, or   `null` if `setting` is being verified in isolation.
          * @returns `true` if the setting secrets are valid, `false` if they are not
+         * @since 1.2
          */
         verify_secrets(connection: Connection | null): boolean;
     }
@@ -20508,6 +20796,7 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.Setting6Lowpan.parent} property of the setting
+         * @since 1.42
          */
         get_parent(): string;
     }
@@ -21815,6 +22104,7 @@ export namespace NM {
          * the blob must be not UNKNOWN (or NULL).
          * @param pdata the data pointer
          * @param length the length of the data
+         * @since 1.2
          */
         static check_cert_scheme(pdata: null, length: bigint | number): Setting8021xCKScheme;
 
@@ -21880,6 +22170,7 @@ export namespace NM {
         /**
          * Returns the value contained in the {@link NM.Setting8021x.auth_timeout} property.
          * @returns the configured authentication timeout in seconds. Zero means the global default value.
+         * @since 1.8
          */
         get_auth_timeout(): number;
 
@@ -21896,11 +22187,13 @@ export namespace NM {
 
         /**
          * @returns the password used to access the CA certificate stored in {@link NM.Setting8021x.ca_cert} property. Only makes sense if the certificate is stored on a PKCS#<!-- -->11 token that requires a login.
+         * @since 1.8
          */
         get_ca_cert_password(): string;
 
         /**
          * @returns the {@link NM.SettingSecretFlags} pertaining to the {@link NM.Setting8021x.ca_cert_password}
+         * @since 1.8
          */
         get_ca_cert_password_flags(): SettingSecretFlags;
 
@@ -21933,6 +22226,7 @@ export namespace NM {
          * 7512), but may be extended to other schemes in future (such as 'file' URIs
          * for local files and 'data' URIs for inline certificate data).
          * @returns the URI string
+         * @since 1.6
          */
         get_ca_cert_uri(): string;
 
@@ -21956,11 +22250,13 @@ export namespace NM {
 
         /**
          * @returns the password used to access the client certificate stored in {@link NM.Setting8021x.client_cert} property. Only makes sense if the certificate is stored on a PKCS#<!-- -->11 token that requires a login.
+         * @since 1.8
          */
         get_client_cert_password(): string;
 
         /**
          * @returns the {@link NM.SettingSecretFlags} pertaining to the {@link NM.Setting8021x.client_cert_password}
+         * @since 1.8
          */
         get_client_cert_password_flags(): SettingSecretFlags;
 
@@ -21990,16 +22286,19 @@ export namespace NM {
          * 7512), but may be extended to other schemes in future (such as 'file' URIs
          * for local files and 'data' URIs for inline certificate data).
          * @returns the URI string
+         * @since 1.6
          */
         get_client_cert_uri(): string;
 
         /**
          * @returns the {@link NM.Setting8021x.domain_match} property.
+         * @since 1.24
          */
         get_domain_match(): string;
 
         /**
          * @returns the {@link NM.Setting8021x.domain_suffix_match} property.
+         * @since 1.2
          */
         get_domain_suffix_match(): string;
 
@@ -22044,12 +22343,14 @@ export namespace NM {
         /**
          * Returns the openssl_ciphers configuration for wpa_supplicant.
          * @returns cipher string for tls setup in wpa_supplicant.
+         * @since 1.48
          */
         get_openssl_ciphers(): string;
 
         /**
          * Returns the value contained in the {@link NM.Setting8021x.optional} property.
          * @returns `true` if the activation should proceed even when the 802.1X     authentication fails; `false` otherwise
+         * @since 1.22
          */
         get_optional(): boolean;
 
@@ -22081,6 +22382,7 @@ export namespace NM {
 
         /**
          * @returns the authentication flags for "phase 1".
+         * @since 1.8
          */
         get_phase1_auth_flags(): Setting8021xAuthFlags;
 
@@ -22129,11 +22431,13 @@ export namespace NM {
 
         /**
          * @returns the password used to access the "phase2" CA certificate stored in {@link NM.Setting8021x.phase2_ca_cert} property. Only makes sense if the certificate is stored on a PKCS#<!-- -->11 token that requires a login.
+         * @since 1.8
          */
         get_phase2_ca_cert_password(): string;
 
         /**
          * @returns the {@link NM.SettingSecretFlags} pertaining to the {@link NM.Setting8021x.phase2_private_key_password}
+         * @since 1.8
          */
         get_phase2_ca_cert_password_flags(): SettingSecretFlags;
 
@@ -22167,6 +22471,7 @@ export namespace NM {
          * 7512), but may be extended to other schemes in future (such as 'file' URIs
          * for local files and 'data' URIs for inline certificate data).
          * @returns the URI string
+         * @since 1.6
          */
         get_phase2_ca_cert_uri(): string;
 
@@ -22190,11 +22495,13 @@ export namespace NM {
 
         /**
          * @returns the password used to access the "phase2" client certificate stored in {@link NM.Setting8021x.phase2_client_cert} property. Only makes sense if the certificate is stored on a PKCS#<!-- -->11 token that requires a login.
+         * @since 1.8
          */
         get_phase2_client_cert_password(): string;
 
         /**
          * @returns the {@link NM.SettingSecretFlags} pertaining to the {@link NM.Setting8021x.phase2_client_cert_password}
+         * @since 1.8
          */
         get_phase2_client_cert_password_flags(): SettingSecretFlags;
 
@@ -22227,16 +22534,19 @@ export namespace NM {
          * 7512), but may be extended to other schemes in future (such as 'file' URIs
          * for local files and 'data' URIs for inline certificate data).
          * @returns the URI string
+         * @since 1.6
          */
         get_phase2_client_cert_uri(): string;
 
         /**
          * @returns the {@link NM.Setting8021x.phase2_domain_match} property.
+         * @since 1.24
          */
         get_phase2_domain_match(): string;
 
         /**
          * @returns the {@link NM.Setting8021x.phase2_domain_suffix_match} property.
+         * @since 1.2
          */
         get_phase2_domain_suffix_match(): string;
 
@@ -22296,6 +22606,7 @@ export namespace NM {
          * 7512), but may be extended to other schemes in future (such as 'file' URIs
          * for local files and 'data' URIs for inline certificate data).
          * @returns the URI string
+         * @since 1.6
          */
         get_phase2_private_key_uri(): string;
 
@@ -22370,6 +22681,7 @@ export namespace NM {
          * 7512), but may be extended to other schemes in future (such as 'file' URIs
          * for local files and 'data' URIs for inline certificate data).
          * @returns the URI string
+         * @since 1.6
          */
         get_private_key_uri(): string;
 
@@ -22900,6 +23212,7 @@ export namespace NM {
         /**
          * @param name the name of the option
          * @returns the value of the bond option after normalization, which is what NetworkManager   will actually apply when activating the connection. `null` if the option won't be applied   to the connection.
+         * @since 1.24
          */
         get_option_normalized(name: string): string;
 
@@ -23006,11 +23319,13 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingBondPort.prio} property of the setting
+         * @since 1.44
          */
         get_prio(): number;
 
         /**
          * @returns the {@link NM.SettingBondPort.queue_id} property of the setting
+         * @since 1.34
          */
         get_queue_id(): number;
     }
@@ -23608,11 +23923,13 @@ export namespace NM {
          * Appends a new vlan and associated information to the setting.  The
          * given vlan gets sealed and a reference to it is added.
          * @param vlan the vlan to add
+         * @since 1.18
          */
         add_vlan(vlan: BridgeVlan): void;
 
         /**
          * Removes all configured VLANs.
+         * @since 1.18
          */
         clear_vlans(): void;
 
@@ -23628,11 +23945,13 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingBridge.group_address} property of the setting
+         * @since 1.24
          */
         get_group_address(): string;
 
         /**
          * @returns the {@link NM.SettingBridge.group_forward_mask} property of the setting
+         * @since 1.10
          */
         get_group_forward_mask(): number;
 
@@ -23653,71 +23972,85 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingBridge.multicast_hash_max} property of the setting
+         * @since 1.26
          */
         get_multicast_hash_max(): number;
 
         /**
          * @returns the {@link NM.SettingBridge.multicast_last_member_count} property of the setting
+         * @since 1.26
          */
         get_multicast_last_member_count(): number;
 
         /**
          * @returns the {@link NM.SettingBridge.multicast_last_member_interval} property of the setting
+         * @since 1.26
          */
         get_multicast_last_member_interval(): number;
 
         /**
          * @returns the {@link NM.SettingBridge.multicast_membership_interval} property of the setting
+         * @since 1.26
          */
         get_multicast_membership_interval(): number;
 
         /**
          * @returns the {@link NM.SettingBridge.multicast_querier} property of the setting
+         * @since 1.24
          */
         get_multicast_querier(): boolean;
 
         /**
          * @returns the {@link NM.SettingBridge.multicast_querier_interval} property of the setting
+         * @since 1.26
          */
         get_multicast_querier_interval(): number;
 
         /**
          * @returns the {@link NM.SettingBridge.multicast_query_interval} property of the setting
+         * @since 1.26
          */
         get_multicast_query_interval(): number;
 
         /**
          * @returns the {@link NM.SettingBridge.multicast_query_response_interval} property of the setting
+         * @since 1.26
          */
         get_multicast_query_response_interval(): number;
 
         /**
          * @returns the {@link NM.SettingBridge.multicast_query_use_ifaddr} property of the setting
+         * @since 1.24
          */
         get_multicast_query_use_ifaddr(): boolean;
 
         /**
          * @returns the {@link NM.SettingBridge.multicast_router} property of the setting
+         * @since 1.24
          */
         get_multicast_router(): string;
 
         /**
          * @returns the {@link NM.SettingBridge.multicast_snooping} property of the setting
+         * @since 1.2
          */
         get_multicast_snooping(): boolean;
 
         /**
          * @returns the {@link NM.SettingBridge.multicast_query_response_interval} property of the setting
+         * @since 1.26
          */
         get_multicast_startup_query_count(): number;
 
         /**
          * @returns the {@link NM.SettingBridge.multicast_startup_query_interval} property of the setting
+         * @since 1.26
          */
         get_multicast_startup_query_interval(): number;
 
         /**
          * @returns the number of VLANs
+         * @since 1.18
          */
         get_num_vlans(): number;
 
@@ -23734,32 +24067,38 @@ export namespace NM {
         /**
          * @param idx index number of the VLAN to return
          * @returns the VLAN at index `idx`
+         * @since 1.18
          */
         get_vlan(idx: number): BridgeVlan;
 
         /**
          * @returns the {@link NM.SettingBridge.vlan_default_pvid} property of the setting
+         * @since 1.18
          */
         get_vlan_default_pvid(): number;
 
         /**
          * @returns the {@link NM.SettingBridge.vlan_filtering} property of the setting
+         * @since 1.18
          */
         get_vlan_filtering(): boolean;
 
         /**
          * @returns the {@link NM.SettingBridge.vlan_protocol} property of the setting
+         * @since 1.24
          */
         get_vlan_protocol(): string;
 
         /**
          * @returns the {@link NM.SettingBridge.vlan_stats_enabled} property of the setting
+         * @since 1.24
          */
         get_vlan_stats_enabled(): boolean;
 
         /**
          * Removes the vlan at index `idx`.
          * @param idx index number of the VLAN.
+         * @since 1.18
          */
         remove_vlan(idx: number): void;
 
@@ -23770,6 +24109,7 @@ export namespace NM {
          * @param vid_start the vlan start index
          * @param vid_end the vlan end index
          * @returns `true` if the vlan was found and removed; `false` otherwise
+         * @since 1.18
          */
         remove_vlan_by_vid(vid_start: number, vid_end: number): boolean;
     }
@@ -23895,11 +24235,13 @@ export namespace NM {
          * Appends a new vlan and associated information to the setting.  The
          * given vlan gets sealed and a reference to it is added.
          * @param vlan the vlan to add
+         * @since 1.18
          */
         add_vlan(vlan: BridgeVlan): void;
 
         /**
          * Removes all configured VLANs.
+         * @since 1.18
          */
         clear_vlans(): void;
 
@@ -23910,6 +24252,7 @@ export namespace NM {
 
         /**
          * @returns the number of VLANs
+         * @since 1.18
          */
         get_num_vlans(): number;
 
@@ -23926,12 +24269,14 @@ export namespace NM {
         /**
          * @param idx index number of the VLAN to return
          * @returns the VLAN at index `idx`
+         * @since 1.18
          */
         get_vlan(idx: number): BridgeVlan;
 
         /**
          * Removes the vlan at index `idx`.
          * @param idx index number of the VLAN.
+         * @since 1.18
          */
         remove_vlan(idx: number): void;
 
@@ -23942,6 +24287,7 @@ export namespace NM {
          * @param vid_start the vlan start index
          * @param vid_end the vlan end index
          * @returns `true` if the vlan was found and removed; `false` otherwise
+         * @since 1.18
          */
         remove_vlan_by_vid(vid_start: number, vid_end: number): boolean;
     }
@@ -24059,6 +24405,7 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingCdma.mtu} property of the setting
+         * @since 1.8
          */
         get_mtu(): number;
 
@@ -25110,6 +25457,7 @@ export namespace NM {
          * Adds a new IP address string to the ip-ping-addresses.
          * @param address the IP address string to add
          * @returns `true` if the new IP address was added; `false` if the IP address was already present
+         * @since 1.52
          */
         add_ip_ping_address(address: string): boolean;
 
@@ -25133,12 +25481,14 @@ export namespace NM {
 
         /**
          * Removes all configured ip-ping-addresses.
+         * @since 1.52
          */
         clear_ip_ping_addresses(): void;
 
         /**
          * Returns the value contained in the {@link NM.SettingConnection.auth_retries} property.
          * @returns the configured authentication retries. Zero means infinity and -1 means a global default value.
+         * @since 1.10
          */
         get_auth_retries(): number;
 
@@ -25151,6 +25501,7 @@ export namespace NM {
         /**
          * Returns the {@link NM.SettingConnection.autoconnect_ports} property of the connection.
          * @returns whether ports of the connection should be activated together          with the connection.
+         * @since 1.46
          */
         get_autoconnect_ports(): Ternary;
 
@@ -25165,12 +25516,15 @@ export namespace NM {
          * Returns the {@link NM.SettingConnection.autoconnect_retries} property of the connection.
          * Zero means infinite, -1 means the global default value.
          * @returns the connection's autoconnect retries
+         * @since 1.6
          */
         get_autoconnect_retries(): number;
 
         /**
          * Returns the {@link NM.SettingConnection.autoconnect_slaves} property of the connection.
          * @returns whether ports of the connection should be activated together          with the connection.
+         * @since 1.2
+         * @deprecated since 1.46.: Use `nm_setting_connection_get_autoconnect_ports()` instead, this is just an alias.
          */
         get_autoconnect_slaves(): SettingConnectionAutoconnectSlaves;
 
@@ -25183,22 +25537,26 @@ export namespace NM {
         /**
          * Returns the {@link NM.SettingConnection.controller} property of the connection.
          * @returns interface name of the controller device or UUID of the controller connection.
+         * @since 1.46
          */
         get_controller(): string;
 
         /**
          * @returns the {@link NM.SettingConnection.dns_over_tls} property of the setting.
+         * @since 1.34
          */
         get_dns_over_tls(): SettingConnectionDnsOverTls;
 
         /**
          * @returns the {@link NM.SettingConnection.dnssec} property of the setting.
+         * @since 1.56
          */
         get_dnssec(): SettingConnectionDnssec;
 
         /**
          * Returns the `NM_SETTING_CONNECTION_DOWN_ON_POWEROFF` property.
          * @returns whether the connection will be brought down before the system is powered off.
+         * @since 1.48
          */
         get_down_on_poweroff(): SettingConnectionDownOnPoweroff;
 
@@ -25222,60 +25580,71 @@ export namespace NM {
         /**
          * @param idx the zero-based index of the ip-ping-addresses entry.
          * @returns the ip address string at index `idx` or   `null` if `idx` is the number of ip-ping-addresses.
+         * @since 1.52
          */
         get_ip_ping_address(idx: number): string;
 
         /**
          * Returns the {@link NM.SettingConnection.ip_ping_addresses_require_all} property of the connection.
          * @returns whether all the ip ping addresses pass the connectivity check.
+         * @since 1.52
          */
         get_ip_ping_addresses_require_all(): Ternary;
 
         /**
          * @returns the value contained in the {@link NM.SettingConnection.ip_ping_timeout} property.
+         * @since 1.52
          */
         get_ip_ping_timeout(): number;
 
         /**
          * Returns the {@link NM.SettingConnection.lldp} property of the connection.
          * @returns a %NMSettingConnectionLldp which indicates whether LLDP must be enabled for the connection.
+         * @since 1.2
          */
         get_lldp(): SettingConnectionLldp;
 
         /**
          * @returns the {@link NM.SettingConnection.llmnr} property of the setting.
+         * @since 1.14
          */
         get_llmnr(): SettingConnectionLlmnr;
 
         /**
          * Returns the {@link NM.SettingConnection.master} property of the connection.
          * @returns interface name of the controller device or UUID of the controller connection.
+         * @deprecated since 1.46.: Use `nm_setting_connection_get_master()` instead which is just an alias.
          */
         get_master(): string;
 
         /**
          * @returns the {@link NM.SettingConnection.mdns} property of the setting.
+         * @since 1.12
          */
         get_mdns(): SettingConnectionMdns;
 
         /**
          * @returns the {@link NM.SettingConnection.metered} property of the setting.
+         * @since 1.2
          */
         get_metered(): Metered;
 
         /**
          * @returns the {@link NM.SettingConnection.mptcp_flags} property of the setting.
+         * @since 1.42
          */
         get_mptcp_flags(): MptcpFlags;
 
         /**
          * Returns the value contained in the {@link NM.SettingConnection.mud_url}
          * property.
+         * @since 1.26
          */
         get_mud_url(): string;
 
         /**
          * @returns the {@link NM.SettingConnection.multi_connect} property of the connection.
+         * @since 1.14
          */
         get_multi_connect(): ConnectionMultiConnect;
 
@@ -25305,12 +25674,14 @@ export namespace NM {
         /**
          * Returns the {@link NM.SettingConnection.port_type} property of the connection.
          * @returns the type of port this connection is, if any.
+         * @since 1.46
          */
         get_port_type(): string;
 
         /**
          * Returns the {@link NM.SettingConnection.read_only} property of the connection.
          * @returns `true` if the connection is read-only, `false` if it is not
+         * @deprecated since 1.44: This property is deprecated and has no meaning.
          */
         get_read_only(): boolean;
 
@@ -25323,12 +25694,14 @@ export namespace NM {
         /**
          * Returns the {@link NM.SettingConnection.slave_type} property of the connection.
          * @returns the type of port this connection is, if any
+         * @deprecated since 1.46.: Use `nm_setting_connection_get_port_type()` instead which is just an alias.
          */
         get_slave_type(): string;
 
         /**
          * Returns the {@link NM.SettingConnection.stable_id} property of the connection.
          * @returns the stable-id for the connection
+         * @since 1.4
          */
         get_stable_id(): string;
 
@@ -25346,11 +25719,13 @@ export namespace NM {
 
         /**
          * @returns the `NM_SETTING_CONNECTION_WAIT_ACTIVATION_DELAY` property with   the delay in milliseconds. -1 is the default.
+         * @since 1.40
          */
         get_wait_activation_delay(): number;
 
         /**
          * @returns the `NM_SETTING_CONNECTION_WAIT_DEVICE_TIMEOUT` property with   the timeout in milliseconds. -1 is the default.
+         * @since 1.20
          */
         get_wait_device_timeout(): number;
 
@@ -25363,6 +25738,7 @@ export namespace NM {
         /**
          * @param type the setting name (ie #NM_SETTING_BOND_SETTING_NAME) to be matched against `setting`'s port type
          * @returns `true` if connection is of the given port `type`
+         * @deprecated since 1.46.
          */
         is_slave_type(type: string): boolean;
 
@@ -25376,6 +25752,7 @@ export namespace NM {
         /**
          * Removes the IP address at index `idx`.
          * @param idx index number of the IP address
+         * @since 1.52
          */
         remove_ip_ping_address(idx: number): void;
 
@@ -25383,6 +25760,7 @@ export namespace NM {
          * Removes the IP address `address` from ip-ping-addresses.
          * @param address the IP address to remove
          * @returns `true` if the IP address was found and removed; `false` if it was not.
+         * @since 1.52
          */
         remove_ip_ping_address_by_value(address: string): boolean;
 
@@ -26007,6 +26385,8 @@ export namespace NM {
         // Methods
         /**
          * Clears all offload features settings
+         * @since 1.14
+         * @deprecated since 1.26: use `nm_setting_option_clear_by_name()` with `nm_ethtool_optname_is_feature()` predicate instead.
          */
         clear_features(): void;
 
@@ -26018,6 +26398,8 @@ export namespace NM {
          * `nm_ethtool_optname_is_feature()`.
          * @param optname option name of the offload feature to get
          * @returns a {@link NM.Ternary} value indicating whether the offload feature   is enabled, disabled, or left untouched.
+         * @since 1.14
+         * @deprecated since 1.26: use `nm_setting_option_get_boolean()` instead.
          */
         get_feature(optname: string): Ternary;
 
@@ -26026,6 +26408,8 @@ export namespace NM {
          * like `NM_ETHTOOL_OPTNAME_FEATURE_GRO`. See `nm_ethtool_optname_is_feature()` to
          * check whether the option name is valid for offload features.
          * @returns list of set option   names or `null` if no options are set. The option names are still owned by   `setting` and may get invalidated when `setting` gets modified.
+         * @since 1.20
+         * @deprecated since 1.26: use `nm_setting_option_get_all_names()` instead.
          */
         get_optnames(): [string[], number];
 
@@ -26036,6 +26420,8 @@ export namespace NM {
          * `nm_ethtool_optname_is_feature()`.
          * @param optname option name of the offload feature to get
          * @param value the new value to set. The special value {@link NM.Ternary.DEFAULT}   means to clear the offload feature setting.
+         * @since 1.14
+         * @deprecated since 1.26: use `nm_setting_option_set()` or `nm_setting_option_set_boolean()` instead.
          */
         set_feature(optname: string, value: Ternary): void;
     }
@@ -26132,6 +26518,7 @@ export namespace NM {
         /**
          * Returns the {@link NM.SettingGeneric.device_handler} property of the connection.
          * @returns the device handler name, or `null` if no device handler is set
+         * @since 1.46
          */
         get_device_handler(): string;
     }
@@ -26268,31 +26655,37 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingGeneve.destination_port} property of the setting
+         * @since 1.58
          */
         get_destination_port(): number;
 
         /**
          * @returns the {@link NM.SettingGeneve.df} property of the setting
+         * @since 1.58
          */
         get_df(): SettingGeneveDf;
 
         /**
          * @returns the {@link NM.SettingGeneve.id} property of the setting
+         * @since 1.58
          */
         get_id(): number;
 
         /**
          * @returns the {@link NM.SettingGeneve.remote} property of the setting
+         * @since 1.58
          */
         get_remote(): string;
 
         /**
          * @returns the {@link NM.SettingGeneve.tos} property of the setting
+         * @since 1.58
          */
         get_tos(): number;
 
         /**
          * @returns the {@link NM.SettingGeneve.ttl} property of the setting
+         * @since 1.58
          */
         get_ttl(): number;
     }
@@ -26876,16 +27269,19 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingGsm.auto_config} property of the setting
+         * @since 1.22
          */
         get_auto_config(): boolean;
 
         /**
          * @returns the {@link NM.SettingGsm.device_id} property of the setting
+         * @since 1.2
          */
         get_device_id(): string;
 
         /**
          * @returns the {@link NM.SettingGsm.device_uid} property of the setting
+         * @since 1.56
          */
         get_device_uid(): string;
 
@@ -26896,56 +27292,67 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingGsm.initial_eps_bearer_apn} property of the setting
+         * @since 1.44
          */
         get_initial_eps_apn(): string;
 
         /**
          * @returns the {@link NM.SettingGsm.initial_eps_bearer_configure} property of the setting
+         * @since 1.44
          */
         get_initial_eps_config(): boolean;
 
         /**
          * @returns For LTE modems, the {@link NM.SettingGsm.initial_eps_noauth} property of the setting
+         * @since 1.52
          */
         get_initial_eps_noauth(): boolean;
 
         /**
          * @returns the {@link NM.SettingGsm.initial_eps_bearer_password} property of the setting
+         * @since 1.52
          */
         get_initial_eps_password(): string;
 
         /**
          * @returns For LTE modems, the {@link NM.SettingGsm.initial_eps_refuse_chap} property of the setting
+         * @since 1.52
          */
         get_initial_eps_refuse_chap(): boolean;
 
         /**
          * @returns For LTE modems, the {@link NM.SettingGsm.initial_eps_refuse_eap} property of the setting
+         * @since 1.52
          */
         get_initial_eps_refuse_eap(): boolean;
 
         /**
          * @returns For LTE modems, the {@link NM.SettingGsm.initial_eps_refuse_mschap} property of the setting
+         * @since 1.52
          */
         get_initial_eps_refuse_mschap(): boolean;
 
         /**
          * @returns For LTE modems, the {@link NM.SettingGsm.initial_eps_refuse_mschapv2} property of the setting
+         * @since 1.52
          */
         get_initial_eps_refuse_mschapv2(): boolean;
 
         /**
          * @returns For LTE modems, the {@link NM.SettingGsm.initial_eps_refuse_pap} property of the setting
+         * @since 1.52
          */
         get_initial_eps_refuse_pap(): boolean;
 
         /**
          * @returns the {@link NM.SettingGsm.initial_eps_bearer_username} property of the setting
+         * @since 1.52
          */
         get_initial_eps_username(): string;
 
         /**
          * @returns the {@link NM.SettingGsm.mtu} property of the setting
+         * @since 1.8
          */
         get_mtu(): number;
 
@@ -26956,6 +27363,7 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingGsm.number} property of the setting
+         * @deprecated since 1.16: User-provided values for this setting are no longer used.
          */
         get_number(): string;
 
@@ -26981,11 +27389,13 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingGsm.sim_id} property of the setting
+         * @since 1.2
          */
         get_sim_id(): string;
 
         /**
          * @returns the {@link NM.SettingGsm.sim_operator_id} property of the setting
+         * @since 1.2
          */
         get_sim_operator_id(): string;
 
@@ -27171,6 +27581,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingHostname.from_dhcp}
          * property.
          * @returns the 'from-dhcp' property value
+         * @since 1.30
          */
         get_from_dhcp(): Ternary;
 
@@ -27178,6 +27589,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingHostname.from_dns_lookup}
          * property.
          * @returns the 'from-dns-lookup' property value
+         * @since 1.30
          */
         get_from_dns_lookup(): Ternary;
 
@@ -27185,6 +27597,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingHostname.only_from_default}
          * property.
          * @returns the 'only-from-default' property value
+         * @since 1.30
          */
         get_only_from_default(): Ternary;
 
@@ -27192,6 +27605,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingHostname.priority}
          * property.
          * @returns the 'priority' property value
+         * @since 1.30
          */
         get_priority(): number;
     }
@@ -27332,31 +27746,37 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingHsr.interlink} property of the setting
+         * @since 1.56
          */
         get_interlink(): string;
 
         /**
          * @returns the {@link NM.SettingHsr.multicast_spec} property of the setting
+         * @since 1.46
          */
         get_multicast_spec(): number;
 
         /**
          * @returns the {@link NM.SettingHsr.port1} property of the setting
+         * @since 1.46
          */
         get_port1(): string;
 
         /**
          * @returns the {@link NM.SettingHsr.port2} property of the setting
+         * @since 1.46
          */
         get_port2(): string;
 
         /**
          * @returns the {@link NM.SettingHsr.protocol_version} property of the setting
+         * @since 1.56
          */
         get_protocol_version(): SettingHsrProtocolVersion;
 
         /**
          * @returns the {@link NM.SettingHsr.prp} property of the setting
+         * @since 1.46
          */
         get_prp(): boolean;
     }
@@ -27703,6 +28123,7 @@ export namespace NM {
         /**
          * Returns the value in the {@link NM.SettingIP4Config.clat} property.
          * @returns the CLAT property value
+         * @since 1.58
          */
         get_clat(): SettingIp4ConfigClat;
 
@@ -27717,6 +28138,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIP4Config.dhcp_fqdn}
          * property.
          * @returns the configured FQDN to send to the DHCP server
+         * @since 1.2
          */
         get_dhcp_fqdn(): string;
 
@@ -27724,6 +28146,7 @@ export namespace NM {
          * Returns the value in the {@link NM.SettingIP4Config.dhcp_ipv6_only_preferred}
          * property.
          * @returns the DHCP IPv6-only preferred property value
+         * @since 1.52
          */
         get_dhcp_ipv6_only_preferred(): SettingIP4DhcpIpv6OnlyPreferred;
 
@@ -27731,6 +28154,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIP4Config.dhcp_vendor_class_identifier}
          * property.
          * @returns the vendor class identifier option to send to the DHCP server
+         * @since 1.28
          */
         get_dhcp_vendor_class_identifier(): string;
 
@@ -27738,6 +28162,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIP4Config.link_local}
          * property.
          * @returns the link-local configuration
+         * @since 1.42
          */
         get_link_local(): SettingIP4LinkLocal;
     }
@@ -28180,6 +28605,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIP6Config.addr_gen_mode}
          * property.
          * @returns IPv6 Address Generation Mode.
+         * @since 1.2
          */
         get_addr_gen_mode(): SettingIP6ConfigAddrGenMode;
 
@@ -28187,6 +28613,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIP6Config.dhcp_duid}
          * property.
          * @returns The configured DUID value to be included in the DHCPv6 requests sent to the DHCPv6 servers.
+         * @since 1.12
          */
         get_dhcp_duid(): string;
 
@@ -28194,6 +28621,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIP6Config.dhcp_pd_hint}
          * property.
          * @returns a string containing an address and prefix length to be used as hint for DHCPv6 prefix delegation.
+         * @since 1.44
          */
         get_dhcp_pd_hint(): string;
 
@@ -28206,11 +28634,13 @@ export namespace NM {
 
         /**
          * @returns The configured `NM_SETTING_IP6_CONFIG_MTU` value for the maximum transmission unit.
+         * @since 1.40
          */
         get_mtu(): number;
 
         /**
          * @returns The configured `NM_SETTING_IP6_CONFIG_RA_TIMEOUT` value with the timeout for router advertisements in seconds.
+         * @since 1.24
          */
         get_ra_timeout(): number;
 
@@ -28218,6 +28648,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIP6Config.temp_preferred_lifetime}
          * property.
          * @returns The preferred lifetime of autogenerated temporary addresses.
+         * @since 1.48
          */
         get_temp_preferred_lifetime(): number;
 
@@ -28225,6 +28656,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIP6Config.temp_valid_lifetime}
          * property.
          * @returns The valid lifetime of autogenerated temporary addresses.
+         * @since 1.48
          */
         get_temp_valid_lifetime(): number;
 
@@ -28232,6 +28664,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIP6Config.token}
          * property.
          * @returns A string.
+         * @since 1.4
          */
         get_token(): string;
     }
@@ -29329,6 +29762,7 @@ export namespace NM {
         /**
          * Adds a new DHCP reject server to the setting.
          * @param server the DHCP reject server to add
+         * @since 1.28
          */
         add_dhcp_reject_server(server: string): void;
 
@@ -29343,6 +29777,7 @@ export namespace NM {
          * Adds a new DNS option to the setting.
          * @param dns_option the DNS option to add
          * @returns `true` if the DNS option was added; `false` otherwise
+         * @since 1.2
          */
         add_dns_option(dns_option: string): boolean;
 
@@ -29373,6 +29808,7 @@ export namespace NM {
          * The function does not check whether an identical rule already exists
          * and always appends the rule to the end of the list.
          * @param routing_rule the {@link NM.IPRoutingRule} to add. The address family   of the added rule must be compatible with the setting.
+         * @since 1.18
          */
         add_routing_rule(routing_rule: IPRoutingRule): void;
 
@@ -29383,6 +29819,7 @@ export namespace NM {
 
         /**
          * Removes all configured DHCP reject servers.
+         * @since 1.28
          */
         clear_dhcp_reject_servers(): void;
 
@@ -29394,6 +29831,7 @@ export namespace NM {
         /**
          * Removes all configured DNS options.
          * @param is_set the dns-options can be either empty or unset (default).   Specify how to clear the options.
+         * @since 1.2
          */
         clear_dns_options(is_set: boolean): void;
 
@@ -29409,6 +29847,7 @@ export namespace NM {
 
         /**
          * Removes all configured routing rules.
+         * @since 1.18
          */
         clear_routing_rules(): void;
 
@@ -29420,11 +29859,13 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingIPConfig.auto_route_ext_gw} property of the setting
+         * @since 1.42
          */
         get_auto_route_ext_gw(): Ternary;
 
         /**
          * @returns the {@link NM.SettingIPConfig.dad_timeout} property.
+         * @since 1.2
          */
         get_dad_timeout(): number;
 
@@ -29432,6 +29873,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIPConfig.dhcp_dscp}
          * property.
          * @returns the value for the DSCP field for DHCP
+         * @since 1.46
          */
         get_dhcp_dscp(): string;
 
@@ -29446,6 +29888,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIPConfig.dhcp_hostname_flags}
          * property.
          * @returns flags for the DHCP hostname and FQDN
+         * @since 1.22
          */
         get_dhcp_hostname_flags(): DhcpHostnameFlags;
 
@@ -29453,11 +29896,13 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIPConfig.dhcp_iaid}
          * property.
          * @returns the configured DHCP IAID (Identity Association Identifier)
+         * @since 1.42
          */
         get_dhcp_iaid(): string;
 
         /**
          * @returns A `null` terminated array of DHCP reject servers. Even if no reject   servers are configured, this always returns a non `null` value.
+         * @since 1.28
          */
         get_dhcp_reject_servers(): string[];
 
@@ -29465,6 +29910,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIPConfig.dhcp_send_hostname}
          * property.
          * @returns `true` if NetworkManager should send the machine hostname to the DHCP server when requesting addresses to allow the server to automatically update DNS information for this machine.
+         * @deprecated since 1.52.: Use `nm_setting_ip_config_get_dhcp_send_hostname_v2()` instead.
          */
         get_dhcp_send_hostname(): boolean;
 
@@ -29472,11 +29918,13 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIPConfig.dhcp_send_hostname_v2}
          * property.
          * @returns the {@link NM.SettingIPConfig.dhcp_send_hostname_v2} property of the setting
+         * @since 1.52
          */
         get_dhcp_send_hostname_v2(): Ternary;
 
         /**
          * @returns the {@link NM.SettingIPConfig.dhcp_send_release} property of the setting
+         * @since 1.48
          */
         get_dhcp_send_release(): Ternary;
 
@@ -29484,6 +29932,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIPConfig.dhcp_timeout}
          * property.
          * @returns the configured DHCP timeout in seconds. 0 = default for the particular kind of device.
+         * @since 1.2
          */
         get_dhcp_timeout(): number;
 
@@ -29497,11 +29946,13 @@ export namespace NM {
          * Since 1.46, access at index "len" is allowed and returns NULL.
          * @param idx index number of the DNS option
          * @returns the DNS option at index `idx`
+         * @since 1.2
          */
         get_dns_option(idx: number): string;
 
         /**
          * @returns the priority of DNS servers
+         * @since 1.4
          */
         get_dns_priority(): number;
 
@@ -29514,6 +29965,7 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingIPConfig.forwarding} property of the setting
+         * @since 1.54
          */
         get_forwarding(): SettingIPConfigForwarding;
 
@@ -29567,6 +30019,7 @@ export namespace NM {
 
         /**
          * @returns the number of configured DNS options
+         * @since 1.2
          */
         get_num_dns_options(): number;
 
@@ -29582,11 +30035,13 @@ export namespace NM {
 
         /**
          * @returns the number of configured routing rules
+         * @since 1.18
          */
         get_num_routing_rules(): number;
 
         /**
          * @returns the {@link NM.SettingIPConfig.replace_local_rule} property of the setting
+         * @since 1.44
          */
         get_replace_local_rule(): Ternary;
 
@@ -29594,6 +30049,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIPConfig.required_timeout}
          * property.
          * @returns the required timeout for the address family
+         * @since 1.34
          */
         get_required_timeout(): number;
 
@@ -29614,17 +30070,20 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIPConfig.route_table}
          * property.
          * @returns the configured route-table.
+         * @since 1.10
          */
         get_route_table(): number;
 
         /**
          * @returns the {@link NM.SettingIPConfig.routed_dns} property of the setting
+         * @since 1.52
          */
         get_routed_dns(): SettingIPConfigRoutedDns;
 
         /**
          * @param idx index number of the routing_rule to return
          * @returns the routing rule at index `idx`
+         * @since 1.18
          */
         get_routing_rule(idx: number): IPRoutingRule;
 
@@ -29632,6 +30091,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIPConfig.shared_dhcp_lease_time}
          * property.
          * @returns the configured DHCP server lease time
+         * @since 1.52
          */
         get_shared_dhcp_lease_time(): number;
 
@@ -29639,6 +30099,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingIPConfig.shared_dhcp_range}
          * property.
          * @returns the configured DHCP server range
+         * @since 1.52
          */
         get_shared_dhcp_range(): string;
 
@@ -29649,6 +30110,7 @@ export namespace NM {
          * or the options are left undefined. The latter means to use
          * a default configuration, while the former explicitly means "no-options".
          * @returns whether DNS options are initialized or left unset (the default).
+         * @since 1.2
          */
         has_dns_options(): boolean;
 
@@ -29668,6 +30130,7 @@ export namespace NM {
         /**
          * Removes the DHCP reject server at index `idx`.
          * @param idx index number of the DHCP reject server
+         * @since 1.28
          */
         remove_dhcp_reject_server(idx: number): void;
 
@@ -29687,6 +30150,7 @@ export namespace NM {
         /**
          * Removes the DNS option at index `idx`.
          * @param idx index number of the DNS option
+         * @since 1.2
          */
         remove_dns_option(idx: number): void;
 
@@ -29694,6 +30158,7 @@ export namespace NM {
          * Removes the DNS option `dns_option`.
          * @param dns_option the DNS option to remove
          * @returns `true` if the DNS option was found and removed; `false` if it was not.
+         * @since 1.2
          */
         remove_dns_option_by_value(dns_option: string): boolean;
 
@@ -29728,6 +30193,7 @@ export namespace NM {
         /**
          * Removes the routing_rule at index `idx`.
          * @param idx index number of the routing_rule
+         * @since 1.18
          */
         remove_routing_rule(idx: number): void;
     }
@@ -29996,84 +30462,98 @@ export namespace NM {
         /**
          * Returns the {@link NM.SettingIPTunnel.encapsulation_limit} property of the setting.
          * @returns the encapsulation limit value
+         * @since 1.42
          */
         get_encapsulation_limit(): number;
 
         /**
          * Returns the {@link NM.SettingIPTunnel.flags} property of the setting.
          * @returns the tunnel flags
+         * @since 1.12
          */
         get_flags(): IPTunnelFlags;
 
         /**
          * Returns the {@link NM.SettingIPTunnel.flow_label} property of the setting.
          * @returns the flow label value
+         * @since 1.42
          */
         get_flow_label(): number;
 
         /**
          * Returns the {@link NM.SettingIPTunnel.fwmark} property of the setting.
          * @returns the fwmark value
+         * @since 1.42
          */
         get_fwmark(): number;
 
         /**
          * Returns the {@link NM.SettingIPTunnel.input_key} property of the setting.
          * @returns the input key
+         * @since 1.2
          */
         get_input_key(): string;
 
         /**
          * Returns the {@link NM.SettingIPTunnel.local} property of the setting.
          * @returns the local endpoint
+         * @since 1.2
          */
         get_local(): string;
 
         /**
          * Returns the {@link NM.SettingIPTunnel.mode} property of the setting.
          * @returns the tunnel mode
+         * @since 1.2
          */
         get_mode(): IPTunnelMode;
 
         /**
          * Returns the {@link NM.SettingIPTunnel.mtu} property of the setting.
          * @returns the MTU
+         * @since 1.2
          */
         get_mtu(): number;
 
         /**
          * Returns the {@link NM.SettingIPTunnel.output_key} property of the setting.
          * @returns the output key
+         * @since 1.2
          */
         get_output_key(): string;
 
         /**
          * Returns the {@link NM.SettingIPTunnel.parent} property of the setting
          * @returns the parent device
+         * @since 1.2
          */
         get_parent(): string;
 
         /**
          * Returns the {@link NM.SettingIPTunnel.path_mtu_discovery} property of the setting.
          * @returns whether path MTU discovery is enabled
+         * @since 1.2
          */
         get_path_mtu_discovery(): boolean;
 
         /**
          * Returns the {@link NM.SettingIPTunnel.remote} property of the setting.
          * @returns the remote endpoint
+         * @since 1.2
          */
         get_remote(): string;
 
         /**
          * Returns the {@link NM.SettingIPTunnel.tos} property of the setting.
          * @returns the TOS value
+         * @since 1.2
          */
         get_tos(): number;
 
         /**
          * Returns the {@link NM.SettingIPTunnel.ttl} property of the setting.
          * @returns the Time-to-live value
+         * @since 1.2
          */
         get_ttl(): number;
     }
@@ -30363,21 +30843,25 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingIpvlan.mode} property of the setting
+         * @since 1.52
          */
         get_mode(): SettingIpvlanMode;
 
         /**
          * @returns the {@link NM.SettingIpvlan.parent} property of the setting
+         * @since 1.52
          */
         get_parent(): string;
 
         /**
          * @returns the {@link NM.SettingIpvlan.private} property of the setting
+         * @since 1.52
          */
         get_private(): boolean;
 
         /**
          * @returns the {@link NM.SettingIpvlan.vepa} property of the setting
+         * @since 1.52
          */
         get_vepa(): boolean;
     }
@@ -30527,6 +31011,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingLink.gro_max_size}
          * property.
          * @returns the 'gro-max-size' property value
+         * @since 1.44
          */
         get_gro_max_size(): number;
 
@@ -30534,6 +31019,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingLink.gso_max_segments}
          * property.
          * @returns the 'gso-max-segments' property value
+         * @since 1.44
          */
         get_gso_max_segments(): number;
 
@@ -30541,6 +31027,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingLink.gso_max_size}
          * property.
          * @returns the 'gso-max-size' property value
+         * @since 1.44
          */
         get_gso_max_size(): number;
 
@@ -30548,6 +31035,7 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingLink.tx_queue_length}
          * property.
          * @returns the 'tx-queue-length' property value
+         * @since 1.44
          */
         get_tx_queue_length(): number;
     }
@@ -30616,6 +31104,7 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingLoopback.mtu} property of the setting
+         * @since 1.42
          */
         get_mtu(): number;
     }
@@ -30832,51 +31321,61 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingMacsec.encrypt} property of the setting
+         * @since 1.6
          */
         get_encrypt(): boolean;
 
         /**
          * @returns the {@link NM.SettingMacsec.mka_cak} property of the setting
+         * @since 1.6
          */
         get_mka_cak(): string;
 
         /**
          * @returns the {@link NM.SettingSecretFlags} pertaining to the {@link NM.SettingMacsec.mka_cak}
+         * @since 1.6
          */
         get_mka_cak_flags(): SettingSecretFlags;
 
         /**
          * @returns the {@link NM.SettingMacsec.mka_ckn} property of the setting
+         * @since 1.6
          */
         get_mka_ckn(): string;
 
         /**
          * @returns the {@link NM.SettingMacsec.mode} property of the setting
+         * @since 1.6
          */
         get_mode(): SettingMacsecMode;
 
         /**
          * @returns the {@link NM.SettingMacsec.offload} property of the setting
+         * @since 1.46
          */
         get_offload(): SettingMacsecOffload;
 
         /**
          * @returns the {@link NM.SettingMacsec.parent} property of the setting
+         * @since 1.6
          */
         get_parent(): string;
 
         /**
          * @returns the {@link NM.SettingMacsec.port} property of the setting
+         * @since 1.6
          */
         get_port(): number;
 
         /**
          * @returns the {@link NM.SettingMacsec.send_sci} property of the setting
+         * @since 1.12
          */
         get_send_sci(): boolean;
 
         /**
          * @returns the {@link NM.SettingMacsec.validation} property of the setting
+         * @since 1.6
          */
         get_validation(): SettingMacsecValidation;
     }
@@ -30977,21 +31476,25 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingMacvlan.mode} property of the setting
+         * @since 1.2
          */
         get_mode(): SettingMacvlanMode;
 
         /**
          * @returns the {@link NM.SettingMacvlan.parent} property of the setting
+         * @since 1.2
          */
         get_parent(): string;
 
         /**
          * @returns the {@link NM.SettingMacvlan.promiscuous} property of the setting
+         * @since 1.2
          */
         get_promiscuous(): boolean;
 
         /**
          * @returns the {@link NM.SettingMacvlan.tap} property of the setting
+         * @since 1.2
          */
         get_tap(): boolean;
     }
@@ -31170,44 +31673,52 @@ export namespace NM {
         /**
          * Adds a new driver to the setting.
          * @param driver the driver to add
+         * @since 1.26
          */
         add_driver(driver: string): void;
 
         /**
          * Adds a new interface name to the setting.
          * @param interface_name the interface name to add
+         * @since 1.14
          */
         add_interface_name(interface_name: string): void;
 
         /**
          * Adds a new kernel command line argument to the setting.
          * @param kernel_command_line the kernel command line argument to add
+         * @since 1.26
          */
         add_kernel_command_line(kernel_command_line: string): void;
 
         /**
          * Adds a new path to the setting.
          * @param path the path to add
+         * @since 1.26
          */
         add_path(path: string): void;
 
         /**
          * Removes all configured drivers.
+         * @since 1.26
          */
         clear_drivers(): void;
 
         /**
          * Removes all configured interface names.
+         * @since 1.14
          */
         clear_interface_names(): void;
 
         /**
          * Removes all configured kernel command line arguments.
+         * @since 1.26
          */
         clear_kernel_command_lines(): void;
 
         /**
          * Removes all configured paths.
+         * @since 1.26
          */
         clear_paths(): void;
 
@@ -31215,12 +31726,14 @@ export namespace NM {
          * Since 1.46, access at index "len" is allowed and returns NULL.
          * @param idx index number of the driver to return
          * @returns the driver at index `idx`
+         * @since 1.26
          */
         get_driver(idx: number): string;
 
         /**
          * Returns all the drivers.
          * @returns the configured drivers.
+         * @since 1.26
          */
         get_drivers(): string[];
 
@@ -31228,12 +31741,14 @@ export namespace NM {
          * Since 1.46, access at index "len" is allowed and returns NULL.
          * @param idx index number of the DNS search domain to return
          * @returns the interface name at index `idx`
+         * @since 1.14
          */
         get_interface_name(idx: number): string;
 
         /**
          * Returns all the interface names.
          * @returns the NULL terminated list of   configured interface names. Before 1.26, the returned array was not `null` terminated and you MUST provide a length.
+         * @since 1.14
          */
         get_interface_names(): string[];
 
@@ -31241,32 +31756,38 @@ export namespace NM {
          * Since 1.46, access at index "len" is allowed and returns NULL.
          * @param idx index number of the kernel command line argument to return
          * @returns the kernel command line argument at index `idx`
+         * @since 1.26
          */
         get_kernel_command_line(idx: number): string;
 
         /**
          * Returns all the kernel command line arguments.
          * @returns the configured kernel command    line arguments.
+         * @since 1.26
          */
         get_kernel_command_lines(): string[];
 
         /**
          * @returns the number of configured drivers
+         * @since 1.26
          */
         get_num_drivers(): number;
 
         /**
          * @returns the number of configured interface names
+         * @since 1.14
          */
         get_num_interface_names(): number;
 
         /**
          * @returns the number of configured kernel command line arguments
+         * @since 1.26
          */
         get_num_kernel_command_lines(): number;
 
         /**
          * @returns the number of configured paths
+         * @since 1.26
          */
         get_num_paths(): number;
 
@@ -31274,18 +31795,21 @@ export namespace NM {
          * Since 1.46, access at index "len" is allowed and returns NULL.
          * @param idx index number of the path to return
          * @returns the path at index `idx`
+         * @since 1.26
          */
         get_path(idx: number): string;
 
         /**
          * Returns all the paths.
          * @returns the configured paths.
+         * @since 1.26
          */
         get_paths(): string[];
 
         /**
          * Removes the driver at index `idx`.
          * @param idx index number of the driver
+         * @since 1.26
          */
         remove_driver(idx: number): void;
 
@@ -31293,12 +31817,14 @@ export namespace NM {
          * Removes `driver`.
          * @param driver the driver to remove
          * @returns `true` if the driver was found and removed; `false` if it was not.
+         * @since 1.26
          */
         remove_driver_by_value(driver: string): boolean;
 
         /**
          * Removes the interface name at index `idx`.
          * @param idx index number of the interface name
+         * @since 1.14
          */
         remove_interface_name(idx: number): void;
 
@@ -31306,12 +31832,14 @@ export namespace NM {
          * Removes `interface_name`.
          * @param interface_name the interface name to remove
          * @returns `true` if the interface name was found and removed; `false` if it was not.
+         * @since 1.14
          */
         remove_interface_name_by_value(interface_name: string): boolean;
 
         /**
          * Removes the kernel command line argument at index `idx`.
          * @param idx index number of the kernel command line argument
+         * @since 1.26
          */
         remove_kernel_command_line(idx: number): void;
 
@@ -31319,12 +31847,14 @@ export namespace NM {
          * Removes `kernel_command_line`.
          * @param kernel_command_line the kernel command line argument name to remove
          * @returns `true` if the kernel command line argument was found and removed; `false` if it was not.
+         * @since 1.26
          */
         remove_kernel_command_line_by_value(kernel_command_line: string): boolean;
 
         /**
          * Removes the path at index `idx`.
          * @param idx index number of the path
+         * @since 1.26
          */
         remove_path(idx: number): void;
 
@@ -31332,6 +31862,7 @@ export namespace NM {
          * Removes `path`.
          * @param path the path to remove
          * @returns `true` if the path was found and removed; `false` if it was not.
+         * @since 1.26
          */
         remove_path_by_value(path: string): boolean;
     }
@@ -31582,26 +32113,31 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingOvsBridge.datapath_type} property of the setting
+         * @since 1.42
          */
         get_datapath_type(): string;
 
         /**
          * @returns the {@link NM.SettingOvsBridge.fail_mode} property of the setting
+         * @since 1.10
          */
         get_fail_mode(): string;
 
         /**
          * @returns the {@link NM.SettingOvsBridge.mcast_snooping_enable} property of the setting
+         * @since 1.10
          */
         get_mcast_snooping_enable(): boolean;
 
         /**
          * @returns the {@link NM.SettingOvsBridge.rstp_enable} property of the setting
+         * @since 1.10
          */
         get_rstp_enable(): boolean;
 
         /**
          * @returns the {@link NM.SettingOvsBridge.stp_enable} property of the setting
+         * @since 1.10
          */
         get_stp_enable(): boolean;
     }
@@ -31774,26 +32310,31 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingOvsDpdk.devargs} property of the setting
+         * @since 1.20
          */
         get_devargs(): string;
 
         /**
          * @returns the {@link NM.SettingOvsDpdk.lsc_interrupt} property of the setting
+         * @since 1.54
          */
         get_lsc_interrupt(): SettingOvsDpdkLscInterrupt;
 
         /**
          * @returns the {@link NM.SettingOvsDpdk.n_rxq} property of the setting
+         * @since 1.36
          */
         get_n_rxq(): number;
 
         /**
          * @returns the {@link NM.SettingOvsDpdk.n_rxq_desc} property of the setting
+         * @since 1.42
          */
         get_n_rxq_desc(): number;
 
         /**
          * @returns the {@link NM.SettingOvsDpdk.n_txq_desc} property of the setting
+         * @since 1.42
          */
         get_n_txq_desc(): number;
     }
@@ -31863,6 +32404,7 @@ export namespace NM {
          * Also, only digits and numbers are allowed with a few special
          * characters. They key must also not start with "NM.".
          * @param key the key to check
+         * @since 1.30
          */
         static check_key(key: string | null): boolean;
 
@@ -31870,6 +32412,7 @@ export namespace NM {
          * Checks whether `val` is a valid user data value. This means,
          * value is not `null`, not too large and valid UTF-8.
          * @param val the value to check
+         * @since 1.30
          */
         static check_val(val: string | null): boolean;
 
@@ -31877,6 +32420,7 @@ export namespace NM {
         /**
          * @param key the external-id to lookup
          * @returns the value associated with `key` or `null` if no such   value exists.
+         * @since 1.30
          */
         get_data(key: string): string;
 
@@ -31888,12 +32432,14 @@ export namespace NM {
 
         /**
          * @returns a   `null`-terminated array containing each key from the table.
+         * @since 1.30
          */
         get_data_keys(): string[];
 
         /**
          * @param key the key to set
          * @param val the value to set or `null` to clear a key.
+         * @since 1.30
          */
         set_data(key: string, val: string | null): void;
 
@@ -31993,11 +32539,13 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingOvsInterface.type} property of the setting
+         * @since 1.10
          */
         get_interface_type(): string;
 
         /**
          * @returns id of the preassigned ovs port
+         * @since 1.42
          */
         get_ofport_request(): number;
     }
@@ -32067,6 +32615,7 @@ export namespace NM {
         /**
          * @param key the other-config to lookup
          * @returns the value associated with `key` or `null` if no such   value exists.
+         * @since 1.42
          */
         get_data(key: string): string;
 
@@ -32078,12 +32627,14 @@ export namespace NM {
 
         /**
          * @returns a   `null`-terminated array containing each key from the table.
+         * @since 1.42
          */
         get_data_keys(): string[];
 
         /**
          * @param key the key to set
          * @param val the value to set or `null` to clear a key.
+         * @since 1.42
          */
         set_data(key: string, val: string | null): void;
 
@@ -32157,6 +32708,7 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingOvsPatch.peer} property of the setting
+         * @since 1.10
          */
         get_peer(): string;
     }
@@ -32326,58 +32878,69 @@ export namespace NM {
          * Appends a new trunk range to the setting.
          * This takes a reference to `trunk`.
          * @param trunk the trunk to add
+         * @since 1.42
          */
         add_trunk(trunk: Range): void;
 
         /**
          * Removes all configured trunk ranges.
+         * @since 1.42
          */
         clear_trunks(): void;
 
         /**
          * @returns the {@link NM.SettingOvsPort.bond_downdelay} property of the setting
+         * @since 1.10
          */
         get_bond_downdelay(): number;
 
         /**
          * @returns the {@link NM.SettingOvsPort.bond_mode} property of the setting
+         * @since 1.10
          */
         get_bond_mode(): string;
 
         /**
          * @returns the {@link NM.SettingOvsPort.bond_updelay} property of the setting
+         * @since 1.10
          */
         get_bond_updelay(): number;
 
         /**
          * @returns the {@link NM.SettingOvsPort.lacp} property of the setting
+         * @since 1.10
          */
         get_lacp(): string;
 
         /**
          * @returns the number of trunk ranges
+         * @since 1.42
          */
         get_num_trunks(): number;
 
         /**
          * @returns the {@link NM.SettingOvsPort.tag} property of the setting
+         * @since 1.10
          */
         get_tag(): number;
 
         /**
          * @param idx index number of the trunk range to return
          * @returns the trunk range at index `idx`
+         * @since 1.42
          */
         get_trunk(idx: number): Range;
 
         /**
          * @returns the {@link NM.SettingOvsPort.vlan_mode} property of the setting
+         * @since 1.10
          */
         get_vlan_mode(): string;
 
         /**
          * Removes the trunk range at index `idx`.
          * @param idx index number of the trunk range.
+         * @since 1.42
          */
         remove_trunk(idx: number): void;
 
@@ -32386,6 +32949,7 @@ export namespace NM {
          * @param start the trunk range start index
          * @param end the trunk range end index
          * @returns `true` if the trunk range was found and removed; `false` otherwise
+         * @since 1.42
          */
         remove_trunk_by_value(start: number, end: number): boolean;
     }
@@ -32927,6 +33491,7 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingPppoe.parent} property of the setting
+         * @since 1.10
          */
         get_parent(): string;
 
@@ -33029,6 +33594,7 @@ export namespace NM {
         // Methods
         /**
          * @returns the subnet ID for prefix delegation
+         * @since 1.54
          */
         get_subnet_id(): number;
     }
@@ -33154,6 +33720,7 @@ export namespace NM {
         // Methods
         /**
          * @returns `true` if this proxy configuration is only for browser clients/schemes, `false` otherwise.
+         * @since 1.6
          */
         get_browser_only(): boolean;
 
@@ -33162,16 +33729,19 @@ export namespace NM {
          * {@link NM.SettingProxyMethod.NONE} should be selected for a connection intended for direct network
          * access.
          * @returns the proxy configuration method
+         * @since 1.6
          */
         get_method(): SettingProxyMethod;
 
         /**
          * @returns the PAC script.
+         * @since 1.6
          */
         get_pac_script(): string;
 
         /**
          * @returns the PAC URL for obtaining PAC file
+         * @since 1.6
          */
         get_pac_url(): string;
     }
@@ -33604,11 +34174,13 @@ export namespace NM {
          * Appends a new VF and associated information to the setting.  The
          * given VF is duplicated internally and is not changed by this function.
          * @param vf the VF to add
+         * @since 1.14
          */
         add_vf(vf: SriovVF): void;
 
         /**
          * Removes all configured VFs.
+         * @since 1.14
          */
         clear_vfs(): void;
 
@@ -33616,31 +34188,37 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingSriov.autoprobe_drivers}
          * property.
          * @returns the autoprobe-drivers property value
+         * @since 1.14
          */
         get_autoprobe_drivers(): Ternary;
 
         /**
          * @returns the value contained in the {@link NM.SettingSriov.eswitch_encap_mode} property.
+         * @since 1.46
          */
         get_eswitch_encap_mode(): SriovEswitchEncapMode;
 
         /**
          * @returns the value contained in the {@link NM.SettingSriov.eswitch_inline_mode} property.
+         * @since 1.46
          */
         get_eswitch_inline_mode(): SriovEswitchInlineMode;
 
         /**
          * @returns the value contained in the {@link NM.SettingSriov.eswitch_mode} property.
+         * @since 1.46
          */
         get_eswitch_mode(): SriovEswitchMode;
 
         /**
          * @returns the number of configured VFs
+         * @since 1.14
          */
         get_num_vfs(): number;
 
         /**
          * @returns the value contained in the {@link NM.SettingSriov.preserve_on_down} property.
+         * @since 1.54
          */
         get_preserve_on_down(): SriovPreserveOnDown;
 
@@ -33648,18 +34226,21 @@ export namespace NM {
          * Returns the value contained in the {@link NM.SettingSriov.total_vfs}
          * property.
          * @returns the total number of SR-IOV virtual functions to create
+         * @since 1.14
          */
         get_total_vfs(): number;
 
         /**
          * @param idx index number of the VF to return
          * @returns the VF at index `idx`
+         * @since 1.14
          */
         get_vf(idx: number): SriovVF;
 
         /**
          * Removes the VF at index `idx`.
          * @param idx index number of the VF
+         * @since 1.14
          */
         remove_vf(idx: number): void;
 
@@ -33667,6 +34248,7 @@ export namespace NM {
          * Removes the VF with VF index `index`.
          * @param index the VF index of the VF to remove
          * @returns `true` if the VF was found and removed; `false` if it was not
+         * @since 1.14
          */
         remove_vf_by_index(index: number): boolean;
     }
@@ -33761,6 +34343,7 @@ export namespace NM {
          * qdisc is not added and the function returns `false`.
          * @param qdisc the qdisc to add
          * @returns `true` if the qdisc was added; `false` if the qdisc was already known.
+         * @since 1.12
          */
         add_qdisc(qdisc: TCQdisc): boolean;
 
@@ -33771,44 +34354,52 @@ export namespace NM {
          * tfilter is not added and the function returns `false`.
          * @param tfilter the tfilter to add
          * @returns `true` if the tfilter was added; `false` if the tfilter was already known.
+         * @since 1.12
          */
         add_tfilter(tfilter: TCTfilter): boolean;
 
         /**
          * Removes all configured queueing disciplines.
+         * @since 1.12
          */
         clear_qdiscs(): void;
 
         /**
          * Removes all configured queueing disciplines.
+         * @since 1.12
          */
         clear_tfilters(): void;
 
         /**
          * @returns the number of configured queueing disciplines
+         * @since 1.12
          */
         get_num_qdiscs(): number;
 
         /**
          * @returns the number of configured queueing disciplines
+         * @since 1.12
          */
         get_num_tfilters(): number;
 
         /**
          * @param idx index number of the qdisc to return
          * @returns the qdisc at index `idx`
+         * @since 1.12
          */
         get_qdisc(idx: number): TCQdisc;
 
         /**
          * @param idx index number of the tfilter to return
          * @returns the tfilter at index `idx`
+         * @since 1.12
          */
         get_tfilter(idx: number): TCTfilter;
 
         /**
          * Removes the qdisc at index `idx`.
          * @param idx index number of the qdisc
+         * @since 1.12
          */
         remove_qdisc(idx: number): void;
 
@@ -33816,12 +34407,14 @@ export namespace NM {
          * Removes the first matching qdisc that matches `qdisc`.
          * @param qdisc the qdisc to remove
          * @returns `true` if the qdisc was found and removed; `false` if it was not.
+         * @since 1.12
          */
         remove_qdisc_by_value(qdisc: TCQdisc): boolean;
 
         /**
          * Removes the tfilter at index `idx`.
          * @param idx index number of the tfilter
+         * @since 1.12
          */
         remove_tfilter(idx: number): void;
 
@@ -33829,6 +34422,7 @@ export namespace NM {
          * Removes the first matching tfilter that matches `tfilter`.
          * @param tfilter the tfilter to remove
          * @returns `true` if the tfilter was found and removed; `false` if it was not.
+         * @since 1.12
          */
         remove_tfilter_by_value(tfilter: TCTfilter): boolean;
     }
@@ -34187,6 +34781,7 @@ export namespace NM {
          * Appends a new link watcher to the setting.
          * @param link_watcher the link watcher to add
          * @returns `true` if the link watcher is added; `false` if an identical link watcher was already there.
+         * @since 1.12
          */
         add_link_watcher(link_watcher: TeamLinkWatcher): boolean;
 
@@ -34194,11 +34789,13 @@ export namespace NM {
          * Adds a new txhash element to the setting.
          * @param txhash the element to add to txhash
          * @returns `true` if the txhash element was added; `false` if the element was already knnown.
+         * @since 1.12
          */
         add_runner_tx_hash(txhash: string): boolean;
 
         /**
          * Removes all configured link watchers.
+         * @since 1.12
          */
         clear_link_watchers(): void;
 
@@ -34210,93 +34807,111 @@ export namespace NM {
         /**
          * @param idx index number of the link watcher to return
          * @returns the link watcher at index `idx`.
+         * @since 1.12
          */
         get_link_watcher(idx: number): TeamLinkWatcher;
 
         /**
          * @returns the #{@link NM.SettingTeam.mcast_rejoin_count} property of the setting
+         * @since 1.12
          */
         get_mcast_rejoin_count(): number;
 
         /**
          * @returns the #{@link NM.SettingTeam.mcast_rejoin_interval} property of the setting
+         * @since 1.12
          */
         get_mcast_rejoin_interval(): number;
 
         /**
          * @returns the #{@link NM.SettingTeam.notify_peers_count} property of the setting
+         * @since 1.12
          */
         get_notify_peers_count(): number;
 
         /**
          * @returns the #{@link NM.SettingTeam.notify_peers_interval} property of the setting
+         * @since 1.12
          */
         get_notify_peers_interval(): number;
 
         /**
          * @returns the number of configured link watchers
+         * @since 1.12
          */
         get_num_link_watchers(): number;
 
         /**
          * @returns the number of elements in txhash
+         * @since 1.12
          */
         get_num_runner_tx_hash(): number;
 
         /**
          * @returns the #{@link NM.SettingTeam.runner} property of the setting
+         * @since 1.12
          */
         get_runner(): string;
 
         /**
          * @returns the #{@link NM.SettingTeam.runner_active} property of the setting
+         * @since 1.12
          */
         get_runner_active(): boolean;
 
         /**
          * @returns the #{@link NM.SettingTeam.runner_agg_select_policy} property of the setting
+         * @since 1.12
          */
         get_runner_agg_select_policy(): string;
 
         /**
          * @returns the #{@link NM.SettingTeam.runner_fast_rate} property of the setting
+         * @since 1.12
          */
         get_runner_fast_rate(): boolean;
 
         /**
          * @returns the #{@link NM.SettingTeam.runner_hwaddr_policy} property of the setting
+         * @since 1.12
          */
         get_runner_hwaddr_policy(): string;
 
         /**
          * @returns the #{@link NM.SettingTeam.runner_min_ports} property of the setting
+         * @since 1.12
          */
         get_runner_min_ports(): number;
 
         /**
          * @returns the #{@link NM.SettingTeam.runner_sys_prio} property of the setting
+         * @since 1.12
          */
         get_runner_sys_prio(): number;
 
         /**
          * @returns the #{@link NM.SettingTeam.runner_tx_balancer} property of the setting
+         * @since 1.12
          */
         get_runner_tx_balancer(): string;
 
         /**
          * @returns the #{@link NM.SettingTeam.runner_tx_balancer_interval} property of the setting
+         * @since 1.12
          */
         get_runner_tx_balancer_interval(): number;
 
         /**
          * @param idx index number of the txhash element to return
          * @returns the txhash element at index `idx`
+         * @since 1.12
          */
         get_runner_tx_hash(idx: number): string;
 
         /**
          * Removes the link watcher at index #idx.
          * @param idx index number of the link watcher to remove
+         * @since 1.12
          */
         remove_link_watcher(idx: number): void;
 
@@ -34304,12 +34919,14 @@ export namespace NM {
          * Removes the link watcher entry matching link_watcher.
          * @param link_watcher the link watcher to remove
          * @returns `true` if the link watcher was found and removed, `false` otherwise.
+         * @since 1.12
          */
         remove_link_watcher_by_value(link_watcher: TeamLinkWatcher): boolean;
 
         /**
          * Removes the txhash element at index `idx`.
          * @param idx index number of the element to remove from txhash
+         * @since 1.12
          */
         remove_runner_tx_hash(idx: number): void;
 
@@ -34317,6 +34934,7 @@ export namespace NM {
          * Removes the txhash element #txhash
          * @param txhash the txhash element to remove
          * @returns `true` if the txhash element was found and removed; `false` if it was not.
+         * @since 1.12
          */
         remove_runner_tx_hash_by_value(txhash: string): boolean;
     }
@@ -34497,11 +35115,13 @@ export namespace NM {
          * Appends a new link watcher to the setting.
          * @param link_watcher the link watcher to add
          * @returns `true` if the link watcher is added; `false` if an identical link watcher was already there.
+         * @since 1.12
          */
         add_link_watcher(link_watcher: TeamLinkWatcher): boolean;
 
         /**
          * Removes all configured link watchers.
+         * @since 1.12
          */
         clear_link_watchers(): void;
 
@@ -34512,43 +35132,51 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingTeamPort.lacp_key} property of the setting
+         * @since 1.12
          */
         get_lacp_key(): number;
 
         /**
          * @returns the {@link NM.SettingTeamPort.lacp_prio} property of the setting
+         * @since 1.12
          */
         get_lacp_prio(): number;
 
         /**
          * @param idx index number of the link watcher to return
          * @returns the link watcher at index `idx`.
+         * @since 1.12
          */
         get_link_watcher(idx: number): TeamLinkWatcher;
 
         /**
          * @returns the number of configured link watchers
+         * @since 1.12
          */
         get_num_link_watchers(): number;
 
         /**
          * @returns the {@link NM.SettingTeamPort.prio} property of the setting
+         * @since 1.12
          */
         get_prio(): number;
 
         /**
          * @returns the {@link NM.SettingTeamPort.queue_id} property of the setting
+         * @since 1.12
          */
         get_queue_id(): number;
 
         /**
          * @returns the {@link NM.SettingTeamPort.sticky} property of the setting
+         * @since 1.12
          */
         get_sticky(): boolean;
 
         /**
          * Removes the link watcher at index #idx.
          * @param idx index number of the link watcher to remove
+         * @since 1.12
          */
         remove_link_watcher(idx: number): void;
 
@@ -34556,6 +35184,7 @@ export namespace NM {
          * Removes the link watcher entry matching link_watcher.
          * @param link_watcher the link watcher to remove
          * @returns `true` if the link watcher was found and removed, `false` otherwise.
+         * @since 1.12
          */
         remove_link_watcher_by_value(link_watcher: TeamLinkWatcher): boolean;
     }
@@ -34704,31 +35333,37 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingTun.group} property of the setting
+         * @since 1.2
          */
         get_group(): string;
 
         /**
          * @returns the {@link NM.SettingTun.mode} property of the setting
+         * @since 1.2
          */
         get_mode(): SettingTunMode;
 
         /**
          * @returns the {@link NM.SettingTun.multi_queue} property of the setting
+         * @since 1.2
          */
         get_multi_queue(): boolean;
 
         /**
          * @returns the {@link NM.SettingTun.owner} property of the setting
+         * @since 1.2
          */
         get_owner(): string;
 
         /**
          * @returns the {@link NM.SettingTun.pi} property of the setting
+         * @since 1.2
          */
         get_pi(): boolean;
 
         /**
          * @returns the {@link NM.SettingTun.vnet_hdr} property of the setting
+         * @since 1.2
          */
         get_vnet_hdr(): boolean;
     }
@@ -34802,6 +35437,7 @@ export namespace NM {
          * characters. The key must contain at least one '.' and
          * look like a fully qualified DNS name.
          * @param key the key to check
+         * @since 1.8
          */
         static check_key(key: string): boolean;
 
@@ -34809,6 +35445,7 @@ export namespace NM {
          * Checks whether `val` is a valid user data value. This means,
          * value is not `null`, not too large and valid UTF-8.
          * @param val the value to check
+         * @since 1.8
          */
         static check_val(val: string): boolean;
 
@@ -34816,6 +35453,7 @@ export namespace NM {
         /**
          * @param key the key to lookup
          * @returns the value associated with `key` or `null` if no such   value exists.
+         * @since 1.8
          */
         get_data(key: string): string;
 
@@ -34827,6 +35465,7 @@ export namespace NM {
 
         /**
          * @returns a   `null`-terminated array containing each key from the table.
+         * @since 1.8
          */
         get_keys(): string[];
 
@@ -34834,6 +35473,7 @@ export namespace NM {
          * @param key the key to set
          * @param val the value to set or `null` to clear a key.
          * @returns `true` if the operation was successful. The operation   can fail if `key` or `val` are not valid strings according   to `nm_setting_user_check_key()` and `nm_setting_user_check_val()`.
+         * @since 1.8
          */
         set_data(key: string, val: string | null): boolean;
 
@@ -34907,6 +35547,7 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingVeth.peer} property of the setting
+         * @since 1.30
          */
         get_peer(): string;
     }
@@ -35123,6 +35764,7 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingVlan.protocol} property of the setting
+         * @since 1.42
          */
         get_protocol(): string;
 
@@ -35350,6 +35992,7 @@ export namespace NM {
         /**
          * Retrieves every data key inside `setting`, as an array.
          * @returns a   `null`-terminated array containing each data key or `null` if   there are no data items.
+         * @since 1.12
          */
         get_data_keys(): string[] | null;
 
@@ -35367,6 +36010,7 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingVpn.persistent} property of the setting
+         * @since 1.42
          */
         get_persistent(): boolean;
 
@@ -35381,6 +36025,7 @@ export namespace NM {
         /**
          * Retrieves every secret key inside `setting`, as an array.
          * @returns a   `null`-terminated array containing each secret key or `null` if   there are no secrets.
+         * @since 1.12
          */
         get_secret_keys(): string[] | null;
 
@@ -35393,6 +36038,7 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingVpn.timeout} property of the setting
+         * @since 1.2
          */
         get_timeout(): number;
 
@@ -35481,6 +36127,7 @@ export namespace NM {
         // Methods
         /**
          * @returns the routing table for the VRF
+         * @since 1.24
          */
         get_table(): number;
     }
@@ -35753,81 +36400,97 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingVxlan.ageing} property of the setting
+         * @since 1.2
          */
         get_ageing(): number;
 
         /**
          * @returns the {@link NM.SettingVxlan.destination_port} property of the setting
+         * @since 1.2
          */
         get_destination_port(): number;
 
         /**
          * @returns the {@link NM.SettingVxlan.id} property of the setting
+         * @since 1.2
          */
         get_id(): number;
 
         /**
          * @returns the {@link NM.SettingVxlan.l2_miss} property of the setting
+         * @since 1.2
          */
         get_l2_miss(): boolean;
 
         /**
          * @returns the {@link NM.SettingVxlan.l3_miss} property of the setting
+         * @since 1.2
          */
         get_l3_miss(): boolean;
 
         /**
          * @returns the {@link NM.SettingVxlan.learning} property of the setting
+         * @since 1.2
          */
         get_learning(): boolean;
 
         /**
          * @returns the {@link NM.SettingVxlan.limit} property of the setting
+         * @since 1.2
          */
         get_limit(): number;
 
         /**
          * @returns the {@link NM.SettingVxlan.local} property of the setting
+         * @since 1.2
          */
         get_local(): string;
 
         /**
          * @returns the {@link NM.SettingVxlan.parent} property of the setting
+         * @since 1.2
          */
         get_parent(): string;
 
         /**
          * @returns the {@link NM.SettingVxlan.proxy} property of the setting
+         * @since 1.2
          */
         get_proxy(): boolean;
 
         /**
          * @returns the {@link NM.SettingVxlan.remote} property of the setting
+         * @since 1.2
          */
         get_remote(): string;
 
         /**
          * @returns the {@link NM.SettingVxlan.rsc} property of the setting
+         * @since 1.2
          */
         get_rsc(): boolean;
 
         /**
          * @returns the {@link NM.SettingVxlan.source_port_max} property of the setting
+         * @since 1.2
          */
         get_source_port_max(): number;
 
         /**
          * @returns the {@link NM.SettingVxlan.source_port_min} property of the setting
+         * @since 1.2
          */
         get_source_port_min(): number;
 
         /**
          * @returns the {@link NM.SettingVxlan.tos} property of the setting
+         * @since 1.2
          */
         get_tos(): number;
 
         /**
          * @returns the {@link NM.SettingVxlan.ttl} property of the setting
+         * @since 1.2
          */
         get_ttl(): number;
     }
@@ -35948,16 +36611,19 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingWifiP2P.peer} property of the setting
+         * @since 1.16
          */
         get_peer(): string;
 
         /**
          * @returns the `NMSettingWiFiP2P:wfd-ies` property of the setting
+         * @since 1.16
          */
         get_wfd_ies(): GLib.Bytes;
 
         /**
          * @returns the {@link NM.SettingWifiP2P.wps_method} property of the setting
+         * @since 1.16
          */
         get_wps_method(): SettingWirelessSecurityWpsMethod;
     }
@@ -36060,6 +36726,7 @@ export namespace NM {
          * Returns the MAC address of a WiMAX device which this connection is locked
          * to.
          * @returns the MAC address
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_mac_address(): string;
 
@@ -36067,6 +36734,7 @@ export namespace NM {
          * Returns the WiMAX NSP name (ex "Sprint" or "CLEAR") which identifies the
          * specific WiMAX network this setting describes a connection to.
          * @returns the WiMAX NSP name
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get_network_name(): string;
     }
@@ -36327,74 +36995,88 @@ export namespace NM {
          * (or moved to) the end, so in case a peer is replaced, the
          * indexes are shifted and the number of peers stays unchanged.
          * @param peer the {@link NM.WireGuardPeer} instance to append.   This seals `peer` and keeps a reference on the   instance.
+         * @since 1.16
          */
         append_peer(peer: WireGuardPeer): void;
 
         /**
          * @returns the number of cleared peers.
+         * @since 1.16
          */
         clear_peers(): number;
 
         /**
          * @returns the set firewall mark.
+         * @since 1.16
          */
         get_fwmark(): number;
 
         /**
          * @returns the "ip4-auto-default-route" property of the setting.
+         * @since 1.20
          */
         get_ip4_auto_default_route(): Ternary;
 
         /**
          * @returns the "ip6-auto-default-route" property of the setting.
+         * @since 1.20
          */
         get_ip6_auto_default_route(): Ternary;
 
         /**
          * @returns the set UDP listen port.
+         * @since 1.16
          */
         get_listen_port(): number;
 
         /**
          * @returns the MTU of the setting.
+         * @since 1.16
          */
         get_mtu(): number;
 
         /**
          * @param idx the index to lookup.
          * @returns the {@link NM.WireGuardPeer} entry at   index `idx`. If the index is out of range, `null` is returned.
+         * @since 1.16
          */
         get_peer(idx: number): WireGuardPeer;
 
         /**
          * @param public_key the public key for looking up the   peer.
          * @returns the {@link NM.WireGuardPeer} instance with a   matching public key. If no such peer exists, `null` is returned.
+         * @since 1.16
          */
         get_peer_by_public_key(public_key: string): [WireGuardPeer | null, number];
 
         /**
          * @returns whether automatically add peer routes.
+         * @since 1.16
          */
         get_peer_routes(): boolean;
 
         /**
          * @returns the number of registered peers.
+         * @since 1.16
          */
         get_peers_len(): number;
 
         /**
          * @returns the set private-key or `null`.
+         * @since 1.16
          */
         get_private_key(): string;
 
         /**
          * @returns the secret-flags for {@link NM.SettingWireGuard.private_key}.
+         * @since 1.16
          */
         get_private_key_flags(): SettingSecretFlags;
 
         /**
          * @param idx the index to remove.
          * @returns `true` if `idx` was in range and a peer   was removed. Otherwise, `self` is unchanged.
+         * @since 1.16
          */
         remove_peer(idx: number): boolean;
 
@@ -36411,6 +37093,7 @@ export namespace NM {
          * `idx` (if another peer with a lower index was dropped).
          * @param peer the {@link NM.WireGuardPeer} instance to set.   This seals `peer` and keeps a reference on the   instance.
          * @param idx the index, in the range of 0 to the number of   peers (including). That means, if `idx` is one past   the end of the number of peers, this is the same as   `nm_setting_wireguard_append_peer()`. Otherwise, the   peer at this index is replaced.
+         * @since 1.16
          */
         set_peer(peer: WireGuardPeer, idx: number): void;
     }
@@ -36904,6 +37587,7 @@ export namespace NM {
          * Adds a new MAC address to the {@link NM.SettingWired.mac_address_blacklist} property.
          * @param mac the MAC address string (hex-digits-and-colons notation) to blacklist
          * @returns `true` if the MAC address was added; `false` if the MAC address is invalid or was already present
+         * @deprecated since 1.48.: Use `nm_setting_wired_add_mac_denylist_item()` instead.
          */
         add_mac_blacklist_item(mac: string): boolean;
 
@@ -36911,6 +37595,7 @@ export namespace NM {
          * Adds a new MAC address to the {@link NM.SettingWired.mac_address_denylist} property.
          * @param mac the MAC address string (hex-digits-and-colons notation) to denylist
          * @returns `true` if the MAC address was added; `false` if the MAC address is invalid or was already present
+         * @since 1.48
          */
         add_mac_denylist_item(mac: string): boolean;
 
@@ -36928,16 +37613,19 @@ export namespace NM {
 
         /**
          * Removes all blacklisted MAC addresses.
+         * @deprecated since 1.48.: Use `nm_setting_wired_clear_mac_denylist_items()` instead.
          */
         clear_mac_blacklist_items(): void;
 
         /**
          * Removes all denylisted MAC addresses.
+         * @since 1.48
          */
         clear_mac_denylist_items(): void;
 
         /**
          * @returns the {@link NM.SettingWired.accept_all_mac_addresses} property of the setting
+         * @since 1.32
          */
         get_accept_all_mac_addresses(): Ternary;
 
@@ -36958,6 +37646,7 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingWired.generate_mac_address_mask} property of the setting
+         * @since 1.4
          */
         get_generate_mac_address_mask(): string;
 
@@ -36968,11 +37657,13 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingWired.mac_address_blacklist} property of the setting
+         * @deprecated since 1.48.: Use `nm_setting_wired_get_mac_address_denylist()` instead.
          */
         get_mac_address_blacklist(): string[];
 
         /**
          * @returns the {@link NM.SettingWired.mac_address_denylist} property of the setting
+         * @since 1.48
          */
         get_mac_address_denylist(): string[];
 
@@ -36980,12 +37671,14 @@ export namespace NM {
          * Since 1.48, access at index "len" is allowed and returns NULL.
          * @param idx the zero-based index of the MAC address entry
          * @returns the blacklisted MAC address string (hex-digits-and-colons notation) at index `idx`
+         * @deprecated since 1.48.: Use `nm_setting_wired_get_mac_denylist_item()` instead.
          */
         get_mac_blacklist_item(idx: number): string;
 
         /**
          * @param idx the zero-based index of the MAC address entry
          * @returns the denylisted MAC address string (hex-digits-and-colons notation) at index `idx`
+         * @since 1.48
          */
         get_mac_denylist_item(idx: number): string;
 
@@ -36996,11 +37689,13 @@ export namespace NM {
 
         /**
          * @returns the number of blacklisted MAC addresses
+         * @deprecated since 1.48.: Use `nm_setting_wired_get_num_mac_denylist_items()` instead.
          */
         get_num_mac_blacklist_items(): number;
 
         /**
          * @returns the number of denylisted MAC addresses
+         * @since 1.48
          */
         get_num_mac_denylist_items(): number;
 
@@ -37067,6 +37762,7 @@ export namespace NM {
         /**
          * Returns the Wake-on-LAN options enabled for the connection
          * @returns the Wake-on-LAN options
+         * @since 1.2
          */
         get_wake_on_lan(): SettingWiredWakeOnLan;
 
@@ -37074,12 +37770,14 @@ export namespace NM {
          * Returns the Wake-on-LAN password. This only applies to
          * {@link NM.SettingWiredWakeOnLan.MAGIC}.
          * @returns the Wake-on-LAN setting password, or `null` if there is no password.
+         * @since 1.2
          */
         get_wake_on_lan_password(): string;
 
         /**
          * Removes the MAC address at index `idx` from the blacklist.
          * @param idx index number of the MAC address
+         * @deprecated since 1.48.: Use `nm_setting_wired_remove_mac_denylist_item()` instead.
          */
         remove_mac_blacklist_item(idx: number): void;
 
@@ -37087,12 +37785,14 @@ export namespace NM {
          * Removes the MAC address `mac` from the blacklist.
          * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the blacklist
          * @returns `true` if the MAC address was found and removed; `false` if it was not.
+         * @deprecated since 1.48.: Use `nm_setting_wired_remove_mac_denylist_item_by_value()` instead.
          */
         remove_mac_blacklist_item_by_value(mac: string): boolean;
 
         /**
          * Removes the MAC address at index `idx` from the denylist.
          * @param idx index number of the MAC address
+         * @since 1.48
          */
         remove_mac_denylist_item(idx: number): void;
 
@@ -37100,6 +37800,7 @@ export namespace NM {
          * Removes the MAC address `mac` from the denylist.
          * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the denylist
          * @returns `true` if the MAC address was found and removed; `false` if it was not.
+         * @since 1.48
          */
         remove_mac_denylist_item_by_value(mac: string): boolean;
 
@@ -37679,6 +38380,7 @@ export namespace NM {
          * Adds a new MAC address to the {@link NM.SettingWireless.mac_address_denylist} property.
          * @param mac the MAC address string (hex-digits-and-colons notation) to denylist
          * @returns `true` if the MAC address was added; `false` if the MAC address is invalid or was already present
+         * @deprecated since 1.48.: Use `nm_setting_wireless_add_mac_denylist_item()` instead.
          */
         add_mac_blacklist_item(mac: string): boolean;
 
@@ -37686,6 +38388,7 @@ export namespace NM {
          * Adds a new MAC address to the {@link NM.SettingWireless.mac_address_denylist} property.
          * @param mac the MAC address string (hex-digits-and-colons notation) to denylist
          * @returns `true` if the MAC address was added; `false` if the MAC address is invalid or was already present
+         * @since 1.48
          */
         add_mac_denylist_item(mac: string): boolean;
 
@@ -37717,16 +38420,19 @@ export namespace NM {
 
         /**
          * Removes all denylisted MAC addresses.
+         * @deprecated since 1.48.: Use `nm_setting_wireless_clear_mac_denylist_items()` instead.
          */
         clear_mac_blacklist_items(): void;
 
         /**
          * Removes all denylisted MAC addresses.
+         * @since 1.48
          */
         clear_mac_denylist_items(): void;
 
         /**
          * @returns the {@link NM.SettingWireless.ap_isolation} property of the setting
+         * @since 1.28
          */
         get_ap_isolation(): Ternary;
 
@@ -37748,6 +38454,7 @@ export namespace NM {
         /**
          * Returns the {@link NM.SettingWireless.channel_width} property.
          * @returns the channel width
+         * @since 1.50
          */
         get_channel_width(): SettingWirelessChannelWidth;
 
@@ -37758,6 +38465,7 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingWireless.generate_mac_address_mask} property of the setting
+         * @since 1.4
          */
         get_generate_mac_address_mask(): string;
 
@@ -37773,16 +38481,19 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingWireless.mac_address_blacklist} property of the setting
+         * @deprecated since 1.48.: Use `nm_setting_wireless_get_mac_address_denylist()` instead.
          */
         get_mac_address_blacklist(): string[];
 
         /**
          * @returns the {@link NM.SettingWireless.mac_address_denylist} property of the setting
+         * @since 1.48
          */
         get_mac_address_denylist(): string[];
 
         /**
          * @returns the {@link NM.SettingWireless.mac_address_randomization} property of the setting
+         * @since 1.2
          */
         get_mac_address_randomization(): SettingMacRandomization;
 
@@ -37790,12 +38501,14 @@ export namespace NM {
          * Since 1.46, access at index "len" is allowed and returns NULL.
          * @param idx the zero-based index of the MAC address entry
          * @returns the denylisted MAC address string (hex-digits-and-colons notation) at index `idx`
+         * @deprecated since 1.48.: Use `nm_setting_wireless_get_mac_denylist_item()` instead.
          */
         get_mac_blacklist_item(idx: number): string;
 
         /**
          * @param idx the zero-based index of the MAC address entry
          * @returns the denylisted MAC address string (hex-digits-and-colons notation) at index `idx`
+         * @since 1.48
          */
         get_mac_denylist_item(idx: number): string;
 
@@ -37811,11 +38524,13 @@ export namespace NM {
 
         /**
          * @returns the number of blacklist MAC addresses
+         * @deprecated since 1.48.: Use `nm_setting_wireless_get_num_mac_denylist_items()` instead.
          */
         get_num_mac_blacklist_items(): number;
 
         /**
          * @returns the number of denylisted MAC addresses
+         * @since 1.48
          */
         get_num_mac_denylist_items(): number;
 
@@ -37826,11 +38541,13 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingWireless.powersave} property of the setting
+         * @since 1.2
          */
         get_powersave(): number;
 
         /**
          * @returns the {@link NM.SettingWireless.rate} property of the setting
+         * @deprecated since 1.44: This setting is not implemented and has no effect.
          */
         get_rate(): number;
 
@@ -37847,18 +38564,21 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingWireless.tx_power} property of the setting
+         * @deprecated since 1.44: This setting is not implemented and has no effect.
          */
         get_tx_power(): number;
 
         /**
          * Returns the Wake-on-WLAN options enabled for the connection
          * @returns the Wake-on-WLAN options
+         * @since 1.12
          */
         get_wake_on_wlan(): SettingWirelessWakeOnWLan;
 
         /**
          * Removes the MAC address at index `idx` from the denylist.
          * @param idx index number of the MAC address
+         * @deprecated since 1.48.: Use `nm_setting_wireless_remove_mac_denylist_item()` instead.
          */
         remove_mac_blacklist_item(idx: number): void;
 
@@ -37866,12 +38586,14 @@ export namespace NM {
          * Removes the MAC address `mac` from the denylist.
          * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the denylist
          * @returns `true` if the MAC address was found and removed; `false` if it was not.
+         * @deprecated since 1.48.: Use `nm_setting_wireless_remove_mac_denylist_item_by_value()` instead.
          */
         remove_mac_blacklist_item_by_value(mac: string): boolean;
 
         /**
          * Removes the MAC address at index `idx` from the denylist.
          * @param idx index number of the MAC address
+         * @since 1.48
          */
         remove_mac_denylist_item(idx: number): void;
 
@@ -37879,6 +38601,7 @@ export namespace NM {
          * Removes the MAC address `mac` from the denylist.
          * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the denylist
          * @returns `true` if the MAC address was found and removed; `false` if it was not.
+         * @since 1.48
          */
         remove_mac_denylist_item_by_value(mac: string): boolean;
     }
@@ -38377,6 +39100,7 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingWirelessSecurity.fils} property of the setting
+         * @since 1.12
          */
         get_fils(): SettingWirelessSecurityFils;
 
@@ -38433,6 +39157,7 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingWirelessSecurity.pmf} property of the setting
+         * @since 1.10
          */
         get_pmf(): SettingWirelessSecurityPmf;
 
@@ -38475,6 +39200,7 @@ export namespace NM {
 
         /**
          * @returns the {@link NM.SettingWirelessSecurity.wps_method} property of the setting
+         * @since 1.10
          */
         get_wps_method(): SettingWirelessSecurityWpsMethod;
 
@@ -38657,26 +39383,31 @@ export namespace NM {
         // Methods
         /**
          * @returns the {@link NM.SettingWpan.channel} property of the setting
+         * @since 1.42
          */
         get_channel(): number;
 
         /**
          * @returns the {@link NM.SettingWpan.mac_address} property of the setting
+         * @since 1.42
          */
         get_mac_address(): string;
 
         /**
          * @returns the {@link NM.SettingWpan.page} property of the setting
+         * @since 1.42
          */
         get_page(): number;
 
         /**
          * @returns the {@link NM.SettingWpan.pan_id} property of the setting
+         * @since 1.42
          */
         get_pan_id(): number;
 
         /**
          * @returns the {@link NM.SettingWpan.short_address} property of the setting
+         * @since 1.42
          */
         get_short_address(): number;
     }
@@ -38896,6 +39627,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingDummy} the connection might contain.
          * @returns an {@link NM.SettingDummy} if the connection contains one, otherwise `null`
+         * @since 1.8
          */
         get_setting_dummy(): SettingDummy;
 
@@ -38908,6 +39640,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingGeneve} the connection might contain.
          * @returns an {@link NM.SettingGeneve} if the connection contains one, otherwise NULL
+         * @since 1.58
          */
         get_setting_geneve(): SettingGeneve;
 
@@ -38946,18 +39679,21 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingIPTunnel} the connection might contain.
          * @returns an {@link NM.SettingIPTunnel} if the connection contains one, otherwise `null`
+         * @since 1.2
          */
         get_setting_ip_tunnel(): SettingIPTunnel;
 
         /**
          * A shortcut to return any {@link NM.SettingMacsec} the connection might contain.
          * @returns an {@link NM.SettingMacsec} if the connection contains one, otherwise `null`
+         * @since 1.6
          */
         get_setting_macsec(): SettingMacsec;
 
         /**
          * A shortcut to return any {@link NM.SettingMacvlan} the connection might contain.
          * @returns an {@link NM.SettingMacvlan} if the connection contains one, otherwise `null`
+         * @since 1.2
          */
         get_setting_macvlan(): SettingMacvlan;
 
@@ -38970,24 +39706,28 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingOvsBridge} the connection might contain.
          * @returns an {@link NM.SettingOvsBridge} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_ovs_bridge(): SettingOvsBridge;
 
         /**
          * A shortcut to return any {@link NM.SettingOvsInterface} the connection might contain.
          * @returns an {@link NM.SettingOvsInterface} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_ovs_interface(): SettingOvsInterface;
 
         /**
          * A shortcut to return any {@link NM.SettingOvsPatch} the connection might contain.
          * @returns an {@link NM.SettingOvsPatch} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_ovs_patch(): SettingOvsPatch;
 
         /**
          * A shortcut to return any {@link NM.SettingOvsPort} the connection might contain.
          * @returns an {@link NM.SettingOvsPort} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_ovs_port(): SettingOvsPort;
 
@@ -39006,6 +39746,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingProxy} the connection might contain.
          * @returns an {@link NM.SettingProxy} if the connection contains one, otherwise `null`
+         * @since 1.6
          */
         get_setting_proxy(): SettingProxy;
 
@@ -39018,6 +39759,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingTCConfig} the connection might contain.
          * @returns an {@link NM.SettingTCConfig} if the connection contains one, otherwise `null`
+         * @since 1.12
          */
         get_setting_tc_config(): SettingTCConfig;
 
@@ -39036,6 +39778,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingTun} the connection might contain.
          * @returns an {@link NM.SettingTun} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_tun(): SettingTun;
 
@@ -39054,6 +39797,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingVxlan} the connection might contain.
          * @returns an {@link NM.SettingVxlan} if the connection contains one, otherwise `null`
+         * @since 1.2
          */
         get_setting_vxlan(): SettingVxlan;
 
@@ -39086,6 +39830,7 @@ export namespace NM {
          * 
          * The returned array is `null`-terminated.
          * @returns a   `null`-terminated array containing every setting of `connection`.   If the connection has no settings, `null` is returned.
+         * @since 1.10
          */
         get_settings(): Setting[] | null;
 
@@ -39213,6 +39958,7 @@ export namespace NM {
         /**
          * Verifies the secrets in the connection.
          * @returns `true` if the secrets are valid, `false` if they are not
+         * @since 1.2
          */
         verify_secrets(): boolean;
 
@@ -39434,24 +40180,28 @@ export namespace NM {
         /**
          * @param list list of plugins
          * @param plugin_info instance to add
+         * @since 1.2
          */
         static list_add(list: VpnPluginInfo[], plugin_info: VpnPluginInfo): boolean;
 
         /**
          * @param list list of plugins
          * @param filename filename to search
+         * @since 1.2
          */
         static list_find_by_filename(list: VpnPluginInfo[], filename: string): VpnPluginInfo;
 
         /**
          * @param list list of plugins
          * @param name name to search
+         * @since 1.2
          */
         static list_find_by_name(list: VpnPluginInfo[], name: string): VpnPluginInfo;
 
         /**
          * @param list list of plugins
          * @param service service to search. This can be the main service-type   or one of the provided aliases.
+         * @since 1.2
          */
         static list_find_by_service(list: VpnPluginInfo[], service: string): VpnPluginInfo;
 
@@ -39469,6 +40219,7 @@ export namespace NM {
          * but it could be retrieved via `nm_vpn_plugin_info_list_find_by_service()`.
          * @param list a possibly empty {@link GLib.SList} of {@link NM.VpnPluginInfo} instances
          * @param name a name to lookup the service-type.
+         * @since 1.4
          */
         static list_find_service_type(list: VpnPluginInfo[], name: string): string;
 
@@ -39476,15 +40227,20 @@ export namespace NM {
          * @param list a possibly empty {@link GLib.SList} of {@link NM.VpnPluginInfo}
          * @param only_existing only include results that are actually in `list`.   Otherwise, the result is extended with a hard-code list or   well-known plugins
          * @param with_abbreviations if `false`, only full service types are returned.   Otherwise, this also includes abbreviated names that can be used   with `nm_vpn_plugin_info_list_find_service_type()`.
+         * @since 1.4
          */
         static list_get_service_types(list: VpnPluginInfo[], only_existing: boolean, with_abbreviations: boolean): string[];
 
+        /**
+         * @since 1.2
+         */
         static list_load(): VpnPluginInfo[];
 
         /**
          * Remove `plugin_info` from `list`.
          * @param list list of plugins
          * @param plugin_info instance
+         * @since 1.2
          */
         static list_remove(list: VpnPluginInfo[], plugin_info: VpnPluginInfo): boolean;
 
@@ -39493,52 +40249,62 @@ export namespace NM {
          * they have the file extension "name". Check if `filename`
          * is valid according to that pattern.
          * @param filename the filename to check
+         * @since 1.2
          */
         static validate_filename(filename: string): boolean;
 
         // Methods
         /**
          * @returns the aliases from the name-file.
+         * @since 1.4
          */
         get_aliases(): string[];
 
         /**
          * @returns the absolute path to the auth-dialog helper or `null`.
+         * @since 1.4
          */
         get_auth_dialog(): string;
 
         /**
          * @returns the cached {@link NM.VpnEditorPlugin} instance.
+         * @since 1.2
          */
         get_editor_plugin(): VpnEditorPlugin;
 
         /**
          * @returns the filename. Can be `null`.
+         * @since 1.2
          */
         get_filename(): string;
 
         /**
          * @returns the name. Cannot be `null`.
+         * @since 1.2
          */
         get_name(): string;
 
         /**
          * @returns the plugin. Can be `null`.
+         * @since 1.2
          */
         get_plugin(): string;
 
         /**
          * @returns the program. Can be `null`.
+         * @since 1.2
          */
         get_program(): string;
 
         /**
          * @returns the service. Cannot be `null`.
+         * @since 1.4
          */
         get_service(): string;
 
         /**
          * @returns loads the plugin and returns the newly created   instance. The plugin is owned by `self` and can be later retrieved again   via `nm_vpn_plugin_info_get_editor_plugin()`. You can load the   plugin only once, unless you reset the state via   `nm_vpn_plugin_info_set_editor_plugin()`.
+         * @since 1.2
          */
         load_editor_plugin(): VpnEditorPlugin;
 
@@ -39546,27 +40312,32 @@ export namespace NM {
          * @param group group name
          * @param key name of the property
          * @returns {@link NM.VpnPluginInfo} is internally a {@link GLib.KeyFile}. Returns the matching property.
+         * @since 1.2
          */
         lookup_property(group: string, key: string): string;
 
         /**
          * Set the internal plugin instance. If `null`, only clear the previous instance.
          * @param plugin plugin instance
+         * @since 1.2
          */
         set_editor_plugin(plugin: VpnEditorPlugin | null): void;
 
         /**
          * @returns `true` if the supports hints for secret requests, otherwise `false`
+         * @since 1.4
          */
         supports_hints(): boolean;
 
         /**
          * @returns `true` if the service supports multiple instances with different bus names, otherwise `false`
+         * @since 1.42
          */
         supports_multiple(): boolean;
 
         /**
          * @returns `true` if the service supports reading files (certificates, keys) of     private connections in a safe way (i.e. checking user permissions), or        if the service doesn't need to read any file from disk.
+         * @since 1.56
          */
         supports_safe_private_file_access(): boolean;
 
@@ -39611,6 +40382,7 @@ export namespace NM {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -39654,6 +40426,7 @@ export namespace NM {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -39780,6 +40553,7 @@ export namespace NM {
          * {@link NM.SettingSecretFlags} and returns it.
          * @param data hash table containing VPN key/value pair data items
          * @param secret_name VPN secret key name for which to retrieve flags for
+         * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
          */
         static get_secret_flags(data: never, secret_name: string): [boolean, SettingSecretFlags];
 
@@ -39787,6 +40561,7 @@ export namespace NM {
          * Parses key/value pairs from a file descriptor (normally stdin) passed by
          * an applet when the applet calls the authentication dialog of the VPN plugin.
          * @param fd file descriptor to read from, usually stdin (0)
+         * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
          */
         static read_vpn_details(fd: number): [boolean, never, never];
 
@@ -39811,12 +40586,14 @@ export namespace NM {
         vfunc_connect_interactive(connection: Connection, details: GLib.Variant): boolean;
 
         /**
+         * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
          * @virtual
          */
         vfunc_disconnect(): boolean;
 
         /**
          * @param reason 
+         * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
          * @virtual
          */
         vfunc_failure(reason: VpnPluginFailure): void;
@@ -39864,6 +40641,9 @@ export namespace NM {
         vfunc_state_changed(state: VpnServiceState): void;
 
         // Methods
+        /**
+         * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
+         */
         disconnect(): boolean;
 
         /**
@@ -39874,11 +40654,18 @@ export namespace NM {
 
         /**
          * @param reason 
+         * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
          */
         failure(reason: VpnPluginFailure): void;
 
+        /**
+         * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
+         */
         get_connection(): Gio.DBusConnection;
 
+        /**
+         * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
+         */
         get_state(): VpnServiceState;
 
         /**
@@ -39889,21 +40676,25 @@ export namespace NM {
          * information to complete the request.
          * @param message an information message about why secrets are required, if any
          * @param hints VPN specific secret names for required new secrets
+         * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
          */
         secrets_required(message: string, hints: string): void;
 
         /**
          * @param ip4_config 
+         * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
          */
         set_ip4_config(ip4_config: GLib.Variant): void;
 
         /**
          * @param banner 
+         * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
          */
         set_login_banner(banner: string): void;
 
         /**
          * @param state 
+         * @deprecated since 1.2: Replaced by NMVpnServicePlugin.
          */
         set_state(state: VpnServiceState): void;
 
@@ -39948,6 +40739,7 @@ export namespace NM {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -39991,6 +40783,7 @@ export namespace NM {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -40137,6 +40930,7 @@ export namespace NM {
          * {@link NM.SettingSecretFlags} and returns it.
          * @param data hash table containing VPN key/value pair data items
          * @param secret_name VPN secret key name for which to retrieve flags for
+         * @since 1.2
          */
         static get_secret_flags(data: never, secret_name: string): [boolean, SettingSecretFlags];
 
@@ -40144,6 +40938,7 @@ export namespace NM {
          * Parses key/value pairs from a file descriptor (normally stdin) passed by
          * an applet when the applet calls the authentication dialog of the VPN plugin.
          * @param fd file descriptor to read from, usually stdin (0)
+         * @since 1.2
          */
         static read_vpn_details(fd: number): [boolean, never, never];
 
@@ -40168,12 +40963,14 @@ export namespace NM {
         vfunc_connect_interactive(connection: Connection, details: GLib.Variant): boolean;
 
         /**
+         * @since 1.2
          * @virtual
          */
         vfunc_disconnect(): boolean;
 
         /**
          * @param reason 
+         * @since 1.2
          * @virtual
          */
         vfunc_failure(reason: VpnPluginFailure): void;
@@ -40221,6 +41018,9 @@ export namespace NM {
         vfunc_state_changed(state: VpnServiceState): void;
 
         // Methods
+        /**
+         * @since 1.2
+         */
         disconnect(): boolean;
 
         /**
@@ -40231,9 +41031,13 @@ export namespace NM {
 
         /**
          * @param reason 
+         * @since 1.2
          */
         failure(reason: VpnPluginFailure): void;
 
+        /**
+         * @since 1.2
+         */
         get_connection(): Gio.DBusConnection;
 
         /**
@@ -40244,26 +41048,31 @@ export namespace NM {
          * information to complete the request.
          * @param message an information message about why secrets are required, if any
          * @param hints VPN specific secret names for required new secrets
+         * @since 1.2
          */
         secrets_required(message: string, hints: string): void;
 
         /**
          * @param config 
+         * @since 1.2
          */
         set_config(config: GLib.Variant): void;
 
         /**
          * @param ip4_config 
+         * @since 1.2
          */
         set_ip4_config(ip4_config: GLib.Variant): void;
 
         /**
          * @param ip6_config 
+         * @since 1.2
          */
         set_ip6_config(ip6_config: GLib.Variant): void;
 
         /**
          * @param banner 
+         * @since 1.2
          */
         set_login_banner(banner: string): void;
 
@@ -40274,6 +41083,7 @@ export namespace NM {
          * you don't need to shutdown the plugin, disposing the instance
          * has the same effect. However, this gives a way to deactivate
          * the plugin before giving up the last reference.
+         * @since 1.12
          */
         shutdown(): void;
 
@@ -40318,6 +41128,7 @@ export namespace NM {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -40361,6 +41172,7 @@ export namespace NM {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -40557,6 +41369,7 @@ export namespace NM {
          * `peer`'s address and in the future possibly other attributes.
          * @param connection an {@link NM.Connection} to validate against `peer`
          * @returns `true` if the connection may be activated with this Wi-Fi P2P Peer, `false` if it cannot be.
+         * @since 1.16
          */
         connection_valid(connection: Connection): boolean;
 
@@ -40572,18 +41385,21 @@ export namespace NM {
          * with this function.
          * @param connections an array of `NMConnections` to filter
          * @returns an array of `NMConnections` that could be activated with the given `peer`. The array should be freed with `g_ptr_array_unref()` when it is no longer required.
+         * @since 1.16
          */
         filter_connections(connections: Connection[]): Connection[];
 
         /**
          * Gets the flags of the P2P peer.
          * @returns the flags
+         * @since 1.16
          */
         get_flags(): __80211ApFlags;
 
         /**
          * Gets the hardware address of the P2P peer.
          * @returns the hardware address
+         * @since 1.16
          */
         get_hw_address(): string;
 
@@ -40591,48 +41407,56 @@ export namespace NM {
          * Returns the timestamp (in CLOCK_BOOTTIME seconds) for the last time the
          * P2P peer was seen.  A value of -1 means the P2P peer has never been seen.
          * @returns the last seen time in seconds
+         * @since 1.16
          */
         get_last_seen(): number;
 
         /**
          * Gets the manufacturer of the P2P peer.
          * @returns the manufacturer
+         * @since 1.16
          */
         get_manufacturer(): string;
 
         /**
          * Gets the model of the P2P peer.
          * @returns the model
+         * @since 1.16
          */
         get_model(): string;
 
         /**
          * Gets the model number of the P2P peer.
          * @returns the model number
+         * @since 1.16
          */
         get_model_number(): string;
 
         /**
          * Gets the name of the P2P peer.
          * @returns the name
+         * @since 1.16
          */
         get_name(): string;
 
         /**
          * Gets the serial number of the P2P peer.
          * @returns the serial number
+         * @since 1.16
          */
         get_serial(): string;
 
         /**
          * Gets the current signal strength of the P2P peer as a percentage.
          * @returns the signal strength (0 to 100)
+         * @since 1.16
          */
         get_strength(): number;
 
         /**
          * Gets the WFD information elements of the P2P peer.
          * @returns the {@link GLib.Bytes} containing the WFD IEs, or `null`.
+         * @since 1.16
          */
         get_wfd_ies(): GLib.Bytes;
     }
@@ -40740,6 +41564,7 @@ export namespace NM {
          * `nsp`'s network name and other attributes.
          * @param connection an {@link NM.Connection} to validate against `nsp`
          * @returns `true` if the connection may be activated with this WiMAX NSP, `false` if it cannot be.
+         * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
          */
         connection_valid(connection: Connection): boolean;
 
@@ -40749,24 +41574,28 @@ export namespace NM {
          * connections will match the `nsp`'s network name and other attributes.
          * @param connections an array of `NMConnections` to filter
          * @returns an array of `NMConnections` that could be activated with the given `nsp`.  The array should be freed with `g_ptr_array_unref()` when it is no longer required.
+         * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
          */
         filter_connections(connections: Connection[]): Connection[];
 
         /**
          * Gets the name of the wimax NSP
          * @returns the name
+         * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
          */
         get_name(): string;
 
         /**
          * Gets the network type of the wimax NSP.
          * @returns the network type
+         * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
          */
         get_network_type(): WimaxNspNetworkType;
 
         /**
          * Gets the WPA signal quality of the wimax NSP.
          * @returns the signal quality
+         * @deprecated since 1.22: WiMAX is no longer supported by NetworkManager since 1.2.0.
          */
         get_signal_quality(): number;
     }
@@ -40798,6 +41627,7 @@ export namespace NM {
          * Parses the string representation of the queueing
          * discipline to a %NMBridgeVlan instance.
          * @param str the string representation of a bridge VLAN
+         * @since 1.18
          */
         static from_str(str: string): BridgeVlan;
 
@@ -40806,40 +41636,47 @@ export namespace NM {
          * Compare two bridge VLAN objects.
          * @param b another {@link NM.BridgeVlan}
          * @returns zero of the two instances are equivalent or   a non-zero integer otherwise. This defines a total ordering   over the VLANs. Whether a VLAN is sealed or not does not   affect the comparison.
+         * @since 1.18
          */
         cmp(b: BridgeVlan): number;
 
         /**
          * Gets the VLAN id range.
          * @returns `true` is the VLAN specifies a range, `false` if it is a single-id VLAN.
+         * @since 1.18
          */
         get_vid_range(): [boolean, number, number];
 
         /**
          * Returns whether the VLAN is the PVID for the port.
          * @returns `true` if the VLAN is the PVID
+         * @since 1.18
          */
         is_pvid(): boolean;
 
         /**
          * @returns whether `self` is sealed or not.
+         * @since 1.18
          */
         is_sealed(): boolean;
 
         /**
          * Returns whether the VLAN is untagged.
          * @returns `true` if the VLAN is untagged, `false` otherwise
+         * @since 1.18
          */
         is_untagged(): boolean;
 
         /**
          * @returns a clone of `vlan`. This instance   is always unsealed.
+         * @since 1.18
          */
         new_clone(): BridgeVlan;
 
         /**
          * Increases the reference count of the object.
          * @returns the input argument `vlan` object. Since 1.42, ref-counting of {@link NM.BridgeVlan} is thread-safe.
+         * @since 1.18
          */
         ref(): BridgeVlan;
 
@@ -40848,6 +41685,7 @@ export namespace NM {
          * to call all functions that modify the instance (except ref/unref).
          * A sealed instance cannot be unsealed again, but you can create
          * an unsealed copy with `nm_bridge_vlan_new_clone()`.
+         * @since 1.18
          */
         seal(): void;
 
@@ -40856,18 +41694,21 @@ export namespace NM {
          * is invalid to set the value to `true` for non-single-id
          * VLANs.
          * @param value the new value
+         * @since 1.18
          */
         set_pvid(value: boolean): void;
 
         /**
          * Change the value of the untagged property of the VLAN.
          * @param value the new value
+         * @since 1.18
          */
         set_untagged(value: boolean): void;
 
         /**
          * Convert a %NMBridgeVlan to a string.
          * @returns formatted string or `null`
+         * @since 1.18
          */
         to_str(): string;
 
@@ -40876,6 +41717,7 @@ export namespace NM {
          * reaches zero the object will be destroyed.
          * 
          * Since 1.42, ref-counting of {@link NM.BridgeVlan} is thread-safe.
+         * @since 1.18
          */
         unref(): void;
     }
@@ -41082,36 +41924,42 @@ export namespace NM {
         /**
          * Gets the list of DNS domains.
          * @returns the list of DNS domains
+         * @since 1.6
          */
         get_domains(): string[];
 
         /**
          * Gets the interface on which name servers are contacted.
          * @returns the interface name
+         * @since 1.6
          */
         get_interface(): string;
 
         /**
          * Gets the list of name servers for this entry.
          * @returns the list of name servers
+         * @since 1.6
          */
         get_nameservers(): string[];
 
         /**
          * Gets the priority of the entry
          * @returns the priority of the entry
+         * @since 1.6
          */
         get_priority(): number;
 
         /**
          * Gets whether the entry refers to VPN name servers.
          * @returns `true` if the entry refers to VPN name servers
+         * @since 1.6
          */
         get_vpn(): boolean;
 
         /**
          * Decreases the reference count of the object.  If the reference count
          * reaches zero, the object will be destroyed.
+         * @since 1.6
          */
         unref(): void;
     }
@@ -41139,12 +41987,14 @@ export namespace NM {
          * @param b the {@link NM.IPAddress} to compare `address` to.
          * @param cmp_flags the {@link NM.IPAddressCmpFlags} that indicate what to compare.
          * @returns 0 if the two objects have the same values (according to their flags)   or a integer indicating the compare order.
+         * @since 1.22
          */
         cmp_full(b: IPAddress, cmp_flags: IPAddressCmpFlags): number;
 
         /**
          * Creates a copy of `address`
          * @returns a copy of `address` This API was part of public headers before 1.32.0 but was erroneously not exported in the ABI. It is thus only usable since 1.32.0.
+         * @since 1.32
          */
         dup(): IPAddress;
 
@@ -41249,15 +42099,20 @@ export namespace NM {
          * @param name the attribute name
          * @param value the attribute value
          * @param family IP address family of the route
+         * @since 1.8
          */
         static attribute_validate(name: string, value: GLib.Variant, family: number): [boolean, boolean];
 
+        /**
+         * @since 1.8
+         */
         static get_variant_attribute_spec(): VariantAttributeSpec;
 
         // Methods
         /**
          * Creates a copy of `route`
          * @returns a copy of `route` This API was part of public headers before 1.32.0 but was erroneously not exported in the ABI. It is thus only usable since 1.32.0.
+         * @since 1.32
          */
         dup(): IPRoute;
 
@@ -41275,6 +42130,7 @@ export namespace NM {
          * @param other the {@link NM.IPRoute} to compare `route` to.
          * @param cmp_flags tune how to compare attributes. Currently, only   NM_IP_ROUTE_EQUAL_CMP_FLAGS_NONE (0) and NM_IP_ROUTE_EQUAL_CMP_FLAGS_WITH_ATTRS (1)   is supported.
          * @returns `true` if the objects contain the same values, `false` if they do not.
+         * @since 1.10
          */
         equal_full(other: IPRoute, cmp_flags: number): boolean;
 
@@ -41392,6 +42248,7 @@ export namespace NM {
          * @param str the string representation to convert to an {@link NM.IPRoutingRule}
          * @param to_string_flags {@link NM.IPRoutingRuleAsStringFlags} for controlling the   string conversion.
          * @param extra_args extra arguments for controlling the string   conversion. Currently, not extra arguments are supported.
+         * @since 1.18
          */
         static from_string(str: string, to_string_flags: IPRoutingRuleAsStringFlags, extra_args: never | null): IPRoutingRule;
 
@@ -41399,128 +42256,153 @@ export namespace NM {
         /**
          * @param other the other {@link NM.IPRoutingRule} instance to compare
          * @returns zero, a positive, or a negative integer to indicate   equality or how the arguments compare.
+         * @since 1.18
          */
         cmp(other: IPRoutingRule | null): number;
 
         /**
          * @returns the set action.
+         * @since 1.18
          */
         get_action(): number;
 
         /**
          * @returns the address family of the rule. Either `AF_INET` or `AF_INET6`.
+         * @since 1.18
          */
         get_addr_family(): number;
 
         /**
          * @returns the destination port end setting.
+         * @since 1.18
          */
         get_destination_port_end(): number;
 
         /**
          * @returns the destination port start setting.
+         * @since 1.18
          */
         get_destination_port_start(): number;
 
         /**
          * @returns the set from/src parameter or   `null`, if no value is set.
+         * @since 1.18
          */
         get_from(): string;
 
         /**
          * @returns the set prefix length for the from/src parameter.
+         * @since 1.18
          */
         get_from_len(): number;
 
         /**
          * @returns the fwmark setting.
+         * @since 1.18
          */
         get_fwmark(): number;
 
         /**
          * @returns the fwmask setting.
+         * @since 1.18
          */
         get_fwmask(): number;
 
         /**
          * @returns the set iifname or `null` if unset.
+         * @since 1.18
          */
         get_iifname(): string;
 
         /**
          * @returns the "invert" setting of the rule.
+         * @since 1.18
          */
         get_invert(): boolean;
 
         /**
          * @returns the ipproto of the rule.
+         * @since 1.18
          */
         get_ipproto(): number;
 
         /**
          * @returns the set oifname or `null` if unset.
+         * @since 1.18
          */
         get_oifname(): string;
 
         /**
          * @returns the priority. A valid priority is in the range from   0 to `G_MAXUINT32`. If unset, -1 is returned.
+         * @since 1.18
          */
         get_priority(): number;
 
         /**
          * @returns the source port end setting.
+         * @since 1.18
          */
         get_source_port_end(): number;
 
         /**
          * @returns the source port start setting.
+         * @since 1.18
          */
         get_source_port_start(): number;
 
         /**
          * @returns the suppress_prefixlength of the rule. -1 means that the value is unset.
+         * @since 1.20
          */
         get_suppress_prefixlength(): number;
 
         /**
          * @returns the set table.
+         * @since 1.18
          */
         get_table(): number;
 
         /**
          * @returns the set to/dst parameter or   `null`, if no value is set.
+         * @since 1.18
          */
         get_to(): string;
 
         /**
          * @returns the set prefix length for the to/dst parameter.
+         * @since 1.18
          */
         get_to_len(): number;
 
         /**
          * @returns the tos of the rule.
+         * @since 1.18
          */
         get_tos(): number;
 
         /**
          * @returns `true` if a uid range is set. This API was wrongly introduced in the header files for 1.32, but the symbols were not exported. The API only works since 1.34 and newer.
+         * @since 1.34
          */
         get_uid_range(): [boolean, number, number];
 
         /**
          * @returns whether `self` is sealed. Once sealed, an instance   cannot be modified nor unsealed.
+         * @since 1.18
          */
         is_sealed(): boolean;
 
         /**
          * Since 1.42, ref-counting of {@link NM.IPRoutingRule} is thread-safe.
          * @returns a newly created rule instance with   the same settings as `rule`. Note that the instance will   always be unsealed.
+         * @since 1.18
          */
         new_clone(): IPRoutingRule;
 
         /**
          * Increases the reference count of the instance.
          * @returns the `self` argument with incremented  reference count. Since 1.42, ref-counting of {@link NM.IPRoutingRule} is thread-safe.
+         * @since 1.18
          */
         ref(): IPRoutingRule;
 
@@ -41528,6 +42410,7 @@ export namespace NM {
          * Seals the routing rule. Afterwards, the instance can no longer be
          * modified, and it is a bug to call any of the accessors that would
          * modify the rule. If `self` was already sealed, this has no effect.
+         * @since 1.18
          */
         seal(): void;
 
@@ -41535,12 +42418,14 @@ export namespace NM {
          * Note that currently only certain actions are allowed. `nm_ip_routing_rule_validate()`
          * will reject unsupported actions as invalid.
          * @param action the action to set
+         * @since 1.18
          */
         set_action(action: number): void;
 
         /**
          * @param start the start port to set.
          * @param end the end port to set.
+         * @since 1.18
          */
         set_destination_port(start: number, end: number): void;
 
@@ -41549,12 +42434,14 @@ export namespace NM {
          * during `nm_ip_routing_rule_validate()`.
          * @param from the from/src address to set.   The address family must match.
          * @param len the corresponding prefix length of the address.
+         * @since 1.18
          */
         set_from(from: string | null, len: number): void;
 
         /**
          * @param fwmark the fwmark
          * @param fwmask the fwmask
+         * @since 1.18
          */
         set_fwmark(fwmark: number, fwmask: number): void;
 
@@ -41564,16 +42451,19 @@ export namespace NM {
          * escaping when tokenizing the words by whitespace. So, in string
          * representation you'd get double backslashes.
          * @param iifname the iifname to set or `null` to unset.
+         * @since 1.18
          */
         set_iifname(iifname: string | null): void;
 
         /**
          * @param invert the new value to set
+         * @since 1.18
          */
         set_invert(invert: boolean): void;
 
         /**
          * @param ipproto the ipproto to set
+         * @since 1.18
          */
         set_ipproto(ipproto: number): void;
 
@@ -41583,6 +42473,7 @@ export namespace NM {
          * escaping when tokenizing the words by whitespace. So, in string
          * representation you'd get double backslashes.
          * @param oifname the oifname to set or `null` to unset.
+         * @since 1.18
          */
         set_oifname(oifname: string | null): void;
 
@@ -41591,22 +42482,26 @@ export namespace NM {
          * to reset the priority. It is a bug calling this function with any
          * other value.
          * @param priority the priority to set
+         * @since 1.18
          */
         set_priority(priority: bigint | number): void;
 
         /**
          * @param start the start port to set.
          * @param end the end port to set.
+         * @since 1.18
          */
         set_source_port(start: number, end: number): void;
 
         /**
          * @param suppress_prefixlength the suppress_prefixlength to set. The value -1 means   unset.
+         * @since 1.20
          */
         set_suppress_prefixlength(suppress_prefixlength: number): void;
 
         /**
          * @param table the table to set
+         * @since 1.18
          */
         set_table(table: number): void;
 
@@ -41615,11 +42510,13 @@ export namespace NM {
          * during `nm_ip_routing_rule_validate()`.
          * @param to the to/dst address to set.   The address family must match.
          * @param len the corresponding prefix length of the address.   If `to` is `null`, this valid is ignored.
+         * @since 1.18
          */
         set_to(to: string | null, len: number): void;
 
         /**
          * @param tos the tos to set
+         * @since 1.18
          */
         set_tos(tos: number): void;
 
@@ -41631,6 +42528,7 @@ export namespace NM {
          * symbols were not exported. The API only works since 1.34 and newer.
          * @param uid_range_start the uid_range start to set.
          * @param uid_range_end the uid_range start to set.
+         * @since 1.34
          */
         set_uid_range(uid_range_start: number, uid_range_end: number): void;
 
@@ -41638,6 +42536,7 @@ export namespace NM {
          * @param to_string_flags {@link NM.IPRoutingRuleAsStringFlags} for controlling the   string conversion.
          * @param extra_args extra arguments for controlling the string   conversion. Currently, not extra arguments are supported.
          * @returns the string representation or `null` on error.
+         * @since 1.18
          */
         to_string(to_string_flags: IPRoutingRuleAsStringFlags, extra_args: never | null): string;
 
@@ -41646,11 +42545,13 @@ export namespace NM {
          * the instance if the reference count reaches zero.
          * 
          * Since 1.42, ref-counting of {@link NM.IPRoutingRule} is thread-safe.
+         * @since 1.18
          */
         unref(): void;
 
         /**
          * @returns `true` if the rule validates.
+         * @since 1.18
          */
         validate(): boolean;
     }
@@ -41676,15 +42577,20 @@ export namespace NM {
          * to keep using the same GError*, you need to set it to `null`
          * after calling this function on it.
          * @param src error to move into the return location
+         * @since 1.30
          */
         fail_with_error(src: GLib.Error): void;
 
         /**
          * Get context information of the current event. This function can be called
          * on all events, but the context information may be unset.
+         * @since 1.30
          */
         get_context(): [string, string, Setting | null, string];
 
+        /**
+         * @since 1.30
+         */
         warn_get(): [string, KeyfileWarnSeverity | null];
     }
 
@@ -41760,6 +42666,7 @@ export namespace NM {
         /**
          * Gets an array of attribute names available for `neighbor`.
          * @returns a `null`-terminated array of attribute names.
+         * @since 1.2
          */
         get_attr_names(): string[];
 
@@ -41767,6 +42674,7 @@ export namespace NM {
          * Gets the string value of attribute with name `name` on `neighbor`
          * @param name the attribute name
          * @returns `true` if a string attribute with name `name` was found, `false` otherwise
+         * @since 1.2
          */
         get_attr_string_value(name: string): [boolean, string];
 
@@ -41774,6 +42682,7 @@ export namespace NM {
          * Get the type of an attribute.
          * @param name the attribute name
          * @returns the {@link GLib.VariantType} of the attribute with name `name`
+         * @since 1.2
          */
         get_attr_type(name: string): GLib.VariantType;
 
@@ -41781,6 +42690,7 @@ export namespace NM {
          * Gets the uint32 value of attribute with name `name` on `neighbor`
          * @param name the attribute name
          * @returns `true` if a uint32 attribute with name `name` was found, `false` otherwise
+         * @since 1.2
          */
         get_attr_uint_value(name: string): [boolean, number];
 
@@ -41788,6 +42698,7 @@ export namespace NM {
          * Gets the value (as a GVariant) of attribute with name `name` on `neighbor`
          * @param name the attribute name
          * @returns the value or `null` if the attribute with `name` was not found.
+         * @since 1.18
          */
         get_attr_value(name: string): GLib.Variant;
 
@@ -41795,6 +42706,7 @@ export namespace NM {
          * Increases the reference count of the object.
          * 
          * Since 1.32, ref-counting of {@link NM.LldpNeighbor} is thread-safe.
+         * @since 1.2
          */
         ref(): void;
 
@@ -41803,6 +42715,7 @@ export namespace NM {
          * reaches zero, the object will be destroyed.
          * 
          * Since 1.32, ref-counting of {@link NM.LldpNeighbor} is thread-safe.
+         * @since 1.2
          */
         unref(): void;
     }
@@ -41829,6 +42742,7 @@ export namespace NM {
          * Parses the string representation of the range to create a %NMRange
          * instance.
          * @param str the string representation of a range
+         * @since 1.42
          */
         static from_str(str: string): Range;
 
@@ -41837,12 +42751,14 @@ export namespace NM {
          * Compare two ranges.
          * @param b another {@link NM.Range}
          * @returns zero if the two instances are equivalent or   a non-zero integer otherwise. This defines a total ordering   over the ranges.
+         * @since 1.42
          */
         cmp(b: Range): number;
 
         /**
          * Gets the start and end values for the range.
          * @returns `true` if the range contains more than one element, `false` otherwise.
+         * @since 1.42
          */
         get_range(): [boolean, number, number];
 
@@ -41850,12 +42766,14 @@ export namespace NM {
          * Increases the reference count of the object.
          * This is thread-safe.
          * @returns the input argument `range` object.
+         * @since 1.42
          */
         ref(): Range;
 
         /**
          * Convert a %NMRange to a string.
          * @returns a string representing the range.
+         * @since 1.42
          */
         to_str(): string;
 
@@ -41863,6 +42781,7 @@ export namespace NM {
          * Decreases the reference count of the object.  If the reference count
          * reaches zero the object will be destroyed.
          * This is thread-safe.
+         * @since 1.42
          */
         unref(): void;
     }
@@ -42205,6 +43124,7 @@ export namespace NM {
          * the value is of the correct type and well-formed.
          * @param name the attribute name
          * @param value the attribute value
+         * @since 1.42
          */
         static attribute_validate(name: string, value: GLib.Variant): [boolean, boolean];
 
@@ -42213,12 +43133,14 @@ export namespace NM {
          * Adds a VLAN to the VF. Currently kernel only supports one VLAN per VF.
          * @param vlan_id the VLAN id
          * @returns `true` if the VLAN was added; `false` if it already existed
+         * @since 1.14
          */
         add_vlan(vlan_id: number): boolean;
 
         /**
          * Creates a copy of `vf`.
          * @returns a copy of `vf`
+         * @since 1.14
          */
         dup(): SriovVF;
 
@@ -42227,6 +43149,7 @@ export namespace NM {
          * attributes and VLANs.
          * @param other the {@link NM.SriovVF} to compare `vf` to.
          * @returns `true` if the objects contain the same values, `false`    if they do not.
+         * @since 1.14
          */
         equal(other: SriovVF): boolean;
 
@@ -42234,18 +43157,21 @@ export namespace NM {
          * Gets the value of the attribute with name `name` on `vf`
          * @param name the name of a VF attribute
          * @returns the value of the attribute with name `name` on   `vf`, or `null` if `vf` has no such attribute.
+         * @since 1.14
          */
         get_attribute(name: string): GLib.Variant;
 
         /**
          * Gets an array of attribute names defined on `vf`.
          * @returns a `null`-terminated array of attribute names
+         * @since 1.14
          */
         get_attribute_names(): string[];
 
         /**
          * Gets the index property of this VF object.
          * @returns the VF index
+         * @since 1.14
          */
         get_index(): number;
 
@@ -42253,6 +43179,7 @@ export namespace NM {
          * Returns the VLANs currently configured on the VF. Currently kernel only
          * supports one VLAN per VF.
          * @returns a list of VLAN ids configured on the VF.
+         * @since 1.14
          */
         get_vlan_ids(): number[];
 
@@ -42260,6 +43187,7 @@ export namespace NM {
          * Returns the configured protocol for the given VLAN.
          * @param vlan_id the VLAN id
          * @returns the configured protocol
+         * @since 1.14
          */
         get_vlan_protocol(vlan_id: number): SriovVFVlanProtocol;
 
@@ -42267,11 +43195,13 @@ export namespace NM {
          * Returns the QoS value for the given VLAN.
          * @param vlan_id the VLAN id
          * @returns the QoS value
+         * @since 1.14
          */
         get_vlan_qos(vlan_id: number): number;
 
         /**
          * Increases the reference count of the object.
+         * @since 1.14
          */
         ref(): void;
 
@@ -42279,6 +43209,7 @@ export namespace NM {
          * Removes a VLAN from a VF.
          * @param vlan_id the VLAN id
          * @returns `true` if the VLAN was removed, `false` if the VLAN `vlan_id`     did not belong to the VF.
+         * @since 1.14
          */
         remove_vlan(vlan_id: number): boolean;
 
@@ -42286,6 +43217,7 @@ export namespace NM {
          * Sets the named attribute on `vf` to the given value.
          * @param name the name of a route attribute
          * @param value the value
+         * @since 1.14
          */
         set_attribute(name: string, value: GLib.Variant | null): void;
 
@@ -42293,6 +43225,7 @@ export namespace NM {
          * Sets the protocol for the given VLAN.
          * @param vlan_id the VLAN id
          * @param protocol the VLAN protocol
+         * @since 1.14
          */
         set_vlan_protocol(vlan_id: number, protocol: SriovVFVlanProtocol): void;
 
@@ -42300,12 +43233,14 @@ export namespace NM {
          * Sets a QoS value for the given VLAN.
          * @param vlan_id the VLAN id
          * @param qos a QoS (priority) value
+         * @since 1.14
          */
         set_vlan_qos(vlan_id: number, qos: number): void;
 
         /**
          * Decreases the reference count of the object.  If the reference count
          * reaches zero, the object will be destroyed.
+         * @since 1.14
          */
         unref(): void;
     }
@@ -42326,6 +43261,7 @@ export namespace NM {
         /**
          * Creates a copy of `action`
          * @returns a copy of `action`
+         * @since 1.12
          */
         dup(): TCAction;
 
@@ -42334,6 +43270,7 @@ export namespace NM {
          * handle, parent and info.
          * @param other the {@link NM.TCAction} to compare `action` to.
          * @returns `true` if the objects contain the same values, `false` if they do not.
+         * @since 1.12
          */
         equal(other: TCAction): boolean;
 
@@ -42341,19 +43278,25 @@ export namespace NM {
          * Gets the value of the attribute with name `name` on `action`
          * @param name the name of an action attribute
          * @returns the value of the attribute with name `name` on   `action`, or `null` if `action` has no such attribute.
+         * @since 1.12
          */
         get_attribute(name: string): GLib.Variant;
 
         /**
          * Gets an array of attribute names defined on `action`.
          * @returns a `null`-terminated array of attribute names,
+         * @since 1.12
          */
         get_attribute_names(): string[];
 
+        /**
+         * @since 1.12
+         */
         get_kind(): string;
 
         /**
          * Increases the reference count of the object.
+         * @since 1.12
          */
         ref(): void;
 
@@ -42361,12 +43304,14 @@ export namespace NM {
          * Sets or clears the named attribute on `action` to the given value.
          * @param name the name of an action attribute
          * @param value the value
+         * @since 1.12
          */
         set_attribute(name: string, value: GLib.Variant | null): void;
 
         /**
          * Decreases the reference count of the object.  If the reference count
          * reaches zero, the object will be destroyed.
+         * @since 1.12
          */
         unref(): void;
     }
@@ -42387,6 +43332,7 @@ export namespace NM {
         /**
          * Creates a copy of `qdisc`
          * @returns a copy of `qdisc`
+         * @since 1.12
          */
         dup(): TCQdisc;
 
@@ -42395,6 +43341,7 @@ export namespace NM {
          * and parent.
          * @param other the {@link NM.TCQdisc} to compare `qdisc` to.
          * @returns `true` if the objects contain the same values, `false` if they do not.
+         * @since 1.12
          */
         equal(other: TCQdisc): boolean;
 
@@ -42402,29 +43349,37 @@ export namespace NM {
          * Gets the value of the attribute with name `name` on `qdisc`
          * @param name the name of an qdisc attribute
          * @returns the value of the attribute with name `name` on   `qdisc`, or `null` if `qdisc` has no such attribute.
+         * @since 1.18
          */
         get_attribute(name: string): GLib.Variant;
 
         /**
          * Gets an array of attribute names defined on `qdisc`.
          * @returns a `null`-terminated array of attribute names   or `null` if no attributes are set.
+         * @since 1.18
          */
         get_attribute_names(): string[];
 
         /**
          * @returns the queueing discipline handle
+         * @since 1.12
          */
         get_handle(): number;
 
+        /**
+         * @since 1.12
+         */
         get_kind(): string;
 
         /**
          * @returns the parent class
+         * @since 1.12
          */
         get_parent(): number;
 
         /**
          * Increases the reference count of the object.
+         * @since 1.12
          */
         ref(): void;
 
@@ -42432,18 +43387,21 @@ export namespace NM {
          * Sets or clears the named attribute on `qdisc` to the given value.
          * @param name the name of an qdisc attribute
          * @param value the value
+         * @since 1.18
          */
         set_attribute(name: string, value: GLib.Variant | null): void;
 
         /**
          * Sets the queueing discipline handle.
          * @param handle the queueing discipline handle
+         * @since 1.12
          */
         set_handle(handle: number): void;
 
         /**
          * Decreases the reference count of the object.  If the reference count
          * reaches zero, the object will be destroyed.
+         * @since 1.12
          */
         unref(): void;
     }
@@ -42464,6 +43422,7 @@ export namespace NM {
         /**
          * Creates a copy of `tfilter`
          * @returns a copy of `tfilter`
+         * @since 1.12
          */
         dup(): TCTfilter;
 
@@ -42472,46 +43431,57 @@ export namespace NM {
          * handle, parent and info.
          * @param other the {@link NM.TCTfilter} to compare `tfilter` to.
          * @returns `true` if the objects contain the same values, `false` if they do not.
+         * @since 1.12
          */
         equal(other: TCTfilter): boolean;
 
         /**
          * @returns the action associated with a traffic filter.
+         * @since 1.42
          */
         get_action(): TCAction;
 
         /**
          * @returns the queueing discipline handle
+         * @since 1.12
          */
         get_handle(): number;
 
+        /**
+         * @since 1.12
+         */
         get_kind(): string;
 
         /**
          * @returns the parent class
+         * @since 1.12
          */
         get_parent(): number;
 
         /**
          * Increases the reference count of the object.
+         * @since 1.12
          */
         ref(): void;
 
         /**
          * Sets the action associated with a traffic filter.
          * @param action the action object
+         * @since 1.42
          */
         set_action(action: TCAction): void;
 
         /**
          * Sets the queueing discipline handle.
          * @param handle the queueing discipline handle
+         * @since 1.12
          */
         set_handle(handle: number): void;
 
         /**
          * Decreases the reference count of the object.  If the reference count
          * reaches zero, the object will be destroyed.
+         * @since 1.12
          */
         unref(): void;
     }
@@ -42538,6 +43508,7 @@ export namespace NM {
         /**
          * Creates a copy of `watcher`
          * @returns a copy of `watcher`
+         * @since 1.12
          */
         dup(): TeamLinkWatcher;
 
@@ -42546,61 +43517,72 @@ export namespace NM {
          * in all the properties.
          * @param other the {@link NM.TeamLinkWatcher} to compare `watcher` to.
          * @returns `true` if the objects contain the same values, `false` if they do not.
+         * @since 1.12
          */
         equal(other: TeamLinkWatcher): boolean;
 
         /**
          * Gets the delay_down interval (in milliseconds) that elapses between the link
          * going down and the runner being notified about it.
+         * @since 1.12
          */
         get_delay_down(): number;
 
         /**
          * Gets the delay_up interval (in milliseconds) that elapses between the link
          * coming up and the runner being notified about it.
+         * @since 1.12
          */
         get_delay_up(): number;
 
         /**
          * Gets the arp ping watcher flags.
+         * @since 1.12
          */
         get_flags(): TeamLinkWatcherArpPingFlags;
 
         /**
          * Gets the init_wait interval (in milliseconds) that the team port should
          * wait before sending the first packet to the target host.
+         * @since 1.12
          */
         get_init_wait(): number;
 
         /**
          * Gets the interval (in milliseconds) that the team port should wait between
          * sending two check packets to the target host.
+         * @since 1.12
          */
         get_interval(): number;
 
         /**
          * Gets the number of missed replies after which the link is considered down.
+         * @since 1.12
          */
         get_missed_max(): number;
 
         /**
          * Gets the name of the link watcher to be used.
+         * @since 1.12
          */
         get_name(): string;
 
         /**
          * Gets the ip address to be used as source for the link probing packets.
+         * @since 1.12
          */
         get_source_host(): string;
 
         /**
          * Gets the host name/ip address to be used as destination for the link probing
          * packets.
+         * @since 1.12
          */
         get_target_host(): string;
 
         /**
          * Gets the VLAN tag ID to be used to outgoing link probes
+         * @since 1.16
          */
         get_vlanid(): number;
 
@@ -42608,6 +43590,7 @@ export namespace NM {
          * Increases the reference count of the object.
          * 
          * Since 1.20, ref-counting of {@link NM.TeamLinkWatcher} is thread-safe.
+         * @since 1.12
          */
         ref(): void;
 
@@ -42616,6 +43599,7 @@ export namespace NM {
          * reaches zero, the object will be destroyed.
          * 
          * Since 1.20, ref-counting of {@link NM.TeamLinkWatcher} is thread-safe.
+         * @since 1.12
          */
         unref(): void;
     }
@@ -42702,6 +43686,7 @@ export namespace NM {
          * @param allowed_ip the allowed-ip entry to set.
          * @param accept_invalid if `true`, also invalid `allowed_ip` value   will be appended. Otherwise, the function does nothing   in face of invalid values and returns `false`.
          * @returns `true` if the value is a valid allowed-ips value, `false` otherwise.   Depending on `accept_invalid`, also invalid values are added.
+         * @since 1.16
          */
         append_allowed_ip(allowed_ip: string, accept_invalid: boolean): boolean;
 
@@ -42709,6 +43694,7 @@ export namespace NM {
          * Removes all allowed-ip entries.
          * 
          * It is a bug trying to modify a sealed {@link NM.WireGuardPeer} instance.
+         * @since 1.16
          */
         clear_allowed_ips(): void;
 
@@ -42716,6 +43702,7 @@ export namespace NM {
          * @param b the other {@link NM.WireGuardPeer} to compare.
          * @param compare_flags {@link NM.SettingCompareFlags} to affect the comparison.
          * @returns zero of the two instances are equivalent or   a non-zero integer otherwise. This defines a total ordering   over the peers. Whether a peer is sealed or not, does not   affect the comparison.
+         * @since 1.16
          */
         cmp(b: WireGuardPeer | null, compare_flags: SettingCompareFlags): number;
 
@@ -42723,41 +43710,49 @@ export namespace NM {
          * @param idx the index from zero to (allowed-ips-len - 1) to   retrieve.
          * @param out_is_valid `true` if the returned value is a valid allowed-ip   setting.   This parameter is wrongly not marked as (out) argument, it is   thus not accessible via introspection. This cannot be fixed without   breaking API for introspection users.
          * @returns the allowed-ip setting at index `idx`.   If `idx` is out of range, `null` will be returned.
+         * @since 1.16
          */
         get_allowed_ip(idx: number, out_is_valid: boolean | null): string | null;
 
         /**
          * @returns the number of allowed-ips entries.
+         * @since 1.16
          */
         get_allowed_ips_len(): number;
 
         /**
          * @returns the endpoint or `null` if none was set.
+         * @since 1.16
          */
         get_endpoint(): string;
 
         /**
          * @returns get the persistent-keepalive setting in seconds. Set to zero to disable   keep-alive.
+         * @since 1.16
          */
         get_persistent_keepalive(): number;
 
         /**
          * @returns the preshared key or `null` if unset.
+         * @since 1.16
          */
         get_preshared_key(): string;
 
         /**
          * @returns get the secret flags for the preshared-key.
+         * @since 1.16
          */
         get_preshared_key_flags(): SettingSecretFlags;
 
         /**
          * @returns the public key or `null` if unset.
+         * @since 1.16
          */
         get_public_key(): string;
 
         /**
          * @returns whether `self` is sealed or not.
+         * @since 1.16
          */
         is_sealed(): boolean;
 
@@ -42765,17 +43760,20 @@ export namespace NM {
          * @param check_non_secrets if `true`, secret properties are validated.   Otherwise, they are ignored for this purpose.
          * @param check_secrets if `true`, non-secret properties are validated.   Otherwise, they are ignored for this purpose.
          * @returns `true` if the peer is valid or fails with an error   reason.
+         * @since 1.16
          */
         is_valid(check_non_secrets: boolean, check_secrets: boolean): boolean;
 
         /**
          * @param with_secrets if `true`, the preshared-key secrets are copied  as well. Otherwise, they will be removed.
          * @returns a clone of `self`. This instance   is always unsealed.
+         * @since 1.16
          */
         new_clone(with_secrets: boolean): WireGuardPeer;
 
         /**
          * @returns returns the input argument `self` after incrementing   the reference count. Since 1.42, ref-counting of {@link NM.WireGuardPeer} is thread-safe.
+         * @since 1.16
          */
         ref(): WireGuardPeer;
 
@@ -42786,6 +43784,7 @@ export namespace NM {
          * It is a bug trying to modify a sealed {@link NM.WireGuardPeer} instance.
          * @param idx the index from zero to (allowed-ips-len - 1) to   retrieve. If the index is out of range, `false` is returned   and nothing is done.
          * @returns `true` if `idx` was valid and the allowed-ip was removed.   `false` otherwise, and the peer will not be changed.
+         * @since 1.16
          */
         remove_allowed_ip(idx: number): boolean;
 
@@ -42794,6 +43793,7 @@ export namespace NM {
          * to call all functions that modify the instance (except ref/unref).
          * A sealed instance cannot be unsealed again, but you can create
          * an unsealed copy with `nm_wireguard_peer_new_clone()`.
+         * @since 1.16
          */
         seal(): void;
 
@@ -42804,12 +43804,14 @@ export namespace NM {
          * @param endpoint the socket address endpoint to set or `null`.
          * @param allow_invalid if `true`, also invalid values are set.   If `false`, the function does nothing for invalid `endpoint`   arguments.
          * @returns `true` if the endpoint is `null` or valid. For an   invalid `endpoint` argument, `false` is returned. Depending   on `allow_invalid`, the instance will be modified.
+         * @since 1.16
          */
         set_endpoint(endpoint: string, allow_invalid: boolean): boolean;
 
         /**
          * It is a bug trying to modify a sealed {@link NM.WireGuardPeer} instance.
          * @param persistent_keepalive the keep-alive value to set.
+         * @since 1.16
          */
         set_persistent_keepalive(persistent_keepalive: number): void;
 
@@ -42827,12 +43829,14 @@ export namespace NM {
          * @param preshared_key the new preshared   key or `null` to clear the preshared key.
          * @param accept_invalid whether to allow setting the key to an invalid   value. If `false`, `self` is unchanged if the key is invalid   and if `false` is returned.
          * @returns `true` if the preshared-key is valid, otherwise `false`.   `null` is considered a valid value.   If the key is invalid, it depends on `accept_invalid` whether the   previous value was reset.
+         * @since 1.16
          */
         set_preshared_key(preshared_key: string | null, accept_invalid: boolean): boolean;
 
         /**
          * It is a bug trying to modify a sealed {@link NM.WireGuardPeer} instance.
          * @param preshared_key_flags the secret flags to set.
+         * @since 1.16
          */
         set_preshared_key_flags(preshared_key_flags: SettingSecretFlags): void;
 
@@ -42844,6 +43848,7 @@ export namespace NM {
          * @param public_key the new public   key or `null` to clear the public key.
          * @param accept_invalid if `true` and `public_key` is not `null` and   invalid, then do not modify the instance.
          * @returns `true` if the key was valid or `null`. Returns   `false` for invalid keys. Depending on `accept_invalid`   will an invalid key be set or not.
+         * @since 1.16
          */
         set_public_key(public_key: string | null, accept_invalid: boolean): boolean;
 
@@ -42852,6 +43857,7 @@ export namespace NM {
          * the instance is freed and all associate data released.
          * 
          * Since 1.42, ref-counting of {@link NM.WireGuardPeer} is thread-safe.
+         * @since 1.16
          */
         unref(): void;
     }
@@ -43055,6 +44061,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingDummy} the connection might contain.
          * @returns an {@link NM.SettingDummy} if the connection contains one, otherwise `null`
+         * @since 1.8
          */
         get_setting_dummy(): SettingDummy;
 
@@ -43067,6 +44074,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingGeneve} the connection might contain.
          * @returns an {@link NM.SettingGeneve} if the connection contains one, otherwise NULL
+         * @since 1.58
          */
         get_setting_geneve(): SettingGeneve;
 
@@ -43105,18 +44113,21 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingIPTunnel} the connection might contain.
          * @returns an {@link NM.SettingIPTunnel} if the connection contains one, otherwise `null`
+         * @since 1.2
          */
         get_setting_ip_tunnel(): SettingIPTunnel;
 
         /**
          * A shortcut to return any {@link NM.SettingMacsec} the connection might contain.
          * @returns an {@link NM.SettingMacsec} if the connection contains one, otherwise `null`
+         * @since 1.6
          */
         get_setting_macsec(): SettingMacsec;
 
         /**
          * A shortcut to return any {@link NM.SettingMacvlan} the connection might contain.
          * @returns an {@link NM.SettingMacvlan} if the connection contains one, otherwise `null`
+         * @since 1.2
          */
         get_setting_macvlan(): SettingMacvlan;
 
@@ -43129,24 +44140,28 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingOvsBridge} the connection might contain.
          * @returns an {@link NM.SettingOvsBridge} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_ovs_bridge(): SettingOvsBridge;
 
         /**
          * A shortcut to return any {@link NM.SettingOvsInterface} the connection might contain.
          * @returns an {@link NM.SettingOvsInterface} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_ovs_interface(): SettingOvsInterface;
 
         /**
          * A shortcut to return any {@link NM.SettingOvsPatch} the connection might contain.
          * @returns an {@link NM.SettingOvsPatch} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_ovs_patch(): SettingOvsPatch;
 
         /**
          * A shortcut to return any {@link NM.SettingOvsPort} the connection might contain.
          * @returns an {@link NM.SettingOvsPort} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_ovs_port(): SettingOvsPort;
 
@@ -43165,6 +44180,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingProxy} the connection might contain.
          * @returns an {@link NM.SettingProxy} if the connection contains one, otherwise `null`
+         * @since 1.6
          */
         get_setting_proxy(): SettingProxy;
 
@@ -43177,6 +44193,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingTCConfig} the connection might contain.
          * @returns an {@link NM.SettingTCConfig} if the connection contains one, otherwise `null`
+         * @since 1.12
          */
         get_setting_tc_config(): SettingTCConfig;
 
@@ -43195,6 +44212,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingTun} the connection might contain.
          * @returns an {@link NM.SettingTun} if the connection contains one, otherwise `null`
+         * @since 1.14
          */
         get_setting_tun(): SettingTun;
 
@@ -43213,6 +44231,7 @@ export namespace NM {
         /**
          * A shortcut to return any {@link NM.SettingVxlan} the connection might contain.
          * @returns an {@link NM.SettingVxlan} if the connection contains one, otherwise `null`
+         * @since 1.2
          */
         get_setting_vxlan(): SettingVxlan;
 
@@ -43245,6 +44264,7 @@ export namespace NM {
          * 
          * The returned array is `null`-terminated.
          * @returns a   `null`-terminated array containing every setting of `connection`.   If the connection has no settings, `null` is returned.
+         * @since 1.10
          */
         get_settings(): Setting[] | null;
 
@@ -43372,6 +44392,7 @@ export namespace NM {
         /**
          * Verifies the secrets in the connection.
          * @returns `true` if the secrets are valid, `false` if they are not
+         * @since 1.2
          */
         verify_secrets(): boolean;
     }
@@ -43587,6 +44608,7 @@ export namespace NM {
 
         /**
          * @returns if set, return the {@link NM.VpnPluginInfo} instance.
+         * @since 1.4
          */
         get_plugin_info(): VpnPluginInfo;
 
@@ -43603,6 +44625,7 @@ export namespace NM {
          * 'nm-vpn-editor-plugin-call.h' which defines the meaning.
          * @param vt_size the size of the buffer. Can be 0 to only query the   size of plugin's VT.
          * @returns the actual size of the `plugin`'s virtual function table.
+         * @since 1.4
          */
         get_vt(vt_size: bigint | number): [number, VpnEditorPluginVT];
 
@@ -43617,6 +44640,7 @@ export namespace NM {
          * This takes a weak reference on `plugin_info`, to avoid circular
          * reference as the plugin-info might also reference the editor-plugin.
          * @param plugin_info a {@link NM.VpnPluginInfo} instance or `null`
+         * @since 1.4
          */
         set_plugin_info(plugin_info: VpnPluginInfo | null): void;
     }

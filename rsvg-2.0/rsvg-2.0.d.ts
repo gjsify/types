@@ -723,22 +723,27 @@ export namespace Rsvg {
          * SVG data was parsed correctly.  Note that `handle` isn't freed until
          * {@link GObject.Object.unref} is called.
          * @returns `TRUE` on success, or `FALSE` on error.
+         * @deprecated since 2.46.: Use {@link Rsvg.Handle.read_stream_sync} or the constructor functions {@link Rsvg.Handle.new_from_gfile_sync} or {@link Rsvg.Handle.new_from_stream_sync}.  See the deprecation notes for {@link Rsvg.Handle.write} for more information.
          */
         close(): boolean;
 
         /**
          * Frees `handle`.
+         * @deprecated Use {@link GObject.Object.unref} instead.
          */
         free(): void;
 
         /**
          * Gets the base uri for this {@link Rsvg.Handle}.
          * @returns the base uri, possibly null
+         * @since 2.8
          */
         get_base_uri(): string;
 
         /**
          * @returns This function always returns `NULL`.
+         * @since 2.4
+         * @deprecated since 2.36.: Librsvg does not read the metadata/desc/title elements; this function always returns `NULL`.
          */
         get_desc(): string | null;
 
@@ -748,6 +753,8 @@ export namespace Rsvg {
          * 
          * This function depends on the {@link Rsvg.Handle}'s DPI to compute dimensions in
          * pixels, so you should call {@link Rsvg.Handle.set_dpi} beforehand.
+         * @since 2.14
+         * @deprecated since 2.52.: Use {@link Rsvg.Handle.get_intrinsic_size_in_pixels} instead.  This function is deprecated because it is not able to return exact fractional dimensions, only integer pixels.
          */
         get_dimensions(): DimensionData;
 
@@ -763,6 +770,8 @@ export namespace Rsvg {
          * has an `id="foo"` attribute.
          * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to use the whole SVG.
          * @returns `TRUE` if the dimensions could be obtained, `FALSE` if there was an error.
+         * @since 2.22
+         * @deprecated since 2.46.: Use {@link Rsvg.Handle.get_geometry_for_layer} instead.
          */
         get_dimensions_sub(id: string | null): [boolean, DimensionData];
 
@@ -797,6 +806,7 @@ export namespace Rsvg {
          * the child elements.
          * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to compute the geometry for the whole SVG.
          * @returns `TRUE` if the geometry could be obtained, or `FALSE` on error.  Errors are returned in the `error` argument. API ordering: This function must be called on a fully-loaded `handle`.  See the section "[API ordering](class.Handle.html#api-ordering)" for details. Panics: this function will panic if the `handle` is not fully-loaded.
+         * @since 2.46
          */
         get_geometry_for_element(id: string | null): [boolean, Rectangle | null, Rectangle | null];
 
@@ -826,6 +836,7 @@ export namespace Rsvg {
          * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to compute the geometry for the whole SVG.
          * @param viewport Viewport size at which the whole SVG would be fitted.
          * @returns `TRUE` if the geometry could be obtained, or `FALSE` on error.  Errors are returned in the `error` argument. API ordering: This function must be called on a fully-loaded `handle`.  See the section "[API ordering](class.Handle.html#api-ordering)" for details. Panics: this function will panic if the `handle` is not fully-loaded.
+         * @since 2.46
          */
         get_geometry_for_layer(id: string | null, viewport: Rectangle): [boolean, Rectangle | null, Rectangle | null];
 
@@ -875,6 +886,7 @@ export namespace Rsvg {
          * the section "[API ordering](class.Handle.html#api-ordering)" for details.
          * 
          * Panics: this function will panic if the `handle` is not fully-loaded.
+         * @since 2.46
          */
         get_intrinsic_dimensions(): [boolean, Length | null, boolean, Length | null, boolean, Rectangle | null];
 
@@ -929,11 +941,14 @@ export namespace Rsvg {
          * documents to a size chosen by the application, by passing a suitably-sized viewport to
          * {@link Rsvg.Handle.render_document}.
          * @returns `TRUE` if the dimensions could be converted directly to pixels; in this case `out_width` and `out_height` will be set accordingly.  Note that the dimensions are floating-point numbers, so your application can know the exact size of an SVG document. To get integer dimensions, you should use `ceil()` to round up to the nearest integer (just using `round()`, may may chop off pixels with fractional coverage).  If the dimensions cannot be converted to pixels, returns `FALSE` and puts 0.0 in both `out_width` and `out_height`.
+         * @since 2.52
          */
         get_intrinsic_size_in_pixels(): [boolean, number, number];
 
         /**
          * @returns This function always returns `NULL`.
+         * @since 2.9
+         * @deprecated since 2.36.: Librsvg does not read the metadata/desc/title elements; this function always returns `NULL`.
          */
         get_metadata(): string | null;
 
@@ -948,6 +963,7 @@ export namespace Rsvg {
          * "natural size" of the document in pixels, so you should call {@link Rsvg.Handle.set_dpi}
          * beforehand.
          * @returns A pixbuf, or `null` on error during rendering.
+         * @deprecated since 2.58.: Use {@link Rsvg.Handle.get_pixbuf_and_error}.
          */
         get_pixbuf(): GdkPixbuf.Pixbuf | null;
 
@@ -962,6 +978,7 @@ export namespace Rsvg {
          * "natural size" of the document in pixels, so you should call {@link Rsvg.Handle.set_dpi}
          * beforehand.
          * @returns A pixbuf, or `null` on error during rendering.
+         * @since 2.59
          */
         get_pixbuf_and_error(): GdkPixbuf.Pixbuf | null;
 
@@ -986,6 +1003,7 @@ export namespace Rsvg {
          * the section "[API ordering](class.Handle.html#api-ordering)" for details.
          * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to use the whole SVG.
          * @returns a pixbuf, or `NULL` if an error occurs during rendering.
+         * @since 2.14
          */
         get_pixbuf_sub(id: string | null): GdkPixbuf.Pixbuf | null;
 
@@ -1001,11 +1019,15 @@ export namespace Rsvg {
          * has an `id="foo"` attribute.
          * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `null` to use the whole SVG.
          * @returns `TRUE` if the position could be obtained, `FALSE` if there was an error.
+         * @since 2.22
+         * @deprecated since 2.46.: Use {@link Rsvg.Handle.get_geometry_for_layer} instead.  This function is deprecated since it is not able to return exact floating-point positions, only integer pixels.
          */
         get_position_sub(id: string | null): [boolean, PositionData];
 
         /**
          * @returns This function always returns `NULL`.
+         * @since 2.4
+         * @deprecated since 2.36.: Librsvg does not read the metadata/desc/title elements; this function always returns `NULL`.
          */
         get_title(): string | null;
 
@@ -1017,6 +1039,7 @@ export namespace Rsvg {
          * has an `id="foo"` attribute.
          * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.
          * @returns `TRUE` if `id` exists in the SVG document, `FALSE` otherwise.
+         * @since 2.22
          */
         has_sub(id: string): boolean;
 
@@ -1043,6 +1066,7 @@ export namespace Rsvg {
          * @param stream a {@link Gio.InputStream}
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns `TRUE` if reading `stream` succeeded, or `FALSE` otherwise   with `error` filled in
+         * @since 2.32
          */
         read_stream_sync(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1088,6 +1112,8 @@ export namespace Rsvg {
          * passed an invalid matrix or if it was created for an invalid surface.
          * @param cr A Cairo context
          * @returns `TRUE` if drawing succeeded; `FALSE` otherwise.  This function will emit a `g_warning()` if a rendering error occurs.
+         * @since 2.14
+         * @deprecated since 2.52.: Please use {@link Rsvg.Handle.render_document} instead; that function lets you pass a viewport and obtain a good error message.
          */
         render_cairo(cr: cairo.Context): boolean;
 
@@ -1142,6 +1168,8 @@ export namespace Rsvg {
          * @param cr A Cairo context
          * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to render the whole SVG.
          * @returns `TRUE` if drawing succeeded; `FALSE` otherwise.  This function will emit a `g_warning()` if a rendering error occurs.
+         * @since 2.14
+         * @deprecated since 2.52.: Please use {@link Rsvg.Handle.render_layer} instead; that function lets you pass a viewport and obtain a good error message.
          */
         render_cairo_sub(cr: cairo.Context, id: string | null): boolean;
 
@@ -1156,6 +1184,7 @@ export namespace Rsvg {
          * @param cr A Cairo context
          * @param viewport Viewport size at which the whole SVG would be fitted.
          * @returns `TRUE` on success, `FALSE` on error.  Errors are returned in the `error` argument. API ordering: This function must be called on a fully-loaded `handle`.  See the section "[API ordering](class.Handle.html#api-ordering)" for details. Panics: this function will panic if the `handle` is not fully-loaded.
+         * @since 2.46
          */
         render_document(cr: cairo.Context, viewport: Rectangle): boolean;
 
@@ -1181,6 +1210,7 @@ export namespace Rsvg {
          * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to render the whole SVG document tree.
          * @param element_viewport Viewport size in which to fit the element
          * @returns `TRUE` on success, `FALSE` on error.  Errors are returned in the `error` argument. API ordering: This function must be called on a fully-loaded `handle`.  See the section "[API ordering](class.Handle.html#api-ordering)" for details. Panics: this function will panic if the `handle` is not fully-loaded.
+         * @since 2.46
          */
         render_element(cr: cairo.Context, id: string | null, element_viewport: Rectangle): boolean;
 
@@ -1209,6 +1239,7 @@ export namespace Rsvg {
          * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to render the whole SVG document tree.
          * @param viewport Viewport size at which the whole SVG would be fitted.
          * @returns `TRUE` on success, `FALSE` on error.  Errors are returned in the `error` argument. API ordering: This function must be called on a fully-loaded `handle`.  See the section "[API ordering](class.Handle.html#api-ordering)" for details. Panics: this function will panic if the `handle` is not fully-loaded.
+         * @since 2.46
          */
         render_layer(cr: cairo.Context, id: string | null, viewport: Rectangle): boolean;
 
@@ -1218,6 +1249,7 @@ export namespace Rsvg {
          * Note: This function may only be called before {@link Rsvg.Handle.write} or
          * {@link Rsvg.Handle.read_stream_sync} have been called.
          * @param base_file a {@link Gio.File}
+         * @since 2.32
          */
         set_base_gfile(base_file: Gio.File): void;
 
@@ -1227,6 +1259,7 @@ export namespace Rsvg {
          * Note: This function may only be called before {@link Rsvg.Handle.write} or
          * {@link Rsvg.Handle.read_stream_sync} have been called.
          * @param base_uri The base uri
+         * @since 2.9
          */
         set_base_uri(base_uri: string): void;
 
@@ -1242,6 +1275,7 @@ export namespace Rsvg {
          * functions) will return an error with domain `G_IO_ERROR`, and code
          * `G_IO_ERROR_CANCELLED`.
          * @param cancellable A {@link Gio.Cancellable} or `NULL`.
+         * @since 2.59.0
          */
         set_cancellable_for_rendering(cancellable: Gio.Cancellable | null): void;
 
@@ -1253,6 +1287,7 @@ export namespace Rsvg {
          * value happens to be, but since `rsvg_set_default_dpi` is deprecated, please
          * do not pass values <= 0 to this function.
          * @param dpi Dots Per Inch (i.e. as Pixels Per Inch)
+         * @since 2.8
          */
         set_dpi(dpi: number): void;
 
@@ -1265,6 +1300,7 @@ export namespace Rsvg {
          * please do not pass values <= 0 to this function.
          * @param dpi_x Dots Per Inch (i.e. Pixels Per Inch)
          * @param dpi_y Dots Per Inch (i.e. Pixels Per Inch)
+         * @since 2.8
          */
         set_dpi_x_y(dpi_x: number, dpi_y: number): void;
 
@@ -1283,6 +1319,7 @@ export namespace Rsvg {
          * `size_func`, which may then modify these values to set the final size of the
          * generated image.
          * @param size_func A sizing function, or `NULL`
+         * @deprecated since 2.14.: Use {@link Rsvg.Handle.render_document} instead. This function was deprecated because when the `size_func` is used, it makes it unclear when the librsvg functions which call the `size_func` will use the size computed originally, or the callback-specified size, or whether it refers to the whole SVG or to just a sub-element of it.  It is easier, and unambiguous, to use code similar to the example above.
          */
         set_size_callback(size_func: SizeFunc | null): void;
 
@@ -1299,6 +1336,7 @@ export namespace Rsvg {
          * Note that ``import`` rules will not be resolved, except for `data:` URLs.
          * @param css String with CSS data; must be valid UTF-8.
          * @returns `TRUE` on success, `FALSE` on error.  Errors are returned in the `error` argument.
+         * @since 2.48
          */
         set_stylesheet(css: Uint8Array | string): boolean;
 
@@ -1314,6 +1352,7 @@ export namespace Rsvg {
          * resolved relative to the location you specify with those functions.
          * @param buf pointer to svg data
          * @returns `TRUE` on success, or `FALSE` on error.
+         * @deprecated since 2.46.: Use {@link Rsvg.Handle.read_stream_sync} or the constructor functions {@link Rsvg.Handle.new_from_gfile_sync} or {@link Rsvg.Handle.new_from_stream_sync}.  This function is deprecated because it will accumulate data from the `buf` in memory until {@link Rsvg.Handle.close} gets called.  To avoid a big temporary buffer, use the suggested functions, which take a {@link Gio.File} or a {@link Gio.InputStream} and do not require a temporary buffer.
          */
         write(buf: Uint8Array | string): boolean;
     }

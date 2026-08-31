@@ -1210,6 +1210,7 @@ export namespace Wp {
         /**
          * Gets the bound id of the client object that is created as a result of this core being connected to the PipeWire daemon.
          * @returns the bound id of this client
+         * @since 0.4.16
          */
         get_own_bound_id(): number;
 
@@ -1270,6 +1271,7 @@ export namespace Wp {
         /**
          * Gets the virtual machine type of the core.
          * @returns a comma separated string with all the virtual machine types that this core matches, or NULL if the core is not running in a virtual machine.
+         * @since 0.4.11
          */
         get_vm_type(): string | null;
 
@@ -1364,6 +1366,7 @@ export namespace Wp {
          * @param cancellable a GCancellable to cancel the operation
          * @param closure a closure to invoke when the operation is done
          * @returns TRUE if the sync operation was started, FALSE if an error occurred before returning from this function
+         * @since 0.4.6
          */
         sync_closure(cancellable: Gio.Cancellable | null, closure: GObject.Closure): boolean;
 
@@ -2467,6 +2470,7 @@ export namespace Wp {
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
          * @returns `TRUE` if `res` has the indicated `source_tag`, `FALSE` if   not.
+         * @since 2.34
          */
         is_tagged(source_tag: null): boolean;
 
@@ -2482,6 +2486,7 @@ export namespace Wp {
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
          * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
+         * @since 2.34
          */
         legacy_propagate_error(): boolean;
 
@@ -2501,6 +2506,7 @@ export namespace Wp {
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
+         * @since 2.34
          * @virtual
          */
         vfunc_is_tagged(source_tag: null): boolean;
@@ -3124,6 +3130,7 @@ export namespace Wp {
          * @param name the name of the module to load
          * @param _arguments arguments to be passed to the module
          * @param properties additional properties to be provided to the module
+         * @since 0.4.2
          */
         static load(core: Core, name: string, _arguments: string | null, properties: Properties | null): ImplModule | null;
 
@@ -3133,6 +3140,7 @@ export namespace Wp {
          * @param name the name of the module to load
          * @param filename filename to be used as arguments
          * @param properties additional properties to be provided to the module
+         * @since 0.4.15
          */
         static load_file(core: Core, name: string, filename: string, properties: Properties | null): ImplModule | null;
     }
@@ -3521,6 +3529,7 @@ export namespace Wp {
         /**
          * Gets the current state of the link.
          * @returns the current state of the link
+         * @since 0.4.11
          */
         get_state(): [LinkState, string];
 
@@ -4420,6 +4429,7 @@ export namespace Wp {
          * 
          * This is usually used to stop any pending activation if an error happened.
          * @param msg the message used in the transition error
+         * @since 0.4.6
          */
         abort_activation(msg: string): void;
 
@@ -5610,6 +5620,7 @@ export namespace Wp {
         /**
          * Iterates through all the objects managed by this device.
          * @returns a WpIterator that iterates over all the objects managed by this device
+         * @since 0.4.11
          */
         new_managed_object_iterator(): Iterator;
 
@@ -5985,6 +5996,7 @@ export namespace Wp {
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
          * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
+         * @since 2.34
          */
         legacy_propagate_error(): boolean;
 
@@ -6004,6 +6016,7 @@ export namespace Wp {
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
+         * @since 2.34
          * @virtual
          */
         vfunc_is_tagged(source_tag: null): boolean;
@@ -6320,12 +6333,14 @@ export namespace Wp {
         /**
          * Gets the key from a properties iterator item.
          * @param item a GValue that was returned from the WpIterator of `wp_properties_new_iterator()`
+         * @deprecated Use `wp_properties_item_get_key()` instead
          */
         static iterator_item_get_key(item: GObject.Value | any): string;
 
         /**
          * Gets the value from a properties iterator item.
          * @param item a GValue that was returned from the WpIterator of `wp_properties_new_iterator()`
+         * @deprecated Use `wp_properties_item_get_value()` instead
          */
         static iterator_item_get_value(item: GObject.Value | any): string;
 
@@ -6387,6 +6402,7 @@ export namespace Wp {
         /**
          * Gets the number of properties contained in this object.
          * @returns the number of properties contained in this object
+         * @since 0.4.10
          */
         get_count(): number;
 
@@ -6491,23 +6507,27 @@ export namespace Wp {
         /**
          * Gets the key from a properties item.
          * @returns the property key of the `item`
+         * @since 0.4.2
          */
         get_key(): string;
 
         /**
          * Gets the value from a properties item.
          * @returns the property value of the `item`
+         * @since 0.4.2
          */
         get_value(): string;
 
         /**
          * Increases the reference count of a properties item object.
          * @returns `self` with an additional reference count on it
+         * @since 0.4.2
          */
         ref(): PropertiesItem;
 
         /**
          * Decreases the reference count on `self` and frees it when the ref count reaches zero.
+         * @since 0.4.2
          */
         unref(): void;
     }
@@ -6702,6 +6722,7 @@ export namespace Wp {
         /**
          * Returns a newly allocated json string with length matching the size.
          * @returns the json string with length matching the size
+         * @since 0.4.11
          */
         to_string(): string;
 
@@ -7916,6 +7937,7 @@ export namespace Wp {
 
             /**
              * Gets the ports state.
+             * @since 0.4.10
              * @virtual
              */
             vfunc_get_ports_state(): SiAdapterPortsState;
@@ -7965,6 +7987,7 @@ export namespace Wp {
         /**
          * Gets the ports state.
          * @returns The state of the ports
+         * @since 0.4.10
          */
         get_ports_state(): SiAdapterPortsState;
 

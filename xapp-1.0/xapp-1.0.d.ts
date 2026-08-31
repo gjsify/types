@@ -393,6 +393,7 @@ export namespace XApp {
         // Static methods
         /**
          * Returns the {@link XApp.Favorites} instance.
+         * @since 2.0
          */
         static get_default(): Favorites;
 
@@ -400,6 +401,7 @@ export namespace XApp {
         /**
          * Adds a new favorite.  If the uri already exists, this does nothing.
          * @param uri The uri the favorite is for
+         * @since 2.0
          */
         add(uri: string): void;
 
@@ -407,6 +409,7 @@ export namespace XApp {
          * Generates a list of favorite GtkActions.
          * @param mimetypes The mimetypes to filter for, or NULL to include all favorites.
          * @returns a new {@link Gtk.ActionGroup} populated with a list of favorites, or NULL             if there are no favorites.
+         * @since 2.0
          */
         create_actions(mimetypes: string | null): Gtk.Action[];
 
@@ -416,6 +419,7 @@ export namespace XApp {
          * @param mimetypes The mimetypes to filter for, or NULL to include all favorites.
          * @param callback (closure user_data): The callback to use when a menu item has been selected.
          * @returns a new {@link Gtk.Menu} populated with a list of favorites, or NULL             if there are no favorites.
+         * @since 2.0
          */
         create_menu(mimetypes: string | null, callback: FavoritesItemSelectedCallback): Gtk.Widget;
 
@@ -423,6 +427,7 @@ export namespace XApp {
          * Looks for an XAppFavoriteInfo that corresponds to `display_name`.
          * @param display_name The display name to lookup info for.
          * @returns an XAppFavoriteInfo or NULL if one was not found. This is owned          by the favorites manager and should not be freed.
+         * @since 2.0
          */
         find_by_display_name(display_name: string): FavoriteInfo;
 
@@ -430,6 +435,7 @@ export namespace XApp {
          * Looks for an XAppFavoriteInfo that corresponds to `uri`.
          * @param uri The uri to lookup info for.
          * @returns an XAppFavoriteInfo or NULL if one was not found. This is owned          by the favorites manager and should not be freed.
+         * @since 2.0
          */
         find_by_uri(uri: string): FavoriteInfo;
 
@@ -438,11 +444,13 @@ export namespace XApp {
          * contain only favorites with that mimetype.
          * @param mimetypes The mimetypes to filter by for results
          * @returns a list of `XAppFavoriteInfos`.             Free the list with `g_list_free`, free elements with `xapp_favorite_info_free`.
+         * @since 2.0
          */
         get_favorites(mimetypes: string[] | null): FavoriteInfo[];
 
         /**
          * @returns The number of favorite files
+         * @since 2.0
          */
         get_n_favorites(): number;
 
@@ -450,12 +458,14 @@ export namespace XApp {
          * Opens a favorite in its default app.
          * @param uri The uri for the favorite to launch
          * @param timestamp The timestamp from an event or 0
+         * @since 2.0
          */
         launch(uri: string, timestamp: number): void;
 
         /**
          * Removes a favorite from the list.
          * @param uri The uri for the favorite being removed
+         * @since 2.0
          */
         remove(uri: string): void;
 
@@ -465,6 +475,7 @@ export namespace XApp {
          * worry about multiple dbus calls (gsettings).
          * @param old_uri the old favorite's uri.
          * @param new_uri The new uri.
+         * @since 2.0
          */
         rename(old_uri: string, new_uri: string): void;
     }
@@ -525,6 +536,7 @@ export namespace XApp {
          * Creates a new {@link XApp.GpuOffloadHelper} instance.
          * 
          * The {@link XApp.GpuOffloadHelper.SignalSignatures.ready | XApp.GpuOffloadHelper::ready} signal will be emitted when the helper is initialized (successfully or not).
+         * @since 2.6
          */
         static get(): GpuOffloadHelper;
 
@@ -533,6 +545,7 @@ export namespace XApp {
          * and can potentially block.
          * 
          * Use `xapp_gpu_offload_helper_is_ready()` to see if the helper was initialized successfully.
+         * @since 2.6
          */
         static get_sync(): GpuOffloadHelper;
 
@@ -540,6 +553,7 @@ export namespace XApp {
         /**
          * Returns an {@link XApp.GpuInfo} for the default GPU.
          * @returns the default {@link XApp.GpuInfo}. Do not free
+         * @since 2.6
          */
         get_default_info(): GpuInfo;
 
@@ -547,24 +561,28 @@ export namespace XApp {
          * Returns an {@link XApp.GpuInfo} with the given ID.
          * @param id The ID of the info to retrieve.
          * @returns the appropriate {@link XApp.GpuInfo}, or `null` if `id` was invalid.
+         * @since 2.6
          */
         get_info_by_id(id: number): GpuInfo;
 
         /**
          * Gets the number of GPUs noticed by Switcheroo.
          * @returns the total number of GPUs. A return value larger than 1 implies there are offloadable GPUs available.
+         * @since 2.6
          */
         get_n_gpus(): number;
 
         /**
          * Generates a list of `XAppGpuInfos` that can be offloaded to, if there are any.
          * @returns a list of `XAppGpuInfos` or `null` if there is only a single GPU. The elements are owned by `helper` but the container itself should be freed.
+         * @since 2.6
          */
         get_offload_infos(): GpuInfo[];
 
         /**
          * Checks if there is a non-default GPU available for offloading.
          * @returns `true` if there is an extra GPU available.
+         * @since 2.6
          */
         is_offload_supported(): boolean;
 
@@ -572,6 +590,7 @@ export namespace XApp {
          * Checks if the helper is ready and valid. This does not mean
          * offload support exists.
          * @returns `true` if the helper has been successfully initialized.
+         * @since 2.6
          */
         is_ready(): boolean;
     }
@@ -1016,6 +1035,7 @@ export namespace XApp {
          * 
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
+         * @since 3.4
          */
         get_action_name(): string | null;
 
@@ -1024,6 +1044,7 @@ export namespace XApp {
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
          * @returns the current target value
+         * @since 3.4
          */
         get_action_target_value(): GLib.Variant;
 
@@ -1040,6 +1061,7 @@ export namespace XApp {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          */
         set_action_name(action_name: string | null): void;
 
@@ -1064,6 +1086,7 @@ export namespace XApp {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          */
         set_action_target_value(target_value: GLib.Variant | null): void;
 
@@ -1080,6 +1103,7 @@ export namespace XApp {
          * `action` is the action name and `target` is the string to use
          * as the target.)
          * @param detailed_action_name the detailed action name
+         * @since 3.4
          */
         set_detailed_action_name(detailed_action_name: string): void;
 
@@ -1087,6 +1111,7 @@ export namespace XApp {
          * Gets the action name for `actionable`.
          * 
          * See `gtk_actionable_set_action_name()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_name(): string | null;
@@ -1095,6 +1120,7 @@ export namespace XApp {
          * Gets the current target value of `actionable`.
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant;
@@ -1112,6 +1138,7 @@ export namespace XApp {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_name(action_name: string | null): void;
@@ -1137,6 +1164,7 @@ export namespace XApp {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
@@ -1158,12 +1186,16 @@ export namespace XApp {
          * > `gtk_activatable_get_related_action()` to retrieve the
          * > previous action.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         do_set_related_action(action: Gtk.Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_related_action(): Gtk.Action;
 
@@ -1172,6 +1204,8 @@ export namespace XApp {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_use_action_appearance(): boolean;
 
@@ -1181,6 +1215,8 @@ export namespace XApp {
          * > {@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * > property and call `gtk_activatable_do_set_related_action()` when it changes.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_related_action(action: Gtk.Action): void;
 
@@ -1193,6 +1229,8 @@ export namespace XApp {
          * > `gtk_activatable_sync_action_properties()` to update `activatable`
          * > if needed.
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -1202,6 +1240,8 @@ export namespace XApp {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          */
         sync_action_properties(action: Gtk.Action | null): void;
 
@@ -1211,6 +1251,8 @@ export namespace XApp {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          * @virtual
          */
         vfunc_sync_action_properties(action: Gtk.Action | null): void;
@@ -1247,6 +1289,7 @@ export namespace XApp {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -1256,6 +1299,7 @@ export namespace XApp {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -1932,6 +1976,7 @@ export namespace XApp {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1975,6 +2020,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2018,6 +2064,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2026,6 +2073,7 @@ export namespace XApp {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -2034,6 +2082,7 @@ export namespace XApp {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): ObjectManagerClient;
 
@@ -2083,6 +2132,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -2091,6 +2141,7 @@ export namespace XApp {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -2101,6 +2152,7 @@ export namespace XApp {
          * @param object_path Object path to look up.
          * @param interface_name D-Bus interface name to look up.
          * @returns A {@link Gio.DBusInterface} instance or `null`. Free   with `g_object_unref()`.
+         * @since 2.30
          */
         get_interface(object_path: string, interface_name: string): Gio.DBusInterface | null;
 
@@ -2108,18 +2160,21 @@ export namespace XApp {
          * Gets the {@link Gio.DBusObject} at `object_path`, if any.
          * @param object_path Object path to look up.
          * @returns A {@link Gio.DBusObject} or `null`. Free with   `g_object_unref()`.
+         * @since 2.30
          */
         get_object(object_path: string): Gio.DBusObject | null;
 
         /**
          * Gets the object path that `manager` is for.
          * @returns A string owned by `manager`. Do not free.
+         * @since 2.30
          */
         get_object_path(): string;
 
         /**
          * Gets all {@link Gio.DBusObject} objects known to `manager`.
          * @returns A list of   {@link Gio.DBusObject} objects. The returned list should be freed with   `g_list_free()` after each element has been freed with   `g_object_unref()`.
+         * @since 2.30
          */
         get_objects(): Gio.DBusObject[];
 
@@ -2128,6 +2183,7 @@ export namespace XApp {
          * any.
          * @param object_path Object path to look up.
          * @param interface_name D-Bus interface name to look up.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interface(object_path: string, interface_name: string): Gio.DBusInterface | null;
@@ -2135,18 +2191,21 @@ export namespace XApp {
         /**
          * Gets the {@link Gio.DBusObject} at `object_path`, if any.
          * @param object_path Object path to look up.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_object(object_path: string): Gio.DBusObject | null;
 
         /**
          * Gets the object path that `manager` is for.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_object_path(): string;
 
         /**
          * Gets all {@link Gio.DBusObject} objects known to `manager`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_objects(): Gio.DBusObject[];
@@ -2222,6 +2281,7 @@ export namespace XApp {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2265,6 +2325,7 @@ export namespace XApp {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -2342,18 +2403,21 @@ export namespace XApp {
          * `object`, if any.
          * @param interface_name A D-Bus interface name.
          * @returns `null` if not found, otherwise a   {@link Gio.DBusInterface} that must be freed with `g_object_unref()`.
+         * @since 2.30
          */
         get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
          * @returns A list of {@link Gio.DBusInterface} instances.   The returned list must be freed by `g_list_free()` after each element has been freed   with `g_object_unref()`.
+         * @since 2.30
          */
         get_interfaces(): Gio.DBusInterface[];
 
         /**
          * Gets the object path for `object`.
          * @returns A string owned by `object`. Do not free.
+         * @since 2.30
          */
         get_object_path(): string;
 
@@ -2361,18 +2425,21 @@ export namespace XApp {
          * Gets the D-Bus interface with name `interface_name` associated with
          * `object`, if any.
          * @param interface_name A D-Bus interface name.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interfaces(): Gio.DBusInterface[];
 
         /**
          * Gets the object path for `object`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_object_path(): string;
@@ -2476,18 +2543,21 @@ export namespace XApp {
          * `object`, if any.
          * @param interface_name A D-Bus interface name.
          * @returns `null` if not found, otherwise a   {@link Gio.DBusInterface} that must be freed with `g_object_unref()`.
+         * @since 2.30
          */
         get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
          * @returns A list of {@link Gio.DBusInterface} instances.   The returned list must be freed by `g_list_free()` after each element has been freed   with `g_object_unref()`.
+         * @since 2.30
          */
         get_interfaces(): Gio.DBusInterface[];
 
         /**
          * Gets the object path for `object`.
          * @returns A string owned by `object`. Do not free.
+         * @since 2.30
          */
         get_object_path(): string;
 
@@ -2495,18 +2565,21 @@ export namespace XApp {
          * Gets the D-Bus interface with name `interface_name` associated with
          * `object`, if any.
          * @param interface_name A D-Bus interface name.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interface(interface_name: string): Gio.DBusInterface | null;
 
         /**
          * Gets the D-Bus interfaces associated with `object`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_interfaces(): Gio.DBusInterface[];
 
         /**
          * Gets the object path for `object`.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_object_path(): string;
@@ -3027,12 +3100,14 @@ export namespace XApp {
         // Static methods
         /**
          * Looks for the existence of any active `XAppStatusIconMonitors` on the bus.
+         * @since 1.6
          */
         static any_monitors(): boolean;
 
         // Methods
         /**
          * @returns The desired icon size - usually set by the host based on panel size. This is not what it's guaranteed to get, and this is really only useful when receiving absolute icon paths from the client app.
+         * @since 1.8
          */
         get_icon_size(): number;
 
@@ -3040,6 +3115,7 @@ export namespace XApp {
          * Returns a pointer to a {@link Gtk.Menu} that was set previously for the
          * primary mouse button.  If no menu was set, this returns `null`.
          * @returns the {@link Gtk.Menu} or `null` if none was set.
+         * @since 1.6
          */
         get_primary_menu(): Gtk.Widget;
 
@@ -3047,6 +3123,7 @@ export namespace XApp {
          * Returns a pointer to a {@link Gtk.Menu} that was set previously for the
          * secondary mouse button.  If no menu was set, this returns `null`.
          * @returns the {@link Gtk.Menu} or `null` if none was set.
+         * @since 1.6
          */
         get_secondary_menu(): Gtk.Widget;
 
@@ -3057,12 +3134,14 @@ export namespace XApp {
          * 
          * See {@link XApp.StatusIconState} for more details.
          * @returns the icon's state.
+         * @since 1.6
          */
         get_state(): StatusIconState;
 
         /**
          * Returns whether or not the icon should currently be visible.
          * @returns the current visibility state.
+         * @since 1.8.5
          */
         get_visible(): boolean;
 
@@ -3075,18 +3154,21 @@ export namespace XApp {
          * @param button The button used to initiate this action (or 0)
          * @param _time The event time (or 0)
          * @param panel_position The {@link Gtk.PositionType} for the position of the icon.
+         * @since 1.8.6
          */
         popup_menu(menu: Gtk.Menu | null, x: number, y: number, button: number, _time: number, panel_position: number): void;
 
         /**
          * Sets the icon name or local path to use.
          * @param icon_name An icon name or absolute path to an icon.
+         * @since 1.6
          */
         set_icon_name(icon_name: string): void;
 
         /**
          * Sets a label, shown beside the icon
          * @param label some text
+         * @since 1.6
          */
         set_label(label: string): void;
 
@@ -3095,36 +3177,42 @@ export namespace XApp {
          * xapp-sn-watcher can tell the applets when the icon is originating from appindicator so panel
          * button 'highlighting' can behave correctly.
          * @param metadata A json-formatted string of key:values.
+         * @since 1.8.7
          */
         set_metadata(metadata: string | null): void;
 
         /**
          * Sets the status icon name. This is not shown to users.
          * @param name a name (this defaults to the name of the application, if not set)
+         * @since 1.6
          */
         set_name(name: string): void;
 
         /**
          * See the {@link XApp.StatusIcon.primary_menu} property for details
          * @param menu A {@link Gtk.Menu} to display when the primary mouse button is released.
+         * @since 1.6
          */
         set_primary_menu(menu: Gtk.Menu | null): void;
 
         /**
          * See the {@link XApp.StatusIcon.secondary_menu} property for details
          * @param menu A {@link Gtk.Menu} to display when the primary mouse button is released.
+         * @since 1.6
          */
         set_secondary_menu(menu: Gtk.Menu | null): void;
 
         /**
          * Sets the tooltip text
          * @param tooltip_text the text to show in the tooltip
+         * @since 1.6
          */
         set_tooltip_text(tooltip_text: string): void;
 
         /**
          * Sets the visibility of the status icon
          * @param visible whether or not the status icon should be visible
+         * @since 1.6
          */
         set_visible(visible: boolean): void;
     }
@@ -3432,6 +3520,7 @@ export namespace XApp {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -3475,6 +3564,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3518,6 +3608,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3526,6 +3617,7 @@ export namespace XApp {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3534,6 +3626,7 @@ export namespace XApp {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): StatusIconInterfaceProxy;
 
@@ -3583,6 +3676,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3591,6 +3685,7 @@ export namespace XApp {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -3598,6 +3693,7 @@ export namespace XApp {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -3610,6 +3706,7 @@ export namespace XApp {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -3618,11 +3715,13 @@ export namespace XApp {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -3635,6 +3734,7 @@ export namespace XApp {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -3644,6 +3744,7 @@ export namespace XApp {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -3689,6 +3790,7 @@ export namespace XApp {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3732,6 +3834,7 @@ export namespace XApp {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -4190,6 +4293,7 @@ export namespace XApp {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -4202,6 +4306,7 @@ export namespace XApp {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -4216,11 +4321,13 @@ export namespace XApp {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -4233,6 +4340,7 @@ export namespace XApp {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -4249,6 +4357,7 @@ export namespace XApp {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -4573,6 +4682,7 @@ export namespace XApp {
         /**
          * List known icon proxies.
          * @returns a {@link GLib.List} of icons
+         * @since 1.6
          */
         list_icons(): StatusIconMonitor[];
     }
@@ -4636,18 +4746,21 @@ export namespace XApp {
         /**
          * Gets the {@link Gtk.Widget} the style manager currently applies styles to.
          * @returns the {@link Gtk.Widget} previously set on the style manager, or `null`.
+         * @since 2.2
          */
         get_widget(): Gtk.Widget;
 
         /**
          * Removes the given style property from the widget if set.
          * @param name the property name
+         * @since 2.2
          */
         remove_style_property(name: string): void;
 
         /**
          * Sets the css font property on the widget based on the supplied pango font description string.
          * @param desc_string a pango font description string
+         * @since 2.2
          */
         set_from_pango_font_string(desc_string: string): void;
 
@@ -4655,12 +4768,14 @@ export namespace XApp {
          * Adds the given style property to the widget. If the property has already been set, the value will be replaced.
          * @param name the property name
          * @param value the value to set the property to
+         * @since 2.2
          */
         set_style_property(name: string, value: string): void;
 
         /**
          * Sets the {@link Gtk.Widget} the style manager will apply styles to.
          * @param widget the {@link Gtk.Widget} that the style manager will apply styles to, or `null` to unset the current widget and remove all styles currently set by this {@link XApp.StyleManager} instance.
+         * @since 2.2
          */
         set_widget(widget: Gtk.Widget): void;
     }
@@ -4871,6 +4986,7 @@ export namespace XApp {
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -4914,6 +5030,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4957,6 +5074,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          */
         init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -4965,6 +5083,7 @@ export namespace XApp {
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -4973,6 +5092,7 @@ export namespace XApp {
          * calls, returning the created object or `null` on error.
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         * @since 2.22
          */
         new_finish(res: Gio.AsyncResult): SwitcherooControlProxy;
 
@@ -5022,6 +5142,7 @@ export namespace XApp {
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 2.22
          * @virtual
          */
         vfunc_init_async(io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -5030,6 +5151,7 @@ export namespace XApp {
          * Finishes asynchronous initialization and returns the result.
          * See `g_async_initable_init_async()`.
          * @param res a {@link Gio.AsyncResult}.
+         * @since 2.22
          * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
@@ -5037,6 +5159,7 @@ export namespace XApp {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -5049,6 +5172,7 @@ export namespace XApp {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -5057,11 +5181,13 @@ export namespace XApp {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -5074,6 +5200,7 @@ export namespace XApp {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -5083,6 +5210,7 @@ export namespace XApp {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -5128,6 +5256,7 @@ export namespace XApp {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5171,6 +5300,7 @@ export namespace XApp {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -5278,6 +5408,7 @@ export namespace XApp {
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
          * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
+         * @since 2.32
          */
         get_object(): Gio.DBusObject | null;
 
@@ -5290,6 +5421,7 @@ export namespace XApp {
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
          * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
+         * @since 2.30
          */
         get_info(): Gio.DBusInterfaceInfo | null;
 
@@ -5304,11 +5436,13 @@ export namespace XApp {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          */
         set_object(object: Gio.DBusObject | null): void;
 
         /**
          * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @since 2.32
          * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
@@ -5321,6 +5455,7 @@ export namespace XApp {
          * construction of `interface_` and is also not made available otherwise.
          * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
          * {@link Gio.DBusInterfaceInfo}.
+         * @since 2.30
          * @virtual
          */
         vfunc_get_info(): Gio.DBusInterfaceInfo | null;
@@ -5337,6 +5472,7 @@ export namespace XApp {
          * 
          * Note that `interface_` will hold a weak reference to `object`.
          * @param object A {@link Gio.DBusObject} or `null`.
+         * @since 2.30
          * @virtual
          */
         vfunc_set_object(object: Gio.DBusObject | null): void;
@@ -5620,6 +5756,7 @@ export namespace XApp {
         /**
          * Adds widget to the visibility group.
          * @param widget the {@link Gtk.Widget} to add to the group
+         * @since 2.2.15
          */
         add_widget(widget: Gtk.Widget): void;
 
@@ -5637,6 +5774,7 @@ export namespace XApp {
          * in the returned state, if they've had their sensitivity individually
          * modified since the last time the group was set.
          * @returns The sensitivity state of the group.
+         * @since 2.2.15
          */
         get_sensitive(): boolean;
 
@@ -5647,45 +5785,53 @@ export namespace XApp {
          * in the returned state, if they've had their visibility individually
          * modified since the last time the group was set.
          * @returns The visibility state of the group.
+         * @since 2.2.15
          */
         get_visible(): boolean;
 
         /**
          * Returns the members of the group or NULL if the group is empty.
          * @returns a list of members of the group. The list is owned by XApp, do not free.
+         * @since 2.2.15
          */
         get_widgets(): Gtk.Widget[];
 
         /**
          * Hide all widgets in the group.
+         * @since 2.2.15
          */
         hide(): void;
 
         /**
          * @param widget the {@link Gtk.Widget} to remove from the group
          * @returns TRUE if the widget was found and removed.
+         * @since 2.2.15
          */
         remove_widget(widget: Gtk.Widget): boolean;
 
         /**
          * Set the sensitivity of all widgets in group.
          * @param sensitive TRUE to make the widgets sensitive.
+         * @since 2.2.15
          */
         set_sensitive(sensitive: boolean): void;
 
         /**
          * Set the visibility of all widgets in the group.
          * @param visible TRUE to make the widgets visible.
+         * @since 2.2.15
          */
         set_visible(visible: boolean): void;
 
         /**
          * @param widgets The widgets to add to this group, replacing any existing ones.
+         * @since 2.2.15
          */
         set_widgets(widgets: Gtk.Widget[] | null): void;
 
         /**
          * Show all widgets in the group.
+         * @since 2.2.15
          */
         show(): void;
     }

@@ -554,6 +554,7 @@ export namespace GSystem {
          * singleton {@link GSystem.Console} instance.  On Unix, this is equivalent to
          * `isatty()`.  For all other cases, such as pipes, sockets, /dev/null,
          * this function will return `null`.
+         * @since 2.36
          */
         static get(): Console;
 
@@ -697,6 +698,7 @@ export namespace GSystem {
          * `gs_subprocess_request_exit()` and `gs_subprocess_force_exit()` API is
          * recommended.
          * @returns Operating-system specific identifier for child process
+         * @since 2.36
          */
         get_pid(): GLib.Pid;
 
@@ -733,12 +735,14 @@ export namespace GSystem {
          * 
          * This function returns `true` if the process has already exited.
          * @returns `true` if the operation is supported, `false` otherwise.
+         * @since 2.36
          */
         request_exit(): boolean;
 
         /**
          * Start an asynchronous wait for the subprocess `self` to exit.
          * @param cancellable a {@link Gio.Cancellable}
+         * @since 2.36
          */
         wait(cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
@@ -746,6 +750,7 @@ export namespace GSystem {
          * Start an asynchronous wait for the subprocess `self` to exit.
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback Invoked when process exits, or `cancellable` is cancelled
+         * @since 2.36
          */
         wait(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -753,6 +758,7 @@ export namespace GSystem {
          * Start an asynchronous wait for the subprocess `self` to exit.
          * @param cancellable a {@link Gio.Cancellable}
          * @param callback Invoked when process exits, or `cancellable` is cancelled
+         * @since 2.36
          */
         wait(cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
@@ -764,6 +770,7 @@ export namespace GSystem {
          * Note that `error` is not set if the process exits abnormally; you
          * must use `g_spawn_check_exit_status()` for that.
          * @param result a {@link Gio.AsyncResult}
+         * @since 2.36
          */
         wait_finish(result: Gio.AsyncResult): [boolean, number];
 
@@ -774,6 +781,7 @@ export namespace GSystem {
          * `error` is set, then `out_exit_status` will be left uninitialized.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` if `cancellable` was cancelled
+         * @since 2.36
          */
         wait_sync(cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -781,6 +789,7 @@ export namespace GSystem {
          * Combines `gs_subprocess_wait_sync()` with `g_spawn_check_exit_status()`.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` if process exited abnormally, or `cancellable` was cancelled
+         * @since 2.36
          */
         wait_sync_check(cancellable: Gio.Cancellable | null): boolean;
 
@@ -825,6 +834,7 @@ export namespace GSystem {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -868,6 +878,7 @@ export namespace GSystem {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;

@@ -264,6 +264,7 @@ export namespace Tracker {
          * Note that the list of prefixes and namespaces is hardcoded in
          * libtracker-sparql. It may not correspond with the installed set of
          * ontologies, if they have been modified since they were installed.
+         * @since 1.10
          */
         static get_default(): NamespaceManager;
 
@@ -275,6 +276,7 @@ export namespace Tracker {
          * be unique.
          * @param prefix a short, unique prefix to identify `namespace`
          * @param ns the URL of the given namespace
+         * @since 1.10
          */
         add_prefix(prefix: string, ns: string): void;
 
@@ -284,18 +286,21 @@ export namespace Tracker {
          * expanded URI. Otherwise, a copy of `compact_uri` will be returned.
          * @param compact_uri a URI or compact URI
          * @returns a newly-allocated string
+         * @since 1.10
          */
         expand_uri(compact_uri: string): string;
 
         /**
          * Calls `func` for each known prefix / URI pair.
          * @param func the function to call for each prefix / URI pair
+         * @since 1.10
          */
         foreach(func: GLib.HFunc): void;
 
         /**
          * @param prefix a string
          * @returns `true` if the {@link Tracker.NamespaceManager} knows about `prefix`, `false` otherwise
+         * @since 1.10
          */
         has_prefix(prefix: string): boolean;
 
@@ -304,12 +309,14 @@ export namespace Tracker {
          * is not known.
          * @param prefix a string
          * @returns a string owned by the {@link Tracker.NamespaceManager}, or `null`
+         * @since 1.10
          */
         lookup_prefix(prefix: string): string;
 
         /**
          * Writes out all namespaces as Turtle `prefix` statements.
          * @returns a newly-allocated string
+         * @since 1.10
          */
         print_turtle(): string;
     }
@@ -415,6 +422,7 @@ export namespace Tracker {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -458,6 +466,7 @@ export namespace Tracker {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -527,6 +536,7 @@ export namespace Tracker {
          * Adds a boolean object to a multi-valued property.
          * @param property_uri a string identifying the property to modify
          * @param value the property object
+         * @since 1.10
          */
         add_boolean(property_uri: string, value: boolean): void;
 
@@ -534,6 +544,7 @@ export namespace Tracker {
          * Adds a double object to a multi-valued property.
          * @param property_uri a string identifying the property to modify
          * @param value the property object
+         * @since 1.10
          */
         add_double(property_uri: string, value: number): void;
 
@@ -545,6 +556,7 @@ export namespace Tracker {
          * types (string, int, etc.).
          * @param property_uri a string identifying the property to set
          * @param value an initialised {@link GObject.Value}
+         * @since 1.10
          */
         add_gvalue(property_uri: string, value: GObject.Value | any): void;
 
@@ -552,6 +564,7 @@ export namespace Tracker {
          * Adds an integer object to a multi-valued property.
          * @param property_uri a string identifying the property to modify
          * @param value the property object
+         * @since 1.10
          */
         add_int(property_uri: string, value: number): void;
 
@@ -559,6 +572,7 @@ export namespace Tracker {
          * Adds an integer object to a multi-valued property.
          * @param property_uri a string identifying the property to modify
          * @param value the property object
+         * @since 1.10
          */
         add_int64(property_uri: string, value: bigint | number): void;
 
@@ -569,6 +583,7 @@ export namespace Tracker {
          * set on `resource`.
          * @param property_uri a string identifying the property to modify
          * @param resource the property object
+         * @since 1.10
          */
         add_relation(property_uri: string, resource: Resource): void;
 
@@ -576,6 +591,7 @@ export namespace Tracker {
          * Adds a string object to a multi-valued property.
          * @param property_uri a string identifying the property to modify
          * @param value the property object
+         * @since 1.10
          */
         add_string(property_uri: string, value: string): void;
 
@@ -585,6 +601,7 @@ export namespace Tracker {
          * it requires that the URI is previously known.
          * @param property_uri a string identifying the property to modify
          * @param value the property object
+         * @since 1.10
          */
         add_uri(property_uri: string, value: string): void;
 
@@ -592,6 +609,7 @@ export namespace Tracker {
          * Returns the first boolean object previously assigned to a property.
          * @param property_uri a string identifying the property to look up
          * @returns the first boolean object
+         * @since 1.10
          */
         get_first_boolean(property_uri: string): boolean;
 
@@ -599,6 +617,7 @@ export namespace Tracker {
          * Returns the first double object previously assigned to a property.
          * @param property_uri a string identifying the property to look up
          * @returns the first double object
+         * @since 1.10
          */
         get_first_double(property_uri: string): number;
 
@@ -606,6 +625,7 @@ export namespace Tracker {
          * Returns the first integer object previously assigned to a property.
          * @param property_uri a string identifying the property to look up
          * @returns the first integer object
+         * @since 1.10
          */
         get_first_int(property_uri: string): number;
 
@@ -613,6 +633,7 @@ export namespace Tracker {
          * Returns the first integer object previously assigned to a property.
          * @param property_uri a string identifying the property to look up
          * @returns the first integer object
+         * @since 1.10
          */
         get_first_int64(property_uri: string): number;
 
@@ -620,6 +641,7 @@ export namespace Tracker {
          * Returns the first resource object previously assigned to a property.
          * @param property_uri a string identifying the property to look up
          * @returns the first resource object
+         * @since 1.10
          */
         get_first_relation(property_uri: string): Resource;
 
@@ -627,6 +649,7 @@ export namespace Tracker {
          * Returns the first string object previously assigned to a property.
          * @param property_uri a string identifying the property to look up
          * @returns the first string object
+         * @since 1.10
          */
         get_first_string(property_uri: string): string;
 
@@ -634,6 +657,7 @@ export namespace Tracker {
          * Returns the first resource object previously assigned to a property.
          * @param property_uri a string identifying the property to look up
          * @returns the first resource object as an URI.
+         * @since 1.10
          */
         get_first_uri(property_uri: string): string;
 
@@ -643,6 +667,7 @@ export namespace Tracker {
          * If the identifier was set to NULL, the identifier returned will be a unique
          * SPARQL blank node identifier, such as "_:123".
          * @returns a string owned by the resource
+         * @since 1.10
          */
         get_identifier(): string;
 
@@ -650,6 +675,7 @@ export namespace Tracker {
          * Returns the list of all known values of the given property.
          * @param property_uri a string identifying the property to look up
          * @returns a {@link GLib.List} of {@link GObject.Value} instances, which must be freed by the caller.
+         * @since 1.10
          */
         get_values(property_uri: string): unknown[];
 
@@ -670,6 +696,7 @@ export namespace Tracker {
          * usual prefixes for all of the ontologies that Tracker ships with by default.
          * @param namespaces a set of prefixed URLs, or `null` to use the     default set
          * @returns a newly-allocated string containing JSON-LD data.
+         * @since 2.0.5
          */
         print_jsonld(namespaces: NamespaceManager | null): string;
 
@@ -684,6 +711,7 @@ export namespace Tracker {
          * @param namespaces a set of prefixed URLs, or `null` to use the     default set
          * @param graph_id the URN of the graph the data should be added to,     or `null`
          * @returns a newly-allocated string containing a SPARQL update command.
+         * @since 1.10
          */
         print_sparql_update(namespaces: NamespaceManager | null, graph_id: string | null): string;
 
@@ -699,6 +727,7 @@ export namespace Tracker {
          * usual prefixes for all of the ontologies that Tracker ships with by default.
          * @param namespaces a set of prefixed URLs, or `null` to use the     default set
          * @returns a newly-allocated string
+         * @since 1.10
          */
         print_turtle(namespaces: NamespaceManager | null): string;
 
@@ -706,6 +735,7 @@ export namespace Tracker {
          * Sets a single-valued boolean object.
          * @param property_uri a string identifying the property to modify
          * @param value the property object
+         * @since 1.10
          */
         set_boolean(property_uri: string, value: boolean): void;
 
@@ -713,6 +743,7 @@ export namespace Tracker {
          * Sets a single-valued double object.
          * @param property_uri a string identifying the property to modify
          * @param value the property object
+         * @since 1.10
          */
         set_double(property_uri: string, value: number): void;
 
@@ -729,6 +760,7 @@ export namespace Tracker {
          * types (string, int, etc.).
          * @param property_uri a string identifying the property to set
          * @param value an initialised {@link GObject.Value}
+         * @since 1.10
          */
         set_gvalue(property_uri: string, value: GObject.Value | any): void;
 
@@ -741,6 +773,7 @@ export namespace Tracker {
          * If the identifier is set to NULL, a SPARQL blank node identifier such as
          * "_:123" is assigned to the resource.
          * @param identifier a string identifying the resource
+         * @since 1.10
          */
         set_identifier(identifier: string | null): void;
 
@@ -748,6 +781,7 @@ export namespace Tracker {
          * Sets a single-valued integer object.
          * @param property_uri a string identifying the property to modify
          * @param value the property object
+         * @since 1.10
          */
         set_int(property_uri: string, value: number): void;
 
@@ -755,6 +789,7 @@ export namespace Tracker {
          * Sets a single-valued integer object.
          * @param property_uri a string identifying the property to modify
          * @param value the property object
+         * @since 1.10
          */
         set_int64(property_uri: string, value: bigint | number): void;
 
@@ -765,6 +800,7 @@ export namespace Tracker {
          * set on `resource`.
          * @param property_uri a string identifying the property to modify
          * @param resource the property object
+         * @since 1.10
          */
         set_relation(property_uri: string, resource: Resource): void;
 
@@ -772,6 +808,7 @@ export namespace Tracker {
          * Sets a single-valued string object.
          * @param property_uri a string identifying the property to modify
          * @param value the property object
+         * @since 1.10
          */
         set_string(property_uri: string, value: string): void;
 
@@ -781,6 +818,7 @@ export namespace Tracker {
          * it requires that the URI is previously known.
          * @param property_uri a string identifying the property to modify
          * @param value the property object
+         * @since 1.10
          */
         set_uri(property_uri: string, value: string): void;
     }
@@ -858,115 +896,156 @@ export namespace Tracker {
         // Methods
         /**
          * @param graph 
+         * @deprecated since 2.0
          */
         insert_open(graph: string | null): void;
 
         /**
          * @param graph 
+         * @deprecated since 2.0
          */
         insert_silent_open(graph: string | null): void;
 
+        /**
+         * @deprecated since 2.0
+         */
         insert_close(): void;
 
         /**
          * @param graph 
+         * @deprecated since 2.0
          */
         delete_open(graph: string | null): void;
 
+        /**
+         * @deprecated since 2.0
+         */
         delete_close(): void;
 
         /**
          * @param graph 
+         * @deprecated since 2.0
          */
         graph_open(graph: string): void;
 
+        /**
+         * @deprecated since 2.0
+         */
         graph_close(): void;
 
+        /**
+         * @deprecated since 2.0
+         */
         where_open(): void;
 
+        /**
+         * @deprecated since 2.0
+         */
         where_close(): void;
 
         /**
          * @param var_name 
+         * @deprecated since 2.0
          */
         subject_variable(var_name: string): void;
 
         /**
          * @param var_name 
+         * @deprecated since 2.0
          */
         object_variable(var_name: string): void;
 
         /**
          * @param iri 
+         * @deprecated since 2.0
          */
         subject_iri(iri: string): void;
 
         /**
          * @param s 
+         * @deprecated since 2.0
          */
         subject(s: string): void;
 
         /**
          * @param iri 
+         * @deprecated since 2.0
          */
         predicate_iri(iri: string): void;
 
         /**
          * @param s 
+         * @deprecated since 2.0
          */
         predicate(s: string): void;
 
         /**
          * @param iri 
+         * @deprecated since 2.0
          */
         object_iri(iri: string): void;
 
         /**
          * @param s 
+         * @deprecated since 2.0
          */
         object(s: string): void;
 
         /**
          * @param literal 
+         * @deprecated since 2.0
          */
         object_string(literal: string): void;
 
         /**
          * @param value 
+         * @deprecated since 2.0
          */
         object_unvalidated(value: string): void;
 
         /**
          * @param literal 
+         * @deprecated since 2.0
          */
         object_boolean(literal: boolean): void;
 
         /**
          * @param literal 
+         * @deprecated since 2.0
          */
         object_int64(literal: bigint | number): void;
 
         /**
          * @param literal 
+         * @deprecated since 2.0
          */
         object_date(literal: bigint | number): number;
 
         /**
          * @param literal 
+         * @deprecated since 2.0
          */
         object_double(literal: number): void;
 
+        /**
+         * @deprecated since 2.0
+         */
         object_blank_open(): void;
 
+        /**
+         * @deprecated since 2.0
+         */
         object_blank_close(): void;
 
         /**
          * @param raw 
+         * @deprecated since 2.0
          */
         prepend(raw: string): void;
 
         /**
          * @param raw 
+         * @deprecated since 2.0
          */
         append(raw: string): void;
 
@@ -1819,12 +1898,14 @@ export namespace Tracker {
         /**
          * Returns the event type.
          * @returns The event type
+         * @since 1.12
          */
         get_event_type(): NotifierEventType;
 
         /**
          * Returns the tracker:id of the element being notified upon.
          * @returns the resource ID
+         * @since 1.12
          */
         get_id(): number;
 
@@ -1833,6 +1914,7 @@ export namespace Tracker {
          * has the flag {@link Tracker.NotifierFlags.QUERY_LOCATION}, and it can
          * be obtained at the time of emission.
          * @returns The element location, or `null`
+         * @since 1.12
          */
         get_location(): string | null;
 
@@ -1848,6 +1930,7 @@ export namespace Tracker {
          * For performance reasons, Tracker only sends notifications for events that
          * are explicitly marked with the tracker:notify property in their ontology.
          * @returns the RDF type of the element
+         * @since 1.12
          */
         get_type(): string;
 
@@ -1858,6 +1941,7 @@ export namespace Tracker {
          * This URN is an unique string identifier for the resource being
          * notified upon, typically of the form "urn:uuid:...".
          * @returns The element URN
+         * @since 1.12
          */
         get_urn(): string;
     }

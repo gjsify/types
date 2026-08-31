@@ -297,6 +297,7 @@ export namespace GUdev {
          * 
          * https://www.freedesktop.org/software/systemd/man/udev_device_has_current_tag.html
          * @returns A `null` terminated string array of current tags. This array is owned by `device` and should not be freed by the caller.
+         * @since 238
          */
         get_current_tags(): string[];
 
@@ -340,6 +341,7 @@ export namespace GUdev {
         /**
          * Gets whether `device` has been initialized.
          * @returns Whether `device` has been initialized.
+         * @since 165
          */
         get_is_initialized(): boolean;
 
@@ -476,6 +478,7 @@ export namespace GUdev {
          * Before version 238 the uncached getters would not strip trailing newlines.
          * @param name Name of the sysfs attribute.
          * @returns The value of the sysfs attribute or `false` if there is no such attribute.
+         * @since 234
          */
         get_sysfs_attr_as_boolean_uncached(name: string): boolean;
 
@@ -497,6 +500,7 @@ export namespace GUdev {
          * Before version 238 the uncached getters would not strip trailing newlines.
          * @param name Name of the sysfs attribute.
          * @returns The value of the sysfs attribute or 0.0 if there is no such attribute.
+         * @since 234
          */
         get_sysfs_attr_as_double_uncached(name: string): number;
 
@@ -518,6 +522,7 @@ export namespace GUdev {
          * Before version 238 the uncached getters would not strip trailing newlines.
          * @param name Name of the sysfs attribute.
          * @returns The value of the sysfs attribute or 0 if there is no such attribute.
+         * @since 234
          */
         get_sysfs_attr_as_int_uncached(name: string): number;
 
@@ -546,6 +551,7 @@ export namespace GUdev {
          * This function does blocking I/O, and updates the sysfs attributes cache.
          * @param name Name of the sysfs attribute.
          * @returns The value of the sysfs attribute split into tokens or `null` if there is no such attribute. This array is owned by `device` and should not be freed by the caller. Before version 238 the uncached getters would not strip trailing newlines.
+         * @since 234
          */
         get_sysfs_attr_as_strv_uncached(name: string): string[] | null;
 
@@ -567,6 +573,7 @@ export namespace GUdev {
          * Before version 238 the uncached getters would not strip trailing newlines.
          * @param name Name of the sysfs attribute.
          * @returns The value of the sysfs attribute or 0 if there is no such attribute.
+         * @since 234
          */
         get_sysfs_attr_as_uint64_uncached(name: string): number;
 
@@ -583,6 +590,7 @@ export namespace GUdev {
          * Before version 238 the uncached getters would not strip trailing newlines.
          * @param name Name of the sysfs attribute.
          * @returns The value of the sysfs attribute or `null` if there is no such attribute. Do not free this string, it is owned by `device`.
+         * @since 234
          */
         get_sysfs_attr_uncached(name: string): string | null;
 
@@ -595,6 +603,7 @@ export namespace GUdev {
         /**
          * Gets all tags for `device`.
          * @returns A `null` terminated string array of tags. This array is owned by `device` and should not be freed by the caller.
+         * @since 165
          */
         get_tags(): string[];
 
@@ -604,6 +613,7 @@ export namespace GUdev {
          * This only works for devices with properties in the udev
          * database. All other devices return 0.
          * @returns Number of micro-seconds since `device` was initialized or 0 if unknown.
+         * @since 165
          */
         get_usec_since_initialized(): number;
 
@@ -633,6 +643,7 @@ export namespace GUdev {
          * functions.
          * @param key Name of sysfs attribute.
          * @returns `true` only if the value for `key` exist.
+         * @since 234
          */
         has_sysfs_attr_uncached(key: string): boolean;
     }
@@ -699,6 +710,7 @@ export namespace GUdev {
         /**
          * All returned devices will be initialized.
          * @returns The passed in `enumerator`.
+         * @since 165
          */
         add_match_is_initialized(): Enumerator;
 
@@ -706,6 +718,7 @@ export namespace GUdev {
          * All returned devices will match the given `name`.
          * @param name Wildcard filter for kernel name e.g. "sda*".
          * @returns The passed in `enumerator`.
+         * @since 165
          */
         add_match_name(name: string): Enumerator;
 
@@ -714,6 +727,7 @@ export namespace GUdev {
          * @param name Wildcard filter for property name.
          * @param value Wildcard filter for property value.
          * @returns The passed in `enumerator`.
+         * @since 165
          */
         add_match_property(name: string, value: string): Enumerator;
 
@@ -721,6 +735,7 @@ export namespace GUdev {
          * All returned devices will match the given `subsystem`.
          * @param subsystem Wildcard for subsystem name e.g. 'scsi' or 'a*'.
          * @returns The passed in `enumerator`.
+         * @since 165
          */
         add_match_subsystem(subsystem: string): Enumerator;
 
@@ -729,6 +744,7 @@ export namespace GUdev {
          * @param name Wildcard filter for sysfs attribute key.
          * @param value Wildcard filter for sysfs attribute value.
          * @returns The passed in `enumerator`.
+         * @since 165
          */
         add_match_sysfs_attr(name: string, value: string): Enumerator;
 
@@ -736,6 +752,7 @@ export namespace GUdev {
          * All returned devices will match the given `tag`.
          * @param tag A udev tag e.g. "udev-acl".
          * @returns The passed in `enumerator`.
+         * @since 165
          */
         add_match_tag(tag: string): Enumerator;
 
@@ -743,6 +760,7 @@ export namespace GUdev {
          * All returned devices will not match the given `subsystem`.
          * @param subsystem Wildcard for subsystem name e.g. 'scsi' or 'a*'.
          * @returns The passed in `enumerator`.
+         * @since 165
          */
         add_nomatch_subsystem(subsystem: string): Enumerator;
 
@@ -751,6 +769,7 @@ export namespace GUdev {
          * @param name Wildcard filter for sysfs attribute key.
          * @param value Wildcard filter for sysfs attribute value.
          * @returns The passed in `enumerator`.
+         * @since 165
          */
         add_nomatch_sysfs_attr(name: string, value: string): Enumerator;
 
@@ -758,12 +777,14 @@ export namespace GUdev {
          * Add a device to the list of devices, to retrieve it back sorted in dependency order.
          * @param sysfs_path A sysfs path, e.g. "/sys/devices/pci0000:00/0000:00:1f.2/host0/target0:0:0/0:0:0:0/block/sda"
          * @returns The passed in `enumerator`.
+         * @since 165
          */
         add_sysfs_path(sysfs_path: string): Enumerator;
 
         /**
          * Executes the query in `enumerator`.
          * @returns A list of {@link GUdev.Device} objects. The caller should free the result by using `g_object_unref()` on each element in the list and then `g_list_free()` on the list.
+         * @since 165
          */
         execute(): Device[];
     }

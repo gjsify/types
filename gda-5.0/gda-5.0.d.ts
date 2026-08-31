@@ -3098,6 +3098,7 @@ export namespace Gda {
          * then the task has not been cancelled.
          * @param task_id a task ID returned by `gda_connection_async_statement_execute()`
          * @returns TRUE if no error occurred
+         * @since 4.2
          */
         async_cancel(task_id: number): boolean;
 
@@ -3111,6 +3112,7 @@ export namespace Gda {
          * executed synchronously.
          * @param task_id a task ID returned by `gda_connection_async_statement_execute()`
          * @returns a {@link GObject.Object}, or `null` if an error occurred
+         * @since 4.2
          */
         async_fetch_result<T = GObject.Object>(task_id: number): [T, Set | null];
 
@@ -3141,6 +3143,7 @@ export namespace Gda {
          * @param col_types an array of GType to request each returned {@link Gda.DataModel}'s column's GType, terminated with the G_TYPE_NONE
          * @param need_last_insert_row TRUE if the values of the last interted row must be computed
          * @returns a task ID, or 0 if an error occurred (not an error regarding `stmt` itself as its execution has not yet started but any other error)
+         * @since 4.2
          */
         async_statement_execute(stmt: Statement, params: Set | null, model_usage: StatementModelUsage, col_types: GObject.GType[] | null, need_last_insert_row: boolean): number;
 
@@ -3232,6 +3235,7 @@ export namespace Gda {
          * @param condition_column_name the name of the column to used in the WHERE condition clause
          * @param condition_value the `condition_column_type`'s GType
          * @returns TRUE if no error occurred, FALSE otherwise
+         * @since 4.2.3
          */
         delete_row_from_table(table: string, condition_column_name: string, condition_value: GObject.Value | any): boolean;
 
@@ -3247,6 +3251,7 @@ export namespace Gda {
          * returned value, see `gda_connection_statement_execute_non_select()`'s documentation.
          * @param sql a query statement that must not begin with "SELECT"
          * @returns the number of rows affected or -1, or -2
+         * @since 4.2.3
          */
         execute_non_select_command(sql: string): number;
 
@@ -3254,6 +3259,7 @@ export namespace Gda {
          * Execute a SQL SELECT command over an opened connection.
          * @param sql a query statement that must begin with "SELECT"
          * @returns a new {@link Gda.DataModel} if successful, `null` otherwise
+         * @since 4.2.3
          */
         execute_select_command(sql: string): DataModel;
 
@@ -3276,6 +3282,7 @@ export namespace Gda {
         /**
          * This function allows you to determine the actual format for the date values.
          * @returns `true` if no error occurred
+         * @since 5.2
          */
         get_date_format(): [boolean, GLib.DateDMY | null, GLib.DateDMY | null, GLib.DateDMY | null, string];
 
@@ -3353,6 +3360,7 @@ export namespace Gda {
          * @param col_names a list of column names (as const gchar *)
          * @param values a list of values (as {@link GObject.Value})
          * @returns TRUE if no error occurred, FALSE otherwise
+         * @since 4.2.3
          */
         insert_row_into_table_v(table: string, col_names: string[], values: (GObject.Value | any)[]): boolean;
 
@@ -3372,6 +3380,7 @@ export namespace Gda {
          * This function helps to parse a SQL string which uses parameters and store them at `params`.
          * @param sql an SQL command to parse, not `null`
          * @returns a {@link Gda.Statement} representing the SQL command, or `null` if an error occurred
+         * @since 4.2.3
          */
         parse_sql_string(sql: string): [Statement, Set | null];
 
@@ -3389,6 +3398,7 @@ export namespace Gda {
          * and taken into account using `gda_connection_add_event()`.
          * @param type a {@link Gda.ConnectionEventType}
          * @returns a pointer to the next available connection event, or `null` if event should be ignored
+         * @since 4.2
          */
         point_available_event(type: ConnectionEventType): ConnectionEvent;
 
@@ -3410,6 +3420,7 @@ export namespace Gda {
          * double quote (") character.
          * @param id an SQL identifier
          * @returns a new string, to free with `g_free()` once not needed anymore
+         * @since 4.0.3
          */
         quote_sql_identifier(id: string): string;
 
@@ -3423,6 +3434,7 @@ export namespace Gda {
          * @param col_types an array of GType to request each returned GdaDataModel's column's GType, see `gda_connection_statement_execute_select_full()` for more information
          * @param stop_on_error set to TRUE if the method has to stop on the first error.
          * @returns a new list of {@link GObject.Object} pointers (see `gda_connection_statement_execute()` for more information about what they represent), one for each actual execution of the statement upon which `rstmt` is built. If `stop_on_error` is `false`, then the list may contain some `null` pointers which refer to statements which failed to execute.
+         * @since 4.2
          */
         repetitive_statement_execute(rstmt: RepetitiveStatement, model_usage: StatementModelUsage, col_types: GObject.GType[] | null, stop_on_error: boolean): GObject.Object[];
 
@@ -3649,6 +3661,7 @@ export namespace Gda {
          * @param col_names a list of column names (as const gchar *)
          * @param values a list of values (as {@link GObject.Value})
          * @returns TRUE if no error occurred, FALSE otherwise
+         * @since 4.2.3
          */
         update_row_in_table_v(table: string, condition_column_name: string, condition_value: GObject.Value | any, col_names: string[], values: (GObject.Value | any)[]): boolean;
 
@@ -3928,6 +3941,7 @@ export namespace Gda {
          * had just been created.
          * @param mapping an array of `gint` which represents the mapping between `wrapper`'s columns and the columns of the wrapped data model
          * @returns `true` if the mapping actually changed
+         * @since 5.2
          */
         set_mapping(mapping: number[] | null): boolean;
 
@@ -3974,6 +3988,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -4147,6 +4162,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -4162,6 +4178,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -4295,18 +4312,21 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          */
         iter_next(iter: DataModelIter): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          */
         iter_prev(iter: DataModelIter): boolean;
 
@@ -4315,6 +4335,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          */
         iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
 
@@ -4373,6 +4394,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -4386,6 +4408,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          */
         set_notify(do_notify_changes: boolean): void;
 
@@ -4526,6 +4549,7 @@ export namespace Gda {
          * This is useful for example for the LDAP related
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
+         * @since 4.2.6
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
@@ -4580,6 +4604,7 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
@@ -4587,6 +4612,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
@@ -4594,6 +4620,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
@@ -4603,6 +4630,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
@@ -4629,6 +4657,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
@@ -4951,6 +4980,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -5124,6 +5154,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -5139,6 +5170,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -5272,18 +5304,21 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          */
         iter_next(iter: DataModelIter): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          */
         iter_prev(iter: DataModelIter): boolean;
 
@@ -5292,6 +5327,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          */
         iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
 
@@ -5350,6 +5386,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -5363,6 +5400,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          */
         set_notify(do_notify_changes: boolean): void;
 
@@ -5503,6 +5541,7 @@ export namespace Gda {
          * This is useful for example for the LDAP related
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
+         * @since 4.2.6
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
@@ -5557,6 +5596,7 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
@@ -5564,6 +5604,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
@@ -5571,6 +5612,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
@@ -5580,6 +5622,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
@@ -5606,6 +5649,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
@@ -5791,6 +5835,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -5964,6 +6009,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -5979,6 +6025,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -6112,18 +6159,21 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          */
         iter_next(iter: DataModelIter): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          */
         iter_prev(iter: DataModelIter): boolean;
 
@@ -6132,6 +6182,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          */
         iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
 
@@ -6190,6 +6241,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -6203,6 +6255,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          */
         set_notify(do_notify_changes: boolean): void;
 
@@ -6343,6 +6396,7 @@ export namespace Gda {
          * This is useful for example for the LDAP related
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
+         * @since 4.2.6
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
@@ -6397,6 +6451,7 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
@@ -6404,6 +6459,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
@@ -6411,6 +6467,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
@@ -6420,6 +6477,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
@@ -6446,6 +6504,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
@@ -6735,6 +6794,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -6908,6 +6968,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -6923,6 +6984,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -7056,18 +7118,21 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          */
         iter_next(iter: DataModelIter): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          */
         iter_prev(iter: DataModelIter): boolean;
 
@@ -7076,6 +7141,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          */
         iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
 
@@ -7134,6 +7200,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -7147,6 +7214,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          */
         set_notify(do_notify_changes: boolean): void;
 
@@ -7287,6 +7355,7 @@ export namespace Gda {
          * This is useful for example for the LDAP related
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
+         * @since 4.2.6
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
@@ -7341,6 +7410,7 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
@@ -7348,6 +7418,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
@@ -7355,6 +7426,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
@@ -7364,6 +7436,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
@@ -7390,6 +7463,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
@@ -7581,6 +7655,7 @@ export namespace Gda {
          * represented by the `param` parameter
          * @param param a {@link Gda.Holder} object, listed in `iter`
          * @returns the column number, or `param` is not valid
+         * @deprecated since 5.2: not very useful
          */
         get_column_for_param(param: Holder): number;
 
@@ -7609,6 +7684,7 @@ export namespace Gda {
          * Get the value stored at the column `col` in `iter`. The returned value must not be modified.
          * @param col the requested column
          * @returns the {@link GObject.Value}, or `null` if the value could not be fetched
+         * @since 4.2.10
          */
         get_value_at_e(col: number): unknown | null;
 
@@ -7787,6 +7863,7 @@ export namespace Gda {
          * `gda_data_model_ldap_new()`.
          * @param cnc a {@link Gda.Connection}
          * @param attributes a string describing which LDAP attributes to retreive, or `null`
+         * @since 4.2.8
          */
         static compute_columns(cnc: Connection, attributes: string | null): Column[];
 
@@ -7820,6 +7897,8 @@ export namespace Gda {
          * @param filter an LDAP filter, for example "(objectClass=*)"
          * @param attributes the list (CSV format) of attributes to fetch, each in the format &lt;attname&gt;[::&lt;GType&gt;]
          * @param scope the search scope
+         * @since 4.2.8
+         * @deprecated since 5.2: use `gda_data_model_ldap_new_with_config`
          */
         static ["new"](cnc: Connection, base_dn: string | null, filter: string | null, attributes: string | null, scope: LdapSearchScope): DataModel;
 
@@ -7866,6 +7945,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -8039,6 +8119,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -8054,6 +8135,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -8187,18 +8269,21 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          */
         iter_next(iter: DataModelIter): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          */
         iter_prev(iter: DataModelIter): boolean;
 
@@ -8207,6 +8292,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          */
         iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
 
@@ -8265,6 +8351,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -8278,6 +8365,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          */
         set_notify(do_notify_changes: boolean): void;
 
@@ -8418,6 +8506,7 @@ export namespace Gda {
          * This is useful for example for the LDAP related
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
+         * @since 4.2.6
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
@@ -8472,6 +8561,7 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
@@ -8479,6 +8569,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
@@ -8486,6 +8577,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
@@ -8495,6 +8587,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
@@ -8521,6 +8614,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
@@ -8671,6 +8765,7 @@ export namespace Gda {
          * @param field the field description, see below
          * @param alias the field alias, or `null`
          * @returns `true` if no error occurred
+         * @since 5.0
          */
         add_data(aggregate_type: DataPivotAggregate, field: string, alias: string | null): boolean;
 
@@ -8693,12 +8788,14 @@ export namespace Gda {
          * @param field the field description, see below
          * @param alias the field alias, or `null`
          * @returns `true` if no error occurred
+         * @since 5.0
          */
         add_field(field_type: DataPivotFieldType, field: string, alias: string | null): boolean;
 
         /**
          * Acutally populates `pivot` by analysing the data from the provided data model.
          * @returns `true` if no error occurred.
+         * @since 5.0
          */
         populate(): boolean;
 
@@ -8745,6 +8842,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -8918,6 +9016,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -8933,6 +9032,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -9066,18 +9166,21 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          */
         iter_next(iter: DataModelIter): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          */
         iter_prev(iter: DataModelIter): boolean;
 
@@ -9086,6 +9189,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          */
         iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
 
@@ -9144,6 +9248,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -9157,6 +9262,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          */
         set_notify(do_notify_changes: boolean): void;
 
@@ -9297,6 +9403,7 @@ export namespace Gda {
          * This is useful for example for the LDAP related
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
+         * @since 4.2.6
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
@@ -9351,6 +9458,7 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
@@ -9358,6 +9466,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
@@ -9365,6 +9474,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
@@ -9374,6 +9484,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
@@ -9400,6 +9511,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
@@ -9936,6 +10048,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -10109,6 +10222,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -10124,6 +10238,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -10257,18 +10372,21 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          */
         iter_next(iter: DataModelIter): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          */
         iter_prev(iter: DataModelIter): boolean;
 
@@ -10277,6 +10395,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          */
         iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
 
@@ -10335,6 +10454,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -10348,6 +10468,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          */
         set_notify(do_notify_changes: boolean): void;
 
@@ -10488,6 +10609,7 @@ export namespace Gda {
          * This is useful for example for the LDAP related
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
+         * @since 4.2.6
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
@@ -10542,6 +10664,7 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
@@ -10549,6 +10672,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
@@ -10556,6 +10680,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
@@ -10565,6 +10690,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
@@ -10591,6 +10717,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
@@ -10895,6 +11022,7 @@ export namespace Gda {
          * Note: any modification statement set using `gda_data_select_set_modification_statement()` will first be unset
          * @param cond_type the type of condition for the modifications where one row only should be identified
          * @returns `true` if no error occurred. If `false` is returned, then some modification statement may still have been computed
+         * @since 4.2.9
          */
         compute_modification_statements_ext(cond_type: DataSelectConditionType): boolean;
 
@@ -10936,6 +11064,7 @@ export namespace Gda {
          *   <listitem><para>the data model has been modified since it was created</para></listitem>
          * </itemizedlist>
          * @returns `true` if no error occurred
+         * @since 5.2.0
          */
         prepare_for_offline(): boolean;
 
@@ -10943,6 +11072,7 @@ export namespace Gda {
          * Requests that `model` be re-run to have an updated result. If an error occurs,
          * then `model` will not be changed.
          * @returns `true` if no error occurred
+         * @since 4.2
          */
         rerun(): boolean;
 
@@ -11067,6 +11197,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -11240,6 +11371,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -11255,6 +11387,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -11388,18 +11521,21 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          */
         iter_next(iter: DataModelIter): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          */
         iter_prev(iter: DataModelIter): boolean;
 
@@ -11408,6 +11544,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          */
         iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
 
@@ -11466,6 +11603,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -11479,6 +11617,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          */
         set_notify(do_notify_changes: boolean): void;
 
@@ -11619,6 +11758,7 @@ export namespace Gda {
          * This is useful for example for the LDAP related
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
+         * @since 4.2.6
          * @virtual
          */
         vfunc_i_get_exceptions(): GLib.Error[];
@@ -11673,6 +11813,7 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          * @virtual
          */
         vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
@@ -11680,6 +11821,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          * @virtual
          */
         vfunc_i_iter_next(iter: DataModelIter): boolean;
@@ -11687,6 +11829,7 @@ export namespace Gda {
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          * @virtual
          */
         vfunc_i_iter_prev(iter: DataModelIter): boolean;
@@ -11696,6 +11839,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          * @virtual
          */
         vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
@@ -11722,6 +11866,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          * @virtual
          */
         vfunc_i_set_notify(do_notify_changes: boolean): void;
@@ -12714,6 +12859,7 @@ export namespace Gda {
          * @param third what comes third in the date representation
          * @param separator separator character used between year, month and day
          * @param twodigits_years TRUE if year part of date must be rendered on 2 digits
+         * @since 4.2.1
          */
         set_str_spec(first: GLib.DateDMY, sec: GLib.DateDMY, third: GLib.DateDMY, separator: number, twodigits_years: boolean): void;
 
@@ -13288,6 +13434,7 @@ export namespace Gda {
          * 
          * `holder`'s value is set to `null`.
          * @param error a {@link GLib.Error} explaining why `holder` is declared invalid, or `null`
+         * @since 4.2.10
          */
         force_invalid_e(error: GLib.Error | null): void;
 
@@ -13377,6 +13524,7 @@ export namespace Gda {
         /**
          * Get the validity of `holder` (that is, of the value held by `holder`)
          * @returns TRUE if `holder`'s value can safely be used
+         * @since 4.2.10
          */
         is_valid_e(): boolean;
 
@@ -13703,6 +13851,7 @@ export namespace Gda {
          * `gda_meta_store_extract()`.
          * @param id an SQL identifier
          * @param cnc a {@link Gda.Connection}
+         * @since 4.0.3
          */
         static sql_identifier_quote(id: string, cnc: Connection): string;
 
@@ -13758,6 +13907,7 @@ export namespace Gda {
          * @param colnames an array of column names from the table for which the foreign key is for
          * @param ref_colnames an array of column names from the referenced table
          * @returns `true` if no error occurred
+         * @since 4.2.4
          */
         declare_foreign_key(mstruct: MetaStruct | null, fk_name: string, catalog: string | null, schema: string | null, table: string, ref_catalog: string | null, ref_schema: string | null, ref_table: string, colnames: string[], ref_colnames: string[]): boolean;
 
@@ -13772,6 +13922,7 @@ export namespace Gda {
          * @param select_sql a SELECT statement
          * @param vars a hash table with all variables names as keys and GValue* as value, representing values for all the variables mentioned in `select_sql`. If there is no variable then this part can be omitted.
          * @returns a new {@link Gda.DataModel}, or `null` if an error occurred
+         * @since 4.2.6
          */
         extract(select_sql: string, vars: { [key: string]: GObject.Value } | null): DataModel;
 
@@ -13816,6 +13967,7 @@ export namespace Gda {
          * @param value_names names of values
          * @param values values
          * @returns `true` if no error occurred
+         * @since 4.2.6
          */
         modify(table_name: string, new_data: DataModel | null, condition: string | null, value_names: string[], values: (GObject.Value | any)[]): boolean;
 
@@ -13927,6 +14079,7 @@ export namespace Gda {
          * Specifies how `store` must handle SQL identifiers it has to store. This method is mainly used by
          * database providers.
          * @param style a style
+         * @since 4.2
          */
         set_identifiers_style(style: SqlIdentifierStyle): void;
 
@@ -13936,6 +14089,7 @@ export namespace Gda {
          * 
          * This method is mainly used by database providers.
          * @param func a {@link Gda.SqlReservedKeywordsFunc} function, or `null`
+         * @since 4.2
          */
         set_reserved_keywords_func(func: SqlReservedKeywordsFunc | null): void;
 
@@ -13961,6 +14115,7 @@ export namespace Gda {
          * @param ref_schema the schema in which the referenced table is, or `null`
          * @param ref_table the name of the referenced table
          * @returns `true` if no error occurred
+         * @since 4.2.4
          */
         undeclare_foreign_key(mstruct: MetaStruct | null, fk_name: string, catalog: string | null, schema: string | null, table: string, ref_catalog: string | null, ref_schema: string | null, ref_table: string): boolean;
     }
@@ -14296,12 +14451,14 @@ export namespace Gda {
          * @param values a {@link Gda.Set} object with the values to be used
          * @param make_copy `true` if `values` is copied, and `false` if `values` is only ref'ed
          * @returns a new {@link Gda.RepetitiveStatement} object
+         * @since 4.2
          */
         append_set(values: Set, make_copy: boolean): boolean;
 
         /**
          * Get all the values sets which will have been added using `gda_repetitive_statement_append_set()`.
          * @returns a new {@link GLib.SList} of {@link Gda.Set} objects (free with `g_slist_free()`).
+         * @since 4.2
          */
         get_all_sets(): Set[];
 
@@ -14312,6 +14469,7 @@ export namespace Gda {
          * Use this object with `gda_repetitive_statement_append_set()`.
          * @param set a place to store the returned template set
          * @returns `true` on success, `false` on error
+         * @since 4.2
          */
         get_template_set(set: Set): boolean;
     }
@@ -14407,6 +14565,7 @@ export namespace Gda {
          * providers' implementations to report any error while reading a value from the database.
          * @param value a {@link GObject.Value} belonging to `row` (obtained with `gda_row_get_value()`).
          * @param error the error which lead to the invalidation
+         * @since 4.2.10
          */
         invalidate_value_e(value: GObject.Value | any, error: GLib.Error | null): void;
 
@@ -14425,6 +14584,7 @@ export namespace Gda {
          * providers' implementations to report any error while reading a value from the database.
          * @param value a {@link GObject.Value} belonging to `row` (obtained with `gda_row_get_value()`).
          * @returns `true` if `value` is valid
+         * @since 4.2.10
          */
         value_is_valid_e(value: GObject.Value | any): boolean;
     }
@@ -14549,6 +14709,7 @@ export namespace Gda {
          * returned {@link Gda.ServerOperation} using `gda_server_operation_set_value_at()`.
          * @param provider the database provider to use
          * @param db_name the name of the database to create, or `null`
+         * @since 4.2.3
          */
         static prepare_create_database(provider: string, db_name: string | null): ServerOperation | null;
 
@@ -14561,6 +14722,7 @@ export namespace Gda {
          * returned {@link Gda.ServerOperation} using `gda_server_operation_set_value_at()`.
          * @param provider the database provider to use
          * @param db_name the name of the database to drop, or `null`
+         * @since 4.2.3
          */
         static prepare_drop_database(provider: string, db_name: string | null): ServerOperation | null;
 
@@ -14569,12 +14731,14 @@ export namespace Gda {
          * table in an opened connection.
          * @param cnc an opened connection
          * @param table_name name of the table to drop
+         * @since 4.2.3
          */
         static prepare_drop_table(cnc: Connection, table_name: string): ServerOperation | null;
 
         /**
          * Performs the reverse of `gda_server_operation_op_type_to_string()`
          * @param str a string
+         * @since 4.2
          */
         static string_to_op_type(str: string): ServerOperationType;
 
@@ -14681,6 +14845,7 @@ export namespace Gda {
          * @param prov a {@link Gda.ServerProvider}, or `null`
          * @param path a complete path to a node (starting with "/")
          * @returns a new string, or `null` if the value is undefined or if the `path` is not defined or `path` does not hold any value, or if the value held is not a string (in that last case a warning is shown).
+         * @since 4.2.6
          */
         get_sql_identifier_at(cnc: Connection | null, prov: ServerProvider | null, path: string): string;
 
@@ -14688,6 +14853,7 @@ export namespace Gda {
          * Get the value for the node at the `path` path
          * @param path a complete path to a node (starting with "/")
          * @returns a constant {@link GObject.Value} if a value has been defined, or `null` if the value is undefined or if the `path` is not defined or `path` does not hold any value.
+         * @since 4.2.6
          */
         get_value_at(path: string): unknown | null;
 
@@ -14714,6 +14880,7 @@ export namespace Gda {
          * `gda_server_provider_create_operation()`, or `gda_server_operation_prepare_create_database()`.
          * @param provider the database provider to use, or `null` if `op` has been created using `gda_server_operation_prepare_create_database()`
          * @returns TRUE if no error occurred and the database has been created, FALSE otherwise
+         * @since 4.2.3
          */
         perform_create_database(provider: string | null): boolean;
 
@@ -14722,6 +14889,7 @@ export namespace Gda {
          * an operation created by `gda_server_operation_prepare_create_table` or any other using the
          * the {@link Gda.ServerOperation} API.
          * @returns TRUE if the table was created; FALSE and set `error` otherwise
+         * @since 4.2.3
          */
         perform_create_table(): boolean;
 
@@ -14730,12 +14898,14 @@ export namespace Gda {
          * `gda_server_provider_create_operation()`, or `gda_server_operation_prepare_drop_database()`.
          * @param provider the database provider to use, or `null` if `op` has been created using `gda_server_operation_prepare_drop_database()`
          * @returns TRUE if no error occurred and the database has been destroyed
+         * @since 4.2.3
          */
         perform_drop_database(provider: string | null): boolean;
 
         /**
          * This is just a convenient function to perform a drop a table operation.
          * @returns TRUE if the table was dropped
+         * @since 4.2.3
          */
         perform_drop_table(): boolean;
 
@@ -14772,6 +14942,7 @@ export namespace Gda {
          * @param value a string
          * @param path a complete path to a node (starting with "/")
          * @returns `true` if no error occurred
+         * @since 4.2.6
          */
         set_value_at(value: string | null, path: string): boolean;
     }
@@ -15083,6 +15254,7 @@ export namespace Gda {
          * @param type a {@link GObject.GType}
          * @param dbms_type a DBMS type definition
          * @returns a {@link Gda.DataHandler}, or `null`
+         * @deprecated since 5.2: use `gda_server_provider_handler_use_default()` instead
          */
         get_data_handler_default(cnc: Connection | null, type: GObject.GType, dbms_type: string): DataHandler;
 
@@ -15487,6 +15659,7 @@ export namespace Gda {
          * Finds a {@link Gda.Holder} using its position
          * @param pos the position of the requested {@link Gda.Holder}, starting at %0
          * @returns the requested {@link Gda.Holder} or `null`
+         * @since 4.2
          */
         get_nth_holder(pos: number): Holder;
 
@@ -15539,6 +15712,7 @@ export namespace Gda {
          * the source by the new model
          * @param source a pointer to a {@link Gda.SetSource} in `set`
          * @param model a {@link Gda.DataModel}
+         * @since 4.2
          */
         replace_source_model(source: SetSource, model: DataModel): void;
     }
@@ -15632,6 +15806,7 @@ export namespace Gda {
          * @param when_array an array containing each WHEN expression ID, having at least `args_size` elements
          * @param then_array an array containing each THEN expression ID, having at least `args_size` elements
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_case(test_expr: SqlBuilderId, else_expr: SqlBuilderId, when_array: SqlBuilderId[], then_array: SqlBuilderId[]): SqlBuilderId;
 
@@ -15642,6 +15817,7 @@ export namespace Gda {
          * @param op2 the ID of the 2nd argument (may be %0 if `op` needs only one operand)
          * @param op3 the ID of the 3rd argument (may be %0 if `op` needs only one or two operand)
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_cond(op: SqlOperatorType, op1: SqlBuilderId, op2: SqlBuilderId, op3: SqlBuilderId): SqlBuilderId;
 
@@ -15654,6 +15830,7 @@ export namespace Gda {
          * @param op type of condition
          * @param op_ids an array of ID for the arguments (not %0)
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_cond_v(op: SqlOperatorType, op_ids: SqlBuilderId[]): SqlBuilderId;
 
@@ -15668,6 +15845,7 @@ export namespace Gda {
          * @param dh deprecated useless argument, just pass `null`
          * @param value value to set the expression to, or `null` or a GDA_TYPE_NULL value to represent an SQL NULL
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_expr_value(dh: DataHandler | null, value: GObject.Value | any | null): SqlBuilderId;
 
@@ -15683,6 +15861,7 @@ export namespace Gda {
          * @param field_name a field name
          * @param table_name a table name, or `null`
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_field_id(field_name: string, table_name: string | null): SqlBuilderId;
 
@@ -15693,6 +15872,7 @@ export namespace Gda {
          * by `value`
          * @param field_name a field name
          * @param value value to set the field to, or `null` or a GDA_TYPE_NULL value to represent an SQL NULL
+         * @since 4.2
          */
         add_field_value_as_gvalue(field_name: string, value: GObject.Value | any | null): void;
 
@@ -15713,6 +15893,7 @@ export namespace Gda {
          * See also `gda_sql_builder_add_field_value()` and `gda_sql_builder_add_field_value_as_gvalue()`.
          * @param field_id the ID of the field's name or definition
          * @param value_id the ID of the value to set the field to, or %0
+         * @since 4.2
          */
         add_field_value_id(field_id: SqlBuilderId, value_id: SqlBuilderId): void;
 
@@ -15721,6 +15902,7 @@ export namespace Gda {
          * @param func_name the functions's name
          * @param args an array of IDs representing the function's arguments
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_function(func_name: string, args: SqlBuilderId[]): SqlBuilderId;
 
@@ -15748,6 +15930,7 @@ export namespace Gda {
          * For fields, see `gda_sql_builder_add_field_id()`.
          * @param str a string
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_id(str: string): SqlBuilderId;
 
@@ -15769,24 +15952,28 @@ export namespace Gda {
          * @param type parameter's type
          * @param nullok TRUE if the parameter can be set to `null`
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         add_param(param_name: string, type: GObject.GType, nullok: boolean): SqlBuilderId;
 
         /**
          * Add a sub select to a COMPOUND statement
          * @param subselect a {@link Gda.SqlBuilder}, which has to be a SELECT or compound SELECT. This will be copied.
+         * @since 4.2
          */
         compound_add_sub_select_from_builder(subselect: SqlBuilder): void;
 
         /**
          * Changes the type of compound which `builder` is making, for a COMPOUND statement
          * @param compound_type a type of compound
+         * @since 4.2
          */
         compound_set_type(compound_type: SqlStatementCompoundType): void;
 
         /**
          * Creates a new {@link Gda.Statement} statement from `builder`'s contents.
          * @returns a new {@link Gda.Statement} object, or `null` if an error occurred
+         * @since 4.2
          */
         get_statement(): Statement;
 
@@ -15795,6 +15982,7 @@ export namespace Gda {
          * @param query a {@link Gda.SqlBuilder} object to get expression from
          * @param expr_id a {@link Gda.SqlBuilderId} of the expression in `query`
          * @returns the ID of the new expression, or %0 if there was an error
+         * @since 4.2
          */
         import_expression_from_builder(query: SqlBuilder, expr_id: SqlBuilderId): SqlBuilderId;
 
@@ -15803,6 +15991,7 @@ export namespace Gda {
          * values in the fields named `field_name` in both tables, via the USING keyword.
          * @param join_id the ID of the join to modify (not %0)
          * @param field_name the name of the field to use in the join condition (not `null`)
+         * @since 4.2
          */
         join_add_field(join_id: SqlBuilderId, field_name: string): void;
 
@@ -15816,6 +16005,7 @@ export namespace Gda {
          * @param table_name a table name, or `null`
          * @param alias an alias (eg. for the "AS" clause), or `null`
          * @returns the ID of the added field, or %0 if there was an error
+         * @since 4.2
          */
         select_add_field(field_name: string, table_name: string | null, alias: string | null): SqlBuilderId;
 
@@ -15824,6 +16014,7 @@ export namespace Gda {
          * @param table_name the name of the target table
          * @param alias the alias to give to the target, or `null`
          * @returns the ID of the new target, or %0 if there was an error
+         * @since 4.2
          */
         select_add_target(table_name: string, alias: string | null): SqlBuilderId;
 
@@ -15834,6 +16025,7 @@ export namespace Gda {
          * @param table_id the ID of the expression holding a table reference (not %0)
          * @param alias the alias to give to the target, or `null`
          * @returns the ID of the new (or existing) target, or %0 if there was an error
+         * @since 4.2
          */
         select_add_target_id(table_id: SqlBuilderId, alias: string | null): SqlBuilderId;
 
@@ -15842,6 +16034,7 @@ export namespace Gda {
          * 
          * Adds the `expr_id` expression to the GROUP BY clause's expressions list
          * @param expr_id the ID of the expression to set use in the GROUP BY clause, or 0 to unset any previous GROUP BY clause
+         * @since 4.2
          */
         select_group_by(expr_id: SqlBuilderId): void;
 
@@ -15850,6 +16043,7 @@ export namespace Gda {
          * @param expr_id the ID of the expression to use during sorting (not %0)
          * @param asc `true` for an ascending sorting
          * @param collation_name name of the collation to use when sorting, or `null`
+         * @since 4.2
          */
         select_order_by(expr_id: SqlBuilderId, asc: boolean, collation_name: string | null): void;
 
@@ -15862,6 +16056,7 @@ export namespace Gda {
          * will then usually be "... DISTINCT ON &lt;expression&gt;...").
          * @param distinct set to `true` to have the DISTINCT requirement
          * @param expr_id the ID of the DISTINCT ON expression, or %0 if no expression is to be used. It is ignored           if `distinct` is `false`.
+         * @since 4.2
          */
         select_set_distinct(distinct: boolean, expr_id: SqlBuilderId): void;
 
@@ -15870,6 +16065,7 @@ export namespace Gda {
          * 
          * Sets the HAVING condition of the statement
          * @param cond_id the ID of the expression to set as HAVING condition, or 0 to unset any previous HAVING condition
+         * @since 4.2
          */
         select_set_having(cond_id: SqlBuilderId): void;
 
@@ -15883,6 +16079,7 @@ export namespace Gda {
          * call to this method.
          * @param limit_count_expr_id the ID of the LIMIT expression, or %0
          * @param limit_offset_expr_id the ID of the OFFSET expression, or %0
+         * @since 4.2
          */
         select_set_limit(limit_count_expr_id: SqlBuilderId, limit_offset_expr_id: SqlBuilderId): void;
 
@@ -15891,6 +16088,7 @@ export namespace Gda {
          * 
          * Sets the name of the table on which the built statement operates.
          * @param table_name a table name
+         * @since 4.2
          */
         set_table(table_name: string): void;
 
@@ -15899,6 +16097,7 @@ export namespace Gda {
          * 
          * Sets the WHERE condition of the statement
          * @param cond_id the ID of the expression to set as WHERE condition, or 0 to unset any previous WHERE condition
+         * @since 4.2
          */
         set_where(cond_id: SqlBuilderId): void;
     }
@@ -16320,6 +16519,7 @@ export namespace Gda {
          * </itemizedlist>
          * @param id the ID of a job as returned by `gda_thread_wrapper_execute()` or `gda_thread_wrapper_execute_void()`
          * @returns `true` if the job has been cancelled, or `false` in any other case.
+         * @since 4.2
          */
         cancel(id: number): boolean;
 
@@ -16348,6 +16548,7 @@ export namespace Gda {
          * @param private_job set to `true` if `callback` is to be invoked only if the signal has    been emitted when a job created for the calling thread is being executed, and to `false`    if `callback` has to be called whenever the `sig_name` signal is emitted by `instance`. Note that    this argument is not taken into account if `private_thread` is set to `false`.
          * @param callback a {@link Gda.ThreadWrapperCallback} function
          * @returns the handler ID
+         * @since 4.2
          */
         connect_raw(instance: null, sig_name: string, private_thread: boolean, private_job: boolean, callback: ThreadWrapperCallback): number;
 
@@ -16358,6 +16559,7 @@ export namespace Gda {
          * was called will not be called anymore (even if the object has emitted the signal in the worker
          * thread and this signal has not been handled in the user thread).
          * @param id a handler ID, as returned by `gda_thread_wrapper_connect_raw()`
+         * @since 4.2
          */
         disconnect(id: bigint | number): void;
 
@@ -16382,6 +16584,7 @@ export namespace Gda {
          * @param func the function to execute, not `null`
          * @param arg argument to pass to `func`, or `null`
          * @returns the job ID, or 0 if an error occurred
+         * @since 4.2
          */
         execute(func: ThreadWrapperFunc, arg: null): number;
 
@@ -16402,6 +16605,7 @@ export namespace Gda {
          * @param func the function to execute, not `null`
          * @param arg argument to pass to `func`
          * @returns the job ID, or 0 if an error occurred
+         * @since 4.2
          */
         execute_void(func: ThreadWrapperVoidFunc, arg: null): number;
 
@@ -16411,6 +16615,7 @@ export namespace Gda {
          * @param may_lock TRUE if this funct must lock the caller untill a result is available
          * @param exp_id ID of the job for which a result is expected
          * @returns the pointer returned by the execution, or `null` if no result is available
+         * @since 4.2
          */
         fetch_result(may_lock: boolean, exp_id: number): null;
 
@@ -16435,6 +16640,7 @@ export namespace Gda {
          * `g_io_channel_unref()` should be called on the {@link GLib.IOChannel} to let `wrapper` know it should not use
          * that object anymore.
          * @returns a new {@link GLib.IOChannel}, or `null` if it could not be created
+         * @since 4.2.9
          */
         get_io_channel(): GLib.IOChannel;
 
@@ -16442,6 +16648,7 @@ export namespace Gda {
          * Use this method to query the number of functions which have been queued to be executed
          * but which have not yet been executed.
          * @returns the number of jobs not yet executed
+         * @since 4.2
          */
         get_waiting_size(): number;
 
@@ -16457,6 +16664,7 @@ export namespace Gda {
          * If `may_block` is `true`, then it will block untill there is one finished execution
          * (functions returning void and signals are ignored regarding this argument).
          * @param may_block whether the call may block
+         * @since 4.2
          */
         iterate(may_block: boolean): void;
 
@@ -16465,11 +16673,13 @@ export namespace Gda {
          * be treated by the calling thread instead of by the thread in which `gda_thread_wrapper_connect_raw()`
          * was called.
          * @param id a signal ID
+         * @since 4.2
          */
         steal_signal(id: bigint | number): void;
 
         /**
          * Does the opposite of `gda_thread_wrapper_get_io_channel()`
+         * @since 4.2.9
          */
         unset_io_channel(): void;
     }
@@ -16677,11 +16887,13 @@ export namespace Gda {
         /**
          * Sets `manager` as a top {@link Gda.TreeManager} object, which will be responsible for creating top level nodes in `tree`.
          * @param manager a {@link Gda.TreeManager} object
+         * @since 4.2
          */
         add_manager(manager: TreeManager): void;
 
         /**
          * Removes any node in `tree`
+         * @since 4.2
          */
         clean(): void;
 
@@ -16689,6 +16901,7 @@ export namespace Gda {
          * Dumps the contents of `tree` to `stream`, using a hierarchical view.
          * @param node a {@link Gda.TreeNode} to start the dump from, or `null` for a full dump
          * @param stream a stream to send the dump to, or `null` for STDOUT
+         * @since 4.2
          */
         dump(node: TreeNode | null, stream: null): void;
 
@@ -16697,6 +16910,7 @@ export namespace Gda {
          * @param tree_path full path to the required nodes (if `use_names` is `true`, then it must start with '/')
          * @param use_names if `true`, then `tree_path` will be interpreted as a unix style path, and if `false`,             then `tree_path` will be interpreted similarly to the `GtkTreePath`'s string representation.
          * @returns the requested {@link Gda.TreeNode} pointer, or `null` if not found
+         * @since 4.2
          */
         get_node(tree_path: string, use_names: boolean): TreeNode | null;
 
@@ -16704,6 +16918,7 @@ export namespace Gda {
          * Get the {@link Gda.TreeManager} which created `node` in `tree`
          * @param node a {@link Gda.TreeNode} present in `tree`
          * @returns the {@link Gda.TreeManager}, or `null` if `node` is not present in `tree`
+         * @since 4.2
          */
         get_node_manager(node: TreeNode): TreeManager;
 
@@ -16711,6 +16926,7 @@ export namespace Gda {
          * Get the path associated to `node` in `tree`.
          * @param node a {@link Gda.TreeNode} node in `tree`
          * @returns a new string, or `null` if `node` is not in `tree`
+         * @since 4.2
          */
         get_node_path(node: TreeNode): string;
 
@@ -16722,6 +16938,7 @@ export namespace Gda {
          * @param tree_path full path to the required nodes (if `use_names` is `true`, then it must start with '/'), or `null`
          * @param use_names if `true`, then `tree_path` will be interpreted as a unix style path, and if `false`,             then `tree_path` will be interpreted similarly to the `GtkTreePath`'s string representation.
          * @returns a new list of {@link Gda.TreeNode} pointers, free it with `g_slist_free()`
+         * @since 4.2
          */
         get_nodes_in_path(tree_path: string | null, use_names: boolean): TreeNode[];
 
@@ -16729,6 +16946,7 @@ export namespace Gda {
          * Sets an attribute to `tree`, which will be accessible to any node in it.
          * @param attribute attribute name
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_attribute(attribute: string, value: GObject.Value | any): void;
 
@@ -16736,6 +16954,7 @@ export namespace Gda {
          * Requests that `tree` be populated with nodes. If an error occurs, then `tree`'s contents is left
          * unchanged, and otherwise `tree`'s previous contents is completely replaced by the new one.
          * @returns TRUE if no error occurred.
+         * @since 4.2
          */
         update_all(): boolean;
 
@@ -16744,6 +16963,7 @@ export namespace Gda {
          * `gda_tree_update_part()`). If `node` is `null` then the top level nodes are updated.
          * @param node a {@link Gda.TreeNode} node in `tree`, or `null`
          * @returns TRUE if no error occurred.
+         * @since 4.2.8
          */
         update_children(node: TreeNode | null): boolean;
 
@@ -16751,6 +16971,7 @@ export namespace Gda {
          * Requests that `tree` be populated with nodes, starting from `node`
          * @param node a {@link Gda.TreeNode} node in `tree`
          * @returns TRUE if no error occurred.
+         * @since 4.2
          */
         update_part(node: TreeNode): boolean;
     }
@@ -16838,6 +17059,7 @@ export namespace Gda {
          * infinite recursive behaviour in this case when creating children nodes
          * (depending on the actual implementation of the {@link Gda.TreeManager}).
          * @param sub a {@link Gda.TreeManager} object to add
+         * @since 4.2
          */
         add_manager(sub: TreeManager): void;
 
@@ -16848,6 +17070,7 @@ export namespace Gda {
          * As a side effect, if `value` is `null`, then the corresponding attribute, if it was set, is unset.
          * @param attribute an attribute name
          * @param value the attribute's value, or `null`
+         * @since 4.2
          */
         add_new_node_attribute(attribute: string, value: GObject.Value | any | null): void;
 
@@ -16860,12 +17083,14 @@ export namespace Gda {
          * @param parent the parent the new node may have, or `null`
          * @param name name given to the new node, or `null`
          * @returns a new {@link Gda.TreeNode}
+         * @since 4.2
          */
         create_node(parent: TreeNode | null, name: string | null): TreeNode;
 
         /**
          * Get the list of sub managers which have already been added using `gda_tree_manager_add_manager()`
          * @returns a list of `GdaTreeMenager` which should not be modified.
+         * @since 4.2
          */
         get_managers(): TreeManager[];
     }
@@ -17480,6 +17705,7 @@ export namespace Gda {
          * see <link linkend="libgda-40-Attributes-manager.synopsis">this section</link>.
          * @param attribute attribute name as a string
          * @returns a read-only {@link GObject.Value}, or `null` if not attribute named `attribute` has been set for `node`
+         * @since 4.2
          */
         fetch_attribute(attribute: string): unknown;
 
@@ -17487,6 +17713,7 @@ export namespace Gda {
          * Get the {@link Gda.TreeNode} child of `node` at position `index` (starting at 0).
          * @param index a index
          * @returns the {@link Gda.TreeNode}, or `null` if not found
+         * @since 4.2
          */
         get_child_index(index: number): TreeNode;
 
@@ -17494,12 +17721,14 @@ export namespace Gda {
          * Get the {@link Gda.TreeNode} child of `node` which has the #GDA_ATTRIBUTE_NAME set to `name`
          * @param name requested node's name
          * @returns the {@link Gda.TreeNode}, or `null` if not found
+         * @since 4.2
          */
         get_child_name(name: string): TreeNode;
 
         /**
          * Get a list of all `node`'s children, free it with `g_slist_free()` after usage
          * @returns a new {@link GLib.SList} of {@link Gda.TreeNode} objects, or `null` if `node` does not have any child
+         * @since 4.2
          */
         get_children(): TreeNode[];
 
@@ -17512,6 +17741,7 @@ export namespace Gda {
          * see <link linkend="libgda-40-Attributes-manager.synopsis">this section</link>.
          * @param attribute attribute name as a string
          * @returns a read-only {@link GObject.Value}, or `null` if not attribute named `attribute` has been set for `node`
+         * @since 4.2
          */
         get_node_attribute(attribute: string): unknown;
 
@@ -17519,6 +17749,7 @@ export namespace Gda {
          * Get the {@link Gda.TreeNode} parent of `node` in the {@link Gda.Tree} node belongs to. If `node` is at the top level,
          * then this method return `null`.
          * @returns the parent {@link Gda.TreeNode}
+         * @since 4.2
          */
         get_parent(): TreeNode;
 
@@ -17542,6 +17773,7 @@ export namespace Gda {
          * copied), except if `value` is `null`, in which case the attribute is removed.
          * @param attribute attribute name
          * @param value a {@link GObject.Value}, or `null`
+         * @since 4.2
          */
         set_node_attribute(attribute: string, value: GObject.Value | any | null): void;
     }
@@ -18063,11 +18295,13 @@ export namespace Gda {
         /**
          * Copy constructor.
          * @returns a new {@link Gda.DsnInfo}
+         * @since 5.2
          */
         copy(): DsnInfo;
 
         /**
          * Frees any resources taken by `dsn` struct. If `dsn` is `null`, then nothing happens.
+         * @since 5.2
          */
         free(): void;
     }
@@ -18242,17 +18476,20 @@ export namespace Gda {
         /**
          * Copy constructor.
          * @returns a new {@link Gda.MetaContext}
+         * @since 5.2
          */
         copy(): MetaContext;
 
         /**
          * Frees any resources taken by `ctx` struct. If `ctx` is `null`, then nothing happens.
+         * @since 5.2
          */
         free(): void;
 
         /**
          * Get table's name to used in the context.
          * @returns A string with the table's name used in the context.
+         * @since 5.2
          */
         get_table(): string;
 
@@ -18265,6 +18502,7 @@ export namespace Gda {
          * @param column the column's name
          * @param value the column's value
          * @param cnc a {@link Gda.Connection} to be used when identifier are normalized, or NULL
+         * @since 5.2
          */
         set_column(column: string, value: GObject.Value | any, cnc: Connection | null): void;
 
@@ -18275,6 +18513,7 @@ export namespace Gda {
          * `columns` incements its reference counting. Is recommended to use `gda_meta_context_free` in order to free them.
          * @param columns a {@link GLib.HashTable} with the table's columns' name and their values to use in context.
          * @param cnc a {@link Gda.Connection} to used to normalize identifiers quoting, or NULL
+         * @since 5.2
          */
         set_columns(columns: { [key: string]: GObject.Value }, cnc: Connection | null): void;
 
@@ -18283,6 +18522,7 @@ export namespace Gda {
          * schema</link> used to store meta information about the database. Use "_tables" to update meta information
          * about database's tables.
          * @param table a string with the table's name to use in context
+         * @since 5.2
          */
         set_table(table: string): void;
     }
@@ -18525,48 +18765,56 @@ export namespace Gda {
 
         /**
          * @returns a `gdouble` representation of `numeric`
+         * @since 5.0.2
          */
         get_double(): number;
 
         /**
          * Gets the precision of a {@link Gda.Numeric}.
          * @returns an integer with the precision of a {@link Gda.Numeric}.
+         * @since 5.0.2
          */
         get_precision(): number;
 
         /**
          * Get the string representation of `numeric`, in the C locale format (dot as a fraction separator).
          * @returns a new string representing the stored valued in `numeric`
+         * @since 5.0.2
          */
         get_string(): string | null;
 
         /**
          * Gets the width of a {@link Gda.Numeric}. (Not yet implemented).
          * @returns an integer with the width of a {@link Gda.Numeric}. (Not jet implemented).
+         * @since 5.0.2
          */
         get_width(): number;
 
         /**
          * Sets `numeric` using a `gdouble` represented by `number`.
          * @param number a `gdouble`
+         * @since 5.0.2
          */
         set_double(number: number): void;
 
         /**
          * Sets `numeric` with a number represented by `str`, in the C locale format (dot as a fraction separator).
          * @param str a string representing a number, in the C locale format
+         * @since 5.0.2
          */
         set_from_string(str: string): void;
 
         /**
          * Sets the precision of a {@link Gda.Numeric}.
          * @param precision a `glong`
+         * @since 5.0.2
          */
         set_precision(precision: bigint | number): void;
 
         /**
          * Sets the width of a {@link Gda.Numeric}. (Not yet implemented).
          * @param width a `glong`
+         * @since 5.0.2
          */
         set_width(width: bigint | number): void;
     }
@@ -18671,6 +18919,7 @@ export namespace Gda {
         /**
          * Call this function to get rid of the clear version of the value associated to
          * `name`.
+         * @since 5.2.0
          */
         protect_values(): void;
 
@@ -18818,28 +19067,33 @@ export namespace Gda {
         // Methods
         /**
          * @param node a {@link Gda.SetNode} to set
+         * @since 5.2
          */
         add_node(node: SetNode): void;
 
         /**
          * Copy constructor.
          * @returns a new {@link Gda.SetGroup}
+         * @since 5.2
          */
         copy(): SetGroup;
 
         /**
          * Frees any resources taken by `sg` struct. If `sg` is `null`, then nothing happens.
+         * @since 5.2
          */
         free(): void;
 
         /**
          * @returns number of nodes in `sg`.
+         * @since 5.2
          */
         get_n_nodes(): number;
 
         /**
          * This method always return first {@link Gda.SetNode} in `sg`.
          * @returns first {@link Gda.SetNode} in `sg`.
+         * @since 5.2
          */
         get_node(): SetNode;
 
@@ -18847,16 +19101,19 @@ export namespace Gda {
          * Returns a {@link GLib.SList} with the {@link Gda.SetNode} grouped by `sg`. You must use
          * `g_slist_free` on returned list.
          * @returns a {@link GLib.SList} with all nodes in `sg`.
+         * @since 5.2
          */
         get_nodes(): SetNode[];
 
         /**
          * @returns a {@link Gda.SetSource}. If `null` then `sg` contains just one element.
+         * @since 5.2
          */
         get_source(): SetSource;
 
         /**
          * @param source a {@link Gda.SetSource} to set
+         * @since 5.2
          */
         set_source(source: SetSource): void;
     }
@@ -18886,26 +19143,31 @@ export namespace Gda {
         /**
          * Copy constructor.
          * @returns a new {@link Gda.SetNode}
+         * @since 5.2
          */
         copy(): SetNode;
 
         /**
          * Frees any resources taken by `node` struct. If `node` is `null`, then nothing happens.
+         * @since 5.2
          */
         free(): void;
 
         /**
          * @returns the {@link Gda.DataModel} used by `node`
+         * @since 5.2
          */
         get_data_model(): DataModel;
 
         /**
          * @returns the {@link Gda.Holder} used by `node`
+         * @since 5.2
          */
         get_holder(): Holder;
 
         /**
          * @returns the number of column referenced in a given {@link Gda.DataModel}. If negative no column is referenced or no {@link Gda.DataModel} is used by `node`.
+         * @since 5.2
          */
         get_source_column(): number;
 
@@ -18914,12 +19176,14 @@ export namespace Gda {
          * counting when set. Internally referenced column number is set to first column
          * in `model`.
          * @param model a {@link Gda.DataModel} to be used by `node`
+         * @since 5.2
          */
         set_data_model(model: DataModel | null): void;
 
         /**
          * Set a {@link Gda.Holder} to `node`.
          * @param holder 
+         * @since 5.2
          */
         set_holder(holder: Holder): void;
 
@@ -18927,6 +19191,7 @@ export namespace Gda {
          * Set column number in the {@link Gda.DataModel} used `node`. If no {@link Gda.DataModel} is set
          * then column is set to invalid (-1);
          * @param column 
+         * @since 5.2
          */
         set_source_column(column: number): void;
     }
@@ -18962,38 +19227,45 @@ export namespace Gda {
         /**
          * Set a {@link Gda.DataModel}
          * @param node a {@link Gda.SetNode} to add
+         * @since 5.2
          */
         add_node(node: SetNode): void;
 
         /**
          * Copy constructor.
          * @returns a new {@link Gda.SetSource}
+         * @since 5.2
          */
         copy(): SetSource;
 
         /**
          * Frees any resources taken by `s` struct. If `s` is `null`, then nothing happens.
+         * @since 5.2
          */
         free(): void;
 
         /**
          * @returns a {@link Gda.DataModel} used by `s`
+         * @since 5.2
          */
         get_data_model(): DataModel;
 
         /**
          * @returns number of nodes in `sg`.
+         * @since 5.2
          */
         get_n_nodes(): number;
 
         /**
          * @returns a list of {@link Gda.SetNode} structs
+         * @since 5.2
          */
         get_nodes(): SetNode[];
 
         /**
          * Set a {@link Gda.DataModel}
          * @param model a {@link Gda.DataModel}
+         * @since 5.2
          */
         set_data_model(model: DataModel): void;
     }
@@ -19248,11 +19520,13 @@ export namespace Gda {
          * 
          * Note: the resulting will always be a valid time.
          * @param ntz a new timezone to use, in seconds added to GMT
+         * @since 5.2
          */
         change_timezone(ntz: bigint | number): void;
 
         /**
          * @returns `TRUE` if {@link Gda.Time} is valid; `false` otherwise.
+         * @since 4.2
          */
         valid(): boolean;
     }
@@ -19299,11 +19573,13 @@ export namespace Gda {
          * 
          * Note: the resulting will always be a valid time.
          * @param ntz a new timezone to use, in seconds added to GMT
+         * @since 5.2
          */
         change_timezone(ntz: bigint | number): void;
 
         /**
          * @returns `TRUE` if {@link Gda.Timestamp} is valid; `false` otherwise.
+         * @since 4.2
          */
         valid(): boolean;
     }
@@ -19798,6 +20074,7 @@ export namespace Gda {
              * This is useful for example for the LDAP related
              * data models where some rows may be missing because the LDAP search has reached a limit
              * imposed by the LDAP server.
+             * @since 4.2.6
              * @virtual
              */
             vfunc_i_get_exceptions(): GLib.Error[];
@@ -19852,6 +20129,7 @@ export namespace Gda {
              * Moves `iter` to the row number given by `row`.
              * @param iter a {@link Gda.DataModelIter} object.
              * @param row a row to point to with `iter`
+             * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
              * @virtual
              */
             vfunc_i_iter_at_row(iter: DataModelIter, row: number): boolean;
@@ -19859,6 +20137,7 @@ export namespace Gda {
             /**
              * Moves `iter` to the next row in `model`.
              * @param iter a {@link Gda.DataModelIter} object.
+             * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
              * @virtual
              */
             vfunc_i_iter_next(iter: DataModelIter): boolean;
@@ -19866,6 +20145,7 @@ export namespace Gda {
             /**
              * Moves `iter` to the next row in `model`.
              * @param iter a {@link Gda.DataModelIter} object.
+             * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
              * @virtual
              */
             vfunc_i_iter_prev(iter: DataModelIter): boolean;
@@ -19875,6 +20155,7 @@ export namespace Gda {
              * @param iter a {@link Gda.DataModelIter} object.
              * @param col the number of column to set value to
              * @param value the to use to set on
+             * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
              * @virtual
              */
             vfunc_i_iter_set_value(iter: DataModelIter, col: number, value: unknown): boolean;
@@ -19901,6 +20182,7 @@ export namespace Gda {
             /**
              * Enable or disable notifications changes on the given data model.
              * @param do_notify_changes Set to TRUE if you require notifications.
+             * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
              * @virtual
              */
             vfunc_i_set_notify(do_notify_changes: boolean): void;
@@ -20028,6 +20310,7 @@ export namespace Gda {
          * columns.
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
+         * @since 5.2.0
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -20201,6 +20484,7 @@ export namespace Gda {
         /**
          * @param col column number.
          * @returns the name for the given column in a data model object.
+         * @since 3.2
          */
         get_column_name(col: number): string;
 
@@ -20216,6 +20500,7 @@ export namespace Gda {
          * data models where some rows may be missing because the LDAP search has reached a limit
          * imposed by the LDAP server.
          * @returns a pointer to a `null` terminated array of {@link GLib.Error}, or `null`.
+         * @since 4.2.6
          */
         get_exceptions(): GLib.Error[];
 
@@ -20349,18 +20634,21 @@ export namespace Gda {
          * Moves `iter` to the row number given by `row`.
          * @param iter a {@link Gda.DataModelIter} object.
          * @param row a row to point to with `iter`
+         * @deprecated since 5.2: use `gda_data_model_iter_move_to_row()` instead
          */
         iter_at_row(iter: DataModelIter, row: number): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_next()` instead
          */
         iter_next(iter: DataModelIter): boolean;
 
         /**
          * Moves `iter` to the next row in `model`.
          * @param iter a {@link Gda.DataModelIter} object.
+         * @deprecated since 5.2: use `gda_data_model_iter_move_prev()` instead
          */
         iter_prev(iter: DataModelIter): boolean;
 
@@ -20369,6 +20657,7 @@ export namespace Gda {
          * @param iter a {@link Gda.DataModelIter} object.
          * @param col the number of column to set value to
          * @param value the to use to set on
+         * @deprecated since 5.2: use `gda_data_model_iter_set_value_at()` instead
          */
         iter_set_value(iter: DataModelIter, col: number, value: GObject.Value | any): boolean;
 
@@ -20427,6 +20716,7 @@ export namespace Gda {
          * title to `name`.
          * @param col column number
          * @param name name for the given column.
+         * @since 3.2
          */
         set_column_name(col: number, name: string): void;
 
@@ -20440,6 +20730,7 @@ export namespace Gda {
         /**
          * Enable or disable notifications changes on the given data model.
          * @param do_notify_changes Set to TRUE if you require notifications.
+         * @deprecated since 5.2: use `gda_data_model_freeze()` and `gda_data_model_thaw()` instead
          */
         set_notify(do_notify_changes: boolean): void;
 

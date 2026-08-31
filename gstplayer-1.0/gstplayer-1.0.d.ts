@@ -477,11 +477,13 @@ export namespace GstPlayer {
         // Static methods
         /**
          * @param config a {@link GstPlayer.Player} configuration
+         * @since 1.10
          */
         static config_get_position_update_interval(config: Gst.Structure): number;
 
         /**
          * @param config a {@link GstPlayer.Player} configuration
+         * @since 1.12
          */
         static config_get_seek_accurate(config: Gst.Structure): boolean;
 
@@ -489,6 +491,7 @@ export namespace GstPlayer {
          * Return the user agent which has been configured using
          * `gst_player_config_set_user_agent()` if any.
          * @param config a {@link GstPlayer.Player} configuration
+         * @since 1.10
          */
         static config_get_user_agent(config: Gst.Structure): string | null;
 
@@ -497,6 +500,7 @@ export namespace GstPlayer {
          * pass 0 to stop updating the position.
          * @param config a {@link GstPlayer.Player} configuration
          * @param interval interval in ms
+         * @since 1.10
          */
         static config_set_position_update_interval(config: Gst.Structure, interval: number): void;
 
@@ -512,6 +516,7 @@ export namespace GstPlayer {
          * Accurate seeking is disabled by default.
          * @param config a {@link GstPlayer.Player} configuration
          * @param accurate accurate seek or not
+         * @since 1.12
          */
         static config_set_seek_accurate(config: Gst.Structure, accurate: boolean): void;
 
@@ -521,6 +526,7 @@ export namespace GstPlayer {
          * or RTSP streams.
          * @param config a {@link GstPlayer.Player} configuration
          * @param agent the string to use as user agent
+         * @since 1.10
          */
         static config_set_user_agent(config: Gst.Structure, agent: string | null): void;
 
@@ -551,6 +557,7 @@ export namespace GstPlayer {
         /**
          * Retrieve the current value of audio-video-offset property
          * @returns The current value of audio-video-offset in nanoseconds
+         * @since 1.10
          */
         get_audio_video_offset(): number;
 
@@ -566,6 +573,7 @@ export namespace GstPlayer {
          * can either be modified and used for the `gst_player_set_config()` call
          * or it must be freed after usage.
          * @returns a copy of the current configuration of `player`. Use `gst_structure_free()` after usage or `gst_player_set_config()`.
+         * @since 1.10
          */
         get_config(): Gst.Structure;
 
@@ -607,12 +615,14 @@ export namespace GstPlayer {
         /**
          * Retrieve the current value of the indicated `type`.
          * @returns The current value of `type`, Default: 0x00000000 "none
+         * @since 1.10
          */
         get_multiview_flags(): GstVideo.VideoMultiviewFlags;
 
         /**
          * Retrieve the current value of the indicated `type`.
          * @returns The current value of `type`, Default: -1 "none"
+         * @since 1.10
          */
         get_multiview_mode(): GstVideo.VideoMultiviewFramePacking;
 
@@ -645,6 +655,7 @@ export namespace GstPlayer {
         /**
          * Retrieve the current value of subtitle-video-offset property
          * @returns The current value of subtitle-video-offset in nanoseconds
+         * @since 1.16
          */
         get_subtitle_video_offset(): number;
 
@@ -664,6 +675,7 @@ export namespace GstPlayer {
          * @param format output format of the video snapshot
          * @param config Additional configuration
          * @returns Current video snapshot sample or `null` on failure
+         * @since 1.12
          */
         get_video_snapshot(format: PlayerSnapshotFormat, config: Gst.Structure | null): Gst.Sample | null;
 
@@ -711,6 +723,7 @@ export namespace GstPlayer {
         /**
          * Sets audio-video-offset property by value of `offset`
          * @param offset `gint64` in nanoseconds
+         * @since 1.10
          */
         set_audio_video_offset(offset: bigint | number): void;
 
@@ -734,6 +747,7 @@ export namespace GstPlayer {
          * This function takes ownership of `config`.
          * @param config a {@link Gst.Structure}
          * @returns `true` when the configuration could be set.
+         * @since 1.10
          */
         set_config(config: Gst.Structure): boolean;
 
@@ -741,6 +755,7 @@ export namespace GstPlayer {
          * Sets the current value of the indicated mode `type` to the passed
          * value.
          * @param flags The new value for the `type`
+         * @since 1.10
          */
         set_multiview_flags(flags: GstVideo.VideoMultiviewFlags): void;
 
@@ -748,6 +763,7 @@ export namespace GstPlayer {
          * Sets the current value of the indicated mode `type` to the passed
          * value.
          * @param mode The new value for the `type`
+         * @since 1.10
          */
         set_multiview_mode(mode: GstVideo.VideoMultiviewFramePacking): void;
 
@@ -786,6 +802,7 @@ export namespace GstPlayer {
         /**
          * Sets subtitle-video-offset property by value of `offset`
          * @param offset `gint64` in nanoseconds
+         * @since 1.16
          */
         set_subtitle_video_offset(offset: bigint | number): void;
 
@@ -1048,21 +1065,25 @@ export namespace GstPlayer {
 
         /**
          * @returns number of audio streams or 0 if unknown.
+         * @since 1.12
          */
         get_number_of_audio_streams(): number;
 
         /**
          * @returns number of total streams or 0 if unknown.
+         * @since 1.12
          */
         get_number_of_streams(): number;
 
         /**
          * @returns number of subtitle streams or 0 if unknown.
+         * @since 1.12
          */
         get_number_of_subtitle_streams(): number;
 
         /**
          * @returns number of video streams or 0 if unknown.
+         * @since 1.12
          */
         get_number_of_video_streams(): number;
 
@@ -1378,6 +1399,7 @@ export namespace GstPlayer {
         /**
          * @param window_handle Window handle to use or `null`
          * @param video_sink the custom video_sink element to be set for the video renderer
+         * @since 1.12
          */
         static new_with_sink(window_handle: null, video_sink: Gst.Element): PlayerVideoRenderer;
 

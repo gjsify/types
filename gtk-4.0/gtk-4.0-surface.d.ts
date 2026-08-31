@@ -1,9 +1,9 @@
 /**
  * The GIR-derived widget VOCABULARY for Gtk-4.0.
  *
- * GENERATED — do not edit. Provenance: Gtk-4.0 — library 4.23.3 — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap
+ * GENERATED — do not edit. Provenance: Gtk-4.0 — library 4.23.3 — 3 child holder(s) — dropped empty base(s): GObject.InitiallyUnowned GObject.Object Gio.ActionGroup Gio.ActionMap
  *
- * 103 concrete widgets, 124 declarations, 104 enum nick unions, 60 slot candidates.
+ * 103 concrete widgets, 3 child holders, 127 declarations, 104 enum nick unions, 63 slot candidates.
  *
  * Module-scoped exports only. There is no `JSX` namespace here, no tag spelling and
  * no `on<Signal>` prop name: those are DIALECT, and every framework answers them
@@ -548,6 +548,22 @@ export interface GtkColumnViewProps extends GtkWidgetProps, GtkAccessibleProps, 
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkColumnViewConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly | GtkScrollableConstructOnly;
+
+/** Represents items in a cell in [class@Gtk.ColumnView]. */
+export interface GtkColumnViewCellProps extends GtkListItemProps {
+    /**
+     * Widget used for display.
+     * @since 4.12
+     */
+    child?: Gtk.Widget | null;
+    /**
+     * If the item can be focused with the keyboard.
+     * @since 4.12
+     */
+    focusable?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkColumnViewCellConstructOnly = GtkListItemConstructOnly;
 
 /** A `GtkComboBox` is a widget that allows the user to choose from a list of valid choices. */
 export interface GtkComboBoxProps extends GtkWidgetProps, GtkAccessibleProps, GtkBuildableProps, GtkCellEditableProps, GtkCellLayoutProps, GtkConstraintTargetProps {
@@ -1288,6 +1304,44 @@ export interface GtkListBoxRowProps extends GtkWidgetProps, GtkAccessibleProps, 
 }
 /** Settable only at construction — a renderer must REBUILD, not patch. */
 export type GtkListBoxRowConstructOnly = GtkWidgetConstructOnly | GtkAccessibleConstructOnly | GtkActionableConstructOnly | GtkBuildableConstructOnly | GtkConstraintTargetConstructOnly;
+
+/** Used by list widgets to represent the headers they display. */
+export interface GtkListHeaderProps {
+    /**
+     * Widget used for display.
+     * @since 4.12
+     */
+    child?: Gtk.Widget | null;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkListHeaderConstructOnly = never;
+
+/** Used by list widgets to represent items in a [iface@Gio.ListModel]. */
+export interface GtkListItemProps {
+    /**
+     * The accessible description to set on the listitem.
+     * @since 4.12
+     */
+    'accessible-description'?: string;
+    /**
+     * The accessible label to set on the listitem.
+     * @since 4.12
+     */
+    'accessible-label'?: string;
+    /** If the item can be activated by the user. */
+    activatable?: boolean;
+    /** Widget used for display. */
+    child?: Gtk.Widget | null;
+    /**
+     * If the item can be focused with the keyboard.
+     * @since 4.12
+     */
+    focusable?: boolean;
+    /** If the item can be selected by the user. */
+    selectable?: boolean;
+}
+/** Settable only at construction — a renderer must REBUILD, not patch. */
+export type GtkListItemConstructOnly = never;
 
 /** Presents a large dynamic list of items. */
 export interface GtkListViewProps extends GtkListBaseProps, GtkAccessibleProps, GtkBuildableProps, GtkConstraintTargetProps, GtkOrientableProps, GtkScrollableProps {
@@ -3177,6 +3231,49 @@ export interface Widgets {
 /** Every GType this namespace can create. A consumer derives its own tag map. */
 export type WidgetGType = keyof Widgets;
 
+// ---------------------------------------------------------------------------
+// Child holders — the same shape, for objects that CARRY a widget without being one.
+//
+// `GtkListItem`, `GtkListHeader`, `GtkColumnViewCell` and `AdwToggle` descend from
+// `GObject.Object` and hold a widget through `set_child`/`get_child`. A renderer places
+// them exactly like a container, so they belong in the vocabulary; a check asking "is
+// this a widget" must still be able to say no. Hence a sibling table rather than four
+// more rows in `Widgets`: concatenate them when you mean both.
+// ---------------------------------------------------------------------------
+
+export interface ChildHolders {
+    GtkColumnViewCell: {
+        class: Gtk.ColumnViewCell;
+        props: GtkColumnViewCellProps;
+        signals: Gtk.ColumnViewCell.SignalSignatures;
+        constructOnly: GtkColumnViewCellConstructOnly;
+        slotCandidates: {
+        'child': 'set_child';
+        };
+    };
+    GtkListHeader: {
+        class: Gtk.ListHeader;
+        props: GtkListHeaderProps;
+        signals: Gtk.ListHeader.SignalSignatures;
+        constructOnly: GtkListHeaderConstructOnly;
+        slotCandidates: {
+        'child': 'set_child';
+        };
+    };
+    GtkListItem: {
+        class: Gtk.ListItem;
+        props: GtkListItemProps;
+        signals: Gtk.ListItem.SignalSignatures;
+        constructOnly: GtkListItemConstructOnly;
+        slotCandidates: {
+        'child': 'set_child';
+        };
+    };
+}
+
+/** Every GType this namespace holds a child in without it being a widget. */
+export type ChildHolderGType = keyof ChildHolders;
+
 /** The writable, optional, GObject-keyed property surface of one GType. */
 export type PropsOf<G extends WidgetGType> = Widgets[G]['props'];
 
@@ -3211,6 +3308,9 @@ export const OWN_SIGNALS: Readonly<Record<string, readonly string[]>>;
 
 /** Widget GType -> every declaration its members come from, self first. */
 export const DECLS: Readonly<Record<string, readonly string[]>>;
+
+/** The GTypes in `DECLS` that hold a widget without being one — see `ChildHolders`. */
+export const CHILD_HOLDERS: readonly string[];
 
 /** Enum GType -> the nicks this surface offers. */
 export const ENUM_NICKS: Readonly<Record<string, readonly string[]>>;

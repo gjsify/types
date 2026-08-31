@@ -563,6 +563,7 @@ export namespace PanelApplet {
          * Menu</link> section.
          * @param resource_path a resource path
          * @param action_group a {@link Gtk.ActionGroup}.
+         * @since 3.4
          */
         setup_menu_from_resource(resource_path: string, action_group: Gtk.ActionGroup): void;
     }

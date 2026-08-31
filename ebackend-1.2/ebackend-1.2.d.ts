@@ -512,6 +512,7 @@ export namespace EBackend {
          * Default implementation returns `false`, which is treated
          * like the backend is local, no checking for server reachability
          * is possible.
+         * @since 3.8
          * @virtual
          */
         vfunc_get_destination_address(): [boolean, string, number];
@@ -520,6 +521,7 @@ export namespace EBackend {
          * Let's the `backend` know that it'll be shut down shortly, no client connects
          * to it anymore. The `backend` can free any resources which reference it, for
          * example the opened views.
+         * @since 3.16
          * @virtual
          */
         vfunc_prepare_shutdown(): void;
@@ -536,6 +538,7 @@ export namespace EBackend {
          * @param certificate_errors a bit-or of {@link Gio.TlsCertificateFlags} for secure connection certificate
          * @param op_error a {@link GLib.Error} with a description of the previous credentials error, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.16
          */
         credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -551,6 +554,7 @@ export namespace EBackend {
          * @param op_error a {@link GLib.Error} with a description of the previous credentials error, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -566,6 +570,7 @@ export namespace EBackend {
          * @param op_error a {@link GLib.Error} with a description of the previous credentials error, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.16
          */
         credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -575,6 +580,7 @@ export namespace EBackend {
          * If an error occurs, the function sets `error` and returns `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         credentials_required_finish(result: Gio.AsyncResult): boolean;
 
@@ -593,6 +599,7 @@ export namespace EBackend {
          * @param op_error a {@link GLib.Error} with a description of the previous credentials error, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
+         * @since 3.16
          */
         credentials_required_sync(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -601,6 +608,7 @@ export namespace EBackend {
          * is any destination reachability test pending, it'll be done immediately
          * and the only state will be updated as well.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.18
          */
         ensure_online_state_updated(cancellable: Gio.Cancellable | null): void;
 
@@ -608,6 +616,7 @@ export namespace EBackend {
          * Makes sure that the associated ESource::connection-status is connected. This is
          * useful in cases when the backend can connect to the destination without invoking
          * {@link EBackend.BackendClass}.authenticate_sync(), possibly through `e_backend_schedule_authenticate()`.
+         * @since 3.18
          */
         ensure_source_status_connected(): void;
 
@@ -622,6 +631,7 @@ export namespace EBackend {
          * like the backend is local, no checking for server reachability
          * is possible.
          * @returns `true`, when it's a remote backend and provides both   `host` and `port`; `false` otherwise.
+         * @since 3.8
          */
         get_destination_address(): [boolean, string, number];
 
@@ -629,6 +639,7 @@ export namespace EBackend {
          * Returns a {@link Gio.NetworkMonitor} used to check whether the backend can
          * access the remote server. The instance is owned by the `backend`.
          * @returns a {@link Gio.NetworkMonitor} used by the `backend`
+         * @since 3.50
          */
         get_network_monitor(): Gio.NetworkMonitor;
 
@@ -641,12 +652,14 @@ export namespace EBackend {
          * and hence whether the `backend` is {@link EBackend.Backend.online}.  But subclasses may
          * override the online state if, for example, a connection attempt fails.
          * @returns the online state
+         * @since 3.4
          */
         get_online(): boolean;
 
         /**
          * Returns the {@link EDataServer.Source} to which `backend` is paired.
          * @returns the {@link EDataServer.Source} to which `backend` is paired
+         * @since 3.4
          */
         get_source(): EDataServer.Source;
 
@@ -655,6 +668,7 @@ export namespace EBackend {
          * 
          * The returned instance is owned by the `backend`.
          * @returns an {@link EBackend.UserPrompter} instance
+         * @since 3.8
          */
         get_user_prompter(): null;
 
@@ -667,6 +681,7 @@ export namespace EBackend {
          * for reachability tests.
          * @param cancellable a {@link Gio.Cancellable} instance, or `null`
          * @returns `true`, when destination server address is reachable or    the backend doesn't provide destination address; `false` if    the backend destination server cannot be reached currently.
+         * @since 3.8
          */
         is_destination_reachable(cancellable: Gio.Cancellable | null): boolean;
 
@@ -674,6 +689,7 @@ export namespace EBackend {
          * Let's the `backend` know that it'll be shut down shortly, no client connects
          * to it anymore. The `backend` can free any resources which reference it, for
          * example the opened views.
+         * @since 3.16
          */
         prepare_shutdown(): void;
 
@@ -688,6 +704,7 @@ export namespace EBackend {
          * The returned {@link Gio.SocketConnectable} is referenced for thread-safety and
          * must be unreferenced with `g_object_unref()` when finished with it.
          * @returns a {@link Gio.SocketConnectable}, or `null`
+         * @since 3.8
          */
         ref_connectable(): Gio.SocketConnectable | null;
 
@@ -698,6 +715,7 @@ export namespace EBackend {
          * The returned {@link GLib.MainContext} is referenced for thread-safety and must be
          * unreferenced with `g_main_context_unref()` when finished with it.
          * @returns a {@link GLib.MainContext}
+         * @since 3.8
          */
         ref_main_context(): GLib.MainContext;
 
@@ -707,6 +725,7 @@ export namespace EBackend {
          * received for the associated {@link EDataServer.Source}. With `null` `credentials` an attempt
          * without it is run.
          * @param credentials a credentials to use to authenticate, or `null`
+         * @since 3.16
          */
         schedule_authenticate(credentials: EDataServer.NamedParameters | null): void;
 
@@ -722,6 +741,7 @@ export namespace EBackend {
          * @param op_error a {@link GLib.Error} with a description of the previous credentials error, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param who_calls an identification who calls this
+         * @since 3.16
          */
         schedule_credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null, who_calls: string | null): void;
 
@@ -733,6 +753,7 @@ export namespace EBackend {
          * the {@link EDataServer.SourceAuthentication} extension of the `backend`'s {@link EBackend.Backend.source}
          * property, if the extension is present.
          * @param connectable a {@link Gio.SocketConnectable}, or `null`
+         * @since 3.8
          */
         set_connectable(connectable: Gio.SocketConnectable): void;
 
@@ -745,6 +766,7 @@ export namespace EBackend {
          * and hence whether the `backend` is {@link EBackend.Backend.online}.  But subclasses may
          * override the online state if, for example, a connection attempt fails.
          * @param online the online state
+         * @since 3.4
          */
         set_online(online: boolean): void;
 
@@ -755,6 +777,7 @@ export namespace EBackend {
          * call `e_backend_trust_prompt_finish()` to get the result of the operation.
          * @param parameters an {@link EDataServer.NamedParameters} with values for the trust prompt
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.8
          */
         trust_prompt(parameters: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null): globalThis.Promise<EDataServer.TrustPromptResponse>;
 
@@ -766,6 +789,7 @@ export namespace EBackend {
          * @param parameters an {@link EDataServer.NamedParameters} with values for the trust prompt
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.8
          */
         trust_prompt(parameters: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -777,6 +801,7 @@ export namespace EBackend {
          * @param parameters an {@link EDataServer.NamedParameters} with values for the trust prompt
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.8
          */
         trust_prompt(parameters: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<EDataServer.TrustPromptResponse> | void;
 
@@ -786,6 +811,7 @@ export namespace EBackend {
          * {@link EDataServer.TrustPromptResponse.UNKNOWN}.
          * @param result a {@link Gio.AsyncResult}
          * @returns an {@link EDataServer.TrustPromptResponse} what user responded Note: The function can return also {@link EDataServer.TrustPromptResponse.UNKNOWN},    it's on error or if user closes the trust prompt dialog with other    than the offered buttons. Usual behaviour in such case is to treat    it as a temporary reject.
+         * @since 3.8
          */
         trust_prompt_finish(result: Gio.AsyncResult): EDataServer.TrustPromptResponse;
 
@@ -795,6 +821,7 @@ export namespace EBackend {
          * @param parameters an {@link EDataServer.NamedParameters} with values for the trust prompt
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an {@link EDataServer.TrustPromptResponse} what user responded Note: The function can return also {@link EDataServer.TrustPromptResponse.UNKNOWN},    it's on error or if user closes the trust prompt dialog with other    than the offered buttons. Usual behaviour in such case is to treat    it as a temporary reject.
+         * @since 3.8
          */
         trust_prompt_sync(parameters: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null): EDataServer.TrustPromptResponse;
     }
@@ -851,6 +878,7 @@ export namespace EBackend {
          * Since only one instance of each {@link EBackend.BackendFactory} subclass is ever created,
          * the hash key need only be unique among subclasses, not among instances of
          * each subclass.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_hash_key(): string;
@@ -858,6 +886,7 @@ export namespace EBackend {
         /**
          * Returns a new {@link EBackend.Backend} instance for `source`.
          * @param source an {@link EDataServer.Source}
+         * @since 3.4
          * @virtual
          */
         vfunc_new_backend(source: EDataServer.Source): Backend;
@@ -870,6 +899,7 @@ export namespace EBackend {
          * the hash key need only be unique among subclasses, not among instances of
          * each subclass.
          * @returns a hash key which uniquely identifies `factory`
+         * @since 3.4
          */
         get_hash_key(): string;
 
@@ -877,6 +907,7 @@ export namespace EBackend {
          * Returns the filename of the shared library for the module used
          * to load the backends provided by `factory`.
          * @returns the filename for the module associated to the `factory`
+         * @since 3.16
          */
         get_module_filename(): string;
 
@@ -884,6 +915,7 @@ export namespace EBackend {
          * Returns a new {@link EBackend.Backend} instance for `source`.
          * @param source an {@link EDataServer.Source}
          * @returns a new {@link EBackend.Backend} instance for `source`
+         * @since 3.4
          */
         new_backend(source: EDataServer.Source): Backend;
 
@@ -891,6 +923,7 @@ export namespace EBackend {
          * Returns TRUE if the `factory` wants to share the subprocess
          * for all backends provided by itself. Otherwise, returns FALSE.
          * @returns TRUE if the `factory` shares the subprocess for all its          backends. Otherwise, FALSE.
+         * @since 3.16
          */
         share_subprocess(): boolean;
     }
@@ -960,6 +993,7 @@ export namespace EBackend {
         /**
          * Frees a statement previously constructed with `e_cache_sqlite_stmt_printf()`.
          * @param stmt a statement to free
+         * @since 3.26
          */
         static sqlite_stmt_free(stmt: string): void;
 
@@ -991,6 +1025,7 @@ export namespace EBackend {
         /**
          * Erases the cache and all of its content from the disk.
          * The only valid operation after this is to free the `cache`.
+         * @since 3.26
          * @virtual
          */
         vfunc_erase(): void;
@@ -1024,6 +1059,7 @@ export namespace EBackend {
          * Instructs the `cache` to change its revision. In case the revision
          * change is frozen with `e_cache_freeze_revision_change()` it notes to
          * change the revision once the revision change is fully thaw.
+         * @since 3.26
          */
         change_revision(): void;
 
@@ -1032,6 +1068,7 @@ export namespace EBackend {
          * removes those which are marked as locally deleted.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         clear_offline_changes(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1041,6 +1078,7 @@ export namespace EBackend {
          * @param uid a unique identifier of an object
          * @param deleted_flag one of {@link EBackend.CacheDeletedFlag} enum
          * @returns Whether the object had been found.
+         * @since 3.26
          */
         contains(uid: string, deleted_flag: CacheDeletedFlag): boolean;
 
@@ -1053,23 +1091,27 @@ export namespace EBackend {
          * @param column_names column names
          * @param column_values column values
          * @param other_columns an {@link EBackend.CacheColumnValues} to fill
+         * @since 3.32
          */
         copy_missing_to_column_values(column_names: string[], column_values: string[], other_columns: CacheColumnValues): CacheColumnValues;
 
         /**
          * @param key a key name
          * @returns a value of the `key`. Free the returned string    with `g_free()`, when no longer needed.
+         * @since 3.26
          */
         dup_key(key: string): string;
 
         /**
          * @returns A revision of the whole `cache`. This is meant to be    used by the descendants. Free the returned pointer with `g_free()`, when no    longer needed.
+         * @since 3.26
          */
         dup_revision(): string;
 
         /**
          * Erases the cache and all of its content from the disk.
          * The only valid operation after this is to free the `cache`.
+         * @since 3.26
          */
         erase(): void;
 
@@ -1084,6 +1126,7 @@ export namespace EBackend {
          * @param func an {@link EBackend.CacheForeachFunc} function to call for each object
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         foreach(deleted_flag: CacheDeletedFlag, where_clause: string | null, func: CacheForeachFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1102,6 +1145,7 @@ export namespace EBackend {
          * @param func an {@link EBackend.CacheUpdateFunc} function to call for each object
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         foreach_update(deleted_flag: CacheDeletedFlag, where_clause: string | null, func: CacheUpdateFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1110,6 +1154,7 @@ export namespace EBackend {
          * can be called multiple times, but each such call requires its
          * pair function `e_cache_thaw_revision_change()` call. See also
          * `e_cache_change_revision()`.
+         * @since 3.26
          */
         freeze_revision_change(): void;
 
@@ -1124,6 +1169,7 @@ export namespace EBackend {
          * @param uid a unique identifier of an object
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns An object with the given `uid`. Free it    with `g_free()`, when no longer needed. Returns `null` on error, like when    the object could not be found.
+         * @since 3.26
          */
         get(uid: string, cancellable: Gio.Cancellable | null): [string | null, string, CacheColumnValues | null];
 
@@ -1131,11 +1177,13 @@ export namespace EBackend {
          * @param deleted_flag one of {@link EBackend.CacheDeletedFlag} enum
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Count of objects stored in the `cache`.
+         * @since 3.26
          */
         get_count(deleted_flag: CacheDeletedFlag, cancellable: Gio.Cancellable | null): number;
 
         /**
          * @returns a filename of the `cache`, with which it had been initialized.
+         * @since 3.26
          */
         get_filename(): string;
 
@@ -1143,6 +1191,7 @@ export namespace EBackend {
          * Reads the user `key` value as an integer.
          * @param key a key name
          * @returns The user `key` value or -1 on error.
+         * @since 3.26
          */
         get_key_int(key: string): number;
 
@@ -1151,6 +1200,7 @@ export namespace EBackend {
          * @param uid a unique identifier of an object
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns An object with the given `uid`. Free it    with `g_free()`, when no longer needed. Returns `null` on error, like when    the object could not be found.
+         * @since 3.30
          */
         get_object_include_deleted(uid: string, cancellable: Gio.Cancellable | null): [string | null, string, CacheColumnValues | null];
 
@@ -1165,6 +1215,7 @@ export namespace EBackend {
          * @param deleted_flag one of {@link EBackend.CacheDeletedFlag} enum
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded. It doesn't necessarily mean that there was    any object stored in the `cache`.
+         * @since 3.26
          */
         get_objects(deleted_flag: CacheDeletedFlag, cancellable: Gio.Cancellable | null): [boolean, string[], string[] | null];
 
@@ -1175,6 +1226,7 @@ export namespace EBackend {
          * changes at once.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns A newly allocated list of all    offline changes. Free it with g_slist_free_full (slist, e_cache_offline_change_free);    when no longer needed.
+         * @since 3.26
          */
         get_offline_changes(cancellable: Gio.Cancellable | null): CacheOfflineChange[];
 
@@ -1182,11 +1234,13 @@ export namespace EBackend {
          * @param uid a unique identifier of an object
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Current offline state {@link EBackend.OfflineState} for the given object.    It returns {@link EBackend.OfflineState.UNKNOWN} when the object could not be    found or other error happened.
+         * @since 3.26
          */
         get_offline_state(uid: string, cancellable: Gio.Cancellable | null): OfflineState;
 
         /**
          * @returns An SQLite3 database pointer. It is owned by the `cache`.
+         * @since 3.26
          */
         get_sqlitedb(): null;
 
@@ -1201,11 +1255,13 @@ export namespace EBackend {
          * @param deleted_flag one of {@link EBackend.CacheDeletedFlag} enum
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded. It doesn't necessarily mean that there was    any object stored in the `cache`.
+         * @since 3.26
          */
         get_uids(deleted_flag: CacheDeletedFlag, cancellable: Gio.Cancellable | null): [boolean, string[], string[] | null];
 
         /**
          * @returns A cache data version. This is meant to be used by the descendants.
+         * @since 3.26
          */
         get_version(): number;
 
@@ -1220,11 +1276,13 @@ export namespace EBackend {
          * @param other_columns an optional    {@link GLib.SList} with additional columns to add to the objects table
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         initialize_sync(filename: string, other_columns: CacheColumnInfo[] | null, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @returns Whether automatic revision change for the `cache`    is currently frozen.
+         * @since 3.26
          */
         is_revision_change_frozen(): boolean;
 
@@ -1233,6 +1291,7 @@ export namespace EBackend {
          * This can be called recursively within one thread.
          * Each call should have its pair `e_cache_unlock()`.
          * @param lock_type an {@link EBackend.CacheLockType}
+         * @since 3.26
          */
         lock(lock_type: CacheLockType): void;
 
@@ -1250,6 +1309,7 @@ export namespace EBackend {
          * @param offline_flag one of {@link EBackend.CacheOfflineFlag}, whether putting this object in offline
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         put(uid: string, revision: string | null, object: string, other_columns: CacheColumnValues | null, offline_flag: CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1262,6 +1322,7 @@ export namespace EBackend {
          * @param offline_flag one of {@link EBackend.CacheOfflineFlag}, whether removing the object in offline
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         remove(uid: string, offline_flag: CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1269,6 +1330,7 @@ export namespace EBackend {
          * Removes all objects from the `cache` in one call.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         remove_all(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1277,6 +1339,7 @@ export namespace EBackend {
          * @param key a key name
          * @param value a value to set, or `null` to delete the key
          * @returns Whether succeeded.
+         * @since 3.26
          */
         set_key(key: string, value: string | null): boolean;
 
@@ -1285,6 +1348,7 @@ export namespace EBackend {
          * @param key a key name
          * @param value an integer value to set
          * @returns Whether succeeded.
+         * @since 3.26
          */
         set_key_int(key: string, value: number): boolean;
 
@@ -1294,6 +1358,7 @@ export namespace EBackend {
          * @param state an {@link EBackend.OfflineState} to set
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         set_offline_state(uid: string, state: OfflineState, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1302,6 +1367,7 @@ export namespace EBackend {
          * used by the descendants, because the revision is updated automatically
          * when needed. The descendants can listen to "revision-changed" signal.
          * @param revision a revision to set; use `null` to unset it
+         * @since 3.26
          */
         set_revision(revision: string | null): void;
 
@@ -1309,6 +1375,7 @@ export namespace EBackend {
          * Sets a cache data version. This is meant to be used by the descendants.
          * The `version` should be greater than zero.
          * @param version a cache data version to set
+         * @since 3.26
          */
         set_version(version: number): void;
 
@@ -1318,6 +1385,7 @@ export namespace EBackend {
          * @param sql_stmt an SQLite statement to execute
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         sqlite_exec(sql_stmt: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1325,6 +1393,7 @@ export namespace EBackend {
          * Runs vacuum (compacts the database file), if needed.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded. It doesn't mean that the vacuum had been run,    only that no error happened during the call.
+         * @since 3.26
          */
         sqlite_maybe_vacuum(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1335,12 +1404,14 @@ export namespace EBackend {
          * @param func an {@link EBackend.CacheSelectFunc} function to call for each row
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.26
          */
         sqlite_select(sql_stmt: string, func: CacheSelectFunc, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Thaws automatic revision change for the `cache`. It's the pair
          * function of `e_cache_freeze_revision_change()`.
+         * @since 3.26
          */
         thaw_revision_change(): void;
 
@@ -1350,6 +1421,7 @@ export namespace EBackend {
          * `action` #E_CACHE_UNLOCK_COMMIT or #E_CACHE_UNLOCK_ROLLBACK,
          * while the #E_CACHE_LOCK_READ should use #E_CACHE_UNLOCK_NONE `action`.
          * @param action an {@link EBackend.CacheUnlockAction}
+         * @since 3.26
          */
         unlock(action: CacheUnlockAction): void;
     }
@@ -1488,6 +1560,7 @@ export namespace EBackend {
          * Counts how many keys the `self` stores and set it to the `out_n_stored`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.48
          */
         count_keys_sync(cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -1497,18 +1570,21 @@ export namespace EBackend {
          * @param func an {@link EBackend.CacheKeysForeachFunc}, which is called for each stored key
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.48
          */
         foreach_sync(func: CacheKeysForeachFunc, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Gets an {@link EBackend.Cache}, with which the `self` had been created.
          * @returns an {@link EBackend.Cache}
+         * @since 3.48
          */
         get_cache(): Cache;
 
         /**
          * Gets a key column name, with which the `self` had been created.
          * @returns a key column name
+         * @since 3.48
          */
         get_key_column_name(): string;
 
@@ -1519,6 +1595,7 @@ export namespace EBackend {
          * @param key a key to get reference count for
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.48
          */
         get_ref_count_sync(key: string, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -1530,18 +1607,21 @@ export namespace EBackend {
          * @param key a key to get
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.48
          */
         get_sync(key: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * Gets a table name, with which the `self` had been created.
          * @returns a table name
+         * @since 3.48
          */
         get_table_name(): string;
 
         /**
          * Get a value column name, with which the `self` had been created.
          * @returns a value column name
+         * @since 3.48
          */
         get_value_column_name(): string;
 
@@ -1549,6 +1629,7 @@ export namespace EBackend {
          * Initializes table in the corresponding {@link EBackend.Cache}.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.48
          */
         init_table_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1560,6 +1641,7 @@ export namespace EBackend {
          * @param inc_ref_counts how many refs to add, or 0 to have it stored forever
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.48
          */
         put_sync(key: string, value: string, inc_ref_counts: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1567,6 +1649,7 @@ export namespace EBackend {
          * Removes all stored keys from the `self`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.48
          */
         remove_all_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1581,6 +1664,7 @@ export namespace EBackend {
          * @param dec_ref_counts reference counts to drop, 0 to remove it regardless of the current reference count
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
+         * @since 3.48
          */
         remove_sync(key: string, dec_ref_counts: number, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -1665,6 +1749,7 @@ export namespace EBackend {
          * objects are owned by `extensible` and should not be unreferenced.
          * @param extension_type the type of extensions to list
          * @returns a list of extension objects derived from `extension_type`
+         * @since 3.4
          */
         list_extensions(extension_type: GObject.GType): EDataServer.Extension[];
 
@@ -1673,6 +1758,7 @@ export namespace EBackend {
          * target the class of `extensible`.  The lifetimes of these newly created
          * {@link EDataServer.Extension} objects are bound to `extensible` such that they are finalized
          * when `extensible` is finalized.
+         * @since 3.4
          */
         load_extensions(): void;
 
@@ -1680,6 +1766,7 @@ export namespace EBackend {
          * Similar to `e_extensible_load_extensions()`, only loads newly discovered
          * extensions again. This can help in case a new module had been loaded
          * to the process, which provides the extensions for the `extensible`.
+         * @since 3.46
          */
         reload_extensions(): void;
     }
@@ -1816,6 +1903,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          * @virtual
          */
         vfunc_create_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -1825,6 +1913,7 @@ export namespace EBackend {
          * 
          * If an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.6
          * @virtual
          */
         vfunc_create_resource_finish(result: Gio.AsyncResult): boolean;
@@ -1847,6 +1936,7 @@ export namespace EBackend {
          * If an error occurs, the function will set `error` and return `false`.
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          * @virtual
          */
         vfunc_create_resource_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): boolean;
@@ -1866,6 +1956,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          * @virtual
          */
         vfunc_delete_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -1875,6 +1966,7 @@ export namespace EBackend {
          * 
          * If an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.6
          * @virtual
          */
         vfunc_delete_resource_finish(result: Gio.AsyncResult): boolean;
@@ -1891,6 +1983,7 @@ export namespace EBackend {
          * If an error occurs, the function will set `error` and return `false`.
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          * @virtual
          */
         vfunc_delete_resource_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): boolean;
@@ -1904,6 +1997,7 @@ export namespace EBackend {
          * 
          * The returned string should be freed with `g_free()` when no longer needed.
          * @param child_source an {@link EDataServer.Source} managed by `backend`
+         * @since 3.6
          * @virtual
          */
         vfunc_dup_resource_id(child_source: EDataServer.Source): string | null;
@@ -1920,6 +2014,7 @@ export namespace EBackend {
          * the `credentials` to connect to the (possibly) remote data store, to
          * open the childern too. Already connected child sources are skipped.
          * @param credentials credentials to authenticate with
+         * @since 3.16
          */
         authenticate_children(credentials: EDataServer.NamedParameters): void;
 
@@ -1947,6 +2042,7 @@ export namespace EBackend {
          * ```
          * 
          * @returns a list    of previously used sources
+         * @since 3.6
          */
         claim_all_resources(): EDataServer.Source[] | null;
 
@@ -1970,6 +2066,7 @@ export namespace EBackend {
          * the operation.
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          */
         create_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -1994,6 +2091,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         create_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2018,6 +2116,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         create_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2027,6 +2126,7 @@ export namespace EBackend {
          * If an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         create_resource_finish(result: Gio.AsyncResult): boolean;
 
@@ -2049,6 +2149,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         create_resource_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2066,6 +2167,7 @@ export namespace EBackend {
          * the operation.
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.6
          */
         delete_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>;
 
@@ -2084,6 +2186,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         delete_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -2102,6 +2205,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.6
          */
         delete_resource(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -2111,6 +2215,7 @@ export namespace EBackend {
          * If an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         delete_resource_finish(result: Gio.AsyncResult): boolean;
 
@@ -2127,6 +2232,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         delete_resource_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2140,6 +2246,7 @@ export namespace EBackend {
          * The returned string should be freed with `g_free()` when no longer needed.
          * @param child_source an {@link EDataServer.Source} managed by `backend`
          * @returns a newly-allocated resource ID for `child_source`,    or `null`
+         * @since 3.6
          */
         dup_resource_id(child_source: EDataServer.Source): string | null;
 
@@ -2150,6 +2257,7 @@ export namespace EBackend {
          * of `e_collection_backend_thaw_populate()` to reverse the effect of this function,
          * regardless of the return value of this function.
          * @returns `true`, when this is the first freeze call
+         * @since 3.38
          */
         freeze_populate(): boolean;
 
@@ -2160,6 +2268,7 @@ export namespace EBackend {
          * The cache directory is meant to store key files for backend-created
          * data sources.  See also: `e_server_side_source_set_write_directory()`
          * @returns the cache directory for `backend`
+         * @since 3.6
          */
         get_cache_dir(): string;
 
@@ -2167,11 +2276,13 @@ export namespace EBackend {
          * Checks whether the `backend` has enabled at least of the `parts`.
          * @param parts a bit-or of {@link EBackend.CollectionBackendParts} with parts to be checked
          * @returns `true`, when at least one of the `parts` is enabled and    the backend's {@link EDataServer.Source} is enabled as well.
+         * @since 3.40
          */
         get_part_enabled(parts: CollectionBackendParts): boolean;
 
         /**
          * @returns Whether the backend has currently frozen (disabled) populate of its content.
+         * @since 3.38
          */
         get_populate_frozen(): boolean;
 
@@ -2180,6 +2291,7 @@ export namespace EBackend {
          * are remembered between two populate calls only.
          * @param source a child {@link EDataServer.Source}
          * @returns `true`, when the `source` is a new child; `false` when    it had been known before.
+         * @since 3.32
          */
         is_new_source(source: EDataServer.Source): boolean;
 
@@ -2199,6 +2311,7 @@ export namespace EBackend {
          * ```
          * 
          * @returns a list of calendar sources
+         * @since 3.6
          */
         list_calendar_sources(): EDataServer.Source[];
 
@@ -2218,6 +2331,7 @@ export namespace EBackend {
          * ```
          * 
          * @returns a list of address book sources
+         * @since 3.6
          */
         list_contacts_sources(): EDataServer.Source[];
 
@@ -2237,6 +2351,7 @@ export namespace EBackend {
          * ```
          * 
          * @returns a list of mail sources
+         * @since 3.6
          */
         list_mail_sources(): EDataServer.Source[];
 
@@ -2250,6 +2365,7 @@ export namespace EBackend {
          * `e_source_registry_server_add_source()` to export it over D-Bus.
          * @param resource_id a stable and unique resource ID
          * @returns a newly-created data source
+         * @since 3.6
          */
         new_child(resource_id: string): EDataServer.Source;
 
@@ -2261,6 +2377,7 @@ export namespace EBackend {
          * The returned {@link Gio.ProxyResolver} is referenced for thread-safety and must
          * be unreferenced with `g_object_unref()` when finished with it.
          * @returns a {@link Gio.ProxyResolver}, or `null`
+         * @since 3.12
          */
         ref_proxy_resolver(): Gio.ProxyResolver | null;
 
@@ -2271,18 +2388,21 @@ export namespace EBackend {
          * Unreference the {@link EBackend.SourceRegistryServer} with `g_object_unref()` when
          * finished with it.
          * @returns the {@link EBackend.SourceRegistryServer} for `backend`
+         * @since 3.6
          */
         ref_server(): SourceRegistryServer;
 
         /**
          * Schedules a call to `populate()` of the `backend` on idle.
          * The function does nothing in case the `backend` is offline.
+         * @since 3.30
          */
         schedule_populate(): void;
 
         /**
          * Thaws populate of the backend's content. This is a pair function
          * for `e_collection_backend_freeze_populate()`.
+         * @since 3.38
          */
         thaw_populate(): void;
     }
@@ -2342,6 +2462,7 @@ export namespace EBackend {
          * @param mail_account_source an {@link EDataServer.Source} to hold mail account information
          * @param mail_identity_source an {@link EDataServer.Source} to hold mail identity information
          * @param mail_transport_source an {@link EDataServer.Source} to hold mail transport information
+         * @since 3.6
          * @virtual
          */
         vfunc_prepare_mail(mail_account_source: EDataServer.Source, mail_identity_source: EDataServer.Source, mail_transport_source: EDataServer.Source): void;
@@ -2356,6 +2477,7 @@ export namespace EBackend {
          * @param mail_account_source an {@link EDataServer.Source} to hold mail account information
          * @param mail_identity_source an {@link EDataServer.Source} to hold mail identity information
          * @param mail_transport_source an {@link EDataServer.Source} to hold mail transport information
+         * @since 3.6
          */
         prepare_mail(mail_account_source: EDataServer.Source, mail_identity_source: EDataServer.Source, mail_transport_source: EDataServer.Source): void;
     }
@@ -2472,12 +2594,14 @@ export namespace EBackend {
          * 
          * Use this function to indicate that the server has a reason to continue
          * to run.  To cancel the hold, call `e_dbus_server_release()`.
+         * @since 3.4
          */
         hold(): void;
 
         /**
          * This function should be called once during `server` initialization to
          * load all available library modules to extend the `server`'s functionality.
+         * @since 3.4
          */
         load_modules(): void;
 
@@ -2487,6 +2611,7 @@ export namespace EBackend {
          * By default the `server` will quit its main loop and cause
          * `e_dbus_server_run()` to return `code`.
          * @param code an {@link EBackend.DBusServerExitCode}
+         * @since 3.4
          */
         quit(code: DBusServerExitCode): void;
 
@@ -2497,6 +2622,7 @@ export namespace EBackend {
          * 
          * Never call this function except to cancel the effect of a previous call
          * to `e_dbus_server_hold()`.
+         * @since 3.4
          */
         release(): void;
 
@@ -2513,6 +2639,7 @@ export namespace EBackend {
          * no client connection is made within the first few seconds.
          * @param wait_for_client continue running until a client connects
          * @returns the exit code passed to `e_dbus_server_quit()`
+         * @since 3.4
          */
         run(wait_for_client: boolean): DBusServerExitCode;
 
@@ -2525,6 +2652,7 @@ export namespace EBackend {
          * objects are owned by `extensible` and should not be unreferenced.
          * @param extension_type the type of extensions to list
          * @returns a list of extension objects derived from `extension_type`
+         * @since 3.4
          */
         list_extensions(extension_type: GObject.GType): EDataServer.Extension[];
 
@@ -2533,6 +2661,7 @@ export namespace EBackend {
          * target the class of `extensible`.  The lifetimes of these newly created
          * {@link EDataServer.Extension} objects are bound to `extensible` such that they are finalized
          * when `extensible` is finalized.
+         * @since 3.4
          */
         load_extensions(): void;
 
@@ -2540,6 +2669,7 @@ export namespace EBackend {
          * Similar to `e_extensible_load_extensions()`, only loads newly discovered
          * extensions again. This can help in case a new module had been loaded
          * to the process, which provides the extensions for the `extensible`.
+         * @since 3.46
          */
         reload_extensions(): void;
     }
@@ -2677,6 +2807,7 @@ export namespace EBackend {
          * Returns a new and unique object path for a D-Bus interface based
          * in the data object path prefix of the `data_factory`
          * @returns a newly allocated string, representing the object path for          the D-Bus interface.
+         * @since 3.16
          */
         construct_path(): string;
 
@@ -2696,6 +2827,7 @@ export namespace EBackend {
         /**
          * Returns the {@link EDataServer.SourceRegistry} owned by `data_factory`.
          * @returns the {@link EDataServer.SourceRegistry}
+         * @since 3.16
          */
         get_registry(): EDataServer.SourceRegistry;
 
@@ -2736,6 +2868,7 @@ export namespace EBackend {
          * @param backend_name a backend name
          * @param extension_name an extension name
          * @returns the {@link EBackend.BackendFactory} for `hash_key`,    or `null`
+         * @since 3.6
          */
         ref_backend_factory(backend_name: string, extension_name: string): BackendFactory | null;
 
@@ -2748,6 +2881,7 @@ export namespace EBackend {
          * @param uid an {@link EDataServer.Source} UID
          * @param extension_name an extension name
          * @param subprocess_path a path of an executable responsible for running the subprocess
+         * @since 3.16
          */
         spawn_subprocess_backend(invocation: Gio.DBusMethodInvocation, uid: string, extension_name: string, subprocess_path: string): void;
 
@@ -2762,6 +2896,7 @@ export namespace EBackend {
          * objects are owned by `extensible` and should not be unreferenced.
          * @param extension_type the type of extensions to list
          * @returns a list of extension objects derived from `extension_type`
+         * @since 3.4
          */
         list_extensions(extension_type: GObject.GType): EDataServer.Extension[];
 
@@ -2770,6 +2905,7 @@ export namespace EBackend {
          * target the class of `extensible`.  The lifetimes of these newly created
          * {@link EDataServer.Extension} objects are bound to `extensible` such that they are finalized
          * when `extensible` is finalized.
+         * @since 3.4
          */
         load_extensions(): void;
 
@@ -2777,6 +2913,7 @@ export namespace EBackend {
          * Similar to `e_extensible_load_extensions()`, only loads newly discovered
          * extensions again. This can help in case a new module had been loaded
          * to the process, which provides the extensions for the `extensible`.
+         * @since 3.46
          */
         reload_extensions(): void;
 
@@ -2821,6 +2958,7 @@ export namespace EBackend {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2864,6 +3002,7 @@ export namespace EBackend {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -3196,6 +3335,7 @@ export namespace EBackend {
         // Static methods
         /**
          * Returns the directory where user-specific data source files are stored.
+         * @since 3.6
          */
         static get_user_dir(): string;
 
@@ -3209,6 +3349,7 @@ export namespace EBackend {
          * 
          * Note the data source file itself is not created here, only its name.
          * @param uid unique identifier for a data source, or `null`
+         * @since 3.6
          */
         static new_user_file(uid: string | null): Gio.File;
 
@@ -3217,6 +3358,7 @@ export namespace EBackend {
          * If the base name of `file` is missing a '.source' extension, the
          * function sets `error` and returns `null`.
          * @param file a {@link Gio.File} for a data source
+         * @since 3.6
          */
         static uid_from_file(file: Gio.File): string | null;
 
@@ -3228,6 +3370,7 @@ export namespace EBackend {
          * after passing `source` uid to `e_source_registry_server_ref_source()` (provided
          * that `source`'s {@link EDataServer.Source.parent} is also exported).
          * @returns whether `source` has been exported
+         * @since 3.6
          */
         get_exported(): boolean;
 
@@ -3235,6 +3378,7 @@ export namespace EBackend {
          * Returns the {@link Gio.File} from which data source content is loaded and to
          * which changes are saved.  Note the `source` may not have a {@link Gio.File}.
          * @returns the {@link Gio.File} for `source`, or `null`
+         * @since 3.6
          */
         get_file(): Gio.File | null;
 
@@ -3247,12 +3391,14 @@ export namespace EBackend {
          * Note that accessing other data sources this way is not thread-safe,
          * and this therefore function may be replaced at some later date.
          * @returns a {@link GLib.Node}, or `null`
+         * @since 3.6
          */
         get_node(): GLib.Node | null;
 
         /**
          * Returns the {@link EBackend.SourceRegistryServer} to which `source` belongs.
          * @returns the {@link EBackend.SourceRegistryServer} for `source`
+         * @since 3.6
          */
         get_server(): SourceRegistryServer;
 
@@ -3264,6 +3410,7 @@ export namespace EBackend {
          * to override this to use its own private cache directory for data sources
          * it creates automatically.
          * @returns the directory where changes are written
+         * @since 3.6
          */
         get_write_directory(): string;
 
@@ -3278,6 +3425,7 @@ export namespace EBackend {
          * sets `error` and returns `false`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
+         * @since 3.6
          */
         load(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3288,6 +3436,7 @@ export namespace EBackend {
          * The returned {@link EBackend.OAuth2Support} object is referenced for thread-safety.
          * Unreference the object with `g_object_unref()` when finished with it.
          * @returns an {@link EBackend.OAuth2Support} object, or `null`
+         * @since 3.8
          */
         ref_oauth2_support(): OAuth2Support | null;
 
@@ -3303,6 +3452,7 @@ export namespace EBackend {
          * Requests for OAuth 2.0 access tokens are forwarded to `oauth2_support`,
          * which implements the {@link EBackend.OAuth2SupportInterface}.
          * @param oauth2_support an {@link EBackend.OAuth2Support} object, or `null`
+         * @since 3.8
          */
         set_oauth2_support(oauth2_support: OAuth2Support | null): void;
 
@@ -3319,6 +3469,7 @@ export namespace EBackend {
          * is enforced for both clients of the registry D-Bus service and within
          * the registry D-Bus service itself.
          * @param remote_creatable whether to export the RemoteCreatable interface
+         * @since 3.6
          */
         set_remote_creatable(remote_creatable: boolean): void;
 
@@ -3336,6 +3487,7 @@ export namespace EBackend {
          * is enforced for both clients of the registry D-Bus server and within
          * the registry D-Bus service itself.
          * @param remote_deletable whether to export the RemoteDeletable interface
+         * @since 3.6
          */
         set_remote_deletable(remote_deletable: boolean): void;
 
@@ -3349,6 +3501,7 @@ export namespace EBackend {
          * Note this is only enforced for clients of the registry D-Bus service.
          * The service itself may remove any data source at any time.
          * @param removable whether to export the Removable interface
+         * @since 3.6
          */
         set_removable(removable: boolean): void;
 
@@ -3362,6 +3515,7 @@ export namespace EBackend {
          * Note this is only enforced for clients of the registry D-Bus service.
          * The service itself can write to any data source at any time.
          * @param writable whether to export the Writable interface
+         * @since 3.6
          */
         set_writable(writable: boolean): void;
 
@@ -3373,6 +3527,7 @@ export namespace EBackend {
          * to override this to use its own private cache directory for data sources
          * it creates automatically.
          * @param write_directory the directory where changes are to be written
+         * @since 3.6
          */
         set_write_directory(write_directory: string): void;
 
@@ -3417,6 +3572,7 @@ export namespace EBackend {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3460,6 +3616,7 @@ export namespace EBackend {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -3469,6 +3626,7 @@ export namespace EBackend {
          * internally; `g_proxy_resolver_get_default()` will only return a proxy
          * resolver that returns `true` for this method.)
          * @returns `true` if `resolver` is supported.
+         * @since 2.26
          */
         is_supported(): boolean;
 
@@ -3491,6 +3649,7 @@ export namespace EBackend {
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A               NULL-terminated array of proxy URIs. Must be freed               with `g_strfreev()`.
+         * @since 2.26
          */
         lookup(uri: string, cancellable: Gio.Cancellable | null): string[];
 
@@ -3499,6 +3658,7 @@ export namespace EBackend {
          * details.
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 2.26
          */
         lookup_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>;
 
@@ -3508,6 +3668,7 @@ export namespace EBackend {
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call after resolution completes
+         * @since 2.26
          */
         lookup_async(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3517,6 +3678,7 @@ export namespace EBackend {
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call after resolution completes
+         * @since 2.26
          */
         lookup_async(uri: string, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
 
@@ -3526,6 +3688,7 @@ export namespace EBackend {
          * `g_proxy_resolver_lookup()` for more details.
          * @param result the result passed to your {@link Gio.AsyncReadyCallback}
          * @returns A               NULL-terminated array of proxy URIs. Must be freed               with `g_strfreev()`.
+         * @since 2.26
          */
         lookup_finish(result: Gio.AsyncResult): string[];
 
@@ -3533,6 +3696,7 @@ export namespace EBackend {
          * Checks if `resolver` can be used on this system. (This is used
          * internally; `g_proxy_resolver_get_default()` will only return a proxy
          * resolver that returns `true` for this method.)
+         * @since 2.26
          * @virtual
          */
         vfunc_is_supported(): boolean;
@@ -3555,6 +3719,7 @@ export namespace EBackend {
          * returned array of proxies.
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 2.26
          * @virtual
          */
         vfunc_lookup(uri: string, cancellable: Gio.Cancellable | null): string[];
@@ -3565,6 +3730,7 @@ export namespace EBackend {
          * @param uri a URI representing the destination to connect to
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call after resolution completes
+         * @since 2.26
          * @virtual
          */
         vfunc_lookup_async(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -3574,6 +3740,7 @@ export namespace EBackend {
          * `g_proxy_resolver_lookup_async()` is complete. See
          * `g_proxy_resolver_lookup()` for more details.
          * @param result the result passed to your {@link Gio.AsyncReadyCallback}
+         * @since 2.26
          * @virtual
          */
         vfunc_lookup_finish(result: Gio.AsyncResult): string[];
@@ -3638,6 +3805,7 @@ export namespace EBackend {
          * objects are owned by `extensible` and should not be unreferenced.
          * @param extension_type the type of extensions to list
          * @returns a list of extension objects derived from `extension_type`
+         * @since 3.4
          */
         list_extensions(extension_type: GObject.GType): EDataServer.Extension[];
 
@@ -3646,6 +3814,7 @@ export namespace EBackend {
          * target the class of `extensible`.  The lifetimes of these newly created
          * {@link EDataServer.Extension} objects are bound to `extensible` such that they are finalized
          * when `extensible` is finalized.
+         * @since 3.4
          */
         load_extensions(): void;
 
@@ -3653,6 +3822,7 @@ export namespace EBackend {
          * Similar to `e_extensible_load_extensions()`, only loads newly discovered
          * extensions again. This can help in case a new module had been loaded
          * to the process, which provides the extensions for the `extensible`.
+         * @since 3.46
          */
         reload_extensions(): void;
     }
@@ -3760,6 +3930,7 @@ export namespace EBackend {
          * Emits the {@link EBackend.SourceRegistryServer.SignalSignatures.load_error | EBackend.SourceRegistryServer::load-error} signal.
          * @param file the {@link Gio.File} that failed to load
          * @param error a {@link GLib.Error} describing the load error
+         * @since 3.6
          * @virtual
          */
         vfunc_load_error(file: Gio.File, error: GLib.Error): void;
@@ -3787,6 +3958,7 @@ export namespace EBackend {
         /**
          * Adds `source` to `server`.
          * @param source an {@link EDataServer.Source}
+         * @since 3.6
          */
         add_source(source: EDataServer.Source): void;
 
@@ -3813,11 +3985,13 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param extension_name the extension name to find
          * @returns an {@link EDataServer.Source}, or `null` if no match was found
+         * @since 3.8
          */
         find_extension(source: EDataServer.Source, extension_name: string): EDataServer.Source | null;
 
         /**
          * @returns an {@link EDataServer.OAuth2Services} instance owned by `server`
+         * @since 3.28
          */
         get_oauth2_services(): EDataServer.OAuth2Services;
 
@@ -3839,6 +4013,7 @@ export namespace EBackend {
          * 
          * @param extension_name an extension name, or `null`
          * @returns a sorted list of sources
+         * @since 3.6
          */
         list_sources(extension_name: string | null): EDataServer.Source[];
 
@@ -3854,6 +4029,7 @@ export namespace EBackend {
          * @param path the path to the directory to load
          * @param flags permission flags for files loaded from `path`
          * @returns `true` if `path` was successfully opened, but this          does not imply the key files were successfully loaded
+         * @since 3.6
          */
         load_directory(path: string, flags: SourcePermissionFlags): boolean;
 
@@ -3861,6 +4037,7 @@ export namespace EBackend {
          * Emits the {@link EBackend.SourceRegistryServer.SignalSignatures.load_error | EBackend.SourceRegistryServer::load-error} signal.
          * @param file the {@link Gio.File} that failed to load
          * @param error a {@link GLib.Error} describing the load error
+         * @since 3.6
          */
         load_error(file: Gio.File, error: GLib.Error): void;
 
@@ -3873,6 +4050,7 @@ export namespace EBackend {
          * @param file the data source key file to load
          * @param flags initial permission flags for the data source
          * @returns the newly-added {@link EDataServer.Source}, or `null` on error
+         * @since 3.6
          */
         load_file(file: Gio.File, flags: SourcePermissionFlags): EDataServer.Source | null;
 
@@ -3886,6 +4064,7 @@ export namespace EBackend {
          * @param path the path to the data source key files inside `resource`
          * @param flags permission flags for files loaded from `path`
          * @returns `true` if `path` was successfully located, but this does not          imply the key files were successfully loaded
+         * @since 3.8
          */
         load_resource(resource: Gio.Resource, path: string, flags: SourcePermissionFlags): boolean;
 
@@ -3902,6 +4081,7 @@ export namespace EBackend {
          * with it.
          * @param source an {@link EDataServer.Source}
          * @returns the {@link EBackend.CollectionBackend} for `source`, or `null`
+         * @since 3.6
          */
         ref_backend(source: EDataServer.Source): CollectionBackend | null;
 
@@ -3917,6 +4097,7 @@ export namespace EBackend {
          * finished with it.
          * @param source an {@link EDataServer.Source}
          * @returns the {@link EBackend.CollectionBackendFactory} for `source`,    or `null`
+         * @since 3.6
          */
         ref_backend_factory(source: EDataServer.Source): CollectionBackendFactory | null;
 
@@ -3930,6 +4111,7 @@ export namespace EBackend {
          * Returns a referenced {@link EDataServer.SourceCredentialsProvider}. Unref it with
          * `g_object_unref()`, when no longer needed.
          * @returns A referenced {@link EDataServer.SourceCredentialsProvider}.
+         * @since 3.16
          */
         ref_credentials_provider(): EDataServer.SourceCredentialsProvider;
 
@@ -3939,6 +4121,7 @@ export namespace EBackend {
          * 
          * Free the returned object with `g_object_unref()`, when no longer needed.
          * @returns the default {@link EBackend.OAuth2Support},    or `null`, when none exists
+         * @since 3.40
          */
         ref_oauth2_support(): OAuth2Support | null;
 
@@ -3949,12 +4132,14 @@ export namespace EBackend {
          * unreferenced with `g_object_unref()` when finished with it.
          * @param uid a unique identifier string
          * @returns an {@link EDataServer.Source}, or `null` if no match was found
+         * @since 3.6
          */
         ref_source(uid: string): EDataServer.Source | null;
 
         /**
          * Removes `source` and all of its descendants from `server`.
          * @param source an {@link EDataServer.Source}
+         * @since 3.6
          */
         remove_source(source: EDataServer.Source): void;
 
@@ -3967,6 +4152,7 @@ export namespace EBackend {
          * operation.
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.8
          */
         get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
 
@@ -3980,6 +4166,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.8
          */
         get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3993,6 +4180,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.8
          */
         get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[string, number]> | void;
 
@@ -4003,6 +4191,7 @@ export namespace EBackend {
          * If an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
+         * @since 3.8
          */
         get_access_token_finish(result: Gio.AsyncResult): [boolean, string, number];
 
@@ -4015,6 +4204,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
+         * @since 3.8
          */
         get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [boolean, string, number];
 
@@ -4028,6 +4218,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.8
          * @virtual
          */
         vfunc_get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -4038,6 +4229,7 @@ export namespace EBackend {
          * Free the returned access token with `g_free()` when finished with it.
          * If an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
+         * @since 3.8
          * @virtual
          */
         vfunc_get_access_token_finish(result: Gio.AsyncResult): [boolean, string, number];
@@ -4050,6 +4242,7 @@ export namespace EBackend {
          * If an error occurs, the function will set `error` and return `false`.
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.8
          * @virtual
          */
         vfunc_get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [boolean, string, number];
@@ -4095,6 +4288,7 @@ export namespace EBackend {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4138,6 +4332,7 @@ export namespace EBackend {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -4201,6 +4396,7 @@ export namespace EBackend {
         /**
          * Returns a new and unique object path for a D-Bus interface based
          * in the data object path prefix of the `subprocess_factory`
+         * @since 3.16
          */
         static construct_path(): string;
 
@@ -4229,18 +4425,21 @@ export namespace EBackend {
         // Methods
         /**
          * Calls `e_backend_prepare_shutdown()` for the list of used backends.
+         * @since 3.16
          */
         call_backends_prepare_shutdown(): void;
 
         /**
          * Returns a list of used backends.
          * @returns A {@link GLib.List} that contains a    list of used backends. The list should be freed by the caller using:    g_list_free_full (backends, g_object_unref).
+         * @since 3.16
          */
         get_backends_list(): Backend[];
 
         /**
          * Returns the {@link EDataServer.SourceRegistry} owned by `subprocess_factory`.
          * @returns the {@link EDataServer.SourceRegistry}
+         * @since 3.16
          */
         get_registry(): EDataServer.SourceRegistry;
 
@@ -4253,6 +4452,7 @@ export namespace EBackend {
          * @param proxy a {@link Gio.DBusInterfaceSkeleton}, used to communicate to the subprocess backend
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a newly allocated string that represents the {@link EBackend.Backend}          data D-Bus object path.
+         * @since 3.16
          */
         open_backend(connection: Gio.DBusConnection, uid: string, backend_factory_type_name: string, module_filename: string, proxy: Gio.DBusInterfaceSkeleton, cancellable: Gio.Cancellable | null): string;
 
@@ -4273,6 +4473,7 @@ export namespace EBackend {
          * @param module_filename the name (full-path) of the backend module to be loaded
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an {@link EBackend.Backend} for `source`, or `null`
+         * @since 3.16
          */
         ref_initable_backend(uid: string, backend_factory_type_name: string, module_filename: string, cancellable: Gio.Cancellable | null): Backend | null;
 
@@ -4281,6 +4482,7 @@ export namespace EBackend {
          * shutdown once all client connections are closed.
          * @param backend an {@link EBackend.Backend}
          * @param proxy a {@link Gio.DBusInterfaceSkeleton}, used to communicate to the subprocess backend
+         * @since 3.16
          */
         set_backend_callbacks(backend: Backend, proxy: Gio.DBusInterfaceSkeleton): void;
 
@@ -4325,6 +4527,7 @@ export namespace EBackend {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4368,6 +4571,7 @@ export namespace EBackend {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -4433,6 +4637,7 @@ export namespace EBackend {
          * @param dialog_name name of a dialog to invoke
          * @param in_parameters optional parameters to pass to extension; can be `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.8
          */
         extension_prompt(dialog_name: string, in_parameters: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
@@ -4451,6 +4656,7 @@ export namespace EBackend {
          * @param in_parameters optional parameters to pass to extension; can be `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.8
          */
         extension_prompt(dialog_name: string, in_parameters: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4469,6 +4675,7 @@ export namespace EBackend {
          * @param in_parameters optional parameters to pass to extension; can be `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.8
          */
         extension_prompt(dialog_name: string, in_parameters: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
@@ -4486,6 +4693,7 @@ export namespace EBackend {
          * @param result a {@link Gio.AsyncResult}
          * @param out_values Where to store values from the extension, or `null`
          * @returns Result code of the prompt, as defined by the extension, or -1 on error.
+         * @since 3.8
          */
         extension_prompt_finish(result: Gio.AsyncResult, out_values: EDataServer.NamedParameters | null): number;
 
@@ -4510,6 +4718,7 @@ export namespace EBackend {
          * @param out_values Where to store values from the extension, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Result code of the prompt, as defined by the extension, or -1 on error.
+         * @since 3.8
          */
         extension_prompt_sync(dialog_name: string, in_parameters: EDataServer.NamedParameters | null, out_values: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null): number;
 
@@ -4531,6 +4740,7 @@ export namespace EBackend {
          * @param use_markup whether both texts are with markup
          * @param button_captions captions of buttons to    use in the message; can be `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.8
          */
         prompt(type: string | null, title: string | null, primary_text: string | null, secondary_text: string | null, use_markup: boolean, button_captions: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<number>;
 
@@ -4553,6 +4763,7 @@ export namespace EBackend {
          * @param button_captions captions of buttons to    use in the message; can be `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.8
          */
         prompt(type: string | null, title: string | null, primary_text: string | null, secondary_text: string | null, use_markup: boolean, button_captions: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -4575,6 +4786,7 @@ export namespace EBackend {
          * @param button_captions captions of buttons to    use in the message; can be `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.8
          */
         prompt(type: string | null, title: string | null, primary_text: string | null, secondary_text: string | null, use_markup: boolean, button_captions: string[] | null, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<number> | void;
 
@@ -4584,6 +4796,7 @@ export namespace EBackend {
          * If an error occurred, the function sets `error` and returns -1.
          * @param result a {@link Gio.AsyncResult}
          * @returns 0-based index of a button being used by a user as a response,   corresponding to 'button_captions' from `e_user_prompter_prompt()` call.
+         * @since 3.8
          */
         prompt_finish(result: Gio.AsyncResult): number;
 
@@ -4605,6 +4818,7 @@ export namespace EBackend {
          * @param button_captions captions of buttons to    use in the message; can be `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns 0-based index of a button being used by a user as a response,   corresponding to `button_captions` list.
+         * @since 3.8
          */
         prompt_sync(type: string | null, title: string | null, primary_text: string | null, secondary_text: string | null, use_markup: boolean, button_captions: string[] | null, cancellable: Gio.Cancellable | null): number;
     }
@@ -4672,6 +4886,7 @@ export namespace EBackend {
          * @param extension an {@link EBackend.UserPrompterServerExtension} descendant
          * @param dialog_name name of a dialog, which the `extensions` implement
          * @returns Whether properly registered `extension`
+         * @since 3.8
          */
         register(extension: EDataServer.Extension, dialog_name: string): boolean;
 
@@ -4684,6 +4899,7 @@ export namespace EBackend {
          * @param prompt_id Id of a prompt, which was responded
          * @param response Response of the prompt
          * @param extension_values For extension prompts can pass extra return values
+         * @since 3.8
          */
         response(prompt_id: number, response: number, extension_values: EDataServer.NamedParameters | null): void;
 
@@ -4696,6 +4912,7 @@ export namespace EBackend {
          * objects are owned by `extensible` and should not be unreferenced.
          * @param extension_type the type of extensions to list
          * @returns a list of extension objects derived from `extension_type`
+         * @since 3.4
          */
         list_extensions(extension_type: GObject.GType): EDataServer.Extension[];
 
@@ -4704,6 +4921,7 @@ export namespace EBackend {
          * target the class of `extensible`.  The lifetimes of these newly created
          * {@link EDataServer.Extension} objects are bound to `extensible` such that they are finalized
          * when `extensible` is finalized.
+         * @since 3.4
          */
         load_extensions(): void;
 
@@ -4711,6 +4929,7 @@ export namespace EBackend {
          * Similar to `e_extensible_load_extensions()`, only loads newly discovered
          * extensions again. This can help in case a new module had been loaded
          * to the process, which provides the extensions for the `extensible`.
+         * @since 3.46
          */
         reload_extensions(): void;
     }
@@ -4778,6 +4997,7 @@ export namespace EBackend {
          * @param prompt_id Prompt identificator, which is used in call to `e_user_prompter_server_extension_response()`
          * @param dialog_name Name of a dialog to run
          * @param parameters Optional extension parameters for the dialog, as passed by a caller
+         * @since 3.8
          * @virtual
          */
         vfunc_prompt(prompt_id: number, dialog_name: string, parameters: EDataServer.NamedParameters | null): boolean;
@@ -4801,6 +5021,7 @@ export namespace EBackend {
          * @param dialog_name Name of a dialog to run
          * @param parameters Optional extension parameters for the dialog, as passed by a caller
          * @returns Whether dialog was found and shown.
+         * @since 3.8
          */
         prompt(prompt_id: number, dialog_name: string, parameters: EDataServer.NamedParameters | null): boolean;
 
@@ -4813,6 +5034,7 @@ export namespace EBackend {
          * @param prompt_id Prompt identificator
          * @param response Response of the prompt
          * @param values Additional response values, if extension defines any
+         * @since 3.8
          */
         response(prompt_id: number, response: number, values: EDataServer.NamedParameters | null): void;
     }
@@ -4876,12 +5098,14 @@ export namespace EBackend {
          * The default implementation allows all sources, which has %ESourceResource
          * extension defined.
          * @param source an {@link EDataServer.Source}
+         * @since 3.26
          * @virtual
          */
         vfunc_get_resource_id(source: EDataServer.Source): string | null;
 
         /**
          * @param source an {@link EDataServer.Source}
+         * @since 3.26
          * @virtual
          */
         vfunc_is_custom_source(source: EDataServer.Source): boolean;
@@ -4899,6 +5123,7 @@ export namespace EBackend {
          * @param credentials credentials to use when running the discovery
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an {@link EDataServer.SourceAuthenticationResult} describing whether discovery on given    addresses succeeded.
+         * @since 3.26
          */
         discover_sync(calendar_url: string | null, contacts_url: string | null, credentials: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null): [EDataServer.SourceAuthenticationResult, string, Gio.TlsCertificateFlags | null];
 
@@ -4910,12 +5135,14 @@ export namespace EBackend {
          * extension defined.
          * @param source an {@link EDataServer.Source}
          * @returns a resource ID corresponding to `source`,    or `null`, when the `source` should be removed.
+         * @since 3.26
          */
         get_resource_id(source: EDataServer.Source): string | null;
 
         /**
          * @param source an {@link EDataServer.Source}
          * @returns `true`, when the `source` is a custom source, thus it    should not be removed as an obsolete source; `false` to not    force to keep it. It still can be left, when it's one of    the WebDAV-discovered sources.
+         * @since 3.26
          */
         is_custom_source(source: EDataServer.Source): boolean;
     }
@@ -4980,12 +5207,14 @@ export namespace EBackend {
          * Frees the `info` structure, previously allocated with `e_cache_column_info_new()`
          * or `e_cache_column_info_copy()`.
          * @param info an {@link EBackend.CacheColumnInfo}
+         * @since 3.26
          */
         static free(info: null): void;
 
         // Methods
         /**
          * @returns Copy of the given `info`.    Free it with `e_cache_column_info_free()` when no longer needed.    If the `info` is `null`, then returns `null` as well.
+         * @since 3.26
          */
         copy(): CacheColumnInfo | null;
     }
@@ -5006,22 +5235,26 @@ export namespace EBackend {
         /**
          * @param name a column name
          * @returns Whether `other_columns` contains column named `name`.
+         * @since 3.26
          */
         contains(name: string): boolean;
 
         /**
          * @returns Copy of the `other_columns`. Free with    `e_cache_column_values_free()`, when no longer needed.
+         * @since 3.26
          */
         copy(): CacheColumnValues;
 
         /**
          * Frees previously allocated `other_columns` with
          * `e_cache_column_values_new()` or `e_cache_column_values_copy()`.
+         * @since 3.26
          */
         free(): void;
 
         /**
          * @returns How many columns are stored in the `other_columns`.
+         * @since 3.26
          */
         get_size(): number;
 
@@ -5030,6 +5263,7 @@ export namespace EBackend {
          * with `g_hash_table_iter_next()`. The key is a column name and
          * the value is the corresponding column value.
          * @param iter a {@link GLib.HashTableIter}
+         * @since 3.26
          */
         init_iter(iter: GLib.HashTableIter): void;
 
@@ -5043,6 +5277,7 @@ export namespace EBackend {
          * the value is overwritten of the `other_columns` freed.
          * @param name a column name
          * @returns Stored value for the column named `name`,    or `null`, if no such column values is stored.
+         * @since 3.26
          */
         lookup(name: string): string | null;
 
@@ -5052,6 +5287,7 @@ export namespace EBackend {
          * and `value`.
          * @param name a column name
          * @param value a column value
+         * @since 3.26
          */
         put(name: string, value: string | null): void;
 
@@ -5059,11 +5295,13 @@ export namespace EBackend {
          * Removes value for the column named `name` from `other_columns`.
          * @param name a column name
          * @returns Whether such column existed and had been removed.
+         * @since 3.26
          */
         remove(name: string): boolean;
 
         /**
          * Removes all values from the `other_columns`, leaving it empty.
+         * @since 3.26
          */
         remove_all(): void;
 
@@ -5073,6 +5311,7 @@ export namespace EBackend {
          * the `name` and the `value`.
          * @param name a column name
          * @param value a column value
+         * @since 3.26
          */
         take(name: string, value: string | null): void;
 
@@ -5082,6 +5321,7 @@ export namespace EBackend {
          * takes owner ship of the `value`.
          * @param name a column name
          * @param value a column value
+         * @since 3.26
          */
         take_value(name: string, value: string | null): void;
     }
@@ -5127,12 +5367,14 @@ export namespace EBackend {
          * Frees the `change` structure, previously allocated with `e_cache_offline_change_new()`
          * or `e_cache_offline_change_copy()`.
          * @param change an {@link EBackend.CacheOfflineChange}
+         * @since 3.26
          */
         static free(change: null): void;
 
         // Methods
         /**
          * @returns Copy of the given `change`.    Free it with `e_cache_offline_change_free()` when no longer    needed. If the `change` is `null`, then returns `null` as well.
+         * @since 3.26
          */
         copy(): CacheOfflineChange | null;
     }
@@ -5343,6 +5585,7 @@ export namespace EBackend {
              * @param source an {@link EDataServer.Source}
              * @param cancellable optional {@link Gio.Cancellable} object, or `null`
              * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+             * @since 3.8
              * @virtual
              */
             vfunc_get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -5353,6 +5596,7 @@ export namespace EBackend {
              * Free the returned access token with `g_free()` when finished with it.
              * If an error occurred, the function will set `error` and return `false`.
              * @param result a {@link Gio.AsyncResult}
+             * @since 3.8
              * @virtual
              */
             vfunc_get_access_token_finish(result: Gio.AsyncResult): [boolean, string, number];
@@ -5365,6 +5609,7 @@ export namespace EBackend {
              * If an error occurs, the function will set `error` and return `false`.
              * @param source an {@link EDataServer.Source}
              * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+             * @since 3.8
              * @virtual
              */
             vfunc_get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [boolean, string, number];
@@ -5395,6 +5640,7 @@ export namespace EBackend {
          * operation.
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
+         * @since 3.8
          */
         get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null): globalThis.Promise<[string, number]>;
 
@@ -5408,6 +5654,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.8
          */
         get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -5421,6 +5668,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @since 3.8
          */
         get_access_token(source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[string, number]> | void;
 
@@ -5431,6 +5679,7 @@ export namespace EBackend {
          * If an error occurred, the function will set `error` and return `false`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
+         * @since 3.8
          */
         get_access_token_finish(result: Gio.AsyncResult): [boolean, string, number];
 
@@ -5443,6 +5692,7 @@ export namespace EBackend {
          * @param source an {@link EDataServer.Source}
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
+         * @since 3.8
          */
         get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [boolean, string, number];
     }

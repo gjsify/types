@@ -959,6 +959,7 @@ export namespace GtkSource {
          * @param iter an iterator.
          * @param category category to search for, or `null`
          * @returns whether `iter` was moved.
+         * @since 2.2
          */
         backward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): boolean;
 
@@ -978,6 +979,7 @@ export namespace GtkSource {
          * @param case_type how to change the case.
          * @param start a {@link Gtk.TextIter}.
          * @param end a {@link Gtk.TextIter}.
+         * @since 3.12
          */
         change_case(case_type: ChangeCaseType, start: Gtk.TextIter, end: Gtk.TextIter): void;
 
@@ -999,6 +1001,7 @@ export namespace GtkSource {
          * @param category a string defining the mark category.
          * @param where location to place the mark.
          * @returns a new {@link GtkSource.Mark}, owned by the buffer.
+         * @since 2.2
          */
         create_source_mark(name: string | null, category: string, where: Gtk.TextIter): Mark;
 
@@ -1032,6 +1035,7 @@ export namespace GtkSource {
          * @param iter an iterator.
          * @param category category to search for, or `null`
          * @returns whether `iter` was moved.
+         * @since 2.2
          */
         forward_iter_to_source_mark(iter: Gtk.TextIter, category: string | null): boolean;
 
@@ -1041,6 +1045,7 @@ export namespace GtkSource {
          * See the {@link GtkSource.Buffer} description for the list of default context classes.
          * @param iter a {@link Gtk.TextIter}.
          * @returns a new `null` terminated array of context class names. Use `g_strfreev()` to free the array if it is no longer needed.
+         * @since 2.10
          */
         get_context_classes_at_iter(iter: Gtk.TextIter): string[];
 
@@ -1060,6 +1065,7 @@ export namespace GtkSource {
 
         /**
          * @returns whether the `buffer` has an implicit trailing newline.
+         * @since 3.14
          */
         get_implicit_trailing_newline(): boolean;
 
@@ -1083,6 +1089,7 @@ export namespace GtkSource {
          * @param iter an iterator.
          * @param category category to search for, or `null`
          * @returns a newly allocated {@link GLib.SList}.
+         * @since 2.2
          */
         get_source_marks_at_iter(iter: Gtk.TextIter, category: string | null): Mark[];
 
@@ -1092,6 +1099,7 @@ export namespace GtkSource {
          * @param line a line number.
          * @param category category to search for, or `null`
          * @returns a newly allocated {@link GLib.SList}.
+         * @since 2.2
          */
         get_source_marks_at_line(line: number, category: string | null): Mark[];
 
@@ -1122,6 +1130,7 @@ export namespace GtkSource {
          * @param iter a {@link Gtk.TextIter}.
          * @param context_class the context class.
          * @returns whether we found a context class toggle before `iter`
+         * @since 2.10
          */
         iter_backward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): boolean;
 
@@ -1136,6 +1145,7 @@ export namespace GtkSource {
          * @param iter a {@link Gtk.TextIter}.
          * @param context_class the context class.
          * @returns whether we found a context class toggle after `iter`
+         * @since 2.10
          */
         iter_forward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): boolean;
 
@@ -1146,6 +1156,7 @@ export namespace GtkSource {
          * @param iter a {@link Gtk.TextIter}.
          * @param context_class class to search for.
          * @returns whether `iter` has the context class.
+         * @since 2.10
          */
         iter_has_context_class(iter: Gtk.TextIter, context_class: string): boolean;
 
@@ -1153,6 +1164,7 @@ export namespace GtkSource {
          * Joins the lines of text between the specified iterators.
          * @param start a {@link Gtk.TextIter}.
          * @param end a {@link Gtk.TextIter}.
+         * @since 3.16
          */
         join_lines(start: Gtk.TextIter, end: Gtk.TextIter): void;
 
@@ -1170,6 +1182,7 @@ export namespace GtkSource {
          * @param start a {@link Gtk.TextIter}.
          * @param end a {@link Gtk.TextIter}.
          * @param category category to search for, or `null`.
+         * @since 2.2
          */
         remove_source_marks(start: Gtk.TextIter, end: Gtk.TextIter, category: string | null): void;
 
@@ -1213,6 +1226,7 @@ export namespace GtkSource {
          * content is not modified when loaded into the `buffer`, and the `buffer`'s
          * content is not modified when saved into a file.
          * @param implicit_trailing_newline the new value.
+         * @since 3.14
          */
         set_implicit_trailing_newline(implicit_trailing_newline: boolean): void;
 
@@ -1271,6 +1285,7 @@ export namespace GtkSource {
          * @param end a {@link Gtk.TextIter}.
          * @param flags {@link GtkSource.SortFlags} specifying how the sort should behave
          * @param column sort considering the text starting at the given column
+         * @since 3.18
          */
         sort_lines(start: Gtk.TextIter, end: Gtk.TextIter, flags: SortFlags, column: number): void;
 
@@ -1683,6 +1698,7 @@ export namespace GtkSource {
         /**
          * Move the completion window to a specific iter.
          * @param iter a {@link Gtk.TextIter}.
+         * @deprecated since 3.8: Use `gtk_source_completion_provider_get_start_iter()` instead.
          */
         move_window(iter: Gtk.TextIter): void;
 
@@ -1722,6 +1738,7 @@ export namespace GtkSource {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -1733,6 +1750,7 @@ export namespace GtkSource {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -1743,6 +1761,7 @@ export namespace GtkSource {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -1753,6 +1772,7 @@ export namespace GtkSource {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -1762,6 +1782,7 @@ export namespace GtkSource {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -1770,6 +1791,7 @@ export namespace GtkSource {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -1780,6 +1802,7 @@ export namespace GtkSource {
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -1790,6 +1813,7 @@ export namespace GtkSource {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -1798,12 +1822,14 @@ export namespace GtkSource {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -1813,6 +1839,7 @@ export namespace GtkSource {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -1824,6 +1851,7 @@ export namespace GtkSource {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -1835,6 +1863,7 @@ export namespace GtkSource {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -1846,6 +1875,7 @@ export namespace GtkSource {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -1855,6 +1885,7 @@ export namespace GtkSource {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -1863,6 +1894,7 @@ export namespace GtkSource {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -1873,6 +1905,7 @@ export namespace GtkSource {
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -1884,6 +1917,7 @@ export namespace GtkSource {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -1893,6 +1927,7 @@ export namespace GtkSource {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -1900,6 +1935,7 @@ export namespace GtkSource {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -2158,6 +2194,7 @@ export namespace GtkSource {
         /**
          * Get the current content widget.
          * @returns The current content widget.
+         * @deprecated since 3.8: Use `gtk_bin_get_child()` instead.
          */
         get_widget(): Gtk.Widget;
 
@@ -2176,6 +2213,7 @@ export namespace GtkSource {
          * lose a reference and it can be destroyed, so if you do not want this to
          * happen you must use `g_object_ref()` before calling this method.
          * @param widget a {@link Gtk.Widget}.
+         * @deprecated since 3.8: Use `gtk_container_add()` instead. If there is already a child widget, remove it with `gtk_container_remove()`.
          */
         set_widget(widget: Gtk.Widget | null): void;
     }
@@ -2307,42 +2345,50 @@ export namespace GtkSource {
         /**
          * Creates a new {@link GtkSource.CompletionItem}. The desired properties need to be set
          * afterwards.
+         * @since 3.24
          */
         static new2(): CompletionItem;
 
         // Methods
         /**
          * @param gicon the {@link Gio.Icon}, or `null`.
+         * @since 3.24
          */
         set_gicon(gicon: Gio.Icon | null): void;
 
         /**
          * @param icon the {@link GdkPixbuf.Pixbuf}, or `null`.
+         * @since 3.24
          */
         set_icon(icon: GdkPixbuf.Pixbuf | null): void;
 
         /**
          * @param icon_name the icon name, or `null`.
+         * @since 3.24
          */
         set_icon_name(icon_name: string | null): void;
 
         /**
          * @param info the info, or `null`.
+         * @since 3.24
          */
         set_info(info: string | null): void;
 
         /**
          * @param label the label, or `null`.
+         * @since 3.24
          */
         set_label(label: string | null): void;
 
         /**
          * @param markup the markup, or `null`.
+         * @since 3.24
          */
         set_markup(markup: string | null): void;
 
         /**
          * @param text the text, or `null`.
+         * @since 3.24
          */
         set_text(text: string | null): void;
 
@@ -2365,6 +2411,7 @@ export namespace GtkSource {
         /**
          * Gets the {@link Gio.Icon} for the icon of `proposal`.
          * @returns A {@link Gio.Icon} with the icon of `proposal`.
+         * @since 3.18
          */
         get_gicon(): Gio.Icon | null;
 
@@ -2377,6 +2424,7 @@ export namespace GtkSource {
         /**
          * Gets the icon name of `proposal`.
          * @returns The icon name of `proposal`.
+         * @since 3.18
          */
         get_icon_name(): string | null;
 
@@ -2444,6 +2492,7 @@ export namespace GtkSource {
 
         /**
          * Gets the {@link Gio.Icon} for the icon of `proposal`.
+         * @since 3.18
          * @virtual
          */
         vfunc_get_gicon(): Gio.Icon | null;
@@ -2456,6 +2505,7 @@ export namespace GtkSource {
 
         /**
          * Gets the icon name of `proposal`.
+         * @since 3.18
          * @virtual
          */
         vfunc_get_icon_name(): string | null;
@@ -2683,6 +2733,7 @@ export namespace GtkSource {
         /**
          * Gets the {@link Gio.Icon} for the icon of `provider`.
          * @returns The icon to be used for the provider,          or `null` if the provider does not have a special icon.
+         * @since 3.18
          */
         get_gicon(): Gio.Icon | null;
 
@@ -2695,6 +2746,7 @@ export namespace GtkSource {
         /**
          * Gets the icon name of `provider`.
          * @returns The icon name to be used for the provider,          or `null` if the provider does not have a special icon.
+         * @since 3.18
          */
         get_icon_name(): string | null;
 
@@ -2816,6 +2868,7 @@ export namespace GtkSource {
 
         /**
          * Gets the {@link Gio.Icon} for the icon of `provider`.
+         * @since 3.18
          * @virtual
          */
         vfunc_get_gicon(): Gio.Icon | null;
@@ -2828,6 +2881,7 @@ export namespace GtkSource {
 
         /**
          * Gets the icon name of `provider`.
+         * @since 3.18
          * @virtual
          */
         vfunc_get_icon_name(): string | null;
@@ -3064,11 +3118,13 @@ export namespace GtkSource {
          * 
          * Since this function is synchronous, it is advised to call it only on local
          * files. See `gtk_source_file_is_local()`.
+         * @since 3.18
          */
         check_file_on_disk(): void;
 
         /**
          * @returns the compression type.
+         * @since 3.14
          */
         get_compression_type(): CompressionType;
 
@@ -3076,16 +3132,19 @@ export namespace GtkSource {
          * The encoding is initially `null`. After a successful file loading or saving
          * operation, the encoding is non-`null`.
          * @returns the character encoding.
+         * @since 3.14
          */
         get_encoding(): Encoding;
 
         /**
          * @returns the {@link Gio.File}.
+         * @since 3.14
          */
         get_location(): Gio.File;
 
         /**
          * @returns the newline type.
+         * @since 3.14
          */
         get_newline_type(): NewlineType;
 
@@ -3096,6 +3155,7 @@ export namespace GtkSource {
          * To have an up-to-date value, you must first call
          * `gtk_source_file_check_file_on_disk()`.
          * @returns whether the file has been deleted.
+         * @since 3.18
          */
         is_deleted(): boolean;
 
@@ -3106,6 +3166,7 @@ export namespace GtkSource {
          * To have an up-to-date value, you must first call
          * `gtk_source_file_check_file_on_disk()`.
          * @returns whether the file is externally modified.
+         * @since 3.18
          */
         is_externally_modified(): boolean;
 
@@ -3113,6 +3174,7 @@ export namespace GtkSource {
          * Returns whether the file is local. If the {@link GtkSource.File.location} is `null`,
          * returns `false`.
          * @returns whether the file is local.
+         * @since 3.18
          */
         is_local(): boolean;
 
@@ -3123,12 +3185,14 @@ export namespace GtkSource {
          * To have an up-to-date value, you must first call
          * `gtk_source_file_check_file_on_disk()`.
          * @returns whether the file is read-only.
+         * @since 3.18
          */
         is_readonly(): boolean;
 
         /**
          * Sets the location.
          * @param location the new {@link Gio.File}, or `null`.
+         * @since 3.14
          */
         set_location(location: Gio.File | null): void;
     }
@@ -3235,36 +3299,43 @@ export namespace GtkSource {
         // Methods
         /**
          * @returns the {@link GtkSource.Buffer} to load the contents into.
+         * @since 3.14
          */
         get_buffer(): Buffer;
 
         /**
          * @returns the detected compression type.
+         * @since 3.14
          */
         get_compression_type(): CompressionType;
 
         /**
          * @returns the detected file encoding.
+         * @since 3.14
          */
         get_encoding(): Encoding;
 
         /**
          * @returns the {@link GtkSource.File}.
+         * @since 3.14
          */
         get_file(): File;
 
         /**
          * @returns the {@link Gio.InputStream} to load, or `null` if a {@link Gio.File} is used.
+         * @since 3.14
          */
         get_input_stream(): Gio.InputStream | null;
 
         /**
          * @returns the {@link Gio.File} to load, or `null` if an input stream is used.
+         * @since 3.14
          */
         get_location(): Gio.File | null;
 
         /**
          * @returns the detected newline type.
+         * @since 3.14
          */
         get_newline_type(): NewlineType;
 
@@ -3275,6 +3346,7 @@ export namespace GtkSource {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
+         * @since 3.14
          */
         load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>;
 
@@ -3286,6 +3358,7 @@ export namespace GtkSource {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 3.14
          */
         load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3297,6 +3370,7 @@ export namespace GtkSource {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 3.14
          */
         load_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3308,6 +3382,7 @@ export namespace GtkSource {
          * type.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the contents has been loaded successfully.
+         * @since 3.14
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -3324,6 +3399,7 @@ export namespace GtkSource {
          * 2. The default candidates as returned by
          * `gtk_source_encoding_get_default_candidates()`.
          * @param candidate_encodings a list of   {@link GtkSource.Encoding}<!-- -->s.
+         * @since 3.14
          */
         set_candidate_encodings(candidate_encodings: Encoding[]): void;
     }
@@ -3470,36 +3546,43 @@ export namespace GtkSource {
         // Methods
         /**
          * @returns the {@link GtkSource.Buffer} to save.
+         * @since 3.14
          */
         get_buffer(): Buffer;
 
         /**
          * @returns the compression type.
+         * @since 3.14
          */
         get_compression_type(): CompressionType;
 
         /**
          * @returns the encoding.
+         * @since 3.14
          */
         get_encoding(): Encoding;
 
         /**
          * @returns the {@link GtkSource.File}.
+         * @since 3.14
          */
         get_file(): File;
 
         /**
          * @returns the flags.
+         * @since 3.14
          */
         get_flags(): FileSaverFlags;
 
         /**
          * @returns the {@link Gio.File} where to save the buffer to.
+         * @since 3.14
          */
         get_location(): Gio.File;
 
         /**
          * @returns the newline type.
+         * @since 3.14
          */
         get_newline_type(): NewlineType;
 
@@ -3509,6 +3592,7 @@ export namespace GtkSource {
          * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
+         * @since 3.14
          */
         save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): globalThis.Promise<boolean>;
 
@@ -3519,6 +3603,7 @@ export namespace GtkSource {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 3.14
          */
         save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -3529,6 +3614,7 @@ export namespace GtkSource {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
+         * @since 3.14
          */
         save_async(io_priority: number, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
 
@@ -3543,6 +3629,7 @@ export namespace GtkSource {
          * if the file has been saved successfully.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the file was saved successfully.
+         * @since 3.14
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -3550,6 +3637,7 @@ export namespace GtkSource {
          * Sets the compression type. By default the compression type is taken from the
          * {@link GtkSource.File}.
          * @param compression_type the new compression type.
+         * @since 3.14
          */
         set_compression_type(compression_type: CompressionType): void;
 
@@ -3557,11 +3645,13 @@ export namespace GtkSource {
          * Sets the encoding. If `encoding` is `null`, the UTF-8 encoding will be set.
          * By default the encoding is taken from the {@link GtkSource.File}.
          * @param encoding the new encoding, or `null` for UTF-8.
+         * @since 3.14
          */
         set_encoding(encoding: Encoding | null): void;
 
         /**
          * @param flags the new flags.
+         * @since 3.14
          */
         set_flags(flags: FileSaverFlags): void;
 
@@ -3569,6 +3659,7 @@ export namespace GtkSource {
          * Sets the newline type. By default the newline type is taken from the
          * {@link GtkSource.File}.
          * @param newline_type the new newline type.
+         * @since 3.14
          */
         set_newline_type(newline_type: NewlineType): void;
     }
@@ -3667,6 +3758,7 @@ export namespace GtkSource {
         /**
          * @param xpad 
          * @param ypad 
+         * @deprecated since 3.12: Use `gtk_source_gutter_renderer_get_padding()` instead.
          */
         get_padding(xpad: number, ypad: number): void;
 
@@ -3680,6 +3772,7 @@ export namespace GtkSource {
 
         /**
          * @returns the associated {@link GtkSource.View}.
+         * @since 3.24
          */
         get_view(): View;
 
@@ -3687,11 +3780,14 @@ export namespace GtkSource {
          * Get the {@link Gdk.Window} of the gutter. The window will only be available when the
          * gutter has at least one, non-zero width, cell renderer packed.
          * @returns the {@link Gdk.Window} of the gutter, or `null` if the gutter has no window.
+         * @since 2.8
+         * @deprecated since 3.12: Use `gtk_text_view_get_window()` instead.
          */
         get_window(): Gdk.Window;
 
         /**
          * @returns the {@link Gtk.TextWindowType} of `gutter`.
+         * @since 3.24
          */
         get_window_type(): Gtk.TextWindowType;
 
@@ -3702,18 +3798,21 @@ export namespace GtkSource {
          * @param renderer a gutter renderer (must inherit from {@link GtkSource.GutterRenderer}).
          * @param position the renderer position.
          * @returns `true` if operation succeeded. Otherwise `false`.
+         * @since 3.0
          */
         insert(renderer: GutterRenderer, position: number): boolean;
 
         /**
          * Invalidates the drawable area of the gutter. You can use this to force a
          * redraw of the gutter if something has changed and needs to be redrawn.
+         * @since 2.8
          */
         queue_draw(): void;
 
         /**
          * Removes `renderer` from `gutter`.
          * @param renderer a {@link GtkSource.GutterRenderer}.
+         * @since 2.8
          */
         remove(renderer: GutterRenderer): void;
 
@@ -3721,12 +3820,14 @@ export namespace GtkSource {
          * Reorders `renderer` in `gutter` to new `position`.
          * @param renderer a {@link Gtk.CellRenderer}.
          * @param position the new renderer position.
+         * @since 2.8
          */
         reorder(renderer: GutterRenderer, position: number): void;
 
         /**
          * @param xpad 
          * @param ypad 
+         * @deprecated since 3.12: Use `gtk_source_gutter_renderer_set_padding()` instead.
          */
         set_padding(xpad: number, ypad: number): void;
     }
@@ -4370,6 +4471,7 @@ export namespace GtkSource {
 
         /**
          * @returns the stock id.
+         * @deprecated since 3.10: Don't use this function.
          */
         get_stock_id(): string;
 
@@ -4390,6 +4492,7 @@ export namespace GtkSource {
 
         /**
          * @param stock_id the stock id
+         * @deprecated since 3.10: Don't use this function.
          */
         set_stock_id(stock_id: string | null): void;
     }
@@ -4634,6 +4737,7 @@ export namespace GtkSource {
          * is not present in the current style scheme.
          * @param style_id a style ID.
          * @returns the ID of the style to use if the specified `style_id` is not present in the current style scheme or `null` if the style has no fallback defined. The returned string is owned by the `language` and must not be modified.
+         * @since 3.4
          */
         get_style_fallback(style_id: string): string | null;
 
@@ -4783,6 +4887,7 @@ export namespace GtkSource {
          * @param filename a filename in Glib filename encoding, or `null`.
          * @param content_type a content type (as in GIO API), or `null`.
          * @returns a {@link GtkSource.Language}, or `null` if there is no suitable language for given `filename` and/or `content_type`. Return value is owned by `lm` and should not be freed.
+         * @since 2.4
          */
         guess_language(filename: string | null, content_type: string | null): Language | null;
 
@@ -4948,12 +5053,14 @@ export namespace GtkSource {
         /**
          * Gets the {@link GtkSource.Map.view} property, which is the view this widget is mapping.
          * @returns a {@link GtkSource.View} or `null`.
+         * @since 3.18
          */
         get_view(): View | null;
 
         /**
          * Sets the view that `map` will be doing the mapping to.
          * @param view a {@link GtkSource.View}
+         * @since 3.18
          */
         set_view(view: View): void;
     }
@@ -5024,6 +5131,7 @@ export namespace GtkSource {
         /**
          * Returns the mark category.
          * @returns the category of the {@link GtkSource.Mark}.
+         * @since 2.2
          */
         get_category(): string;
 
@@ -5034,6 +5142,7 @@ export namespace GtkSource {
          * If `category` is `null`, looks for marks of any category.
          * @param category a string specifying the mark category, or `null`.
          * @returns the next {@link GtkSource.Mark}, or `null`.
+         * @since 2.2
          */
         next(category: string | null): Mark | null;
 
@@ -5044,6 +5153,7 @@ export namespace GtkSource {
          * If `category` is `null`, looks for marks of any category
          * @param category a string specifying the mark category, or `null`.
          * @returns the previous {@link GtkSource.Mark}, or `null`.
+         * @since 2.2
          */
         prev(category: string): Mark | null;
     }
@@ -5201,6 +5311,7 @@ export namespace GtkSource {
          * Gets a stock id of an icon used by this attributes. Note that the stock id can
          * be `null` if it wasn't set earlier.
          * @returns Stock id. Returned string is owned by `attributes` and shouldn't be freed.
+         * @deprecated since 3.10: Don't use this function.
          */
         get_stock_id(): string;
 
@@ -5261,6 +5372,7 @@ export namespace GtkSource {
         /**
          * Sets stock id to be used as a base for rendered icon.
          * @param stock_id a stock id.
+         * @deprecated since 3.10: Don't use this function.
          */
         set_stock_id(stock_id: string): void;
     }
@@ -5686,6 +5798,7 @@ export namespace GtkSource {
          * Returns the name of the font used to print the text body. The returned string
          * must be freed with `g_free()`.
          * @returns a new string containing the name of the font used to print the text body.
+         * @since 2.2
          */
         get_body_font_name(): string;
 
@@ -5693,6 +5806,7 @@ export namespace GtkSource {
          * Gets the bottom margin in units of `unit`.
          * @param unit the unit for the return value.
          * @returns the bottom margin.
+         * @since 2.2
          */
         get_bottom_margin(unit: Gtk.Unit): number;
 
@@ -5701,6 +5815,7 @@ export namespace GtkSource {
          * object reference is owned by the compositor object and
          * should not be unreferenced.
          * @returns the {@link GtkSource.Buffer} associated with the compositor.
+         * @since 2.2
          */
         get_buffer(): Buffer;
 
@@ -5708,6 +5823,7 @@ export namespace GtkSource {
          * Returns the name of the font used to print the page footer.
          * The returned string must be freed with `g_free()`.
          * @returns a new string containing the name of the font used to print the page footer.
+         * @since 2.2
          */
         get_footer_font_name(): string;
 
@@ -5715,6 +5831,7 @@ export namespace GtkSource {
          * Returns the name of the font used to print the page header.
          * The returned string must be freed with `g_free()`.
          * @returns a new string containing the name of the font used to print the page header.
+         * @since 2.2
          */
         get_header_font_name(): string;
 
@@ -5723,6 +5840,7 @@ export namespace GtkSource {
          * buffer rules.  Note that highlighting will happen
          * only if the buffer to print has highlighting activated.
          * @returns `true` if the printed output will be highlighted.
+         * @since 2.2
          */
         get_highlight_syntax(): boolean;
 
@@ -5730,6 +5848,7 @@ export namespace GtkSource {
          * Gets the left margin in units of `unit`.
          * @param unit the unit for the return value.
          * @returns the left margin
+         * @since 2.2
          */
         get_left_margin(unit: Gtk.Unit): number;
 
@@ -5737,6 +5856,7 @@ export namespace GtkSource {
          * Returns the name of the font used to print line numbers on the left margin.
          * The returned string must be freed with `g_free()`.
          * @returns a new string containing the name of the font used to print line numbers on the left margin.
+         * @since 2.2
          */
         get_line_numbers_font_name(): string;
 
@@ -5744,12 +5864,14 @@ export namespace GtkSource {
          * Returns the number of pages in the document or <code>-1</code> if the
          * document has not been completely paginated.
          * @returns the number of pages in the document or <code>-1</code> if the document has not been completely paginated.
+         * @since 2.2
          */
         get_n_pages(): number;
 
         /**
          * Returns the current fraction of the document pagination that has been completed.
          * @returns a fraction from 0.0 to 1.0 inclusive.
+         * @since 2.2
          */
         get_pagination_progress(): number;
 
@@ -5759,6 +5881,7 @@ export namespace GtkSource {
          * <emphasis>and</emphasis> some format strings have been specified
          * with `gtk_source_print_compositor_set_footer_format()`.
          * @returns `true` if the footer is set to be printed.
+         * @since 2.2
          */
         get_print_footer(): boolean;
 
@@ -5768,6 +5891,7 @@ export namespace GtkSource {
          * <emphasis>and</emphasis> some format strings have been specified
          * with `gtk_source_print_compositor_set_header_format()`.
          * @returns `true` if the header is set to be printed.
+         * @since 2.2
          */
         get_print_header(): boolean;
 
@@ -5776,6 +5900,7 @@ export namespace GtkSource {
          * value is 0, no line numbers will be printed.  The default value is
          * 1 (i.e. numbers printed in all lines).
          * @returns the interval of printed line numbers.
+         * @since 2.2
          */
         get_print_line_numbers(): number;
 
@@ -5783,12 +5908,14 @@ export namespace GtkSource {
          * Gets the right margin in units of `unit`.
          * @param unit the unit for the return value.
          * @returns the right margin.
+         * @since 2.2
          */
         get_right_margin(unit: Gtk.Unit): number;
 
         /**
          * Returns the width of tabulation in characters for printed text.
          * @returns width of tab.
+         * @since 2.2
          */
         get_tab_width(): number;
 
@@ -5796,12 +5923,14 @@ export namespace GtkSource {
          * Gets the top margin in units of `unit`.
          * @param unit the unit for the return value.
          * @returns the top margin.
+         * @since 2.2
          */
         get_top_margin(unit: Gtk.Unit): number;
 
         /**
          * Gets the line wrapping mode for the printed text.
          * @returns the line wrap mode.
+         * @since 2.2
          */
         get_wrap_mode(): Gtk.WrapMode;
 
@@ -5868,6 +5997,7 @@ export namespace GtkSource {
          * </programlisting></informalexample>
          * @param context the {@link Gtk.PrintContext} whose parameters (e.g. paper size, print margins, etc.) are used by the the `compositor` to paginate the document.
          * @returns `true` if the document has been completely paginated, `false` otherwise.
+         * @since 2.2
          */
         paginate(context: Gtk.PrintContext): boolean;
 
@@ -5882,6 +6012,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the default font for the body text.
+         * @since 2.2
          */
         set_body_font_name(font_name: string): void;
 
@@ -5889,6 +6020,7 @@ export namespace GtkSource {
          * Sets the bottom margin used by `compositor`.
          * @param margin the new bottom margin in units of `unit`.
          * @param unit the units for `margin`.
+         * @since 2.2
          */
         set_bottom_margin(margin: number, unit: Gtk.Unit): void;
 
@@ -5905,6 +6037,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for the footer text, or `null`.
+         * @since 2.2
          */
         set_footer_font_name(font_name: string | null): void;
 
@@ -5915,6 +6048,7 @@ export namespace GtkSource {
          * @param left a format string to print on the left of the footer.
          * @param center a format string to print on the center of the footer.
          * @param right a format string to print on the right of the footer.
+         * @since 2.2
          */
         set_footer_format(separator: boolean, left: string | null, center: string | null, right: string | null): void;
 
@@ -5931,6 +6065,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for header text, or `null`.
+         * @since 2.2
          */
         set_header_font_name(font_name: string | null): void;
 
@@ -5960,6 +6095,7 @@ export namespace GtkSource {
          * @param left a format string to print on the left of the header.
          * @param center a format string to print on the center of the header.
          * @param right a format string to print on the right of the header.
+         * @since 2.2
          */
         set_header_format(separator: boolean, left: string | null, center: string | null, right: string | null): void;
 
@@ -5970,6 +6106,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param highlight whether syntax should be highlighted.
+         * @since 2.2
          */
         set_highlight_syntax(highlight: boolean): void;
 
@@ -5977,6 +6114,7 @@ export namespace GtkSource {
          * Sets the left margin used by `compositor`.
          * @param margin the new left margin in units of `unit`.
          * @param unit the units for `margin`.
+         * @since 2.2
          */
         set_left_margin(margin: number, unit: Gtk.Unit): void;
 
@@ -5993,6 +6131,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param font_name the name of the font for line numbers, or `null`.
+         * @since 2.2
          */
         set_line_numbers_font_name(font_name: string | null): void;
 
@@ -6008,6 +6147,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param print `true` if you want the footer to be printed.
+         * @since 2.2
          */
         set_print_footer(print: boolean): void;
 
@@ -6023,6 +6163,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param print `true` if you want the header to be printed.
+         * @since 2.2
          */
         set_print_header(print: boolean): void;
 
@@ -6036,6 +6177,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param interval interval for printed line numbers.
+         * @since 2.2
          */
         set_print_line_numbers(interval: number): void;
 
@@ -6043,6 +6185,7 @@ export namespace GtkSource {
          * Sets the right margin used by `compositor`.
          * @param margin the new right margin in units of `unit`.
          * @param unit the units for `margin`.
+         * @since 2.2
          */
         set_right_margin(margin: number, unit: Gtk.Unit): void;
 
@@ -6052,6 +6195,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param width width of tab in characters.
+         * @since 2.2
          */
         set_tab_width(width: number): void;
 
@@ -6059,6 +6203,7 @@ export namespace GtkSource {
          * Sets the top margin used by `compositor`.
          * @param margin the new top margin in units of `unit`
          * @param unit the units for `margin`
+         * @since 2.2
          */
         set_top_margin(margin: number, unit: Gtk.Unit): void;
 
@@ -6068,6 +6213,7 @@ export namespace GtkSource {
          * This function cannot be called anymore after the first call to the
          * `gtk_source_print_compositor_paginate()` function.
          * @param wrap_mode a {@link Gtk.WrapMode}.
+         * @since 2.2
          */
         set_wrap_mode(wrap_mode: Gtk.WrapMode): void;
     }
@@ -6133,6 +6279,7 @@ export namespace GtkSource {
         /**
          * Adds `region_to_add` to `region`. `region_to_add` is not modified.
          * @param region_to_add the {@link GtkSource.Region} to add to `region`, or `null`.
+         * @since 3.22
          */
         add_region(region_to_add: Region | null): void;
 
@@ -6140,23 +6287,27 @@ export namespace GtkSource {
          * Adds the subregion delimited by `_start` and `_end` to `region`.
          * @param _start the start of the subregion.
          * @param _end the end of the subregion.
+         * @since 3.22
          */
         add_subregion(_start: Gtk.TextIter, _end: Gtk.TextIter): void;
 
         /**
          * Gets the `start` and `end` bounds of the `region`.
          * @returns `true` if `start` and `end` have been set successfully (if non-`null`),   or `false` if the `region` is empty.
+         * @since 3.22
          */
         get_bounds(): [boolean, Gtk.TextIter | null, Gtk.TextIter | null];
 
         /**
          * @returns the {@link Gtk.TextBuffer}.
+         * @since 3.22
          */
         get_buffer(): Gtk.TextBuffer | null;
 
         /**
          * Initializes a {@link GtkSource.RegionIter} to the first subregion of `region`. If
          * `region` is empty, `iter` will be initialized to the end iterator.
+         * @since 3.22
          */
         get_start_region_iter(): RegionIter;
 
@@ -6165,6 +6316,7 @@ export namespace GtkSource {
          * `region2` are not modified.
          * @param region2 a {@link GtkSource.Region}, or `null`.
          * @returns the intersection as a {@link GtkSource.Region}   object.
+         * @since 3.22
          */
         intersect_region(region2: Region | null): Region | null;
 
@@ -6174,12 +6326,14 @@ export namespace GtkSource {
          * @param _start the start of the subregion.
          * @param _end the end of the subregion.
          * @returns the intersection as a new   {@link GtkSource.Region}.
+         * @since 3.22
          */
         intersect_subregion(_start: Gtk.TextIter, _end: Gtk.TextIter): Region | null;
 
         /**
          * Returns whether the `region` is empty. A `null` `region` is considered empty.
          * @returns whether the `region` is empty.
+         * @since 3.22
          */
         is_empty(): boolean;
 
@@ -6187,6 +6341,7 @@ export namespace GtkSource {
          * Subtracts `region_to_subtract` from `region`. `region_to_subtract` is not
          * modified.
          * @param region_to_subtract the {@link GtkSource.Region} to subtract from   `region`, or `null`.
+         * @since 3.22
          */
         subtract_region(region_to_subtract: Region | null): void;
 
@@ -6194,6 +6349,7 @@ export namespace GtkSource {
          * Subtracts the subregion delimited by `_start` and `_end` from `region`.
          * @param _start the start of the subregion.
          * @param _end the end of the subregion.
+         * @since 3.22
          */
         subtract_subregion(_start: Gtk.TextIter, _end: Gtk.TextIter): void;
 
@@ -6203,6 +6359,7 @@ export namespace GtkSource {
          * The returned string contains the character offsets of the subregions. It
          * doesn't include a newline character at the end of the string.
          * @returns a string represention of `region`. Free   with `g_free()` when no longer needed.
+         * @since 3.22
          */
         to_string(): string | null;
     }
@@ -6352,6 +6509,8 @@ export namespace GtkSource {
          * that the `buffer` is small, this function is more convenient to use.
          * @param iter start of search.
          * @returns whether a match was found.
+         * @since 3.10
+         * @deprecated since 3.22: Use `gtk_source_search_context_backward2()` instead.
          */
         backward(iter: Gtk.TextIter): [boolean, Gtk.TextIter | null, Gtk.TextIter | null];
 
@@ -6371,6 +6530,7 @@ export namespace GtkSource {
          * the same value as the {@link GtkSource.SearchSettings.wrap_around} property.
          * @param iter start of search.
          * @returns whether a match was found.
+         * @since 3.22
          */
         backward2(iter: Gtk.TextIter): [boolean, Gtk.TextIter | null, Gtk.TextIter | null, boolean];
 
@@ -6387,6 +6547,7 @@ export namespace GtkSource {
          * ownership of `cancellable`, so you can unref it after calling this function.
          * @param iter start of search.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @since 3.10
          */
         backward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null]>;
 
@@ -6404,6 +6565,7 @@ export namespace GtkSource {
          * @param iter start of search.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 3.10
          */
         backward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6421,6 +6583,7 @@ export namespace GtkSource {
          * @param iter start of search.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 3.10
          */
         backward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null]> | void;
 
@@ -6429,6 +6592,8 @@ export namespace GtkSource {
          * `gtk_source_search_context_backward_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether a match was found.
+         * @since 3.10
+         * @deprecated since 3.22: Use `gtk_source_search_context_backward_finish2()` instead.
          */
         backward_finish(result: Gio.AsyncResult): [boolean, Gtk.TextIter | null, Gtk.TextIter | null];
 
@@ -6440,6 +6605,7 @@ export namespace GtkSource {
          * details.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether a match was found.
+         * @since 3.22
          */
         backward_finish2(result: Gio.AsyncResult): [boolean, Gtk.TextIter | null, Gtk.TextIter | null, boolean];
 
@@ -6449,6 +6615,8 @@ export namespace GtkSource {
          * that the `buffer` is small, this function is more convenient to use.
          * @param iter start of search.
          * @returns whether a match was found.
+         * @since 3.10
+         * @deprecated since 3.22: Use `gtk_source_search_context_forward2()` instead.
          */
         forward(iter: Gtk.TextIter): [boolean, Gtk.TextIter | null, Gtk.TextIter | null];
 
@@ -6468,6 +6636,7 @@ export namespace GtkSource {
          * the same value as the {@link GtkSource.SearchSettings.wrap_around} property.
          * @param iter start of search.
          * @returns whether a match was found.
+         * @since 3.22
          */
         forward2(iter: Gtk.TextIter): [boolean, Gtk.TextIter | null, Gtk.TextIter | null, boolean];
 
@@ -6484,6 +6653,7 @@ export namespace GtkSource {
          * ownership of `cancellable`, so you can unref it after calling this function.
          * @param iter start of search.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @since 3.10
          */
         forward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null]>;
 
@@ -6501,6 +6671,7 @@ export namespace GtkSource {
          * @param iter start of search.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 3.10
          */
         forward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -6518,6 +6689,7 @@ export namespace GtkSource {
          * @param iter start of search.
          * @param cancellable a {@link Gio.Cancellable}, or `null`.
          * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
+         * @since 3.10
          */
         forward_async(iter: Gtk.TextIter, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<[Gtk.TextIter | null, Gtk.TextIter | null]> | void;
 
@@ -6526,6 +6698,8 @@ export namespace GtkSource {
          * `gtk_source_search_context_forward_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether a match was found.
+         * @since 3.10
+         * @deprecated since 3.22: Use `gtk_source_search_context_forward_finish2()` instead.
          */
         forward_finish(result: Gio.AsyncResult): [boolean, Gtk.TextIter | null, Gtk.TextIter | null];
 
@@ -6537,21 +6711,25 @@ export namespace GtkSource {
          * details.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether a match was found.
+         * @since 3.22
          */
         forward_finish2(result: Gio.AsyncResult): [boolean, Gtk.TextIter | null, Gtk.TextIter | null, boolean];
 
         /**
          * @returns the associated buffer.
+         * @since 3.10
          */
         get_buffer(): Buffer;
 
         /**
          * @returns whether to highlight the search occurrences.
+         * @since 3.10
          */
         get_highlight(): boolean;
 
         /**
          * @returns the {@link GtkSource.Style} to apply on search matches.
+         * @since 3.16
          */
         get_match_style(): Style;
 
@@ -6563,6 +6741,7 @@ export namespace GtkSource {
          * @param match_start the start of the occurrence.
          * @param match_end the end of the occurrence.
          * @returns the position of the search occurrence. The first occurrence has the position 1 (not 0). Returns 0 if `match_start` and `match_end` don't delimit an occurrence. Returns -1 if the position is not yet known.
+         * @since 3.10
          */
         get_occurrence_position(match_start: Gtk.TextIter, match_end: Gtk.TextIter): number;
 
@@ -6571,6 +6750,7 @@ export namespace GtkSource {
          * fully scanned, the total number of occurrences is unknown, and -1 is
          * returned.
          * @returns the total number of search occurrences, or -1 if unknown.
+         * @since 3.10
          */
         get_occurrences_count(): number;
 
@@ -6581,11 +6761,13 @@ export namespace GtkSource {
          * 
          * Free the return value with `g_error_free()`.
          * @returns the {@link GLib.Error}, or `null` if the pattern is valid.
+         * @since 3.10
          */
         get_regex_error(): GLib.Error | null;
 
         /**
          * @returns the search settings.
+         * @since 3.10
          */
         get_settings(): SearchSettings;
 
@@ -6601,6 +6783,8 @@ export namespace GtkSource {
          * @param replace the replacement text.
          * @param replace_length the length of `replace` in bytes, or -1.
          * @returns whether the match has been replaced.
+         * @since 3.10
+         * @deprecated since 3.22: Use `gtk_source_search_context_replace2()` instead.
          */
         replace(match_start: Gtk.TextIter, match_end: Gtk.TextIter, replace: string, replace_length: number): boolean;
 
@@ -6619,6 +6803,7 @@ export namespace GtkSource {
          * @param replace the replacement text.
          * @param replace_length the length of `replace` in bytes, or -1.
          * @returns whether the match has been replaced.
+         * @since 3.22
          */
         replace2(match_start: Gtk.TextIter, match_end: Gtk.TextIter, replace: string, replace_length: number): boolean;
 
@@ -6632,12 +6817,14 @@ export namespace GtkSource {
          * @param replace the replacement text.
          * @param replace_length the length of `replace` in bytes, or -1.
          * @returns the number of replaced matches.
+         * @since 3.10
          */
         replace_all(replace: string, replace_length: number): number;
 
         /**
          * Enables or disables the search occurrences highlighting.
          * @param highlight the setting.
+         * @since 3.10
          */
         set_highlight(highlight: boolean): void;
 
@@ -6647,6 +6834,7 @@ export namespace GtkSource {
          * To enable or disable the search highlighting, use
          * `gtk_source_search_context_set_highlight()`.
          * @param match_style a {@link GtkSource.Style}, or `null`.
+         * @since 3.16
          */
         set_match_style(match_style: Style | null): void;
 
@@ -6656,6 +6844,8 @@ export namespace GtkSource {
          * 
          * The search context holds a reference to `settings`.
          * @param settings the new {@link GtkSource.SearchSettings}, or `null`.
+         * @since 3.10
+         * @deprecated since 3.24: The {@link GtkSource.SearchContext.settings} property will become a construct-only property in a future version. Create a new {@link GtkSource.SearchContext} instead, or change the {@link GtkSource.SearchSettings} properties. When the {@link GtkSource.SearchContext.settings} property will become construct-only, it will be possible to simplify some code that needed to listen to the notify::settings signal.
          */
         set_settings(settings: SearchSettings | null): void;
     }
@@ -6817,16 +7007,19 @@ export namespace GtkSource {
         // Methods
         /**
          * @returns whether to search at word boundaries.
+         * @since 3.10
          */
         get_at_word_boundaries(): boolean;
 
         /**
          * @returns whether the search is case sensitive.
+         * @since 3.10
          */
         get_case_sensitive(): boolean;
 
         /**
          * @returns whether to search by regular expressions.
+         * @since 3.10
          */
         get_regex_enabled(): boolean;
 
@@ -6836,11 +7029,13 @@ export namespace GtkSource {
          * You may be interested to call `gtk_source_utils_escape_search_text()` after
          * this function.
          * @returns the text to search, or `null` if the search is disabled.
+         * @since 3.10
          */
         get_search_text(): string | null;
 
         /**
          * @returns whether to wrap around the search.
+         * @since 3.10
          */
         get_wrap_around(): boolean;
 
@@ -6850,12 +7045,14 @@ export namespace GtkSource {
          * multiple words. See also `gtk_text_iter_starts_word()` and
          * `gtk_text_iter_ends_word()`.
          * @param at_word_boundaries the setting.
+         * @since 3.10
          */
         set_at_word_boundaries(at_word_boundaries: boolean): void;
 
         /**
          * Enables or disables the case sensitivity for the search.
          * @param case_sensitive the setting.
+         * @since 3.10
          */
         set_case_sensitive(case_sensitive: boolean): void;
 
@@ -6868,6 +7065,7 @@ export namespace GtkSource {
          * [Regular expression syntax](https://developer.gnome.org/glib/stable/glib-regex-syntax.html)
          * page in the GLib reference manual.
          * @param regex_enabled the setting.
+         * @since 3.10
          */
         set_regex_enabled(regex_enabled: boolean): void;
 
@@ -6879,6 +7077,7 @@ export namespace GtkSource {
          * You may be interested to call `gtk_source_utils_unescape_search_text()` before
          * this function.
          * @param search_text the nul-terminated text to search, or `null` to disable the search.
+         * @since 3.10
          */
         set_search_text(search_text: string | null): void;
 
@@ -6888,6 +7087,7 @@ export namespace GtkSource {
          * occurrences are found. Similarly, the backward search continues to search at
          * the end of the buffer.
          * @param wrap_around the setting.
+         * @since 3.10
          */
         set_wrap_around(wrap_around: boolean): void;
     }
@@ -6993,11 +7193,13 @@ export namespace GtkSource {
          * @param settings a {@link Gio.Settings} object.
          * @param key the `settings` key to bind.
          * @param flags flags for the binding.
+         * @since 3.24
          */
         bind_matrix_setting(settings: Gio.Settings, key: string, flags: Gio.SettingsBindFlags): void;
 
         /**
          * @returns whether the {@link GtkSource.SpaceDrawer.matrix} property is enabled.
+         * @since 3.24
          */
         get_enable_matrix(): boolean;
 
@@ -7008,6 +7210,7 @@ export namespace GtkSource {
          * The `gtk_source_space_drawer_get_types_for_locations()` function may be more
          * convenient to use.
          * @returns the {@link GtkSource.SpaceDrawer.matrix} value as a new floating {@link GLib.Variant}   instance.
+         * @since 3.24
          */
         get_matrix(): GLib.Variant;
 
@@ -7022,12 +7225,14 @@ export namespace GtkSource {
          * specified `locations`.
          * @param locations one or several {@link GtkSource.SpaceLocationFlags}.
          * @returns a combination of {@link GtkSource.SpaceTypeFlags}.
+         * @since 3.24
          */
         get_types_for_locations(locations: SpaceLocationFlags): SpaceTypeFlags;
 
         /**
          * Sets whether the {@link GtkSource.SpaceDrawer.matrix} property is enabled.
          * @param enable_matrix the new value.
+         * @since 3.24
          */
         set_enable_matrix(enable_matrix: boolean): void;
 
@@ -7040,6 +7245,7 @@ export namespace GtkSource {
          * The `gtk_source_space_drawer_set_types_for_locations()` function may be more
          * convenient to use.
          * @param matrix the new matrix value, or `null`.
+         * @since 3.24
          */
         set_matrix(matrix: GLib.Variant | null): void;
 
@@ -7048,6 +7254,7 @@ export namespace GtkSource {
          * `locations`.
          * @param locations one or several {@link GtkSource.SpaceLocationFlags}.
          * @param types a combination of {@link GtkSource.SpaceTypeFlags}.
+         * @since 3.24
          */
         set_types_for_locations(locations: SpaceLocationFlags, types: SpaceTypeFlags): void;
     }
@@ -7344,6 +7551,7 @@ export namespace GtkSource {
          * If `style` is `null`, the related *-set properties of {@link Gtk.TextTag} are set to
          * `false`.
          * @param tag a {@link Gtk.TextTag} to apply styles to.
+         * @since 3.22
          */
         apply(tag: Gtk.TextTag): void;
 
@@ -7351,6 +7559,7 @@ export namespace GtkSource {
          * Creates a copy of `style`, that is a new {@link GtkSource.Style} instance which
          * has the same attributes set.
          * @returns copy of `style`, call `g_object_unref()` when you are done with it.
+         * @since 2.0
          */
         copy(): Style;
     }
@@ -7443,32 +7652,38 @@ export namespace GtkSource {
         // Methods
         /**
          * @returns a `null`-terminated array containing the `scheme` authors or `null` if no author is specified by the style scheme.
+         * @since 2.0
          */
         get_authors(): string[] | null;
 
         /**
          * @returns `scheme` description (if defined), or `null`.
+         * @since 2.0
          */
         get_description(): string | null;
 
         /**
          * @returns `scheme` file name if the scheme was created parsing a style scheme file or `null` in the other cases.
+         * @since 2.0
          */
         get_filename(): string | null;
 
         /**
          * @returns `scheme` id.
+         * @since 2.0
          */
         get_id(): string;
 
         /**
          * @returns `scheme` name.
+         * @since 2.0
          */
         get_name(): string;
 
         /**
          * @param style_id id of the style to retrieve.
          * @returns style which corresponds to `style_id` in the `scheme`, or `null` when no style with this name found.  It is owned by `scheme` and may not be unref'ed.
+         * @since 2.0
          */
         get_style(style_id: string): Style | null;
     }
@@ -7685,6 +7900,7 @@ export namespace GtkSource {
          * 
          * See `gtk_actionable_set_action_name()` for more information.
          * @returns the action name, or `null` if none is set
+         * @since 3.4
          */
         get_action_name(): string | null;
 
@@ -7693,6 +7909,7 @@ export namespace GtkSource {
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
          * @returns the current target value
+         * @since 3.4
          */
         get_action_target_value(): GLib.Variant;
 
@@ -7709,6 +7926,7 @@ export namespace GtkSource {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          */
         set_action_name(action_name: string | null): void;
 
@@ -7733,6 +7951,7 @@ export namespace GtkSource {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          */
         set_action_target_value(target_value: GLib.Variant | null): void;
 
@@ -7749,6 +7968,7 @@ export namespace GtkSource {
          * `action` is the action name and `target` is the string to use
          * as the target.)
          * @param detailed_action_name the detailed action name
+         * @since 3.4
          */
         set_detailed_action_name(detailed_action_name: string): void;
 
@@ -7756,6 +7976,7 @@ export namespace GtkSource {
          * Gets the action name for `actionable`.
          * 
          * See `gtk_actionable_set_action_name()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_name(): string | null;
@@ -7764,6 +7985,7 @@ export namespace GtkSource {
          * Gets the current target value of `actionable`.
          * 
          * See `gtk_actionable_set_action_target_value()` for more information.
+         * @since 3.4
          * @virtual
          */
         vfunc_get_action_target_value(): GLib.Variant;
@@ -7781,6 +8003,7 @@ export namespace GtkSource {
          * respectively.  This is the same form used for actions in the {@link Gio.Menu}
          * associated with the window.
          * @param action_name an action name, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_name(action_name: string | null): void;
@@ -7806,6 +8029,7 @@ export namespace GtkSource {
          * be rendered as active (and the other buttons, with different targets,
          * rendered inactive).
          * @param target_value a {@link GLib.Variant} to set as the target value, or `null`
+         * @since 3.4
          * @virtual
          */
         vfunc_set_action_target_value(target_value: GLib.Variant | null): void;
@@ -7827,12 +8051,16 @@ export namespace GtkSource {
          * > `gtk_activatable_get_related_action()` to retrieve the
          * > previous action.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         do_set_related_action(action: Gtk.Action): void;
 
         /**
          * Gets the related {@link Gtk.Action} for `activatable`.
          * @returns the related {@link Gtk.Action} if one is set.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_related_action(): Gtk.Action;
 
@@ -7841,6 +8069,8 @@ export namespace GtkSource {
          * and appearance when setting the related action or when
          * the action changes appearance.
          * @returns whether `activatable` uses its actions appearance.
+         * @since 2.16
+         * @deprecated since 3.10
          */
         get_use_action_appearance(): boolean;
 
@@ -7850,6 +8080,8 @@ export namespace GtkSource {
          * > {@link Gtk.Activatable} implementors need to handle the {@link Gtk.Activatable.related_action}
          * > property and call `gtk_activatable_do_set_related_action()` when it changes.
          * @param action the {@link Gtk.Action} to set
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_related_action(action: Gtk.Action): void;
 
@@ -7862,6 +8094,8 @@ export namespace GtkSource {
          * > `gtk_activatable_sync_action_properties()` to update `activatable`
          * > if needed.
          * @param use_appearance whether to use the actions appearance
+         * @since 2.16
+         * @deprecated since 3.10
          */
         set_use_action_appearance(use_appearance: boolean): void;
 
@@ -7871,6 +8105,8 @@ export namespace GtkSource {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          */
         sync_action_properties(action: Gtk.Action | null): void;
 
@@ -7880,6 +8116,8 @@ export namespace GtkSource {
          * or unset and by the implementing class when
          * {@link Gtk.Activatable.use_action_appearance} changes.
          * @param action the related {@link Gtk.Action} or `null`
+         * @since 2.16
+         * @deprecated since 3.10
          * @virtual
          */
         vfunc_sync_action_properties(action: Gtk.Action | null): void;
@@ -7897,17 +8135,20 @@ export namespace GtkSource {
         /**
          * Gets the currently-selected scheme.
          * @returns the currently-selected scheme.
+         * @since 3.16
          */
         get_style_scheme(): StyleScheme;
 
         /**
          * Sets the scheme.
          * @param scheme a {@link GtkSource.StyleScheme}
+         * @since 3.16
          */
         set_style_scheme(scheme: StyleScheme): void;
 
         /**
          * Gets the currently-selected scheme.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_style_scheme(): StyleScheme;
@@ -7915,6 +8156,7 @@ export namespace GtkSource {
         /**
          * Sets the scheme.
          * @param scheme a {@link GtkSource.StyleScheme}
+         * @since 3.16
          * @virtual
          */
         vfunc_set_style_scheme(scheme: StyleScheme): void;
@@ -7941,6 +8183,7 @@ export namespace GtkSource {
          * Returns whether the widget should grab focus when it is clicked with the mouse.
          * See `gtk_widget_set_focus_on_click()`.
          * @returns `true` if the widget should grab focus when it is clicked with               the mouse.
+         * @since 3.20
          */
         get_focus_on_click(): boolean;
 
@@ -7950,6 +8193,7 @@ export namespace GtkSource {
          * you don’t want the keyboard focus removed from the main area of the
          * application.
          * @param focus_on_click whether the widget should grab focus when clicked with the mouse
+         * @since 3.20
          */
         set_focus_on_click(focus_on_click: boolean): void;
     }
@@ -8065,17 +8309,20 @@ export namespace GtkSource {
         /**
          * Gets the currently-selected scheme.
          * @returns the currently-selected scheme.
+         * @since 3.16
          */
         get_style_scheme(): StyleScheme;
 
         /**
          * Sets the scheme.
          * @param scheme a {@link GtkSource.StyleScheme}
+         * @since 3.16
          */
         set_style_scheme(scheme: StyleScheme): void;
 
         /**
          * Gets the currently-selected scheme.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_style_scheme(): StyleScheme;
@@ -8083,6 +8330,7 @@ export namespace GtkSource {
         /**
          * Sets the scheme.
          * @param scheme a {@link GtkSource.StyleScheme}
+         * @since 3.16
          * @virtual
          */
         vfunc_set_style_scheme(scheme: StyleScheme): void;
@@ -8927,6 +9175,7 @@ export namespace GtkSource {
          * Returns the {@link GtkSource.BackgroundPatternType} specifying if and how
          * the background pattern should be displayed for this `view`.
          * @returns the {@link GtkSource.BackgroundPatternType}.
+         * @since 3.16
          */
         get_background_pattern(): BackgroundPatternType;
 
@@ -8942,6 +9191,7 @@ export namespace GtkSource {
          * Returns the {@link GtkSource.DrawSpacesFlags} specifying if and how spaces
          * should be displayed for this `view`.
          * @returns the {@link GtkSource.DrawSpacesFlags}, 0 if no spaces should be drawn.
+         * @deprecated since 3.24: Use `gtk_source_space_drawer_get_types_for_locations()` instead.
          */
         get_draw_spaces(): DrawSpacesFlags;
 
@@ -8952,6 +9202,7 @@ export namespace GtkSource {
          * and mark category icons are rendered in the left gutter.
          * @param window_type the gutter window type.
          * @returns the {@link GtkSource.Gutter}.
+         * @since 2.8
          */
         get_gutter(window_type: Gtk.TextWindowType): Gutter;
 
@@ -8999,6 +9250,7 @@ export namespace GtkSource {
         /**
          * Returns whether line marks are displayed beside the text.
          * @returns `true` if the line marks are displayed.
+         * @since 2.2
          */
         get_show_line_marks(): boolean;
 
@@ -9018,6 +9270,7 @@ export namespace GtkSource {
          * Returns `true` if pressing the Backspace key will try to delete spaces
          * up to the previous tab stop.
          * @returns `true` if smart Backspace handling is enabled.
+         * @since 3.18
          */
         get_smart_backspace(): boolean;
 
@@ -9033,6 +9286,7 @@ export namespace GtkSource {
          * guaranteed to be the same for the lifetime of `view`. Each {@link GtkSource.View}
          * object has a different {@link GtkSource.SpaceDrawer}.
          * @returns the {@link GtkSource.SpaceDrawer} associated with `view`.
+         * @since 3.24
          */
         get_space_drawer(): SpaceDrawer;
 
@@ -9055,6 +9309,7 @@ export namespace GtkSource {
          * empty lines are not indented.
          * @param start {@link Gtk.TextIter} of the first line to indent
          * @param end {@link Gtk.TextIter} of the last line to indent
+         * @since 3.16
          */
         indent_lines(start: Gtk.TextIter, end: Gtk.TextIter): void;
 
@@ -9072,6 +9327,7 @@ export namespace GtkSource {
         /**
          * Set if and how the background pattern should be displayed.
          * @param background_pattern the {@link GtkSource.BackgroundPatternType}.
+         * @since 3.16
          */
         set_background_pattern(background_pattern: BackgroundPatternType): void;
 
@@ -9082,6 +9338,7 @@ export namespace GtkSource {
          * For a finer-grained method, there is also the GtkSourceTag's
          * {@link GtkSource.Tag.draw_spaces} property.
          * @param flags {@link GtkSource.DrawSpacesFlags} specifing how white spaces should be displayed
+         * @deprecated since 3.24: Use `gtk_source_space_drawer_set_types_for_locations()` instead.
          */
         set_draw_spaces(flags: DrawSpacesFlags): void;
 
@@ -9155,6 +9412,7 @@ export namespace GtkSource {
         /**
          * If `true` line marks will be displayed beside the text.
          * @param show whether line marks should be displayed.
+         * @since 2.2
          */
         set_show_line_marks(show: boolean): void;
 
@@ -9174,6 +9432,7 @@ export namespace GtkSource {
          * When set to `true`, pressing the Backspace key will try to delete spaces
          * up to the previous tab stop.
          * @param smart_backspace whether to enable smart Backspace handling.
+         * @since 3.18
          */
         set_smart_backspace(smart_backspace: boolean): void;
 
@@ -9197,6 +9456,7 @@ export namespace GtkSource {
          * specified lines.
          * @param start {@link Gtk.TextIter} of the first line to indent
          * @param end {@link Gtk.TextIter} of the last line to indent
+         * @since 3.16
          */
         unindent_lines(start: Gtk.TextIter, end: Gtk.TextIter): void;
 
@@ -9265,36 +9525,42 @@ export namespace GtkSource {
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
          * @returns `true` if `border` has been set
+         * @since 3.16
          */
         get_border(): [boolean, Gtk.Border];
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_hadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_vadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
@@ -9303,12 +9569,14 @@ export namespace GtkSource {
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
@@ -9317,6 +9585,7 @@ export namespace GtkSource {
          * vertical scrolling should start below the minimum height or
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
@@ -9326,6 +9595,7 @@ export namespace GtkSource {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
@@ -9429,11 +9699,13 @@ export namespace GtkSource {
         // Static methods
         /**
          * Gets all encodings.
+         * @since 3.14
          */
         static get_all(): Encoding[];
 
         /**
          * Gets the {@link GtkSource.Encoding} for the current locale. See also `g_get_charset()`.
+         * @since 3.14
          */
         static get_current(): Encoding;
 
@@ -9444,6 +9716,7 @@ export namespace GtkSource {
          * This function returns a different list depending on the current locale (i.e.
          * language, country and default encoding). The UTF-8 encoding and the current
          * locale encoding are guaranteed to be present in the returned list.
+         * @since 3.18
          */
         static get_default_candidates(): Encoding[];
 
@@ -9451,20 +9724,26 @@ export namespace GtkSource {
          * Gets a {@link GtkSource.Encoding} from a character set such as "UTF-8" or
          * "ISO-8859-1".
          * @param charset a character set.
+         * @since 3.14
          */
         static get_from_charset(charset: string): Encoding | null;
 
+        /**
+         * @since 3.14
+         */
         static get_utf8(): Encoding;
 
         // Methods
         /**
          * Used by language bindings.
          * @returns a copy of `enc`.
+         * @since 3.14
          */
         copy(): Encoding;
 
         /**
          * Used by language bindings.
+         * @since 3.14
          */
         free(): void;
 
@@ -9472,17 +9751,20 @@ export namespace GtkSource {
          * Gets the character set of the {@link GtkSource.Encoding}, such as "UTF-8" or
          * "ISO-8859-1".
          * @returns the character set of the {@link GtkSource.Encoding}.
+         * @since 3.14
          */
         get_charset(): string;
 
         /**
          * Gets the name of the {@link GtkSource.Encoding} such as "Unicode" or "Western".
          * @returns the name of the {@link GtkSource.Encoding}.
+         * @since 3.14
          */
         get_name(): string;
 
         /**
          * @returns a string representation. Free with `g_free()` when no longer needed.
+         * @since 3.14
          */
         to_string(): string;
     }
@@ -9670,17 +9952,20 @@ export namespace GtkSource {
         /**
          * Gets the subregion at this iterator.
          * @returns `true` if `start` and `end` have been set successfully (if non-`null`),   or `false` if `iter` is the end iterator or if the region is empty.
+         * @since 3.22
          */
         get_subregion(): [boolean, Gtk.TextIter | null, Gtk.TextIter | null];
 
         /**
          * @returns whether `iter` is the end iterator.
+         * @since 3.22
          */
         is_end(): boolean;
 
         /**
          * Moves `iter` to the next subregion.
          * @returns `true` if `iter` moved and is dereferenceable, or `false` if `iter` has   been set to the end iterator.
+         * @since 3.22
          */
         next(): boolean;
     }
@@ -9821,6 +10106,7 @@ export namespace GtkSource {
 
             /**
              * Gets the {@link Gio.Icon} for the icon of `proposal`.
+             * @since 3.18
              * @virtual
              */
             vfunc_get_gicon(): Gio.Icon | null;
@@ -9833,6 +10119,7 @@ export namespace GtkSource {
 
             /**
              * Gets the icon name of `proposal`.
+             * @since 3.18
              * @virtual
              */
             vfunc_get_icon_name(): string | null;
@@ -9917,6 +10204,7 @@ export namespace GtkSource {
         /**
          * Gets the {@link Gio.Icon} for the icon of `proposal`.
          * @returns A {@link Gio.Icon} with the icon of `proposal`.
+         * @since 3.18
          */
         get_gicon(): Gio.Icon | null;
 
@@ -9929,6 +10217,7 @@ export namespace GtkSource {
         /**
          * Gets the icon name of `proposal`.
          * @returns The icon name of `proposal`.
+         * @since 3.18
          */
         get_icon_name(): string | null;
 
@@ -10016,6 +10305,7 @@ export namespace GtkSource {
 
             /**
              * Gets the {@link Gio.Icon} for the icon of `provider`.
+             * @since 3.18
              * @virtual
              */
             vfunc_get_gicon(): Gio.Icon | null;
@@ -10028,6 +10318,7 @@ export namespace GtkSource {
 
             /**
              * Gets the icon name of `provider`.
+             * @since 3.18
              * @virtual
              */
             vfunc_get_icon_name(): string | null;
@@ -10169,6 +10460,7 @@ export namespace GtkSource {
         /**
          * Gets the {@link Gio.Icon} for the icon of `provider`.
          * @returns The icon to be used for the provider,          or `null` if the provider does not have a special icon.
+         * @since 3.18
          */
         get_gicon(): Gio.Icon | null;
 
@@ -10181,6 +10473,7 @@ export namespace GtkSource {
         /**
          * Gets the icon name of `provider`.
          * @returns The icon name to be used for the provider,          or `null` if the provider does not have a special icon.
+         * @since 3.18
          */
         get_icon_name(): string | null;
 
@@ -10293,6 +10586,7 @@ export namespace GtkSource {
             // Virtual methods
             /**
              * Gets the currently-selected scheme.
+             * @since 3.16
              * @virtual
              */
             vfunc_get_style_scheme(): StyleScheme;
@@ -10300,6 +10594,7 @@ export namespace GtkSource {
             /**
              * Sets the scheme.
              * @param scheme a {@link GtkSource.StyleScheme}
+             * @since 3.16
              * @virtual
              */
             vfunc_set_style_scheme(scheme: StyleScheme): void;
@@ -10345,12 +10640,14 @@ export namespace GtkSource {
         /**
          * Gets the currently-selected scheme.
          * @returns the currently-selected scheme.
+         * @since 3.16
          */
         get_style_scheme(): StyleScheme;
 
         /**
          * Sets the scheme.
          * @param scheme a {@link GtkSource.StyleScheme}
+         * @since 3.16
          */
         set_style_scheme(scheme: StyleScheme): void;
     }
@@ -10372,36 +10669,42 @@ export namespace GtkSource {
              * Begin a not undoable action on the buffer. All changes between this call
              * and the call to `gtk_source_undo_manager_end_not_undoable_action()` cannot
              * be undone. This function should be re-entrant.
+             * @since 2.10
              * @virtual
              */
             vfunc_begin_not_undoable_action(): void;
 
             /**
              * Get whether there are redo operations available.
+             * @since 2.10
              * @virtual
              */
             vfunc_can_redo(): boolean;
 
             /**
              * Emits the {@link GtkSource.UndoManager.SignalSignatures.can_redo_changed | GtkSource.UndoManager::can-redo-changed} signal.
+             * @since 2.10
              * @virtual
              */
             vfunc_can_redo_changed(): void;
 
             /**
              * Get whether there are undo operations available.
+             * @since 2.10
              * @virtual
              */
             vfunc_can_undo(): boolean;
 
             /**
              * Emits the {@link GtkSource.UndoManager.SignalSignatures.can_undo_changed | GtkSource.UndoManager::can-undo-changed} signal.
+             * @since 2.10
              * @virtual
              */
             vfunc_can_undo_changed(): void;
 
             /**
              * Ends a not undoable action on the buffer.
+             * @since 2.10
              * @virtual
              */
             vfunc_end_not_undoable_action(): void;
@@ -10410,6 +10713,7 @@ export namespace GtkSource {
              * Perform a single redo. Calling this function when there are no redo operations
              * available is an error. Use `gtk_source_undo_manager_can_redo()` to find out
              * if there are redo operations available.
+             * @since 2.10
              * @virtual
              */
             vfunc_redo(): void;
@@ -10418,6 +10722,7 @@ export namespace GtkSource {
              * Perform a single undo. Calling this function when there are no undo operations
              * available is an error. Use `gtk_source_undo_manager_can_undo()` to find out
              * if there are undo operations available.
+             * @since 2.10
              * @virtual
              */
             vfunc_undo(): void;
@@ -10442,33 +10747,39 @@ export namespace GtkSource {
          * Begin a not undoable action on the buffer. All changes between this call
          * and the call to `gtk_source_undo_manager_end_not_undoable_action()` cannot
          * be undone. This function should be re-entrant.
+         * @since 2.10
          */
         begin_not_undoable_action(): void;
 
         /**
          * Get whether there are redo operations available.
          * @returns `true` if there are redo operations available, `false` otherwise
+         * @since 2.10
          */
         can_redo(): boolean;
 
         /**
          * Emits the {@link GtkSource.UndoManager.SignalSignatures.can_redo_changed | GtkSource.UndoManager::can-redo-changed} signal.
+         * @since 2.10
          */
         can_redo_changed(): void;
 
         /**
          * Get whether there are undo operations available.
          * @returns `true` if there are undo operations available, `false` otherwise
+         * @since 2.10
          */
         can_undo(): boolean;
 
         /**
          * Emits the {@link GtkSource.UndoManager.SignalSignatures.can_undo_changed | GtkSource.UndoManager::can-undo-changed} signal.
+         * @since 2.10
          */
         can_undo_changed(): void;
 
         /**
          * Ends a not undoable action on the buffer.
+         * @since 2.10
          */
         end_not_undoable_action(): void;
 
@@ -10476,6 +10787,7 @@ export namespace GtkSource {
          * Perform a single redo. Calling this function when there are no redo operations
          * available is an error. Use `gtk_source_undo_manager_can_redo()` to find out
          * if there are redo operations available.
+         * @since 2.10
          */
         redo(): void;
 
@@ -10483,6 +10795,7 @@ export namespace GtkSource {
          * Perform a single undo. Calling this function when there are no undo operations
          * available is an error. Use `gtk_source_undo_manager_can_undo()` to find out
          * if there are undo operations available.
+         * @since 2.10
          */
         undo(): void;
     }

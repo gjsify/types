@@ -20,6 +20,12 @@ export const DECLS = {
     GWeatherTimezoneMenu: ['GWeatherTimezoneMenu', 'GtkComboBox', 'GtkBin', 'GtkContainer', 'GtkWidget', 'GtkBuildable', 'GtkCellEditable', 'GtkCellLayout'],
 };
 
+// The GTypes above that are NOT widgets: they hold one through `set_child`/`get_child`
+// and descend from `GObject.Object`. A renderer places them like a container; a check
+// asking "is this a widget" must not count them. Derived from the accessor pair, never
+// from a list — the count is in the provenance line above.
+export const CHILD_HOLDERS = [];
+
 export const ENUM_NICKS = {
     GWeatherConditionPhenomenon: ['invalid', 'none', 'drizzle', 'rain', 'snow', 'snow-grains', 'ice-crystals', 'ice-pellets', 'hail', 'small-hail', 'unknown-precipitation', 'mist', 'fog', 'smoke', 'volcanic-ash', 'sand', 'haze', 'spray', 'dust', 'squall', 'sandstorm', 'duststorm', 'funnel-cloud', 'tornado', 'dust-whirls', 'last'],
     GWeatherConditionQualifier: ['invalid', 'none', 'vicinity', 'light', 'moderate', 'heavy', 'shallow', 'patches', 'partial', 'thunderstorm', 'blowing', 'showers', 'drifting', 'freezing', 'last'],

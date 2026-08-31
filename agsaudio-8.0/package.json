@@ -1,6 +1,6 @@
 {
     "name": "@girs/agsaudio-8.0",
-    "version": "4.3.0",
+    "version": "4.4.0",
     "description": "GJS TypeScript type definitions for AgsAudio-8.0",
     "type": "module",
     "module": "agsaudio-8.0.js",
@@ -31,17 +31,17 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.3.0",
-      "@girs/libxml2-2.0": "^4.3.0",
-      "@girs/soup-3.0": "^4.3.0",
-      "@girs/gio-2.0": "^4.3.0",
-      "@girs/gobject-2.0": "^4.3.0",
-      "@girs/glib-2.0": "^4.3.0",
-      "@girs/gmodule-2.0": "^4.3.0",
-      "@girs/gstbase-1.0": "^4.3.0",
-      "@girs/gst-1.0": "^4.3.0",
-      "@girs/gstaudio-1.0": "^4.3.0",
-      "@girs/ags-8.0": "^4.3.0"    },
+      "@girs/gjs": "^4.4.0",
+      "@girs/libxml2-2.0": "^4.4.0",
+      "@girs/soup-3.0": "^4.4.0",
+      "@girs/gio-2.0": "^4.4.0",
+      "@girs/gobject-2.0": "^4.4.0",
+      "@girs/glib-2.0": "^4.4.0",
+      "@girs/gmodule-2.0": "^4.4.0",
+      "@girs/gstbase-1.0": "^4.4.0",
+      "@girs/gst-1.0": "^4.4.0",
+      "@girs/gstaudio-1.0": "^4.4.0",
+      "@girs/ags-8.0": "^4.4.0"    },
     "devDependencies": {
       "typescript": "*"
     },

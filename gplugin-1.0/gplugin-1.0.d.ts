@@ -280,6 +280,7 @@ export namespace GPlugin {
          * Creates a {@link GPlugin.Source} that will query plugins on disk using the
          * paths from `manager`.
          * @param manager The {@link GPlugin.Manager} instance.
+         * @since 0.39
          */
         static ["new"](manager: Manager): Source;
 
@@ -291,6 +292,7 @@ export namespace GPlugin {
          * The implementation should return TRUE if it found a new unqueried plugin,
          * which will tell the manager to continue scanning.
          * @returns `true` if an unqueried plugin was found, `false` otherwise.
+         * @since 0.39
          */
         scan(): boolean;
 
@@ -301,6 +303,7 @@ export namespace GPlugin {
          * 
          * The implementation should return TRUE if it found a new unqueried plugin,
          * which will tell the manager to continue scanning.
+         * @since 0.39
          * @virtual
          */
         vfunc_scan(): boolean;
@@ -384,6 +387,7 @@ export namespace GPlugin {
         /**
          * Gets the identifier of `loader`.
          * @returns The ID of `loader`.
+         * @since 0.34
          */
         get_id(): string;
 
@@ -530,6 +534,7 @@ export namespace GPlugin {
         // Static methods
         /**
          * Gets the default plugin manager in GPlugin.
+         * @since 0.33
          */
         static get_default(): Manager;
 
@@ -560,6 +565,7 @@ export namespace GPlugin {
         /**
          * Append the paths held in the environment variable `name` to the list.
          * @param name The name of the environment variable containing the paths to add.
+         * @since 0.37
          */
         append_paths_from_environment(name: string): void;
 
@@ -581,6 +587,7 @@ export namespace GPlugin {
          * filename.
          * @param filename The filename of the plugin.
          * @returns The plugin if found, otherwise `null`.
+         * @since 0.44
          */
         find_plugin_with_filename(filename: string): Plugin | null;
 
@@ -673,6 +680,7 @@ export namespace GPlugin {
         /**
          * Prepends the paths held in the environment variable `name` to the list.
          * @param name The name of the environment variable containing the paths to add.
+         * @since 0.37
          */
         prepend_paths_from_environment(name: string): void;
 
@@ -1178,6 +1186,7 @@ export namespace GPlugin {
          * be turned on. The plugin loaders use this to make sure all plugins can
          * always be loaded.
          * @returns `true` if the plugin should be loaded when queried, `false`          otherwise.
+         * @since 0.39
          */
         get_auto_load(): boolean;
 
@@ -1209,6 +1218,7 @@ export namespace GPlugin {
         /**
          * Gets the discriminator from `info`.
          * @returns The discriminator.
+         * @since 0.44
          */
         get_discriminator(): string;
 
@@ -1263,6 +1273,7 @@ export namespace GPlugin {
          * be turned on. The plugin loaders use this to make sure all plugins can
          * always be loaded.
          * @returns `true` if the plugin should be loaded when queried, `false`          otherwise.
+         * @deprecated since 0.39.0: Use {@link GPlugin.PluginInfo.get_auto_load} instead.
          */
         get_load_on_query(): boolean;
 
@@ -1275,18 +1286,21 @@ export namespace GPlugin {
         /**
          * Gets the priority of the plugin as specified in `info`.
          * @returns The priority from `info`.
+         * @since 0.32
          */
         get_priority(): number;
 
         /**
          * Gets the provides of the plugin as specified in `info`.
          * @returns The list of          dependencies from `info`.
+         * @since 0.32
          */
         get_provides(): string[];
 
         /**
          * Returns the ID of the {@link Gio.Settings} schema as specified in `info`.
          * @returns The schema ID from `info`.
+         * @since 0.39
          */
         get_settings_schema(): string;
 
@@ -1303,6 +1317,7 @@ export namespace GPlugin {
          * {@link GPlugin.PluginInfo.unloadable} property to `false` to tell
          * {@link GPlugin.Manager} to not even attempt to unload it.
          * @returns `true` if the plugin is unloadable, otherwise `false`.
+         * @since 0.35
          */
         get_unloadable(): boolean;
 
@@ -1463,6 +1478,7 @@ export namespace GPlugin {
          * plugin that normally isn't unloadabled from being loaded during the next
          * run of program.
          * @returns The desired state that the user has requested the plugin to be in.
+         * @since 0.38
          */
         get_desired_state(): PluginState;
 
@@ -1501,6 +1517,7 @@ export namespace GPlugin {
          * Sets the desired state of the plugin. This shouldn't need to be called by
          * anyone except {@link GPlugin.Loader} which manages the state of plugins.
          * @param state The desired state.
+         * @since 0.38
          */
         set_desired_state(state: PluginState): void;
 
@@ -1532,6 +1549,7 @@ export namespace GPlugin {
              * 
              * The implementation should return TRUE if it found a new unqueried plugin,
              * which will tell the manager to continue scanning.
+             * @since 0.39
              * @virtual
              */
             vfunc_scan(): boolean;
@@ -1562,6 +1580,7 @@ export namespace GPlugin {
          * The implementation should return TRUE if it found a new unqueried plugin,
          * which will tell the manager to continue scanning.
          * @returns `true` if an unqueried plugin was found, `false` otherwise.
+         * @since 0.39
          */
         scan(): boolean;
     }

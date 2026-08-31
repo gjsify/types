@@ -723,6 +723,7 @@ export namespace Playerctl {
          * A convenience function for bindings to subscribe to an event with a callback
          * @param event the event to subscribe to
          * @param callback the callback to run on the event
+         * @deprecated since 2.0.0: Use `g_object_connect()` to listen to events.
          */
         on(event: string, callback: GObject.Closure): void;
 

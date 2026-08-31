@@ -157,6 +157,7 @@ export namespace GModule {
          * directory it will return `\Windows\mylibrary.dll`.
          * @param directory the directory where the module is. This can be     `null` or the empty string to indicate that the standard platform-specific     directories will be used, though that is not recommended
          * @param module_name the name of the module
+         * @deprecated since 2.76: Use `g_module_open()` instead with `module_name` as the basename of the file_name argument. See `G_MODULE_SUFFIX` for why.
          */
         static build_path(directory: string | null, module_name: string): string;
 

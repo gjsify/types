@@ -268,6 +268,7 @@ export namespace ClutterGst {
         /**
          * Sends an event to the navigation interface.
          * @param event The event to send
+         * @since 1.22
          */
         send_event_simple(event: Gst.Event): void;
 
@@ -298,12 +299,14 @@ export namespace ClutterGst {
          * @param y The y coordinate of the mouse event.
          * @param delta_x The delta_x coordinate of the mouse event.
          * @param delta_y The delta_y coordinate of the mouse event.
+         * @since 1.18
          */
         send_mouse_scroll_event(x: number, y: number, delta_x: number, delta_y: number): void;
 
         /**
          * sending a navigation event.
          * @param structure 
+         * @deprecated since 1.22: Use {@link GstVideo.NavigationInterface}.send_event_simple() instead.
          * @virtual
          */
         vfunc_send_event(structure: Gst.Structure): void;
@@ -318,6 +321,7 @@ export namespace ClutterGst {
         /**
          * Sends an event to the navigation interface.
          * @param event The event to send
+         * @since 1.22
          * @virtual
          */
         vfunc_send_event_simple(event: Gst.Event): void;
@@ -529,12 +533,14 @@ export namespace ClutterGst {
          * audio stream playing in the list returned by
          * `clutter_gst_video_texture_get_audio_streams()`.
          * @returns the index of the current audio stream, -1 if the media has no audio stream
+         * @since 1.4
          */
         get_audio_stream(): number;
 
         /**
          * Get the list of audio streams of the current media.
          * @returns a list of {@link Gst.TagList} describing the available audio streams
+         * @since 1.4
          */
         get_audio_streams(): Gst.TagList[];
 
@@ -546,12 +552,14 @@ export namespace ClutterGst {
 
         /**
          * @returns a {@link ClutterGst.BufferingMode}
+         * @since 1.4
          */
         get_buffering_mode(): BufferingMode;
 
         /**
          * Retrieves the material used to draw when no media is being played.
          * @returns the {@link Cogl.Handle} of the idle material
+         * @since 1.2
          */
         get_idle_material(): Cogl.Handle;
 
@@ -565,6 +573,7 @@ export namespace ClutterGst {
         /**
          * Get the current value of the seek-flags property.
          * @returns a combination of {@link ClutterGst.SeekFlags}
+         * @since 1.4
          */
         get_seek_flags(): SeekFlags;
 
@@ -573,12 +582,14 @@ export namespace ClutterGst {
          * subitles track in the list returned by
          * `clutter_gst_video_texture_get_subtitle_tracks()`.
          * @returns the index of the current subtitlest track, -1 if the media has no subtitles track or if the subtitles have been turned off
+         * @since 1.4
          */
         get_subtitle_track(): number;
 
         /**
          * Get the list of subtitles tracks of the current media.
          * @returns a list of {@link Gst.TagList} describing the available subtitles tracks
+         * @since 1.4
          */
         get_subtitle_tracks(): Gst.TagList[];
 
@@ -591,6 +602,7 @@ export namespace ClutterGst {
         /**
          * Retrieves the user agent used when streaming.
          * @returns the user agent used. The returned string has to be freed with `g_free()`
+         * @since 1.2
          */
         get_user_agent(): string;
 
@@ -598,11 +610,13 @@ export namespace ClutterGst {
          * Set the audio stream to play. `index_` is the index of the stream
          * in the list returned by `clutter_gst_video_texture_get_audio_streams()`.
          * @param index_ the index of the audio stream
+         * @since 1.4
          */
         set_audio_stream(index_: number): void;
 
         /**
          * @param mode a {@link ClutterGst.BufferingMode}
+         * @since 1.4
          */
         set_buffering_mode(mode: BufferingMode): void;
 
@@ -614,6 +628,7 @@ export namespace ClutterGst {
          * If `COGL_INVALID_HANDLE` is given as `material` to this function, this
          * default idle material will be used.
          * @param material the handle of a Cogl material
+         * @since 1.2
          */
         set_idle_material(material: Cogl.Handle): void;
 
@@ -621,6 +636,7 @@ export namespace ClutterGst {
          * Seeking can be done with several trade-offs. Clutter-gst defaults
          * to {@link ClutterGst.SeekFlags.NONE}.
          * @param flags a combination of {@link ClutterGst.SeekFlags}
+         * @since 1.4
          */
         set_seek_flags(flags: SeekFlags): void;
 
@@ -630,6 +646,7 @@ export namespace ClutterGst {
          * 
          * If `index_` is -1, the subtitles are turned off.
          * @param index_ the index of the subtitles track
+         * @since 1.4
          */
         set_subtitle_track(index_: number): void;
 
@@ -640,6 +657,7 @@ export namespace ClutterGst {
          * promote your software, make it appear in statistics or because the server
          * requires a special user agent you want to impersonate.
          * @param user_agent the user agent
+         * @since 1.2
          */
         set_user_agent(user_agent: string): void;
 
@@ -903,66 +921,88 @@ export namespace ClutterGst {
         /**
          * Retrieves the playback volume of `media`.
          * @returns The playback volume between 0.0 and 1.0
+         * @since 1.0
+         * @deprecated since 1.12
          */
         get_audio_volume(): number;
 
         /**
          * Retrieves the amount of the stream that is buffered.
          * @returns the fill level, between 0.0 and 1.0
+         * @since 1.0
+         * @deprecated since 1.12
          */
         get_buffer_fill(): number;
 
         /**
          * Retrieves whether `media` is seekable or not.
          * @returns `true` if `media` can seek, `false` otherwise.
+         * @since 0.2
+         * @deprecated since 1.12
          */
         get_can_seek(): boolean;
 
         /**
          * Retrieves the duration of the media stream that `media` represents.
          * @returns the duration of the media stream, in seconds
+         * @since 0.2
+         * @deprecated since 1.12
          */
         get_duration(): number;
 
         /**
          * Retrieves the playing status of `media`.
          * @returns `true` if playing, `false` if stopped.
+         * @since 0.2
+         * @deprecated since 1.12
          */
         get_playing(): boolean;
 
         /**
          * Retrieves the playback progress of `media`.
          * @returns the playback progress, between 0.0 and 1.0
+         * @since 1.0
+         * @deprecated since 1.12
          */
         get_progress(): number;
 
         /**
          * Retrieves the font name currently used.
          * @returns a string containing the font name. Use `g_free()`   to free the returned string
+         * @since 1.2
+         * @deprecated since 1.12
          */
         get_subtitle_font_name(): string;
 
         /**
          * Retrieves the URI of the subtitle file in use.
          * @returns the URI of the subtitle file. Use `g_free()`   to free the returned string
+         * @since 1.2
+         * @deprecated since 1.12
          */
         get_subtitle_uri(): string;
 
         /**
          * Retrieves the URI from `media`.
          * @returns the URI of the media stream. Use `g_free()`   to free the returned string
+         * @since 0.2
+         * @deprecated since 1.12
          */
         get_uri(): string;
 
         /**
          * Sets the playback volume of `media` to `volume`.
          * @param volume the volume as a double between 0.0 and 1.0
+         * @since 1.0
+         * @deprecated since 1.12
          */
         set_audio_volume(volume: number): void;
 
         /**
          * Sets the source of `media` using a file path.
          * @param filename A filename
+         * @since 0.2
+         * @deprecated since 1.12
          */
         set_filename(filename: string): void;
 
@@ -975,6 +1015,8 @@ export namespace ClutterGst {
          * current state with `clutter_media_get_playing()`. ClutterGstVideoTexture
          * in clutter-gst is an example of such an asynchronous implementation.
          * @param playing `true` to start playing
+         * @since 0.2
+         * @deprecated since 1.12
          */
         set_playing(playing: boolean): void;
 
@@ -982,6 +1024,8 @@ export namespace ClutterGst {
          * Sets the playback progress of `media`. The `progress` is
          * a normalized value between 0.0 (begin) and 1.0 (end).
          * @param progress the progress of the playback, between 0.0 and 1.0
+         * @since 1.0
+         * @deprecated since 1.12
          */
         set_progress(progress: number): void;
 
@@ -997,18 +1041,24 @@ export namespace ClutterGst {
          * ```
          * 
          * @param font_name a font name, or `null` to set the default font name
+         * @since 1.2
+         * @deprecated since 1.12
          */
         set_subtitle_font_name(font_name: string): void;
 
         /**
          * Sets the location of a subtitle file to display while playing `media`.
          * @param uri the URI of a subtitle file
+         * @since 1.2
+         * @deprecated since 1.12
          */
         set_subtitle_uri(uri: string): void;
 
         /**
          * Sets the URI of `media` to `uri`.
          * @param uri the URI of the media stream
+         * @since 0.2
+         * @deprecated since 1.12
          */
         set_uri(uri: string): void;
 
@@ -1027,18 +1077,21 @@ export namespace ClutterGst {
          * Frees the resources created by `clutter_gst_player_init()`. After
          * `clutter_gst_player_deinit()` has been called, no other player method can be
          * called on the instance.
+         * @since 1.4
          */
         deinit(): void;
 
         /**
          * Get the idle state of the pipeline.
          * @returns TRUE if the pipline is in idle mode, FALSE otherwise.
+         * @since 1.4
          */
         get_idle(): boolean;
 
         /**
          * Whether the player is seeking.
          * @returns TRUE if the player is seeking, FALSE otherwise.
+         * @since 1.6
          */
         get_in_seek(): boolean;
 
@@ -1051,6 +1104,7 @@ export namespace ClutterGst {
          * the dispose or finalize vfuncs), call `clutter_gst_player_deinit()` to
          * desallocate the resources created by `clutter_gst_player_init()`.
          * @returns TRUE if the initialization was successfull, FALSE otherwise.
+         * @since 1.4
          */
         init(): boolean;
 
@@ -1065,29 +1119,34 @@ export namespace ClutterGst {
          * Get the current audio stream. The number returned in the index of the
          * audio stream playing in the list returned by
          * `clutter_gst_player_get_audio_streams()`.
+         * @since 1.4
          * @virtual
          */
         vfunc_get_audio_stream(): number;
 
         /**
          * Get the list of audio streams of the current media.
+         * @since 1.4
          * @virtual
          */
         vfunc_get_audio_streams(): string[];
 
         /**
+         * @since 1.4
          * @virtual
          */
         vfunc_get_buffering_mode(): BufferingMode;
 
         /**
          * Get the idle state of the pipeline.
+         * @since 1.4
          * @virtual
          */
         vfunc_get_idle(): boolean;
 
         /**
          * Whether the player is seeking.
+         * @since 1.6
          * @virtual
          */
         vfunc_get_in_seek(): boolean;
@@ -1095,12 +1154,14 @@ export namespace ClutterGst {
         /**
          * Retrieves the {@link Gst.Pipeline} used by the `player`, for direct use with
          * GStreamer API.
+         * @since 1.4
          * @virtual
          */
         vfunc_get_pipeline(): Gst.Element;
 
         /**
          * Get the current value of the seek-flags property.
+         * @since 1.4
          * @virtual
          */
         vfunc_get_seek_flags(): SeekFlags;
@@ -1109,18 +1170,21 @@ export namespace ClutterGst {
          * Get the current subtitles track. The number returned is the index of the
          * subtiles track in the list returned by
          * `clutter_gst_player_get_subtitle_tracks()`.
+         * @since 1.4
          * @virtual
          */
         vfunc_get_subtitle_track(): number;
 
         /**
          * Get the list of subtitles tracks of the current media.
+         * @since 1.4
          * @virtual
          */
         vfunc_get_subtitle_tracks(): string[];
 
         /**
          * Retrieves the user agent used when streaming.
+         * @since 1.4
          * @virtual
          */
         vfunc_get_user_agent(): string;
@@ -1129,12 +1193,14 @@ export namespace ClutterGst {
          * Set the audio stream to play. `index_` is the index of the stream
          * in the list returned by `clutter_gst_player_get_audio_streams()`.
          * @param index_ the index of the audio stream
+         * @since 1.4
          * @virtual
          */
         vfunc_set_audio_stream(index_: number): void;
 
         /**
          * @param mode a {@link ClutterGst.BufferingMode}
+         * @since 1.4
          * @virtual
          */
         vfunc_set_buffering_mode(mode: BufferingMode): void;
@@ -1143,6 +1209,7 @@ export namespace ClutterGst {
          * Seeking can be done with several trade-offs. Clutter-gst defaults
          * to {@link ClutterGst.SeekFlags.NONE}.
          * @param flags a combination of {@link ClutterGst.SeekFlags}
+         * @since 1.4
          * @virtual
          */
         vfunc_set_seek_flags(flags: SeekFlags): void;
@@ -1153,6 +1220,7 @@ export namespace ClutterGst {
          * 
          * If `index_` is -1, the subtitles are turned off.
          * @param index_ the index of the subtitles track
+         * @since 1.4
          * @virtual
          */
         vfunc_set_subtitle_track(index_: number): void;
@@ -1164,6 +1232,7 @@ export namespace ClutterGst {
          * promote your software, make it appear in statistics or because the server
          * requires a special user agent you want to impersonate.
          * @param user_agent the user agent
+         * @since 1.4
          * @virtual
          */
         vfunc_set_user_agent(user_agent: string): void;
@@ -1228,29 +1297,34 @@ export namespace ClutterGst {
              * Get the current audio stream. The number returned in the index of the
              * audio stream playing in the list returned by
              * `clutter_gst_player_get_audio_streams()`.
+             * @since 1.4
              * @virtual
              */
             vfunc_get_audio_stream(): number;
 
             /**
              * Get the list of audio streams of the current media.
+             * @since 1.4
              * @virtual
              */
             vfunc_get_audio_streams(): string[];
 
             /**
+             * @since 1.4
              * @virtual
              */
             vfunc_get_buffering_mode(): BufferingMode;
 
             /**
              * Get the idle state of the pipeline.
+             * @since 1.4
              * @virtual
              */
             vfunc_get_idle(): boolean;
 
             /**
              * Whether the player is seeking.
+             * @since 1.6
              * @virtual
              */
             vfunc_get_in_seek(): boolean;
@@ -1258,12 +1332,14 @@ export namespace ClutterGst {
             /**
              * Retrieves the {@link Gst.Pipeline} used by the `player`, for direct use with
              * GStreamer API.
+             * @since 1.4
              * @virtual
              */
             vfunc_get_pipeline(): Gst.Element;
 
             /**
              * Get the current value of the seek-flags property.
+             * @since 1.4
              * @virtual
              */
             vfunc_get_seek_flags(): SeekFlags;
@@ -1272,18 +1348,21 @@ export namespace ClutterGst {
              * Get the current subtitles track. The number returned is the index of the
              * subtiles track in the list returned by
              * `clutter_gst_player_get_subtitle_tracks()`.
+             * @since 1.4
              * @virtual
              */
             vfunc_get_subtitle_track(): number;
 
             /**
              * Get the list of subtitles tracks of the current media.
+             * @since 1.4
              * @virtual
              */
             vfunc_get_subtitle_tracks(): string[];
 
             /**
              * Retrieves the user agent used when streaming.
+             * @since 1.4
              * @virtual
              */
             vfunc_get_user_agent(): string;
@@ -1292,12 +1371,14 @@ export namespace ClutterGst {
              * Set the audio stream to play. `index_` is the index of the stream
              * in the list returned by `clutter_gst_player_get_audio_streams()`.
              * @param index_ the index of the audio stream
+             * @since 1.4
              * @virtual
              */
             vfunc_set_audio_stream(index_: number): void;
 
             /**
              * @param mode a {@link ClutterGst.BufferingMode}
+             * @since 1.4
              * @virtual
              */
             vfunc_set_buffering_mode(mode: BufferingMode): void;
@@ -1306,6 +1387,7 @@ export namespace ClutterGst {
              * Seeking can be done with several trade-offs. Clutter-gst defaults
              * to {@link ClutterGst.SeekFlags.NONE}.
              * @param flags a combination of {@link ClutterGst.SeekFlags}
+             * @since 1.4
              * @virtual
              */
             vfunc_set_seek_flags(flags: SeekFlags): void;
@@ -1316,6 +1398,7 @@ export namespace ClutterGst {
              * 
              * If `index_` is -1, the subtitles are turned off.
              * @param index_ the index of the subtitles track
+             * @since 1.4
              * @virtual
              */
             vfunc_set_subtitle_track(index_: number): void;
@@ -1327,6 +1410,7 @@ export namespace ClutterGst {
              * promote your software, make it appear in statistics or because the server
              * requires a special user agent you want to impersonate.
              * @param user_agent the user agent
+             * @since 1.4
              * @virtual
              */
             vfunc_set_user_agent(user_agent: string): void;
@@ -1472,6 +1556,7 @@ export namespace ClutterGst {
          * Frees the resources created by `clutter_gst_player_init()`. After
          * `clutter_gst_player_deinit()` has been called, no other player method can be
          * called on the instance.
+         * @since 1.4
          */
         deinit(): void;
 
@@ -1480,29 +1565,34 @@ export namespace ClutterGst {
          * audio stream playing in the list returned by
          * `clutter_gst_player_get_audio_streams()`.
          * @returns the index of the current audio stream, -1 if the media has no audio stream
+         * @since 1.4
          */
         get_audio_stream(): number;
 
         /**
          * Get the list of audio streams of the current media.
          * @returns a list of strings describing the available audio streams
+         * @since 1.4
          */
         get_audio_streams(): string[];
 
         /**
          * @returns a {@link ClutterGst.BufferingMode}
+         * @since 1.4
          */
         get_buffering_mode(): BufferingMode;
 
         /**
          * Get the idle state of the pipeline.
          * @returns TRUE if the pipline is in idle mode, FALSE otherwise.
+         * @since 1.4
          */
         get_idle(): boolean;
 
         /**
          * Whether the player is seeking.
          * @returns TRUE if the player is seeking, FALSE otherwise.
+         * @since 1.6
          */
         get_in_seek(): boolean;
 
@@ -1510,12 +1600,14 @@ export namespace ClutterGst {
          * Retrieves the {@link Gst.Pipeline} used by the `player`, for direct use with
          * GStreamer API.
          * @returns the {@link Gst.Pipeline} element used by the player
+         * @since 1.4
          */
         get_pipeline(): Gst.Element;
 
         /**
          * Get the current value of the seek-flags property.
          * @returns a combination of {@link ClutterGst.SeekFlags}
+         * @since 1.4
          */
         get_seek_flags(): SeekFlags;
 
@@ -1524,18 +1616,21 @@ export namespace ClutterGst {
          * subtiles track in the list returned by
          * `clutter_gst_player_get_subtitle_tracks()`.
          * @returns the index of the current subtitlest track, -1 if the media has no subtitles track or if the subtitles have been turned off
+         * @since 1.4
          */
         get_subtitle_track(): number;
 
         /**
          * Get the list of subtitles tracks of the current media.
          * @returns a list of strings describing the available subtitles tracks
+         * @since 1.4
          */
         get_subtitle_tracks(): string[];
 
         /**
          * Retrieves the user agent used when streaming.
          * @returns the user agent used. The returned string has to be freed with `g_free()`
+         * @since 1.4
          */
         get_user_agent(): string;
 
@@ -1548,6 +1643,7 @@ export namespace ClutterGst {
          * the dispose or finalize vfuncs), call `clutter_gst_player_deinit()` to
          * desallocate the resources created by `clutter_gst_player_init()`.
          * @returns TRUE if the initialization was successfull, FALSE otherwise.
+         * @since 1.4
          */
         init(): boolean;
 
@@ -1555,11 +1651,13 @@ export namespace ClutterGst {
          * Set the audio stream to play. `index_` is the index of the stream
          * in the list returned by `clutter_gst_player_get_audio_streams()`.
          * @param index_ the index of the audio stream
+         * @since 1.4
          */
         set_audio_stream(index_: number): void;
 
         /**
          * @param mode a {@link ClutterGst.BufferingMode}
+         * @since 1.4
          */
         set_buffering_mode(mode: BufferingMode): void;
 
@@ -1567,6 +1665,7 @@ export namespace ClutterGst {
          * Seeking can be done with several trade-offs. Clutter-gst defaults
          * to {@link ClutterGst.SeekFlags.NONE}.
          * @param flags a combination of {@link ClutterGst.SeekFlags}
+         * @since 1.4
          */
         set_seek_flags(flags: SeekFlags): void;
 
@@ -1576,6 +1675,7 @@ export namespace ClutterGst {
          * 
          * If `index_` is -1, the subtitles are turned off.
          * @param index_ the index of the subtitles track
+         * @since 1.4
          */
         set_subtitle_track(index_: number): void;
 
@@ -1586,6 +1686,7 @@ export namespace ClutterGst {
          * promote your software, make it appear in statistics or because the server
          * requires a special user agent you want to impersonate.
          * @param user_agent the user agent
+         * @since 1.4
          */
         set_user_agent(user_agent: string): void;
     }

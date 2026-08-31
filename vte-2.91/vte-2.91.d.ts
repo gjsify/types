@@ -1012,6 +1012,7 @@ export namespace Vte {
 
         /**
          * Since 0.42 this is a no-op.
+         * @deprecated since 0.42
          */
         close(): void;
 
@@ -1059,6 +1060,7 @@ export namespace Vte {
          * @param child_setup an extra child setup function to run in the child just before `exec()`, or `null`
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @since 0.48
          */
         spawn_async(working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, timeout: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Pid | null>;
 
@@ -1074,6 +1076,7 @@ export namespace Vte {
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
+         * @since 0.48
          */
         spawn_async(working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1089,12 +1092,14 @@ export namespace Vte {
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
+         * @since 0.48
          */
         spawn_async(working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, timeout: number, cancellable: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<GLib.Pid | null> | void;
 
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, or `false` on error with `error` filled in
+         * @since 0.48
          */
         spawn_finish(result: Gio.AsyncResult): [boolean, GLib.Pid | null];
 
@@ -1140,6 +1145,7 @@ export namespace Vte {
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Gio.AsyncReadyCallback}, or `null`
+         * @since 0.62
          */
         spawn_with_fds_async(working_directory: string | null, argv: string[], envv: string[] | null, fds: number[] | null, map_fds: number[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
 
@@ -1184,6 +1190,7 @@ export namespace Vte {
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         * @since 2.22
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1227,6 +1234,7 @@ export namespace Vte {
          * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @since 2.22
          * @virtual
          */
         vfunc_init(cancellable: Gio.Cancellable | null): boolean;
@@ -4014,6 +4022,7 @@ export namespace Vte {
         /**
          * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
          * selection.
+         * @deprecated since 0.50: Use `vte_terminal_copy_clipboard_format()` with {@link Vte.Format.TEXT}   instead.
          * @virtual
          */
         vfunc_copy_clipboard(): void;
@@ -4159,6 +4168,7 @@ export namespace Vte {
         /**
          * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
          * selection.
+         * @deprecated since 0.50: Use `vte_terminal_copy_clipboard_format()` with {@link Vte.Format.TEXT}   instead.
          */
         copy_clipboard(): void;
 
@@ -4173,6 +4183,7 @@ export namespace Vte {
          * returns the HTML data in UTF-16 with a U+FEFF BYTE ORDER MARK character at
          * the start.
          * @param format a {@link Vte.Format}
+         * @since 0.50
          */
         copy_clipboard_format(format: Format): void;
 
@@ -4187,6 +4198,7 @@ export namespace Vte {
          *   `prop` is unset, or `prop` is not a registered property.
          * @param prop a termprop name
          * @returns the property's value, or `null`
+         * @since 0.78
          */
         dup_termprop_string(prop: string): [string | null, number];
 
@@ -4195,6 +4207,7 @@ export namespace Vte {
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns the property's value, or `null`
+         * @since 0.78
          */
         dup_termprop_string_by_id(prop: number): [string | null, number];
 
@@ -4203,6 +4216,7 @@ export namespace Vte {
          *   `prop` is unset, or `prop` is not a registered property.
          * @param prop a termprop name
          * @returns the property's value as a {@link Vte.Uuid}, or `null`
+         * @since 0.78
          */
         dup_termprop_uuid(prop: string): Uuid | null;
 
@@ -4211,6 +4225,7 @@ export namespace Vte {
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns the property's value as a {@link Vte.Uuid}, or `null`
+         * @since 0.78
          */
         dup_termprop_uuid_by_id(prop: number): Uuid | null;
 
@@ -4220,6 +4235,8 @@ export namespace Vte {
          * @param regexes an array of {@link GLib.Regex}
          * @param match_flags the {@link GLib.RegexMatchFlags} to use when matching the regexes
          * @returns `false`
+         * @since 0.44
+         * @deprecated since 0.46: Use `vte_terminal_event_check_regex_simple()` instead.
          */
         event_check_gregex_simple(event: Gdk.Event, regexes: GLib.Regex[], match_flags: GLib.RegexMatchFlags): [boolean, string[]];
 
@@ -4234,6 +4251,7 @@ export namespace Vte {
          * @param regexes an array of {@link Vte.Regex}
          * @param match_flags PCRE2 match flags, or 0
          * @returns a newly allocated array of strings,   or `null` if none of the regexes matched
+         * @since 0.62
          */
         event_check_regex_simple(event: Gdk.Event, regexes: Regex[], match_flags: number): string[] | null;
 
@@ -4253,6 +4271,7 @@ export namespace Vte {
         /**
          * Sends a block of binary data to the child.
          * @param data data to send to the child
+         * @deprecated since 0.60: Don't send binary data. Use `vte_terminal_feed_child()` instead to send   UTF-8 text
          */
         feed_child_binary(data: Uint8Array | string | null): void;
 
@@ -4260,12 +4279,14 @@ export namespace Vte {
          * Checks whether or not the terminal will attempt to draw bold text,
          * by using a bold font variant.
          * @returns `true` if bolding is enabled, `false` if not
+         * @deprecated since 0.60: There's probably no reason for this feature to exist.
          */
         get_allow_bold(): boolean;
 
         /**
          * Checks whether or not hyperlinks (OSC 8 escape sequence) are allowed.
          * @returns `true` if hyperlinks are enabled, `false` if not
+         * @since 0.50
          */
         get_allow_hyperlink(): boolean;
 
@@ -4281,16 +4302,19 @@ export namespace Vte {
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
          * or if SGR 1 only enables bold and leaves the color intact.
          * @returns `true` if bold also enables bright, `false` if not
+         * @since 0.52
          */
         get_bold_is_bright(): boolean;
 
         /**
          * @returns the terminal's cell height scale
+         * @since 0.52
          */
         get_cell_height_scale(): number;
 
         /**
          * @returns the terminal's cell width scale
+         * @since 0.52
          */
         get_cell_width_scale(): number;
 
@@ -4324,6 +4348,7 @@ export namespace Vte {
          * This function is rarely useful. One use for it is if you disable
          * drawing the background (see `vte_terminal_set_clear_background()`)
          * and then need to draw the background yourself.
+         * @since 0.54
          */
         get_color_background_for_draw(): Gdk.RGBA;
 
@@ -4334,21 +4359,25 @@ export namespace Vte {
 
         /**
          * @returns the context menu, or `null`
+         * @since 0.76
          */
         get_context_menu(): Gtk.Widget | null;
 
         /**
          * @returns the context menu model, or `null`
+         * @since 0.76
          */
         get_context_menu_model(): Gio.MenuModel | null;
 
         /**
          * @returns the URI of the current directory of the   process running in the terminal, or `null`
+         * @deprecated since 0.78: Use the `VTE_TERMPROP_CURRENT_FILE_URI_STRING` termprop.
          */
         get_current_directory_uri(): string | null;
 
         /**
          * @returns the URI of the current file the   process running in the terminal is operating on, or `null` if   not set
+         * @deprecated since 0.78: Use the `VTE_TERMPROP_CURRENT_FILE_URI_STRING` termprop.
          */
         get_current_file_uri(): string | null;
 
@@ -4375,33 +4404,39 @@ export namespace Vte {
         /**
          * Checks whether the terminal communicates with a11y backends
          * @returns `true` if a11y is enabled, `false` if not
+         * @since 0.78
          */
         get_enable_a11y(): boolean;
 
         /**
          * Checks whether the terminal performs bidirectional text rendering.
          * @returns `true` if BiDi is enabled, `false` if not
+         * @since 0.58
          */
         get_enable_bidi(): boolean;
 
         /**
          * @returns `true` if fallback scrolling is enabled
+         * @since 0.64
          */
         get_enable_fallback_scrolling(): boolean;
 
         /**
          * @returns `true` iff legacy OSC 777 is enabled
+         * @since 0.78
          */
         get_enable_legacy_osc777(): boolean;
 
         /**
          * Checks whether the terminal shapes Arabic text.
          * @returns `true` if Arabic shaping is enabled, `false` if not
+         * @since 0.58
          */
         get_enable_shaping(): boolean;
 
         /**
          * @returns `false`
+         * @since 0.62
          */
         get_enable_sixel(): boolean;
 
@@ -4409,6 +4444,7 @@ export namespace Vte {
          * Determines the name of the encoding in which the terminal expects data to be
          * encoded, or `null` if UTF-8 is in use.
          * @returns the current encoding for the terminal
+         * @deprecated since 0.54: Support for non-UTF-8 is deprecated.
          */
         get_encoding(): string | null;
 
@@ -4423,6 +4459,7 @@ export namespace Vte {
 
         /**
          * @returns the terminal's font options, or `null`
+         * @since 0.74
          */
         get_font_options(): cairo.FontOptions | null;
 
@@ -4441,6 +4478,7 @@ export namespace Vte {
          * `terminal` must be realized (see `gtk_widget_get_realized()`).
          * @param min_rows the minimum number of rows to request
          * @param min_columns the minimum number of columns to request
+         * @deprecated since 0.52
          */
         get_geometry_hints(min_rows: number, min_columns: number): Gdk.Geometry;
 
@@ -4454,6 +4492,7 @@ export namespace Vte {
 
         /**
          * @returns `null`
+         * @deprecated since 0.54
          */
         get_icon_title(): string | null;
 
@@ -4480,6 +4519,7 @@ export namespace Vte {
         /**
          * Checks whether or not the terminal will rewrap its contents upon resize.
          * @returns `true` if rewrapping is enabled, `false` if not
+         * @deprecated since 0.58
          */
         get_rewrap_on_resize(): boolean;
 
@@ -4490,26 +4530,31 @@ export namespace Vte {
 
         /**
          * @returns whether or not the terminal will forcibly scroll to the bottom of the viewable history when the new data is received from the child.
+         * @since 0.76
          */
         get_scroll_on_insert(): boolean;
 
         /**
          * @returns whether or not the terminal will forcibly scroll to the bottom of the viewable history when the user presses a key.  Modifier keys do not trigger this behavior.
+         * @since 0.52
          */
         get_scroll_on_keystroke(): boolean;
 
         /**
          * @returns whether or not the terminal will forcibly scroll to the bottom of the viewable history when the new data is received from the child.
+         * @since 0.52
          */
         get_scroll_on_output(): boolean;
 
         /**
          * @returns `true` if the scroll unit is pixels; or `false` if the unit is lines
+         * @since 0.66
          */
         get_scroll_unit_is_pixels(): boolean;
 
         /**
          * @returns length of the scrollback buffer used by the terminal. A negative value means "infinite scrollback".
+         * @since 0.52
          */
         get_scrollback_lines(): number;
 
@@ -4518,6 +4563,7 @@ export namespace Vte {
          *   or to `false` if `prop` is unset, or `prop` is not a registered property.
          * @param prop a termprop name
          * @returns `true` iff the termprop is set
+         * @since 0.78
          */
         get_termprop_bool(prop: string): [boolean, boolean];
 
@@ -4526,6 +4572,7 @@ export namespace Vte {
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns `true` iff the termprop is set
+         * @since 0.78
          */
         get_termprop_bool_by_id(prop: number): [boolean, boolean];
 
@@ -4534,6 +4581,7 @@ export namespace Vte {
          *   `prop` is unset, or `prop` is not a registered property.
          * @param prop a termprop name
          * @returns the property's value, or `null`
+         * @since 0.78
          */
         get_termprop_data(prop: string): Uint8Array | null;
 
@@ -4542,6 +4590,7 @@ export namespace Vte {
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns the property's value, or `null`
+         * @since 0.78
          */
         get_termprop_data_by_id(prop: number): Uint8Array | null;
 
@@ -4551,6 +4600,7 @@ export namespace Vte {
          *   registered property.
          * @param prop a termprop name
          * @returns `true` iff the termprop is set
+         * @since 0.78
          */
         get_termprop_double(prop: string): [boolean, number];
 
@@ -4559,6 +4609,7 @@ export namespace Vte {
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns `true` iff the termprop is set
+         * @since 0.78
          */
         get_termprop_double_by_id(prop: number): [boolean, number];
 
@@ -4567,6 +4618,7 @@ export namespace Vte {
          * @param prop a property name of a {@link Vte.PropertyType.STRING} property
          * @param gtype a {@link GObject.GType} of an enum type
          * @returns `true` iff the property was set and could be parsed a   a value of the enumeration type
+         * @since 0.82
          */
         get_termprop_enum(prop: string, gtype: GObject.GType): [boolean, number];
 
@@ -4576,6 +4628,7 @@ export namespace Vte {
          * @param prop a property ID of a {@link Vte.PropertyType.STRING} property
          * @param gtype a {@link GObject.GType} of an enum type
          * @returns `true` iff the property was set and could be parsed a   a value of enumeration type `type`
+         * @since 0.82
          */
         get_termprop_enum_by_id(prop: number, gtype: GObject.GType): [boolean, number];
 
@@ -4585,6 +4638,7 @@ export namespace Vte {
          * @param gtype a {@link GObject.GType} of a flags type
          * @param ignore_unknown_flags whether to ignore unknown flags
          * @returns `true` iff the property was set and could be parsed a   a value of the flags type
+         * @since 0.82
          */
         get_termprop_flags(prop: string, gtype: GObject.GType, ignore_unknown_flags: boolean): [boolean, number];
 
@@ -4595,6 +4649,7 @@ export namespace Vte {
          * @param gtype a {@link GObject.GType} of a flags type
          * @param ignore_unknown_flags whether to ignore unknown flags
          * @returns `true` iff the property was set and could be parsed a   a value of flags type `type`
+         * @since 0.82
          */
         get_termprop_flags_by_id(prop: number, gtype: GObject.GType, ignore_unknown_flags: boolean): [boolean, number];
 
@@ -4608,6 +4663,7 @@ export namespace Vte {
          * the values to the expected range.
          * @param prop a termprop name
          * @returns `true` iff the termprop is set
+         * @since 0.78
          */
         get_termprop_int(prop: string): [boolean, number];
 
@@ -4616,6 +4672,7 @@ export namespace Vte {
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns `true` iff the termprop is set
+         * @since 0.78
          */
         get_termprop_int_by_id(prop: number): [boolean, number];
 
@@ -4625,6 +4682,7 @@ export namespace Vte {
          * and returns `false` if the termprop is unset.
          * @param prop a termprop name
          * @returns `true` iff the termprop is set
+         * @since 0.78
          */
         get_termprop_rgba(prop: string): [boolean, Gdk.RGBA | null];
 
@@ -4633,6 +4691,7 @@ export namespace Vte {
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns `true` iff the termprop is set
+         * @since 0.78
          */
         get_termprop_rgba_by_id(prop: number): [boolean, Gdk.RGBA | null];
 
@@ -4641,6 +4700,7 @@ export namespace Vte {
          *   `prop` is unset, or `prop` is not a registered property.
          * @param prop a termprop name
          * @returns the property's value, or `null`
+         * @since 0.78
          */
         get_termprop_string(prop: string): [string | null, number];
 
@@ -4649,6 +4709,7 @@ export namespace Vte {
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns the property's value, or `null`
+         * @since 0.78
          */
         get_termprop_string_by_id(prop: number): [string | null, number];
 
@@ -4662,6 +4723,7 @@ export namespace Vte {
          * the values to the expected range.
          * @param prop a termprop name
          * @returns `true` iff the termprop is set
+         * @since 0.78
          */
         get_termprop_uint(prop: string): [boolean, number];
 
@@ -4670,6 +4732,7 @@ export namespace Vte {
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns `true` iff the termprop is set
+         * @since 0.78
          */
         get_termprop_uint_by_id(prop: number): [boolean, number];
 
@@ -4697,6 +4760,7 @@ export namespace Vte {
          *     and a boxed `GdkTexture` on gtk4
          * @param prop a termprop name
          * @returns `true` iff the property has a value, with `gvalue` containig   the property's value.
+         * @since 0.78
          */
         get_termprop_value(prop: string): [boolean, unknown | null];
 
@@ -4705,6 +4769,7 @@ export namespace Vte {
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns `true` iff the property has a value, with `gvalue` containig   the property's value.
+         * @since 0.78
          */
         get_termprop_value_by_id(prop: number): [boolean, unknown | null];
 
@@ -4719,12 +4784,14 @@ export namespace Vte {
          * Since 0.72, passing a non-`null` `is_selected` parameter will make this function itself return `null`.
          * @param is_selected a {@link Vte.SelectionFunc} callback. Deprecated: 0.44: Always pass `null` here.
          * @returns a newly allocated text string, or `null`.
+         * @deprecated since 0.76: Use `vte_terminal_get_text_format()` instead
          */
         get_text(is_selected: SelectionFunc | null): [string | null, CharAttributes[] | null];
 
         /**
          * Checks whether or not the terminal will allow blinking text.
          * @returns the blinking setting
+         * @since 0.52
          */
         get_text_blink_mode(): TextBlinkMode;
 
@@ -4735,6 +4802,7 @@ export namespace Vte {
          * logical columns.
          * @param format the {@link Vte.Format} to use
          * @returns a newly allocated text string, or `null`.
+         * @since 0.76
          */
         get_text_format(format: Format): string | null;
 
@@ -4749,6 +4817,7 @@ export namespace Vte {
          * Since 0.72, passing a non-`null` `is_selected` parameter will make this function itself return `null`.
          * @param is_selected a {@link Vte.SelectionFunc} callback. Deprecated: 0.44: Always pass `null` here.
          * @returns a newly allocated text string, or `null`.
+         * @deprecated since 0.56: Use `vte_terminal_get_text_format()` instead.
          */
         get_text_include_trailing_spaces(is_selected: SelectionFunc | null): [string, CharAttributes[] | null];
 
@@ -4771,6 +4840,7 @@ export namespace Vte {
          * @param end_col last column to search for data
          * @param is_selected a {@link Vte.SelectionFunc} callback. Deprecated: 0.44: Always pass `null` here
          * @returns a newly allocated text string, or `null`.
+         * @deprecated since 0.76: Use `vte_terminal_get_text_range_format()` instead
          */
         get_text_range(start_row: bigint | number, start_col: bigint | number, end_row: bigint | number, end_col: bigint | number, is_selected: SelectionFunc | null): [string | null, CharAttributes[] | null];
 
@@ -4782,6 +4852,7 @@ export namespace Vte {
          * @param end_row the last row of the range
          * @param end_col the last column of the range
          * @returns a newly allocated string, or `null`.
+         * @since 0.72
          */
         get_text_range_format(format: Format, start_row: bigint | number, start_col: bigint | number, end_row: bigint | number, end_col: bigint | number): [string | null, number];
 
@@ -4790,6 +4861,7 @@ export namespace Vte {
          * Since 0.72, this function also supports {@link Vte.Format.HTML} format.
          * @param format the {@link Vte.Format} to use
          * @returns a newly allocated string containing the selected text, or `null` if there is no selection or the format is not supported
+         * @since 0.70
          */
         get_text_selected(format: Format): string | null;
 
@@ -4797,11 +4869,13 @@ export namespace Vte {
          * Gets the currently selected text in the format specified by `format`.
          * @param format the {@link Vte.Format} to use
          * @returns a newly allocated string containing the selected text, or `null` if there is no selection or the format is not supported
+         * @since 0.72
          */
         get_text_selected_full(format: Format): [string | null, number];
 
         /**
          * @returns the window title, or `null`
+         * @deprecated since 0.78: Use the `VTE_TERMPROP_XTERM_TITLE` termprop.
          */
         get_window_title(): string | null;
 
@@ -4812,26 +4886,31 @@ export namespace Vte {
          * 
          * If `null`, a built-in set is used.
          * @returns a string, or `null`
+         * @since 0.40
          */
         get_word_char_exceptions(): string | null;
 
         /**
          * @returns the horizontal alignment of `terminal` within its allocation
+         * @since 0.76
          */
         get_xalign(): Align;
 
         /**
          * @returns the horizontal fillment of `terminal` within its allocation
+         * @since 0.76
          */
         get_xfill(): boolean;
 
         /**
          * @returns the vertical alignment of `terminal` within its allocation
+         * @since 0.76
          */
         get_yalign(): Align;
 
         /**
          * @returns the vertical fillment of `terminal` within its allocation
+         * @since 0.76
          */
         get_yfill(): boolean;
 
@@ -4844,6 +4923,7 @@ export namespace Vte {
          * The caller must tolerate the returned string potentially not being a valid URI.
          * @param event a {@link Gdk.Event}
          * @returns a newly allocated string containing the target of the hyperlink,  or `null`
+         * @since 0.50
          */
         hyperlink_check_event(event: Gdk.Event): string | null;
 
@@ -4852,6 +4932,7 @@ export namespace Vte {
          * @param gregex a {@link GLib.Regex}
          * @param gflags the {@link GLib.RegexMatchFlags} to use when matching the regex
          * @returns -1
+         * @deprecated since 0.46: Use `vte_terminal_match_add_regex()` instead.
          */
         match_add_gregex(gregex: GLib.Regex, gflags: GLib.RegexMatchFlags): number;
 
@@ -4865,6 +4946,7 @@ export namespace Vte {
          * @param regex a {@link Vte.Regex}
          * @param flags PCRE2 match flags, or 0
          * @returns an integer associated with this expression
+         * @since 0.46
          */
         match_add_regex(regex: Regex, flags: number): number;
 
@@ -4880,6 +4962,7 @@ export namespace Vte {
          * @param column the text column
          * @param row the text row
          * @returns a newly allocated string which matches one of the previously   set regular expressions
+         * @deprecated since 0.46: Use `vte_terminal_match_check_event()` instead.
          */
         match_check(column: bigint | number, row: bigint | number): [string | null, number];
 
@@ -4916,6 +4999,7 @@ export namespace Vte {
          * specified by `tag`.  The terminal keeps a reference to `cursor`.
          * @param tag the tag of the regex which should use the specified cursor
          * @param cursor the {@link Gdk.Cursor} which the terminal should use when the pattern is   highlighted, or `null` to use the standard cursor
+         * @deprecated since 0.40: Use `vte_terminal_match_set_cursor_name()` instead.
          */
         match_set_cursor(tag: number, cursor: Gdk.Cursor | null): void;
 
@@ -4932,6 +5016,7 @@ export namespace Vte {
          * specified by `tag`.
          * @param tag the tag of the regex which should use the specified cursor
          * @param cursor_type a {@link Gdk.CursorType}
+         * @deprecated since 0.54: Use `vte_terminal_match_set_cursor_name()` instead.
          */
         match_set_cursor_type(tag: number, cursor_type: Gdk.CursorType): void;
 
@@ -4955,6 +5040,7 @@ export namespace Vte {
          * this differs from `vte_terminal_feed_child()` in that it may process
          * `text` before passing it to the child (e.g. apply bracketed mode)
          * @param text a string to paste
+         * @since 0.68
          */
         paste_text(text: string): void;
 
@@ -4975,6 +5061,7 @@ export namespace Vte {
          *   `prop` is unset, or `prop` is not a registered property.
          * @param prop a termprop name
          * @returns the property's value as a {@link GLib.Bytes}, or `null`
+         * @since 0.78
          */
         ref_termprop_data_bytes(prop: string): GLib.Bytes | null;
 
@@ -4983,6 +5070,7 @@ export namespace Vte {
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns the property's value as a {@link GLib.Bytes}, or `null`
+         * @since 0.78
          */
         ref_termprop_data_bytes_by_id(prop: number): GLib.Bytes | null;
 
@@ -4991,6 +5079,7 @@ export namespace Vte {
          *   `prop` is unset, or `prop` is not a registered property.
          * @param prop a termprop name
          * @returns the property's value as a {@link GdkPixbuf.Pixbuf}, or `null`
+         * @since 0.80
          */
         ref_termprop_image_pixbuf(prop: string): GdkPixbuf.Pixbuf | null;
 
@@ -4999,6 +5088,7 @@ export namespace Vte {
          * termprop by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns the property's value as a {@link GdkPixbuf.Pixbuf}, or `null`
+         * @since 0.80
          */
         ref_termprop_image_pixbuf_by_id(prop: number): GdkPixbuf.Pixbuf | null;
 
@@ -5013,6 +5103,7 @@ export namespace Vte {
          * must not be modified.
          * @param prop a termprop name
          * @returns the property's value as a {@link cairo.Surface}, or `null`
+         * @since 0.80
          */
         ref_termprop_image_surface(prop: string): cairo.Surface | null;
 
@@ -5021,6 +5112,7 @@ export namespace Vte {
          * termprop by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns the property's value as a {@link cairo.Surface}, or `null`
+         * @since 0.80
          */
         ref_termprop_image_surface_by_id(prop: number): cairo.Surface | null;
 
@@ -5029,6 +5121,7 @@ export namespace Vte {
          *   `prop` is unset, or `prop` is not a registered property.
          * @param prop a termprop name
          * @returns the property's value as a {@link GLib.Uri}, or `null`
+         * @since 0.78
          */
         ref_termprop_uri(prop: string): GLib.Uri | null;
 
@@ -5037,6 +5130,7 @@ export namespace Vte {
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns the property's value as a {@link GLib.Uri}, or `null`
+         * @since 0.78
          */
         ref_termprop_uri_by_id(prop: number): GLib.Uri | null;
 
@@ -5063,6 +5157,7 @@ export namespace Vte {
          *   variant representation.
          * @param prop a termprop name
          * @returns a floating {@link GLib.Variant}, or `null`
+         * @since 0.78
          */
         ref_termprop_variant(prop: string): GLib.Variant | null;
 
@@ -5071,6 +5166,7 @@ export namespace Vte {
          * by ID. See that function for more information.
          * @param prop a termprop ID
          * @returns a floating {@link GLib.Variant}, or `null`
+         * @since 0.78
          */
         ref_termprop_variant_by_id(prop: number): GLib.Variant | null;
 
@@ -5087,6 +5183,7 @@ export namespace Vte {
         /**
          * Resets the termprop `prop` to its default value.
          * @param prop a termprop name
+         * @since 0.84
          */
         reset_termprop(prop: string): void;
 
@@ -5094,6 +5191,7 @@ export namespace Vte {
          * Like `vte_terminal_reset_termprop()` except that it takes the termprop
          * by ID. See that function for more information.
          * @param prop a termprop ID
+         * @since 0.84
          */
         reset_termprop_by_id(prop: number): void;
 
@@ -5113,11 +5211,13 @@ export namespace Vte {
 
         /**
          * @returns `null`
+         * @deprecated since 0.46: use `vte_terminal_search_get_regex()` instead.
          */
         search_get_gregex(): GLib.Regex;
 
         /**
          * @returns the search {@link Vte.Regex} regex set in `terminal`, or `null`
+         * @since 0.46
          */
         search_get_regex(): Regex;
 
@@ -5130,6 +5230,7 @@ export namespace Vte {
          * This function does nothing since version 0.60.
          * @param gregex a {@link GLib.Regex}, or `null`
          * @param gflags flags from {@link GLib.RegexMatchFlags}
+         * @deprecated since 0.46: use `vte_terminal_search_set_regex()` instead.
          */
         search_set_gregex(gregex: GLib.Regex | null, gflags: GLib.RegexMatchFlags): void;
 
@@ -5140,6 +5241,7 @@ export namespace Vte {
          * <literal>PCRE2_MULTILINE</literal> flag.
          * @param regex a {@link Vte.Regex}, or `null`
          * @param flags PCRE2 match flags, or 0
+         * @since 0.46
          */
         search_set_regex(regex: Regex | null, flags: number): void;
 
@@ -5159,12 +5261,14 @@ export namespace Vte {
          * Controls whether or not the terminal will attempt to draw bold text,
          * by using a bold font variant.
          * @param allow_bold `true` if the terminal should attempt to draw bold text
+         * @deprecated since 0.60: There's probably no reason for this feature to exist.
          */
         set_allow_bold(allow_bold: boolean): void;
 
         /**
          * Controls whether or not hyperlinks (OSC 8 escape sequence) are allowed.
          * @param allow_hyperlink `true` if the terminal should allow hyperlinks
+         * @since 0.50
          */
         set_allow_hyperlink(allow_hyperlink: boolean): void;
 
@@ -5188,6 +5292,7 @@ export namespace Vte {
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
          * or if SGR 1 only enables bold and leaves the color intact.
          * @param bold_is_bright `true` if bold should also enable bright
+         * @since 0.52
          */
         set_bold_is_bright(bold_is_bright: boolean): void;
 
@@ -5197,6 +5302,7 @@ export namespace Vte {
          * This can be used to increase the line spacing. (The font's height is not affected.)
          * Valid values go from 1.0 (default) to 2.0 ("double spacing").
          * @param scale the cell height scale
+         * @since 0.52
          */
         set_cell_height_scale(scale: number): void;
 
@@ -5206,6 +5312,7 @@ export namespace Vte {
          * This can be used to increase the letter spacing. (The font's width is not affected.)
          * Valid values go from 1.0 (default) to 2.0.
          * @param scale the cell width scale
+         * @since 0.52
          */
         set_cell_width_scale(scale: number): void;
 
@@ -5225,6 +5332,7 @@ export namespace Vte {
          * This function is rarely useful. One use for it is to add a background
          * image to the terminal.
          * @param setting whether to clear the background
+         * @since 0.52
          */
         set_clear_background(setting: boolean): void;
 
@@ -5256,6 +5364,7 @@ export namespace Vte {
          * under the cursor will be drawn with foreground and background colors
          * reversed.
          * @param cursor_foreground the new color to use for the text cursor, or `null`
+         * @since 0.44
          */
         set_color_cursor_foreground(cursor_foreground: Gdk.RGBA | null): void;
 
@@ -5306,6 +5415,7 @@ export namespace Vte {
          * Note that a menu model set with `vte_terminal_set_context_menu_model()`
          * takes precedence over a menu set using this function.
          * @param menu a menu
+         * @since 0.76
          */
         set_context_menu(menu: Gtk.Widget | null): void;
 
@@ -5313,6 +5423,7 @@ export namespace Vte {
          * Sets `model` as the context menu model in `terminal`.
          * Use `null` to unset the current menu model.
          * @param model a {@link Gio.MenuModel}
+         * @since 0.76
          */
         set_context_menu_model(model: Gio.MenuModel | null): void;
 
@@ -5345,12 +5456,14 @@ export namespace Vte {
         /**
          * Controls whether or not the terminal will communicate with a11y backends.
          * @param enable_a11y `true` to enable a11y support
+         * @since 0.78
          */
         set_enable_a11y(enable_a11y: boolean): void;
 
         /**
          * Controls whether or not the terminal will perform bidirectional text rendering.
          * @param enable_bidi `true` to enable BiDi support
+         * @since 0.58
          */
         set_enable_bidi(enable_bidi: boolean): void;
 
@@ -5362,6 +5475,7 @@ export namespace Vte {
          * {@link Gtk.ScrolledWindow}, to perform kinetic scrolling (while vte itself does
          * not, yet, implement kinetic scrolling by itself).
          * @param enable whether to enable fallback scrolling
+         * @since 0.64
          */
         set_enable_fallback_scrolling(enable: boolean): void;
 
@@ -5369,18 +5483,21 @@ export namespace Vte {
          * Sets whether legacy OSC 777 sequences are translated to
          * their corresponding termprops.
          * @param enable whether to enable legacy OSC 777
+         * @since 0.78
          */
         set_enable_legacy_osc777(enable: boolean): void;
 
         /**
          * Controls whether or not the terminal will shape Arabic text.
          * @param enable_shaping `true` to enable Arabic shaping
+         * @since 0.58
          */
         set_enable_shaping(enable_shaping: boolean): void;
 
         /**
          * Set whether to enable SIXEL images.
          * @param enabled whether to enable SIXEL images
+         * @since 0.62
          */
         set_enable_sixel(enabled: boolean): void;
 
@@ -5394,6 +5511,7 @@ export namespace Vte {
          * spawning the child process.
          * @param codeset target charset, or `null` to use UTF-8
          * @returns `true` if the encoding could be changed to the specified one,  or `false` with `error` set to {@link GLib.ConvertError.NO_CONVERSION}.
+         * @deprecated since 0.54: Support for non-UTF-8 is deprecated.
          */
         set_encoding(codeset: string | null): boolean;
 
@@ -5415,6 +5533,7 @@ export namespace Vte {
          * function to set a {@link cairo.FontOptions} that has
          * {@link cairo.HintMetrics.OFF} set.
          * @param font_options the font options, or `null`
+         * @since 0.74
          */
         set_font_options(font_options: cairo.FontOptions | null): void;
 
@@ -5430,6 +5549,7 @@ export namespace Vte {
          * 
          * `terminal` must be realized (see `gtk_widget_get_realized()`).
          * @param window a {@link Gtk.Window}
+         * @deprecated since 0.52
          */
         set_geometry_hints_for_window(window: Gtk.Window): void;
 
@@ -5461,6 +5581,7 @@ export namespace Vte {
          * Controls whether or not the terminal will rewrap its contents, including
          * the scrollback history, whenever the terminal's width changes.
          * @param rewrap `true` if the terminal should rewrap on resize
+         * @deprecated since 0.58
          */
         set_rewrap_on_resize(rewrap: boolean): void;
 
@@ -5468,6 +5589,7 @@ export namespace Vte {
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when text is inserted, e.g. by a paste.
          * @param scroll whether the terminal should scroll on insert
+         * @since 0.76
          */
         set_scroll_on_insert(scroll: boolean): void;
 
@@ -5476,6 +5598,7 @@ export namespace Vte {
          * the viewable history when the user presses a key.  Modifier keys do not
          * trigger this behavior.
          * @param scroll whether the terminal should scroll on keystrokes
+         * @since 0.52
          */
         set_scroll_on_keystroke(scroll: boolean): void;
 
@@ -5483,6 +5606,7 @@ export namespace Vte {
          * Controls whether or not the terminal will forcibly scroll to the bottom of
          * the viewable history when the new data is received from the child.
          * @param scroll whether the terminal should scroll on output
+         * @since 0.52
          */
         set_scroll_on_output(scroll: boolean): void;
 
@@ -5492,6 +5616,7 @@ export namespace Vte {
          * This function is rarely useful, except when the terminal is added to a
          * {@link Gtk.ScrolledWindow}.
          * @param enable whether to use pixels as scroll unit
+         * @since 0.66
          */
         set_scroll_unit_is_pixels(enable: boolean): void;
 
@@ -5523,12 +5648,14 @@ export namespace Vte {
         /**
          * Suppress emissions of signals and property notifications
          * that are deprecated.
+         * @since 0.78
          */
         set_suppress_legacy_signals(): void;
 
         /**
          * Controls whether or not the terminal will allow blinking text.
          * @param text_blink_mode the {@link Vte.TextBlinkMode} to use
+         * @since 0.52
          */
         set_text_blink_mode(text_blink_mode: TextBlinkMode): void;
 
@@ -5544,6 +5671,7 @@ export namespace Vte {
          * 
          * Use `null` to reset the set of exception characters to the default.
          * @param exceptions a string of ASCII punctuation characters, or `null`
+         * @since 0.40
          */
         set_word_char_exceptions(exceptions: string): void;
 
@@ -5553,6 +5681,7 @@ export namespace Vte {
          * Note: `VTE_ALIGN_START_FILL` is not supported, and will be treated
          *   like {@link Vte.Align.START}.
          * @param align alignment value from {@link Vte.Align}
+         * @since 0.76
          */
         set_xalign(align: Align): void;
 
@@ -5562,12 +5691,14 @@ export namespace Vte {
          * Note: `VTE_FILL_START_FILL` is not supported, and will be treated
          *   like `VTE_FILL_START`.
          * @param fill fillment value from `VteFill`
+         * @since 0.76
          */
         set_xfill(fill: boolean): void;
 
         /**
          * Sets the vertical alignment of `terminal` within its allocation.
          * @param align alignment value from {@link Vte.Align}
+         * @since 0.76
          */
         set_yalign(align: Align): void;
 
@@ -5576,6 +5707,7 @@ export namespace Vte {
          * Note that yfill is only supported with yalign set to
          * {@link Vte.Align.START}, and is ignored for all other yalign values.
          * @param fill fillment value from `VteFill`
+         * @since 0.76
          */
         set_yfill(fill: boolean): void;
 
@@ -5594,6 +5726,7 @@ export namespace Vte {
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Vte.TerminalSpawnAsyncCallback}, or `null`
+         * @since 0.48
          */
         spawn_async(pty_flags: PtyFlags, working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, timeout: number, cancellable: Gio.Cancellable | null, callback: TerminalSpawnAsyncCallback | null): void;
 
@@ -5629,6 +5762,7 @@ export namespace Vte {
          * @param child_setup an extra child setup function to run in the child just before `exec()`, or `null`
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, or `false` on error with `error` filled in
+         * @deprecated since 0.48: Use `vte_terminal_spawn_async()` instead.
          */
         spawn_sync(pty_flags: PtyFlags, working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Pid | null];
 
@@ -5688,6 +5822,7 @@ export namespace Vte {
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback a {@link Vte.TerminalSpawnAsyncCallback}, or `null`
+         * @since 0.62
          */
         spawn_with_fds_async(pty_flags: PtyFlags, working_directory: string | null, argv: string[], envv: string[] | null, fds: number[] | null, map_fds: number[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, timeout: number, cancellable: Gio.Cancellable | null, callback: TerminalSpawnAsyncCallback | null): void;
 
@@ -5796,6 +5931,7 @@ export namespace Vte {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
 
@@ -5807,6 +5943,7 @@ export namespace Vte {
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
+         * @since 2.12
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
 
@@ -5817,6 +5954,7 @@ export namespace Vte {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          */
         custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -5827,6 +5965,7 @@ export namespace Vte {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
 
@@ -5836,6 +5975,7 @@ export namespace Vte {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
+         * @since 2.12
          */
         custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, null];
 
@@ -5844,6 +5984,7 @@ export namespace Vte {
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
+         * @since 2.12
          */
         get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
 
@@ -5854,6 +5995,7 @@ export namespace Vte {
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
          * @returns the name set with `gtk_buildable_set_name()`
+         * @since 2.12
          */
         get_name(): string;
 
@@ -5864,6 +6006,7 @@ export namespace Vte {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          */
         parser_finished(builder: Gtk.Builder): void;
 
@@ -5872,12 +6015,14 @@ export namespace Vte {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          */
         set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
 
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          */
         set_name(name: string): void;
 
@@ -5887,6 +6032,7 @@ export namespace Vte {
          * @param builder a {@link Gtk.Builder}
          * @param child child to add
          * @param type kind of child or `null`
+         * @since 2.12
          * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type: string | null): void;
@@ -5898,6 +6044,7 @@ export namespace Vte {
          * specified in the UI definition.
          * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @since 2.12
          * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
@@ -5909,6 +6056,7 @@ export namespace Vte {
          * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_finished(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -5920,6 +6068,7 @@ export namespace Vte {
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data: null): void;
@@ -5929,6 +6078,7 @@ export namespace Vte {
          * @param builder a {@link Gtk.Builder} used to construct this object
          * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @since 2.12
          * @virtual
          */
         vfunc_custom_tag_start(builder: Gtk.Builder, child: GObject.Object | null, tagname: string): [boolean, GLib.MarkupParser, never];
@@ -5937,6 +6087,7 @@ export namespace Vte {
          * Get the internal child called `childname` of the `buildable` object.
          * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @since 2.12
          * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
@@ -5947,6 +6098,7 @@ export namespace Vte {
          * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @since 2.12
          * @virtual
          */
         vfunc_get_name(): string;
@@ -5958,6 +6110,7 @@ export namespace Vte {
          * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
          * @param builder a {@link Gtk.Builder}
+         * @since 2.12
          * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
@@ -5967,6 +6120,7 @@ export namespace Vte {
          * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @since 2.12
          * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: unknown): void;
@@ -5974,6 +6128,7 @@ export namespace Vte {
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @since 2.12
          * @virtual
          */
         vfunc_set_name(name: string): void;
@@ -5985,36 +6140,42 @@ export namespace Vte {
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
          * @returns `true` if `border` has been set
+         * @since 3.16
          */
         get_border(): [boolean, Gtk.Border];
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
          * @returns horizontal {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_hadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the horizontal {@link Gtk.ScrollablePolicy}.
          * @returns The horizontal {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
          * @returns vertical {@link Gtk.Adjustment}.
+         * @since 3.0
          */
         get_vadjustment(): Gtk.Adjustment;
 
         /**
          * Gets the vertical {@link Gtk.ScrollablePolicy}.
          * @returns The vertical {@link Gtk.ScrollablePolicy}.
+         * @since 3.0
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
 
         /**
          * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
          * @param hadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_hadjustment(hadjustment: Gtk.Adjustment | null): void;
 
@@ -6023,12 +6184,14 @@ export namespace Vte {
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
          * @param policy the horizontal {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
         /**
          * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
          * @param vadjustment a {@link Gtk.Adjustment}
+         * @since 3.0
          */
         set_vadjustment(vadjustment: Gtk.Adjustment | null): void;
 
@@ -6037,6 +6200,7 @@ export namespace Vte {
          * vertical scrolling should start below the minimum height or
          * below the natural height.
          * @param policy the vertical {@link Gtk.ScrollablePolicy}
+         * @since 3.0
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy): void;
 
@@ -6046,6 +6210,7 @@ export namespace Vte {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @since 3.16
          * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
@@ -6072,6 +6237,7 @@ export namespace Vte {
         // Methods
         /**
          * @returns the {@link Gdk.Event} that triggered the event, or `null` if it was not   triggered by an event
+         * @since 0.76
          */
         get_event(): Gdk.Event;
     }
@@ -6119,6 +6285,7 @@ export namespace Vte {
          * @param replacement the replacement string
          * @param flags PCRE2 match flags
          * @returns the substituted string, or `null`   if an error occurred
+         * @since 0.56
          */
         substitute(subject: string, replacement: string, flags: number): string;
 
@@ -6165,6 +6332,7 @@ export namespace Vte {
          * @param str a string
          * @param len the length of `str`, or -1 is `str` is NUL terminated
          * @param fmt a {@link Vte.UuidFormat}
+         * @since 0.78
          */
         static validate_string(str: string, len: bigint | number, fmt: UuidFormat): boolean;
 
@@ -6172,6 +6340,7 @@ export namespace Vte {
         /**
          * Creates a copy of `uuid`.
          * @returns a new copy of @`uuid`
+         * @since 0.78
          */
         dup(): Uuid;
 
@@ -6179,11 +6348,13 @@ export namespace Vte {
          * Compares `uuid` and `other` for equality.
          * @param other 
          * @returns `true` iff `uuid` and `other` are equal
+         * @since 0.78
          */
         equal(other: Uuid): boolean;
 
         /**
          * Frees `uuid`.
+         * @since 0.78
          */
         free(): void;
 
@@ -6193,6 +6364,7 @@ export namespace Vte {
          * @param fmt a {@link Vte.UuidFormat}
          * @param len a location to store the length of the returned string, or `null`
          * @returns a string representation of `uuid`
+         * @since 0.78
          */
         free_to_string(fmt: UuidFormat, len: bigint | number): string;
 
@@ -6201,6 +6373,7 @@ export namespace Vte {
          * @param data string data
          * @param len the length of `data`, or -1 if `str` is NUL terminated
          * @returns a new v5 UUID
+         * @since 0.78
          */
         new_v5(data: string, len: bigint | number): Uuid;
 
@@ -6208,6 +6381,7 @@ export namespace Vte {
          * Returns the string representation of `uuid`.
          * @param fmt a {@link Vte.UuidFormat}
          * @returns a string representation of `uuid`
+         * @since 0.78
          */
         to_string(fmt: UuidFormat): [string, number];
     }

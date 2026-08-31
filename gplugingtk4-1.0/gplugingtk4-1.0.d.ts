@@ -223,6 +223,7 @@ export namespace GPluginGtk4 {
         /**
          * Gets the {@link GPlugin.Plugin} that's being displayed.
          * @returns The plugin that's being displayed, or          `null` if the page is empty.
+         * @since 0.39
          */
         get_plugin(): GPlugin.Plugin | null;
 
@@ -234,6 +235,7 @@ export namespace GPluginGtk4 {
          * `GSettingsBackend *` after setting `G_SETTINGS_ENABLE_BACKEND` for the files
          * where you need it.
          * @returns The settings backend in use.
+         * @since 0.40
          */
         get_settings_backend(): null;
 
@@ -242,6 +244,7 @@ export namespace GPluginGtk4 {
          * 
          * A `plugin` value of `null` will clear the widget.
          * @param plugin The plugin instance.
+         * @since 0.39
          */
         set_plugin(plugin: GPlugin.Plugin | null): void;
 
@@ -252,6 +255,7 @@ export namespace GPluginGtk4 {
          * GPlugin users, this function takes a `gpointer` instead of a
          * `GSettingsBackend *` but the type will be checked internally.
          * @param backend The settings backend to use. If `null`,           the default GSettings backend will be used.
+         * @since 0.40
          */
         set_settings_backend(backend: null): void;
 
@@ -386,12 +390,14 @@ export namespace GPluginGtk4 {
         /**
          * Returns the {@link GPlugin.Plugin} that's being displayed.
          * @returns The plugin that's being displayed, or          `null` if the row is empty.
+         * @since 0.38
          */
         get_plugin(): GPlugin.Plugin | null;
 
         /**
          * Returns a key that can be used to sort this row.
          * @returns The sort key.
+         * @since 0.38
          */
         get_sort_key(): string;
 
@@ -399,6 +405,7 @@ export namespace GPluginGtk4 {
          * Matches this row instance against some text to be searched for.
          * @param text The text to search for.
          * @returns Whether the row matches the text or not.
+         * @since 0.38
          */
         matches_search(text: string): boolean;
 
@@ -407,6 +414,7 @@ export namespace GPluginGtk4 {
          * 
          * A `plugin` value of `null` will clear the widget.
          * @param plugin The plugin instance.
+         * @since 0.38
          */
         set_plugin(plugin: GPlugin.Plugin | null): void;
 
@@ -660,6 +668,7 @@ export namespace GPluginGtk4 {
         /**
          * Returns the plugin settings that are being displayed.
          * @returns The settings being displayed.
+         * @since 0.40
          */
         get_settings(): Gio.Settings;
 
@@ -672,6 +681,7 @@ export namespace GPluginGtk4 {
         /**
          * This function will set which plugin settings to display.
          * @param settings The plugin settings to display.
+         * @since 0.40
          */
         set_settings(settings: Gio.Settings | null): void;
 
@@ -840,6 +850,7 @@ export namespace GPluginGtk4 {
          * `GSettingsBackend *` after setting `G_SETTINGS_ENABLE_BACKEND` for the files
          * where you need it.
          * @returns The settings backend.
+         * @since 0.40
          */
         get_settings_backend(): null;
 
@@ -862,6 +873,7 @@ export namespace GPluginGtk4 {
          * GPlugin users, this function takes a `gpointer` instead of a
          * `GSettingsBackend *` but the type will be checked internally.
          * @param backend The settings backend to use. If `null`,           the default GSettings backend will be used.
+         * @since 0.40
          */
         set_settings_backend(backend: null): void;
 
@@ -874,12 +886,14 @@ export namespace GPluginGtk4 {
 
         /**
          * Shows the plugin list overview.
+         * @since 0.39
          */
         show_overview(): void;
 
         /**
          * Shows a page for a single plugin.
          * @param plugin The plugin to show.
+         * @since 0.39
          */
         show_plugin(plugin: GPlugin.Plugin): void;
 
